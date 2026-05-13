@@ -1,0 +1,26 @@
+{
+  "name": "@shouldi/contracts",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Cross-boundary schemas and API types shared by Expo client and HTTP API.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

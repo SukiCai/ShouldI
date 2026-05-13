@@ -1,0 +1,14 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      # If 8787 is taken locally (e.g. `npm run api`), run: SHOULDI_API_HOST_PORT=8877 docker compose up
+      - "${SHOULDI_API_HOST_PORT:-8787}:8787"
+    environment:
+      PORT: "8787"
+      # Uncomment and mount Hermes below to enable agent wiring in-container.
+      # HERMES_ROOT: /opt/hermes
+    # volumes:
+    #   - ./hermes-agent-private:/opt/hermes:ro

@@ -1,0 +1,21 @@
+{
+  "name": "shouldi",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "mobile": "npm run start -w @shouldi/mobile",
+    "api": "npm run dev -w @shouldi/api",
+    "gateway": "npm run api",
+    "build": "npm run build -w @shouldi/contracts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "@types/react": "18.3.28",
+    "@types/react-dom": "18.3.7"
+  }
+}
