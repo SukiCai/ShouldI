@@ -22,6 +22,10 @@ export const ExploreCardSchema = z.object({
   rewardPoints: z.number().int().positive().default(10),
   followedByMe: z.boolean().default(false),
   myVoteOptionId: z.string().optional(),
+  /** Stable option id the product AI would lean toward if this card were surfaced to ShouldI’s assistant. */
+  aiSuggestedOptionId: z.string().optional(),
+  /** Optional one-line teaser shown after someone votes so they can compare to the AI leaning. */
+  aiSuggestionNote: z.string().optional(),
   winningOptionId: z.string().optional(),
   rewardEligibleOptionId: z.string().optional(),
   notifiedOnOutcome: z.boolean().default(false),

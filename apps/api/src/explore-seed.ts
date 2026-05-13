@@ -34,6 +34,8 @@ export const seededExploreCards: ExploreCard[] = [
     takeaway: 'If pay is solving fear, quantify runway and revisit offer trade-offs—not just headline comp.',
     provenance: 'community_story',
     matchHint: 'Popular with early-career “should I chase title vs stability?” readers.',
+    aiSuggestedOptionId: 'negotiate',
+    aiSuggestionNote: 'Model runway and downside before choosing pay vs stability — negotiate terms first.',
   },
   {
     id: 'seed-career-1',
@@ -62,6 +64,8 @@ export const seededExploreCards: ExploreCard[] = [
     hook: 'Said yes to leadership before I liked managing.',
     tension: 'I confused promotion with readiness. The calendar filled with coordination, not craft.',
     provenance: 'curated_digest',
+    aiSuggestedOptionId: 'trial-lead',
+    aiSuggestionNote: 'A bounded leadership trial lowers regret if IC craft still anchors your identity.',
   },
   {
     id: 'seed-relationship-1',
@@ -92,6 +96,8 @@ export const seededExploreCards: ExploreCard[] = [
     outcome: 'A structured conversation broke the pattern.',
     takeaway: 'Name needs early with a cooldown rule: short check-ins beat surprise ultimatums.',
     provenance: 'community_story',
+    aiSuggestedOptionId: 'wait',
+    aiSuggestionNote: 'If either of you is flooded, a short pause with a calendar check-in often lands better than debating in the spillover moment.',
   },
   {
     id: 'seed-life-1',
@@ -121,5 +127,7 @@ export const seededExploreCards: ExploreCard[] = [
     tension:
       'Every time work quieted down, something else moved—lease end date, visa timeline, partner’s role. Waiting for full alignment meant waiting forever.',
     provenance: 'ai_framework',
+    aiSuggestedOptionId: 'pilot',
+    aiSuggestionNote: 'Reversible pilots surface hidden constraints before irreversible leases and commutes.',
   },
 ];

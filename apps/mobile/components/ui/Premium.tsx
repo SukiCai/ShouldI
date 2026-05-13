@@ -27,7 +27,7 @@ export function GradientHero({
   );
 }
 
-export function GlassCard({ children, style }: PropsWithChildren<{ style?: ViewStyle | ViewStyle[] }>) {
+export function GlassCard({ children, style }: PropsWithChildren<{ style?: StyleProp<ViewStyle> }>) {
   return <View style={[styles.card, style]}>{children}</View>;
 }
 

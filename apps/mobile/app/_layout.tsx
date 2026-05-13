@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
+import { palette } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 
 export { ErrorBoundary } from 'expo-router';
@@ -63,6 +64,14 @@ function RootLayoutNav() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="decide" options={{ headerShown: false }} />
         <Stack.Screen name="decision/[id]" options={{ title: 'Decision details' }} />
+        <Stack.Screen
+          name="plot-deck"
+          options={{
+            title: 'Plot Deck',
+            headerTintColor: palette.accent,
+            headerBackTitle: 'Explore',
+          }}
+        />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>

@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
-import { Animated, Easing, Platform, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { palette, typography } from '@/constants/theme';
 
@@ -12,16 +12,23 @@ type ExploreMomentHeaderProps = {
   caseCount: number;
   /** Minimal keeps focus on cards; dramatic is the large cinematic hero. */
   variant?: 'minimal' | 'dramatic';
+  footerLink?: { label: string; accessibilityHint?: string; onPress: () => void };
 };
 
-export function ExploreMomentHeader({ caseCount, variant = 'minimal' }: ExploreMomentHeaderProps) {
+export function ExploreMomentHeader({ caseCount, variant = 'minimal', footerLink }: ExploreMomentHeaderProps) {
   if (variant === 'dramatic') {
     return <DramaticMomentHeader caseCount={caseCount} />;
   }
-  return <MinimalExploreBar caseCount={caseCount} />;
+  return <MinimalExploreBar caseCount={caseCount} footerLink={footerLink} />;
 }
 
-function MinimalExploreBar({ caseCount }: { caseCount: number }) {
+function MinimalExploreBar({
+  caseCount,
+  footerLink,
+}: {
+  caseCount: number;
+  footerLink?: { label: string; accessibilityHint?: string; onPress: () => void };
+}) {
   const breathe = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -78,6 +85,16 @@ function MinimalExploreBar({ caseCount }: { caseCount: number }) {
           end={{ x: 1, y: 0.5 }}
           style={minimalStyles.accentHair}
         />
+        {footerLink ? (
+          <Pressable
+            accessibilityRole="link"
+            accessibilityHint={footerLink.accessibilityHint}
+            onPress={footerLink.onPress}
+            hitSlop={8}
+            style={({ pressed }) => [minimalStyles.footerLinkWrap, pressed && minimalStyles.footerLinkPressed]}>
+            <Text style={minimalStyles.footerLinkText}>{footerLink.label}</Text>
+          </Pressable>
+        ) : null}
       </View>
     </View>
   );
@@ -258,6 +275,22 @@ const minimalStyles = StyleSheet.create({
     borderRadius: 2,
     marginTop: 8,
     opacity: 0.85,
+  },
+  footerLinkWrap: {
+    alignSelf: 'flex-end',
+    marginTop: 8,
+    paddingVertical: 2,
+    paddingHorizontal: 2,
+  },
+  footerLinkPressed: {
+    opacity: 0.7,
+  },
+  footerLinkText: {
+    ...typography.caption,
+    color: palette.accent,
+    fontWeight: '700',
+    letterSpacing: 0.35,
+    fontSize: 12,
   },
 });
 
