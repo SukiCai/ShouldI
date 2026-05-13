@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -69,6 +69,23 @@ export default function DecisionDetailScreen() {
         ))}
       </GlassCard>
 
+      {card.matchHint ? (
+        <>
+          <SectionHeader title="Sounds like your situation?" />
+          <GlassCard style={{ gap: 10 }}>
+            <Text style={typography.body}>{card.matchHint}</Text>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Open Decide to work through your own choice"
+              onPress={() => router.push('/(tabs)/decide')}
+              style={({ pressed }) => [styles.decideLink, pressed && styles.decideLinkPressed]}
+            >
+              <Text style={styles.decideLinkText}>Structure your decision in Decide →</Text>
+            </Pressable>
+          </GlassCard>
+        </>
+      ) : null}
+
       <SectionHeader title="Follow & rewards" />
       <GlassCard style={{ gap: 10 }}>
         <Pressable
@@ -112,6 +129,24 @@ export default function DecisionDetailScreen() {
 }
 
 const styles = StyleSheet.create({
+  decideLink: {
+    alignSelf: 'flex-start',
+    marginTop: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#cdd9ff',
+    backgroundColor: palette.accentSoft,
+  },
+  decideLinkPressed: {
+    opacity: 0.9,
+  },
+  decideLinkText: {
+    ...typography.compact,
+    color: palette.accent,
+    fontWeight: '700',
+  },
   discuss: {
     ...typography.body,
     color: palette.slate900,

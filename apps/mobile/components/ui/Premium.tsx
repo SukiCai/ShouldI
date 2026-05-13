@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { palette, radius, spacing, typography } from '@/constants/theme';
 
@@ -40,11 +40,19 @@ export function SectionHeader({ title, right }: { title: string; right?: string 
   );
 }
 
-export function PillTag({ label, tone = 'neutral' }: { label: string; tone?: 'neutral' | 'brand' | 'good' }) {
+export function PillTag({
+  label,
+  tone = 'neutral',
+  style,
+}: {
+  label: string;
+  tone?: 'neutral' | 'brand' | 'good';
+  style?: StyleProp<ViewStyle>;
+}) {
   const toneStyle =
     tone === 'brand' ? styles.pillBrand : tone === 'good' ? styles.pillGood : styles.pillNeutral;
   return (
-    <View style={[styles.pill, toneStyle]}>
+    <View style={[styles.pill, toneStyle, style]}>
       <Text style={styles.pillText}>{label}</Text>
     </View>
   );

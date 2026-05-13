@@ -117,8 +117,9 @@ export const seededExploreCards: ExploreCard[] = [
     rewardPoints: 18,
     followedByMe: false,
     notifiedOnOutcome: false,
-    hook: 'Deferred a relocation for “perfect timing”.',
-    tension: 'I waited until everything lined up professionally. Life doesn’t cooperate with that plan.',
+    hook: 'Deferred a relocation until work felt “stable.”',
+    tension:
+      'Every time work quieted down, something else moved—lease end date, visa timeline, partner’s role. Waiting for full alignment meant waiting forever.',
     provenance: 'ai_framework',
   },
 ];

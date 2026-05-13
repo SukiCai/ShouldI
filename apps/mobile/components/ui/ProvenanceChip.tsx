@@ -23,12 +23,11 @@ const styles = StyleSheet.create({
   shell: {
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingVertical: 5,
     borderRadius: 999,
     backgroundColor: palette.accentSoft,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#cad6ff',
-    marginBottom: 8,
   },
   text: {
     color: palette.slate900,
