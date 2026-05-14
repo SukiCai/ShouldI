@@ -23,8 +23,8 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
+import { ReelCardLiquidBackdrop } from '@/components/explore/ReelCardLiquidBackdrop';
 import { palette, typography } from '@/constants/theme';
-import { REEL_SURFACE_FLARE, REEL_SURFACE_GRADIENTS, REEL_SURFACE_MAIN_LOCATIONS } from '@/constants/reelSurfaceGradients';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
 
@@ -157,25 +157,9 @@ function ReelCardSurface({
   isOpen: boolean;
   children: React.ReactNode;
 }) {
-  const tint = REEL_SURFACE_GRADIENTS[category];
-  const flare = REEL_SURFACE_FLARE[category];
   return (
     <View style={styles.reelCardOuter}>
-      <LinearGradient
-        pointerEvents="none"
-        colors={[...tint]}
-        locations={[...REEL_SURFACE_MAIN_LOCATIONS]}
-        start={{ x: 0.02, y: 0 }}
-        end={{ x: 1, y: 0.98 }}
-        style={styles.reelCardAmbient}
-      />
-      <LinearGradient
-        pointerEvents="none"
-        colors={[...flare]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0.92, y: 0.88 }}
-        style={styles.reelCardAmbient}
-      />
+      <ReelCardLiquidBackdrop category={category} />
       <LinearGradient
         pointerEvents="none"
         colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.38)', '#ffffff']}
