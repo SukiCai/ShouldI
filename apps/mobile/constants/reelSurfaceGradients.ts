@@ -1,10 +1,11 @@
 import type { DecisionCategory } from '@shouldi/contracts';
 
 export const REEL_SURFACE_GRADIENTS: Record<DecisionCategory, readonly [string, string, string]> = {
-  life: ['#a87cff', '#f06dae', '#ffd0ec'],
-  career: ['#3d83ff', '#36c5ff', '#9af3e8'],
-  relationship: ['#ff5cb8', '#986fff', '#ffbce0'],
-  money: ['#ff9f1c', '#f4d941', '#2dd4a7'],
+  /** Editorial-tint washes — airy, readable on white UI chrome. */
+  life: ['#d4cbfa', '#f4f2fc', '#fff8fb'],
+  career: ['#c5daff', '#eff6ff', '#f2fcfa'],
+  relationship: ['#f2c4ec', '#faf5ff', '#fff5f9'],
+  money: ['#ffd8b8', '#fff7ed', '#f0fcf6'],
 };
 
 export const REEL_SURFACE_LOCATIONS = [0, 0.52, 1] as const;

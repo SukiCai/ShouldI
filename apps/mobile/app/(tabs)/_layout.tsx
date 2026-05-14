@@ -1,7 +1,11 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import * as Haptics from 'expo-haptics';
+import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
+import { PlatformPressable } from '@react-navigation/elements';
 import { Tabs } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Colors from '@/constants/Colors';
 import { palette } from '@/constants/theme';
@@ -11,50 +15,137 @@ import { useColorScheme } from '@/components/useColorScheme';
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
+  focused?: boolean;
 }) {
-  return <FontAwesome size={26} style={{ marginBottom: -2 }} {...props} />;
+  const { focused, ...rest } = props;
+  return (
+    <View style={styles.sideIconWrap} accessibilityElementsHidden={false}>
+      <FontAwesome
+        size={focused ? 21 : 20}
+        importantForAccessibility="no"
+        style={{ marginBottom: 0 }}
+        {...rest}
+      />
+    </View>
+  );
 }
+
+/** Middle slot: subtle raised “+” that matches the dock instead of hovering awkwardly far above it. */
+function DecideFabTabButton(props: BottomTabBarButtonProps) {
+  const { children: _children, style, ...rest } = props;
+  const focused = !!rest.accessibilityState?.selected;
+  const scheme = useColorScheme();
+  const isDark = scheme === 'dark';
+
+  return (
+    <PlatformPressable
+      {...rest}
+      accessibilityLabel={rest.accessibilityLabel ?? 'Decide: start a structured choice'}
+      style={[style, styles.decideHitArea]}
+    >
+      <View style={styles.decideSlot} pointerEvents="none">
+        <View
+          style={[
+            styles.decideFab,
+            isDark && styles.decideFabDark,
+            focused && styles.decideFabFocused,
+            focused && !isDark && styles.decideFabFocusedLight,
+            focused && isDark && styles.decideFabFocusedDark,
+          ]}
+          accessibilityElementsHidden={false}>
+          <FontAwesome name="plus" size={18} color={palette.white} />
+        </View>
+        <Text
+          style={[
+            styles.decideFabCaption,
+            focused && styles.decideFabCaptionFocused,
+            isDark && !focused && styles.decideFabCaptionDim,
+          ]}
+          numberOfLines={1}>
+          Decide
+        </Text>
+      </View>
+    </PlatformPressable>
+  );
+}
+
+const tabListeners =
+  Platform.OS !== 'web'
+    ? ({
+        tabPress() {
+          void Haptics.selectionAsync().catch(() => undefined);
+        },
+      } as const)
+    : {};
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const insets = useSafeAreaInsets();
+  const isDark = colorScheme === 'dark';
+  const bottomPad = Platform.OS === 'ios' ? insets.bottom : Math.max(insets.bottom, 6);
+
+  const barBg = isDark ? palette.slate950 : palette.mist;
+  const hairline = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(92,107,146,0.14)';
 
   return (
     <Tabs
       initialRouteName="explore"
+      backBehavior="history"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        tabBarInactiveTintColor: palette.slate500,
+        tabBarActiveTintColor: Colors[isDark ? 'dark' : 'light'].tint,
+        tabBarInactiveTintColor: isDark ? 'rgba(200,209,229,0.55)' : palette.slate500,
         tabBarShowLabel: true,
+        tabBarHideOnKeyboard: true,
+        tabBarLabelPosition: 'below-icon',
         tabBarLabelStyle: styles.tabLabel,
-        tabBarStyle: styles.tabBar,
+        tabBarAllowFontScaling: true,
+        tabBarIconStyle: styles.tabBarIconStyle,
+        tabBarStyle: [
+          styles.tabBar,
+          {
+            paddingTop: 8,
+            paddingBottom: Platform.OS === 'ios' ? bottomPad + 2 : Math.max(bottomPad + 4, 12),
+            paddingHorizontal: Platform.OS === 'ios' ? 10 : 6,
+            backgroundColor: barBg,
+            borderTopColor: hairline,
+          },
+        ],
         tabBarItemStyle: styles.tabItem,
         headerShown: useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
         name="explore"
+        listeners={tabListeners}
         options={{
           title: 'Explore',
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} />,
-          tabBarAccessibilityLabel: 'Explore real outcomes feed',
+          tabBarIcon: ({ color, focused }) => <TabBarIcon name="compass" focused={focused} color={color} />,
+          tabBarAccessibilityLabel: 'Explore: real decisions and community outcomes',
+          tabBarButtonTestID: 'tab-explore',
         }}
       />
       <Tabs.Screen
         name="decide"
+        listeners={tabListeners}
         options={{
-          title: 'Decide',
-          tabBarIcon: ({ color }) => <TabBarIcon name="clipboard" color={color} />,
-          tabBarAccessibilityLabel: 'Start or resume a structured decision briefing',
+          title: '',
+          tabBarShowLabel: false,
+          tabBarAccessibilityLabel: 'Decide: start a structured choice',
+          tabBarIcon: () => null,
           headerShown: false,
+          tabBarButton: DecideFabTabButton,
+          tabBarButtonTestID: 'tab-decide',
         }}
       />
       <Tabs.Screen
         name="you"
+        listeners={tabListeners}
         options={{
-          title: 'You',
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-          tabBarAccessibilityLabel: 'Account, controls, saved activity',
+          title: 'Profile',
           headerShown: false,
+          tabBarIcon: ({ color, focused }) => <TabBarIcon name="user-circle" focused={focused} color={color} />,
+          tabBarAccessibilityLabel: 'Profile: account, settings, saved activity',
+          tabBarButtonTestID: 'tab-profile',
         }}
       />
     </Tabs>
@@ -63,29 +154,96 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    position: 'absolute',
-    left: 14,
-    right: 14,
-    bottom: 14,
-    borderRadius: 18,
-    height: 72,
-    paddingTop: 8,
-    paddingBottom: 8,
-    borderTopWidth: 0,
-    backgroundColor: 'rgba(253,254,255,0.96)',
-    shadowColor: '#081128',
-    shadowOpacity: 0.1,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 8,
+    borderRadius: 0,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    shadowColor: '#0b1224',
+    shadowOpacity: Platform.OS === 'ios' ? 0.04 : 0,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: -1 },
+    elevation: Platform.OS === 'android' ? 6 : 0,
+    overflow: 'visible',
+  },
+  tabBarIconStyle: {
+    marginBottom: 2,
   },
   tabItem: {
-    borderRadius: 14,
-    marginHorizontal: 2,
+    paddingVertical: 0,
+    minWidth: 48,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: Platform.OS === 'android' ? 2 : 0,
+  },
+  sideIconWrap: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 24,
+    marginBottom: 2,
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: 10,
+    letterSpacing: 0.15,
     fontWeight: '600',
-    marginBottom: 2,
+    marginTop: 2,
+    textAlign: 'center',
+    maxWidth: 88,
+  },
+  decideHitArea: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 0,
+  },
+  decideSlot: {
+    alignItems: 'center',
+    gap: 3,
+    marginTop: Platform.OS === 'ios' ? -10 : -8,
+  },
+  decideFab: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: palette.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#0b1224',
+    shadowOpacity: 0.16,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: Platform.OS === 'android' ? 6 : 0,
+    borderWidth: StyleSheet.hairlineWidth * 2,
+    borderColor: 'rgba(255,255,255,0.32)',
+  },
+  decideFabDark: {
+    borderColor: 'rgba(255,255,255,0.22)',
+    shadowOpacity: 0.35,
+  },
+  decideFabFocused: {
+    shadowOpacity: 0.26,
+    shadowRadius: Platform.OS === 'ios' ? 10 : 6,
+    shadowOffset: { width: 0, height: 3 },
+  },
+  decideFabFocusedLight: {
+    borderColor: palette.accentSoft,
+    borderWidth: 2,
+  },
+  decideFabFocusedDark: {
+    borderWidth: 2,
+    borderColor: 'rgba(180,207,255,0.45)',
+  },
+  decideFabCaption: {
+    fontSize: 10,
+    fontWeight: '600',
+    letterSpacing: 0.12,
+    textAlign: 'center',
+    color: palette.slate500,
+    maxWidth: 88,
+    marginBottom: Platform.OS === 'android' ? 2 : 0,
+  },
+  decideFabCaptionDim: {
+    color: 'rgba(200,209,229,0.55)',
+  },
+  decideFabCaptionFocused: {
+    color: palette.accent,
   },
 });

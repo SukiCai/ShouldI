@@ -20,6 +20,9 @@ export const ExploreCardSchema = z.object({
   distribution: z.array(z.object({ optionId: z.string(), votes: z.number().int().nonnegative() })).min(2),
   discussionPreview: z.array(z.string()).max(4).default([]),
   rewardPoints: z.number().int().positive().default(10),
+  /** Bookmark this dilemma for quick access later. */
+  savedByMe: z.boolean().default(false),
+  /** Get notified or see updates when the thread moves. */
   followedByMe: z.boolean().default(false),
   myVoteOptionId: z.string().optional(),
   /** Stable option id the product AI would lean toward if this card were surfaced to ShouldI’s assistant. */

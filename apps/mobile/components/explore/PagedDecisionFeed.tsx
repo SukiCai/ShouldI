@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
 import type { ExploreFeedResponse } from '@shouldi/contracts';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
@@ -22,43 +24,174 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { palette, typography } from '@/constants/theme';
-import { REEL_SURFACE_GRADIENTS, REEL_SURFACE_LOCATIONS } from '@/constants/reelSurfaceGradients';
+import { REEL_SURFACE_GRADIENTS } from '@/constants/reelSurfaceGradients';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
+
+const STORAGE_REEL_SAVE_OVERRIDES = '@shouldi/v1/reel_save_overrides';
+const STORAGE_REEL_FOLLOW_OVERRIDES = '@shouldi/v1/reel_follow_overrides';
+
+/** User toggles — keys omitted when aligned with API default again. */
+type IdBoolMap = Record<string, boolean>;
+
+function effectiveBool(overrides: IdBoolMap, id: string, serverFallback: boolean): boolean {
+  const o = overrides[id];
+  return o !== undefined ? o : serverFallback;
+}
+
+function bumpOverride(
+  setOverrides: React.Dispatch<React.SetStateAction<IdBoolMap>>,
+  storageKey: string,
+  id: string,
+  serverFallback: boolean,
+): void {
+  setOverrides((prev) => {
+    const current = prev[id] !== undefined ? prev[id]! : serverFallback;
+    const next = !current;
+    const n = { ...prev };
+    if (next === serverFallback) delete n[id];
+    else n[id] = next;
+    void AsyncStorage.setItem(storageKey, JSON.stringify(n)).catch(() => undefined);
+    return n;
+  });
+}
+
+function formatCategoryLabel(category: ExploreFeedCard['category']): string {
+  return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+const REEL_STAR_GRADIENT = ['#fff6e8', '#ffe1b8', '#fecf7a'] as const;
+const REEL_BELL_GRADIENT = ['#7aa2ff', '#4d74f7', '#2d53e6'] as const;
+
+function ReelCardActionBar({
+  category,
+  saved,
+  following,
+  onToggleSave,
+  onToggleFollow,
+}: {
+  category: ExploreFeedCard['category'];
+  saved: boolean;
+  following: boolean;
+  onToggleSave: () => void;
+  onToggleFollow: () => void;
+}) {
+  const saveLabel = saved ? 'Saved — tap to remove from saved' : 'Save this dilemma';
+  const followLabel = following ? 'Following — tap to stop update alerts' : 'Follow for updates';
+
+  return (
+    <View style={styles.cardTopRow}>
+      <View style={styles.categoryChip}>
+        <Text style={styles.categoryChipText}>{formatCategoryLabel(category)}</Text>
+      </View>
+      <View style={styles.cardIconGroup}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={saveLabel}
+          hitSlop={8}
+          onPress={() => {
+            if (Platform.OS !== 'web') {
+              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+            }
+            onToggleSave();
+          }}
+          style={({ pressed }) => [
+            styles.toolbarIconHit,
+            saved && styles.toolbarIconHitActiveGlowSave,
+            pressed && styles.toolbarIconHitPressed,
+          ]}>
+          {saved ? (
+            <LinearGradient
+              colors={[...REEL_STAR_GRADIENT]}
+              start={{ x: 0.1, y: 0 }}
+              end={{ x: 0.95, y: 1 }}
+              style={[styles.toolbarIconGem, Platform.OS === 'android' ? styles.toolbarIconGemRaisedAndroid : null]}>
+              <Ionicons name="star" size={19} color="#734210" />
+            </LinearGradient>
+          ) : (
+            <View style={[styles.toolbarIconGem, styles.toolbarIconFrost]}>
+              <Ionicons name="star-outline" size={20} color={palette.slate500} />
+            </View>
+          )}
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={followLabel}
+          hitSlop={8}
+          onPress={() => {
+            if (Platform.OS !== 'web') {
+              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
+            }
+            onToggleFollow();
+          }}
+          style={({ pressed }) => [
+            styles.toolbarIconHit,
+            following && styles.toolbarIconHitActiveGlowBell,
+            pressed && styles.toolbarIconHitPressed,
+          ]}>
+          {following ? (
+            <LinearGradient
+              colors={[...REEL_BELL_GRADIENT]}
+              start={{ x: 0.15, y: 0 }}
+              end={{ x: 0.85, y: 1 }}
+              style={[styles.toolbarIconGem, Platform.OS === 'android' ? styles.toolbarIconGemRaisedAndroid : null]}>
+              <Ionicons name="notifications" size={18} color={palette.white} />
+            </LinearGradient>
+          ) : (
+            <View style={[styles.toolbarIconGem, styles.toolbarIconFrost]}>
+              <Ionicons name="notifications-outline" size={19} color={palette.slate500} />
+            </View>
+          )}
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
+function ReelCardSurface({
+  category,
+  isOpen,
+  children,
+}: {
+  category: ExploreFeedCard['category'];
+  isOpen: boolean;
+  children: React.ReactNode;
+}) {
+  const tint = REEL_SURFACE_GRADIENTS[category];
+  return (
+    <View style={styles.reelCardOuter}>
+      <LinearGradient
+        pointerEvents="none"
+        colors={[tint[0], tint[1], '#fdfefe']}
+        locations={[0, 0.4, 1]}
+        start={{ x: -0.08, y: 0 }}
+        end={{ x: 1.02, y: 1 }}
+        style={styles.reelCardAmbient}
+      />
+      <View style={[styles.reelCardInner, isOpen && styles.reelCardInnerOpen]}>{children}</View>
+    </View>
+  );
+}
 
 export function decisionFeedStatus(card: unknown): 'open' | 'resolved' {
   const value = (card as { status?: string })?.status;
   return value === 'resolved' ? 'resolved' : 'open';
 }
 
-function ColorfulReelCard({ category, children }: { category: keyof typeof REEL_SURFACE_GRADIENTS; children: React.ReactNode }) {
-  const gradient = REEL_SURFACE_GRADIENTS[category];
-  return (
-    <LinearGradient
-      colors={[...gradient]}
-      locations={[...REEL_SURFACE_LOCATIONS]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.cardColorSurface}>
-      {children}
-    </LinearGradient>
-  );
-}
-
 const DEFAULT_SWIPE_CUES = [
-  'Flick up — next dilemma locked in 🔒',
-  'One more swipe, fresh takes incoming ✨',
-  'Keep cruising — surprises live above ↑',
-  'Plot twist boarding on the next card 🎬',
-  'Scroll up for your next dopamine vote 📈',
+  'Swipe up for the next question',
+  'More perspectives on the next card ↑',
+  'Keep scrolling for another vote',
+  'Next dilemma above',
+  'Pull up when you’re ready for more',
 ] as const;
 
 export const PLOT_DECK_SWIPE_CUES = [
-  'Swipe — see how another arc landed 🎯',
-  'The herd already spoke · next reel ↑',
-  'Closure in motion — flip to the next beat ✨',
-  'Real outcomes · same reel energy 📼',
-  'One more swipe for how it broke 🎬',
+  'Swipe up — see another outcome',
+  'Next reel above',
+  'More settled threads when you swipe ↑',
+  'Continue for the next story',
+  'Swipe when you’d like another result',
 ] as const;
 
 export type PagedDecisionFeedProps = {
@@ -83,9 +216,84 @@ function totalVotesFromCard(card: ExploreFeedCard): number {
   return card.distribution.reduce((sum, d) => sum + d.votes, 0);
 }
 
-function safeRewardPoints(card: unknown): number {
-  const raw = (card as { rewardPoints?: number })?.rewardPoints;
-  return Number.isFinite(raw) && (raw ?? 0) > 0 ? (raw as number) : 10;
+function compactVoteCount(n: number): string {
+  try {
+    return new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
+  } catch {
+    return n.toLocaleString();
+  }
+}
+
+function LiveVotesPill({
+  voteTotal,
+  isLivePoll,
+  inline,
+}: {
+  voteTotal: number;
+  isLivePoll: boolean;
+  inline?: boolean;
+}) {
+  return (
+    <View
+      style={[styles.headerVotePill, inline && styles.headerVotePillInline]}
+      accessibilityRole="text"
+      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'} so far`}>
+      {isLivePoll ? <LivePulseDot /> : null}
+      <View style={[styles.headerVoteTextStack, inline && styles.headerVoteTextStackInline]}>
+        <Text style={[styles.headerVoteStrong, inline && styles.headerVoteStrongInline]}>
+          {compactVoteCount(voteTotal)}
+        </Text>
+        <Text style={[styles.headerVoteMicro, inline && styles.headerVoteMicroInline]}>
+          {isLivePoll ? 'Live · votes cast' : 'Total votes'}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+function LivePulseDot() {
+  const pulse = React.useRef(new Animated.Value(0.35)).current;
+  React.useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulse, {
+          toValue: 1,
+          duration: 820,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulse, {
+          toValue: 0.35,
+          duration: 820,
+          easing: Easing.in(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [pulse]);
+
+  return (
+    <Animated.View
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      style={[
+        styles.livePulseDot,
+        {
+          opacity: pulse,
+          transform: [
+            {
+              scale: pulse.interpolate({
+                inputRange: [0.35, 1],
+                outputRange: [0.94, 1.12],
+              }),
+            },
+          ],
+        },
+      ]}
+    />
+  );
 }
 
 function InlineDistributionTrack({ percentage }: { percentage: number }) {
@@ -258,9 +466,11 @@ function BouncySwipeCue({
 
   return (
     <View style={styles.swipeCueCluster} accessibilityRole="text">
-      <Animated.Text style={[styles.swipeArrow, { opacity: arrowOpacity, transform: [{ translateY: arrowY }] }]} accessibilityLabel="">
-        ↑
-      </Animated.Text>
+      <Animated.View style={{ opacity: arrowOpacity, transform: [{ translateY: arrowY }] }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <View style={styles.swipeCueOrb}>
+          <Ionicons name="chevron-up" size={21} color={palette.slate500} />
+        </View>
+      </Animated.View>
       <Text style={[typography.compact, styles.scrollCue]}>{line}</Text>
     </View>
   );
@@ -278,7 +488,55 @@ export function PagedDecisionFeed({
   const insets = useSafeAreaInsets();
   const { height: windowHeight } = useWindowDimensions();
   const [selectedByCard, setSelectedByCard] = React.useState<Record<string, string>>({});
+  const [saveOverrides, setSaveOverrides] = React.useState<IdBoolMap>({});
+  const [followOverrides, setFollowOverrides] = React.useState<IdBoolMap>({});
   const [feedViewportH, setFeedViewportH] = React.useState(0);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const [rawS, rawF] = await Promise.all([
+          AsyncStorage.getItem(STORAGE_REEL_SAVE_OVERRIDES),
+          AsyncStorage.getItem(STORAGE_REEL_FOLLOW_OVERRIDES),
+        ]);
+        if (cancelled) return;
+        if (rawS) {
+          const parsed = JSON.parse(rawS) as unknown;
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            const rec: IdBoolMap = {};
+            for (const [k, v] of Object.entries(parsed)) {
+              if (typeof v === 'boolean') rec[k] = v;
+            }
+            setSaveOverrides(rec);
+          }
+        }
+        if (rawF) {
+          const parsed = JSON.parse(rawF) as unknown;
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            const rec: IdBoolMap = {};
+            for (const [k, v] of Object.entries(parsed)) {
+              if (typeof v === 'boolean') rec[k] = v;
+            }
+            setFollowOverrides(rec);
+          }
+        }
+      } catch {
+        /* ignore malformed storage */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const toggleSaveForCard = React.useCallback((card: ExploreFeedCard) => {
+    bumpOverride(setSaveOverrides, STORAGE_REEL_SAVE_OVERRIDES, card.id, card.savedByMe ?? false);
+  }, []);
+
+  const toggleFollowForCard = React.useCallback((card: ExploreFeedCard) => {
+    bumpOverride(setFollowOverrides, STORAGE_REEL_FOLLOW_OVERRIDES, card.id, card.followedByMe ?? false);
+  }, []);
 
   const pageHeight = React.useMemo(() => {
     const fallback = Math.max(
@@ -366,6 +624,7 @@ export function PagedDecisionFeed({
           const status = decisionFeedStatus(item);
           const isOpen = status === 'open';
           const isResolved = status === 'resolved';
+          const voteTotalAll = totalVotesFromCard(item);
           const effectivePicked = selectedByCard[item.id] ?? item.myVoteOptionId;
           const hasPicked = isResolved || !!effectivePicked;
 
@@ -383,28 +642,31 @@ export function PagedDecisionFeed({
                 bounces
                 {...(Platform.OS === 'ios' ? { directionalLockEnabled: true } : {})}>
                 <ReelCardMotionWrap animationToken={item.id} isLandingHero={celebrateLandingHero && index === 0}>
-                  <ColorfulReelCard category={item.category}>
-                    {!isOpen ? (
-                      <>
-                        <Text accessibilityRole="header" style={[typography.hero, styles.storyHeadline]} numberOfLines={4}>
-                          {item.hook}
-                        </Text>
-                        <Text style={[typography.body, styles.storyBody]} numberOfLines={5}>
-                          {shorten(item.tension, 140)}
-                        </Text>
-                      </>
+                  <ReelCardSurface category={item.category} isOpen={isOpen}>
+                    <ReelCardActionBar
+                      category={item.category}
+                      saved={effectiveBool(saveOverrides, item.id, item.savedByMe ?? false)}
+                      following={effectiveBool(followOverrides, item.id, item.followedByMe ?? false)}
+                      onToggleSave={() => toggleSaveForCard(item)}
+                      onToggleFollow={() => toggleFollowForCard(item)}
+                    />
+                    <View style={styles.pollQuestionRow}>
+                      <Text
+                        accessibilityRole="header"
+                        style={[
+                          isOpen ? typography.hero : typography.h2,
+                          styles.pollQuestion,
+                          styles.pollQuestionFlexible,
+                          isOpen && styles.pollQuestionOpen,
+                          isOpen && styles.pollHeroOpen,
+                        ]}>
+                        {item.question}
+                      </Text>
+                      <LiveVotesPill voteTotal={voteTotalAll} isLivePoll={isOpen} inline />
+                    </View>
+                    {isOpen && !hasPicked ? (
+                      <Text style={styles.pickPrompt}>Tap an option to vote.</Text>
                     ) : null}
-                    <View style={[styles.pollShell, isOpen && styles.pollShellOpen]}>
-                    {isOpen ? null : <Text style={[typography.caption, styles.pollEyebrow]}>Community poll</Text>}
-                    <Text
-                      accessibilityRole="header"
-                      style={[
-                        isOpen ? typography.title : typography.h2,
-                        styles.pollQuestion,
-                        isOpen && styles.pollQuestionOpen,
-                      ]}>
-                      {item.question}
-                    </Text>
                     {(() => {
                       const total = totalVotesFromCard(item);
                       const aiPickId = item.aiSuggestedOptionId;
@@ -420,26 +682,6 @@ export function PagedDecisionFeed({
                           : null;
                       return (
                         <>
-                          {!hasPicked && !isResolved ? (
-                            <Text style={[typography.caption, styles.pollHint]}>
-                              {status === 'open' ? (
-                                <>
-                                  Choose one to see how the community splits —{' '}
-                                  <Text style={styles.pollHintStrong}>{safeRewardPoints(item)} pts</Text> up for grabs when
-                                  this closes.
-                                </>
-                              ) : (
-                                <>
-                                  Tap an option to unlock bars —{' '}
-                                  <Text style={styles.pollHintStrong}>{safeRewardPoints(item)} pts</Text> reward pool.
-                                </>
-                              )}
-                            </Text>
-                          ) : isResolved ? (
-                            <Text style={[typography.caption, styles.pollHintMuted]}>Final vote snapshot · voting closed</Text>
-                          ) : (
-                            <Text style={[typography.caption, styles.pollHintMuted]}>Live snapshot · your vote updates below</Text>
-                          )}
                           <View style={styles.optionWrap}>
                             {item.options.map((option) => {
                               const votes = item.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
@@ -460,6 +702,9 @@ export function PagedDecisionFeed({
                                   disabled={isResolved}
                                   onPress={() => {
                                     if (isResolved) return;
+                                    if (Platform.OS !== 'web') {
+                                      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+                                    }
                                     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
                                     setSelectedByCard((prev) => ({
                                       ...prev,
@@ -496,9 +741,27 @@ export function PagedDecisionFeed({
                               );
                             })}
                           </View>
+                          {hasPicked ? (
+                            <PrimaryButton
+                              accessibilityLabel="Open discussion thread"
+                              style={styles.discussButtonBelowChoices}
+                              onPress={() =>
+                                router.push({
+                                  pathname: '/decision/[id]',
+                                  params: { id: item.id, fromReel: '1', reelCategory: item.category },
+                                })
+                              }>
+                              <Text style={styles.buttonLabel}>Discuss</Text>
+                            </PrimaryButton>
+                          ) : null}
+                          {hasPicked || isResolved ? (
+                            <Text style={[typography.caption, styles.pollPhaseCaption]}>
+                              {isResolved ? 'Community result · voting closed.' : 'Totals update automatically as votes come in.'}
+                            </Text>
+                          ) : null}
                           {hasPicked && aiPickLabel ? (
                             <View style={styles.aiSuggestionCallout} accessibilityRole="text">
-                              <Text style={styles.aiSuggestionEyebrow}>ShouldI AI</Text>
+                              <Text style={styles.aiSuggestionEyebrow}>ShouldI assistant</Text>
                               {userVoteLabel ? (
                                 userVoteLabel === aiPickLabel ? (
                                   <Text style={styles.aiSuggestionBody}>
@@ -521,47 +784,24 @@ export function PagedDecisionFeed({
                               ) : null}
                             </View>
                           ) : null}
-                          <View style={styles.pollFooter}>
-                            <Text style={[typography.caption, styles.votesMetaStrong]}>{total.toLocaleString()} votes</Text>
-                            {!hasPicked && !isResolved ? (
-                              <Text style={[typography.caption, styles.votesMeta]}>Your vote unlocks the bars</Text>
-                            ) : !isResolved ? (
-                              <Text style={[typography.caption, styles.votesMeta]}>Here’s how everyone leaned</Text>
-                            ) : (
-                              <Text style={[typography.caption, styles.votesMeta]}>Final community split</Text>
-                            )}
-                          </View>
                         </>
                       );
                     })()}
-                  </View>
-                  {status === 'resolved' ? (
-                    <View style={styles.outcomeShell}>
-                      <Text style={[typography.caption, styles.outcomeEyebrow]}>How it turned out</Text>
-                      <Text style={[typography.body, styles.outcomeText]}>{shorten(item.outcome ?? '', 160)}</Text>
-                      <Text style={[typography.caption, styles.lessonEyebrow]}>Takeaway</Text>
-                      <Text style={[typography.compact, styles.lessonText]}>{shorten(item.takeaway ?? '', 130)}</Text>
-                    </View>
-                  ) : (
-                    <Text style={[typography.caption, styles.pendingInline]}>Outcome still open — follow the thread for updates.</Text>
-                  )}
-                  <View style={styles.cardActions}>
-                    {hasPicked ? (
-                      <PrimaryButton
-                        accessibilityLabel="Open discussion and full thread"
-                        onPress={() =>
-                          router.push({
-                            pathname: '/decision/[id]',
-                            params: { id: item.id, fromReel: '1', reelCategory: item.category },
-                          })
-                        }>
-                        <Text style={styles.buttonLabel}>Open full thread</Text>
-                      </PrimaryButton>
+                    {status === 'resolved' ? (
+                      <View style={styles.outcomeMerged}>
+                        <Text style={[typography.caption, styles.outcomeEyebrow]}>What happened</Text>
+                        <Text style={[typography.body, styles.outcomeText]}>{shorten(item.outcome ?? '', 160)}</Text>
+                        <Text style={[typography.caption, styles.lessonEyebrow]}>Takeaway</Text>
+                        <Text style={[typography.compact, styles.lessonText]}>{shorten(item.takeaway ?? '', 130)}</Text>
+                      </View>
                     ) : null}
-                    <BouncySwipeCue index={index} cues={swipeCues} />
-                  </View>
-                  </ColorfulReelCard>
+                  </ReelCardSurface>
                 </ReelCardMotionWrap>
+                {index === 0 ? (
+                  <View style={styles.swipeCueOutsideCard}>
+                    <BouncySwipeCue index={0} cues={swipeCues} />
+                  </View>
+                ) : null}
               </ScrollView>
             </View>
           );
@@ -595,190 +835,402 @@ const styles = StyleSheet.create({
   },
   pageScrollContent: {
     flexGrow: 1,
-    paddingTop: 10,
+    paddingTop: 8,
   },
   cardMotionOuter: {
     marginHorizontal: 12,
   },
-  cardColorSurface: {
+  reelCardOuter: {
     flexDirection: 'column',
     borderRadius: 26,
-    padding: 22,
-    gap: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.5)',
-    shadowColor: palette.accent,
-    shadowOpacity: 0.22,
-    shadowRadius: 28,
+    borderColor: 'rgba(255,255,255,0.85)',
+    backgroundColor: '#eef2fa',
+    overflow: 'hidden',
+    shadowColor: '#152238',
+    shadowOpacity: 0.11,
+    shadowRadius: 36,
     shadowOffset: { width: 0, height: 18 },
-    elevation: 12,
+    elevation: 10,
+  },
+  reelCardAmbient: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  reelCardInner: {
+    flexDirection: 'column',
+    paddingHorizontal: 18,
+    paddingTop: 16,
+    paddingBottom: 15,
+    gap: 14,
+    position: 'relative',
+    zIndex: 1,
+  },
+  reelCardInnerOpen: {
+    gap: 11,
+  },
+  discussButtonBelowChoices: {
+    marginTop: 6,
+    marginBottom: 2,
+    alignSelf: 'stretch',
+  },
+  swipeCueOutsideCard: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    marginTop: 14,
+    paddingHorizontal: 12,
+    paddingBottom: 12,
+  },
+  cardTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginBottom: 6,
+    minHeight: 40,
+    paddingHorizontal: 0,
+  },
+  categoryChip: {
+    alignSelf: 'center',
+    paddingHorizontal: 13,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.55)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.92)',
+    maxWidth: '58%',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.04,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
+      },
+      default: {},
+    }),
+  },
+  categoryChipText: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontWeight: '600',
+    letterSpacing: 0.25,
+    color: palette.slate800,
+    textTransform: 'capitalize',
+  },
+  cardIconGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    flexShrink: 0,
+  },
+  toolbarIconHit: {
+    paddingHorizontal: 2,
+    paddingVertical: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  toolbarIconHitPressed: {
+    opacity: 0.9,
+    transform: [{ scale: 0.95 }],
+  },
+  toolbarIconHitActiveGlowSave: Platform.select({
+    ios: {
+      shadowColor: '#d9a046',
+      shadowOpacity: 0.35,
+      shadowRadius: 7,
+      shadowOffset: { width: 0, height: 3 },
+    },
+    default: {},
+  }),
+  toolbarIconHitActiveGlowBell: Platform.select({
+    ios: {
+      shadowColor: palette.accent,
+      shadowOpacity: 0.4,
+      shadowRadius: 8,
+      shadowOffset: { width: 0, height: 3 },
+    },
+    default: {},
+  }),
+  toolbarIconGem: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
     overflow: 'hidden',
   },
-  storyHeadline: {
-    color: palette.slate950,
-    marginTop: 2,
+  toolbarIconGemRaisedAndroid: {
+    elevation: 3,
   },
-  storyBody: {
-    color: palette.slate800,
-    marginTop: 4,
+  toolbarIconFrost: {
+    backgroundColor: 'rgba(255,255,255,0.55)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.88)',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.035,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
+      },
+      android: { elevation: 1 },
+      default: {},
+    }),
   },
-  pollShell: {
-    marginTop: 4,
-    backgroundColor: 'rgba(255,255,255,0.82)',
-    borderRadius: 16,
-    padding: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#dfe8fb',
-    gap: 10,
+  headerVotePill: {
+    flexShrink: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.88)',
+    shadowColor: '#0b1224',
+    shadowOpacity: 0.03,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 1,
   },
-  pollShellOpen: {
-    marginTop: 10,
-    paddingVertical: 14,
-    paddingHorizontal: 14,
-    gap: 8,
+  headerVotePillInline: {
+    alignSelf: 'flex-start',
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    minWidth: 84,
+    maxWidth: 124,
+    gap: 5,
+    marginTop: Platform.OS === 'ios' ? 8 : 6,
   },
-  pollEyebrow: {
-    color: palette.accent,
+  headerVoteTextStack: {
+    alignItems: 'center',
+  },
+  headerVoteTextStackInline: {
+    alignItems: 'center',
+    minWidth: 0,
+  },
+  headerVoteStrong: {
+    fontSize: 15,
+    lineHeight: 18,
     fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.8,
+    color: palette.slate950,
+    letterSpacing: -0.35,
+  },
+  headerVoteMicro: {
+    fontSize: 10,
+    lineHeight: 13,
+    fontWeight: '600',
+    color: palette.slate500,
+    letterSpacing: 0.15,
+  },
+  headerVoteStrongInline: {
+    fontSize: 14,
+    lineHeight: 17,
+    letterSpacing: -0.35,
+  },
+  headerVoteMicroInline: {
+    fontSize: 9,
+    lineHeight: 11,
+    letterSpacing: 0.08,
+    textAlign: 'center',
+  },
+  livePulseDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 999,
+    backgroundColor: palette.mint,
+  },
+  pollQuestionRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    marginBottom: 2,
+    paddingBottom: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'rgba(255,255,255,0.45)',
+    paddingVertical: Platform.OS === 'ios' ? 4 : 2,
+  },
+  pollQuestionFlexible: {
+    flex: 1,
+    minWidth: 0,
+    marginTop: 0,
+    marginBottom: 0,
   },
   pollQuestion: {
     color: palette.slate950,
-    marginTop: -4,
+    marginTop: 0,
   },
   pollQuestionOpen: {
     marginTop: 0,
-    marginBottom: 2,
+    marginBottom: 0,
   },
-  pollHint: {
+  pollHeroOpen: {
+    fontWeight: '600',
+    letterSpacing: -0.52,
+    lineHeight: 33,
+  },
+  pickPrompt: {
+    ...typography.caption,
+    color: palette.slate500,
+    fontWeight: '500',
+    marginTop: 8,
+    marginBottom: 6,
+    lineHeight: 18,
+    letterSpacing: 0.08,
+  },
+  pollPhaseCaption: {
     color: palette.slate500,
     lineHeight: 18,
-  },
-  pollHintStrong: {
-    color: palette.slate900,
-    fontWeight: '700',
-  },
-  pollHintMuted: {
-    color: palette.slate500,
+    marginTop: 0,
+    marginBottom: 0,
+    paddingTop: 12,
+    fontWeight: '500',
+    fontSize: 12,
+    letterSpacing: 0.15,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: 'rgba(255,255,255,0.45)',
   },
   aiSuggestionCallout: {
-    marginTop: 2,
-    padding: 12,
-    borderRadius: 12,
-    backgroundColor: 'rgba(139,92,246,0.07)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(124,106,239,0.22)',
+    marginTop: 6,
+    padding: 15,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.62)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.95)',
     gap: 6,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#2d53d6',
+        shadowOpacity: 0.07,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 6 },
+      },
+      android: { elevation: 1 },
+      default: {},
+    }),
   },
   aiSuggestionEyebrow: {
     ...typography.caption,
-    fontWeight: '800',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    color: '#5236a8',
+    fontWeight: '600',
+    letterSpacing: 0.55,
+    color: palette.slate500,
+    textTransform: 'none',
   },
   aiSuggestionBody: {
     ...typography.compact,
-    color: palette.slate900,
+    color: palette.slate800,
+    fontWeight: '500',
+    lineHeight: 21,
   },
   aiSuggestionEmphasis: {
-    fontWeight: '800',
-    color: '#482d9f',
+    fontWeight: '700',
+    color: palette.slate900,
   },
   aiSuggestionNote: {
     ...typography.caption,
     color: palette.slate500,
-    lineHeight: 18,
+    lineHeight: 17,
     marginTop: 2,
+    fontWeight: '500',
   },
-  pollFooter: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
-    gap: 12,
-    paddingTop: 4,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#dfe8fb',
+  outcomeMerged: {
     marginTop: 4,
-    flexWrap: 'wrap',
-  },
-  votesMetaStrong: {
-    color: palette.slate900,
-    fontWeight: '700',
-  },
-  outcomeShell: {
-    backgroundColor: 'rgba(255,255,255,0.84)',
-    borderRadius: 16,
-    padding: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#e8edf6',
+    paddingTop: 14,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: 'rgba(255,255,255,0.52)',
     gap: 8,
   },
   outcomeEyebrow: {
     color: palette.slate500,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.8,
+    fontWeight: '600',
+    textTransform: 'none',
+    letterSpacing: 0.08,
+    fontSize: 12,
+    marginBottom: 2,
   },
   outcomeText: {
     color: palette.slate900,
+    fontWeight: '500',
+    lineHeight: 24,
+    marginBottom: 2,
   },
   lessonEyebrow: {
-    marginTop: 6,
-    color: palette.mint,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.8,
+    marginTop: 8,
+    marginBottom: 2,
+    color: palette.slate500,
+    fontWeight: '600',
+    fontSize: 12,
+    textTransform: 'none',
+    letterSpacing: 0.08,
   },
   lessonText: {
     color: palette.slate800,
-    lineHeight: 21,
-  },
-  cardActions: {
-    gap: 10,
-    marginTop: 2,
+    lineHeight: 22,
+    fontWeight: '400',
   },
   scrollCue: {
     textAlign: 'center',
     color: palette.slate500,
-    paddingHorizontal: 8,
-    lineHeight: 20,
+    paddingHorizontal: 12,
+    lineHeight: 21,
+    fontWeight: '500',
+    fontSize: 13,
+    letterSpacing: 0.1,
+    marginTop: 4,
   },
   swipeCueCluster: {
     alignItems: 'center',
-    gap: 4,
-    marginTop: 2,
-    paddingVertical: 4,
+    gap: 10,
+    marginTop: 4,
+    paddingVertical: 6,
   },
-  swipeArrow: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: palette.accent,
-    marginBottom: -2,
+  swipeCueOrb: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.65)',
+    borderWidth: 1,
+    borderColor: 'rgba(45,107,255,0.14)',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.055,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 2 },
+      },
+      android: { elevation: 1 },
+      default: {},
+    }),
   },
   optionWrap: {
     gap: 10,
   },
   optionPill: {
-    borderRadius: 14,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d6e0f7',
-    backgroundColor: '#f8faff',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.9)',
+    backgroundColor: 'rgba(255,255,255,0.72)',
+    paddingHorizontal: 15,
+    paddingVertical: 14,
     flexDirection: 'column',
     alignItems: 'stretch',
     gap: 8,
+    shadowColor: '#334e73',
+    shadowOpacity: 0.045,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: Platform.OS === 'android' ? 1 : 0,
   },
   optionPillActive: {
-    borderColor: '#aac3ff',
-    backgroundColor: '#eaf1ff',
+    borderColor: 'rgba(45,107,255,0.42)',
+    backgroundColor: 'rgba(255,255,255,0.93)',
   },
   optionPillAiLean: {
-    borderColor: 'rgba(139,92,246,0.42)',
-    backgroundColor: 'rgba(246,243,255,0.75)',
-    borderWidth: 2,
+    borderColor: 'rgba(69,134,255,0.5)',
+    backgroundColor: 'rgba(233,239,255,0.92)',
+    borderWidth: 1,
   },
   optionPillDisabled: {
     opacity: 0.92,
@@ -800,19 +1252,19 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
   aiLeanBadge: {
-    borderRadius: 6,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    backgroundColor: 'rgba(139,92,246,0.14)',
+    borderRadius: 8,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    backgroundColor: 'rgba(45,107,255,0.07)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(139,92,246,0.35)',
+    borderColor: 'rgba(45,107,255,0.18)',
   },
   aiLeanBadgeText: {
     fontSize: 10,
     lineHeight: 12,
-    fontWeight: '800',
-    letterSpacing: 0.8,
-    color: '#6239b6',
+    fontWeight: '700',
+    letterSpacing: 0.45,
+    color: palette.accent,
   },
   optionText: {
     ...typography.compact,
@@ -822,7 +1274,7 @@ const styles = StyleSheet.create({
   },
   optionTextActive: {
     color: palette.accent,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   optionMeta: {
     ...typography.caption,
@@ -831,11 +1283,12 @@ const styles = StyleSheet.create({
   },
   optionMetaPicked: {
     color: palette.accent,
+    fontWeight: '600',
   },
   inlineTrack: {
-    height: 7,
+    height: 6,
     borderRadius: 999,
-    backgroundColor: '#e8edf8',
+    backgroundColor: palette.slate200,
     overflow: 'hidden',
     width: '100%',
   },
@@ -843,17 +1296,6 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 999,
     backgroundColor: palette.accent,
-  },
-  votesMeta: {
-    color: palette.slate500,
-    flexShrink: 1,
-    textAlign: 'right',
-  },
-  pendingInline: {
-    color: palette.slate500,
-    marginTop: 2,
-    lineHeight: 18,
-    paddingHorizontal: 2,
   },
   buttonLabel: {
     color: palette.white,
