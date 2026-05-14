@@ -22,7 +22,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import ProvenanceChip from '@/components/ui/ProvenanceChip';
 import Screen from '@/components/ui/Screen';
-import { parseReelCategoryParam, REEL_SURFACE_GRADIENTS, REEL_SURFACE_LOCATIONS } from '@/constants/reelSurfaceGradients';
+import {
+  parseReelCategoryParam,
+  REEL_SURFACE_LOCATIONS,
+  reelSurfaceGradientCoarse,
+} from '@/constants/reelSurfaceGradients';
 import { palette, spacing, typography } from '@/constants/theme';
 import { apiGetJson } from '@/lib/api';
 import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
@@ -204,7 +208,7 @@ export default function DecisionDetailScreen() {
   });
 
   const categoryBg: DecisionCategory = query.data?.category ?? categorySeed ?? 'life';
-  const gradient = REEL_SURFACE_GRADIENTS[categoryBg];
+  const gradient = reelSurfaceGradientCoarse(categoryBg);
 
   React.useEffect(() => {
     if (!fromReel) {

@@ -24,7 +24,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { palette, typography } from '@/constants/theme';
-import { REEL_SURFACE_GRADIENTS } from '@/constants/reelSurfaceGradients';
+import { REEL_SURFACE_FLARE, REEL_SURFACE_GRADIENTS, REEL_SURFACE_MAIN_LOCATIONS } from '@/constants/reelSurfaceGradients';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
 
@@ -158,15 +158,47 @@ function ReelCardSurface({
   children: React.ReactNode;
 }) {
   const tint = REEL_SURFACE_GRADIENTS[category];
+  const flare = REEL_SURFACE_FLARE[category];
   return (
     <View style={styles.reelCardOuter}>
       <LinearGradient
         pointerEvents="none"
-        colors={[tint[0], tint[1], '#fdfefe']}
-        locations={[0, 0.4, 1]}
-        start={{ x: -0.08, y: 0 }}
-        end={{ x: 1.02, y: 1 }}
+        colors={[...tint]}
+        locations={[...REEL_SURFACE_MAIN_LOCATIONS]}
+        start={{ x: 0.02, y: 0 }}
+        end={{ x: 1, y: 0.98 }}
         style={styles.reelCardAmbient}
+      />
+      <LinearGradient
+        pointerEvents="none"
+        colors={[...flare]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0.92, y: 0.88 }}
+        style={styles.reelCardAmbient}
+      />
+      <LinearGradient
+        pointerEvents="none"
+        colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.38)', '#ffffff']}
+        locations={[0.42, 0.72, 1]}
+        start={{ x: 0.5, y: 0.08 }}
+        end={{ x: 0.5, y: 1 }}
+        style={styles.reelCardAmbient}
+      />
+      <LinearGradient
+        pointerEvents="none"
+        colors={['rgba(248,250,252,0)', 'rgba(15,23,42,0.04)']}
+        locations={[0.55, 1]}
+        start={{ x: 0.5, y: 0.5 }}
+        end={{ x: 0.5, y: 1 }}
+        style={styles.reelCardAmbient}
+      />
+      <LinearGradient
+        pointerEvents="none"
+        colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0)']}
+        locations={[0, 0.45, 1]}
+        start={{ x: 0.42, y: 0 }}
+        end={{ x: 0.58, y: 0.42 }}
+        style={styles.reelCardRim}
       />
       <View style={[styles.reelCardInner, isOpen && styles.reelCardInnerOpen]}>{children}</View>
     </View>
@@ -237,14 +269,14 @@ function LiveVotesPill({
     <View
       style={[styles.headerVotePill, inline && styles.headerVotePillInline]}
       accessibilityRole="text"
-      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'} so far`}>
+      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}>
       {isLivePoll ? <LivePulseDot /> : null}
       <View style={[styles.headerVoteTextStack, inline && styles.headerVoteTextStackInline]}>
         <Text style={[styles.headerVoteStrong, inline && styles.headerVoteStrongInline]}>
           {compactVoteCount(voteTotal)}
         </Text>
         <Text style={[styles.headerVoteMicro, inline && styles.headerVoteMicroInline]}>
-          {isLivePoll ? 'Live · votes cast' : 'Total votes'}
+          {isLivePoll ? 'Live · voted' : 'Total votes'}
         </Text>
       </View>
     </View>
@@ -835,26 +867,31 @@ const styles = StyleSheet.create({
   },
   pageScrollContent: {
     flexGrow: 1,
-    paddingTop: 8,
+    justifyContent: 'center',
+    paddingVertical: 8,
   },
   cardMotionOuter: {
     marginHorizontal: 12,
   },
   reelCardOuter: {
     flexDirection: 'column',
-    borderRadius: 26,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.85)',
-    backgroundColor: '#eef2fa',
+    borderRadius: 28,
+    borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,255,255,0.72)',
+    backgroundColor: 'rgba(248,250,252,0.94)',
     overflow: 'hidden',
-    shadowColor: '#152238',
-    shadowOpacity: 0.11,
-    shadowRadius: 36,
-    shadowOffset: { width: 0, height: 18 },
-    elevation: 10,
+    shadowColor: '#1e293b',
+    shadowOpacity: Platform.OS === 'ios' ? 0.16 : 0.2,
+    shadowRadius: Platform.OS === 'ios' ? 34 : 24,
+    shadowOffset: { width: 0, height: Platform.OS === 'ios' ? 16 : 10 },
+    elevation: Platform.OS === 'android' ? 8 : 0,
   },
   reelCardAmbient: {
     ...StyleSheet.absoluteFillObject,
+  },
+  reelCardRim: {
+    ...StyleSheet.absoluteFillObject,
+    opacity: Platform.OS === 'android' ? 0.92 : 1,
   },
   reelCardInner: {
     flexDirection: 'column',
@@ -894,9 +931,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 13,
     paddingVertical: 7,
     borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.55)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.92)',
+    backgroundColor: 'rgba(255,255,255,0.78)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.06)',
     maxWidth: '58%',
     ...Platform.select({
       ios: {
@@ -962,9 +999,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   toolbarIconFrost: {
-    backgroundColor: 'rgba(255,255,255,0.55)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.88)',
+    backgroundColor: 'rgba(255,255,255,0.76)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.07)',
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -984,9 +1021,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
     paddingVertical: 7,
     borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.88)',
+    backgroundColor: 'rgba(255,255,255,0.76)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.07)',
     shadowColor: '#0b1224',
     shadowOpacity: 0.03,
     shadowRadius: 12,
@@ -1047,7 +1084,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     paddingBottom: 12,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.45)',
+    borderBottomColor: 'rgba(15,23,42,0.06)',
     paddingVertical: Platform.OS === 'ios' ? 4 : 2,
   },
   pollQuestionFlexible: {
@@ -1088,22 +1125,22 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.15,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(255,255,255,0.45)',
+    borderTopColor: 'rgba(15,23,42,0.055)',
   },
   aiSuggestionCallout: {
     marginTop: 6,
     padding: 15,
     borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.62)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: 'rgba(255,255,255,0.92)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.06)',
     gap: 6,
     ...Platform.select({
       ios: {
-        shadowColor: '#2d53d6',
-        shadowOpacity: 0.07,
-        shadowRadius: 16,
-        shadowOffset: { width: 0, height: 6 },
+        shadowColor: '#64748b',
+        shadowOpacity: 0.06,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 4 },
       },
       android: { elevation: 1 },
       default: {},
@@ -1137,7 +1174,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     paddingTop: 14,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(255,255,255,0.52)',
+    borderTopColor: 'rgba(15,23,42,0.06)',
     gap: 8,
   },
   outcomeEyebrow: {
@@ -1190,9 +1227,9 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.65)',
-    borderWidth: 1,
-    borderColor: 'rgba(45,107,255,0.14)',
+    backgroundColor: 'rgba(255,255,255,0.95)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.08)',
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -1209,9 +1246,9 @@ const styles = StyleSheet.create({
   },
   optionPill: {
     borderRadius: 18,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.9)',
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(15,23,42,0.06)',
+    backgroundColor: 'rgba(255,255,255,0.92)',
     paddingHorizontal: 15,
     paddingVertical: 14,
     flexDirection: 'column',
