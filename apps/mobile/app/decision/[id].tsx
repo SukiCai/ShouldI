@@ -2,7 +2,6 @@ import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import * as React from 'react';
 import {
   ActivityIndicator,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,21 +9,17 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Animated, {
-  Extrapolation,
-  interpolate,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { DiscussExpandTransition } from '@/components/decision/DiscussExpandTransition';
+import { DiscussExpanded } from '@/components/decision/DiscussExpanded';
+import { ReelCardAtmosphereLayers } from '@/components/explore/ReelDiscussChrome';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import ProvenanceChip from '@/components/ui/ProvenanceChip';
 import Screen from '@/components/ui/Screen';
 import {
-  parseReelCategoryParam,
   REEL_SURFACE_LOCATIONS,
+  reelDiscussBackdropCategory,
   reelSurfaceGradientCoarse,
 } from '@/constants/reelSurfaceGradients';
 import { palette, spacing, typography } from '@/constants/theme';
@@ -52,9 +47,6 @@ function optionLabel(card: ExploreCard, optionId: string | undefined): string | 
   if (!optionId) return null;
   return card.options.find((o) => o.id === optionId)?.label ?? null;
 }
-
-const HEADER_CONTENT_OFFSET_IOS = 44;
-const HEADER_CONTENT_OFFSET_ANDROID = 56;
 
 type DecisionSectionsProps = {
   card: ExploreCard;
@@ -185,18 +177,84 @@ function DecisionSections({ card, reelPresentation }: DecisionSectionsProps) {
   );
 }
 
-export default function DecisionDetailScreen() {
-  const navigation = useNavigation();
+/** Coarse gradient + Explore-style liquid/atmosphere pinned behind Discuss scroll content (same stack as reels). */
+function DiscussBackdropStack({
+  category,
+  coarseGradient,
+  children,
+}: {
+  category: DecisionCategory;
+  coarseGradient: readonly [string, string, string];
+  children: React.ReactNode;
+}) {
+  return (
+    <View style={styles.fill}>
+      <LinearGradient
+        colors={[...coarseGradient]}
+        locations={[...REEL_SURFACE_LOCATIONS]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={StyleSheet.absoluteFillObject}
+      />
+      <View style={styles.discussAtmospherePortal} pointerEvents="none">
+        <ReelCardAtmosphereLayers category={category} />
+      </View>
+      {children}
+    </View>
+  );
+}
+
+/** Full-bleed screen behind Discuss content (no faux modal dim ring). */
+function ReelDiscussChrome({ screenTint, children }: { screenTint: string; children: React.ReactNode }) {
+  return (
+    <View style={[styles.reelOuter, { backgroundColor: screenTint }]}>
+      <View style={styles.reelSheet}>{children}</View>
+    </View>
+  );
+}
+
+function DecisionDetailStandard({ id }: { id: string }) {
+  const query = useQuery({
+    enabled: !!id,
+    queryKey: ['decision-detail', id],
+    queryFn: async () => {
+      const json = await apiGetJson(`/v1/explore/${id}`);
+      return ExploreCardSchema.parse(json);
+    },
+  });
+
+  if (query.isLoading) {
+    return (
+      <Screen padded>
+        <Text style={typography.body}>Loading decision…</Text>
+      </Screen>
+    );
+  }
+  if (query.error || !query.data) {
+    return (
+      <Screen padded>
+        <Text style={typography.title}>Decision not found</Text>
+      </Screen>
+    );
+  }
+
+  return (
+    <Screen padded scroll>
+      <DecisionSections card={query.data} reelPresentation={false} />
+    </Screen>
+  );
+}
+
+function DecisionDetailFromReel({
+  id,
+  reelCategoryRaw,
+  pickedOptionRaw,
+}: {
+  id: string;
+  reelCategoryRaw: string | string[] | undefined;
+  pickedOptionRaw: string | string[] | undefined;
+}) {
   const insets = useSafeAreaInsets();
-  const params = useLocalSearchParams<{ id: string | string[]; fromReel?: string | string[]; reelCategory?: string | string[] }>();
-
-  const idRaw = params.id;
-  const id = typeof idRaw === 'string' ? idRaw : Array.isArray(idRaw) ? idRaw[0] : '';
-  const fromReelParam = typeof params.fromReel === 'string' ? params.fromReel : Array.isArray(params.fromReel) ? params.fromReel[0] : undefined;
-  const fromReel = fromReelParam === '1' || fromReelParam === 'true';
-  const categorySeed = parseReelCategoryParam(params.reelCategory);
-
-  const expand = useSharedValue(fromReel ? 0 : 1);
 
   const query = useQuery({
     enabled: !!id,
@@ -207,27 +265,112 @@ export default function DecisionDetailScreen() {
     },
   });
 
-  const categoryBg: DecisionCategory = query.data?.category ?? categorySeed ?? 'life';
+  const categoryBg: DecisionCategory = reelDiscussBackdropCategory(query.data, reelCategoryRaw);
   const gradient = reelSurfaceGradientCoarse(categoryBg);
+  /** Aligns notch / navigator gutter with coarse gradient stop 0 — avoids ivory vs tinted band. */
+  const screenTint = gradient[0]!;
 
-  React.useEffect(() => {
-    if (!fromReel) {
-      expand.value = 1;
-      return;
-    }
-    expand.value = 0;
-    expand.value = withSpring(1, { damping: 18, stiffness: 186, mass: 0.8 });
-  }, [expand, fromReel, id]);
+  const pickedFromRouteRaw = typeof pickedOptionRaw === 'string' ? pickedOptionRaw : Array.isArray(pickedOptionRaw) ? pickedOptionRaw[0] : '';
+  const pickedFromRoute = pickedFromRouteRaw?.trim() || undefined;
+
+  /** In-card back control only — no native header on Discuss (`headerShown: false`). */
+  const discussContentPadTop = insets.top + 8;
+
+  if (query.error || (!query.isLoading && !query.data)) {
+    return (
+      <ReelDiscussChrome screenTint={screenTint}>
+        <DiscussExpandTransition>
+          <DiscussBackdropStack category={categoryBg} coarseGradient={gradient}>
+            <View
+              style={[
+                styles.reelDiscussContent,
+                {
+                  paddingTop: discussContentPadTop,
+                  paddingBottom: Math.max(insets.bottom, 12) + 8,
+                  paddingLeft: Math.max(insets.left, 0),
+                  paddingRight: Math.max(insets.right, 0),
+                },
+              ]}>
+              <Text style={styles.onGradientTitle}>Decision not found</Text>
+            </View>
+          </DiscussBackdropStack>
+        </DiscussExpandTransition>
+      </ReelDiscussChrome>
+    );
+  }
+
+  if (query.isLoading || !query.data) {
+    return (
+      <ReelDiscussChrome screenTint={screenTint}>
+        <DiscussExpandTransition>
+          <DiscussBackdropStack category={categoryBg} coarseGradient={gradient}>
+            <View
+              style={[
+                styles.centerLoader,
+                {
+                  paddingTop: discussContentPadTop,
+                  paddingBottom: Math.max(insets.bottom, 12),
+                  paddingLeft: Math.max(insets.left, 0),
+                  paddingRight: Math.max(insets.right, 0),
+                },
+              ]}>
+              <ActivityIndicator size="large" color={palette.slate950} />
+              <Text style={styles.loaderLabel}>Opening thread…</Text>
+            </View>
+          </DiscussBackdropStack>
+        </DiscussExpandTransition>
+      </ReelDiscussChrome>
+    );
+  }
+
+  return (
+    <ReelDiscussChrome screenTint={screenTint}>
+      <DiscussExpandTransition>
+        <DiscussBackdropStack category={categoryBg} coarseGradient={gradient}>
+          <ScrollView
+            style={[styles.fill, styles.scrollTransparent]}
+            contentContainerStyle={[
+              styles.reelDiscussScrollContent,
+              {
+                paddingTop: discussContentPadTop,
+                paddingLeft: Math.max(insets.left, 0),
+                paddingRight: Math.max(insets.right, 0),
+                paddingBottom: Math.max(insets.bottom, 12) + 8,
+              },
+            ]}
+            showsVerticalScrollIndicator={false}
+            contentInsetAdjustmentBehavior="never"
+            keyboardShouldPersistTaps="handled">
+            <DiscussExpanded card={query.data} pickedOptionFromRoute={pickedFromRoute ?? undefined} />
+          </ScrollView>
+        </DiscussBackdropStack>
+      </DiscussExpandTransition>
+    </ReelDiscussChrome>
+  );
+}
+
+export default function DecisionDetailScreen() {
+  const navigation = useNavigation();
+  const params = useLocalSearchParams<{
+    id: string | string[];
+    fromReel?: string | string[];
+    reelCategory?: string | string[];
+    pickedOption?: string | string[];
+  }>();
+
+  const idRaw = params.id;
+  const id = typeof idRaw === 'string' ? idRaw : Array.isArray(idRaw) ? idRaw[0] : '';
+  const fromReelParam = typeof params.fromReel === 'string' ? params.fromReel : Array.isArray(params.fromReel) ? params.fromReel[0] : undefined;
+  const fromReel = fromReelParam === '1' || fromReelParam === 'true';
+  const pickedOption = params.pickedOption;
 
   React.useLayoutEffect(() => {
     if (fromReel) {
       navigation.setOptions({
         title: '',
-        headerTransparent: true,
-        headerShadowVisible: false,
-        headerTintColor: palette.slate950,
-        headerBackTitleVisible: false,
-        animation: 'fade',
+        headerShown: false,
+        gestureEnabled: true,
+        contentStyle: { backgroundColor: 'transparent' },
       } as object);
       return;
     }
@@ -240,107 +383,34 @@ export default function DecisionDetailScreen() {
     } as object);
   }, [navigation, fromReel]);
 
-  const shellStyle = useAnimatedStyle(() => {
-    const horizontal = interpolate(expand.value, [0, 1], [22, 0], Extrapolation.CLAMP);
-    const vertical = interpolate(expand.value, [0, 1], [28, 0], Extrapolation.CLAMP);
-    const radius = interpolate(expand.value, [0, 1], [28, 0], Extrapolation.CLAMP);
-    const scale = interpolate(expand.value, [0, 1], [0.94, 1], Extrapolation.CLAMP);
-    return {
-      flex: 1,
-      overflow: 'hidden',
-      marginHorizontal: horizontal,
-      marginTop: vertical,
-      marginBottom: vertical,
-      borderRadius: radius,
-      transform: [{ scale }],
-    };
-  });
-
-  const approxHeaderPad =
-    insets.top + (Platform.OS === 'ios' ? HEADER_CONTENT_OFFSET_IOS : HEADER_CONTENT_OFFSET_ANDROID);
-
   if (!fromReel) {
-    if (query.isLoading) {
-      return (
-        <Screen padded>
-          <Text style={typography.body}>Loading decision…</Text>
-        </Screen>
-      );
-    }
-    if (query.error || !query.data) {
-      return (
-        <Screen padded>
-          <Text style={typography.title}>Decision not found</Text>
-        </Screen>
-      );
-    }
-
-    const card = query.data;
-    return (
-      <Screen padded scroll>
-        <DecisionSections card={card} reelPresentation={false} />
-      </Screen>
-    );
+    return <DecisionDetailStandard id={id} />;
   }
 
-  if (query.error || (!query.isLoading && !query.data)) {
-    return (
-      <View style={styles.reelOuter}>
-        <Animated.View style={[shellStyle, styles.fill]}>
-          <LinearGradient colors={[...gradient]} locations={[...REEL_SURFACE_LOCATIONS]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.fill}>
-            <View style={[styles.edgePad, { paddingTop: approxHeaderPad + 8 }]}>
-              <Text style={styles.onGradientTitle}>Decision not found</Text>
-            </View>
-          </LinearGradient>
-        </Animated.View>
-      </View>
-    );
-  }
-
-  if (query.isLoading || !query.data) {
-    return (
-      <View style={styles.reelOuter}>
-        <Animated.View style={[shellStyle, styles.fill]}>
-          <LinearGradient colors={[...gradient]} locations={[...REEL_SURFACE_LOCATIONS]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.fill}>
-            <View style={[styles.centerLoader, { paddingTop: approxHeaderPad }]}>
-              <ActivityIndicator size="large" color={palette.slate950} />
-              <Text style={styles.loaderLabel}>Opening thread…</Text>
-            </View>
-          </LinearGradient>
-        </Animated.View>
-      </View>
-    );
-  }
-
-  const card = query.data;
-
-  return (
-    <View style={styles.reelOuter}>
-      <Animated.View style={[shellStyle, styles.fill]}>
-        <LinearGradient colors={[...gradient]} locations={[...REEL_SURFACE_LOCATIONS]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.fill}>
-          <ScrollView showsVerticalScrollIndicator={false} contentInsetAdjustmentBehavior="automatic" keyboardShouldPersistTaps="handled">
-            <View style={[styles.edgePad, { paddingTop: approxHeaderPad + 10 }]}>
-              <DecisionSections card={card} reelPresentation />
-            </View>
-          </ScrollView>
-        </LinearGradient>
-      </Animated.View>
-    </View>
-  );
+  return <DecisionDetailFromReel id={id} reelCategoryRaw={params.reelCategory} pickedOptionRaw={pickedOption} />;
 }
 
 const styles = StyleSheet.create({
   reelOuter: {
     flex: 1,
-    backgroundColor: palette.mist,
+  },
+  reelSheet: {
+    flex: 1,
+    overflow: 'hidden',
+  },
+  reelDiscussScrollContent: {},
+  reelDiscussContent: {
+    flex: 1,
+    gap: 10,
   },
   fill: {
     flex: 1,
   },
-  edgePad: {
-    paddingHorizontal: 20,
-    gap: 10,
-    paddingBottom: 32,
+  discussAtmospherePortal: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  scrollTransparent: {
+    backgroundColor: 'transparent',
   },
   centerLoader: {
     flex: 1,

@@ -1,6 +1,8 @@
-import type { ExploreCard } from '@shouldi/contracts';
+import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
-export const seededExploreCards: ExploreCard[] = [
+type ExploreCardDraft = Omit<ExploreCard, 'discussionPosts'>;
+
+const exploreCardsBase: ExploreCardDraft[] = [
   {
     id: 'seed-money-1',
     category: 'money',
@@ -529,3 +531,286 @@ export const seededExploreCards: ExploreCard[] = [
     aiSuggestionNote: 'Hybrid presence often survives committee review longer than permanent “no”—and preserves family anchors.',
   },
 ];
+
+function defaultDiscussionPosts(card: ExploreCardDraft): TeamDiscussionPost[] {
+  const { options, discussionPreview: preview, id: cardId } = card;
+  if (options.length === 0) return [];
+  const lines =
+    preview.length > 0
+      ? preview
+      : [
+          'Naming the downside I weighted most—and what would change my mind next week.',
+          'Thanks for structuring this cleanly. I disagree on timing but appreciate the framing.',
+          'Curious how others calibrated risk tolerance here—did anyone rerun the numbers?',
+        ];
+  const authors = ['Morgan Ade', 'Jordan Lee', 'Casey Kim', 'Riley Park', 'Quinn Shah'];
+  const emojis = ['🧭', '🎯', '📎', '🌊', '✨'];
+  const times = ['Just now', '18m', '1h', '3h', 'Yesterday'];
+  const count = Math.min(5, Math.max(3, options.length + 2));
+  const roots = Array.from({ length: count }, (_, i) => {
+    const choice = options[i % options.length]!;
+    const body =
+      preview.length > 0
+        ? lines[Math.min(i % lines.length, lines.length - 1)] ?? lines[0]!
+        : lines[i % lines.length]!;
+    return {
+      id: `${cardId}-tp-${choice.id}-${i}`,
+      authorName: authors[i % authors.length]!,
+      authorEmoji: emojis[i % emojis.length]!,
+      optionId: choice.id,
+      body,
+      timeLabel: times[i % times.length],
+      upvoteCount: 3 + ((i * 5) % 24),
+    };
+  });
+  /** Demo nested threads so Discuss can render reply trees + “full thread”. */
+  const first = roots[0];
+  const replies: TeamDiscussionPost[] =
+    first == null
+      ? []
+      : [
+          {
+            id: `${cardId}-thr-a`,
+            parentId: first.id,
+            authorName: authors[(count + 1) % authors.length]!,
+            authorEmoji: '💬',
+            optionId: first.optionId,
+            body:
+              'Same caveat for me—I wrote down the worst case for 90 days and it changed whether “just take it” felt responsible.',
+            timeLabel: times[(count + 1) % times.length],
+            upvoteCount: 4 + ((count * 3) % 14),
+          },
+          {
+            id: `${cardId}-thr-b`,
+            parentId: `${cardId}-thr-a`,
+            authorName: authors[(count + 3) % authors.length]!,
+            authorEmoji: '🧩',
+            optionId: first.optionId,
+            body:
+              'If your worst case assumes you can lateral in 60 days but your network is thin, stretch the runway model—conservative beats optimistic here.',
+            timeLabel: times[(count + 2) % times.length],
+            upvoteCount: 6,
+          },
+        ];
+  return [...roots, ...replies];
+}
+
+function curatedMoneySeedOne(): TeamDiscussionPost[] {
+  return [
+    {
+      id: 'seed-money-1-tp-take-pay-0',
+      authorName: 'Taylor V.',
+      authorEmoji: '💼',
+      optionId: 'take-pay',
+      body:
+        'I took the pay bump once without pinning severance timelines—having that in writing matters more than the headline number implies.',
+      timeLabel: '32m',
+      upvoteCount: 12,
+    },
+    {
+      id: 'seed-money-1-tp-stable-0',
+      authorName: 'Noah Reyes',
+      authorEmoji: '🛡️',
+      optionId: 'stay-stable',
+      body:
+        'Stability buys optionality during a search—I’d overweight leadership signals vs. comp when the roadmap looks shaky.',
+      timeLabel: '1h',
+      upvoteCount: 8,
+    },
+    {
+      id: 'seed-money-1-tp-stable-1',
+      authorName: 'Dr. Alma Cho',
+      authorEmoji: '🧾',
+      optionId: 'stay-stable',
+      body:
+        'Model runway assuming your next role takes 90–120 days. If reserves don’t survive that interval, headline pay is riskier.',
+      timeLabel: '3h',
+      upvoteCount: 21,
+    },
+    {
+      id: 'seed-money-1-tp-nego-0',
+      authorName: 'Priya K.',
+      authorEmoji: '🤝',
+      optionId: 'negotiate',
+      body:
+        'Negotiating compensation and exit terms upfront changed my trade-off math—often more leverage than switching offers.',
+      timeLabel: 'Yesterday',
+      upvoteCount: 15,
+    },
+    {
+      id: 'seed-money-1-re-st0-1',
+      parentId: 'seed-money-1-tp-stable-0',
+      authorName: 'Jordan Lee',
+      authorEmoji: '📎',
+      optionId: 'stay-stable',
+      body:
+        'Seconding the runway point—I track “months of runway if income hits zero” separately from headline savings; panic decisions drop when that number is boring.',
+      timeLabel: '55m',
+      upvoteCount: 9,
+    },
+    {
+      id: 'seed-money-1-re-st0-2',
+      parentId: 'seed-money-1-tp-stable-0',
+      authorName: 'Quinn Shah',
+      authorEmoji: '🌊',
+      optionId: 'stay-stable',
+      body:
+        'Did you sanity-check vesting cliffs? Sometimes the bump is imaginary if you churn before cliff + refresh.',
+      timeLabel: '42m',
+      upvoteCount: 14,
+    },
+    {
+      id: 'seed-money-1-re-st1-1',
+      parentId: 'seed-money-1-tp-stable-1',
+      authorName: 'Riley Park',
+      authorEmoji: '✨',
+      optionId: 'stay-stable',
+      body:
+        'On the 90–120 day assumption: if you’re in a niche skill set, triple that for stress-testing—matching can lag even when hiring is hot.',
+      timeLabel: '2h',
+      upvoteCount: 17,
+    },
+    {
+      id: 'seed-money-1-re-st1-deep',
+      parentId: 'seed-money-1-re-st1-1',
+      authorName: 'Taylor V.',
+      authorEmoji: '💼',
+      optionId: 'stay-stable',
+      body: 'Yep—calendar the check-ins weekly so you adjust the runway model instead of “feeling fine” until you’re not.',
+      timeLabel: '1h',
+      upvoteCount: 11,
+    },
+    {
+      id: 'seed-money-1-re-pay-1',
+      parentId: 'seed-money-1-tp-take-pay-0',
+      authorName: 'Casey Kim',
+      authorEmoji: '🎯',
+      optionId: 'take-pay',
+      body:
+        'If the company volatility is directional (down rounds, hiring freeze), I’d bake in a tighter “abort if X” clause before signing—not just optimism on comp.',
+      timeLabel: '2h',
+      upvoteCount: 22,
+    },
+    {
+      id: 'seed-money-1-re-nego-1',
+      parentId: 'seed-money-1-tp-nego-0',
+      authorName: 'Morgan Ade',
+      authorEmoji: '🧭',
+      optionId: 'negotiate',
+      body:
+        'My win was parallel tracks: negotiated while politely keeping warm intros elsewhere—stopped me from collapsing into one brittle outcome.',
+      timeLabel: '5h',
+      upvoteCount: 13,
+    },
+  ];
+}
+
+function curatedCareerSeedOne(card: ExploreCardDraft): TeamDiscussionPost[] {
+  return [
+    {
+      id: 'seed-career-1-mgmt',
+      authorName: 'Jordan K.',
+      authorEmoji: '🧭',
+      optionId: 'mgmt-now',
+      body:
+        'Moving into management earlier compressed my IC craft—and accelerated the soft-skill gaps I hadn’t practiced. Coaching helped, but timelines were blunt.',
+      timeLabel: '20m',
+      upvoteCount: 31,
+    },
+    {
+      id: 'seed-career-1-ic',
+      authorName: 'Samira N.',
+      authorEmoji: '🧱',
+      optionId: 'stay-ic',
+      body:
+        'Depth at IC level changed my leverage for later leadership—compounding shipped work beat title velocity for my goals.',
+      timeLabel: '1h',
+      upvoteCount: 19,
+    },
+    {
+      id: 'seed-career-1-trial',
+      authorName: 'Alex P.',
+      authorEmoji: '🧪',
+      optionId: 'trial-lead',
+      body:
+        'A bounded leadership trial made the downside obvious—I could steer back without rewriting my identity banner.',
+      timeLabel: '4h',
+      upvoteCount: 7,
+    },
+    {
+      id: 'seed-career-1-trial-b',
+      authorName: 'Morgan Diaz',
+      authorEmoji: '📚',
+      optionId: 'trial-lead',
+      body:
+        'If trial scope is muddy, insist on reviewers and KPIs—you don’t want “informal interim lead” quietly becoming unpaid PM.',
+      timeLabel: 'Yesterday',
+      upvoteCount: 24,
+    },
+    {
+      id: 'seed-career-1-re-mgmt-1',
+      parentId: 'seed-career-1-mgmt',
+      authorName: 'Samira N.',
+      authorEmoji: '🧱',
+      optionId: 'mgmt-now',
+      body:
+        'Sounds familiar—I asked for guardrails (“no hiring”, “stay close to codebase”) until week 12; blurred lines showed up sooner without them.',
+      timeLabel: '35m',
+      upvoteCount: 26,
+    },
+    {
+      id: 'seed-career-1-re-mgmt-2',
+      parentId: 'seed-career-1-mgmt',
+      authorName: 'Alex P.',
+      authorEmoji: '🧪',
+      optionId: 'mgmt-now',
+      body:
+        'One pragmatic flag: calendar load. If the role is silently 60% meetings Week 4, revise expectations before you mentally commit.',
+      timeLabel: '50m',
+      upvoteCount: 18,
+    },
+    {
+      id: 'seed-career-1-re-ic-1',
+      parentId: 'seed-career-1-ic',
+      authorName: 'Jordan K.',
+      authorEmoji: '🧭',
+      optionId: 'stay-ic',
+      body:
+        'IC leverage can plateau—when it did for me I scheduled “lead shadows” quarterly so the jump wasn’t a binary shock later.',
+      timeLabel: '2h',
+      upvoteCount: 12,
+    },
+    {
+      id: 'seed-career-1-re-trial-1',
+      parentId: 'seed-career-1-trial',
+      authorName: 'Morgan Diaz',
+      authorEmoji: '📚',
+      optionId: 'trial-lead',
+      body:
+        'Agree—write trial exit criteria jointly with your manager. “End with retro + decision date” avoids the slow drift Morgan warned about.',
+      timeLabel: '3h',
+      upvoteCount: 15,
+    },
+    {
+      id: 'seed-career-1-re-trial-deep',
+      parentId: 'seed-career-1-re-trial-1',
+      authorName: 'Jordan K.',
+      authorEmoji: '🧭',
+      optionId: 'trial-lead',
+      body:
+        'We used a shared doc plus a single escalation path—it cut thrash when stakeholders disagreed on what “trial success” meant.',
+      timeLabel: 'Yesterday',
+      upvoteCount: 9,
+    },
+  ];
+}
+
+export const seededExploreCards: ExploreCard[] = exploreCardsBase.map((c) => {
+  if (c.id === 'seed-money-1') {
+    return { ...c, discussionPosts: curatedMoneySeedOne() };
+  }
+  if (c.id === 'seed-career-1') {
+    return { ...c, discussionPosts: curatedCareerSeedOne(c) };
+  }
+  return { ...c, discussionPosts: defaultDiscussionPosts(c) };
+});

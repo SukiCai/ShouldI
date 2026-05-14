@@ -1,9 +1,8 @@
+import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import type { ExploreFeedResponse } from '@shouldi/contracts';
-import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
-import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
 import {
   Animated,
@@ -23,7 +22,13 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
-import { ReelCardLiquidBackdrop } from '@/components/explore/ReelCardLiquidBackdrop';
+import {
+  reelDiscussStyles,
+  ReelCardSurface,
+  ReelCardActionBar,
+  LiveVotesPill,
+  InlineDistributionTrack,
+} from '@/components/explore/ReelDiscussChrome';
 import { palette, typography } from '@/constants/theme';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
@@ -56,138 +61,7 @@ function bumpOverride(
   });
 }
 
-function formatCategoryLabel(category: ExploreFeedCard['category']): string {
-  return category.charAt(0).toUpperCase() + category.slice(1);
-}
 
-const REEL_STAR_GRADIENT = ['#fff6e8', '#ffe1b8', '#fecf7a'] as const;
-const REEL_BELL_GRADIENT = ['#7aa2ff', '#4d74f7', '#2d53e6'] as const;
-
-function ReelCardActionBar({
-  category,
-  saved,
-  following,
-  onToggleSave,
-  onToggleFollow,
-}: {
-  category: ExploreFeedCard['category'];
-  saved: boolean;
-  following: boolean;
-  onToggleSave: () => void;
-  onToggleFollow: () => void;
-}) {
-  const saveLabel = saved ? 'Saved — tap to remove from saved' : 'Save this dilemma';
-  const followLabel = following ? 'Following — tap to stop update alerts' : 'Follow for updates';
-
-  return (
-    <View style={styles.cardTopRow}>
-      <View style={styles.categoryChip}>
-        <Text style={styles.categoryChipText}>{formatCategoryLabel(category)}</Text>
-      </View>
-      <View style={styles.cardIconGroup}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={saveLabel}
-          hitSlop={8}
-          onPress={() => {
-            if (Platform.OS !== 'web') {
-              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
-            }
-            onToggleSave();
-          }}
-          style={({ pressed }) => [
-            styles.toolbarIconHit,
-            saved && styles.toolbarIconHitActiveGlowSave,
-            pressed && styles.toolbarIconHitPressed,
-          ]}>
-          {saved ? (
-            <LinearGradient
-              colors={[...REEL_STAR_GRADIENT]}
-              start={{ x: 0.1, y: 0 }}
-              end={{ x: 0.95, y: 1 }}
-              style={[styles.toolbarIconGem, Platform.OS === 'android' ? styles.toolbarIconGemRaisedAndroid : null]}>
-              <Ionicons name="star" size={19} color="#734210" />
-            </LinearGradient>
-          ) : (
-            <View style={[styles.toolbarIconGem, styles.toolbarIconFrost]}>
-              <Ionicons name="star-outline" size={20} color={palette.slate500} />
-            </View>
-          )}
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={followLabel}
-          hitSlop={8}
-          onPress={() => {
-            if (Platform.OS !== 'web') {
-              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
-            }
-            onToggleFollow();
-          }}
-          style={({ pressed }) => [
-            styles.toolbarIconHit,
-            following && styles.toolbarIconHitActiveGlowBell,
-            pressed && styles.toolbarIconHitPressed,
-          ]}>
-          {following ? (
-            <LinearGradient
-              colors={[...REEL_BELL_GRADIENT]}
-              start={{ x: 0.15, y: 0 }}
-              end={{ x: 0.85, y: 1 }}
-              style={[styles.toolbarIconGem, Platform.OS === 'android' ? styles.toolbarIconGemRaisedAndroid : null]}>
-              <Ionicons name="notifications" size={18} color={palette.white} />
-            </LinearGradient>
-          ) : (
-            <View style={[styles.toolbarIconGem, styles.toolbarIconFrost]}>
-              <Ionicons name="notifications-outline" size={19} color={palette.slate500} />
-            </View>
-          )}
-        </Pressable>
-      </View>
-    </View>
-  );
-}
-
-function ReelCardSurface({
-  category,
-  isOpen,
-  children,
-}: {
-  category: ExploreFeedCard['category'];
-  isOpen: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <View style={styles.reelCardOuter}>
-      <ReelCardLiquidBackdrop category={category} />
-      <LinearGradient
-        pointerEvents="none"
-        colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.38)', '#ffffff']}
-        locations={[0.42, 0.72, 1]}
-        start={{ x: 0.5, y: 0.08 }}
-        end={{ x: 0.5, y: 1 }}
-        style={styles.reelCardAmbient}
-      />
-      <LinearGradient
-        pointerEvents="none"
-        colors={['rgba(248,250,252,0)', 'rgba(15,23,42,0.04)']}
-        locations={[0.55, 1]}
-        start={{ x: 0.5, y: 0.5 }}
-        end={{ x: 0.5, y: 1 }}
-        style={styles.reelCardAmbient}
-      />
-      <LinearGradient
-        pointerEvents="none"
-        colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0)']}
-        locations={[0, 0.45, 1]}
-        start={{ x: 0.42, y: 0 }}
-        end={{ x: 0.58, y: 0.42 }}
-        style={styles.reelCardRim}
-      />
-      <View style={[styles.reelCardInner, isOpen && styles.reelCardInnerOpen]}>{children}</View>
-    </View>
-  );
-}
 
 export function decisionFeedStatus(card: unknown): 'open' | 'resolved' {
   const value = (card as { status?: string })?.status;
@@ -232,109 +106,7 @@ function totalVotesFromCard(card: ExploreFeedCard): number {
   return card.distribution.reduce((sum, d) => sum + d.votes, 0);
 }
 
-function compactVoteCount(n: number): string {
-  try {
-    return new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-  } catch {
-    return n.toLocaleString();
-  }
-}
 
-function LiveVotesPill({
-  voteTotal,
-  isLivePoll,
-  inline,
-}: {
-  voteTotal: number;
-  isLivePoll: boolean;
-  inline?: boolean;
-}) {
-  return (
-    <View
-      style={[styles.headerVotePill, inline && styles.headerVotePillInline]}
-      accessibilityRole="text"
-      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}>
-      {isLivePoll ? <LivePulseDot /> : null}
-      <View style={[styles.headerVoteTextStack, inline && styles.headerVoteTextStackInline]}>
-        <Text style={[styles.headerVoteStrong, inline && styles.headerVoteStrongInline]}>
-          {compactVoteCount(voteTotal)}
-        </Text>
-        <Text style={[styles.headerVoteMicro, inline && styles.headerVoteMicroInline]}>
-          {isLivePoll ? 'Live · voted' : 'Total votes'}
-        </Text>
-      </View>
-    </View>
-  );
-}
-
-function LivePulseDot() {
-  const pulse = React.useRef(new Animated.Value(0.35)).current;
-  React.useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulse, {
-          toValue: 1,
-          duration: 820,
-          easing: Easing.out(Easing.quad),
-          useNativeDriver: true,
-        }),
-        Animated.timing(pulse, {
-          toValue: 0.35,
-          duration: 820,
-          easing: Easing.in(Easing.quad),
-          useNativeDriver: true,
-        }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [pulse]);
-
-  return (
-    <Animated.View
-      accessibilityElementsHidden
-      importantForAccessibility="no-hide-descendants"
-      style={[
-        styles.livePulseDot,
-        {
-          opacity: pulse,
-          transform: [
-            {
-              scale: pulse.interpolate({
-                inputRange: [0.35, 1],
-                outputRange: [0.94, 1.12],
-              }),
-            },
-          ],
-        },
-      ]}
-    />
-  );
-}
-
-function InlineDistributionTrack({ percentage }: { percentage: number }) {
-  const progress = React.useRef(new Animated.Value(0)).current;
-
-  React.useEffect(() => {
-    progress.setValue(0);
-    Animated.timing(progress, {
-      toValue: 1,
-      duration: 280,
-      useNativeDriver: false,
-    }).start();
-  }, [progress, percentage]);
-
-  const animatedWidth = progress.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0%', `${Math.max(percentage, 0)}%`],
-  });
-
-  return (
-    <View style={styles.inlineTrack}>
-      <Animated.View style={[styles.inlineFill, { width: animatedWidth }]} />
-    </View>
-  );
-}
 
 function ReelCardMotionWrap({
   animationToken,
@@ -666,15 +438,15 @@ export function PagedDecisionFeed({
                       onToggleSave={() => toggleSaveForCard(item)}
                       onToggleFollow={() => toggleFollowForCard(item)}
                     />
-                    <View style={styles.pollQuestionRow}>
+                    <View style={reelDiscussStyles.pollQuestionRow}>
                       <Text
                         accessibilityRole="header"
                         style={[
                           isOpen ? typography.hero : typography.h2,
-                          styles.pollQuestion,
-                          styles.pollQuestionFlexible,
-                          isOpen && styles.pollQuestionOpen,
-                          isOpen && styles.pollHeroOpen,
+                          reelDiscussStyles.pollQuestion,
+                          reelDiscussStyles.pollQuestionFlexible,
+                          isOpen && reelDiscussStyles.pollQuestionOpen,
+                          isOpen && reelDiscussStyles.pollHeroOpen,
                         ]}>
                         {item.question}
                       </Text>
@@ -698,7 +470,7 @@ export function PagedDecisionFeed({
                           : null;
                       return (
                         <>
-                          <View style={styles.optionWrap}>
+                          <View style={reelDiscussStyles.optionWrap}>
                             {item.options.map((option) => {
                               const votes = item.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
                               const percentage = total > 0 ? Math.round((votes / total) * 100) : 0;
@@ -728,27 +500,27 @@ export function PagedDecisionFeed({
                                     }));
                                   }}
                                   style={({ pressed }) => [
-                                    styles.optionPill,
-                                    selected && styles.optionPillActive,
-                                    aiLeanHere && styles.optionPillAiLean,
-                                    isResolved && styles.optionPillDisabled,
-                                    !isResolved && pressed && styles.optionPillPressed,
+                                    reelDiscussStyles.optionPill,
+                                    selected && reelDiscussStyles.optionPillActive,
+                                    aiLeanHere && reelDiscussStyles.optionPillAiLean,
+                                    isResolved && reelDiscussStyles.optionPillDisabled,
+                                    !isResolved && pressed && reelDiscussStyles.optionPillPressed,
                                   ]}>
-                                  <View style={styles.optionTopRow}>
-                                    <Text style={[styles.optionText, selected && styles.optionTextActive]}>{option.label}</Text>
-                                    <View style={styles.optionMetaCluster}>
+                                  <View style={reelDiscussStyles.optionTopRow}>
+                                    <Text style={[reelDiscussStyles.optionText, selected && reelDiscussStyles.optionTextActive]}>{option.label}</Text>
+                                    <View style={reelDiscussStyles.optionMetaCluster}>
                                       {aiLeanHere ? (
-                                        <View style={styles.aiLeanBadge}>
-                                          <Text style={styles.aiLeanBadgeText}>AI</Text>
+                                        <View style={reelDiscussStyles.aiLeanBadge}>
+                                          <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
                                         </View>
                                       ) : null}
                                       {hasPicked ? (
-                                        <Text style={[styles.optionMeta, selected && styles.optionMetaPicked]}>
+                                        <Text style={[reelDiscussStyles.optionMeta, selected && reelDiscussStyles.optionMetaPicked]}>
                                           {percentage}%
                                           {selected ? (isResolved ? ' · Final' : ' · You') : ''}
                                         </Text>
                                       ) : selected ? (
-                                        <Text style={styles.optionMeta}>Selected</Text>
+                                        <Text style={reelDiscussStyles.optionMeta}>Selected</Text>
                                       ) : null}
                                     </View>
                                   </View>
@@ -764,7 +536,13 @@ export function PagedDecisionFeed({
                               onPress={() =>
                                 router.push({
                                   pathname: '/decision/[id]',
-                                  params: { id: item.id, fromReel: '1', reelCategory: item.category },
+                                  params: {
+                                    id: item.id,
+                                    fromReel: '1',
+                                    reelCategory: item.category,
+                                    pickedOption:
+                                      typeof effectivePicked === 'string' ? effectivePicked : '',
+                                  },
                                 })
                               }>
                               <Text style={styles.buttonLabel}>Discuss</Text>
@@ -857,38 +635,6 @@ const styles = StyleSheet.create({
   cardMotionOuter: {
     marginHorizontal: 12,
   },
-  reelCardOuter: {
-    flexDirection: 'column',
-    borderRadius: 28,
-    borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.72)',
-    backgroundColor: 'rgba(248,250,252,0.94)',
-    overflow: 'hidden',
-    shadowColor: '#1e293b',
-    shadowOpacity: Platform.OS === 'ios' ? 0.16 : 0.2,
-    shadowRadius: Platform.OS === 'ios' ? 34 : 24,
-    shadowOffset: { width: 0, height: Platform.OS === 'ios' ? 16 : 10 },
-    elevation: Platform.OS === 'android' ? 8 : 0,
-  },
-  reelCardAmbient: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  reelCardRim: {
-    ...StyleSheet.absoluteFillObject,
-    opacity: Platform.OS === 'android' ? 0.92 : 1,
-  },
-  reelCardInner: {
-    flexDirection: 'column',
-    paddingHorizontal: 18,
-    paddingTop: 16,
-    paddingBottom: 15,
-    gap: 14,
-    position: 'relative',
-    zIndex: 1,
-  },
-  reelCardInnerOpen: {
-    gap: 11,
-  },
   discussButtonBelowChoices: {
     marginTop: 6,
     marginBottom: 2,
@@ -901,195 +647,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingBottom: 12,
   },
-  cardTopRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 12,
-    marginBottom: 6,
-    minHeight: 40,
-    paddingHorizontal: 0,
-  },
-  categoryChip: {
-    alignSelf: 'center',
-    paddingHorizontal: 13,
-    paddingVertical: 7,
-    borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.78)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
-    maxWidth: '58%',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#0b1224',
-        shadowOpacity: 0.04,
-        shadowRadius: 10,
-        shadowOffset: { width: 0, height: 3 },
-      },
-      default: {},
-    }),
-  },
-  categoryChipText: {
-    fontSize: 12,
-    lineHeight: 15,
-    fontWeight: '600',
-    letterSpacing: 0.25,
-    color: palette.slate800,
-    textTransform: 'capitalize',
-  },
-  cardIconGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    flexShrink: 0,
-  },
-  toolbarIconHit: {
-    paddingHorizontal: 2,
-    paddingVertical: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  toolbarIconHitPressed: {
-    opacity: 0.9,
-    transform: [{ scale: 0.95 }],
-  },
-  toolbarIconHitActiveGlowSave: Platform.select({
-    ios: {
-      shadowColor: '#d9a046',
-      shadowOpacity: 0.35,
-      shadowRadius: 7,
-      shadowOffset: { width: 0, height: 3 },
-    },
-    default: {},
-  }),
-  toolbarIconHitActiveGlowBell: Platform.select({
-    ios: {
-      shadowColor: palette.accent,
-      shadowOpacity: 0.4,
-      shadowRadius: 8,
-      shadowOffset: { width: 0, height: 3 },
-    },
-    default: {},
-  }),
-  toolbarIconGem: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  },
-  toolbarIconGemRaisedAndroid: {
-    elevation: 3,
-  },
-  toolbarIconFrost: {
-    backgroundColor: 'rgba(255,255,255,0.76)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#0b1224',
-        shadowOpacity: 0.035,
-        shadowRadius: 6,
-        shadowOffset: { width: 0, height: 2 },
-      },
-      android: { elevation: 1 },
-      default: {},
-    }),
-  },
-  headerVotePill: {
-    flexShrink: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 7,
-    paddingHorizontal: 11,
-    paddingVertical: 7,
-    borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.76)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.03,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 1,
-  },
-  headerVotePillInline: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 7,
-    minWidth: 84,
-    maxWidth: 124,
-    gap: 5,
-    marginTop: Platform.OS === 'ios' ? 8 : 6,
-  },
-  headerVoteTextStack: {
-    alignItems: 'center',
-  },
-  headerVoteTextStackInline: {
-    alignItems: 'center',
-    minWidth: 0,
-  },
-  headerVoteStrong: {
-    fontSize: 15,
-    lineHeight: 18,
-    fontWeight: '700',
-    color: palette.slate950,
-    letterSpacing: -0.35,
-  },
-  headerVoteMicro: {
-    fontSize: 10,
-    lineHeight: 13,
-    fontWeight: '600',
-    color: palette.slate500,
-    letterSpacing: 0.15,
-  },
-  headerVoteStrongInline: {
-    fontSize: 14,
-    lineHeight: 17,
-    letterSpacing: -0.35,
-  },
-  headerVoteMicroInline: {
-    fontSize: 9,
-    lineHeight: 11,
-    letterSpacing: 0.08,
-    textAlign: 'center',
-  },
-  livePulseDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 999,
-    backgroundColor: palette.mint,
-  },
-  pollQuestionRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 12,
-    marginBottom: 2,
-    paddingBottom: 12,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(15,23,42,0.06)',
-    paddingVertical: Platform.OS === 'ios' ? 4 : 2,
-  },
-  pollQuestionFlexible: {
-    flex: 1,
-    minWidth: 0,
-    marginTop: 0,
-    marginBottom: 0,
-  },
-  pollQuestion: {
-    color: palette.slate950,
-    marginTop: 0,
-  },
-  pollQuestionOpen: {
-    marginTop: 0,
-    marginBottom: 0,
-  },
-  pollHeroOpen: {
-    fontWeight: '600',
-    letterSpacing: -0.52,
-    lineHeight: 33,
-  },
+
   pickPrompt: {
     ...typography.caption,
     color: palette.slate500,
@@ -1225,99 +783,7 @@ const styles = StyleSheet.create({
       default: {},
     }),
   },
-  optionWrap: {
-    gap: 10,
-  },
-  optionPill: {
-    borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
-    backgroundColor: 'rgba(255,255,255,0.92)',
-    paddingHorizontal: 15,
-    paddingVertical: 14,
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    gap: 8,
-    shadowColor: '#334e73',
-    shadowOpacity: 0.045,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: Platform.OS === 'android' ? 1 : 0,
-  },
-  optionPillActive: {
-    borderColor: 'rgba(79,118,194,0.42)',
-    backgroundColor: 'rgba(255,255,255,0.93)',
-  },
-  optionPillAiLean: {
-    borderColor: 'rgba(69,134,255,0.5)',
-    backgroundColor: 'rgba(233,239,255,0.92)',
-    borderWidth: 1,
-  },
-  optionPillDisabled: {
-    opacity: 0.92,
-  },
-  optionPillPressed: {
-    opacity: 0.88,
-    transform: [{ scale: 0.992 }],
-  },
-  optionTopRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-  },
-  optionMetaCluster: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    flexShrink: 0,
-  },
-  aiLeanBadge: {
-    borderRadius: 8,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    backgroundColor: 'rgba(79,118,194,0.07)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79,118,194,0.18)',
-  },
-  aiLeanBadgeText: {
-    fontSize: 10,
-    lineHeight: 12,
-    fontWeight: '700',
-    letterSpacing: 0.45,
-    color: palette.accent,
-  },
-  optionText: {
-    ...typography.compact,
-    color: palette.slate900,
-    flex: 1,
-    marginRight: 10,
-  },
-  optionTextActive: {
-    color: palette.accent,
-    fontWeight: '600',
-  },
-  optionMeta: {
-    ...typography.caption,
-    color: palette.slate500,
-    fontWeight: '700',
-  },
-  optionMetaPicked: {
-    color: palette.accent,
-    fontWeight: '600',
-  },
-  inlineTrack: {
-    height: 6,
-    borderRadius: 999,
-    backgroundColor: palette.slate200,
-    overflow: 'hidden',
-    width: '100%',
-  },
-  inlineFill: {
-    height: '100%',
-    borderRadius: 999,
-    backgroundColor: palette.accent,
-  },
+
   buttonLabel: {
     color: palette.white,
     fontWeight: '600',

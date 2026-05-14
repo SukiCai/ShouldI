@@ -1,4 +1,4 @@
-import type { DecisionCategory } from '@shouldi/contracts';
+import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
 
 /**
  * Dusty Morandi washes with higher chroma corners — luminous mid for copy legibility,
@@ -38,6 +38,14 @@ export function parseReelCategoryParam(raw: unknown): DecisionCategory | undefin
   if (typeof v !== 'string') return undefined;
   if (['life', 'career', 'relationship', 'money'].includes(v)) return v as DecisionCategory;
   return undefined;
+}
+
+/** Decide category gradient for Decide detail / Discuss while feed data may still be loading. */
+export function reelDiscussBackdropCategory(
+  card: ExploreCard | undefined,
+  reelCategoryRaw: unknown,
+): DecisionCategory {
+  return card?.category ?? parseReelCategoryParam(reelCategoryRaw) ?? 'life';
 }
 
 /** Orb specs for Explore reel liquid layer — anchored 0–1 inside the card, sized vs min(w,h). */

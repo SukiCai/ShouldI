@@ -6,6 +6,21 @@ export type Provenance = z.infer<typeof ProvenanceSchema>;
 export const DecisionCategorySchema = z.enum(['life', 'career', 'relationship', 'money']);
 export type DecisionCategory = z.infer<typeof DecisionCategorySchema>;
 
+export const TeamDiscussionPostSchema = z.object({
+  id: z.string(),
+  authorName: z.string(),
+  authorEmoji: z.string().default('🙂'),
+  /** Which option / "team" this member is speaking for. */
+  optionId: z.string(),
+  body: z.string(),
+  timeLabel: z.string().optional(),
+  /** When set, this post is a reply to another post in the same thread. */
+  parentId: z.string().optional(),
+  /** Synthetic / server count of helpful votes (client may add +1 when the user taps thumbs up). */
+  upvoteCount: z.number().int().nonnegative().default(0),
+});
+export type TeamDiscussionPost = z.infer<typeof TeamDiscussionPostSchema>;
+
 export const ExploreCardSchema = z.object({
   id: z.string(),
   category: DecisionCategorySchema,
@@ -19,6 +34,8 @@ export const ExploreCardSchema = z.object({
   options: z.array(z.object({ id: z.string(), label: z.string() })).min(2),
   distribution: z.array(z.object({ optionId: z.string(), votes: z.number().int().nonnegative() })).min(2),
   discussionPreview: z.array(z.string()).max(4).default([]),
+  /** Curated team-thread posts (optionId groups members by choice). */
+  discussionPosts: z.array(TeamDiscussionPostSchema).optional().default([]),
   rewardPoints: z.number().int().positive().default(10),
   /** Bookmark this dilemma for quick access later. */
   savedByMe: z.boolean().default(false),

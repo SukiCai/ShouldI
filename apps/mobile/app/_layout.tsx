@@ -63,7 +63,14 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="decide" options={{ headerShown: false }} />
-        <Stack.Screen name="decision/[id]" options={{ title: 'Decision details' }} />
+        <Stack.Screen
+          name="decision/[id]"
+          options={{
+            title: 'Decision details',
+            /** Avoid default slide — Discuss uses an in-screen “expand” spring. */
+            animation: 'fade',
+          }}
+        />
         <Stack.Screen
           name="plot-deck"
           options={{
