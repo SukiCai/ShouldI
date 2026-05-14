@@ -1,17 +1,41 @@
 export const palette = {
-  slate950: '#0b1224',
-  slate900: '#101a34',
-  slate800: '#1c2b4a',
-  slate500: '#5c6f92',
-  slate200: '#d6deef',
-  slate100: '#eaf0fb',
-  white: '#fdfefe',
-  mist: '#f4f6fb',
-  accent: '#2d6bff',
-  accentSoft: '#e9efff',
-  mint: '#43c29b',
-  warning: '#b4690e',
-  danger: '#a61b1b',
+  /** Ink family — dusty blue-grey (trust, editorial). */
+  slate950: '#2c343c',
+  slate900: '#383f48',
+  slate800: '#434d58',
+  slate500: '#6b7582',
+  slate200: '#c5cfd8',
+  slate100: '#e4eaef',
+
+  /** Warm ivory surfaces vs cold white — premium paper. */
+  white: '#faf8f6',
+  mist: '#f1f2f4',
+
+  /** Primary: saturated dusty cobalt — calm + credible CTAs & links. */
+  accent: '#4f76c2',
+  /** Companion stop (gradients, highlights); dusty sea-glass teal. */
+  accentBloom: '#4da89b',
+  accentSoft: '#e6ecf5',
+
+  /** Success / affirmation / logo hub — Morandi teal-sage with lift. */
+  mint: '#5fa995',
+
+  /** Playful accent — warm terracotta (moments that should feel cheeky-delightful). */
+  playful: '#c9746a',
+
+  warning: '#b0893d',
+  danger: '#a85d64',
+
+  /** Dark hero washes (splash, cinematic headers): blue-grey soot, never pure black. */
+  nightInk: '#2d363e',
+  nightSlate: '#3e4854',
+  nightHorizon: '#4e5a67',
+
+  /** Live / pulse indicator on light chrome. */
+  livePulse: '#5ebf9f',
+
+  /** Mid blend of accent + bloom — Expo splash/adaptive backdrop while letterboxing. */
+  backdropMid: '#4f96b5',
 };
 
 export const typography = {

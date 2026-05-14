@@ -1,7 +1,17 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
-import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  AccessibilityInfo,
+  Animated,
+  Easing,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
+import { ShouldILogoMark } from '@/components/branding/ShouldILogo';
 import { palette, typography } from '@/constants/theme';
 
 function rgba255(r: number, g: number, b: number, a: number): string {
@@ -30,19 +40,50 @@ function MinimalExploreBar({
   footerLink?: { label: string; accessibilityHint?: string; onPress: () => void };
 }) {
   const breathe = React.useRef(new Animated.Value(0)).current;
+  const [reduceMotion, setReduceMotion] = React.useState(false);
 
   React.useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const fn = AccessibilityInfo.isReduceMotionEnabled;
+        if (typeof fn === 'function') {
+          const v = await fn();
+          if (!cancelled) setReduceMotion(v);
+        }
+      } catch {
+        /* noop */
+      }
+    })();
+    let sub: { remove: () => void } | undefined;
+    try {
+      sub = AccessibilityInfo.addEventListener('reduceMotionChanged', setReduceMotion);
+    } catch {
+      /* noop */
+    }
+    return () => {
+      cancelled = true;
+      sub?.remove?.();
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (reduceMotion) {
+      breathe.stopAnimation();
+      breathe.setValue(1);
+      return undefined;
+    }
     const loop = Animated.loop(
       Animated.sequence([
         Animated.timing(breathe, {
           toValue: 1,
-          duration: 2000,
+          duration: 1800,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
         }),
         Animated.timing(breathe, {
           toValue: 0,
-          duration: 2000,
+          duration: 1800,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
         }),
@@ -50,49 +91,42 @@ function MinimalExploreBar({
     );
     loop.start();
     return () => loop.stop();
-  }, [breathe]);
+  }, [breathe, reduceMotion]);
 
   const liveDotOpacity = breathe.interpolate({
     inputRange: [0, 1],
-    outputRange: [0.5, 1],
+    outputRange: [0.45, 1],
   });
 
   const countLabel =
     caseCount === 1 ? '1 live dilemma' : `${caseCount.toLocaleString()} live dilemmas`;
 
   return (
-    <View
-      accessibilityRole="header"
-      accessibilityLabel={`ShouldI explore. ${countLabel}. Swipe to vote.`}>
-      <View style={minimalStyles.pad}>
-        <View style={minimalStyles.bar}>
-          <View style={minimalStyles.left}>
-            <Text style={minimalStyles.logo}>
-              Should<Text style={minimalStyles.logoAccent}>I</Text>
-            </Text>
-            <View style={minimalStyles.sep} />
-            <Text style={minimalStyles.zone}>Explore</Text>
+    <View accessibilityRole="header" accessibilityLabel={`ShouldI explore · ${countLabel}. Swipe up on the reel to vote.`}>
+      <View style={minimalStyles.row}>
+        <View style={minimalStyles.leftCluster}>
+          <View style={minimalStyles.logoMarkWrap} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+            <ShouldILogoMark size={26} />
           </View>
-
+          <Text style={minimalStyles.title}>Explore</Text>
           <View style={minimalStyles.livePill} accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
-            <Animated.View style={[minimalStyles.liveDot, { opacity: liveDotOpacity }]} />
+            {!reduceMotion ? (
+              <Animated.View style={[minimalStyles.liveDot, { opacity: liveDotOpacity }]} />
+            ) : (
+              <View style={[minimalStyles.liveDot, minimalStyles.liveDotRm]} />
+            )}
             <Text style={minimalStyles.liveCount}>{caseCount.toLocaleString()}</Text>
           </View>
         </View>
-        <LinearGradient
-          colors={['rgba(45,107,255,0.65)', palette.mint, 'rgba(45,107,255,0.5)']}
-          start={{ x: 0, y: 0.5 }}
-          end={{ x: 1, y: 0.5 }}
-          style={minimalStyles.accentHair}
-        />
         {footerLink ? (
           <Pressable
             accessibilityRole="link"
             accessibilityHint={footerLink.accessibilityHint}
+            accessibilityLabel="Plot Deck"
             onPress={footerLink.onPress}
-            hitSlop={8}
-            style={({ pressed }) => [minimalStyles.footerLinkWrap, pressed && minimalStyles.footerLinkPressed]}>
-            <Text style={minimalStyles.footerLinkText}>{footerLink.label}</Text>
+            hitSlop={{ top: 10, bottom: 10, left: 8, right: 8 }}
+            style={({ pressed }) => [minimalStyles.plotLinkWrap, pressed && minimalStyles.plotLinkPressed]}>
+            <Text style={minimalStyles.plotLinkText}>{footerLink.label}</Text>
           </Pressable>
         ) : null}
       </View>
@@ -143,10 +177,14 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
       accessibilityRole="header"
       accessible
       accessibilityLabel={`ShouldI explore. ${countLabel}. Swipe reels to vote.`}>
-      <LinearGradient colors={['#070b18', '#0f1d3f', '#132448']} locations={[0, 0.55, 1]} style={dramaticStyles.baseGlow} />
+      <LinearGradient
+        colors={[palette.nightInk, palette.nightSlate, palette.nightHorizon]}
+        locations={[0, 0.55, 1]}
+        style={dramaticStyles.baseGlow}
+      />
 
       <LinearGradient
-        colors={['transparent', 'rgba(45, 107, 255, 0.35)', 'rgba(67, 194, 155, 0.12)']}
+        colors={['transparent', 'rgba(79, 118, 194, 0.32)', 'rgba(95, 169, 149, 0.12)']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={dramaticStyles.radialBloom}
@@ -171,7 +209,7 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
           importantForAccessibility="no-hide-descendants"
           style={{ transform: [{ scale: orbScale }] }}>
           <LinearGradient
-            colors={['#396dff', '#5b8dff', palette.mint]}
+            colors={[palette.accent, palette.playful, palette.accentBloom]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={dramaticStyles.statOrb}>
@@ -199,98 +237,93 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
 }
 
 const minimalStyles = StyleSheet.create({
-  pad: {
-    gap: 0,
-  },
-  bar: {
+  row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: 12,
-    paddingVertical: 4,
-    minHeight: 40,
+    gap: 10,
+    minHeight: 30,
+    paddingVertical: 2,
   },
-  left: {
+  leftCluster: {
     flexDirection: 'row',
     alignItems: 'center',
-    flexShrink: 1,
     gap: 8,
+    flexShrink: 1,
+    minWidth: 0,
   },
-  logo: {
+  logoMarkWrap: {
+    flexShrink: 0,
+    borderRadius: 8,
+    overflow: 'visible',
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.accent,
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 2 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  title: {
     fontSize: 15,
-    fontWeight: '800',
-    letterSpacing: 3,
-    color: palette.slate800,
-    textTransform: 'uppercase',
-  },
-  logoAccent: {
-    color: palette.accent,
-  },
-  sep: {
-    width: StyleSheet.hairlineWidth,
-    height: 14,
-    backgroundColor: 'rgba(92,111,146,0.35)',
-    borderRadius: StyleSheet.hairlineWidth,
-  },
-  zone: {
-    ...typography.caption,
-    color: palette.slate500,
+    lineHeight: 19,
     fontWeight: '700',
-    letterSpacing: 2,
-    textTransform: 'uppercase',
-    fontSize: 11,
+    letterSpacing: -0.35,
+    color: palette.slate900,
   },
   livePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 7,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    gap: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
     borderRadius: 999,
-    backgroundColor: '#ecf2ff',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#c8dafb',
+    borderColor: 'rgba(79, 118, 194, 0.15)',
+    backgroundColor: palette.accentSoft,
     flexShrink: 0,
-    shadowColor: palette.accent,
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 2,
   },
   liveDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-    backgroundColor: palette.mint,
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: palette.livePulse,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,255,255,0.85)',
+    flexShrink: 0,
+  },
+  liveDotRm: {
+    opacity: 0.85,
   },
   liveCount: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '800',
-    letterSpacing: -0.3,
+    letterSpacing: -0.35,
     color: palette.slate900,
     fontVariant: ['tabular-nums'],
   },
-  accentHair: {
-    height: 3,
-    borderRadius: 2,
-    marginTop: 8,
-    opacity: 0.85,
-  },
-  footerLinkWrap: {
-    alignSelf: 'flex-end',
-    marginTop: 8,
+  plotLinkWrap: {
+    flexShrink: 0,
     paddingVertical: 2,
-    paddingHorizontal: 2,
+    paddingLeft: 4,
+    marginLeft: 4,
+    borderRadius: 6,
+    maxWidth: '44%',
+    alignSelf: 'center',
   },
-  footerLinkPressed: {
-    opacity: 0.7,
+  plotLinkPressed: {
+    opacity: 0.65,
   },
-  footerLinkText: {
-    ...typography.caption,
-    color: palette.accent,
-    fontWeight: '700',
-    letterSpacing: 0.35,
+  plotLinkText: {
     fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '700',
+    letterSpacing: 0.15,
+    color: palette.accent,
+    textAlign: 'right',
   },
 });
 
@@ -318,7 +351,7 @@ const dramaticStyles = StyleSheet.create({
     width: 210,
     height: 210,
     borderRadius: 105,
-    backgroundColor: 'rgba(93,143,255,0.32)',
+    backgroundColor: 'rgba(79, 118, 194, 0.28)',
     transform: [{ scale: 1.4 }],
   },
   inner: {
@@ -351,7 +384,7 @@ const dramaticStyles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   brandAccent: {
-    color: palette.mint,
+    color: palette.playful,
   },
   railMuted: {
     ...typography.caption,
@@ -370,7 +403,7 @@ const dramaticStyles = StyleSheet.create({
     ...(Platform.OS === 'web'
       ? {}
       : {
-          textShadowColor: 'rgba(0,12,44,0.55)',
+          textShadowColor: 'rgba(40, 50, 60, 0.45)',
           textShadowOffset: { width: 0, height: 3 },
           textShadowRadius: 18,
         }),

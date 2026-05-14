@@ -54,7 +54,7 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.surface}>
-      <View style={[styles.headerWrap, { paddingTop: Math.max(10, insets.top + 6) }]}>
+      <View style={[styles.headerWrap, { paddingTop: Math.max(6, insets.top + 2) }]}>
         <ExploreMomentHeader
           caseCount={openCards.length}
           variant="minimal"
@@ -81,7 +81,7 @@ export default function ExploreScreen() {
       ) : (
         <PagedDecisionFeed
           cards={openCards}
-          headerChromeEstimate={124}
+          headerChromeEstimate={90}
           bottomOverlayExtra={88}
           isFetching={query.isFetching}
           onRefresh={() => query.refetch()}
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
     backgroundColor: palette.mist,
   },
   headerWrap: {
-    paddingHorizontal: 16,
-    paddingBottom: 4,
+    paddingHorizontal: 14,
+    paddingBottom: 2,
   },
   emptyFrame: {
     flex: 1,

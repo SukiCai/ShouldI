@@ -16,7 +16,11 @@ export function GradientHero({
   right?: ReactNode;
 }) {
   return (
-    <LinearGradient colors={['#e8efff', '#f4f7ff']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
+    <LinearGradient
+      colors={[palette.accentSoft, palette.slate100]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.hero}>
       <View style={{ flex: 1 }}>
         {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
         <Text style={typography.title}>{title}</Text>
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d9e3fb',
+    borderColor: palette.slate200,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -101,9 +105,9 @@ const styles = StyleSheet.create({
     backgroundColor: palette.white,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#e3eafa',
+    borderColor: palette.slate200,
     padding: spacing.md,
-    shadowColor: '#0b1324',
+    shadowColor: palette.slate950,
     shadowOpacity: 0.08,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
@@ -132,16 +136,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   pillNeutral: {
-    backgroundColor: '#f6f8ff',
-    borderColor: '#d8e1f7',
+    backgroundColor: palette.mist,
+    borderColor: palette.slate200,
   },
   pillBrand: {
-    backgroundColor: '#eaf0ff',
-    borderColor: '#cdd9ff',
+    backgroundColor: '#e9edf5',
+    borderColor: '#c9d8e9',
   },
   pillGood: {
-    backgroundColor: '#e9f8f2',
-    borderColor: '#c5eadc',
+    backgroundColor: '#e7f4ef',
+    borderColor: '#b9dcd1',
   },
   pillText: {
     ...typography.caption,
@@ -151,7 +155,7 @@ const styles = StyleSheet.create({
   ghostBtn: {
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ccd8f7',
+    borderColor: 'rgba(107,117,130,0.32)',
     backgroundColor: 'transparent',
     paddingHorizontal: 14,
     paddingVertical: 10,

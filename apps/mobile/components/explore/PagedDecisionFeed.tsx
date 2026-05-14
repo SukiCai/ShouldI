@@ -1245,7 +1245,7 @@ const styles = StyleSheet.create({
     elevation: Platform.OS === 'android' ? 1 : 0,
   },
   optionPillActive: {
-    borderColor: 'rgba(45,107,255,0.42)',
+    borderColor: 'rgba(79,118,194,0.42)',
     backgroundColor: 'rgba(255,255,255,0.93)',
   },
   optionPillAiLean: {
@@ -1276,9 +1276,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    backgroundColor: 'rgba(45,107,255,0.07)',
+    backgroundColor: 'rgba(79,118,194,0.07)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(45,107,255,0.18)',
+    borderColor: 'rgba(79,118,194,0.18)',
   },
   aiLeanBadgeText: {
     fontSize: 10,

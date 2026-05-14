@@ -1,3 +1,4 @@
+import { palette } from '@/constants/theme';
 import { GATEWAY_ORIGIN } from '@/lib/api';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: 'flex-start',
-    backgroundColor: '#2d6bff',
+    backgroundColor: palette.accent,
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderRadius: 10,

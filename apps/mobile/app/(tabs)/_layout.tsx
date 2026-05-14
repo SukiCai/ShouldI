@@ -85,7 +85,7 @@ export default function TabLayout() {
   const bottomPad = Platform.OS === 'ios' ? insets.bottom : Math.max(insets.bottom, 6);
 
   const barBg = isDark ? palette.slate950 : palette.mist;
-  const hairline = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(92,107,146,0.14)';
+  const hairline = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(105,117,134,0.16)';
 
   return (
     <Tabs
@@ -93,7 +93,7 @@ export default function TabLayout() {
       backBehavior="history"
       screenOptions={{
         tabBarActiveTintColor: Colors[isDark ? 'dark' : 'light'].tint,
-        tabBarInactiveTintColor: isDark ? 'rgba(200,209,229,0.55)' : palette.slate500,
+        tabBarInactiveTintColor: isDark ? 'rgba(200,206,216,0.55)' : palette.slate500,
         tabBarShowLabel: true,
         tabBarHideOnKeyboard: true,
         tabBarLabelPosition: 'below-icon',

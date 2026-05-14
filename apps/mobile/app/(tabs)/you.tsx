@@ -31,7 +31,7 @@ export default function YouScreen() {
             accessibilityLabel="Muted notifications toggle"
             value={muted}
             onValueChange={setMuted}
-            thumbColor={muted ? palette.accent : '#f7f9ff'}
+            thumbColor={muted ? palette.accent : palette.white}
           />
         </View>
       </GlassCard>

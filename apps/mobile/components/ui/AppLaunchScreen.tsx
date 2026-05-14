@@ -75,7 +75,11 @@ export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
   const detailLine = detail?.trim();
 
   return (
-    <LinearGradient colors={['#070b18', '#0f1d3f', '#122a52']} locations={[0, 0.5, 1]} style={styles.root}>
+    <LinearGradient
+      colors={[palette.nightInk, palette.nightSlate, palette.nightHorizon]}
+      locations={[0, 0.5, 1]}
+      style={styles.root}
+    >
       <View style={styles.content} accessibilityLabel="ShouldI loading">
         <View style={styles.markBlock}>
           <Animated.View style={[styles.pulseRing, { opacity: ringOpacity, transform: [{ scale: ringScale }] }]} />
@@ -103,7 +107,7 @@ export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
       </View>
 
       <LinearGradient
-        colors={['transparent', 'rgba(67, 194, 155, 0.08)', 'rgba(57, 109, 255, 0.12)']}
+        colors={['transparent', 'rgba(95, 169, 149, 0.08)', 'rgba(79, 118, 194, 0.12)']}
         style={styles.floorGlow}
         pointerEvents="none"
       />
