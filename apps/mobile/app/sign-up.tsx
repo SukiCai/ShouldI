@@ -25,7 +25,7 @@ export default function SignUpScreen() {
       appearance="oled"
       heroAvatars={HERO_SIGNUP_AVATARS}
       headline="Let's get you signed up!"
-      heroBadge="Dei"
+      heroBadge="SHOULDI"
       footerCtaLabel="Sign Up"
       footerCtaAccessibilityLabel="Sign up"
       swipeAlternate={{ pathname: '/sign-in', direction: 'up' }}

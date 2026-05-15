@@ -265,11 +265,12 @@ const SIGNUP_FLOAT_PRESETS = [
  */
 type SwarmSlot = { cx: number; cy: number; diameter: number };
 
-/** Pre-scale ◁ OLED layout (left / right / bottom). */
+/** Pre-scale ◁ OLED layout — size contrast; **top-left disk is largest** (visual anchor).
+ * Centers nudged ~7% toward triangle centroid — rings read a hair tighter together. */
 const OLED_TRI_BASE: SwarmSlot[] = [
-  { cx: 84, cy: 54, diameter: 112 },
-  { cx: 250, cy: 56, diameter: 110 },
-  { cx: 168, cy: 186, diameter: 118 },
+  { cx: 90, cy: 57, diameter: 132 },
+  { cx: 244, cy: 59, diameter: 106 },
+  { cx: 168, cy: 180, diameter: 120 },
 ];
 
 const OLED_TRI_MAG = 1.125;
@@ -646,42 +647,42 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
   );
 }
 
-/** Light frosted badge (mist hero). */
+/** Light frosted badge (mist hero) — readable rim + visible fashion tint vs hero. */
 const glassBadgeMist = Platform.select({
   ios: {
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.82)',
-    backgroundColor: 'rgba(252,253,254,0.42)',
-    shadowColor: palette.heroInk,
-    shadowOpacity: 0.08,
+    borderColor: 'rgba(255,120,178,0.42)',
+    backgroundColor: 'rgba(246,249,253,0.44)',
+    shadowColor: '#4a3558',
+    shadowOpacity: 0.16,
     shadowRadius: 24,
-    shadowOffset: { width: 0, height: 8 },
+    shadowOffset: { width: 0, height: 9 },
   },
   android: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.6)',
-    backgroundColor: 'rgba(252,253,254,0.52)',
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: 'rgba(242,142,206,0.48)',
+    backgroundColor: 'rgba(246,249,253,0.48)',
+    elevation: 3,
   },
   default: {},
 });
 
-/** Glass badge on OLED — reference “Dei” pill over avatars */
+/** Glass badge on OLED — luminous rim so chip pops on black + donut art. */
 const glassBadgeOled = Platform.select({
   ios: {
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.26)',
-    backgroundColor: 'rgba(255,255,255,0.09)',
+    borderColor: 'rgba(255,170,238,0.58)',
+    backgroundColor: 'rgba(226,228,246,0.26)',
     shadowColor: '#000',
-    shadowOpacity: 0.45,
-    shadowRadius: 24,
-    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.55,
+    shadowRadius: 22,
+    shadowOffset: { width: 4, height: 14 },
   },
   android: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.35)',
-    backgroundColor: 'rgba(255,255,255,0.09)',
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: 'rgba(246,178,238,0.55)',
+    backgroundColor: 'rgba(226,228,246,0.3)',
+    elevation: 6,
   },
   default: {},
 });
@@ -887,6 +888,85 @@ export function GenZAuthChrome({
                     oled ? glassBadgeOled : glassBadgeMist,
                     oled && (heroAvatars?.length ?? 0) >= 3 ? styles.heroBadgeOledTriangle : null,
                   ]}>
+                  <LinearGradient
+                    pointerEvents="none"
+                    colors={
+                      oled
+                        ? [
+                            'rgba(248,230,246,0.62)',
+                            'rgba(218,228,251,0.44)',
+                            'rgba(205,226,246,0.5)',
+                          ]
+                        : [
+                            'rgba(255,246,251,0.78)',
+                            'rgba(238,226,251,0.52)',
+                            'rgba(226,239,251,0.68)',
+                          ]
+                    }
+                    locations={oled ? [0.06, 0.45, 1] : [0, 0.48, 1]}
+                    start={{ x: 0.08, y: 0 }}
+                    end={{ x: 0.92, y: 1 }}
+                    style={StyleSheet.absoluteFillObject}
+                  />
+                  <LinearGradient
+                    pointerEvents="none"
+                    colors={
+                      oled
+                        ? ['rgba(255,200,226,0.38)', 'rgba(210,230,255,0.22)', 'rgba(218,246,254,0)']
+                        : ['rgba(255,198,226,0.45)', 'rgba(224,246,253,0.28)', 'rgba(236,250,253,0.12)']
+                    }
+                    locations={[0, 0.55, 1]}
+                    start={{ x: 0.12, y: 0 }}
+                    end={{ x: 0.88, y: 1 }}
+                    style={StyleSheet.absoluteFillObject}
+                  />
+                  <LinearGradient
+                    pointerEvents="none"
+                    colors={[`${palette.neonPink}e8`, `${palette.bokehViolet}df`, `${palette.neonSky}e0`]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                    style={styles.heroBadgeLeftAccent}
+                  />
+                  <LinearGradient
+                    pointerEvents="none"
+                    colors={
+                      oled
+                        ? [
+                            'rgba(255,255,255,0)',
+                            'rgba(255,77,148,0.58)',
+                            'rgba(94,228,255,0.54)',
+                            'rgba(255,255,255,0)',
+                          ]
+                        : [
+                            'rgba(255,255,255,0)',
+                            'rgba(255,77,148,0.72)',
+                            'rgba(94,228,255,0.62)',
+                            'rgba(255,255,255,0)',
+                          ]
+                    }
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.heroBadgeBottomGleam}
+                  />
+                  {oled ? (
+                    <LinearGradient
+                      pointerEvents="none"
+                      colors={['rgba(255,255,255,0.34)', 'rgba(255,255,255,0)']}
+                      locations={[0, 1]}
+                      start={{ x: 0.28, y: 0 }}
+                      end={{ x: 0.72, y: 0.62 }}
+                      style={styles.heroBadgeTopSheen}
+                    />
+                  ) : (
+                    <LinearGradient
+                      pointerEvents="none"
+                      colors={['rgba(255,255,255,0.38)', 'rgba(255,255,255,0)']}
+                      locations={[0, 1]}
+                      start={{ x: 0.3, y: 0 }}
+                      end={{ x: 0.7, y: 0.55 }}
+                      style={styles.heroBadgeTopSheen}
+                    />
+                  )}
                   <Text style={[styles.heroBadgeTxt, oled ? styles.heroBadgeTxtOled : null]}>{heroBadge}</Text>
                 </View>
               ) : null}
@@ -1295,35 +1375,82 @@ const styles = StyleSheet.create({
     top: '50%',
     zIndex: 14,
     marginTop: -18,
-    transform: [{ translateY: -6 }],
-    borderRadius: radius.pill,
-    paddingHorizontal: 26,
-    paddingVertical: 10,
+    overflow: 'hidden',
+    /** Editorial chip: asymmetric radii + attitude tilt */
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 16,
+    borderBottomRightRadius: 26,
+    borderBottomLeftRadius: 18,
+    transform: [{ translateY: -5 }, { rotateZ: '-7deg' }, { skewX: '7deg' }],
+    paddingHorizontal: 32,
+    paddingVertical: 11,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  heroBadgeLeftAccent: {
+    position: 'absolute',
+    left: 0,
+    top: '5%',
+    bottom: '5%',
+    width: 6,
+    borderRadius: 3,
+    opacity: 1,
+  },
+  heroBadgeBottomGleam: {
+    position: 'absolute',
+    left: '4%',
+    right: '4%',
+    bottom: 0,
+    height: 4,
+    borderBottomLeftRadius: 2,
+    borderBottomRightRadius: 2,
+  },
+  heroBadgeTopSheen: {
+    ...StyleSheet.absoluteFillObject,
+    height: '48%',
+    bottom: undefined,
+    opacity: 0.72,
   },
   /** OLED triangle cluster — overlaps avatars like reference pill. */
   heroBadgeOledTriangle: {
     top: '40%',
     marginTop: -20,
-    transform: [{ translateY: -10 }],
-    paddingHorizontal: 30,
+    transform: [{ translateY: -11 }, { rotateZ: '-8.5deg' }, { skewX: '8deg' }],
+    paddingHorizontal: 34,
     paddingVertical: 11,
+    borderTopLeftRadius: 26,
+    borderTopRightRadius: 18,
+    borderBottomRightRadius: 24,
+    borderBottomLeftRadius: 17,
   },
   heroBadgeTxt: {
     ...typography.compact,
     fontWeight: '800',
     color: palette.heroInk,
-    letterSpacing: 3,
-    fontSize: 14,
+    letterSpacing: 4.2,
+    fontSize: 13,
     textTransform: 'uppercase',
   },
   heroBadgeTxtOled: {
-    color: 'rgba(255,255,255,0.95)',
-    textShadowColor: 'rgba(0,0,0,0.4)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
-    letterSpacing: 4,
+    color: '#fff',
+    letterSpacing: 4.5,
+    ...Platform.select({
+      ios: {
+        textShadowColor: 'rgba(12,8,26,0.62)',
+        textShadowOffset: { width: 0, height: 1.5 },
+        textShadowRadius: 6,
+      },
+      android: {
+        textShadowColor: 'rgba(0,0,0,0.58)',
+        textShadowOffset: { width: 0, height: 1.5 },
+        textShadowRadius: 6,
+      },
+      default: {
+        textShadowColor: 'rgba(0,0,0,0.58)',
+        textShadowOffset: { width: 0, height: 1.5 },
+        textShadowRadius: 6,
+      },
+    }),
   },
   sheetStack: {
     position: 'relative',
