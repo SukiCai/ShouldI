@@ -177,6 +177,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
       <ReelCardSurface category={card.category} isOpen={isOpen} layout="fullscreen" suppressAtmosphere>
         <ReelCardActionBar
           category={card.category}
+          rewardPoints={card.rewardPoints}
           saved={saved}
           following={following}
           onToggleSave={() => setSaved((s) => !s)}

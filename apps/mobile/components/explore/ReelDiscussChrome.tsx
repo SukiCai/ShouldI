@@ -24,6 +24,26 @@ export type ReelDiscussCategory = ExploreFeedResponse['cards'][number]['category
 
 const REEL_STAR_GRADIENT = ['#fff6e8', '#ffe1b8', '#fecf7a'] as const;
 const REEL_BELL_GRADIENT = ['#7aa2ff', '#4d74f7', '#2d53e6'] as const;
+/** Soft gold chip — bounty / participation reward pool. */
+const REWARD_CHIP_GRADIENT = ['#fffefb', '#fff3d8', '#ffe8b8'] as const;
+
+export function RewardPointsGem({ rewardPoints }: { rewardPoints?: number | null | undefined }) {
+  const pts = typeof rewardPoints === 'number' ? rewardPoints : NaN;
+  if (!Number.isFinite(pts) || pts <= 0) return null;
+  const a11y = `本题奖励积分 ${pts}，参与讨论或贡献优质观点可获得`;
+  return (
+    <View accessibilityRole="text" accessibilityLabel={a11y}>
+      <LinearGradient
+        colors={[...REWARD_CHIP_GRADIENT]}
+        start={{ x: 0.08, y: 0 }}
+        end={{ x: 0.95, y: 1 }}
+        style={reelDiscussStyles.rewardPointsChip}>
+        <Ionicons name="sparkles" size={14} color="#b45309" />
+        <Text style={reelDiscussStyles.rewardPointsChipText}>{pts} 积分</Text>
+      </LinearGradient>
+    </View>
+  );
+}
 
 export function formatCategoryLabel(category: ReelDiscussCategory): string {
   return category.charAt(0).toUpperCase() + category.slice(1);
@@ -109,6 +129,7 @@ export function ReelCardSurface({
 
 export function ReelCardActionBar({
   category,
+  rewardPoints,
   saved,
   following,
   onToggleSave,
@@ -117,6 +138,7 @@ export function ReelCardActionBar({
   onLeadingBackPress,
 }: {
   category: ReelDiscussCategory;
+  rewardPoints?: number | null | undefined;
   saved: boolean;
   following: boolean;
   onToggleSave: () => void;
@@ -125,6 +147,8 @@ export function ReelCardActionBar({
 }) {
   const saveLabel = saved ? 'Saved — tap to remove from saved' : 'Save this dilemma';
   const followLabel = following ? 'Following — tap to stop update alerts' : 'Follow for updates';
+  const hasRewardPoints =
+    typeof rewardPoints === 'number' && Number.isFinite(rewardPoints) && rewardPoints > 0;
 
   return (
     <View style={reelDiscussStyles.cardTopRow}>
@@ -145,12 +169,19 @@ export function ReelCardActionBar({
           ]}>
           <Ionicons name="chevron-back" size={22} color={palette.slate900} />
         </Pressable>
+      ) : hasRewardPoints ? (
+        /** 信息流左侧：悬赏积分替换原「分类」圆角标签 */
+        <View style={reelDiscussStyles.categoryChipSlot}>
+          <RewardPointsGem rewardPoints={rewardPoints} />
+        </View>
       ) : (
         <View style={reelDiscussStyles.categoryChip}>
           <Text style={reelDiscussStyles.categoryChipText}>{formatCategoryLabel(category)}</Text>
         </View>
       )}
-      <View style={reelDiscussStyles.cardIconGroup}>
+      <View style={reelDiscussStyles.cardActionBarTrailing}>
+        {onLeadingBackPress ? <RewardPointsGem rewardPoints={rewardPoints} /> : null}
+        <View style={reelDiscussStyles.cardIconGroup}>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={saveLabel}
@@ -215,6 +246,7 @@ export function ReelCardActionBar({
             </View>
           )}
         </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -378,6 +410,11 @@ export const reelDiscussStyles = StyleSheet.create({
     minHeight: 40,
     paddingHorizontal: 0,
   },
+  categoryChipSlot: {
+    alignSelf: 'center',
+    maxWidth: '58%',
+    flexShrink: 1,
+  },
   categoryChip: {
     alignSelf: 'center',
     paddingHorizontal: 13,
@@ -405,11 +442,47 @@ export const reelDiscussStyles = StyleSheet.create({
     color: palette.slate800,
     textTransform: 'capitalize',
   },
+  cardActionBarTrailing: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    flexShrink: 0,
+    marginLeft: 'auto',
+  },
   cardIconGroup: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
     flexShrink: 0,
+  },
+  rewardPointsChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(180,106,26,0.18)',
+    flexShrink: 0,
+    overflow: 'hidden',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#92400e',
+        shadowOpacity: 0.1,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
+      },
+      default: {},
+    }),
+  },
+  rewardPointsChipText: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontWeight: '800',
+    letterSpacing: 0.06,
+    color: '#78350f',
+    fontVariant: ['tabular-nums'],
   },
   toolbarIconHit: {
     paddingHorizontal: 2,

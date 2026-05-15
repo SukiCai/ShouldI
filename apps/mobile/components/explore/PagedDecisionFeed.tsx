@@ -433,6 +433,7 @@ export function PagedDecisionFeed({
                   <ReelCardSurface category={item.category} isOpen={isOpen}>
                     <ReelCardActionBar
                       category={item.category}
+                      rewardPoints={item.rewardPoints}
                       saved={effectiveBool(saveOverrides, item.id, item.savedByMe ?? false)}
                       following={effectiveBool(followOverrides, item.id, item.followedByMe ?? false)}
                       onToggleSave={() => toggleSaveForCard(item)}
