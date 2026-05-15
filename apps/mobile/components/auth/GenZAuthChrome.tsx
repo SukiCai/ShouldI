@@ -618,7 +618,7 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
       <View
         style={[
           styles.avatarSwarmArena,
-          { width: OLED_TRIANGLE_BOUNDS.w * swarmScale + 8, minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + 32 },
+          { width: OLED_TRIANGLE_BOUNDS.w * swarmScale + 8, minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + 16 },
         ]}>
         {faces.map((src, idx) => {
           const slot = slots[idx];
@@ -651,8 +651,8 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
 const glassBadgeMist = Platform.select({
   ios: {
     borderWidth: 1,
-    borderColor: 'rgba(255,120,178,0.42)',
-    backgroundColor: 'rgba(246,249,253,0.44)',
+    borderColor: 'rgba(255,120,178,0.52)',
+    backgroundColor: 'rgba(246,249,253,0.58)',
     shadowColor: '#4a3558',
     shadowOpacity: 0.16,
     shadowRadius: 24,
@@ -660,8 +660,8 @@ const glassBadgeMist = Platform.select({
   },
   android: {
     borderWidth: 1,
-    borderColor: 'rgba(242,142,206,0.48)',
-    backgroundColor: 'rgba(246,249,253,0.48)',
+    borderColor: 'rgba(242,142,206,0.58)',
+    backgroundColor: 'rgba(246,249,253,0.62)',
     elevation: 3,
   },
   default: {},
@@ -671,8 +671,8 @@ const glassBadgeMist = Platform.select({
 const glassBadgeOled = Platform.select({
   ios: {
     borderWidth: 1,
-    borderColor: 'rgba(255,170,238,0.58)',
-    backgroundColor: 'rgba(226,228,246,0.26)',
+    borderColor: 'rgba(255,170,238,0.68)',
+    backgroundColor: 'rgba(228,230,248,0.4)',
     shadowColor: '#000',
     shadowOpacity: 0.55,
     shadowRadius: 22,
@@ -680,8 +680,8 @@ const glassBadgeOled = Platform.select({
   },
   android: {
     borderWidth: 1,
-    borderColor: 'rgba(246,178,238,0.55)',
-    backgroundColor: 'rgba(226,228,246,0.3)',
+    borderColor: 'rgba(246,178,238,0.65)',
+    backgroundColor: 'rgba(228,230,248,0.44)',
     elevation: 6,
   },
   default: {},
@@ -868,7 +868,7 @@ export function GenZAuthChrome({
             { paddingBottom: footerReserve + 8, paddingTop: Math.max(insets.top, 10) + 46 },
           ]}
           showsVerticalScrollIndicator={false}>
-          <View style={[styles.hero, { minHeight: SCREEN_H * 0.41 }]}>
+          <View style={styles.heroCluster}>
             <View
               style={[
                 styles.heroInner,
@@ -893,14 +893,14 @@ export function GenZAuthChrome({
                     colors={
                       oled
                         ? [
-                            'rgba(248,230,246,0.62)',
-                            'rgba(218,228,251,0.44)',
-                            'rgba(205,226,246,0.5)',
+                            'rgba(250,234,248,0.78)',
+                            'rgba(226,232,252,0.58)',
+                            'rgba(212,224,248,0.64)',
                           ]
                         : [
-                            'rgba(255,246,251,0.78)',
-                            'rgba(238,226,251,0.52)',
-                            'rgba(226,239,251,0.68)',
+                            'rgba(255,248,252,0.9)',
+                            'rgba(244,232,248,0.68)',
+                            'rgba(232,242,252,0.82)',
                           ]
                     }
                     locations={oled ? [0.06, 0.45, 1] : [0, 0.48, 1]}
@@ -912,8 +912,8 @@ export function GenZAuthChrome({
                     pointerEvents="none"
                     colors={
                       oled
-                        ? ['rgba(255,200,226,0.38)', 'rgba(210,230,255,0.22)', 'rgba(218,246,254,0)']
-                        : ['rgba(255,198,226,0.45)', 'rgba(224,246,253,0.28)', 'rgba(236,250,253,0.12)']
+                        ? ['rgba(255,206,228,0.5)', 'rgba(216,234,255,0.32)', 'rgba(224,248,255,0.08)']
+                        : ['rgba(255,204,228,0.58)', 'rgba(230,248,255,0.4)', 'rgba(240,252,255,0.22)']
                     }
                     locations={[0, 0.55, 1]}
                     start={{ x: 0.12, y: 0 }}
@@ -922,7 +922,7 @@ export function GenZAuthChrome({
                   />
                   <LinearGradient
                     pointerEvents="none"
-                    colors={[`${palette.neonPink}e8`, `${palette.bokehViolet}df`, `${palette.neonSky}e0`]}
+                    colors={[`${palette.neonPink}f5`, `${palette.bokehViolet}ef`, `${palette.neonSky}f2`]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 0, y: 1 }}
                     style={styles.heroBadgeLeftAccent}
@@ -933,14 +933,14 @@ export function GenZAuthChrome({
                       oled
                         ? [
                             'rgba(255,255,255,0)',
-                            'rgba(255,77,148,0.58)',
-                            'rgba(94,228,255,0.54)',
+                            'rgba(255,77,148,0.72)',
+                            'rgba(94,228,255,0.68)',
                             'rgba(255,255,255,0)',
                           ]
                         : [
                             'rgba(255,255,255,0)',
-                            'rgba(255,77,148,0.72)',
-                            'rgba(94,228,255,0.62)',
+                            'rgba(255,77,148,0.85)',
+                            'rgba(94,228,255,0.78)',
                             'rgba(255,255,255,0)',
                           ]
                     }
@@ -951,7 +951,7 @@ export function GenZAuthChrome({
                   {oled ? (
                     <LinearGradient
                       pointerEvents="none"
-                      colors={['rgba(255,255,255,0.34)', 'rgba(255,255,255,0)']}
+                      colors={['rgba(255,255,255,0.48)', 'rgba(255,255,255,0)']}
                       locations={[0, 1]}
                       start={{ x: 0.28, y: 0 }}
                       end={{ x: 0.72, y: 0.62 }}
@@ -960,7 +960,7 @@ export function GenZAuthChrome({
                   ) : (
                     <LinearGradient
                       pointerEvents="none"
-                      colors={['rgba(255,255,255,0.38)', 'rgba(255,255,255,0)']}
+                      colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)']}
                       locations={[0, 1]}
                       start={{ x: 0.3, y: 0 }}
                       end={{ x: 0.7, y: 0.55 }}
@@ -971,6 +971,8 @@ export function GenZAuthChrome({
                 </View>
               ) : null}
             </View>
+          </View>
+          <View style={styles.heroHeadlineSpacer}>
             <View style={styles.titleBlock}>
               <Text style={[styles.heroTitle, oled ? styles.heroTitleOled : null]}>{headline}</Text>
               {subtitle ? <Text style={[styles.heroSub, oled ? styles.heroSubOled : null]}>{subtitle}</Text> : null}
@@ -1210,13 +1212,21 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
   },
-  hero: {
+  heroCluster: {
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingBottom: 10,
-    justifyContent: 'center',
     zIndex: 2,
-    gap: 10,
+    width: '100%',
+  },
+  /** Headline hugs avatars · symmetric modest pad below before sheet */
+  heroHeadlineSpacer: {
+    width: '100%',
+    alignItems: 'center',
+    marginTop: -34,
+    paddingTop: 0,
+    paddingBottom: 18,
+    paddingHorizontal: 20,
+    zIndex: 2,
   },
   heroInner: {
     position: 'relative',
@@ -1225,7 +1235,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   heroInnerTall: {
-    minHeight: 352,
+    minHeight: 298,
     paddingTop: 4,
     overflow: 'visible',
   },
@@ -1243,29 +1253,32 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   titleBlock: {
+    alignSelf: 'center',
     alignItems: 'center',
     gap: 10,
-    maxWidth: 320,
+    maxWidth: 340,
     paddingHorizontal: 4,
-    marginTop: 8,
+    width: '100%',
   },
   heroTitle: {
-    fontSize: 30,
-    lineHeight: 37,
+    fontSize: 34,
+    lineHeight: 42,
     fontWeight: '800',
-    letterSpacing: -1.6,
+    letterSpacing: -1.4,
     color: palette.slate950,
     textAlign: 'center',
-    maxWidth: 320,
+    alignSelf: 'center',
+    maxWidth: 340,
+    width: '100%',
     textShadowColor: 'rgba(255,255,255,0.9)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 8,
   },
   heroTitleOled: {
-    color: 'rgba(255,255,255,0.98)',
-    textShadowColor: 'rgba(0,0,0,0.55)',
-    textShadowRadius: 12,
-    textShadowOffset: { width: 0, height: 2 },
+    color: '#ffffff',
+    textShadowColor: 'rgba(0,0,0,0.35)',
+    textShadowRadius: 10,
+    textShadowOffset: { width: 0, height: 1 },
   },
   heroSub: {
     ...typography.compact,
@@ -1313,8 +1326,9 @@ const styles = StyleSheet.create({
   },
   avatarRowFloating: {
     overflow: 'visible',
-    paddingVertical: 26,
-    minHeight: 216,
+    paddingTop: 18,
+    paddingBottom: 2,
+    minHeight: 200,
     alignSelf: 'center',
   },
   avatarOverlap: {
@@ -1381,7 +1395,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
     borderBottomRightRadius: 26,
     borderBottomLeftRadius: 18,
-    transform: [{ translateY: -5 }, { rotateZ: '-7deg' }, { skewX: '7deg' }],
+    transform: [{ translateY: 15 }, { rotateZ: '-7deg' }, { skewX: '7deg' }],
     paddingHorizontal: 32,
     paddingVertical: 11,
     alignItems: 'center',
@@ -1409,13 +1423,13 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     height: '48%',
     bottom: undefined,
-    opacity: 0.72,
+    opacity: 0.82,
   },
   /** OLED triangle cluster — overlaps avatars like reference pill. */
   heroBadgeOledTriangle: {
     top: '40%',
     marginTop: -20,
-    transform: [{ translateY: -11 }, { rotateZ: '-8.5deg' }, { skewX: '8deg' }],
+    transform: [{ translateY: 9 }, { rotateZ: '-8.5deg' }, { skewX: '8deg' }],
     paddingHorizontal: 34,
     paddingVertical: 11,
     borderTopLeftRadius: 26,
@@ -1456,7 +1470,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: SCREEN_W,
     alignSelf: 'stretch',
-    marginTop: -6,
+    marginTop: 0,
     overflow: 'visible',
     ...Platform.select({
       ios: {
