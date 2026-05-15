@@ -604,25 +604,43 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
 
   /* Slightly tighter margins + allow mild overshoot on wide screens → larger overall orbs */
   const swarmScale = Math.min(1.04, (SCREEN_W - 40) / (OLED_TRIANGLE_BOUNDS.w + 24));
-  const slots = React.useMemo(
-    () =>
-      OLED_TRI_SLOTS.slice(0, n).map((slot) => ({
-        cx: slot.cx * swarmScale,
-        cy: slot.cy * swarmScale,
-        diameter: slot.diameter * swarmScale,
-      })),
-    [n, swarmScale],
-  );
+
+  const { arenaWidth, scaledSlots, slotShiftX } = React.useMemo(() => {
+    const slots = OLED_TRI_SLOTS.slice(0, n).map((slot) => ({
+      cx: slot.cx * swarmScale,
+      cy: slot.cy * swarmScale,
+      diameter: slot.diameter * swarmScale,
+    }));
+    const aw = OLED_TRIANGLE_BOUNDS.w * swarmScale + 8;
+
+    let minLX = Infinity;
+    let maxRX = -Infinity;
+    for (const s of slots) {
+      minLX = Math.min(minLX, s.cx - s.diameter / 2);
+      maxRX = Math.max(maxRX, s.cx + s.diameter / 2);
+    }
+    const clusterMidX = (minLX + maxRX) / 2;
+    const dx = aw / 2 - clusterMidX;
+
+    return {
+      arenaWidth: aw,
+      scaledSlots: slots,
+      slotShiftX: dx,
+    };
+  }, [n, swarmScale]);
 
   return (
     <View style={[styles.avatarRowFloating]}>
       <View
         style={[
           styles.avatarSwarmArena,
-          { width: OLED_TRIANGLE_BOUNDS.w * swarmScale + 8, minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + 16 },
+          {
+            width: arenaWidth,
+            minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + 16,
+          },
         ]}>
         {faces.map((src, idx) => {
-          const slot = slots[idx];
+          const slot = scaledSlots[idx];
           if (!slot) return null;
           const { cx, cy, diameter } = slot;
           const θ = heroSwarmEnterAngle(n, idx);
@@ -633,7 +651,7 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
               index={idx}
               ringColor={OLED_TRI_RINGS[idx]!}
               rotation={OLED_TRI_TILTS[idx]!}
-              layoutLeft={cx - diameter / 2}
+              layoutLeft={cx - diameter / 2 + slotShiftX}
               layoutTop={cy - diameter / 2}
               diameter={diameter}
               approachBx={Math.cos(θ) * SWARM_APPROACH_RADIUS * swarmScale}
@@ -1349,10 +1367,12 @@ const styles = StyleSheet.create({
   },
   avatarRowFloating: {
     overflow: 'visible',
+    width: '100%',
+    alignItems: 'center',
     paddingTop: 18,
     paddingBottom: 2,
     minHeight: 200,
-    alignSelf: 'center',
+    alignSelf: 'stretch',
   },
   avatarOverlap: {
     marginLeft: -26,
