@@ -226,14 +226,14 @@ function DecisionDetailStandard({ id }: { id: string }) {
   if (query.isLoading) {
     return (
       <Screen padded>
-        <Text style={typography.body}>Loading decision…</Text>
+        <Text style={[typography.body, styles.standardScreenMuted]}>Loading decision…</Text>
       </Screen>
     );
   }
   if (query.error || !query.data) {
     return (
       <Screen padded>
-        <Text style={typography.title}>Decision not found</Text>
+        <Text style={[typography.title, styles.standardScreenTitle]}>Decision not found</Text>
       </Screen>
     );
   }
@@ -314,7 +314,7 @@ function DecisionDetailFromReel({
                   paddingRight: Math.max(insets.right, 0),
                 },
               ]}>
-              <ActivityIndicator size="large" color={palette.slate950} />
+              <ActivityIndicator size="large" color={palette.neonMint} />
               <Text style={styles.loaderLabel}>Opening thread…</Text>
             </View>
           </DiscussBackdropStack>
@@ -378,8 +378,10 @@ export default function DecisionDetailScreen() {
     navigation.setOptions({
       title: 'Decision details',
       headerTransparent: false,
-      headerShadowVisible: true,
-      headerTintColor: palette.accent,
+      headerShadowVisible: false,
+      headerTintColor: palette.neonMint,
+      headerStyle: { backgroundColor: palette.mist },
+      headerTitleStyle: { color: palette.textOnCanvas, fontWeight: '700', fontSize: 17 },
     } as object);
   }, [navigation, fromReel]);
 
@@ -405,6 +407,12 @@ const styles = StyleSheet.create({
   },
   fill: {
     flex: 1,
+  },
+  standardScreenTitle: {
+    color: palette.textOnCanvas,
+  },
+  standardScreenMuted: {
+    color: palette.textMutedOnCanvas,
   },
   discussAtmospherePortal: {
     ...StyleSheet.absoluteFillObject,

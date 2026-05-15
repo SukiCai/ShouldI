@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { palette } from '@/constants/theme';
 
@@ -9,42 +9,66 @@ export type ShouldILogoMarkProps = {
   style?: React.ComponentProps<typeof View>['style'];
 };
 
-/** Gradient squircle + fork; gradient uses accent + accentBloom from theme. */
+/** OLED squircle + tricolor fork hub (matches assets/brand/logo-mark.svg raster pipeline). */
 export function ShouldILogoMark({ size = 24, style }: ShouldILogoMarkProps) {
   const gid = React.useId().replace(/:/g, '');
-  const gradId = `si_logo_grad_${gid}`;
+  const rimId = `si_logo_rim_${gid}`;
+  const faceId = `si_logo_face_${gid}`;
   const w = Math.max(8, Math.round(size));
   const vb = 24;
 
   const hub = vb / 2;
-  const hubColor = palette.neonMint;
-  const forkStroke = 'rgba(253,254,255,0.92)';
-  const outline = 'rgba(255,255,255,0.35)';
+  const cy = 14.18;
 
   return (
     <View style={[style, { width: w, height: w }]} pointerEvents="none" accessibilityElementsHidden>
       <Svg width={w} height={w} viewBox={`0 0 ${vb} ${vb}`}>
         <Defs>
-          <LinearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <Stop offset="0%" stopColor={palette.neonSky} />
+          <LinearGradient id={rimId} x1="0%" y1="100%" x2="100%" y2="0%">
+            <Stop offset="0%" stopColor={palette.neonMint} />
+            <Stop offset="50%" stopColor={palette.neonSky} />
             <Stop offset="100%" stopColor={palette.neonPink} />
           </LinearGradient>
+          <RadialGradient id={faceId} cx="50%" cy="40%" r="72%" gradientUnits="objectBoundingBox">
+            <Stop offset="0%" stopColor={palette.nightWash} />
+            <Stop offset="100%" stopColor="#000000" />
+          </RadialGradient>
         </Defs>
         <Rect
           x={1}
           y={1}
           width={vb - 2}
           height={vb - 2}
-          rx={7.5}
-          ry={7.5}
-          fill={`url(#${gradId})`}
-          stroke={outline}
+          rx={8.25}
+          ry={8.25}
+          fill={`url(#${faceId})`}
+          stroke={`url(#${rimId})`}
           strokeWidth={0.5}
         />
-        <Path d={`M ${hub} 17.15 L ${hub} 14.08`} fill="none" stroke={forkStroke} strokeWidth={2} strokeLinecap="round" />
-        <Path d={`M ${hub} 14.08 Q 10.5 12.35 7.25 10.15`} fill="none" stroke={forkStroke} strokeWidth={2} strokeLinecap="round" />
-        <Path d={`M ${hub} 14.08 Q 13.5 12.35 ${vb - 7.25} 10.15`} fill="none" stroke={forkStroke} strokeWidth={2} strokeLinecap="round" />
-        <Circle cx={hub} cy={14.08} r={2.12} fill={hubColor} stroke={forkStroke} strokeWidth={0.38} />
+        <Path d={`M ${hub} 17.08 L ${hub} ${cy}`} stroke={palette.neonPink} strokeWidth={1.9} strokeLinecap="round" />
+        <Path
+          d={`M ${hub} ${cy} Q 10.42 12.38 7.05 10.08`}
+          fill="none"
+          stroke={palette.neonMint}
+          strokeWidth={1.9}
+          strokeLinecap="round"
+        />
+        <Path
+          d={`M ${hub} ${cy} Q 13.58 12.38 16.95 10.08`}
+          fill="none"
+          stroke={palette.neonSky}
+          strokeWidth={1.9}
+          strokeLinecap="round"
+        />
+        <Circle
+          cx={hub}
+          cy={cy}
+          r={2.08}
+          fill="#fdfefe"
+          stroke={palette.neonMint}
+          strokeWidth={0.38}
+          strokeOpacity={0.95}
+        />
       </Svg>
     </View>
   );

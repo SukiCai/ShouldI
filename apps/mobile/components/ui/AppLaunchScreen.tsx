@@ -1,7 +1,7 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
 import { Animated, Easing, Platform, StyleSheet, Text, View } from 'react-native';
 
+import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 import { palette, typography } from '@/constants/theme';
 
 const TAGLINES = [
@@ -11,180 +11,124 @@ const TAGLINES = [
 ];
 
 type AppLaunchScreenProps = {
-  /** Shown under the rotating taglines (e.g. while fetching Explore). */
   detail?: string;
 };
 
 export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
   const shimmer = React.useRef(new Animated.Value(0)).current;
+  const ring2 = React.useRef(new Animated.Value(0)).current;
   const taglineAnim = React.useRef(new Animated.Value(1)).current;
   const [tagIdx, setTagIdx] = React.useState(() => Math.floor(Math.random() * TAGLINES.length));
 
   React.useEffect(() => {
-    const breathe = Animated.loop(
+    Animated.loop(
       Animated.sequence([
-        Animated.timing(shimmer, {
-          toValue: 1,
-          duration: 1600,
-          easing: Easing.inOut(Easing.quad),
-          useNativeDriver: true,
-        }),
-        Animated.timing(shimmer, {
-          toValue: 0,
-          duration: 1600,
-          easing: Easing.inOut(Easing.quad),
-          useNativeDriver: true,
-        }),
+        Animated.timing(shimmer, { toValue: 1, duration: 1800, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+        Animated.timing(shimmer, { toValue: 0, duration: 1800, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
       ]),
-    );
-    breathe.start();
-    return () => breathe.stop();
+    ).start();
   }, [shimmer]);
 
   React.useEffect(() => {
-    const id = setInterval(() => {
-      setTagIdx((i) => (i + 1) % TAGLINES.length);
-    }, 3400);
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(ring2, { toValue: 1, duration: 2600, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+        Animated.timing(ring2, { toValue: 0, duration: 2600, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+      ]),
+    ).start();
+  }, [ring2]);
+
+  React.useEffect(() => {
+    const id = setInterval(() => setTagIdx((i) => (i + 1) % TAGLINES.length), 3400);
     return () => clearInterval(id);
   }, []);
 
   React.useEffect(() => {
     taglineAnim.setValue(0);
-    Animated.timing(taglineAnim, {
-      toValue: 1,
-      duration: 480,
-      easing: Easing.out(Easing.cubic),
-      useNativeDriver: true,
-    }).start();
+    Animated.timing(taglineAnim, { toValue: 1, duration: 480, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
   }, [tagIdx, taglineAnim]);
 
-  const ringScale = shimmer.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 1.08],
-  });
-  const ringOpacity = shimmer.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.32, 0.55],
-  });
+  const ring1Scale = shimmer.interpolate({ inputRange: [0, 1], outputRange: [0.94, 1.08] });
+  const ring1Opacity = shimmer.interpolate({ inputRange: [0, 1], outputRange: [0.22, 0.48] });
+  const ring2Scale = ring2.interpolate({ inputRange: [0, 1], outputRange: [1.06, 1.22] });
+  const ring2Opacity = ring2.interpolate({ inputRange: [0, 1], outputRange: [0.1, 0.28] });
+  const iGlow = shimmer.interpolate({ inputRange: [0, 1], outputRange: [0.72, 1] });
   const lineOpacity = taglineAnim;
-  const lineY = taglineAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [8, 0],
-  });
-
-  const detailLine = detail?.trim();
+  const lineY = taglineAnim.interpolate({ inputRange: [0, 1], outputRange: [8, 0] });
 
   return (
     <View style={styles.root}>
-      <LinearGradient
-        colors={['#fffefb', palette.accentSoft, '#e9fbf4']}
-        locations={[0, 0.55, 1]}
-        start={{ x: 0.35, y: 0 }}
-        end={{ x: 0.65, y: 1 }}
-        style={StyleSheet.absoluteFill}
-        pointerEvents="none"
-      />
-      <HeroBubbles />
-      <LinearGradient
-        colors={['transparent', `${palette.bokehMint}26`, `${palette.bokehSky}18`]}
-        style={styles.floorGlow}
-        pointerEvents="none"
-      />
+      <View style={StyleSheet.absoluteFill} pointerEvents="none">
+        <OledFluorSpeckles />
+      </View>
+
       <View style={styles.content} accessibilityLabel="ShouldI loading">
         <View style={styles.markBlock}>
-          <Animated.View style={[styles.pulseRing, { opacity: ringOpacity, transform: [{ scale: ringScale }] }]} />
+          {/* Outer diffuse ring — pink/sky */}
+          <Animated.View
+            style={[
+              styles.ringOuter,
+              { opacity: ring2Opacity, transform: [{ scale: ring2Scale }] },
+            ]}
+          />
+          {/* Inner tight ring — mint */}
+          <Animated.View
+            style={[
+              styles.ringInner,
+              { opacity: ring1Opacity, transform: [{ scale: ring1Scale }] },
+            ]}
+          />
 
-          <Text style={styles.logo}>
-            Should<Text style={styles.logoI}>I</Text>
-          </Text>
+          {/* Wordmark */}
+          <View style={styles.wordmarkRow}>
+            <Text style={styles.logoShould}>Should</Text>
+            <Animated.Text
+              style={[
+                styles.logoI,
+                Platform.OS === 'ios' && {
+                  textShadowColor: palette.neonMint,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: shimmer.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [6, 22],
+                  }) as unknown as number,
+                  opacity: iGlow,
+                },
+              ]}>
+              I
+            </Animated.Text>
+          </View>
 
+          {/* Neon dot trio */}
           <View style={styles.dotRow}>
-            <View style={styles.dot} />
-            <View style={[styles.dot, styles.dotMid]} />
-            <View style={styles.dot} />
+            <View style={[styles.dot, { backgroundColor: `${palette.neonSky}bb` }]} />
+            <View style={[styles.dotMid, { backgroundColor: palette.neonMint }]} />
+            <View style={[styles.dot, { backgroundColor: `${palette.neonPink}bb` }]} />
           </View>
         </View>
 
-        <Animated.Text style={[styles.tagline, { opacity: lineOpacity, transform: [{ translateY: lineY }] }]}>
+        {/* Rotating tagline */}
+        <Animated.Text
+          style={[styles.tagline, { opacity: lineOpacity, transform: [{ translateY: lineY }] }]}>
           {TAGLINES[tagIdx]}
         </Animated.Text>
 
-        {detailLine ? (
-          <Text style={styles.detail}>{detailLine}</Text>
+        {detail?.trim() ? (
+          <Text style={styles.detail}>{detail.trim()}</Text>
         ) : (
-          <Text style={[typography.caption, styles.monoHint]}>Loading experience…</Text>
+          <Text style={styles.monoHint}>Loading experience…</Text>
         )}
       </View>
     </View>
   );
 }
 
-function HeroBubbles() {
-  return (
-    <View style={heroBubbleStyles.wrap} pointerEvents="none">
-      <View style={[heroBubbleStyles.dot, heroBubbleStyles.pink]} />
-      <View style={[heroBubbleStyles.dot, heroBubbleStyles.violet]} />
-      <View style={[heroBubbleStyles.dot, heroBubbleStyles.sky]} />
-      <View style={[heroBubbleStyles.dot, heroBubbleStyles.mint]} />
-    </View>
-  );
-}
-
-const heroBubbleStyles = StyleSheet.create({
-  wrap: {
-    ...StyleSheet.absoluteFillObject,
-    overflow: 'hidden',
-    zIndex: 1,
-  },
-  dot: {
-    position: 'absolute',
-    borderRadius: 999,
-  },
-  pink: {
-    width: 120,
-    height: 120,
-    top: '12%',
-    right: '-6%',
-    backgroundColor: `${palette.bokehPink}52`,
-    transform: [{ scale: 1.1 }],
-  },
-  violet: {
-    width: 96,
-    height: 96,
-    top: '22%',
-    left: '-10%',
-    backgroundColor: `${palette.bokehViolet}42`,
-  },
-  sky: {
-    width: 88,
-    height: 88,
-    bottom: '34%',
-    right: '4%',
-    backgroundColor: `${palette.bokehSky}3a`,
-  },
-  mint: {
-    width: 72,
-    height: 72,
-    bottom: '26%',
-    left: '12%',
-    backgroundColor: `${palette.bokehMint}36`,
-  },
-});
-
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: palette.mist,
-  },
-  floorGlow: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: '42%',
-    opacity: 1,
+    backgroundColor: '#000000',
   },
   content: {
     alignItems: 'center',
@@ -196,76 +140,119 @@ const styles = StyleSheet.create({
   markBlock: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 200,
-    minHeight: 120,
+    width: 220,
+    minHeight: 130,
     position: 'relative',
   },
-  pulseRing: {
+  ringOuter: {
     position: 'absolute',
-    width: 152,
-    height: 152,
-    borderRadius: 76,
-    borderWidth: StyleSheet.hairlineWidth * 2,
-    borderColor: `${palette.neonMint}44`,
-    top: -10,
+    width: 196,
+    height: 196,
+    borderRadius: 98,
+    borderWidth: 1.5,
+    borderColor: `${palette.neonPink}`,
     alignSelf: 'center',
+    top: -24,
   },
-  logo: {
-    fontSize: 44,
-    fontWeight: '800',
-    letterSpacing: -2,
-    color: palette.heroInk,
-    textAlign: 'center',
+  ringInner: {
+    position: 'absolute',
+    width: 148,
+    height: 148,
+    borderRadius: 74,
+    borderWidth: StyleSheet.hairlineWidth * 3,
+    borderColor: palette.neonMint,
+    alignSelf: 'center',
+    top: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.neonMint,
+        shadowOpacity: 0.5,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 0 },
+      },
+      android: {},
+      default: {},
+    }),
+  },
+  wordmarkRow: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
     zIndex: 1,
   },
-  logoI: {
-    color: palette.neonMint,
+  logoShould: {
+    fontSize: 46,
     fontWeight: '800',
-    fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
+    letterSpacing: -2,
+    color: '#ffffff',
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        textShadowColor: 'rgba(0,0,0,0.5)',
+        textShadowOffset: { width: 0, height: 1 },
+        textShadowRadius: 8,
+      },
+      default: {},
+    }),
+  },
+  logoI: {
+    fontSize: 46,
+    fontWeight: '800',
+    letterSpacing: -2,
+    color: palette.neonMint,
+    ...Platform.select({
+      ios: {
+        fontStyle: 'italic',
+      },
+      default: {},
+    }),
   },
   dotRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginTop: 16,
-    paddingVertical: 5,
+    marginTop: 18,
+    paddingVertical: 6,
     paddingHorizontal: 20,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.heroInk}12`,
-    backgroundColor: 'rgba(255,255,255,0.74)',
+    borderColor: `${palette.neonMint}2a`,
+    backgroundColor: 'rgba(255,255,255,0.06)',
     zIndex: 1,
   },
   dot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: palette.slate200,
   },
   dotMid: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: `${palette.bokehPink}c8`,
-    shadowColor: palette.bokehPink,
-    shadowOpacity: 0.55,
-    shadowRadius: 8,
-    elevation: 4,
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.neonMint,
+        shadowOpacity: 0.8,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 0 },
+      },
+      android: { elevation: 4 },
+      default: {},
+    }),
   },
   tagline: {
     ...typography.compact,
-    color: palette.slate800,
+    color: 'rgba(247,247,247,0.55)',
     textAlign: 'center',
-    letterSpacing: 0.18,
+    letterSpacing: 0.2,
     lineHeight: 22,
     paddingHorizontal: 16,
     minHeight: 48,
     fontWeight: '500',
   },
   monoHint: {
-    color: palette.slate500,
+    color: 'rgba(247,247,247,0.32)',
     textAlign: 'center',
-    letterSpacing: 2,
+    letterSpacing: 2.4,
     textTransform: 'uppercase',
     fontWeight: '700',
     fontSize: 10,
@@ -273,7 +260,7 @@ const styles = StyleSheet.create({
   },
   detail: {
     ...typography.caption,
-    color: palette.slate500,
+    color: 'rgba(247,247,247,0.45)',
     textAlign: 'center',
     letterSpacing: 0.35,
     lineHeight: 18,

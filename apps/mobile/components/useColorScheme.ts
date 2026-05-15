@@ -1,6 +1,9 @@
-import { useColorScheme as useRNColorScheme } from 'react-native';
+import { useResolvedColorScheme } from '@/lib/appearance';
 
-/** Wraps RN’s hook — explicit export avoids Hermes issues with some `export { … } from` re-exports. */
-export function useColorScheme() {
-  return useRNColorScheme();
+/**
+ * App-aware light/dark (Settings + OS “system”).
+ * Must run under `AppearanceProvider` (see `app/_layout.tsx`).
+ */
+export function useColorScheme(): 'light' | 'dark' {
+  return useResolvedColorScheme();
 }

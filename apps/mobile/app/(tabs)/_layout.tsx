@@ -7,7 +7,7 @@ import { Tabs } from 'expo-router';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { palette } from '@/constants/theme';
+import { palette, themeSurface } from '@/constants/theme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -35,6 +35,7 @@ function DecideFabTabButton(props: BottomTabBarButtonProps) {
   const focused = !!rest.accessibilityState?.selected;
   const scheme = useColorScheme();
   const isDark = scheme === 'dark';
+  const surface = themeSurface(scheme);
 
   return (
     <PlatformPressable
@@ -57,8 +58,7 @@ function DecideFabTabButton(props: BottomTabBarButtonProps) {
         <Text
           style={[
             styles.decideFabCaption,
-            focused && styles.decideFabCaptionFocused,
-            isDark && !focused && styles.decideFabCaptionDim,
+            { color: focused ? palette.neonMint : surface.inactiveTab },
           ]}
           numberOfLines={1}>
           Decide
@@ -80,9 +80,11 @@ const tabListeners =
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
   const bottomPad = Platform.OS === 'ios' ? insets.bottom : Math.max(insets.bottom, 6);
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
 
-  const barBg = palette.mist;
-  const hairline = 'rgba(15,23,42,0.08)';
+  const barBg = surface.tabBar;
+  const hairline = surface.tabBarBorder;
 
   return (
     <Tabs
@@ -90,7 +92,7 @@ export default function TabLayout() {
       backBehavior="history"
       screenOptions={{
         tabBarActiveTintColor: palette.neonMint,
-        tabBarInactiveTintColor: palette.slate500,
+        tabBarInactiveTintColor: surface.inactiveTab,
         tabBarShowLabel: true,
         tabBarHideOnKeyboard: true,
         tabBarLabelPosition: 'below-icon',
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderTopWidth: StyleSheet.hairlineWidth,
     shadowColor: '#0b1224',
-    shadowOpacity: Platform.OS === 'ios' ? 0.12 : 0,
+    shadowOpacity: Platform.OS === 'ios' ? 0.48 : 0,
     shadowRadius: Platform.OS === 'ios' ? 14 : 0,
     shadowOffset: { width: 0, height: -2 },
     elevation: Platform.OS === 'android' ? 6 : 0,
@@ -233,13 +235,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: 0.12,
     textAlign: 'center',
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     maxWidth: 88,
     marginBottom: Platform.OS === 'android' ? 2 : 0,
   },
-  decideFabCaptionDim: {
-    color: '#94a3b8',
-  },
+  decideFabCaptionDim: {},
   decideFabCaptionFocused: {
     color: palette.neonMint,
   },

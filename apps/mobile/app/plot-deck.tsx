@@ -8,6 +8,7 @@ import {
   PLOT_DECK_SWIPE_CUES,
 } from '@/components/explore/PagedDecisionFeed';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
+import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { palette, typography } from '@/constants/theme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
@@ -39,6 +40,9 @@ export default function PlotDeckScreen() {
   if (query.error) {
     return (
       <View style={[styles.center, styles.errorPad]}>
+        <View style={styles.canvasSpeckles} pointerEvents="none">
+          <OledFluorSpeckles />
+        </View>
         <Text style={[typography.title, styles.sheetHead]}>Couldn’t load Plot Deck</Text>
         <Text style={[typography.body, styles.centerText, styles.mutedOnBlack]}>
           Trying <Text style={styles.monoGlow}>{GATEWAY_ORIGIN}</Text>
@@ -59,6 +63,9 @@ export default function PlotDeckScreen() {
 
   return (
     <View style={styles.surface}>
+      <View style={styles.canvasSpeckles} pointerEvents="none">
+        <OledFluorSpeckles />
+      </View>
       <Text style={[typography.caption, styles.lede, { paddingHorizontal: Math.max(16, insets.left || 16) }]}>
         After the herd voted — swipe outcomes like reels.
       </Text>
@@ -89,9 +96,15 @@ const styles = StyleSheet.create({
   surface: {
     flex: 1,
     backgroundColor: palette.mist,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  canvasSpeckles: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 0,
   },
   lede: {
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     fontWeight: '600',
     letterSpacing: 0.3,
     marginTop: 6,
@@ -108,10 +121,10 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   emptyTitle: {
-    color: palette.slate950,
+    color: palette.textOnCanvas,
   },
   emptyBody: {
-    color: palette.slate800,
+    color: palette.textMutedOnCanvas,
     lineHeight: 23,
   },
   center: {
@@ -129,12 +142,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   sheetHead: {
-    color: palette.slate950,
+    color: palette.textOnCanvas,
     textAlign: 'center',
     marginBottom: 4,
   },
   mutedOnBlack: {
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   monoGlow: {
     ...typography.caption,

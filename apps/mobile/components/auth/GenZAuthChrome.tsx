@@ -36,6 +36,8 @@ import Animated, {
 import Svg, { Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
 import { palette, radius, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from '@/components/ui/OledSignUpBackdrop';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -72,20 +74,71 @@ function useReducedMotion(): boolean {
   return reduceMotion;
 }
 
-/** White sheet SVG: rounded top + flat-ish bottom + center scoop (shows CTA capsule). */
+function sheetBottomCornerR(w: number, h: number, topR: number): number {
+  return Math.max(13, Math.min(26, Math.min(topR * 0.52, w * 0.062, h * 0.068)));
+}
+
+/**
+ * One symmetric quadratic from current point `(xR, yB)` to `(xL, yB)`:
+ * parabolic bell — smooth apex, no segmented cubics needed.
+ *
+ * Control at `(mid, yB − 2·depth)` so the midpoint depth from the chord is `depth`.
+ */
+function gaussianScoopBell(mid: number, xL: number, _xR: number, yB: number, depth: number): string {
+  const cy = yB - 2 * depth;
+  return `Q ${mid},${cy} ${xL},${yB}`;
+}
+
+/** White sheet SVG: rounded top + smooth bottom fillets + Gaussian center scoop (~⅓ chord). */
 function notchSheetPath(w: number, h: number, topR: number, notchHalf: number, notchDip: number) {
   const r = Math.min(topR, w / 2 - 1);
   const mid = w / 2;
-  const n = Math.min(notchHalf, mid - 40);
+  const n = Math.min(notchHalf, mid - 28);
   const d = notchDip;
+  const br = sheetBottomCornerR(w, h, topR);
+  const brK = 0.42;
+
+  const xBellL = mid - n;
+  const xBellR = mid + n;
+  const xR0 = w - br;
+
+  const rightSpan = xR0 - xBellR;
+  const wingBow = Math.min(6.25, Math.max(2.4, d * 0.11));
+
+  let rightWing: string[];
+  if (rightSpan <= 4) {
+    const p2Sm = xBellR + rightSpan / 2;
+    rightWing = [`C ${xR0 - 1},${h} ${p2Sm},${h - wingBow * 0.75} ${xBellR},${h}`];
+  } else {
+    const p1Wx = xR0 - Math.min(rightSpan * 0.38, Math.max(rightSpan * 0.08, rightSpan - 10));
+    const p2Wx = Math.max(xBellR + 3, Math.min(xR0 - 3, xBellR + rightSpan * 0.5));
+    rightWing = [`C ${p1Wx},${h} ${p2Wx},${h - wingBow} ${xBellR},${h}`];
+  }
+
+  const xBL = br;
+  const leftSpan = xBellL - xBL;
+  let leftWing: string[];
+  if (leftSpan <= 4) {
+    const p2SmL = xBellL - leftSpan / 2;
+    leftWing = [`C ${xBellL - 1},${h} ${p2SmL},${h - wingBow * 0.75} ${xBL},${h}`];
+  } else {
+    const p1Lx = xBellL - Math.min(leftSpan * 0.38, Math.max(leftSpan * 0.08, leftSpan - 10));
+    const p2Lx = Math.min(xBellL - 3, Math.max(xBL + 3, xBL + leftSpan * 0.58));
+    leftWing = [`C ${p1Lx},${h} ${p2Lx},${h - wingBow} ${xBL},${h}`];
+  }
+
+  const scoop = gaussianScoopBell(mid, xBellL, xBellR, h, d);
+
   return [
     `M ${r},0`,
     `H ${w - r}`,
     `Q ${w},0 ${w},${r}`,
-    `V ${h}`,
-    `H ${mid + n}`,
-    `C ${mid + n * 0.5} ${h - d} ${mid - n * 0.5} ${h - d} ${mid - n},${h}`,
-    `H 0`,
+    `V ${h - br}`,
+    `C ${w},${h - br * brK} ${w - br * brK},${h} ${xR0},${h}`,
+    ...rightWing,
+    scoop,
+    ...leftWing,
+    `C ${br * brK},${h} 0,${h - br * brK} 0,${h - br}`,
     `V ${r}`,
     `Q 0,0 ${r},0`,
     `Z`,
@@ -132,62 +185,6 @@ function GlowOrbsMist() {
       <GlowOrb size={40} bg={`${palette.bokehMint}4f`} blur={palette.neonMint} style={{ right: '12%', bottom: '32%' }} />
       <GlowOrb size={50} bg={`${palette.bokehViolet}38`} blur={palette.neonPink} style={{ right: '4%', bottom: '8%' }} />
     </>
-  );
-}
-
-/** Lifted luminous pastels on #000 — clearer / less muddy than dusty bokeh, calmer than full neon. */
-const OLED_LUMA_PINK = '#ffb2e8';
-const OLED_LUMA_SKY = '#93edff';
-const OLED_LUMA_MINT = '#7fffd0';
-const OLED_LUMA_LIME = '#e4f299';
-const OLED_LUMA_VIOLET = '#e4d9ff';
-const OLED_LUMA_TEAL = '#70d8c6';
-
-type OledSpeck = { k: string; z: number; c: string } & (
-  | { left: `${number}%`; top: `${number}%` }
-  | { right: `${number}%`; top: `${number}%` }
-  | { left: `${number}%`; bottom: `${number}%` }
-  | { right: `${number}%`; bottom: `${number}%` }
-);
-
-/** Tiny solids — same luma ladder as halo rings so the field stays bright-coherent. */
-const OLED_FLUOR_SPECKS: readonly OledSpeck[] = [
-  { k: 'a', z: 7, c: OLED_LUMA_PINK, left: '8%', top: '12%' },
-  { k: 'b', z: 5, c: OLED_LUMA_SKY, left: '5%', top: '34%' },
-  { k: 'c', z: 6, c: OLED_LUMA_MINT, right: '10%', top: '11%' },
-  { k: 'd', z: 4, c: OLED_LUMA_LIME, right: '6%', top: '29%' },
-  { k: 'e', z: 8, c: OLED_LUMA_SKY, left: '13%', top: '50%' },
-  { k: 'f', z: 5, c: OLED_LUMA_VIOLET, left: '7%', bottom: '42%' },
-  { k: 'g', z: 6, c: OLED_LUMA_MINT, right: '12%', bottom: '34%' },
-  { k: 'h', z: 4, c: OLED_LUMA_PINK, right: '8%', bottom: '14%' },
-  { k: 'i', z: 5, c: OLED_LUMA_TEAL, left: '24%', bottom: '22%' },
-];
-
-function OledFluorSpeckles() {
-  return (
-    <View style={styles.oledFluorLayer} pointerEvents="none">
-      {OLED_FLUOR_SPECKS.map((s) => {
-        const { k, z, c, ...pos } = s;
-        const r = z / 2;
-        return (
-          <View
-            key={k}
-            accessibilityElementsHidden
-            importantForAccessibility="no-hide-descendants"
-            style={[
-              styles.oledFluorDot,
-              pos,
-              {
-                width: z,
-                height: z,
-                borderRadius: r,
-                backgroundColor: c,
-              },
-            ]}
-          />
-        );
-      })}
-    </View>
   );
 }
 
@@ -315,6 +312,12 @@ const OLED_TRI_TILTS = ['-10deg', '8deg', '-5deg'] as const;
 const SWARM_ENTER_MS = 1_060;
 /** How far outside the arena circles begin their approach (pixels, pre-scale). */
 const SWARM_APPROACH_RADIUS = 228;
+/** Per-seat enter delay (ms). Bottom orb starts with the herd — no trailing wait. */
+const SWARM_ENTER_STAGGER_MS: readonly [number, number, number] = [0, 170, 0];
+/** Bottom triangle seat (third orb): eases **in from the left** (translateX − → 0). */
+const SWARM_BOTTOM_SLOT_INDEX = 2;
+/** |translateX| at t=0 as a fraction of `approachReach` (negative bx = enters from stage left). */
+const SWARM_BOTTOM_FROM_LEFT_HORIZONTAL_MUL = 0.78;
 const SWARM_BREATH_EASE = Easing.inOut(Easing.sin);
 
 /** Inner photo diameter — thin scatter ring only; portrait sits close to the outer disk rim. */
@@ -337,12 +340,6 @@ const HERO_AVATAR_PAN_DOWN_FRAC = 0.062;
 function clipBackdropForRing(ringHex: string, premium: boolean) {
   const a = premium ? '2e' : '26';
   return `${ringHex}${a}`;
-}
-
-const GOLDEN_ANGLE_LIFT = 0.713;
-
-function heroSwarmEnterAngle(total: number, index: number) {
-  return (Math.PI * 2 * index) / total + index * GOLDEN_ANGLE_LIFT + (index % 2 === 0 ? -0.11 : 0.14);
 }
 
 function swarmStaticTiltStyle(rotation: string): Pick<ViewStyle, 'transform'> {
@@ -388,6 +385,7 @@ function AnimatedCircularAvatarOrb({
   const fy = useSharedValue(0.5);
 
   React.useEffect(() => {
+    const tierBp = breathForTier(heroClusterBreathForIndex(index), motionTier);
     cancelAnimation(breath);
     cancelAnimation(enter);
     cancelAnimation(fx);
@@ -404,7 +402,7 @@ function AnimatedCircularAvatarOrb({
 
     breath.value = withDelay(
       enterDelayMs + Math.round(SWARM_ENTER_MS * 0.48),
-      withRepeat(withTiming(1, { duration: bp.breathMs, easing: SWARM_BREATH_EASE }), -1, true),
+      withRepeat(withTiming(1, { duration: tierBp.breathMs, easing: SWARM_BREATH_EASE }), -1, true),
     );
     enter.value = withDelay(enterDelayMs, withTiming(1, { duration: SWARM_ENTER_MS, easing: Easing.out(Easing.cubic) }));
 
@@ -429,7 +427,7 @@ function AnimatedCircularAvatarOrb({
       cancelAnimation(fx);
       cancelAnimation(fy);
     };
-  }, [reducedMotion, motionTier, bp.breathMs, breath, enter, enterDelayMs, fx, fy, floatCfg]);
+  }, [reducedMotion, motionTier, enterDelayMs, index, floatCfg]);
 
   const sMin = bp.scaleMin;
   const sMax = bp.scaleMax;
@@ -596,8 +594,17 @@ function AnimatedCircularAvatarOrb({
 
 const OLED_CLUSTER_FACE_COUNT = 3;
 
-/** Triangle hero · radial fly-in. `premium` adds buoyant drift. */
-function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourcePropType[]; motionTier: HeroMotionTier }) {
+/** Triangle hero · each donut flies in from outside along centroid → seat. `premium` adds buoyant drift. */
+function HeroCircularCluster({
+  sources,
+  motionTier,
+  signupTrioAvoidSheetOverlap,
+}: {
+  sources: ImageSourcePropType[];
+  motionTier: HeroMotionTier;
+  /** Extra foot room + stacking guard for OLED signup — bottom orb vs white sheet chrome. */
+  signupTrioAvoidSheetOverlap?: boolean;
+}) {
   const faces = sources.slice(0, OLED_CLUSTER_FACE_COUNT);
   const n = faces.length;
   if (n === 0) return null;
@@ -605,7 +612,7 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
   /* Slightly tighter margins + allow mild overshoot on wide screens → larger overall orbs */
   const swarmScale = Math.min(1.04, (SCREEN_W - 40) / (OLED_TRIANGLE_BOUNDS.w + 24));
 
-  const { arenaWidth, scaledSlots, slotShiftX } = React.useMemo(() => {
+  const { arenaWidth, scaledSlots, slotShiftX, centroidCx, centroidCy } = React.useMemo(() => {
     const slots = OLED_TRI_SLOTS.slice(0, n).map((slot) => ({
       cx: slot.cx * swarmScale,
       cy: slot.cy * swarmScale,
@@ -620,30 +627,74 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
       maxRX = Math.max(maxRX, s.cx + s.diameter / 2);
     }
     const clusterMidX = (minLX + maxRX) / 2;
-    const dx = aw / 2 - clusterMidX;
+    const dxShift = aw / 2 - clusterMidX;
+
+    let sumCx = 0;
+    let sumCy = 0;
+    for (const s of slots) {
+      sumCx += s.cx;
+      sumCy += s.cy;
+    }
+    const ccx = slots.length ? sumCx / slots.length : 0;
+    const ccy = slots.length ? sumCy / slots.length : 0;
 
     return {
       arenaWidth: aw,
       scaledSlots: slots,
-      slotShiftX: dx,
+      slotShiftX: dxShift,
+      centroidCx: ccx,
+      centroidCy: ccy,
     };
   }, [n, swarmScale]);
 
+  const sheetGuard = !!signupTrioAvoidSheetOverlap;
+  const arenaPadBottom = sheetGuard ? 38 : 16;
+  const floatingBottomPad = sheetGuard ? 24 : 2;
+
   return (
-    <View style={[styles.avatarRowFloating]}>
+    <View pointerEvents="box-none" style={[styles.avatarRowFloating, sheetGuard && { paddingBottom: floatingBottomPad }]}>
       <View
+        pointerEvents="box-none"
         style={[
           styles.avatarSwarmArena,
           {
             width: arenaWidth,
-            minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + 16,
+            minHeight: OLED_TRIANGLE_BOUNDS.h * swarmScale + arenaPadBottom,
           },
         ]}>
         {faces.map((src, idx) => {
           const slot = scaledSlots[idx];
           if (!slot) return null;
           const { cx, cy, diameter } = slot;
-          const θ = heroSwarmEnterAngle(n, idx);
+
+          const approachReach = SWARM_APPROACH_RADIUS * swarmScale;
+
+          let approachBx: number;
+          let approachBy: number;
+
+          if (idx === SWARM_BOTTOM_SLOT_INDEX && n >= 3) {
+            /** Left → right glide into apex seat. */
+            approachBx = -approachReach * SWARM_BOTTOM_FROM_LEFT_HORIZONTAL_MUL;
+            approachBy = 0;
+          } else {
+            /** Unit vector centroid → seat: begin further out on that ray, ease to origin. */
+            let rdx = cx - centroidCx;
+            let rdy = cy - centroidCy;
+            const rlen = Math.hypot(rdx, rdy);
+            if (rlen < 0.75) {
+              const ang = ((Math.PI * 2) / Math.max(n, 1)) * idx;
+              rdx = Math.cos(ang);
+              rdy = Math.sin(ang);
+            } else {
+              rdx /= rlen;
+              rdy /= rlen;
+            }
+            approachBx = rdx * approachReach;
+            approachBy = rdy * approachReach;
+          }
+
+          const stagger = SWARM_ENTER_STAGGER_MS[idx] ?? idx * 170;
+
           return (
             <AnimatedCircularAvatarOrb
               key={`avatar-${idx}`}
@@ -654,9 +705,9 @@ function HeroCircularCluster({ sources, motionTier }: { sources: ImageSourceProp
               layoutLeft={cx - diameter / 2 + slotShiftX}
               layoutTop={cy - diameter / 2}
               diameter={diameter}
-              approachBx={Math.cos(θ) * SWARM_APPROACH_RADIUS * swarmScale}
-              approachBy={Math.sin(θ) * SWARM_APPROACH_RADIUS * swarmScale}
-              enterDelayMs={idx * 118}
+              approachBx={approachBx}
+              approachBy={approachBy}
+              enterDelayMs={stagger}
               motionTier={motionTier}
             />
           );
@@ -686,7 +737,7 @@ const glassBadgeMist = Platform.select({
   default: {},
 });
 
-/** OLED chip — frost reads from **backdrop blur**; tint + hairline mimic reference capsule. */
+/** OLED billboard (dark appearance) — dark blur capsule on #000 canvas. */
 const glassBadgeOled = Platform.select({
   ios: {
     borderWidth: StyleSheet.hairlineWidth + 0.5,
@@ -759,17 +810,30 @@ export function GenZAuthChrome({
 }: GenZAuthChromeProps) {
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const scrollRef = React.useRef<ScrollView>(null);
+
+  const scrollSheetHeroToTop = React.useCallback(() => {
+    Keyboard.dismiss();
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
+  }, []);
 
   const oled = appearance === 'oled';
+  const colorScheme = useColorScheme();
+  /** Light appearance only → pastel paper OLED. Dark / unspecified → billboard black OLED. */
+  const oledLightCanvas = oled && colorScheme === 'light';
+  const oledDarkBillboard = oled && colorScheme !== 'light';
+  const trioRasterHero = oled && (heroAvatars?.length ?? 0) >= 3;
   /** ~55% sheet */
   const sheetMinH = Math.max(392, Math.round(SCREEN_H * 0.52));
   const topR = 46;
-  const notchHalf = Math.min(92, SCREEN_W * 0.22);
-  const notchDip = 36;
-  const ctaBump = notchDip + 18;
-  const footerReserve = ctaBump + 56 + Math.max(insets.bottom, Platform.OS === 'android' ? 14 : 8);
+  const notchHalf = Math.min(Math.floor(SCREEN_W * 0.26), Math.round(SCREEN_W / 2) - 28);
+  const notchDip = 70;
+  const oledInsetPad = Math.max(insets.bottom, Platform.OS === 'android' ? 14 : 8);
+  const ctaBump = notchDip + Math.round(Math.max(56, Math.round(notchDip + 26)) * 0.82);
+  /** Bottom scroll padding for Mist (docked CTA). OLED CTA is in-card — see ScrollView padding. */
+  const footerReserve = ctaBump + 44 + oledInsetPad;
 
-  const path = notchSheetPath(SCREEN_W, sheetMinH, topR, notchHalf, notchDip);
+  const mistSheetPath = notchSheetPath(SCREEN_W, sheetMinH, topR, notchHalf, notchDip);
 
   const panResponder = React.useMemo(
     () =>
@@ -799,19 +863,42 @@ export function GenZAuthChrome({
   );
 
   return (
-    <View style={[styles.root, oled && styles.rootOled, style]}>
-      <StatusBar style={oled ? 'light' : 'dark'} />
+    <View
+      style={[
+        styles.root,
+        oledLightCanvas && styles.authSurfaceRoot,
+        oledDarkBillboard && styles.authSurfaceDarkRoot,
+        style,
+      ]}>
+      <StatusBar style={oledLightCanvas ? 'dark' : 'light'} />
 
       {oled ? (
-        <>
-          <View style={[StyleSheet.absoluteFill, styles.oledBase]} />
-          <OledFluorSpeckles />
-        </>
+        oledLightCanvas ? (
+          <>
+            <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.authSurfaceLightBase]} />
+            <LinearGradient
+              pointerEvents="none"
+              colors={[palette.white, palette.accentSoft, '#eef2fb']}
+              locations={[0, 0.45, 1]}
+              start={{ x: 0.1, y: 0 }}
+              end={{ x: 0.92, y: 1 }}
+              style={styles.authSurfaceLightWash}
+            />
+            <View pointerEvents="none" style={[StyleSheet.absoluteFillObject, styles.authGlowOrbsDim]}>
+              <GlowOrbsMist />
+            </View>
+          </>
+        ) : (
+          <>
+            <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.authSurfaceDarkBase]} />
+            <OledFluorSpeckles />
+          </>
+        )
       ) : (
         <>
           <View style={[StyleSheet.absoluteFill, styles.mistBase]} />
           <LinearGradient
-            colors={[palette.mist, `${palette.accentSoft}b3`, palette.mist]}
+            colors={[palette.mist, `${palette.nightWash}b3`, palette.mist]}
             start={{ x: 0.2, y: 0 }}
             end={{ x: 0.9, y: 1 }}
             style={styles.mistWash}
@@ -827,32 +914,34 @@ export function GenZAuthChrome({
         </View>
       ) : null}
 
-      {/* CTA tucked under scoop — OLED uses flat black capsule like reference */}
-      <View {...(panResponder ? panResponder.panHandlers : {})} pointerEvents="box-none" style={[styles.ctaDock, { bottom: Math.max(insets.bottom, 10) }]}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
-          accessibilityHint={
-            footerSubtitle ?? (swipeAlternate ? 'Swipe on the capsule to flip between Sign up and Sign in' : undefined)
-          }
-          onPress={() => {
-            void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
-            onFooterPress();
-          }}
-          style={({ pressed }) => [
-            styles.ctaPress,
-            oled ? styles.ctaPressOled : null,
-            pressed && { opacity: oled ? 0.93 : 0.96, transform: [{ scale: oled ? 0.988 : 0.985 }] },
-          ]}>
-          {oled ? (
-            <View style={styles.ctaSolid}>
-              <View style={{ flexShrink: 1, alignItems: 'center', width: '100%' }}>
-                <Text style={[styles.ctaLabel, styles.ctaLabelOled]}>{footerCtaLabel}</Text>
-                {slideHint ? <Text style={styles.ctaSwipeHint}>{slideHint}</Text> : null}
-                {footerSubtitle ? <Text style={styles.ctaSubtitleOled}>{footerSubtitle}</Text> : null}
-              </View>
-            </View>
-          ) : (
+      {/* Mist: docked capsule CTA. OLED: CTA renders inside sheet (see ScrollView card). */}
+      {!oled ? (
+        <View
+          {...(panResponder ? panResponder.panHandlers : {})}
+          pointerEvents="box-none"
+          style={[styles.ctaDock, { bottom: Math.max(insets.bottom, 10) }]}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
+            accessibilityHint={
+              footerSubtitle ??
+              (swipeAlternate ? 'Swipe near the bottom button to flip between Sign up and Sign in' : undefined)
+            }
+            onPress={() => {
+              void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
+              onFooterPress();
+            }}
+            style={({ pressed }) =>
+              [
+                styles.ctaPress,
+                styles.ctaPressDocked,
+                pressed &&
+                  ({
+                    opacity: 0.96,
+                    transform: [{ scale: 0.985 }],
+                  } as const),
+              ]
+            }>
             <LinearGradient
               colors={['#0a0d12', palette.heroInk, '#131820']}
               locations={[0, 0.45, 1]}
@@ -871,30 +960,41 @@ export function GenZAuthChrome({
                 <Ionicons name="chevron-forward" size={21} color={palette.heroInk} />
               </LinearGradient>
             </LinearGradient>
-          )}
-        </Pressable>
-      </View>
+          </Pressable>
+        </View>
+      ) : null}
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{ flex: 1, zIndex: 24 }}
         pointerEvents="box-none">
         <ScrollView
-          keyboardShouldPersistTaps="handled"
+          ref={scrollRef}
+          keyboardShouldPersistTaps="always"
           pointerEvents="box-none"
           contentContainerStyle={[
             styles.scrollContent,
-            { paddingBottom: footerReserve + 8, paddingTop: Math.max(insets.top, 10) + 46 },
+            {
+              paddingBottom: oled ? Math.max(24, Math.round(insets.bottom * 0.45)) : footerReserve + 8,
+              paddingTop: Math.max(insets.top, 10) + 46,
+            },
           ]}
           showsVerticalScrollIndicator={false}>
-          <View style={styles.heroCluster}>
+          <View
+            pointerEvents={oled ? 'box-none' : 'auto'}
+            style={[styles.heroCluster, trioRasterHero && styles.heroClusterZUnderSignupSheet]}>
             <View
+              pointerEvents={oled ? 'box-none' : 'auto'}
               style={[
                 styles.heroInner,
                 (heroAvatars?.length ?? 0) >= 3 || heroImage ? styles.heroInnerTall : null,
               ]}>
               {(heroAvatars?.length ?? 0) >= 3 ? (
-                <HeroCircularCluster sources={heroAvatars ?? []} motionTier={heroMotion} />
+                <HeroCircularCluster
+                  sources={heroAvatars ?? []}
+                  motionTier={heroMotion}
+                  signupTrioAvoidSheetOverlap={trioRasterHero}
+                />
               ) : heroImage ? (
                 <HeroRaster heroImage={heroImage} minHeight={228} />
               ) : (
@@ -904,10 +1004,10 @@ export function GenZAuthChrome({
                 <View
                   style={[
                     styles.heroBadgeOuter,
-                    oled ? glassBadgeOled : glassBadgeMist,
+                    oledDarkBillboard ? glassBadgeOled : glassBadgeMist,
                     oled && (heroAvatars?.length ?? 0) >= 3 ? styles.heroBadgeOledTriangle : null,
                   ]}>
-                  {oled ? (
+                  {oledDarkBillboard ? (
                     <>
                       {Platform.OS === 'web' ? (
                         <View
@@ -1008,28 +1108,110 @@ export function GenZAuthChrome({
                       />
                     </>
                   )}
-                  <Text style={[styles.heroBadgeTxt, oled ? styles.heroBadgeTxtOled : null]}>{heroBadge}</Text>
+                  <Text style={[styles.heroBadgeTxt, oledDarkBillboard ? styles.heroBadgeTxtOled : null]}>
+                    {heroBadge}
+                  </Text>
                 </View>
               ) : null}
             </View>
           </View>
-          <View style={styles.heroHeadlineSpacer}>
+          <View
+            pointerEvents={oled ? 'box-none' : 'auto'}
+            style={[styles.heroHeadlineSpacer, trioRasterHero && styles.heroHeadSpacerSignupTrio]}>
             <View style={styles.titleBlock}>
-              <Text style={[styles.heroTitle, oled ? styles.heroTitleOled : null]}>{headline}</Text>
-              {subtitle ? <Text style={[styles.heroSub, oled ? styles.heroSubOled : null]}>{subtitle}</Text> : null}
+              <Text style={[styles.heroTitle, oledDarkBillboard ? styles.heroTitleOled : null]}>{headline}</Text>
+              {subtitle ? (
+                <Text style={[styles.heroSub, oledDarkBillboard ? styles.heroSubOled : null]}>{subtitle}</Text>
+              ) : null}
             </View>
           </View>
 
-          <View style={[styles.sheetStack, { minHeight: sheetMinH }]}>
-            <Svg width={SCREEN_W} height={sheetMinH} pointerEvents="none" style={styles.sheetSvg}>
-              <Path d={path} fill={palette.sheet} />
-            </Svg>
-            <View style={styles.sheetInner}>
-              <View style={styles.sheetInset}>{sheetHeader}</View>
-              <View style={[styles.sheetInset, styles.sheetForm]}>{children}</View>
-              {tertiaryRow ? <View style={styles.sheetInset}>{tertiaryRow}</View> : null}
-              <View style={{ height: scrollBottomPad }} pointerEvents="none" />
-            </View>
+          <View
+            style={[
+              styles.sheetStack,
+              trioRasterHero && styles.sheetStackSignupTrio,
+              oled && styles.sheetStackOledFront,
+              !oled && { minHeight: sheetMinH },
+              oled &&
+                Platform.OS === 'ios' &&
+                ({
+                  shadowOpacity: 0,
+                  shadowRadius: 0,
+                  shadowOffset: { width: 0, height: 0 },
+                } as const),
+            ]}>
+            {oled ? (
+              <View style={styles.sheetCardOled} pointerEvents="auto" collapsable={false}>
+                <View style={styles.sheetCardForeground} pointerEvents="box-none">
+                  <View style={styles.sheetInset} pointerEvents="auto">
+                    {sheetHeader}
+                  </View>
+                  <View style={[styles.sheetInset, styles.sheetForm]} pointerEvents="auto">
+                    {children}
+                  </View>
+                  {tertiaryRow ? (
+                    <View style={styles.sheetInset} pointerEvents="auto">
+                      {tertiaryRow}
+                    </View>
+                  ) : null}
+                  <View style={[styles.sheetInset, styles.sheetCtaBlock]} pointerEvents="box-none">
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
+                      accessibilityHint={footerSubtitle}
+                      onPress={() => {
+                        void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
+                        onFooterPress();
+                      }}
+                      style={({ pressed }) =>
+                        [
+                          styles.ctaPress,
+                          styles.ctaPressInCard,
+                          pressed &&
+                            ({
+                              opacity: 0.96,
+                              transform: [{ scale: 0.985 }],
+                            } as const),
+                        ]
+                      }>
+                      <View style={styles.ctaOledSolid}>
+                        <Text style={styles.ctaOledSolidLabel}>{footerCtaLabel}</Text>
+                      </View>
+                    </Pressable>
+                    {footerSubtitle ? <Text style={styles.ctaFooterBelowOled}>{footerSubtitle}</Text> : null}
+                    {slideHint ? <Text style={styles.ctaSwipeHintBelowOled}>{slideHint}</Text> : null}
+                  </View>
+                  <View style={{ height: scrollBottomPad }} pointerEvents="none" />
+                </View>
+              </View>
+            ) : (
+              <>
+                <Svg width={SCREEN_W} height={sheetMinH} pointerEvents="none" style={styles.sheetSvg}>
+                  <Path d={mistSheetPath} fill={palette.sheet} />
+                </Svg>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Scroll to top"
+                  accessibilityHint="Scrolls back to show the headline and illustration at the top."
+                  onPress={scrollSheetHeroToTop}
+                  style={styles.sheetTapScroll}
+                />
+                <View style={styles.sheetForeground} pointerEvents="box-none">
+                  <View style={styles.sheetInset} pointerEvents="auto">
+                    {sheetHeader}
+                  </View>
+                  <View style={[styles.sheetInset, styles.sheetForm]} pointerEvents="box-none">
+                    {children}
+                  </View>
+                  {tertiaryRow ? (
+                    <View style={styles.sheetInset} pointerEvents="auto">
+                      {tertiaryRow}
+                    </View>
+                  ) : null}
+                  <View style={{ height: scrollBottomPad }} pointerEvents="none" />
+                </View>
+              </>
+            )}
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -1046,10 +1228,10 @@ export function GenZAuthChrome({
             }}
             style={({ pressed }) => [
               styles.backChip,
-              oled && styles.backChipOled,
+              oledDarkBillboard && styles.backChipOled,
               pressed && styles.backChipPressed,
             ]}>
-            <Ionicons name="chevron-back" size={22} color={oled ? '#fdfefe' : palette.heroInk} />
+            <Ionicons name="chevron-back" size={22} color={oledDarkBillboard ? '#fdfefe' : palette.heroInk} />
           </Pressable>
         ) : (
           <View style={styles.backSlot} />
@@ -1071,30 +1253,33 @@ async function bumpHaptic(style: Haptics.ImpactFeedbackStyle = Haptics.ImpactFee
 
 export const AuthFields = StyleSheet.create({
   linkRowWrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column',
     alignItems: 'center',
-    gap: 6,
-    marginBottom: 28,
-    marginTop: 4,
+    gap: 4,
+    marginBottom: 20,
+    marginTop: 2,
     paddingHorizontal: 16,
     alignSelf: 'stretch',
   },
   muted: {
     ...typography.compact,
+    fontSize: 13,
     color: palette.slate500,
     textAlign: 'center',
     fontWeight: '500',
+    letterSpacing: 0.15,
   },
   boldLink: {
-    ...typography.compact,
-    fontWeight: '900',
+    fontSize: 22,
+    lineHeight: 28,
+    fontWeight: '800',
     color: palette.heroInk,
+    letterSpacing: -0.3,
+    textAlign: 'center',
   },
   phoneRow: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 12,
     alignItems: 'stretch',
     marginBottom: 14,
   },
@@ -1103,7 +1288,7 @@ export const AuthFields = StyleSheet.create({
     alignItems: 'center',
     gap: 6,
     paddingHorizontal: 14,
-    minWidth: 102,
+    minWidth: 104,
     backgroundColor: '#eceef2',
     borderRadius: radius.pill,
     justifyContent: 'center',
@@ -1111,14 +1296,14 @@ export const AuthFields = StyleSheet.create({
     borderWidth: 0,
   },
   countryEmoji: {
-    fontSize: 22,
+    fontSize: 21,
     lineHeight: 26,
   },
   countryCode: {
     ...typography.compact,
-    fontWeight: '800',
+    fontWeight: '700',
     color: palette.heroInk,
-    letterSpacing: -0.3,
+    letterSpacing: -0.2,
     fontVariant: ['tabular-nums'],
   },
   controlFocused: Platform.select({
@@ -1168,12 +1353,13 @@ export const AuthFields = StyleSheet.create({
   },
   tertiaryCenter: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 8,
     marginBottom: 4,
     paddingHorizontal: 6,
   },
   tertiaryBold: {
-    ...typography.compact,
+    fontSize: 15,
+    lineHeight: 20,
     fontWeight: '800',
     color: palette.heroInk,
     textAlign: 'center',
@@ -1186,8 +1372,32 @@ const styles = StyleSheet.create({
     backgroundColor: palette.mist,
     overflow: 'hidden',
   },
-  rootOled: {
+  /** Sign-in / Sign-up OLED in **system light mode**. */
+  authSurfaceRoot: {
+    backgroundColor: palette.white,
+  },
+  /** OLED dark / billboard (dark mode or unspecified). */
+  authSurfaceDarkRoot: {
     backgroundColor: '#000000',
+  },
+  authSurfaceLightBase: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: palette.white,
+    zIndex: 0,
+  },
+  authSurfaceLightWash: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 0,
+    opacity: 0.88,
+  },
+  authGlowOrbsDim: {
+    zIndex: 0,
+    opacity: Platform.OS === 'ios' ? 0.5 : 0.4,
+  },
+  authSurfaceDarkBase: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: '#000000',
+    zIndex: 0,
   },
   mistBase: {
     backgroundColor: palette.mist,
@@ -1201,19 +1411,6 @@ const styles = StyleSheet.create({
     height: SCREEN_H,
     opacity: 0.65,
     zIndex: 0,
-  },
-  oledBase: {
-    backgroundColor: '#000000',
-    zIndex: 0,
-  },
-  /** Solid micro-fluor accents (under hero; above black slab). */
-  oledFluorLayer: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 1,
-    overflow: 'hidden',
-  },
-  oledFluorDot: {
-    position: 'absolute',
   },
   chromeOverlay: {
     position: 'absolute',
@@ -1256,8 +1453,12 @@ const styles = StyleSheet.create({
   heroCluster: {
     alignItems: 'center',
     paddingHorizontal: 20,
-    zIndex: 2,
+    zIndex: 10,
     width: '100%',
+  },
+  /** Below headline + sheet — keeps white notch from looking “under” the billboard orbs. */
+  heroClusterZUnderSignupSheet: {
+    zIndex: 3,
   },
   /** Headline hugs avatars · symmetric modest pad below before sheet */
   heroHeadlineSpacer: {
@@ -1267,7 +1468,13 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     paddingBottom: 18,
     paddingHorizontal: 20,
-    zIndex: 2,
+    zIndex: 10,
+  },
+  heroHeadSpacerSignupTrio: {
+    /** Pull copy back under the triangle (was −26, read as a wide air gap). */
+    marginTop: -60,
+    paddingBottom: 22,
+    zIndex: 14,
   },
   heroInner: {
     position: 'relative',
@@ -1549,7 +1756,47 @@ const styles = StyleSheet.create({
         shadowRadius: 40,
         shadowOffset: { width: 0, height: -20 },
       },
-      android: { elevation: 4 },
+      android: {},
+      default: {},
+    }),
+  },
+  sheetCardOled: {
+    position: 'relative',
+    width: SCREEN_W,
+    alignSelf: 'center',
+    backgroundColor: palette.sheet,
+    borderRadius: 26,
+    overflow: 'hidden',
+    marginTop: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.16,
+        shadowRadius: 28,
+        shadowOffset: { width: 0, height: 14 },
+      },
+      android: { elevation: 8 },
+      default: {},
+    }),
+  },
+  sheetCardForeground: {
+    position: 'relative',
+    zIndex: 2,
+    paddingTop: 36,
+    paddingBottom: 12,
+    pointerEvents: 'box-none',
+  },
+  sheetStackSignupTrio: {
+    marginTop: 18,
+    zIndex: 11,
+  },
+  /** OLED: pull auth card above overlapping hero/layout so TextInputs reliably receive taps. */
+  sheetStackOledFront: {
+    zIndex: 38,
+    position: 'relative',
+    ...Platform.select({
+      ios: {},
+      android: { elevation: 24 },
       default: {},
     }),
   },
@@ -1561,13 +1808,21 @@ const styles = StyleSheet.create({
     pointerEvents: 'none',
     zIndex: 0,
   },
-  sheetInner: {
-    position: 'relative',
-    paddingTop: 36,
+  sheetTapScroll: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 1,
+  },
+  sheetForeground: {
+    ...StyleSheet.absoluteFillObject,
     zIndex: 2,
-    minHeight: 120,
+    paddingTop: 36,
     paddingBottom: 4,
     pointerEvents: 'box-none',
+  },
+  sheetCtaBlock: {
+    marginTop: 10,
+    marginBottom: 0,
+    gap: 0,
   },
   sheetInset: {
     paddingHorizontal: Math.max(22, SCREEN_W * 0.068),
@@ -1583,14 +1838,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
-    zIndex: 5,
+    zIndex: 26,
     paddingHorizontal: 28,
     paddingVertical: 18,
     pointerEvents: 'box-none',
   },
   ctaPress: {
-    width: SCREEN_W - 56,
-    maxWidth: 400,
     borderRadius: radius.pill,
     overflow: 'hidden',
     ...Platform.select({
@@ -1604,14 +1857,68 @@ const styles = StyleSheet.create({
       default: {},
     }),
   },
-  ctaPressOled: {
-    shadowColor: '#000',
-    shadowOpacity: 0.5,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 4 },
-    paddingVertical: 0,
-    maxWidth: 420,
-    width: SCREEN_W - 48,
+  ctaPressDocked: {
+    width: SCREEN_W - 56,
+    maxWidth: 400,
+  },
+  ctaPressInCard: {
+    width: '100%',
+    maxWidth: '100%',
+    alignSelf: 'stretch',
+  },
+  /** OLED sign-in / sign-up: flat primary pill (matches `PrimaryButton` primary). */
+  ctaOledSolid: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: Platform.OS === 'ios' ? 16 : 15,
+    paddingHorizontal: 22,
+    minHeight: 52,
+    backgroundColor: '#000000',
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: palette.signUpMintHairline,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOpacity: 0.45,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: { elevation: 6 },
+      default: {},
+    }),
+  },
+  ctaOledSolidLabel: {
+    fontSize: 17,
+    fontWeight: '700',
+    letterSpacing: 0.35,
+    color: palette.sheet,
+    textAlign: 'center',
+  },
+  ctaFooterBelowOled: {
+    ...typography.caption,
+    color: 'rgba(15,17,21,0.42)',
+    textAlign: 'center',
+    marginTop: 12,
+    fontWeight: '500',
+    maxWidth: 300,
+    alignSelf: 'center',
+    paddingHorizontal: 8,
+  },
+  ctaSwipeHintBelowOled: {
+    ...typography.caption,
+    color: 'rgba(15,17,21,0.48)',
+    textAlign: 'center',
+    marginTop: 8,
+    fontWeight: '600',
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    fontSize: 10,
+    lineHeight: 14,
+    maxWidth: 300,
+    alignSelf: 'center',
+    paddingHorizontal: 8,
   },
   ctaGradient: {
     flexDirection: 'row',
@@ -1626,28 +1933,12 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     gap: 12,
   },
-  ctaSolid: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: Platform.OS === 'ios' ? 19 : 18,
-    paddingHorizontal: 20,
-    minHeight: 64,
-    backgroundColor: '#000000',
-    borderRadius: radius.pill,
-  },
   ctaLabel: {
     fontSize: 18,
     fontWeight: '800',
     color: palette.sheet,
     letterSpacing: 0.25,
     textAlign: 'center',
-  },
-  ctaLabelOled: {
-    letterSpacing: 0.65,
-    textTransform: 'none',
-    fontSize: 19,
-    fontVariant: [],
   },
   ctaSubtitle: {
     ...typography.caption,
@@ -1656,13 +1947,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     letterSpacing: 0.12,
     lineHeight: 16,
-  },
-  ctaSubtitleOled: {
-    ...typography.caption,
-    color: 'rgba(255,255,255,0.38)',
-    textAlign: 'center',
-    marginTop: 6,
-    fontWeight: '500',
   },
   ctaSwipeHint: {
     ...typography.caption,

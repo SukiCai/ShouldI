@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { GestureResponderEvent, Pressable, StyleSheet, ViewStyle } from 'react-native';
+import { GestureResponderEvent, Platform, Pressable, StyleSheet, ViewStyle } from 'react-native';
 
 import { palette, radius } from '@/constants/theme';
 
@@ -51,17 +51,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   primary: {
-    backgroundColor: palette.heroInk,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.25,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 5,
+    backgroundColor: '#000000',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: palette.signUpMintHairline,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000000',
+        shadowOpacity: 0.5,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: {
+        elevation: 8,
+      },
+      default: {
+        elevation: 6,
+      },
+    }),
   },
   ghost: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0.06)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.14)',
+    borderColor: 'rgba(255,255,255,0.16)',
   },
   pressed: {
     transform: [{ scale: 0.985 }],

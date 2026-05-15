@@ -304,7 +304,7 @@ export default function DecideCategoryScreen() {
 const styles = StyleSheet.create({
   subtitle: {
     marginTop: 6,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   chatShell: {
     marginTop: spacing.sm,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     color: palette.slate950,
   },
   chipsHint: {
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     fontSize: 12,
     lineHeight: 18,
   },

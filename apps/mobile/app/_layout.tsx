@@ -1,16 +1,31 @@
 import 'react-native-gesture-handler';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import type { Theme } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import 'react-native-reanimated';
 
-import { palette } from '@/constants/theme';
-import { useColorScheme } from '@/components/useColorScheme';
+import { palette, themeSurface } from '@/constants/theme';
+import { AppearanceProvider, useAppearance } from '@/lib/appearance';
+
+const navigationDark: Theme = {
+  ...DarkTheme,
+  dark: true,
+  colors: {
+    ...DarkTheme.colors,
+    primary: palette.neonMint,
+    background: palette.mist,
+    card: palette.sheet,
+    text: palette.textOnCanvas,
+    border: palette.chromeHairline,
+    notification: palette.neonPink,
+  },
+};
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -51,17 +66,38 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RootLayoutNav />
+      <AppearanceProvider>
+        <RootLayoutNav />
+      </AppearanceProvider>
     </QueryClientProvider>
   );
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const { resolvedScheme } = useAppearance();
+  const isDark = resolvedScheme === 'dark';
+  const surface = themeSurface(resolvedScheme);
+
+  const navTheme: Theme = useMemo(() => {
+    if (isDark) return navigationDark;
+    return {
+      ...DefaultTheme,
+      dark: false,
+      colors: {
+        ...DefaultTheme.colors,
+        primary: '#0d9488',
+        background: surface.canvas,
+        card: palette.sheet,
+        text: surface.textPrimary,
+        border: surface.hairline,
+        notification: palette.neonPink,
+      },
+    };
+  }, [isDark, surface.canvas, surface.hairline, surface.textPrimary]);
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+    <ThemeProvider value={navTheme}>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="decide" options={{ headerShown: false }} />
@@ -77,13 +113,14 @@ function RootLayoutNav() {
           name="plot-deck"
           options={{
             title: 'Plot Deck',
-            headerTintColor: palette.neonMint,
-            headerTitleStyle: { color: palette.slate950, fontWeight: '700' },
-            headerStyle: { backgroundColor: palette.sheet },
+            headerTintColor: isDark ? palette.neonMint : '#0d9488',
+            headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
+            headerStyle: { backgroundColor: surface.canvas },
             headerShadowVisible: false,
             headerBackTitle: 'Explore',
           }}
         />
+        <Stack.Screen name="settings" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="sign-up" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="sign-in" options={{ headerShown: false, animation: 'slide_from_right' }} />

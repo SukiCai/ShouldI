@@ -25,7 +25,7 @@ export default function DecideResultScreen() {
   if (!lastResponse) {
     return (
       <Screen padded>
-        <Text>No briefing yet.</Text>
+        <Text style={[typography.body, { color: palette.textOnCanvas }]}>No briefing yet.</Text>
         <PrimaryButton onPress={() => router.replace('/decide')}>
           <Text style={{ color: palette.white }}>Start over</Text>
         </PrimaryButton>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   labelCaps: {
     letterSpacing: 1,
     textTransform: 'uppercase',
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   body: {
     color: palette.slate900,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   disclaimer: {
     marginTop: spacing.sm,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     lineHeight: 18,
   },
   pillSecondary: {

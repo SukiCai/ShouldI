@@ -1,16 +1,21 @@
 <!--
-  ShouldI mark (mirrors ShouldILogoMark): dusty cobalt bloom to sea-glass teal; hub teal-sage.
+  ShouldI OLED mark — fluorescent mint / sky / pink hub on charcoal lift (matches signup + launch neon).
 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none">
   <defs>
-    <linearGradient id="si" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4f76c2" />
-      <stop offset="100%" stop-color="#4da89b" />
+    <linearGradient id="si_neon_rim" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3dffb8" />
+      <stop offset="50%" stop-color="#54dcff" />
+      <stop offset="100%" stop-color="#ff4d94" />
     </linearGradient>
+    <radialGradient id="si_face" cx="50%" cy="40%" r="72%">
+      <stop offset="0%" stop-color="#141820" />
+      <stop offset="100%" stop-color="#000000" />
+    </radialGradient>
   </defs>
-  <rect x="1" y="1" width="22" height="22" rx="7.5" ry="7.5" fill="url(#si)" stroke="rgba(255,255,255,0.35)" stroke-width="0.5" />
-  <path d="M 12 17.15 L 12 14.08" fill="none" stroke="rgba(253,254,255,0.92)" stroke-width="2" stroke-linecap="round" />
-  <path d="M 12 14.08 Q 10.5 12.35 7.25 10.15" fill="none" stroke="rgba(253,254,255,0.92)" stroke-width="2" stroke-linecap="round" />
-  <path d="M 12 14.08 Q 13.5 12.35 16.75 10.15" fill="none" stroke="rgba(253,254,255,0.92)" stroke-width="2" stroke-linecap="round" />
-  <circle cx="12" cy="14.08" r="2.12" fill="#5fa995" stroke="rgba(253,254,255,0.92)" stroke-width="0.38" />
+  <rect x="1" y="1" width="22" height="22" rx="8.25" ry="8.25" fill="url(#si_face)" stroke="url(#si_neon_rim)" stroke-width="0.5" />
+  <path d="M 12 17.08 L 12 14.18" stroke="#ff4d94" stroke-width="1.9" stroke-linecap="round" />
+  <path d="M 12 14.18 Q 10.42 12.38 7.05 10.08" stroke="#3dffb8" stroke-width="1.9" stroke-linecap="round" fill="none" />
+  <path d="M 12 14.18 Q 13.58 12.38 16.95 10.08" stroke="#54dcff" stroke-width="1.9" stroke-linecap="round" fill="none" />
+  <circle cx="12" cy="14.18" r="2.08" fill="#fdfefe" stroke="#3dffb8" stroke-width="0.38" stroke-opacity="0.95" />
 </svg>

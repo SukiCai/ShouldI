@@ -10,9 +10,9 @@ export default function DecideNavigator() {
       <Stack
         screenOptions={{
           headerTintColor: palette.neonMint,
-          headerStyle: { backgroundColor: palette.sheet },
+          headerStyle: { backgroundColor: palette.mist },
           headerShadowVisible: false,
-          headerTitleStyle: { color: palette.slate950, fontWeight: '700', fontSize: 17 },
+          headerTitleStyle: { color: palette.textOnCanvas, fontWeight: '700', fontSize: 17 },
           contentStyle: { backgroundColor: palette.mist },
         }}>
         <Stack.Screen name="index" options={{ title: 'AI intake' }} />

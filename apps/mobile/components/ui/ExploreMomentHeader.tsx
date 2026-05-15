@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import { ShouldILogoMark } from '@/components/branding/ShouldILogo';
+import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 import { palette, typography } from '@/constants/theme';
 
 function rgba255(r: number, g: number, b: number, a: number): string {
@@ -159,10 +160,6 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
     return () => wave.stop();
   }, [shimmer]);
 
-  const haloOpacity = shimmer.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.38, 0.85],
-  });
   const orbScale = shimmer.interpolate({
     inputRange: [0, 1],
     outputRange: [1, 1.04],
@@ -177,20 +174,9 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
       accessibilityRole="header"
       accessible
       accessibilityLabel={`ShouldI explore. ${countLabel}. Swipe reels to vote.`}>
-      <LinearGradient
-        colors={['#fffdfb', '#f2f8ff', '#eefcf6']}
-        locations={[0, 0.48, 1]}
-        style={dramaticStyles.baseGlow}
-      />
-
-      <LinearGradient
-        colors={['transparent', 'rgba(255, 120, 195, 0.14)', 'rgba(94, 234, 212, 0.1)']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={dramaticStyles.radialBloom}
-      />
-
-      <Animated.View style={[dramaticStyles.haloDisk, { opacity: haloOpacity }]} pointerEvents="none" />
+      <View style={dramaticStyles.oledBackdrop}>
+        <OledFluorSpeckles />
+      </View>
 
       <View style={dramaticStyles.inner}>
         <View style={dramaticStyles.copyCol}>
@@ -225,8 +211,6 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
           </LinearGradient>
         </Animated.View>
       </View>
-
-      <LinearGradient colors={['rgba(253,254,255,0.14)', 'rgba(253,254,255,0)']} style={dramaticStyles.glassSweep} />
 
       <View style={dramaticStyles.floorLine} />
       <Text style={dramaticStyles.microProof} accessibilityLabel={countLabel}>
@@ -272,7 +256,7 @@ const minimalStyles = StyleSheet.create({
     lineHeight: 19,
     fontWeight: '700',
     letterSpacing: -0.35,
-    color: palette.slate950,
+    color: palette.textOnCanvas,
   },
   livePill: {
     flexDirection: 'row',
@@ -333,26 +317,17 @@ const dramaticStyles = StyleSheet.create({
     overflow: 'hidden',
     paddingBottom: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: palette.chromeHairline,
+    position: 'relative',
+    backgroundColor: palette.mist,
   },
-  baseGlow: {
+  oledBackdrop: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 26,
-  },
-  radialBloom: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 26,
-    opacity: 0.94,
-  },
-  haloDisk: {
-    position: 'absolute',
-    top: '-40%',
-    right: '-18%',
-    width: 210,
-    height: 210,
-    borderRadius: 105,
-    backgroundColor: 'rgba(255, 150, 200, 0.14)',
-    transform: [{ scale: 1.4 }],
+    overflow: 'hidden',
+    backgroundColor: palette.mist,
+    pointerEvents: 'none',
+    zIndex: 0,
   },
   inner: {
     flexDirection: 'row',
@@ -363,6 +338,8 @@ const dramaticStyles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 4,
     minHeight: 132,
+    zIndex: 1,
+    position: 'relative',
   },
   copyCol: {
     flex: 1,
@@ -380,7 +357,7 @@ const dramaticStyles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     letterSpacing: 3.2,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     textTransform: 'uppercase',
   },
   brandAccent: {
@@ -388,22 +365,30 @@ const dramaticStyles = StyleSheet.create({
   },
   railMuted: {
     ...typography.caption,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     letterSpacing: 2,
     textTransform: 'uppercase',
     fontWeight: '700',
   },
   headline: {
-    color: palette.slate950,
+    color: palette.textOnCanvas,
     fontSize: 28,
     lineHeight: 32,
     fontWeight: '800',
     letterSpacing: -0.8,
     marginTop: 2,
+    ...Platform.select({
+      ios: {
+        textShadowColor: 'rgba(0,0,0,0.35)',
+        textShadowOffset: { width: 0, height: 1 },
+        textShadowRadius: 10,
+      },
+      default: {},
+    }),
   },
   lede: {
     ...typography.compact,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     lineHeight: 20,
     marginTop: 2,
     letterSpacing: 0.15,
@@ -447,24 +432,18 @@ const dramaticStyles = StyleSheet.create({
     color: rgba255(255, 255, 255, 0.92),
     marginTop: 2,
   },
-  glassSweep: {
-    height: StyleSheet.hairlineWidth + 44,
-    marginHorizontal: -1,
-    marginTop: -6,
-    opacity: 0.35,
-    pointerEvents: 'none',
-  },
   floorLine: {
     height: StyleSheet.hairlineWidth,
     marginHorizontal: 22,
-    backgroundColor: 'rgba(15,23,42,0.06)',
+    backgroundColor: palette.chromeHairline,
     marginTop: -32,
     marginBottom: 8,
+    zIndex: 1,
   },
   microProof: {
     ...typography.caption,
     textAlign: 'center',
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     paddingHorizontal: 16,
     marginTop: -2,
     letterSpacing: 1.8,
@@ -472,5 +451,7 @@ const dramaticStyles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 10,
     lineHeight: 14,
+    zIndex: 1,
+    position: 'relative',
   },
 });

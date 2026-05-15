@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   ghost: {
-    color: palette.slate950,
+    color: palette.textOnCanvas,
     textAlign: 'center',
   },
   labelCaps: {

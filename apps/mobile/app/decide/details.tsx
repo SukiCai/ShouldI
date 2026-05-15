@@ -14,8 +14,8 @@ export default function DecideDetailsScreen() {
 
   return (
     <Screen padded scroll>
-      <Text style={typography.title}>Describe your decision</Text>
-      <Text style={[typography.body, styles.subtitle]}>
+      <Text style={[typography.title, styles.pageTitle]}>Describe your decision</Text>
+      <Text style={[typography.body, styles.pageSubtitle]}>
         Be specific. Better detail means better recommendation quality.
       </Text>
       <Text style={[typography.caption, styles.progress]}>Step 2 of 3</Text>
@@ -83,17 +83,20 @@ export default function DecideDetailsScreen() {
 }
 
 const styles = StyleSheet.create({
-  subtitle: {
+  pageTitle: {
+    color: palette.textOnCanvas,
+  },
+  pageSubtitle: {
     marginTop: 8,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   progress: {
     marginTop: 8,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   label: {
     marginTop: 16,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
     textTransform: 'uppercase',
     letterSpacing: 0.9,
     fontWeight: '600',

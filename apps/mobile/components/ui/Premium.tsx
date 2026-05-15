@@ -1,8 +1,9 @@
 import type { PropsWithChildren, ReactNode } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
-import { palette, radius, spacing, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import { palette, radius, spacing, themeSurface, typography } from '@/constants/theme';
+import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 
 export function GradientHero({
   title,
@@ -15,31 +16,40 @@ export function GradientHero({
   eyebrow?: string;
   right?: ReactNode;
 }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   return (
-    <LinearGradient
-      colors={['#fffefb', palette.accentSoft, '#e9fbf4']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.hero}>
-      <View style={{ flex: 1 }}>
-        {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
-        <Text style={[typography.title, styles.heroHeadline]}>{title}</Text>
-        {subtitle ? <Text style={styles.heroSub}>{subtitle}</Text> : null}
+    <View style={[styles.hero, { backgroundColor: surface.canvas, borderColor: surface.heroBorder }]}>
+      <View style={styles.heroSpeckles} pointerEvents="none">
+        <OledFluorSpeckles />
       </View>
-      {right ? <View style={{ marginLeft: spacing.sm }}>{right}</View> : null}
-    </LinearGradient>
+      <View style={{ flex: 1, zIndex: 1 }}>
+        {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
+        <Text style={[typography.title, styles.heroHeadline, { color: surface.textPrimary }]}>{title}</Text>
+        {subtitle ? <Text style={[styles.heroSub, { color: surface.textMuted }]}>{subtitle}</Text> : null}
+      </View>
+      {right ? (
+        <View style={{ marginLeft: spacing.sm, zIndex: 1 }}>{right}</View>
+      ) : null}
+    </View>
   );
 }
 
 export function GlassCard({ children, style }: PropsWithChildren<{ style?: StyleProp<ViewStyle> }>) {
-  return <View style={[styles.card, style]}>{children}</View>;
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  return (
+    <View style={[styles.card, styles.cardShadow, { borderColor: surface.sheetBorder }, style]}>{children}</View>
+  );
 }
 
 export function SectionHeader({ title, right }: { title: string; right?: string }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   return (
     <View style={styles.sectionHeader}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      {right ? <Text style={styles.sectionRight}>{right}</Text> : null}
+      <Text style={[styles.sectionTitle, { color: surface.textPrimary }]}>{title}</Text>
+      {right ? <Text style={[styles.sectionRight, { color: surface.textMuted }]}>{right}</Text> : null}
     </View>
   );
 }
@@ -77,23 +87,40 @@ export function GhostAction({
   onPress?: () => void;
   accessibilityLabel?: string;
 }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel ?? label} style={styles.ghostBtn} onPress={onPress}>
-      <Text style={styles.ghostBtnText}>{label}</Text>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel ?? label}
+      style={[
+        styles.ghostBtn,
+        {
+          borderColor: isDark ? 'rgba(255,255,255,0.16)' : 'rgba(15,23,42,0.12)',
+          backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.04)',
+        },
+      ]}
+      onPress={onPress}>
+      <Text style={[styles.ghostBtnText, { color: surface.textPrimary }]}>{label}</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   hero: {
+    position: 'relative',
     borderRadius: radius.lg,
     paddingHorizontal: 16,
     paddingVertical: 14,
     borderWidth: StyleSheet.hairlineWidth * 2,
-    borderColor: `${palette.neonMint}55`,
+    borderColor: palette.signUpMintHairline,
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
+  },
+  heroSpeckles: {
+    ...StyleSheet.absoluteFillObject,
   },
   eyebrow: {
     ...typography.caption,
@@ -104,26 +131,43 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   heroHeadline: {
-    color: palette.slate950,
-    letterSpacing: -0.35,
+    color: palette.textOnCanvas,
+    letterSpacing: -0.6,
     fontWeight: '800',
+    fontSize: 22,
+    lineHeight: 28,
+    ...Platform.select({
+      ios: {
+        textShadowColor: 'rgba(0,0,0,0.35)',
+        textShadowOffset: { width: 0, height: 1 },
+        textShadowRadius: 10,
+      },
+      default: {},
+    }),
   },
   heroSub: {
     ...typography.compact,
-    color: palette.slate500,
     marginTop: 4,
   },
   card: {
     backgroundColor: palette.sheet,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
     padding: spacing.md,
-    shadowColor: '#0f172a',
-    shadowOpacity: 0.08,
-    shadowRadius: 20,
-    shadowOffset: { width: 0, height: 10 },
-    elevation: 3,
+  },
+  cardShadow: {
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.neonMint,
+        shadowOpacity: 0.14,
+        shadowRadius: 18,
+        shadowOffset: { width: 0, height: 8 },
+      },
+      android: {
+        elevation: 3,
+      },
+      default: {},
+    }),
   },
   sectionHeader: {
     marginTop: spacing.sm,
@@ -134,12 +178,12 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     ...typography.h2,
-    color: palette.slate950,
+    color: palette.textOnCanvas,
     letterSpacing: -0.2,
   },
   sectionRight: {
     ...typography.caption,
-    color: palette.slate500,
+    color: palette.textMutedOnCanvas,
   },
   pill: {
     borderRadius: radius.pill,
@@ -178,8 +222,8 @@ const styles = StyleSheet.create({
   ghostBtn: {
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.12)',
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    borderColor: 'rgba(255,255,255,0.16)',
+    backgroundColor: 'rgba(255,255,255,0.08)',
     paddingHorizontal: 14,
     paddingVertical: 10,
     alignItems: 'center',
@@ -187,7 +231,7 @@ const styles = StyleSheet.create({
   },
   ghostBtnText: {
     ...typography.compact,
-    color: palette.slate900,
+    color: palette.textOnCanvas,
     fontWeight: '700',
   },
 });

@@ -129,5 +129,6 @@ const styles = StyleSheet.create({
     gap: 14,
     marginTop: 4,
     marginBottom: 4,
+    pointerEvents: 'auto',
   },
 });
