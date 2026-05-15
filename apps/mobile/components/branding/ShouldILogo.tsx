@@ -17,7 +17,7 @@ export function ShouldILogoMark({ size = 24, style }: ShouldILogoMarkProps) {
   const vb = 24;
 
   const hub = vb / 2;
-  const hubColor = palette.mint;
+  const hubColor = palette.neonMint;
   const forkStroke = 'rgba(253,254,255,0.92)';
   const outline = 'rgba(255,255,255,0.35)';
 
@@ -26,8 +26,8 @@ export function ShouldILogoMark({ size = 24, style }: ShouldILogoMarkProps) {
       <Svg width={w} height={w} viewBox={`0 0 ${vb} ${vb}`}>
         <Defs>
           <LinearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <Stop offset="0%" stopColor={palette.accent} />
-            <Stop offset="100%" stopColor={palette.accentBloom} />
+            <Stop offset="0%" stopColor={palette.neonSky} />
+            <Stop offset="100%" stopColor={palette.neonPink} />
           </LinearGradient>
         </Defs>
         <Rect

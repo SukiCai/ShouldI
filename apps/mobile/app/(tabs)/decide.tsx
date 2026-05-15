@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   metricValue: {
-    color: palette.accent,
+    color: palette.neonMint,
     fontSize: 24,
     lineHeight: 28,
     fontWeight: '700',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bullet: {
-    color: palette.accent,
+    color: palette.neonSky,
     fontWeight: '700',
     width: 22,
   },

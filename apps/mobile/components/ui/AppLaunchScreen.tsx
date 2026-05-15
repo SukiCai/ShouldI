@@ -75,11 +75,21 @@ export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
   const detailLine = detail?.trim();
 
   return (
-    <LinearGradient
-      colors={[palette.nightInk, palette.nightSlate, palette.nightHorizon]}
-      locations={[0, 0.5, 1]}
-      style={styles.root}
-    >
+    <View style={styles.root}>
+      <LinearGradient
+        colors={['#fffefb', palette.accentSoft, '#e9fbf4']}
+        locations={[0, 0.55, 1]}
+        start={{ x: 0.35, y: 0 }}
+        end={{ x: 0.65, y: 1 }}
+        style={StyleSheet.absoluteFill}
+        pointerEvents="none"
+      />
+      <HeroBubbles />
+      <LinearGradient
+        colors={['transparent', `${palette.bokehMint}26`, `${palette.bokehSky}18`]}
+        style={styles.floorGlow}
+        pointerEvents="none"
+      />
       <View style={styles.content} accessibilityLabel="ShouldI loading">
         <View style={styles.markBlock}>
           <Animated.View style={[styles.pulseRing, { opacity: ringOpacity, transform: [{ scale: ringScale }] }]} />
@@ -105,21 +115,68 @@ export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
           <Text style={[typography.caption, styles.monoHint]}>Loading experience…</Text>
         )}
       </View>
-
-      <LinearGradient
-        colors={['transparent', 'rgba(95, 169, 149, 0.08)', 'rgba(79, 118, 194, 0.12)']}
-        style={styles.floorGlow}
-        pointerEvents="none"
-      />
-    </LinearGradient>
+    </View>
   );
 }
+
+function HeroBubbles() {
+  return (
+    <View style={heroBubbleStyles.wrap} pointerEvents="none">
+      <View style={[heroBubbleStyles.dot, heroBubbleStyles.pink]} />
+      <View style={[heroBubbleStyles.dot, heroBubbleStyles.violet]} />
+      <View style={[heroBubbleStyles.dot, heroBubbleStyles.sky]} />
+      <View style={[heroBubbleStyles.dot, heroBubbleStyles.mint]} />
+    </View>
+  );
+}
+
+const heroBubbleStyles = StyleSheet.create({
+  wrap: {
+    ...StyleSheet.absoluteFillObject,
+    overflow: 'hidden',
+    zIndex: 1,
+  },
+  dot: {
+    position: 'absolute',
+    borderRadius: 999,
+  },
+  pink: {
+    width: 120,
+    height: 120,
+    top: '12%',
+    right: '-6%',
+    backgroundColor: `${palette.bokehPink}52`,
+    transform: [{ scale: 1.1 }],
+  },
+  violet: {
+    width: 96,
+    height: 96,
+    top: '22%',
+    left: '-10%',
+    backgroundColor: `${palette.bokehViolet}42`,
+  },
+  sky: {
+    width: 88,
+    height: 88,
+    bottom: '34%',
+    right: '4%',
+    backgroundColor: `${palette.bokehSky}3a`,
+  },
+  mint: {
+    width: 72,
+    height: 72,
+    bottom: '26%',
+    left: '12%',
+    backgroundColor: `${palette.bokehMint}36`,
+  },
+});
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: palette.mist,
   },
   floorGlow: {
     position: 'absolute',
@@ -134,6 +191,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     maxWidth: 320,
     gap: 28,
+    zIndex: 2,
   },
   markBlock: {
     alignItems: 'center',
@@ -148,7 +206,7 @@ const styles = StyleSheet.create({
     height: 152,
     borderRadius: 76,
     borderWidth: StyleSheet.hairlineWidth * 2,
-    borderColor: 'rgba(255,255,255,0.22)',
+    borderColor: `${palette.neonMint}44`,
     top: -10,
     alignSelf: 'center',
   },
@@ -156,12 +214,12 @@ const styles = StyleSheet.create({
     fontSize: 44,
     fontWeight: '800',
     letterSpacing: -2,
-    color: 'rgba(255,255,255,0.97)',
+    color: palette.heroInk,
     textAlign: 'center',
     zIndex: 1,
   },
   logoI: {
-    color: palette.mint,
+    color: palette.neonMint,
     fontWeight: '800',
     fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
   },
@@ -174,29 +232,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.14)',
-    backgroundColor: 'rgba(255,255,255,0.045)',
+    borderColor: `${palette.heroInk}12`,
+    backgroundColor: 'rgba(255,255,255,0.74)',
     zIndex: 1,
   },
   dot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: 'rgba(255,255,255,0.26)',
+    backgroundColor: palette.slate200,
   },
   dotMid: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: palette.accent,
-    shadowColor: palette.accent,
+    backgroundColor: `${palette.bokehPink}c8`,
+    shadowColor: palette.bokehPink,
     shadowOpacity: 0.55,
     shadowRadius: 8,
     elevation: 4,
   },
   tagline: {
     ...typography.compact,
-    color: 'rgba(253,254,254,0.78)',
+    color: palette.slate800,
     textAlign: 'center',
     letterSpacing: 0.18,
     lineHeight: 22,
@@ -205,7 +263,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   monoHint: {
-    color: 'rgba(255,255,255,0.4)',
+    color: palette.slate500,
     textAlign: 'center',
     letterSpacing: 2,
     textTransform: 'uppercase',
@@ -215,7 +273,7 @@ const styles = StyleSheet.create({
   },
   detail: {
     ...typography.caption,
-    color: 'rgba(255,255,255,0.54)',
+    color: palette.slate500,
     textAlign: 'center',
     letterSpacing: 0.35,
     lineHeight: 18,

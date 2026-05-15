@@ -17,13 +17,13 @@ export function GradientHero({
 }) {
   return (
     <LinearGradient
-      colors={[palette.accentSoft, palette.slate100]}
+      colors={['#fffefb', palette.accentSoft, '#e9fbf4']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.hero}>
       <View style={{ flex: 1 }}>
         {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
-        <Text style={typography.title}>{title}</Text>
+        <Text style={[typography.title, styles.heroHeadline]}>{title}</Text>
         {subtitle ? <Text style={styles.heroSub}>{subtitle}</Text> : null}
       </View>
       {right ? <View style={{ marginLeft: spacing.sm }}>{right}</View> : null}
@@ -57,7 +57,13 @@ export function PillTag({
     tone === 'brand' ? styles.pillBrand : tone === 'good' ? styles.pillGood : styles.pillNeutral;
   return (
     <View style={[styles.pill, toneStyle, style]}>
-      <Text style={styles.pillText}>{label}</Text>
+      <Text
+        style={[
+          styles.pillTextBase,
+          tone === 'neutral' ? styles.pillTxtNeutral : tone === 'brand' ? styles.pillTxtBrand : styles.pillTxtGood,
+        ]}>
+        {label}
+      </Text>
     </View>
   );
 }
@@ -83,18 +89,24 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     paddingHorizontal: 16,
     paddingVertical: 14,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.slate200,
+    borderWidth: StyleSheet.hairlineWidth * 2,
+    borderColor: `${palette.neonMint}55`,
     flexDirection: 'row',
     alignItems: 'center',
+    overflow: 'hidden',
   },
   eyebrow: {
     ...typography.caption,
     textTransform: 'uppercase',
     letterSpacing: 0.9,
-    color: palette.accent,
+    color: palette.neonMint,
     fontWeight: '700',
     marginBottom: 2,
+  },
+  heroHeadline: {
+    color: palette.slate950,
+    letterSpacing: -0.35,
+    fontWeight: '800',
   },
   heroSub: {
     ...typography.compact,
@@ -102,15 +114,15 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   card: {
-    backgroundColor: palette.white,
+    backgroundColor: palette.sheet,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.slate200,
+    borderColor: 'rgba(15,23,42,0.06)',
     padding: spacing.md,
-    shadowColor: palette.slate950,
+    shadowColor: '#0f172a',
     shadowOpacity: 0.08,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
+    shadowRadius: 20,
+    shadowOffset: { width: 0, height: 10 },
     elevation: 3,
   },
   sectionHeader: {
@@ -123,6 +135,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     ...typography.h2,
     color: palette.slate950,
+    letterSpacing: -0.2,
   },
   sectionRight: {
     ...typography.caption,
@@ -136,27 +149,37 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   pillNeutral: {
-    backgroundColor: palette.mist,
+    backgroundColor: palette.field,
     borderColor: palette.slate200,
   },
   pillBrand: {
-    backgroundColor: '#e9edf5',
-    borderColor: '#c9d8e9',
+    backgroundColor: `${palette.neonSky}26`,
+    borderColor: `${palette.neonSky}55`,
   },
   pillGood: {
-    backgroundColor: '#e7f4ef',
-    borderColor: '#b9dcd1',
+    backgroundColor: `${palette.neonMint}24`,
+    borderColor: `${palette.neonMint}4d`,
   },
-  pillText: {
+  pillTextBase: {
     ...typography.caption,
-    color: palette.slate900,
     fontWeight: '600',
+  },
+  pillTxtNeutral: {
+    color: palette.slate900,
+  },
+  pillTxtBrand: {
+    color: '#06202c',
+    fontWeight: '700',
+  },
+  pillTxtGood: {
+    color: '#042f24',
+    fontWeight: '700',
   },
   ghostBtn: {
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(107,117,130,0.32)',
-    backgroundColor: 'transparent',
+    borderColor: 'rgba(15,23,42,0.12)',
+    backgroundColor: 'rgba(255,255,255,0.72)',
     paddingHorizontal: 14,
     paddingVertical: 10,
     alignItems: 'center',

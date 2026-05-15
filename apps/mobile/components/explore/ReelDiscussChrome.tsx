@@ -354,7 +354,7 @@ export const reelDiscussStyles = StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 28,
     borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.72)',
+    borderColor: 'rgba(248,250,252,0.92)',
     backgroundColor: 'rgba(248,250,252,0.94)',
     overflow: 'hidden',
     shadowColor: '#1e293b',
@@ -744,6 +744,6 @@ export const reelDiscussStyles = StyleSheet.create({
   inlineFill: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
   },
 });

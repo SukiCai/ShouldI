@@ -38,11 +38,11 @@ export default function ExploreScreen() {
   if (query.error) {
     return (
       <View style={[styles.center, styles.errorPad]}>
-        <Text style={typography.title}>Couldn’t connect to ShouldI API</Text>
-        <Text style={[typography.body, styles.centerText, styles.muted]}>
-          Trying <Text style={styles.mono}>{GATEWAY_ORIGIN}</Text>
+        <Text style={[typography.title, styles.sheetTitle]}>Couldn’t connect to ShouldI API</Text>
+        <Text style={[typography.body, styles.centerText, styles.mutedDark]}>
+          Trying <Text style={styles.monoDim}>{GATEWAY_ORIGIN}</Text>
         </Text>
-        <Text style={[typography.caption, styles.centerText, styles.muted]}>
+        <Text style={[typography.caption, styles.centerText, styles.mutedDark]}>
           Start API: npm run api or docker compose up
         </Text>
         <PrimaryButton accessibilityLabel="Retry loading explore cards" onPress={() => query.refetch()}>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   emptyTitle: {
-    color: palette.slate900,
+    color: palette.slate950,
     textAlign: 'center',
   },
   emptyBody: {
@@ -126,19 +126,19 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderRadius: 14,
+    borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cdd9ff',
-    backgroundColor: palette.accentSoft,
+    borderColor: 'rgba(15,23,42,0.08)',
+    backgroundColor: palette.sheet,
   },
   plotDeckGhostText: {
     ...typography.compact,
-    color: palette.accent,
+    color: palette.slate900,
     fontWeight: '700',
   },
   plotDeckGhostArrow: {
     ...typography.compact,
-    color: palette.accent,
+    color: palette.neonMint,
     fontWeight: '700',
   },
   center: {
@@ -154,12 +154,19 @@ const styles = StyleSheet.create({
   centerText: {
     textAlign: 'center',
   },
-  mono: {
+  sheetTitle: {
+    color: palette.slate950,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  mutedDark: {
+    color: palette.slate500,
+    textAlign: 'center',
+  },
+  monoDim: {
     ...typography.caption,
     fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
-  },
-  muted: {
-    color: palette.slate500,
+    color: palette.neonSky,
   },
   buttonLabel: {
     color: palette.white,

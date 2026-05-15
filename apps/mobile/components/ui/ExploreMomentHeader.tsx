@@ -178,13 +178,13 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
       accessible
       accessibilityLabel={`ShouldI explore. ${countLabel}. Swipe reels to vote.`}>
       <LinearGradient
-        colors={[palette.nightInk, palette.nightSlate, palette.nightHorizon]}
-        locations={[0, 0.55, 1]}
+        colors={['#fffdfb', '#f2f8ff', '#eefcf6']}
+        locations={[0, 0.48, 1]}
         style={dramaticStyles.baseGlow}
       />
 
       <LinearGradient
-        colors={['transparent', 'rgba(79, 118, 194, 0.32)', 'rgba(95, 169, 149, 0.12)']}
+        colors={['transparent', 'rgba(255, 120, 195, 0.14)', 'rgba(94, 234, 212, 0.1)']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={dramaticStyles.radialBloom}
@@ -209,7 +209,7 @@ function DramaticMomentHeader({ caseCount }: { caseCount: number }) {
           importantForAccessibility="no-hide-descendants"
           style={{ transform: [{ scale: orbScale }] }}>
           <LinearGradient
-            colors={[palette.accent, palette.playful, palette.accentBloom]}
+            colors={[palette.neonPink, palette.neonSky, palette.neonMint]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={dramaticStyles.statOrb}>
@@ -258,10 +258,10 @@ const minimalStyles = StyleSheet.create({
     overflow: 'visible',
     ...Platform.select({
       ios: {
-        shadowColor: palette.accent,
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        shadowOffset: { width: 0, height: 2 },
+        shadowColor: palette.neonSky,
+        shadowOpacity: 0.45,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 0 },
       },
       android: { elevation: 2 },
       default: {},
@@ -272,7 +272,7 @@ const minimalStyles = StyleSheet.create({
     lineHeight: 19,
     fontWeight: '700',
     letterSpacing: -0.35,
-    color: palette.slate900,
+    color: palette.slate950,
   },
   livePill: {
     flexDirection: 'row',
@@ -282,8 +282,8 @@ const minimalStyles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79, 118, 194, 0.15)',
-    backgroundColor: palette.accentSoft,
+    borderColor: `${palette.neonMint}40`,
+    backgroundColor: palette.sheet,
     flexShrink: 0,
   },
   liveDot: {
@@ -292,7 +292,7 @@ const minimalStyles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: palette.livePulse,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.85)',
+    borderColor: 'rgba(16,185,129,0.4)',
     flexShrink: 0,
   },
   liveDotRm: {
@@ -302,7 +302,7 @@ const minimalStyles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     letterSpacing: -0.35,
-    color: palette.slate900,
+    color: palette.slate950,
     fontVariant: ['tabular-nums'],
   },
   plotLinkWrap: {
@@ -322,7 +322,7 @@ const minimalStyles = StyleSheet.create({
     lineHeight: 16,
     fontWeight: '700',
     letterSpacing: 0.15,
-    color: palette.accent,
+    color: palette.neonMint,
     textAlign: 'right',
   },
 });
@@ -333,7 +333,7 @@ const dramaticStyles = StyleSheet.create({
     overflow: 'hidden',
     paddingBottom: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.12)',
+    borderColor: 'rgba(15,23,42,0.06)',
   },
   baseGlow: {
     ...StyleSheet.absoluteFillObject,
@@ -351,7 +351,7 @@ const dramaticStyles = StyleSheet.create({
     width: 210,
     height: 210,
     borderRadius: 105,
-    backgroundColor: 'rgba(79, 118, 194, 0.28)',
+    backgroundColor: 'rgba(255, 150, 200, 0.14)',
     transform: [{ scale: 1.4 }],
   },
   inner: {
@@ -380,37 +380,30 @@ const dramaticStyles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     letterSpacing: 3.2,
-    color: rgba255(255, 255, 255, 0.55),
+    color: palette.slate500,
     textTransform: 'uppercase',
   },
   brandAccent: {
-    color: palette.playful,
+    color: palette.neonPink,
   },
   railMuted: {
     ...typography.caption,
-    color: rgba255(255, 255, 255, 0.45),
+    color: palette.slate500,
     letterSpacing: 2,
     textTransform: 'uppercase',
     fontWeight: '700',
   },
   headline: {
-    color: '#fdfefe',
+    color: palette.slate950,
     fontSize: 28,
     lineHeight: 32,
     fontWeight: '800',
     letterSpacing: -0.8,
     marginTop: 2,
-    ...(Platform.OS === 'web'
-      ? {}
-      : {
-          textShadowColor: 'rgba(40, 50, 60, 0.45)',
-          textShadowOffset: { width: 0, height: 3 },
-          textShadowRadius: 18,
-        }),
   },
   lede: {
     ...typography.compact,
-    color: rgba255(255, 255, 255, 0.78),
+    color: palette.slate500,
     lineHeight: 20,
     marginTop: 2,
     letterSpacing: 0.15,
@@ -427,7 +420,7 @@ const dramaticStyles = StyleSheet.create({
     gap: 2,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'rgba(255,255,255,0.22)',
-    shadowColor: palette.accent,
+    shadowColor: palette.neonPink,
     shadowOpacity: 0.45,
     shadowRadius: 22,
     shadowOffset: { width: 0, height: 8 },
@@ -464,14 +457,14 @@ const dramaticStyles = StyleSheet.create({
   floorLine: {
     height: StyleSheet.hairlineWidth,
     marginHorizontal: 22,
-    backgroundColor: 'rgba(255,255,255,0.09)',
+    backgroundColor: 'rgba(15,23,42,0.06)',
     marginTop: -32,
     marginBottom: 8,
   },
   microProof: {
     ...typography.caption,
     textAlign: 'center',
-    color: rgba255(255, 255, 255, 0.46),
+    color: palette.slate500,
     paddingHorizontal: 16,
     marginTop: -2,
     letterSpacing: 1.8,

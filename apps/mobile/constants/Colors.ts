@@ -1,12 +1,12 @@
 import { palette } from './theme';
 
-const tintColorLight = palette.accent;
+const tintColorLight = palette.neonMint;
 const tintColorDark = palette.white;
 
 export default {
   light: {
     text: palette.slate950,
-    background: palette.white,
+    background: palette.sheet,
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,

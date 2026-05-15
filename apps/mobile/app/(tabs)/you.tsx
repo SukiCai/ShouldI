@@ -31,7 +31,7 @@ export default function YouScreen() {
             accessibilityLabel="Muted notifications toggle"
             value={muted}
             onValueChange={setMuted}
-            thumbColor={muted ? palette.accent : palette.white}
+            thumbColor={muted ? palette.neonPink : palette.sheet}
           />
         </View>
       </GlassCard>
@@ -50,6 +50,11 @@ export default function YouScreen() {
         <Text style={[typography.compact, styles.ghostText]}>Transparency</Text>
       </PrimaryButton>
 
+      <Link href="/sign-up">
+        <Text style={[styles.linkMuted, typography.compact]} accessibilityRole="button">
+          Sign-up screen (preview layout)
+        </Text>
+      </Link>
       <Link href="/modal">
         <Text style={[styles.link, typography.body]} accessibilityRole="button">
           Diagnostics
@@ -81,21 +86,30 @@ const styles = StyleSheet.create({
   sectionLabel: {
     marginTop: spacing.lg,
     fontWeight: '700',
+    color: palette.slate950,
   },
   placeholderBox: {
     borderStyle: 'dashed',
   },
   ghostText: {
-    color: palette.slate900,
+    color: palette.heroInk,
     fontWeight: '700',
     textAlign: 'center',
   },
   link: {
     marginTop: spacing.sm,
-    color: palette.accent,
+    color: palette.neonSky,
     fontWeight: '700',
     textDecorationLine: 'underline',
     textAlign: 'center',
     marginBottom: 70,
+  },
+  linkMuted: {
+    marginTop: spacing.sm,
+    color: palette.neonMint,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+    textAlign: 'center',
+    marginBottom: 4,
   },
 });

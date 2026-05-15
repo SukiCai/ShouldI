@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: 'flex-start',
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderRadius: 10,

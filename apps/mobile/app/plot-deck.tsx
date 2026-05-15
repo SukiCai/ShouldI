@@ -39,9 +39,9 @@ export default function PlotDeckScreen() {
   if (query.error) {
     return (
       <View style={[styles.center, styles.errorPad]}>
-        <Text style={typography.title}>Couldn’t load Plot Deck</Text>
-        <Text style={[typography.body, styles.centerText, styles.muted]}>
-          Trying <Text style={styles.mono}>{GATEWAY_ORIGIN}</Text>
+        <Text style={[typography.title, styles.sheetHead]}>Couldn’t load Plot Deck</Text>
+        <Text style={[typography.body, styles.centerText, styles.mutedOnBlack]}>
+          Trying <Text style={styles.monoGlow}>{GATEWAY_ORIGIN}</Text>
         </Text>
         <PrimaryButton accessibilityLabel="Retry loading Plot Deck" onPress={() => query.refetch()}>
           <Text style={styles.buttonLabel}>Retry</Text>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   emptyTitle: {
-    color: palette.slate900,
+    color: palette.slate950,
   },
   emptyBody: {
     color: palette.slate800,
@@ -127,6 +127,19 @@ const styles = StyleSheet.create({
   },
   centerText: {
     textAlign: 'center',
+  },
+  sheetHead: {
+    color: palette.slate950,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  mutedOnBlack: {
+    color: palette.slate500,
+  },
+  monoGlow: {
+    ...typography.caption,
+    fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
+    color: palette.neonSky,
   },
   mono: {
     ...typography.caption,
@@ -152,7 +165,7 @@ const styles = StyleSheet.create({
   backLinkText: {
     ...typography.compact,
     fontWeight: '700',
-    color: palette.accent,
+    color: palette.neonMint,
     textAlign: 'center',
   },
 });

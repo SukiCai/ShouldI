@@ -977,7 +977,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderRadius: radius.pill,
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
   },
   inlineReplyPrimaryDisabled: {
     opacity: 0.38,

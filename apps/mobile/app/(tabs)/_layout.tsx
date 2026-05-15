@@ -7,7 +7,6 @@ import { Tabs } from 'expo-router';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Colors from '@/constants/Colors';
 import { palette } from '@/constants/theme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -53,7 +52,7 @@ function DecideFabTabButton(props: BottomTabBarButtonProps) {
             focused && isDark && styles.decideFabFocusedDark,
           ]}
           accessibilityElementsHidden={false}>
-          <FontAwesome name="plus" size={18} color={palette.white} />
+          <FontAwesome name="plus" size={18} color={palette.sheet} />
         </View>
         <Text
           style={[
@@ -79,21 +78,19 @@ const tabListeners =
     : {};
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
   const insets = useSafeAreaInsets();
-  const isDark = colorScheme === 'dark';
   const bottomPad = Platform.OS === 'ios' ? insets.bottom : Math.max(insets.bottom, 6);
 
-  const barBg = isDark ? palette.slate950 : palette.mist;
-  const hairline = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(105,117,134,0.16)';
+  const barBg = palette.mist;
+  const hairline = 'rgba(15,23,42,0.08)';
 
   return (
     <Tabs
       initialRouteName="explore"
       backBehavior="history"
       screenOptions={{
-        tabBarActiveTintColor: Colors[isDark ? 'dark' : 'light'].tint,
-        tabBarInactiveTintColor: isDark ? 'rgba(200,206,216,0.55)' : palette.slate500,
+        tabBarActiveTintColor: palette.neonMint,
+        tabBarInactiveTintColor: palette.slate500,
         tabBarShowLabel: true,
         tabBarHideOnKeyboard: true,
         tabBarLabelPosition: 'below-icon',
@@ -157,9 +154,9 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderTopWidth: StyleSheet.hairlineWidth,
     shadowColor: '#0b1224',
-    shadowOpacity: Platform.OS === 'ios' ? 0.04 : 0,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: -1 },
+    shadowOpacity: Platform.OS === 'ios' ? 0.12 : 0,
+    shadowRadius: Platform.OS === 'ios' ? 14 : 0,
+    shadowOffset: { width: 0, height: -2 },
     elevation: Platform.OS === 'android' ? 6 : 0,
     overflow: 'visible',
   },
@@ -203,7 +200,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#0b1224',
@@ -224,12 +221,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
   },
   decideFabFocusedLight: {
-    borderColor: palette.accentSoft,
+    borderColor: palette.neonMint,
     borderWidth: 2,
   },
   decideFabFocusedDark: {
     borderWidth: 2,
-    borderColor: 'rgba(180,207,255,0.45)',
+    borderColor: `${palette.neonSky}99`,
   },
   decideFabCaption: {
     fontSize: 10,
@@ -241,9 +238,9 @@ const styles = StyleSheet.create({
     marginBottom: Platform.OS === 'android' ? 2 : 0,
   },
   decideFabCaptionDim: {
-    color: 'rgba(200,209,229,0.55)',
+    color: '#94a3b8',
   },
   decideFabCaptionFocused: {
-    color: palette.accent,
+    color: palette.neonMint,
   },
 });

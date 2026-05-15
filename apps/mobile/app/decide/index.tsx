@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
   },
   fill: {
     height: '100%',
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
     borderRadius: 999,
   },
   chatList: {
@@ -353,12 +353,12 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   assistantBubble: {
-    backgroundColor: palette.accentSoft,
-    borderColor: '#d8e2ff',
+    backgroundColor: palette.field,
+    borderColor: 'rgba(15,23,42,0.06)',
   },
   userBubble: {
-    backgroundColor: palette.white,
-    borderColor: '#dfe7fa',
+    backgroundColor: palette.sheet,
+    borderColor: 'rgba(15,23,42,0.06)',
   },
   assistantText: {
     color: palette.slate900,
@@ -374,8 +374,8 @@ const styles = StyleSheet.create({
   composer: {
     marginTop: spacing.sm,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#dce6fb',
-    backgroundColor: '#fffffffa',
+    borderColor: 'rgba(15,23,42,0.08)',
+    backgroundColor: palette.sheet,
     borderRadius: radius.lg,
     padding: 10,
     gap: 10,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
   },
   sendBtn: {
     alignSelf: 'flex-end',
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
     borderRadius: radius.pill,
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
   },
   reviewBtn: {
     marginTop: spacing.sm,
-    backgroundColor: palette.accent,
+    backgroundColor: palette.heroInk,
     borderRadius: radius.pill,
     paddingVertical: 14,
     alignItems: 'center',

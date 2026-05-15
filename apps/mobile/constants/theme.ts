@@ -7,11 +7,28 @@ export const palette = {
   slate200: '#c5cfd8',
   slate100: '#e4eaef',
 
-  /** Warm ivory surfaces vs cold white — premium paper. */
+  /** Warm ivory surfaces vs cold white — premium paper (legacy shells). */
   white: '#faf8f6',
-  mist: '#f1f2f4',
 
-  /** Primary: saturated dusty cobalt — calm + credible CTAs & links. */
+  /** True white cards/sheets paired with airy gray chrome. */
+  sheet: '#ffffff',
+
+  /** Soft pill/input fill — matches airy “signup sheet” fields. */
+  field: '#f0f0f0',
+
+  /** Airy canvas (Gen Z SaaS — soft clay / cool gray). Cards float above this. */
+  mist: '#f2f5fb',
+
+  /** Ink for filled CTAs; keep punchy blacks on pastel chrome. */
+  heroInk: '#0d0d11',
+
+  /** Neon accents — fluorescent pastels against black. */
+  neonPink: '#ff4d94',
+  neonMint: '#3dffb8',
+  neonSky: '#54dcff',
+  neonCitron: '#f7ff94',
+
+  /** Primary: dusty cobalt — links & secondary gradients. */
   accent: '#4f76c2',
   /** Companion stop (gradients, highlights); dusty sea-glass teal. */
   accentBloom: '#4da89b',
@@ -26,13 +43,21 @@ export const palette = {
   warning: '#b0893d',
   danger: '#a85d64',
 
-  /** Dark hero washes (splash, cinematic headers): blue-grey soot, never pure black. */
-  nightInk: '#2d363e',
-  nightSlate: '#3e4854',
-  nightHorizon: '#4e5a67',
+  /** Dark hero washes (splash): prefer full ink for billboard moments. */
+  nightInk: '#000000',
 
-  /** Live / pulse indicator on light chrome. */
-  livePulse: '#5ebf9f',
+  /** Companion hero stops — still visible on OLED black. */
+  nightSlate: '#1a2229',
+  nightHorizon: '#283039',
+
+  /** Pastel bokeh (hero overlays); use at low opacity — tuned slightly brighter vs mist. */
+  bokehPink: '#fda5d7',
+  bokehViolet: '#cfb8ff',
+  bokehMint: '#6cffa8',
+  bokehSky: '#7bdcff',
+
+  /** Live pulse on light chrome — mint pop without glow overload. */
+  livePulse: '#10b981',
 
   /** Mid blend of accent + bloom — Expo splash/adaptive backdrop while letterboxing. */
   backdropMid: '#4f96b5',
