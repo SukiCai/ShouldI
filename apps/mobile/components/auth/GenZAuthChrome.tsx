@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
@@ -667,12 +668,12 @@ const glassBadgeMist = Platform.select({
   default: {},
 });
 
-/** Glass badge on OLED — luminous rim so chip pops on black + donut art. */
+/** OLED chip — frost reads from **backdrop blur**; tint + hairline mimic reference capsule. */
 const glassBadgeOled = Platform.select({
   ios: {
-    borderWidth: 1,
-    borderColor: 'rgba(255,170,238,0.68)',
-    backgroundColor: 'rgba(228,230,248,0.4)',
+    borderWidth: StyleSheet.hairlineWidth + 0.5,
+    borderColor: 'rgba(255,255,255,0.22)',
+    backgroundColor: 'transparent',
     shadowColor: '#000',
     shadowOpacity: 0.55,
     shadowRadius: 22,
@@ -680,8 +681,8 @@ const glassBadgeOled = Platform.select({
   },
   android: {
     borderWidth: 1,
-    borderColor: 'rgba(246,178,238,0.65)',
-    backgroundColor: 'rgba(228,230,248,0.44)',
+    borderColor: 'rgba(255,255,255,0.24)',
+    backgroundColor: 'transparent',
     elevation: 6,
   },
   default: {},
@@ -888,84 +889,106 @@ export function GenZAuthChrome({
                     oled ? glassBadgeOled : glassBadgeMist,
                     oled && (heroAvatars?.length ?? 0) >= 3 ? styles.heroBadgeOledTriangle : null,
                   ]}>
-                  <LinearGradient
-                    pointerEvents="none"
-                    colors={
-                      oled
-                        ? [
-                            'rgba(250,234,248,0.78)',
-                            'rgba(226,232,252,0.58)',
-                            'rgba(212,224,248,0.64)',
-                          ]
-                        : [
-                            'rgba(255,248,252,0.9)',
-                            'rgba(244,232,248,0.68)',
-                            'rgba(232,242,252,0.82)',
-                          ]
-                    }
-                    locations={oled ? [0.06, 0.45, 1] : [0, 0.48, 1]}
-                    start={{ x: 0.08, y: 0 }}
-                    end={{ x: 0.92, y: 1 }}
-                    style={StyleSheet.absoluteFillObject}
-                  />
-                  <LinearGradient
-                    pointerEvents="none"
-                    colors={
-                      oled
-                        ? ['rgba(255,206,228,0.5)', 'rgba(216,234,255,0.32)', 'rgba(224,248,255,0.08)']
-                        : ['rgba(255,204,228,0.58)', 'rgba(230,248,255,0.4)', 'rgba(240,252,255,0.22)']
-                    }
-                    locations={[0, 0.55, 1]}
-                    start={{ x: 0.12, y: 0 }}
-                    end={{ x: 0.88, y: 1 }}
-                    style={StyleSheet.absoluteFillObject}
-                  />
-                  <LinearGradient
-                    pointerEvents="none"
-                    colors={[`${palette.neonPink}f5`, `${palette.bokehViolet}ef`, `${palette.neonSky}f2`]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 0, y: 1 }}
-                    style={styles.heroBadgeLeftAccent}
-                  />
-                  <LinearGradient
-                    pointerEvents="none"
-                    colors={
-                      oled
-                        ? [
-                            'rgba(255,255,255,0)',
-                            'rgba(255,77,148,0.72)',
-                            'rgba(94,228,255,0.68)',
-                            'rgba(255,255,255,0)',
-                          ]
-                        : [
-                            'rgba(255,255,255,0)',
-                            'rgba(255,77,148,0.85)',
-                            'rgba(94,228,255,0.78)',
-                            'rgba(255,255,255,0)',
-                          ]
-                    }
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={styles.heroBadgeBottomGleam}
-                  />
                   {oled ? (
-                    <LinearGradient
-                      pointerEvents="none"
-                      colors={['rgba(255,255,255,0.48)', 'rgba(255,255,255,0)']}
-                      locations={[0, 1]}
-                      start={{ x: 0.28, y: 0 }}
-                      end={{ x: 0.72, y: 0.62 }}
-                      style={styles.heroBadgeTopSheen}
-                    />
+                    <>
+                      {Platform.OS === 'web' ? (
+                        <View
+                          pointerEvents="none"
+                          style={[styles.heroBadgeBlurPlate, styles.heroBadgeFrostFallbackWeb]}
+                        />
+                      ) : (
+                        <BlurView
+                          pointerEvents="none"
+                          tint="dark"
+                          intensity={Platform.OS === 'ios' ? 78 : 92}
+                          style={styles.heroBadgeBlurPlate}
+                          {...(Platform.OS === 'android'
+                            ? ({
+                                experimentalBlurMethod: 'dimezisBlurView',
+                                blurReductionFactor: 5,
+                              } as const)
+                            : {})}
+                        />
+                      )}
+                      <View pointerEvents="none" style={styles.heroBadgeFrostTint} />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={['rgba(255,255,255,0.13)', 'rgba(255,255,255,0.02)', 'rgba(14,14,26,0.5)']}
+                        locations={[0, 0.42, 1]}
+                        start={{ x: 0.12, y: 0 }}
+                        end={{ x: 0.88, y: 1 }}
+                        style={StyleSheet.absoluteFillObject}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={['rgba(255,255,255,0.22)', 'rgba(255,255,255,0)']}
+                        locations={[0, 1]}
+                        start={{ x: 0.25, y: 0 }}
+                        end={{ x: 0.65, y: 0.55 }}
+                        style={styles.heroBadgeTopSheenFrost}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.12)', 'rgba(255,255,255,0)']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.heroBadgeFrostHairline}
+                      />
+                    </>
                   ) : (
-                    <LinearGradient
-                      pointerEvents="none"
-                      colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)']}
-                      locations={[0, 1]}
-                      start={{ x: 0.3, y: 0 }}
-                      end={{ x: 0.7, y: 0.55 }}
-                      style={styles.heroBadgeTopSheen}
-                    />
+                    <>
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={[
+                          'rgba(255,248,252,0.9)',
+                          'rgba(244,232,248,0.68)',
+                          'rgba(232,242,252,0.82)',
+                        ]}
+                        locations={[0, 0.48, 1]}
+                        start={{ x: 0.08, y: 0 }}
+                        end={{ x: 0.92, y: 1 }}
+                        style={StyleSheet.absoluteFillObject}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={[
+                          'rgba(255,204,228,0.58)',
+                          'rgba(230,248,255,0.4)',
+                          'rgba(240,252,255,0.22)',
+                        ]}
+                        locations={[0, 0.55, 1]}
+                        start={{ x: 0.12, y: 0 }}
+                        end={{ x: 0.88, y: 1 }}
+                        style={StyleSheet.absoluteFillObject}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={[`${palette.neonPink}f5`, `${palette.bokehViolet}ef`, `${palette.neonSky}f2`]}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 0, y: 1 }}
+                        style={styles.heroBadgeLeftAccent}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={[
+                          'rgba(255,255,255,0)',
+                          'rgba(255,77,148,0.85)',
+                          'rgba(94,228,255,0.78)',
+                          'rgba(255,255,255,0)',
+                        ]}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.heroBadgeBottomGleam}
+                      />
+                      <LinearGradient
+                        pointerEvents="none"
+                        colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)']}
+                        locations={[0, 1]}
+                        start={{ x: 0.3, y: 0 }}
+                        end={{ x: 0.7, y: 0.55 }}
+                        style={styles.heroBadgeTopSheen}
+                      />
+                    </>
                   )}
                   <Text style={[styles.heroBadgeTxt, oled ? styles.heroBadgeTxtOled : null]}>{heroBadge}</Text>
                 </View>
@@ -1401,6 +1424,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  /** Backdrop frost — OLED SHOULDI capsule (blur + tonal veil). */
+  heroBadgeBlurPlate: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  heroBadgeFrostTint: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(48,46,54,0.38)',
+  },
+  heroBadgeFrostFallbackWeb: {
+    backgroundColor: 'rgba(52,54,62,0.78)',
+  },
+  heroBadgeTopSheenFrost: {
+    ...StyleSheet.absoluteFillObject,
+    height: '42%',
+    bottom: undefined,
+    opacity: 0.48,
+  },
+  heroBadgeFrostHairline: {
+    position: 'absolute',
+    left: '8%',
+    right: '8%',
+    bottom: 0,
+    height: 2,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+  },
   heroBadgeLeftAccent: {
     position: 'absolute',
     left: 0,
@@ -1444,6 +1493,7 @@ const styles = StyleSheet.create({
     letterSpacing: 4.2,
     fontSize: 13,
     textTransform: 'uppercase',
+    zIndex: 6,
   },
   heroBadgeTxtOled: {
     color: '#fff',
