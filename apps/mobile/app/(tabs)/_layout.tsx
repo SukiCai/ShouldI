@@ -129,7 +129,7 @@ export default function TabLayout() {
         options={{
           title: '',
           tabBarShowLabel: false,
-          tabBarAccessibilityLabel: 'Decide: start a structured choice',
+          tabBarAccessibilityLabel: 'Decide: Harmence intake chat',
           tabBarIcon: () => null,
           headerShown: false,
           tabBarButton: DecideFabTabButton,

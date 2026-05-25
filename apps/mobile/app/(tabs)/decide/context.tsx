@@ -99,7 +99,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       const payload = await apiPostJson('/v1/chat', validated);
       const parsed = ChatResponseSchema.parse(payload);
       rememberResponse(parsed);
-      router.replace('/decide/result');
+      router.replace('/(tabs)/decide/result');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went sideways.';
       setError(message);

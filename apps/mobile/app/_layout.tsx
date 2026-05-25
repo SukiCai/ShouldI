@@ -100,7 +100,6 @@ function RootLayoutNav() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="decide" options={{ headerShown: false }} />
         <Stack.Screen
           name="decision/[id]"
           options={{

@@ -82,21 +82,20 @@ export function AppLaunchScreen({ detail }: AppLaunchScreenProps) {
           {/* Wordmark */}
           <View style={styles.wordmarkRow}>
             <Text style={styles.logoShould}>Should</Text>
-            <Animated.Text
-              style={[
-                styles.logoI,
-                Platform.OS === 'ios' && {
-                  textShadowColor: palette.neonMint,
-                  textShadowOffset: { width: 0, height: 0 },
-                  textShadowRadius: shimmer.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [6, 22],
-                  }) as unknown as number,
-                  opacity: iGlow,
-                },
-              ]}>
-              I
-            </Animated.Text>
+            {/** Native-driver animated text rejects animated textShadow*; shimmer via opacity wrapper only */}
+            <Animated.View style={{ opacity: iGlow }}>
+              <Text
+                style={[
+                  styles.logoI,
+                  Platform.OS === 'ios' && {
+                    textShadowColor: palette.neonMint,
+                    textShadowOffset: { width: 0, height: 0 },
+                    textShadowRadius: 16,
+                  },
+                ]}>
+                I
+              </Text>
+            </Animated.View>
           </View>
 
           {/* Neon dot trio */}

@@ -84,3 +84,61 @@ export const ChatResponseSchema = z.object({
   hermesStatus: z.enum(['stub', 'embedded', 'ready', 'error']),
 });
 export type ChatResponse = z.infer<typeof ChatResponseSchema>;
+
+/** Harmence Decide interview — mobile ↔ ShouldI gateway ↔ Hermes tree signal */
+export const DecideInterviewRoleSchema = z.enum(['user', 'assistant']);
+export type DecideInterviewRole = z.infer<typeof DecideInterviewRoleSchema>;
+
+export const DecideInterviewBubbleSchema = z.object({
+  id: z.string(),
+  role: DecideInterviewRoleSchema,
+  text: z.string(),
+  at: z.number().int(),
+});
+export type DecideInterviewBubble = z.infer<typeof DecideInterviewBubbleSchema>;
+
+export const DecideInterviewTurnRequestSchema = z.object({
+  sessionId: z.string().nullable().optional(),
+  userText: z.string().optional().default(''),
+});
+export type DecideInterviewTurnRequest = z.infer<typeof DecideInterviewTurnRequestSchema>;
+
+export const DecideInterviewDraftHintsSchema = z.object({
+  title: z.string().optional(),
+  category: DecisionCategorySchema.optional(),
+  constraints: z.string().optional(),
+  successCriteria: z.string().optional(),
+});
+export type DecideInterviewDraftHints = z.infer<typeof DecideInterviewDraftHintsSchema>;
+
+export const DecideInterviewTurnResponseSchema = z.object({
+  sessionId: z.string(),
+  bubbles: z.array(DecideInterviewBubbleSchema),
+  phase: z.string(),
+  isComplete: z.boolean(),
+  hermesIntegrated: z.boolean(),
+  suggestedDraftHints: DecideInterviewDraftHintsSchema.optional(),
+});
+export type DecideInterviewTurnResponse = z.infer<typeof DecideInterviewTurnResponseSchema>;
+
+export const DecideInterviewSessionSummarySchema = z.object({
+  id: z.string(),
+  preview: z.string(),
+  updatedAt: z.number().int(),
+  messageCount: z.number().int().nonnegative(),
+});
+export type DecideInterviewSessionSummary = z.infer<typeof DecideInterviewSessionSummarySchema>;
+
+export const DecideInterviewSessionsListSchema = z.object({
+  sessions: z.array(DecideInterviewSessionSummarySchema),
+});
+
+export const DecideInterviewSessionDetailSchema = z.object({
+  id: z.string(),
+  updatedAt: z.number().int(),
+  bubbles: z.array(DecideInterviewBubbleSchema),
+  phase: z.string(),
+  isComplete: z.boolean(),
+  hermesIntegrated: z.boolean(),
+});
+export type DecideInterviewSessionDetail = z.infer<typeof DecideInterviewSessionDetailSchema>;

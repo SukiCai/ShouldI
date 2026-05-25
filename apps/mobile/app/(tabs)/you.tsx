@@ -47,6 +47,115 @@ const DEMO_STATS = {
 /** Cash-out / redemption rate shown in UI: this many points = US $1 */
 const POINTS_PER_USD = 10;
 
+/**
+ * Light-mode You tab — neutral Gen Z gray copy (#5b5b5b) + sky / pink / mint accents.
+ */
+const YOU_LIGHT = {
+  /** Display name, gear */
+  ink: '#3d3d3d',
+  /** Primary labels, stats, card titles */
+  body: '#5b5b5b',
+  /** Secondary lines, live label */
+  muted: 'rgba(91, 91, 91, 0.68)',
+  sky: '#49cdeb',
+  pink: '#ec7ab8',
+  mint: '#2dd4bf',
+  /** Wallet USD / rate — slightly stronger gray */
+  emphasis: '#4a4a4a',
+  tabInactive: 'rgba(91, 91, 91, 0.4)',
+  tabTrack: 'rgba(91, 91, 91, 0.12)',
+} as const;
+
+type YouChromatics = {
+  textPrimary: string;
+  textMuted: string;
+  display: string;
+  sky: string;
+  pink: string;
+  mint: string;
+  tabActive: string;
+  tabInactive: string;
+  tabUnderline: string;
+  tabTrack: string;
+  linkSignIn: string;
+  linkJoin: string;
+  walletUsd: string;
+  walletRate: string;
+  walletDisc: string;
+  walletRateBg: string;
+  walletRateBorder: string;
+  ctaOnGradient: string;
+  liveDot: string;
+  liveText: string;
+  liveBorder: string;
+  liveBg: string;
+  gearIcon: string;
+};
+
+function youChromatics(isDark: boolean, surface?: ReturnType<typeof themeSurface>): YouChromatics {
+  const s = surface ?? themeSurface(isDark ? 'dark' : 'light');
+  if (isDark) {
+    return {
+      textPrimary: s.textPrimary,
+      textMuted: s.textMuted,
+      display: s.textPrimary,
+      sky: palette.neonSky,
+      pink: palette.neonPink,
+      mint: palette.neonMint,
+      tabActive: s.textPrimary,
+      tabInactive: s.textMuted,
+      tabUnderline: palette.neonMint,
+      tabTrack: s.hairline,
+      linkSignIn: palette.neonSky,
+      linkJoin: palette.neonMint,
+      walletUsd: palette.neonMint,
+      walletRate: palette.neonMint,
+      walletDisc: s.textMuted,
+      walletRateBg: 'rgba(61,255,184,0.07)',
+      walletRateBorder: `${palette.neonMint}30`,
+      ctaOnGradient: palette.heroInk,
+      liveDot: palette.neonMint,
+      liveText: palette.neonMint,
+      liveBorder: `${palette.neonMint}40`,
+      liveBg: `${palette.neonMint}09`,
+      gearIcon: s.textPrimary,
+    };
+  }
+  return {
+    textPrimary: YOU_LIGHT.body,
+    textMuted: YOU_LIGHT.muted,
+    display: YOU_LIGHT.ink,
+    sky: YOU_LIGHT.sky,
+    pink: YOU_LIGHT.pink,
+    mint: YOU_LIGHT.mint,
+    tabActive: YOU_LIGHT.sky,
+    tabInactive: YOU_LIGHT.tabInactive,
+    tabUnderline: YOU_LIGHT.sky,
+    tabTrack: YOU_LIGHT.tabTrack,
+    linkSignIn: YOU_LIGHT.sky,
+    linkJoin: YOU_LIGHT.pink,
+    walletUsd: YOU_LIGHT.emphasis,
+    walletRate: YOU_LIGHT.emphasis,
+    walletDisc: YOU_LIGHT.muted,
+    walletRateBg: `${YOU_LIGHT.sky}18`,
+    walletRateBorder: `${YOU_LIGHT.sky}45`,
+    ctaOnGradient: '#1a1a1a',
+    liveDot: YOU_LIGHT.sky,
+    liveText: YOU_LIGHT.muted,
+    liveBorder: `${YOU_LIGHT.sky}50`,
+    liveBg: `${YOU_LIGHT.sky}14`,
+    gearIcon: YOU_LIGHT.ink,
+  };
+}
+
+/** Safe wrapper — delegates to {@link youChromatics} which coerces a missing `surface`. */
+function resolveYouChromatics(
+  isDark: boolean,
+  surface: ReturnType<typeof themeSurface> | undefined,
+): YouChromatics {
+  return youChromatics(isDark, surface);
+}
+
 function pointsToUsdCash(points: number): number {
   return points / POINTS_PER_USD;
 }
@@ -125,6 +234,13 @@ const ACCENT = {
   pink: [palette.neonPink, `${palette.neonPink}33`] as const,
 };
 
+/** Grid rail tints in light mode — same triad feel as `ACCENT`, readable on white. */
+const CARD_ACCENT_LIGHT: Record<DecisionPreview['accent'], string> = {
+  mint: '#14b8a6',
+  sky: YOU_LIGHT.sky,
+  pink: YOU_LIGHT.pink,
+};
+
 type TabKey = 'yours' | 'orbit' | 'saved';
 
 const TABS: { key: TabKey; label: string; getData: () => DecisionPreview[] }[] = [
@@ -139,8 +255,9 @@ const STAT_GAP = 8;
 const TAB_SPRING = { damping: 24, stiffness: 340, mass: 0.38 };
 
 /** Compact “on-air” cue — dot opacity only, no halo glow */
-function LivePulsePill() {
+function LivePulsePill({ surface, isDark }: { surface: ReturnType<typeof themeSurface>; isDark: boolean }) {
   const pulse = useSharedValue(1);
+  const chrom = resolveYouChromatics(isDark, surface);
 
   React.useEffect(() => {
     pulse.value = withRepeat(
@@ -158,9 +275,9 @@ function LivePulsePill() {
   }));
 
   return (
-    <View style={styles.livePill}>
-      <Animated.View style={[styles.liveDot, { backgroundColor: palette.neonMint }, dotStyle]} />
-      <Text style={styles.livePillText}>live</Text>
+    <View style={[styles.livePill, { borderColor: chrom.liveBorder, backgroundColor: chrom.liveBg }]}>
+      <Animated.View style={[styles.liveDot, { backgroundColor: chrom.liveDot }, dotStyle]} />
+      <Text style={[styles.livePillText, { color: chrom.liveText }]}>live</Text>
     </View>
   );
 }
@@ -168,10 +285,12 @@ function LivePulsePill() {
 type ProfileTabStripProps = {
   activeTab: TabKey;
   onSelect: (key: TabKey) => void;
+  isDark: boolean;
   surface: ReturnType<typeof themeSurface>;
 };
 
-function ProfileTabStrip({ activeTab, onSelect, surface }: ProfileTabStripProps) {
+function ProfileTabStrip({ activeTab, onSelect, isDark, surface }: ProfileTabStripProps) {
+  const chrom = resolveYouChromatics(isDark, surface);
   const [trackWidth, setTrackWidth] = React.useState(0);
   const lineX = useSharedValue(0);
   const lineW = useSharedValue(0);
@@ -223,7 +342,7 @@ function ProfileTabStrip({ activeTab, onSelect, surface }: ProfileTabStripProps)
                 style={[
                   styles.tabBarLabel,
                   {
-                    color: active ? surface.textPrimary : surface.textMuted,
+                    color: active ? chrom.tabActive : chrom.tabInactive,
                     fontWeight: active ? '700' : '500',
                     letterSpacing: active ? -0.2 : 0.15,
                   },
@@ -234,9 +353,9 @@ function ProfileTabStrip({ activeTab, onSelect, surface }: ProfileTabStripProps)
           );
         })}
       </View>
-      <View style={[styles.tabUnderlineTrack, { backgroundColor: surface.hairline }]}>
+      <View style={[styles.tabUnderlineTrack, { backgroundColor: chrom.tabTrack }]}>
         <Animated.View
-          style={[styles.tabUnderlineBar, underlineStyle, { backgroundColor: palette.neonMint }]}
+          style={[styles.tabUnderlineBar, underlineStyle, { backgroundColor: chrom.tabUnderline }]}
         />
       </View>
     </View>
@@ -254,6 +373,7 @@ function StatChipFixed({
   surface: ReturnType<typeof themeSurface>;
   isDark: boolean;
 }) {
+  const chrom = resolveYouChromatics(isDark, surface);
   return (
     <View
       style={[
@@ -263,8 +383,8 @@ function StatChipFixed({
           borderColor: surface.hairline,
         },
       ]}>
-      <Text style={[styles.statValue, { color: surface.textPrimary }]}>{value.toLocaleString()}</Text>
-      <Text style={[styles.statLabel, { color: surface.textMuted }]} numberOfLines={2}>
+      <Text style={[styles.statValue, { color: chrom.textPrimary }]}>{value.toLocaleString()}</Text>
+      <Text style={[styles.statLabel, { color: chrom.textMuted }]} numberOfLines={2}>
         {label}
       </Text>
     </View>
@@ -284,7 +404,8 @@ function ProfileDecisionCard({
   onOpen: (id: string) => void;
   compact?: boolean;
 }) {
-  const accentColor = ACCENT[item.accent][0];
+  const chrom = resolveYouChromatics(isDark, surface);
+  const accentColor = isDark ? ACCENT[item.accent][0] : CARD_ACCENT_LIGHT[item.accent];
   const open = item.status === 'open';
 
   return (
@@ -305,28 +426,28 @@ function ProfileDecisionCard({
         <View style={[styles.gridCardBody, compact && styles.gridCardBodyCompact]}>
           <View style={styles.gridCardTop}>
             {open ? (
-              <LivePulsePill />
+              <LivePulsePill surface={surface} isDark={isDark} />
             ) : (
               <View
                 style={[
                   styles.statusPill,
                   {
-                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)',
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${YOU_LIGHT.sky}10`,
                     borderWidth: StyleSheet.hairlineWidth,
-                    borderColor: surface.hairline,
+                    borderColor: isDark ? surface.hairline : YOU_LIGHT.tabTrack,
                   },
                 ]}>
-                <Text style={[styles.statusPillText, { color: surface.textMuted }]}>done</Text>
+                <Text style={[styles.statusPillText, { color: chrom.textMuted }]}>done</Text>
               </View>
             )}
-            <FontAwesome name="chevron-right" size={11} color={surface.textMuted} />
+            <FontAwesome name="chevron-right" size={11} color={chrom.textMuted} />
           </View>
           <Text
-            style={[styles.gridTitle, { color: surface.textPrimary }, compact && styles.gridTitleCompact]}
+            style={[styles.gridTitle, { color: chrom.textPrimary }, compact && styles.gridTitleCompact]}
             numberOfLines={compact ? 3 : 4}>
             {item.question}
           </Text>
-          <Text style={[styles.gridHint, { color: surface.textMuted }]} numberOfLines={2}>
+          <Text style={[styles.gridHint, { color: chrom.textMuted }]} numberOfLines={2}>
             {item.hint}
           </Text>
         </View>
@@ -335,19 +456,31 @@ function ProfileDecisionCard({
   );
 }
 
-function EmptyCards({ surface, message }: { surface: ReturnType<typeof themeSurface>; message: string }) {
+function EmptyCards({
+  surface,
+  message,
+  isDark,
+}: {
+  surface: ReturnType<typeof themeSurface>;
+  message: string;
+  isDark: boolean;
+}) {
+  const chrom = resolveYouChromatics(isDark, surface);
   return (
     <View style={[styles.emptyCard, { borderColor: surface.hairline, backgroundColor: surface.statTileBg }]}>
       <Text style={{ fontSize: 28, marginBottom: 8 }}>✦</Text>
-      <Text style={[typography.compact, { color: surface.textMuted, textAlign: 'center', lineHeight: 20 }]}>{message}</Text>
+      <Text style={[typography.compact, { color: chrom.textMuted, textAlign: 'center', lineHeight: 20 }]}>
+        {message}
+      </Text>
     </View>
   );
 }
 
 export default function YouScreen() {
   const scheme = useColorScheme();
-  const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
+  const surface = React.useMemo(() => themeSurface(scheme), [scheme]);
+  const chrom = React.useMemo(() => resolveYouChromatics(isDark, surface), [isDark, surface]);
   const { width: windowWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = React.useState<TabKey>('yours');
@@ -421,7 +554,7 @@ export default function YouScreen() {
           colors={
             isDark
               ? ['rgba(61,255,184,0.14)', 'rgba(84,220,255,0.07)', 'rgba(15,23,42,0.02)']
-              : ['rgba(61,255,184,0.22)', 'rgba(255,77,148,0.06)', '#ffffff']
+              : [`${YOU_LIGHT.sky}33`, `${YOU_LIGHT.pink}14`, '#ffffff']
           }
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -442,7 +575,7 @@ export default function YouScreen() {
                 },
                 pressed && { opacity: 0.9 },
               ]}>
-              <FontAwesome name="cog" size={18} color={surface.textPrimary} />
+              <FontAwesome name="cog" size={18} color={chrom.gearIcon} />
             </Pressable>
           </View>
 
@@ -459,17 +592,21 @@ export default function YouScreen() {
 
             <View style={styles.nameBlock}>
               <View style={styles.nameRow}>
-                <Text style={[styles.displayName, { color: surface.textPrimary }]}>Jordan Avery</Text>
+                <Text style={[styles.displayName, { color: chrom.display }]}>Jordan Avery</Text>
                 <LinearGradient
-                  colors={[`${palette.neonSky}cc`, `${palette.neonMint}aa`]}
+                  colors={
+                    isDark
+                      ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
+                      : [`${YOU_LIGHT.sky}d0`, `${YOU_LIGHT.mint}b8`]
+                  }
                   start={{ x: 0, y: 0.5 }}
                   end={{ x: 1, y: 0.5 }}
                   style={styles.proBubble}>
                   <Text style={styles.proText}>pro</Text>
                 </LinearGradient>
               </View>
-              <Text style={[styles.handle, { color: surface.textMuted }]}>@jordan</Text>
-              <Text style={[styles.tagline, { color: surface.textMuted }]}>
+              <Text style={[styles.handle, { color: chrom.textMuted }]}>@jordan</Text>
+              <Text style={[styles.tagline, { color: chrom.textMuted }]}>
                 your fit check for big choices ✦ low pressure, high signal
               </Text>
             </View>
@@ -497,7 +634,7 @@ export default function YouScreen() {
             },
           ]}>
           <LinearGradient
-            colors={[palette.neonMint, palette.neonSky]}
+            colors={isDark ? [palette.neonMint, palette.neonSky] : [YOU_LIGHT.sky, YOU_LIGHT.mint]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
             style={styles.walletAccent}
@@ -506,13 +643,13 @@ export default function YouScreen() {
             style={styles.walletBody}
             accessibilityLabel={`Rewards balance ${cashLabel}, ${pointsBalance.toLocaleString()} points. ${POINTS_PER_USD} points per dollar.`}>
             <View style={styles.walletHeader}>
-              <Text style={[styles.walletTitle, { color: surface.textPrimary }]}>rewards</Text>
+              <Text style={[styles.walletTitle, { color: chrom.textPrimary }]}>rewards</Text>
               <View
                 style={[
                   styles.walletRateCapsule,
-                  { backgroundColor: isDark ? 'rgba(61,255,184,0.07)' : 'rgba(61,255,184,0.09)' },
+                  { backgroundColor: chrom.walletRateBg, borderColor: chrom.walletRateBorder },
                 ]}>
-                <Text style={[styles.walletRateCapsuleTxt, { color: palette.neonMint }]}>
+                <Text style={[styles.walletRateCapsuleTxt, { color: chrom.walletRate }]}>
                   {POINTS_PER_USD} pts → $1
                 </Text>
               </View>
@@ -520,8 +657,8 @@ export default function YouScreen() {
 
             <View style={styles.walletMainRow}>
               <View style={styles.walletValueCol}>
-                <Text style={styles.walletUsd}>{cashLabel}</Text>
-                <Text style={[styles.walletPts, { color: surface.textMuted }]}>
+                <Text style={[styles.walletUsd, { color: chrom.walletUsd }]}>{cashLabel}</Text>
+                <Text style={[styles.walletPts, { color: chrom.textMuted }]}>
                   {pointsBalance.toLocaleString()} pts
                 </Text>
               </View>
@@ -532,23 +669,23 @@ export default function YouScreen() {
                 onPress={handleCashOut}
                 style={({ pressed }) => [styles.walletCta, pressed && { opacity: 0.9, transform: [{ scale: 0.985 }] }]}>
                 <LinearGradient
-                  colors={[`${palette.neonMint}f0`, '#2ad4b4']}
+                  colors={isDark ? [`${palette.neonMint}f0`, '#2ad4b4'] : [YOU_LIGHT.sky, YOU_LIGHT.mint]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
                   style={styles.walletCtaGrad}>
-                  <Text style={styles.walletCtaLabel}>cash out</Text>
-                  <FontAwesome name="arrow-right" size={11} color={palette.heroInk} />
+                  <Text style={[styles.walletCtaLabel, { color: chrom.ctaOnGradient }]}>cash out</Text>
+                  <FontAwesome name="arrow-right" size={11} color={chrom.ctaOnGradient} />
                 </LinearGradient>
               </Pressable>
             </View>
 
-            <Text style={[styles.walletDisclaimer, { color: surface.textMuted }]}>est. only</Text>
+            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>est. only</Text>
           </View>
         </View>
       </View>
 
       <View style={styles.profileTabsWrap}>
-        <ProfileTabStrip activeTab={activeTab} onSelect={selectTab} surface={surface} />
+        <ProfileTabStrip activeTab={activeTab} onSelect={selectTab} isDark={isDark} surface={surface} />
       </View>
     </>
   );
@@ -556,24 +693,24 @@ export default function YouScreen() {
   const listFooter = (
     <>
       <View style={[styles.accountStrip, { borderTopColor: surface.hairline }]}>
-        <Text style={[styles.accountHint, { color: surface.textMuted }]}>account</Text>
+        <Text style={[styles.accountHint, { color: chrom.textMuted }]}>account</Text>
         <View style={styles.accountLinks}>
           <Link href="/sign-in" asChild>
             <Pressable hitSlop={8}>
-              <Text style={[styles.linkText, { color: palette.neonSky }]}>sign in</Text>
+              <Text style={[styles.linkText, { color: chrom.linkSignIn }]}>sign in</Text>
             </Pressable>
           </Link>
-          <Text style={{ color: surface.textMuted, opacity: 0.5 }}>·</Text>
+          <Text style={{ color: chrom.textMuted, opacity: 0.5 }}>·</Text>
           <Link href="/sign-up" asChild>
             <Pressable hitSlop={8}>
-              <Text style={[styles.linkText, { color: palette.neonMint }]}>join</Text>
+              <Text style={[styles.linkText, { color: chrom.linkJoin }]}>join</Text>
             </Pressable>
           </Link>
         </View>
       </View>
       {__DEV__ ? (
         <Link href="/modal">
-          <Text style={[typography.caption, styles.devLink, { color: surface.textMuted }]}>diagnostics</Text>
+          <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>diagnostics</Text>
         </Link>
       ) : null}
     </>
@@ -588,7 +725,7 @@ export default function YouScreen() {
         renderItem={renderItem}
         ListHeaderComponent={listHeader}
         ListFooterComponent={listFooter}
-        ListEmptyComponent={<EmptyCards surface={surface} message={emptyCopy} />}
+        ListEmptyComponent={<EmptyCards surface={surface} message={emptyCopy} isDark={isDark} />}
         columnWrapperStyle={styles.cardColumnWrapper}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
@@ -761,7 +898,6 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonMint}30`,
   },
   walletRateCapsuleTxt: {
     fontSize: 9,
@@ -786,7 +922,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: -0.85,
     fontVariant: ['tabular-nums'],
-    color: palette.neonMint,
   },
   walletPts: {
     fontSize: 11,
@@ -820,7 +955,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '800',
     letterSpacing: 0.12,
-    color: palette.heroInk,
     textTransform: 'lowercase',
   },
   walletDisclaimer: {
@@ -924,7 +1058,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '700',
     letterSpacing: 0.55,
-    color: palette.neonMint,
     textTransform: 'lowercase',
   },
   cardColumnWrapper: {

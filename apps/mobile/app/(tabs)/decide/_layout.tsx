@@ -15,7 +15,7 @@ export default function DecideNavigator() {
           headerTitleStyle: { color: palette.textOnCanvas, fontWeight: '700', fontSize: 17 },
           contentStyle: { backgroundColor: palette.mist },
         }}>
-        <Stack.Screen name="index" options={{ title: 'AI intake' }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="details" options={{ title: 'Manual details (legacy)' }} />
         <Stack.Screen name="confirm" options={{ title: 'Review draft' }} />
         <Stack.Screen name="result" options={{ headerBackVisible: false, title: 'ShouldI briefing' }} />

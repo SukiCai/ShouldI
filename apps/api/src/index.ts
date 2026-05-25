@@ -1,8 +1,19 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { ExploreFeedResponseSchema } from '@shouldi/contracts';
+import {
+  DecideInterviewSessionDetailSchema,
+  DecideInterviewSessionsListSchema,
+  DecideInterviewTurnRequestSchema,
+  DecideInterviewTurnResponseSchema,
+  ExploreFeedResponseSchema,
+} from '@shouldi/contracts';
 import { seededExploreCards } from './explore-seed.js';
+import {
+  handleInterviewTurn,
+  summarizeSessionDetail,
+  summarizeSessionsForMobile,
+} from './harmence-interview.js';
 import { summarizeRequest } from './hermes-adapter.js';
 import { resolveHermesRepoRoot } from './hermes-resolve.js';
 
@@ -53,6 +64,33 @@ app.post('/v1/chat', async (c) => {
     return c.json({ error: 'INVALID_REQUEST' }, 400);
   }
   return c.json(response.data);
+});
+
+app.get('/v1/harmence/interview/sessions', (c) => {
+  const payload = summarizeSessionsForMobile();
+  const parsed = DecideInterviewSessionsListSchema.parse(payload);
+  return c.json(parsed);
+});
+
+app.get('/v1/harmence/interview/sessions/:id', (c) => {
+  const id = c.req.param('id');
+  const detail = summarizeSessionDetail(id);
+  if (!detail) return c.json({ error: 'NOT_FOUND' }, 404);
+  return c.json(DecideInterviewSessionDetailSchema.parse(detail));
+});
+
+app.post('/v1/harmence/interview/turn', async (c) => {
+  const body = await c.req.json().catch(() => ({}));
+  const parsed = DecideInterviewTurnRequestSchema.safeParse(body);
+  if (!parsed.success) {
+    return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
+  }
+  try {
+    const res = handleInterviewTurn(parsed.data.sessionId ?? null, parsed.data.userText ?? '');
+    return c.json(DecideInterviewTurnResponseSchema.parse(res));
+  } catch {
+    return c.json({ error: 'UNKNOWN_SESSION' }, 404);
+  }
 });
 
 const port = Number(process.env.PORT ?? 8787);

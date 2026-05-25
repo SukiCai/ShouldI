@@ -26,7 +26,7 @@ export default function DecideResultScreen() {
     return (
       <Screen padded>
         <Text style={[typography.body, { color: palette.textOnCanvas }]}>No briefing yet.</Text>
-        <PrimaryButton onPress={() => router.replace('/decide')}>
+        <PrimaryButton onPress={() => router.replace('/(tabs)/decide')}>
           <Text style={{ color: palette.white }}>Start over</Text>
         </PrimaryButton>
       </Screen>
@@ -99,7 +99,7 @@ export default function DecideResultScreen() {
         style={{ marginTop: spacing.sm }}
         onPress={() => {
           reset();
-          router.replace('/decide');
+          router.replace('/(tabs)/decide');
         }}
         accessibilityLabel="Return to decision wizard home">
         <Text style={{ color: palette.accent, fontWeight: '700' }}>New decision briefing</Text>

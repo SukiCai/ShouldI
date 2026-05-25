@@ -73,7 +73,7 @@ export default function DecideDetailsScreen() {
         <PrimaryButton
           disabled={!draft.title.trim()}
           accessibilityLabel="Review decision recap"
-          onPress={() => router.push('/decide/confirm')}
+          onPress={() => router.push('/(tabs)/decide/confirm')}
         >
           <Text style={styles.button}>Review</Text>
         </PrimaryButton>

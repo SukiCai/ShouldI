@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
-import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
+import { GlassCard, SectionHeader } from '@/components/ui/Premium';
 import Screen from '@/components/ui/Screen';
 import { palette, spacing, typography } from '@/constants/theme';
 
@@ -14,12 +14,6 @@ export default function DecideConfirmScreen() {
   return (
     <Screen padded>
       <ScrollView accessibilityRole="scrollbar">
-        <GradientHero
-          eyebrow="Final review"
-          title="Review before generating"
-          subtitle="Quick check before generation."
-          right={<PillTag label="Step 3/3" tone="brand" />}
-        />
         <SectionHeader title="Draft summary" />
         <GlassCard>
           <Section label="Arena" body={draft.category ?? 'Unset'} />
