@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const ProvenanceSchema = z.enum(['community_story', 'ai_framework', 'curated_digest']);
+export const ProvenanceSchema = z.enum(['community_story', 'ai_framework', 'curated_digest', 'community_ai_validation']);
 export type Provenance = z.infer<typeof ProvenanceSchema>;
 
 export const DecisionCategorySchema = z.enum(['life', 'career', 'relationship', 'money']);
@@ -54,6 +54,15 @@ export const ExploreCardSchema = z.object({
   outcome: z.string().optional(),
   takeaway: z.string().optional(),
   provenance: ProvenanceSchema,
+  /** Crowd validates Harmence's preliminary stance; card copy is summarized on-device before posting. */
+  aiValidation: z
+    .object({
+      verdictLine: z.string(),
+      verdictBecause: z.string(),
+      agreeWithAiVotes: z.number().int().nonnegative().default(0),
+      disagreeWithAiVotes: z.number().int().nonnegative().default(0),
+    })
+    .optional(),
   matchHint: z.string().optional(),
 });
 export type ExploreCard = z.infer<typeof ExploreCardSchema>;

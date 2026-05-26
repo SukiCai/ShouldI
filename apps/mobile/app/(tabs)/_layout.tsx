@@ -7,7 +7,7 @@ import { Tabs } from 'expo-router';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { palette, themeSurface } from '@/constants/theme';
+import { palette, profileLight, themeSurface } from '@/constants/theme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -36,6 +36,7 @@ function DecideFabTabButton(props: BottomTabBarButtonProps) {
   const scheme = useColorScheme();
   const isDark = scheme === 'dark';
   const surface = themeSurface(scheme);
+  const tabAccent = isDark ? palette.neonMint : profileLight.sky;
 
   return (
     <PlatformPressable
@@ -58,7 +59,7 @@ function DecideFabTabButton(props: BottomTabBarButtonProps) {
         <Text
           style={[
             styles.decideFabCaption,
-            { color: focused ? palette.neonMint : surface.inactiveTab },
+            { color: focused ? tabAccent : surface.inactiveTab },
           ]}
           numberOfLines={1}>
           Decide
@@ -82,6 +83,9 @@ export default function TabLayout() {
   const bottomPad = Platform.OS === 'ios' ? insets.bottom : Math.max(insets.bottom, 6);
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
+  /** Light: match Profile tab underline (sky). Dark: keep neon mint on OLED dock. */
+  const tabAccent = isDark ? palette.neonMint : profileLight.sky;
 
   const barBg = surface.tabBar;
   const hairline = surface.tabBarBorder;
@@ -91,7 +95,7 @@ export default function TabLayout() {
       initialRouteName="explore"
       backBehavior="history"
       screenOptions={{
-        tabBarActiveTintColor: palette.neonMint,
+        tabBarActiveTintColor: tabAccent,
         tabBarInactiveTintColor: surface.inactiveTab,
         tabBarShowLabel: true,
         tabBarHideOnKeyboard: true,
@@ -223,7 +227,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
   },
   decideFabFocusedLight: {
-    borderColor: palette.neonMint,
+    borderColor: profileLight.sky,
     borderWidth: 2,
   },
   decideFabFocusedDark: {

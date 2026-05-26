@@ -10,7 +10,7 @@ import {
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
 import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 import PrimaryButton from '@/components/ui/PrimaryButton';
-import { palette, typography } from '@/constants/theme';
+import { palette, profileTypography, typography } from '@/constants/theme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { ExploreFeedResponseSchema } from '@shouldi/contracts';
 import { useQuery } from '@tanstack/react-query';
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
   },
   muted: {
-    color: palette.slate500,
+    color: profileTypography.subdued,
   },
   buttonLabel: {
     color: palette.white,

@@ -4,22 +4,40 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import Screen from '@/components/ui/Screen';
-import { palette, radius, spacing, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import {
+  palette,
+  profileNeutralStroke,
+  profileTypography,
+  radius,
+  spacing,
+  themeSurface,
+  typography,
+} from '@/constants/theme';
 
 import { useDecideWizard } from './context';
 
 export default function DecideDetailsScreen() {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   const { draft, updateDraft } = useDecideWizard();
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const ph = profileTypography.subdued;
 
   return (
     <Screen padded scroll>
-      <Text style={[typography.title, styles.pageTitle]}>Describe your decision</Text>
-      <Text style={[typography.body, styles.pageSubtitle]}>
+      <Text style={[typography.title, { color: surface.textDisplay }]}>Describe your decision</Text>
+      <Text style={[typography.body, { marginTop: 8, color: surface.textMuted }]}>
         Be specific. Better detail means better recommendation quality.
       </Text>
-      <Text style={[typography.caption, styles.progress]}>Step 2 of 3</Text>
-      <Text style={[typography.compact, styles.label]} accessibilityLabel="Decision headline input">
+      <Text style={[typography.caption, { marginTop: 8, color: surface.textMuted }]}>Step 2 of 3</Text>
+      <Text
+        style={[
+          typography.compact,
+          styles.labelBase,
+          { marginTop: 16, color: surface.textMuted },
+        ]}
+        accessibilityLabel="Decision headline input">
         Decision statement
       </Text>
       <TextInput
@@ -30,10 +48,15 @@ export default function DecideDetailsScreen() {
         accessibilityLabel="Headline describing your dilemma"
         onChangeText={(text) => updateDraft({ title: text })}
         placeholder="Example: Take the remote role with lower pay to reduce burnout."
-        placeholderTextColor={palette.slate500}
-        style={styles.inputLarge}
+        placeholderTextColor={ph}
+        style={[
+          styles.inputLarge,
+          { borderColor: profileNeutralStroke(0.14), color: surface.textDisplay },
+        ]}
       />
-      <Text style={[typography.compact, styles.label]}>Concrete constraints</Text>
+      <Text style={[typography.compact, styles.labelBase, { marginTop: 16, color: surface.textMuted }]}>
+        Concrete constraints
+      </Text>
       <TextInput
         multiline
         textAlignVertical="top"
@@ -42,8 +65,8 @@ export default function DecideDetailsScreen() {
         accessibilityLabel="Constraints field"
         onChangeText={(text) => updateDraft({ constraints: text })}
         placeholder="Timeline, runway, dependents, team risk, contractual limits..."
-        placeholderTextColor={palette.slate500}
-        style={styles.input}
+        placeholderTextColor={ph}
+        style={[styles.input, { borderColor: profileNeutralStroke(0.14), color: surface.textDisplay }]}
       />
 
       {!showAdvanced ? (
@@ -56,7 +79,9 @@ export default function DecideDetailsScreen() {
         </Text>
       ) : (
         <>
-          <Text style={[typography.compact, styles.label]}>Success signal (optional)</Text>
+          <Text style={[typography.compact, styles.labelBase, { marginTop: 16, color: surface.textMuted }]}>
+            Success signal (optional)
+          </Text>
           <TextInput
             multiline
             textAlignVertical="top"
@@ -64,8 +89,8 @@ export default function DecideDetailsScreen() {
             value={draft.successCriteria}
             onChangeText={(text) => updateDraft({ successCriteria: text })}
             placeholder="Name the subjective win in one or two sentences."
-            placeholderTextColor={palette.slate500}
-            style={styles.input}
+            placeholderTextColor={ph}
+            style={[styles.input, { borderColor: profileNeutralStroke(0.14), color: surface.textDisplay }]}
           />
         </>
       )}
@@ -83,20 +108,7 @@ export default function DecideDetailsScreen() {
 }
 
 const styles = StyleSheet.create({
-  pageTitle: {
-    color: palette.textOnCanvas,
-  },
-  pageSubtitle: {
-    marginTop: 8,
-    color: palette.textMutedOnCanvas,
-  },
-  progress: {
-    marginTop: 8,
-    color: palette.textMutedOnCanvas,
-  },
-  label: {
-    marginTop: 16,
-    color: palette.textMutedOnCanvas,
+  labelBase: {
     textTransform: 'uppercase',
     letterSpacing: 0.9,
     fontWeight: '600',
@@ -112,20 +124,16 @@ const styles = StyleSheet.create({
     minHeight: 110,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d9e3ff',
-    backgroundColor: palette.white,
+    backgroundColor: palette.sheet,
     padding: 14,
-    color: palette.slate950,
   },
   inputLarge: {
     marginTop: 8,
     minHeight: 120,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d9e3ff',
-    backgroundColor: palette.white,
+    backgroundColor: palette.sheet,
     padding: 14,
-    color: palette.slate950,
   },
   button: {
     fontWeight: '600',

@@ -23,7 +23,7 @@ import {
   reelDiscussStyles,
   totalVotesFromDistribution,
 } from '@/components/explore/ReelDiscussChrome';
-import { palette, radius, spacing, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, profileTypography, radius, spacing, typography } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
 const TEAM_STRIPES = [palette.accent, palette.mint, palette.playful, palette.accentBloom] as const;
@@ -358,7 +358,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                     ? 'Share evidence, timelines, or what would flip your stance—stay respectful.'
                     : 'Vote on Explore to unlock posting…'
                 }
-                placeholderTextColor={palette.slate500}
+                placeholderTextColor={profileTypography.subdued}
                 value={draft}
                 onChangeText={setDraft}
                 maxLength={2000}
@@ -525,7 +525,7 @@ function DiscussionPostCard({
               liked && styles.actionPillSelected,
               pressed && styles.actionPillPressed,
             ]}>
-            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? palette.accent : palette.slate500} />
+            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? palette.accent : profileTypography.subdued} />
             <Text style={[styles.actionPillLabel, liked && styles.actionPillLabelOn]}>{formatThumbDisplay(n)}</Text>
           </Pressable>
 
@@ -541,7 +541,7 @@ function DiscussionPostCard({
                 composerOpen && styles.replyPillOn,
                 pressed && styles.replyPillPressed,
               ]}>
-              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? palette.accent : palette.slate500} />
+              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? palette.accent : profileTypography.subdued} />
               <Text style={[styles.replyPillText, composerOpen && styles.replyPillTextOn]}>{composerOpen ? 'Close' : 'Reply'}</Text>
             </Pressable>
           ) : null}
@@ -558,7 +558,7 @@ function DiscussionPostCard({
             <Text style={styles.viewThreadBarLabel}>
               View full thread · {threadReplyTotal} {threadReplyTotal === 1 ? 'reply' : 'replies'}
             </Text>
-            <Ionicons name="chevron-forward" size={17} color={palette.slate500} />
+            <Ionicons name="chevron-forward" size={17} color={profileTypography.subdued} />
           </Pressable>
         ) : null}
 
@@ -567,7 +567,7 @@ function DiscussionPostCard({
             <TextInput
               accessibilityLabel={`Reply to ${post.authorName}`}
               placeholder={`Reply to ${post.authorName}…`}
-              placeholderTextColor={palette.slate500}
+              placeholderTextColor={profileTypography.subdued}
               style={styles.inlineReplyInput}
               multiline
               value={replyDraft}
@@ -633,7 +633,7 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingTop: 18,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(15,23,42,0.06)',
+    borderTopColor: profileNeutralStroke(0.06),
   },
   discussionTitleRow: {
     flexDirection: 'row',
@@ -659,10 +659,10 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 1.2,
     textTransform: 'uppercase',
-    color: palette.slate500,
+    color: profileTypography.subdued,
   },
   discussionTitle: {
-    color: palette.slate950,
+    color: profileTypography.ink,
     fontSize: 20,
     lineHeight: 26,
     fontWeight: '700',
@@ -670,7 +670,7 @@ const styles = StyleSheet.create({
   },
   discussionSub: {
     ...typography.body,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     lineHeight: 22,
     fontWeight: '500',
     opacity: 0.92,
@@ -696,7 +696,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.09)',
+    borderColor: profileNeutralStroke(0.09),
     backgroundColor: 'rgba(255,255,255,0.82)',
     maxWidth: 220,
     ...Platform.select({
@@ -726,7 +726,7 @@ const styles = StyleSheet.create({
   },
   filterChipText: {
     ...typography.compact,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     fontWeight: '600',
     flexShrink: 1,
   },
@@ -779,12 +779,12 @@ const styles = StyleSheet.create({
   teamBadgeText: {
     ...typography.compact,
     fontWeight: '700',
-    color: palette.slate900,
+    color: profileTypography.body,
     flexShrink: 1,
   },
   teamBadgeMeta: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     fontWeight: '600',
     marginLeft: 4,
   },
@@ -799,10 +799,10 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     backgroundColor: 'rgba(255,255,255,0.88)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: profileNeutralStroke(0.06),
     ...Platform.select({
       ios: {
-        shadowColor: '#0f172a',
+        shadowColor: profileTypography.ink,
         shadowOpacity: 0.04,
         shadowRadius: 12,
         shadowOffset: { width: 0, height: 3 },
@@ -823,12 +823,12 @@ const styles = StyleSheet.create({
   },
   threadAuthor: {
     fontWeight: '700',
-    color: palette.slate900,
+    color: profileTypography.body,
     flexShrink: 1,
   },
   threadTime: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     marginLeft: 4,
     fontWeight: '600',
   },
@@ -851,7 +851,7 @@ const styles = StyleSheet.create({
   },
   threadBody: {
     ...typography.body,
-    color: palette.slate900,
+    color: profileTypography.body,
     fontWeight: '400',
     lineHeight: 23,
     letterSpacing: -0.1,
@@ -871,7 +871,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.08)',
+    borderColor: profileNeutralStroke(0.08),
     backgroundColor: 'rgba(255,255,255,0.55)',
   },
   actionPillSelected: {
@@ -884,7 +884,7 @@ const styles = StyleSheet.create({
   actionPillLabel: {
     ...typography.caption,
     fontWeight: '700',
-    color: palette.slate500,
+    color: profileTypography.subdued,
     minWidth: 16,
   },
   actionPillLabelOn: {
@@ -898,7 +898,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.08)',
+    borderColor: profileNeutralStroke(0.08),
     backgroundColor: 'rgba(255,255,255,0.45)',
   },
   replyPillOn: {
@@ -911,7 +911,7 @@ const styles = StyleSheet.create({
   replyPillText: {
     ...typography.caption,
     fontWeight: '700',
-    color: palette.slate500,
+    color: profileTypography.subdued,
   },
   replyPillTextOn: {
     color: palette.accent,
@@ -921,7 +921,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     paddingLeft: 10,
     borderLeftWidth: 2,
-    borderLeftColor: 'rgba(15,23,42,0.06)',
+    borderLeftColor: profileNeutralStroke(0.06),
   },
   threadRowNested: {
     backgroundColor: 'rgba(255,255,255,0.8)',
@@ -930,15 +930,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     paddingVertical: 2,
     borderRadius: 6,
-    backgroundColor: 'rgba(15,23,42,0.05)',
+    backgroundColor: profileNeutralStroke(0.05),
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: profileNeutralStroke(0.06),
   },
   depthReplyBadgeText: {
     fontSize: 10,
     lineHeight: 13,
     fontWeight: '800',
-    color: palette.slate500,
+    color: profileTypography.subdued,
     letterSpacing: 0.3,
     textTransform: 'uppercase',
   },
@@ -956,7 +956,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingVertical: 11,
     ...typography.compact,
-    color: palette.slate900,
+    color: profileTypography.body,
   },
   inlineReplyActions: {
     flexDirection: 'row',
@@ -971,7 +971,7 @@ const styles = StyleSheet.create({
   inlineReplyGhostText: {
     ...typography.compact,
     fontWeight: '700',
-    color: palette.slate500,
+    color: profileTypography.subdued,
   },
   inlineReplyPrimary: {
     paddingHorizontal: 18,
@@ -1010,7 +1010,7 @@ const styles = StyleSheet.create({
     flex: 1,
     ...typography.compact,
     fontWeight: '700',
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     minWidth: 0,
   },
   threadModalRoot: {
@@ -1024,7 +1024,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingBottom: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(15,23,42,0.08)',
+    borderBottomColor: profileNeutralStroke(0.08),
   },
   threadModalClose: {
     paddingVertical: 8,
@@ -1043,7 +1043,7 @@ const styles = StyleSheet.create({
     flex: 1,
     ...typography.caption,
     fontWeight: '700',
-    color: palette.slate900,
+    color: profileTypography.body,
     textAlign: 'center',
     minWidth: 0,
   },
@@ -1063,16 +1063,16 @@ const styles = StyleSheet.create({
     gap: 6,
     backgroundColor: 'rgba(255,255,255,0.72)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
+    borderColor: profileNeutralStroke(0.07),
   },
   emptyTitle: {
     ...typography.compact,
     fontWeight: '700',
-    color: palette.slate900,
+    color: profileTypography.body,
   },
   emptySubtitle: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     lineHeight: 17,
     fontWeight: '500',
   },
@@ -1085,14 +1085,14 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     gap: 12,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(15,23,42,0.07)',
+    borderTopColor: profileNeutralStroke(0.07),
     borderRadius: radius.lg,
     backgroundColor: 'rgba(253,251,247,0.55)',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'rgba(255,255,255,0.65)',
     ...Platform.select({
       ios: {
-        shadowColor: '#0f172a',
+        shadowColor: profileTypography.ink,
         shadowOpacity: 0.05,
         shadowRadius: 16,
         shadowOffset: { width: 0, height: 4 },
@@ -1103,7 +1103,7 @@ const styles = StyleSheet.create({
   },
   composerEyebrow: {
     ...typography.caption,
-    color: palette.slate900,
+    color: profileTypography.body,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
@@ -1113,12 +1113,12 @@ const styles = StyleSheet.create({
     maxHeight: 168,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.09)',
+    borderColor: profileNeutralStroke(0.09),
     backgroundColor: 'rgba(255,255,255,0.94)',
     paddingHorizontal: spacing.sm,
     paddingVertical: 13,
     ...typography.body,
-    color: palette.slate900,
+    color: profileTypography.body,
     textAlignVertical: 'top',
   },
   postBtn: {
@@ -1152,11 +1152,11 @@ const styles = StyleSheet.create({
   needVoteTitle: {
     ...typography.compact,
     fontWeight: '800',
-    color: palette.slate900,
+    color: profileTypography.body,
   },
   needVoteBody: {
     ...typography.caption,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     lineHeight: 18,
     fontWeight: '500',
   },

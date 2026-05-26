@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { palette, typography } from '@/constants/theme';
+import { palette, profileTypography, typography } from '@/constants/theme';
 import type { Provenance } from '@shouldi/contracts';
 
 const labelMap: Record<Provenance, string> = {
   community_story: 'Community outcome',
   ai_framework: 'AI lens',
   curated_digest: 'Curated insight',
+  community_ai_validation: 'Validate AI',
 };
 
 type Props = { provenance: Provenance };
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     borderColor: '#cad6ff',
   },
   text: {
-    color: palette.slate900,
+    color: profileTypography.body,
     textTransform: 'uppercase',
     letterSpacing: 0.4,
   },

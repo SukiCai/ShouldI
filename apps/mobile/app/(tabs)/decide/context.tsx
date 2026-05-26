@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import * as React from 'react';
+import { Alert } from 'react-native';
 
 import { apiPostJson } from '@/lib/api';
 import {
@@ -16,9 +17,30 @@ export type DecideDraft = {
   title: string;
   constraints: string;
   successCriteria: string;
+  /** Yes/no crowd question — surfaced on Explore reel */
+  communityChallengeQuestion: string;
+  /** Harmence leaning headline */
+  communityAiVerdictLine: string;
+  /** Tradeoffs / risks / rationale — summarized for peers */
+  communityAiBecause: string;
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
+
+function hydrateCommunityFromBriefing(parsed: ChatResponse): Pick<
+  DecideDraft,
+  'communityAiVerdictLine' | 'communityAiBecause'
+> {
+  const first = parsed.sections[0];
+  const stitched = parsed.sections
+    .map((s) => (s.title ? `${s.title}\n${s.body}` : s.body))
+    .join('\n\n')
+    .trim();
+  return {
+    communityAiVerdictLine: first?.title?.trim() || 'Recommendation',
+    communityAiBecause: stitched.slice(0, 3200),
+  };
+}
 
 export type DecideWizardContextValue = {
   draft: DecideDraft;
@@ -26,7 +48,10 @@ export type DecideWizardContextValue = {
   reset(): void;
   lastResponse: ChatResponse | null;
   rememberResponse(parsed: ChatResponse): void;
+  /** Runs `/v1/chat`, hydrates Explore card preview fields, stays on Review briefing until you open full briefing. */
   submitBriefing(): Promise<void>;
+  /** Mock hand-off — wire to POST /requests later */
+  postCommunityValidationCard(): void;
   busy: boolean;
   error?: string | null;
 };
@@ -46,6 +71,9 @@ const blankDraft = (): DecideDraft => ({
   title: '',
   constraints: '',
   successCriteria: '',
+  communityChallengeQuestion: '',
+  communityAiVerdictLine: '',
+  communityAiBecause: '',
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {
@@ -58,8 +86,8 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
     AsyncStorage.getItem(STORAGE_KEY)
       .then((persisted) => {
         if (persisted) {
-          const parsed = JSON.parse(persisted) as DecideDraft;
-          setDraftState((previous) => ({ ...previous, ...parsed }));
+          const parsed = JSON.parse(persisted) as Partial<DecideDraft>;
+          setDraftState({ ...blankDraft(), ...parsed });
         }
       })
       .catch(() => null);
@@ -99,7 +127,11 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       const payload = await apiPostJson('/v1/chat', validated);
       const parsed = ChatResponseSchema.parse(payload);
       rememberResponse(parsed);
-      router.replace('/(tabs)/decide/result');
+      const hydrate = hydrateCommunityFromBriefing(parsed);
+      updateDraft({
+        ...hydrate,
+        communityAiBecause: hydrate.communityAiBecause.trim() || hydrate.communityAiBecause,
+      });
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went sideways.';
       setError(message);
@@ -112,7 +144,29 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
     draft.successCriteria,
     draft.title,
     rememberResponse,
+    updateDraft,
   ]);
+
+  const postCommunityValidationCard = React.useCallback(() => {
+    if (!draft.category || !draft.title.trim()) {
+      setError('Category and headline are required before posting.');
+      return;
+    }
+    if (
+      !draft.communityAiVerdictLine.trim() ||
+      !draft.communityAiBecause.trim() ||
+      !draft.communityChallengeQuestion.trim()
+    ) {
+      setError('Fill Harmence stance, rationale, and the yes/no challenge before sending to Explore.');
+      return;
+    }
+    setError(null);
+    Alert.alert(
+      'Sent to Explore',
+      'Peers will thumbs up/down on Harmence stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
+      [{ text: 'Open Explore', onPress: () => router.replace('/(tabs)/explore') }],
+    );
+  }, [draft]);
 
   const contextValue = React.useMemo<DecideWizardContextValue>(() => {
     return {
@@ -122,10 +176,21 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       lastResponse,
       rememberResponse,
       submitBriefing,
+      postCommunityValidationCard,
       busy,
       error,
     };
-  }, [busy, draft, error, lastResponse, rememberResponse, reset, submitBriefing, updateDraft]);
+  }, [
+    busy,
+    draft,
+    error,
+    lastResponse,
+    postCommunityValidationCard,
+    rememberResponse,
+    reset,
+    submitBriefing,
+    updateDraft,
+  ]);
 
   return <DecideWizardContext.Provider value={contextValue}>{children}</DecideWizardContext.Provider>;
 }

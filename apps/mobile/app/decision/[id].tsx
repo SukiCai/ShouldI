@@ -22,7 +22,7 @@ import {
   reelDiscussBackdropCategory,
   reelSurfaceGradientCoarse,
 } from '@/constants/reelSurfaceGradients';
-import { palette, spacing, typography } from '@/constants/theme';
+import { palette, profileTypography, spacing, typography } from '@/constants/theme';
 import { apiGetJson } from '@/lib/api';
 import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
 import { ExploreCardSchema } from '@shouldi/contracts';
@@ -433,7 +433,7 @@ const styles = StyleSheet.create({
   },
   onGradientTitle: {
     ...typography.title,
-    color: palette.slate950,
+    color: profileTypography.ink,
   },
   frostPanel: {
     backgroundColor: 'rgba(255,255,255,0.86)',
@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
   },
   threadTitle: {
     ...typography.hero,
-    color: palette.slate950,
+    color: profileTypography.ink,
     marginTop: 2,
     letterSpacing: -0.3,
     lineHeight: 36,
@@ -471,7 +471,7 @@ const styles = StyleSheet.create({
   },
   threadSub: {
     ...typography.compact,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     opacity: 0.95,
     marginTop: 2,
   },
@@ -526,12 +526,12 @@ const styles = StyleSheet.create({
   },
   discuss: {
     ...typography.body,
-    color: palette.slate900,
+    color: profileTypography.body,
   },
   label: {
     ...typography.caption,
     marginTop: spacing.xs,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
   },
@@ -568,7 +568,7 @@ const styles = StyleSheet.create({
   aiSuggestionNoteDetail: {
     ...typography.caption,
     marginTop: spacing.sm,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     lineHeight: 18,
   },
 });

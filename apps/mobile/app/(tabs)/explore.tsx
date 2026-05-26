@@ -21,6 +21,7 @@ export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
   const query = useQuery({
     queryKey: ['explore'],
     queryFn: async () => {
@@ -83,8 +84,17 @@ export default function ExploreScreen() {
           <Text style={[typography.body, styles.emptyBody, { color: surface.textMuted }]}>
             No live dilemmas in the reel right now. Flip to the Plot Deck for resolved arcs—or pull to refresh later.
           </Text>
-          <Pressable accessibilityRole="button" onPress={() => router.push('/plot-deck')} style={styles.plotDeckGhost}>
-            <Text style={styles.plotDeckGhostText}>Open Plot Deck</Text>
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push('/plot-deck')}
+            style={[
+              styles.plotDeckGhost,
+              {
+                backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : palette.sheet,
+                borderColor: surface.hairline,
+              },
+            ]}>
+            <Text style={[styles.plotDeckGhostText, { color: surface.textPrimary }]}>Open Plot Deck</Text>
             <Text style={styles.plotDeckGhostArrow}>→</Text>
           </Pressable>
         </View>
@@ -142,12 +152,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.chromeHairline,
-    backgroundColor: palette.sheet,
   },
   plotDeckGhostText: {
     ...typography.compact,
-    color: palette.slate900,
     fontWeight: '700',
   },
   plotDeckGhostArrow: {

@@ -128,23 +128,70 @@ export const radius = {
   md: 16,
 };
 
+/**
+ * Profile-tab (You) light neutrals + pastel accents — warm grays, not cool slate.
+ * Use with `themeSurface('light')`, `profileTypography`, and `profileNeutralStroke`.
+ */
+export const profileLight = {
+  /** Display name · hero ink — aligns with Profile `chrom.display` */
+  ink: '#353535',
+  /** Primary labels, stats, grid titles (`chrom.textPrimary`) */
+  body: '#4d4d4d',
+  /** Secondary lines (@, tagline, hints) — opaque so it reads like Profile, not washed out */
+  muted: 'rgba(72,72,72,0.88)',
+  tabInactive: 'rgba(72,72,72,0.5)',
+  tabTrack: 'rgba(91, 91, 91, 0.12)',
+  sky: '#49cdeb',
+  pink: '#ec7ab8',
+  mint: '#2dd4bf',
+  /** Wallet rate / pts emphasis */
+  emphasis: '#454545',
+  ctaOnGradient: '#141414',
+} as const;
+
+/** Stroke on Profile-aligned light chrome (RGB 91,91,91). Prefer over `rgba(15,23,42,…)`. */
+export function profileNeutralStroke(opacity: number): string {
+  return `rgba(91,91,91,${opacity})`;
+}
+
+/** Typography on light editorial / card chrome — matches Profile copy hierarchy. */
+export const profileTypography = {
+  ink: profileLight.ink,
+  body: profileLight.body,
+  muted: profileLight.muted,
+  /** ICONs / captions — match Profile grid title luminance (#4d…), not lighter gray */
+  subdued: profileLight.body,
+  emphasis: profileLight.emphasis,
+  /** Tertiary only; still darker than legacy #7a7a… */
+  faint: '#676767',
+} as const;
+
+export type ThemeSurface = ReturnType<typeof themeSurface>;
+
 /** Semantic surfaces for light vs dark canvas (Profile, Settings, Screen, tabs chrome). */
 export function themeSurface(scheme: 'light' | 'dark') {
   const isDark = scheme === 'dark';
+  const L = profileLight;
   return {
-    canvas: isDark ? palette.mist : '#f1f5f9',
-    canvasSecondary: isDark ? palette.nightWash : '#e2e8f0',
-    textPrimary: isDark ? palette.textOnCanvas : '#0f172a',
-    textMuted: isDark ? palette.textMutedOnCanvas : 'rgba(15,23,42,0.58)',
-    hairline: isDark ? palette.chromeHairline : 'rgba(15,23,42,0.1)',
+    canvas: isDark ? palette.mist : '#f7f9fb',
+    canvasSecondary: isDark ? palette.nightWash : '#eef1f4',
+    /** Primary body copy */
+    textPrimary: isDark ? palette.textOnCanvas : L.body,
+    /** Strong headlines / display */
+    textDisplay: isDark ? palette.textOnCanvas : L.ink,
+    textMuted: isDark ? palette.textMutedOnCanvas : L.muted,
+    hairline: isDark ? palette.chromeHairline : L.tabTrack,
     sheet: palette.sheet,
-    sheetBorder: isDark ? 'rgba(15,23,42,0.06)' : 'rgba(15,23,42,0.08)',
-    heroBorder: isDark ? palette.signUpMintHairline : 'rgba(15,23,42,0.1)',
-    tabBar: isDark ? palette.mist : '#f8fafc',
-    tabBarBorder: isDark ? palette.chromeHairline : 'rgba(15,23,42,0.08)',
-    inactiveTab: isDark ? palette.textMutedOnCanvas : 'rgba(15,23,42,0.45)',
+    sheetBorder: isDark ? 'rgba(15,23,42,0.06)' : profileNeutralStroke(0.09),
+    /** Lists / Premium GlassCard — never force pure white sheet on OLED (was invisible with light text tokens). */
+    groupedSurface: isDark ? 'rgba(255,255,255,0.08)' : palette.sheet,
+    groupedBorder: isDark ? palette.chromeHairline : profileNeutralStroke(0.09),
+    heroBorder: isDark ? palette.signUpMintHairline : profileNeutralStroke(0.12),
+    tabBar: isDark ? palette.mist : '#f9fafc',
+    tabBarBorder: isDark ? palette.chromeHairline : profileNeutralStroke(0.08),
+    inactiveTab: isDark ? palette.textMutedOnCanvas : L.tabInactive,
     statTileBg: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.95)',
-    statTileBorder: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.06)',
-    pressedOverlay: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)',
+    statTileBorder: isDark ? 'rgba(255,255,255,0.1)' : profileNeutralStroke(0.06),
+    pressedOverlay: isDark ? 'rgba(255,255,255,0.08)' : profileNeutralStroke(0.06),
   };
 }

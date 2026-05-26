@@ -24,6 +24,8 @@ export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
+  /** Light thumb on OLED reads as glowing; dial down when switch is off. */
+  const switchThumbOff = scheme === 'dark' ? '#585f68' : palette.sheet;
   const { preference, setPreference } = useAppearance();
 
   const [pushEnabled, setPushEnabled] = React.useState(true);
@@ -137,7 +139,7 @@ export default function SettingsScreen() {
               value={pushEnabled}
               onValueChange={setPushEnabled}
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
-              thumbColor={pushEnabled ? palette.neonMint : palette.sheet}
+              thumbColor={pushEnabled ? palette.neonMint : switchThumbOff}
             />
           </Row>
           <Row icon="envelope-o" title="Weekly digest" subtitle="Highlights from your circles" isLast={false}>
@@ -146,7 +148,7 @@ export default function SettingsScreen() {
               value={emailDigest}
               onValueChange={setEmailDigest}
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
-              thumbColor={emailDigest ? palette.neonMint : palette.sheet}
+              thumbColor={emailDigest ? palette.neonMint : switchThumbOff}
             />
           </Row>
           <Row icon="at" title="Mentions & tags" subtitle="When someone references you" isLast>
@@ -155,7 +157,7 @@ export default function SettingsScreen() {
               value={mentionAlerts}
               onValueChange={setMentionAlerts}
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
-              thumbColor={mentionAlerts ? palette.neonMint : palette.sheet}
+              thumbColor={mentionAlerts ? palette.neonMint : switchThumbOff}
             />
           </Row>
         </GlassCard>

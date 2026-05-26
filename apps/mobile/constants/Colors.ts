@@ -1,14 +1,14 @@
-import { palette } from './theme';
+import { palette, profileLight } from './theme';
 
-const tintColorLight = palette.neonMint;
+const tintColorLight = profileLight.sky;
 const tintColorDark = palette.neonMint;
 
 export default {
   light: {
-    text: palette.slate950,
+    text: profileLight.body,
     background: palette.sheet,
     tint: tintColorLight,
-    tabIconDefault: 'rgba(15,23,42,0.42)',
+    tabIconDefault: profileLight.tabInactive,
     tabIconSelected: tintColorLight,
   },
   dark: {

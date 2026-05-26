@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
-import { palette, radius, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import { palette, profileNeutralStroke, radius, themeSurface, typography } from '@/constants/theme';
 
 type Props = PropsWithChildren<{
   selected?: boolean;
@@ -10,14 +11,28 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function Chip({ children, selected, onPress, accessibilityLabel }: Props) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
+
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={[styles.shell, selected ? styles.shellSelected : undefined]}>
-      <Text style={[typography.compact, selected ? styles.labelSelected : styles.label]}>{children}</Text>
+      style={[
+        styles.shell,
+        {
+          backgroundColor: surface.groupedSurface,
+          borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.18),
+        },
+        selected ? styles.shellSelected : undefined,
+      ]}>
+      <Text
+        style={[typography.compact, selected ? styles.labelSelected : { color: surface.textPrimary, textAlign: 'center' }]}>
+        {children}
+      </Text>
     </Pressable>
   );
 }
@@ -28,16 +43,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.slate500,
-    backgroundColor: palette.white,
   },
   shellSelected: {
     backgroundColor: palette.accent + '26',
     borderColor: palette.accent,
-  },
-  label: {
-    color: palette.slate950,
-    textAlign: 'center',
   },
   labelSelected: {
     color: palette.accent,

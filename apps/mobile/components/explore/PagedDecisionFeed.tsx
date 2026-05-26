@@ -29,7 +29,7 @@ import {
   LiveVotesPill,
   InlineDistributionTrack,
 } from '@/components/explore/ReelDiscussChrome';
-import { palette, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, profileTypography, typography } from '@/constants/theme';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
 
@@ -100,6 +100,45 @@ export type PagedDecisionFeedProps = {
 function shorten(text: string, max = 150): string {
   if (text.length <= max) return text;
   return `${text.slice(0, max).trimEnd()}…`;
+}
+
+function AiValidationCrowdStrip({
+  v,
+}: {
+  v: NonNullable<ExploreFeedCard['aiValidation']>;
+}) {
+  const [bump, setBump] = React.useState({ up: 0, down: 0 });
+  const upTotal = v.agreeWithAiVotes + bump.up;
+  const downTotal = v.disagreeWithAiVotes + bump.down;
+  return (
+    <View style={styles.aiValBlock} accessibilityRole="summary">
+      <Text style={styles.aiValEyebrow}>Validate Harmence · peer check on AI stance</Text>
+      <Text style={styles.aiValVerdict}>{v.verdictLine}</Text>
+      <Text style={[typography.body, styles.aiValBecause]}>{shorten(v.verdictBecause, 340)}</Text>
+      <Text style={styles.aiValThumbExplain}>Do you agree this leaning fits the story above?</Text>
+      <View style={styles.aiValThumbsRow}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`Agree with AI leaning, ${upTotal} votes`}
+          hitSlop={8}
+          onPress={() => setBump((prev) => ({ ...prev, up: prev.up + 1 }))}
+          style={({ pressed }) => [styles.aiValThumbBtn, pressed && styles.aiValThumbPressed]}>
+          <Ionicons name="thumbs-up-outline" size={18} color={profileTypography.body} />
+          <Text style={styles.aiValThumbCount}>{upTotal}</Text>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`Disagree with AI leaning, ${downTotal} votes`}
+          hitSlop={8}
+          onPress={() => setBump((prev) => ({ ...prev, down: prev.down + 1 }))}
+          style={({ pressed }) => [styles.aiValThumbBtn, pressed && styles.aiValThumbPressed]}>
+          <Ionicons name="thumbs-down-outline" size={18} color={profileTypography.body} />
+          <Text style={styles.aiValThumbCount}>{downTotal}</Text>
+        </Pressable>
+      </View>
+      <Text style={styles.aiValChallengeEyebrow}>Yes / no challenge for strangers</Text>
+    </View>
+  );
 }
 
 function totalVotesFromCard(card: ExploreFeedCard): number {
@@ -256,7 +295,7 @@ function BouncySwipeCue({
     <View style={styles.swipeCueCluster} accessibilityRole="text">
       <Animated.View style={{ opacity: arrowOpacity, transform: [{ translateY: arrowY }] }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <View style={styles.swipeCueOrb}>
-          <Ionicons name="chevron-up" size={21} color={palette.slate500} />
+          <Ionicons name="chevron-up" size={21} color={profileTypography.subdued} />
         </View>
       </Animated.View>
       <Text style={[typography.compact, styles.scrollCue]}>{line}</Text>
@@ -439,6 +478,7 @@ export function PagedDecisionFeed({
                       onToggleSave={() => toggleSaveForCard(item)}
                       onToggleFollow={() => toggleFollowForCard(item)}
                     />
+                    {item.aiValidation ? <AiValidationCrowdStrip v={item.aiValidation} /> : null}
                     <View style={reelDiscussStyles.pollQuestionRow}>
                       <Text
                         accessibilityRole="header"
@@ -651,15 +691,83 @@ const styles = StyleSheet.create({
 
   pickPrompt: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     fontWeight: '500',
     marginTop: 8,
     marginBottom: 6,
     lineHeight: 18,
     letterSpacing: 0.08,
   },
+  aiValBlock: {
+    marginHorizontal: 4,
+    marginBottom: 10,
+    padding: 14,
+    borderRadius: 18,
+    backgroundColor: 'rgba(249,250,251,0.98)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.07),
+    gap: 8,
+  },
+  aiValEyebrow: {
+    ...typography.caption,
+    fontWeight: '700',
+    letterSpacing: 0.4,
+    color: profileTypography.subdued,
+    textTransform: 'uppercase',
+  },
+  aiValVerdict: {
+    ...typography.h2,
+    color: profileTypography.body,
+    fontWeight: '700',
+    letterSpacing: -0.3,
+  },
+  aiValBecause: {
+    color: profileTypography.emphasis,
+    lineHeight: 23,
+  },
+  aiValThumbExplain: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '600',
+    marginTop: 4,
+  },
+  aiValThumbsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    marginTop: 6,
+  },
+  aiValThumbBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    backgroundColor: '#ffffff',
+  },
+  aiValThumbPressed: {
+    opacity: 0.88,
+    transform: [{ scale: 0.98 }],
+  },
+  aiValThumbCount: {
+    ...typography.compact,
+    fontWeight: '800',
+    color: profileTypography.body,
+    minWidth: 28,
+  },
+  aiValChallengeEyebrow: {
+    ...typography.caption,
+    fontWeight: '700',
+    color: palette.neonMint,
+    marginTop: 6,
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
   pollPhaseCaption: {
-    color: palette.slate500,
+    color: profileTypography.subdued,
     lineHeight: 18,
     marginTop: 0,
     marginBottom: 0,
@@ -668,7 +776,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.15,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(15,23,42,0.055)',
+    borderTopColor: profileNeutralStroke(0.055),
   },
   aiSuggestionCallout: {
     marginTop: 6,
@@ -676,7 +784,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: profileNeutralStroke(0.06),
     gap: 6,
     ...Platform.select({
       ios: {
@@ -693,22 +801,22 @@ const styles = StyleSheet.create({
     ...typography.caption,
     fontWeight: '600',
     letterSpacing: 0.55,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     textTransform: 'none',
   },
   aiSuggestionBody: {
     ...typography.compact,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     fontWeight: '500',
     lineHeight: 21,
   },
   aiSuggestionEmphasis: {
     fontWeight: '700',
-    color: palette.slate900,
+    color: profileTypography.body,
   },
   aiSuggestionNote: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     lineHeight: 17,
     marginTop: 2,
     fontWeight: '500',
@@ -717,11 +825,11 @@ const styles = StyleSheet.create({
     marginTop: 4,
     paddingTop: 14,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(15,23,42,0.06)',
+    borderTopColor: profileNeutralStroke(0.06),
     gap: 8,
   },
   outcomeEyebrow: {
-    color: palette.slate500,
+    color: profileTypography.subdued,
     fontWeight: '600',
     textTransform: 'none',
     letterSpacing: 0.08,
@@ -729,7 +837,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   outcomeText: {
-    color: palette.slate900,
+    color: profileTypography.body,
     fontWeight: '500',
     lineHeight: 24,
     marginBottom: 2,
@@ -737,20 +845,20 @@ const styles = StyleSheet.create({
   lessonEyebrow: {
     marginTop: 8,
     marginBottom: 2,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     fontWeight: '600',
     fontSize: 12,
     textTransform: 'none',
     letterSpacing: 0.08,
   },
   lessonText: {
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     lineHeight: 22,
     fontWeight: '400',
   },
   scrollCue: {
     textAlign: 'center',
-    color: palette.slate500,
+    color: profileTypography.subdued,
     paddingHorizontal: 12,
     lineHeight: 21,
     fontWeight: '500',
@@ -772,7 +880,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(255,255,255,0.95)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.08)',
+    borderColor: profileNeutralStroke(0.08),
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',

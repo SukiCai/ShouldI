@@ -2,7 +2,7 @@ import type { PropsWithChildren, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, radius, spacing, themeSurface, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, radius, spacing, themeSurface, typography } from '@/constants/theme';
 import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 
 export function GradientHero({
@@ -25,7 +25,7 @@ export function GradientHero({
       </View>
       <View style={{ flex: 1, zIndex: 1 }}>
         {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
-        <Text style={[typography.title, styles.heroHeadline, { color: surface.textPrimary }]}>{title}</Text>
+        <Text style={[typography.title, styles.heroHeadline, { color: surface.textDisplay }]}>{title}</Text>
         {subtitle ? <Text style={[styles.heroSub, { color: surface.textMuted }]}>{subtitle}</Text> : null}
       </View>
       {right ? (
@@ -39,7 +39,18 @@ export function GlassCard({ children, style }: PropsWithChildren<{ style?: Style
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   return (
-    <View style={[styles.card, styles.cardShadow, { borderColor: surface.sheetBorder }, style]}>{children}</View>
+    <View
+      style={[
+        styles.card,
+        styles.cardShadow,
+        {
+          backgroundColor: surface.groupedSurface,
+          borderColor: surface.groupedBorder,
+        },
+        style,
+      ]}>
+      {children}
+    </View>
   );
 }
 
@@ -48,7 +59,7 @@ export function SectionHeader({ title, right }: { title: string; right?: string 
   const surface = themeSurface(scheme);
   return (
     <View style={styles.sectionHeader}>
-      <Text style={[styles.sectionTitle, { color: surface.textPrimary }]}>{title}</Text>
+      <Text style={[styles.sectionTitle, { color: surface.textDisplay }]}>{title}</Text>
       {right ? <Text style={[styles.sectionRight, { color: surface.textMuted }]}>{right}</Text> : null}
     </View>
   );
@@ -63,14 +74,28 @@ export function PillTag({
   tone?: 'neutral' | 'brand' | 'good';
   style?: StyleProp<ViewStyle>;
 }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
+  const neutralTone =
+    tone === 'neutral'
+      ? {
+          backgroundColor: isDark ? 'rgba(255,255,255,0.09)' : palette.field,
+          borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.14),
+        }
+      : null;
   const toneStyle =
-    tone === 'brand' ? styles.pillBrand : tone === 'good' ? styles.pillGood : styles.pillNeutral;
+    tone === 'brand' ? styles.pillBrand : tone === 'good' ? styles.pillGood : neutralTone;
   return (
     <View style={[styles.pill, toneStyle, style]}>
       <Text
         style={[
           styles.pillTextBase,
-          tone === 'neutral' ? styles.pillTxtNeutral : tone === 'brand' ? styles.pillTxtBrand : styles.pillTxtGood,
+          tone === 'neutral'
+            ? { color: surface.textPrimary }
+            : tone === 'brand'
+              ? styles.pillTxtBrand
+              : styles.pillTxtGood,
         ]}>
         {label}
       </Text>
@@ -97,8 +122,8 @@ export function GhostAction({
       style={[
         styles.ghostBtn,
         {
-          borderColor: isDark ? 'rgba(255,255,255,0.16)' : 'rgba(15,23,42,0.12)',
-          backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.04)',
+          borderColor: isDark ? 'rgba(255,255,255,0.16)' : profileNeutralStroke(0.14),
+          backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : profileNeutralStroke(0.04),
         },
       ]}
       onPress={onPress}>
@@ -150,7 +175,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   card: {
-    backgroundColor: palette.sheet,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
     padding: spacing.md,
@@ -192,10 +216,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     alignSelf: 'flex-start',
   },
-  pillNeutral: {
-    backgroundColor: palette.field,
-    borderColor: palette.slate200,
-  },
   pillBrand: {
     backgroundColor: `${palette.neonSky}26`,
     borderColor: `${palette.neonSky}55`,
@@ -207,9 +227,6 @@ const styles = StyleSheet.create({
   pillTextBase: {
     ...typography.caption,
     fontWeight: '600',
-  },
-  pillTxtNeutral: {
-    color: palette.slate900,
   },
   pillTxtBrand: {
     color: '#06202c',

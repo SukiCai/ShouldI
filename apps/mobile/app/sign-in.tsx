@@ -24,7 +24,7 @@ export default function SignInScreen() {
     <GenZAuthChrome
       appearance="oled"
       heroAvatars={HERO_AVATAR_CLUSTER}
-      headline={`Let's get you\nsigned in!`}
+      headline={"AI can answer. Humans validate."}
       heroBadge="SHOULDI"
       footerCtaLabel="Sign In"
       footerCtaAccessibilityLabel="Sign in"

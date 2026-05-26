@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { AuthFields } from '@/components/auth/GenZAuthChrome';
-import { palette } from '@/constants/theme';
+import { palette, profileTypography } from '@/constants/theme';
 
 type Props = {
   phone: string;
@@ -66,14 +66,14 @@ export function AuthCredentialFields({
           onPress={() => void vibe().then(() => Alert.alert('Country picker', 'More regions ship soon.'))}>
           <Text style={AuthFields.countryEmoji}>🇺🇸</Text>
           <Text style={AuthFields.countryCode}>+1</Text>
-          <Ionicons name="chevron-down" size={17} color={palette.slate500} />
+          <Ionicons name="chevron-down" size={17} color={profileTypography.subdued} />
         </Pressable>
 
         <View style={[AuthFields.inputPill, phoneFocus ? AuthFields.controlFocused : null]}>
           <TextInput
             value={phone}
             placeholder="––– ––– ––––"
-            placeholderTextColor={`${palette.slate500}c4`}
+            placeholderTextColor={`${profileTypography.subdued}c4`}
             onChangeText={(raw) => onPhoneChange(formatUsPhoneDigits(raw))}
             keyboardType="phone-pad"
             autoCorrect={false}
@@ -94,7 +94,7 @@ export function AuthCredentialFields({
           <TextInput
             value={password}
             placeholder="Password"
-            placeholderTextColor={`${palette.slate500}c4`}
+            placeholderTextColor={`${profileTypography.subdued}c4`}
             onChangeText={onPasswordChange}
             secureTextEntry={!showPassword}
             accessibilityLabel="Password"
@@ -116,7 +116,7 @@ export function AuthCredentialFields({
               void vibe();
               onToggleShowPassword();
             }}>
-            <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={22} color={palette.slate500} />
+            <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={22} color={profileTypography.subdued} />
           </Pressable>
         </View>
       </View>

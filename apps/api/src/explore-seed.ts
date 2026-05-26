@@ -5,6 +5,44 @@ type ExploreCardDraft = Omit<ExploreCard, 'discussionPosts'>;
 /** 留学生与海外华裔高共鸣题库：身分路线、择校求职、家庭经济、归属感与心理健康；用户可见正文全中文（内部字段键名除外）。 */
 const exploreCardsBase: ExploreCardDraft[] = [
   {
+    id: 'seed-ai-validation-1',
+    category: 'career',
+    status: 'open',
+    author: { id: 'u-shouldi-demo', name: '匿名决策者', avatarEmoji: '🛰️' },
+    question:
+      '在课业许可还能覆盖实习窗口的前提下，我应该优先押「先实习摸清行业」还是「直接冲有身分担保的全职」？',
+    options: [
+      { id: 'yes', label: '是，先实习再决定押哪条全职' },
+      { id: 'no', label: '否，我更该直接押担保全职' },
+    ],
+    distribution: [
+      { optionId: 'yes', votes: 156 },
+      { optionId: 'no', votes: 89 },
+    ],
+    discussionPreview: [
+      'Harmence 把「合法实习小时」写进前提，很多人漏看这条硬杠。',
+      '家人要的是确定性——把 8–12 周试验讲清，往往比空喊「我会努力」有用。',
+    ],
+    rewardPoints: 18,
+    savedByMe: false,
+    followedByMe: false,
+    notifiedOnOutcome: false,
+    hook: '我把 Harmence 草稿贴进 Explore，只想知道陌生人敢不敢和我拍同一侧。',
+    tension: '实习像拖延，可对很多人是唯一不伤身分的试探；全职像标准答案，抽签失手就是断崖。',
+    provenance: 'community_ai_validation',
+    matchHint: '验证 AI 立场 + 众人按踩 · 海外求职经典张力',
+    aiSuggestedOptionId: 'yes',
+    aiSuggestionNote:
+      '若体面的实习谈话已在进行，把它当成信息期权，常常比空等抽签更能说服家里与时间线。',
+    aiValidation: {
+      verdictLine: 'Lean yes — 先实习再锁全职',
+      verdictBecause:
+        '在课业许可仍覆盖实习的前提下，用 8–12 周试岗换行业与人际信号，比一次性 all-in 担保全职更能降低「错赛道 + 身分卡死」联合风险。前提是每周小时数与 CPT/学期规则已书面核对。',
+      agreeWithAiVotes: 156,
+      disagreeWithAiVotes: 89,
+    },
+  },
+  {
     id: 'seed-money-1',
     category: 'money',
     status: 'resolved',

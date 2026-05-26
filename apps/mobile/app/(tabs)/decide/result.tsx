@@ -4,7 +4,8 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import Screen from '@/components/ui/Screen';
-import { palette, spacing, typography } from '@/constants/theme';
+import { palette, spacing, themeSurface, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
 
 import { useDecideWizard } from './context';
 
@@ -20,12 +21,15 @@ const statusHeadline: Record<'stub' | 'embedded' | 'ready' | 'error', string> = 
 };
 
 export default function DecideResultScreen() {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
   const { lastResponse, reset } = useDecideWizard();
 
   if (!lastResponse) {
     return (
       <Screen padded>
-        <Text style={[typography.body, { color: palette.textOnCanvas }]}>No briefing yet.</Text>
+        <Text style={[typography.body, { color: surface.textPrimary }]}>No briefing yet.</Text>
         <PrimaryButton onPress={() => router.replace('/(tabs)/decide')}>
           <Text style={{ color: palette.white }}>Start over</Text>
         </PrimaryButton>
@@ -43,7 +47,14 @@ export default function DecideResultScreen() {
         subtitle="Final output from your intake flow."
         right={<PillTag label={`Thread ${threadId}`} tone="brand" />}
       />
-      <GlassCard style={styles.statusCard}>
+      <GlassCard
+        style={[
+          styles.statusCard,
+          {
+            backgroundColor: isDark ? `${palette.neonMint}14` : '#f3fcf8',
+            borderColor: isDark ? `${palette.neonMint}40` : '#d5efdf',
+          },
+        ]}>
         <Text style={[typography.caption, styles.micro]} accessibilityRole="alert">
           {statusHeadline[hermesStatus]}
         </Text>
@@ -52,17 +63,17 @@ export default function DecideResultScreen() {
       <ScrollView contentContainerStyle={{ paddingBottom: spacing.lg }}>
         {sections.map((section) => (
           <GlassCard key={section.id} style={styles.section}>
-            <Text style={[typography.compact, styles.labelCaps]}>{section.title}</Text>
-            <Text style={[typography.body, styles.body]} selectable>
+            <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>{section.title}</Text>
+            <Text style={[typography.body, { ...styles.body, color: surface.textPrimary }]} selectable>
               {section.body}
             </Text>
           </GlassCard>
         ))}
-        <Text style={[typography.caption, styles.disclaimer]}>{disclaimer}</Text>
+        <Text style={[typography.caption, styles.disclaimer, { color: surface.textMuted }]}>{disclaimer}</Text>
       </ScrollView>
 
       <View style={{ marginVertical: spacing.md }}>
-        <Text style={[typography.compact, styles.labelCaps]}>Keep momentum</Text>
+        <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>Keep momentum</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 10 }}>
           {continuitySuggestions.map((label) => (
             <TouchableOpacity
@@ -75,8 +86,16 @@ export default function DecideResultScreen() {
                   pathname: '/(tabs)/explore',
                 })
               }
-              style={styles.pillSecondary}>
-              <Text style={[typography.compact]} numberOfLines={1}>{label}</Text>
+              style={[
+                styles.pillSecondary,
+                isDark && {
+                  borderColor: palette.chromeHairline,
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                },
+              ]}>
+              <Text style={[typography.compact, { color: surface.textPrimary }]} numberOfLines={1}>
+                {label}
+              </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -92,6 +111,14 @@ export default function DecideResultScreen() {
         <Text style={{ color: palette.white, fontWeight: '600', fontSize: 16 }}>
           Continue to Explore
         </Text>
+      </PrimaryButton>
+
+      <PrimaryButton
+        variant="ghost"
+        style={{ marginTop: spacing.sm }}
+        onPress={() => router.push('/(tabs)/decide/confirm')}
+        accessibilityLabel="Fine tune Explore validation card">
+        <Text style={{ color: palette.accentBloom, fontWeight: '700' }}>Adjust Explore validation card</Text>
       </PrimaryButton>
 
       <PrimaryButton
@@ -116,8 +143,6 @@ const styles = StyleSheet.create({
   },
   statusCard: {
     marginTop: spacing.sm,
-    backgroundColor: '#f3fcf8',
-    borderColor: '#d5efdf',
   },
   section: {
     marginTop: spacing.md,
@@ -126,15 +151,12 @@ const styles = StyleSheet.create({
   labelCaps: {
     letterSpacing: 1,
     textTransform: 'uppercase',
-    color: palette.textMutedOnCanvas,
   },
   body: {
-    color: palette.slate900,
     lineHeight: 22,
   },
   disclaimer: {
     marginTop: spacing.sm,
-    color: palette.textMutedOnCanvas,
     lineHeight: 18,
   },
   pillSecondary: {

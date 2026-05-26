@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-import { palette, radius, typography } from '@/constants/theme';
+import { palette, profileTypography, radius, typography } from '@/constants/theme';
 
 type Mode = 'sign-up' | 'sign-in';
 
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontWeight: '600',
     letterSpacing: 0.2,
-    color: palette.slate950,
+    color: profileTypography.ink,
   },
   dividerRow: {
     flexDirection: 'row',
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.35,
     textTransform: 'uppercase',
     fontWeight: '600',
-    color: palette.slate500,
+    color: profileTypography.subdued,
     paddingHorizontal: 2,
   },
 });

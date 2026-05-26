@@ -9,6 +9,10 @@ Deployable or long-running applications in this monorepo.
 
 Do not nest shared libraries inside `apps/`; place reusable code under **`packages/`** and consume it via workspace dependencies.
 
+### Mobile UI palette
+
+Light-mode copy and hairlines match **Profile (You)** — warm neutrals live in **`apps/mobile/constants/theme.ts`** (`profileLight`, `profileTypography`, `profileNeutralStroke`) and **`themeSurface()`** (`textDisplay`, `textPrimary`, `textMuted`). Prefer those over cool slate literals on pastel chrome. In **dark** mode, **`themeSurface().groupedSurface` / `groupedBorder`** drive **`GlassCard`** and similar panels — do not use **`palette.sheet` (white)** as a card fill when copy uses **`textPrimary` (white)**.
+
 ---
 
 ## Product trajectory (confidence, not generic intelligence)

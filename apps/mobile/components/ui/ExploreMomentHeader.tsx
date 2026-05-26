@@ -12,8 +12,9 @@ import {
 } from 'react-native';
 
 import { ShouldILogoMark } from '@/components/branding/ShouldILogo';
+import { useColorScheme } from '@/components/useColorScheme';
 import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
-import { palette, typography } from '@/constants/theme';
+import { palette, profileLight, profileTypography, typography } from '@/constants/theme';
 
 function rgba255(r: number, g: number, b: number, a: number): string {
   return `rgba(${r},${g},${b},${a})`;
@@ -102,15 +103,30 @@ function MinimalExploreBar({
   const countLabel =
     caseCount === 1 ? '1 live dilemma' : `${caseCount.toLocaleString()} live dilemmas`;
 
+  const scheme = useColorScheme();
+  const isDark = scheme === 'dark';
+  /** Profile tab strip uses sky, not neon mint — calmer on light canvas. */
+  const accentOnChrome = isDark ? palette.neonMint : profileLight.sky;
+
   return (
     <View accessibilityRole="header" accessibilityLabel={`ShouldI explore · ${countLabel}. Swipe up on the reel to vote.`}>
       <View style={minimalStyles.row}>
         <View style={minimalStyles.leftCluster}>
-          <View style={minimalStyles.logoMarkWrap} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+          <View
+            style={[
+              minimalStyles.logoMarkWrap,
+              isDark ? minimalStyles.logoMarkWrapDark : minimalStyles.logoMarkWrapLight,
+            ]}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants">
             <ShouldILogoMark size={26} />
           </View>
-          <Text style={minimalStyles.title}>Explore</Text>
-          <View style={minimalStyles.livePill} accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
+          <Text style={[minimalStyles.title, { color: isDark ? palette.textOnCanvas : profileTypography.ink }]}>
+            Explore
+          </Text>
+          <View
+            style={[minimalStyles.livePill, { borderColor: `${accentOnChrome}55` }]}
+            accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
             {!reduceMotion ? (
               <Animated.View style={[minimalStyles.liveDot, { opacity: liveDotOpacity }]} />
             ) : (
@@ -127,7 +143,7 @@ function MinimalExploreBar({
             onPress={footerLink.onPress}
             hitSlop={{ top: 10, bottom: 10, left: 8, right: 8 }}
             style={({ pressed }) => [minimalStyles.plotLinkWrap, pressed && minimalStyles.plotLinkPressed]}>
-            <Text style={minimalStyles.plotLinkText}>{footerLink.label}</Text>
+            <Text style={[minimalStyles.plotLinkText, { color: accentOnChrome }]}>{footerLink.label}</Text>
           </Pressable>
         ) : null}
       </View>
@@ -240,6 +256,8 @@ const minimalStyles = StyleSheet.create({
     flexShrink: 0,
     borderRadius: 8,
     overflow: 'visible',
+  },
+  logoMarkWrapDark: {
     ...Platform.select({
       ios: {
         shadowColor: palette.neonSky,
@@ -251,12 +269,23 @@ const minimalStyles = StyleSheet.create({
       default: {},
     }),
   },
+  logoMarkWrapLight: {
+    ...Platform.select({
+      ios: {
+        shadowColor: '#505050',
+        shadowOpacity: 0.14,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 1 },
+      },
+      android: { elevation: 1 },
+      default: {},
+    }),
+  },
   title: {
     fontSize: 15,
     lineHeight: 19,
     fontWeight: '700',
     letterSpacing: -0.35,
-    color: palette.textOnCanvas,
   },
   livePill: {
     flexDirection: 'row',
@@ -266,7 +295,6 @@ const minimalStyles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonMint}40`,
     backgroundColor: palette.sheet,
     flexShrink: 0,
   },
@@ -286,7 +314,7 @@ const minimalStyles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     letterSpacing: -0.35,
-    color: palette.slate950,
+    color: profileTypography.ink,
     fontVariant: ['tabular-nums'],
   },
   plotLinkWrap: {
@@ -306,7 +334,6 @@ const minimalStyles = StyleSheet.create({
     lineHeight: 16,
     fontWeight: '700',
     letterSpacing: 0.15,
-    color: palette.neonMint,
     textAlign: 'right',
   },
 });

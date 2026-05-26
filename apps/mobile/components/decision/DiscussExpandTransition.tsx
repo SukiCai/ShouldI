@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   scrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#383838',
     zIndex: 0,
   },
 });

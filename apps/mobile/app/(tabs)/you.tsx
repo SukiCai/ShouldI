@@ -29,7 +29,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Screen from '@/components/ui/Screen';
+import { resolveYouChromatics } from '@/constants/appChromatics';
 import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
+
+/**
+ * Light pastel accents — must match {@link profileLight} in `constants/theme.ts`.
+ * Kept as file-local literals so Hermes doesn't hit flaky tab-bundle init ordering on `.sky`/`.pink` reads.
+ */
+const PROFILE_TAB_LIGHT = {
+  sky: '#49cdeb',
+  pink: '#ec7ab8',
+  mint: '#2dd4bf',
+} as const;
 
 const AVATAR = require('@/constants/users/user-char-01.png');
 
@@ -42,132 +53,9 @@ const DEMO_STATS = {
   likesReceived: 942,
   /** Lifetime points from votes, decisions, and milestones */
   pointsEarned: 2450,
+  /** Subset credited when others validate your threads, boosts, referrals, etc. (demo split). */
+  pointsFromOthers: 620,
 } as const;
-
-/** Cash-out / redemption rate shown in UI: this many points = US $1 */
-const POINTS_PER_USD = 10;
-
-/**
- * Light-mode You tab — neutral Gen Z gray copy (#5b5b5b) + sky / pink / mint accents.
- */
-const YOU_LIGHT = {
-  /** Display name, gear */
-  ink: '#3d3d3d',
-  /** Primary labels, stats, card titles */
-  body: '#5b5b5b',
-  /** Secondary lines, live label */
-  muted: 'rgba(91, 91, 91, 0.68)',
-  sky: '#49cdeb',
-  pink: '#ec7ab8',
-  mint: '#2dd4bf',
-  /** Wallet USD / rate — slightly stronger gray */
-  emphasis: '#4a4a4a',
-  tabInactive: 'rgba(91, 91, 91, 0.4)',
-  tabTrack: 'rgba(91, 91, 91, 0.12)',
-} as const;
-
-type YouChromatics = {
-  textPrimary: string;
-  textMuted: string;
-  display: string;
-  sky: string;
-  pink: string;
-  mint: string;
-  tabActive: string;
-  tabInactive: string;
-  tabUnderline: string;
-  tabTrack: string;
-  linkSignIn: string;
-  linkJoin: string;
-  walletUsd: string;
-  walletRate: string;
-  walletDisc: string;
-  walletRateBg: string;
-  walletRateBorder: string;
-  ctaOnGradient: string;
-  liveDot: string;
-  liveText: string;
-  liveBorder: string;
-  liveBg: string;
-  gearIcon: string;
-};
-
-function youChromatics(isDark: boolean, surface?: ReturnType<typeof themeSurface>): YouChromatics {
-  const s = surface ?? themeSurface(isDark ? 'dark' : 'light');
-  if (isDark) {
-    return {
-      textPrimary: s.textPrimary,
-      textMuted: s.textMuted,
-      display: s.textPrimary,
-      sky: palette.neonSky,
-      pink: palette.neonPink,
-      mint: palette.neonMint,
-      tabActive: s.textPrimary,
-      tabInactive: s.textMuted,
-      tabUnderline: palette.neonMint,
-      tabTrack: s.hairline,
-      linkSignIn: palette.neonSky,
-      linkJoin: palette.neonMint,
-      walletUsd: palette.neonMint,
-      walletRate: palette.neonMint,
-      walletDisc: s.textMuted,
-      walletRateBg: 'rgba(61,255,184,0.07)',
-      walletRateBorder: `${palette.neonMint}30`,
-      ctaOnGradient: palette.heroInk,
-      liveDot: palette.neonMint,
-      liveText: palette.neonMint,
-      liveBorder: `${palette.neonMint}40`,
-      liveBg: `${palette.neonMint}09`,
-      gearIcon: s.textPrimary,
-    };
-  }
-  return {
-    textPrimary: YOU_LIGHT.body,
-    textMuted: YOU_LIGHT.muted,
-    display: YOU_LIGHT.ink,
-    sky: YOU_LIGHT.sky,
-    pink: YOU_LIGHT.pink,
-    mint: YOU_LIGHT.mint,
-    tabActive: YOU_LIGHT.sky,
-    tabInactive: YOU_LIGHT.tabInactive,
-    tabUnderline: YOU_LIGHT.sky,
-    tabTrack: YOU_LIGHT.tabTrack,
-    linkSignIn: YOU_LIGHT.sky,
-    linkJoin: YOU_LIGHT.pink,
-    walletUsd: YOU_LIGHT.emphasis,
-    walletRate: YOU_LIGHT.emphasis,
-    walletDisc: YOU_LIGHT.muted,
-    walletRateBg: `${YOU_LIGHT.sky}18`,
-    walletRateBorder: `${YOU_LIGHT.sky}45`,
-    ctaOnGradient: '#1a1a1a',
-    liveDot: YOU_LIGHT.sky,
-    liveText: YOU_LIGHT.muted,
-    liveBorder: `${YOU_LIGHT.sky}50`,
-    liveBg: `${YOU_LIGHT.sky}14`,
-    gearIcon: YOU_LIGHT.ink,
-  };
-}
-
-/** Safe wrapper — delegates to {@link youChromatics} which coerces a missing `surface`. */
-function resolveYouChromatics(
-  isDark: boolean,
-  surface: ReturnType<typeof themeSurface> | undefined,
-): YouChromatics {
-  return youChromatics(isDark, surface);
-}
-
-function pointsToUsdCash(points: number): number {
-  return points / POINTS_PER_USD;
-}
-
-function formatUsd(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(amount);
-}
 
 type DecisionPreview = {
   id: string;
@@ -237,8 +125,8 @@ const ACCENT = {
 /** Grid rail tints in light mode — same triad feel as `ACCENT`, readable on white. */
 const CARD_ACCENT_LIGHT: Record<DecisionPreview['accent'], string> = {
   mint: '#14b8a6',
-  sky: YOU_LIGHT.sky,
-  pink: YOU_LIGHT.pink,
+  sky: PROFILE_TAB_LIGHT.sky,
+  pink: PROFILE_TAB_LIGHT.pink,
 };
 
 type TabKey = 'yours' | 'orbit' | 'saved';
@@ -432,9 +320,9 @@ function ProfileDecisionCard({
                 style={[
                   styles.statusPill,
                   {
-                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${YOU_LIGHT.sky}10`,
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${PROFILE_TAB_LIGHT.sky}10`,
                     borderWidth: StyleSheet.hairlineWidth,
-                    borderColor: isDark ? surface.hairline : YOU_LIGHT.tabTrack,
+                    borderColor: surface.hairline,
                   },
                 ]}>
                 <Text style={[styles.statusPillText, { color: chrom.textMuted }]}>done</Text>
@@ -517,20 +405,20 @@ export default function YouScreen() {
   ] as const;
 
   const pointsBalance = DEMO_STATS.pointsEarned;
-  const cashLabel = formatUsd(pointsToUsdCash(pointsBalance));
+  const pointsFromOthers = DEMO_STATS.pointsFromOthers;
 
   const tabData = TABS.find((t) => t.key === activeTab)?.getData() ?? [];
 
-  const handleCashOut = React.useCallback(() => {
+  const handleAddPoints = React.useCallback(() => {
     if (Platform.OS !== 'web') {
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
     }
     Alert.alert(
-      'Cash out',
-      `Redeem about ${cashLabel} (${pointsBalance.toLocaleString()} pts)? Payouts and wallet linking will open here soon.`,
+      'Add points',
+      'Boosts when your threads get validated, friend invites, and partner promos will show up here. This preview build does not alter your balance.',
       [{ text: 'OK', style: 'default' }],
     );
-  }, [cashLabel, pointsBalance]);
+  }, []);
   const emptyCopy =
     activeTab === 'yours'
       ? 'Nothing dropped yet — start a decision from the Decide tab.'
@@ -554,7 +442,7 @@ export default function YouScreen() {
           colors={
             isDark
               ? ['rgba(61,255,184,0.14)', 'rgba(84,220,255,0.07)', 'rgba(15,23,42,0.02)']
-              : [`${YOU_LIGHT.sky}33`, `${YOU_LIGHT.pink}14`, '#ffffff']
+              : [`${PROFILE_TAB_LIGHT.sky}33`, `${PROFILE_TAB_LIGHT.pink}14`, '#ffffff']
           }
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -575,7 +463,7 @@ export default function YouScreen() {
                 },
                 pressed && { opacity: 0.9 },
               ]}>
-              <FontAwesome name="cog" size={18} color={chrom.gearIcon} />
+              <FontAwesome name="cog" size={15} color={chrom.gearIcon} />
             </Pressable>
           </View>
 
@@ -597,7 +485,7 @@ export default function YouScreen() {
                   colors={
                     isDark
                       ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
-                      : [`${YOU_LIGHT.sky}d0`, `${YOU_LIGHT.mint}b8`]
+                      : [`${PROFILE_TAB_LIGHT.sky}d0`, `${PROFILE_TAB_LIGHT.mint}b8`]
                   }
                   start={{ x: 0, y: 0.5 }}
                   end={{ x: 1, y: 0.5 }}
@@ -634,14 +522,14 @@ export default function YouScreen() {
             },
           ]}>
           <LinearGradient
-            colors={isDark ? [palette.neonMint, palette.neonSky] : [YOU_LIGHT.sky, YOU_LIGHT.mint]}
+            colors={isDark ? [palette.neonMint, palette.neonSky] : [PROFILE_TAB_LIGHT.sky, PROFILE_TAB_LIGHT.mint]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
             style={styles.walletAccent}
           />
           <View
             style={styles.walletBody}
-            accessibilityLabel={`Rewards balance ${cashLabel}, ${pointsBalance.toLocaleString()} points. ${POINTS_PER_USD} points per dollar.`}>
+            accessibilityLabel={`Rewards. Balance ${pointsBalance.toLocaleString()} points. ${pointsFromOthers.toLocaleString()} points collected from others. Add points.`}>
             <View style={styles.walletHeader}>
               <Text style={[styles.walletTitle, { color: chrom.textPrimary }]}>rewards</Text>
               <View
@@ -650,36 +538,41 @@ export default function YouScreen() {
                   { backgroundColor: chrom.walletRateBg, borderColor: chrom.walletRateBorder },
                 ]}>
                 <Text style={[styles.walletRateCapsuleTxt, { color: chrom.walletRate }]}>
-                  {POINTS_PER_USD} pts → $1
+                  {pointsFromOthers.toLocaleString()} from others
                 </Text>
               </View>
             </View>
 
             <View style={styles.walletMainRow}>
               <View style={styles.walletValueCol}>
-                <Text style={[styles.walletUsd, { color: chrom.walletUsd }]}>{cashLabel}</Text>
-                <Text style={[styles.walletPts, { color: chrom.textMuted }]}>
-                  {pointsBalance.toLocaleString()} pts
+                <View style={styles.walletBalanceRow}>
+                  <Text style={[styles.walletBalanceNum, { color: chrom.walletUsd }]}>
+                    {pointsBalance.toLocaleString()}
+                  </Text>
+                  <Text style={[styles.walletBalancePtsSuffix, { color: chrom.textMuted }]}>pts</Text>
+                </View>
+                <Text style={[styles.walletFromOthersLine, { color: chrom.textMuted }]}>
+                  collected from votes, validations & boosts driven by others
                 </Text>
               </View>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Cash out rewards"
-                accessibilityHint="Starts cash-out when payouts are available"
-                onPress={handleCashOut}
+                accessibilityLabel="Add points"
+                accessibilityHint="Open ways to earn more points when available"
+                onPress={handleAddPoints}
                 style={({ pressed }) => [styles.walletCta, pressed && { opacity: 0.9, transform: [{ scale: 0.985 }] }]}>
                 <LinearGradient
-                  colors={isDark ? [`${palette.neonMint}f0`, '#2ad4b4'] : [YOU_LIGHT.sky, YOU_LIGHT.mint]}
+                  colors={isDark ? [`${palette.neonMint}f0`, '#2ad4b4'] : [PROFILE_TAB_LIGHT.sky, PROFILE_TAB_LIGHT.mint]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
                   style={styles.walletCtaGrad}>
-                  <Text style={[styles.walletCtaLabel, { color: chrom.ctaOnGradient }]}>cash out</Text>
-                  <FontAwesome name="arrow-right" size={11} color={chrom.ctaOnGradient} />
+                  <FontAwesome name="plus-circle" size={12} color={chrom.ctaOnGradient} />
+                  <Text style={[styles.walletCtaLabel, { color: chrom.ctaOnGradient }]}>add points</Text>
                 </LinearGradient>
               </Pressable>
             </View>
 
-            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>est. only</Text>
+            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>demo split · API soon</Text>
           </View>
         </View>
       </View>
@@ -770,8 +663,8 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   gear: {
-    width: 42,
-    height: 42,
+    width: 38,
+    height: 38,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
     alignItems: 'center',
@@ -907,26 +800,39 @@ const styles = StyleSheet.create({
   },
   walletMainRow: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'space-between',
     gap: 10,
   },
   walletValueCol: {
     flex: 1,
     minWidth: 0,
-    gap: 1,
+    gap: 4,
     paddingBottom: 0,
   },
-  walletUsd: {
+  walletBalanceRow: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  walletBalanceNum: {
     fontSize: 24,
     fontWeight: '900',
     letterSpacing: -0.85,
     fontVariant: ['tabular-nums'],
   },
-  walletPts: {
+  walletBalancePtsSuffix: {
+    fontSize: 13,
+    fontWeight: '700',
+    letterSpacing: -0.2,
+  },
+  walletFromOthersLine: {
     fontSize: 11,
     fontWeight: '600',
     letterSpacing: -0.06,
+    lineHeight: 15,
+    maxWidth: 220,
   },
   walletCta: {
     borderRadius: 999,

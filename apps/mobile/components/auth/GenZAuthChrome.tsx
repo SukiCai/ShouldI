@@ -35,7 +35,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import Svg, { Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { palette, radius, typography } from '@/constants/theme';
+import { palette, profileTypography, radius, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from '@/components/ui/OledSignUpBackdrop';
 
@@ -1264,7 +1264,7 @@ export const AuthFields = StyleSheet.create({
   muted: {
     ...typography.compact,
     fontSize: 13,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     textAlign: 'center',
     fontWeight: '500',
     letterSpacing: 0.15,
@@ -1345,7 +1345,7 @@ export const AuthFields = StyleSheet.create({
     flex: 1,
     ...typography.body,
     fontSize: 17,
-    color: palette.slate950,
+    color: profileTypography.ink,
     fontWeight: '600',
     paddingVertical: Platform.OS === 'ios' ? 16 : 11,
     minHeight: 50,
@@ -1513,7 +1513,7 @@ const styles = StyleSheet.create({
     lineHeight: 42,
     fontWeight: '800',
     letterSpacing: -1.4,
-    color: palette.slate950,
+    color: profileTypography.ink,
     textAlign: 'center',
     alignSelf: 'center',
     maxWidth: 340,
@@ -1530,7 +1530,7 @@ const styles = StyleSheet.create({
   },
   heroSub: {
     ...typography.compact,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     textAlign: 'center',
     lineHeight: 20,
     fontWeight: '500',

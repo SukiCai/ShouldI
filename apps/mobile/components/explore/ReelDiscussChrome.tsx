@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import { ReelCardLiquidBackdrop } from '@/components/explore/ReelCardLiquidBackdrop';
-import { palette, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, profileTypography, typography } from '@/constants/theme';
 
 import type { ExploreFeedResponse } from '@shouldi/contracts';
 
@@ -77,7 +77,7 @@ export function ReelCardAtmosphereLayers({ category }: Readonly<{ category: Reel
       />
       <LinearGradient
         pointerEvents="none"
-        colors={['rgba(248,250,252,0)', 'rgba(15,23,42,0.04)']}
+        colors={['rgba(248,251,253,0)', profileNeutralStroke(0.035)]}
         locations={[0.55, 1]}
         start={{ x: 0.5, y: 0.5 }}
         end={{ x: 0.5, y: 1 }}
@@ -167,7 +167,7 @@ export function ReelCardActionBar({
             reelDiscussStyles.toolbarBackGem,
             pressed && reelDiscussStyles.toolbarIconHitPressed,
           ]}>
-          <Ionicons name="chevron-back" size={22} color={palette.slate900} />
+          <Ionicons name="chevron-back" size={22} color={profileTypography.body} />
         </Pressable>
       ) : hasRewardPoints ? (
         /** 信息流左侧：悬赏积分替换原「分类」圆角标签 */
@@ -210,7 +210,7 @@ export function ReelCardActionBar({
             </LinearGradient>
           ) : (
             <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-              <Ionicons name="star-outline" size={20} color={palette.slate500} />
+              <Ionicons name="star-outline" size={20} color={profileTypography.subdued} />
             </View>
           )}
         </Pressable>
@@ -242,7 +242,7 @@ export function ReelCardActionBar({
             </LinearGradient>
           ) : (
             <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-              <Ionicons name="notifications-outline" size={19} color={palette.slate500} />
+              <Ionicons name="notifications-outline" size={19} color={profileTypography.subdued} />
             </View>
           )}
         </Pressable>
@@ -422,7 +422,7 @@ export const reelDiscussStyles = StyleSheet.create({
     borderRadius: 999,
     backgroundColor: 'rgba(255,255,255,0.78)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: profileNeutralStroke(0.06),
     maxWidth: '58%',
     ...Platform.select({
       ios: {
@@ -439,7 +439,7 @@ export const reelDiscussStyles = StyleSheet.create({
     lineHeight: 15,
     fontWeight: '600',
     letterSpacing: 0.25,
-    color: palette.slate800,
+    color: profileTypography.emphasis,
     textTransform: 'capitalize',
   },
   cardActionBarTrailing: {
@@ -526,7 +526,7 @@ export const reelDiscussStyles = StyleSheet.create({
   toolbarIconFrost: {
     backgroundColor: 'rgba(255,255,255,0.76)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
+    borderColor: profileNeutralStroke(0.07),
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -548,7 +548,7 @@ export const reelDiscussStyles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(255,255,255,0.76)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
+    borderColor: profileNeutralStroke(0.07),
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -570,7 +570,7 @@ export const reelDiscussStyles = StyleSheet.create({
     borderRadius: 999,
     backgroundColor: 'rgba(255,255,255,0.76)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.07)',
+    borderColor: profileNeutralStroke(0.07),
     shadowColor: '#0b1224',
     shadowOpacity: 0.03,
     shadowRadius: 12,
@@ -597,14 +597,14 @@ export const reelDiscussStyles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 18,
     fontWeight: '700',
-    color: palette.slate950,
+    color: profileTypography.ink,
     letterSpacing: -0.35,
   },
   headerVoteMicro: {
     fontSize: 10,
     lineHeight: 13,
     fontWeight: '600',
-    color: palette.slate500,
+    color: profileTypography.subdued,
     letterSpacing: 0.15,
   },
   headerVoteStrongInline: {
@@ -631,11 +631,11 @@ export const reelDiscussStyles = StyleSheet.create({
     marginBottom: 2,
     paddingBottom: 12,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(15,23,42,0.06)',
+    borderBottomColor: profileNeutralStroke(0.06),
     paddingVertical: Platform.OS === 'ios' ? 4 : 2,
   },
   pollQuestion: {
-    color: palette.slate950,
+    color: profileTypography.ink,
     marginTop: 0,
   },
   pollQuestionOpen: {
@@ -659,7 +659,7 @@ export const reelDiscussStyles = StyleSheet.create({
   optionPill: {
     borderRadius: 18,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(15,23,42,0.06)',
+    borderColor: profileNeutralStroke(0.06),
     backgroundColor: 'rgba(255,255,255,0.92)',
     paddingHorizontal: 15,
     paddingVertical: 14,
@@ -717,7 +717,7 @@ export const reelDiscussStyles = StyleSheet.create({
   },
   optionText: {
     ...typography.compact,
-    color: palette.slate900,
+    color: profileTypography.body,
     flex: 1,
     marginRight: 10,
   },
@@ -727,7 +727,7 @@ export const reelDiscussStyles = StyleSheet.create({
   },
   optionMeta: {
     ...typography.caption,
-    color: palette.slate500,
+    color: profileTypography.subdued,
     fontWeight: '700',
   },
   optionMetaPicked: {
@@ -737,7 +737,7 @@ export const reelDiscussStyles = StyleSheet.create({
   inlineTrack: {
     height: 6,
     borderRadius: 999,
-    backgroundColor: palette.slate200,
+    backgroundColor: '#eaeaea',
     overflow: 'hidden',
     width: '100%',
   },
