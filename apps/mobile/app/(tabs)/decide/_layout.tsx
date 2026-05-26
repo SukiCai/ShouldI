@@ -2,18 +2,23 @@ import { Stack } from 'expo-router';
 
 import DecideWizardProvider from './context';
 
-import { palette } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import { palette, profileLight, themeSurface } from '@/constants/theme';
 
 export default function DecideNavigator() {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const isDark = scheme === 'dark';
+
   return (
     <DecideWizardProvider>
       <Stack
         screenOptions={{
-          headerTintColor: palette.neonMint,
-          headerStyle: { backgroundColor: palette.mist },
+          headerTintColor: isDark ? palette.neonMint : profileLight.sky,
+          headerStyle: { backgroundColor: surface.canvas },
           headerShadowVisible: false,
-          headerTitleStyle: { color: palette.textOnCanvas, fontWeight: '700', fontSize: 17 },
-          contentStyle: { backgroundColor: palette.mist },
+          headerTitleStyle: { color: surface.textDisplay, fontWeight: '700', fontSize: 17 },
+          contentStyle: { backgroundColor: surface.canvas },
         }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="details" options={{ title: 'Manual details (legacy)' }} />

@@ -7,6 +7,7 @@ import Screen from '@/components/ui/Screen';
 import { useColorScheme } from '@/components/useColorScheme';
 import {
   palette,
+  profileLight,
   profileNeutralStroke,
   profileTypography,
   radius,
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   },
   expand: {
     marginTop: 12,
-    color: palette.accent,
+    color: profileLight.sky,
     fontWeight: '600',
   },
   input: {

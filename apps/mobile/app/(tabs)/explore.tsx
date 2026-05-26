@@ -6,11 +6,11 @@ import {
   decisionFeedStatus,
   PagedDecisionFeed,
 } from '@/components/explore/PagedDecisionFeed';
+import { ExploreCanvasBackdrop } from '@/components/explore/ExploreCanvasBackdrop';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { ExploreMomentHeader } from '@/components/ui/ExploreMomentHeader';
-import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
-import { palette, themeSurface, typography } from '@/constants/theme';
+import { palette, profileLight, themeSurface, typography } from '@/constants/theme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { ExploreFeedResponseSchema } from '@shouldi/contracts';
 import { useQuery } from '@tanstack/react-query';
@@ -37,77 +37,79 @@ export default function ExploreScreen() {
   );
 
   if (query.isLoading) {
-    return <AppLaunchScreen detail="Fetching live reels…" />;
+    return <AppLaunchScreen detail="Loading reels…" />;
   }
 
   if (query.error) {
     return (
-      <View style={[styles.center, styles.errorPad, { backgroundColor: surface.canvas }]}>
-        <View style={styles.canvasSpeckles} pointerEvents="none">
-          <OledFluorSpeckles />
+      <View style={[styles.surface, styles.errorFill, { backgroundColor: isDark ? surface.canvas : palette.white }]}>
+        <ExploreCanvasBackdrop isDark={isDark} />
+        <View style={[styles.center, styles.errorPad]}>
+          <Text style={[typography.title, styles.sheetTitle, { color: surface.textPrimary }]}>Couldn’t connect</Text>
+          <Text style={[typography.body, styles.centerText, { color: surface.textMuted }]}>
+            Trying <Text style={styles.monoDim}>{GATEWAY_ORIGIN}</Text>
+          </Text>
+          <Text style={[typography.caption, styles.centerText, { color: surface.textMuted }]}>
+            Run <Text style={styles.monoDim}>npm run api</Text> locally
+          </Text>
+          <PrimaryButton accessibilityLabel="Retry loading explore cards" onPress={() => query.refetch()}>
+            <Text style={styles.buttonLabel}>Retry</Text>
+          </PrimaryButton>
         </View>
-        <Text style={[typography.title, styles.sheetTitle, { color: surface.textPrimary }]}>Couldn’t connect to ShouldI API</Text>
-        <Text style={[typography.body, styles.centerText, { color: surface.textMuted }]}>
-          Trying <Text style={styles.monoDim}>{GATEWAY_ORIGIN}</Text>
-        </Text>
-        <Text style={[typography.caption, styles.centerText, { color: surface.textMuted }]}>
-          Start API: npm run api or docker compose up
-        </Text>
-        <PrimaryButton accessibilityLabel="Retry loading explore cards" onPress={() => query.refetch()}>
-          <Text style={styles.buttonLabel}>Retry</Text>
-        </PrimaryButton>
       </View>
     );
   }
 
   return (
-    <View style={[styles.surface, { backgroundColor: surface.canvas }]}>
-      <View style={styles.canvasSpeckles} pointerEvents="none">
-        <OledFluorSpeckles />
-      </View>
-      <View style={[styles.headerWrap, { paddingTop: Math.max(6, insets.top + 2) }]}>
-        <ExploreMomentHeader
-          caseCount={openCards.length}
-          variant="minimal"
-          footerLink={{
-            label: 'Plot Deck ›',
-            accessibilityHint:
-              'Open Plot Deck — vertical reel of dilemmas after the community voted, with outcomes.',
-            onPress: () => router.push('/plot-deck'),
-          }}
-        />
-      </View>
-
-      {openCards.length === 0 ? (
-        <View style={styles.emptyFrame}>
-          <Text style={[typography.title, styles.emptyTitle, { color: surface.textPrimary }]}>You’re caught up</Text>
-          <Text style={[typography.body, styles.emptyBody, { color: surface.textMuted }]}>
-            No live dilemmas in the reel right now. Flip to the Plot Deck for resolved arcs—or pull to refresh later.
-          </Text>
-          <Pressable
-            accessibilityRole="button"
-            onPress={() => router.push('/plot-deck')}
-            style={[
-              styles.plotDeckGhost,
-              {
-                backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : palette.sheet,
-                borderColor: surface.hairline,
-              },
-            ]}>
-            <Text style={[styles.plotDeckGhostText, { color: surface.textPrimary }]}>Open Plot Deck</Text>
-            <Text style={styles.plotDeckGhostArrow}>→</Text>
-          </Pressable>
+    <View style={[styles.surface, { backgroundColor: isDark ? surface.canvas : palette.white }]}>
+      <ExploreCanvasBackdrop isDark={isDark} />
+      <View style={styles.chromeLayer}>
+        <View style={[styles.headerWrap, { paddingTop: Math.max(6, insets.top + 2) }]}>
+          <ExploreMomentHeader
+            caseCount={openCards.length}
+            variant="minimal"
+            footerLink={{
+              label: 'Outcomes ›',
+              accessibilityHint:
+                'Open reels that already ended — community results and lessons.',
+              onPress: () => router.push('/plot-deck'),
+            }}
+          />
         </View>
-      ) : (
-        <PagedDecisionFeed
-          cards={openCards}
-          headerChromeEstimate={90}
-          bottomOverlayExtra={88}
-          isFetching={query.isFetching}
-          onRefresh={() => query.refetch()}
-          celebrateLandingHero
-        />
-      )}
+
+        {openCards.length === 0 ? (
+          <View style={styles.emptyFrame}>
+            <Text style={[typography.title, styles.emptyTitle, { color: surface.textPrimary }]}>You’re caught up</Text>
+            <Text style={[typography.body, styles.emptyBody, { color: surface.textMuted }]}>
+              Pull down to refresh, or peek at finished dilemmas when you’re ready.
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => router.push('/plot-deck')}
+              style={[
+                styles.plotDeckGhost,
+                {
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : palette.sheet,
+                  borderColor: surface.hairline,
+                },
+              ]}>
+              <Text style={[styles.plotDeckGhostText, { color: surface.textPrimary }]}>Browse outcomes</Text>
+              <Text style={[styles.plotDeckGhostArrow, { color: isDark ? palette.neonMint : profileLight.sky }]}>
+                →
+              </Text>
+            </Pressable>
+          </View>
+        ) : (
+          <PagedDecisionFeed
+            cards={openCards}
+            headerChromeEstimate={90}
+            bottomOverlayExtra={88}
+            isFetching={query.isFetching}
+            onRefresh={() => query.refetch()}
+            celebrateLandingHero
+          />
+        )}
+      </View>
     </View>
   );
 }
@@ -117,9 +119,10 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
   },
-  canvasSpeckles: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 0,
+  chromeLayer: {
+    flex: 1,
+    zIndex: 1,
+    minHeight: 0,
   },
   headerWrap: {
     paddingHorizontal: 14,
@@ -159,14 +162,19 @@ const styles = StyleSheet.create({
   },
   plotDeckGhostArrow: {
     ...typography.compact,
-    color: palette.neonMint,
     fontWeight: '700',
   },
   center: {
     flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
+    width: '100%',
+    zIndex: 1,
+  },
+  errorFill: {
+    flex: 1,
   },
   errorPad: {
     paddingHorizontal: 24,

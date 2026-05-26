@@ -149,6 +149,21 @@ export const profileLight = {
   ctaOnGradient: '#141414',
 } as const;
 
+/**
+ * LinearGradient stops aligned with Profile (You) hero — use on Decide shells and matched surfaces.
+ */
+export const PROFILE_HERO_GRADIENT_LIGHT = [
+  `${profileLight.sky}33`,
+  `${profileLight.pink}14`,
+  '#ffffff',
+] as const;
+
+export const PROFILE_HERO_GRADIENT_DARK = [
+  'rgba(61,255,184,0.14)',
+  'rgba(84,220,255,0.07)',
+  'rgba(15,23,42,0.02)',
+] as const;
+
 /** Stroke on Profile-aligned light chrome (RGB 91,91,91). Prefer over `rgba(15,23,42,…)`. */
 export function profileNeutralStroke(opacity: number): string {
   return `rgba(91,91,91,${opacity})`;

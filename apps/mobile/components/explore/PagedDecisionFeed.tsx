@@ -69,19 +69,15 @@ export function decisionFeedStatus(card: unknown): 'open' | 'resolved' {
 }
 
 const DEFAULT_SWIPE_CUES = [
-  'Swipe up for the next question',
-  'More perspectives on the next card ↑',
-  'Keep scrolling for another vote',
-  'Next dilemma above',
-  'Pull up when you’re ready for more',
+  'Next card ↑',
+  'Swipe up',
+  'More above',
 ] as const;
 
 export const PLOT_DECK_SWIPE_CUES = [
-  'Swipe up — see another outcome',
-  'Next reel above',
-  'More settled threads when you swipe ↑',
-  'Continue for the next story',
-  'Swipe when you’d like another result',
+  'Next story ↑',
+  'Swipe up',
+  'Continue above',
 ] as const;
 
 export type PagedDecisionFeedProps = {
@@ -102,41 +98,26 @@ function shorten(text: string, max = 150): string {
   return `${text.slice(0, max).trimEnd()}…`;
 }
 
-function AiValidationCrowdStrip({
+/** Short rationale for why the assistant leans toward one option — read-only, no voting UI. */
+function AiDecisionReasonCard({
   v,
 }: {
   v: NonNullable<ExploreFeedCard['aiValidation']>;
 }) {
-  const [bump, setBump] = React.useState({ up: 0, down: 0 });
-  const upTotal = v.agreeWithAiVotes + bump.up;
-  const downTotal = v.disagreeWithAiVotes + bump.down;
+  const detail = shorten(v.verdictBecause, 300);
   return (
-    <View style={styles.aiValBlock} accessibilityRole="summary">
-      <Text style={styles.aiValEyebrow}>Validate Harmence · peer check on AI stance</Text>
-      <Text style={styles.aiValVerdict}>{v.verdictLine}</Text>
-      <Text style={[typography.body, styles.aiValBecause]}>{shorten(v.verdictBecause, 340)}</Text>
-      <Text style={styles.aiValThumbExplain}>Do you agree this leaning fits the story above?</Text>
-      <View style={styles.aiValThumbsRow}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Agree with AI leaning, ${upTotal} votes`}
-          hitSlop={8}
-          onPress={() => setBump((prev) => ({ ...prev, up: prev.up + 1 }))}
-          style={({ pressed }) => [styles.aiValThumbBtn, pressed && styles.aiValThumbPressed]}>
-          <Ionicons name="thumbs-up-outline" size={18} color={profileTypography.body} />
-          <Text style={styles.aiValThumbCount}>{upTotal}</Text>
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Disagree with AI leaning, ${downTotal} votes`}
-          hitSlop={8}
-          onPress={() => setBump((prev) => ({ ...prev, down: prev.down + 1 }))}
-          style={({ pressed }) => [styles.aiValThumbBtn, pressed && styles.aiValThumbPressed]}>
-          <Ionicons name="thumbs-down-outline" size={18} color={profileTypography.body} />
-          <Text style={styles.aiValThumbCount}>{downTotal}</Text>
-        </Pressable>
+    <View
+      style={styles.aiReasonCard}
+      accessibilityRole="text"
+      accessibilityLabel={`Assistant lean: ${v.verdictLine}. ${detail}`}>
+      <View style={styles.aiReasonEyebrowRow}>
+        <View style={styles.aiReasonBadge}>
+          <Text style={styles.aiReasonBadgeLabel}>AI</Text>
+        </View>
+        <Text style={styles.aiReasonEyebrow}>Why this lean</Text>
       </View>
-      <Text style={styles.aiValChallengeEyebrow}>Yes / no challenge for strangers</Text>
+      <Text style={styles.aiReasonLead}>{v.verdictLine}</Text>
+      <Text style={[typography.compact, styles.aiReasonBody]}>{detail}</Text>
     </View>
   );
 }
@@ -478,37 +459,28 @@ export function PagedDecisionFeed({
                       onToggleSave={() => toggleSaveForCard(item)}
                       onToggleFollow={() => toggleFollowForCard(item)}
                     />
-                    {item.aiValidation ? <AiValidationCrowdStrip v={item.aiValidation} /> : null}
                     <View style={reelDiscussStyles.pollQuestionRow}>
-                      <Text
-                        accessibilityRole="header"
-                        style={[
-                          isOpen ? typography.hero : typography.h2,
-                          reelDiscussStyles.pollQuestion,
-                          reelDiscussStyles.pollQuestionFlexible,
-                          isOpen && reelDiscussStyles.pollQuestionOpen,
-                          isOpen && reelDiscussStyles.pollHeroOpen,
-                        ]}>
-                        {item.question}
-                      </Text>
+                      <View style={reelDiscussStyles.pollQuestionTextCol}>
+                        <Text
+                          accessibilityRole="header"
+                          style={[
+                            isOpen ? typography.hero : typography.h2,
+                            reelDiscussStyles.pollQuestion,
+                            isOpen && reelDiscussStyles.pollQuestionOpen,
+                            isOpen && reelDiscussStyles.pollHeroOpen,
+                          ]}>
+                          {item.question}
+                        </Text>
+                        <View style={reelDiscussStyles.pollQuestionUnderline} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
+                      </View>
                       <LiveVotesPill voteTotal={voteTotalAll} isLivePoll={isOpen} inline />
                     </View>
                     {isOpen && !hasPicked ? (
-                      <Text style={styles.pickPrompt}>Tap an option to vote.</Text>
+                      <Text style={styles.pickPrompt}>Pick an option.</Text>
                     ) : null}
                     {(() => {
                       const total = totalVotesFromCard(item);
                       const aiPickId = item.aiSuggestedOptionId;
-                      const aiPickLabel =
-                        aiPickId && item.options.some((o) => o.id === aiPickId)
-                          ? item.options.find((o) => o.id === aiPickId)?.label ?? null
-                          : null;
-                      const userVoteId =
-                        typeof effectivePicked === 'string' ? effectivePicked : undefined;
-                      const userVoteLabel =
-                        userVoteId && item.options.some((o) => o.id === userVoteId)
-                          ? item.options.find((o) => o.id === userVoteId)?.label ?? null
-                          : null;
                       return (
                         <>
                           <View style={reelDiscussStyles.optionWrap}>
@@ -517,6 +489,16 @@ export function PagedDecisionFeed({
                               const percentage = total > 0 ? Math.round((votes / total) * 100) : 0;
                               const selected = effectivePicked === option.id;
                               const aiLeanHere = !!(hasPicked && aiPickId && option.id === aiPickId);
+                              const pollBar =
+                                selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
+                              const pickedSurfaceStyle =
+                                hasPicked && selected && aiLeanHere
+                                  ? reelDiscussStyles.optionPillUserAndAiPick
+                                  : hasPicked && selected && !aiLeanHere
+                                    ? reelDiscussStyles.optionPillUserPick
+                                    : hasPicked && !selected && aiLeanHere
+                                      ? reelDiscussStyles.optionPillAiLeanOnly
+                                      : undefined;
                               return (
                                 <Pressable
                                   key={option.id}
@@ -542,14 +524,18 @@ export function PagedDecisionFeed({
                                   }}
                                   style={({ pressed }) => [
                                     reelDiscussStyles.optionPill,
-                                    selected && reelDiscussStyles.optionPillActive,
-                                    aiLeanHere && reelDiscussStyles.optionPillAiLean,
+                                    pickedSurfaceStyle,
                                     isResolved && reelDiscussStyles.optionPillDisabled,
                                     !isResolved && pressed && reelDiscussStyles.optionPillPressed,
                                   ]}>
                                   <View style={reelDiscussStyles.optionTopRow}>
                                     <Text style={[reelDiscussStyles.optionText, selected && reelDiscussStyles.optionTextActive]}>{option.label}</Text>
                                     <View style={reelDiscussStyles.optionMetaCluster}>
+                                      {selected && hasPicked ? (
+                                        <View style={reelDiscussStyles.userPickBadge}>
+                                          <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
+                                        </View>
+                                      ) : null}
                                       {aiLeanHere ? (
                                         <View style={reelDiscussStyles.aiLeanBadge}>
                                           <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
@@ -565,14 +551,15 @@ export function PagedDecisionFeed({
                                       ) : null}
                                     </View>
                                   </View>
-                                  {hasPicked ? <InlineDistributionTrack percentage={percentage} /> : null}
+                                  {hasPicked ? <InlineDistributionTrack percentage={percentage} emphasis={pollBar} /> : null}
                                 </Pressable>
                               );
                             })}
                           </View>
+                          {hasPicked && item.aiValidation ? <AiDecisionReasonCard v={item.aiValidation} /> : null}
                           {hasPicked ? (
                             <PrimaryButton
-                              accessibilityLabel="Open discussion thread"
+                              accessibilityLabel="Open discussion"
                               style={styles.discussButtonBelowChoices}
                               onPress={() =>
                                 router.push({
@@ -586,38 +573,8 @@ export function PagedDecisionFeed({
                                   },
                                 })
                               }>
-                              <Text style={styles.buttonLabel}>Discuss</Text>
+                              <Text style={styles.buttonLabel}>Thread</Text>
                             </PrimaryButton>
-                          ) : null}
-                          {hasPicked || isResolved ? (
-                            <Text style={[typography.caption, styles.pollPhaseCaption]}>
-                              {isResolved ? 'Community result · voting closed.' : 'Totals update automatically as votes come in.'}
-                            </Text>
-                          ) : null}
-                          {hasPicked && aiPickLabel ? (
-                            <View style={styles.aiSuggestionCallout} accessibilityRole="text">
-                              <Text style={styles.aiSuggestionEyebrow}>ShouldI assistant</Text>
-                              {userVoteLabel ? (
-                                userVoteLabel === aiPickLabel ? (
-                                  <Text style={styles.aiSuggestionBody}>
-                                    Same leaning as you — we’d shortlist{' '}
-                                    <Text style={styles.aiSuggestionEmphasis}>{aiPickLabel}</Text>.
-                                  </Text>
-                                ) : (
-                                  <Text style={styles.aiSuggestionBody}>
-                                    You picked <Text style={styles.aiSuggestionEmphasis}>{userVoteLabel}</Text>
-                                    {' · '}we’d lean <Text style={styles.aiSuggestionEmphasis}>{aiPickLabel}</Text>.
-                                  </Text>
-                                )
-                              ) : (
-                                <Text style={styles.aiSuggestionBody}>
-                                  We’d lean toward <Text style={styles.aiSuggestionEmphasis}>{aiPickLabel}</Text>.
-                                </Text>
-                              )}
-                              {item.aiSuggestionNote ? (
-                                <Text style={styles.aiSuggestionNote}>{item.aiSuggestionNote}</Text>
-                              ) : null}
-                            </View>
                           ) : null}
                         </>
                       );
@@ -698,127 +655,67 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     letterSpacing: 0.08,
   },
-  aiValBlock: {
-    marginHorizontal: 4,
-    marginBottom: 10,
-    padding: 14,
-    borderRadius: 18,
-    backgroundColor: 'rgba(249,250,251,0.98)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.07),
-    gap: 8,
-  },
-  aiValEyebrow: {
-    ...typography.caption,
-    fontWeight: '700',
-    letterSpacing: 0.4,
-    color: profileTypography.subdued,
-    textTransform: 'uppercase',
-  },
-  aiValVerdict: {
-    ...typography.h2,
-    color: profileTypography.body,
-    fontWeight: '700',
-    letterSpacing: -0.3,
-  },
-  aiValBecause: {
-    color: profileTypography.emphasis,
-    lineHeight: 23,
-  },
-  aiValThumbExplain: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    fontWeight: '600',
+  aiReasonCard: {
+    marginHorizontal: 2,
     marginTop: 4,
-  },
-  aiValThumbsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-    marginTop: 6,
-  },
-  aiValThumbBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 14,
-    borderRadius: 14,
+    marginBottom: 2,
+    paddingVertical: 14,
+    paddingHorizontal: 15,
+    borderRadius: 16,
+    backgroundColor: 'rgba(253,253,253,0.94)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.1),
-    backgroundColor: '#ffffff',
-  },
-  aiValThumbPressed: {
-    opacity: 0.88,
-    transform: [{ scale: 0.98 }],
-  },
-  aiValThumbCount: {
-    ...typography.compact,
-    fontWeight: '800',
-    color: profileTypography.body,
-    minWidth: 28,
-  },
-  aiValChallengeEyebrow: {
-    ...typography.caption,
-    fontWeight: '700',
-    color: palette.neonMint,
-    marginTop: 6,
-    letterSpacing: 0.35,
-    textTransform: 'uppercase',
-  },
-  pollPhaseCaption: {
-    color: profileTypography.subdued,
-    lineHeight: 18,
-    marginTop: 0,
-    marginBottom: 0,
-    paddingTop: 12,
-    fontWeight: '500',
-    fontSize: 12,
-    letterSpacing: 0.15,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: profileNeutralStroke(0.055),
-  },
-  aiSuggestionCallout: {
-    marginTop: 6,
-    padding: 15,
-    borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.92)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.06),
-    gap: 6,
+    borderColor: profileNeutralStroke(0.08),
+    borderLeftWidth: 4,
+    borderLeftColor: palette.heroInk,
+    gap: 9,
     ...Platform.select({
       ios: {
-        shadowColor: '#64748b',
-        shadowOpacity: 0.06,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.045,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
       },
       android: { elevation: 1 },
       default: {},
     }),
   },
-  aiSuggestionEyebrow: {
+  aiReasonEyebrowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 1,
+  },
+  aiReasonBadge: {
+    borderRadius: 6,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    backgroundColor: palette.heroInk,
+  },
+  aiReasonBadgeLabel: {
+    fontSize: 9,
+    lineHeight: 12,
+    fontWeight: '800',
+    letterSpacing: 0.55,
+    color: palette.sheet,
+  },
+  aiReasonEyebrow: {
     ...typography.caption,
     fontWeight: '600',
-    letterSpacing: 0.55,
     color: profileTypography.subdued,
-    textTransform: 'none',
+    letterSpacing: 0.12,
+    flex: 1,
   },
-  aiSuggestionBody: {
-    ...typography.compact,
-    color: profileTypography.emphasis,
-    fontWeight: '500',
-    lineHeight: 21,
-  },
-  aiSuggestionEmphasis: {
+  aiReasonLead: {
+    ...typography.h2,
+    color: profileTypography.ink,
     fontWeight: '700',
-    color: profileTypography.body,
+    letterSpacing: -0.35,
+    lineHeight: 24,
+    fontSize: 17,
   },
-  aiSuggestionNote: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    lineHeight: 17,
-    marginTop: 2,
+  aiReasonBody: {
+    color: profileTypography.body,
+    lineHeight: 21,
     fontWeight: '500',
   },
   outcomeMerged: {

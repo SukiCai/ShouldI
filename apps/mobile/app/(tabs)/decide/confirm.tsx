@@ -8,7 +8,14 @@ import PrimaryButton from '@/components/ui/PrimaryButton';
 import { GhostAction } from '@/components/ui/Premium';
 import Screen from '@/components/ui/Screen';
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
+import {
+  palette,
+  profileLight,
+  screenContentGutter,
+  spacing,
+  themeSurface,
+  typography,
+} from '@/constants/theme';
 
 import { useDecideWizard } from './context';
 
@@ -22,6 +29,11 @@ export default function DecideConfirmScreen() {
 
   const panelBg = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.92)';
   const panelBorder = surface.hairline;
+
+  const statusReadyBg = lastResponse ? (isDark ? 'rgba(61,255,184,0.12)' : `${profileLight.sky}18`) : isDark ? 'rgba(255,255,255,0.06)' : profileLight.tabTrack;
+  const statusReadyBorder = lastResponse ? (isDark ? 'rgba(61,255,184,0.35)' : `${profileLight.sky}45`) : surface.hairline;
+  const statusDotColor = lastResponse ? (isDark ? palette.neonMint : profileLight.sky) : surface.textMuted;
+  const statusTextColor = lastResponse ? (isDark ? palette.neonMint : profileLight.mint) : surface.textMuted;
 
   React.useEffect(() => {
     if (!draft.title.trim()) return;
@@ -54,12 +66,12 @@ export default function DecideConfirmScreen() {
             style={[
               styles.statusPill,
               {
-                backgroundColor: lastResponse ? 'rgba(61,255,184,0.12)' : 'rgba(255,255,255,0.06)',
-                borderColor: lastResponse ? 'rgba(61,255,184,0.35)' : surface.hairline,
+                backgroundColor: statusReadyBg,
+                borderColor: statusReadyBorder,
               },
             ]}>
-            <View style={[styles.statusDot, { backgroundColor: lastResponse ? palette.neonMint : surface.textMuted }]} />
-            <Text style={[styles.statusText, { color: lastResponse ? palette.neonMint : surface.textMuted }]}>
+            <View style={[styles.statusDot, { backgroundColor: statusDotColor }]} />
+            <Text style={[styles.statusText, { color: statusTextColor }]}>
               {lastResponse ? 'Briefing ready — card fields filled' : 'Generate a briefing to populate AI copy'}
             </Text>
           </View>

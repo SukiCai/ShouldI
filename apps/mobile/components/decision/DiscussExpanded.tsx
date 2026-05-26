@@ -186,17 +186,19 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
         />
 
         <View style={reelDiscussStyles.pollQuestionRow}>
-          <Text
-            accessibilityRole="header"
-            style={[
-              isOpen ? typography.hero : typography.h2,
-              reelDiscussStyles.pollQuestion,
-              reelDiscussStyles.pollQuestionFlexible,
-              isOpen && reelDiscussStyles.pollQuestionOpen,
-              isOpen && reelDiscussStyles.pollHeroOpen,
-            ]}>
-            {card.question}
-          </Text>
+          <View style={reelDiscussStyles.pollQuestionTextCol}>
+            <Text
+              accessibilityRole="header"
+              style={[
+                isOpen ? typography.hero : typography.h2,
+                reelDiscussStyles.pollQuestion,
+                isOpen && reelDiscussStyles.pollQuestionOpen,
+                isOpen && reelDiscussStyles.pollHeroOpen,
+              ]}>
+              {card.question}
+            </Text>
+            <View style={reelDiscussStyles.pollQuestionUnderline} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
+          </View>
           <LiveVotesPill voteTotal={voteTotal} isLivePoll={isOpen} inline />
         </View>
 
@@ -206,19 +208,29 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
             const percentage = voteTotal > 0 ? Math.round((votes / voteTotal) * 100) : 0;
             const selected = effectivePick === option.id;
             const aiLeanHere = !!(hasResults && card.aiSuggestedOptionId && option.id === card.aiSuggestedOptionId);
+            const pollBar = selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
+            const pickedSurfaceStyle =
+              hasResults && selected && aiLeanHere
+                ? reelDiscussStyles.optionPillUserAndAiPick
+                : hasResults && selected && !aiLeanHere
+                  ? reelDiscussStyles.optionPillUserPick
+                  : hasResults && !selected && aiLeanHere
+                    ? reelDiscussStyles.optionPillAiLeanOnly
+                    : undefined;
             return (
               <View
                 key={option.id}
-                style={[
-                  reelDiscussStyles.optionPill,
-                  selected && reelDiscussStyles.optionPillActive,
-                  aiLeanHere && reelDiscussStyles.optionPillAiLean,
-                ]}>
+                style={[reelDiscussStyles.optionPill, pickedSurfaceStyle]}>
                 <View style={reelDiscussStyles.optionTopRow}>
                   <Text style={[reelDiscussStyles.optionText, selected && reelDiscussStyles.optionTextActive]}>
                     {option.label}
                   </Text>
                   <View style={reelDiscussStyles.optionMetaCluster}>
+                    {selected && hasResults ? (
+                      <View style={reelDiscussStyles.userPickBadge}>
+                        <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
+                      </View>
+                    ) : null}
                     {aiLeanHere ? (
                       <View style={reelDiscussStyles.aiLeanBadge}>
                         <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
@@ -232,7 +244,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                     ) : null}
                   </View>
                 </View>
-                {hasResults ? <InlineDistributionTrack percentage={percentage} /> : null}
+                {hasResults ? <InlineDistributionTrack percentage={percentage} emphasis={pollBar} /> : null}
               </View>
             );
           })}

@@ -4,8 +4,15 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import Screen from '@/components/ui/Screen';
-import { palette, spacing, themeSurface, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
+import {
+  palette,
+  profileLight,
+  profileNeutralStroke,
+  spacing,
+  themeSurface,
+  typography,
+} from '@/constants/theme';
 
 import { useDecideWizard } from './context';
 
@@ -51,8 +58,8 @@ export default function DecideResultScreen() {
         style={[
           styles.statusCard,
           {
-            backgroundColor: isDark ? `${palette.neonMint}14` : '#f3fcf8',
-            borderColor: isDark ? `${palette.neonMint}40` : '#d5efdf',
+            backgroundColor: isDark ? `${palette.neonMint}14` : `${profileLight.mint}12`,
+            borderColor: isDark ? `${palette.neonMint}40` : `${profileLight.mint}45`,
           },
         ]}>
         <Text style={[typography.caption, styles.micro]} accessibilityRole="alert">
@@ -88,9 +95,9 @@ export default function DecideResultScreen() {
               }
               style={[
                 styles.pillSecondary,
-                isDark && {
-                  borderColor: palette.chromeHairline,
-                  backgroundColor: 'rgba(255,255,255,0.08)',
+                {
+                  borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.1),
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : surface.statTileBg,
                 },
               ]}>
               <Text style={[typography.compact, { color: surface.textPrimary }]} numberOfLines={1}>
@@ -118,7 +125,7 @@ export default function DecideResultScreen() {
         style={{ marginTop: spacing.sm }}
         onPress={() => router.push('/(tabs)/decide/confirm')}
         accessibilityLabel="Fine tune Explore validation card">
-        <Text style={{ color: palette.accentBloom, fontWeight: '700' }}>Adjust Explore validation card</Text>
+        <Text style={{ color: profileLight.sky, fontWeight: '700' }}>Adjust Explore validation card</Text>
       </PrimaryButton>
 
       <PrimaryButton
@@ -129,7 +136,7 @@ export default function DecideResultScreen() {
           router.replace('/(tabs)/decide');
         }}
         accessibilityLabel="Return to decision wizard home">
-        <Text style={{ color: palette.accent, fontWeight: '700' }}>New decision briefing</Text>
+        <Text style={{ color: profileLight.pink, fontWeight: '700' }}>New decision briefing</Text>
       </PrimaryButton>
     </Screen>
   );
@@ -162,8 +169,6 @@ const styles = StyleSheet.create({
   pillSecondary: {
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cdd8f9',
-    backgroundColor: '#f9fbff',
     paddingHorizontal: 16,
     paddingVertical: 8,
     marginRight: 8,

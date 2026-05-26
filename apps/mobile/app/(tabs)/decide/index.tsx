@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import {
@@ -16,8 +17,19 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { resolveAppChromatics } from '@/constants/appChromatics';
+import {
+  PROFILE_HERO_GRADIENT_DARK,
+  PROFILE_HERO_GRADIENT_LIGHT,
+  palette,
+  profileNeutralStroke,
+  profileTypography,
+  screenContentGutter,
+  spacing,
+  themeSurface,
+  typography,
+} from '@/constants/theme';
 import { apiGetJson, apiPostJson, GATEWAY_ORIGIN } from '@/lib/api';
-import { palette, profileNeutralStroke, profileTypography, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
 import type { DecisionCategory } from '@shouldi/contracts';
 import {
   DecideInterviewSessionDetailSchema,
@@ -50,40 +62,29 @@ function mergeDeduped(messages: DecideInterviewBubble[], additions: DecideInterv
 export default function DecideCategoryScreen() {
   const params = useLocalSearchParams<{ category?: DecisionCategory }>();
   const { draft, updateDraft } = useDecideWizard();
-  const scheme = useColorScheme() ?? 'dark';
+  const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
   const isDark = scheme === 'dark';
+  const chrom = React.useMemo(() => resolveAppChromatics(isDark, surface), [isDark, surface]);
 
   const colors = React.useMemo(
     () => ({
       pageBg: surface.canvas,
-      composerBg: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.94)',
-      composerBorder: isDark ? 'rgba(255,255,255,0.12)' : profileNeutralStroke(0.14),
-      assistantBubbleBg: isDark ? '#303030' : '#ffffff',
-      assistantBubbleBorder: isDark ? 'transparent' : profileNeutralStroke(0.08),
-      userBubbleBg: isDark ? palette.heroInk : '#e8f4f8',
-      userBubbleBorder: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(53,173,227,0.25)',
+      composerBg: isDark ? surface.groupedSurface : surface.statTileBg,
+      composerBorder: isDark ? 'rgba(255,255,255,0.12)' : surface.groupedBorder,
+      assistantBubbleBg: isDark ? surface.groupedSurface : surface.statTileBg,
+      assistantBubbleBorder: isDark ? 'rgba(255,255,255,0.1)' : surface.groupedBorder,
+      userBubbleBg: isDark ? palette.heroInk : `${chrom.sky}20`,
+      userBubbleBorder: isDark ? 'rgba(255,255,255,0.1)' : `${chrom.sky}42`,
       headerHairline: surface.hairline,
       muted: surface.textMuted,
       primaryTxt: surface.textPrimary,
-      sendFab: palette.neonMint,
+      sendFab: chrom.mint,
       modalBg: isDark ? palette.nightWash : surface.sheet,
+      sparklesGlyph: chrom.mint,
     }),
-    [isDark, surface],
-  );
-
-  /** Harmence dock is OLED black under any appearance so it matches dark chat framing. */
-  const headerChrome = React.useMemo(
-    () => ({
-      bg: palette.mist,
-      border: palette.chromeHairline,
-      title: palette.textOnCanvas,
-      subtitle: palette.textMutedOnCanvas,
-      icon: palette.sheet,
-      dotMuted: palette.textMutedOnCanvas,
-    }),
-    [],
+    [isDark, surface, chrom],
   );
 
   const [sessionId, setSessionId] = React.useState<string | null>(null);
@@ -255,29 +256,34 @@ export default function DecideCategoryScreen() {
           styles.header,
           {
             paddingTop: insets.top + 6,
-            borderBottomColor: headerChrome.border,
-            backgroundColor: headerChrome.bg,
+            borderBottomColor: surface.hairline,
           },
         ]}>
+        <LinearGradient
+          colors={isDark ? PROFILE_HERO_GRADIENT_DARK : PROFILE_HERO_GRADIENT_LIGHT}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={StyleSheet.absoluteFillObject}
+        />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Past sessions"
           onPress={openPastSessions}
           style={styles.headerIconBtn}
           hitSlop={{ top: 8, bottom: 8, left: 4, right: 10 }}>
-          <Ionicons name="time-outline" size={24} color={headerChrome.icon} />
+          <Ionicons name="time-outline" size={24} color={chrom.gearIcon} />
         </Pressable>
         <View style={styles.headerTitleBlock}>
           <View style={styles.titleRow}>
-            <Text style={[styles.agentTitle, { color: headerChrome.title }]}>Harmence</Text>
+            <Text style={[styles.agentTitle, { color: chrom.display }]}>Harmence</Text>
             <View
               style={[
                 styles.liveDot,
-                { backgroundColor: hermesIntegrated ? palette.neonMint : headerChrome.dotMuted },
+                { backgroundColor: hermesIntegrated ? chrom.mint : chrom.textMuted },
               ]}
             />
           </View>
-          <Text style={[styles.agentSubtitle, { color: headerChrome.subtitle }]} numberOfLines={1}>
+          <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
             {subtitle}
           </Text>
         </View>
@@ -288,13 +294,13 @@ export default function DecideCategoryScreen() {
           disabled={booting || sending}
           style={[styles.headerIconBtn, (booting || sending) && { opacity: 0.35 }]}
           hitSlop={{ top: 8, bottom: 8, left: 10, right: 4 }}>
-          <Ionicons name="create-outline" size={24} color={headerChrome.icon} />
+          <Ionicons name="create-outline" size={24} color={chrom.gearIcon} />
         </Pressable>
       </View>
 
       {booting ? (
         <View style={styles.loadingCenter}>
-          <ActivityIndicator color={palette.neonMint} size="large" />
+          <ActivityIndicator color={chrom.mint} size="large" />
           <Text style={[styles.loadingLabel, { color: colors.muted }]}>Loading…</Text>
         </View>
       ) : (
@@ -310,12 +316,15 @@ export default function DecideCategoryScreen() {
             item.role === 'assistant' ? (
               <View style={[styles.rowAssistant, styles.msgPadH]}>
                 <View style={styles.assistantLeading}>
-                  <View style={[styles.glyphCircle, isDark ? styles.glyphCircleDark : styles.glyphCircleLight]}>
-                    <Ionicons
-                      name="sparkles-outline"
-                      size={16}
-                      color={isDark ? palette.neonMint : palette.accent}
-                    />
+                  <View
+                    style={[
+                      styles.glyphCircle,
+                      {
+                        backgroundColor: isDark ? `${chrom.mint}26` : `${chrom.sky}1a`,
+                        borderColor: isDark ? `${chrom.mint}38` : `${chrom.sky}50`,
+                      },
+                    ]}>
+                    <Ionicons name="sparkles-outline" size={16} color={colors.sparklesGlyph} />
                   </View>
                 </View>
                 <View
@@ -383,7 +392,7 @@ export default function DecideCategoryScreen() {
             onPress={() => router.push('/(tabs)/decide/confirm')}
             style={[styles.continuePill, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
             <Text style={[styles.continuePillText, { color: colors.primaryTxt }]}>Review & Explore card</Text>
-            <Ionicons name="arrow-forward-circle-outline" size={18} color={palette.neonMint} />
+            <Ionicons name="arrow-forward-circle-outline" size={18} color={chrom.mint} />
           </Pressable>
         ) : (
           <View style={[styles.softHintWrap, styles.msgPadH]}>
@@ -425,9 +434,9 @@ export default function DecideCategoryScreen() {
               (!input.trim() || booting || !sessionId || sending) && styles.sendCircleDisabled,
             ]}>
             {sending ? (
-              <ActivityIndicator color={palette.heroInk} size="small" />
+              <ActivityIndicator color={chrom.ctaOnGradient} size="small" />
             ) : (
-              <Ionicons name="paper-plane-outline" size={17} color={palette.heroInk} />
+              <Ionicons name="paper-plane-outline" size={17} color={chrom.ctaOnGradient} />
             )}
           </Pressable>
         </View>
@@ -441,7 +450,7 @@ export default function DecideCategoryScreen() {
               styles.sheetCard,
               { backgroundColor: colors.modalBg, paddingBottom: bottomPad + 12, borderTopColor: colors.composerBorder },
             ]}>
-            <View style={styles.sheetGrab} />
+            <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
             <View style={styles.sheetHeadRow}>
               <Text style={[styles.sheetTitle, { color: colors.primaryTxt }]}>Chats</Text>
               <Pressable hitSlop={12} onPress={() => setSessionsOpen(false)} accessibilityRole="button">
@@ -452,7 +461,7 @@ export default function DecideCategoryScreen() {
               Sessions live in gateway memory until you restart the API.
             </Text>
             {listLoading ? (
-              <ActivityIndicator color={palette.neonMint} style={{ marginVertical: spacing.lg }} />
+              <ActivityIndicator color={chrom.mint} style={{ marginVertical: spacing.lg }} />
             ) : (
               <FlatList
                 data={sessions}
@@ -469,7 +478,7 @@ export default function DecideCategoryScreen() {
                     onPress={() => void activateSessionFromHistory(item.id)}
                     style={[styles.sheetRow, { borderBottomColor: colors.composerBorder }]}>
                     <View style={[styles.sheetRowGlyph, { backgroundColor: colors.composerBg }]}>
-                      <Ionicons name="chatbubbles-outline" size={17} color={palette.neonSky} />
+                      <Ionicons name="chatbubbles-outline" size={17} color={chrom.sky} />
                     </View>
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <Text numberOfLines={2} style={[styles.sheetRowTitle, { color: colors.primaryTxt }]}>
@@ -509,6 +518,8 @@ const styles = StyleSheet.create({
     minHeight: 48,
     borderBottomWidth: StyleSheet.hairlineWidth,
     gap: 6,
+    overflow: 'hidden',
+    position: 'relative',
   },
   headerIconBtn: {
     width: 44,
@@ -583,14 +594,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-  },
-  glyphCircleDark: {
-    backgroundColor: 'rgba(61,255,184,0.12)',
-    borderColor: 'rgba(61,255,184,0.22)',
-  },
-  glyphCircleLight: {
-    backgroundColor: 'rgba(53,173,227,0.08)',
-    borderColor: 'rgba(53,173,227,0.15)',
   },
   assistantBubble: {
     flex: 1,
@@ -729,7 +732,6 @@ const styles = StyleSheet.create({
     width: 44,
     height: 5,
     borderRadius: 3,
-    backgroundColor: 'rgba(247,247,247,0.18)',
     alignSelf: 'center',
     marginBottom: 14,
     marginTop: 4,

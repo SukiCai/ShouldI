@@ -54,7 +54,7 @@ export const ExploreCardSchema = z.object({
   outcome: z.string().optional(),
   takeaway: z.string().optional(),
   provenance: ProvenanceSchema,
-  /** Crowd validates Harmence's preliminary stance; card copy is summarized on-device before posting. */
+  /** Assistant lean rationale (summary line + because); surfaced after vote — vote counts optional for analytics. */
   aiValidation: z
     .object({
       verdictLine: z.string(),

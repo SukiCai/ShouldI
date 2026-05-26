@@ -107,9 +107,11 @@ function MinimalExploreBar({
   const isDark = scheme === 'dark';
   /** Profile tab strip uses sky, not neon mint — calmer on light canvas. */
   const accentOnChrome = isDark ? palette.neonMint : profileLight.sky;
+  const liveDotBg = isDark ? palette.livePulse : profileLight.sky;
+  const liveDotBorder = isDark ? 'rgba(16,185,129,0.4)' : `${profileLight.sky}80`;
 
   return (
-    <View accessibilityRole="header" accessibilityLabel={`ShouldI explore · ${countLabel}. Swipe up on the reel to vote.`}>
+    <View accessibilityRole="header" accessibilityLabel={`Explore · ${countLabel}. Swipe up for the next card.`}>
       <View style={minimalStyles.row}>
         <View style={minimalStyles.leftCluster}>
           <View
@@ -128,9 +130,20 @@ function MinimalExploreBar({
             style={[minimalStyles.livePill, { borderColor: `${accentOnChrome}55` }]}
             accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
             {!reduceMotion ? (
-              <Animated.View style={[minimalStyles.liveDot, { opacity: liveDotOpacity }]} />
+              <Animated.View
+                style={[
+                  minimalStyles.liveDot,
+                  { opacity: liveDotOpacity, backgroundColor: liveDotBg, borderColor: liveDotBorder },
+                ]}
+              />
             ) : (
-              <View style={[minimalStyles.liveDot, minimalStyles.liveDotRm]} />
+              <View
+                style={[
+                  minimalStyles.liveDot,
+                  minimalStyles.liveDotRm,
+                  { backgroundColor: liveDotBg, borderColor: liveDotBorder },
+                ]}
+              />
             )}
             <Text style={minimalStyles.liveCount}>{caseCount.toLocaleString()}</Text>
           </View>
@@ -302,9 +315,7 @@ const minimalStyles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: palette.livePulse,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(16,185,129,0.4)',
     flexShrink: 0,
   },
   liveDotRm: {

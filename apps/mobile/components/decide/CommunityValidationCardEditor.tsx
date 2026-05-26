@@ -2,7 +2,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, profileNeutralStroke, radius, spacing, themeSurface, typography } from '@/constants/theme';
+import { palette, profileLight, profileNeutralStroke, radius, spacing, themeSurface, typography } from '@/constants/theme';
 
 export type CommunityCardFields = {
   aiVerdictLine: string;
@@ -28,14 +28,16 @@ export function CommunityValidationCardEditor({ labels, onChange }: Props) {
   const inputBorder = isDark ? 'rgba(255,255,255,0.1)' : profileNeutralStroke(0.12);
   const panelBorder = surface.hairline;
   const panelBg = isDark ? 'rgba(255,255,255,0.045)' : 'rgba(255,255,255,0.94)';
-  const chipBg = isDark ? 'rgba(61,255,184,0.1)' : 'rgba(61,255,184,0.08)';
-  const chipBorder = isDark ? 'rgba(61,255,184,0.22)' : 'rgba(61,255,184,0.35)';
+  const chipBg = isDark ? 'rgba(61,255,184,0.1)' : `${profileLight.sky}12`;
+  const chipBorder = isDark ? 'rgba(61,255,184,0.22)' : `${profileLight.sky}40`;
+  const pipBorder = isDark ? palette.neonSky : profileLight.sky;
+  const thumbsIconColor = isDark ? palette.neonMint : profileLight.mint;
 
   return (
     <View style={[styles.sheet, { backgroundColor: panelBg, borderColor: panelBorder }]} accessibilityLabel="Community validation card preview">
       <View style={styles.brandRow}>
-        <View style={[styles.pip, { borderColor: palette.neonSky }]}>
-          <FontAwesome name="users" size={12} color={palette.neonSky} />
+        <View style={[styles.pip, { borderColor: pipBorder }]}>
+          <FontAwesome name="users" size={12} color={pipBorder} />
         </View>
         <Text style={[styles.brandText, { color: surface.textMuted }]}>Community validation preview</Text>
       </View>
@@ -66,7 +68,7 @@ export function CommunityValidationCardEditor({ labels, onChange }: Props) {
       />
 
       <View style={[styles.thumbsExplain, { backgroundColor: chipBg, borderColor: chipBorder }]}>
-        <FontAwesome name="check-circle" size={14} color={palette.neonMint} />
+        <FontAwesome name="check-circle" size={14} color={thumbsIconColor} />
         <Text style={[styles.thumbGhostLbl, { color: surface.textMuted }]}>
           Thumbs ↑↓ on Harmence • then poll below answers your challenge question
         </Text>
