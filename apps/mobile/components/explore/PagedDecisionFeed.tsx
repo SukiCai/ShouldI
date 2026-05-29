@@ -1,7 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import type { ExploreFeedResponse } from '@shouldi/contracts';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import * as React from 'react';
 import {
@@ -26,40 +25,13 @@ import {
   reelDiscussStyles,
   ReelCardSurface,
   ReelCardActionBar,
-  LiveVotesPill,
+  RewardPointsGem,
   InlineDistributionTrack,
+  PollQuestionAccentBar,
 } from '@/components/explore/ReelDiscussChrome';
 import { palette, profileNeutralStroke, profileTypography, typography } from '@/constants/theme';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
-
-const STORAGE_REEL_SAVE_OVERRIDES = '@shouldi/v1/reel_save_overrides';
-const STORAGE_REEL_FOLLOW_OVERRIDES = '@shouldi/v1/reel_follow_overrides';
-
-/** User toggles — keys omitted when aligned with API default again. */
-type IdBoolMap = Record<string, boolean>;
-
-function effectiveBool(overrides: IdBoolMap, id: string, serverFallback: boolean): boolean {
-  const o = overrides[id];
-  return o !== undefined ? o : serverFallback;
-}
-
-function bumpOverride(
-  setOverrides: React.Dispatch<React.SetStateAction<IdBoolMap>>,
-  storageKey: string,
-  id: string,
-  serverFallback: boolean,
-): void {
-  setOverrides((prev) => {
-    const current = prev[id] !== undefined ? prev[id]! : serverFallback;
-    const next = !current;
-    const n = { ...prev };
-    if (next === serverFallback) delete n[id];
-    else n[id] = next;
-    void AsyncStorage.setItem(storageKey, JSON.stringify(n)).catch(() => undefined);
-    return n;
-  });
-}
 
 
 
@@ -68,17 +40,11 @@ export function decisionFeedStatus(card: unknown): 'open' | 'resolved' {
   return value === 'resolved' ? 'resolved' : 'open';
 }
 
-const DEFAULT_SWIPE_CUES = [
-  'Next card ↑',
-  'Swipe up',
-  'More above',
-] as const;
+const DEFAULT_SWIPE_CUES = ['More vibes ↑', 'Swipe for next', 'Keep scrolling ↑'] as const;
 
-export const PLOT_DECK_SWIPE_CUES = [
-  'Next story ↑',
-  'Swipe up',
-  'Continue above',
-] as const;
+export const PLOT_DECK_SWIPE_CUES = ['Next dilemma ↑', 'Swipe for more', 'One more ↑'] as const;
+
+export const EXPLORE_FIRST_VOTE_REWARD_POINTS = 2;
 
 export type PagedDecisionFeedProps = {
   cards: ExploreFeedCard[];
@@ -91,6 +57,8 @@ export type PagedDecisionFeedProps = {
   onRefresh: () => void;
   /** Landing emphasis on reel #1 (Explore only — subtle extra spring). */
   celebrateLandingHero?: boolean;
+  /** First vote on an open reel — surfaced in Explore header balance (demo-local persist). */
+  onEarnExploreVotePoints?: (delta: number) => void;
 };
 
 function shorten(text: string, max = 150): string {
@@ -101,20 +69,26 @@ function shorten(text: string, max = 150): string {
 /** Short rationale for why the assistant leans toward one option — read-only, no voting UI. */
 function AiDecisionReasonCard({
   v,
+  suggestedOptionLabel,
 }: {
   v: NonNullable<ExploreFeedCard['aiValidation']>;
+  suggestedOptionLabel?: string | null;
 }) {
   const detail = shorten(v.verdictBecause, 300);
   return (
     <View
       style={styles.aiReasonCard}
       accessibilityRole="text"
-      accessibilityLabel={`Assistant lean: ${v.verdictLine}. ${detail}`}>
+      accessibilityLabel={`AI decision. ${suggestedOptionLabel ? `Suggested option ${suggestedOptionLabel}. ` : ''}${v.verdictLine}. ${detail}`}>
       <View style={styles.aiReasonEyebrowRow}>
         <View style={styles.aiReasonBadge}>
-          <Text style={styles.aiReasonBadgeLabel}>AI</Text>
+          <Text style={styles.aiReasonBadgeLabel}>AI DECISION</Text>
         </View>
-        <Text style={styles.aiReasonEyebrow}>Why this lean</Text>
+        {suggestedOptionLabel ? (
+          <Text style={styles.aiReasonEyebrow}>Lean: {suggestedOptionLabel}</Text>
+        ) : (
+          <Text style={styles.aiReasonEyebrow}>Reason summary</Text>
+        )}
       </View>
       <Text style={styles.aiReasonLead}>{v.verdictLine}</Text>
       <Text style={[typography.compact, styles.aiReasonBody]}>{detail}</Text>
@@ -292,60 +266,12 @@ export function PagedDecisionFeed({
   isFetching,
   onRefresh,
   celebrateLandingHero = false,
+  onEarnExploreVotePoints,
 }: PagedDecisionFeedProps) {
   const insets = useSafeAreaInsets();
   const { height: windowHeight } = useWindowDimensions();
   const [selectedByCard, setSelectedByCard] = React.useState<Record<string, string>>({});
-  const [saveOverrides, setSaveOverrides] = React.useState<IdBoolMap>({});
-  const [followOverrides, setFollowOverrides] = React.useState<IdBoolMap>({});
   const [feedViewportH, setFeedViewportH] = React.useState(0);
-
-  React.useEffect(() => {
-    let cancelled = false;
-    void (async () => {
-      try {
-        const [rawS, rawF] = await Promise.all([
-          AsyncStorage.getItem(STORAGE_REEL_SAVE_OVERRIDES),
-          AsyncStorage.getItem(STORAGE_REEL_FOLLOW_OVERRIDES),
-        ]);
-        if (cancelled) return;
-        if (rawS) {
-          const parsed = JSON.parse(rawS) as unknown;
-          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-            const rec: IdBoolMap = {};
-            for (const [k, v] of Object.entries(parsed)) {
-              if (typeof v === 'boolean') rec[k] = v;
-            }
-            setSaveOverrides(rec);
-          }
-        }
-        if (rawF) {
-          const parsed = JSON.parse(rawF) as unknown;
-          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-            const rec: IdBoolMap = {};
-            for (const [k, v] of Object.entries(parsed)) {
-              if (typeof v === 'boolean') rec[k] = v;
-            }
-            setFollowOverrides(rec);
-          }
-        }
-      } catch {
-        /* ignore malformed storage */
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const toggleSaveForCard = React.useCallback((card: ExploreFeedCard) => {
-    bumpOverride(setSaveOverrides, STORAGE_REEL_SAVE_OVERRIDES, card.id, card.savedByMe ?? false);
-  }, []);
-
-  const toggleFollowForCard = React.useCallback((card: ExploreFeedCard) => {
-    bumpOverride(setFollowOverrides, STORAGE_REEL_FOLLOW_OVERRIDES, card.id, card.followedByMe ?? false);
-  }, []);
-
   const pageHeight = React.useMemo(() => {
     const fallback = Math.max(
       360,
@@ -452,35 +378,36 @@ export function PagedDecisionFeed({
                 <ReelCardMotionWrap animationToken={item.id} isLandingHero={celebrateLandingHero && index === 0}>
                   <ReelCardSurface category={item.category} isOpen={isOpen}>
                     <ReelCardActionBar
-                      category={item.category}
-                      rewardPoints={item.rewardPoints}
-                      saved={effectiveBool(saveOverrides, item.id, item.savedByMe ?? false)}
-                      following={effectiveBool(followOverrides, item.id, item.followedByMe ?? false)}
-                      onToggleSave={() => toggleSaveForCard(item)}
-                      onToggleFollow={() => toggleFollowForCard(item)}
+                      variant="reel-feed-top"
+                      voteSummary={{ voteTotal: voteTotalAll, isLivePoll: isOpen }}
                     />
                     <View style={reelDiscussStyles.pollQuestionRow}>
                       <View style={reelDiscussStyles.pollQuestionTextCol}>
-                        <Text
-                          accessibilityRole="header"
-                          style={[
-                            isOpen ? typography.hero : typography.h2,
-                            reelDiscussStyles.pollQuestion,
-                            isOpen && reelDiscussStyles.pollQuestionOpen,
-                            isOpen && reelDiscussStyles.pollHeroOpen,
-                          ]}>
-                          {item.question}
-                        </Text>
-                        <View style={reelDiscussStyles.pollQuestionUnderline} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
+                        <View style={reelDiscussStyles.pollQuestionTitleRow}>
+                          <Text
+                            accessibilityRole="header"
+                            style={[
+                              isOpen ? typography.hero : typography.h2,
+                              reelDiscussStyles.pollQuestion,
+                              reelDiscussStyles.pollQuestionHeadlineFlexible,
+                              isOpen && reelDiscussStyles.pollQuestionOpen,
+                              isOpen && reelDiscussStyles.pollHeroOpen,
+                            ]}>
+                            {item.question}
+                          </Text>
+                          <RewardPointsGem rewardPoints={item.rewardPoints} density="compact" />
+                        </View>
+                        <PollQuestionAccentBar />
                       </View>
-                      <LiveVotesPill voteTotal={voteTotalAll} isLivePoll={isOpen} inline />
                     </View>
                     {isOpen && !hasPicked ? (
-                      <Text style={styles.pickPrompt}>Pick an option.</Text>
+                      <Text style={styles.pickPrompt}>Tap whatever feels closest — zero pressure.</Text>
                     ) : null}
                     {(() => {
                       const total = totalVotesFromCard(item);
                       const aiPickId = item.aiSuggestedOptionId;
+                      const aiSuggestedLabel =
+                        aiPickId != null ? item.options.find((option) => option.id === aiPickId)?.label ?? null : null;
                       return (
                         <>
                           <View style={reelDiscussStyles.optionWrap}>
@@ -513,7 +440,10 @@ export function PagedDecisionFeed({
                                   disabled={isResolved}
                                   onPress={() => {
                                     if (isResolved) return;
-                                    if (Platform.OS !== 'web') {
+                                    const hadPickAlready = !!(
+                                      selectedByCard[item.id] ?? item.myVoteOptionId
+                                    );
+                                    if (Platform.OS !== 'web' && hadPickAlready) {
                                       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
                                     }
                                     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -521,6 +451,9 @@ export function PagedDecisionFeed({
                                       ...prev,
                                       [item.id]: option.id,
                                     }));
+                                    if (isOpen && !hadPickAlready) {
+                                      onEarnExploreVotePoints?.(EXPLORE_FIRST_VOTE_REWARD_POINTS);
+                                    }
                                   }}
                                   style={({ pressed }) => [
                                     reelDiscussStyles.optionPill,
@@ -556,10 +489,15 @@ export function PagedDecisionFeed({
                               );
                             })}
                           </View>
-                          {hasPicked && item.aiValidation ? <AiDecisionReasonCard v={item.aiValidation} /> : null}
+                          {hasPicked && item.aiValidation ? (
+                            <AiDecisionReasonCard
+                              v={item.aiValidation}
+                              suggestedOptionLabel={aiSuggestedLabel}
+                            />
+                          ) : null}
                           {hasPicked ? (
                             <PrimaryButton
-                              accessibilityLabel="Open discussion"
+                              accessibilityLabel="Join discussion"
                               style={styles.discussButtonBelowChoices}
                               onPress={() =>
                                 router.push({
@@ -573,7 +511,7 @@ export function PagedDecisionFeed({
                                   },
                                 })
                               }>
-                              <Text style={styles.buttonLabel}>Thread</Text>
+                              <Text style={styles.buttonLabel}>Join Discussion</Text>
                             </PrimaryButton>
                           ) : null}
                         </>
@@ -631,12 +569,14 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   cardMotionOuter: {
-    marginHorizontal: 12,
+    marginHorizontal: 17,
   },
   discussButtonBelowChoices: {
-    marginTop: 6,
-    marginBottom: 2,
+    marginTop: 14,
+    marginBottom: 6,
     alignSelf: 'stretch',
+    borderRadius: 18,
+    overflow: 'hidden',
   },
   swipeCueOutsideCard: {
     alignSelf: 'stretch',
@@ -648,34 +588,35 @@ const styles = StyleSheet.create({
 
   pickPrompt: {
     ...typography.caption,
-    color: profileTypography.subdued,
-    fontWeight: '500',
-    marginTop: 8,
-    marginBottom: 6,
-    lineHeight: 18,
-    letterSpacing: 0.08,
+    color: profileTypography.body,
+    fontWeight: '600',
+    marginTop: 6,
+    marginBottom: 10,
+    lineHeight: 20,
+    letterSpacing: 0.04,
+    fontSize: 14,
   },
   aiReasonCard: {
-    marginHorizontal: 2,
-    marginTop: 4,
-    marginBottom: 2,
-    paddingVertical: 14,
-    paddingHorizontal: 15,
-    borderRadius: 16,
-    backgroundColor: 'rgba(253,253,253,0.94)',
+    marginHorizontal: 0,
+    marginTop: 12,
+    marginBottom: 6,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    borderRadius: 26,
+    backgroundColor: 'rgba(255,253,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: `${palette.neonPink}28`,
     borderLeftWidth: 4,
-    borderLeftColor: palette.heroInk,
-    gap: 9,
+    borderLeftColor: '#0f172a',
+    gap: 10,
     ...Platform.select({
       ios: {
-        shadowColor: '#0b1224',
-        shadowOpacity: 0.045,
-        shadowRadius: 10,
-        shadowOffset: { width: 0, height: 3 },
+        shadowColor: palette.heroInk,
+        shadowOpacity: 0.08,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 4 },
       },
-      android: { elevation: 1 },
+      android: { elevation: 2 },
       default: {},
     }),
   },
@@ -686,17 +627,17 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   aiReasonBadge: {
-    borderRadius: 6,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    backgroundColor: palette.heroInk,
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    backgroundColor: '#0f172a',
   },
   aiReasonBadgeLabel: {
     fontSize: 9,
     lineHeight: 12,
     fontWeight: '800',
-    letterSpacing: 0.55,
-    color: palette.sheet,
+    letterSpacing: 0.6,
+    color: palette.white,
   },
   aiReasonEyebrow: {
     ...typography.caption,
@@ -770,14 +711,14 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   swipeCueOrb: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.95)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    backgroundColor: 'rgba(255,255,255,0.96)',
+    borderWidth: 1,
+    borderColor: `${palette.neonSky}46`,
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',

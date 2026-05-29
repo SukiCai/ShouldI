@@ -31,7 +31,7 @@ export default function DecideResultScreen() {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
-  const { lastResponse, reset } = useDecideWizard();
+  const { draft, lastResponse, reset } = useDecideWizard();
 
   if (!lastResponse) {
     return (
@@ -68,6 +68,24 @@ export default function DecideResultScreen() {
       </GlassCard>
       <SectionHeader title="Recommendation" right={`${sections.length} blocks`} />
       <ScrollView contentContainerStyle={{ paddingBottom: spacing.lg }}>
+        {draft.expertVerdicts.length > 0 ? (
+          <GlassCard style={styles.section}>
+            <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>Expert council</Text>
+            {draft.expertVerdicts.map((verdict) => (
+              <View key={verdict.expertId} style={styles.expertVerdict}>
+                <Text style={[typography.compact, { color: surface.textPrimary, fontWeight: '800' }]}>
+                  {verdict.expertTitle}
+                </Text>
+                <Text style={[typography.body, { color: isDark ? palette.neonMint : profileLight.sky, fontWeight: '800' }]}>
+                  {verdict.verdictLine}
+                </Text>
+                <Text style={[typography.compact, { color: surface.textMuted, lineHeight: 20 }]}>
+                  {verdict.reasoning}
+                </Text>
+              </View>
+            ))}
+          </GlassCard>
+        ) : null}
         {sections.map((section) => (
           <GlassCard key={section.id} style={styles.section}>
             <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>{section.title}</Text>
@@ -154,6 +172,10 @@ const styles = StyleSheet.create({
   section: {
     marginTop: spacing.md,
     gap: 6,
+  },
+  expertVerdict: {
+    gap: 4,
+    paddingVertical: 8,
   },
   labelCaps: {
     letterSpacing: 1,

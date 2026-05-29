@@ -31,6 +31,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import Screen from '@/components/ui/Screen';
 import { resolveYouChromatics } from '@/constants/appChromatics';
 import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
+import { useViewerPointsBalance } from '@/lib/useViewerPointsBalance';
 
 /**
  * Light pastel accents — must match {@link profileLight} in `constants/theme.ts`.
@@ -51,8 +52,6 @@ const DEMO_STATS = {
   following: 64,
   /** Likes received on their activity */
   likesReceived: 942,
-  /** Lifetime points from votes, decisions, and milestones */
-  pointsEarned: 2450,
   /** Subset credited when others validate your threads, boosts, referrals, etc. (demo split). */
   pointsFromOthers: 620,
 } as const;
@@ -404,7 +403,7 @@ export default function YouScreen() {
     { value: DEMO_STATS.likesReceived, label: 'likes received' },
   ] as const;
 
-  const pointsBalance = DEMO_STATS.pointsEarned;
+  const { balance: pointsBalance } = useViewerPointsBalance();
   const pointsFromOthers = DEMO_STATS.pointsFromOthers;
 
   const tabData = TABS.find((t) => t.key === activeTab)?.getData() ?? [];

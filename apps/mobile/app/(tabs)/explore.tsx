@@ -12,6 +12,7 @@ import PrimaryButton from '@/components/ui/PrimaryButton';
 import { ExploreMomentHeader } from '@/components/ui/ExploreMomentHeader';
 import { palette, profileLight, themeSurface, typography } from '@/constants/theme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
+import { useViewerPointsBalance } from '@/lib/useViewerPointsBalance';
 import { ExploreFeedResponseSchema } from '@shouldi/contracts';
 import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
@@ -22,6 +23,8 @@ export default function ExploreScreen() {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
+  const { balance: viewerPointsBalance, hydrated: pointsHydrated, awardPoints } =
+    useViewerPointsBalance();
   const query = useQuery({
     queryKey: ['explore'],
     queryFn: async () => {
@@ -67,6 +70,8 @@ export default function ExploreScreen() {
         <View style={[styles.headerWrap, { paddingTop: Math.max(6, insets.top + 2) }]}>
           <ExploreMomentHeader
             caseCount={openCards.length}
+            viewerPointsBalance={viewerPointsBalance}
+            pointsHydrated={pointsHydrated}
             variant="minimal"
             footerLink={{
               label: 'Outcomes ›',
@@ -107,6 +112,7 @@ export default function ExploreScreen() {
             isFetching={query.isFetching}
             onRefresh={() => query.refetch()}
             celebrateLandingHero
+            onEarnExploreVotePoints={awardPoints}
           />
         )}
       </View>
@@ -123,10 +129,15 @@ const styles = StyleSheet.create({
     flex: 1,
     zIndex: 1,
     minHeight: 0,
+    overflow: 'visible',
   },
   headerWrap: {
+    position: 'relative',
+    zIndex: 20,
+    elevation: 20,
     paddingHorizontal: 14,
     paddingBottom: 2,
+    overflow: 'visible',
   },
   emptyFrame: {
     flex: 1,

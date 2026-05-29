@@ -87,6 +87,32 @@ export default function DecideConfirmScreen() {
 
         <View style={styles.blockSpacer} />
 
+        {draft.expertVerdicts.length > 0 ? (
+          <>
+            <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Expert council</Text>
+            <View style={[styles.panel, { backgroundColor: panelBg, borderColor: panelBorder }]}>
+              {draft.expertVerdicts.map((verdict, index) => (
+                <View
+                  key={verdict.expertId}
+                  style={[
+                    styles.expertRow,
+                    index < draft.expertVerdicts.length - 1 && {
+                      borderBottomColor: surface.hairline,
+                      borderBottomWidth: StyleSheet.hairlineWidth,
+                    },
+                  ]}>
+                  <Text style={[styles.expertTitle, { color: surface.textPrimary }]}>{verdict.expertTitle}</Text>
+                  <Text style={[styles.expertLine, { color: isDark ? palette.neonMint : profileLight.sky }]}>
+                    {verdict.verdictLine}
+                  </Text>
+                  <Text style={[styles.expertReason, { color: surface.textMuted }]}>{verdict.reasoning}</Text>
+                </View>
+              ))}
+            </View>
+            <View style={styles.blockSpacer} />
+          </>
+        ) : null}
+
         <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Explore post</Text>
         <CommunityValidationCardEditor
           labels={{
@@ -251,6 +277,27 @@ const styles = StyleSheet.create({
   ctxValue: {
     ...typography.body,
     lineHeight: 23,
+    fontWeight: '500',
+  },
+  expertRow: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: 14,
+    gap: 5,
+  },
+  expertTitle: {
+    ...typography.caption,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+  },
+  expertLine: {
+    ...typography.body,
+    lineHeight: 22,
+    fontWeight: '800',
+  },
+  expertReason: {
+    ...typography.compact,
+    lineHeight: 20,
     fontWeight: '500',
   },
   blockSpacer: {

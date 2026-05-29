@@ -17,9 +17,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import {
   InlineDistributionTrack,
-  LiveVotesPill,
+  PollQuestionAccentBar,
   ReelCardActionBar,
   ReelCardSurface,
+  RewardPointsGem,
   reelDiscussStyles,
   totalVotesFromDistribution,
 } from '@/components/explore/ReelDiscussChrome';
@@ -61,6 +62,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
   const [localPosts, setLocalPosts] = React.useState<TeamDiscussionPost[]>([]);
   const [localReplies, setLocalReplies] = React.useState<TeamDiscussionPost[]>([]);
   const [userThumbUp, setUserThumbUp] = React.useState<Record<string, boolean>>({});
+  const [aiReaction, setAiReaction] = React.useState<'agree' | 'disagree' | null>(null);
   const [replyingToId, setReplyingToId] = React.useState<string | null>(null);
   const [replyDraft, setReplyDraft] = React.useState('');
   const [threadModalRoot, setThreadModalRoot] = React.useState<TeamDiscussionPost | null>(null);
@@ -90,6 +92,28 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
     }
     return card.options.map((o) => ({ option: o, posts: m.get(o.id) ?? [] }));
   }, [card.options, filteredTopLevel]);
+  const aiSuggestedLabel = React.useMemo(
+    () => (card.aiSuggestedOptionId ? optionLabel(card, card.aiSuggestedOptionId) : null),
+    [card],
+  );
+  const aiSignalRows = React.useMemo(() => {
+    const rows = [
+      { label: 'Decision', value: card.question },
+      { label: 'Current context', value: card.hook },
+      { label: 'Core tradeoff', value: card.tension },
+    ];
+    if (effectivePick) rows.push({ label: 'Your choice', value: optionLabel(card, effectivePick) });
+    if (card.matchHint) rows.push({ label: 'Pattern match', value: card.matchHint });
+    return rows;
+  }, [card.hook, card.matchHint, card.question, card.tension, effectivePick, card]);
+  const aiDecisionHeadline =
+    card.aiValidation?.verdictLine ?? (aiSuggestedLabel ? `Lean ${aiSuggestedLabel}` : 'AI decision summary');
+  const aiDecisionReason =
+    card.aiValidation?.verdictBecause ??
+    card.aiSuggestionNote ??
+    'The AI leaned on the situation, tradeoffs, and pattern match shown above.';
+  const agreeCount = (card.aiValidation?.agreeWithAiVotes ?? 0) + (aiReaction === 'agree' ? 1 : 0);
+  const disagreeCount = (card.aiValidation?.disagreeWithAiVotes ?? 0) + (aiReaction === 'disagree' ? 1 : 0);
 
   const getReplies = React.useCallback(
     (parentId: string) =>
@@ -171,13 +195,19 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
     },
     [replyingToId, cancelReply],
   );
+  const onPressAiReaction = React.useCallback((next: 'agree' | 'disagree') => {
+    if (Platform.OS !== 'web') {
+      void Haptics.selectionAsync().catch(() => undefined);
+    }
+    setAiReaction((curr) => (curr === next ? null : next));
+  }, []);
 
   return (
     <View style={styles.wrap}>
       <ReelCardSurface category={card.category} isOpen={isOpen} layout="fullscreen" suppressAtmosphere>
         <ReelCardActionBar
-          category={card.category}
-          rewardPoints={card.rewardPoints}
+          variant="discuss-top"
+          voteSummary={{ voteTotal, isLivePoll: isOpen }}
           saved={saved}
           following={following}
           onToggleSave={() => setSaved((s) => !s)}
@@ -187,19 +217,22 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
 
         <View style={reelDiscussStyles.pollQuestionRow}>
           <View style={reelDiscussStyles.pollQuestionTextCol}>
-            <Text
-              accessibilityRole="header"
-              style={[
-                isOpen ? typography.hero : typography.h2,
-                reelDiscussStyles.pollQuestion,
-                isOpen && reelDiscussStyles.pollQuestionOpen,
-                isOpen && reelDiscussStyles.pollHeroOpen,
-              ]}>
-              {card.question}
-            </Text>
-            <View style={reelDiscussStyles.pollQuestionUnderline} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
+            <View style={reelDiscussStyles.pollQuestionTitleRow}>
+              <Text
+                accessibilityRole="header"
+                style={[
+                  isOpen ? typography.hero : typography.h2,
+                  reelDiscussStyles.pollQuestion,
+                  reelDiscussStyles.pollQuestionHeadlineFlexible,
+                  isOpen && reelDiscussStyles.pollQuestionOpen,
+                  isOpen && reelDiscussStyles.pollHeroOpen,
+                ]}>
+                {card.question}
+              </Text>
+              <RewardPointsGem rewardPoints={card.rewardPoints} density="compact" />
+            </View>
+            <PollQuestionAccentBar />
           </View>
-          <LiveVotesPill voteTotal={voteTotal} isLivePoll={isOpen} inline />
         </View>
 
         <View style={reelDiscussStyles.optionWrap}>
@@ -250,16 +283,80 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
           })}
         </View>
 
-        <View style={styles.discussionHeader}>
-          <View style={styles.discussionTitleRow}>
-            <View style={styles.discussionAccentStrip} accessibilityElementsHidden />
-            <View style={styles.discussionTitleStack}>
-              <Text style={styles.discussionEyebrow}>Community thread</Text>
-              <Text style={styles.discussionTitle}>Team perspectives</Text>
+        <View style={styles.summarySection}>
+          <View style={styles.aiDecisionCard}>
+            <View style={styles.aiDecisionHeaderRow}>
+              <View style={styles.aiDecisionBadge}>
+                <Text style={styles.aiDecisionBadgeText}>AI DECISION</Text>
+              </View>
+              {aiSuggestedLabel ? <Text style={styles.aiDecisionPick}>Lean: {aiSuggestedLabel}</Text> : null}
+            </View>
+            <Text style={styles.aiDecisionHeadline}>{aiDecisionHeadline}</Text>
+            <Text style={styles.aiDecisionReason}>{aiDecisionReason}</Text>
+
+            <View style={styles.aiSignalsSection}>
+              <Text style={styles.aiSignalsEyebrow}>Signals AI used for you</Text>
+              <View style={styles.aiSignalsGrid}>
+                {aiSignalRows.map((row) => (
+                  <View key={row.label} style={styles.aiSignalTile}>
+                    <Text style={styles.aiSignalLabel}>{row.label}</Text>
+                    <Text style={styles.aiSignalValue}>{row.value}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.aiReactionRow}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={`Agree with AI. ${agreeCount} agrees.`}
+                accessibilityState={{ selected: aiReaction === 'agree' }}
+                onPress={() => onPressAiReaction('agree')}
+                style={({ pressed }) => [
+                  styles.aiReactionPill,
+                  aiReaction === 'agree' && styles.aiReactionPillAgreeOn,
+                  pressed && styles.aiReactionPillPressed,
+                ]}>
+                <Ionicons
+                  name={aiReaction === 'agree' ? 'thumbs-up' : 'thumbs-up-outline'}
+                  size={16}
+                  color={aiReaction === 'agree' ? palette.mint : profileTypography.subdued}
+                />
+                <Text style={[styles.aiReactionLabel, aiReaction === 'agree' && styles.aiReactionLabelOn]}>
+                  Agree · {agreeCount}
+                </Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={`Disagree with AI. ${disagreeCount} disagrees.`}
+                accessibilityState={{ selected: aiReaction === 'disagree' }}
+                onPress={() => onPressAiReaction('disagree')}
+                style={({ pressed }) => [
+                  styles.aiReactionPill,
+                  aiReaction === 'disagree' && styles.aiReactionPillDisagreeOn,
+                  pressed && styles.aiReactionPillPressed,
+                ]}>
+                <Ionicons
+                  name={aiReaction === 'disagree' ? 'thumbs-down' : 'thumbs-down-outline'}
+                  size={16}
+                  color={aiReaction === 'disagree' ? palette.accent : profileTypography.subdued}
+                />
+                <Text style={[styles.aiReactionLabel, aiReaction === 'disagree' && styles.aiReactionLabelOn]}>
+                  Disagree · {disagreeCount}
+                </Text>
+              </Pressable>
             </View>
           </View>
-          <Text style={styles.discussionSub}>
-            Replies carry the stance they support — disagree with ideas, not people.
+        </View>
+
+        <View style={styles.communitySectionHeader}>
+          <Text style={styles.communitySectionEyebrow}>Discussion</Text>
+          <Text style={styles.communitySectionTitle}>Community responses</Text>
+          <Text style={styles.communitySectionBody}>
+            Read reactions to the AI decision, then add your own take beneath the side you support.
+          </Text>
+          <Text style={styles.communitySectionMeta}>
+            {filteredTopLevel.length} {filteredTopLevel.length === 1 ? 'top-level note' : 'top-level notes'}
           </Text>
         </View>
 
@@ -269,7 +366,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
             accessibilityState={{ selected: filterOptionId === null }}
             onPress={() => setFilterOptionId(null)}
             style={[styles.filterChip, filterOptionId === null && styles.filterChipOn]}>
-            <Text style={[styles.filterChipText, filterOptionId === null && styles.filterChipTextOn]}>All teams</Text>
+            <Text style={[styles.filterChipText, filterOptionId === null && styles.filterChipTextOn]}>All perspectives</Text>
           </Pressable>
           {card.options.map((o, idx) => (
             <Pressable
@@ -291,12 +388,12 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
         {!effectivePick ? (
           <View style={styles.needVoteCallout}>
             <Text style={styles.needVoteTitle}>
-              {isOpen ? 'Choose a side on the reel first' : 'Join the thread with a stance'}
+              {isOpen ? 'Choose a side before you post' : 'Join the discussion with a stance'}
             </Text>
             <Text style={styles.needVoteBody}>
               {isOpen
-                ? "Your vote anchors which team badge you'll wear in this thread. Head back to Explore, tap an option, then reopen Discuss."
-                : 'Posts are labeled by the option they support. To add your voice under a team banner, return to the reel, tap the stance you identify with, then open Discuss again.'}
+                ? 'Your vote decides which side your response appears under. Head back to Explore, tap an option, then reopen Discuss.'
+                : 'Every note here is tagged by the side it supports. To add your response under the right team, return to the reel, tap the stance you identify with, then open Discuss again.'}
             </Text>
           </View>
         ) : (
@@ -312,7 +409,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                       <View style={[styles.teamBadgeDot, { backgroundColor: stripe }]} />
                       <Text style={styles.teamBadgeText}>{option.label}</Text>
                       <Text style={styles.teamBadgeMeta}>
-                        {voiceCount} {voiceCount === 1 ? 'voice' : 'voices'}
+                        {voiceCount} {voiceCount === 1 ? 'response' : 'responses'}
                       </Text>
                     </View>
                   </View>
@@ -345,8 +442,8 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
 
             {filteredTopLevel.length === 0 ? (
               <View style={styles.emptyCard}>
-                <Text style={styles.emptyTitle}>No notes in this slice</Text>
-                <Text style={styles.emptySubtitle}>Broaden filters or draft the first takeaway for your team.</Text>
+                <Text style={styles.emptyTitle}>No responses in this slice yet</Text>
+                <Text style={styles.emptySubtitle}>Broaden the filter or be the first to explain why you agree or disagree.</Text>
               </View>
             ) : null}
 
@@ -354,12 +451,12 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
               <Text style={styles.composerEyebrow}>
                 {effectivePick
                   ? `Posting as · ${optionLabel(card, effectivePick)}`
-                  : 'Join this decision'}
+                  : 'Join this discussion'}
               </Text>
               <TextInput
                 accessibilityLabel={
                   effectivePick
-                    ? `Write a perspective for ${optionLabel(card, effectivePick)}`
+                    ? `Write a response for ${optionLabel(card, effectivePick)}`
                     : 'Discussion composer disabled until you vote'
                 }
                 style={styles.input}
@@ -367,7 +464,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 editable={!!effectivePick}
                 placeholder={
                   effectivePick
-                    ? 'Share evidence, timelines, or what would flip your stance—stay respectful.'
+                    ? 'Explain why you agree or disagree with the AI, and share what happened in your own experience.'
                     : 'Vote on Explore to unlock posting…'
                 }
                 placeholderTextColor={profileTypography.subdued}
@@ -380,7 +477,7 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 style={styles.postBtn}
                 disabled={!effectivePick || draft.trim().length < 4}
                 onPress={submit}>
-                <Text style={styles.postBtnLabel}>Post</Text>
+                <Text style={styles.postBtnLabel}>Share response</Text>
               </PrimaryButton>
             </View>
           </>
@@ -640,55 +737,420 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     width: '100%',
   },
-  discussionHeader: {
-    marginTop: 6,
-    gap: 10,
-    paddingTop: 18,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: profileNeutralStroke(0.06),
+  summarySection: {
+    marginTop: 18,
+    gap: 14,
   },
-  discussionTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    gap: 12,
-  },
-  discussionAccentStrip: {
-    width: 4,
-    alignSelf: 'stretch',
-    minHeight: 36,
-    borderRadius: 2,
-    backgroundColor: 'rgba(79,118,194,0.42)',
-    marginTop: 2,
-  },
-  discussionTitleStack: {
-    flex: 1,
-    gap: 4,
-    minWidth: 0,
-  },
-  discussionEyebrow: {
-    fontSize: 11,
-    lineHeight: 14,
-    fontWeight: '800',
-    letterSpacing: 1.2,
-    textTransform: 'uppercase',
+  summaryEyebrow: {
+    ...typography.caption,
     color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.45,
+    textTransform: 'uppercase',
+    paddingHorizontal: 2,
   },
-  discussionTitle: {
+  summaryTitle: {
+    ...typography.h2,
     color: profileTypography.ink,
-    fontSize: 20,
-    lineHeight: 26,
+    fontWeight: '800',
+    letterSpacing: -0.45,
+    paddingHorizontal: 2,
+  },
+  summaryCard: {
+    gap: 0,
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.08),
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    overflow: 'hidden',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.04,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  summaryRow: {
+    gap: 6,
+    paddingVertical: 14,
+    paddingHorizontal: spacing.md,
+  },
+  summaryRowDivider: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: profileNeutralStroke(0.08),
+  },
+  summaryRowLabel: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  summaryRowValue: {
+    ...typography.compact,
+    color: profileTypography.body,
+    lineHeight: 20,
+    fontWeight: '500',
+  },
+  aiDecisionCard: {
+    gap: 10,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    borderRadius: 26,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: `${palette.neonPink}28`,
+    borderLeftWidth: 4,
+    borderLeftColor: '#0f172a',
+    backgroundColor: 'rgba(255,253,255,0.92)',
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.heroInk,
+        shadowOpacity: 0.08,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  aiDecisionHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    flexWrap: 'wrap',
+  },
+  aiDecisionBadge: {
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    backgroundColor: '#0f172a',
+  },
+  aiDecisionBadgeText: {
+    fontSize: 9,
+    lineHeight: 12,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: palette.white,
+  },
+  aiDecisionPick: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '600',
+    letterSpacing: 0.12,
+    flex: 1,
+  },
+  aiDecisionHeadline: {
+    ...typography.h2,
+    color: profileTypography.ink,
     fontWeight: '700',
     letterSpacing: -0.35,
+    lineHeight: 24,
+    fontSize: 17,
   },
-  discussionSub: {
-    ...typography.body,
-    color: profileTypography.emphasis,
-    lineHeight: 22,
+  aiDecisionReason: {
+    ...typography.compact,
+    color: profileTypography.body,
+    lineHeight: 21,
     fontWeight: '500',
-    opacity: 0.92,
+  },
+  aiSignalsSection: {
+    gap: 10,
+    marginTop: 2,
+    paddingTop: 12,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: profileNeutralStroke(0.08),
+  },
+  aiSignalsEyebrow: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  aiSignalsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+  },
+  aiSignalTile: {
+    flexBasis: '47%',
+    flexGrow: 1,
+    minWidth: 132,
+    gap: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 11,
+    borderRadius: radius.md,
+    backgroundColor: 'rgba(255,255,255,0.84)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.08),
+  },
+  aiSignalLabel: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.3,
+    textTransform: 'uppercase',
+  },
+  aiSignalValue: {
+    ...typography.compact,
+    color: profileTypography.body,
+    lineHeight: 19,
+    fontWeight: '600',
+  },
+  aiReactionRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginTop: 2,
+  },
+  aiReactionPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    backgroundColor: 'rgba(255,255,255,0.82)',
+  },
+  aiReactionPillAgreeOn: {
+    borderColor: 'rgba(95,169,149,0.35)',
+    backgroundColor: 'rgba(228,248,240,0.92)',
+  },
+  aiReactionPillDisagreeOn: {
+    borderColor: 'rgba(79,118,194,0.35)',
+    backgroundColor: 'rgba(230,238,255,0.92)',
+  },
+  aiReactionPillPressed: {
+    opacity: 0.9,
+  },
+  aiReactionLabel: {
+    ...typography.caption,
+    color: profileTypography.body,
+    fontWeight: '800',
+  },
+  aiReactionLabelOn: {
+    color: profileTypography.ink,
+  },
+  workflowHeader: {
+    gap: 6,
+    paddingHorizontal: 2,
+  },
+  workflowEyebrow: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.45,
+    textTransform: 'uppercase',
+  },
+  workflowTitle: {
+    ...typography.h2,
+    color: profileTypography.ink,
+    fontWeight: '800',
+    letterSpacing: -0.45,
+  },
+  workflowBody: {
+    ...typography.compact,
+    color: profileTypography.emphasis,
+    lineHeight: 20,
+    fontWeight: '500',
+  },
+  stageStack: {
+    gap: 12,
+  },
+  stageCard: {
+    gap: 10,
+    padding: spacing.md,
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.08),
+    backgroundColor: 'rgba(255,255,255,0.86)',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.04,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  stageHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    flexWrap: 'wrap',
+  },
+  stageBadge: {
+    paddingHorizontal: 9,
+    paddingVertical: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(79,118,194,0.14)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(79,118,194,0.26)',
+  },
+  stageBadgeMint: {
+    backgroundColor: 'rgba(95,169,149,0.14)',
+    borderColor: 'rgba(95,169,149,0.28)',
+  },
+  stageBadgeText: {
+    ...typography.caption,
+    color: profileTypography.body,
+    fontWeight: '800',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  stageTitle: {
+    ...typography.compact,
+    color: profileTypography.ink,
+    fontWeight: '800',
+    fontSize: 15,
+  },
+  stageBody: {
+    ...typography.compact,
+    color: profileTypography.body,
+    lineHeight: 20,
+    fontWeight: '500',
+  },
+  signalChipWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  signalChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderRadius: radius.pill,
+    backgroundColor: 'rgba(227,236,255,0.8)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(79,118,194,0.16)',
+  },
+  signalChipSoft: {
+    backgroundColor: 'rgba(241,246,255,0.92)',
+  },
+  signalChipText: {
+    ...typography.caption,
+    color: profileTypography.body,
+    fontWeight: '700',
+  },
+  stageMiniLabel: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  audienceChipWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  audienceChip: {
+    paddingHorizontal: 11,
+    paddingVertical: 8,
+    borderRadius: radius.pill,
+    backgroundColor: 'rgba(255,255,255,0.96)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.08),
+  },
+  audienceChipText: {
+    ...typography.caption,
+    color: profileTypography.emphasis,
+    fontWeight: '700',
+  },
+  stageFootnote: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    lineHeight: 17,
+    fontWeight: '600',
+  },
+  spotlightShell: {
+    gap: 10,
+  },
+  spotlightEyebrow: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+    paddingHorizontal: 2,
+  },
+  spotlightRailContent: {
+    paddingRight: spacing.sm,
+    gap: 10,
+  },
+  spotlightCard: {
+    width: 204,
+    minHeight: 124,
+    padding: 14,
+    borderRadius: radius.lg,
+    backgroundColor: 'rgba(255,255,255,0.92)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.08),
+    gap: 8,
+  },
+  spotlightTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  spotlightEmoji: {
+    fontSize: 16,
+  },
+  spotlightAuthor: {
+    ...typography.compact,
+    color: profileTypography.body,
+    fontWeight: '800',
+    flex: 1,
+  },
+  spotlightBody: {
+    ...typography.compact,
+    color: profileTypography.body,
+    lineHeight: 19,
+    fontWeight: '500',
+  },
+  spotlightLane: {
+    ...typography.caption,
+    color: palette.accent,
+    fontWeight: '700',
+  },
+  communitySectionHeader: {
+    marginTop: 18,
+    gap: 5,
+    paddingHorizontal: 2,
+  },
+  communitySectionEyebrow: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '800',
+    letterSpacing: 0.45,
+    textTransform: 'uppercase',
+  },
+  communitySectionTitle: {
+    ...typography.h2,
+    color: profileTypography.ink,
+    fontWeight: '800',
+    letterSpacing: -0.4,
+  },
+  communitySectionBody: {
+    ...typography.compact,
+    color: profileTypography.emphasis,
+    lineHeight: 20,
+    fontWeight: '500',
+  },
+  communitySectionMeta: {
+    ...typography.caption,
+    color: profileTypography.subdued,
+    fontWeight: '700',
   },
   filterRail: {
-    marginTop: 10,
+    marginTop: 14,
     marginBottom: 2,
     flexGrow: 0,
   },

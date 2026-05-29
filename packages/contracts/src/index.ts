@@ -103,22 +103,104 @@ export const DecideInterviewBubbleSchema = z.object({
   role: DecideInterviewRoleSchema,
   text: z.string(),
   at: z.number().int(),
+  expertId: z.string().optional(),
+  expertTitle: z.string().optional(),
+  expertIcon: z.string().optional(),
+  expertColor: z.string().optional(),
+  supportingExpertIds: z.array(z.string()).default([]),
 });
 export type DecideInterviewBubble = z.infer<typeof DecideInterviewBubbleSchema>;
+
+export const DecideInterviewExpertSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  subtitle: z.string().optional(),
+  skillName: z.string(),
+  icon: z.string(),
+  color: z.string(),
+});
+export type DecideInterviewExpert = z.infer<typeof DecideInterviewExpertSchema>;
 
 export const DecideInterviewTurnRequestSchema = z.object({
   sessionId: z.string().nullable().optional(),
   userText: z.string().optional().default(''),
+  selectedOptionId: z.string().optional(),
 });
 export type DecideInterviewTurnRequest = z.infer<typeof DecideInterviewTurnRequestSchema>;
+
+export const DecideInterviewChoiceOptionSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  description: z.string().optional(),
+});
+export type DecideInterviewChoiceOption = z.infer<typeof DecideInterviewChoiceOptionSchema>;
+
+export const DecideInterviewChoicePromptSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  question: z.string(),
+  helperText: z.string().optional(),
+  specialistLabel: z.string().optional(),
+  speakerExpertId: z.string().optional(),
+  supportingExpertIds: z.array(z.string()).default([]),
+  whyItMatters: z.string().optional(),
+  progress: z
+    .object({
+      checked: z.number().int().nonnegative(),
+      total: z.number().int().positive().optional(),
+      label: z.string().optional(),
+      mode: z.enum(['bounded', 'adaptive']).default('bounded'),
+    })
+    .optional(),
+  options: z.array(DecideInterviewChoiceOptionSchema).min(2).max(5),
+  allowCustomAnswer: z.boolean().default(true),
+});
+export type DecideInterviewChoicePrompt = z.infer<typeof DecideInterviewChoicePromptSchema>;
 
 export const DecideInterviewDraftHintsSchema = z.object({
   title: z.string().optional(),
   category: DecisionCategorySchema.optional(),
   constraints: z.string().optional(),
   successCriteria: z.string().optional(),
+  communityChallengeQuestion: z.string().optional(),
+  communityAiVerdictLine: z.string().optional(),
+  communityAiBecause: z.string().optional(),
 });
 export type DecideInterviewDraftHints = z.infer<typeof DecideInterviewDraftHintsSchema>;
+
+export const DecideInterviewFinalDecisionSchema = z.object({
+  verdictLine: z.string(),
+  recommendation: z.string(),
+  rationale: z.string(),
+  confidence: z.enum(['low', 'medium', 'high']).default('medium'),
+  nextSteps: z.array(z.string()).default([]),
+  expertVerdicts: z
+    .array(
+      z.object({
+        expertId: z.string(),
+        expertTitle: z.string(),
+        verdictLine: z.string(),
+        reasoning: z.string(),
+        confidence: z.enum(['low', 'medium', 'high']).default('medium'),
+        risks: z.array(z.string()).default([]),
+        nextQuestionsOrActions: z.array(z.string()).default([]),
+      }),
+    )
+    .default([]),
+});
+export type DecideInterviewFinalDecision = z.infer<typeof DecideInterviewFinalDecisionSchema>;
+
+export const DecideInterviewPreviewCardSchema = z.object({
+  category: DecisionCategorySchema,
+  question: z.string(),
+  hook: z.string(),
+  tension: z.string(),
+  options: z.array(DecideInterviewChoiceOptionSchema).min(2).max(4),
+  aiVerdictLine: z.string(),
+  aiBecause: z.string(),
+  discussionPreview: z.array(z.string()).max(4).default([]),
+});
+export type DecideInterviewPreviewCard = z.infer<typeof DecideInterviewPreviewCardSchema>;
 
 export const DecideInterviewTurnResponseSchema = z.object({
   sessionId: z.string(),
@@ -126,7 +208,12 @@ export const DecideInterviewTurnResponseSchema = z.object({
   phase: z.string(),
   isComplete: z.boolean(),
   hermesIntegrated: z.boolean(),
+  activeExperts: z.array(DecideInterviewExpertSchema).default([]),
+  newlyActivatedExperts: z.array(DecideInterviewExpertSchema).default([]),
   suggestedDraftHints: DecideInterviewDraftHintsSchema.optional(),
+  choicePrompt: DecideInterviewChoicePromptSchema.optional(),
+  finalDecision: DecideInterviewFinalDecisionSchema.optional(),
+  previewCard: DecideInterviewPreviewCardSchema.optional(),
 });
 export type DecideInterviewTurnResponse = z.infer<typeof DecideInterviewTurnResponseSchema>;
 
@@ -149,5 +236,8 @@ export const DecideInterviewSessionDetailSchema = z.object({
   phase: z.string(),
   isComplete: z.boolean(),
   hermesIntegrated: z.boolean(),
+  activeExperts: z.array(DecideInterviewExpertSchema).default([]),
+  choicePrompt: DecideInterviewChoicePromptSchema.optional(),
+  finalDecision: DecideInterviewFinalDecisionSchema.optional(),
 });
 export type DecideInterviewSessionDetail = z.infer<typeof DecideInterviewSessionDetailSchema>;

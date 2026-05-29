@@ -1,3 +1,5 @@
+import { Ionicons } from '@expo/vector-icons';
+import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
 import {
@@ -22,27 +24,62 @@ function rgba255(r: number, g: number, b: number, a: number): string {
 
 type ExploreMomentHeaderProps = {
   caseCount: number;
+  /** With `viewerPointsBalance`, swaps the dilemma-count pill for the viewer's total points balance. */
+  viewerPointsBalance?: number;
+  /** False until persisted balance finishes loading — avoids false “earn” bursts. */
+  pointsHydrated?: boolean;
   /** Minimal keeps focus on cards; dramatic is the large cinematic hero. */
   variant?: 'minimal' | 'dramatic';
   footerLink?: { label: string; accessibilityHint?: string; onPress: () => void };
 };
 
-export function ExploreMomentHeader({ caseCount, variant = 'minimal', footerLink }: ExploreMomentHeaderProps) {
+export function ExploreMomentHeader({
+  caseCount,
+  viewerPointsBalance,
+  pointsHydrated = true,
+  variant = 'minimal',
+  footerLink,
+}: ExploreMomentHeaderProps) {
   if (variant === 'dramatic') {
     return <DramaticMomentHeader caseCount={caseCount} />;
   }
-  return <MinimalExploreBar caseCount={caseCount} footerLink={footerLink} />;
+  return (
+    <MinimalExploreBar
+      caseCount={caseCount}
+      footerLink={footerLink}
+      viewerPointsBalance={viewerPointsBalance}
+      pointsHydrated={pointsHydrated}
+    />
+  );
 }
 
 function MinimalExploreBar({
   caseCount,
   footerLink,
+  viewerPointsBalance,
+  pointsHydrated = true,
 }: {
   caseCount: number;
   footerLink?: { label: string; accessibilityHint?: string; onPress: () => void };
+  viewerPointsBalance?: number;
+  pointsHydrated?: boolean;
 }) {
+  const usePointsLedger = typeof viewerPointsBalance === 'number';
+
   const breathe = React.useRef(new Animated.Value(0)).current;
+  const balancePulse = React.useRef(new Animated.Value(1)).current;
+  const haloScale = React.useRef(new Animated.Value(0.84)).current;
+  const haloOpacity = React.useRef(new Animated.Value(0)).current;
+  const flashScale = React.useRef(new Animated.Value(0.94)).current;
+  const flashOpacity = React.useRef(new Animated.Value(0)).current;
+  const plusOpacity = React.useRef(new Animated.Value(0)).current;
+  const plusLift = React.useRef(new Animated.Value(0)).current;
+  const plusScale = React.useRef(new Animated.Value(0.72)).current;
+
   const [reduceMotion, setReduceMotion] = React.useState(false);
+  const [earnBurstDelta, setEarnBurstDelta] = React.useState<number | null>(null);
+  const prevBalanceRef = React.useRef<number | null>(null);
+  const runningPlusBurstRef = React.useRef<Animated.CompositeAnimation | null>(null);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -70,7 +107,7 @@ function MinimalExploreBar({
   }, []);
 
   React.useEffect(() => {
-    if (reduceMotion) {
+    if (usePointsLedger || reduceMotion) {
       breathe.stopAnimation();
       breathe.setValue(1);
       return undefined;
@@ -93,7 +130,7 @@ function MinimalExploreBar({
     );
     loop.start();
     return () => loop.stop();
-  }, [breathe, reduceMotion]);
+  }, [breathe, reduceMotion, usePointsLedger]);
 
   const liveDotOpacity = breathe.interpolate({
     inputRange: [0, 1],
@@ -107,11 +144,247 @@ function MinimalExploreBar({
   const isDark = scheme === 'dark';
   /** Profile tab strip uses sky, not neon mint — calmer on light canvas. */
   const accentOnChrome = isDark ? palette.neonMint : profileLight.sky;
+  const pointsHaloBg = isDark ? 'rgba(61,255,184,0.24)' : 'rgba(73,205,235,0.22)';
   const liveDotBg = isDark ? palette.livePulse : profileLight.sky;
   const liveDotBorder = isDark ? 'rgba(16,185,129,0.4)' : `${profileLight.sky}80`;
 
+  React.useEffect(() => {
+    if (!usePointsLedger || viewerPointsBalance == null) return;
+    if (!pointsHydrated) {
+      prevBalanceRef.current = viewerPointsBalance;
+      return;
+    }
+    if (prevBalanceRef.current === null) {
+      prevBalanceRef.current = viewerPointsBalance;
+      return;
+    }
+    const delta = viewerPointsBalance - prevBalanceRef.current;
+    prevBalanceRef.current = viewerPointsBalance;
+    if (delta <= 0) return;
+
+    void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      AccessibilityInfo.announceForAccessibility(
+        `Earned ${delta} points. New total balance ${viewerPointsBalance}.`,
+      );
+    }
+
+    setEarnBurstDelta(delta);
+    balancePulse.stopAnimation();
+    haloScale.stopAnimation();
+    haloOpacity.stopAnimation();
+    flashScale.stopAnimation();
+    flashOpacity.stopAnimation();
+    balancePulse.setValue(1);
+    haloScale.setValue(0.84);
+    haloOpacity.setValue(0);
+    flashScale.setValue(0.94);
+    flashOpacity.setValue(0);
+
+    if (reduceMotion) {
+      Animated.parallel([
+        Animated.sequence([
+          Animated.timing(balancePulse, {
+            toValue: 1.12,
+            duration: 150,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: true,
+          }),
+          Animated.spring(balancePulse, {
+            toValue: 1,
+            damping: 12,
+            stiffness: 220,
+            mass: 0.55,
+            useNativeDriver: true,
+          }),
+        ]),
+        Animated.sequence([
+          Animated.timing(flashOpacity, {
+            toValue: 0.55,
+            duration: 100,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: true,
+          }),
+          Animated.timing(flashOpacity, {
+            toValue: 0,
+            duration: 260,
+            easing: Easing.in(Easing.quad),
+            useNativeDriver: true,
+          }),
+        ]),
+      ]).start();
+      return;
+    }
+
+    haloOpacity.setValue(0.42);
+    flashOpacity.setValue(0.92);
+    Animated.parallel([
+      Animated.sequence([
+        Animated.timing(balancePulse, {
+          toValue: 1.24,
+          duration: 170,
+          easing: Easing.out(Easing.back(1.25)),
+          useNativeDriver: true,
+        }),
+        Animated.timing(balancePulse, {
+          toValue: 0.94,
+          duration: 130,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.spring(balancePulse, {
+          toValue: 1,
+          damping: 12,
+          stiffness: 220,
+          mass: 0.55,
+          useNativeDriver: true,
+        }),
+      ]),
+      Animated.parallel([
+        Animated.timing(haloScale, {
+          toValue: 1.82,
+          duration: 580,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: true,
+        }),
+        Animated.timing(haloOpacity, {
+          toValue: 0,
+          duration: 580,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ]),
+      Animated.parallel([
+        Animated.sequence([
+          Animated.timing(flashScale, {
+            toValue: 1.06,
+            duration: 130,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: true,
+          }),
+          Animated.timing(flashScale, {
+            toValue: 1.22,
+            duration: 340,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: true,
+          }),
+        ]),
+        Animated.sequence([
+          Animated.timing(flashOpacity, {
+            toValue: 0.96,
+            duration: 120,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: true,
+          }),
+          Animated.timing(flashOpacity, {
+            toValue: 0,
+            duration: 360,
+            easing: Easing.in(Easing.quad),
+            useNativeDriver: true,
+          }),
+        ]),
+      ]),
+    ]).start();
+  }, [
+    viewerPointsBalance,
+    pointsHydrated,
+    usePointsLedger,
+    balancePulse,
+    haloScale,
+    haloOpacity,
+    flashScale,
+    flashOpacity,
+    reduceMotion,
+  ]);
+
+  React.useEffect(() => {
+    runningPlusBurstRef.current?.stop?.();
+    plusOpacity.stopAnimation();
+    plusLift.stopAnimation();
+    plusScale.stopAnimation();
+
+    if (earnBurstDelta == null) return undefined;
+
+    if (reduceMotion) {
+      plusLift.setValue(6);
+      plusOpacity.setValue(1);
+      plusScale.setValue(1);
+      const t = setTimeout(() => {
+        plusOpacity.setValue(0);
+        setEarnBurstDelta(null);
+      }, 620);
+      return () => clearTimeout(t);
+    }
+
+    plusOpacity.setValue(0);
+    plusLift.setValue(-2);
+    plusScale.setValue(0.72);
+
+    const seq = Animated.sequence([
+      Animated.parallel([
+        Animated.timing(plusOpacity, {
+          toValue: 1,
+          duration: 130,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.timing(plusLift, {
+          toValue: 10,
+          duration: 260,
+          easing: Easing.out(Easing.back(1.18)),
+          useNativeDriver: true,
+        }),
+        Animated.spring(plusScale, {
+          toValue: 1.08,
+          damping: 10,
+          stiffness: 240,
+          mass: 0.65,
+          useNativeDriver: true,
+        }),
+      ]),
+      Animated.delay(340),
+      Animated.parallel([
+        Animated.timing(plusOpacity, {
+          toValue: 0,
+          duration: 240,
+          easing: Easing.in(Easing.cubic),
+          useNativeDriver: true,
+        }),
+        Animated.timing(plusLift, {
+          toValue: 24,
+          duration: 240,
+          easing: Easing.in(Easing.cubic),
+          useNativeDriver: true,
+        }),
+        Animated.timing(plusScale, {
+          toValue: 0.92,
+          duration: 200,
+          easing: Easing.in(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ]),
+    ]);
+    runningPlusBurstRef.current = seq;
+    seq.start(({ finished }) => {
+      if (finished) setEarnBurstDelta(null);
+    });
+
+    return () => {
+      runningPlusBurstRef.current?.stop?.();
+    };
+  }, [earnBurstDelta, plusLift, plusOpacity, plusScale, reduceMotion]);
+
+  const ledgerLabel =
+    usePointsLedger && viewerPointsBalance != null
+      ? ` Your total points balance is ${pointsHydrated ? viewerPointsBalance.toLocaleString() : 'loading'}.`
+      : '';
+
+  const headerA11yLabel = usePointsLedger
+    ? `Explore.${ledgerLabel}`.trim()
+    : `Explore · ${countLabel}. Swipe up for the next card.${ledgerLabel}`;
+
   return (
-    <View accessibilityRole="header" accessibilityLabel={`Explore · ${countLabel}. Swipe up for the next card.`}>
+    <View accessibilityRole="header" accessibilityLabel={headerA11yLabel}>
       <View style={minimalStyles.row}>
         <View style={minimalStyles.leftCluster}>
           <View
@@ -123,30 +396,104 @@ function MinimalExploreBar({
             importantForAccessibility="no-hide-descendants">
             <ShouldILogoMark size={26} />
           </View>
+
           <Text style={[minimalStyles.title, { color: isDark ? palette.textOnCanvas : profileTypography.ink }]}>
             Explore
           </Text>
-          <View
-            style={[minimalStyles.livePill, { borderColor: `${accentOnChrome}55` }]}
-            accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
-            {!reduceMotion ? (
+
+          {usePointsLedger && viewerPointsBalance != null ? (
+            <View style={minimalStyles.pointsLedgerOuter}>
               <Animated.View
+                pointerEvents="none"
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
                 style={[
-                  minimalStyles.liveDot,
-                  { opacity: liveDotOpacity, backgroundColor: liveDotBg, borderColor: liveDotBorder },
+                  minimalStyles.pointsHalo,
+                  {
+                    backgroundColor: pointsHaloBg,
+                    opacity: haloOpacity,
+                    transform: [{ scale: haloScale }],
+                  },
                 ]}
               />
-            ) : (
-              <View
+              <Animated.View
+                pointerEvents="none"
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
                 style={[
-                  minimalStyles.liveDot,
-                  minimalStyles.liveDotRm,
-                  { backgroundColor: liveDotBg, borderColor: liveDotBorder },
+                  minimalStyles.pointsFlash,
+                  {
+                    opacity: flashOpacity,
+                    transform: [{ scale: flashScale }],
+                  },
                 ]}
               />
-            )}
-            <Text style={minimalStyles.liveCount}>{caseCount.toLocaleString()}</Text>
-          </View>
+              {earnBurstDelta != null ? (
+                <Animated.View
+                  pointerEvents="none"
+                  accessibilityElementsHidden
+                  importantForAccessibility="no-hide-descendants"
+                  style={[
+                    minimalStyles.earnBurstBadge,
+                    {
+                      opacity: plusOpacity,
+                      transform: [{ translateY: plusLift }, { scale: plusScale }],
+                    },
+                  ]}>
+                  <Ionicons name="sparkles" size={13} color={palette.sheet} />
+                  <Text style={minimalStyles.earnBurstText}>+{earnBurstDelta} pts</Text>
+                </Animated.View>
+              ) : null}
+              <Animated.View style={{ transform: [{ scale: balancePulse }] }}>
+                <View
+                  style={[minimalStyles.pointsLedgerPill, { borderColor: `${accentOnChrome}52` }]}
+                  accessibilityLabel={
+                    pointsHydrated
+                      ? `Your total points balance, ${viewerPointsBalance}`
+                      : 'Points balance loading'
+                  }>
+                  <Ionicons
+                    name="sparkles"
+                    size={14}
+                    color={palette.neonPink}
+                    style={minimalStyles.pointsGlyph}
+                  />
+                  <View style={minimalStyles.pointsValueWrap}>
+                    <Text style={minimalStyles.liveCount}>
+                      {pointsHydrated ? viewerPointsBalance.toLocaleString() : '…'}
+                    </Text>
+                    <Text style={minimalStyles.ptsSuffix}>pts</Text>
+                  </View>
+                </View>
+              </Animated.View>
+            </View>
+          ) : (
+            <View
+              style={[minimalStyles.livePill, { borderColor: `${accentOnChrome}55` }]}
+              accessibilityLabel={`${caseCount.toLocaleString()} dilemmas live`}>
+              {!reduceMotion ? (
+                <Animated.View
+                  style={[
+                    minimalStyles.liveDot,
+                    {
+                      opacity: liveDotOpacity,
+                      backgroundColor: liveDotBg,
+                      borderColor: liveDotBorder,
+                    },
+                  ]}
+                />
+              ) : (
+                <View
+                  style={[
+                    minimalStyles.liveDot,
+                    minimalStyles.liveDotRm,
+                    { backgroundColor: liveDotBg, borderColor: liveDotBorder },
+                  ]}
+                />
+              )}
+              <Text style={minimalStyles.liveCount}>{caseCount.toLocaleString()}</Text>
+            </View>
+          )}
         </View>
         {footerLink ? (
           <Pressable
@@ -299,6 +646,90 @@ const minimalStyles = StyleSheet.create({
     lineHeight: 19,
     fontWeight: '700',
     letterSpacing: -0.35,
+  },
+  pointsLedgerOuter: {
+    position: 'relative',
+    flexShrink: 0,
+    alignSelf: 'center',
+    marginLeft: 2,
+  },
+  pointsHalo: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    bottom: -4,
+    left: -4,
+    borderRadius: 999,
+  },
+  pointsFlash: {
+    position: 'absolute',
+    top: -1,
+    right: -1,
+    bottom: -1,
+    left: -1,
+    borderRadius: 999,
+    backgroundColor: palette.neonPink,
+  },
+  pointsLedgerPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    minHeight: 26,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    backgroundColor: palette.sheet,
+    flexShrink: 0,
+  },
+  pointsGlyph: {
+    alignSelf: 'center',
+  },
+  pointsValueWrap: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 3,
+  },
+  ptsSuffix: {
+    fontSize: 10,
+    lineHeight: 12,
+    fontWeight: '800',
+    letterSpacing: 0.02,
+    color: profileTypography.subdued,
+    textTransform: 'lowercase',
+  },
+  earnBurstBadge: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '100%',
+    marginTop: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: palette.neonPink,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,255,255,0.5)',
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.neonPink,
+        shadowOpacity: 0.38,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 6 },
+      },
+      android: { elevation: 6 },
+      default: {},
+    }),
+  },
+  earnBurstText: {
+    fontSize: 15,
+    lineHeight: 18,
+    fontWeight: '900',
+    letterSpacing: -0.3,
+    fontVariant: ['tabular-nums'],
+    color: palette.sheet,
   },
   livePill: {
     flexDirection: 'row',

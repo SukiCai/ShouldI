@@ -36,22 +36,35 @@ export type ReelDiscussCategory = ExploreFeedResponse['cards'][number]['category
 const REEL_STAR_GRADIENT = ['#fffefb', `#fef6e8`, `${profileLight.pink}3a`] as const;
 /** Alerts — sky → mint (matches Decide wallet CTA pairing). */
 const REEL_BELL_GRADIENT = [profileLight.sky, `${profileLight.mint}f2`, '#1fb5a8'] as const;
-/** Bounty chip — apricot/peach beside Profile oranges. */
-const REWARD_CHIP_GRADIENT = ['#fffefb', `#ffefd9`, `#fdd19a`] as const;
+/** Bounty chip — soft lavender→blush peach (Gen‑Z pastel, readable on ivory). */
+const REWARD_CHIP_GRADIENT = ['#fcf8ff', '#ffeaf5', `#ffd899`] as const;
 
-export function RewardPointsGem({ rewardPoints }: { rewardPoints?: number | null | undefined }) {
+export function RewardPointsGem({
+  rewardPoints,
+  density = 'comfortable',
+}: {
+  rewardPoints?: number | null | undefined;
+  /** `compact` — sits inline after the reel title */
+  density?: 'comfortable' | 'compact';
+}) {
   const pts = typeof rewardPoints === 'number' ? rewardPoints : NaN;
   if (!Number.isFinite(pts) || pts <= 0) return null;
   const a11y = `本题奖励积分 ${pts}，参与讨论或贡献优质观点可获得`;
+  const chipStyle =
+    density === 'compact'
+      ? [reelDiscussStyles.rewardPointsChip, reelDiscussStyles.rewardPointsChipCompact]
+      : reelDiscussStyles.rewardPointsChip;
+  const textStyle =
+    density === 'compact' ? reelDiscussStyles.rewardPointsChipTextCompact : reelDiscussStyles.rewardPointsChipText;
   return (
-    <View accessibilityRole="text" accessibilityLabel={a11y}>
+    <View accessibilityRole="text" accessibilityLabel={a11y} style={density === 'compact' ? reelDiscussStyles.rewardPointsGemShrink : undefined}>
       <LinearGradient
         colors={[...REWARD_CHIP_GRADIENT]}
         start={{ x: 0.08, y: 0 }}
         end={{ x: 0.95, y: 1 }}
-        style={reelDiscussStyles.rewardPointsChip}>
-        <Ionicons name="sparkles" size={14} color={profileLight.sky} />
-        <Text style={reelDiscussStyles.rewardPointsChipText}>{pts} 积分</Text>
+        style={chipStyle}>
+        <Ionicons name="sparkles" size={density === 'compact' ? 12 : 14} color={palette.neonPink} />
+        <Text style={textStyle}>{pts} 积分</Text>
       </LinearGradient>
     </View>
   );
@@ -140,26 +153,169 @@ export function ReelCardSurface({
   );
 }
 
-export function ReelCardActionBar({
-  category,
-  rewardPoints,
-  saved,
-  following,
-  onToggleSave,
-  onToggleFollow,
-  /** When set, shows a frosted back control instead of the category chip (Discuss screen). */
-  onLeadingBackPress,
-}: {
-  category: ReelDiscussCategory;
-  rewardPoints?: number | null | undefined;
+type ReelCardTrailingIconsProps = {
   saved: boolean;
   following: boolean;
   onToggleSave: () => void;
   onToggleFollow: () => void;
-  onLeadingBackPress?: () => void;
-}) {
+};
+
+/** Save + follow — reused by Discuss top bar and standard reel toolbar. */
+function ReelCardTrailingIcons({
+  saved,
+  following,
+  onToggleSave,
+  onToggleFollow,
+}: ReelCardTrailingIconsProps) {
   const saveLabel = saved ? 'Saved — tap to remove from saved' : 'Save this dilemma';
   const followLabel = following ? 'Following — tap to stop update alerts' : 'Follow for updates';
+  return (
+    <View style={reelDiscussStyles.cardIconGroup}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={saveLabel}
+        hitSlop={8}
+        onPress={() => {
+          if (Platform.OS !== 'web') {
+            void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+          }
+          onToggleSave();
+        }}
+        style={({ pressed }) => [
+          reelDiscussStyles.toolbarIconHit,
+          saved && reelDiscussStyles.toolbarIconHitActiveGlowSave,
+          pressed && reelDiscussStyles.toolbarIconHitPressed,
+        ]}>
+        {saved ? (
+          <LinearGradient
+            colors={[...REEL_STAR_GRADIENT]}
+            start={{ x: 0.1, y: 0 }}
+            end={{ x: 0.95, y: 1 }}
+            style={[
+              reelDiscussStyles.toolbarIconGem,
+              Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
+            ]}>
+            <Ionicons name="star" size={19} color={profileTypography.emphasis} />
+          </LinearGradient>
+        ) : (
+          <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
+            <Ionicons name="star-outline" size={20} color={profileTypography.subdued} />
+          </View>
+        )}
+      </Pressable>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={followLabel}
+        hitSlop={8}
+        onPress={() => {
+          if (Platform.OS !== 'web') {
+            void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
+          }
+          onToggleFollow();
+        }}
+        style={({ pressed }) => [
+          reelDiscussStyles.toolbarIconHit,
+          following && reelDiscussStyles.toolbarIconHitActiveGlowBell,
+          pressed && reelDiscussStyles.toolbarIconHitPressed,
+        ]}>
+        {following ? (
+          <LinearGradient
+            colors={[...REEL_BELL_GRADIENT]}
+            start={{ x: 0.05, y: 0 }}
+            end={{ x: 0.95, y: 1 }}
+            style={[
+              reelDiscussStyles.toolbarIconGem,
+              Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
+            ]}>
+            <Ionicons name="notifications" size={18} color={palette.heroInk} />
+          </LinearGradient>
+        ) : (
+          <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
+            <Ionicons name="notifications-outline" size={19} color={profileTypography.subdued} />
+          </View>
+        )}
+      </Pressable>
+    </View>
+  );
+}
+
+export type ReelCardActionBarProps =
+  | {
+      variant: 'reel-feed-top';
+      voteSummary: { voteTotal: number; isLivePoll: boolean };
+    }
+  | {
+      variant: 'discuss-top';
+      voteSummary: { voteTotal: number; isLivePoll: boolean };
+      saved: boolean;
+      following: boolean;
+      onToggleSave: () => void;
+      onToggleFollow: () => void;
+      onLeadingBackPress: () => void;
+    }
+  | {
+      variant?: 'standard';
+      category: ReelDiscussCategory;
+      rewardPoints?: number | null | undefined;
+      saved: boolean;
+      following: boolean;
+      onToggleSave: () => void;
+      onToggleFollow: () => void;
+      /** When set, shows a frosted back control instead of the category chip (Discuss screen). */
+      onLeadingBackPress?: () => void;
+    };
+
+export function ReelCardActionBar(props: ReelCardActionBarProps) {
+  if (props.variant === 'reel-feed-top') {
+    return (
+      <View style={[reelDiscussStyles.cardTopRow, reelDiscussStyles.cardTopRowVotesOnly]}>
+        <View style={reelDiscussStyles.cardTopRowSpacer} />
+        <LiveVotesPill elevated voteTotal={props.voteSummary.voteTotal} isLivePoll={props.voteSummary.isLivePoll} />
+      </View>
+    );
+  }
+
+  if (props.variant === 'discuss-top') {
+    return (
+      <View style={[reelDiscussStyles.cardTopRow, reelDiscussStyles.cardTopRowDiscuss]}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Go back"
+          hitSlop={10}
+          onPress={() => {
+            if (Platform.OS !== 'web') {
+              void Haptics.selectionAsync().catch(() => undefined);
+            }
+            props.onLeadingBackPress();
+          }}
+          style={({ pressed }) => [
+            reelDiscussStyles.toolbarBackGem,
+            pressed && reelDiscussStyles.toolbarIconHitPressed,
+          ]}>
+          <Ionicons name="chevron-back" size={22} color={profileTypography.body} />
+        </Pressable>
+        <View style={reelDiscussStyles.cardTopRowSpacer} />
+        <LiveVotesPill elevated voteTotal={props.voteSummary.voteTotal} isLivePoll={props.voteSummary.isLivePoll} />
+        <ReelCardTrailingIcons
+          saved={props.saved}
+          following={props.following}
+          onToggleSave={props.onToggleSave}
+          onToggleFollow={props.onToggleFollow}
+        />
+      </View>
+    );
+  }
+
+  const {
+    category,
+    rewardPoints,
+    saved,
+    following,
+    onToggleSave,
+    onToggleFollow,
+    onLeadingBackPress,
+  } = props;
+
   const hasRewardPoints =
     typeof rewardPoints === 'number' && Number.isFinite(rewardPoints) && rewardPoints > 0;
 
@@ -193,73 +349,12 @@ export function ReelCardActionBar({
         </View>
       )}
       <View style={reelDiscussStyles.cardActionBarTrailing}>
-        {onLeadingBackPress ? <RewardPointsGem rewardPoints={rewardPoints} /> : null}
-        <View style={reelDiscussStyles.cardIconGroup}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={saveLabel}
-          hitSlop={8}
-          onPress={() => {
-            if (Platform.OS !== 'web') {
-              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
-            }
-            onToggleSave();
-          }}
-          style={({ pressed }) => [
-            reelDiscussStyles.toolbarIconHit,
-            saved && reelDiscussStyles.toolbarIconHitActiveGlowSave,
-            pressed && reelDiscussStyles.toolbarIconHitPressed,
-          ]}>
-          {saved ? (
-            <LinearGradient
-              colors={[...REEL_STAR_GRADIENT]}
-              start={{ x: 0.1, y: 0 }}
-              end={{ x: 0.95, y: 1 }}
-              style={[
-                reelDiscussStyles.toolbarIconGem,
-                Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
-              ]}>
-              <Ionicons name="star" size={19} color={profileTypography.emphasis} />
-            </LinearGradient>
-          ) : (
-            <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-              <Ionicons name="star-outline" size={20} color={profileTypography.subdued} />
-            </View>
-          )}
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={followLabel}
-          hitSlop={8}
-          onPress={() => {
-            if (Platform.OS !== 'web') {
-              void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
-            }
-            onToggleFollow();
-          }}
-          style={({ pressed }) => [
-            reelDiscussStyles.toolbarIconHit,
-            following && reelDiscussStyles.toolbarIconHitActiveGlowBell,
-            pressed && reelDiscussStyles.toolbarIconHitPressed,
-          ]}>
-          {following ? (
-            <LinearGradient
-              colors={[...REEL_BELL_GRADIENT]}
-              start={{ x: 0.05, y: 0 }}
-              end={{ x: 0.95, y: 1 }}
-              style={[
-                reelDiscussStyles.toolbarIconGem,
-                Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
-              ]}>
-              <Ionicons name="notifications" size={18} color={palette.heroInk} />
-            </LinearGradient>
-          ) : (
-            <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-              <Ionicons name="notifications-outline" size={19} color={profileTypography.subdued} />
-            </View>
-          )}
-        </Pressable>
-        </View>
+        <ReelCardTrailingIcons
+          saved={saved}
+          following={following}
+          onToggleSave={onToggleSave}
+          onToggleFollow={onToggleFollow}
+        />
       </View>
     </View>
   );
@@ -314,26 +409,80 @@ export function LiveVotesPill({
   voteTotal,
   isLivePoll,
   inline,
+  /** Stronger frost + rim — reel Explore / plot-deck header */
+  elevated,
 }: {
   voteTotal: number;
   isLivePoll: boolean;
   inline?: boolean;
+  elevated?: boolean;
 }) {
-  return (
-    <View
-      style={[reelDiscussStyles.headerVotePill, inline && reelDiscussStyles.headerVotePillInline]}
-      accessibilityRole="text"
-      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}>
+  const pillChrome = [
+    reelDiscussStyles.headerVotePill,
+    inline && reelDiscussStyles.headerVotePillInline,
+  ];
+
+  const body = (
+    <>
       {isLivePoll ? <LivePulseDot /> : null}
       <View style={[reelDiscussStyles.headerVoteTextStack, inline && reelDiscussStyles.headerVoteTextStackInline]}>
         <Text style={[reelDiscussStyles.headerVoteStrong, inline && reelDiscussStyles.headerVoteStrongInline]}>
           {compactVoteCount(voteTotal)}
         </Text>
         <Text style={[reelDiscussStyles.headerVoteMicro, inline && reelDiscussStyles.headerVoteMicroInline]}>
-          {isLivePoll ? 'Live · voted' : 'Total votes'}
+          {inline
+            ? isLivePoll
+              ? 'Live'
+              : 'Total'
+            : isLivePoll
+              ? 'Live · voted'
+              : 'Total votes'}
         </Text>
       </View>
+    </>
+  );
+
+  if (elevated) {
+    return (
+      <View
+        accessibilityRole="text"
+        accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}
+        style={reelDiscussStyles.headerVotePillElevatedOuter}>
+        <LinearGradient
+          pointerEvents="none"
+          colors={['rgba(255,253,254,0.97)', `${palette.neonSky}26`, `${palette.neonPink}22`]}
+          locations={[0, 0.48, 1]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={StyleSheet.absoluteFillObject}
+        />
+        <View style={reelDiscussStyles.headerVotePillElevatedInner}>{body}</View>
+      </View>
+    );
+  }
+
+  return (
+    <View
+      style={pillChrome}
+      accessibilityRole="text"
+      accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}>
+      {body}
     </View>
+  );
+}
+
+/** Gradient accent under poll headline — friendlier Gen‑Z “signal” strip than flat cobalt. */
+export function PollQuestionAccentBar() {
+  return (
+    <LinearGradient
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      colors={[`${palette.neonPink}cc`, palette.accent, `${palette.neonSky}bb`]}
+      locations={[0, 0.5, 1]}
+      start={{ x: 0, y: 0.5 }}
+      end={{ x: 1, y: 0.5 }}
+      style={reelDiscussStyles.pollQuestionAccentBar}
+    />
   );
 }
 
@@ -380,16 +529,17 @@ export function InlineDistributionTrack({
 export const reelDiscussStyles = StyleSheet.create({
   reelCardOuter: {
     flexDirection: 'column',
-    borderRadius: 28,
+    borderRadius: 36,
     borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(253,253,253,0.35)',
+    borderColor: 'rgba(199,174,255,0.35)',
+    /** Milky frost — reads cleanly on chaotic Explore mesh without feeling cold */
+    backgroundColor: 'rgba(255,254,253,0.92)',
     overflow: 'hidden',
-    shadowColor: '#374151',
-    shadowOpacity: Platform.OS === 'ios' ? 0.12 : 0.14,
-    shadowRadius: Platform.OS === 'ios' ? 34 : 24,
-    shadowOffset: { width: 0, height: Platform.OS === 'ios' ? 16 : 10 },
-    elevation: Platform.OS === 'android' ? 8 : 0,
+    shadowColor: `${palette.heroInk}`,
+    shadowOpacity: Platform.OS === 'ios' ? 0.08 : 0.11,
+    shadowRadius: Platform.OS === 'ios' ? 38 : 28,
+    shadowOffset: { width: 0, height: Platform.OS === 'ios' ? 18 : 13 },
+    elevation: Platform.OS === 'android' ? 11 : 0,
   },
   reelCardOuterFullscreen: {
     alignSelf: 'stretch',
@@ -405,23 +555,23 @@ export const reelDiscussStyles = StyleSheet.create({
   },
   reelCardInner: {
     flexDirection: 'column',
-    paddingHorizontal: 18,
-    paddingTop: 16,
-    paddingBottom: 15,
-    gap: 14,
+    paddingHorizontal: 22,
+    paddingTop: 20,
+    paddingBottom: 20,
+    gap: 18,
     position: 'relative',
     zIndex: 1,
   },
   reelCardInnerOpen: {
-    gap: 11,
+    gap: 15,
   },
   /** Edge-to-edge body (Discuss) — same layering as reel card, tighter insets */
   reelCardInnerFullscreen: {
     flexDirection: 'column',
-    paddingHorizontal: 18,
-    paddingTop: 14,
-    paddingBottom: 12,
-    gap: 12,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 14,
+    gap: 14,
     position: 'relative',
     zIndex: 1,
   },
@@ -433,6 +583,21 @@ export const reelDiscussStyles = StyleSheet.create({
     marginBottom: 6,
     minHeight: 40,
     paddingHorizontal: 0,
+  },
+  cardTopRowVotesOnly: {
+    justifyContent: 'flex-end',
+    minHeight: 32,
+    marginBottom: 4,
+    paddingBottom: 4,
+  },
+  /** Discuss: back + spacer + same elevated vote pill as Explore + save/bell */
+  cardTopRowDiscuss: {
+    justifyContent: 'flex-start',
+    flexWrap: 'nowrap',
+    gap: 8,
+  },
+  cardTopRowSpacer: {
+    flex: 1,
   },
   categoryChipSlot: {
     alignSelf: 'center',
@@ -483,11 +648,11 @@ export const reelDiscussStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-    paddingHorizontal: 12,
+    paddingHorizontal: 13,
     paddingVertical: 8,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.14),
+    borderColor: `${palette.neonPink}50`,
     flexShrink: 0,
     overflow: 'hidden',
     ...Platform.select({
@@ -507,6 +672,22 @@ export const reelDiscussStyles = StyleSheet.create({
     letterSpacing: 0.06,
     color: profileTypography.emphasis,
     fontVariant: ['tabular-nums'],
+  },
+  rewardPointsChipCompact: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    gap: 4,
+  },
+  rewardPointsChipTextCompact: {
+    fontSize: 11,
+    lineHeight: 14,
+    fontWeight: '800',
+    letterSpacing: 0.04,
+    color: profileTypography.emphasis,
+    fontVariant: ['tabular-nums'],
+  },
+  rewardPointsGemShrink: {
+    flexShrink: 0,
   },
   toolbarIconHit: {
     paddingHorizontal: 2,
@@ -601,6 +782,35 @@ export const reelDiscussStyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 1,
   },
+  headerVotePillElevatedOuter: {
+    flexShrink: 0,
+    position: 'relative',
+    borderRadius: 999,
+    overflow: 'hidden',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: `${palette.neonPink}55`,
+    ...Platform.select({
+      ios: {
+        shadowColor: palette.neonSky,
+        shadowOpacity: 0.16,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: {
+        elevation: 2,
+      },
+      default: {},
+    }),
+  },
+  headerVotePillElevatedInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+    paddingHorizontal: 13,
+    paddingVertical: 9,
+    zIndex: 1,
+    position: 'relative',
+  },
   headerVotePillInline: {
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
@@ -620,16 +830,17 @@ export const reelDiscussStyles = StyleSheet.create({
   headerVoteStrong: {
     fontSize: 15,
     lineHeight: 18,
-    fontWeight: '700',
+    fontWeight: '800',
     color: profileTypography.ink,
-    letterSpacing: -0.35,
+    letterSpacing: -0.45,
+    fontVariant: ['tabular-nums'],
   },
   headerVoteMicro: {
     fontSize: 10,
     lineHeight: 13,
-    fontWeight: '600',
+    fontWeight: '700',
     color: profileTypography.subdued,
-    letterSpacing: 0.15,
+    letterSpacing: 0.12,
   },
   headerVoteStrongInline: {
     fontSize: 14,
@@ -641,31 +852,40 @@ export const reelDiscussStyles = StyleSheet.create({
     lineHeight: 11,
     letterSpacing: 0.08,
     textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: '800',
   },
   livePulseDot: {
-    width: 7,
-    height: 7,
+    width: 8,
+    height: 8,
     borderRadius: 999,
-    backgroundColor: profileLight.sky,
+    backgroundColor: palette.neonPink,
+    shadowColor: palette.neonPink,
+    shadowOpacity: Platform.OS === 'ios' ? 0.55 : 0,
+    shadowRadius: Platform.OS === 'ios' ? 4 : 0,
+    shadowOffset: { width: 0, height: 0 },
   },
   pollQuestionRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     gap: 12,
-    marginBottom: 2,
-    paddingVertical: Platform.OS === 'ios' ? 4 : 2,
+    marginBottom: 4,
+    paddingVertical: Platform.OS === 'ios' ? 6 : 4,
   },
   /** Title + hairline only under the question — not full width under the vote pill */
   pollQuestionTextCol: {
     flex: 1,
     minWidth: 0,
-    paddingBottom: 12,
+    paddingBottom: 14,
   },
-  pollQuestionUnderline: {
-    alignSelf: 'stretch',
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: profileNeutralStroke(0.06),
-    marginTop: 8,
+  /** Gradient accent ribbon under headline — share across Explore & Discuss */
+  pollQuestionAccentBar: {
+    alignSelf: 'flex-start',
+    width: 74,
+    height: 6,
+    borderRadius: 3,
+    marginTop: 14,
+    opacity: 0.94,
   },
   pollQuestion: {
     color: profileTypography.ink,
@@ -676,28 +896,49 @@ export const reelDiscussStyles = StyleSheet.create({
     marginBottom: 0,
   },
   pollHeroOpen: {
-    fontWeight: '600',
-    letterSpacing: -0.52,
-    lineHeight: 33,
+    fontWeight: '800',
+    letterSpacing: -0.7,
+    lineHeight: 36,
+    color: profileTypography.emphasis,
+  },
+  /** Question + optional 积分 chip on one wrapping row */
+  pollQuestionTitleRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: 8,
+    rowGap: 10,
+  },
+  /** No flexGrow — otherwise the title box eats the row and pushes 积分 chip to the far right */
+  pollQuestionHeadlineFlexible: {
+    flexShrink: 1,
+    minWidth: 148,
+    maxWidth: '100%',
   },
   optionWrap: {
-    gap: 10,
+    gap: 14,
+    marginTop: 2,
   },
   optionPill: {
-    borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.06),
-    backgroundColor: 'rgba(255,255,255,0.92)',
-    paddingHorizontal: 15,
-    paddingVertical: 14,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: `${palette.heroInk}14`,
+    backgroundColor: 'rgba(255,255,255,0.93)',
+    paddingHorizontal: 18,
+    paddingVertical: 16,
     flexDirection: 'column',
     alignItems: 'stretch',
-    gap: 8,
-    shadowColor: profileNeutralStroke(0.25),
-    shadowOpacity: 0.045,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: Platform.OS === 'android' ? 1 : 0,
+    gap: 12,
+    ...Platform.select({
+      ios: {
+        shadowColor: `${palette.heroInk}`,
+        shadowOpacity: 0.048,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 5 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
   },
   /** Cobalt rim — unmistakably “your vote” vs mint assistant cues */
   optionPillUserPick: {
@@ -759,10 +1000,10 @@ export const reelDiscussStyles = StyleSheet.create({
     flexShrink: 0,
   },
   aiLeanBadge: {
-    borderRadius: 8,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    backgroundColor: palette.heroInk,
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    backgroundColor: 'rgba(42,39,71,0.94)',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'rgba(255,255,255,0.12)',
   },
@@ -774,9 +1015,9 @@ export const reelDiscussStyles = StyleSheet.create({
     color: palette.white,
   },
   userPickBadge: {
-    borderRadius: 8,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
     backgroundColor: `${palette.accent}18`,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: `${palette.accent}42`,
@@ -793,10 +1034,13 @@ export const reelDiscussStyles = StyleSheet.create({
     color: profileTypography.body,
     flex: 1,
     marginRight: 10,
+    fontWeight: '500',
+    lineHeight: 22,
+    fontSize: 16,
   },
   optionTextActive: {
-    color: '#2e4d8f',
-    fontWeight: '700',
+    color: palette.accent,
+    fontWeight: '800',
   },
   optionMeta: {
     ...typography.caption,
@@ -811,14 +1055,14 @@ export const reelDiscussStyles = StyleSheet.create({
   inlineTrack: {
     height: 6,
     borderRadius: 999,
-    backgroundColor: profileNeutralStroke(0.06),
+    backgroundColor: `${palette.heroInk}0f`,
     overflow: 'hidden',
     width: '100%',
   },
   inlineFillNeutral: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: 'rgba(91,91,91,0.28)',
+    backgroundColor: `${palette.heroInk}2e`,
   },
   inlineFillUser: {
     height: '100%',

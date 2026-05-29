@@ -10,6 +10,7 @@ import {
   ChatResponseSchema,
   type ChatResponse,
   type DecisionCategory,
+  type DecideInterviewFinalDecision,
 } from '@shouldi/contracts';
 
 export type DecideDraft = {
@@ -23,6 +24,7 @@ export type DecideDraft = {
   communityAiVerdictLine: string;
   /** Tradeoffs / risks / rationale — summarized for peers */
   communityAiBecause: string;
+  expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
@@ -74,6 +76,7 @@ const blankDraft = (): DecideDraft => ({
   communityChallengeQuestion: '',
   communityAiVerdictLine: '',
   communityAiBecause: '',
+  expertVerdicts: [],
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {

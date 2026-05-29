@@ -15,6 +15,7 @@ import {
   summarizeSessionsForMobile,
 } from './harmence-interview.js';
 import { summarizeRequest } from './hermes-adapter.js';
+import { getHermesAgentStatus, probeHermesApi } from './hermes-client.js';
 import { resolveHermesRepoRoot } from './hermes-resolve.js';
 
 const app = new Hono();
@@ -48,18 +49,24 @@ app.get('/v1/explore/:id', (c) => {
   return c.json(card);
 });
 
-app.get('/v1/hermes', (c) => {
+app.get('/v1/hermes', async (c) => {
   const resolved = resolveHermesRepoRoot();
+  const apiLive = await probeHermesApi();
+  const status = getHermesAgentStatus();
   return c.json({
-    integrated: !!resolved,
+    integrated: apiLive,
+    repoPresent: !!resolved,
     source: resolved?.source ?? null,
     root: resolved?.root ?? null,
+    apiUrl: status.apiUrl,
+    apiLive,
+    apiKeyConfigured: status.apiKeyConfigured,
   });
 });
 
 app.post('/v1/chat', async (c) => {
   const body = await c.req.json().catch(() => null);
-  const response = summarizeRequest(body);
+  const response = await summarizeRequest(body);
   if (!response.ok) {
     return c.json({ error: 'INVALID_REQUEST' }, 400);
   }
@@ -72,9 +79,9 @@ app.get('/v1/harmence/interview/sessions', (c) => {
   return c.json(parsed);
 });
 
-app.get('/v1/harmence/interview/sessions/:id', (c) => {
+app.get('/v1/harmence/interview/sessions/:id', async (c) => {
   const id = c.req.param('id');
-  const detail = summarizeSessionDetail(id);
+  const detail = await summarizeSessionDetail(id);
   if (!detail) return c.json({ error: 'NOT_FOUND' }, 404);
   return c.json(DecideInterviewSessionDetailSchema.parse(detail));
 });
@@ -86,7 +93,11 @@ app.post('/v1/harmence/interview/turn', async (c) => {
     return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
   }
   try {
-    const res = handleInterviewTurn(parsed.data.sessionId ?? null, parsed.data.userText ?? '');
+    const res = await handleInterviewTurn(
+      parsed.data.sessionId ?? null,
+      parsed.data.userText ?? '',
+      parsed.data.selectedOptionId,
+    );
     return c.json(DecideInterviewTurnResponseSchema.parse(res));
   } catch {
     return c.json({ error: 'UNKNOWN_SESSION' }, 404);
@@ -94,9 +105,13 @@ app.post('/v1/harmence/interview/turn', async (c) => {
 });
 
 const port = Number(process.env.PORT ?? 8787);
-const embedded = resolveHermesRepoRoot();
-console.info(
-  `gateway listening on ${port}`,
-  embedded ? `[Hermes: ${embedded.root}]` : '[Hermes: not detected]',
-);
+const hermesStatus = getHermesAgentStatus();
+void probeHermesApi(true).then((live) => {
+  console.info(
+    `gateway listening on ${port}`,
+    live
+      ? `[Hermes agent: ${hermesStatus.apiUrl}]`
+      : `[Hermes agent: unreachable at ${hermesStatus.apiUrl}]`,
+  );
+});
 serve({ fetch: app.fetch, port });

@@ -27,6 +27,12 @@ npm install
 npm run build -w @shouldi/contracts   # emits dist typings for dependents
 ```
 
+### Hermes agent (real AI in Decide / briefing)
+
+ShouldI proxies to **Hermes api_server** when it is running. Full checklist: [`docs/hermes-setup.md`](docs/hermes-setup.md).
+
+Short version: `cd hermes-agent-private && python3 -m venv .venv && source .venv/bin/activate && pip install -e .`, then enable `API_SERVER_ENABLED=true` in `~/.hermes/.env`, add a model provider key, run `hermes gateway` (port **8642**), then `npm run api` (port **8787**). See [`docs/hermes-setup.md`](docs/hermes-setup.md).
+
 ### Run the HTTP API (default port 8787)
 
 ```bash
@@ -35,20 +41,37 @@ npm run api
 npm run gateway
 ```
 
-Docker runs **`@shouldi/api`** only (Expo stays on the host):
+Docker runs **Hermes agent + ShouldI API + Expo web** together:
 
 ```bash
+cp .env.example .env
+# Edit .env: set OPENROUTER_API_KEY (or your provider) + reuse host Hermes config if you have it:
+# SHOULDI_HERMES_DATA=/Users/you/.hermes
+
 docker compose up --build
 ```
 
-[`compose.yaml`](compose.yaml) publishes the API on host port **`SHOULDI_API_HOST_PORT`** (default **8787**; the container listens on **8787** inside the network namespace). If **8787** is already in use—for example **`npm run api`** locally—pick another published port and set `EXPO_PUBLIC_API_URL` to match:
+| Service | URL | Override |
+|---------|-----|----------|
+| **Hermes** (agent HTTP) | http://localhost:8642 | `SHOULDI_HERMES_HOST_PORT` |
+| **API** | http://localhost:8787 | `SHOULDI_API_HOST_PORT` |
+| **Web UI** | http://localhost:18080 | `SHOULDI_WEB_HOST_PORT` |
+
+First-time Hermes config inside Docker:
 
 ```bash
-SHOULDI_API_HOST_PORT=8877 docker compose up --build
-# Expo: http://localhost:8877 (iOS sim) or http://10.0.2.2:8877 (Android emulator)
+docker compose run --rm hermes setup
 ```
 
-Optionally mount Hermes by uncommenting **`HERMES_ROOT`** and **`volumes:`** in [`compose.yaml`](compose.yaml).
+If you already ran `hermes setup` on the host, bind-mount that data dir via `SHOULDI_HERMES_DATA` in `.env` so Docker reuses your model + keys.
+
+For native Expo Go / simulators on the host, use `npm run mobile` and point `EXPO_PUBLIC_API_URL` at the published API port.
+
+If **8787** or **8080** is already in use locally:
+
+```bash
+SHOULDI_API_HOST_PORT=8877 SHOULDI_WEB_HOST_PORT=18080 docker compose up --build
+```
 
 Standalone image:
 

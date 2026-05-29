@@ -19,9 +19,15 @@ From the monorepo root you can also run `npm run api` (alias: `npm run gateway`)
 
 ### Docker
 
-[`Dockerfile`](Dockerfile) in this folder is built with **repository root context**: `docker build -f apps/api/Dockerfile -t shouldi-api .` Prefer `docker compose up --build` from the repo root ([`compose.yaml`](../../compose.yaml)).
+[`Dockerfile`](Dockerfile) in this folder is built with **repository root context**: `docker build -f apps/api/Dockerfile -t shouldi-api .`
+
+From the repo root, **`docker compose up --build`** starts **`api`** and the Expo **web** UI ([`apps/mobile/Dockerfile`](../mobile/Dockerfile) + [`compose.yaml`](../../compose.yaml)).
 
 ### Env
 
 - `PORT` — overrides default `8787`.
 - `HERMES_ROOT` or `SHOULDI_HERMES_ROOT` — optional absolute path to a Hermes checkout (overrides embedded submodule path).
+- `HERMES_API_URL` — Hermes OpenAI-compatible server (default `http://127.0.0.1:8642`).
+- `HERMES_API_KEY` — Bearer token matching Hermes `API_SERVER_KEY` when set.
+
+See [`../../docs/hermes-setup.md`](../../docs/hermes-setup.md) for gateway + provider key setup.

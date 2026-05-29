@@ -1,13 +1,25 @@
 **/node_modules
 .git
-**/hermes-agent-private
-**/android
-**/ios
 .cursor
 .idea
 **/*.md
 **/dist
 
-# Workspace lockfile expects apps/mobile/package.json — exclude native app baggage from build context only.
-apps/mobile/**
-!apps/mobile/package.json
+# Hermes submodule — include source for docker/hermes build; drop heavy artifacts.
+hermes-agent-private/.venv
+hermes-agent-private/**/node_modules
+hermes-agent-private/**/.git
+hermes-agent-private/**/__pycache__
+hermes-agent-private/website
+hermes-agent-private/tests
+hermes-agent-private/mock-app
+hermes-agent-private/tinker-atropos
+hermes-agent-private/environments
+hermes-agent-private/.playwright
+
+# Exclude native / local Expo baggage; keep source for the web image build.
+apps/mobile/node_modules
+apps/mobile/android
+apps/mobile/ios
+apps/mobile/.expo
+apps/mobile/dist

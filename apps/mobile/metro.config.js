@@ -4,10 +4,20 @@ const path = require('path');
 
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, '../..');
+const packagesRoot = path.join(workspaceRoot, 'packages');
 
 const config = getDefaultConfig(projectRoot);
-config.watchFolders = [workspaceRoot];
+// Monorepo: watch packages + app only — NOT the full repo (hermes-agent-private is huge).
+config.watchFolders = [packagesRoot];
 config.resolver.disableHierarchicalLookup = true;
+config.resolver.blockList = [
+  ...(Array.isArray(config.resolver.blockList)
+    ? config.resolver.blockList
+    : config.resolver.blockList
+      ? [config.resolver.blockList]
+      : []),
+  /[/\\]hermes-agent-private[/\\].*/,
+];
 config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
