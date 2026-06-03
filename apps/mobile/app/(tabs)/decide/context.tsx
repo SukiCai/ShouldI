@@ -13,6 +13,18 @@ import {
   type DecideInterviewFinalDecision,
 } from '@shouldi/contracts';
 
+export type DiscussDraftPollOption = {
+  id: string;
+  label: string;
+};
+
+export function defaultPollOptions(): DiscussDraftPollOption[] {
+  return [
+    { id: 'yes', label: 'Yes' },
+    { id: 'no', label: 'No' },
+  ];
+}
+
 export type DecideDraft = {
   category?: DecisionCategory;
   title: string;
@@ -24,6 +36,12 @@ export type DecideDraft = {
   communityAiVerdictLine: string;
   /** Tradeoffs / risks / rationale — summarized for peers */
   communityAiBecause: string;
+  hook: string;
+  tension: string;
+  pollOptions: DiscussDraftPollOption[];
+  aiSuggestedOptionId: string;
+  discussionPreview: string[];
+  rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
 };
 
@@ -76,6 +94,12 @@ const blankDraft = (): DecideDraft => ({
   communityChallengeQuestion: '',
   communityAiVerdictLine: '',
   communityAiBecause: '',
+  hook: '',
+  tension: '',
+  pollOptions: defaultPollOptions(),
+  aiSuggestedOptionId: 'yes',
+  discussionPreview: [],
+  rewardPoints: 10,
   expertVerdicts: [],
 });
 
@@ -155,12 +179,16 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       setError('Category and headline are required before posting.');
       return;
     }
+    const pollQuestion = draft.communityChallengeQuestion.trim() || draft.title.trim();
     if (
+      !pollQuestion ||
+      !draft.hook.trim() ||
+      !draft.tension.trim() ||
       !draft.communityAiVerdictLine.trim() ||
       !draft.communityAiBecause.trim() ||
-      !draft.communityChallengeQuestion.trim()
+      draft.pollOptions.some((option) => !option.label.trim())
     ) {
-      setError('Fill Harmence stance, rationale, and the yes/no challenge before sending to Explore.');
+      setError('Fill the poll question, hook, tradeoff, Harmence stance, and option labels before sending to Explore.');
       return;
     }
     setError(null);

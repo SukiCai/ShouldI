@@ -299,27 +299,39 @@ export default function DecideCategoryScreen() {
       setFinalDecision(parsed.finalDecision ?? null);
       if (parsed.finalDecision) setVerdictExpanded(false);
 
-      if (parsed.isComplete && parsed.suggestedDraftHints) {
+      if (parsed.isComplete && (parsed.suggestedDraftHints || parsed.previewCard)) {
         const h = parsed.suggestedDraftHints;
+        const preview = parsed.previewCard;
         const d = draftRef.current;
+        const pollOptions =
+          preview?.options?.length && preview.options.length >= 2
+            ? preview.options.map((option) => ({ id: option.id, label: option.label }))
+            : d.pollOptions;
         updateDraft({
-          category: h.category ?? d.category,
-          title: h.title?.trim()?.length ? h.title.trim() : d.title,
-          constraints: h.constraints?.trim()
+          category: h?.category ?? preview?.category ?? d.category,
+          title: h?.title?.trim()?.length ? h.title.trim() : preview?.question?.trim() || d.title,
+          constraints: h?.constraints?.trim()
             ? [d.constraints, h.constraints.trim()].filter(Boolean).join('\n\n')
             : d.constraints,
           successCriteria:
-            h.successCriteria?.trim()?.length ? h.successCriteria.trim() : d.successCriteria,
+            h?.successCriteria?.trim()?.length ? h.successCriteria.trim() : d.successCriteria,
           communityChallengeQuestion:
-            h.communityChallengeQuestion?.trim()?.length
+            h?.communityChallengeQuestion?.trim()?.length
               ? h.communityChallengeQuestion.trim()
-              : d.communityChallengeQuestion,
+              : preview?.question?.trim() || d.communityChallengeQuestion,
           communityAiVerdictLine:
-            h.communityAiVerdictLine?.trim()?.length
+            h?.communityAiVerdictLine?.trim()?.length
               ? h.communityAiVerdictLine.trim()
-              : d.communityAiVerdictLine,
+              : preview?.aiVerdictLine?.trim() || d.communityAiVerdictLine,
           communityAiBecause:
-            h.communityAiBecause?.trim()?.length ? h.communityAiBecause.trim() : d.communityAiBecause,
+            h?.communityAiBecause?.trim()?.length
+              ? h.communityAiBecause.trim()
+              : preview?.aiBecause?.trim() || d.communityAiBecause,
+          hook: preview?.hook?.trim() || d.hook,
+          tension: preview?.tension?.trim() || d.tension,
+          pollOptions,
+          discussionPreview:
+            preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: parsed.finalDecision?.expertVerdicts ?? d.expertVerdicts,
         });
       }

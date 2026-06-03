@@ -3,19 +3,13 @@ import * as React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { CommunityValidationCardEditor } from '@/components/decide/CommunityValidationCardEditor';
+import { DiscussDraftEditor } from '@/components/decide/DiscussDraftEditor';
+import { DiscussScreenBackdrop } from '@/components/decision/DiscussScreenBackdrop';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import { GhostAction } from '@/components/ui/Premium';
-import Screen from '@/components/ui/Screen';
 import { useColorScheme } from '@/components/useColorScheme';
-import {
-  palette,
-  profileLight,
-  screenContentGutter,
-  spacing,
-  themeSurface,
-  typography,
-} from '@/constants/theme';
+import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
+import { palette, spacing, themeSurface, typography } from '@/constants/theme';
 
 import { useDecideWizard } from './context';
 
@@ -27,281 +21,123 @@ export default function DecideConfirmScreen() {
   const isDark = scheme === 'dark';
   const insets = useSafeAreaInsets();
 
-  const panelBg = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.92)';
-  const panelBorder = surface.hairline;
-
-  const statusReadyBg = lastResponse ? (isDark ? 'rgba(61,255,184,0.12)' : `${profileLight.sky}18`) : isDark ? 'rgba(255,255,255,0.06)' : profileLight.tabTrack;
-  const statusReadyBorder = lastResponse ? (isDark ? 'rgba(61,255,184,0.35)' : `${profileLight.sky}45`) : surface.hairline;
-  const statusDotColor = lastResponse ? (isDark ? palette.neonMint : profileLight.sky) : surface.textMuted;
-  const statusTextColor = lastResponse ? (isDark ? palette.neonMint : profileLight.mint) : surface.textMuted;
+  const category = draft.category ?? 'life';
+  const gradient = reelSurfaceGradientCoarse(category);
+  const screenTint = gradient[0]!;
 
   React.useEffect(() => {
     if (!draft.title.trim()) return;
     if (draft.communityChallengeQuestion.trim().length > 0) return;
     updateDraft({
-      communityChallengeQuestion: `Given everything I shared about "${draft.title.trim()}", would you side with Harmence's leaning below?`,
+      communityChallengeQuestion: draft.title.trim(),
     });
   }, [draft.title, draft.communityChallengeQuestion, updateDraft]);
 
+  React.useEffect(() => {
+    if (draft.hook.trim().length > 0) return;
+    const seed = draft.constraints.trim() || draft.title.trim();
+    if (!seed) return;
+    updateDraft({ hook: seed.slice(0, 220) });
+  }, [draft.constraints, draft.hook, draft.title, updateDraft]);
+
+  React.useEffect(() => {
+    if (draft.tension.trim().length > 0) return;
+    if (!draft.communityAiBecause.trim()) return;
+    updateDraft({ tension: draft.communityAiBecause.trim().slice(0, 220) });
+  }, [draft.communityAiBecause, draft.tension, updateDraft]);
+
+  const pollQuestion = draft.communityChallengeQuestion.trim() || draft.title.trim();
+  const canPost =
+    !!lastResponse &&
+    !!draft.category &&
+    !!pollQuestion &&
+    !!draft.hook.trim() &&
+    !!draft.tension.trim() &&
+    !!draft.communityAiVerdictLine.trim() &&
+    !!draft.communityAiBecause.trim() &&
+    draft.pollOptions.every((option) => option.label.trim().length > 0);
+
   return (
-    <Screen padded={false}>
-      <ScrollView
-        accessibilityRole="scrollbar"
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={[
-          styles.scroll,
-          {
-            paddingTop: Math.max(10, insets.top + 4),
-            paddingHorizontal: screenContentGutter,
-            paddingBottom: Math.max(spacing.xl, insets.bottom + 24),
-          },
-        ]}>
-        <View style={styles.hero}>
-          <Text style={[styles.title, { color: surface.textPrimary }]}>Review draft</Text>
-          <Text style={[styles.subtitle, { color: surface.textMuted }]}>
-            Shape the Explore thread: how Harmence leans, why, and the yes/no you want strangers to fight over.
-          </Text>
-          <View
-            style={[
-              styles.statusPill,
-              {
-                backgroundColor: statusReadyBg,
-                borderColor: statusReadyBorder,
-              },
-            ]}>
-            <View style={[styles.statusDot, { backgroundColor: statusDotColor }]} />
-            <Text style={[styles.statusText, { color: statusTextColor }]}>
-              {lastResponse ? 'Briefing ready — card fields filled' : 'Generate a briefing to populate AI copy'}
-            </Text>
-          </View>
-        </View>
+    <View style={[styles.root, { backgroundColor: screenTint }]}>
+      <DiscussScreenBackdrop category={category} coarseGradient={gradient}>
+        <ScrollView
+          accessibilityRole="scrollbar"
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={[
+            styles.scroll,
+            {
+              paddingTop: insets.top + 8,
+              paddingLeft: Math.max(insets.left, 0),
+              paddingRight: Math.max(insets.right, 0),
+              paddingBottom: Math.max(spacing.xl, insets.bottom + 24),
+            },
+          ]}>
+          <DiscussDraftEditor draft={draft} onChange={updateDraft} onBack={() => router.back()} />
 
-        <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Intake snapshot</Text>
-        <View style={[styles.panel, { backgroundColor: panelBg, borderColor: panelBorder }]}>
-          <ContextRow label="Arena" value={draft.category ?? 'Unset'} surface={surface} isLast={false} />
-          <ContextRow label="Decision" value={draft.title || 'Unset'} surface={surface} isLast={false} />
-          <ContextRow label="Constraints" value={draft.constraints || 'None noted'} surface={surface} isLast={false} />
-          <ContextRow label="Success signal" value={draft.successCriteria || 'Skipped'} surface={surface} isLast />
-        </View>
-
-        <View style={styles.blockSpacer} />
-
-        {draft.expertVerdicts.length > 0 ? (
-          <>
-            <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Expert council</Text>
-            <View style={[styles.panel, { backgroundColor: panelBg, borderColor: panelBorder }]}>
-              {draft.expertVerdicts.map((verdict, index) => (
-                <View
-                  key={verdict.expertId}
-                  style={[
-                    styles.expertRow,
-                    index < draft.expertVerdicts.length - 1 && {
-                      borderBottomColor: surface.hairline,
-                      borderBottomWidth: StyleSheet.hairlineWidth,
-                    },
-                  ]}>
-                  <Text style={[styles.expertTitle, { color: surface.textPrimary }]}>{verdict.expertTitle}</Text>
-                  <Text style={[styles.expertLine, { color: isDark ? palette.neonMint : profileLight.sky }]}>
-                    {verdict.verdictLine}
-                  </Text>
-                  <Text style={[styles.expertReason, { color: surface.textMuted }]}>{verdict.reasoning}</Text>
-                </View>
-              ))}
+          {error ? (
+            <View
+              style={[
+                styles.errorBanner,
+                {
+                  borderColor: isDark ? 'rgba(255,120,120,0.45)' : 'rgba(180,40,40,0.35)',
+                  backgroundColor: isDark ? 'rgba(255,80,80,0.1)' : 'rgba(255,235,235,0.95)',
+                },
+              ]}>
+              <Text style={[styles.errorText, { color: isDark ? '#ffb8b8' : '#7f1d1d' }]}>{error}</Text>
             </View>
-            <View style={styles.blockSpacer} />
-          </>
-        ) : null}
-
-        <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Explore post</Text>
-        <CommunityValidationCardEditor
-          labels={{
-            aiVerdictLine: draft.communityAiVerdictLine,
-            aiBecause: draft.communityAiBecause,
-            challengeQuestion: draft.communityChallengeQuestion,
-          }}
-          onChange={(p) =>
-            updateDraft({
-              ...(p.aiVerdictLine !== undefined ? { communityAiVerdictLine: p.aiVerdictLine } : {}),
-              ...(p.aiBecause !== undefined ? { communityAiBecause: p.aiBecause } : {}),
-              ...(p.challengeQuestion !== undefined ? { communityChallengeQuestion: p.challengeQuestion } : {}),
-            })
-          }
-        />
-
-        {error ? (
-          <View
-            style={[
-              styles.errorBanner,
-              {
-                borderColor: isDark ? 'rgba(255,120,120,0.45)' : 'rgba(180,40,40,0.35)',
-                backgroundColor: isDark ? 'rgba(255,80,80,0.1)' : 'rgba(255,235,235,0.95)',
-              },
-            ]}>
-            <Text style={[styles.errorText, { color: isDark ? '#ffb8b8' : '#7f1d1d' }]}>{error}</Text>
-          </View>
-        ) : null}
-
-        <View style={styles.actions}>
-          <PrimaryButton
-            accessibilityHint="Calls ShouldI briefing API and hydrates Explore fields"
-            disabled={busy || !draft.category || !draft.title.trim()}
-            onPress={() => {
-              void submitBriefing();
-            }}>
-            <Text style={styles.onPrimary}>{busy ? 'Synthesizing…' : 'Synthesize briefing into card'}</Text>
-          </PrimaryButton>
-
-          <View style={styles.secondaryRow}>
-            <View style={[styles.flexBtn, !lastResponse && styles.disabledWrap]} pointerEvents={lastResponse ? 'auto' : 'none'}>
-              <GhostAction
-                label="Open full briefing"
-                accessibilityLabel="Open full briefing transcript"
-                onPress={() => {
-                  if (lastResponse) router.push('/(tabs)/decide/result');
-                }}
-              />
-            </View>
-            <View style={styles.flexBtn}>
-              <GhostAction label="Back to chat" accessibilityLabel="Back to Harmence" onPress={() => router.back()} />
-            </View>
-          </View>
-
-          <PrimaryButton
-            accessibilityLabel="Publish validation card to Explore"
-            disabled={
-              busy ||
-              !lastResponse ||
-              !draft.category ||
-              !draft.communityAiVerdictLine.trim() ||
-              !draft.communityAiBecause.trim() ||
-              !draft.communityChallengeQuestion.trim()
-            }
-            onPress={() => postCommunityValidationCard()}>
-            <Text style={styles.onPrimary}>Post to Explore · peer validation</Text>
-          </PrimaryButton>
-
-          {!lastResponse ? (
-            <Text style={[styles.helper, { color: surface.textMuted }]}>
-              Synthesize Harmence&apos;s briefing first — we&apos;ll drop the copy into the card above for a final edit.
-            </Text>
           ) : null}
-        </View>
-      </ScrollView>
-    </Screen>
-  );
-}
 
-function ContextRow({
-  label,
-  value,
-  surface,
-  isLast,
-}: {
-  label: string;
-  value: string;
-  surface: ReturnType<typeof themeSurface>;
-  isLast: boolean;
-}) {
-  return (
-    <View style={[styles.ctxRow, !isLast && { borderBottomColor: surface.hairline, borderBottomWidth: StyleSheet.hairlineWidth }]}>
-      <Text style={[styles.ctxLabel, { color: surface.textMuted }]}>{label}</Text>
-      <Text style={[styles.ctxValue, { color: surface.textPrimary }]}>{value}</Text>
+          <View style={styles.actions}>
+            <PrimaryButton
+              accessibilityHint="Calls ShouldI briefing API and hydrates Explore fields"
+              disabled={busy || !draft.category || !draft.title.trim()}
+              onPress={() => {
+                void submitBriefing();
+              }}>
+              <Text style={styles.onPrimary}>{busy ? 'Synthesizing…' : 'Synthesize briefing into card'}</Text>
+            </PrimaryButton>
+
+            <View style={styles.secondaryRow}>
+              <View style={[styles.flexBtn, !lastResponse && styles.disabledWrap]} pointerEvents={lastResponse ? 'auto' : 'none'}>
+                <GhostAction
+                  label="Open full briefing"
+                  accessibilityLabel="Open full briefing transcript"
+                  onPress={() => {
+                    if (lastResponse) router.push('/(tabs)/decide/result');
+                  }}
+                />
+              </View>
+              <View style={styles.flexBtn}>
+                <GhostAction label="Back to chat" accessibilityLabel="Back to Harmence" onPress={() => router.back()} />
+              </View>
+            </View>
+
+            <PrimaryButton
+              accessibilityLabel="Publish validation card to Explore"
+              disabled={busy || !canPost}
+              onPress={() => postCommunityValidationCard()}>
+              <Text style={styles.onPrimary}>Post to Explore · peer validation</Text>
+            </PrimaryButton>
+
+            {!lastResponse ? (
+              <Text style={[styles.helper, { color: surface.textMuted }]}>
+                Tap any text on the card above to edit — it matches what peers will see in Discuss.
+              </Text>
+            ) : null}
+          </View>
+        </ScrollView>
+      </DiscussScreenBackdrop>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   scroll: {
     flexGrow: 1,
-  },
-  hero: {
-    marginBottom: spacing.md,
-    gap: 8,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: '800',
-    letterSpacing: -0.8,
-    lineHeight: 34,
-  },
-  subtitle: {
-    ...typography.compact,
-    lineHeight: 21,
-    maxWidth: 520,
-  },
-  statusPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    alignSelf: 'flex-start',
-    marginTop: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 999,
-    borderWidth: StyleSheet.hairlineWidth,
-  },
-  statusDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-  },
-  statusText: {
-    ...typography.caption,
-    fontWeight: '700',
-    letterSpacing: 0.2,
-  },
-  sectionEyebrow: {
-    ...typography.caption,
-    fontWeight: '700',
-    letterSpacing: 0.75,
-    textTransform: 'uppercase',
-    marginBottom: 8,
-  },
-  panel: {
-    borderRadius: 20,
-    borderWidth: StyleSheet.hairlineWidth,
-    overflow: 'hidden',
-  },
-  ctxRow: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: 14,
-    gap: 4,
-  },
-  ctxLabel: {
-    ...typography.caption,
-    fontWeight: '700',
-    letterSpacing: 0.4,
-    textTransform: 'uppercase',
-  },
-  ctxValue: {
-    ...typography.body,
-    lineHeight: 23,
-    fontWeight: '500',
-  },
-  expertRow: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: 14,
-    gap: 5,
-  },
-  expertTitle: {
-    ...typography.caption,
-    fontWeight: '800',
-    letterSpacing: 0.4,
-    textTransform: 'uppercase',
-  },
-  expertLine: {
-    ...typography.body,
-    lineHeight: 22,
-    fontWeight: '800',
-  },
-  expertReason: {
-    ...typography.compact,
-    lineHeight: 20,
-    fontWeight: '500',
-  },
-  blockSpacer: {
-    height: spacing.lg,
   },
   errorBanner: {
     marginTop: spacing.md,
@@ -317,6 +153,7 @@ const styles = StyleSheet.create({
   actions: {
     marginTop: spacing.lg,
     gap: 12,
+    paddingHorizontal: 4,
   },
   secondaryRow: {
     flexDirection: 'row',

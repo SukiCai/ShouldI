@@ -22,7 +22,7 @@ export default function DecideNavigator() {
         }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="details" options={{ title: 'Manual details (legacy)' }} />
-        <Stack.Screen name="confirm" options={{ title: 'Review draft' }} />
+        <Stack.Screen name="confirm" options={{ headerShown: false, title: 'Review draft' }} />
         <Stack.Screen name="result" options={{ headerBackVisible: false, title: 'ShouldI briefing' }} />
       </Stack>
     </DecideWizardProvider>
