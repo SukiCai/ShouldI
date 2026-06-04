@@ -1,28 +1,25 @@
 ## ShouldI
 
-ShouldI is an AI-assisted decision companion: **`@shouldi/mobile`** (Expo), **`@shouldi/api`** (Hono), **`@shouldi/contracts`** (Zod), plus an embedded **Hermes** submodule at `./hermes-agent-private`.
+ShouldI is an AI-assisted decision companion: **`@shouldi/mobile`** (Expo), **`@shouldi/api`** (Hono), **`@shouldi/contracts`** (Zod), plus vendored **Hermes** source at `./hermes-agent-private`.
 
 ### Repository layout
 
 - [`apps/mobile`](apps/mobile) — Expo Router client; talks only HTTPS to **`@shouldi/api`** (no Python / Hermes inside the native bundle).
 - [`apps/api`](apps/api) — **`@shouldi/api`**: Node/Hono service (`/health`, `/v1/explore`, `/v1/me`, `/v1/hermes`, `/v1/chat`). Server-side adapter: [`apps/api/src/hermes-adapter.ts`](apps/api/src/hermes-adapter.ts).
 - [`packages/contracts`](packages/contracts) — Zod contracts + shared types consumed by **`@shouldi/mobile`** and **`@shouldi/api`**.
-- [`hermes-agent-private`](hermes-agent-private) — **full Hermes repo** (`git submodule` at repo root, nested deps). Sibling of `apps/` and `packages/`.
+- [`hermes-agent-private`](hermes-agent-private) — **full Hermes agent** (vendored in-repo, including `tinker-atropos`). Sibling of `apps/` and `packages/`.
 
 Conventions for **`apps/`** vs **`packages/`**: [`apps/README.md`](apps/README.md), [`packages/README.md`](packages/README.md).
 
 ### Prereqs
 
 - Node ≥ 20 (`nvm`, Homebrew node, etc.)
-- Hermes toolchain (Python / `uv` / venv) when you run the agent; submodule at [`./hermes-agent-private`](hermes-agent-private) (bootstrap in Install below).
+- Hermes toolchain (Python / `uv` / venv) when you run the agent; tree at [`./hermes-agent-private`](hermes-agent-private) (bootstrap in Install below).
 
 ### Install
 
 ```bash
 cd /Users/sukicai/Desktop/ShouldI
-git submodule update --init --recursive
-# If .gitmodules uses file:///... submodule URLs and Git blocks them:
-# git -c protocol.file.allow=always submodule update --init --recursive
 npm install
 npm run build -w @shouldi/contracts   # emits dist typings for dependents
 ```
