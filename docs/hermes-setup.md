@@ -191,7 +191,7 @@ When `apiLive` is `true`, **Decide → Harmence chat** and **Review briefing** (
 
 ## Docker note
 
-`docker compose up` builds a slim Hermes image from `docker/hermes/Dockerfile` (embedded submodule). It is faster than the upstream `nousresearch/hermes-agent` image but still runs the full agent loop via `hermes gateway run`. Persisted state lives in the `hermes-data` volume or your bind-mounted `SHOULDI_HERMES_DATA`.
+`docker compose up` builds a slim Hermes image from `docker/hermes/Dockerfile` (vendored `hermes-agent-private/` tree). It is faster than the upstream `nousresearch/hermes-agent` image but still runs the full agent loop via `hermes gateway run`. Persisted state lives in the `hermes-data` volume or your bind-mounted `SHOULDI_HERMES_DATA`.
 
 ## Troubleshooting
 

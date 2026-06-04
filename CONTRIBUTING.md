@@ -4,12 +4,12 @@
 
 - **`apps/`** — runnable surfaces (Expo client, Node HTTP API). Prefer thin UI/routing here; push shared semantics into **`packages/`** when both sides need them.
 - **`packages/`** — libraries with clear consumers (today: **`@shouldi/contracts`** — Zod schemas / API types).
-- **`hermes-agent-private/`** — Hermes upstream as a git submodule at the repo root. The native app never bundles or imports Python from here.
+- **`hermes-agent-private/`** — vendored Hermes source at the repo root. The native app never bundles or imports Python from here.
 
 ### Prerequisites
 
 - **Node ≥ 20** (`package.json` `engines`).
-- **Hermes** Python environment when exercising agent paths; submodule: `git submodule update --init --recursive` from the repo root.
+- **Hermes** Python environment when exercising agent paths; see [`docs/hermes-setup.md`](docs/hermes-setup.md).
 
 ### Local setup
 
