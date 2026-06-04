@@ -4,7 +4,7 @@
 
 1. **`@shouldi/mobile`** speaks only HTTPS to **`@shouldi/api`** — no embedded Python runtime in the Expo bundle.
 2. **One source of truth** for wire shapes: **`@shouldi/contracts`** (Zod).
-3. **Hermes** is optional at dev time but anchored at `./hermes-agent-private` via submodule unless overridden by env.
+3. **Hermes** is optional at dev time but anchored at vendored `./hermes-agent-private` unless overridden by env.
 
 ### High-level flow
 
