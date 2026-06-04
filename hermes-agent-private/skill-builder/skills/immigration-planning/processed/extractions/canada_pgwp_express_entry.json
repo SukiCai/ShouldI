@@ -1,0 +1,398 @@
+{
+  "source_file": "pgwp_express_entry.txt",
+  "heuristics": [
+    {
+      "rule": "Run your CRS score before you choose a program, not after you graduate",
+      "condition": "When a prospective international student is deciding which Canadian program to enroll in",
+      "action": "Use the federal CRS calculator to project your post-graduation score based on age, language, education, and planned work experience before committing to a program",
+      "because": "Most CRS-relevant variables (program type, age at graduation, education level) are locked by enrollment decisions made years before you enter the immigration funnel — late awareness cannot reverse them",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If your program is a diploma or certificate and your study permit application was filed on or after June 25, 2025, verify PGWP eligibility against the current eligible fields list before enrolling",
+      "condition": "When a diploma or certificate student is selecting a Canadian institution and program",
+      "action": "Cross-check the specific program field against IRCC's post-June 25, 2025 eligible fields list — do not assume eligibility based on older advice or peer experience",
+      "because": "178 fields were removed from PGWP eligibility; students in ineligible programs will not receive a PGWP regardless of academic performance, leaving them with no legal work authorization after graduation",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Prioritize French language training if your CRS score is stuck below the general draw cut-off (~520+)",
+      "condition": "When a non-French-speaking Express Entry candidate cannot reach competitive CRS scores through other means",
+      "action": "Invest 6–12 months in French language training to reach CLB 7, unlocking both significant CRS point additions and access to French-language draws with cut-offs as low as 379–428",
+      "because": "French proficiency is the single highest-ROI CRS lever available — it adds points and opens entirely separate draw categories with dramatically lower thresholds",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Ensure your Canadian work experience is in NOC TEER 0, 1, 2, or 3 — not TEER 4 or 5 — before counting it toward CEC eligibility",
+      "condition": "When a PGWP holder is planning work experience to qualify for Canadian Experience Class",
+      "action": "Look up the NOC TEER classification of any job offer before accepting it, and prioritize roles in TEER 0–3 even if TEER 4–5 roles pay comparably",
+      "because": "CEC requires 1 year of skilled work in TEER 0–3; retail, food service, and manual labor roles (TEER 4–5) do not count, and students who work 1–2 years in ineligible roles must restart the clock",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Have your spouse take IELTS and document their education credentials as soon as you begin your PGWP period",
+      "condition": "When a married or common-law PGWP holder is building toward an Express Entry application",
+      "action": "Get your spouse's language tested and education assessed (ECA if foreign credentials) — do not wait until you are ready to file",
+      "because": "Spousal language and education scores can add 10–40 CRS points, a meaningful difference at current cut-offs, and assessments take months to complete",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Monitor PNP draw streams for your NOC code actively — do not wait passively for a federal Express Entry draw",
+      "condition": "When a candidate has a base CRS score below the current federal draw cut-off but has Canadian work experience in a specific occupation",
+      "action": "Identify which provinces have active PNP streams aligned to your NOC code and apply when your score meets provincial thresholds",
+      "because": "A provincial nomination adds 600 CRS points, effectively guaranteeing an ITA regardless of base score — it is often faster than waiting for a general federal draw",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Apply for PGWP immediately after graduation — do not wait for employer confirmation or job offers",
+      "condition": "When a student completes their eligible Canadian study program",
+      "action": "Submit the PGWP application as soon as your final transcript or graduation confirmation is available, including the now-required language test results",
+      "because": "PGWP applications must be filed while your study permit is still valid or within the implied status period; delays can result in loss of eligibility and gaps in work authorization",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Do not rely on job offer points as a CRS strategy — they were removed as of March 25, 2025",
+      "condition": "When a candidate is evaluating whether to pursue a specific employer in hopes of boosting their Express Entry score",
+      "action": "Redirect effort previously spent on employer-based CRS boosts toward language scores, French proficiency, and PNP streams",
+      "because": "Job offer points no longer exist in CRS scoring; acting on outdated advice wastes strategic energy that could be spent on still-valid levers",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Program type: university degree vs. diploma/certificate",
+      "why_it_matters": "University degree students (bachelor's and above) retain PGWP eligibility regardless of field; diploma/certificate students are subject to the post-June 2025 eligible fields list, making program selection a direct immigration variable",
+      "how_to_assess": "Confirm the credential type with the institution (degree vs. diploma/certificate) and check the current IRCC eligible fields list for diploma programs",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Study permit application date relative to June 25, 2025",
+      "why_it_matters": "Determines which PGWP eligibility rules apply — students who applied before this date are protected under previous rules; those who applied after must meet the new program field requirements",
+      "how_to_assess": "Check the date on your study permit application confirmation from IRCC; this is a binary threshold, not a spectrum",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "French language proficiency (current and achievable level)",
+      "why_it_matters": "French at CLB 7+ unlocks both additional CRS points and access to French-language draws with cut-offs 90–150 points lower than general draws — this single factor can be the difference between qualifying and not qualifying",
+      "how_to_assess": "Take a French placement test and estimate realistic time to CLB 7 given current level; compare the CRS gain against other available levers",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Age at time of Express Entry application",
+      "why_it_matters": "CRS age points peak at 20–29 and decrease progressively after 30, accelerating after 35 — a 2-year delay in filing can cost 15–30+ CRS points that cannot be recovered",
+      "how_to_assess": "Use the CRS calculator to model your score at current age vs. age at graduation vs. 1 year post-graduation; identify whether urgency is warranted",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "NOC TEER classification of available employment",
+      "why_it_matters": "CEC requires 1 year of Canadian work experience in TEER 0–3; time spent in TEER 4–5 roles does not count, and students who discover this late must work additional time in eligible roles before applying",
+      "how_to_assess": "Look up the NOC code of any job offer using the ESDC Job Bank NOC search tool and confirm its TEER level before accepting",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Spousal education and language scores",
+      "why_it_matters": "For married or common-law candidates, a spouse's CLB 5+ language score and education credentials add meaningful CRS points (estimated 10–40 depending on levels) — potentially closing the gap to an ITA",
+      "how_to_assess": "Have your spouse take IELTS/TEF and run the CRS calculator with and without spousal factors to quantify the actual point difference",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Active PNP streams for your occupation and province of residence",
+      "why_it_matters": "A provincial nomination adds 600 CRS points, making PNP availability a faster pathway than federal Express Entry for candidates with sub-520 base scores",
+      "how_to_assess": "Monitor the immigration portal of provinces where you live or work; check NOC-specific draw histories to assess realistic access",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Foreign credential recognition (ECA status)",
+      "why_it_matters": "Foreign education credentials must be assessed by a designated ECA organization to receive CRS education points; unassessed credentials receive no points and cannot be appealed retroactively after filing",
+      "how_to_assess": "Initiate ECA assessment through WES, ICAS, or other IRCC-designated bodies as early as possible — processing takes 3–6 months",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Program duration (relative to 2-year threshold for maximum PGWP)",
+      "why_it_matters": "Programs under 8 months generate no PGWP; programs 8 months to under 2 years generate a PGWP equal to program length; programs 2+ years generate the maximum 3-year PGWP — duration directly determines how much time you have to accumulate CEC-eligible work experience",
+      "how_to_assess": "Calculate the expected PGWP duration from your program length and model whether it provides enough time (1 year minimum) to qualify for CEC before expiry",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Enrolling in a shorter, cheaper college diploma or certificate program to save money",
+      "unstated_consequence": "If the program field is not on the post-June 2025 eligible list and the study permit was filed after June 25, 2025, there is no PGWP — the cost savings on tuition are offset by the loss of legal work authorization and the entire immigration pathway",
+      "who_it_affects": "Cost-conscious international students choosing college over university, especially those who applied for study permits after June 2025",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Taking any available job during the PGWP period to start earning",
+      "unstated_consequence": "If the job is in NOC TEER 4 or 5 (retail, food service, manual labor), it builds no CEC eligibility — the student spends 1–2 years working without advancing toward PR, while also aging out of peak CRS age points",
+      "who_it_affects": "Students in fields with limited TEER 0–3 entry-level opportunities, or those who need income quickly and accept whatever is available",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Dismissing French language investment as unnecessary for non-Francophone students",
+      "unstated_consequence": "The student remains locked into general Express Entry draws with 520+ CRS cut-offs while French-language draw cut-offs sit 90–150 points lower — the decision to skip French may mean waiting years longer for an ITA or never qualifying",
+      "who_it_affects": "Mandarin, Hindi, Korean, and other non-European language speakers who view French as irrelevant to their background",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Waiting until the PGWP period to start thinking about immigration strategy",
+      "unstated_consequence": "Program type, program field, study permit application date, age trajectory, and education credential type are all already fixed — the most impactful variables can no longer be changed, leaving the student only marginal levers to work with",
+      "who_it_affects": "Students who treat immigration planning as a post-graduation task rather than a pre-enrollment one",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on a job offer as a CRS booster in Express Entry strategy",
+      "unstated_consequence": "As of March 25, 2025, job offer points were removed from the CRS scoring system — students who structured their job search around this strategy gained no CRS benefit from it",
+      "who_it_affects": "Students who received pre-2025 immigration advice or relied on outdated online resources",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Not pursuing your spouse's language testing and ECA because you plan to apply individually",
+      "unstated_consequence": "Spousal factors in Express Entry add 10–40 CRS points — by not documenting them, the candidate forgoes points that could close the gap to an ITA, often for the cost of one IELTS exam",
+      "who_it_affects": "Married or common-law PGWP holders who are unaware that spousal factors affect their own CRS score even under a principal applicant filing",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Selecting a program based on career interest alone without checking PGWP or NOC TEER implications",
+      "unstated_consequence": "The student may complete a program that generates either no PGWP or a short-duration PGWP, and then work in a TEER 4–5 role — making the entire Canadian study investment a dead end for permanent residency",
+      "who_it_affects": "Students in non-traditional or emerging fields (some agriculture, transport, arts) where PGWP eligibility or TEER classification is ambiguous",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Enrolling in a diploma program without verifying PGWP field eligibility under the new (post-June 2025) rules",
+      "why_it_happens": "Students rely on peer advice, recruitment agents, or institution marketing that predates the June 2025 rule changes — and institutions may not proactively disclose eligibility risk",
+      "consequence": "No PGWP issued after graduation; student has no legal work authorization in Canada and must leave or find an alternative permit, effectively losing the investment in Canadian education as an immigration pathway",
+      "warning_signs": [
+        "Choosing a program based on a friend's PGWP experience from before June 2025",
+        "Institution or agent says the program 'has always been PGWP eligible' without referencing the current IRCC list",
+        "Program is in transportation, certain agriculture fields, or traditional trades"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Accumulating 1–2 years of TEER 4–5 work experience and then discovering it doesn't count for CEC",
+      "why_it_happens": "Students are unaware of NOC TEER categories and assume any legal Canadian work experience counts toward CEC eligibility; they prioritize income or convenience over immigration strategy",
+      "consequence": "The student must find a TEER 0–3 job and work another full year before becoming CEC-eligible, often while their PGWP approaches expiry and age penalty increases",
+      "warning_signs": [
+        "Working in retail, food service, warehousing, or manual labor on PGWP",
+        "Never having looked up the NOC code of your current job",
+        "Assuming 'Canadian work experience' means any work done in Canada"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Ignoring CRS score tracking until after graduation, then discovering disqualifying gaps",
+      "why_it_happens": "Students treat immigration as a post-graduation problem and assume the system will work out if they just get the degree; they experience optimism bias about meeting cut-offs",
+      "consequence": "Discovers late that their score is 30–50 points below the cut-off with no remaining high-impact levers — French takes time, age penalty has already begun, and the PGWP clock is running",
+      "warning_signs": [
+        "Has never run the official CRS calculator",
+        "Believes Express Entry 'is just about getting a job in Canada first'",
+        "Doesn't know their own CLB score or language band results"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Dismissing French language investment and then being locked out of lower-cut-off draws",
+      "why_it_happens": "Non-Francophone students perceive French as culturally irrelevant to their background or career, underestimate the CRS point value, and focus exclusively on English proficiency",
+      "consequence": "Competes only in general draws at 520+ CRS cut-off rather than French-language draws at 379–428; may wait years longer for an ITA or age out of peak scoring before receiving one",
+      "warning_signs": [
+        "Has never researched French-language Express Entry draw cut-off history",
+        "Believes French is only useful for living in Quebec",
+        "Actively avoids French language coursework as 'not relevant to my degree'"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Using pre-2025 immigration advice and expecting job offer points to boost CRS",
+      "why_it_happens": "Students rely on immigration blog posts, YouTube videos, or advisor guidance that was accurate before March 25, 2025 but is now outdated; the rule change is recent and not yet widely internalized",
+      "consequence": "Job search strategy optimized for CRS point gain yields no CRS benefit; student may have accepted a less suitable role believing it would accelerate PR",
+      "warning_signs": [
+        "Advisor or resource mentions 'getting a job offer to boost your CRS' without noting the 2025 rule change",
+        "CRS strategy sheet lists job offer as a key lever",
+        "Candidate has never verified when their immigration information source was last updated"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Not submitting spouse's language and education credentials for ECA/IELTS before filing Express Entry",
+      "why_it_happens": "Students don't realize spousal factors affect the principal applicant's CRS score; they assume only their own credentials matter and don't want to spend money on tests for a non-working spouse",
+      "consequence": "Files with a CRS score 10–40 points lower than achievable; may wait additional draw cycles or miss the cut-off entirely when a small boost would have secured an ITA",
+      "warning_signs": [
+        "Married or common-law partner has never taken a Canadian-recognized language test",
+        "Foreign credentials of spouse have never been ECA-assessed",
+        "Candidate runs CRS calculator without entering spousal information"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "When did you submit your Canadian study permit application — before or after June 25, 2025?",
+      "what_it_reveals": "Determines which set of PGWP eligibility rules applies; students before this date are protected under previous rules, those after must meet new field-of-study requirements",
+      "follow_up_if_yes": "If before June 25, 2025: your program field does not affect PGWP eligibility — focus on duration and language requirements instead",
+      "follow_up_if_no": "If after June 25, 2025: immediately verify your specific program field against the current IRCC eligible fields list — do not assume eligibility",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is your Canadian program a university degree (bachelor's or above) or a college diploma/certificate?",
+      "what_it_reveals": "University degree students have blanket PGWP eligibility regardless of field; diploma/certificate students face field-specific eligibility restrictions and higher compliance risk",
+      "follow_up_if_yes": "If university degree: PGWP field risk is resolved — shift focus to program duration, language test requirements, and CRS planning",
+      "follow_up_if_no": "If diploma/certificate: immediately check program field against IRCC's eligible list and confirm study permit application date relative to June 25, 2025",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is your current CRS score, and have you run the official federal calculator in the last 3 months?",
+      "what_it_reveals": "Reveals whether the candidate has situational awareness of their immigration competitiveness and which specific gaps exist (language, age, education, spousal factors)",
+      "follow_up_if_yes": "If score known: compare it against current draw cut-offs for general, CEC-specific, French-language, and PNP-enhanced draws — identify which category is realistic",
+      "follow_up_if_no": "If score unknown: run the calculator immediately; no strategic immigration decisions should be made without a current score",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is your French language proficiency level, and have you taken an official TEF Canada or TCF Canada test?",
+      "what_it_reveals": "Determines access to French-language Express Entry draws (cut-offs 90–150 points lower than general draws) and whether French investment is a viable CRS lever",
+      "follow_up_if_yes": "If CLB 7+ French: ensure it is documented in your Express Entry profile and model CRS score with French-language draw eligibility factored in",
+      "follow_up_if_no": "If below CLB 7 or untested: estimate realistic time to CLB 7 and calculate the CRS point gain; compare to other available improvement strategies",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is the NOC TEER level of the job you are currently in or planning to accept on your PGWP?",
+      "what_it_reveals": "Determines whether current work experience will count toward the 1-year CEC requirement; TEER 4–5 roles do not qualify and may result in the candidate building time with no CEC eligibility progress",
+      "follow_up_if_yes": "If TEER 0–3: confirm the NOC code is accurate and start tracking your 1-year eligibility clock — ensure you maintain consistent hours and document employment",
+      "follow_up_if_no": "If TEER 4–5: urgently evaluate whether a parallel or alternative TEER 0–3 opportunity is available; every month in an ineligible role delays PR",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does your province of residence or work have an active PNP stream aligned to your NOC code?",
+      "what_it_reveals": "Identifies whether the 600-point provincial nomination pathway is accessible, which would effectively guarantee an ITA regardless of base CRS score",
+      "follow_up_if_yes": "If active PNP stream exists: determine the minimum provincial score requirement and apply as soon as eligible — do not wait for a federal draw",
+      "follow_up_if_no": "If no active stream: monitor draw history of neighboring provinces and assess whether relocating is strategically worthwhile given the 600-point benefit",
+      "country_scope": "canada"
+    },
+    {
+      "question": "If you have a spouse or common-law partner, have they taken an IELTS/TEF and had their education credentials ECA-assessed?",
+      "what_it_reveals": "Identifies uncaptured CRS points from spousal factors — a commonly overlooked source of 10–40 additional CRS points that requires only documentation effort, not changing any other circumstance",
+      "follow_up_if_yes": "If tested and assessed: include spousal factors in CRS profile and verify score is calculated correctly",
+      "follow_up_if_no": "If not tested: initiate IELTS/TEF registration and ECA process immediately — both take months and cannot be rushed when you are ready to file",
+      "country_scope": "canada"
+    },
+    {
+      "question": "If you completed your highest degree outside Canada, has it been assessed by an IRCC-designated ECA organization?",
+      "what_it_reveals": "Unassessed foreign credentials receive no CRS education points; this is a correctable gap but requires 3–6 months to process and cannot be backdated after filing",
+      "follow_up_if_yes": "If ECA complete: confirm it aligns with the Canadian credential level you are claiming in your Express Entry profile",
+      "follow_up_if_no": "If ECA not started: begin immediately through WES, ICAS, or another designated body — do not wait until you are otherwise ready to file",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is your current age, and how old will you be at your projected Express Entry application date?",
+      "what_it_reveals": "CRS age points peak at 20–29 and decline after 30, accelerating after 35 — a 2-year delay in application timing can cost 15–30+ irrecoverable CRS points, changing whether an ITA is achievable",
+      "follow_up_if_yes": "If under 29 at application: age is not yet a constraint — focus on other levers; model whether rushing the timeline sacrifices other score components",
+      "follow_up_if_no": "If 30 or older, or approaching 30: treat application timing as urgent; each additional year of delay has a compounding negative effect on CRS score",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you study in Canada, you will automatically get a PGWP after graduation",
+      "actual_reality": "PGWP eligibility depends on program type, program field, program duration, study permit application date, and now language test results — multiple students in ineligible programs discover post-graduation that no PGWP will be issued",
+      "implication": "PGWP eligibility must be verified before enrollment, not assumed; the burden is on the student, not the institution, to confirm they qualify",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Any Canadian work experience on a PGWP counts toward permanent residency through Express Entry",
+      "actual_reality": "Only Canadian work experience in NOC TEER 0, 1, 2, or 3 counts toward CEC eligibility; TEER 4–5 work (which includes most entry-level retail, food service, and manual labor roles) generates zero CEC eligibility regardless of duration",
+      "implication": "Job selection during the PGWP period is an immigration decision, not just a career one — prioritizing TEER 0–3 roles over higher-paying TEER 4–5 roles is often the correct strategic choice",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Getting a Canadian job offer boosts your Express Entry score significantly",
+      "actual_reality": "Job offer points were removed from the CRS scoring system on March 25, 2025 — a job offer provides no CRS point boost and does not meaningfully accelerate Express Entry under current rules",
+      "implication": "Students should stop optimizing their job search for employer-based CRS gains and redirect that strategic energy toward language scores, French proficiency, and PNP streams",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "French is only relevant if you want to live in Quebec or work in a French environment",
+      "actual_reality": "French language proficiency at CLB 7+ adds significant CRS points and unlocks access to French-language Express Entry draws with cut-offs 90–150 points lower than general draws — it functions as a pure immigration point mechanism independent of where you live or work",
+      "implication": "Non-Francophone students should evaluate French investment as an immigration optimization tool, not a lifestyle choice; the ROI in CRS points is often higher than any other available lever",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The Canada immigration system is straightforward because it's points-based and not a lottery",
+      "actual_reality": "While there is no lottery, CRS cut-off scores have risen significantly (general draws now 520+, CEC-specific 531–534), making competition intense; the system rewards those who optimize across multiple dimensions simultaneously, not just those who show up with Canadian experience",
+      "implication": "Students who plan only one variable (e.g., 'just get Canadian work experience') and ignore others (French, spousal factors, age timing, PNP) will find themselves below cut-off despite meeting basic eligibility requirements",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "You can start planning your Canadian permanent residency strategy after you graduate",
+      "actual_reality": "The most impactful CRS variables — program type, program field, age at application, study permit application date — are determined by decisions made before or at enrollment, often 2–4 years before graduation",
+      "implication": "Immigration strategy must begin at program selection, not at graduation; the PGWP period is too late to recover from enrollment decisions that created structural CRS disadvantages",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Only your own qualifications matter for Express Entry",
+      "actual_reality": "For married or common-law candidates, a spouse's language test results and education assessment can add 10–40 CRS points under the spousal factor component — making spouse documentation a direct immigration priority",
+      "implication": "Married students should treat their spouse's IELTS/TEF exam and ECA as part of their own immigration preparation, not as optional paperwork for the spouse",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "When to start CRS planning",
+      "naive_pattern": "Assumes CRS planning begins after graduation when they are on PGWP and looking for jobs — views it as a post-study administrative task",
+      "informed_pattern": "Runs the CRS calculator before choosing a program and uses projected post-graduation scores to inform program type, duration, and field selection decisions",
+      "why_it_matters": "The highest-leverage CRS variables are locked at enrollment; a student who discovers their structural disadvantage during PGWP has almost no high-impact remaining options",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Evaluating program options",
+      "naive_pattern": "Chooses program based on tuition cost, career interest, and school ranking — treats PGWP eligibility as a given",
+      "informed_pattern": "Filters programs first by PGWP eligibility (checking the current IRCC list for diploma/certificate programs), then by NOC TEER category of likely graduate employment, then by cost and career factors",
+      "why_it_matters": "A program that fails PGWP eligibility is an immigration dead end regardless of academic quality; a program that leads only to TEER 4–5 employment makes CEC qualification extremely difficult",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Job search strategy during PGWP",
+      "naive_pattern": "Takes the best-paying or most convenient job available, regardless of NOC TEER classification — assumes all Canadian work experience is equivalent for immigration",
+      "informed_pattern": "Prioritizes TEER 0–3 roles even at marginally lower pay, because NOC classification directly determines CEC eligibility and every month in a TEER 4–5 role is an immigration delay",
+      "why_it_matters": "A student who spends 1–2 years in TEER 4–5 work must then restart the 1-year CEC eligibility clock while their PGWP expires and their age penalty grows",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Attitude toward French language investment",
+      "naive_pattern": "Dismisses French as culturally irrelevant and focuses exclusively on advancing English proficiency — never quantifies the CRS impact of French",
+      "informed_pattern": "Calculates the CRS point gain from reaching CLB 7 in French, compares it to other available levers, and makes a data-driven decision about whether 6–12 months of French study is the highest-ROI immigration action available",
+      "why_it_matters": "French-language draws operate at cut-offs 90–150 points below general draws; ignoring this creates a multi-year wait that informed candidates have already eliminated",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Understanding of PNP as a pathway",
+      "naive_pattern": "Views Express Entry as the only federal pathway and waits passively for a general draw — unaware of PNP streams or treats them as complicated and optional",
+      "informed_pattern": "Actively monitors PNP draw streams for their NOC code and province, treating a provincial nomination as a priority strategy because it adds 600 CRS points and often provides a faster route than federal draws",
+      "why_it_matters": "A student who qualifies for a PNP and doesn't pursue it may wait years for a federal ITA while their PGWP expires — the 600-point nomination is often the single fastest available path to PR",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Use of spousal factors in Express Entry",
+      "naive_pattern": "Completes the Express Entry profile using only their own credentials, unaware that spousal factors affect the principal applicant's CRS score",
+      "informed_pattern": "Has spouse take IELTS/TEF and complete ECA assessment before filing, captures all available spousal CRS points, and models score with and without spousal factors to quantify the difference",
+      "why_it_matters": "10–40 uncaptured CRS points from spousal factors could be the difference between qualifying in a draw and waiting additional cycles — for the cost of one language test",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Knowledge of current CRS rules vs. outdated advice",
+      "naive_pattern": "Relies on immigration forums, peer advice, or blog posts without checking the publication date — acts on rules that may have changed (e.g., job offer CRS points, PGWP field eligibility)",
+      "informed_pattern": "Cross-references all strategic decisions against the current IRCC official guidance and checks for rule change dates; treats advisor or peer advice as a starting point for verification, not a final answer",
+      "why_it_matters": "The March 2025 removal of job offer CRS points and the June 2025 PGWP field eligibility overhaul are recent enough that most peer advice and online resources are still outdated — acting on stale information has direct immigration consequences",
+      "country_scope": "canada"
+    }
+  ]
+}

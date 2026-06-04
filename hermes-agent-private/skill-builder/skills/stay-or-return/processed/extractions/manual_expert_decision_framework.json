@@ -1,0 +1,357 @@
+{
+  "source_file": "expert_decision_framework.txt",
+  "heuristics": [
+    {
+      "rule": "Frame the decision as 10-year trajectory comparison, not current-conditions comparison",
+      "condition": "When evaluating whether to stay in host country or return home",
+      "action": "Rate each path on career compounding, financial compounding, immigration stability compounding, and relational compounding over 10 years — not on present quality of life",
+      "because": "Current-conditions comparison is biased toward staying because you are already adapted to the known environment; trajectories reveal which path actually compounds more value"
+    },
+    {
+      "rule": "Audit whether your stay decision is analysis or fear of failure in disguise",
+      "condition": "When you have concluded you should stay and are using career/financial arguments to support it",
+      "action": "Ask explicitly: 'Am I staying because this path genuinely compounds better, or because returning feels like admitting defeat?' If the honest answer is fear, the analysis is not done yet",
+      "because": "Fear of failure masquerading as career analysis is the primary distortion in this decision; catching it forces genuine evaluation rather than post-hoc rationalization"
+    },
+    {
+      "rule": "Treat a return at 25-28 with US credentials as elite positioning in home market, not failure",
+      "condition": "When framing return as giving up or losing",
+      "action": "Reframe: a top-university degree, 2-3 years of US work experience, English fluency, and an international network is premium positioning in most home markets",
+      "because": "The return-as-failure framing is imported from peers who are also afraid, not from realistic outcome assessment; the actual home-market value of those credentials is high"
+    },
+    {
+      "rule": "Never let immigration inertia make the decision by default",
+      "condition": "When telling yourself 'I'll stay until I get my green card, then I'll think about it'",
+      "action": "Make a conscious, explicit stay-vs-return decision now, separate from the green card timeline",
+      "because": "Green cards take 5-20+ years for many nationalities; by the time it arrives, roots have deepened and the decision has been made by inaction rather than choice"
+    },
+    {
+      "rule": "Compare savings rate, not gross salary",
+      "condition": "When doing financial comparison between staying and returning",
+      "action": "Adjust gross income for taxes, cost of living, immigration legal costs, family remittances, and purchasing power before comparing",
+      "because": "$200k in San Francisco saving $30k/year is not clearly superior to ¥40k/month in Shanghai saving ¥25k/month while living rent-free near family"
+    },
+    {
+      "rule": "Expand the option set beyond binary stay-vs-hometown before deciding",
+      "condition": "When the decision feels like a forced choice between staying indefinitely or returning to hometown",
+      "action": "Explicitly evaluate: return with a plan at 28, third-country options (Canada, Singapore, UK, Dubai), split-life arrangements, or delayed return after hitting a specific milestone",
+      "because": "Binary framing forecloses legitimate paths that may dominate both default options on multiple dimensions"
+    },
+    {
+      "rule": "Account for windows that close when sizing the urgency of the return option",
+      "condition": "When assuming the return option is always available and can be deferred indefinitely",
+      "action": "Identify which home-market opportunities (entrepreneurship, social capital formation, family relationships) are time-sensitive and assess how much narrower those windows become each year you stay",
+      "because": "Returning at 25 is categorically different from returning at 40; the entrepreneurial opportunity, the social capital needed to start a company, and the family relationships you can still influence shrink with each passing year"
+    },
+    {
+      "rule": "Seek out returnees in your network before deciding, not just stayers",
+      "condition": "When using your social network as evidence that staying is correct",
+      "action": "Actively identify and talk to people from your cohort who returned and are doing well",
+      "because": "Peer groups self-select around shared decisions; people who return are systematically underrepresented in your local social network, creating a survivorship-bias illusion that staying is the dominant choice"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Career ceiling by market for your specific role",
+      "why_it_matters": "The ceiling varies dramatically by field and background; staying may be optimal in some niches (certain AI research, biotech) and suboptimal in others where home-market demand is surging",
+      "how_to_assess": "Identify the most senior roles achievable in your specific function in each market; assess whether a foreign-background professional has reached those roles; check glass ceiling effects for your demographic in the host country",
+      "weight": "high"
+    },
+    {
+      "factor": "Immigration tax — true cost of maintaining status",
+      "why_it_matters": "Visa constraints foreclose opportunities available to domestic peers: starting a company, switching employers freely, taking career risks; these costs are rarely quantified but compound over years",
+      "how_to_assess": "Calculate annual legal fees, estimate mental overhead and time cost, list specific opportunities you have declined or cannot pursue due to visa status, estimate probability-weighted timeline to permanent status",
+      "weight": "high"
+    },
+    {
+      "factor": "Savings rate differential (not gross salary)",
+      "why_it_matters": "Net wealth accumulation is what compounds; gross salary comparisons without adjusting for taxes, cost of living, remittances, and purchasing power systematically mislead the analysis",
+      "how_to_assess": "Build a simple model: gross income minus taxes, rent, living costs, legal fees, remittances; compare residual savings and their purchasing power in each market",
+      "weight": "high"
+    },
+    {
+      "factor": "Equity and ownership access",
+      "why_it_matters": "Wage income has a ceiling; equity in startups, property ownership, and business stakes are the primary wealth-compounding mechanisms and differ sharply between markets and visa statuses",
+      "how_to_assess": "Assess whether your visa status allows you to found or co-found a company; evaluate property ownership rights; compare startup ecosystem quality and access to founding opportunities in each market",
+      "weight": "high"
+    },
+    {
+      "factor": "Realistic probability-weighted timeline to permanent residence",
+      "why_it_matters": "The expected value of staying changes radically depending on whether permanent status is 3 years away or 25 years away or functionally impossible",
+      "how_to_assess": "Identify your specific visa category and backlog; calculate realistic median time to permanent status; assign probability that the path completes given policy risk; multiply by the value of the rights it unlocks",
+      "weight": "high"
+    },
+    {
+      "factor": "Family financial assets and obligations in home market",
+      "why_it_matters": "Inheritance, family business, property, and aging parent care are asymmetric: they only compound at home and cannot be captured remotely",
+      "how_to_assess": "Estimate value of home-country family assets you stand to be involved with; assess aging parents' care timeline; evaluate whether a family business requires your physical presence to grow or preserve value",
+      "weight": "high"
+    },
+    {
+      "factor": "Partner's career and immigration status",
+      "why_it_matters": "A partner whose visa is dependent on yours, or whose career is tied to the host country, changes the payoff matrix for both people",
+      "how_to_assess": "Map your partner's ideal scenario explicitly; assess what each path costs them professionally and personally; determine whether their career compounds more in host country or home country",
+      "weight": "high"
+    },
+    {
+      "factor": "Home-market demand for your specific skills",
+      "why_it_matters": "Not all fields have equal home-market demand; AI, biotech, and finance in Shanghai or Mumbai may rival or exceed opportunities abroad, but this is field- and city-specific",
+      "how_to_assess": "Research compensation and role availability for your specific function in target home-market cities; talk to practitioners working in that market; assess trajectory of the sector over next 5 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Currency exposure over 10 years",
+      "why_it_matters": "Currency appreciation or depreciation of home currency against dollar/CAD affects the real value of savings and transfers over a decade",
+      "how_to_assess": "Assess expected trajectory of home currency; consider where you plan to spend savings long-term; evaluate whether dollar-denominated savings are actually more valuable given your end-use scenario",
+      "weight": "medium"
+    },
+    {
+      "factor": "Proximity to aging parents at critical years",
+      "why_it_matters": "Parents' health crises and final years are not evenly distributed across time; missing them is irreversible and has psychological costs that don't appear in financial models",
+      "how_to_assess": "Assess parents' current age and health trajectory; estimate when caregiving needs are likely to peak; evaluate whether remote support is genuinely adequate or a rationalization",
+      "weight": "medium"
+    },
+    {
+      "factor": "Depth of social roots and whether they matter to your 10-year self",
+      "why_it_matters": "Social roots compound slowly and are hard to rebuild; the value of deep roots depends on how much you weight community belonging versus mobility",
+      "how_to_assess": "Ask honestly whether you have built genuine deep relationships in the host country or are still primarily connected to an expat/international community; project which matters more to you at 40",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether the field is more meritocratic in host country or home country",
+      "why_it_matters": "In less meritocratic home markets, advancement depends on network and family connections that an internationally-educated returnee may or may not have",
+      "how_to_assess": "Research whether top performers in your field at home rose on credentials and output or on family/political connections; assess whether your specific network advantages are transferable",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying indefinitely to wait for green card",
+      "unstated_consequence": "The decision gets made by inertia rather than choice; by the time the green card arrives, roots have deepened, family situations have crystallized, and the flexibility to return from a position of strength has eroded",
+      "who_it_affects": "Nationals from high-backlog countries (India, China) facing 10-50+ year green card waits who treat the green card as a prerequisite for re-evaluating"
+    },
+    {
+      "choice": "Staying in host country on a work visa",
+      "unstated_consequence": "Systematic foreclosure of career risks that domestic peers take freely — switching employers, founding companies, taking unpaid sabbaticals, negotiating aggressively — creating a compounding career disadvantage that is invisible in year-one salary comparisons",
+      "who_it_affects": "Entrepreneurially-inclined professionals and those in fast-moving fields where career pivots and risk-taking are how people reach the top"
+    },
+    {
+      "choice": "Comparing current San Francisco lifestyle to hometown lifestyle as the decision frame",
+      "unstated_consequence": "The comparison is biased toward staying because you are already adapted to the known environment; the actual comparison — career trajectory at 38 in each market — often has a different answer",
+      "who_it_affects": "Anyone who has lived 3+ years in the host country and normalized its conveniences while their home-market memory has become dated"
+    },
+    {
+      "choice": "Returning home late (after 40) rather than at 28-30",
+      "unstated_consequence": "The entrepreneurial window, the social capital formation window, and the family relationship influence window have all narrowed significantly; you return from constraint rather than from strength",
+      "who_it_affects": "Professionals who deferred the return option indefinitely and find themselves returning reactively due to visa failure or family emergency rather than proactively"
+    },
+    {
+      "choice": "High gross salary in expensive US city",
+      "unstated_consequence": "Net savings rate may be lower than a lower-gross salary in a home market with lower costs, no immigration overhead, and access to family financial assets; the absolute number obscures the actual wealth-building rate",
+      "who_it_affects": "Professionals in high cost-of-living cities (San Francisco, New York) with significant remittance obligations to family and ongoing immigration legal costs"
+    },
+    {
+      "choice": "Treating immigration as binary (green card or return)",
+      "unstated_consequence": "Legitimate intermediate and alternative paths — EB-1A self-petition, O-1, L-1, Canada PR, Singapore, Dubai, third-country options — are never evaluated, foreclosing options that might dominate both binary choices",
+      "who_it_affects": "Professionals who have only been advised by peers in similar visa situations rather than by immigration attorneys or practitioners who have navigated alternative paths"
+    },
+    {
+      "choice": "Using peer group consensus as evidence that staying is correct",
+      "unstated_consequence": "Your peer group is a self-selected sample that systematically excludes people who returned; you are measuring the prevalence of stayers among stayers, not among all people who faced the same decision",
+      "who_it_affects": "International students embedded in tight-knit national communities in the host country where successful returnees have no visible presence in the local social graph"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Indefinite deferral — 'I'll decide after I get my green card'",
+      "why_it_happens": "The green card feels like a natural decision milestone; deferring to it avoids the discomfort of making an active choice with incomplete information",
+      "consequence": "The decision gets made by default inertia over 5-20 years; by the time the green card arrives, the return option has deteriorated — entrepreneurial windows closed, family relationships reduced to annual visits, home-market network atrophied",
+      "warning_signs": [
+        "You have said 'I'll think about it after the green card' for more than two years",
+        "You cannot articulate what you would specifically do differently with permanent status versus what you are doing now"
+      ]
+    },
+    {
+      "pattern": "Current-conditions comparison instead of trajectory comparison",
+      "why_it_happens": "Current conditions are observable and concrete; 10-year trajectories require modeling and are uncertain; the mind defaults to what is measurable",
+      "consequence": "The comparison is systematically biased toward staying because the known environment feels better than an uncertain projection of home-market life; the actual compounding question never gets answered",
+      "warning_signs": [
+        "Your analysis is primarily about lifestyle quality (restaurants, infrastructure, culture) rather than career ceiling and savings rate",
+        "You are comparing your current adapted life in the host country to a mental image of home country conditions from when you left"
+      ]
+    },
+    {
+      "pattern": "Peer-driven decision-making",
+      "why_it_happens": "Peer behavior feels like social proof; it is cognitively easier to do what people like you are doing than to independently model an uncertain future",
+      "consequence": "Your decision is calibrated to a self-selected, non-representative sample; people who have returned and are thriving are systematically absent from your local social network, making return look rarer and riskier than it is",
+      "warning_signs": [
+        "You cannot name three people from your cohort who returned and are doing well",
+        "Your primary evidence for staying is that most of your friends are staying"
+      ]
+    },
+    {
+      "pattern": "One-dimensional financial analysis (gross salary comparison)",
+      "why_it_happens": "Salary numbers are easy to compare; purchasing power, savings rate, immigration costs, equity access, and family financial context require more work to quantify",
+      "consequence": "The analysis produces a misleading result that overweights US gross salary; the person who earns more but saves less and owns nothing is worse off on wealth-compounding despite the larger nominal number",
+      "warning_signs": [
+        "Your financial comparison is a single number (annual salary) rather than a model with savings rate, costs, and equity",
+        "You have not calculated what your immigration legal fees and cost-of-living premium actually cost annually"
+      ]
+    },
+    {
+      "pattern": "Treating immigration as binary (green card or return)",
+      "why_it_happens": "Most people learn about immigration from peers in similar situations, not from practitioners; the O-1, EB-1A, L-1, Canada PR, and third-country paths are not commonly discussed in peer networks",
+      "consequence": "The option space is artificially narrowed; paths that might dominate both binary options are never evaluated",
+      "warning_signs": [
+        "You believe your only options are 'wait for H-1B lottery / employer-sponsored GC' or 'go home'",
+        "You have not consulted an immigration attorney about alternative pathways"
+      ]
+    },
+    {
+      "pattern": "Ignoring windows that close — treating the return option as permanently available",
+      "why_it_happens": "Future optionality feels constant because it is invisible; the gradual narrowing of entrepreneurial windows, family relationship windows, and home-market network windows does not trigger an alarm",
+      "consequence": "The professional returns reactively at 40+ from constraint (visa failure, family emergency) rather than proactively at 28-30 from a position of strength, with far fewer compounding years ahead in the home market",
+      "warning_signs": [
+        "You have not considered what specific opportunities are available to you at 28 that will not be available at 38",
+        "You have not visited home or maintained active relationships with home-market peers in more than two years"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you built a 10-year compounding model on both paths, or are you comparing today's quality of life?",
+      "what_it_reveals": "Whether the person is doing genuine analysis or rationalizing a fear-driven default; most people have not built any model",
+      "follow_up_if_yes": "Walk me through the model — what did you use for career ceiling, savings rate, and immigration probability? What were the key assumptions?",
+      "follow_up_if_no": "What would need to be true about the home-market trajectory for return to be the better compounding path? Have you ever asked that question seriously?"
+    },
+    {
+      "question": "What is your realistic, probability-weighted path to permanent residence, and what is the median timeline?",
+      "what_it_reveals": "Whether the person has a concrete plan or a vague hope; nationalities with 20+ year backlogs who treat the green card as a near-term milestone are making decisions on false premises",
+      "follow_up_if_yes": "What is your contingency if that path fails or the policy changes? Have you evaluated alternative paths (EB-1A, O-1, Canada, third country)?",
+      "follow_up_if_no": "Are you making a long-term life decision without knowing the probability that the foundational assumption (permanent status) actually materializes?"
+    },
+    {
+      "question": "What specific career milestone at home would you need to see to consider returning successful — and is that achievable within 5 years?",
+      "what_it_reveals": "Whether the person has a concrete picture of what success-at-home looks like, or whether 'returning is failure' is an undefined feeling rather than a reasoned assessment",
+      "follow_up_if_yes": "Is that milestone genuinely tied to staying abroad, or is it achievable with the credentials you already have?",
+      "follow_up_if_no": "If you cannot define what home-market success looks like, how are you concluding that staying abroad is better?"
+    },
+    {
+      "question": "What opportunities are you systematically foreclosing by staying — starting a company, career pivots, free negotiation, family time?",
+      "what_it_reveals": "Whether the person has priced in the immigration tax; most have not explicitly inventoried what they cannot do on their current status",
+      "follow_up_if_yes": "Have you quantified the value of those foreclosed options? Are they options you would actually pursue if the visa constraint were removed?",
+      "follow_up_if_no": "Before concluding staying is optimal, you need to know what it costs — not just what it provides."
+    },
+    {
+      "question": "Is going home fear of failure, or is it genuinely the better compounding path?",
+      "what_it_reveals": "Forces the person to separate emotional framing from analytical conclusion; reveals whether the stay decision is rationalization or genuine analysis",
+      "follow_up_if_yes": "What does 'failure' mean concretely? Is a person with a top-university degree, 3 years of US experience, and English fluency actually failing in their home market?",
+      "follow_up_if_no": "Then show me the analysis — where does the home-market path actually compound worse over 10 years?"
+    },
+    {
+      "question": "Who in your social network has returned and is doing well — and have you actually talked to them?",
+      "what_it_reveals": "Whether the person's peer sample is representative or systematically skewed toward stayers; reveals whether return-as-failure is an empirical finding or a sampling artifact",
+      "follow_up_if_yes": "What did they say about the actual experience of return versus the anticipated experience? What surprised them?",
+      "follow_up_if_no": "Your peer group is a self-selected sample. You are measuring the prevalence of stayers among stayers. That is not evidence about what's optimal for you."
+    },
+    {
+      "question": "What does your partner's ideal scenario look like, and how much weight does that carry in your decision?",
+      "what_it_reveals": "Whether partner constraints have been explicitly modeled or are being minimized; a partner whose visa depends on yours or whose career is in the host country changes the payoff matrix substantially",
+      "follow_up_if_yes": "Is your partner's preference a genuine constraint or a preference that has been discussed and negotiated?",
+      "follow_up_if_no": "Have you had an explicit conversation about the stay-vs-return question with your partner, or are you assuming alignment?"
+    },
+    {
+      "question": "If you stay 10 more years and your home country has grown substantially in your field, will you feel like you missed the window?",
+      "what_it_reveals": "Tests whether the person has considered the regret risk of the stay decision, not just the stay vs. return comparison at current conditions",
+      "follow_up_if_yes": "Then the question is not just 'is staying better now' but 'what is the cost of missing the window if the home market accelerates'?",
+      "follow_up_if_no": "What is your confidence level that home-market growth in your field will not accelerate in the next decade — and what is that confidence based on?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A higher US salary means you are better off financially than a returnee",
+      "actual_reality": "Net savings rate, not gross salary, determines wealth compounding; a person earning $200k in San Francisco and saving $30k/year may accumulate less real wealth than a returnee earning ¥40k/month in Shanghai and saving ¥25k/month while living rent-free near family",
+      "implication": "Build a full savings-rate model before using salary as a proxy for financial outcome; include taxes, rent, immigration legal fees, remittances, and purchasing power of savings"
+    },
+    {
+      "common_belief": "Returning home means failing or giving up",
+      "actual_reality": "A person returning with a top-university degree, 2-3 years of US work experience, English fluency, and an international network has elite credentials and premium positioning in most home markets; the failure framing comes from peer groups who are also afraid, not from realistic outcome assessment",
+      "implication": "Recalibrate the baseline: the question is not 'am I failing by returning' but 'which path compounds more value for my specific situation over 10 years'"
+    },
+    {
+      "common_belief": "The immigration decision is binary: get the green card or return home",
+      "actual_reality": "There are multiple intermediate and alternative paths — EB-1A extraordinary ability self-petition, O-1 visa, L-1 intracompany transfer, Canada PR, Singapore employment pass, Dubai — with different probability profiles, timelines, and opportunity costs",
+      "implication": "Before accepting the binary, consult an immigration attorney about alternative pathways; the option that dominates may not be on the default menu"
+    },
+    {
+      "common_belief": "Because most people in your cohort are staying, staying is the right choice",
+      "actual_reality": "Peer groups self-select around shared decisions; people who returned are systematically underrepresented in your local social network; you are measuring the prevalence of stayers among stayers",
+      "implication": "Actively seek out returnees from your cohort and talk to them; their experience is data that your current social network is structurally filtering out"
+    },
+    {
+      "common_belief": "You can always return later if staying does not work out",
+      "actual_reality": "The return option degrades with time; returning at 25 is categorically different from returning at 40; entrepreneurial windows, family relationship windows, and social capital formation windows narrow each year",
+      "implication": "Treat the return option as a depreciating asset with a time dimension; evaluate it on the basis of what is available now that will not be available in 10 years"
+    },
+    {
+      "common_belief": "Your visa status is just a paperwork inconvenience that does not affect your career",
+      "actual_reality": "Visa status systematically forecloses opportunities available to domestic peers: founding companies, switching employers freely, taking unpaid career risks, negotiating aggressively; this compounds into a measurable career disadvantage over years",
+      "implication": "Explicitly inventory the opportunities you have declined or cannot pursue due to visa status; price that cost into the stay decision"
+    },
+    {
+      "common_belief": "'I'll think about stay vs. return after I get my green card' is a reasonable deferral",
+      "actual_reality": "For many nationalities the green card backlog is 10-50+ years; deferring the decision to that milestone means the decision is made by inertia rather than choice, with roots deepened and options narrowed",
+      "implication": "Make an explicit conscious decision on the stay-vs-return question now, independent of the green card timeline; do not outsource the decision to bureaucratic timing"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Decision frame",
+      "junior_pattern": "Compares current quality of life in host country versus current quality of life at home; asks 'is my life here better than my life there?'",
+      "senior_pattern": "Compares 10-year trajectories across career, financial, immigration, and relational compounding dimensions; asks 'which path generates more value at year 10?'",
+      "why_it_matters": "The two frames produce different answers; the current-conditions frame is biased toward staying because you are already adapted to the known environment"
+    },
+    {
+      "dimension": "Financial analysis",
+      "junior_pattern": "Compares gross salary numbers and concludes higher number equals better outcome",
+      "senior_pattern": "Builds a savings-rate model adjusting for taxes, cost of living, immigration legal costs, remittances, equity access, purchasing power, and family financial context",
+      "why_it_matters": "Gross salary is a misleading proxy; the person with the lower nominal salary may be compounding wealth faster"
+    },
+    {
+      "dimension": "Option set",
+      "junior_pattern": "Treats the decision as binary: stay in host country vs. return to hometown",
+      "senior_pattern": "Evaluates the full option set: return with a plan, third-country paths, delayed return from a position of strength, split-life arrangements",
+      "why_it_matters": "Binary framing forecloses paths that may dominate both default options"
+    },
+    {
+      "dimension": "Immigration understanding",
+      "junior_pattern": "Treats immigration as binary: get the employer-sponsored green card or go home; waits passively for the process to resolve",
+      "senior_pattern": "Understands the full landscape of pathways (EB-1A, O-1, L-1, Canada PR, third-country options); actively engineers the path rather than waiting",
+      "why_it_matters": "Passive waiting on a single pathway that may take decades forecloses alternatives that could resolve the uncertainty in years"
+    },
+    {
+      "dimension": "Use of peer evidence",
+      "junior_pattern": "Uses the fact that most friends are staying as social proof that staying is correct",
+      "senior_pattern": "Recognizes that peer groups self-select around shared decisions; actively seeks out returnees to correct the sampling bias",
+      "why_it_matters": "Peer group consensus is not evidence about what is optimal for you; it is evidence about what people who are afraid of returning have decided"
+    },
+    {
+      "dimension": "Self-awareness about emotional distortion",
+      "junior_pattern": "Does not distinguish between 'I have analyzed this and staying is better' and 'returning feels like failure so I am rationalizing staying'",
+      "senior_pattern": "Explicitly audits whether the conclusion is driven by analysis or by fear of failure; treats these as different situations requiring different responses",
+      "why_it_matters": "Decisions made to avoid emotional discomfort rather than to maximize outcome produce systematically worse results; catching the distortion is prerequisite to fixing it"
+    },
+    {
+      "dimension": "Time horizon for opportunity assessment",
+      "junior_pattern": "Assumes the return option is always available and can be deferred indefinitely without cost",
+      "senior_pattern": "Recognizes that specific windows — entrepreneurial opportunity, social capital formation, family relationship influence — close over time; treats the return option as a depreciating asset",
+      "why_it_matters": "Treating optionality as permanent leads to passive inertia; recognizing it degrades creates urgency to make an active choice"
+    },
+    {
+      "dimension": "Scope of factors considered",
+      "junior_pattern": "Focuses primarily on salary and immigration status as the key variables",
+      "senior_pattern": "Explicitly models all four compounding dimensions: career ceiling, financial compounding, immigration stability, and relational/personal compounding; weights them against personal values",
+      "why_it_matters": "Optimizing on salary and status while ignoring relational and personal compounding produces outcomes that look good on paper but feel wrong at year 10"
+    }
+  ]
+}

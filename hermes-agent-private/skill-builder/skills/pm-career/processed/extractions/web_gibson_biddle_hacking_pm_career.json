@@ -1,0 +1,262 @@
+{
+  "source_file": "gibson_biddle_hacking_pm_career.txt",
+  "heuristics": [
+    {
+      "rule": "Target 8/10 job satisfaction as your navigation metric, not 10/10 or 5/10",
+      "condition": "When evaluating whether to stay, push for change, or leave a role",
+      "action": "Rate your satisfaction on a 1-10 scale regularly and track it over time; act if it drops below 7 for six months, act urgently if below 5 for three months",
+      "because": "10/10 is unrealistic and causes paralysis; 5/10 means you're enduring rather than building; 8/10 means you're engaged, growing, and pulling others upward"
+    },
+    {
+      "rule": "Test career hypotheses through small experiments before making full moves",
+      "condition": "When considering a domain change, company switch, or new role type",
+      "action": "Take on side projects, do informational interviews, or volunteer for cross-functional work before committing",
+      "because": "This gathers real data about fit and interest with low downside risk, converting anxious hope into actionable information"
+    },
+    {
+      "rule": "Make specific, concrete asks when reaching out to potential mentors",
+      "condition": "When seeking guidance from someone ahead of you in your target trajectory",
+      "action": "Ask a bounded, answerable question like 'Can we talk for 30 minutes about how you decided to move from X to Y?' instead of 'Can you be my mentor?'",
+      "because": "Generic asks get ignored; specific asks are easy to say yes to and demonstrate you've done your homework"
+    },
+    {
+      "rule": "Build relationships during good times, not when you need something",
+      "condition": "When your career is stable and you don't have an immediate need",
+      "action": "Stay in touch with your network proactively, without an agenda",
+      "because": "The people you maintained contact with when you didn't need anything are the ones who will go out of their way to help you later"
+    },
+    {
+      "rule": "Treat a persistent feeling of incompetence as a signal of high learning, not failure",
+      "condition": "When you've taken on a new role or domain and feel out of your depth",
+      "action": "Stay the course and treat the discomfort as the cost of growth rather than a sign you made the wrong move",
+      "because": "If you're always competent, you're not growing; the steepest learning curves coincide with the highest periods of development"
+    },
+    {
+      "rule": "At each career stage transition, identify what you were good at that you now need to stop doing",
+      "condition": "When moving from Senior PM to Director/VP or any stage-level promotion",
+      "action": "Explicitly inventory the hands-on behaviors that made you successful and create a plan to delegate or deprioritize them",
+      "because": "The VP who keeps trying to be a great Senior PM will fail as a VP; stage transitions require giving up what made you successful, not just adding new skills"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Job satisfaction trend over time",
+      "why_it_matters": "A single data point is noise; a sustained trend below threshold signals a structural problem that won't self-resolve",
+      "how_to_assess": "Track a 1-10 satisfaction rating regularly over months and look for directional trends, not just snapshots",
+      "weight": "high"
+    },
+    {
+      "factor": "What the current environment teaches vs. what you're missing",
+      "why_it_matters": "Large and small companies develop fundamentally different instincts; your career stage determines which gap is more costly",
+      "how_to_assess": "Audit your experience: have you had radical ownership? Have you operated at scale with complex stakeholders? Identify which instinct is underdeveloped",
+      "weight": "high"
+    },
+    {
+      "factor": "Meta-learning capacity",
+      "why_it_matters": "The ability to learn new skills quickly as the job changes matters more than current static competency, because job requirements change",
+      "how_to_assess": "Reflect on how quickly you've come up to speed in past role changes and whether you've actively sought unfamiliar domains",
+      "weight": "high"
+    },
+    {
+      "factor": "Stage of career progression (feature vs. product vs. business vs. org)",
+      "why_it_matters": "The scale of what you're building defines what skills are actually required; title alone is misleading",
+      "how_to_assess": "Assess not your title but the scope of what you own: are you building a feature, a product, a business, or an organization?",
+      "weight": "high"
+    },
+    {
+      "factor": "Quality of your personal board of directors",
+      "why_it_matters": "Without diverse, honest feedback, you're navigating your career with a biased map",
+      "how_to_assess": "Check whether you have mentors ahead of you, peers at your level, mentors from outside product, and people who will tell you hard truths — not just encouragers",
+      "weight": "medium"
+    },
+    {
+      "factor": "Sponsor vs. mentor presence",
+      "why_it_matters": "Mentors advise you directly; sponsors advocate for you in rooms you're not in — you need both for advancement",
+      "how_to_assess": "Identify whether anyone in your network actively advocates for you in promotion or opportunity discussions without you present",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying at a large company for stability and process mastery",
+      "unstated_consequence": "You develop the ability to navigate complexity but lose or never build the ownership instinct — the capacity to operate with radical accountability when no process exists",
+      "who_it_affects": "Mid-career PMs who move to startups or founding roles and find they cannot function without structure"
+    },
+    {
+      "choice": "Building your career entirely at startups for speed and ownership",
+      "unstated_consequence": "You develop strong ownership instincts but lack the ability to operate at scale, build alignment across many stakeholders, or influence without direct authority",
+      "who_it_affects": "Mid-career PMs who move to large companies or take VP roles that require managing through layers"
+    },
+    {
+      "choice": "Pursuing 10/10 job satisfaction as the goal",
+      "unstated_consequence": "You create a standard that is unrealistic in practice, which leads to decision paralysis — no option ever meets the bar, so you stay stuck",
+      "who_it_affects": "High-performers with perfectionist tendencies who set idealized standards for career moves"
+    },
+    {
+      "choice": "Holding on to the hands-on PM skills that earned you a promotion to VP",
+      "unstated_consequence": "You crowd out the behaviors required to succeed at the VP level — building organization, developing culture, operating strategically — and fail at the new stage",
+      "who_it_affects": "Newly promoted VPs and Directors who were exceptional Senior PMs and struggle to let go of individual contributor identity"
+    },
+    {
+      "choice": "Building your network only when you need something",
+      "unstated_consequence": "The people you approach transactionally are less motivated to go out of their way for you; the network exists on paper but doesn't activate when you need it",
+      "who_it_affects": "PMs who are heads-down builders and treat relationship maintenance as a distraction until they're in a job search or crisis"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating career decisions as a ladder to climb rather than a system to experiment with",
+      "why_it_happens": "Cultural default: career progress is framed as sequential advancement up a predefined hierarchy, making deviation feel like failure rather than data",
+      "consequence": "Anxiety replaces curiosity; the person optimizes for titles and levels rather than learning and fit, and makes moves based on hope rather than tested hypotheses",
+      "warning_signs": [
+        "Making career decisions based primarily on what looks good on a resume rather than what closes a skill gap",
+        "Feeling existential dread about career decisions rather than treating them as experiments with recoverable outcomes"
+      ]
+    },
+    {
+      "pattern": "Staying in a below-threshold role too long without acting",
+      "why_it_happens": "Normalizing a slow decline in satisfaction; each individual week feels tolerable even as the trend is clearly negative",
+      "consequence": "Extended time in an environment that doesn't develop you, compounded opportunity cost, and increased difficulty leaving due to inertia",
+      "warning_signs": [
+        "Job satisfaction has been below 7 for more than six months with no concrete plan to change it",
+        "Rationalizing 'it'll get better' without identifying what specifically will change"
+      ]
+    },
+    {
+      "pattern": "Staying always within competence by avoiding unfamiliar domains",
+      "why_it_happens": "Competence feels good; incompetence is uncomfortable; people optimize for the feeling of being good at their job rather than the steepness of their learning curve",
+      "consequence": "Career stagnation disguised as stability; the person plateaus and becomes less competitive for the next stage",
+      "warning_signs": [
+        "Never feeling out of your depth in your current role",
+        "Describing your work as 'running smoothly' for multiple consecutive years without a new challenge"
+      ]
+    },
+    {
+      "pattern": "Making generic, open-ended asks when seeking mentorship",
+      "why_it_happens": "People don't know what they need, or feel it's presumptuous to make a specific ask of someone senior",
+      "consequence": "The outreach gets ignored or produces a vague, low-value relationship that doesn't actually move the needle on the career question",
+      "warning_signs": [
+        "Sending messages that say 'I'd love to pick your brain' or 'Can you be my mentor?' without a specific question",
+        "Getting no responses from senior people you've reached out to"
+      ]
+    },
+    {
+      "pattern": "Failing to let go of senior IC behaviors after moving into a leadership stage",
+      "why_it_happens": "The behaviors that earned the promotion were rewarded for years; the new stage requires a different operating model that isn't yet natural or validated",
+      "consequence": "The person succeeds at the old job while failing at the new one, ultimately getting managed out or plateauing at the new level",
+      "warning_signs": [
+        "As a new VP or Director, still writing PRDs and making product decisions that should be owned by reports",
+        "Receiving feedback that you're 'too in the weeds' or 'not thinking strategically enough'"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your job satisfaction score right now on a 1-10 scale, and what was it six months ago?",
+      "what_it_reveals": "Whether you're experiencing a stable situation, a recoverable dip, or a sustained decline that signals structural misfit",
+      "follow_up_if_yes": "If it's been below 7 for six months: what specifically do you believe will change it, and what is the concrete plan?",
+      "follow_up_if_no": "If it's stable around 8: what would it take to push it higher, and is that possible in your current role?"
+    },
+    {
+      "question": "What is the scale of what you are building — a feature, a product, a business, or an organization?",
+      "what_it_reveals": "Whether your current scope matches the stage of career you're targeting and what the actual gap is",
+      "follow_up_if_yes": "If you're building at the right stage: what behaviors from the previous stage are you still holding onto that are limiting you?",
+      "follow_up_if_no": "If you're building below your target stage: is that a skill gap or an org ceiling preventing scope expansion?"
+    },
+    {
+      "question": "Have you primarily built your career at large companies, small companies, or a mix?",
+      "what_it_reveals": "Which instincts you've developed (process navigation vs. radical ownership) and which are likely underdeveloped",
+      "follow_up_if_yes": "If large companies only: can you point to a time you had radical ownership with no process to rely on?",
+      "follow_up_if_no": "If startups only: can you point to a time you built alignment across many stakeholders without direct authority?"
+    },
+    {
+      "question": "Who in your network advocates for you in rooms you're not in?",
+      "what_it_reveals": "Whether you have sponsors (not just mentors) and whether your advancement is being actively championed",
+      "follow_up_if_yes": "If you have sponsors: are they in the right rooms — the ones where promotion, hiring, and opportunity decisions are made?",
+      "follow_up_if_no": "If you have no sponsors: is that because you haven't built the right relationships, or because you haven't done work visible enough to advocate for?"
+    },
+    {
+      "question": "When did you last feel genuinely incompetent at something in your job?",
+      "what_it_reveals": "Whether you're on a real learning curve or have settled into a comfortable competence plateau",
+      "follow_up_if_yes": "If recently: are you treating that discomfort as information about growth or as a signal you made a mistake?",
+      "follow_up_if_no": "If not recently: what does that tell you about the growth potential of your current role?"
+    },
+    {
+      "question": "Before your last major career move, did you test the hypothesis through smaller experiments?",
+      "what_it_reveals": "Whether the person applies product thinking to their own career or makes binary leaps based on unvalidated assumptions",
+      "follow_up_if_yes": "If yes: what did you learn from those experiments that changed or confirmed your decision?",
+      "follow_up_if_no": "If no: what assumption did you make that you wish you had tested first?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The skills listed in job descriptions predict career success in PM roles",
+      "actual_reality": "Static competency in a list of skills matters less than the ability to learn new skills quickly as the job changes — meta-learning capacity is the durable differentiator",
+      "implication": "PMs should invest in developing the ability to learn fast in unfamiliar domains rather than trying to perfectly match a job description's listed requirements"
+    },
+    {
+      "common_belief": "Career stages are defined by titles (APM, PM, Senior PM, Director, VP)",
+      "actual_reality": "Career stages are defined by the scale of what you're building — feature, product, business, organization, industry — and the transition between stages is nonlinear and requires giving up what made you successful",
+      "implication": "Chasing titles without expanding scope is a false proxy; you should assess whether what you own has actually increased in scale, not just whether your title changed"
+    },
+    {
+      "common_belief": "Large companies are better for career development than startups (or vice versa)",
+      "actual_reality": "Large and small companies develop fundamentally different and complementary instincts; neither is categorically better, and the right choice depends entirely on which instinct you're currently missing",
+      "implication": "Mid-career PMs should diagnose their specific gap — ownership instinct vs. operating-at-scale capability — and choose environments that close that gap, not environments that feel prestigious"
+    },
+    {
+      "common_belief": "A mentor relationship is what you need to advance your career",
+      "actual_reality": "You need both mentors (who advise you directly) and sponsors (who advocate for you in rooms you're not in); most people have only mentors and lack the sponsor relationship that actually drives advancement",
+      "implication": "Actively cultivate relationships with people who have the standing and motivation to put your name forward in promotion and opportunity conversations, not just people who give you advice"
+    },
+    {
+      "common_belief": "Career decisions should feel certain before you make them",
+      "actual_reality": "Treating your career as a product means running experiments; the goal is to test hypotheses with small, recoverable bets rather than waiting for certainty that never comes",
+      "implication": "Structure career exploration as informational interviews, side projects, and cross-functional work before making full moves, converting anxiety into actionable data"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Relationship to career decisions",
+      "junior_pattern": "Treats career moves as high-stakes binary choices that must be gotten right; experiences anxiety and waits for certainty",
+      "senior_pattern": "Treats career moves as hypotheses to be tested through small experiments; gathers data before committing and iterates based on results",
+      "why_it_matters": "The junior approach leads to paralysis or poorly-validated leaps; the senior approach generates real information and reduces downside risk of major moves"
+    },
+    {
+      "dimension": "Definition of career progress",
+      "junior_pattern": "Measures progress by title and level attained",
+      "senior_pattern": "Measures progress by the scale of what they're building and the scope of their ownership — feature vs. product vs. business vs. organization",
+      "why_it_matters": "Title without scope expansion is a false signal; conflating the two leads to accepting moves that look like advancement but don't develop the capabilities needed for the next stage"
+    },
+    {
+      "dimension": "Response to feeling incompetent in a new role",
+      "junior_pattern": "Interprets incompetence as a sign they made the wrong move or aren't good enough; tries to return to areas of established competence",
+      "senior_pattern": "Interprets incompetence as a signal of maximum learning and stays the course, treating discomfort as the cost of growth",
+      "why_it_matters": "Retreating to competence at the wrong moment prevents the development needed to advance to the next career stage"
+    },
+    {
+      "dimension": "Stage transition behavior",
+      "junior_pattern": "When promoted to a higher stage, tries to keep doing what made them successful at the previous stage while adding new responsibilities",
+      "senior_pattern": "Explicitly identifies what they need to stop doing and lets go of previous-stage behaviors to make room for new ones",
+      "why_it_matters": "The VP who keeps behaving like a Senior PM fails at being a VP; stage transitions require subtraction, not just addition"
+    },
+    {
+      "dimension": "Network building approach",
+      "junior_pattern": "Builds network reactively — reaches out when they need something (a job, a referral, advice in a crisis)",
+      "senior_pattern": "Builds relationships proactively during stable periods with no immediate agenda, so the network is activated and motivated when it's actually needed",
+      "why_it_matters": "Transactional outreach produces transactional responses; genuine relationships produce advocates who go out of their way"
+    },
+    {
+      "dimension": "Mentor and advisor asks",
+      "junior_pattern": "Makes open-ended asks like 'Can you be my mentor?' or 'I'd love to pick your brain'",
+      "senior_pattern": "Makes specific, bounded asks tied to a concrete decision or question, making it easy for the other person to say yes and deliver real value",
+      "why_it_matters": "Generic asks get ignored; specific asks get answered and build the relationship through a successful exchange"
+    },
+    {
+      "dimension": "Choosing between large and small companies",
+      "junior_pattern": "Chooses based on prestige, brand, or compensation without assessing which instincts they're missing",
+      "senior_pattern": "Diagnoses the specific gap in their operating experience — ownership instinct vs. scale and complexity — and selects the environment that closes that gap",
+      "why_it_matters": "Optimizing for prestige instead of learning leads to a career that looks impressive but has foundational capability gaps that surface at senior levels"
+    }
+  ]
+}

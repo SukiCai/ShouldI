@@ -1,0 +1,316 @@
+{
+  "source_file": "total_comp_equity_tactics.txt",
+  "heuristics": [
+    {
+      "rule": "Never name a number or give a yes/no on the first offer call",
+      "condition": "When a recruiter presents an offer and expects a response on the call",
+      "action": "Ask clarifying questions about level, vesting, bonus target, and equity cliff, then request a few days to consider before reconnecting",
+      "because": "You lose negotiating leverage the moment you accept or anchor a number; delay preserves all options and signals deliberateness"
+    },
+    {
+      "rule": "Value early-stage startup equity at $0 for financial planning purposes",
+      "condition": "When evaluating a compensation package from a Seed or Series A company",
+      "action": "Base all financial modeling on cash salary only and treat equity as a lottery ticket",
+      "because": "80-90% of startups fail and liquidity may never materialize; planning around equity claims leads to real financial miscalculation"
+    },
+    {
+      "rule": "Move to signing bonus or equity refresh when base salary is capped",
+      "condition": "When a recruiter says the base salary cannot be increased further",
+      "action": "Explicitly ask whether signing bonus or equity refresh is possible, framing these as alternatives to base",
+      "because": "Signing bonuses don't affect recurring payroll budgets and equity refreshes can often be approved outside normal comp bands, making them easier for managers to approve"
+    },
+    {
+      "rule": "Use the final commitment close only once and only when genuinely ready to sign",
+      "condition": "When you have reached your target total comp number and are ready to commit",
+      "action": "Say 'If you can get to [X total comp], I'll sign today' as a binding commitment, not a negotiating probe",
+      "because": "This technique only works if it is credible; using it prematurely or insincerely destroys trust and eliminates its leverage effect"
+    },
+    {
+      "rule": "Anchor counter-offers to objective third-party data rather than personal need",
+      "condition": "When forced to name a target compensation figure during negotiation",
+      "action": "Reference levels.fyi percentile data for the specific level and role at comparable companies as the basis for your range",
+      "because": "Anchoring to market data depersonalizes the ask and makes it harder for recruiters to dismiss; it frames your number as industry-standard rather than arbitrary"
+    },
+    {
+      "rule": "Start processes with slow-moving large companies first, layer in fast-moving startups later",
+      "condition": "When running multiple interview processes simultaneously to generate competing offers",
+      "action": "Initiate Google, Amazon, Microsoft processes first (3-6 weeks), then start startup processes (1-2 weeks) so timelines converge",
+      "because": "Simultaneous offers maximize negotiation leverage; misaligned timelines force you to accept or decline before you have competitive data"
+    },
+    {
+      "rule": "Always ask for the offer level, not just the total comp number",
+      "condition": "When evaluating an offer from a company with leveled compensation bands",
+      "action": "Confirm which band level the offer is placed at and whether it is at the low, mid, or high end of that band",
+      "because": "A low end of a senior band beats a high end of a mid band for long-term career progression and future earning potential"
+    },
+    {
+      "rule": "Negotiate over phone or video, not email or text alone",
+      "condition": "When preparing to counter an offer",
+      "action": "Request a call rather than sending a written counter-offer",
+      "because": "Calls allow the recruiter to become an advocate who can 'fight for you' internally; text-only negotiation reduces the recruiter to a passive message relay"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Company stage and equity liquidity timeline",
+      "why_it_matters": "Equity is 30-60% of total comp at large tech companies but may be worth $0 at early-stage companies; misvaluing this reverses offer rankings",
+      "how_to_assess": "Ask for the 409A valuation, preferred share liquidation preferences, and estimated IPO or liquidity timeline; apply a discount rate based on stage (public=80-90%, Series C-D=60-90%, Seed/A=0%)",
+      "weight": "high"
+    },
+    {
+      "factor": "Option exercise window after leaving",
+      "why_it_matters": "A 90-day exercise window means you must pay to exercise vested options within 90 days of leaving or forfeit them; a 10-year window gives you flexibility to wait for a liquidity event",
+      "how_to_assess": "Ask directly: 'How long after leaving do I have to exercise my options?'; standard is 90 days, best-in-class is 5-10 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Vesting schedule structure",
+      "why_it_matters": "A 4-year cliff (all equity vests at year 4) versus quarterly vesting after a 1-year cliff is a massive practical difference in when you can access the value",
+      "how_to_assess": "Ask explicitly for the vesting schedule; confirm whether there is a cliff, the cliff duration, and the post-cliff cadence (monthly vs. quarterly)",
+      "weight": "high"
+    },
+    {
+      "factor": "Presence and quality of a competing offer",
+      "why_it_matters": "A competing offer from a company you would genuinely work for is the single most reliable lever for increasing any offer",
+      "how_to_assess": "Assess whether you have an offer from a credible competitor at a comparable or higher total comp; never fabricate; evaluate your genuine willingness to accept it",
+      "weight": "high"
+    },
+    {
+      "factor": "Total compensation versus base salary",
+      "why_it_matters": "Two offers at the same base can differ by $100,000+ annually once equity, bonus, and signing bonus are included; comparing by base produces wrong rankings",
+      "how_to_assess": "Build a full annual comp model: annualized equity (grant divided by vesting years), target bonus percentage, and base salary; treat signing bonus separately as non-recurring",
+      "weight": "high"
+    },
+    {
+      "factor": "Signing bonus recurrence and clawback terms",
+      "why_it_matters": "Signing bonuses are one-time; modeling them as ongoing comp inflates perceived annual earnings; clawback provisions can require repayment if you leave early",
+      "how_to_assess": "Ask whether the signing bonus is subject to clawback and over what period; model annual comp without it",
+      "weight": "medium"
+    },
+    {
+      "factor": "Fully diluted ownership percentage",
+      "why_it_matters": "The percentage of the company your equity represents matters more than the raw number of shares; future dilution from funding rounds affects actual value",
+      "how_to_assess": "Ask: 'What percentage of the company does this grant represent on a fully diluted basis?'; compare against 409A valuation to understand dollar value",
+      "weight": "medium"
+    },
+    {
+      "factor": "Negotiation style: competitive firmness combined with collaborative warmth",
+      "why_it_matters": "Research cited shows best negotiators combine firm outcome orientation with warm interpersonal approach; either alone is less effective",
+      "how_to_assess": "Assess whether your counter-offer framing expresses genuine enthusiasm for the role while being specific and firm about the compensation target",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a high signing bonus as part of the offer",
+      "unstated_consequence": "The signing bonus inflates the perceived total comp, masking a below-market annual salary; once you model year 2 comp without it, the offer may be substantially weaker than alternatives",
+      "who_it_affects": "Early-career candidates who are cash-constrained and anchor emotionally on the large one-time number"
+    },
+    {
+      "choice": "Taking a startup offer with significant equity upside",
+      "unstated_consequence": "Options with a 90-day exercise window create a golden handcuff: leaving the company means either paying out-of-pocket to exercise vested options (often tens of thousands of dollars) or forfeiting them entirely",
+      "who_it_affects": "Candidates with limited liquid savings who cannot afford to exercise options when leaving, effectively trapping them regardless of job satisfaction"
+    },
+    {
+      "choice": "Negotiating via email instead of phone to feel less confrontational",
+      "unstated_consequence": "The recruiter cannot advocate internally on your behalf in real time; email reduces them to a passive relay and removes the social dynamic that makes recruiters want to 'fight for you'",
+      "who_it_affects": "Introverted or conflict-averse candidates who default to written communication as a comfort mechanism"
+    },
+    {
+      "choice": "Reneging on an accepted offer after signing",
+      "unstated_consequence": "While legal consequences are minimal, reputation damage within the industry is real and persistent, particularly in small or tight-knit sectors where recruiters and hiring managers move between companies",
+      "who_it_affects": "Candidates in niche technical domains or geographic markets where professional networks are dense and interconnected"
+    },
+    {
+      "choice": "Using levels.fyi data without specifying level in the negotiation",
+      "unstated_consequence": "Being vague about comp targets while citing market data allows the recruiter to assume a lower level benchmark; specificity about level is required for the data to support your ask",
+      "who_it_affects": "Candidates who research market rates but fail to confirm which level their offer corresponds to"
+    },
+    {
+      "choice": "Prioritizing base salary in negotiation when base is capped",
+      "unstated_consequence": "Spending political capital pushing against a fixed base leaves signing bonus and equity refresh untouched; these alternative levers are often approvable without escalation but are never offered proactively",
+      "who_it_affects": "First-time negotiators who treat base salary as the only meaningful dimension of compensation"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Comparing offers by base salary only",
+      "why_it_happens": "Base salary is the most visible and legible number; equity and bonus require calculation and ask-specific questions to quantify, so candidates default to the easily comparable figure",
+      "consequence": "Candidates accept offers that are $50,000-$100,000+ lower in actual annual compensation because the base salary appeared competitive",
+      "warning_signs": [
+        "Saying 'both offers are about the same' without calculating annualized equity",
+        "Not knowing the bonus target percentage of either offer"
+      ]
+    },
+    {
+      "pattern": "Accepting startup equity valuations from recruiters at face value",
+      "why_it_happens": "Recruiters present equity with optimistic future valuations that feel compelling; candidates lack the framework to apply stage-appropriate discounts",
+      "consequence": "Financial planning built on equity that never materializes, leading to compensation that is effectively just the base salary with no upside realized",
+      "warning_signs": [
+        "Recruiter describes equity value using projected post-IPO or next-round valuations",
+        "Candidate cannot answer what the current 409A valuation is"
+      ]
+    },
+    {
+      "pattern": "Giving a number or accepting verbally on the first offer call",
+      "why_it_happens": "Candidates feel social pressure to respond positively in the moment; excitement or relief at receiving an offer overrides strategic patience",
+      "consequence": "Forfeits negotiating leverage before any counter has been made; the recruiter registers the candidate as satisfied at the initial number",
+      "warning_signs": [
+        "Saying 'that sounds great' or 'I think I can work with that' on the first call",
+        "Not knowing what questions to ask about the offer components in the moment"
+      ]
+    },
+    {
+      "pattern": "Fabricating or exaggerating a competing offer",
+      "why_it_happens": "Candidates know competing offers are powerful leverage but don't have one; they inflate a real offer or invent one to gain negotiating power",
+      "consequence": "If the recruiter asks for documentation or the fabrication is discovered, trust is destroyed and the offer may be rescinded; the tactic is explicitly flagged as something never to do",
+      "warning_signs": [
+        "Citing a competing offer from a company whose process hasn't produced a written offer",
+        "Being unable to provide specifics when the recruiter asks follow-up questions about the competing offer"
+      ]
+    },
+    {
+      "pattern": "Using Glassdoor or PayScale for tech compensation research",
+      "why_it_happens": "These platforms are widely known brand names for salary data; candidates don't realize they systematically mishandle equity and underreport tech compensation",
+      "consequence": "Candidates anchor their negotiation targets to artificially low benchmarks, leaving significant compensation on the table",
+      "warning_signs": [
+        "Citing a salary range from Glassdoor that is 20-30% below levels.fyi data for the same role",
+        "Not knowing whether the cited salary figure includes equity"
+      ]
+    },
+    {
+      "pattern": "Using the final commitment close ('I'll sign today if you reach X') too early or insincerely",
+      "why_it_happens": "The tactic sounds powerful and candidates deploy it as a negotiating probe rather than a genuine commitment",
+      "consequence": "Destroys credibility with the recruiter; if the number is met and the candidate still doesn't sign, the recruiter loses trust and future negotiations are compromised",
+      "warning_signs": [
+        "Making the commitment close before having fully evaluated the offer",
+        "Using the phrase more than once in the same negotiation"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you calculated the full annual total compensation for each offer, including annualized equity, target bonus, and base — excluding the signing bonus?",
+      "what_it_reveals": "Whether the candidate is comparing offers on a valid apples-to-apples basis or defaulting to base salary comparison",
+      "follow_up_if_yes": "What is the annualized equity value and what discount rate did you apply based on company stage?",
+      "follow_up_if_no": "The offer ranking may be reversed once full comp is modeled; what is the equity grant, vesting schedule, and bonus target for each offer?"
+    },
+    {
+      "question": "What stage is the company — public, pre-IPO Series C/D, or early-stage Seed/A?",
+      "what_it_reveals": "Which equity valuation framework applies and how much weight to give the equity component in financial planning",
+      "follow_up_if_yes": "For pre-IPO: have you asked for the 409A valuation and the liquidation preference structure?",
+      "follow_up_if_no": "If company stage is unknown, the candidate cannot accurately value the equity or assess liquidity risk"
+    },
+    {
+      "question": "Do you have a competing offer from a company you would genuinely consider working for?",
+      "what_it_reveals": "Whether the most powerful negotiation lever is available and can be used credibly",
+      "follow_up_if_yes": "Have you mentioned it to the recruiter, and have you framed your target company as the first choice?",
+      "follow_up_if_no": "Are there other processes in flight that could produce a competing offer before the current deadline?"
+    },
+    {
+      "question": "What level is the offer, and have you confirmed whether it is at the low, mid, or high end of that band?",
+      "what_it_reveals": "Whether the candidate is evaluating near-term comp or long-term career trajectory; a misleveled offer has compounding consequences",
+      "follow_up_if_yes": "Does the offered level match the scope and expectations described in the role?",
+      "follow_up_if_no": "The candidate cannot accurately benchmark the offer or assess career progression potential without this information"
+    },
+    {
+      "question": "For option grants specifically: what is the exercise window after leaving the company?",
+      "what_it_reveals": "Whether the equity creates a golden handcuff that limits the candidate's future job mobility",
+      "follow_up_if_yes": "If 90 days: can you afford to exercise vested options out of pocket if you leave before a liquidity event?",
+      "follow_up_if_no": "Candidate may be agreeing to equity terms that trap them financially without realizing it"
+    },
+    {
+      "question": "Have you checked levels.fyi for the 25th, 50th, and 75th percentile total comp for your specific level and role at this company?",
+      "what_it_reveals": "Whether the candidate has objective market data to anchor their counter-offer or is negotiating without a benchmark",
+      "follow_up_if_yes": "Where does the current offer fall in that range, and what percentile are you targeting?",
+      "follow_up_if_no": "Candidate is likely to either anchor too low or make an ask that is not credibly supported by data"
+    },
+    {
+      "question": "Are you genuinely willing to walk away from this offer if the company does not meet your target number?",
+      "what_it_reveals": "Whether the negotiation is real or performative; the source states that the final close and firm counter only work if the candidate is actually willing to decline",
+      "follow_up_if_yes": "Then name a specific total comp target and hold to it through the negotiation",
+      "follow_up_if_no": "Adjust negotiation tactics accordingly; do not use the commitment close and do not make ultimatums you will not follow through on"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Glassdoor and PayScale give you accurate salary benchmarks for tech roles",
+      "actual_reality": "These platforms wildly mishandle equity compensation and systematically underreport total comp for tech; levels.fyi and H-1B filings are the authoritative sources for tech compensation",
+      "implication": "Candidates who benchmark using Glassdoor anchor their negotiations too low and leave significant money on the table; switch to levels.fyi before any negotiation"
+    },
+    {
+      "common_belief": "Salary is the most important and negotiable component of an offer",
+      "actual_reality": "Equity is often 30-60% of total comp at large tech companies; signing bonuses are one-time and the easiest component for companies to approve; base salary is often the most constrained by band limits",
+      "implication": "When base is capped, shift negotiation focus to signing bonus and equity refresh rather than continuing to push on base"
+    },
+    {
+      "common_belief": "Recruiters will volunteer all relevant compensation details when making an offer",
+      "actual_reality": "Critical details like the option exercise window, fully diluted ownership percentage, liquidation preferences, and 409A valuations are almost never volunteered; they must be explicitly asked for",
+      "implication": "Candidates must run a structured checklist of equity questions on every offer call or risk agreeing to terms that significantly reduce actual compensation value"
+    },
+    {
+      "common_belief": "Asking for more will make you seem greedy and risk the offer being rescinded",
+      "actual_reality": "People who negotiate get an average 18.83% more than those who accept the first offer; offers are almost never rescinded for polite, well-framed negotiation",
+      "implication": "The expected value of negotiating is highly positive and the downside risk is near zero when done with warmth and professionalism"
+    },
+    {
+      "common_belief": "A competing offer from a company you wouldn't actually take is just as useful as a real one",
+      "actual_reality": "Fabricating or exaggerating competing offers is explicitly flagged as something to never do; the tactic only works when genuine and can destroy the offer if discovered",
+      "implication": "Only cite competing offers that are real, documented, and from companies you would actually consider; the leverage comes from credibility, not the existence of a number"
+    },
+    {
+      "common_belief": "The equity value the recruiter quotes is what the equity is worth",
+      "actual_reality": "Recruiter-quoted equity valuations for pre-IPO companies are based on hoped-for future valuations, not current 409A values; early-stage equity should be valued at $0 for budgeting",
+      "implication": "Apply stage-appropriate discount rates to all equity: public companies at 80-90% of market value, Series C-D at 60-90%, early-stage at $0 for planning purposes"
+    },
+    {
+      "common_belief": "Signing bonuses are part of your ongoing compensation",
+      "actual_reality": "Signing bonuses are one-time payments; your year-2 and beyond compensation is materially lower unless the bonus is renewed, which is not standard",
+      "implication": "Always model annual recurring compensation without the signing bonus to understand the true ongoing offer value; signing bonus is a bridge, not a salary component"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Offer comparison methodology",
+      "junior_pattern": "Compares offers by base salary, gravitates toward whichever offer has the highest headline number",
+      "senior_pattern": "Builds a full annual total comp model for each offer: annualized equity at stage-appropriate discount, target bonus, and base; excludes signing bonus from recurring calc",
+      "why_it_matters": "Two offers at the same base can differ by $100,000+ annually; junior methodology produces wrong rankings and systematically undervalues public company offers"
+    },
+    {
+      "dimension": "Equity evaluation",
+      "junior_pattern": "Accepts recruiter's equity valuation and treats it as real money, excited by the large headline number",
+      "senior_pattern": "Asks for 409A valuation, liquidation preferences, fully diluted percentage, and exercise window; applies stage-appropriate discount before counting equity in financial planning",
+      "why_it_matters": "Inflated equity expectations lead to accepting lower base salaries in exchange for equity that may never materialize"
+    },
+    {
+      "dimension": "Response to first offer",
+      "junior_pattern": "Responds with immediate positivity or concern on the first call, either accepting verbally or revealing dissatisfaction",
+      "senior_pattern": "Expresses genuine excitement, asks structured clarifying questions, requests time to consider, and schedules a follow-up call before any decision",
+      "why_it_matters": "Responding on the first call forfeits leverage; the pause creates space for preparation and signals deliberateness that strengthens the negotiating position"
+    },
+    {
+      "dimension": "Negotiation framing",
+      "junior_pattern": "Frames compensation asks around personal need ('I need more because of my student loans') or vague dissatisfaction",
+      "senior_pattern": "Frames asks around objective market data (levels.fyi benchmarks, competing offers) or company-first reasoning ('I want to make it easy to choose you')",
+      "why_it_matters": "Personal need framing is easy for recruiters to dismiss; market data and competing offer framing creates external justification that is harder to counter and more credible"
+    },
+    {
+      "dimension": "Understanding of negotiation dimensions",
+      "junior_pattern": "Treats base salary as the only negotiable variable; gives up when told base is capped",
+      "senior_pattern": "Knows the full priority order of negotiable dimensions (equity refresh, signing bonus, vacation, remote flexibility, accelerated vesting, professional development, equipment) and moves through them systematically",
+      "why_it_matters": "Stopping at base salary leaves multiple high-value, easily approvable components untouched; companies expect candidates to ask across dimensions"
+    },
+    {
+      "dimension": "Use of research tools",
+      "junior_pattern": "Relies on Glassdoor or PayScale for salary benchmarks; cites ranges without specifying level",
+      "senior_pattern": "Uses levels.fyi for total comp by level and company, H-1B filings for authoritative base salary data, and Blind for peer compensation validation; always specifies the exact level when citing data",
+      "why_it_matters": "Inaccurate benchmark data produces low anchors; level-specific data is required for the benchmark to be credible in negotiation"
+    },
+    {
+      "dimension": "Competing offer strategy",
+      "junior_pattern": "Runs interview processes sequentially or randomly; gets caught with misaligned timelines; may fabricate offers out of desperation",
+      "senior_pattern": "Deliberately sequences processes by company speed (large corps first, startups second) to engineer timeline convergence; only cites real offers; uses urgency scripts to accelerate lagging processes",
+      "why_it_matters": "Deliberate timing is what makes competing offers available simultaneously; without it, offers expire before alternatives are ready and leverage disappears"
+    }
+  ]
+}

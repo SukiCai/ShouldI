@@ -1,0 +1,6 @@
+{
+  "name": "user_model",
+  "provider_class": "plugins.memory.user_model.provider.UserModelProvider",
+  "description": "Persistent per-user profile from registration data + conversation inference. MUTUALLY EXCLUSIVE with other external memory providers (Honcho, Mem0). Only one external provider is supported at a time.",
+  "config_keys": []
+}

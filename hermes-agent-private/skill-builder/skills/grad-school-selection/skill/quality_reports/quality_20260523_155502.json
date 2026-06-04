@@ -1,0 +1,48 @@
+{
+  "skill_name": "Graduate School Selection Advisor",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that reframes grad school selection around advisor-fit and immigration runway rather than program rankings — both non-obvious lenses that meaningfully differentiate expert from novice thinking. The specificity (8–12 programs, 3+ advisors per program, 40–50% dropout rate, CIP code mention, years 4–6 funding question) is excellent, though some heuristics could go deeper on edge cases and field-specific variation.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The expert framing is genuinely counterintuitive and concrete: 'PhD admissions are locally competitive, not globally competitive: a perfect candidate with no faculty match gets rejected; a moderate candidate with strong faculty alignment gets in.' This reframes the entire problem in a way that immediately changes downstream advice.",
+    "The immigration-as-decision-variable framing is rare and high-value: 'A funded PhD is, among other things, a 5–6 year legal-stay runway that resets OPT and builds credentials qualifying for EB-1A or O-1 — bypassing the H-1B lottery.' Most advice treats grad school as purely academic; this skill correctly forces the dual-lens analysis.",
+    "Diagnostic questions are sharp and actionable. 'Is funding institutionally guaranteed for 4–5 years, or contingent on advisor grants / annual renewal?' and 'Have you spoken to 2–3 current and former students of the target advisor?' both probe exactly what novices skip.",
+    "The hidden tradeoffs table is excellent — e.g., '1-year university fellowship: Often a recruiting incentive, not multi-year security' and 'Highly productive advisor with 15+ students: Publications yes, individual mentorship and advocacy no' are precisely the kind of invisible-at-decision-time consequences novices miss."
+  ],
+  "weaknesses": [
+    "Field/discipline variation is largely absent. Advisor-first logic dominates in STEM/lab sciences, but humanities PhDs work very differently (cohort funding, less grant-contingent, different placement dynamics). The skill implicitly assumes a STEM/engineering applicant without flagging this.",
+    "The '8–12 programs' heuristic is presented as universal but is field-dependent — top economics/math PhD applicants often apply to 10–15, while some humanities applicants apply to 6 due to fit scarcity. The skill doesn't acknowledge this calibration.",
+    "Some heuristics give the 'what' but the 'why' is thin. E.g., heuristic #5 ('would you choose this advisor again?') is great, but the skill doesn't give the AI follow-up probes for when the student says 'yes, but...' — which is the most common answer and most diagnostic.",
+    "The skill addresses choosing/applying but is light on post-acceptance negotiation: stipend negotiation, summer funding, conference travel budgets, dual-offer leverage — all things a senior advisor would coach on.",
+    "EB-1A/O-1 are mentioned as bypasses to the H-1B lottery but never explained or qualified. Realistically, EB-1A out of a PhD with no postdoc is hard for most fields. This risks the AI overstating the immigration pathway."
+  ],
+  "improvement_suggestions": [
+    "Add a short 'Field Calibration' section noting how advisor-first logic, funding norms, and portfolio size vary across STEM, social science, humanities, and professional master's programs (MBA, MPP, etc.). Without this, the AI may give STEM advice to a literature PhD applicant.",
+    "Expand the advisor due-diligence section with specific follow-up probes when interviewing students: 'How often do you meet 1:1?', 'When did your advisor last respond to a draft within a week?', 'Has anyone left the lab in the past 3 years, and why?' — these are the questions that actually surface the Ghost/Exploiter archetypes the skill alludes to but doesn't fully name.",
+    "Add a section on offer negotiation and dual-offer leverage — how to ask for matching stipends, summer funding, additional fellowships, and what's actually negotiable vs. fixed.",
+    "Qualify the immigration claims: spell out that EB-1A typically requires substantial post-PhD output, that O-1 has its own evidentiary bar, and that 'funded PhD as visa runway' still has real risks (advisor loss, dropout, visa status during transitions).",
+    "Add a failure pattern: 'Choosing an advisor in their first 1–2 years on faculty without verifying tenure trajectory' — pre-tenure advisors can be excellent but carry real risk of departure or denied tenure mid-PhD."
+  ],
+  "generic_advice_flags": [
+    "'Do not give generic advice. Every response should reflect where the user actually is' — this is meta-instruction rather than substantive content. It's fine as a closing reminder but doesn't add domain expertise.",
+    "Heuristic #8 'Open the SOP with a specific research problem, not your biography' is correct but treated thinly. SOP guidance is a deep subdomain (structure, faculty-naming density, fit paragraph mechanics) that gets one line — either expand it or scope it out explicitly."
+  ],
+  "missing_coverage": [
+    "Discipline-specific variation (humanities vs. STEM vs. professional programs) — the skill reads as STEM-centric without saying so.",
+    "Post-acceptance negotiation: stipend matching, summer support, conference funding, leveraging competing offers.",
+    "Pre-tenure vs. tenured advisor tradeoffs — pre-tenure advisors are hungry and high-touch but carry departure/denial risk.",
+    "Industry PhD vs. academic PhD differentiation — many CS/ML PhD applicants now target industry research labs, which changes the calculus on prestige, advisor industry connections, and internship policy.",
+    "What to do when admitted to a program but rejected by/not-matched-with the target advisor (rotation programs vs. direct admit, and how to navigate this).",
+    "Handling rec letter politics: how to ask, what to share with letter writers, how to handle a weak third letter.",
+    "Country-specific considerations beyond the US — Canada, UK, EU programs have different funding models and immigration paths the skill doesn't address despite the 'international students' framing."
+  ]
+}

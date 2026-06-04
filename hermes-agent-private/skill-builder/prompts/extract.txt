@@ -1,0 +1,107 @@
+You are an expert knowledge extractor specializing in career development and professional decision-making.
+
+You will be given raw text from a single source (a blog post, Reddit discussion, essay, podcast transcript, etc.) about {{domain_description}}.
+
+Your task is to extract structured, actionable insights that capture how experienced professionals actually think and decide — NOT summaries, NOT advice platitudes.
+
+Extract only what is clearly supported by the text. If a category has no clear evidence, return an empty array for it.
+
+---
+
+## 1. HEURISTICS
+Rules of thumb that experienced practitioners use. These should be specific and decision-relevant.
+Bad: "Be strategic about your career."
+Good: "If you've had strong reviews for 18+ months but no scope expansion, that's an org ceiling, not a skill gap."
+
+Format each as:
+{
+  "rule": "<the heuristic>",
+  "condition": "When <situation>...",
+  "action": "...do/think <X>",
+  "because": "<reason this works>"
+}
+
+## 2. DECISION_FACTORS
+Variables that actually matter when making decisions in this domain. Not all variables matter equally — capture the ones the source emphasizes.
+
+Format each as:
+{
+  "factor": "<name>",
+  "why_it_matters": "<why this variable changes the decision>",
+  "how_to_assess": "<how you would evaluate this factor in practice>",
+  "weight": "high | medium | low"
+}
+
+## 3. HIDDEN_TRADEOFFS
+Consequences of choices that are rarely stated explicitly. The "and then what happens" that people don't warn you about.
+
+Format each as:
+{
+  "choice": "<the option being chosen>",
+  "unstated_consequence": "<what silently comes with it>",
+  "who_it_affects": "<which type of person this hits hardest>"
+}
+
+## 4. FAILURE_PATTERNS
+Recurring mistakes and why they happen. Include root cause, not just symptom.
+
+Format each as:
+{
+  "pattern": "<the mistake>",
+  "why_it_happens": "<cognitive or situational cause>",
+  "consequence": "<what it costs the person>",
+  "warning_signs": ["<sign 1>", "<sign 2>"]
+}
+
+## 5. DIAGNOSTIC_QUESTIONS
+Questions an expert would ask to understand someone's specific situation before giving advice. These are questions that distinguish cases that look the same on the surface.
+
+Format each as:
+{
+  "question": "<the diagnostic question>",
+  "what_it_reveals": "<what the answer tells you>",
+  "follow_up_if_yes": "<next question or inference>",
+  "follow_up_if_no": "<next question or inference>"
+}
+
+## 6. INDUSTRY_REALITIES
+How things actually work versus how people commonly believe they work. Myth vs. reality.
+
+Format each as:
+{
+  "common_belief": "<what people assume>",
+  "actual_reality": "<what experienced people know>",
+  "implication": "<how this should change behavior>"
+}
+
+## 7. JUNIOR_VS_SENIOR_SIGNALS
+Behavioral or cognitive differences that distinguish junior from senior thinking in this domain. What separates novice reasoning from expert reasoning.
+
+Format each as:
+{
+  "dimension": "<what's being compared>",
+  "junior_pattern": "<how a junior thinks/acts>",
+  "senior_pattern": "<how a senior thinks/acts>",
+  "why_it_matters": "<the consequence of the difference>"
+}
+
+---
+
+## Source file: {{source_file}}
+
+## Source text:
+---
+{{source_text}}
+---
+
+Return ONLY valid JSON with this exact structure. No markdown fences, no explanation text:
+{
+  "source_file": "{{source_file}}",
+  "heuristics": [...],
+  "decision_factors": [...],
+  "hidden_tradeoffs": [...],
+  "failure_patterns": [...],
+  "diagnostic_questions": [...],
+  "industry_realities": [...],
+  "junior_vs_senior_signals": [...]
+}

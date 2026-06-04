@@ -53,21 +53,13 @@ curl -s http://localhost:8642/health
 curl -s http://localhost:8787/v1/hermes
 ```
 
-## 1. Submodule
+## 1. Hermes source tree
 
-From the ShouldI repo root:
-
-```bash
-git submodule update --init --recursive
-```
-
-If `.gitmodules` uses a `file://` URL and Git blocks it:
+`hermes-agent-private/` is **vendored in this repo** (not a git submodule). You should see `run_agent.py` at the root after clone:
 
 ```bash
-git -c protocol.file.allow=always submodule update --init --recursive
+ls hermes-agent-private/run_agent.py
 ```
-
-You should have `hermes-agent-private/` with `run_agent.py` at the root.
 
 ## 2. Hermes Python environment
 

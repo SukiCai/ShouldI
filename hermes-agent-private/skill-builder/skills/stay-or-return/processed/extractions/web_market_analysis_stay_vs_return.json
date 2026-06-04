@@ -1,0 +1,332 @@
+{
+  "source_file": "market_analysis_stay_vs_return.txt",
+  "heuristics": [
+    {
+      "rule": "Compare savings rate over 10 years, not gross salary numbers",
+      "condition": "When evaluating a US salary vs. a home country salary offer",
+      "action": "Model monthly savings after taxes, rent, and cost of living for both paths, then project net worth at 10 years",
+      "because": "A $200k US salary with $6k/month rent and 40% tax can generate less savings than a ¥30k/month salary in a Tier 2 Chinese city due to purchasing power differentials"
+    },
+    {
+      "rule": "Adjust home country salary by 1.72x purchasing power before comparing to US income",
+      "condition": "When comparing nominal salaries between US and China",
+      "action": "Multiply Chinese salary by approximately 1.72 to get equivalent purchasing power, then compare to US take-home after taxes and cost of living",
+      "because": "China is approximately 72% cheaper than the US, meaning nominal salary comparisons systematically overstate the US advantage"
+    },
+    {
+      "rule": "Treat total immigration legal costs as a direct compensation deduction",
+      "condition": "When calculating the real value of a US job offer requiring visa sponsorship",
+      "action": "Subtract $20,000–$100,000 in expected lifetime immigration legal costs from total US compensation before comparing to home country options",
+      "because": "These costs are paid directly from compensation and are invisible in standard salary comparisons, making the US offer appear more attractive than it actually is"
+    },
+    {
+      "rule": "If green card wait time exceeds 20 years, treat the US path as structurally capped",
+      "condition": "When an Indian national is evaluating long-term US career prospects",
+      "action": "Factor in 50–100+ year EB-2/EB-3 backlogs when assessing whether to stay, and quantify the opportunity cost of permanent temporary status",
+      "because": "Decades of 'temporary' status means decades of immigration tax, employer dependency, and constrained career mobility that compounding wealth projections rarely capture"
+    },
+    {
+      "rule": "Count immigration overhead as 20–100 hours per year in your time budget",
+      "condition": "When a visa-holding professional is evaluating work-life quality in the US",
+      "action": "Explicitly account for time spent on visa tracking, attorney coordination, renewal trips, and mental overhead as a recurring annual cost",
+      "because": "This cognitive and time load is real, affects work and life quality, and is never included in salary or lifestyle comparisons"
+    },
+    {
+      "rule": "Only pursue US path if targeting elite outcomes; for median outcomes, the ROI case weakens significantly",
+      "condition": "When an international student is modeling whether the $400k–$800k total investment in US education and immigration pays off",
+      "action": "Benchmark your realistic career outcome against the median, not the FAANG ceiling, before committing to the US path",
+      "because": "The investment compounds favorably for elite destinations (FAANG, top finance, top research) but often does not beat a career that started earlier at home for median outcomes"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Savings rate over 10-year horizon",
+      "why_it_matters": "Determines actual net worth accumulation, which is the real output of career decisions — not gross salary",
+      "how_to_assess": "Model monthly take-home after taxes and fixed costs (rent, healthcare, transportation) for each path, project savings monthly, and compound over 10 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Immigration tax — financial, time, and opportunity",
+      "why_it_matters": "Significantly reduces the real value of US compensation and restricts career mobility in ways that compound over time",
+      "how_to_assess": "Estimate annual legal fees ($3k–$8k), total green card process costs ($20k–$100k), hours per year spent on immigration overhead, and enumerate specific career actions you cannot take on H-1B",
+      "weight": "high"
+    },
+    {
+      "factor": "Career ceiling in each market",
+      "why_it_matters": "Determines the maximum compensation and leadership trajectory available, which drives 10–20 year wealth and impact outcomes",
+      "how_to_assess": "Assess whether C-suite and VP roles are realistically accessible given language, cultural, and visa constraints in the US; assess whether returnee premium and lower leadership competition create a higher ceiling at home",
+      "weight": "high"
+    },
+    {
+      "factor": "Visa status and employer dependency",
+      "why_it_matters": "Employer knowledge of high switching costs for visa holders depresses wage growth and stunts career mobility for years",
+      "how_to_assess": "Determine whether you are on H-1B, how many years to green card, and whether your employer knows your switching costs are high; research finding: 50% of visa-holding researchers felt trapped, 80% reported restricted job prospects",
+      "weight": "high"
+    },
+    {
+      "factor": "Family and inherited wealth assets in home country",
+      "why_it_matters": "Property, business assets, and family wealth create wealth floors unavailable abroad that dramatically alter the financial comparison",
+      "how_to_assess": "Explicitly value family property, business interests, or inheritance expectations in the home country and include them in net worth projections",
+      "weight": "high"
+    },
+    {
+      "factor": "Currency appreciation risk",
+      "why_it_matters": "USD has historically appreciated vs. RMB and INR, which changes long-term wealth calculations if savings are held in or converted to home currency",
+      "how_to_assess": "Model scenarios where USD strengthens 10–30% vs. home currency over 10 years and assess how that changes relative wealth accumulation",
+      "weight": "medium"
+    },
+    {
+      "factor": "Entrepreneurship accessibility",
+      "why_it_matters": "Home country allows free pivoting, company founding, and independent consulting without visa authorization; US H-1B actively restricts these",
+      "how_to_assess": "Ask whether you can start a company, take a gap, switch industries, or consult independently in each location without immigration consequences",
+      "weight": "high"
+    },
+    {
+      "factor": "Home market startup and VC ecosystem maturity",
+      "why_it_matters": "A maturing home ecosystem means returnees can access growth opportunities, leadership roles, and equity that previously only existed in the US",
+      "how_to_assess": "Research home country VC investment rank, unicorn count, and sector competitiveness (China ranks 4th globally for VC; India 5th for unicorns); assess whether target sector is globally competitive at home",
+      "weight": "medium"
+    },
+    {
+      "factor": "Returnee premium (海归 effect)",
+      "why_it_matters": "International exposure is scarce and valued at many home country companies, creating premium positioning unavailable to those who never left",
+      "how_to_assess": "Research whether target employers in the home country actively recruit returnees and whether international credentials command salary or role premiums",
+      "weight": "medium"
+    },
+    {
+      "factor": "US education and immigration total investment",
+      "why_it_matters": "The $400k–$800k total investment must compound significantly to beat a career that started earlier at home — this threshold is often not modeled",
+      "how_to_assess": "Sum 4-year education and living costs, immigration legal fees, and foregone earnings during study; then determine whether realistic career outcome exceeds this break-even",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in the US on H-1B for career growth",
+      "unstated_consequence": "Employer gains permanent negotiating leverage because switching costs for the visa holder are asymmetrically high, systematically depressing wage growth and career mobility for years",
+      "who_it_affects": "Mid-career professionals who are 3–8 years into H-1B with green card pending, who have the most to lose from job gaps"
+    },
+    {
+      "choice": "Pursuing the full US green card path",
+      "unstated_consequence": "For Indian nationals, EB-2/EB-3 backlogs of 50–100+ years mean decades of permanent temporary status with all associated immigration taxes, effectively making the green card a theoretical endpoint rather than a real one",
+      "who_it_affects": "Indian nationals in standard employment-based green card queues"
+    },
+    {
+      "choice": "Comparing US vs. home country salary in nominal terms",
+      "unstated_consequence": "Systematically overstates the US advantage by ignoring purchasing power (72% cost difference with China), savings rate, effective tax burden, and immigration costs — leading to a decision based on a number that doesn't represent real wealth accumulation",
+      "who_it_affects": "Early-career professionals making their first stay-vs-return analysis without financial modeling experience"
+    },
+    {
+      "choice": "Staying in the US for access to FAANG-level compensation",
+      "unstated_consequence": "The $400k–$800k total investment in US education and immigration only generates positive ROI for elite outcomes; for median US career outcomes, a career starting earlier at home may compound more favorably",
+      "who_it_affects": "International students who model their financial future against best-case US outcomes rather than realistic median outcomes"
+    },
+    {
+      "choice": "Remaining in the US for stability and established career",
+      "unstated_consequence": "Cannot start a company, consult independently, switch industries, or take career gaps without immigration consequences — forfeiting the entrepreneurial upside that home country peers can freely pursue",
+      "who_it_affects": "Entrepreneurially inclined professionals on H-1B who delay or abandon company-founding ambitions due to visa constraints"
+    },
+    {
+      "choice": "Including inherited or family property in informal mental accounting but not in formal financial models",
+      "unstated_consequence": "Systematically undervalues the home country option by ignoring wealth floors from family assets (property, business) that are real and material to net worth projections",
+      "who_it_affects": "Professionals from families with significant property or business assets in their home country"
+    },
+    {
+      "choice": "Staying in the US as policy environment becomes less predictable",
+      "unstated_consequence": "H-1B processing delays, reduced employer sponsorship, and visa interview slot scarcity create compounding uncertainty that affects career planning, family decisions, and mental health in ways that don't appear in compensation comparisons",
+      "who_it_affects": "Professionals mid-process in H-1B or green card applications during periods of policy volatility"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Using gross nominal salary to compare US vs. home country options",
+      "why_it_happens": "Salary numbers are the most visible and easily comparable data point; purchasing power, savings rate, and tax adjustments require deliberate modeling that most people don't do",
+      "consequence": "Overestimates the US financial advantage by 2–3x, leading to decisions to stay that may actually produce lower net worth over 10 years",
+      "warning_signs": [
+        "Saying 'the US pays 3–4x what I'd make at home' without adjusting for cost of living",
+        "Not knowing your effective savings rate in the US vs. projected savings rate at home"
+      ]
+    },
+    {
+      "pattern": "Ignoring immigration tax as a compensation component",
+      "why_it_happens": "Legal fees and time costs are paid episodically and not visible in monthly budgets; opportunity costs of visa constraints are counterfactual and hard to quantify",
+      "consequence": "Underestimates true cost of US path by $20k–$100k in direct costs, plus uncounted hours and career options foregone, making stay decisions look better than they are",
+      "warning_signs": [
+        "Not knowing total legal fees paid to date on immigration process",
+        "Never calculating hours per year spent on visa-related overhead"
+      ]
+    },
+    {
+      "pattern": "Assuming the glass ceiling doesn't apply to you personally",
+      "why_it_happens": "High performers receive positive feedback that feels like evidence of unlimited upside; cultural and structural barriers to C-suite access are invisible until you're blocked by them",
+      "consequence": "Professionals reach mid-career expecting VP/C-suite access that proves structurally unavailable, having already spent a decade optimizing for a ceiling they didn't know existed",
+      "warning_signs": [
+        "Strong performance reviews but no expansion in scope or leadership visibility after 18+ months",
+        "No senior leaders in your organization who share your background or profile"
+      ]
+    },
+    {
+      "pattern": "Modeling financial future against elite US outcomes rather than realistic median outcomes",
+      "why_it_happens": "Social environments in elite universities and top companies create availability bias toward FAANG success stories; survivorship bias makes median outcomes invisible",
+      "consequence": "The $400k–$800k investment in US education and immigration only pays off at elite outcomes; median outcomes may be financially worse than a home country career that started earlier",
+      "warning_signs": [
+        "Justifying US education costs by referencing FAANG salaries without modeling probability of achieving them",
+        "Not modeling the foregone earnings during 4+ years of US study"
+      ]
+    },
+    {
+      "pattern": "Ignoring family and inherited wealth assets when comparing financial paths",
+      "why_it_happens": "Family assets feel separate from 'career' decisions and are not naturally included in salary comparisons; professionals may undervalue or feel uncomfortable accounting for inherited advantages",
+      "consequence": "Distorts the comparison by omitting real wealth floors that make the home country path significantly more financially secure than it appears on salary alone",
+      "warning_signs": [
+        "Saying 'I'd make less at home' without accounting for family property or business assets",
+        "Comparing only earned income without including net worth starting position"
+      ]
+    },
+    {
+      "pattern": "Treating green card as a near-term milestone without modeling actual wait times",
+      "why_it_happens": "The green card feels like a defined endpoint that justifies enduring current constraints; actual queue times for Indian nationals are not widely understood until you are in them",
+      "consequence": "Indian nationals discover mid-career that their wait is 50–100+ years at current rates, having already spent 10+ years in temporary status with full immigration tax burden",
+      "warning_signs": [
+        "Not knowing your priority date or current USCIS cutoff date for your category",
+        "Planning major life decisions (buying property, starting a business) around an expected green card timeline that hasn't been formally modeled"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your actual monthly savings rate in the US after taxes, rent, and cost of living — and what would it be in your home city?",
+      "what_it_reveals": "Whether the US salary advantage survives cost-of-living and tax adjustment; the most common analysis failure is comparing gross salaries rather than savings rates",
+      "follow_up_if_yes": "If savings rate is higher in the US, model whether the gap is large enough to justify immigration tax and opportunity costs",
+      "follow_up_if_no": "If savings rate is comparable or higher at home, the US financial case collapses and the decision becomes about career ceiling and lifestyle"
+    },
+    {
+      "question": "What is the total legal cost you have paid or will pay for your full immigration process, and have you subtracted this from your US compensation?",
+      "what_it_reveals": "Whether the person has accounted for the $20k–$100k immigration tax that is invisible in salary comparisons",
+      "follow_up_if_yes": "If they have modeled it, ask whether they've also quantified the time and opportunity costs of visa constraints",
+      "follow_up_if_no": "If they haven't, this is a significant blind spot — walk through the full immigration cost stack before proceeding with any financial comparison"
+    },
+    {
+      "question": "What is your realistic priority date and current USCIS cutoff for your green card category, and what does that imply about your wait time?",
+      "what_it_reveals": "Whether the person understands their actual timeline to permanent status, which determines the duration of immigration tax exposure",
+      "follow_up_if_yes": "If wait time is 20+ years, this is a structural constraint that should reframe the entire decision — explore National Interest Waiver, O-1, or EB-1A paths",
+      "follow_up_if_no": "If they don't know, they are making a major life decision without a key variable — get this information before any other analysis"
+    },
+    {
+      "question": "Are there any family assets — property, business, inheritance — in your home country that would be available to you if you returned?",
+      "what_it_reveals": "Whether the person is ignoring a wealth floor that materially changes the financial comparison between staying and returning",
+      "follow_up_if_yes": "Quantify and include these assets in the net worth comparison; they may dramatically shift the relative attractiveness of returning",
+      "follow_up_if_no": "If no family assets exist, the financial comparison rests entirely on earned income and the savings rate analysis becomes more determinative"
+    },
+    {
+      "question": "What specific career actions are you currently unable to take because of your visa status?",
+      "what_it_reveals": "The true opportunity cost of the immigration tax — whether visa constraints are actively suppressing entrepreneurial, consulting, or mobility options the person would otherwise pursue",
+      "follow_up_if_yes": "If meaningful opportunities are being foregone, quantify their expected value and include it in the stay-vs-return comparison",
+      "follow_up_if_no": "If the person says nothing is restricted, probe specifically: could you start a company today, consult independently, take a 3-month gap, or switch industries without immigration consequences?"
+    },
+    {
+      "question": "Is your target outcome a FAANG-level elite career, or are you modeling for a median professional outcome in the US?",
+      "what_it_reveals": "Whether the person's financial model is based on realistic probability-weighted outcomes or best-case survivorship-biased expectations",
+      "follow_up_if_yes": "If targeting elite outcomes, assess probability honestly and model both the elite and median scenarios weighted by likelihood",
+      "follow_up_if_no": "If targeting median outcomes, the $400k–$800k US investment likely does not beat a home country career that started earlier — this should be stated explicitly"
+    },
+    {
+      "question": "Have you researched whether returnees with your profile command a premium at employers in your home country, and in which sectors?",
+      "what_it_reveals": "Whether the returnee premium (海归 effect) applies to the person's specific background, industry, and target employers — not all returnees benefit equally",
+      "follow_up_if_yes": "If returnee premium exists in their sector, model the salary and leadership trajectory uplift it provides in the home country comparison",
+      "follow_up_if_no": "If no premium exists in their sector, remove this factor from the home country case and rely on other variables"
+    },
+    {
+      "question": "How has the policy environment in the US changed since you began your career or education there, and how does that affect your specific visa category?",
+      "what_it_reveals": "Whether the person is making a decision based on the US immigration environment as it was when they arrived versus as it currently operates",
+      "follow_up_if_yes": "If they are tracking policy changes, assess whether current H-1B processing delays, reduced sponsorship, and interview slot scarcity materially change their timeline or risk",
+      "follow_up_if_no": "If they are not tracking policy changes, they may be operating on outdated assumptions — update their model with current 2025 realities including 19% enrollment drop signals and employer sponsorship pullbacks"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The US pays 3–4x more than home countries, making it financially superior",
+      "actual_reality": "After purchasing power adjustment, effective taxes, rent, and cost of living, the real savings rate gap is often much smaller — and in some cases, a senior role in a Tier 2 home city generates comparable or higher net savings",
+      "implication": "Never make stay-vs-return decisions on nominal salary; always model after-tax, after-cost savings rates and project net worth over 10 years"
+    },
+    {
+      "common_belief": "Working hard and getting strong reviews will eventually lead to C-suite or VP-level roles in the US",
+      "actual_reality": "Many senior leadership roles remain harder to access for non-native English speakers or those without deep US cultural roots — this is a structural ceiling, not a skill gap",
+      "implication": "Assess the leadership composition of your organization and industry before assuming the US ceiling is as high as compensation benchmarks suggest"
+    },
+    {
+      "common_belief": "The green card is a realistic near-term milestone that justifies enduring current visa constraints",
+      "actual_reality": "For Indian nationals in EB-2/EB-3 categories, wait times are 50–100+ years at current rates — the green card is effectively not a real planning horizon for most",
+      "implication": "Indian nationals should treat permanent temporary status as the baseline scenario and make career and wealth decisions accordingly, rather than optimizing around a green card that may never arrive"
+    },
+    {
+      "common_belief": "The H-1B only affects where you can work — your career mobility within that job is unaffected",
+      "actual_reality": "Research shows 50% of visa-holding researchers felt trapped in their roles and 80% reported restricted job prospects; employer leverage from high switching costs systematically depresses wage growth",
+      "implication": "Treat visa status as a negotiating constraint that affects salary, career pivots, and entrepreneurial options — not just geography"
+    },
+    {
+      "common_belief": "US education investment pays off because of the salary premium it unlocks",
+      "actual_reality": "Total investment including education, living costs, immigration fees, and foregone earnings reaches $400k–$800k before permanent status — this only generates positive ROI at elite outcomes, not median ones",
+      "implication": "Model your realistic probability of achieving elite outcomes before committing to or continuing the US path; for median outcomes, the case is weaker than students typically model"
+    },
+    {
+      "common_belief": "Home country markets are still far behind the US in career opportunity, especially in tech",
+      "actual_reality": "China ranks 4th globally for VC investment with competitive AI, EV, and biotech sectors; India ranks 5th for unicorns and has a $1.25B national AI Mission; IIT Madras cohorts going to the US dropped from ~50% to 10–20% — a real opportunity signal",
+      "implication": "Reassess home country opportunity using current data, not 10-year-old assumptions; the gap has narrowed materially and in some sectors reversed"
+    },
+    {
+      "common_belief": "Returning home means giving up your international career advantage",
+      "actual_reality": "Returnees (海归) have premium positioning at many home country companies that value international exposure; regulatory and language advantages are scarce and genuinely valuable in growing markets",
+      "implication": "International credentials can be more competitively differentiating in a home market hungry for that profile than in a US market saturated with similarly credentialed immigrants"
+    },
+    {
+      "common_belief": "Immigration legal fees are a minor administrative cost",
+      "actual_reality": "Total immigration legal costs over a full green card process run $20,000–$100,000, paid directly from compensation and invisible in salary comparisons",
+      "implication": "Treat immigration legal costs as a direct reduction to US compensation when building financial models"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Financial comparison methodology",
+      "junior_pattern": "Compares gross nominal salaries between US and home country and concludes the US pays 3–4x more",
+      "senior_pattern": "Models after-tax take-home, monthly savings after cost of living, and 10-year net worth projections for both paths with purchasing power adjustment",
+      "why_it_matters": "The nominal comparison systematically overstates the US advantage and leads to decisions that may produce lower actual wealth accumulation"
+    },
+    {
+      "dimension": "Immigration cost accounting",
+      "junior_pattern": "Treats visa and green card costs as background administrative expenses separate from career economics",
+      "senior_pattern": "Includes full immigration tax — $20k–$100k in legal fees, 20–100 hours per year in overhead, and explicit enumeration of career actions blocked by visa status — as direct inputs to the financial model",
+      "why_it_matters": "Ignoring immigration tax makes the US path appear significantly more attractive than it actually is in net compensation terms"
+    },
+    {
+      "dimension": "Career ceiling assessment",
+      "junior_pattern": "Extrapolates current compensation trajectory and assumes strong performance will naturally lead to senior leadership",
+      "senior_pattern": "Researches leadership composition at senior levels, assesses structural access barriers for non-native speakers and visa holders, and separately models the ceiling in each market",
+      "why_it_matters": "Hitting a structural ceiling mid-career after a decade of optimization is a much worse outcome than choosing the market with the higher real ceiling earlier"
+    },
+    {
+      "dimension": "Green card timeline modeling",
+      "junior_pattern": "Treats the green card as a defined near-term milestone and makes major life decisions (home purchase, business plans) around an assumed timeline",
+      "senior_pattern": "Looks up actual priority date and USCIS cutoff date, models realistic wait time, and makes decisions based on the probability-weighted scenario of permanent temporary status",
+      "why_it_matters": "Indian nationals who discover 50–100 year backlogs mid-career have already paid a decade of immigration tax optimizing for an outcome that was never realistic"
+    },
+    {
+      "dimension": "Home country opportunity assessment",
+      "junior_pattern": "Uses the home country opportunity landscape as it was when they left (often 5–10 years ago) and assumes the US remains categorically superior",
+      "senior_pattern": "Actively researches current home market data — VC rankings, unicorn counts, sector competitiveness, returnee premium — and updates priors based on current conditions",
+      "why_it_matters": "The home market has materially improved since 2020 in China and India; decisions based on outdated mental models systematically undervalue the return option"
+    },
+    {
+      "dimension": "Outcome probability calibration",
+      "junior_pattern": "Models financial future against FAANG-level or elite outcomes because that is what the social environment makes salient",
+      "senior_pattern": "Explicitly estimates probability of achieving elite vs. median outcomes and weights the financial model accordingly before committing to the US investment",
+      "why_it_matters": "The US path only generates clearly positive ROI at elite outcomes; for median outcomes the $400k–$800k investment may not beat a home country career that started earlier"
+    },
+    {
+      "dimension": "Wealth comparison scope",
+      "junior_pattern": "Compares earned income streams only, ignoring family assets, inherited property, and wealth floors available in the home country",
+      "senior_pattern": "Includes family assets, property, business interests, and inheritance expectations in net worth comparisons, recognizing these as real financial variables",
+      "why_it_matters": "Ignoring family wealth distorts the comparison and systematically undervalues the home country option for professionals from property or business-owning families"
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "source_file": "expert_framework_intl_students.txt",
+  "heuristics": [
+    {
+      "rule": "A world-class program with a bad advisor produces a worse outcome than a good program with an exceptional advisor",
+      "condition": "When choosing between a higher-ranked program with poor advisor fit and a lower-ranked program with strong advisor fit",
+      "action": "Prioritize advisor quality over program ranking",
+      "because": "The advisor controls funding continuity, research direction, mentorship quality, professional network access, reference letters, and graduation timeline — all of which outweigh brand name in determining actual career outcomes"
+    },
+    {
+      "rule": "Apply to 8–12 programs total",
+      "condition": "When building your graduate school application portfolio",
+      "action": "Stay within the 8–12 range and never go below 8",
+      "because": "Fewer than 8 creates catastrophic risk in a bad admissions year; more than 12 yields diminishing returns given application fees, time cost, and marginal program quality"
+    },
+    {
+      "rule": "Confirm advisor interest before submitting to at least 5 programs on your list",
+      "condition": "When applying to PhD programs",
+      "action": "Contact potential advisors and secure demonstrated interest before submitting applications",
+      "because": "Cold applications with no prior faculty contact convert at significantly lower rates than applications where the advisor already knows your name and work"
+    },
+    {
+      "rule": "Ask former lab members 'Would you choose this advisor again knowing what you know now?'",
+      "condition": "When evaluating a potential PhD advisor",
+      "action": "Speak to 3–5 current and former students and ask this specific question",
+      "because": "Current students may be cautious; former students who have left the lab speak more freely and give the most honest signal of advisor quality"
+    },
+    {
+      "rule": "A funded PhD functions as a 5–6 year immigration runway",
+      "condition": "When an international student prioritizes US long-term residency but faces H-1B lottery uncertainty",
+      "action": "Factor the funded PhD's legal stay duration into the PhD vs. MS decision explicitly",
+      "because": "F-1 status during a funded PhD provides legal work authorization throughout, resets OPT post-graduation, and allows time to build a publication record qualifying for EB-1A or O-1 — both bypassing the H-1B lottery"
+    },
+    {
+      "rule": "Look at where the last 5 graduated students from the lab are now",
+      "condition": "When evaluating whether an advisor will actually advance your career",
+      "action": "Research the placement record of recent PhD graduates from the specific lab, not just the department",
+      "because": "Lab-level placement data reveals whether the advisor actively develops independent researchers or produces students who struggle to place — department averages can mask bad individual advisors"
+    },
+    {
+      "rule": "Check STEM Designated Degree Program List eligibility for your specific degree before applying",
+      "condition": "When OPT duration is a factor in your program selection",
+      "action": "Verify the specific degree (not just the field) is on the STEM OPT list",
+      "because": "STEM OPT extends work authorization from 12 to 36 months, but eligibility depends on the specific CIP code of your degree — not all programs in STEM fields qualify"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor funding status and graduation record",
+      "why_it_matters": "An advisor with expiring grants may lose ability to fund you; an advisor who hasn't graduated students in 3+ years signals mentorship or lab health problems",
+      "how_to_assess": "Ask the advisor directly about current grant status; check NSF/NIH grant databases; ask current students about funding security; count funded graduates in the last 3 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Full funding (tuition + stipend) vs. self-pay",
+      "why_it_matters": "Unfunded programs create financial pressure, immigration complications if finances are exhausted, and reduce negotiating leverage with advisors",
+      "how_to_assess": "Verify the offer letter explicitly covers tuition and provides stipend; ask what happens to funding in years 4–6; clarify whether funding is guaranteed or contingent",
+      "weight": "high"
+    },
+    {
+      "factor": "Program location relative to target job market",
+      "why_it_matters": "During OPT, students must find employment while managing visa timing; programs in tech hubs have structurally more employers, alumni networks, and on-campus recruiting access",
+      "how_to_assess": "Research whether target employers recruit on campus; check alumni LinkedIn profiles for post-graduation job locations; assess whether relocation during OPT is financially and logistically feasible",
+      "weight": "high"
+    },
+    {
+      "factor": "Genuine interest in research as a practice",
+      "why_it_matters": "PhD programs require 5–6 years of narrow, slow, often frustrating research — without intrinsic motivation, dropout risk is high (40–50% in many programs)",
+      "how_to_assess": "Reflect honestly on prior research experience; ask whether you enjoyed the process of research, not just the outcomes; distinguish prestige motivation from intellectual motivation",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding type (RA vs. TA vs. Fellowship)",
+      "why_it_matters": "RA ties your income to advisor's grant and constrains research direction; TA is more stable but costs 10–20 hours/week; fellowships give maximum independence",
+      "how_to_assess": "Ask explicitly what type of funding your offer includes and whether it can change; ask whether you have flexibility to pursue your own research agenda vs. being required to work on the advisor's grants",
+      "weight": "high"
+    },
+    {
+      "factor": "STEM OPT eligibility of specific degree",
+      "why_it_matters": "Determines whether post-graduation work authorization is 12 or 36 months — a 2-year difference with major implications for H-1B lottery attempts and job search time",
+      "how_to_assess": "Check the DHS STEM Designated Degree Program List using the specific CIP code of the degree you will be awarded",
+      "weight": "high"
+    },
+    {
+      "factor": "Track record of international student job placement",
+      "why_it_matters": "Some programs have structural advantages or disadvantages in helping international students navigate the employer sponsorship process",
+      "how_to_assess": "Ask current international students whether employers on campus offer sponsorship; check alumni profiles for post-graduation visa outcomes; ask the career office directly",
+      "weight": "high"
+    },
+    {
+      "factor": "Average time-to-degree",
+      "why_it_matters": "Longer time-to-degree extends total years on F-1 but also delays career entry and compresses the post-graduation OPT window relative to age and opportunity cost",
+      "how_to_assess": "Ask the program directly; check with current students; look up published program statistics; ask specifically about funding continuity in years 4–6",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor's behavior during the application process",
+      "why_it_matters": "How an advisor treats you before you're their student predicts how they will treat you after — slow responses, lack of interest in your ideas, or dismissiveness are leading indicators",
+      "how_to_assess": "Track response time to your emails; assess whether they engage substantively with your research ideas or give generic replies; notice whether they ask questions about your work",
+      "weight": "medium"
+    },
+    {
+      "factor": "PhD's advanced degree H-1B pool eligibility",
+      "why_it_matters": "PhD graduates can enter the 20,000-slot advanced degree H-1B pool in addition to the general pool, improving lottery odds under wage-weighted systems",
+      "how_to_assess": "Confirm the specific degree qualifies as an advanced degree for H-1B purposes; assess current H-1B policy and wage-weighting rules at time of application",
+      "weight": "medium"
+    },
+    {
+      "factor": "Research fit vs. program ranking",
+      "why_it_matters": "A lower-ranked program with a funded advisor whose work directly matches your interests may produce better career outcomes than a top-ranked program where you cannot find an advisor",
+      "how_to_assess": "Map your specific research interests to individual faculty rather than department reputation; assess whether you can identify 2–3 faculty at each program who do work you'd genuinely want to contribute to",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing a PhD for prestige or immigration stability without genuine research interest",
+      "unstated_consequence": "40–50% dropout rate means a significant share of students leave after 2–3 years with no degree, no credential, and a major opportunity cost gap in their resume and visa timeline",
+      "who_it_affects": "International students who chose PhD primarily for immigration runway or institutional brand, without prior research experience to validate their tolerance for the work"
+    },
+    {
+      "choice": "Accepting an RA-funded PhD position",
+      "unstated_consequence": "Your research topic is partially or fully constrained by the advisor's active grant — your dissertation serves the advisor's funding priorities, not necessarily your intellectual agenda",
+      "who_it_affects": "Students who have a specific research question or direction they want to pursue independently, who may find themselves locked into advisor-defined projects for years"
+    },
+    {
+      "choice": "Accepting a TA-funded PhD position",
+      "unstated_consequence": "Teaching 10–20 hours per week extends time-to-degree and reduces dissertation momentum — the 'stable' funding comes at the cost of slower research progress",
+      "who_it_affects": "Students who underestimate the cognitive load of teaching preparation and grading, especially non-native English speakers who invest additional time in course communication"
+    },
+    {
+      "choice": "Choosing a highly ranked program in a non-tech-hub location",
+      "unstated_consequence": "During the OPT period, you face a 3–6 month structural disadvantage in job search compared to peers at hub-located programs — fewer employers recruit on campus, alumni networks are thinner in your target city, and relocation must happen while managing visa timing",
+      "who_it_affects": "International students whose target employers are concentrated in specific metro areas and who have limited financial buffer to fund an extended job search from a remote campus"
+    },
+    {
+      "choice": "Relying on advisor continuity for funding and research support",
+      "unstated_consequence": "If the advisor leaves the university, takes a leave, loses their grant, or retires, your funding and research support may collapse mid-degree with no automatic institutional backstop",
+      "who_it_affects": "Students who did not ask explicitly about succession planning, co-advisor structures, or department policy for students whose advisors depart"
+    },
+    {
+      "choice": "Pursuing an MS in the US as an immigration strategy",
+      "unstated_consequence": "MS programs are typically 1–2 years, followed by 12–36 months OPT, after which you must win the H-1B lottery or leave — a funded PhD provides 5–6 additional years of legal stay before that clock starts",
+      "who_it_affects": "Students who believe an MS degree resolves their long-term US immigration uncertainty, without accounting for H-1B lottery odds and the compressed timeline"
+    },
+    {
+      "choice": "Applying to NSF GRFP as an international student",
+      "unstated_consequence": "NSF GRFP is restricted to US citizens and permanent residents — international students who invest significant time in this application receive no benefit",
+      "who_it_affects": "International students who do not check fellowship eligibility before investing time in applications, often because the application process looks similar to eligible fellowships"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Pursuing a PhD primarily for prestige or immigration without genuine research interest",
+      "why_it_happens": "PhD programs carry cultural and social prestige signals; immigration anxiety causes students to optimize for visa runway rather than degree fit; students who haven't done research underestimate how different it is from coursework",
+      "consequence": "40–50% dropout rate; students who leave after 2–3 years have no degree, a gap on their resume, disrupted visa status, and significant opportunity cost relative to entering industry earlier",
+      "warning_signs": [
+        "Student cannot articulate a specific research question they want to pursue",
+        "Student's stated reason for PhD is 'more opportunities' or 'better visa situation' rather than specific intellectual or research goals"
+      ]
+    },
+    {
+      "pattern": "Evaluating programs by ranking without screening individual advisors",
+      "why_it_happens": "Rankings are visible and comparable; advisor quality requires effort to assess and is not publicly ranked; students conflate department reputation with individual mentor quality",
+      "consequence": "Student joins a high-ranked program with a poorly mentoring, under-funded, or exploitative advisor and experiences worse outcomes than they would have at a lower-ranked program with a strong advisor",
+      "warning_signs": [
+        "Student lists programs only by US News ranking without identifying specific faculty",
+        "Student has not contacted or spoken to any faculty at their target programs before applying"
+      ]
+    },
+    {
+      "pattern": "Applying to fewer than 8 programs to save time or application fees",
+      "why_it_happens": "Students underestimate year-to-year variability in admissions outcomes; overconfidence in their profile's competitiveness; cost sensitivity around application fees",
+      "consequence": "In a bad year — faculty on sabbatical, grant funding cuts, unusually competitive cohort — students with narrow application pools receive complete rejection and must reapply the following year, losing a full year of career progression",
+      "warning_signs": [
+        "Student has applied to 5 or fewer programs",
+        "Student has not identified backup programs with confirmed advisor interest"
+      ]
+    },
+    {
+      "pattern": "Submitting cold applications without prior advisor contact",
+      "why_it_happens": "Students assume the application process is anonymous and merit-based like undergraduate admissions; they don't realize faculty actively seek students whose names they already recognize",
+      "consequence": "Significantly lower admission conversion rate; student competes at a structural disadvantage against applicants whose names advisors already associate with their research agenda",
+      "warning_signs": [
+        "Student has not emailed any faculty before submitting applications",
+        "Student's application list has no programs where they have confirmed faculty interest"
+      ]
+    },
+    {
+      "pattern": "Ignoring the immigration implications of program and funding type selection",
+      "why_it_happens": "Students treat grad school choice as a purely academic or career decision; immigration consequences feel abstract and distant relative to immediate concerns about rankings and research",
+      "consequence": "Students reach graduation with a compressed OPT window, poor location for H-1B-sponsoring employers, or no path to extended legal stay — creating urgent visa crises during what should be a career transition period",
+      "warning_signs": [
+        "Student cannot explain how their chosen program affects their OPT eligibility and duration",
+        "Student has not verified whether their specific degree is on the STEM Designated Degree Program List"
+      ]
+    },
+    {
+      "pattern": "Accepting funding offers without understanding what happens in years 4–6",
+      "why_it_happens": "Funding offers are framed for entry years; students focus on the immediate offer rather than modeling long-term continuity; asking about late-stage funding feels awkward or pessimistic",
+      "consequence": "Students reach years 4–6 to find TA funding is competitive, RA grants have expired, and they must scramble for support while trying to finish dissertation — extending time-to-degree under financial stress",
+      "warning_signs": [
+        "Student cannot explain what their funding source will be in years 4, 5, and 6",
+        "Offer letter specifies funding for only 1–2 years"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is this program fully funded — tuition plus stipend — or will you be paying tuition?",
+      "what_it_reveals": "Whether the student has a financially viable path through the degree without accumulating debt or depleting savings, and whether they have correctly read their offer letter",
+      "follow_up_if_yes": "What happens to funding in years 4–6, and is it guaranteed or contingent on RA grant renewal?",
+      "follow_up_if_no": "Do you have verified financial resources to cover the full cost, and have you modeled what happens if your financial situation changes mid-program?"
+    },
+    {
+      "question": "Have you spoken to at least 2–3 current or former students in this specific advisor's lab?",
+      "what_it_reveals": "Whether the student has done real advisor due diligence or is relying on surface signals like publication count and program ranking",
+      "follow_up_if_yes": "Did you speak to anyone who has left the lab, and did you ask whether they would choose this advisor again?",
+      "follow_up_if_no": "Why not, and are you willing to delay your decision until you have done so?"
+    },
+    {
+      "question": "Do you genuinely want to do research, or are you pursuing a PhD for immigration stability, prestige, or funding?",
+      "what_it_reveals": "Whether the student has a motivational foundation strong enough to sustain 5–6 years of narrow, slow, often frustrating research work",
+      "follow_up_if_yes": "Have you already done research? What specifically did you enjoy about the process — not the outcomes, but the day-to-day work?",
+      "follow_up_if_no": "Have you considered whether a funded masters or direct industry entry would achieve your actual goals with less time and risk?"
+    },
+    {
+      "question": "Is your specific degree program on the STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether the student will qualify for 36-month STEM OPT or only 12-month standard OPT — a critical variable in post-graduation immigration runway",
+      "follow_up_if_yes": "Have you verified this using the specific CIP code of your exact degree, not just the field name?",
+      "follow_up_if_no": "How does a 12-month OPT window change your job search and H-1B timeline planning?"
+    },
+    {
+      "question": "What happens to your visa status if you need to leave this program before completion?",
+      "what_it_reveals": "Whether the student has modeled downside scenarios and understands their immigration exposure if the PhD doesn't work out",
+      "follow_up_if_yes": "Have you consulted with an immigration advisor about your options in that scenario?",
+      "follow_up_if_no": "This is a critical gap — a 40–50% PhD dropout rate means this scenario is not hypothetical for a large share of students"
+    },
+    {
+      "question": "Does this program have a track record of helping international students find jobs in your target market?",
+      "what_it_reveals": "Whether the student has verified the program's practical placement infrastructure for international students or is assuming it based on general reputation",
+      "follow_up_if_yes": "Have you verified this by speaking to international alumni rather than relying on program-published statistics?",
+      "follow_up_if_no": "Have you spoken to current international students about employer sponsorship availability and the on-campus recruiting landscape?"
+    },
+    {
+      "question": "What type of funding is included in your offer — RA, TA, or fellowship — and do you understand the constraints each imposes?",
+      "what_it_reveals": "Whether the student understands how their funding type affects their research independence, time allocation, and risk exposure to advisor grant cycles",
+      "follow_up_if_yes": "If RA: have you confirmed whether you can pursue your own dissertation direction or must work on the advisor's active grant projects?",
+      "follow_up_if_no": "Do you know who to ask to get this clarified before accepting the offer?"
+    },
+    {
+      "question": "Is your program located in a city where your target employers actively recruit, or will you need to relocate during OPT?",
+      "what_it_reveals": "Whether the student has factored the structural job search advantage of tech-hub programs into their location decision",
+      "follow_up_if_yes": "Have you verified that employers in that city offer visa sponsorship at meaningful rates?",
+      "follow_up_if_no": "Have you modeled the financial and logistical cost of relocation during the OPT period while managing visa timing constraints?"
+    },
+    {
+      "question": "Have you identified at least one potential advisor at 5 or more programs on your list who has shown confirmed interest in your application?",
+      "what_it_reveals": "Whether the student's application portfolio is built on strategic faculty contact or is a set of cold applications with low conversion probability",
+      "follow_up_if_yes": "How did you confirm interest — email exchange, video call, or something else?",
+      "follow_up_if_no": "Which programs on your list have you contacted faculty at, and what was the response?"
+    },
+    {
+      "question": "What is the average time-to-degree in this program, and what does funding look like in years 4–6?",
+      "what_it_reveals": "Whether the student has stress-tested the financial and timeline assumptions behind their funding offer, or is only looking at the entry-year offer",
+      "follow_up_if_yes": "Have you spoken to students currently in years 4–6 about their funding experience, or are you relying on program-provided averages?",
+      "follow_up_if_no": "This is a critical variable — a program with a 7-year average time-to-degree and only 4-year guaranteed funding creates a structural financial crisis for most students"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You are applying to a graduate program",
+      "actual_reality": "In PhD admissions, you are primarily applying to an advisor — the program is the institutional container, but the advisor determines your funding, research direction, mentorship, network access, and career trajectory",
+      "implication": "Spend more time researching and contacting individual faculty than researching departmental rankings or curriculum; a strong fit with a well-funded advisor at a mid-ranked program beats a cold application to a top-ranked department"
+    },
+    {
+      "common_belief": "PhD admissions is a merit-based process where strong applications are evaluated anonymously",
+      "actual_reality": "Faculty actively seek students whose names they already recognize — prior email contact, conference meetings, or research conversations give applicants a structural advantage over equally qualified cold applicants",
+      "implication": "Contact potential advisors before submitting applications; introduce your research interests and ask substantive questions about their work; make your name visible before your application arrives"
+    },
+    {
+      "common_belief": "A fully funded PhD offer means your funding is secure for the duration of the degree",
+      "actual_reality": "RA funding is tied to the advisor's active grants, which can expire or be cut; TA funding is often competitive in later years; only multi-year fellowship funding is genuinely guaranteed — and even that has conditions",
+      "implication": "Ask explicitly about funding continuity in years 4–6 before accepting any offer; understand which specific mechanism funds you and what happens if that mechanism ends"
+    },
+    {
+      "common_belief": "Choosing a top-ranked program maximizes career outcomes",
+      "actual_reality": "A world-class program with a bad advisor produces worse career outcomes than a good program with an exceptional advisor — advisor quality, funding continuity, and research fit are stronger predictors of PhD outcome than department ranking",
+      "implication": "Evaluate programs at the level of individual faculty labs, not aggregate rankings; a strong advisor at a program ranked 15–30 is likely a better choice than a weak or unavailable advisor at a top-5 program"
+    },
+    {
+      "common_belief": "The NSF Graduate Research Fellowship is a viable funding option for international students to pursue",
+      "actual_reality": "NSF GRFP is restricted to US citizens and permanent residents — international students are categorically ineligible",
+      "implication": "International students should not invest application time in NSF GRFP; check eligibility for every fellowship before investing effort, as eligibility varies significantly across external fellowship programs"
+    },
+    {
+      "common_belief": "An MS degree resolves long-term US immigration uncertainty",
+      "actual_reality": "An MS provides 12–36 months of OPT, after which you must win the H-1B lottery or leave; a funded PhD provides 5–6 years of legal stay, resets OPT, and builds credentials that may qualify for lottery-exempt visas",
+      "implication": "International students who care about long-term US immigration stability should explicitly model the PhD vs. MS decision through an immigration lens, not just a career or tuition lens"
+    },
+    {
+      "common_belief": "PhD dropout is rare and mainly affects students who were clearly not ready",
+      "actual_reality": "PhD dropout rates are 40–50% in many programs — this is not a fringe outcome; it represents a large share of admitted students who often leave 2–3 years in with no degree and significant opportunity cost",
+      "implication": "The risk of leaving a PhD without a degree is not a tail risk — it is a base rate outcome for a near-majority of students; this should be explicitly weighted in the PhD vs. MS decision, especially for students without prior research experience"
+    },
+    {
+      "common_belief": "University-issued fellowship funding is multi-year and stable",
+      "actual_reality": "University fellowships given to top incoming students are often 1-year awards, not multi-year guarantees; they are frequently used as recruiting incentives without long-term funding commitments",
+      "implication": "Distinguish explicitly between a 1-year university fellowship and a multi-year external fellowship; ask what your funding source will be in years 2–6 before treating a fellowship offer as evidence of long-term financial security"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Unit of analysis in program evaluation",
+      "junior_pattern": "Evaluates graduate programs by US News ranking and general departmental reputation",
+      "senior_pattern": "Evaluates graduate programs by individual advisor quality, lab funding status, recent graduate placement, and confirmed advisor interest",
+      "why_it_matters": "The advisor — not the department — determines research direction, funding security, mentorship quality, and career network; optimizing for ranking without advisor-level analysis produces systematically worse outcomes"
+    },
+    {
+      "dimension": "Motivation for PhD pursuit",
+      "junior_pattern": "Pursues PhD because it 'sounds prestigious,' provides immigration runway, or because 'more education means more opportunities'",
+      "senior_pattern": "Pursues PhD only after verifying genuine interest in research as a practice through prior research experience, and can articulate a specific intellectual problem they want to work on",
+      "why_it_matters": "PhD programs have 40–50% dropout rates; students without intrinsic research motivation disproportionately contribute to that rate, exiting after 2–3 years with no degree and significant cost"
+    },
+    {
+      "dimension": "How immigration implications are factored into grad school decisions",
+      "junior_pattern": "Treats grad school choice as purely academic or career-focused; assumes immigration 'will work out' or is a problem for after graduation",
+      "senior_pattern": "Explicitly models how program location, degree type, STEM OPT eligibility, funding duration, and credential type interact with post-graduation visa pathways before choosing a program",
+      "why_it_matters": "Students who don't model immigration implications face visa crises during career transitions — compressed OPT windows, poor employer sponsorship access, or lack of H-1B lottery alternatives"
+    },
+    {
+      "dimension": "Advisor due diligence",
+      "junior_pattern": "Evaluates advisors by publication count, h-index, and lab website — all public, surface-level signals",
+      "senior_pattern": "Speaks to 3–5 current and former students, specifically asks whether they would choose the advisor again, checks where the last 5 graduates are now, and tracks advisor behavior during the application process as a leading indicator",
+      "why_it_matters": "Surface signals don't reveal mentorship quality, lab culture, funding stability, or whether the advisor develops independent researchers — the variables that actually determine degree experience and career outcomes"
+    },
+    {
+      "dimension": "Understanding of funding offer",
+      "junior_pattern": "Sees 'fully funded' in an offer letter and treats financial security as confirmed; doesn't distinguish funding types or ask about year 4–6 continuity",
+      "senior_pattern": "Asks explicitly what type of funding is offered (RA/TA/fellowship), what grant or mechanism funds it, what happens if that mechanism ends, and what funding looks like in years 4–6",
+      "why_it_matters": "RA funding tied to expiring grants can collapse mid-degree; TA positions become competitive in later years; students who don't model this face financial crises during dissertation completion"
+    },
+    {
+      "dimension": "Application portfolio construction",
+      "junior_pattern": "Applies to a small number of programs to save time and fees, weighted toward reach schools based on ranking",
+      "senior_pattern": "Constructs a balanced 8–12 program portfolio with 2–3 reach, 4–5 core, and 2–3 safety programs, with confirmed advisor interest in at least 5 programs before submitting",
+      "why_it_matters": "Year-to-year admissions variability means even strong applicants face complete rejection with narrow portfolios; confirmed advisor interest dramatically increases conversion rates and reduces portfolio risk"
+    },
+    {
+      "dimension": "Fellowship eligibility awareness",
+      "junior_pattern": "Applies for well-known fellowships like NSF GRFP without checking eligibility for international students",
+      "senior_pattern": "Checks eligibility requirements for every fellowship before investing application effort, recognizing that major US fellowships vary significantly in international student eligibility",
+      "why_it_matters": "NSF GRFP is restricted to US citizens and permanent residents — international students who invest time in ineligible applications lose opportunity to identify and apply for fellowships they actually qualify for"
+    }
+  ]
+}

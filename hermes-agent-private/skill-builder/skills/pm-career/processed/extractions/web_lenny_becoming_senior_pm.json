@@ -1,0 +1,234 @@
+{
+  "source_file": "lenny_becoming_senior_pm.txt",
+  "heuristics": [
+    {
+      "rule": "Block calendar time explicitly for strategic work — it will always lose to reactive work if unprotected",
+      "condition": "When you are a PM trying to develop or demonstrate senior-level strategic thinking...",
+      "action": "...schedule dedicated, recurring calendar blocks for strategy development before your week fills with execution tasks",
+      "because": "Strategic work is non-urgent but high-importance; reactive work is always urgent and will crowd it out without structural protection"
+    },
+    {
+      "rule": "Use the autonomy template when raising challenges to your manager: state the problem, state your proposed approach, ask for input",
+      "condition": "When you encounter a challenge or decision point and need to communicate upward...",
+      "action": "...frame the conversation as: 'Here's the challenge, here's my proposed approach, any thoughts?' rather than presenting the problem alone",
+      "because": "This format signals decision-making capability and independent thinking while still inviting feedback — it demonstrates senior-level autonomy without bypassing collaboration"
+    },
+    {
+      "rule": "Articulate the conditional logic behind 'it depends' answers explicitly to demonstrate senior reasoning",
+      "condition": "When facing a complex decision where no single answer is obviously correct...",
+      "action": "...identify and state the conditions: 'If X is true, then A is best; if Y is true, then B is best'",
+      "because": "The ability to articulate what makes an answer context-dependent is itself a senior-level skill — it shows systematic thinking rather than uncertainty or avoidance"
+    },
+    {
+      "rule": "Accelerate the PM-to-Senior PM transition before any other career move — it has the greatest compounding effect",
+      "condition": "When prioritizing which career milestone to focus on...",
+      "action": "...concentrate energy on clearing the Senior IC threshold first, ahead of pursuing management or director paths",
+      "because": "The first transition (PM to Senior PM, median 3 years) sets the pace for all subsequent milestones; accelerating it compresses the entire career timeline"
+    },
+    {
+      "rule": "Answer 'why?' for every roadmap component to transform a timeline into a strategic framework",
+      "condition": "When building a product roadmap...",
+      "action": "...explicitly document the reasoning behind each item, not just what will be built and when",
+      "because": "A roadmap without 'why' is a schedule; a roadmap with 'why' is a strategy — the latter signals senior-level ownership of direction, not just execution"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Strategic scope ownership",
+      "why_it_matters": "The defining difference between PM and Senior PM is not execution quality but whether the person sets the scope versus works within a defined scope — this determines readiness for promotion",
+      "how_to_assess": "Ask: Am I defining what problems to solve and why, or am I executing against a direction handed to me? Can I point to a vision and strategic framework I authored?",
+      "weight": "high"
+    },
+    {
+      "factor": "Autonomy demonstrated in upward communication",
+      "why_it_matters": "Senior PMs build trust by proactively communicating decisions and proposals rather than waiting for instructions — managers use this signal to gauge readiness for greater independence",
+      "how_to_assess": "Review your last 5 manager conversations: did you bring proposed approaches, or did you bring problems waiting for answers?",
+      "weight": "high"
+    },
+    {
+      "factor": "Ability to hold and reason through competing valid perspectives",
+      "why_it_matters": "Senior decisions increasingly have no clean right answer — the capacity to reason through tradeoffs without prematurely resolving ambiguity is a senior-level cognitive requirement",
+      "how_to_assess": "Observe whether you can articulate the conditions under which different answers would each be correct, without defaulting to a single rigid framework",
+      "weight": "high"
+    },
+    {
+      "factor": "Alignment of work to long-term vision vs. incremental delivery",
+      "why_it_matters": "Junior PMs focus on shipping value incrementally; senior PMs connect every decision to a long-term vision — this shift in orientation signals strategic maturity",
+      "how_to_assess": "Ask: Can I draw a direct line from today's work to a 2–3 year vision? Do I have a documented strategic framework that explains why this bet over alternatives?",
+      "weight": "high"
+    },
+    {
+      "factor": "Cross-functional constraint awareness",
+      "why_it_matters": "Senior PMs do not prioritize their own team's goals over the organization's — failure to internalize this leads to decisions that optimize locally but damage broader trust and outcomes",
+      "how_to_assess": "Assess whether your recent decisions accounted for constraints and goals of adjacent teams, or whether they were optimized purely for your own team's metrics",
+      "weight": "medium"
+    },
+    {
+      "factor": "Time in role at Senior IC level before pursuing management",
+      "why_it_matters": "The typical path requires 1–2 years at Senior IC before moving to Manager of PMs — moving too early risks skipping the consolidation needed to lead other PMs effectively",
+      "how_to_assess": "Assess how long you have held the Senior IC title and whether you have demonstrated the three differentiators (strategy, autonomy, nuance) consistently across that period",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Focusing on flawless execution of a defined scope to earn promotion",
+      "unstated_consequence": "Execution quality alone does not qualify someone for Senior PM — the promotion requires demonstrating scope-setting, not just scope-delivery, so strong executors can be passed over indefinitely",
+      "who_it_affects": "Highly capable junior PMs who are reliable, high-output contributors but have never been given or claimed the opportunity to define strategy"
+    },
+    {
+      "choice": "Waiting for manager direction before acting on challenges",
+      "unstated_consequence": "This behavior is read as a signal of junior-level thinking even when the work output is strong — it trains managers to see you as an executor rather than a future autonomous operator",
+      "who_it_affects": "PMs who are strong at execution but come from cultures or teams where deference to leadership is rewarded"
+    },
+    {
+      "choice": "Treating strategy as a deliverable to complete rather than time to protect",
+      "unstated_consequence": "Strategic work gets perpetually deferred by urgent reactive work — without explicit calendar protection it effectively never happens, leaving the PM stuck in execution mode",
+      "who_it_affects": "PMs in fast-moving, high-demand product orgs where reactive work is constant and rewarded"
+    },
+    {
+      "choice": "Resolving ambiguous decisions quickly to appear decisive",
+      "unstated_consequence": "Premature resolution of complex tradeoffs is a junior signal, not a senior one — senior PMs are expected to hold ambiguity and articulate conditions, not collapse it prematurely",
+      "who_it_affects": "PMs who have been rewarded for speed and decisiveness in earlier roles and interpret ambiguity tolerance as weakness"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating roadmaps as timelines rather than strategic documents",
+      "why_it_happens": "Roadmaps are easier to build as lists of features and dates — adding 'why' requires deeper strategic thinking that takes time and exposes uncertainty, so PMs default to the mechanical version",
+      "consequence": "The PM appears to be executing a plan rather than owning a strategy — this signals junior-level thinking to leadership regardless of delivery quality",
+      "warning_signs": [
+        "Your roadmap answers 'what' and 'when' but not 'why'",
+        "You struggle to explain why your themes are the right bets versus alternatives"
+      ]
+    },
+    {
+      "pattern": "Presenting problems to managers without a proposed solution",
+      "why_it_happens": "PMs mistake transparency for leadership quality — they surface challenges early thinking this shows good judgment, but without a proposed approach it reads as dependency",
+      "consequence": "Managers perceive the PM as needing direction rather than being ready for greater autonomy, slowing or blocking promotion",
+      "warning_signs": [
+        "Your manager frequently responds to your updates by telling you what to do next",
+        "You frame 1:1 conversations around 'I have a problem' rather than 'here's what I'm thinking of doing'"
+      ]
+    },
+    {
+      "pattern": "Optimizing for incremental value delivery instead of long-term vision alignment",
+      "why_it_happens": "Incremental delivery is visible, measurable, and rewarded in sprint cycles — long-term vision work is harder to quantify and feels less urgent, so PMs gravitate toward the former",
+      "consequence": "The PM builds a track record of shipping but not of strategic thinking — leadership cannot envision them at a senior level because they have never demonstrated it",
+      "warning_signs": [
+        "You measure your success primarily by features shipped or OKRs hit",
+        "You cannot articulate a multi-year vision for your product area"
+      ]
+    },
+    {
+      "pattern": "Applying rigid frameworks to nuanced decisions",
+      "why_it_happens": "Frameworks reduce cognitive load and provide defensible reasoning — junior PMs learn frameworks as tools and over-rely on them because they lack the pattern recognition to know when a framework doesn't fit",
+      "consequence": "Decisions optimize for the framework rather than the actual situation, and the PM fails to demonstrate the contextual judgment that senior roles require",
+      "warning_signs": [
+        "You reach for a standard framework before assessing whether it fits the specific situation",
+        "You feel uncomfortable when a decision cannot be resolved by a known model"
+      ]
+    },
+    {
+      "pattern": "Prioritizing own team's goals over organizational goals",
+      "why_it_happens": "PMs are accountable for their team's metrics and naturally advocate for their area — without deliberate effort to internalize org-level goals, local optimization becomes the default",
+      "consequence": "Cross-functional partners lose trust, and leadership sees the PM as a local optimizer rather than a senior operator who can be trusted with broader scope",
+      "warning_signs": [
+        "You frequently find yourself in conflict with adjacent teams over resources or priorities",
+        "Your success metrics are exclusively tied to your team's output, not business-wide outcomes"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Can you describe the strategic framework for your product area — including target markets, key pain points, and why you are betting on your current approach over alternatives?",
+      "what_it_reveals": "Whether the PM has internalized strategic ownership or is executing against someone else's direction",
+      "follow_up_if_yes": "Who authored that framework — did you create it, or were you handed it? Have you secured executive alignment on it?",
+      "follow_up_if_no": "Do you know who owns the strategy for your area? What would it take for you to develop and own it?"
+    },
+    {
+      "question": "When you last brought a problem to your manager, did you come with a proposed approach or just the problem?",
+      "what_it_reveals": "Whether the PM is demonstrating autonomous thinking or dependency in upward communication",
+      "follow_up_if_yes": "What was your manager's response — did they adjust your proposal or redirect you entirely? This reveals how much strategic trust exists.",
+      "follow_up_if_no": "Is this a habit or a one-off? What stopped you from forming a view first?"
+    },
+    {
+      "question": "Can you name a recent decision where the right answer genuinely depended on context, and articulate what the conditions were?",
+      "what_it_reveals": "Whether the PM can reason in conditional logic versus applying rigid frameworks or defaulting to single answers",
+      "follow_up_if_yes": "Were you able to communicate those conditions to stakeholders clearly, or did you resolve the ambiguity prematurely to appear decisive?",
+      "follow_up_if_no": "Do you tend to resolve ambiguous decisions quickly? Who do you defer to when the answer isn't clear?"
+    },
+    {
+      "question": "How much of your working week is spent on strategic work versus reactive execution work?",
+      "what_it_reveals": "Whether the PM has structural conditions that allow senior-level behavior to develop, or is trapped in execution mode",
+      "follow_up_if_yes": "Is that time protected on your calendar, or does it happen opportunistically? Opportunistic strategy time is effectively no strategy time.",
+      "follow_up_if_no": "Have you ever explicitly blocked time for strategy? What would you need to stop doing to create that space?"
+    },
+    {
+      "question": "What is the 2–3 year vision for your product area, and can you show how this quarter's work connects to it?",
+      "what_it_reveals": "Whether the PM thinks in strategic themes and long arcs or in sprint cycles and feature lists",
+      "follow_up_if_yes": "Did you communicate that vision to your team and leadership? Is it documented in a form others can reference and hold you to?",
+      "follow_up_if_no": "Do you know if a vision exists at a level above you? If so, why haven't you translated it into your area?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Becoming a Senior PM requires being dramatically better at the core day-to-day work of product management",
+      "actual_reality": "The biggest differentiator for Senior PM is strategic scope and ownership — not execution quality. A PM who executes perfectly on a defined scope is not necessarily ready to be senior if they cannot set the scope themselves.",
+      "implication": "PMs aiming for Senior should invest in developing and demonstrating strategy, autonomy, and nuanced judgment — not in perfecting execution skills they likely already have"
+    },
+    {
+      "common_belief": "Career progression in PM is primarily a function of time in role and consistent strong performance",
+      "actual_reality": "The PM-to-Senior PM transition has a median of 3 years, but acceleration is possible — and this first transition has the greatest compounding impact on total career velocity",
+      "implication": "PMs should treat the Senior IC threshold as a lever to pull actively, not a milestone to wait for — deliberate focus on the three differentiators can shorten the timeline meaningfully"
+    },
+    {
+      "common_belief": "'It depends' is an evasive non-answer that signals uncertainty or lack of conviction",
+      "actual_reality": "At senior levels, 'it depends' paired with explicit conditional logic is the correct and expected answer to complex decisions — it signals sophisticated reasoning, not weakness",
+      "implication": "PMs should practice articulating the conditions that make different answers correct, and resist the pressure to collapse nuanced decisions into false simplicity"
+    },
+    {
+      "common_belief": "Surfacing problems to your manager quickly and transparently is a sign of good judgment and collaboration",
+      "actual_reality": "Surfacing problems without a proposed approach signals dependency and junior-level thinking — senior PMs are expected to bring a point of view alongside the problem",
+      "implication": "PMs should default to the autonomy template (problem + proposed approach + request for input) in upward communication to signal senior-level readiness"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Relationship to scope",
+      "junior_pattern": "Executes effectively within a defined scope handed to them by leadership or a roadmap they inherited",
+      "senior_pattern": "Defines the scope in the first place — authors the vision, strategic framework, and roadmap that others execute against",
+      "why_it_matters": "Scope-setting is the primary gate for Senior PM promotion — execution quality alone cannot substitute for it"
+    },
+    {
+      "dimension": "Strategic horizon",
+      "junior_pattern": "Prioritizes incremental value delivery; success is measured in features shipped and short-cycle OKRs",
+      "senior_pattern": "Aligns all work to long-term vision achievement; can articulate how today's work connects to a 2–3 year future state",
+      "why_it_matters": "Without a visible long-term orientation, leadership cannot see the PM as capable of owning a strategy — only of delivering against one"
+    },
+    {
+      "dimension": "Upward communication style",
+      "junior_pattern": "Brings problems and challenges to the manager and waits for direction or resolution",
+      "senior_pattern": "Brings problems paired with a proposed approach and invites feedback — signals independent decision-making capability",
+      "why_it_matters": "How a PM communicates upward is how managers form mental models of their readiness for autonomy — this pattern directly shapes promotion decisions"
+    },
+    {
+      "dimension": "Handling ambiguous decisions",
+      "junior_pattern": "Applies a known framework or resolves ambiguity quickly to appear decisive; uncomfortable holding multiple valid answers simultaneously",
+      "senior_pattern": "Holds competing valid perspectives without premature resolution; articulates conditional logic explicitly ('if X then A, if Y then B')",
+      "why_it_matters": "Senior decisions are disproportionately ambiguous — the capacity to reason through rather than collapse ambiguity is a core senior-level competency"
+    },
+    {
+      "dimension": "Organizational perspective",
+      "junior_pattern": "Advocates primarily for their own team's goals, metrics, and resources",
+      "senior_pattern": "Weighs cross-functional constraints and organizational goals; does not optimize locally at the expense of broader outcomes",
+      "why_it_matters": "Inability to transcend team-level thinking signals that the PM cannot be trusted with broader scope — it limits both promotion and cross-functional influence"
+    },
+    {
+      "dimension": "Relationship to strategic work",
+      "junior_pattern": "Treats strategy as something that happens when there is time; allows reactive execution work to crowd it out",
+      "senior_pattern": "Explicitly protects calendar time for strategic work; treats it as a structural requirement, not an opportunistic activity",
+      "why_it_matters": "Senior PMs are accountable for strategy — if it doesn't get done, that is a performance gap, not a scheduling issue"
+    }
+  ]
+}

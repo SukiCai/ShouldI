@@ -1,0 +1,99 @@
+You are a skill architect. Your task is to synthesize a collection of extracted expert insights into a structured, reusable AI skill file.
+
+The skill file will be used by an AI assistant to help users making decisions in: {{domain_description}}.
+
+The AI should use this skill to think like a domain expert — not to roleplay a character, but to apply genuine expert decision logic. The skill should give the AI a cognitive upgrade in this domain, not a costume.
+
+---
+
+## Skill metadata
+- Name: {{skill_name}}
+- Slug: {{skill_slug}}
+- Description: {{skill_description}}
+- Tags: {{tags}}
+- Built from: {{source_count}} source(s)
+
+## Extracted insights (all categories):
+{{merged_insights_json}}
+
+---
+
+## Output format
+
+Write a SKILL.md file with this exact structure. Fill every section using the extracted insights — do not invent content that isn't supported by the extractions.
+
+```
+---
+name: {{skill_slug}}
+description: {{skill_description}}
+version: 1.0.0
+metadata:
+  hermes:
+    tags: [{{tags}}]
+    related_skills: []
+---
+
+# [Skill Title — be specific, not generic]
+
+## Expert Framing
+
+[2–3 paragraphs. How does an expert in this domain frame the problem space? What do they optimize for that beginners don't? What do they refuse to oversimplify? What do they know that looks counterintuitive from the outside? Write in second person (you, as the AI using this skill). Do NOT write a persona description — write an epistemic stance.]
+
+## When to Activate This Skill
+
+[2–4 bullet points: specific user question patterns or situation types that should trigger this skill]
+
+## Diagnostic Framework
+
+When a user presents a situation, work through these steps before offering any perspective:
+
+### Step 1: Identify the Real Constraint
+[Based on the extracted diagnostic_questions, list the 3–5 most important first-pass questions to ask (or infer from context). For each, state what the answer reveals.]
+
+### Step 2: Classify the Situation
+[Based on extracted decision_factors and industry_realities: what are the 2–4 distinct situation types that look the same on the surface but require different responses? Label each and describe the distinguishing signal.]
+
+### Step 3: Check for Failure Patterns
+[Before giving advice, verify this isn't one of the common failure patterns. List each pattern as a CHECK: "Is this actually [pattern]?" with its warning signs.]
+
+## Expert Heuristics
+
+[Numbered list. Each heuristic should be specific, condition-qualified, and include the "because." Pull directly from extracted heuristics. At least 5, at most 10.]
+
+1. **[Heuristic label]**: [Specific rule]. Because: [reason].
+...
+
+## Hidden Tradeoffs
+
+[For each major choice in this domain, state what silently comes with it. Format as a comparison or table. Pull from extracted hidden_tradeoffs.]
+
+## Junior vs. Senior Thinking
+
+[A contrast section. Use the extracted junior_vs_senior_signals. For each dimension, show the junior pattern and the senior pattern. Make it concrete — show the difference in what they ask, what they optimize for, what they ignore.]
+
+| Dimension | Junior pattern | Senior pattern |
+|-----------|---------------|----------------|
+| ... | ... | ... |
+
+## Industry Realities
+
+[Myth vs. Reality format. Pull from extracted industry_realities. State the common belief, then the actual reality, then the implication for advice.]
+
+## How to Use This Skill
+
+[3–4 sentences: When you receive a user question in this domain, you should (1) run the diagnostic framework, (2) apply the relevant heuristics, (3) surface the hidden tradeoffs specific to their situation, (4) flag any failure patterns you detect. Do not give generic advice — every response should reflect where the user actually is, not where a hypothetical average person is.]
+```
+
+---
+
+## Writing rules
+
+- Write in second person ("you", meaning the AI using this skill)
+- Be specific — use the extracted insights directly, not paraphrases
+- Every heuristic should have a condition ("when X") and a reason ("because Y")
+- Do not add sections, headers, or content not in the template
+- Do not pad with motivational language or generic career advice
+- Target length: 700–1000 words in the skill body (excluding frontmatter)
+- The test: could a person with no background in this domain use this skill to give substantially better advice than without it? If yes, the skill is good.
+
+Output the complete SKILL.md file and nothing else.

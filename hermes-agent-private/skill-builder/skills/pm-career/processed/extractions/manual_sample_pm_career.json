@@ -1,0 +1,364 @@
+{
+  "source_file": "sample_pm_career.txt",
+  "heuristics": [
+    {
+      "rule": "If performance reviews are strong but promotions consistently go to people with political capital, you're hitting an org ceiling, not a skill gap",
+      "condition": "When you have strong reviews for multiple cycles but aren't advancing",
+      "action": "Diagnose whether the block is internal (skill) or structural (org), then act accordingly — fix skills or leave",
+      "because": "Skill gaps and org ceilings feel identical from the inside but require completely opposite responses; misdiagnosing wastes years"
+    },
+    {
+      "rule": "If you've solved the problems you were hired to solve and no new scope is available, it's time to leave",
+      "condition": "When internal growth path is genuinely exhausted — not just 'not this cycle'",
+      "action": "Switch companies rather than wait for scope that isn't coming",
+      "because": "Staying in a role with no new scope stalls your learning rate regardless of title or compensation"
+    },
+    {
+      "rule": "Optimize for scope over title at every career stage",
+      "condition": "When evaluating a role or promotion offer",
+      "action": "Ask 'what's the most important decision I'll make in the next 12 months?' before accepting; walk away if the answer isn't immediately interesting",
+      "because": "Title without scope is a career trap — it looks good externally but doesn't build the skills that make you genuinely senior in the market sense"
+    },
+    {
+      "rule": "If you can't list three genuinely hard problems you worked on in the last 12 months, your current role isn't developing you",
+      "condition": "When assessing whether to stay or leave a role",
+      "action": "Treat the inability to list three hard problems as a stronger signal than your performance review score",
+      "because": "Performance reviews measure past output; the hardness of your problems predicts future growth rate"
+    },
+    {
+      "rule": "If your manager can't describe what the next level looks like and name two people who got there, there is no defined path",
+      "condition": "When evaluating internal promotion prospects",
+      "action": "Don't wait for a promotion cycle — confirm the path is real before investing in it",
+      "because": "Without a defined and evidenced path, advocacy is impossible and the goalposts will move"
+    },
+    {
+      "rule": "If you're not in strategy-setting conversations after 18 months, ask why before concluding it's an org ceiling",
+      "condition": "When you feel excluded from key organizational decisions",
+      "action": "Diagnose whether exclusion reflects thin stakeholder relationships (fixable) or a structural org ceiling (leave)",
+      "because": "Mistaking thin relationships for an org ceiling causes PMs to leave problems they could have solved"
+    },
+    {
+      "rule": "The real cost of an MBA is two years of not compounding your execution track record",
+      "condition": "When considering an MBA to accelerate a PM career",
+      "action": "Compare the MBA path against two years at a great company building craft; only pursue MBA if it provides network, legitimacy signal, or domain access you can't get otherwise",
+      "because": "Internal advocacy and execution track record — not an MBA — drive promotion to Group PM or Director at tech companies"
+    },
+    {
+      "rule": "Switch companies only after you've absorbed the lessons of your current environment",
+      "condition": "When considering leaving before fully extracting value from a role",
+      "action": "Delay the switch until you can clearly articulate what you learned; if you're running from hard feedback, fix the feedback first",
+      "because": "Problems travel with you; switching before learning means you'll face the same issues without the context you had before"
+    },
+    {
+      "rule": "Find two people 5 years ahead of you — one who stayed, one who left — and ask what they'd change",
+      "condition": "When calibrating a stay-vs-leave decision",
+      "action": "Use the pattern of their regrets as your primary data point over salary benchmarks",
+      "because": "Regret patterns from people ahead of you reveal trajectory consequences that present-moment thinking systematically misses"
+    },
+    {
+      "rule": "If nominal ownership is offered without the authority to say no, it's worse than no ownership",
+      "condition": "When evaluating how much real ownership a new role provides",
+      "action": "Ask specifically about the last two decisions the PM made independently, what happened when they were wrong, and what they pushed back on and won",
+      "because": "Nominal ownership trains you to feel responsible without the authority to act — a habit that is actively harmful to career development"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Learning rate",
+      "why_it_matters": "Learning rate predicts where you'll be in 3–5 years more than current compensation or title; a high learning rate compounds, a low one stagnates",
+      "how_to_assess": "Ask whether you've done something in the last 6 months that surprised you — something you didn't know you could do; if you can't answer, the role isn't growing you",
+      "weight": "high"
+    },
+    {
+      "factor": "Decision authority",
+      "why_it_matters": "Real ownership — the ability to say no and have your judgment respected — is the core mechanism by which PM skills develop; without it, you build activity habits, not impact habits",
+      "how_to_assess": "Ask the hiring team to name two recent decisions the PM made independently and what happened when they got something wrong; vague answers mean authority is nominal",
+      "weight": "high"
+    },
+    {
+      "factor": "Scope of impact",
+      "why_it_matters": "The blast radius of your decisions, the strategic ambiguity you must resolve, and the stakeholders who depend on your judgment determine how fast you grow toward genuinely senior capability",
+      "how_to_assess": "Compare what the most important decision you'll make in the next 12 months is; assess number of stakeholders, ambiguity level, and organizational surface area",
+      "weight": "high"
+    },
+    {
+      "factor": "Skill gap vs. org ceiling diagnosis",
+      "why_it_matters": "The correct response to a skill gap (stay and fix it) is the opposite of the correct response to an org ceiling (leave); misdiagnosis leads to years of misdirected effort",
+      "how_to_assess": "Check if feedback is consistent across multiple managers and reviews (skill gap) vs. politically colored and inconsistent (org signal); check if scope expanded or contracted in the last 6 months",
+      "weight": "high"
+    },
+    {
+      "factor": "Manager's ability and willingness to advocate",
+      "why_it_matters": "A manager who is political, checked out, or below the influence threshold cannot advocate for you even if they want to; your promotion depends heavily on their organizational capital",
+      "how_to_assess": "Assess whether your manager understands what you want to do next, can describe a path to it, and has the political standing to fight for you in headcount and promotion discussions",
+      "weight": "high"
+    },
+    {
+      "factor": "Company trajectory alignment with industry direction",
+      "why_it_matters": "Staying at a company moving against industry direction limits your external market value and narrows the problems you'll encounter",
+      "how_to_assess": "Evaluate whether the company's bets are in domains growing in importance; assess whether your external network credibility is growing or stagnating",
+      "weight": "medium"
+    },
+    {
+      "factor": "Career stage fit with company stage",
+      "why_it_matters": "Early-career PMs benefit from structure and craft-building at larger companies; mid-career PMs need ambiguity and high-stakes ownership that large structured environments can no longer provide",
+      "how_to_assess": "Identify whether you need to build craft (favor process-heavy environments) or judgment under ambiguity (favor earlier-stage, higher-ownership environments)",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether problems travel with you",
+      "why_it_matters": "Switching companies to escape feedback or avoid hard situations doesn't remove the underlying skill gap — it relocates it to a new context without the institutional knowledge you had before",
+      "how_to_assess": "Ask honestly whether the reasons for leaving are organizational (no path, no scope, political block) or personal (hard feedback, discomfort, conflict); if personal, address before leaving",
+      "weight": "medium"
+    },
+    {
+      "factor": "MBA as filter in target domain",
+      "why_it_matters": "MBA is a genuine filter in some domains (consulting, PE-backed product, certain enterprise environments) and largely irrelevant in others (tech PM promotion to Director)",
+      "how_to_assess": "Identify whether the specific role or domain you're targeting uses MBA as a real hiring or promotion filter, not just a preference signal",
+      "weight": "low"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Optimizing for title over scope",
+      "unstated_consequence": "You gain a credential that looks good externally but doesn't build the skills the market actually pays for at senior levels; the gap between your title and your capability widens silently",
+      "who_it_affects": "Mid-career PMs at slower-growth or structured companies who use LinkedIn visibility as a proxy for career progress"
+    },
+    {
+      "choice": "Joining a high-brand company for the name",
+      "unstated_consequence": "Brand companies often come with reduced decision authority, slower feedback loops, and cog-in-machine dynamics that actively slow skill development despite the resume signal",
+      "who_it_affects": "PMs who are mid-career and need ownership to grow, who mistake brand association for skill-building opportunity"
+    },
+    {
+      "choice": "Pursuing an MBA to accelerate PM career",
+      "unstated_consequence": "Two years of not compounding an execution track record; re-entry requires rebuilding credibility from scratch, and the MBA doesn't substitute for internal advocacy at tech companies",
+      "who_it_affects": "PMs already in product roles who are progressing, even if slowly, and use the MBA as a perceived shortcut to senior levels"
+    },
+    {
+      "choice": "Staying in a large, structured company past the learning horizon",
+      "unstated_consequence": "The structure that was a scaffold becomes a comfort — it removes the ambiguity and ownership pressure that would force the next level of development, and this feels like stability rather than stagnation",
+      "who_it_affects": "Mid-career PMs who are good at navigating structured environments and conflate comfort with growth"
+    },
+    {
+      "choice": "Accepting nominal ownership in a role",
+      "unstated_consequence": "You develop the habit of feeling responsible without the authority to act — a disposition that is actively harmful and hard to unlearn when real ownership becomes available",
+      "who_it_affects": "PMs earlier in their careers who don't yet have a calibrated baseline for what real ownership feels like"
+    },
+    {
+      "choice": "Switching companies to avoid hard feedback",
+      "unstated_consequence": "The skill gap travels with you to the new role, now without the institutional context and relationships you had before, making the problem harder to fix in a new environment",
+      "who_it_affects": "PMs who have received consistent negative feedback and interpret company-switching as a reset rather than a relocation of the problem"
+    },
+    {
+      "choice": "Leaving before absorbing the lessons of the current environment",
+      "unstated_consequence": "You close the learning loop prematurely and arrive at the next role without the synthesis that would have made the previous experience compound; you'll likely encounter the same situations without the pattern-matching to handle them",
+      "who_it_affects": "PMs who switch frequently in search of better conditions rather than extracting full value from each environment"
+    },
+    {
+      "choice": "Waiting for scope expansion that isn't structurally available",
+      "unstated_consequence": "Each cycle you wait reinforces the org's model of you at your current level, making internal reframing harder and costing compounding time that could be spent in a higher-scope role",
+      "who_it_affects": "PMs who have exhausted internal growth paths but delay leaving due to comfort, compensation, or optimism about org change"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Diagnosing an org ceiling as a skill gap and staying to fix something that isn't broken",
+      "why_it_happens": "Org ceilings and skill gaps feel identical from the inside; it's cognitively easier to accept a self-improvement narrative than to conclude the environment is the problem",
+      "consequence": "Years of effort directed at non-issues while the actual constraint — structural politics, no available scope — remains unchanged",
+      "warning_signs": [
+        "Performance reviews are consistently strong but promotions go to people with political capital",
+        "The PM role at your level hasn't changed in 2+ years despite your growth"
+      ]
+    },
+    {
+      "pattern": "Diagnosing a skill gap as an org ceiling and leaving without fixing the underlying issue",
+      "why_it_happens": "Switching companies feels like agency and progress; accepting hard feedback requires sustained discomfort",
+      "consequence": "The skill gap travels to the new role without the institutional knowledge and relationships that made it manageable before",
+      "warning_signs": [
+        "Feedback about the same 2–3 things has come from multiple managers or reviews",
+        "The reason for leaving feels more like relief than strategic repositioning"
+      ]
+    },
+    {
+      "pattern": "Staying in a large structured environment past the point where it teaches anything",
+      "why_it_happens": "Structure is comfortable and rewards execution of known playbooks; the absence of growth is invisible because performance metrics still look good",
+      "consequence": "The PM exits their formative mid-career years without the ambiguity tolerance and ownership experience that the market requires at senior levels",
+      "warning_signs": [
+        "Can't identify something done in the last 6 months that was genuinely surprising or difficult",
+        "The 'hardest problems' of the last year aren't actually hard when described to an outsider"
+      ]
+    },
+    {
+      "pattern": "Optimizing for title over scope and calling it a promotion",
+      "why_it_happens": "Title is visible and legible to the external market; scope is invisible until it becomes a gap at the next level",
+      "consequence": "The PM accumulates a senior title without the corresponding capability, creating a gap that becomes apparent — and damaging — at the next stage",
+      "warning_signs": [
+        "Unable to clearly answer 'what's the most important decision I'll make in the next 12 months?' with something genuinely interesting",
+        "The Senior PM role involves one small feature with minimal stakeholders"
+      ]
+    },
+    {
+      "pattern": "Mistaking exclusion from strategy conversations for an org ceiling when it's actually thin stakeholder relationships",
+      "why_it_happens": "Exclusion from rooms feels structural and external; acknowledging that your relationships are the issue requires more personal accountability",
+      "consequence": "The PM leaves an environment where they could have grown by building relationships, and carries the thin-relationship pattern to the next company",
+      "warning_signs": [
+        "Haven't been invited to strategy-setting conversations after 18 months",
+        "Unable to name whose opinion shapes outcomes before anything is written down"
+      ]
+    },
+    {
+      "pattern": "Pursuing an MBA as a response to career stagnation without diagnosing the actual cause",
+      "why_it_happens": "The MBA question is often a proxy for 'am I advancing fast enough?' — it feels like action when the real problem is undiagnosed",
+      "consequence": "Two years of non-compounding execution experience, followed by re-entry where the original problem (unclear growth path, wrong environment, skill gap) still exists",
+      "warning_signs": [
+        "Primary motivation is 'I don't know what else to do'",
+        "Already in a PM role and progressing, even if slowly"
+      ]
+    },
+    {
+      "pattern": "Treating 'shipped' as the definition of success rather than 'worked'",
+      "why_it_happens": "Shipping is measurable and creates short-term social validation; whether the thing worked is often unclear for months and requires sitting with uncertainty",
+      "consequence": "PMs build a habit of output-orientation rather than outcome-orientation, which becomes a ceiling at senior levels where results — not activity — are the currency",
+      "warning_signs": [
+        "Success stories focus on velocity and volume of launches rather than user or business outcomes",
+        "Post-launch analysis is shallow or absent from the PM's workflow"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "In the last 6 months, did your scope of decisions expand or contract?",
+      "what_it_reveals": "Whether the current environment is offering growth or pulling back; contraction without explanation is an org signal, not a skill signal",
+      "follow_up_if_yes": "What specifically expanded — is it more ambiguity, more stakeholders, or just more volume of the same work?",
+      "follow_up_if_no": "Was the contraction explained? If not, who owns the scope that used to be yours?"
+    },
+    {
+      "question": "Can you name 3 decisions you made in the last month that your manager doesn't know about?",
+      "what_it_reveals": "Whether real ownership exists — decisions that don't require reporting up signal actual authority; inability to name any means the ownership is thinner than the title suggests",
+      "follow_up_if_yes": "Are those decisions consequential — do they have real stakes and real feedback loops?",
+      "follow_up_if_no": "Is this because you escalate by habit or because the org expects escalation? Both are diagnostic but require different fixes"
+    },
+    {
+      "question": "What specific feedback has been consistent across more than one manager or review cycle?",
+      "what_it_reveals": "Multi-source consistent feedback is almost always a real skill gap; inconsistent or politically-colored feedback is usually an org signal",
+      "follow_up_if_yes": "Can you identify specific behaviors a more senior PM exhibits that you don't yet have? If yes, this is a skill gap — stay and fix it",
+      "follow_up_if_no": "Has any feedback felt arbitrary or shifted depending on political context? If yes, this is an org signal, not a skill gap"
+    },
+    {
+      "question": "If you left tomorrow, what would be missing that you haven't learned yet?",
+      "what_it_reveals": "Whether the current role still has extractable value; if the answer is 'nothing significant,' staying is likely a comfort decision, not a growth decision",
+      "follow_up_if_yes": "Is that learning actually available in the current role — is there scope and opportunity to acquire it, or is it theoretically available but structurally inaccessible?",
+      "follow_up_if_no": "Have you been honest with yourself about whether you're avoiding something rather than completing something?"
+    },
+    {
+      "question": "Does your current manager understand what you want to do next, and can they describe a path to it?",
+      "what_it_reveals": "Whether effective advocacy is possible; a manager who can't articulate your path can't fight for you even if they want to",
+      "follow_up_if_yes": "Can they name two people who have made that transition — is there evidence the path is real, not aspirational?",
+      "follow_up_if_no": "Is this because you haven't told them, or because they don't have the organizational knowledge or capital to know?"
+    },
+    {
+      "question": "When did you last surprise yourself — do something in your current role you didn't know you could do?",
+      "what_it_reveals": "Whether the role is still at the growth edge; inability to recall a recent surprise is a strong signal the role is no longer developing new capabilities",
+      "follow_up_if_yes": "Is that happening regularly, or was it a one-time event 18 months ago?",
+      "follow_up_if_no": "Is the absence of surprise because the role is too comfortable, or because external factors (org structure, limited scope) removed the conditions for growth?"
+    },
+    {
+      "question": "What are the last two big decisions the team made and why?",
+      "what_it_reveals": "Whether real decision-making authority exists in the team and whether the reasoning is legible and substantive — used in interviews to evaluate whether a prospective role will make you better",
+      "follow_up_if_yes": "Were those decisions made by the PM or by a committee — who actually had the call?",
+      "follow_up_if_no": "Vague or evasive answers signal that decisions are made elsewhere; this is a strong signal to walk away from the role"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Promotion to Senior PM signals genuine seniority in the market",
+      "actual_reality": "Most companies promote to the HR definition of senior (tenure + competency signals), not the market definition (owning a problem from ambiguous to shipped with minimal oversight); the two rarely align",
+      "implication": "Don't treat a Senior PM title as evidence that you're genuinely senior — assess your capability against the market definition, not the HR band"
+    },
+    {
+      "common_belief": "Joining a high-brand company is good for your career development",
+      "actual_reality": "High-brand companies often mean becoming a cog in a large machine — reduced decision authority, slower feedback loops, and narrower scope that trades development for prestige",
+      "implication": "Evaluate roles at brand companies by the same ownership and scope criteria as any other role; brand does not substitute for development"
+    },
+    {
+      "common_belief": "An MBA accelerates PM career progression to senior levels",
+      "actual_reality": "For progression to Group PM or Director at tech companies, internal advocacy and execution track record drive promotion — not an MBA; the MBA is a legitimate filter only in specific domains",
+      "implication": "Only pursue an MBA if it provides network, legitimacy signal, or domain access genuinely unavailable through two years of craft-building at a strong company"
+    },
+    {
+      "common_belief": "Switching companies resets the clock and gives you a fresh start",
+      "actual_reality": "Problems — skill gaps, thin relationships, avoidance of hard feedback — travel with you; a new environment removes institutional context that made the problem manageable without removing the problem",
+      "implication": "Diagnose honestly whether you're leaving for organizational reasons or personal ones; fix personal issues before switching or you'll face them in a harder context"
+    },
+    {
+      "common_belief": "If you have strong performance reviews, you should be getting promoted",
+      "actual_reality": "Strong reviews without scope expansion after 18+ months often signals an org ceiling — promotions in political environments go to people with political capital, not necessarily the highest performers",
+      "implication": "Track scope expansion alongside review scores; if scope is flat or contracting despite strong reviews, treat this as an org ceiling signal and assess whether to leave"
+    },
+    {
+      "common_belief": "Ownership is a standard feature of PM roles — the title implies it",
+      "actual_reality": "Nominal ownership is common and worse than no ownership; many PM roles come with the language of ownership but without the authority to say no, make independent decisions, or own consequences",
+      "implication": "Test ownership claims during the interview process with specific behavioral questions about past decisions and consequences; don't accept ownership language without evidence"
+    },
+    {
+      "common_belief": "Larger, more established companies are better places to develop as a PM",
+      "actual_reality": "This is stage-dependent: large structured companies are better for early-career craft-building; mid-career PMs typically need the ambiguity, ownership, and high-stakes decisions that large structured environments can no longer provide",
+      "implication": "Match company stage to career stage; staying in a structured environment past your learning horizon trades growth for comfort"
+    },
+    {
+      "common_belief": "The interview process tells you whether you can do the job",
+      "actual_reality": "The interview process is designed to evaluate whether you can do the job; the candidate must independently run a parallel process to evaluate whether the job will make them better",
+      "implication": "Use the interview to ask about real decisions, ownership evidence, and growth path — treat poor answers as walk-away signals regardless of offer quality"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Relationship to the roadmap",
+      "junior_pattern": "Treats the roadmap as immutable; focuses on executing what's there",
+      "senior_pattern": "Makes the space argument — 'we shouldn't build any of these; here's the real problem' — and challenges whether the roadmap addresses the right things",
+      "why_it_matters": "Senior PMs create leverage by solving the right problem; junior PMs create activity by solving the assigned problem, regardless of whether it matters"
+    },
+    {
+      "dimension": "How conviction is built",
+      "junior_pattern": "Seeks permission from stakeholders and managers before committing to a direction",
+      "senior_pattern": "Builds conviction from user and market signals first, then brings stakeholders along",
+      "why_it_matters": "Permission-seeking makes you dependent on others' judgment rather than developing your own; conviction-building is the mechanism by which senior PMs create organizational trust"
+    },
+    {
+      "dimension": "Definition of success",
+      "junior_pattern": "Defines success as 'shipped' — the work is done when it's launched",
+      "senior_pattern": "Defines success as 'worked' — the launch is the beginning of the feedback loop, not the end of the work",
+      "why_it_matters": "Output-orientation produces activity; outcome-orientation produces impact; the market pays for impact at senior levels"
+    },
+    {
+      "dimension": "Relationship to escalations",
+      "junior_pattern": "Reacts to escalations when they arrive",
+      "senior_pattern": "Prevents escalations by reading stakeholder dynamics proactively and building capital before it's needed",
+      "why_it_matters": "Reactive escalation handling is fire-fighting; proactive stakeholder management is a force multiplier that determines who gets resources and whose concerns make it into plans"
+    },
+    {
+      "dimension": "Problem framing",
+      "junior_pattern": "Frames every problem as a feature request — takes the problem as stated and seeks to build a solution",
+      "senior_pattern": "Reframes problems upstream — questions whether the stated problem is the real problem before engaging with solutions",
+      "why_it_matters": "Building the wrong thing efficiently is worse than not building; senior PMs create more value by problem selection than by execution quality"
+    },
+    {
+      "dimension": "Relationship to eng and design",
+      "junior_pattern": "Treats eng and design as execution resources who implement PM decisions",
+      "senior_pattern": "Treats eng and design as strategic partners whose judgment actively changes the PM's judgment",
+      "why_it_matters": "Teams where PM treats partners as execution resources produce worse outcomes and have higher attrition; senior PMs compound through the team's judgment, not just their own"
+    },
+    {
+      "dimension": "Handling ambiguity",
+      "junior_pattern": "Resolves ambiguity prematurely to reduce discomfort and create the appearance of clarity",
+      "senior_pattern": "Holds ambiguity without resolving it until the evidence justifies resolution; distinguishes between productive ambiguity and unclear thinking",
+      "why_it_matters": "Premature resolution of ambiguity produces false confidence and wrong decisions; senior PMs' tolerance for ambiguity is what allows them to make better calls with incomplete information"
+    },
+    {
+      "dimension": "Activity vs. impact confusion",
+      "junior_pattern": "Confuses activity with impact — measures progress by volume of work, meetings, and output",
+      "senior_pattern": "Measures progress by change in outcomes — user behavior, business metrics, team capability",
+      "why_it_matters": "Activity is visible and socially rewarded in the short term; impact is what determines whether you get promoted and whether your career compounds"
+    }
+  ]
+}

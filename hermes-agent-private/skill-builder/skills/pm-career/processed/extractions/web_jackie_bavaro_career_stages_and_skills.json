@@ -1,0 +1,279 @@
+{
+  "source_file": "jackie_bavaro_career_stages_and_skills.txt",
+  "heuristics": [
+    {
+      "rule": "Expand scope first, demonstrate impact at that scope, then ask for the title",
+      "condition": "When pursuing promotion to the next level...",
+      "action": "...seek expanded responsibilities before the title change, not after",
+      "because": "Promotions depend on demonstrated impact at higher scope, not mastery of a competency rubric — the title follows proof, not preparation"
+    },
+    {
+      "rule": "Make your judgment visible by explicitly unpacking your decision-making process",
+      "condition": "When operating at senior PM level where trust is required for expanded influence...",
+      "action": "...articulate the alternatives you considered and why you chose a specific path, rather than just presenting conclusions",
+      "because": "Judgment is invisible unless you show your work — executives cannot calibrate trust in someone whose reasoning they cannot observe"
+    },
+    {
+      "rule": "Connect your work to company strategy explicitly, never assume the link is obvious",
+      "condition": "When presenting plans or requesting resources at senior levels...",
+      "action": "...articulate why your area matters at the company level in every significant communication",
+      "because": "A senior PM who cannot explain their area's strategic relevance will be overlooked in resource allocation, regardless of execution quality"
+    },
+    {
+      "rule": "Treat cross-stage transitions as fundamentally different jobs, not faster execution of the current job",
+      "condition": "When moving from PM2 to Senior PM, or from Senior PM to Director...",
+      "action": "...deliberately shift focus to the new stage's responsibilities even if it means appearing temporarily less competent",
+      "because": "Cross-stage promotions require different work, not better work — attempting to get promoted by excelling at Stage 1 work will not unlock Stage 2 advancement"
+    },
+    {
+      "rule": "Use 360-degree feedback as a proxy for collaborative reputation before seeking scope expansion",
+      "condition": "When assessing readiness for senior-level expanded influence...",
+      "action": "...solicit feedback on whether peers and stakeholders view you as constructive, humble, and genuinely collaborative",
+      "because": "Executives pattern-match heavily on collaboration signals when deciding who gets expanded scope — defensive or self-interested reputations block advancement regardless of output quality"
+    },
+    {
+      "rule": "Validate ideas with real people before committing resources, not after",
+      "condition": "When evaluating new product opportunities or strategic bets...",
+      "action": "...compress the feedback loop by testing early rather than building before validating",
+      "because": "Early validation can reduce development time from six months to two weeks by eliminating work on ideas that would have failed anyway"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Current career stage (execution vs. strategy vs. org leadership)",
+      "why_it_matters": "The definition of 'great' changes entirely at each stage — skills that earned promotion in Stage 1 are insufficient and potentially irrelevant for Stage 2 advancement",
+      "how_to_assess": "Determine whether your current role requires you to execute against a defined scope (Stage 1), define the scope and make the case for it (Stage 2), or build and lead a team beyond your individual output (Stage 3)",
+      "weight": "high"
+    },
+    {
+      "factor": "Scope of current responsibilities relative to target level",
+      "why_it_matters": "Operating at the wrong scope — even with technical competence on every listed skill — will block promotion; scope must precede title",
+      "how_to_assess": "Compare the areas you are currently defining and owning versus areas assigned to you; assess whether you are identifying opportunities or executing against identified ones",
+      "weight": "high"
+    },
+    {
+      "factor": "Visibility of your judgment to decision-makers",
+      "why_it_matters": "Sound judgment that is not demonstrated explicitly cannot build trust, which is required for expanded autonomy and scope at senior levels",
+      "how_to_assess": "Audit recent decisions: did you share your reasoning framework, alternatives considered, and rationale — or just the outcome? Do executives know how you think?",
+      "weight": "high"
+    },
+    {
+      "factor": "Organizational dynamics literacy",
+      "why_it_matters": "What actually matters to stakeholders often differs from what they say matters; understanding this gap determines whether you can move work through the organization",
+      "how_to_assess": "Identify key stakeholders and gatekeepers; assess whether you know their actual priorities, resistance triggers, and what scrappiness is acceptable versus what violates unspoken rules",
+      "weight": "high"
+    },
+    {
+      "factor": "Cross-functional collaborative reputation",
+      "why_it_matters": "Leaders who are viewed as defensive or self-interested will not be given expanded scope regardless of execution quality; leaders actively want to work with certain PMs and merely tolerate others",
+      "how_to_assess": "Collect 360-degree feedback specifically on whether peers describe you as constructive, humble, and collaborative in escalations and disagreements",
+      "weight": "high"
+    },
+    {
+      "factor": "Ability to articulate an inspiring vision",
+      "why_it_matters": "A senior PM who cannot articulate why their area matters at the company level will be deprioritized in resource allocation conversations",
+      "how_to_assess": "Test whether you can explain your product area's connection to company strategy in a way that energizes listeners — not just informs them",
+      "weight": "medium"
+    },
+    {
+      "factor": "Recruiting capability",
+      "why_it_matters": "At senior levels, PMs are expected to help grow the team; inability to write job descriptions, pitch candidates, or conduct effective interviews caps team growth and signals limited senior readiness",
+      "how_to_assess": "Assess whether you have been involved in hiring, whether you can write a compelling job description, and whether you can close candidates on your team's vision",
+      "weight": "medium"
+    },
+    {
+      "factor": "Proactive information sharing behavior",
+      "why_it_matters": "Avoiding surprises is a trust-building mechanism — executives who are caught off guard lose confidence in PMs regardless of outcomes",
+      "how_to_assess": "Audit whether you proactively share the right information up and down the chain, and whether you flag problems early rather than surfacing them at crisis point",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Focusing on excelling at current-stage execution to earn next-stage promotion",
+      "unstated_consequence": "You hit a ceiling at PM2 because Stage 2 advancement requires doing fundamentally different work — being excellent at Stage 1 does not create a path forward, it creates a very comfortable dead end",
+      "who_it_affects": "High-performing PM2s who receive strong reviews but are never offered Senior PM scope expansion"
+    },
+    {
+      "choice": "Pursuing a cross-stage transition (e.g., PM2 to Senior PM)",
+      "unstated_consequence": "You will appear less competent for a period before becoming more competent at the new level, because new responsibilities pull attention from current execution strengths",
+      "who_it_affects": "PMs who have built their identity and reputation around execution excellence and are uncomfortable with temporary perceived regression"
+    },
+    {
+      "choice": "Presenting conclusions without showing your reasoning process",
+      "unstated_consequence": "Executives cannot assess your judgment and therefore cannot extend trust — technically correct decisions made through invisible reasoning do not build the credibility required for expanded scope",
+      "who_it_affects": "Senior PMs who are analytically strong but communicate in output-only mode"
+    },
+    {
+      "choice": "Relying on official processes to understand how work gets done",
+      "unstated_consequence": "You miss the informal stakeholder map — who the actual gatekeepers are, what triggers their resistance, and when scrappiness serves the mission better than process compliance",
+      "who_it_affects": "PMs transitioning from structured large-company environments or those newer to organizational politics"
+    },
+    {
+      "choice": "Building deep competency in listed skills on a career ladder rubric",
+      "unstated_consequence": "You may achieve full rubric compliance and still not be promoted because the actual driver of promotion is demonstrated impact at expanded scope — not skill checklist completion",
+      "who_it_affects": "PMs who optimize for visible, measurable skill development over scope ownership and strategic influence"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating a cross-stage transition like a within-stage promotion",
+      "why_it_happens": "Within-stage promotions are visible and reward the same behaviors at higher intensity — the pattern feels like it should continue to work, but cross-stage transitions require a categorical shift in what you do, not just how well you do it",
+      "consequence": "PMs remain stuck at PM2 or Senior PM indefinitely, receiving positive feedback on execution while never being considered for the next level because they are not doing the next level's work",
+      "warning_signs": [
+        "Strong performance reviews paired with no scope expansion offers",
+        "Feedback focused on execution quality rather than strategic thinking or team influence"
+      ]
+    },
+    {
+      "pattern": "Assuming strategic relevance of your work is obvious to executives",
+      "why_it_happens": "PMs close to their work understand the connection intuitively and underestimate the cognitive distance between their daily context and an executive's view across the organization",
+      "consequence": "The product area gets deprioritized in resource allocation despite solid execution, and the PM is seen as lacking strategic thinking rather than lacking communication",
+      "warning_signs": [
+        "Repeatedly not receiving resources you believe your area deserves",
+        "Executives asking basic questions about why your area matters in review meetings"
+      ]
+    },
+    {
+      "pattern": "Confusing competency rubric mastery with promotion readiness",
+      "why_it_happens": "Career ladders present skills as a checklist, implying that checking every box earns advancement — the actual mechanism (scope, autonomy, impact) is not explicitly stated in most rubrics",
+      "consequence": "PMs invest time developing skills that are necessary but not sufficient, while neglecting the scope expansion that actually drives promotion decisions",
+      "warning_signs": [
+        "PM can cite their progress against every listed competency but has not taken on new areas of ownership",
+        "Preparation for promotion conversations focused entirely on skills demonstrated rather than impact at expanded scope"
+      ]
+    },
+    {
+      "pattern": "Hiding reasoning and only presenting conclusions",
+      "why_it_happens": "PMs are rewarded early in their career for having answers and being decisive — the habit of presenting clean conclusions persists into stages where showing the reasoning process is what actually builds trust",
+      "consequence": "Executives cannot calibrate trust in the PM's judgment, so they hesitate to extend expanded scope or autonomy even when outcomes have been good",
+      "warning_signs": [
+        "Leaders frequently asking follow-up questions about how you arrived at decisions",
+        "Being told to communicate more proactively or to bring leadership in earlier"
+      ]
+    },
+    {
+      "pattern": "Building from solutions rather than starting from goals",
+      "why_it_happens": "Feature-think is intuitive and concrete — it is easier to imagine a solution than to rigorously define the goal the solution should serve",
+      "consequence": "Resources are committed to building things that fail because the goal was never validated, leading to wasted development cycles that could have been caught with early testing",
+      "warning_signs": [
+        "Planning discussions that jump to what to build before defining what success looks like",
+        "Validation happening after significant development investment rather than before"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Are you currently executing against scope that was defined for you, or are you identifying and defining new areas of opportunity yourself?",
+      "what_it_reveals": "Which career stage you are actually operating in, regardless of your title — Stage 1 executes against defined scope, Stage 2 defines the scope",
+      "follow_up_if_yes": "If defining your own scope: are you also making the case for why it is the right area, or are you still seeking approval for the direction?",
+      "follow_up_if_no": "If executing against defined scope: is this because the organization hasn't given you the opportunity, or because you haven't sought it out?"
+    },
+    {
+      "question": "When you make a significant decision, do you share the alternatives you considered and the reasoning behind your choice — or do you present the conclusion?",
+      "what_it_reveals": "Whether you are actively building or passively assuming trust — invisible judgment cannot generate the credibility required for senior-level autonomy",
+      "follow_up_if_yes": "If sharing reasoning: are decision-makers able to see your judgment clearly, or is the framing still output-focused?",
+      "follow_up_if_no": "If presenting conclusions only: have you received feedback that leaders want to be brought in earlier or want to understand your thinking process?"
+    },
+    {
+      "question": "Can you name the key stakeholders and gatekeepers in your organization and articulate what they actually care about — as opposed to what they say they care about?",
+      "what_it_reveals": "Whether you have developed organizational dynamics literacy, which is required at Stage 2 and above to move work through the organization",
+      "follow_up_if_yes": "If yes: are you actively using this understanding to get ahead of resistance and build coalitions before escalations?",
+      "follow_up_if_no": "If no: are you relying on official processes as your primary model for how decisions get made?"
+    },
+    {
+      "question": "If asked in an executive meeting, could you articulate why your product area matters to the company's strategy in a way that is both accurate and energizing?",
+      "what_it_reveals": "Whether you have done the strategic alignment work required at senior levels — PMs who cannot answer this are invisible in resource allocation decisions",
+      "follow_up_if_yes": "If yes: have you actually communicated this in contexts where it would be heard, or only in your own planning?",
+      "follow_up_if_no": "If no: is this a gap in your thinking or a gap in your communication of thinking you've already done?"
+    },
+    {
+      "question": "Have you collected 360-degree feedback recently, and do the people you escalate with or disagree with describe you as constructive and collaborative?",
+      "what_it_reveals": "Your collaborative reputation, which executives use heavily as a signal for who gets expanded scope — being tolerated versus being actively sought out is a significant career differentiator",
+      "follow_up_if_yes": "If positive reputation: are leaders actively pulling you into cross-functional work, or is the collaboration reactive only?",
+      "follow_up_if_no": "If reputation is unclear or negative: is the feedback about style (defensiveness, self-interest) or substance (disagreement on direction)?"
+    },
+    {
+      "question": "Are you preparing for promotion by developing skills, or by seeking expanded scope and demonstrating impact at that scope?",
+      "what_it_reveals": "Whether you understand the actual mechanism of promotion — skill development is necessary but not sufficient; scope and demonstrated impact are what actually drive promotion decisions",
+      "follow_up_if_yes": "If pursuing scope: have you made the case to your manager for why you should own expanded areas, and what was the response?",
+      "follow_up_if_no": "If focused on skills: do you know which specific scope expansions would be available to you if you sought them?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You get promoted by mastering every skill listed on the career ladder rubric",
+      "actual_reality": "Promotions depend on scope, autonomy, and impact — delivering impactful work at higher levels. You can be technically competent on every listed competency and still not get promoted if you are operating at the wrong scope",
+      "implication": "PMs should pursue expanded scope of ownership first, demonstrate impact at that scope, and then request the title — not reverse-engineer the rubric"
+    },
+    {
+      "common_belief": "Being excellent at execution will eventually earn a promotion to Senior PM",
+      "actual_reality": "Mastery of Stage 1 skills creates a ceiling at PM2 — cross-stage promotion to Senior PM requires doing fundamentally different work (identifying opportunities and making the case for them), not executing faster or better",
+      "implication": "PMs approaching PM2 ceiling need to deliberately start doing Stage 2 work (defining scope, setting goals) even before being given permission or the title"
+    },
+    {
+      "common_belief": "Strategic thinking means having good ideas about product direction",
+      "actual_reality": "Strategic thinking for PMs specifically means starting from goals rather than solutions, and validating ideas with real people before committing resources — the greatest product thinkers do not get ideas right on the first try, they test and iterate",
+      "implication": "PMs should compress validation cycles as early as possible rather than building confidence through internal reasoning — external feedback before building is a strategic skill, not a sign of uncertainty"
+    },
+    {
+      "common_belief": "If you demonstrate sound judgment through good outcomes, executives will extend trust and expand your scope",
+      "actual_reality": "Judgment is invisible unless you show your work — executives cannot calibrate trust in reasoning they cannot observe, so good outcomes from opaque processes do not reliably build the credibility required for advancement",
+      "implication": "Senior PMs must explicitly unpack their decision-making frameworks, surface alternatives considered, and share reasoning proactively — not just deliver results"
+    },
+    {
+      "common_belief": "Understanding how your organization works means knowing the official processes",
+      "actual_reality": "Work actually gets done through informal stakeholder dynamics — what gatekeepers actually care about (often different from what they say), which resistance triggers to avoid, and when rule-bending serves the mission better than process adherence",
+      "implication": "Senior PMs need to build an explicit map of informal organizational dynamics, not just the org chart and process documentation"
+    },
+    {
+      "common_belief": "Cross-stage career transitions feel like natural progressions where you become more capable",
+      "actual_reality": "Cross-stage transitions feel like stepping backward initially — new responsibilities pull attention from current role execution, causing a period of appearing less competent before becoming more competent at the new level",
+      "implication": "PMs should expect and plan for a performance dip during cross-stage transitions rather than interpreting it as evidence they made the wrong move"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Scope ownership",
+      "junior_pattern": "Receives a defined area and executes against it — success means delivering well within the assigned boundaries",
+      "senior_pattern": "Identifies new opportunities themselves, defines the area, and makes the case for why it is the right area to pursue",
+      "why_it_matters": "Stage 2 advancement is gated entirely on scope definition capability — PMs who only execute against assigned scope will not be considered for Senior PM regardless of execution quality"
+    },
+    {
+      "dimension": "Goal orientation",
+      "junior_pattern": "Hits goals that are set for them; asks 'what do we need to build?' and executes toward a feature or solution",
+      "senior_pattern": "Sets goals, not just hits them; starts from the goal and works backward to solutions, validating ideas before committing resources",
+      "why_it_matters": "Feature-think leads to building the wrong things; goal-first thinking leads to validated bets — the difference compounds across a product's lifecycle"
+    },
+    {
+      "dimension": "Trust-building approach",
+      "junior_pattern": "Presents conclusions and outcomes, assuming good results will speak for themselves and build credibility",
+      "senior_pattern": "Explicitly unpacks decision-making frameworks, surfaces alternatives considered, and shares reasoning proactively — shows the work, not just the output",
+      "why_it_matters": "Judgment that is invisible cannot generate trust; executives extend scope and autonomy based on confidence in reasoning, not just track record of outcomes"
+    },
+    {
+      "dimension": "Organizational navigation",
+      "junior_pattern": "Relies on official processes as the model for how decisions get made and work moves through the organization",
+      "senior_pattern": "Maps informal stakeholder dynamics — understands what key stakeholders actually care about (vs. what they say), identifies gatekeepers, and knows when scrappiness serves the mission better than process compliance",
+      "why_it_matters": "Work moves through organizations via informal dynamics as much as formal processes — PMs who only understand the official map will be slow and frequently blocked"
+    },
+    {
+      "dimension": "Promotion strategy",
+      "junior_pattern": "Prepares for promotion by developing skills and achieving rubric competencies, then asks for the title",
+      "senior_pattern": "Seeks expanded scope first, demonstrates impact at that scope, then asks for the title — understands that scope and impact drive promotion, not skill checklist completion",
+      "why_it_matters": "The actual mechanism of promotion is misunderstood by many PMs — optimizing for skill rubrics rather than scope expansion leads to competent but stalled careers"
+    },
+    {
+      "dimension": "Stakeholder relationships",
+      "junior_pattern": "Works with stakeholders transactionally — coordinates when needed, manages escalations when they occur",
+      "senior_pattern": "Builds relationships across the company proactively so that leaders actively want to collaborate during escalations — not just tolerate the interaction",
+      "why_it_matters": "Being actively sought versus tolerated is a significant differentiator in who gets expanded scope and resource allocation in cross-functional decisions"
+    },
+    {
+      "dimension": "Validation timing",
+      "junior_pattern": "Builds confidence internally through analysis and reasoning, then commits to building — validation happens after significant development investment",
+      "senior_pattern": "Validates ideas with real people before committing resources — compresses the feedback loop to test before building rather than building before testing",
+      "why_it_matters": "Early validation can reduce development time from six months to two weeks by eliminating work on ideas that would have failed — the compounding cost of late validation is enormous"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "source_file": "rankings_funding_program_fit.txt",
+  "heuristics": [
+    {
+      "rule": "A top-10 program with a poor advisor match produces worse outcomes than a top-30 program with an excellent advisor match",
+      "condition": "When choosing between a higher-ranked program with weak faculty fit and a lower-ranked program with strong faculty fit",
+      "action": "Prioritize advisor match and research alignment over raw program ranking",
+      "because": "PhD outcomes are advisor-specific, not institution-wide — the advisor's placement record, grant funding, and mentorship quality determine your trajectory more than the program's aggregate rank"
+    },
+    {
+      "rule": "Verify an advisor's active grant status before accepting any PhD offer",
+      "condition": "When evaluating a PhD offer from a specific lab or advisor",
+      "action": "Directly confirm whether the advisor has active, funded grants before committing",
+      "because": "An advisor with no active grants means no RA funding, no research budget, and potentially no graduation support — your stipend and research progress are contingent on their funding pipeline"
+    },
+    {
+      "rule": "If a PhD admit is achievable, paying for an unfunded MS is rarely the better financial or career decision",
+      "condition": "When an international student is deciding between an unfunded MS and a funded PhD for which they are qualified",
+      "action": "Pursue the funded PhD over the unfunded MS",
+      "because": "A funded PhD costs zero tuition and pays a stipend over 5–6 years; an unfunded MS costs $150,000–$200,000 with no guaranteed employment, and the PhD often produces better long-term outcomes including immigration pathways"
+    },
+    {
+      "rule": "Ask for placement data for the last 5–10 cohorts, not just stated program reputation",
+      "condition": "When evaluating whether a program matches your specific career target (industry vs. academia vs. home country)",
+      "action": "Request actual alumni placement records from the department directly",
+      "because": "A top-5 program whose graduates mostly go into academia is structurally misaligned with an industry career goal — prestige does not transfer across career tracks the same way"
+    },
+    {
+      "rule": "An advisor with 15+ PhD students cannot provide adequate mentorship to any individual student",
+      "condition": "When assessing a potential advisor's capacity to support your development",
+      "action": "Evaluate advisor-to-student ratio and factor it as a proxy for mentorship quality",
+      "because": "Mentorship is time-constrained — a highly productive advisor with an overloaded lab may produce publications but not the personalized guidance that determines student success and placement"
+    },
+    {
+      "rule": "For OPT job searches, program location is a structural career variable, not just a lifestyle preference",
+      "condition": "When an international student plans to work in the US post-graduation and is comparing programs in different geographic markets",
+      "action": "Weight Bay Area or NYC program locations more heavily due to recruiting density and network access",
+      "because": "OPT has a hard deadline, and proximity to employer concentrations directly determines access to interviews, networking events, and recruiting pipelines during a time-constrained job search"
+    },
+    {
+      "rule": "Rankings matter for academic hiring and elite firm pipelines, but not for most industry careers",
+      "condition": "When a student is deciding how much weight to give program prestige in their application strategy",
+      "action": "Assess rankings against your specific career target before treating them as a primary filter",
+      "because": "Hiring committees at research universities filter by program pedigree; McKinsey and Goldman maintain target school lists — but most industry employers care about skills, projects, and portfolio, not rank-12 vs. rank-25 distinctions"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor's placement record",
+      "why_it_matters": "This is the single most predictive variable for academic career outcomes — it tells you what the advisor has actually delivered for prior students, not what they promise",
+      "how_to_assess": "Ask the advisor directly where their last 5–10 PhD graduates are now; cross-check LinkedIn profiles of former lab members; look for first-author publications from students",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor's active grant funding",
+      "why_it_matters": "Determines whether RA funding is available, whether research resources exist, and whether the advisor is actively embedded in the research community — loss of grant can eliminate stipend",
+      "how_to_assess": "Search NSF, NIH, or relevant agency grant databases for the advisor's name; ask current lab members directly; ask the advisor about funding horizon",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding structure and guarantee period",
+      "why_it_matters": "Determines whether a PhD is a zero-cost credential with income or a financial liability; year-by-year funding is a trap vs. multi-year guaranteed packages",
+      "how_to_assess": "Ask whether the stipend is guaranteed for 4–5 years regardless of advisor grant status, or contingent on annual renewal; get the answer in writing in the offer letter",
+      "weight": "high"
+    },
+    {
+      "factor": "Program location relative to target job market",
+      "why_it_matters": "Structural proximity to employers, recruiting pipelines, and networking events affects career outcomes independently of program quality — especially critical during time-limited OPT",
+      "how_to_assess": "Identify where your target employers are headquartered and where they recruit actively; check whether the program has formal recruiting relationships with those employers",
+      "weight": "high"
+    },
+    {
+      "factor": "Alumni outcomes in your specific career track",
+      "why_it_matters": "A program's prestige does not uniformly transfer across career tracks — a top academic program may have weak industry placement and vice versa",
+      "how_to_assess": "Request placement data from the department for the last 5–10 cohorts; sort by career track (academic, industry, government, return to home country) to find the relevant subset",
+      "weight": "high"
+    },
+    {
+      "factor": "Time-to-degree",
+      "why_it_matters": "Average PhD completion of 4 years vs. 7 years is a multi-year income and opportunity cost difference — it also signals program and advising quality",
+      "how_to_assess": "Ask the department for median time-to-degree data; ask current students how long they expect to take and why; compare against field norms",
+      "weight": "high"
+    },
+    {
+      "factor": "Program ranking",
+      "why_it_matters": "Matters specifically for academic job market first-round filtering and for elite firm recruiting pipelines; matters less for most industry careers and PhD research outcomes",
+      "how_to_assess": "Identify whether your career target uses program prestige as a filter (academic hiring, consulting/finance pipelines) or evaluates on skills and portfolio (most tech and applied industry roles)",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor-to-student ratio",
+      "why_it_matters": "Determines the quality of mentorship you will realistically receive — a productive but overloaded advisor may not invest time in your development",
+      "how_to_assess": "Count current PhD students in the lab; ask current students how often they meet with the advisor and whether they feel supported",
+      "weight": "medium"
+    },
+    {
+      "factor": "Department culture and collaboration",
+      "why_it_matters": "Affects learning environment, peer network quality, and whether you will have collaborative support during the degree — poor culture increases attrition and isolation",
+      "how_to_assess": "Assess seminar attendance and faculty-student interaction during campus visits; ask current students whether faculty collaborate across labs and whether the student community is collegial",
+      "weight": "medium"
+    },
+    {
+      "factor": "Cost of living relative to stipend",
+      "why_it_matters": "The real value of a stipend varies dramatically by location — $30,000 in Pittsburgh vs. $30,000 in San Francisco represents a very different standard of living and savings rate",
+      "how_to_assess": "Use cost-of-living indices to normalize stipend amounts across program locations; ask current students about financial comfort and whether the stipend is livable",
+      "weight": "medium"
+    },
+    {
+      "factor": "International student support infrastructure",
+      "why_it_matters": "Determines access to visa advising, immigration guidance, English language resources, and community — affects wellbeing and practical success for international students",
+      "how_to_assess": "Evaluate the university's ISSS office capacity and responsiveness; ask about OPT and CPT advising; assess the diversity and size of the international graduate student community",
+      "weight": "medium"
+    },
+    {
+      "factor": "Name recognition in home country market",
+      "why_it_matters": "For students returning home, institutional brand recognition may matter more than subfield ranking or even research quality in local hiring decisions",
+      "how_to_assess": "Research how the institution is perceived in your home country's job market; ask professionals in your home country which US universities they recognize and respect",
+      "weight": "medium"
+    },
+    {
+      "factor": "Research fit with specific faculty",
+      "why_it_matters": "An excellent advisor match in a lower-ranked program outperforms a poor advisor match in a higher-ranked program — research direction alignment determines what you produce and who you become",
+      "how_to_assess": "Read the advisor's recent papers and grants; assess whether your research questions align with their active projects; ask whether they are taking students in your area",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a PhD offer without verifying the advisor's grant funding status",
+      "unstated_consequence": "Stipend may disappear mid-program if the advisor's grant ends, leaving you without RA funding and potentially without a clear path to graduation",
+      "who_it_affects": "International students most severely — they cannot easily switch to federal loans or part-time work without visa complications, and losing funding mid-PhD can force program abandonment"
+    },
+    {
+      "choice": "Paying for an unfunded professional MS at a prestigious institution",
+      "unstated_consequence": "You incur $150,000–$200,000 in costs with no guaranteed employment outcome, while a funded PhD would have paid you a stipend and produced a higher credential with better immigration options",
+      "who_it_affects": "International students who are PhD-qualified but choose the MS path for speed or perceived prestige — they trade long-term financial and career advantage for a shorter credential with higher upfront cost"
+    },
+    {
+      "choice": "Choosing a highly ranked program in a non-hub location",
+      "unstated_consequence": "Structural access to internships, recruiting pipelines, and networking events is limited — during OPT, a hard job search deadline compounds this disadvantage",
+      "who_it_affects": "International students targeting US tech or finance industry jobs, for whom OPT timing and employer proximity are mission-critical"
+    },
+    {
+      "choice": "Optimizing for overall program prestige rather than subfield or advisor reputation",
+      "unstated_consequence": "You may end up in a prestigious program that has weak faculty in your specific research area, limited placement into your target career track, and an advisor with no investment in your development",
+      "who_it_affects": "Students who assume program-level prestige translates uniformly to individual-level outcomes — particularly first-generation grad school applicants without insider knowledge"
+    },
+    {
+      "choice": "Joining a high-output lab with an advisor who has 15+ PhD students",
+      "unstated_consequence": "You receive strong brand association with the advisor's reputation but potentially minimal individual mentorship — you may produce publications but lack the career guidance and advocacy that drives placement",
+      "who_it_affects": "Students who need more active mentorship due to being earlier in their research development or navigating an unfamiliar academic culture as an international student"
+    },
+    {
+      "choice": "Accepting a PhD offer without visiting or interviewing current students",
+      "unstated_consequence": "You commit to a 5–6 year relationship with an advisor and department culture based on incomplete information — problems with advising style, lab dynamics, or departmental support that current students would have revealed remain invisible until you are already enrolled",
+      "who_it_affects": "All PhD applicants, but especially international students who face higher switching costs if the program turns out to be a poor fit"
+    },
+    {
+      "choice": "Applying only to top-10 programs without safety options",
+      "unstated_consequence": "Top-10 rejection across the board yields zero admissions — applicants with no safety schools end up with no graduate education, often a full cycle lost",
+      "who_it_affects": "High-achieving students who conflate their qualifications with admission probability and underestimate selectivity variance"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying only to prestige programs without considering faculty match or building a safety list",
+      "why_it_happens": "Rankings are highly visible and socially validated — students use them as a proxy for quality because evaluating advisor fit requires deeper research that feels uncertain",
+      "consequence": "Rejection across all applications with no admissions to fall back on — a full cycle lost and delayed career entry by at least one year",
+      "warning_signs": [
+        "Application list consists entirely of top-10 programs across multiple fields with no safety options",
+        "Student cannot name specific faculty they want to work with at each program — only the program's rank"
+      ]
+    },
+    {
+      "pattern": "Joining a lab without verifying the advisor's active grant status",
+      "why_it_happens": "Students assume that a funded PhD offer implies stable long-term funding — they don't know to ask whether that funding is advisor-contingent or institutionally guaranteed",
+      "consequence": "Stipend disappears mid-program when advisor's grant ends, leaving the student without income, research resources, or clear graduation support",
+      "warning_signs": [
+        "Offer letter does not specify the number of years of guaranteed funding",
+        "Advisor deflects or gives vague answers when asked about current grant status and timeline"
+      ]
+    },
+    {
+      "pattern": "Paying for an unfunded MS when a funded PhD is achievable",
+      "why_it_happens": "Students underestimate the financial magnitude of the difference and overestimate the speed advantage of the MS — they may also lack mentors who have modeled the PhD path",
+      "consequence": "$150,000–$200,000 in debt with uncertain employment outcomes, versus a funded PhD that would have provided income, a stronger credential, and better immigration pathways",
+      "warning_signs": [
+        "Student is academically competitive for PhD programs but is only applying to MS programs",
+        "Student's rationale for MS over PhD is primarily based on duration without full accounting of financial cost difference"
+      ]
+    },
+    {
+      "pattern": "Accepting a PhD offer without visiting or interviewing current students and the advisor",
+      "why_it_happens": "Visiting feels optional when the program name is prestigious or when logistics are difficult — students underestimate the importance of advisor relationship quality and lab culture",
+      "consequence": "Students discover advising mismatches, dysfunctional lab dynamics, or inadequate support only after enrollment — switching programs has high costs including lost time and visa complications for international students",
+      "warning_signs": [
+        "Student is ready to accept an offer without ever speaking directly to current PhD students in the lab",
+        "Student has never had a substantive conversation with the potential advisor about research expectations and funding"
+      ]
+    },
+    {
+      "pattern": "Optimizing for overall program ranking without checking alumni outcomes in your specific career target",
+      "why_it_happens": "Rankings feel like a comprehensive quality signal — students assume a top program produces good outcomes across all career paths, not realizing that placement is track-specific",
+      "consequence": "Students end up in programs well-suited for academic careers when they want industry roles, or with advisors whose networks don't connect to their target employers",
+      "warning_signs": [
+        "Student cannot cite where the last three cohorts from a specific program placed in their target career track",
+        "Student's career goal is industry but they are primarily evaluating programs on research output metrics"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your specific career target after graduation — academic research, industry, or returning to your home country?",
+      "what_it_reveals": "This changes which decision factors are most important — rankings matter more for academic hiring and elite firm pipelines, skills and location matter more for industry, and institutional brand recognition matters more for home country return",
+      "follow_up_if_yes": "If academic: ask which specific subfield and what type of institution (R1, teaching-focused, etc.) — this determines how much program prestige within the subfield matters",
+      "follow_up_if_no": "If industry or home country: shift evaluation weight toward alumni placement data, program location, and institutional name recognition in the target market"
+    },
+    {
+      "question": "Do you have a specific faculty member at each program you want to work with, or are you applying to the program generally?",
+      "what_it_reveals": "Students applying to programs without specific advisor targets are likely to end up advisor-less or with poor matches — this is a core risk factor for PhD success",
+      "follow_up_if_yes": "If yes: follow up by asking whether that faculty member is actively taking students, has current funding, and what their advising style and placement record look like",
+      "follow_up_if_no": "If no: the student needs to research faculty before finalizing their program list — applying without faculty targets is a structural mistake for PhD applicants"
+    },
+    {
+      "question": "Is the PhD offer you received funded with a guaranteed stipend for multiple years, or is funding contingent on annual review or advisor grant status?",
+      "what_it_reveals": "Distinguishes between financially secure PhD funding and precarious year-by-year funding that can disappear — critical for international students who cannot easily bridge funding gaps",
+      "follow_up_if_yes": "If guaranteed: assess the stipend level against cost of living in the program location to determine real quality of life",
+      "follow_up_if_no": "If contingent: treat this as a significant risk factor and investigate the advisor's grant pipeline depth before accepting"
+    },
+    {
+      "question": "Have you spoken directly with current PhD students in the lab or program you are considering?",
+      "what_it_reveals": "Current students reveal the reality of advising quality, lab culture, and departmental support that official program materials conceal — absence of this step means the student is deciding on incomplete information",
+      "follow_up_if_yes": "If yes: ask what specific things they learned that changed or confirmed their decision — probe for advisor responsiveness, lab dynamics, and graduation timelines",
+      "follow_up_if_no": "If no: flag this as a critical information gap that should be addressed before acceptance, regardless of program prestige"
+    },
+    {
+      "question": "Do you know where graduates from your target program have actually gone in the last 5 years, broken down by career track?",
+      "what_it_reveals": "Alumni placement data reveals whether the program's prestige actually converts into outcomes in your specific target career — without this, ranking-based decisions are based on assumed rather than demonstrated outcomes",
+      "follow_up_if_yes": "If yes: assess whether the distribution of placements matches your career target and whether the program has a track record in your specific area",
+      "follow_up_if_no": "If no: the student should request this data from the department before making a decision — if the department cannot or will not provide it, that itself is diagnostic"
+    },
+    {
+      "question": "Are you considering an unfunded MS because you believe it will be faster or more accessible than a funded PhD?",
+      "what_it_reveals": "Reveals whether the student has fully modeled the financial cost difference and whether they are PhD-eligible but underestimating their competitiveness for funded programs",
+      "follow_up_if_yes": "If yes: walk through the full cost comparison including tuition, living costs, and opportunity cost — compare against the funded PhD stipend and credential value over 5–6 years",
+      "follow_up_if_no": "If no: assess whether their reasons for the MS route are career-track specific (e.g., industry pivot requiring professional degree) or based on other assumptions worth examining"
+    },
+    {
+      "question": "If you plan to work in the US after graduation, how does the location of each program you are considering relate to your target employer geography?",
+      "what_it_reveals": "Reveals whether the student has accounted for the structural career advantage of program location during OPT — a student at a remote campus faces a harder job search with the same hard deadline",
+      "follow_up_if_yes": "If near target employers: assess whether the program has formal recruiting relationships with those employers or relies on students self-navigating into their networks",
+      "follow_up_if_no": "If far from target employers: the student needs to explicitly plan for how they will access interviews and networking during a time-limited OPT period from a non-hub location"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A higher-ranked program always produces better career outcomes",
+      "actual_reality": "Program ranking is advisor-specific in its impact — a top-10 program with a poor advisor match produces worse outcomes than a top-30 program with an excellent advisor match. Rankings measure aggregate institutional metrics, not individual experience quality.",
+      "implication": "Evaluate programs at the advisor level, not the institution level — research the specific faculty member's placement record, grant funding, and advising style rather than stopping at department rank"
+    },
+    {
+      "common_belief": "All funded PhD programs provide stable multi-year financial support",
+      "actual_reality": "Some PhD programs admit students with funding that is contingent on the advisor's grant status — if the grant ends, so does the stipend. Others admit unfunded students hoping they will find support later. Not all PhD offers are equal in financial security.",
+      "implication": "Read offer letters carefully for funding guarantee language; ask explicitly whether funding is institutionally guaranteed for a set number of years or dependent on advisor grants; verify this before accepting"
+    },
+    {
+      "common_belief": "Rankings matter equally across all career paths",
+      "actual_reality": "Rankings matter specifically for academic job market hiring and for elite consulting and finance firm recruiting pipelines. For most industry careers, employers evaluate skills, portfolio, and projects — rank-12 vs. rank-25 distinctions are largely invisible to non-elite industry employers.",
+      "implication": "Calibrate how much weight you give rankings to your specific career target — if you are going into tech or applied industry roles, redirect evaluation effort from rankings to alumni placements, program location, and research fit"
+    },
+    {
+      "common_belief": "An unfunded MS from a prestigious institution is worth the cost because the brand name will pay off",
+      "actual_reality": "An unfunded 2-year MS can cost $150,000–$200,000 in total. Employers in most industry fields evaluate skills and projects, not prestige brand. A well-structured MS from a regional university with strong industry connections often produces better employment outcomes than an unfunded prestigious MS.",
+      "implication": "Evaluate the MS decision as a financial investment with explicit ROI analysis — factor in total cost, expected salary premium if any, time to break even, and compare honestly against the funded PhD alternative if eligible"
+    },
+    {
+      "common_belief": "Program prestige translates uniformly into good placement across career tracks",
+      "actual_reality": "A top-5 program whose graduates mostly go into academia is structurally misaligned with an industry career goal. Placement records are track-specific — prestige does not automatically translate into strong industry or home-country placement.",
+      "implication": "Check actual alumni outcomes in your specific career track before treating overall prestige as a reliable signal of fit for your goals"
+    },
+    {
+      "common_belief": "Program location is a lifestyle factor secondary to academic quality",
+      "actual_reality": "Program location is a structural career variable — Bay Area and NYC programs have materially richer recruiting pipelines, internship access, and networking density. For international students on OPT with a hard job search deadline, geographic proximity to employers is a concrete career advantage.",
+      "implication": "Treat program location as a career factor with measurable impact on job search outcomes, not just a quality-of-life consideration — especially weight it for OPT job searches in time-sensitive competitive markets"
+    },
+    {
+      "common_belief": "International students can access the same financial aid and funding options as domestic students for MS programs",
+      "actual_reality": "International students cannot access US federal financial aid. Fellowships for international MS students are limited. The unfunded MS represents a full out-of-pocket cost that domestic students can partially offset through federal loans and aid.",
+      "implication": "International students must treat unfunded MS costs as a full cash investment with no federal aid backstop — this makes the funded PhD vs. unfunded MS calculus even more asymmetric for international applicants than for domestic students"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How programs are evaluated",
+      "junior_pattern": "Uses overall program ranking as the primary filter — builds application list by ranking order and treats top-10 as universally superior to top-30",
+      "senior_pattern": "Evaluates programs at the advisor level first — identifies specific faculty whose research aligns, then considers funding security, placement data for their specific career track, and location relative to target employers",
+      "why_it_matters": "Rankings are aggregate metrics that obscure advisor-specific quality — the advisor relationship is the primary determinant of PhD outcome, and a junior evaluator using rankings as a proxy misses the most predictive variable"
+    },
+    {
+      "dimension": "How funding decisions are made",
+      "junior_pattern": "Assumes a PhD offer is a PhD offer — does not distinguish between institutionally guaranteed multi-year funding and advisor-contingent year-by-year funding",
+      "senior_pattern": "Reads offer letters carefully for funding guarantee language, asks about grant contingency directly, and treats funding security as a primary acceptance criterion alongside research fit",
+      "why_it_matters": "Accepting a PhD with contingent funding and then losing stipend mid-program is a catastrophic outcome — especially for international students who cannot bridge the gap through federal aid or casual employment"
+    },
+    {
+      "dimension": "What counts as due diligence before accepting",
+      "junior_pattern": "Accepts an offer based on program reputation and official materials without speaking to current students or the advisor about real working conditions",
+      "senior_pattern": "Treats conversations with current PhD students in the lab and a substantive discussion with the potential advisor as non-negotiable steps before accepting any offer — knows that official materials are marketing",
+      "why_it_matters": "Advising style mismatches, dysfunctional lab cultures, and inadequate departmental support are invisible in official materials but consistently visible to current students — missing this information means deciding blind on a 5–6 year commitment"
+    },
+    {
+      "dimension": "How the MS vs. PhD decision is framed",
+      "junior_pattern": "Frames the MS as the safer, faster, more accessible path — focuses on time-to-degree without fully modeling the financial cost difference or comparing against funded PhD alternatives",
+      "senior_pattern": "Treats the MS vs. PhD decision as an explicit financial and career ROI analysis — calculates total MS cost including tuition and living expenses, compares against funded PhD stipend and credential value, and assesses immigration pathway differences",
+      "why_it_matters": "The unfunded MS can cost $150,000–$200,000 with uncertain employment outcomes while the funded PhD pays a stipend — a student who doesn't model this difference may make a financially catastrophic choice while believing they are being conservative"
+    },
+    {
+      "dimension": "How prestige is used as a signal",
+      "junior_pattern": "Treats prestige as a universal good that transfers across career tracks — assumes a top-5 program produces better outcomes than a top-30 program regardless of career goal",
+      "senior_pattern": "Uses prestige selectively — weights it heavily for academic hiring and elite firm pipelines where pedigree filtering is documented, and discounts it for most industry careers where skills and portfolio dominate",
+      "why_it_matters": "Chasing prestige in a career context where it doesn't transfer leads to poor program fit, wrong alumni networks, and misaligned advising — with no benefit to offset the costs"
+    },
+    {
+      "dimension": "How program location is weighted",
+      "junior_pattern": "Treats location as a lifestyle preference or cost-of-living factor — secondary to academic reputation in the decision",
+      "senior_pattern": "Treats location as a structural career variable — explicitly maps program location against target employer geography and weights proximity to industry hubs as a concrete job search advantage, especially for OPT-constrained international students",
+      "why_it_matters": "For international students with a hard OPT deadline, being geographically distant from target employers during the most critical job search period is a measurable career disadvantage that no amount of program prestige fully offsets"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile /Users/andyliu/hermes-base-agent/tools/guided_interview_tool.py)",
+      "Bash(python -m py_compile /Users/andyliu/hermes-base-agent/toolsets.py)",
+      "Bash(python -m py_compile /Users/andyliu/hermes-base-agent/hermes_cli/commands.py)",
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\"; wc -l \"{}\"; head -30 \"{}\"')",
+      "Bash(python -m py_compile /Users/andyliu/hermes-base-agent/tools/smart_talk_state_tool.py)",
+      "Bash(python -c ' *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit: $?\")",
+      "Read(//Users/andyliu/.hermes/skills/**)",
+      "Read(//Users/andyliu/.hermes/**)",
+      "Bash(python -c \"from agent.guided_mode import GUIDED_MODE_PROMPT, enable_guided_mode, disable_guided_mode, is_guided_mode_enabled; print\\('guided_mode module OK'\\); enable_guided_mode\\('test'\\); print\\('enabled:', is_guided_mode_enabled\\('test'\\)\\); disable_guided_mode\\('test'\\); print\\('disabled:', is_guided_mode_enabled\\('test'\\)\\)\")",
+      "Bash(python -c \"from hermes_cli.commands import COMMAND_REGISTRY, GATEWAY_KNOWN_COMMANDS; guided = next\\(\\(c for c in COMMAND_REGISTRY if c.name == 'guided'\\), None\\); print\\('CommandDef:', guided\\); print\\('in GATEWAY_KNOWN_COMMANDS:', 'guided' in GATEWAY_KNOWN_COMMANDS\\)\")",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Read(//Users/andyliu/hermes-agent/**)",
+      "Read(//Users/andyliu/hermes-agent/tools/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/andyliu/.hermes/skills/smart_talk",
+      "/Users/andyliu/hermes-agent/mock-app/backend",
+      "/Users/andyliu/hermes-agent"
+    ]
+  }
+}

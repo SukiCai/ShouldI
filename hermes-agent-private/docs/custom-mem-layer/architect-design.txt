@@ -1,0 +1,162 @@
+ ╔══════════════════════════════════════════════════════════════════════════════╗          
+  ║                    PERSISTENT USER MODELING LAYER                           ║           
+  ║                    plugins/memory/user_model/                               ║           
+  ╚══════════════════════════════════════════════════════════════════════════════╝          
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   REGISTRATION (一次性，每次 session 启动幂等调用)                                         
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+                                                                                            
+    产品 App                                                                                
+      │  registration_data = {role, domain, years_experience, industry}                     
+      ▼                                                                                     
+    bridge.seed_user_from_registration(user_id, data, hermes_home)                        
+      │                                                                                     
+      ▼                                                                                   
+    UserModelStore.seed_from_registration()  ──────► state.db / user_models                 
+      │  idempotent upsert → profile_json             (SCHEMA_VERSION 7)                    
+      │  首次写入 created_at / updated_at                                                   
+                                                                                            
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   SESSION START  (initialize)                                                              
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+                                                                                            
+    MemoryManager.initialize_all(session_id, user_id=..., hermes_home=...)                  
+      │                                                                                     
+      ▼                                                                                     
+    UserModelProvider.initialize()                                                        
+      ├── UserModelStore.get_model(user_id)                                                 
+      │     ├── FOUND  → self._model  (profile + inferred dimensions + signal_vocab)      
+      │     └── NOT FOUND → self._model = None  (graceful degradation)                      
+      └── TurnGate(aux_client)  ← Haiku client for Gate 3                                   
+                                                                                            
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   SYSTEM PROMPT ASSEMBLY  (每次 session 开始，位置 7/9)                                    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+                                                                                            
+    UserModelProvider.system_prompt_block()                                                 
+      │                                                                                     
+      ├── model == None ──► ""  (新用户，静默)                             
+      │                                                                                     
+      └── model exists ──► UserModelStore.get_compressed_context()                        
+                              │                                                             
+                              ▼                                            
+            ┌──────────────────────────────────────────────────────┐                        
+            │  User: Product Manager at B2B SaaS, 5 years.         │  ← profile             
+  (authoritative)                                                                           
+            │  Communication: Prefers direct, concise responses.    │  ← inferred summary   
+  (conf≥0.7)                                                                                
+            │  Technical depth: Engineer-level, comfortable with    │      
+            │  code and system design trade-offs.                   │                       
+            └──────────────────────────────────────────────────────┘                        
+            注: token 节省来自对话变短（不再重复问背景），非 cache prefix 复用              
+                                                                                            
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   PER-TURN  (每一轮对话)                                                                   
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                                                                            
+    用户发消息 → sync_turn(user_content)                                 
+    │                                                                                       
+    │   ┌─────────────────────── THREE-GATE FILTER ──────────────────────────┐            
+    │   │                                                                      │            
+    │   │  Gate 1: len(message) > 30?                                         │
+    │   │          NO ──► SKIP  (trivial ACK, 免费)                           │             
+    │   │          YES ──►                                                     │            
+    │   │                                                                      │
+    │   │  Gate 2: signal_vocab 中任意 term 是 message 的子串?                │             
+    │   │          NO ──► SKIP  (无触发词，免费)                               │            
+    │   │          YES ──►      (用户原始语言，无需翻译)                       │            
+    │   │                                                                      │            
+    │   │  Gate 3: LLM Haiku 二元分类                                         │             
+    │   │          "Does this reveal professional background/preferences?"     │            
+    │   │          NO  ──► SKIP                                                │            
+    │   │          YES ──► 加入 _queued_signals[]                              │            
+    │   └──────────────────────────────────────────────────────────────────────┘            
+    │                                                                                       
+    ▼                                                                                       
+    LLM API Call (agent 正常回复)                                                           
+                                                                                            
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   SESSION END  (on_session_end → shutdown)                                                 
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                                                                            
+    on_session_end(messages)                                                                
+      │                                                                                     
+      ├── user_id 为空 or model 为 None ──► 跳过                                            
+      │                                                                                     
+      └── inference_event.clear()  ← 告知 shutdown() "有推断进行中"                       
+            │                                                                               
+            └── Thread(daemon=True) ──► UserModelInferrer.run()            
+                  │                                                                         
+                  └── ThreadPoolExecutor(max_workers=2)                                   
+                        │                                                                   
+                        ├── Task A: Update inferred traits  (Haiku)                         
+                        │     Input:  完整 transcript + 现有 inferred_json
+                        │     │                                                             
+                        │     │  ① 对所有现有 keyword: confidence × 0.95  (decay)
+                        │     │  ② 识别有新证据的 dimension                                 
+                        │     │  ③ 强化: new_conf = min(1.0, decayed + evidence×0.5)        
+                        │     │  ④ 关键词有实质变化(Δ>0.1)? → 生成 summary                  
+                        │     │     summary 用完整 transcript 生成，捕捉表达方式            
+                        │     │     (不只看关键词，避免歧义解读)                            
+                        │     │  ⑤ 剪枝: conf<0.3 → 删除                                    
+                        │     │  ⑥ 上限: ≤5 keywords/dimension, ≤10 dimensions              
+                        │     │                                                             
+                        │     └──► UserModelStore.update_inferred()                         
+                        │                                                                   
+                        └── Task B: Update signal vocabulary  (Haiku)                     
+                              Input:  完整 transcript (用户原始语言)                        
+                              │                                                           
+                              │  提取预测"用户即将披露自身信息"的短语                       
+                              │  e.g. "as a PM", "in my experience", "我们团队"             
+                              │  decay × 0.95, 剪枝 <0.3, 上限 20 terms                     
+                              │                                                             
+                              └──► UserModelStore.update_signal_vocab()                     
+                                                                                            
+    shutdown()                                                                            
+      └── inference_event.wait(timeout=10.0)  ← 最多等 10s，不丢数据                      
+                                                                                            
+                                                                                            
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━              
+   DATA MODEL  (state.db / user_models)                                                     
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                                                                            
+    UserModel                                                                               
+    ├── profile  (不衰减，权威)                                                             
+    │     role, domain, years_experience, industry                                          
+    │                                                                                       
+    ├── inferred: list[TraitDimension]  (会衰减)                                          
+    │     TraitDimension                                                                    
+    │     ├── field: "communication_style"                                                  
+    │     ├── keywords: [                   ← 多关键词，每个独立置信度
+    │     │     {value:"direct",   conf:0.85},  会衰减 × 0.95/session                       
+    │     │     {value:"concise",  conf:0.70},  强化 = min(1, decay + Δ×0.5)                
+    │     │     {value:"no fluff", conf:0.60}   低于 0.3 → 删除                             
+    │     │   ]                                                                             
+    │     ├── summary: "Prefers concise..."  ← LLM 生成，有 transcript 上下文               
+    │     └── summary_updated_at             不衰减，仅关键词变化时重新生成                 
+    │                                                                                       
+    └── signal_vocab: list[SignalTerm]  (动态，会衰减)                                      
+          {term:"as a PM", trigger_for:"role", conf:0.80}  原始语言                         
+          decay × 0.95, 上限 20 terms                                                       
+                                                                                            
+  核心设计决策总结：                                                                        
+                                                                           
+  ┌──────────────────────────┬──────────────────────────────────────────────────────────┐   
+  │           问题           │                           解法                           │ 
+  ├──────────────────────────┼──────────────────────────────────────────────────────────┤ 
+  │ summary 只看 keyword     │ Task A 在 session_end 生成，此时完整 transcript 可访问   │ 
+  │ 会误解                   │                                                          │ 
+  ├──────────────────────────┼──────────────────────────────────────────────────────────┤   
+  │ 不同语言 signal 匹配     │ signal_vocab 存原始语言，Gate 3 用 LLM 做语义判断        │   
+  ├──────────────────────────┼──────────────────────────────────────────────────────────┤   
+  │ 旧信息会被遗忘           │ 反复出现的特征被强化（decay +                            │   
+  │                          │ reinforce），只有真正沉寂的才消亡                        │
+  ├──────────────────────────┼──────────────────────────────────────────────────────────┤   
+  │ shutdown 丢数据          │ threading.Event + 10s wait，与 Honcho 相同模式           │ 
+  └──────────────────────────┴──────────────────────────────────────────────────────────┘   
+                                     

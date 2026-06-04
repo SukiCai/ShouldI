@@ -1,0 +1,373 @@
+{
+  "source_file": "opt_h1b_pathways.txt",
+  "heuristics": [
+    {
+      "rule": "File OPT application within the strict window: no earlier than 90 days before graduation and no later than 60 days after the graduation end date.",
+      "condition": "When you are an F-1 student approaching graduation and planning to work in the US...",
+      "action": "Calculate and calendar both boundary dates immediately upon knowing your graduation date, and submit the OPT application inside that window.",
+      "because": "Missing either boundary permanently forfeits OPT authorization — there is no appeal or extension mechanism for this deadline.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Verify STEM OPT degree eligibility before graduation, not after.",
+      "condition": "When you are pursuing a degree in any STEM-adjacent field and plan to use STEM OPT...",
+      "action": "Cross-reference your exact degree program against the DHS STEM designated degree program list before your final semester.",
+      "because": "Many degrees that sound STEM do not appear on the official list; discovering ineligibility after graduation eliminates 24 months of authorized work and multiple H-1B lottery attempts.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If H-1B was not selected in the lottery and OPT is still active, file for cap-gap extension immediately — do not wait for employer guidance.",
+      "condition": "When your OPT expires while your H-1B petition is pending after lottery selection...",
+      "action": "Confirm cap-gap protection applies and ensure the H-1B petition was filed before OPT expiration; consult an attorney at once if timing is uncertain.",
+      "because": "Cap-gap protection only applies if the H-1B was filed before OPT expired; any gap in filing creates unlawful presence.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Negotiate salary to reach OEWS Wage Level III or IV before H-1B filing under the post-2025 wage-weighted lottery system.",
+      "condition": "When you are preparing an H-1B petition under the new wage-weighted selection process...",
+      "action": "Research OEWS wage levels for your occupation and location, then negotiate your offer to at least Wage Level III before your employer files.",
+      "because": "Higher wage levels now carry materially better lottery selection probability; failing to negotiate simultaneously sacrifices income and immigration odds.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Register for the H-1B lottery during the March 1–18 window every eligible year — missing it costs a full additional year of waiting.",
+      "condition": "When you are on OPT or STEM OPT and H-1B cap-subject filing is your target status...",
+      "action": "Set multi-channel reminders for the registration window and confirm with your employer's immigration counsel at least 60 days in advance.",
+      "because": "There is no late registration option; a missed window means at minimum one additional year on OPT or alternative status, consuming a lottery attempt.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Consult an immigration attorney at least 6 months before OPT expiration, not after receiving a lottery rejection.",
+      "condition": "When any F-1 student is within 6 months of OPT or STEM OPT expiration...",
+      "action": "Schedule a paid attorney consultation to map cap-gap, alternative visa, or departure options before the deadline pressure eliminates options.",
+      "because": "Several alternatives (O-1 preparation, L-1 arrangement, cap-exempt employer search) require months of lead time that does not exist after a late-March lottery result.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are a Canadian or Mexican national in a qualifying profession, evaluate TN visa before pursuing H-1B.",
+      "condition": "When a Canadian or Mexican citizen is planning US work authorization strategy...",
+      "action": "Confirm whether your profession appears on the TN designated occupation list; if yes, treat TN as the primary pathway and H-1B as a backup.",
+      "because": "TN has no annual cap, no lottery, Canadians can apply at the port of entry same-day, and it is renewable indefinitely — structurally superior to H-1B for eligible nationals.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you have publications, awards, or documented high salary evidence, assess O-1 eligibility before assuming H-1B is the only path.",
+      "condition": "When an F-1 student with strong academic or professional credentials does not get selected in the H-1B lottery...",
+      "action": "Compile a list of publications, citations, awards, media coverage, and salary comparisons and present them to an immigration attorney for O-1 assessment.",
+      "because": "O-1 is filed year-round with no cap or lottery, and strong academic records often satisfy more criteria than students realize; dismissing it without assessment wastes a viable path.",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "STEM degree list eligibility",
+      "why_it_matters": "Determines whether the student gets 24 additional months of OPT, which means up to 2 additional H-1B lottery attempts — a decisive difference in total runway.",
+      "how_to_assess": "Look up the exact degree program name on the current DHS STEM Designated Degree Program List; do not rely on the department or field name alone.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "OEWS wage level of the offered position",
+      "why_it_matters": "Under the post-2025 wage-weighted H-1B lottery, wage level directly determines selection probability — a Level I or II position has materially lower odds than Level III or IV.",
+      "how_to_assess": "Use the Department of Labor's Foreign Labor Certification Data Center to look up the prevailing wage for your specific occupation and geographic area, then ask the employer which level they intend to file at.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer's cap-exempt status",
+      "why_it_matters": "Cap-exempt employers (universities, university-affiliated nonprofits, government research organizations) can file H-1B year-round without lottery, eliminating the primary risk of the US immigration funnel.",
+      "how_to_assess": "Ask HR or immigration counsel directly whether the organization has successfully filed cap-exempt H-1B petitions before; verify it meets the statutory definition, not just a nonprofit label.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Nationality and TN or E-3 eligibility",
+      "why_it_matters": "Canadian and Mexican nationals may use TN; Australian nationals may use E-3 — both pathways have no lottery, no annual cap pressure, and are indefinitely renewable, making H-1B dependency optional.",
+      "how_to_assess": "Confirm citizenship, then check whether the target occupation appears on the TN or E-3 eligible profession lists.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer's prior H-1B sponsorship history and approval rate",
+      "why_it_matters": "Employers with no H-1B history may lack institutional knowledge, established immigration counsel relationships, or internal approval processes — significantly increasing risk of procedural failure.",
+      "how_to_assess": "Ask HR directly for number of H-1B petitions filed and approved in the last 3 years; USCIS disclosure data is publicly available and can cross-verify claims.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Access to multinational employer with foreign subsidiary",
+      "why_it_matters": "Working abroad for 1 year at a qualifying multinational company unlocks the L-1 intracompany transfer pathway, bypassing the H-1B lottery entirely; L-1A also leads to EB-1C green card.",
+      "how_to_assess": "Identify whether any target employer has offices in a country where the student has work authorization; confirm L-1 qualifying relationship between entities.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Extraordinary ability documentation",
+      "why_it_matters": "Sufficient documented achievement (publications, citations, awards, speaking invitations, high relative salary) can support an O-1 petition filed year-round with no cap or lottery.",
+      "how_to_assess": "Conduct a structured inventory of all publications, citations, awards, judging/review roles, media mentions, and salary benchmarks against peers; present to an O-1 specialist for assessment.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Remaining OPT/STEM OPT time at point of lottery failure",
+      "why_it_matters": "The number of remaining months determines how many additional lottery attempts are possible and how much time exists to pursue alternatives — running out of OPT with no backup is the critical failure mode.",
+      "how_to_assess": "Calculate exact OPT expiration date and subtract the next H-1B lottery start date (March 1) to determine whether another full attempt is possible.",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking a cap-exempt position (university, nonprofit research lab) to secure H-1B without lottery",
+      "unstated_consequence": "You must remain with that specific employer to maintain status; switching to a cap-subject employer later reactivates lottery dependency, and salary ranges at these institutions are often significantly below private sector equivalents.",
+      "who_it_affects": "Students in tech or finance who would earn substantially more in industry but accept academic roles for immigration stability.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Enrolling in a second US master's or PhD program to reset OPT and gain additional lottery attempts",
+      "unstated_consequence": "This costs 1–5 years of time and tuition, and the opportunity cost of foregone income compounds significantly; additionally, the advanced degree pool (20,000 slots) does not guarantee selection — it merely provides a second entry.",
+      "who_it_affects": "Students who treat degree re-enrollment as a guaranteed immigration solution rather than a probabilistic delay.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a J-1 exchange visitor position as an alternative to H-1B",
+      "unstated_consequence": "Many J-1 categories impose a 2-year home country residency requirement before the holder can switch to H-1B or apply for a green card, which can derail long-term US residency plans entirely.",
+      "who_it_affects": "Students who accept J-1 offers without checking the home residency requirement and later find themselves unable to transition to immigrant status without a waiver.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on employer to manage all H-1B strategy without personal involvement",
+      "unstated_consequence": "Employers may not know the lottery odds, may not file timely, may use immigration counsel unfamiliar with the student's specific situation, or may not pursue cap-exempt options they qualify for — leaving the student exposed.",
+      "who_it_affects": "Students at smaller companies or those at large companies with high-volume immigration counsel who treat every case identically.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Not negotiating salary before H-1B filing under the wage-weighted lottery",
+      "unstated_consequence": "Under the post-2025 system, a student who accepts a lower wage level simultaneously reduces lottery selection odds and accepts lower compensation — both outcomes are avoidable with negotiation.",
+      "who_it_affects": "Students who treat salary negotiation as separate from immigration strategy, or who are reluctant to negotiate for fear of jeopardizing sponsorship.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Working abroad for 1 year at a multinational to pursue L-1 transfer",
+      "unstated_consequence": "This requires voluntarily leaving the US, accepting local salary and conditions abroad, and trusting that the US entity will complete the L-1 transfer — none of which is guaranteed contractually in many cases.",
+      "who_it_affects": "Students with strong personal or professional ties to the US who underestimate the disruption and uncertainty of the abroad-first strategy.",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating H-1B selection as a near-certainty and making long-term life plans dependent on it",
+      "why_it_happens": "Students anchor on the process (employer files, student registers) and confuse process completion with outcome certainty; historical approval stories from peers reinforce this bias.",
+      "consequence": "No backup plan exists when lottery selection fails; student faces abrupt status loss, job termination, or forced departure with no runway for alternatives.",
+      "warning_signs": [
+        "Student cannot name a single alternative if H-1B is not selected",
+        "Student has signed a lease or made financial commitments contingent on H-1B approval",
+        "Student has not asked employer about cap-exempt options or prior sponsorship history"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming a STEM-sounding degree qualifies for STEM OPT without verifying the official DHS list",
+      "why_it_happens": "Students conflate departmental naming conventions or popular understanding of STEM with the specific statutory list; advisors sometimes also fail to flag this until it is too late.",
+      "consequence": "Student plans 36 months of OPT runway (12 + 24) but is only eligible for 12, losing 2 additional H-1B lottery attempts and 24 months of authorized employment.",
+      "warning_signs": [
+        "Student has not personally looked up their exact degree program on the DHS STEM Designated Degree Program List",
+        "Student's degree is in a field adjacent to STEM (e.g., information systems, construction management, applied arts)"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Missing the OPT application window by filing too early or too late",
+      "why_it_happens": "Students are focused on job searching and graduation logistics; the 90-day pre-graduation and 60-day post-graduation boundaries are counterintuitive and easy to miscalculate.",
+      "consequence": "Permanent forfeiture of OPT authorization for that degree level; student cannot legally work in the US on F-1 status.",
+      "warning_signs": [
+        "Student has not calendared both the earliest and latest filing dates",
+        "Student is relying on school DSO to remind them without confirming the actual dates independently"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Dismissing O-1 visa as only for celebrities or elite scientists without conducting a proper eligibility assessment",
+      "why_it_happens": "Students anchor on the 'extraordinary ability' label and assume it requires global fame; they are unaware that a structured set of documentary criteria applies and that academic achievements often satisfy multiple criteria.",
+      "consequence": "A viable year-round, cap-exempt pathway is never pursued; student accepts lottery risk or departure when O-1 might have been approvable.",
+      "warning_signs": [
+        "Student with peer-reviewed publications, awards, or above-market salary has never discussed O-1 with an attorney",
+        "Student rules out O-1 based solely on its name or perception rather than a documented criteria assessment"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Accepting a J-1 position without checking the 2-year home residency requirement",
+      "why_it_happens": "The J-1 is presented as a straightforward work authorization option; the home residency requirement is buried in program terms and not volunteered by all employers.",
+      "consequence": "Student becomes ineligible to change to H-1B or apply for a green card for 2 years without a waiver, potentially derailing entire long-term US residency strategy.",
+      "warning_signs": [
+        "Student accepted a J-1 offer without consulting an immigration attorney",
+        "Student does not know whether their J-1 program category carries the 2-year requirement"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Not negotiating salary before H-1B filing under the wage-weighted lottery, leaving both income and lottery odds on the table",
+      "why_it_happens": "Students treat salary negotiation and immigration strategy as separate processes managed by different parties; they fear that negotiating will signal they are difficult or jeopardize sponsorship.",
+      "consequence": "Lower wage level reduces lottery selection probability under the post-2025 system while simultaneously leaving real compensation on the table.",
+      "warning_signs": [
+        "Student accepted the first offer without researching OEWS wage levels for the role",
+        "Student does not know which wage level their employer intends to file at"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your exact degree program listed on the current DHS STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether the student has 12 months or 36 months of OPT eligibility, which directly determines how many H-1B lottery attempts they have.",
+      "follow_up_if_yes": "Has your employer confirmed they are E-Verify enrolled, which is required for STEM OPT extension?",
+      "follow_up_if_no": "What is your contingency plan given that you have only one H-1B lottery attempt before status expires?",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does your employer have cap-exempt status — specifically, are they a university, university-affiliated nonprofit, or government research organization?",
+      "what_it_reveals": "Whether the lottery is even relevant — cap-exempt employers can file H-1B year-round, eliminating the primary bottleneck in the US immigration funnel.",
+      "follow_up_if_yes": "Have they successfully filed cap-exempt H-1B petitions before, and are you aware of the constraint of remaining with that employer?",
+      "follow_up_if_no": "What wage level will your position be classified at, and how does that affect your lottery selection odds under the new system?",
+      "country_scope": "us"
+    },
+    {
+      "question": "What OEWS wage level does your employer intend to classify your position at for the H-1B petition?",
+      "what_it_reveals": "Under the post-2025 wage-weighted lottery, this directly determines the student's selection probability — Levels III and IV have materially higher odds than Levels I and II.",
+      "follow_up_if_yes": "Have you verified this against the Department of Labor prevailing wage data for your occupation and location, and have you negotiated accordingly?",
+      "follow_up_if_no": "The employer may not yet know or may not have immigration counsel; this is a signal to escalate or consult an independent attorney.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are you a Canadian, Mexican, or Australian national?",
+      "what_it_reveals": "Whether TN (Canada/Mexico) or E-3 (Australia) visa eligibility applies — both are lottery-free, cap-free, and indefinitely renewable, potentially making H-1B dependency unnecessary.",
+      "follow_up_if_yes": "Is your intended occupation on the TN or E-3 eligible profession list, and have you evaluated this pathway against H-1B as a primary rather than backup option?",
+      "follow_up_if_no": "Do you have any other nationality-based visa options, or are you fully dependent on H-1B or OPT?",
+      "country_scope": "us"
+    },
+    {
+      "question": "Do you have peer-reviewed publications, formal awards, above-market salary documentation, or other evidence of recognized achievement in your field?",
+      "what_it_reveals": "Whether an O-1 extraordinary ability petition may be viable — a year-round, cap-exempt alternative to H-1B that is more accessible than most students assume.",
+      "follow_up_if_yes": "Have you had an immigration attorney conduct a structured O-1 criteria assessment against your documentation?",
+      "follow_up_if_no": "Are you building toward any of these credentials during your OPT period as a deliberate strategy to open the O-1 pathway before STEM OPT expires?",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does any multinational company you are considering have offices in a country where you have existing work authorization or citizenship?",
+      "what_it_reveals": "Whether an L-1 intracompany transfer strategy is viable — working abroad for 1 year at a qualifying multinational enables a US L-1 transfer without the H-1B lottery.",
+      "follow_up_if_yes": "Is the employer willing to structure an intentional abroad-first arrangement, and does the role qualify as managerial, executive, or specialized knowledge?",
+      "follow_up_if_no": "The L-1 pathway is not available; focus assessment on remaining alternatives.",
+      "country_scope": "us"
+    },
+    {
+      "question": "What is your employer's track record with H-1B sponsorship — how many petitions have they filed and approved in the last 3 years?",
+      "what_it_reveals": "Whether the employer has institutional readiness — established immigration counsel, internal approval workflows, and experience navigating USCIS requirements — or whether the student is their first or rare case.",
+      "follow_up_if_yes": "Ask for the name of their immigration law firm and whether the same firm will handle your case.",
+      "follow_up_if_no": "The student should consider retaining independent immigration counsel to monitor the process and flag errors the employer's team may miss.",
+      "country_scope": "us"
+    },
+    {
+      "question": "If you accept a J-1 position, does your specific J-1 program category carry the 2-year home country residency requirement?",
+      "what_it_reveals": "Whether accepting the J-1 will block future H-1B or green card applications for 2 years unless a waiver is obtained — a potentially deal-breaking constraint for students targeting long-term US residency.",
+      "follow_up_if_yes": "Are you prepared to pursue a J-1 waiver, and do you understand the grounds and processing time involved?",
+      "follow_up_if_no": "Confirm this in writing with an immigration attorney before accepting the offer, as program sponsor categorization is not always transparently communicated.",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The H-1B lottery is a standard process that employers manage routinely, and most international students who apply get selected eventually.",
+      "actual_reality": "In peak years, H-1B selection rates were as low as 15–20% even for advanced degree applicants; the new wage-weighted system means odds vary dramatically by wage level, employer type, and position classification — and many employers lack the institutional knowledge to optimize the filing.",
+      "implication": "Students must treat H-1B as a probabilistic event with a real failure scenario, not a standard process step, and must independently build and maintain backup pathways.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "O-1 visa is only for globally famous scientists, artists, or executives and is not a realistic option for most international students.",
+      "actual_reality": "O-1 eligibility is assessed against a structured set of criteria (publications, awards, media coverage, salary benchmarks, judging roles, original contributions) and many students with strong academic records satisfy more criteria than they realize; immigration attorneys who specialize in O-1 regularly approve cases for candidates at the mid-career level.",
+      "implication": "Students should always conduct a documented O-1 criteria assessment with a specialist before ruling it out, particularly those with publications, institutional affiliations, or above-market compensation.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Once an employer agrees to sponsor H-1B, the student's immigration path is secure.",
+      "actual_reality": "Employer agreement to sponsor is only the start; the petition must be correctly classified at the right wage level, filed in the correct window, and selected in the lottery — each step has failure modes the employer may not be equipped to prevent without experienced immigration counsel.",
+      "implication": "Students should independently verify employer immigration readiness, understand the wage level classification, and maintain their own attorney relationship rather than fully delegating to the employer.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Negotiating salary risks the employer withdrawing H-1B sponsorship, so students should accept the first offer.",
+      "actual_reality": "Under the post-2025 wage-weighted lottery, higher wage level directly improves H-1B selection probability; negotiating to reach Wage Level III or IV simultaneously increases compensation and immigration odds — the two goals are aligned, not in tension.",
+      "implication": "Students should research OEWS wage levels for their occupation and negotiate deliberately, framing it as aligned with the employer's interest in successful H-1B selection.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "STEM OPT automatically extends anyone in a technical or scientific field.",
+      "actual_reality": "STEM OPT eligibility depends on the exact degree program appearing on the official DHS STEM Designated Degree Program List, not on the field of work or the department name — many degrees in data, information systems, and applied technical fields do not qualify.",
+      "implication": "STEM OPT eligibility must be verified against the official list before graduation; planning 36 months of OPT runway without this verification is a significant planning risk.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Cap-exempt employers (universities, nonprofits) are less desirable immigration options because they pay less and limit career growth.",
+      "actual_reality": "Cap-exempt employers eliminate lottery risk entirely, allow indefinite H-1B filing year-round, and provide stable status that can support credential-building toward O-1 or EB-1 green card pathways — which are both cap-exempt and faster than EB-2/EB-3 for many nationalities.",
+      "implication": "Students should evaluate cap-exempt positions not only on immediate compensation but on the long-term immigration stability and credential-building they enable, particularly for those with research or academic backgrounds.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If you don't get H-1B, you must either leave the US or go back to school.",
+      "actual_reality": "There are at least 10 documented alternative pathways including O-1, TN, E-3, L-1, cap-exempt H-1B, EB-1 direct green card, and working abroad temporarily — each with specific eligibility criteria that many students never assess.",
+      "implication": "Students should map their eligibility across all 10 pathways before each lottery result, so that a rejection triggers immediate execution of a pre-evaluated backup rather than a reactive scramble.",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "H-1B planning mindset",
+      "naive_pattern": "Treats H-1B as the singular pathway and assumes employer will handle everything; has no documented backup plan and cannot articulate alternatives.",
+      "informed_pattern": "Treats H-1B as one probabilistic option among several; has pre-assessed O-1, TN/E-3, cap-exempt, and L-1 eligibility before the lottery result arrives and knows exactly which to activate upon rejection.",
+      "why_it_matters": "H-1B failure without a pre-built backup leads to status gaps, forced departure, or rushed decisions under time pressure — all of which are avoidable with advance planning.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Salary negotiation approach",
+      "naive_pattern": "Accepts the first offer to avoid jeopardizing sponsorship, does not know what wage level the employer intends to file at, and treats salary and immigration as separate concerns.",
+      "informed_pattern": "Researches OEWS wage levels before negotiating, understands that higher wage level improves lottery odds under the post-2025 system, and explicitly frames negotiation as aligned with the employer's interest in a successful petition.",
+      "why_it_matters": "Under the new wage-weighted lottery, failing to negotiate simultaneously sacrifices income and immigration probability — both outcomes are avoidable.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "STEM OPT eligibility verification",
+      "naive_pattern": "Assumes eligibility based on field of study or departmental name; plans 36 months of OPT without verifying the official DHS list.",
+      "informed_pattern": "Verifies the exact degree program against the DHS STEM Designated Degree Program List before the final semester; builds 12-month and 36-month OPT scenarios in parallel.",
+      "why_it_matters": "Discovering ineligibility after graduation eliminates 24 months of authorized work and up to 2 additional H-1B lottery attempts with no remedy available.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Employer immigration readiness assessment",
+      "naive_pattern": "Takes the employer's offer of sponsorship at face value without asking about prior H-1B history, approval rates, or immigration counsel relationships.",
+      "informed_pattern": "Asks directly about number of H-1B petitions filed and approved in recent years, verifies through public USCIS data, and assesses whether the employer's counsel has experience with the student's specific case type.",
+      "why_it_matters": "Employers without H-1B infrastructure frequently make procedural errors, miss filing windows, or misclassify wage levels — all of which can result in denial or reduced lottery odds that the student bears the consequences of.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "O-1 visa self-assessment",
+      "naive_pattern": "Dismisses O-1 immediately because 'I'm not famous enough' without conducting any structured review of eligibility criteria.",
+      "informed_pattern": "Builds a documented inventory of publications, citations, awards, peer review roles, salary comparisons, and media mentions; presents it to an O-1 specialist for a structured criteria assessment.",
+      "why_it_matters": "O-1 is cap-exempt and year-round; dismissing it without assessment means potentially missing a viable pathway that avoids the lottery entirely.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Cap-exempt employer evaluation",
+      "naive_pattern": "Dismisses university and nonprofit research roles as lower-tier options purely based on salary, without evaluating the immigration stability or long-term credential-building value.",
+      "informed_pattern": "Evaluates cap-exempt positions as immigration-stable platforms that enable EB-1 or O-1 credential-building while earning a stable income — then models the long-term compensation and status trajectory rather than the immediate salary comparison.",
+      "why_it_matters": "For students facing repeated H-1B lottery failures, a cap-exempt position may be the only stable platform from which to build toward a green card — the opportunity cost of dismissing it can be years of additional immigration uncertainty.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "J-1 visa acceptance process",
+      "naive_pattern": "Accepts a J-1 offer as a convenient bridge status without checking whether the program category carries the 2-year home residency requirement.",
+      "informed_pattern": "Before accepting any J-1 offer, consults an attorney to confirm the home residency requirement status of the specific program category and models how a waiver would work if required.",
+      "why_it_matters": "Accepting a J-1 with an unrecognized 2-year home residency requirement can block H-1B and green card applications for 2 additional years, fundamentally altering a student's long-term US residency timeline.",
+      "country_scope": "us"
+    }
+  ]
+}

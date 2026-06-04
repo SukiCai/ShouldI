@@ -1,0 +1,52 @@
+{
+  "skill_name": "International Student Immigration & Career Advisor",
+  "overall_score": 4.4,
+  "summary": "This is a genuinely strong skill that captures expert-level reasoning patterns rather than just regurgitating immigration rules. It excels at surfacing the gap between novice and expert thinking, includes current (post-2025) regulatory changes, and structures decisions around dependency chains rather than checklists. Minor weaknesses include some unverifiable specific claims, limited coverage of edge cases (Quebec, dual intent, country-of-origin specifics), and a few heuristics that border on generic.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "Expert framing is genuinely insight-dense: 'immigration outcomes are determined by decisions made 3–5 years before the relevant deadline' reframes the whole problem from reactive to anticipatory, and the line about peers/HR/agents being 'systematically miscalibrated' names a specific epistemic failure mode rather than vaguely warning about 'bad advice.'",
+    "Diagnostic questions are exceptional — e.g., 'When you say my employer will sponsor me, what specifically have they told you about their immigration attorney, filing timeline, and internal process?' This is exactly the kind of probe a senior advisor uses to distinguish real commitments from polite intentions. Similarly 'Are you staying because you believe it compounds better over 10 years, or because returning home would feel like failure?' surfaces an emotional driver most students won't name themselves.",
+    "Hidden tradeoffs section is genuinely non-obvious: 'Cap-exempt position for status stability → locks you to that employer; switching reactivates lottery; salaries often below industry' captures a tradeoff that students universally miss. The TEER 4–5 trap ('builds no CEC eligibility while you age out of peak CRS points') is exactly the kind of compounding penalty novices can't see.",
+    "Country frameworks include specific, current regulatory facts (wage-weighted H-1B post-2025, June 25 2025 PGWP field overhaul, March 25 2025 removal of job offer CRS points) that demonstrate the skill isn't operating on stale knowledge.",
+    "The novice-vs-expert table has real differentiating power — e.g., 'Accepts first offer to protect sponsorship' vs. 'Researches OEWS; frames negotiation as aligned with petition success' captures a counterintuitive expert insight, not just maturity-signaling."
+  ],
+  "weaknesses": [
+    "Some heuristics drift toward generic — 'Always have Plan A, B, and C for each stage transition' and 'Plan 3–5 years ahead, not 6–12 months ahead' are directionally right but state principles rather than provide concrete decision rules. Compare to the much sharper Canadian heuristic about TEER 0–3.",
+    "A few specific claims are stated with more confidence than the underlying regulatory reality may warrant. E.g., 'Selection has been as low as 15–20%' for H-1B is plausible but undated; the 'wage-weighted system' description is presented as established fact when implementation specifics have evolved. The skill would be stronger with explicit 'verify current rules' flags on the most volatile claims.",
+    "Failure patterns are good but warning signs are sometimes thin. 'Warning signs: primary source is Reddit, Blind, or WeChat' is specific, but 'Treating immigration as reactive' could use more behavioral markers (e.g., 'still hasn't initiated WES three months from graduation,' 'cannot describe the cap-gap rule').",
+    "The skill assumes a fairly sophisticated user — there's no scaffolding for what to do when a student doesn't know basic terms (NOC, OEWS, CRS, TEER). An AI using this might overshoot a confused undergrad.",
+    "Stay-vs-return framing is named as critical but only lightly developed — there's no actual framework for *running* the 10-year compounding analysis (factors to weight, how to price the 'immigration stability tax,' how to compare against home-country trajectories)."
+  ],
+  "improvement_suggestions": [
+    "Add a short 'volatility flags' section listing claims most likely to be outdated (lottery selection rates, specific cutoff scores, field list contents) and instruct the AI to verify against IRCC/USCIS sources before quoting them as fact in user advice.",
+    "Expand the stay-vs-return section into a real sub-framework: explicit factors (career compounding rate in each market, family obligations timeline, healthcare/cost-of-living delta, currency/savings repatriation, partner career, identity/belonging) with a worked example of weighing them.",
+    "Add a 'terminology bridge' for users unfamiliar with NOC, TEER, OEWS, ECA, CLB — even a one-line gloss per term so the AI can adapt depth to user sophistication.",
+    "Strengthen weaker heuristics by adding the specific trigger and action. Instead of 'Always have Plan A, B, C,' specify: 'Before accepting any offer, write down which of [O-1, TN/E-3, L-1, cap-exempt, second degree, Canada/UK pivot] is your backup if H-1B fails twice.'",
+    "Add coverage of Quebec (CSQ, PEQ, distinct French requirements) — currently the Canada section reads as if Quebec is just 'where French matters more,' which misses an entire parallel system.",
+    "Add a brief section on dual intent and how it affects student visa renewals, F-1 to H-1B transitions, and consular processing risk — a common blindspot."
+  ],
+  "generic_advice_flags": [
+    "'Plan 3–5 years ahead, not 6–12 months ahead' — directionally correct but as stated this is a principle, not a heuristic. A novice reading this doesn't know *what* to plan or *which* variables lock when. Compare to the much better 'Run your CRS score before you choose a program, not after you graduate.'",
+    "'Always have Plan A, B, and C for each stage transition' — true but generic; doesn't tell the AI what concrete Plans B and C look like for an F-1 student in CS vs. an MBA vs. a humanities PhD.",
+    "'Use forums to generate questions, not to make decisions' — good principle but stated abstractly; would be sharper as 'If your only sources are Reddit/Blind/WeChat, treat every claim as a hypothesis to verify with counsel, not as a rule.'",
+    "'Consult an immigration attorney 6 months before OPT expiration' — solid, but doesn't specify what to bring to the consultation or how to evaluate attorney quality, which is itself a non-trivial expert skill."
+  ],
+  "missing_coverage": [
+    "Quebec's distinct immigration system (CSQ, PEQ, Quebec Experience Program) — currently absent despite being a major pathway for international students in Canada.",
+    "Dual intent doctrine and its practical implications for visa renewals, travel, and consular interviews while a green card or PR application is pending.",
+    "Green card pathway specifics beyond a passing mention of EB-1 — no treatment of EB-2 NIW, PERM timelines, country-of-birth backlog effects (especially India/China where waits can exceed a decade and change the entire calculus).",
+    "Spouse work authorization details (H-4 EAD eligibility rules, recent rule changes, Canada open work permit changes in 2024-2025 for spouses of students/workers).",
+    "What to do when things go wrong: RFE response strategy, denial recovery, status violation remediation, reinstatement applications.",
+    "Country-of-origin asymmetries: an Indian national's H-1B + green-card math is fundamentally different from a Brazilian's, and the skill currently treats nationality only at the TN/E-3 level.",
+    "Tax and financial dimensions of the stay-vs-return decision (exit tax, FBAR/FATCA, retirement account portability) — these are major hidden costs of long-term US stays that students rarely consider."
+  ]
+}

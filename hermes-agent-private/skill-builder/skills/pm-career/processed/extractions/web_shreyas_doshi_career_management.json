@@ -1,0 +1,278 @@
+{
+  "source_file": "shreyas_doshi_career_management.txt",
+  "heuristics": [
+    {
+      "rule": "Invest in communication skills disproportionately relative to how much of your job they represent",
+      "condition": "When deciding where to invest career development time as a senior PM",
+      "action": "Prioritize writing, speaking, and presenting skills even though they constitute a small fraction of daily work",
+      "because": "Presentations are 5% of the job but 50% of how you are judged — the return on communication investment is asymmetrically high relative to time spent"
+    },
+    {
+      "rule": "Separate title, money, and scope when evaluating any role or promotion",
+      "condition": "When assessing a new opportunity or a promotion offer",
+      "action": "Explicitly evaluate scope (decision authority and surface area) as the primary variable, treating title and money as secondary",
+      "because": "Title and money are legible and emotionally salient but scope is the strongest predictor of long-term career development; conflating them leads to underweighting the variable that actually matters"
+    },
+    {
+      "rule": "Partner with your manager by asking what gap exists between where you are now and the next level",
+      "condition": "When pursuing promotion",
+      "action": "Initiate a collaborative conversation with your manager that frames them as an ally with a role in your growth rather than a gatekeeper to negotiate against",
+      "because": "It transforms an adversarial dynamic into a collaborative one, gives your manager a clear role, and generates specific actionable feedback rather than vague hope"
+    },
+    {
+      "rule": "Make your impact visible to decision-makers without relying on visibility happening organically",
+      "condition": "When you do high-impact work that is invisible (infrastructure, coordination, quality) or when you are a non-native English speaker or introvert",
+      "action": "Actively narrate your work and contributions to the people who need to see them",
+      "because": "Promotion committees suffer from presentation bias and will judge on high-visibility moments; if your work is invisible, you are systematically disadvantaged regardless of actual impact"
+    },
+    {
+      "rule": "Build peer relationships and coaching circles during good times, not when you need them",
+      "condition": "When your career is stable and you are not actively job searching or navigating a crisis",
+      "action": "Invest time in building peer networks proactively",
+      "because": "By the time you need a network for a job search or difficult situation, it is too late to build it — relationships built under no pressure are far more useful than ones built under urgency"
+    },
+    {
+      "rule": "Orient day-to-day decisions against a five-year future vision rather than the next promotion cycle",
+      "condition": "When deciding which projects to take, which relationships to build, or which skills to develop",
+      "action": "Ask what the five-year future looks like and work backward to identify what skills, scope, decisions, and relationships are required",
+      "because": "Short-term promotion focus optimizes for the next six months; long-term vision changes the texture of daily decisions and produces compounding career capital"
+    },
+    {
+      "rule": "Look outward at the market rather than only inward at your own product",
+      "condition": "When trying to learn and develop as a PM while operating in a busy role",
+      "action": "Conduct product takedowns of competitors, engage directly with user feedback channels, and analyze decisions made by other product teams",
+      "because": "Internal-focused PMs improve incrementally from their own experiments; external-focused PMs learn from the entire market's experiments simultaneously"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Scope",
+      "why_it_matters": "Scope — the actual decision authority and surface area of work — is the strongest predictor of long-term career development; without expanding scope, title and compensation gains do not translate into genuine capability growth",
+      "how_to_assess": "Ask: what decisions am I actually empowered to make? How large is the surface area of product I own? Has this grown in the last 12–18 months?",
+      "weight": "high"
+    },
+    {
+      "factor": "Manager as accelerant vs. ceiling",
+      "why_it_matters": "Career growth ultimately rests on you, but your manager can either accelerate your trajectory or cap it; knowing which one you have determines whether staying or leaving is the right move",
+      "how_to_assess": "Attempt the partnership conversation (ask what gap exists between you and the next level); a manager who engages constructively is an accelerant, one who deflects or gives vague answers is likely a ceiling",
+      "weight": "high"
+    },
+    {
+      "factor": "Joy vs. Ego weighting in a role",
+      "why_it_matters": "Roles that satisfy ego (sound impressive externally) but lack joy (genuine meaning and energy) accelerate career stagnation, not growth, because sustained high performance requires intrinsic motivation",
+      "how_to_assess": "Honestly separate what makes you look good from what you find energizing; ask whether you would take the role if no one else knew about it",
+      "weight": "high"
+    },
+    {
+      "factor": "Visibility of your work to decision-makers",
+      "why_it_matters": "Promotion decisions are made by committees with presentation bias; if the people who decide your level cannot see your impact, your actual performance is partially irrelevant",
+      "how_to_assess": "Ask: do the people in my promotion calibration know what I have done and why it mattered? Would they cite my work unprompted?",
+      "weight": "high"
+    },
+    {
+      "factor": "Peer network and coaching circle quality",
+      "why_it_matters": "Peer groups provide pattern recognition across organizations that helps you distinguish industry norms from company-specific dysfunction — a critical diagnostic for career decisions",
+      "how_to_assess": "Do you have at least a small group of peers at similar career stages outside your company with whom you discuss real decisions? Do those relationships predate any urgent need?",
+      "weight": "medium"
+    },
+    {
+      "factor": "Communication skill relative to peers",
+      "why_it_matters": "Because presentations disproportionately determine how you are judged, a gap in communication skills relative to peers compounds negatively over time in promotion and influence outcomes",
+      "how_to_assess": "Seek explicit feedback on high-visibility presentations; observe whether you are included or excluded from high-stakes communication opportunities",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing a role with an impressive title or brand name",
+      "unstated_consequence": "If the role lacks scope or joy, the external signal temporarily boosts perceived status while actual skill development stagnates; the impressive title can mask that you are not growing",
+      "who_it_affects": "PMs who are early in building their identity and are susceptible to conflating external validation with genuine career progress"
+    },
+    {
+      "choice": "Doing high-impact but invisible work (infrastructure, coordination, quality improvement)",
+      "unstated_consequence": "The work genuinely moves the company forward but systematically disadvantages you in promotion calibration because committees judge on visible presentation moments, not invisible sustained impact",
+      "who_it_affects": "Introverts, non-native English speakers, and PMs who work on technical or operational areas with low stakeholder visibility"
+    },
+    {
+      "choice": "Passively hoping your manager will recognize and advocate for your promotion",
+      "unstated_consequence": "You cede control of the most important career lever to someone else's attention and priorities; the manager may respect your work but never translate it into active advocacy",
+      "who_it_affects": "High-performing PMs who believe good work speaks for itself and are uncomfortable with self-advocacy"
+    },
+    {
+      "choice": "Sharing credit generously with your team",
+      "unstated_consequence": "If not paired with deliberate narration of your own contributions to the right people, credit-sharing can make your individual impact invisible, undermining promotion outcomes despite being the ethically and strategically correct long-term move",
+      "who_it_affects": "PMs who share credit generously but do not simultaneously ensure their own contributions are legible to promotion decision-makers"
+    },
+    {
+      "choice": "Focusing exclusively on the next promotion cycle (6–12 month horizon)",
+      "unstated_consequence": "Short-term optimization shapes which projects you take, which skills you develop, and which relationships you build — often in ways that diverge from what would be most valuable at a five-year horizon",
+      "who_it_affects": "Mid-career PMs under pressure to hit a promotion timeline who sacrifice compounding skill development for near-term legibility"
+    },
+    {
+      "choice": "Building your network only when you need it (job searching, navigating a crisis)",
+      "unstated_consequence": "Relationships built under urgency are weaker, more transactional, and provide less honest feedback than relationships built during stable periods; you lose the most valuable property of a network — trust built without agenda",
+      "who_it_affects": "PMs who are heads-down in execution during good periods and reach out to their network only when something goes wrong"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Overweighting ego and underweighting joy when evaluating roles",
+      "why_it_happens": "Ego-satisfying signals (title, brand, salary) are external, legible, and immediately gratifying; joy is internal, harder to articulate, and easy to rationalize away as a luxury",
+      "consequence": "The PM takes a role that sounds impressive but is draining, which leads to underperformance, disengagement, and career stagnation disguised as external success",
+      "warning_signs": [
+        "You find yourself describing the role primarily in terms of how it sounds to others",
+        "You cannot articulate what specifically about the work you find energizing, only what makes it look good"
+      ]
+    },
+    {
+      "pattern": "Hoping a manager will recognize and advocate for promotion without active partnership",
+      "why_it_happens": "High performers often believe their work quality is self-evident and conflate advocacy with self-aggrandizement, making passive hope feel like the appropriate and humble approach",
+      "consequence": "The PM waits through multiple review cycles without promotion while less-impactful but more-vocal peers advance; the manager never becomes an active ally",
+      "warning_signs": [
+        "You have had strong performance reviews but have not explicitly discussed the gap between your current level and the next with your manager",
+        "You do not know specifically what your manager would say you need to demonstrate to be promoted"
+      ]
+    },
+    {
+      "pattern": "Conflating title and compensation gains with genuine career development",
+      "why_it_happens": "Title and money are immediately measurable and socially validated; scope is abstract and harder to compare across companies and roles",
+      "consequence": "The PM accumulates titles and compensation without accumulating the decision-making experience and scope expansion that build long-term career capital; gaps become apparent when they try to operate at a higher level",
+      "warning_signs": [
+        "You evaluate new opportunities primarily by comparing titles and compensation bands",
+        "You have not explicitly asked what decisions you would be empowered to make in a new role"
+      ]
+    },
+    {
+      "pattern": "Doing high-impact invisible work without narrating it to decision-makers",
+      "why_it_happens": "PMs who do coordination, infrastructure, or quality work often believe that demonstrating impact through results is sufficient, and that self-narration feels like self-promotion",
+      "consequence": "Promotion committees judge on visible high-stakes moments; invisible contributors are passed over regardless of actual organizational impact",
+      "warning_signs": [
+        "You cannot name three people in your promotion calibration who could describe your specific contributions unprompted",
+        "Your work is frequently acknowledged by immediate teammates but rarely cited by senior leadership"
+      ]
+    },
+    {
+      "pattern": "Only looking inward at your own product for learning rather than outward at the market",
+      "why_it_happens": "Internal learning is immediately relevant and easier to act on; external analysis requires deliberate effort with less obvious immediate payoff",
+      "consequence": "The PM improves incrementally from a narrow set of experiments while missing the pattern recognition and mental models that come from analyzing the broader market's product decisions",
+      "warning_signs": [
+        "You cannot describe specific product decisions by competitors and your hypotheses about why they were made",
+        "Your product intuition is primarily shaped by your own users and data rather than cross-industry observation"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has your scope — the actual decision authority and surface area of your work — expanded in the last 12–18 months?",
+      "what_it_reveals": "Whether the constraint on career progress is a skill gap (you haven't demonstrated readiness for more scope) or an organizational ceiling (the org structurally cannot give you more scope regardless of performance)",
+      "follow_up_if_yes": "Is that scope expansion visible to the people who make promotion decisions, or is it happening informally?",
+      "follow_up_if_no": "Have you had explicit conversations with your manager about what would need to be true for you to take on more scope, or are you waiting for it to happen organically?"
+    },
+    {
+      "question": "Do you know specifically what gap your manager would say exists between your current level and the next?",
+      "what_it_reveals": "Whether you have activated the partnership approach to promotion or are relying on hope; also reveals whether your manager is functioning as an ally or a ceiling",
+      "follow_up_if_yes": "Have you made progress against that specific gap in the last review cycle, and does your manager know it?",
+      "follow_up_if_no": "What has prevented you from having that conversation — discomfort, belief that the answer is obvious, or lack of access to your manager?"
+    },
+    {
+      "question": "When you evaluate a new role, do you explicitly separate what you find energizing about the work from what makes it sound impressive to others?",
+      "what_it_reveals": "Whether the person is using the Tablestakes–Ego–Joy framework or conflating ego satisfaction with genuine fit; reveals susceptibility to taking roles that sound good but produce stagnation",
+      "follow_up_if_yes": "What specifically did you identify in the joy category that you cannot get from your current role?",
+      "follow_up_if_no": "Can you articulate what you find genuinely energizing about product work that is independent of how it looks to your peers or recruiters?"
+    },
+    {
+      "question": "Can you name the people who will be in your next promotion calibration, and would they be able to describe your specific contributions unprompted?",
+      "what_it_reveals": "Whether the person's impact is visible to the actual decision-makers, or whether they are relying on organic recognition in a system with documented presentation bias",
+      "follow_up_if_yes": "How did you ensure that visibility — was it deliberate narration or high-visibility presentations, and is it sustainable?",
+      "follow_up_if_no": "What is your plan to make your work legible to those people before the next calibration cycle?"
+    },
+    {
+      "question": "Do you have a clear picture of what you want your career to look like in five years, including what skills, scope, decisions, and relationships you will need?",
+      "what_it_reveals": "Whether the person is making day-to-day decisions with a directional long-term view or optimizing purely for the next 6–12 month promotion cycle",
+      "follow_up_if_yes": "Are your current project choices and relationship investments actually aligned with that five-year picture?",
+      "follow_up_if_no": "Are your current career decisions being made primarily by reacting to what is available or what your manager assigns, rather than by a proactive strategy?"
+    },
+    {
+      "question": "Do you have peer relationships outside your company — built before you needed them — with people at similar career stages who give you honest feedback?",
+      "what_it_reveals": "Whether the person has pattern recognition across organizations to distinguish company-specific dysfunction from industry norms, and whether they have the network infrastructure to navigate future transitions",
+      "follow_up_if_yes": "Have those peers helped you identify something about your situation that you would have misread if you had only internal information?",
+      "follow_up_if_no": "Are you currently interpreting your company's dynamics through only internal reference points, which may cause you to misattribute org ceilings as personal skill gaps or vice versa?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Promotion decisions are made based on sustained impact and performance over the review period",
+      "actual_reality": "Promotion committees often judge candidates based heavily on one or a few high-visibility presentations due to presentation bias, which systematically disadvantages quiet contributors, non-native English speakers, and people doing invisible but high-impact work",
+      "implication": "Regardless of actual impact, PMs must ensure their work is visible and narrated to the right people; relying on impact alone is insufficient in environments where decision-makers have limited direct exposure to your work"
+    },
+    {
+      "common_belief": "Your manager is responsible for your career growth and will advocate for you if you perform well",
+      "actual_reality": "Career growth ultimately rests on you, not your manager; your manager can be a powerful accelerant or a ceiling, but the default is neither — it is indifference unless you actively partner with them",
+      "implication": "PMs must take explicit ownership of the promotion conversation by partnering with their manager rather than hoping recognition will happen passively"
+    },
+    {
+      "common_belief": "Title and compensation are reliable proxies for career development",
+      "actual_reality": "Scope — decision authority and surface area — is the most important predictor of long-term career development; title and money are legible but often lead people to underweight the variable that actually matters",
+      "implication": "PMs should evaluate roles and promotions primarily on scope expansion, treating title and compensation as important but secondary; a high title with narrow scope is a career trap"
+    },
+    {
+      "common_belief": "Sharing credit generously and self-advocating are in conflict — you either give credit or you take it",
+      "actual_reality": "Credit is infinitely divisible; sharing credit and making your own contributions legible are not mutually exclusive and are both necessary simultaneously",
+      "implication": "PMs should give credit generously to build the kind of reputation that makes others want to work with and advocate for them, while separately ensuring their own contributions are narrated to decision-makers"
+    },
+    {
+      "common_belief": "The most effective way to develop as a PM is to go deep on your own product and users",
+      "actual_reality": "The best PMs look outward — they learn from the entire market's experiments, not just their own; internal-focused PMs improve incrementally while external-focused PMs develop faster pattern recognition",
+      "implication": "PMs should build deliberate practices for analyzing competitor and adjacent product decisions, not just optimize for internal metrics and user feedback"
+    },
+    {
+      "common_belief": "Presentations and communication skills are soft skills that matter less than product judgment and execution",
+      "actual_reality": "Presentations are 5% of the job but 50% of how you are judged; communication skills have an outsized career return disproportionate to the time they consume",
+      "implication": "Deliberate investment in communication — writing, speaking, presenting — is one of the highest-return career development activities for a senior PM, not a nice-to-have"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate a new role or promotion",
+      "junior_pattern": "Evaluates primarily on title and compensation, treating scope as a secondary or assumed variable; conflates a better title with genuine career progress",
+      "senior_pattern": "Explicitly separates title, money, and scope; treats scope as the primary variable and interrogates the actual decision authority and surface area they would own",
+      "why_it_matters": "Optimizing for title without scope produces stagnation — you get the signal of advancement without the experience that builds long-term capability"
+    },
+    {
+      "dimension": "Approach to promotion",
+      "junior_pattern": "Hopes the manager will recognize their work and advocate for them, or demands promotion directly when frustrated; treats promotion as something that happens to them",
+      "senior_pattern": "Partners with their manager by explicitly asking what gap exists between their current level and the next; treats promotion as a collaborative process they drive",
+      "why_it_matters": "The partnership approach converts the manager into an ally and generates specific actionable feedback; passive hope produces indefinite waiting and ambiguity"
+    },
+    {
+      "dimension": "Career planning horizon",
+      "junior_pattern": "Focuses on the next promotion cycle (6–12 months); makes project and relationship decisions based on what will be visible and rewarded in the near term",
+      "senior_pattern": "Anchors decisions to a five-year future vision and works backward to identify required skills, scope, decisions, and relationships; near-term decisions are filtered through the long-term view",
+      "why_it_matters": "Short-term optimization and long-term optimization often diverge; without a long-term anchor, daily decisions compound in the wrong direction"
+    },
+    {
+      "dimension": "Orientation for learning and development",
+      "junior_pattern": "Looks primarily inward — focuses on their own product, users, and metrics; learns from their own experiments",
+      "senior_pattern": "Looks outward — conducts product takedowns of competitors, analyzes decisions made by other product teams, learns from the entire market's experiments simultaneously",
+      "why_it_matters": "Inward-focused PMs improve incrementally; outward-focused PMs develop pattern recognition across a much larger dataset and develop intuition faster"
+    },
+    {
+      "dimension": "Relationship between credit-sharing and self-advocacy",
+      "junior_pattern": "Treats credit and self-advocacy as a zero-sum tradeoff — either you share credit generously or you advocate for yourself; often defaults to one at the expense of the other",
+      "senior_pattern": "Understands credit is infinitely divisible and practices both simultaneously — shares credit generously while ensuring their own contributions are narrated to decision-makers",
+      "why_it_matters": "Sharing credit without self-advocacy produces invisible impact; self-advocacy without sharing credit damages the relationships and reputation that produce long-term advocacy from others"
+    },
+    {
+      "dimension": "Investment in communication skills",
+      "junior_pattern": "Treats communication and presentation as peripheral soft skills; invests development time proportionally to how much of the day-to-day job they represent (low)",
+      "senior_pattern": "Recognizes that presentations are disproportionately determinative of how they are judged; invests in communication skills at a rate that reflects their outsized career return, not their time share",
+      "why_it_matters": "Communication skill gaps compound negatively over time in promotion and influence outcomes because high-visibility moments are where career trajectories are actually set"
+    },
+    {
+      "dimension": "When they build their network",
+      "junior_pattern": "Builds or activates their network reactively — reaches out when job searching, navigating a crisis, or needing a reference; relationships are built under urgency",
+      "senior_pattern": "Invests in peer relationships and coaching circles proactively during stable periods; relationships are built without agenda and are therefore higher trust and more honest",
+      "why_it_matters": "Relationships built under urgency are weaker and more transactional; the most valuable network properties — honest feedback, fast referrals, pattern recognition across orgs — require trust built over time"
+    }
+  ]
+}

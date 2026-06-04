@@ -1,0 +1,46 @@
+{
+  "skill_name": "International Student Job Search Strategist",
+  "overall_score": 4.4,
+  "summary": "A genuinely strong skill that captures how an experienced career coach actually thinks about the international student job search — particularly the timeline-as-constraint framing, the visa disclosure reframe, and the channel reallocation diagnosis. It would meaningfully improve AI advice in this domain. Minor weaknesses include some slightly soft heuristics, a couple of statistics presented without ranges/caveats, and missing coverage of Canada-specific mechanics despite being scoped to both countries.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "Expert framing is genuinely counterintuitive and names specific wrong framings: 'relationship activation problem on an immigration-constrained timeline, not a volume application problem' and 'a small company saying we'd sponsor without an immigration attorney is not a viable employer' — both correct real, common user misconceptions.",
+    "The diagnostic questions are excellent and operational. 'Have you verified target companies' actual H-1B filing history on H1Bdata.info or MyVisaJobs.com?' and 'How many current employees at your top 5 target companies have you spoken to in the last 6 months?' are tools, not platitudes — they immediately diagnose evidence-based vs. assumption-based targeting.",
+    "Hidden tradeoffs are genuinely non-obvious. 'Asking for referral before relationship exists — destroys the social obligation that would have created the referral naturally' and 'Outreach before proof-of-work exists — burns contacts who won't reopen the door once credentials improve' are the kind of insights only people who've watched this play out repeatedly would surface.",
+    "The junior vs. senior table has meaningful, behavior-changing differentiators — particularly 'Contact target: Directors and VPs (assumes authority) vs. Managers <2 years in role' and 'Referral framing: Asking a favor vs. Offering a $2K–$10K bonus opportunity'. These would directly change AI output."
+  ],
+  "weaknesses": [
+    "Several statistics are stated as if precise without sourcing or ranges, which weakens credibility: '70–80% of jobs filled before public posting', 'ATS filters 75–90% before human review', 'Referred candidates are 7–15× more likely to be hired and move 55% faster'. These numbers vary widely by source and industry; senior practitioners typically hedge or contextualize them.",
+    "Despite the skill being scoped to 'US and Canada', Canada-specific mechanics are nearly absent. No mention of PGWP timelines, LMIA, Express Entry/CRS implications, or the Global Talent Stream — all of which materially change the strategy for Canadian-based international students.",
+    "Heuristic #6 ('Target managers <2 years in role') is asserted but the operationalization is thin — how does a user actually identify newer managers at scale on LinkedIn? The skill names the heuristic but doesn't give the tactic to execute it.",
+    "The 'Vet small employers for execution, not intent' heuristic is great but lacks the actual diagnostic questions to use in conversation with the employer. A more expert version would include: 'How many H-1B petitions has your immigration attorney filed for the company? When was your last one?'"
+  ],
+  "improvement_suggestions": [
+    "Add a Canada-specific section or parallel track: PGWP duration tied to program length, LMIA-exempt categories (CUSMA, intra-company transfers), CRS scoring implications of Canadian work experience, and PNP pathways. Without this, the 'and Canada' in the scope is misleading.",
+    "Replace bare statistics with ranges or hedges and attribute where possible (e.g., 'estimates range from 60–80% depending on industry and source — Wharton/LinkedIn studies'). Or move them to a 'rules of thumb' framing rather than hard numbers.",
+    "Add concrete cold email and follow-up templates (or skeletons), since heuristic #5 specifies '50–125 words' but doesn't show the structure. A 3-line skeleton (common ground / proof of worth / specific 30-min ask) with one worked example would 10x the actionability.",
+    "Add a heuristic or section on what to do during informational interviews that *does* convert to referrals — the timing of the second touch, what to send after the call, how to surface the ask 3–4 weeks later without breaking the no-ask rule of the first call.",
+    "Add a failure pattern around 'consulting body shops' / fraudulent sponsorship offers, which is a real and high-stakes trap for international students."
+  ],
+  "generic_advice_flags": [
+    "'Practice STAR answers out loud with a person — because the skill being tested is verbal fluency under social pressure' — the insight is right but the heuristic stops short of expert specificity. A senior version would specify how many reps, which question categories matter most for new grads (failure stories, conflict, ambiguity), and that the partner should interrupt and ask clarifying questions.",
+    "'Optimize for relationship-building, proof-of-work portfolio, and broad sponsor-friendly target list' for the 12+ months stage is directionally correct but vague — what does 'proof-of-work portfolio' mean concretely for a CS student vs. a finance student vs. a marketing student?"
+  ],
+  "missing_coverage": [
+    "Canada-specific mechanics (PGWP, LMIA, CRS, PNP) despite being in scope",
+    "How to handle the GPT/transition from informational interview to actual referral ask — the timing and language of the second touch",
+    "Salary negotiation under visa constraints — international students often under-negotiate fearing offer withdrawal; expert framing on what is/isn't safe to negotiate when sponsorship is on the table",
+    "The role of CPT during study and how internship strategy feeds full-time pipelines at the same employer (return-offer conversion as the dominant strategy)",
+    "Red flags for consulting/body shop scams and fraudulent sponsorship arrangements",
+    "Industry-specific variation — the skill reads as tech-default but covers 'professional roles'; finance, consulting, and biotech have very different sponsorship landscapes and recruiting calendars"
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "source_file": "expert_job_search_framework.txt",
+  "heuristics": [
+    {
+      "rule": "Start internship search 9–12 months before start date; start full-time search 6–12 months before graduation; for international students on OPT, start 12–18 months before graduation",
+      "condition": "When planning your job search timeline...",
+      "action": "...anchor your start date to your target end date and work backward, treating job search as a concurrent multi-semester project rather than a post-graduation task",
+      "because": "By the time urgency is felt, the best options (early referrals, relationship-building cycles, insider knowledge) have already been foreclosed"
+    },
+    {
+      "rule": "Allocate 50%+ of job search time to cold outreach and referral requests, not to applications or resume polishing",
+      "condition": "When deciding how to spend your daily job search hours...",
+      "action": "...prioritize Type A activities (cold outreach, referral requests, networking with strangers) over Type B (applying to postings) and Type C (browsing, optimizing resume abstractly)",
+      "because": "Type A has the highest return per hour invested even though response rates per message are low; Type C feels productive but generates zero pipeline"
+    },
+    {
+      "rule": "The further down the referral chain you are from a close personal contact, the more proof of worth your outreach message must contain",
+      "condition": "When reaching out to someone at a target company with no strong existing relationship...",
+      "action": "...front-load your outreach with concrete evidence of capability (specific outcomes, relevant work, common ground) rather than a generic introduction",
+      "because": "A cold contact with no obvious connection has no social obligation to forward your materials; demonstrated value substitutes for relational trust"
+    },
+    {
+      "rule": "Never ask for a job or referral in the first informational interview conversation",
+      "condition": "When conducting a 20–30 minute informational interview with someone at a target company...",
+      "action": "...ask only for knowledge (their path, team challenges, what strong performance looks like) and demonstrate genuine curiosity about their experience",
+      "because": "Social obligation to move your resume forward is created by genuine connection, not transactional requests; premature asks destroy the relationship before it forms"
+    },
+    {
+      "rule": "Apply to companies you have researched, not companies you have merely heard of",
+      "condition": "When building your target company list...",
+      "action": "...require yourself to have specific knowledge of each company's products, tech stack, culture, or recent news before adding it to your active pipeline",
+      "because": "Generic interest is detectable by hiring managers and fails the 'specific reason why this company' test that distinguishes hired candidates from rejected ones"
+    },
+    {
+      "rule": "Optimize your LinkedIn for recruiter search behavior (headlines, skills, keywords) rather than for narrative readability",
+      "condition": "When updating your LinkedIn profile...",
+      "action": "...prioritize keyword density and searchability in headlines and skills sections to drive inbound recruiter discovery, then use the narrative sections to drive conversion",
+      "because": "LinkedIn functions as a search engine; recruiters searching for candidates will never reach your narrative if your profile doesn't surface in their query results"
+    },
+    {
+      "rule": "Practice behavioral interview responses out loud with another person, not silently in your head",
+      "condition": "When preparing for behavioral interviews...",
+      "action": "...drill STAR responses verbally with a live partner rather than reading about the framework or rehearsing internally",
+      "because": "Answering out loud under social pressure is a distinct skill from understanding a framework; internal rehearsal does not build the muscle being tested"
+    },
+    {
+      "rule": "Track funding announcements and hiring announcements at target companies to identify unlisted roles",
+      "condition": "When trying to access the hidden job market...",
+      "action": "...monitor companies in active growth phases because they frequently fill new headcount before roles are posted publicly",
+      "because": "Companies adding headcount under growth pressure prioritize speed; roles get filled through internal networks before HR completes the formal posting process"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Position in the referral chain",
+      "why_it_matters": "A close friend who can vouch for you personally creates a fundamentally different social obligation than a cold contact with no common ground; the conversion rate and required effort differ dramatically across the five levels",
+      "how_to_assess": "Map each target company contact against the five-tier referral hierarchy: (1) close friend who vouches, (2) acquaintance who knows your reputation, (3) mutual connection who forwards, (4) cold contact with common ground, (5) cold contact with no connection",
+      "weight": "high"
+    },
+    {
+      "factor": "Timing relative to need",
+      "why_it_matters": "Networking done 12+ months before graduation yields authentic conversations, reciprocal relationships, and discovery of unknown opportunities; networking done in desperation is detectable and limited to only what is currently available",
+      "how_to_assess": "Calculate months remaining before your target start date or OPT authorization deadline and compare against recommended lead times (9–12 months for internships, 12–18 months for international students)",
+      "weight": "high"
+    },
+    {
+      "factor": "Work authorization clarity and timeline",
+      "why_it_matters": "International students have a hard constraint (OPT deadline) that compresses all other timelines and must be proactively communicated to recruiters; failure to manage this creates last-minute scrambles with no recovery options",
+      "how_to_assess": "Know the exact date of authorization expiration, whether sponsorship is required and when, and whether each target company has a history of sponsoring the relevant visa type",
+      "weight": "high"
+    },
+    {
+      "factor": "Ability to articulate outcomes, not just experience",
+      "why_it_matters": "Hiring managers consistently distinguish candidates who can quantify impact ('reduced latency by 40%') from those who describe activity ('worked on backend systems'); this is a filtering criterion, not a tiebreaker",
+      "how_to_assess": "Test yourself: can you explain your most impactful project in 90 seconds in a way that makes a non-technical hiring manager want to know more?",
+      "weight": "high"
+    },
+    {
+      "factor": "Existing network density at target companies",
+      "why_it_matters": "Most offers are won at steps 2–4 of the funnel (network activation, outreach, conversation) not at step 5 (application); having zero contacts at a target company means starting from the least efficient entry point",
+      "how_to_assess": "For each company on your target list, count how many current employees you have spoken to in the last 6 months",
+      "weight": "high"
+    },
+    {
+      "factor": "Public visibility and discoverability",
+      "why_it_matters": "The hidden job market is most accessible to people who are findable — through blog posts, open source, talks, LinkedIn articles; invisibility forecloses inbound opportunities entirely",
+      "how_to_assess": "Search your own name and relevant skill keywords on LinkedIn and GitHub; assess whether a recruiter searching for your skill set would find you without knowing your name",
+      "weight": "medium"
+    },
+    {
+      "factor": "Specificity of company targeting rationale",
+      "why_it_matters": "Generic interest (applied everywhere, prepared for nowhere) is one of the most common reasons candidates fail to get offers; companies detect and penalize it through interview questions about motivation",
+      "how_to_assess": "Write one sentence explaining why you want to work at each specific company that could not apply to any other company",
+      "weight": "medium"
+    },
+    {
+      "factor": "Portfolio and proof of work completeness",
+      "why_it_matters": "These must be completed before outreach begins; initiating networking without published proof of work wastes the relationship window because you cannot demonstrate capability when asked",
+      "how_to_assess": "Is your portfolio publicly accessible and does it include work a recruiter or hiring manager could evaluate without asking you for context?",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Starting job search only after graduation or when urgency is felt",
+      "unstated_consequence": "The best opportunities — those accessed through warm relationships, early referrals, and insider knowledge of unlisted roles — are already foreclosed; you can only compete for what is currently posted and visible",
+      "who_it_affects": "International students on OPT deadlines, who have a compressing authorization window that leaves no slack for slow-cycle relationship building"
+    },
+    {
+      "choice": "Spending most job search time on applications to posted jobs",
+      "unstated_consequence": "ATS systems filter out 75–90% of applicants before human eyes see them, meaning the majority of this effort produces zero result; the activity feels productive while generating almost no pipeline advancement",
+      "who_it_affects": "Students who optimize resumes extensively but do no outreach — they invest the most in the stage with the lowest uncontrolled conversion rate"
+    },
+    {
+      "choice": "Targeting only brand-name companies you have heard of",
+      "unstated_consequence": "You compete in the most crowded applicant pools against the most well-networked candidates, while excellent companies with higher conversion rates and less competition go uncontacted",
+      "who_it_affects": "International students who rely on brand recognition as a proxy for visa sponsorship likelihood without verifying actual sponsorship history at lesser-known but equally capable companies"
+    },
+    {
+      "choice": "Asking for a referral or job in the first informational interview conversation",
+      "unstated_consequence": "The social obligation that would have naturally developed over a genuine conversation is destroyed; the contact is less likely to help than a stranger because the transactional framing has poisoned the relationship",
+      "who_it_affects": "High-urgency job seekers in desperation phase who cannot afford to invest in relationship development and attempt to shortcut the process"
+    },
+    {
+      "choice": "Building your network only when you need a job",
+      "unstated_consequence": "Every outreach is immediately recognizable as transactional; you have no reciprocal value to offer because you have built no reputation as a connector; contacts sense the pressure and respond accordingly",
+      "who_it_affects": "Students who treat networking as a job search tactic rather than a career-long practice, and who discover at graduation that their network consists only of classmates in the same situation"
+    },
+    {
+      "choice": "Practicing interview responses silently and internally rather than out loud",
+      "unstated_consequence": "The skill being tested — coherent thinking under social pressure, with a real person in real time — is never actually practiced; performance in the actual interview is not predicted by how well the internal rehearsal went",
+      "who_it_affects": "High-intelligence candidates who are comfortable with conceptual understanding but have not built the specific verbal fluency skill that interviews require"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating job search as a post-graduation problem rather than a concurrent multi-semester project",
+      "why_it_happens": "The cost of inaction is invisible until the deadline arrives; students prioritize coursework with immediate feedback loops and defer job search because consequences feel distant",
+      "consequence": "By the time urgency is felt, the relationship-building window is closed; only posted, competitive, ATS-filtered roles remain available; international students with OPT deadlines face the highest cost",
+      "warning_signs": [
+        "Thinking 'I'll start networking after finals'",
+        "Having no conversations with current employees at target companies 6 months before graduation"
+      ]
+    },
+    {
+      "pattern": "Optimizing the resume while neglecting the network",
+      "why_it_happens": "Resume editing is a controllable, comfortable task with visible output; outreach involves rejection risk and social discomfort, so students substitute resume polish for pipeline activity",
+      "consequence": "Strong credentials attached to no relationships enter ATS systems and are filtered out before human review; effort produces no interviews",
+      "warning_signs": [
+        "Spending hours tweaking resume formatting while sending fewer than 5 outreach messages per week",
+        "Describing your job search strategy in terms of resume versions rather than conversations had"
+      ]
+    },
+    {
+      "pattern": "Generic interest across all applications with no company-specific preparation",
+      "why_it_happens": "Volume feels like strategy; sending 100 applications feels more productive than deep research on 10 companies; students assume differentiation happens at the resume level",
+      "consequence": "Fails the 'specific reason why this company' filter in interviews; produces no inside knowledge advantage; misses unlisted roles that require a relationship to discover",
+      "warning_signs": [
+        "Unable to answer 'why us specifically' without mentioning brand name or size",
+        "No conversations with employees at any target company before applying"
+      ]
+    },
+    {
+      "pattern": "Strong credentials but inability to explain work in plain language under pressure",
+      "why_it_happens": "Technical training emphasizes depth and correctness; communication under time pressure with non-technical audiences is never practiced in academic settings; students assume capability implies communicability",
+      "consequence": "Fails to convert interviews into offers despite genuine competence; loses to candidates with slightly weaker credentials but stronger communication",
+      "warning_signs": [
+        "Cannot explain most impactful project in 90 seconds without being prompted or corrected",
+        "Answers to 'tell me about yourself' consistently exceed 3 minutes"
+      ]
+    },
+    {
+      "pattern": "Treating rejection as failure rather than as pipeline signal",
+      "why_it_happens": "Rejection is emotionally costly; students reduce applications to reduce exposure to rejection rather than analyzing patterns and adjusting; the sunk cost of each application makes rejection feel personal",
+      "consequence": "No improvement across application cycles; same weaknesses persist; pipeline volume drops below the threshold needed to generate offers",
+      "warning_signs": [
+        "Not tracking rejections or asking for feedback",
+        "Reducing application volume after rejection rather than analyzing and adjusting"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Can you explain your most impactful project in 90 seconds in a way that would make a non-technical hiring manager want to know more?",
+      "what_it_reveals": "Whether the candidate has translated technical work into outcome-oriented language that survives cross-functional communication — a direct hiring manager filter",
+      "follow_up_if_yes": "What specific metric or outcome do you lead with, and how do you know it was impactful relative to alternatives?",
+      "follow_up_if_no": "Is the barrier a lack of quantified outcomes in your work, or an inability to frame existing outcomes for a non-technical audience?"
+    },
+    {
+      "question": "Have you spoken to at least one current employee at each of your target companies in the last 6 months?",
+      "what_it_reveals": "Whether the candidate is operating at steps 2–4 of the funnel (relationship-based) or defaulting to step 5 (application-based); reveals the actual state of their network at each target",
+      "follow_up_if_yes": "What did you learn from those conversations that changed how you're positioning yourself or which roles you're targeting?",
+      "follow_up_if_no": "What is preventing outreach — absence of any connection point, fear of rejection, or belief that applications alone are sufficient?"
+    },
+    {
+      "question": "Do you know the exact timeline of your work authorization status and have you communicated it clearly to recruiters?",
+      "what_it_reveals": "Whether the candidate has internalized the OPT deadline as a hard constraint that compresses all other timelines, and whether they are managing recruiter expectations proactively",
+      "follow_up_if_yes": "Have you verified which of your target companies have a track record of sponsoring the specific visa type you will need?",
+      "follow_up_if_no": "When is your OPT authorization deadline, and have you calculated backward from that date to determine when job search must have already begun?"
+    },
+    {
+      "question": "Can you give a specific reason — one that could not apply to any other company — for why you want to work at each company you are actively applying to?",
+      "what_it_reveals": "Whether the candidate has done genuine company research or is applying by brand recognition; predicts performance on 'why us' interview questions and whether outreach messages will read as authentic",
+      "follow_up_if_yes": "How did you develop that specific reason — through employee conversations, product research, or public information?",
+      "follow_up_if_no": "Are you applying to these companies because of genuine fit signals or because of name recognition and perceived safety in volume?"
+    },
+    {
+      "question": "Have you practiced behavioral interview responses out loud with another person in the last two weeks?",
+      "what_it_reveals": "Whether the candidate has built the actual verbal fluency skill that interviews test, or whether they have only studied the framework — a distinction that predicts performance under real interview conditions",
+      "follow_up_if_yes": "What feedback did you receive, and what specific response weaknesses are you actively working on?",
+      "follow_up_if_no": "Is the barrier access to a practice partner, belief that internal rehearsal is equivalent, or underestimation of how different live performance is from studied preparation?"
+    },
+    {
+      "question": "How far in advance did you begin building your network at your target companies?",
+      "what_it_reveals": "Whether the candidate is in early-networking mode (authentic, reciprocal, time to discover unknown opportunities) or late-networking mode (high pressure, transactional, limited to currently available roles)",
+      "follow_up_if_yes": "What reciprocal value have you offered to contacts — introductions, relevant information, collaboration — that distinguishes you as a connector rather than just a job seeker?",
+      "follow_up_if_no": "Given the remaining time before your deadline, which relationship-building steps can still be completed meaningfully versus which require a different strategy?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Sending many applications is a job search strategy",
+      "actual_reality": "ATS systems filter out 75–90% of applicants before any human sees them; the application stage is a validation mechanism for opportunities already created through relationships, not a discovery mechanism",
+      "implication": "Time allocated to volume applications beyond a threshold returns less than time allocated to relationship activation; the application should be the last step of a process that began with network contact"
+    },
+    {
+      "common_belief": "The resume is the primary job search tool",
+      "actual_reality": "The resume validates a candidate who is already known to a human reviewer; it does not discover opportunities; most offers are won at steps 2–4 of the funnel before the resume is ever seen",
+      "implication": "Resume optimization should follow, not lead, network activation; a strong resume submitted cold converts at dramatically lower rates than the same resume submitted with a referral"
+    },
+    {
+      "common_belief": "Asking someone for a referral is what networking is for",
+      "actual_reality": "Referrals are an outcome of relationships, not the purpose of a conversation; asking for a referral before establishing genuine connection destroys the social obligation that would have created the referral naturally",
+      "implication": "Informational interviews should be structured as knowledge-seeking conversations with no explicit ask; the referral request, if it comes, should emerge from a relationship the contact feels is genuine"
+    },
+    {
+      "common_belief": "The job market consists of posted positions on job boards",
+      "actual_reality": "The hidden job market — positions filled before posting — is most accessible through former managers, weak ties, public visibility, and tracking companies in active growth; most experienced hires bypass the public posting process entirely",
+      "implication": "A job search strategy built only on job board monitoring will systematically miss the highest-quality opportunities filled through network channels before they become visible"
+    },
+    {
+      "common_belief": "Strong credentials and technical ability are the primary differentiators at hiring",
+      "actual_reality": "Hiring managers consistently report that what distinguishes hired candidates is demonstrated outcomes (not just experience), curiosity about the specific company, clear communication under pressure, and a narrative of fit — not raw credential strength",
+      "implication": "Candidates should invest as much preparation in articulating impact and company-specific reasoning as in technical interview preparation; communication skill is a filtering criterion, not a tiebreaker"
+    },
+    {
+      "common_belief": "Networking close to graduation is sufficient if done intensively",
+      "actual_reality": "Late networking is categorically different from early networking; desperation is detectable, reciprocal relationships cannot be built in weeks, and you are limited to only what is currently available rather than discovering unknown opportunities",
+      "implication": "The network available at graduation is the one built over the preceding two years; intensive late-stage networking can only partially compensate for the relational capital that early networking would have created"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Mental model of job search",
+      "junior_pattern": "Treats job search as a funnel entered at the application stage; optimizes resume as the primary lever; waits for responses after submitting",
+      "senior_pattern": "Treats job search as a relationship activation problem; builds network before need arises; uses application as a validation step after human contact is established",
+      "why_it_matters": "The entry point into the funnel determines which conversion rates apply; entering at step 5 means competing against 75–90% ATS filtration with no relationship advantage"
+    },
+    {
+      "dimension": "Response to rejection",
+      "junior_pattern": "Treats each rejection as a failure signal; either reduces application volume to avoid further rejection or continues without changing approach",
+      "senior_pattern": "Treats rejection as a filtering mechanism and pipeline data point; asks for feedback, tracks patterns across rejections, and adjusts approach based on aggregate signal",
+      "why_it_matters": "Only candidates who analyze rejections improve across cycles; those who avoid or ignore rejection data repeat the same failure patterns until the authorization deadline passes"
+    },
+    {
+      "dimension": "Time allocation across activity types",
+      "junior_pattern": "Defaults to Type C (browsing, optimizing resume abstractly) and Type B (applying to posted jobs) because they are comfortable and produce visible output",
+      "senior_pattern": "Prioritizes Type A (cold outreach, referral requests, networking with strangers) despite discomfort because return per hour is highest even when per-message response rate is low",
+      "why_it_matters": "Activity type determines pipeline generation rate; comfort-seeking job search produces the feeling of productivity with a fraction of the actual results"
+    },
+    {
+      "dimension": "Company targeting strategy",
+      "junior_pattern": "Targets companies by brand recognition and name familiarity; applies broadly to maximize perceived chances; prepares generically",
+      "senior_pattern": "Targets companies by researched fit (culture, tech stack, team problems, recent news); maintains a focused list with specific rationale; prepares with inside knowledge from employee conversations",
+      "why_it_matters": "Brand-name targeting concentrates effort in the most competitive applicant pools; researched targeting reveals less-competed opportunities and produces the company-specific reasoning that distinguishes hired candidates"
+    },
+    {
+      "dimension": "Interview preparation method",
+      "junior_pattern": "Studies STAR framework, reads about behavioral questions, rehearses answers mentally; believes understanding the framework equals readiness",
+      "senior_pattern": "Drills responses out loud with live partners; treats interview preparation as skill-building requiring physical practice, not knowledge acquisition",
+      "why_it_matters": "The skill being evaluated in interviews — coherent verbal thinking under social pressure — is not developed by reading or internal rehearsal; performance predicts only from practiced performance"
+    },
+    {
+      "dimension": "Networking timing and framing",
+      "junior_pattern": "Initiates networking when job search urgency is felt; frames every interaction around job search needs; asks for referrals as the primary objective of conversations",
+      "senior_pattern": "Builds network continuously before need arises; frames interactions around genuine knowledge exchange and relationship development; earns referrals as an outcome of established connection",
+      "why_it_matters": "Transactional networking under time pressure is detectable and produces lower response rates; relationship-based networking produces the social obligation that converts to referrals and insider access"
+    },
+    {
+      "dimension": "Understanding of what hiring managers actually evaluate",
+      "junior_pattern": "Assumes credentials, GPA, and technical depth are the primary differentiators; focuses preparation on proving technical ability",
+      "senior_pattern": "Understands that demonstrated outcomes, company-specific curiosity, communication clarity under pressure, and narrative fit are the actual hiring filters; prepares accordingly across all dimensions",
+      "why_it_matters": "Misdiagnnosing the evaluation criteria causes candidates to over-invest in one dimension (technical) while leaving the actual differentiating factors (communication, specificity, narrative) underdeveloped"
+    }
+  ]
+}

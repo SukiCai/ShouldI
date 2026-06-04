@@ -1,0 +1,261 @@
+记忆层 Logic Flow — 当前实现
+更新于 2026-04-28
+========================================
+
+架构层级
+--------
+
+  run_agent.py
+    └─ MemoryManager          ← 编排器，管理所有 provider
+         ├─ BuiltinMemoryProvider  ← 原有内置（MEMORY.md/USER.md）
+         └─ UserModelProvider      ← 自定义插件
+              ├─ UserModelStore    ← SQLite CRUD
+              ├─ TurnGate          ← 3-gate 过滤器
+              └─ UserModelInferrer ← LLM 推理（Task A + B）
+
+
+数据存储
+--------
+
+  单表：{hermes_home}/state.db → user_models
+
+  user_id       TEXT PRIMARY KEY
+  profile_json  TEXT  -- {"role": ..., "domain": ..., "years_experience": ...}
+  inferred_json TEXT  -- [{field, keywords:[{value,confidence,updated_at}], summary, summary_updated_at}]
+  signal_vocab  TEXT  -- [{term, trigger_for, confidence, updated_at}]
+  created_at    REAL
+  updated_at    REAL  -- 同时用于 cooldown 判断
+
+
+========================================
+生命周期时序
+========================================
+
+1. INITIALIZE
+--------------
+触发：Agent 启动
+路径：run_agent.py → MemoryManager.initialize_all() → UserModelProvider.initialize()
+
+处理：
+  - 创建 UserModelStore，路径 = {hermes_home}/state.db
+  - 用 user_id 从 SQLite 读取 UserModel 快照（未知用户返回 None，graceful degradation）
+  - 初始化 aux LLM client（用于 Gate 3 + 推理），失败则 Gate 3 默认 YES
+  - 创建 TurnGate 实例
+
+内存中的 UserModel 结构：
+  UserModel(
+    user_id: str,
+    profile: dict,            # 注册数据
+    inferred: [TraitDimension],   # 推理出的维度列表
+    signal_vocab: [dict],     # 信号词汇表
+    updated_at: float
+  )
+
+  TraitDimension(
+    field: str,               # e.g. "communication_style"
+    keywords: [TraitKeyword], # [{value, confidence, updated_at}]
+    summary: str,
+    summary_updated_at: float
+  )
+
+
+2. SYSTEM PROMPT 注入
+----------------------
+触发：每次组装 system prompt
+路径：MemoryManager.build_system_prompt()
+        → UserModelProvider.system_prompt_block()
+        → UserModelStore.get_compressed_context()
+
+处理：
+  1. 读 profile，拼注册行：
+       "User: {role} at {domain}, {N} years ({industry})."
+  2. 读所有有 summary 的 inferred 维度
+  3. 按 avg keyword confidence 降序排列
+  4. 过滤 avg confidence >= 0.4；若无一达标，fallback 取前 2 个
+  5. 格式："Communication Style: {summary}"
+  6. 总长截断到 600 chars（按 \n 边界截断）
+
+返回示例：
+  ## User Profile
+  User: Product Manager at TechCorp, 5 years (SaaS).
+  Communication Style: User prefers direct, concise answers...
+  Technical Depth: User asks follow-up questions on implementation...
+
+返回 "" 条件：无 user_id / 无数据 / 异常
+
+
+3. PREFETCH（每 turn，API call 前）
+------------------------------------
+触发：每次 LLM API call 之前
+路径：MemoryManager.prefetch_all() → UserModelProvider.prefetch()
+
+返回：""（纯 no-op）
+原因：用户画像已完整注入 system prompt，不需要 per-turn 召回
+
+
+4. SYNC_TURN — 3-gate 过滤（每 turn，LLM 回复后）
+--------------------------------------------------
+触发：每轮对话完成后
+路径：MemoryManager.sync_all() → UserModelProvider.sync_turn()
+
+三层 Gate 串行：
+
+  Gate 1 — 长度过滤（无成本）
+    message.strip() < 30 chars → 直接跳过
+
+  Gate 2 — 动态信号词汇匹配（无成本）
+    signal_vocab 中任意 term 是否是 message 的子串（大小写不敏感）
+    → 无匹配则跳过
+
+  Gate 3 — LLM 二分类器（语言无关，仅在 Gate 2 通过后触发）
+    Prompt: "Does this message reveal anything about the user's
+             professional background, work habits, or communication
+             preferences? Reply with exactly one word: YES or NO"
+    max_tokens=5, temperature=0
+    → YES 才通过；aux client 不可用时默认 YES
+
+通过所有 Gate 后：
+  仅打 debug log，不写库。
+  消息已隐式保留在完整 messages 列表，等 session 结束时整体传给 inferrer。
+
+注：Gate 2 的 signal_vocab 随 session 积累越来越精准，
+    新用户 vocab 为空时 Gate 2 全部放行（跳到 Gate 3）。
+
+
+5. ON_SESSION_END — 推理更新
+------------------------------
+触发：CLI 正常退出 / /reset / session 超时
+路径：MemoryManager.on_session_end()
+        → UserModelProvider.on_session_end()
+        → 后台线程（daemon=True，名 "user_model_infer"）
+        → UserModelInferrer.run()
+
+前置守卫（任一不满足 → 跳过整个推理）：
+  ┌─────────────────────────────────────────┬──────────────────┐
+  │ 条件                                    │ 值               │
+  ├─────────────────────────────────────────┼──────────────────┤
+  │ aux client + model 已配置               │ —                │
+  │ session 内 user turn 数                 │ >= 3 (MIN_TURNS) │
+  │ 距上次推理间隔（updated_at）             │ >= 1h (COOLDOWN) │
+  │ transcript 非空                         │ —                │
+  └─────────────────────────────────────────┴──────────────────┘
+
+Task A + Task B 通过 ThreadPoolExecutor(max_workers=2) 并行执行：
+
+
+  Task A — 性格/习惯维度推理
+  --------------------------
+  输入：
+    - 现有 inferred_json（field + keywords + summary）
+    - 最近 40 条消息的 transcript（20 turns）
+
+  Prompt 让 LLM 返回：
+    [{
+      "field": "communication_style",
+      "keywords": [{"value": "direct", "evidence_strength": 0.8}],
+      "summary": "1-2句描述"
+    }]
+
+  可选 field：
+    role, domain, experience_level, communication_style,
+    technical_depth, preferred_response_length,
+    industry, decision_making_style
+
+  update_inferred() 存储逻辑：
+    对每个现有 keyword：  confidence × 0.95          （decay）
+    Task A 返回的 keyword：
+      已存在 → confidence = min(1.0, decayed + evidence × 0.5)  （reinforce）
+      不存在 → confidence = min(1.0, evidence × 0.5)            （新增）
+    剪枝：confidence < 0.3 的 keyword 删除
+    上限：每维度最多 5 个 keywords（保留 confidence 最高的）
+    上限：最多 10 个维度（按 avg confidence 保留）
+    summary：仅当 Task A 返回 summary 字段时更新
+
+  SQL：
+    UPDATE user_models SET inferred_json = ?, updated_at = ? WHERE user_id = ?
+
+
+  Task B — 信号词汇提取
+  ----------------------
+  输入：同一份 transcript
+
+  Prompt 让 LLM 返回：
+    [{"term": "as a PM", "trigger_for": "role", "confidence": 0.8}]
+  规则：term 必须用用户原始语言，聚焦于自我披露前的前置短语
+
+  update_signal_vocab() 存储逻辑：
+    对所有现有 term：confidence × 0.95                           （decay）
+    Task B 返回的 term：
+      已存在 → confidence = min(1.0, decayed + evidence × 0.5)  （reinforce）
+      不存在 → 新增，confidence = min(1.0, evidence × 0.5)      （新增）
+    剪枝：confidence < 0.3 删除
+    上限：最多 20 个 terms（按 confidence 保留）
+
+  SQL：
+    UPDATE user_models SET signal_vocab = ?, updated_at = ? WHERE user_id = ?
+
+
+6. SHUTDOWN
+------------
+触发：on_session_end 之后，agent teardown 时
+路径：MemoryManager.shutdown_all() → UserModelProvider.shutdown()
+
+处理：
+  threading.Event.wait(timeout=10.0)
+  阻塞等待后台推理线程完成，防止进程退出时推理被截断。
+
+
+7. 注册数据写入（独立于上述生命周期）
+--------------------------------------
+入口：UserModelStore.seed_from_registration(user_id, profile)
+
+逻辑：
+  新用户 → INSERT，inferred_json='[]', signal_vocab='[]'
+  已有用户 → 仅 UPDATE profile_json，不覆盖 inferred 或 signal_vocab
+
+
+========================================
+signal_vocab 的动态演化
+========================================
+
+第 1 次 session（新用户，vocab 为空）
+  Gate 2：vocab 空 → 全部放行，全靠 Gate 3 LLM 过滤
+  session_end Task B：生成初始词汇表
+    e.g. ["as a PM", "我们团队", "in my experience", ...]
+    → 写入 signal_vocab
+
+第 2-3 次 session（vocab 5-10 条）
+  Gate 2：开始命中用户个人化表达，过滤精度上升
+  session_end Task B：继续扩充，覆盖更多语言变体
+
+第 N 次 session（成熟用户，vocab 15-20 条）
+  Gate 2 已能精准捕捉该用户高价值表达
+  Gate 3 LLM 调用频率极低（大部分在 Gate 2 已决策）
+  vocab 趋于稳定
+
+
+========================================
+完整数据流时序（一图总结）
+========================================
+
+  Agent 启动
+    → initialize(): 读 SQLite → 内存 UserModel 快照
+
+  ┌─ 每次 API call ──────────────────────────────────────────┐
+  │  system_prompt_block():                                  │
+  │    UserModel → get_compressed_context() → 注入 system    │
+  │    prompt（最多 600 chars，位置 7/9）                     │
+  └──────────────────────────────────────────────────────────┘
+
+  ┌─ 每轮对话 ───────────────────────────────────────────────┐
+  │  prefetch()    → "" (no-op)                              │
+  │  LLM API call  ← 携带 ## User Profile 背景               │
+  │  sync_turn()   → Gate 1 → Gate 2 → Gate 3               │
+  │                  通过 → log signal，等 session end        │
+  └──────────────────────────────────────────────────────────┘
+
+  Session 结束
+    → on_session_end(): 启动后台线程
+        ┌─ Task A → update_inferred() → inferred_json 更新
+        └─ Task B → update_signal_vocab() → signal_vocab 更新
+    → shutdown(): 等待后台线程（最多 10s）

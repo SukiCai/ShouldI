@@ -1,0 +1,1897 @@
+{
+  "heuristics": [
+    {
+      "rule": "If performance reviews are strong but promotions consistently go to people with political capital, you're hitting an org ceiling, not a skill gap",
+      "condition": "When you have strong reviews for multiple cycles but aren't advancing",
+      "action": "Diagnose whether the block is internal (skill) or structural (org), then act accordingly — fix skills or leave",
+      "because": "Skill gaps and org ceilings feel identical from the inside but require completely opposite responses; misdiagnosing wastes years",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "If you've solved the problems you were hired to solve and no new scope is available, it's time to leave",
+      "condition": "When internal growth path is genuinely exhausted — not just 'not this cycle'",
+      "action": "Switch companies rather than wait for scope that isn't coming",
+      "because": "Staying in a role with no new scope stalls your learning rate regardless of title or compensation",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "Optimize for scope over title at every career stage",
+      "condition": "When evaluating a role or promotion offer",
+      "action": "Ask 'what's the most important decision I'll make in the next 12 months?' before accepting; walk away if the answer isn't immediately interesting",
+      "because": "Title without scope is a career trap — it looks good externally but doesn't build the skills that make you genuinely senior in the market sense",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "If you can't list three genuinely hard problems you worked on in the last 12 months, your current role isn't developing you",
+      "condition": "When assessing whether to stay or leave a role",
+      "action": "Treat the inability to list three hard problems as a stronger signal than your performance review score",
+      "because": "Performance reviews measure past output; the hardness of your problems predicts future growth rate",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "If your manager can't describe what the next level looks like and name two people who got there, there is no defined path",
+      "condition": "When evaluating internal promotion prospects",
+      "action": "Don't wait for a promotion cycle — confirm the path is real before investing in it",
+      "because": "Without a defined and evidenced path, advocacy is impossible and the goalposts will move",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "If you're not in strategy-setting conversations after 18 months, ask why before concluding it's an org ceiling",
+      "condition": "When you feel excluded from key organizational decisions",
+      "action": "Diagnose whether exclusion reflects thin stakeholder relationships (fixable) or a structural org ceiling (leave)",
+      "because": "Mistaking thin relationships for an org ceiling causes PMs to leave problems they could have solved",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "The real cost of an MBA is two years of not compounding your execution track record",
+      "condition": "When considering an MBA to accelerate a PM career",
+      "action": "Compare the MBA path against two years at a great company building craft; only pursue MBA if it provides network, legitimacy signal, or domain access you can't get otherwise",
+      "because": "Internal advocacy and execution track record — not an MBA — drive promotion to Group PM or Director at tech companies",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "Switch companies only after you've absorbed the lessons of your current environment",
+      "condition": "When considering leaving before fully extracting value from a role",
+      "action": "Delay the switch until you can clearly articulate what you learned; if you're running from hard feedback, fix the feedback first",
+      "because": "Problems travel with you; switching before learning means you'll face the same issues without the context you had before",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "Find two people 5 years ahead of you — one who stayed, one who left — and ask what they'd change",
+      "condition": "When calibrating a stay-vs-leave decision",
+      "action": "Use the pattern of their regrets as your primary data point over salary benchmarks",
+      "because": "Regret patterns from people ahead of you reveal trajectory consequences that present-moment thinking systematically misses",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "If nominal ownership is offered without the authority to say no, it's worse than no ownership",
+      "condition": "When evaluating how much real ownership a new role provides",
+      "action": "Ask specifically about the last two decisions the PM made independently, what happened when they were wrong, and what they pushed back on and won",
+      "because": "Nominal ownership trains you to feel responsible without the authority to act — a habit that is actively harmful to career development",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "rule": "Target 8/10 job satisfaction as your navigation metric, not 10/10 or 5/10",
+      "condition": "When evaluating whether to stay, push for change, or leave a role",
+      "action": "Rate your satisfaction on a 1-10 scale regularly and track it over time; act if it drops below 7 for six months, act urgently if below 5 for three months",
+      "because": "10/10 is unrealistic and causes paralysis; 5/10 means you're enduring rather than building; 8/10 means you're engaged, growing, and pulling others upward",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "Test career hypotheses through small experiments before making full moves",
+      "condition": "When considering a domain change, company switch, or new role type",
+      "action": "Take on side projects, do informational interviews, or volunteer for cross-functional work before committing",
+      "because": "This gathers real data about fit and interest with low downside risk, converting anxious hope into actionable information",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "Make specific, concrete asks when reaching out to potential mentors",
+      "condition": "When seeking guidance from someone ahead of you in your target trajectory",
+      "action": "Ask a bounded, answerable question like 'Can we talk for 30 minutes about how you decided to move from X to Y?' instead of 'Can you be my mentor?'",
+      "because": "Generic asks get ignored; specific asks are easy to say yes to and demonstrate you've done your homework",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "Build relationships during good times, not when you need something",
+      "condition": "When your career is stable and you don't have an immediate need",
+      "action": "Stay in touch with your network proactively, without an agenda",
+      "because": "The people you maintained contact with when you didn't need anything are the ones who will go out of their way to help you later",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "Treat a persistent feeling of incompetence as a signal of high learning, not failure",
+      "condition": "When you've taken on a new role or domain and feel out of your depth",
+      "action": "Stay the course and treat the discomfort as the cost of growth rather than a sign you made the wrong move",
+      "because": "If you're always competent, you're not growing; the steepest learning curves coincide with the highest periods of development",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "At each career stage transition, identify what you were good at that you now need to stop doing",
+      "condition": "When moving from Senior PM to Director/VP or any stage-level promotion",
+      "action": "Explicitly inventory the hands-on behaviors that made you successful and create a plan to delegate or deprioritize them",
+      "because": "The VP who keeps trying to be a great Senior PM will fail as a VP; stage transitions require giving up what made you successful, not just adding new skills",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "rule": "Expand scope first, demonstrate impact at that scope, then ask for the title",
+      "condition": "When pursuing promotion to the next level...",
+      "action": "...seek expanded responsibilities before the title change, not after",
+      "because": "Promotions depend on demonstrated impact at higher scope, not mastery of a competency rubric — the title follows proof, not preparation",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Make your judgment visible by explicitly unpacking your decision-making process",
+      "condition": "When operating at senior PM level where trust is required for expanded influence...",
+      "action": "...articulate the alternatives you considered and why you chose a specific path, rather than just presenting conclusions",
+      "because": "Judgment is invisible unless you show your work — executives cannot calibrate trust in someone whose reasoning they cannot observe",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Connect your work to company strategy explicitly, never assume the link is obvious",
+      "condition": "When presenting plans or requesting resources at senior levels...",
+      "action": "...articulate why your area matters at the company level in every significant communication",
+      "because": "A senior PM who cannot explain their area's strategic relevance will be overlooked in resource allocation, regardless of execution quality",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Treat cross-stage transitions as fundamentally different jobs, not faster execution of the current job",
+      "condition": "When moving from PM2 to Senior PM, or from Senior PM to Director...",
+      "action": "...deliberately shift focus to the new stage's responsibilities even if it means appearing temporarily less competent",
+      "because": "Cross-stage promotions require different work, not better work — attempting to get promoted by excelling at Stage 1 work will not unlock Stage 2 advancement",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Use 360-degree feedback as a proxy for collaborative reputation before seeking scope expansion",
+      "condition": "When assessing readiness for senior-level expanded influence...",
+      "action": "...solicit feedback on whether peers and stakeholders view you as constructive, humble, and genuinely collaborative",
+      "because": "Executives pattern-match heavily on collaboration signals when deciding who gets expanded scope — defensive or self-interested reputations block advancement regardless of output quality",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Validate ideas with real people before committing resources, not after",
+      "condition": "When evaluating new product opportunities or strategic bets...",
+      "action": "...compress the feedback loop by testing early rather than building before validating",
+      "because": "Early validation can reduce development time from six months to two weeks by eliminating work on ideas that would have failed anyway",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "rule": "Block calendar time explicitly for strategic work — it will always lose to reactive work if unprotected",
+      "condition": "When you are a PM trying to develop or demonstrate senior-level strategic thinking...",
+      "action": "...schedule dedicated, recurring calendar blocks for strategy development before your week fills with execution tasks",
+      "because": "Strategic work is non-urgent but high-importance; reactive work is always urgent and will crowd it out without structural protection",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "rule": "Use the autonomy template when raising challenges to your manager: state the problem, state your proposed approach, ask for input",
+      "condition": "When you encounter a challenge or decision point and need to communicate upward...",
+      "action": "...frame the conversation as: 'Here's the challenge, here's my proposed approach, any thoughts?' rather than presenting the problem alone",
+      "because": "This format signals decision-making capability and independent thinking while still inviting feedback — it demonstrates senior-level autonomy without bypassing collaboration",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "rule": "Articulate the conditional logic behind 'it depends' answers explicitly to demonstrate senior reasoning",
+      "condition": "When facing a complex decision where no single answer is obviously correct...",
+      "action": "...identify and state the conditions: 'If X is true, then A is best; if Y is true, then B is best'",
+      "because": "The ability to articulate what makes an answer context-dependent is itself a senior-level skill — it shows systematic thinking rather than uncertainty or avoidance",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "rule": "Accelerate the PM-to-Senior PM transition before any other career move — it has the greatest compounding effect",
+      "condition": "When prioritizing which career milestone to focus on...",
+      "action": "...concentrate energy on clearing the Senior IC threshold first, ahead of pursuing management or director paths",
+      "because": "The first transition (PM to Senior PM, median 3 years) sets the pace for all subsequent milestones; accelerating it compresses the entire career timeline",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "rule": "Answer 'why?' for every roadmap component to transform a timeline into a strategic framework",
+      "condition": "When building a product roadmap...",
+      "action": "...explicitly document the reasoning behind each item, not just what will be built and when",
+      "because": "A roadmap without 'why' is a schedule; a roadmap with 'why' is a strategy — the latter signals senior-level ownership of direction, not just execution",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "rule": "If you've been passed over multiple cycles with the same feedback, the org may not have structural room for you — not a skill gap",
+      "condition": "When you've received consistent positive reviews but repeated promotion denials with recycled feedback...",
+      "action": "...treat this as an organizational ceiling signal and seriously evaluate an external move",
+      "because": "Repeated cycles with identical feedback without promotion usually indicates headcount, budget, or political constraints — not genuine development needs",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Own scope before the title, not after",
+      "condition": "When you want to demonstrate readiness for the next level...",
+      "action": "...identify scope you can credibly take on and start owning it without waiting to be asked",
+      "because": "Promotions reward demonstrated performance at the next level, not potential — you have to show the work before the recognition",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Make your impact legible, not just real",
+      "condition": "When you've delivered meaningful business outcomes...",
+      "action": "...actively surface and communicate those wins to your manager rather than assuming visibility",
+      "because": "Managers are overloaded and promotion decisions are made on available evidence — undocumented impact doesn't exist in calibration rooms",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Track named skill gaps monthly in a shared doc with your manager",
+      "condition": "When you've identified 2–3 specific limiting skills holding back your promotion...",
+      "action": "...create a shared tracking document with your manager, naming each gap precisely, defining what 'fixed' looks like, and reviewing progress monthly",
+      "because": "Visible, documented progress removes ambiguity about what's needed and makes it harder to be passed over without a clear, specific explanation",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Identify who has calibration-level influence, not just your direct manager",
+      "condition": "When building relationships to support your promotion...",
+      "action": "...find and cultivate a real relationship with someone who has actual influence in the calibration process, not just your direct manager",
+      "because": "Promotion decisions happen in rooms you're not in — a well-intentioned but low-influence advocate cannot move the needle regardless of what they say",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Study who actually gets promoted, not what the rubric says",
+      "condition": "When trying to understand what your org rewards...",
+      "action": "...pattern-match on recent promotions: who got promoted, what did they work on, what's the narrative about them",
+      "because": "What organizations say they reward and what they actually reward are often different — the promotion record is ground truth",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Ask for promotion directly and explicitly",
+      "condition": "When you believe you're ready for promotion...",
+      "action": "...have an explicit conversation with your manager about timing rather than assuming they are tracking or prioritizing it",
+      "because": "Managers often don't prioritize a report's promotion without a direct signal of urgency — silence is interpreted as contentment",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Diagnose whether your block is a skill gap or a structural constraint before acting",
+      "condition": "When you feel stalled in your promotion trajectory...",
+      "action": "...determine whether the blocker is performance-based or structural (headcount frozen, budget cycle, tenure requirements) before deciding your response",
+      "because": "The correct action for a skill gap is development; the correct action for a structural constraint is either patience or exit — conflating them wastes time",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "rule": "Invest in communication skills disproportionately relative to how much of your job they represent",
+      "condition": "When deciding where to invest career development time as a senior PM",
+      "action": "Prioritize writing, speaking, and presenting skills even though they constitute a small fraction of daily work",
+      "because": "Presentations are 5% of the job but 50% of how you are judged — the return on communication investment is asymmetrically high relative to time spent",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Separate title, money, and scope when evaluating any role or promotion",
+      "condition": "When assessing a new opportunity or a promotion offer",
+      "action": "Explicitly evaluate scope (decision authority and surface area) as the primary variable, treating title and money as secondary",
+      "because": "Title and money are legible and emotionally salient but scope is the strongest predictor of long-term career development; conflating them leads to underweighting the variable that actually matters",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Partner with your manager by asking what gap exists between where you are now and the next level",
+      "condition": "When pursuing promotion",
+      "action": "Initiate a collaborative conversation with your manager that frames them as an ally with a role in your growth rather than a gatekeeper to negotiate against",
+      "because": "It transforms an adversarial dynamic into a collaborative one, gives your manager a clear role, and generates specific actionable feedback rather than vague hope",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Make your impact visible to decision-makers without relying on visibility happening organically",
+      "condition": "When you do high-impact work that is invisible (infrastructure, coordination, quality) or when you are a non-native English speaker or introvert",
+      "action": "Actively narrate your work and contributions to the people who need to see them",
+      "because": "Promotion committees suffer from presentation bias and will judge on high-visibility moments; if your work is invisible, you are systematically disadvantaged regardless of actual impact",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Build peer relationships and coaching circles during good times, not when you need them",
+      "condition": "When your career is stable and you are not actively job searching or navigating a crisis",
+      "action": "Invest time in building peer networks proactively",
+      "because": "By the time you need a network for a job search or difficult situation, it is too late to build it — relationships built under no pressure are far more useful than ones built under urgency",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Orient day-to-day decisions against a five-year future vision rather than the next promotion cycle",
+      "condition": "When deciding which projects to take, which relationships to build, or which skills to develop",
+      "action": "Ask what the five-year future looks like and work backward to identify what skills, scope, decisions, and relationships are required",
+      "because": "Short-term promotion focus optimizes for the next six months; long-term vision changes the texture of daily decisions and produces compounding career capital",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "rule": "Look outward at the market rather than only inward at your own product",
+      "condition": "When trying to learn and develop as a PM while operating in a busy role",
+      "action": "Conduct product takedowns of competitors, engage directly with user feedback channels, and analyze decisions made by other product teams",
+      "because": "Internal-focused PMs improve incrementally from their own experiments; external-focused PMs learn from the entire market's experiments simultaneously",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Learning rate",
+      "why_it_matters": "Learning rate predicts where you'll be in 3–5 years more than current compensation or title; a high learning rate compounds, a low one stagnates",
+      "how_to_assess": "Ask whether you've done something in the last 6 months that surprised you — something you didn't know you could do; if you can't answer, the role isn't growing you",
+      "weight": "high",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Decision authority",
+      "why_it_matters": "Real ownership — the ability to say no and have your judgment respected — is the core mechanism by which PM skills develop; without it, you build activity habits, not impact habits",
+      "how_to_assess": "Ask the hiring team to name two recent decisions the PM made independently and what happened when they got something wrong; vague answers mean authority is nominal",
+      "weight": "high",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Scope of impact",
+      "why_it_matters": "The blast radius of your decisions, the strategic ambiguity you must resolve, and the stakeholders who depend on your judgment determine how fast you grow toward genuinely senior capability",
+      "how_to_assess": "Compare what the most important decision you'll make in the next 12 months is; assess number of stakeholders, ambiguity level, and organizational surface area",
+      "weight": "high",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Skill gap vs. org ceiling diagnosis",
+      "why_it_matters": "The correct response to a skill gap (stay and fix it) is the opposite of the correct response to an org ceiling (leave); misdiagnosis leads to years of misdirected effort",
+      "how_to_assess": "Check if feedback is consistent across multiple managers and reviews (skill gap) vs. politically colored and inconsistent (org signal); check if scope expanded or contracted in the last 6 months",
+      "weight": "high",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Manager's ability and willingness to advocate",
+      "why_it_matters": "A manager who is political, checked out, or below the influence threshold cannot advocate for you even if they want to; your promotion depends heavily on their organizational capital",
+      "how_to_assess": "Assess whether your manager understands what you want to do next, can describe a path to it, and has the political standing to fight for you in headcount and promotion discussions",
+      "weight": "high",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Company trajectory alignment with industry direction",
+      "why_it_matters": "Staying at a company moving against industry direction limits your external market value and narrows the problems you'll encounter",
+      "how_to_assess": "Evaluate whether the company's bets are in domains growing in importance; assess whether your external network credibility is growing or stagnating",
+      "weight": "medium",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Career stage fit with company stage",
+      "why_it_matters": "Early-career PMs benefit from structure and craft-building at larger companies; mid-career PMs need ambiguity and high-stakes ownership that large structured environments can no longer provide",
+      "how_to_assess": "Identify whether you need to build craft (favor process-heavy environments) or judgment under ambiguity (favor earlier-stage, higher-ownership environments)",
+      "weight": "medium",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Whether problems travel with you",
+      "why_it_matters": "Switching companies to escape feedback or avoid hard situations doesn't remove the underlying skill gap — it relocates it to a new context without the institutional knowledge you had before",
+      "how_to_assess": "Ask honestly whether the reasons for leaving are organizational (no path, no scope, political block) or personal (hard feedback, discomfort, conflict); if personal, address before leaving",
+      "weight": "medium",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "MBA as filter in target domain",
+      "why_it_matters": "MBA is a genuine filter in some domains (consulting, PE-backed product, certain enterprise environments) and largely irrelevant in others (tech PM promotion to Director)",
+      "how_to_assess": "Identify whether the specific role or domain you're targeting uses MBA as a real hiring or promotion filter, not just a preference signal",
+      "weight": "low",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "factor": "Job satisfaction trend over time",
+      "why_it_matters": "A single data point is noise; a sustained trend below threshold signals a structural problem that won't self-resolve",
+      "how_to_assess": "Track a 1-10 satisfaction rating regularly over months and look for directional trends, not just snapshots",
+      "weight": "high",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "What the current environment teaches vs. what you're missing",
+      "why_it_matters": "Large and small companies develop fundamentally different instincts; your career stage determines which gap is more costly",
+      "how_to_assess": "Audit your experience: have you had radical ownership? Have you operated at scale with complex stakeholders? Identify which instinct is underdeveloped",
+      "weight": "high",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "Meta-learning capacity",
+      "why_it_matters": "The ability to learn new skills quickly as the job changes matters more than current static competency, because job requirements change",
+      "how_to_assess": "Reflect on how quickly you've come up to speed in past role changes and whether you've actively sought unfamiliar domains",
+      "weight": "high",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "Stage of career progression (feature vs. product vs. business vs. org)",
+      "why_it_matters": "The scale of what you're building defines what skills are actually required; title alone is misleading",
+      "how_to_assess": "Assess not your title but the scope of what you own: are you building a feature, a product, a business, or an organization?",
+      "weight": "high",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "Quality of your personal board of directors",
+      "why_it_matters": "Without diverse, honest feedback, you're navigating your career with a biased map",
+      "how_to_assess": "Check whether you have mentors ahead of you, peers at your level, mentors from outside product, and people who will tell you hard truths — not just encouragers",
+      "weight": "medium",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "Sponsor vs. mentor presence",
+      "why_it_matters": "Mentors advise you directly; sponsors advocate for you in rooms you're not in — you need both for advancement",
+      "how_to_assess": "Identify whether anyone in your network actively advocates for you in promotion or opportunity discussions without you present",
+      "weight": "medium",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "factor": "Current career stage (execution vs. strategy vs. org leadership)",
+      "why_it_matters": "The definition of 'great' changes entirely at each stage — skills that earned promotion in Stage 1 are insufficient and potentially irrelevant for Stage 2 advancement",
+      "how_to_assess": "Determine whether your current role requires you to execute against a defined scope (Stage 1), define the scope and make the case for it (Stage 2), or build and lead a team beyond your individual output (Stage 3)",
+      "weight": "high",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Scope of current responsibilities relative to target level",
+      "why_it_matters": "Operating at the wrong scope — even with technical competence on every listed skill — will block promotion; scope must precede title",
+      "how_to_assess": "Compare the areas you are currently defining and owning versus areas assigned to you; assess whether you are identifying opportunities or executing against identified ones",
+      "weight": "high",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Visibility of your judgment to decision-makers",
+      "why_it_matters": "Sound judgment that is not demonstrated explicitly cannot build trust, which is required for expanded autonomy and scope at senior levels",
+      "how_to_assess": "Audit recent decisions: did you share your reasoning framework, alternatives considered, and rationale — or just the outcome? Do executives know how you think?",
+      "weight": "high",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Organizational dynamics literacy",
+      "why_it_matters": "What actually matters to stakeholders often differs from what they say matters; understanding this gap determines whether you can move work through the organization",
+      "how_to_assess": "Identify key stakeholders and gatekeepers; assess whether you know their actual priorities, resistance triggers, and what scrappiness is acceptable versus what violates unspoken rules",
+      "weight": "high",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Cross-functional collaborative reputation",
+      "why_it_matters": "Leaders who are viewed as defensive or self-interested will not be given expanded scope regardless of execution quality; leaders actively want to work with certain PMs and merely tolerate others",
+      "how_to_assess": "Collect 360-degree feedback specifically on whether peers describe you as constructive, humble, and collaborative in escalations and disagreements",
+      "weight": "high",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Ability to articulate an inspiring vision",
+      "why_it_matters": "A senior PM who cannot articulate why their area matters at the company level will be deprioritized in resource allocation conversations",
+      "how_to_assess": "Test whether you can explain your product area's connection to company strategy in a way that energizes listeners — not just informs them",
+      "weight": "medium",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Recruiting capability",
+      "why_it_matters": "At senior levels, PMs are expected to help grow the team; inability to write job descriptions, pitch candidates, or conduct effective interviews caps team growth and signals limited senior readiness",
+      "how_to_assess": "Assess whether you have been involved in hiring, whether you can write a compelling job description, and whether you can close candidates on your team's vision",
+      "weight": "medium",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Proactive information sharing behavior",
+      "why_it_matters": "Avoiding surprises is a trust-building mechanism — executives who are caught off guard lose confidence in PMs regardless of outcomes",
+      "how_to_assess": "Audit whether you proactively share the right information up and down the chain, and whether you flag problems early rather than surfacing them at crisis point",
+      "weight": "medium",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "factor": "Strategic scope ownership",
+      "why_it_matters": "The defining difference between PM and Senior PM is not execution quality but whether the person sets the scope versus works within a defined scope — this determines readiness for promotion",
+      "how_to_assess": "Ask: Am I defining what problems to solve and why, or am I executing against a direction handed to me? Can I point to a vision and strategic framework I authored?",
+      "weight": "high",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Autonomy demonstrated in upward communication",
+      "why_it_matters": "Senior PMs build trust by proactively communicating decisions and proposals rather than waiting for instructions — managers use this signal to gauge readiness for greater independence",
+      "how_to_assess": "Review your last 5 manager conversations: did you bring proposed approaches, or did you bring problems waiting for answers?",
+      "weight": "high",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Ability to hold and reason through competing valid perspectives",
+      "why_it_matters": "Senior decisions increasingly have no clean right answer — the capacity to reason through tradeoffs without prematurely resolving ambiguity is a senior-level cognitive requirement",
+      "how_to_assess": "Observe whether you can articulate the conditions under which different answers would each be correct, without defaulting to a single rigid framework",
+      "weight": "high",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Alignment of work to long-term vision vs. incremental delivery",
+      "why_it_matters": "Junior PMs focus on shipping value incrementally; senior PMs connect every decision to a long-term vision — this shift in orientation signals strategic maturity",
+      "how_to_assess": "Ask: Can I draw a direct line from today's work to a 2–3 year vision? Do I have a documented strategic framework that explains why this bet over alternatives?",
+      "weight": "high",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Cross-functional constraint awareness",
+      "why_it_matters": "Senior PMs do not prioritize their own team's goals over the organization's — failure to internalize this leads to decisions that optimize locally but damage broader trust and outcomes",
+      "how_to_assess": "Assess whether your recent decisions accounted for constraints and goals of adjacent teams, or whether they were optimized purely for your own team's metrics",
+      "weight": "medium",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Time in role at Senior IC level before pursuing management",
+      "why_it_matters": "The typical path requires 1–2 years at Senior IC before moving to Manager of PMs — moving too early risks skipping the consolidation needed to lead other PMs effectively",
+      "how_to_assess": "Assess how long you have held the Senior IC title and whether you have demonstrated the three differentiators (strategy, autonomy, nuance) consistently across that period",
+      "weight": "medium",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "factor": "Organizational headroom at the next level",
+      "why_it_matters": "If there are no open roles or headcount at the next level, performance is irrelevant to promotion timing — the ceiling is structural, not personal",
+      "how_to_assess": "Ask your manager directly whether there is a role to promote into; observe whether anyone at the next level has been hired or promoted recently",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Influence level of your champion",
+      "why_it_matters": "A champion with low organizational influence cannot move promotion decisions even with genuine advocacy — the quality of the champion matters more than having one",
+      "how_to_assess": "Observe who speaks in leadership forums, whose recommendations get acted on, and who participates in calibration sessions at your level",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Legibility of your impact",
+      "why_it_matters": "Impact that isn't communicated and documented doesn't exist in calibration conversations — the decision is made on available evidence",
+      "how_to_assess": "Ask yourself: if your manager had to describe your last 6 months of impact in a calibration meeting, could they do it specifically and compellingly without your help",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Scope of projects currently owned",
+      "why_it_matters": "Promotion requires demonstrated performance at the next level — scope is the prerequisite for that demonstration",
+      "how_to_assess": "Compare the cross-functional reach, business stakes, and strategic visibility of your current work against what people at the next level typically own",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Specificity and visibility of gap-closure progress",
+      "why_it_matters": "Vague feedback loops allow promotion to be deferred indefinitely; named, tracked gaps with agreed definitions of 'fixed' create accountability",
+      "how_to_assess": "Check whether you and your manager have co-defined exactly what 'closing the gap' looks like and are reviewing progress on a regular cadence",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Number of promotion cycles already passed",
+      "why_it_matters": "Multiple cycles with the same feedback is a signal that the block is systemic or political, not developmental",
+      "how_to_assess": "Count how many review cycles have passed with positive reviews but no promotion; assess whether the feedback has materially changed or remains identical",
+      "weight": "high",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Budget cycle and tenure minimums",
+      "why_it_matters": "Structural constraints like tenure requirements or frozen budgets make promotion impossible regardless of performance, and misreading them as performance feedback is costly",
+      "how_to_assess": "Ask HR or your manager directly about minimum tenure per level and whether the upcoming cycle has budget for promotions",
+      "weight": "medium",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "External market value at next-level title",
+      "why_it_matters": "The market frequently offers the next-level title faster than your current employer — knowing this changes the cost-benefit of staying vs. leaving",
+      "how_to_assess": "Run a parallel job search or engage recruiters to benchmark what title and comp the market would offer you today",
+      "weight": "medium",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "factor": "Scope",
+      "why_it_matters": "Scope — the actual decision authority and surface area of work — is the strongest predictor of long-term career development; without expanding scope, title and compensation gains do not translate into genuine capability growth",
+      "how_to_assess": "Ask: what decisions am I actually empowered to make? How large is the surface area of product I own? Has this grown in the last 12–18 months?",
+      "weight": "high",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "factor": "Manager as accelerant vs. ceiling",
+      "why_it_matters": "Career growth ultimately rests on you, but your manager can either accelerate your trajectory or cap it; knowing which one you have determines whether staying or leaving is the right move",
+      "how_to_assess": "Attempt the partnership conversation (ask what gap exists between you and the next level); a manager who engages constructively is an accelerant, one who deflects or gives vague answers is likely a ceiling",
+      "weight": "high",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "factor": "Joy vs. Ego weighting in a role",
+      "why_it_matters": "Roles that satisfy ego (sound impressive externally) but lack joy (genuine meaning and energy) accelerate career stagnation, not growth, because sustained high performance requires intrinsic motivation",
+      "how_to_assess": "Honestly separate what makes you look good from what you find energizing; ask whether you would take the role if no one else knew about it",
+      "weight": "high",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "factor": "Visibility of your work to decision-makers",
+      "why_it_matters": "Promotion decisions are made by committees with presentation bias; if the people who decide your level cannot see your impact, your actual performance is partially irrelevant",
+      "how_to_assess": "Ask: do the people in my promotion calibration know what I have done and why it mattered? Would they cite my work unprompted?",
+      "weight": "high",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "factor": "Peer network and coaching circle quality",
+      "why_it_matters": "Peer groups provide pattern recognition across organizations that helps you distinguish industry norms from company-specific dysfunction — a critical diagnostic for career decisions",
+      "how_to_assess": "Do you have at least a small group of peers at similar career stages outside your company with whom you discuss real decisions? Do those relationships predate any urgent need?",
+      "weight": "medium",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "factor": "Communication skill relative to peers",
+      "why_it_matters": "Because presentations disproportionately determine how you are judged, a gap in communication skills relative to peers compounds negatively over time in promotion and influence outcomes",
+      "how_to_assess": "Seek explicit feedback on high-visibility presentations; observe whether you are included or excluded from high-stakes communication opportunities",
+      "weight": "medium",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Optimizing for title over scope",
+      "unstated_consequence": "You gain a credential that looks good externally but doesn't build the skills the market actually pays for at senior levels; the gap between your title and your capability widens silently",
+      "who_it_affects": "Mid-career PMs at slower-growth or structured companies who use LinkedIn visibility as a proxy for career progress",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Joining a high-brand company for the name",
+      "unstated_consequence": "Brand companies often come with reduced decision authority, slower feedback loops, and cog-in-machine dynamics that actively slow skill development despite the resume signal",
+      "who_it_affects": "PMs who are mid-career and need ownership to grow, who mistake brand association for skill-building opportunity",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Pursuing an MBA to accelerate PM career",
+      "unstated_consequence": "Two years of not compounding an execution track record; re-entry requires rebuilding credibility from scratch, and the MBA doesn't substitute for internal advocacy at tech companies",
+      "who_it_affects": "PMs already in product roles who are progressing, even if slowly, and use the MBA as a perceived shortcut to senior levels",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Staying in a large, structured company past the learning horizon",
+      "unstated_consequence": "The structure that was a scaffold becomes a comfort — it removes the ambiguity and ownership pressure that would force the next level of development, and this feels like stability rather than stagnation",
+      "who_it_affects": "Mid-career PMs who are good at navigating structured environments and conflate comfort with growth",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Accepting nominal ownership in a role",
+      "unstated_consequence": "You develop the habit of feeling responsible without the authority to act — a disposition that is actively harmful and hard to unlearn when real ownership becomes available",
+      "who_it_affects": "PMs earlier in their careers who don't yet have a calibrated baseline for what real ownership feels like",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Switching companies to avoid hard feedback",
+      "unstated_consequence": "The skill gap travels with you to the new role, now without the institutional context and relationships you had before, making the problem harder to fix in a new environment",
+      "who_it_affects": "PMs who have received consistent negative feedback and interpret company-switching as a reset rather than a relocation of the problem",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Leaving before absorbing the lessons of the current environment",
+      "unstated_consequence": "You close the learning loop prematurely and arrive at the next role without the synthesis that would have made the previous experience compound; you'll likely encounter the same situations without the pattern-matching to handle them",
+      "who_it_affects": "PMs who switch frequently in search of better conditions rather than extracting full value from each environment",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Waiting for scope expansion that isn't structurally available",
+      "unstated_consequence": "Each cycle you wait reinforces the org's model of you at your current level, making internal reframing harder and costing compounding time that could be spent in a higher-scope role",
+      "who_it_affects": "PMs who have exhausted internal growth paths but delay leaving due to comfort, compensation, or optimism about org change",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "choice": "Staying at a large company for stability and process mastery",
+      "unstated_consequence": "You develop the ability to navigate complexity but lose or never build the ownership instinct — the capacity to operate with radical accountability when no process exists",
+      "who_it_affects": "Mid-career PMs who move to startups or founding roles and find they cannot function without structure",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "choice": "Building your career entirely at startups for speed and ownership",
+      "unstated_consequence": "You develop strong ownership instincts but lack the ability to operate at scale, build alignment across many stakeholders, or influence without direct authority",
+      "who_it_affects": "Mid-career PMs who move to large companies or take VP roles that require managing through layers",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "choice": "Pursuing 10/10 job satisfaction as the goal",
+      "unstated_consequence": "You create a standard that is unrealistic in practice, which leads to decision paralysis — no option ever meets the bar, so you stay stuck",
+      "who_it_affects": "High-performers with perfectionist tendencies who set idealized standards for career moves",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "choice": "Holding on to the hands-on PM skills that earned you a promotion to VP",
+      "unstated_consequence": "You crowd out the behaviors required to succeed at the VP level — building organization, developing culture, operating strategically — and fail at the new stage",
+      "who_it_affects": "Newly promoted VPs and Directors who were exceptional Senior PMs and struggle to let go of individual contributor identity",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "choice": "Building your network only when you need something",
+      "unstated_consequence": "The people you approach transactionally are less motivated to go out of their way for you; the network exists on paper but doesn't activate when you need it",
+      "who_it_affects": "PMs who are heads-down builders and treat relationship maintenance as a distraction until they're in a job search or crisis",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "choice": "Focusing on excelling at current-stage execution to earn next-stage promotion",
+      "unstated_consequence": "You hit a ceiling at PM2 because Stage 2 advancement requires doing fundamentally different work — being excellent at Stage 1 does not create a path forward, it creates a very comfortable dead end",
+      "who_it_affects": "High-performing PM2s who receive strong reviews but are never offered Senior PM scope expansion",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "choice": "Pursuing a cross-stage transition (e.g., PM2 to Senior PM)",
+      "unstated_consequence": "You will appear less competent for a period before becoming more competent at the new level, because new responsibilities pull attention from current execution strengths",
+      "who_it_affects": "PMs who have built their identity and reputation around execution excellence and are uncomfortable with temporary perceived regression",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "choice": "Presenting conclusions without showing your reasoning process",
+      "unstated_consequence": "Executives cannot assess your judgment and therefore cannot extend trust — technically correct decisions made through invisible reasoning do not build the credibility required for expanded scope",
+      "who_it_affects": "Senior PMs who are analytically strong but communicate in output-only mode",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "choice": "Relying on official processes to understand how work gets done",
+      "unstated_consequence": "You miss the informal stakeholder map — who the actual gatekeepers are, what triggers their resistance, and when scrappiness serves the mission better than process compliance",
+      "who_it_affects": "PMs transitioning from structured large-company environments or those newer to organizational politics",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "choice": "Building deep competency in listed skills on a career ladder rubric",
+      "unstated_consequence": "You may achieve full rubric compliance and still not be promoted because the actual driver of promotion is demonstrated impact at expanded scope — not skill checklist completion",
+      "who_it_affects": "PMs who optimize for visible, measurable skill development over scope ownership and strategic influence",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "choice": "Focusing on flawless execution of a defined scope to earn promotion",
+      "unstated_consequence": "Execution quality alone does not qualify someone for Senior PM — the promotion requires demonstrating scope-setting, not just scope-delivery, so strong executors can be passed over indefinitely",
+      "who_it_affects": "Highly capable junior PMs who are reliable, high-output contributors but have never been given or claimed the opportunity to define strategy",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "choice": "Waiting for manager direction before acting on challenges",
+      "unstated_consequence": "This behavior is read as a signal of junior-level thinking even when the work output is strong — it trains managers to see you as an executor rather than a future autonomous operator",
+      "who_it_affects": "PMs who are strong at execution but come from cultures or teams where deference to leadership is rewarded",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "choice": "Treating strategy as a deliverable to complete rather than time to protect",
+      "unstated_consequence": "Strategic work gets perpetually deferred by urgent reactive work — without explicit calendar protection it effectively never happens, leaving the PM stuck in execution mode",
+      "who_it_affects": "PMs in fast-moving, high-demand product orgs where reactive work is constant and rewarded",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "choice": "Resolving ambiguous decisions quickly to appear decisive",
+      "unstated_consequence": "Premature resolution of complex tradeoffs is a junior signal, not a senior one — senior PMs are expected to hold ambiguity and articulate conditions, not collapse it prematurely",
+      "who_it_affects": "PMs who have been rewarded for speed and decisiveness in earlier roles and interpret ambiguity tolerance as weakness",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "choice": "Staying to 'earn' the promotion through continued performance",
+      "unstated_consequence": "If the block is structural or political rather than performance-based, continued tenure may reinforce a below-market title and compensation without changing the outcome",
+      "who_it_affects": "High performers at companies with frozen headcount or strong internal tenure bias who interpret structural blocks as personal development needs",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "choice": "Relying on your direct manager as your primary advocate",
+      "unstated_consequence": "A manager with low organizational influence may genuinely advocate for you while producing zero result — and you may not know this is happening until after a failed cycle",
+      "who_it_affects": "PMs who have strong relationships with their immediate manager but haven't mapped the broader power structure of calibration",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "choice": "Waiting to be assigned more scope before demonstrating next-level behavior",
+      "unstated_consequence": "Organizations rarely pre-assign scope to justify a promotion — the expectation is that you demonstrate the level before receiving the title, so waiting creates a permanent stall",
+      "who_it_affects": "PMs who operate on an employment contract mental model where expanded responsibility follows recognition rather than precedes it",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "choice": "Not explicitly asking for promotion, assuming the manager is tracking it",
+      "unstated_consequence": "Managers often interpret absence of urgency as contentment and deprioritize advocating for you in a competitive calibration environment",
+      "who_it_affects": "PMs who are conflict-averse or who believe that strong performance should speak for itself without self-advocacy",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "choice": "Focusing only on the official promotion rubric",
+      "unstated_consequence": "The rubric describes what the org says it values; the actual promotion record reveals what it actually rewards — these diverge enough to derail well-prepared candidates",
+      "who_it_affects": "Detail-oriented PMs who optimize for documented criteria without studying the informal political and narrative patterns that drive real decisions",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "choice": "Pursuing a role with an impressive title or brand name",
+      "unstated_consequence": "If the role lacks scope or joy, the external signal temporarily boosts perceived status while actual skill development stagnates; the impressive title can mask that you are not growing",
+      "who_it_affects": "PMs who are early in building their identity and are susceptible to conflating external validation with genuine career progress",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "choice": "Doing high-impact but invisible work (infrastructure, coordination, quality improvement)",
+      "unstated_consequence": "The work genuinely moves the company forward but systematically disadvantages you in promotion calibration because committees judge on visible presentation moments, not invisible sustained impact",
+      "who_it_affects": "Introverts, non-native English speakers, and PMs who work on technical or operational areas with low stakeholder visibility",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "choice": "Passively hoping your manager will recognize and advocate for your promotion",
+      "unstated_consequence": "You cede control of the most important career lever to someone else's attention and priorities; the manager may respect your work but never translate it into active advocacy",
+      "who_it_affects": "High-performing PMs who believe good work speaks for itself and are uncomfortable with self-advocacy",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "choice": "Sharing credit generously with your team",
+      "unstated_consequence": "If not paired with deliberate narration of your own contributions to the right people, credit-sharing can make your individual impact invisible, undermining promotion outcomes despite being the ethically and strategically correct long-term move",
+      "who_it_affects": "PMs who share credit generously but do not simultaneously ensure their own contributions are legible to promotion decision-makers",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "choice": "Focusing exclusively on the next promotion cycle (6–12 month horizon)",
+      "unstated_consequence": "Short-term optimization shapes which projects you take, which skills you develop, and which relationships you build — often in ways that diverge from what would be most valuable at a five-year horizon",
+      "who_it_affects": "Mid-career PMs under pressure to hit a promotion timeline who sacrifice compounding skill development for near-term legibility",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "choice": "Building your network only when you need it (job searching, navigating a crisis)",
+      "unstated_consequence": "Relationships built under urgency are weaker, more transactional, and provide less honest feedback than relationships built during stable periods; you lose the most valuable property of a network — trust built without agenda",
+      "who_it_affects": "PMs who are heads-down in execution during good periods and reach out to their network only when something goes wrong",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Diagnosing an org ceiling as a skill gap and staying to fix something that isn't broken",
+      "why_it_happens": "Org ceilings and skill gaps feel identical from the inside; it's cognitively easier to accept a self-improvement narrative than to conclude the environment is the problem",
+      "consequence": "Years of effort directed at non-issues while the actual constraint — structural politics, no available scope — remains unchanged",
+      "warning_signs": [
+        "Performance reviews are consistently strong but promotions go to people with political capital",
+        "The PM role at your level hasn't changed in 2+ years despite your growth"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Diagnosing a skill gap as an org ceiling and leaving without fixing the underlying issue",
+      "why_it_happens": "Switching companies feels like agency and progress; accepting hard feedback requires sustained discomfort",
+      "consequence": "The skill gap travels to the new role without the institutional knowledge and relationships that made it manageable before",
+      "warning_signs": [
+        "Feedback about the same 2–3 things has come from multiple managers or reviews",
+        "The reason for leaving feels more like relief than strategic repositioning"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Staying in a large structured environment past the point where it teaches anything",
+      "why_it_happens": "Structure is comfortable and rewards execution of known playbooks; the absence of growth is invisible because performance metrics still look good",
+      "consequence": "The PM exits their formative mid-career years without the ambiguity tolerance and ownership experience that the market requires at senior levels",
+      "warning_signs": [
+        "Can't identify something done in the last 6 months that was genuinely surprising or difficult",
+        "The 'hardest problems' of the last year aren't actually hard when described to an outsider"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Optimizing for title over scope and calling it a promotion",
+      "why_it_happens": "Title is visible and legible to the external market; scope is invisible until it becomes a gap at the next level",
+      "consequence": "The PM accumulates a senior title without the corresponding capability, creating a gap that becomes apparent — and damaging — at the next stage",
+      "warning_signs": [
+        "Unable to clearly answer 'what's the most important decision I'll make in the next 12 months?' with something genuinely interesting",
+        "The Senior PM role involves one small feature with minimal stakeholders"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Mistaking exclusion from strategy conversations for an org ceiling when it's actually thin stakeholder relationships",
+      "why_it_happens": "Exclusion from rooms feels structural and external; acknowledging that your relationships are the issue requires more personal accountability",
+      "consequence": "The PM leaves an environment where they could have grown by building relationships, and carries the thin-relationship pattern to the next company",
+      "warning_signs": [
+        "Haven't been invited to strategy-setting conversations after 18 months",
+        "Unable to name whose opinion shapes outcomes before anything is written down"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Pursuing an MBA as a response to career stagnation without diagnosing the actual cause",
+      "why_it_happens": "The MBA question is often a proxy for 'am I advancing fast enough?' — it feels like action when the real problem is undiagnosed",
+      "consequence": "Two years of non-compounding execution experience, followed by re-entry where the original problem (unclear growth path, wrong environment, skill gap) still exists",
+      "warning_signs": [
+        "Primary motivation is 'I don't know what else to do'",
+        "Already in a PM role and progressing, even if slowly"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Treating 'shipped' as the definition of success rather than 'worked'",
+      "why_it_happens": "Shipping is measurable and creates short-term social validation; whether the thing worked is often unclear for months and requires sitting with uncertainty",
+      "consequence": "PMs build a habit of output-orientation rather than outcome-orientation, which becomes a ceiling at senior levels where results — not activity — are the currency",
+      "warning_signs": [
+        "Success stories focus on velocity and volume of launches rather than user or business outcomes",
+        "Post-launch analysis is shallow or absent from the PM's workflow"
+      ],
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "pattern": "Treating career decisions as a ladder to climb rather than a system to experiment with",
+      "why_it_happens": "Cultural default: career progress is framed as sequential advancement up a predefined hierarchy, making deviation feel like failure rather than data",
+      "consequence": "Anxiety replaces curiosity; the person optimizes for titles and levels rather than learning and fit, and makes moves based on hope rather than tested hypotheses",
+      "warning_signs": [
+        "Making career decisions based primarily on what looks good on a resume rather than what closes a skill gap",
+        "Feeling existential dread about career decisions rather than treating them as experiments with recoverable outcomes"
+      ],
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "pattern": "Staying in a below-threshold role too long without acting",
+      "why_it_happens": "Normalizing a slow decline in satisfaction; each individual week feels tolerable even as the trend is clearly negative",
+      "consequence": "Extended time in an environment that doesn't develop you, compounded opportunity cost, and increased difficulty leaving due to inertia",
+      "warning_signs": [
+        "Job satisfaction has been below 7 for more than six months with no concrete plan to change it",
+        "Rationalizing 'it'll get better' without identifying what specifically will change"
+      ],
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "pattern": "Staying always within competence by avoiding unfamiliar domains",
+      "why_it_happens": "Competence feels good; incompetence is uncomfortable; people optimize for the feeling of being good at their job rather than the steepness of their learning curve",
+      "consequence": "Career stagnation disguised as stability; the person plateaus and becomes less competitive for the next stage",
+      "warning_signs": [
+        "Never feeling out of your depth in your current role",
+        "Describing your work as 'running smoothly' for multiple consecutive years without a new challenge"
+      ],
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "pattern": "Making generic, open-ended asks when seeking mentorship",
+      "why_it_happens": "People don't know what they need, or feel it's presumptuous to make a specific ask of someone senior",
+      "consequence": "The outreach gets ignored or produces a vague, low-value relationship that doesn't actually move the needle on the career question",
+      "warning_signs": [
+        "Sending messages that say 'I'd love to pick your brain' or 'Can you be my mentor?' without a specific question",
+        "Getting no responses from senior people you've reached out to"
+      ],
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "pattern": "Failing to let go of senior IC behaviors after moving into a leadership stage",
+      "why_it_happens": "The behaviors that earned the promotion were rewarded for years; the new stage requires a different operating model that isn't yet natural or validated",
+      "consequence": "The person succeeds at the old job while failing at the new one, ultimately getting managed out or plateauing at the new level",
+      "warning_signs": [
+        "As a new VP or Director, still writing PRDs and making product decisions that should be owned by reports",
+        "Receiving feedback that you're 'too in the weeds' or 'not thinking strategically enough'"
+      ],
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "pattern": "Treating a cross-stage transition like a within-stage promotion",
+      "why_it_happens": "Within-stage promotions are visible and reward the same behaviors at higher intensity — the pattern feels like it should continue to work, but cross-stage transitions require a categorical shift in what you do, not just how well you do it",
+      "consequence": "PMs remain stuck at PM2 or Senior PM indefinitely, receiving positive feedback on execution while never being considered for the next level because they are not doing the next level's work",
+      "warning_signs": [
+        "Strong performance reviews paired with no scope expansion offers",
+        "Feedback focused on execution quality rather than strategic thinking or team influence"
+      ],
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "pattern": "Assuming strategic relevance of your work is obvious to executives",
+      "why_it_happens": "PMs close to their work understand the connection intuitively and underestimate the cognitive distance between their daily context and an executive's view across the organization",
+      "consequence": "The product area gets deprioritized in resource allocation despite solid execution, and the PM is seen as lacking strategic thinking rather than lacking communication",
+      "warning_signs": [
+        "Repeatedly not receiving resources you believe your area deserves",
+        "Executives asking basic questions about why your area matters in review meetings"
+      ],
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "pattern": "Confusing competency rubric mastery with promotion readiness",
+      "why_it_happens": "Career ladders present skills as a checklist, implying that checking every box earns advancement — the actual mechanism (scope, autonomy, impact) is not explicitly stated in most rubrics",
+      "consequence": "PMs invest time developing skills that are necessary but not sufficient, while neglecting the scope expansion that actually drives promotion decisions",
+      "warning_signs": [
+        "PM can cite their progress against every listed competency but has not taken on new areas of ownership",
+        "Preparation for promotion conversations focused entirely on skills demonstrated rather than impact at expanded scope"
+      ],
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "pattern": "Hiding reasoning and only presenting conclusions",
+      "why_it_happens": "PMs are rewarded early in their career for having answers and being decisive — the habit of presenting clean conclusions persists into stages where showing the reasoning process is what actually builds trust",
+      "consequence": "Executives cannot calibrate trust in the PM's judgment, so they hesitate to extend expanded scope or autonomy even when outcomes have been good",
+      "warning_signs": [
+        "Leaders frequently asking follow-up questions about how you arrived at decisions",
+        "Being told to communicate more proactively or to bring leadership in earlier"
+      ],
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "pattern": "Building from solutions rather than starting from goals",
+      "why_it_happens": "Feature-think is intuitive and concrete — it is easier to imagine a solution than to rigorously define the goal the solution should serve",
+      "consequence": "Resources are committed to building things that fail because the goal was never validated, leading to wasted development cycles that could have been caught with early testing",
+      "warning_signs": [
+        "Planning discussions that jump to what to build before defining what success looks like",
+        "Validation happening after significant development investment rather than before"
+      ],
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "pattern": "Treating roadmaps as timelines rather than strategic documents",
+      "why_it_happens": "Roadmaps are easier to build as lists of features and dates — adding 'why' requires deeper strategic thinking that takes time and exposes uncertainty, so PMs default to the mechanical version",
+      "consequence": "The PM appears to be executing a plan rather than owning a strategy — this signals junior-level thinking to leadership regardless of delivery quality",
+      "warning_signs": [
+        "Your roadmap answers 'what' and 'when' but not 'why'",
+        "You struggle to explain why your themes are the right bets versus alternatives"
+      ],
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "pattern": "Presenting problems to managers without a proposed solution",
+      "why_it_happens": "PMs mistake transparency for leadership quality — they surface challenges early thinking this shows good judgment, but without a proposed approach it reads as dependency",
+      "consequence": "Managers perceive the PM as needing direction rather than being ready for greater autonomy, slowing or blocking promotion",
+      "warning_signs": [
+        "Your manager frequently responds to your updates by telling you what to do next",
+        "You frame 1:1 conversations around 'I have a problem' rather than 'here's what I'm thinking of doing'"
+      ],
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "pattern": "Optimizing for incremental value delivery instead of long-term vision alignment",
+      "why_it_happens": "Incremental delivery is visible, measurable, and rewarded in sprint cycles — long-term vision work is harder to quantify and feels less urgent, so PMs gravitate toward the former",
+      "consequence": "The PM builds a track record of shipping but not of strategic thinking — leadership cannot envision them at a senior level because they have never demonstrated it",
+      "warning_signs": [
+        "You measure your success primarily by features shipped or OKRs hit",
+        "You cannot articulate a multi-year vision for your product area"
+      ],
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "pattern": "Applying rigid frameworks to nuanced decisions",
+      "why_it_happens": "Frameworks reduce cognitive load and provide defensible reasoning — junior PMs learn frameworks as tools and over-rely on them because they lack the pattern recognition to know when a framework doesn't fit",
+      "consequence": "Decisions optimize for the framework rather than the actual situation, and the PM fails to demonstrate the contextual judgment that senior roles require",
+      "warning_signs": [
+        "You reach for a standard framework before assessing whether it fits the specific situation",
+        "You feel uncomfortable when a decision cannot be resolved by a known model"
+      ],
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "pattern": "Prioritizing own team's goals over organizational goals",
+      "why_it_happens": "PMs are accountable for their team's metrics and naturally advocate for their area — without deliberate effort to internalize org-level goals, local optimization becomes the default",
+      "consequence": "Cross-functional partners lose trust, and leadership sees the PM as a local optimizer rather than a senior operator who can be trusted with broader scope",
+      "warning_signs": [
+        "You frequently find yourself in conflict with adjacent teams over resources or priorities",
+        "Your success metrics are exclusively tied to your team's output, not business-wide outcomes"
+      ],
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "pattern": "Treating a structural ceiling as a personal skill gap",
+      "why_it_happens": "Managers rarely say 'there's no headcount' — they default to developmental feedback, which sounds like a growth opportunity but is actually a delay tactic or honest uncertainty",
+      "consequence": "The PM invests months in closing gaps that were never the real blocker, losing time and growing resentment without changing the outcome",
+      "warning_signs": [
+        "Feedback across multiple cycles sounds identical with no new specifics",
+        "Peers with similar performance haven't been promoted either in a given cycle"
+      ],
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "pattern": "Assuming impact is visible without making it legible",
+      "why_it_happens": "Strong performers often believe good work speaks for itself and feel uncomfortable with self-promotion, leading them to under-communicate outcomes",
+      "consequence": "In calibration rooms, their manager cannot make a compelling, specific case — and the PM loses to peers who are less strong but better narrated",
+      "warning_signs": [
+        "You can't recall the last time you proactively summarized your impact to your manager",
+        "Your manager struggles to articulate your wins in your own 1:1s"
+      ],
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "pattern": "Investing in the wrong champion",
+      "why_it_happens": "PMs build relationships with accessible, friendly senior colleagues who may lack real influence in calibration, confusing likability and seniority with decision-making power",
+      "consequence": "The champion advocates sincerely but moves nothing — the PM believes they have political cover and is blindsided when the promotion doesn't come through",
+      "warning_signs": [
+        "Your champion is well-liked but doesn't visibly shape organizational decisions",
+        "You've never observed your champion's recommendations being adopted in cross-functional settings"
+      ],
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "pattern": "Never explicitly asking for promotion",
+      "why_it_happens": "Cultural conditioning around not appearing greedy or impatient, combined with assumption that strong performance creates an implicit social contract",
+      "consequence": "Manager deprioritizes advocating for the PM in a competitive calibration cycle because there's no urgency signal — other direct reports who did ask get the available slots",
+      "warning_signs": [
+        "You've never had an explicit conversation with your manager about promotion timing",
+        "You assume your manager knows you want to be promoted without having said it directly"
+      ],
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "pattern": "Waiting for scope to be assigned rather than proactively owning it",
+      "why_it_happens": "PMs expect the organization to recognize readiness and reward it with expanded responsibility before requiring next-level performance — the promotion logic runs backward",
+      "consequence": "The PM perpetually appears as a strong L5 rather than an emerging L6, and the org has no evidence to make the case for promotion",
+      "warning_signs": [
+        "You frequently think 'once I'm promoted I'll be able to do X'",
+        "Your current scope looks identical to what it was 12 months ago"
+      ],
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "pattern": "Overweighting ego and underweighting joy when evaluating roles",
+      "why_it_happens": "Ego-satisfying signals (title, brand, salary) are external, legible, and immediately gratifying; joy is internal, harder to articulate, and easy to rationalize away as a luxury",
+      "consequence": "The PM takes a role that sounds impressive but is draining, which leads to underperformance, disengagement, and career stagnation disguised as external success",
+      "warning_signs": [
+        "You find yourself describing the role primarily in terms of how it sounds to others",
+        "You cannot articulate what specifically about the work you find energizing, only what makes it look good"
+      ],
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "pattern": "Hoping a manager will recognize and advocate for promotion without active partnership",
+      "why_it_happens": "High performers often believe their work quality is self-evident and conflate advocacy with self-aggrandizement, making passive hope feel like the appropriate and humble approach",
+      "consequence": "The PM waits through multiple review cycles without promotion while less-impactful but more-vocal peers advance; the manager never becomes an active ally",
+      "warning_signs": [
+        "You have had strong performance reviews but have not explicitly discussed the gap between your current level and the next with your manager",
+        "You do not know specifically what your manager would say you need to demonstrate to be promoted"
+      ],
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "pattern": "Conflating title and compensation gains with genuine career development",
+      "why_it_happens": "Title and money are immediately measurable and socially validated; scope is abstract and harder to compare across companies and roles",
+      "consequence": "The PM accumulates titles and compensation without accumulating the decision-making experience and scope expansion that build long-term career capital; gaps become apparent when they try to operate at a higher level",
+      "warning_signs": [
+        "You evaluate new opportunities primarily by comparing titles and compensation bands",
+        "You have not explicitly asked what decisions you would be empowered to make in a new role"
+      ],
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "pattern": "Doing high-impact invisible work without narrating it to decision-makers",
+      "why_it_happens": "PMs who do coordination, infrastructure, or quality work often believe that demonstrating impact through results is sufficient, and that self-narration feels like self-promotion",
+      "consequence": "Promotion committees judge on visible high-stakes moments; invisible contributors are passed over regardless of actual organizational impact",
+      "warning_signs": [
+        "You cannot name three people in your promotion calibration who could describe your specific contributions unprompted",
+        "Your work is frequently acknowledged by immediate teammates but rarely cited by senior leadership"
+      ],
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "pattern": "Only looking inward at your own product for learning rather than outward at the market",
+      "why_it_happens": "Internal learning is immediately relevant and easier to act on; external analysis requires deliberate effort with less obvious immediate payoff",
+      "consequence": "The PM improves incrementally from a narrow set of experiments while missing the pattern recognition and mental models that come from analyzing the broader market's product decisions",
+      "warning_signs": [
+        "You cannot describe specific product decisions by competitors and your hypotheses about why they were made",
+        "Your product intuition is primarily shaped by your own users and data rather than cross-industry observation"
+      ],
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "In the last 6 months, did your scope of decisions expand or contract?",
+      "what_it_reveals": "Whether the current environment is offering growth or pulling back; contraction without explanation is an org signal, not a skill signal",
+      "follow_up_if_yes": "What specifically expanded — is it more ambiguity, more stakeholders, or just more volume of the same work?",
+      "follow_up_if_no": "Was the contraction explained? If not, who owns the scope that used to be yours?",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "Can you name 3 decisions you made in the last month that your manager doesn't know about?",
+      "what_it_reveals": "Whether real ownership exists — decisions that don't require reporting up signal actual authority; inability to name any means the ownership is thinner than the title suggests",
+      "follow_up_if_yes": "Are those decisions consequential — do they have real stakes and real feedback loops?",
+      "follow_up_if_no": "Is this because you escalate by habit or because the org expects escalation? Both are diagnostic but require different fixes",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "What specific feedback has been consistent across more than one manager or review cycle?",
+      "what_it_reveals": "Multi-source consistent feedback is almost always a real skill gap; inconsistent or politically-colored feedback is usually an org signal",
+      "follow_up_if_yes": "Can you identify specific behaviors a more senior PM exhibits that you don't yet have? If yes, this is a skill gap — stay and fix it",
+      "follow_up_if_no": "Has any feedback felt arbitrary or shifted depending on political context? If yes, this is an org signal, not a skill gap",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "If you left tomorrow, what would be missing that you haven't learned yet?",
+      "what_it_reveals": "Whether the current role still has extractable value; if the answer is 'nothing significant,' staying is likely a comfort decision, not a growth decision",
+      "follow_up_if_yes": "Is that learning actually available in the current role — is there scope and opportunity to acquire it, or is it theoretically available but structurally inaccessible?",
+      "follow_up_if_no": "Have you been honest with yourself about whether you're avoiding something rather than completing something?",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "Does your current manager understand what you want to do next, and can they describe a path to it?",
+      "what_it_reveals": "Whether effective advocacy is possible; a manager who can't articulate your path can't fight for you even if they want to",
+      "follow_up_if_yes": "Can they name two people who have made that transition — is there evidence the path is real, not aspirational?",
+      "follow_up_if_no": "Is this because you haven't told them, or because they don't have the organizational knowledge or capital to know?",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "When did you last surprise yourself — do something in your current role you didn't know you could do?",
+      "what_it_reveals": "Whether the role is still at the growth edge; inability to recall a recent surprise is a strong signal the role is no longer developing new capabilities",
+      "follow_up_if_yes": "Is that happening regularly, or was it a one-time event 18 months ago?",
+      "follow_up_if_no": "Is the absence of surprise because the role is too comfortable, or because external factors (org structure, limited scope) removed the conditions for growth?",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "What are the last two big decisions the team made and why?",
+      "what_it_reveals": "Whether real decision-making authority exists in the team and whether the reasoning is legible and substantive — used in interviews to evaluate whether a prospective role will make you better",
+      "follow_up_if_yes": "Were those decisions made by the PM or by a committee — who actually had the call?",
+      "follow_up_if_no": "Vague or evasive answers signal that decisions are made elsewhere; this is a strong signal to walk away from the role",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "question": "What is your job satisfaction score right now on a 1-10 scale, and what was it six months ago?",
+      "what_it_reveals": "Whether you're experiencing a stable situation, a recoverable dip, or a sustained decline that signals structural misfit",
+      "follow_up_if_yes": "If it's been below 7 for six months: what specifically do you believe will change it, and what is the concrete plan?",
+      "follow_up_if_no": "If it's stable around 8: what would it take to push it higher, and is that possible in your current role?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "What is the scale of what you are building — a feature, a product, a business, or an organization?",
+      "what_it_reveals": "Whether your current scope matches the stage of career you're targeting and what the actual gap is",
+      "follow_up_if_yes": "If you're building at the right stage: what behaviors from the previous stage are you still holding onto that are limiting you?",
+      "follow_up_if_no": "If you're building below your target stage: is that a skill gap or an org ceiling preventing scope expansion?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "Have you primarily built your career at large companies, small companies, or a mix?",
+      "what_it_reveals": "Which instincts you've developed (process navigation vs. radical ownership) and which are likely underdeveloped",
+      "follow_up_if_yes": "If large companies only: can you point to a time you had radical ownership with no process to rely on?",
+      "follow_up_if_no": "If startups only: can you point to a time you built alignment across many stakeholders without direct authority?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "Who in your network advocates for you in rooms you're not in?",
+      "what_it_reveals": "Whether you have sponsors (not just mentors) and whether your advancement is being actively championed",
+      "follow_up_if_yes": "If you have sponsors: are they in the right rooms — the ones where promotion, hiring, and opportunity decisions are made?",
+      "follow_up_if_no": "If you have no sponsors: is that because you haven't built the right relationships, or because you haven't done work visible enough to advocate for?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "When did you last feel genuinely incompetent at something in your job?",
+      "what_it_reveals": "Whether you're on a real learning curve or have settled into a comfortable competence plateau",
+      "follow_up_if_yes": "If recently: are you treating that discomfort as information about growth or as a signal you made a mistake?",
+      "follow_up_if_no": "If not recently: what does that tell you about the growth potential of your current role?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "Before your last major career move, did you test the hypothesis through smaller experiments?",
+      "what_it_reveals": "Whether the person applies product thinking to their own career or makes binary leaps based on unvalidated assumptions",
+      "follow_up_if_yes": "If yes: what did you learn from those experiments that changed or confirmed your decision?",
+      "follow_up_if_no": "If no: what assumption did you make that you wish you had tested first?",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "question": "Are you currently executing against scope that was defined for you, or are you identifying and defining new areas of opportunity yourself?",
+      "what_it_reveals": "Which career stage you are actually operating in, regardless of your title — Stage 1 executes against defined scope, Stage 2 defines the scope",
+      "follow_up_if_yes": "If defining your own scope: are you also making the case for why it is the right area, or are you still seeking approval for the direction?",
+      "follow_up_if_no": "If executing against defined scope: is this because the organization hasn't given you the opportunity, or because you haven't sought it out?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "When you make a significant decision, do you share the alternatives you considered and the reasoning behind your choice — or do you present the conclusion?",
+      "what_it_reveals": "Whether you are actively building or passively assuming trust — invisible judgment cannot generate the credibility required for senior-level autonomy",
+      "follow_up_if_yes": "If sharing reasoning: are decision-makers able to see your judgment clearly, or is the framing still output-focused?",
+      "follow_up_if_no": "If presenting conclusions only: have you received feedback that leaders want to be brought in earlier or want to understand your thinking process?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "Can you name the key stakeholders and gatekeepers in your organization and articulate what they actually care about — as opposed to what they say they care about?",
+      "what_it_reveals": "Whether you have developed organizational dynamics literacy, which is required at Stage 2 and above to move work through the organization",
+      "follow_up_if_yes": "If yes: are you actively using this understanding to get ahead of resistance and build coalitions before escalations?",
+      "follow_up_if_no": "If no: are you relying on official processes as your primary model for how decisions get made?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "If asked in an executive meeting, could you articulate why your product area matters to the company's strategy in a way that is both accurate and energizing?",
+      "what_it_reveals": "Whether you have done the strategic alignment work required at senior levels — PMs who cannot answer this are invisible in resource allocation decisions",
+      "follow_up_if_yes": "If yes: have you actually communicated this in contexts where it would be heard, or only in your own planning?",
+      "follow_up_if_no": "If no: is this a gap in your thinking or a gap in your communication of thinking you've already done?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "Have you collected 360-degree feedback recently, and do the people you escalate with or disagree with describe you as constructive and collaborative?",
+      "what_it_reveals": "Your collaborative reputation, which executives use heavily as a signal for who gets expanded scope — being tolerated versus being actively sought out is a significant career differentiator",
+      "follow_up_if_yes": "If positive reputation: are leaders actively pulling you into cross-functional work, or is the collaboration reactive only?",
+      "follow_up_if_no": "If reputation is unclear or negative: is the feedback about style (defensiveness, self-interest) or substance (disagreement on direction)?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "Are you preparing for promotion by developing skills, or by seeking expanded scope and demonstrating impact at that scope?",
+      "what_it_reveals": "Whether you understand the actual mechanism of promotion — skill development is necessary but not sufficient; scope and demonstrated impact are what actually drive promotion decisions",
+      "follow_up_if_yes": "If pursuing scope: have you made the case to your manager for why you should own expanded areas, and what was the response?",
+      "follow_up_if_no": "If focused on skills: do you know which specific scope expansions would be available to you if you sought them?",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "question": "Can you describe the strategic framework for your product area — including target markets, key pain points, and why you are betting on your current approach over alternatives?",
+      "what_it_reveals": "Whether the PM has internalized strategic ownership or is executing against someone else's direction",
+      "follow_up_if_yes": "Who authored that framework — did you create it, or were you handed it? Have you secured executive alignment on it?",
+      "follow_up_if_no": "Do you know who owns the strategy for your area? What would it take for you to develop and own it?",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "question": "When you last brought a problem to your manager, did you come with a proposed approach or just the problem?",
+      "what_it_reveals": "Whether the PM is demonstrating autonomous thinking or dependency in upward communication",
+      "follow_up_if_yes": "What was your manager's response — did they adjust your proposal or redirect you entirely? This reveals how much strategic trust exists.",
+      "follow_up_if_no": "Is this a habit or a one-off? What stopped you from forming a view first?",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "question": "Can you name a recent decision where the right answer genuinely depended on context, and articulate what the conditions were?",
+      "what_it_reveals": "Whether the PM can reason in conditional logic versus applying rigid frameworks or defaulting to single answers",
+      "follow_up_if_yes": "Were you able to communicate those conditions to stakeholders clearly, or did you resolve the ambiguity prematurely to appear decisive?",
+      "follow_up_if_no": "Do you tend to resolve ambiguous decisions quickly? Who do you defer to when the answer isn't clear?",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "question": "How much of your working week is spent on strategic work versus reactive execution work?",
+      "what_it_reveals": "Whether the PM has structural conditions that allow senior-level behavior to develop, or is trapped in execution mode",
+      "follow_up_if_yes": "Is that time protected on your calendar, or does it happen opportunistically? Opportunistic strategy time is effectively no strategy time.",
+      "follow_up_if_no": "Have you ever explicitly blocked time for strategy? What would you need to stop doing to create that space?",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "question": "What is the 2–3 year vision for your product area, and can you show how this quarter's work connects to it?",
+      "what_it_reveals": "Whether the PM thinks in strategic themes and long arcs or in sprint cycles and feature lists",
+      "follow_up_if_yes": "Did you communicate that vision to your team and leadership? Is it documented in a form others can reference and hold you to?",
+      "follow_up_if_no": "Do you know if a vision exists at a level above you? If so, why haven't you translated it into your area?",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "question": "Have you received the same promotional feedback across more than one review cycle without it changing?",
+      "what_it_reveals": "Whether the block is a genuine skill gap (feedback would evolve as you develop) or a structural/political ceiling (feedback stays static because the real issue isn't developmental)",
+      "follow_up_if_yes": "Ask your manager directly whether there is a role to be promoted into — distinguish skill gap from headcount constraint",
+      "follow_up_if_no": "Treat the feedback as genuine and build a specific action plan with your manager to close the named gaps",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Can your manager describe your last six months of impact specifically and compellingly without your help?",
+      "what_it_reveals": "Whether your impact is legible enough to survive a calibration conversation you're not present for",
+      "follow_up_if_yes": "Your visibility is sufficient — focus on scope, champion, and structural factors",
+      "follow_up_if_no": "Impact legibility is your most urgent gap — build a habit of proactively surfacing wins and framing them in business terms",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Who specifically is advocating for you in the calibration room, and what is their actual organizational influence?",
+      "what_it_reveals": "Whether you have real political cover in the decision-making process or only the appearance of it",
+      "follow_up_if_yes": "Maintain the relationship and keep your champion updated on your impact narrative",
+      "follow_up_if_no": "Identify who actually influences calibration outcomes at your level and invest in building a real relationship with them",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Have you explicitly told your manager that you want to be promoted and discussed timing directly?",
+      "what_it_reveals": "Whether your manager has a clear urgency signal from you or is operating on assumption of contentment",
+      "follow_up_if_yes": "Confirm your manager has a concrete plan and timeline, not just acknowledgment",
+      "follow_up_if_no": "Have this conversation immediately — the absence of this signal is likely deprioritizing your case in competitive cycles",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Is your current scope materially different from what it was 12 months ago?",
+      "what_it_reveals": "Whether you are demonstrating next-level performance or repeating the same level of work on a longer tenure",
+      "follow_up_if_yes": "Assess whether that scope expansion is visible and attributed to you in the org's perception",
+      "follow_up_if_no": "Scope stagnation is a leading indicator that you will not have evidence to support a promotion case — identify what you can proactively own",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "When you look at people who have been promoted in your org recently, do you understand the narrative that got them there?",
+      "what_it_reveals": "Whether you understand what your org actually rewards versus what it says it rewards — the gap between these is where promotions are won or lost",
+      "follow_up_if_yes": "Assess whether your own work and narrative match those patterns",
+      "follow_up_if_no": "Study recent promotions more carefully — talk to those people or their managers to understand the actual criteria in practice",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Do you know whether there is current headcount and budget for a promotion at your target level this cycle?",
+      "what_it_reveals": "Whether a promotion is structurally possible in the upcoming cycle regardless of your performance",
+      "follow_up_if_yes": "Focus on performance and advocacy factors knowing the structural path is open",
+      "follow_up_if_no": "Either get clarity from your manager or treat this cycle as a development cycle and begin evaluating the external market in parallel",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "question": "Has your scope — the actual decision authority and surface area of your work — expanded in the last 12–18 months?",
+      "what_it_reveals": "Whether the constraint on career progress is a skill gap (you haven't demonstrated readiness for more scope) or an organizational ceiling (the org structurally cannot give you more scope regardless of performance)",
+      "follow_up_if_yes": "Is that scope expansion visible to the people who make promotion decisions, or is it happening informally?",
+      "follow_up_if_no": "Have you had explicit conversations with your manager about what would need to be true for you to take on more scope, or are you waiting for it to happen organically?",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "question": "Do you know specifically what gap your manager would say exists between your current level and the next?",
+      "what_it_reveals": "Whether you have activated the partnership approach to promotion or are relying on hope; also reveals whether your manager is functioning as an ally or a ceiling",
+      "follow_up_if_yes": "Have you made progress against that specific gap in the last review cycle, and does your manager know it?",
+      "follow_up_if_no": "What has prevented you from having that conversation — discomfort, belief that the answer is obvious, or lack of access to your manager?",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "question": "When you evaluate a new role, do you explicitly separate what you find energizing about the work from what makes it sound impressive to others?",
+      "what_it_reveals": "Whether the person is using the Tablestakes–Ego–Joy framework or conflating ego satisfaction with genuine fit; reveals susceptibility to taking roles that sound good but produce stagnation",
+      "follow_up_if_yes": "What specifically did you identify in the joy category that you cannot get from your current role?",
+      "follow_up_if_no": "Can you articulate what you find genuinely energizing about product work that is independent of how it looks to your peers or recruiters?",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "question": "Can you name the people who will be in your next promotion calibration, and would they be able to describe your specific contributions unprompted?",
+      "what_it_reveals": "Whether the person's impact is visible to the actual decision-makers, or whether they are relying on organic recognition in a system with documented presentation bias",
+      "follow_up_if_yes": "How did you ensure that visibility — was it deliberate narration or high-visibility presentations, and is it sustainable?",
+      "follow_up_if_no": "What is your plan to make your work legible to those people before the next calibration cycle?",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "question": "Do you have a clear picture of what you want your career to look like in five years, including what skills, scope, decisions, and relationships you will need?",
+      "what_it_reveals": "Whether the person is making day-to-day decisions with a directional long-term view or optimizing purely for the next 6–12 month promotion cycle",
+      "follow_up_if_yes": "Are your current project choices and relationship investments actually aligned with that five-year picture?",
+      "follow_up_if_no": "Are your current career decisions being made primarily by reacting to what is available or what your manager assigns, rather than by a proactive strategy?",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "question": "Do you have peer relationships outside your company — built before you needed them — with people at similar career stages who give you honest feedback?",
+      "what_it_reveals": "Whether the person has pattern recognition across organizations to distinguish company-specific dysfunction from industry norms, and whether they have the network infrastructure to navigate future transitions",
+      "follow_up_if_yes": "Have those peers helped you identify something about your situation that you would have misread if you had only internal information?",
+      "follow_up_if_no": "Are you currently interpreting your company's dynamics through only internal reference points, which may cause you to misattribute org ceilings as personal skill gaps or vice versa?",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Promotion to Senior PM signals genuine seniority in the market",
+      "actual_reality": "Most companies promote to the HR definition of senior (tenure + competency signals), not the market definition (owning a problem from ambiguous to shipped with minimal oversight); the two rarely align",
+      "implication": "Don't treat a Senior PM title as evidence that you're genuinely senior — assess your capability against the market definition, not the HR band",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "Joining a high-brand company is good for your career development",
+      "actual_reality": "High-brand companies often mean becoming a cog in a large machine — reduced decision authority, slower feedback loops, and narrower scope that trades development for prestige",
+      "implication": "Evaluate roles at brand companies by the same ownership and scope criteria as any other role; brand does not substitute for development",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "An MBA accelerates PM career progression to senior levels",
+      "actual_reality": "For progression to Group PM or Director at tech companies, internal advocacy and execution track record drive promotion — not an MBA; the MBA is a legitimate filter only in specific domains",
+      "implication": "Only pursue an MBA if it provides network, legitimacy signal, or domain access genuinely unavailable through two years of craft-building at a strong company",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "Switching companies resets the clock and gives you a fresh start",
+      "actual_reality": "Problems — skill gaps, thin relationships, avoidance of hard feedback — travel with you; a new environment removes institutional context that made the problem manageable without removing the problem",
+      "implication": "Diagnose honestly whether you're leaving for organizational reasons or personal ones; fix personal issues before switching or you'll face them in a harder context",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "If you have strong performance reviews, you should be getting promoted",
+      "actual_reality": "Strong reviews without scope expansion after 18+ months often signals an org ceiling — promotions in political environments go to people with political capital, not necessarily the highest performers",
+      "implication": "Track scope expansion alongside review scores; if scope is flat or contracting despite strong reviews, treat this as an org ceiling signal and assess whether to leave",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "Ownership is a standard feature of PM roles — the title implies it",
+      "actual_reality": "Nominal ownership is common and worse than no ownership; many PM roles come with the language of ownership but without the authority to say no, make independent decisions, or own consequences",
+      "implication": "Test ownership claims during the interview process with specific behavioral questions about past decisions and consequences; don't accept ownership language without evidence",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "Larger, more established companies are better places to develop as a PM",
+      "actual_reality": "This is stage-dependent: large structured companies are better for early-career craft-building; mid-career PMs typically need the ambiguity, ownership, and high-stakes decisions that large structured environments can no longer provide",
+      "implication": "Match company stage to career stage; staying in a structured environment past your learning horizon trades growth for comfort",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "The interview process tells you whether you can do the job",
+      "actual_reality": "The interview process is designed to evaluate whether you can do the job; the candidate must independently run a parallel process to evaluate whether the job will make them better",
+      "implication": "Use the interview to ask about real decisions, ownership evidence, and growth path — treat poor answers as walk-away signals regardless of offer quality",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "common_belief": "The skills listed in job descriptions predict career success in PM roles",
+      "actual_reality": "Static competency in a list of skills matters less than the ability to learn new skills quickly as the job changes — meta-learning capacity is the durable differentiator",
+      "implication": "PMs should invest in developing the ability to learn fast in unfamiliar domains rather than trying to perfectly match a job description's listed requirements",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "common_belief": "Career stages are defined by titles (APM, PM, Senior PM, Director, VP)",
+      "actual_reality": "Career stages are defined by the scale of what you're building — feature, product, business, organization, industry — and the transition between stages is nonlinear and requires giving up what made you successful",
+      "implication": "Chasing titles without expanding scope is a false proxy; you should assess whether what you own has actually increased in scale, not just whether your title changed",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "common_belief": "Large companies are better for career development than startups (or vice versa)",
+      "actual_reality": "Large and small companies develop fundamentally different and complementary instincts; neither is categorically better, and the right choice depends entirely on which instinct you're currently missing",
+      "implication": "Mid-career PMs should diagnose their specific gap — ownership instinct vs. operating-at-scale capability — and choose environments that close that gap, not environments that feel prestigious",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "common_belief": "A mentor relationship is what you need to advance your career",
+      "actual_reality": "You need both mentors (who advise you directly) and sponsors (who advocate for you in rooms you're not in); most people have only mentors and lack the sponsor relationship that actually drives advancement",
+      "implication": "Actively cultivate relationships with people who have the standing and motivation to put your name forward in promotion and opportunity conversations, not just people who give you advice",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "common_belief": "Career decisions should feel certain before you make them",
+      "actual_reality": "Treating your career as a product means running experiments; the goal is to test hypotheses with small, recoverable bets rather than waiting for certainty that never comes",
+      "implication": "Structure career exploration as informational interviews, side projects, and cross-functional work before making full moves, converting anxiety into actionable data",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "common_belief": "You get promoted by mastering every skill listed on the career ladder rubric",
+      "actual_reality": "Promotions depend on scope, autonomy, and impact — delivering impactful work at higher levels. You can be technically competent on every listed competency and still not get promoted if you are operating at the wrong scope",
+      "implication": "PMs should pursue expanded scope of ownership first, demonstrate impact at that scope, and then request the title — not reverse-engineer the rubric",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "Being excellent at execution will eventually earn a promotion to Senior PM",
+      "actual_reality": "Mastery of Stage 1 skills creates a ceiling at PM2 — cross-stage promotion to Senior PM requires doing fundamentally different work (identifying opportunities and making the case for them), not executing faster or better",
+      "implication": "PMs approaching PM2 ceiling need to deliberately start doing Stage 2 work (defining scope, setting goals) even before being given permission or the title",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "Strategic thinking means having good ideas about product direction",
+      "actual_reality": "Strategic thinking for PMs specifically means starting from goals rather than solutions, and validating ideas with real people before committing resources — the greatest product thinkers do not get ideas right on the first try, they test and iterate",
+      "implication": "PMs should compress validation cycles as early as possible rather than building confidence through internal reasoning — external feedback before building is a strategic skill, not a sign of uncertainty",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "If you demonstrate sound judgment through good outcomes, executives will extend trust and expand your scope",
+      "actual_reality": "Judgment is invisible unless you show your work — executives cannot calibrate trust in reasoning they cannot observe, so good outcomes from opaque processes do not reliably build the credibility required for advancement",
+      "implication": "Senior PMs must explicitly unpack their decision-making frameworks, surface alternatives considered, and share reasoning proactively — not just deliver results",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "Understanding how your organization works means knowing the official processes",
+      "actual_reality": "Work actually gets done through informal stakeholder dynamics — what gatekeepers actually care about (often different from what they say), which resistance triggers to avoid, and when rule-bending serves the mission better than process adherence",
+      "implication": "Senior PMs need to build an explicit map of informal organizational dynamics, not just the org chart and process documentation",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "Cross-stage career transitions feel like natural progressions where you become more capable",
+      "actual_reality": "Cross-stage transitions feel like stepping backward initially — new responsibilities pull attention from current role execution, causing a period of appearing less competent before becoming more competent at the new level",
+      "implication": "PMs should expect and plan for a performance dip during cross-stage transitions rather than interpreting it as evidence they made the wrong move",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "common_belief": "Becoming a Senior PM requires being dramatically better at the core day-to-day work of product management",
+      "actual_reality": "The biggest differentiator for Senior PM is strategic scope and ownership — not execution quality. A PM who executes perfectly on a defined scope is not necessarily ready to be senior if they cannot set the scope themselves.",
+      "implication": "PMs aiming for Senior should invest in developing and demonstrating strategy, autonomy, and nuanced judgment — not in perfecting execution skills they likely already have",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "common_belief": "Career progression in PM is primarily a function of time in role and consistent strong performance",
+      "actual_reality": "The PM-to-Senior PM transition has a median of 3 years, but acceleration is possible — and this first transition has the greatest compounding impact on total career velocity",
+      "implication": "PMs should treat the Senior IC threshold as a lever to pull actively, not a milestone to wait for — deliberate focus on the three differentiators can shorten the timeline meaningfully",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "common_belief": "'It depends' is an evasive non-answer that signals uncertainty or lack of conviction",
+      "actual_reality": "At senior levels, 'it depends' paired with explicit conditional logic is the correct and expected answer to complex decisions — it signals sophisticated reasoning, not weakness",
+      "implication": "PMs should practice articulating the conditions that make different answers correct, and resist the pressure to collapse nuanced decisions into false simplicity",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "common_belief": "Surfacing problems to your manager quickly and transparently is a sign of good judgment and collaboration",
+      "actual_reality": "Surfacing problems without a proposed approach signals dependency and junior-level thinking — senior PMs are expected to bring a point of view alongside the problem",
+      "implication": "PMs should default to the autonomy template (problem + proposed approach + request for input) in upward communication to signal senior-level readiness",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "common_belief": "Strong performance will naturally lead to promotion over time",
+      "actual_reality": "Promotion requires legible impact, organizational headroom, an influential champion, and explicit advocacy — performance is necessary but not sufficient and can be invisible without active communication",
+      "implication": "Treat promotion as a project with multiple workstreams, not a passive outcome of doing your job well",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "Your direct manager is your primary lever for getting promoted",
+      "actual_reality": "Promotion decisions happen in calibration rooms with multiple stakeholders — a direct manager with low organizational influence may advocate genuinely and produce no result",
+      "implication": "Map the power structure of the calibration process and identify who actually moves decisions, then build relationships at that level",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "The promotion rubric tells you what you need to do to get promoted",
+      "actual_reality": "What organizations say they reward and what they actually reward frequently diverge — the real signal is in who has been promoted and why, not in the written criteria",
+      "implication": "Study actual promotion patterns as primary research, and treat the rubric as a baseline floor rather than a complete map",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "Asking for a promotion makes you look impatient or entitled",
+      "actual_reality": "Without an explicit urgency signal from you, managers often deprioritize your case in competitive calibration cycles — asking directly is expected and necessary, not aggressive",
+      "implication": "Have explicit conversations about promotion timing; treat your manager as someone who needs a clear signal, not someone reading your preferences implicitly",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "If you're blocked on promotion, the solution is to keep developing and prove yourself",
+      "actual_reality": "Sometimes the block is structural — frozen headcount, budget constraints, tenure requirements, or organizational politics — and no amount of development changes the outcome at that company",
+      "implication": "Diagnose the type of block before choosing a response; if it is structural, the correct action may be to leave rather than develop",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "Staying at a company longer demonstrates commitment and will eventually be rewarded with promotion",
+      "actual_reality": "The external market often offers the next-level title faster than your current employer will — long tenure at a below-market title can permanently anchor your compensation and title trajectory",
+      "implication": "Periodically benchmark yourself externally regardless of whether you intend to leave — the market is a source of real information about your level",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "common_belief": "Promotion decisions are made based on sustained impact and performance over the review period",
+      "actual_reality": "Promotion committees often judge candidates based heavily on one or a few high-visibility presentations due to presentation bias, which systematically disadvantages quiet contributors, non-native English speakers, and people doing invisible but high-impact work",
+      "implication": "Regardless of actual impact, PMs must ensure their work is visible and narrated to the right people; relying on impact alone is insufficient in environments where decision-makers have limited direct exposure to your work",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "common_belief": "Your manager is responsible for your career growth and will advocate for you if you perform well",
+      "actual_reality": "Career growth ultimately rests on you, not your manager; your manager can be a powerful accelerant or a ceiling, but the default is neither — it is indifference unless you actively partner with them",
+      "implication": "PMs must take explicit ownership of the promotion conversation by partnering with their manager rather than hoping recognition will happen passively",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "common_belief": "Title and compensation are reliable proxies for career development",
+      "actual_reality": "Scope — decision authority and surface area — is the most important predictor of long-term career development; title and money are legible but often lead people to underweight the variable that actually matters",
+      "implication": "PMs should evaluate roles and promotions primarily on scope expansion, treating title and compensation as important but secondary; a high title with narrow scope is a career trap",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "common_belief": "Sharing credit generously and self-advocating are in conflict — you either give credit or you take it",
+      "actual_reality": "Credit is infinitely divisible; sharing credit and making your own contributions legible are not mutually exclusive and are both necessary simultaneously",
+      "implication": "PMs should give credit generously to build the kind of reputation that makes others want to work with and advocate for them, while separately ensuring their own contributions are narrated to decision-makers",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "common_belief": "The most effective way to develop as a PM is to go deep on your own product and users",
+      "actual_reality": "The best PMs look outward — they learn from the entire market's experiments, not just their own; internal-focused PMs improve incrementally while external-focused PMs develop faster pattern recognition",
+      "implication": "PMs should build deliberate practices for analyzing competitor and adjacent product decisions, not just optimize for internal metrics and user feedback",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "common_belief": "Presentations and communication skills are soft skills that matter less than product judgment and execution",
+      "actual_reality": "Presentations are 5% of the job but 50% of how you are judged; communication skills have an outsized career return disproportionate to the time they consume",
+      "implication": "Deliberate investment in communication — writing, speaking, presenting — is one of the highest-return career development activities for a senior PM, not a nice-to-have",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Relationship to the roadmap",
+      "junior_pattern": "Treats the roadmap as immutable; focuses on executing what's there",
+      "senior_pattern": "Makes the space argument — 'we shouldn't build any of these; here's the real problem' — and challenges whether the roadmap addresses the right things",
+      "why_it_matters": "Senior PMs create leverage by solving the right problem; junior PMs create activity by solving the assigned problem, regardless of whether it matters",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "How conviction is built",
+      "junior_pattern": "Seeks permission from stakeholders and managers before committing to a direction",
+      "senior_pattern": "Builds conviction from user and market signals first, then brings stakeholders along",
+      "why_it_matters": "Permission-seeking makes you dependent on others' judgment rather than developing your own; conviction-building is the mechanism by which senior PMs create organizational trust",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Definition of success",
+      "junior_pattern": "Defines success as 'shipped' — the work is done when it's launched",
+      "senior_pattern": "Defines success as 'worked' — the launch is the beginning of the feedback loop, not the end of the work",
+      "why_it_matters": "Output-orientation produces activity; outcome-orientation produces impact; the market pays for impact at senior levels",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Relationship to escalations",
+      "junior_pattern": "Reacts to escalations when they arrive",
+      "senior_pattern": "Prevents escalations by reading stakeholder dynamics proactively and building capital before it's needed",
+      "why_it_matters": "Reactive escalation handling is fire-fighting; proactive stakeholder management is a force multiplier that determines who gets resources and whose concerns make it into plans",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Problem framing",
+      "junior_pattern": "Frames every problem as a feature request — takes the problem as stated and seeks to build a solution",
+      "senior_pattern": "Reframes problems upstream — questions whether the stated problem is the real problem before engaging with solutions",
+      "why_it_matters": "Building the wrong thing efficiently is worse than not building; senior PMs create more value by problem selection than by execution quality",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Relationship to eng and design",
+      "junior_pattern": "Treats eng and design as execution resources who implement PM decisions",
+      "senior_pattern": "Treats eng and design as strategic partners whose judgment actively changes the PM's judgment",
+      "why_it_matters": "Teams where PM treats partners as execution resources produce worse outcomes and have higher attrition; senior PMs compound through the team's judgment, not just their own",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Handling ambiguity",
+      "junior_pattern": "Resolves ambiguity prematurely to reduce discomfort and create the appearance of clarity",
+      "senior_pattern": "Holds ambiguity without resolving it until the evidence justifies resolution; distinguishes between productive ambiguity and unclear thinking",
+      "why_it_matters": "Premature resolution of ambiguity produces false confidence and wrong decisions; senior PMs' tolerance for ambiguity is what allows them to make better calls with incomplete information",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Activity vs. impact confusion",
+      "junior_pattern": "Confuses activity with impact — measures progress by volume of work, meetings, and output",
+      "senior_pattern": "Measures progress by change in outcomes — user behavior, business metrics, team capability",
+      "why_it_matters": "Activity is visible and socially rewarded in the short term; impact is what determines whether you get promoted and whether your career compounds",
+      "_source": "sample_pm_career.txt"
+    },
+    {
+      "dimension": "Relationship to career decisions",
+      "junior_pattern": "Treats career moves as high-stakes binary choices that must be gotten right; experiences anxiety and waits for certainty",
+      "senior_pattern": "Treats career moves as hypotheses to be tested through small experiments; gathers data before committing and iterates based on results",
+      "why_it_matters": "The junior approach leads to paralysis or poorly-validated leaps; the senior approach generates real information and reduces downside risk of major moves",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Definition of career progress",
+      "junior_pattern": "Measures progress by title and level attained",
+      "senior_pattern": "Measures progress by the scale of what they're building and the scope of their ownership — feature vs. product vs. business vs. organization",
+      "why_it_matters": "Title without scope expansion is a false signal; conflating the two leads to accepting moves that look like advancement but don't develop the capabilities needed for the next stage",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Response to feeling incompetent in a new role",
+      "junior_pattern": "Interprets incompetence as a sign they made the wrong move or aren't good enough; tries to return to areas of established competence",
+      "senior_pattern": "Interprets incompetence as a signal of maximum learning and stays the course, treating discomfort as the cost of growth",
+      "why_it_matters": "Retreating to competence at the wrong moment prevents the development needed to advance to the next career stage",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Stage transition behavior",
+      "junior_pattern": "When promoted to a higher stage, tries to keep doing what made them successful at the previous stage while adding new responsibilities",
+      "senior_pattern": "Explicitly identifies what they need to stop doing and lets go of previous-stage behaviors to make room for new ones",
+      "why_it_matters": "The VP who keeps behaving like a Senior PM fails at being a VP; stage transitions require subtraction, not just addition",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Network building approach",
+      "junior_pattern": "Builds network reactively — reaches out when they need something (a job, a referral, advice in a crisis)",
+      "senior_pattern": "Builds relationships proactively during stable periods with no immediate agenda, so the network is activated and motivated when it's actually needed",
+      "why_it_matters": "Transactional outreach produces transactional responses; genuine relationships produce advocates who go out of their way",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Mentor and advisor asks",
+      "junior_pattern": "Makes open-ended asks like 'Can you be my mentor?' or 'I'd love to pick your brain'",
+      "senior_pattern": "Makes specific, bounded asks tied to a concrete decision or question, making it easy for the other person to say yes and deliver real value",
+      "why_it_matters": "Generic asks get ignored; specific asks get answered and build the relationship through a successful exchange",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Choosing between large and small companies",
+      "junior_pattern": "Chooses based on prestige, brand, or compensation without assessing which instincts they're missing",
+      "senior_pattern": "Diagnoses the specific gap in their operating experience — ownership instinct vs. scale and complexity — and selects the environment that closes that gap",
+      "why_it_matters": "Optimizing for prestige instead of learning leads to a career that looks impressive but has foundational capability gaps that surface at senior levels",
+      "_source": "gibson_biddle_hacking_pm_career.txt"
+    },
+    {
+      "dimension": "Scope ownership",
+      "junior_pattern": "Receives a defined area and executes against it — success means delivering well within the assigned boundaries",
+      "senior_pattern": "Identifies new opportunities themselves, defines the area, and makes the case for why it is the right area to pursue",
+      "why_it_matters": "Stage 2 advancement is gated entirely on scope definition capability — PMs who only execute against assigned scope will not be considered for Senior PM regardless of execution quality",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Goal orientation",
+      "junior_pattern": "Hits goals that are set for them; asks 'what do we need to build?' and executes toward a feature or solution",
+      "senior_pattern": "Sets goals, not just hits them; starts from the goal and works backward to solutions, validating ideas before committing resources",
+      "why_it_matters": "Feature-think leads to building the wrong things; goal-first thinking leads to validated bets — the difference compounds across a product's lifecycle",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Trust-building approach",
+      "junior_pattern": "Presents conclusions and outcomes, assuming good results will speak for themselves and build credibility",
+      "senior_pattern": "Explicitly unpacks decision-making frameworks, surfaces alternatives considered, and shares reasoning proactively — shows the work, not just the output",
+      "why_it_matters": "Judgment that is invisible cannot generate trust; executives extend scope and autonomy based on confidence in reasoning, not just track record of outcomes",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Organizational navigation",
+      "junior_pattern": "Relies on official processes as the model for how decisions get made and work moves through the organization",
+      "senior_pattern": "Maps informal stakeholder dynamics — understands what key stakeholders actually care about (vs. what they say), identifies gatekeepers, and knows when scrappiness serves the mission better than process compliance",
+      "why_it_matters": "Work moves through organizations via informal dynamics as much as formal processes — PMs who only understand the official map will be slow and frequently blocked",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Promotion strategy",
+      "junior_pattern": "Prepares for promotion by developing skills and achieving rubric competencies, then asks for the title",
+      "senior_pattern": "Seeks expanded scope first, demonstrates impact at that scope, then asks for the title — understands that scope and impact drive promotion, not skill checklist completion",
+      "why_it_matters": "The actual mechanism of promotion is misunderstood by many PMs — optimizing for skill rubrics rather than scope expansion leads to competent but stalled careers",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Stakeholder relationships",
+      "junior_pattern": "Works with stakeholders transactionally — coordinates when needed, manages escalations when they occur",
+      "senior_pattern": "Builds relationships across the company proactively so that leaders actively want to collaborate during escalations — not just tolerate the interaction",
+      "why_it_matters": "Being actively sought versus tolerated is a significant differentiator in who gets expanded scope and resource allocation in cross-functional decisions",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Validation timing",
+      "junior_pattern": "Builds confidence internally through analysis and reasoning, then commits to building — validation happens after significant development investment",
+      "senior_pattern": "Validates ideas with real people before committing resources — compresses the feedback loop to test before building rather than building before testing",
+      "why_it_matters": "Early validation can reduce development time from six months to two weeks by eliminating work on ideas that would have failed — the compounding cost of late validation is enormous",
+      "_source": "jackie_bavaro_career_stages_and_skills.txt"
+    },
+    {
+      "dimension": "Relationship to scope",
+      "junior_pattern": "Executes effectively within a defined scope handed to them by leadership or a roadmap they inherited",
+      "senior_pattern": "Defines the scope in the first place — authors the vision, strategic framework, and roadmap that others execute against",
+      "why_it_matters": "Scope-setting is the primary gate for Senior PM promotion — execution quality alone cannot substitute for it",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Strategic horizon",
+      "junior_pattern": "Prioritizes incremental value delivery; success is measured in features shipped and short-cycle OKRs",
+      "senior_pattern": "Aligns all work to long-term vision achievement; can articulate how today's work connects to a 2–3 year future state",
+      "why_it_matters": "Without a visible long-term orientation, leadership cannot see the PM as capable of owning a strategy — only of delivering against one",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Upward communication style",
+      "junior_pattern": "Brings problems and challenges to the manager and waits for direction or resolution",
+      "senior_pattern": "Brings problems paired with a proposed approach and invites feedback — signals independent decision-making capability",
+      "why_it_matters": "How a PM communicates upward is how managers form mental models of their readiness for autonomy — this pattern directly shapes promotion decisions",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Handling ambiguous decisions",
+      "junior_pattern": "Applies a known framework or resolves ambiguity quickly to appear decisive; uncomfortable holding multiple valid answers simultaneously",
+      "senior_pattern": "Holds competing valid perspectives without premature resolution; articulates conditional logic explicitly ('if X then A, if Y then B')",
+      "why_it_matters": "Senior decisions are disproportionately ambiguous — the capacity to reason through rather than collapse ambiguity is a core senior-level competency",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Organizational perspective",
+      "junior_pattern": "Advocates primarily for their own team's goals, metrics, and resources",
+      "senior_pattern": "Weighs cross-functional constraints and organizational goals; does not optimize locally at the expense of broader outcomes",
+      "why_it_matters": "Inability to transcend team-level thinking signals that the PM cannot be trusted with broader scope — it limits both promotion and cross-functional influence",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Relationship to strategic work",
+      "junior_pattern": "Treats strategy as something that happens when there is time; allows reactive execution work to crowd it out",
+      "senior_pattern": "Explicitly protects calendar time for strategic work; treats it as a structural requirement, not an opportunistic activity",
+      "why_it_matters": "Senior PMs are accountable for strategy — if it doesn't get done, that is a performance gap, not a scheduling issue",
+      "_source": "lenny_becoming_senior_pm.txt"
+    },
+    {
+      "dimension": "Understanding what drives promotion decisions",
+      "junior_pattern": "Believes promotion is a direct output of strong performance reviews and meeting the rubric criteria — waits for the organization to recognize readiness",
+      "senior_pattern": "Understands promotion as a multi-variable process involving legible impact, scope, an influential champion, structural headroom, and explicit self-advocacy — manages all of these in parallel",
+      "why_it_matters": "Junior thinking creates passive candidates who are consistently surprised and frustrated; senior thinking creates candidates who can diagnose and address the actual blockers",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "Diagnosing a promotion stall",
+      "junior_pattern": "Accepts developmental feedback at face value and works harder on the stated gaps, regardless of whether those gaps are the real blocker",
+      "senior_pattern": "Distinguishes between skill-gap blocks and structural/political blocks before deciding on a response — asks directly about headcount and calibration dynamics",
+      "why_it_matters": "Misdiagnosing a structural ceiling as a skill gap wastes development time and delays the correct action, which is often an external move",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "Relationship with scope",
+      "junior_pattern": "Waits to be assigned more scope or promoted before taking on next-level work — expects recognition to precede expanded responsibility",
+      "senior_pattern": "Proactively identifies and owns scope at the next level before the title, demonstrating the performance rather than waiting to be given the opportunity",
+      "why_it_matters": "Organizations promote demonstrated performance, not anticipated potential — the junior pattern produces perpetual candidates who never build the evidence base for promotion",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "Impact communication",
+      "junior_pattern": "Assumes good work is visible and that self-promotion is unnecessary or uncomfortable — relies on the manager to notice and articulate their contributions",
+      "senior_pattern": "Actively makes impact legible through regular communication, framing wins in business terms, and ensuring the manager can make a compelling case in rooms the PM isn't present in",
+      "why_it_matters": "Calibration decisions are made on available evidence — undocumented or uncommunicated impact simply doesn't exist in that process",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "Navigating organizational constraints",
+      "junior_pattern": "Treats all promotion blockers as personal development gaps and responds with more effort in the same direction",
+      "senior_pattern": "Recognizes that structural constraints (headcount, budget, tenure requirements, politics) are real limits that require different responses than skill gaps — including potentially leaving",
+      "why_it_matters": "Understanding structural constraints is explicitly identified in the source as a senior PM skill; misreading them leads to years of wasted tenure",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "Champion-building",
+      "junior_pattern": "Builds relationships with accessible, friendly senior people based on personal comfort — conflates seniority or likability with calibration influence",
+      "senior_pattern": "Maps the actual power structure of promotion decisions, identifies who holds real influence in calibration, and deliberately invests in those relationships",
+      "why_it_matters": "A low-influence champion produces zero result regardless of their effort or genuine support — only influence in the right room changes outcomes",
+      "_source": "lenny_how_to_get_promoted.txt"
+    },
+    {
+      "dimension": "How they evaluate a new role or promotion",
+      "junior_pattern": "Evaluates primarily on title and compensation, treating scope as a secondary or assumed variable; conflates a better title with genuine career progress",
+      "senior_pattern": "Explicitly separates title, money, and scope; treats scope as the primary variable and interrogates the actual decision authority and surface area they would own",
+      "why_it_matters": "Optimizing for title without scope produces stagnation — you get the signal of advancement without the experience that builds long-term capability",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "Approach to promotion",
+      "junior_pattern": "Hopes the manager will recognize their work and advocate for them, or demands promotion directly when frustrated; treats promotion as something that happens to them",
+      "senior_pattern": "Partners with their manager by explicitly asking what gap exists between their current level and the next; treats promotion as a collaborative process they drive",
+      "why_it_matters": "The partnership approach converts the manager into an ally and generates specific actionable feedback; passive hope produces indefinite waiting and ambiguity",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "Career planning horizon",
+      "junior_pattern": "Focuses on the next promotion cycle (6–12 months); makes project and relationship decisions based on what will be visible and rewarded in the near term",
+      "senior_pattern": "Anchors decisions to a five-year future vision and works backward to identify required skills, scope, decisions, and relationships; near-term decisions are filtered through the long-term view",
+      "why_it_matters": "Short-term optimization and long-term optimization often diverge; without a long-term anchor, daily decisions compound in the wrong direction",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "Orientation for learning and development",
+      "junior_pattern": "Looks primarily inward — focuses on their own product, users, and metrics; learns from their own experiments",
+      "senior_pattern": "Looks outward — conducts product takedowns of competitors, analyzes decisions made by other product teams, learns from the entire market's experiments simultaneously",
+      "why_it_matters": "Inward-focused PMs improve incrementally; outward-focused PMs develop pattern recognition across a much larger dataset and develop intuition faster",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "Relationship between credit-sharing and self-advocacy",
+      "junior_pattern": "Treats credit and self-advocacy as a zero-sum tradeoff — either you share credit generously or you advocate for yourself; often defaults to one at the expense of the other",
+      "senior_pattern": "Understands credit is infinitely divisible and practices both simultaneously — shares credit generously while ensuring their own contributions are narrated to decision-makers",
+      "why_it_matters": "Sharing credit without self-advocacy produces invisible impact; self-advocacy without sharing credit damages the relationships and reputation that produce long-term advocacy from others",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "Investment in communication skills",
+      "junior_pattern": "Treats communication and presentation as peripheral soft skills; invests development time proportionally to how much of the day-to-day job they represent (low)",
+      "senior_pattern": "Recognizes that presentations are disproportionately determinative of how they are judged; invests in communication skills at a rate that reflects their outsized career return, not their time share",
+      "why_it_matters": "Communication skill gaps compound negatively over time in promotion and influence outcomes because high-visibility moments are where career trajectories are actually set",
+      "_source": "shreyas_doshi_career_management.txt"
+    },
+    {
+      "dimension": "When they build their network",
+      "junior_pattern": "Builds or activates their network reactively — reaches out when job searching, navigating a crisis, or needing a reference; relationships are built under urgency",
+      "senior_pattern": "Invests in peer relationships and coaching circles proactively during stable periods; relationships are built without agenda and are therefore higher trust and more honest",
+      "why_it_matters": "Relationships built under urgency are weaker and more transactional; the most valuable network properties — honest feedback, fast referrals, pattern recognition across orgs — require trust built over time",
+      "_source": "shreyas_doshi_career_management.txt"
+    }
+  ],
+  "_meta": {
+    "skill": "Senior PM Career Decisions",
+    "source_count": 6,
+    "sources": [
+      "manual_sample_pm_career",
+      "web_gibson_biddle_hacking_pm_career",
+      "web_jackie_bavaro_career_stages_and_skills",
+      "web_lenny_becoming_senior_pm",
+      "web_lenny_how_to_get_promoted",
+      "web_shreyas_doshi_career_management"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "skill_name": "Graduate School Selection Advisor",
+  "overall_score": 4.4,
+  "summary": "This is a genuinely strong skill that captures how an experienced PhD advisor or insider actually thinks — particularly the advisor-first framing, the immigration-as-decision-variable lens, and the specific dropout/portfolio statistics. It avoids the typical 'pursue your passion' pablum and provides operationally useful heuristics. Some weaknesses around field-specificity (CS vs. humanities advising looks very different), missing financial/cost-of-living calibration for funded PhD offers, and a few claims stated as facts that deserve more nuance.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The opening reframe is genuinely expert and non-obvious: 'PhD admissions are locally competitive, not globally competitive: a perfect candidate with no faculty match gets rejected; a moderate candidate with strong faculty alignment gets in.' This corrects the dominant naive mental model directly.",
+    "The immigration framing is rare and valuable: treating a funded PhD as 'a 5–6 year legal-stay runway that resets OPT and builds credentials qualifying for EB-1A or O-1 — bypassing the H-1B lottery' is the kind of insight that almost no generic grad advice surfaces, and it materially changes the MS vs. PhD calculus.",
+    "The hidden tradeoffs table is excellent — items like '1-year university fellowship: Often a recruiting incentive, not multi-year security' and 'Highly productive advisor with 15+ students: Publications yes, individual mentorship and advocacy no' are exactly the late-realized downsides that experienced advisors warn about.",
+    "Diagnostic Q4 ('is funding institutionally guaranteed for 4–5 years, or contingent on advisor grants / annual renewal?') and Q5 ('would you choose this advisor again?') are diagnostic in the real sense — they distinguish students who've done due diligence from those who haven't, in one question."
+  ],
+  "weaknesses": [
+    "The skill is implicitly STEM/CS-shaped and doesn't acknowledge field variation. In humanities/social sciences, RA funding is rare, TA loads are higher, time-to-degree is 6–8+ years, and placement is much worse — the '8–12 programs, 3+ advisors each' heuristic doesn't translate cleanly to a small subfield in comparative literature.",
+    "Some claims are stated as universal facts when they're field- or context-dependent. '40–50% dropout' is roughly accurate as a US PhD aggregate but varies dramatically by field (humanities ~50%+, engineering closer to 30%). The skill presents it as a flat base rate.",
+    "The financial analysis of PhD offers is thin. Nowhere does it mention evaluating stipend vs. local cost of living, health insurance coverage, summer funding, or whether the stipend supports dependents — all material to international students with families. The MS side gets a cost number ($150K–$200K) but the PhD side is treated as just 'funded.'",
+    "The SOP guidance is asserted but not operationalized: 'Open the SOP with a specific research problem, not your biography' is good but the skill never shows what that looks like, what counts as 'specific enough,' or how to handle programs that explicitly ask for biographical material (some do)."
+  ],
+  "improvement_suggestions": [
+    "Add a field-calibration section or table: how the advisor-first framework, portfolio size, funding structure, and dropout rates differ across CS/engineering vs. life sciences vs. humanities vs. professional masters. Without this, the AI will give CS-shaped advice to a sociology applicant.",
+    "Add a 'PhD offer financial evaluation' subsection with concrete checks: stipend-to-rent ratio in the program's city, summer funding norms, health insurance and dependent coverage, conference travel budget, and what a 'livable' funded offer actually looks like in 2024–2025 dollars.",
+    "Expand the SOP guidance with a concrete before/after example or a structural template (problem → gap → your prior work → specific faculty/labs → fit), so the AI can actually critique a draft rather than restate the principle.",
+    "Add coverage of the reapplication scenario and the gap-year/research-assistant path — many strong applicants benefit from a 1–2 year RA/predoc before applying, and this isn't mentioned anywhere."
+  ],
+  "generic_advice_flags": [
+    "'Talk to 3–5 current and former lab members' — the number is specific but the heuristic could be sharper: how do you find former students who've left (LinkedIn search for the lab name with end-dates), what specific questions beyond 'would you choose again' separate signal from politeness, and how to read non-responses.",
+    "'Send targeted personalized emails referencing specific recent papers' — true but every grad-school blog says this. The expert layer would be: what subject line works, what length, whether to attach CV, what response rates look like, and how to interpret silence vs. a polite 'apply through the normal process' reply."
+  ],
+  "missing_coverage": [
+    "Reapplication strategy and predoc/RA gap-year paths for applicants who don't get in or want to strengthen their profile.",
+    "Field-specific calibration (humanities, social sciences, professional masters like MBA/MPP) — the current framework is implicitly STEM PhD.",
+    "How to evaluate and negotiate competing offers (yes, PhD offers can sometimes be negotiated for higher stipend, extra fellowship year, or a guaranteed summer).",
+    "Mental health, advisor abuse, and exit options mid-PhD — given the 40–50% dropout rate the skill cites, there's nothing about how to recognize a toxic lab early or pivot to a master's-exit.",
+    "Dual-career and family considerations (partner visas on F-1/F-2, spouse work authorization on H-4 vs. F-2) which materially affect international student program choice."
+  ]
+}

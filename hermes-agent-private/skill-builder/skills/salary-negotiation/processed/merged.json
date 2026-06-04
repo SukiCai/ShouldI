@@ -1,0 +1,1154 @@
+{
+  "heuristics": [
+    {
+      "rule": "Do not disclose visa/sponsorship status before the company has decided they want you",
+      "condition": "When applying or in early interviews as an international student requiring sponsorship...",
+      "action": "...avoid proactively mentioning OPT/H-1B status unless explicitly asked; research sponsorship capacity through H-1B data and alumni intelligence instead",
+      "because": "Sponsorship cost becomes an elimination filter before your qualifications are weighed — disclosing early raises costs before benefits are established",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Negotiate salary using market data, never personal need or visa-adjusted pricing",
+      "condition": "When countering an offer as a visa holder...",
+      "action": "...ground the counter in levels.fyi, H-1B salary data, and peer compensation ranges rather than personal financial needs or immigration constraints",
+      "because": "Disclosing your reservation price or framing requests around personal need reveals your floor and eliminates negotiating room",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "A higher salary negotiation is simultaneously a better H-1B lottery outcome post-2025",
+      "condition": "When negotiating compensation under the wage-weighted H-1B lottery system...",
+      "action": "...explicitly frame targeting a Level III or IV salary as benefiting both parties — higher comp for you, better lottery odds for the company's investment",
+      "because": "Salary and immigration interests are directly aligned under wage-weighted lottery rules, making this a rare non-zero-sum negotiation argument",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Reframe visa dependency as a retention differentiator, not a cost",
+      "condition": "When an employer treats sponsorship as a burden during comp discussions...",
+      "action": "...explicitly state that H-1B holders stay 2–3 years minimum due to switching complexity, making them a long-term retention asset that justifies the salary requested",
+      "because": "This flips the power dynamic from 'I'm a cost because of my visa' to 'I'm a retention asset,' neutralizing the employer's implicit leverage",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Verify sponsorship execution capacity before signing, not just sponsorship willingness",
+      "condition": "When a company says they will sponsor H-1B but you have no confirmation...",
+      "action": "...ask explicitly: do they have immigration counsel, have they sponsored before, what is their approval rate, who is currently on H-1B there, and get written confirmation before accepting",
+      "because": "Sponsorship willingness and execution capacity are different risks — a company without immigration infrastructure is a material risk regardless of intent",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Sponsorship cost does not justify below-market comp",
+      "condition": "When an employer implies your salary should be lower because of sponsorship overhead...",
+      "action": "...counter that sponsorship attorney and USCIS fees total $3,000–$8,000/year, which is less than 5% of a $150,000+ employee's total cost — not a justification for 20% below-market pay",
+      "because": "The actual cost of sponsorship is small relative to total compensation; treating it as a salary discount is a negotiation tactic, not a financial reality",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Know H-1B portability rights to make competing threats credible",
+      "condition": "When feeling trapped at a current employer due to visa dependency...",
+      "action": "...internalize that H-1B portability allows switching employers without waiting for approval if the new petition is filed within 60 days, making the threat to leave or imply alternatives genuinely credible",
+      "because": "Perceived lock-in is the source of employer leverage; knowing your legal rights converts a structural disadvantage into a negotiable constraint",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "rule": "Never name a salary number first — the first number anchors the entire negotiation",
+      "condition": "When a recruiter or HR form asks you to state your salary expectations or current compensation",
+      "action": "Deflect with 'I'm more focused on fit right now — if we're right for each other, we can be flexible on numbers' or enter $1 on forms to proceed",
+      "because": "Whoever names first sets the ceiling for their own outcome; if you name low, the company accepts and you leave money on the table; if you name high without knowing their range, you may anchor awkwardly",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Only negotiate compensation after the company has reached 'Yes-If' status — not while still in 'No-But' evaluation",
+      "condition": "When you are still in interview or evaluation stages and a recruiter tries to discuss compensation",
+      "action": "Defer with 'I look forward to receiving your offer' — signal that comp discussion comes after the hiring decision, not during it",
+      "because": "Negotiating while the company is still deciding whether to hire you forces excessive compromise; once they've decided they want you, leverage shifts substantially in your favor",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Treat negotiation as a fixed rule, not a situational choice — always counter at least once",
+      "condition": "When any job offer arrives, regardless of how generous it seems",
+      "action": "Counter or request at least one adjustment before accepting",
+      "because": "The worst-case outcome of negotiating is receiving the original offer unchanged; upside exists, downside does not — making it a pure expected-value positive action every time",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "When salary hits a ceiling, pivot immediately to signing bonus or equity",
+      "condition": "When a recruiter signals that base salary cannot move due to pay bands or HR constraints",
+      "action": "Say 'If you could increase the signing bonus to X, I could accept this salary' — reframe the ask to a one-time cost",
+      "because": "Companies have asymmetric budget flexibility; signing bonuses don't affect ongoing payroll equity or pay-band precedent, making them easier for employers to grant while giving you equivalent real value",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Proclaim a specific reason for every negotiation request to dramatically increase acceptance rate",
+      "condition": "When making any counter-request on salary, bonus, equity, or other terms",
+      "action": "Attach a concrete justification — student loans, relocation costs, market data — even if the reason is modest",
+      "because": "Reasons make requests feel human and legitimate rather than greedy; humans respond to narrative context, and justified requests are psychologically easier for recruiters to approve internally",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Explicitly call out exploding offer deadlines — never let them silently expire",
+      "condition": "When an offer comes with a 24–72 hour expiration window",
+      "action": "Directly state 'This timeline doesn't work for me — I need time to make an informed decision and consult with my family'",
+      "because": "Virtually every exploding offer extends when called out explicitly; but silently assuming they'll still want you after expiry is a mistake — the extension only happens if you request it",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Use an external decision-maker buffer to deflect immediate pressure",
+      "condition": "When a recruiter is pushing for a same-call decision or immediate commitment",
+      "action": "Say 'I'll review this and discuss with my family — I'll follow up if I have questions'",
+      "because": "Removes you from direct real-time pressure; the recruiter cannot demand an instant decision if the decision is not solely yours, buying you time without appearing uninterested",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Reveal a quantified value proposition during negotiation to reframe the cost of your salary request",
+      "condition": "When you have a prior achievement that maps directly to the company's core business metric",
+      "action": "Quantify your past impact ('I increased sales 3% at my last company — what would 1% mean here?') and let them calculate before discussing your ask",
+      "because": "Once the employer anchors on a large value figure (e.g., millions in revenue), a $4,000–$10,000 salary increase becomes psychologically trivial by comparison",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Contact other companies immediately when you receive a strong offer to compress timelines",
+      "condition": "When you receive an offer from one company while other processes are still ongoing",
+      "action": "Email other companies: 'I've received a strong offer and my timeline is compressed — can you expedite?' ",
+      "because": "This is not manipulation — it naturally surfaces genuine interest from other parties and creates real competing leverage; companies respond rationally to competitive signals",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Maintain visible enthusiasm throughout the negotiation, even when numbers disappoint",
+      "condition": "When an offer comes in lower than expected or the company pushes back on your counter",
+      "action": "Reiterate excitement for the mission and desire to make it work before restating your ask",
+      "because": "Companies fear candidates who 'go bad' during negotiations; if your enthusiasm visibly drops, you become less attractive at exactly the moment you need the most leverage",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "rule": "Never name a number or give a yes/no on the first offer call",
+      "condition": "When a recruiter presents an offer and expects a response on the call",
+      "action": "Ask clarifying questions about level, vesting, bonus target, and equity cliff, then request a few days to consider before reconnecting",
+      "because": "You lose negotiating leverage the moment you accept or anchor a number; delay preserves all options and signals deliberateness",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Value early-stage startup equity at $0 for financial planning purposes",
+      "condition": "When evaluating a compensation package from a Seed or Series A company",
+      "action": "Base all financial modeling on cash salary only and treat equity as a lottery ticket",
+      "because": "80-90% of startups fail and liquidity may never materialize; planning around equity claims leads to real financial miscalculation",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Move to signing bonus or equity refresh when base salary is capped",
+      "condition": "When a recruiter says the base salary cannot be increased further",
+      "action": "Explicitly ask whether signing bonus or equity refresh is possible, framing these as alternatives to base",
+      "because": "Signing bonuses don't affect recurring payroll budgets and equity refreshes can often be approved outside normal comp bands, making them easier for managers to approve",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Use the final commitment close only once and only when genuinely ready to sign",
+      "condition": "When you have reached your target total comp number and are ready to commit",
+      "action": "Say 'If you can get to [X total comp], I'll sign today' as a binding commitment, not a negotiating probe",
+      "because": "This technique only works if it is credible; using it prematurely or insincerely destroys trust and eliminates its leverage effect",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Anchor counter-offers to objective third-party data rather than personal need",
+      "condition": "When forced to name a target compensation figure during negotiation",
+      "action": "Reference levels.fyi percentile data for the specific level and role at comparable companies as the basis for your range",
+      "because": "Anchoring to market data depersonalizes the ask and makes it harder for recruiters to dismiss; it frames your number as industry-standard rather than arbitrary",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Start processes with slow-moving large companies first, layer in fast-moving startups later",
+      "condition": "When running multiple interview processes simultaneously to generate competing offers",
+      "action": "Initiate Google, Amazon, Microsoft processes first (3-6 weeks), then start startup processes (1-2 weeks) so timelines converge",
+      "because": "Simultaneous offers maximize negotiation leverage; misaligned timelines force you to accept or decline before you have competitive data",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Always ask for the offer level, not just the total comp number",
+      "condition": "When evaluating an offer from a company with leveled compensation bands",
+      "action": "Confirm which band level the offer is placed at and whether it is at the low, mid, or high end of that band",
+      "because": "A low end of a senior band beats a high end of a mid band for long-term career progression and future earning potential",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "rule": "Negotiate over phone or video, not email or text alone",
+      "condition": "When preparing to counter an offer",
+      "action": "Request a call rather than sending a written counter-offer",
+      "because": "Calls allow the recruiter to become an advocate who can 'fight for you' internally; text-only negotiation reduces the recruiter to a passive message relay",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Company's H-1B sponsorship history and approval rate",
+      "why_it_matters": "A company with no prior H-1B sponsorships or low approval rates represents a material risk that the offer is not executable, regardless of the salary number",
+      "how_to_assess": "Check public USCIS H-1B disclosure data, ask directly whether they have immigration counsel and current H-1B employees, and request confirmation in writing before signing",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "OEWS wage level classification of the offer",
+      "why_it_matters": "Post-2025, wage level directly determines H-1B lottery odds — Level III or IV gives significantly better odds, meaning the wage level affects both comp and immigration outcomes simultaneously",
+      "how_to_assess": "Cross-reference the offered salary against OEWS wage tables for the job's SOC code and geographic location to determine which level it falls into",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "OPT expiration date and H-1B filing deadline",
+      "why_it_matters": "Timeline urgency changes negotiation posture — a student with 6 months of OPT remaining has more flexibility than one with 6 weeks, affecting BATNA credibility and process parallelism",
+      "how_to_assess": "Calculate exact OPT end date, STEM OPT extension eligibility, and the H-1B cap filing window (April 1 each year) to map your actual runway",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Quality and credibility of BATNA",
+      "why_it_matters": "Without a real alternative — whether a competing offer, another degree program, CPT position, or another country's job market — counter-offers lack credibility and the employer retains leverage",
+      "how_to_assess": "Identify at least one path you would genuinely pursue if this offer fell through; a BATNA only works if you would actually use it",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Whether the company has decided they want you before visa status is disclosed",
+      "why_it_matters": "Leverage shifts dramatically once a company is invested in hiring you — sponsorship cost is weighed against losing a desired candidate, not against an unknown applicant",
+      "how_to_assess": "Track whether you've received a verbal or written signal of intent to hire before any sponsorship conversation begins",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Market compensation data for the role and level",
+      "why_it_matters": "Negotiating from objective market data removes the need to disclose personal need and establishes an external benchmark that is harder to dismiss than personal requests",
+      "how_to_assess": "Use levels.fyi, H-1B salary disclosure data for the specific company and role, and peer data to establish a credible range before negotiating",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Whether the student is negotiating from fear or from data",
+      "why_it_matters": "Fear-based negotiation leads to accepting the first offer and systematically under-negotiating by 10–30% compared to domestic peers, compounding to hundreds of thousands of dollars over a career",
+      "how_to_assess": "Ask yourself: is my counter grounded in a salary range from public data, or am I asking for what feels safe given my visa anxiety?",
+      "weight": "high",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Whether immigration commitment is confirmed in writing",
+      "why_it_matters": "Verbal sponsorship promises are unenforceable; without written confirmation, the offer may be real on comp but not real on immigration",
+      "how_to_assess": "Request explicit written confirmation of H-1B filing intent as part of the offer package before signing",
+      "weight": "medium",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "factor": "Whether you have competing offers from companies you'd actually work for",
+      "why_it_matters": "A real competing offer is the single most reliable source of negotiating leverage — it transforms your ask from opinion into market evidence and creates genuine optionality",
+      "how_to_assess": "Count active offers or imminent offers from companies you would genuinely accept; distinguish real competing offers from vague 'other conversations'",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Timing overlap of multiple active offer windows",
+      "why_it_matters": "Leverage from competing offers only exists if offer windows actually overlap; a competing offer that expired two weeks ago provides no real pressure",
+      "how_to_assess": "Map interview start dates and typical decision timelines; start large-company interviews first (slower, wider windows) and startup interviews later (faster, tighter) to maximize overlap",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Whether the company has reached 'Yes-If' vs. 'No-But' status on hiring you",
+      "why_it_matters": "Negotiating before the company has decided to hire you forces compromise; negotiating after they've committed gives you full leverage",
+      "how_to_assess": "Assess whether you've received a formal or informal offer signal; 'we'd like to make you an offer' is Yes-If; 'we're still evaluating' is No-But",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Information asymmetry — what the company knows about your current salary and alternatives",
+      "why_it_matters": "Your negotiating power is directly proportional to what the company does not know about your floor and alternatives; revealing your current salary or reservation price collapses that power",
+      "how_to_assess": "Audit what you've disclosed: current comp, specific asks, how you rank this offer vs. others — each disclosure reduces asymmetry",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Which compensation dimensions have flexibility at this specific company",
+      "why_it_matters": "Companies have asymmetric flexibility across comp components; salary may be locked by pay bands while signing bonuses, equity, and vacation are freely adjustable",
+      "how_to_assess": "When salary hits resistance, ask 'What can you approve on your own?' to identify which levers remain open",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "How differentiated your skills are relative to this company's core needs",
+      "why_it_matters": "You are more valuable to companies where your specific skills are scarce and central; differentiation yields stronger offers and more negotiating room",
+      "how_to_assess": "Ask 'What are the key projects defining this company's future, and how does someone get on those teams?' — assess fit between your strengths and their stated priorities",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "How much the company has already invested in your interview process",
+      "why_it_matters": "Sunk interview costs create strong pressure on the company to reach agreement; a company that has spent tens of thousands evaluating you is highly motivated not to lose you over modest salary differences",
+      "how_to_assess": "Count interview rounds completed, number of interviewers involved, time elapsed — more investment means more pressure on their side",
+      "weight": "medium",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "The long-term compounding effect of the current negotiation outcome",
+      "why_it_matters": "Each offer sets the baseline for future raises and the anchor for your next employer's offer; undercompensation compounds across decades",
+      "how_to_assess": "Calculate the 10-year gross value of a $5K salary difference; assess whether this role sets a comp baseline you want to carry forward",
+      "weight": "high",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Whether justifications for requests are market-based vs. personal-need-based",
+      "why_it_matters": "Market data ('comparable roles pay X') is far more persuasive than personal circumstance ('I have high rent'); the type of justification affects acceptance rate",
+      "how_to_assess": "Before negotiating, gather external compensation benchmarks (Levels.fyi, Glassdoor, Blind, peer offers) to anchor requests in market reality rather than personal need",
+      "weight": "medium",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Candidate's visible enthusiasm and likelihood-to-sign signal",
+      "why_it_matters": "Companies invest more negotiating effort in candidates they believe they can close; enthusiasm is itself a form of leverage when it signals genuine interest without desperation",
+      "how_to_assess": "Assess whether your communication throughout the process has conveyed excitement about the specific company and role, not just about compensation",
+      "weight": "medium",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "factor": "Company stage and equity liquidity timeline",
+      "why_it_matters": "Equity is 30-60% of total comp at large tech companies but may be worth $0 at early-stage companies; misvaluing this reverses offer rankings",
+      "how_to_assess": "Ask for the 409A valuation, preferred share liquidation preferences, and estimated IPO or liquidity timeline; apply a discount rate based on stage (public=80-90%, Series C-D=60-90%, Seed/A=0%)",
+      "weight": "high",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Option exercise window after leaving",
+      "why_it_matters": "A 90-day exercise window means you must pay to exercise vested options within 90 days of leaving or forfeit them; a 10-year window gives you flexibility to wait for a liquidity event",
+      "how_to_assess": "Ask directly: 'How long after leaving do I have to exercise my options?'; standard is 90 days, best-in-class is 5-10 years",
+      "weight": "high",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Vesting schedule structure",
+      "why_it_matters": "A 4-year cliff (all equity vests at year 4) versus quarterly vesting after a 1-year cliff is a massive practical difference in when you can access the value",
+      "how_to_assess": "Ask explicitly for the vesting schedule; confirm whether there is a cliff, the cliff duration, and the post-cliff cadence (monthly vs. quarterly)",
+      "weight": "high",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Presence and quality of a competing offer",
+      "why_it_matters": "A competing offer from a company you would genuinely work for is the single most reliable lever for increasing any offer",
+      "how_to_assess": "Assess whether you have an offer from a credible competitor at a comparable or higher total comp; never fabricate; evaluate your genuine willingness to accept it",
+      "weight": "high",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Total compensation versus base salary",
+      "why_it_matters": "Two offers at the same base can differ by $100,000+ annually once equity, bonus, and signing bonus are included; comparing by base produces wrong rankings",
+      "how_to_assess": "Build a full annual comp model: annualized equity (grant divided by vesting years), target bonus percentage, and base salary; treat signing bonus separately as non-recurring",
+      "weight": "high",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Signing bonus recurrence and clawback terms",
+      "why_it_matters": "Signing bonuses are one-time; modeling them as ongoing comp inflates perceived annual earnings; clawback provisions can require repayment if you leave early",
+      "how_to_assess": "Ask whether the signing bonus is subject to clawback and over what period; model annual comp without it",
+      "weight": "medium",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Fully diluted ownership percentage",
+      "why_it_matters": "The percentage of the company your equity represents matters more than the raw number of shares; future dilution from funding rounds affects actual value",
+      "how_to_assess": "Ask: 'What percentage of the company does this grant represent on a fully diluted basis?'; compare against 409A valuation to understand dollar value",
+      "weight": "medium",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "factor": "Negotiation style: competitive firmness combined with collaborative warmth",
+      "why_it_matters": "Research cited shows best negotiators combine firm outcome orientation with warm interpersonal approach; either alone is less effective",
+      "how_to_assess": "Assess whether your counter-offer framing expresses genuine enthusiasm for the role while being specific and firm about the compensation target",
+      "weight": "medium",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting the first offer to avoid friction and preserve the sponsorship relationship",
+      "unstated_consequence": "Systematically under-negotiating by 10–30% relative to domestic peers, which compounds over a career to hundreds of thousands of dollars in lost compensation",
+      "who_it_affects": "International students on OPT and early H-1B holders who conflate sponsorship preservation with salary acceptance",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Disclosing visa status early in the application process to be transparent",
+      "unstated_consequence": "Sponsorship cost becomes a filter that eliminates you before your qualifications are assessed — you lose the evaluation before the competition begins",
+      "who_it_affects": "International students who interpret transparency as an early-stage obligation rather than a strategic timing decision",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Treating H-1B dependency as a permanent lock-in that prevents job switching",
+      "unstated_consequence": "Employers who understand that you believe you cannot leave will price your comp accordingly — the psychological trap becomes a real financial one even if the legal constraint is softer than believed",
+      "who_it_affects": "H-1B holders who don't know about the 60-day portability rule and therefore cannot credibly imply alternatives",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Accepting a sponsorship commitment without verifying execution infrastructure",
+      "unstated_consequence": "You may sign and onboard only to discover the company has no immigration counsel, has never completed an H-1B, and cannot actually deliver the sponsorship — leaving you in status limbo",
+      "who_it_affects": "Students who distinguish sponsorship willingness from execution capacity too late — after accepting the offer",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Framing long-term visa commitment as a weakness during negotiation",
+      "unstated_consequence": "You surrender a genuine retention differentiator — the fact that you are likely to stay 2–3 years longer than domestic peers — and allow the employer to use it as leverage instead of you using it as value",
+      "who_it_affects": "International students who have internalized the visa constraint as purely negative and haven't been exposed to the reframe",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Running a single-company job search to preserve OPT time",
+      "unstated_consequence": "You eliminate competing offer leverage entirely, capping your negotiating ceiling at whatever the single company is willing to offer without external market pressure",
+      "who_it_affects": "OPT students who are risk-averse about timeline and underestimate the financial return of a multi-process search",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "choice": "Revealing your current salary when asked",
+      "unstated_consequence": "The company can now anchor your offer to your past underpayment rather than your market value; you've effectively justified a below-market offer by providing evidence that you've accepted below-market pay before",
+      "who_it_affects": "Candidates who are currently underpaid relative to market, early-career professionals, and those switching from lower-paying industries or geographies",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Accepting the first offer immediately without countering",
+      "unstated_consequence": "You signal that you either didn't know negotiation was possible or didn't believe you had standing to negotiate — which experienced hiring managers interpret as a competence signal about your professional self-awareness",
+      "who_it_affects": "First-time job seekers and engineers who have internalized the cultural norm that discussing compensation is unseemly",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Negotiating only on base salary",
+      "unstated_consequence": "You leave significant value on the table in dimensions where companies have far more flexibility — signing bonuses, equity, vacation, professional development, remote work — while fighting hardest on the dimension most constrained by HR pay bands",
+      "who_it_affects": "Anyone whose salary ask hits a hard company ceiling but who doesn't know to redirect to other levers",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Letting an exploding offer deadline pass without explicitly challenging it",
+      "unstated_consequence": "The offer lapses; the assumption that 'they'll still want me' is almost always wrong because the company interprets silence as disinterest or indecisiveness, not as a negotiating move",
+      "who_it_affects": "Candidates who are conflict-averse and assume the company will proactively extend without being asked",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Making a specific salary counter-request early in negotiation",
+      "unstated_consequence": "You reveal your floor — the company now knows the minimum you'll accept and can offer just above it rather than their true ceiling",
+      "who_it_affects": "Candidates who mistake specificity for confidence; particularly harms those who would have received higher offers if they had maintained information asymmetry",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Treating negotiation as a one-shot transaction focused only on the current offer",
+      "unstated_consequence": "You optimize for the immediate package while ignoring that the number sets your raise baseline and your next employer's anchor; short-term framing systematically undervalues the compounding effect of early-career negotiations",
+      "who_it_affects": "Early-career professionals who are focused on getting the offer rather than optimizing lifetime earnings",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Using personal financial need as the primary justification for a higher salary",
+      "unstated_consequence": "The employer is not buying your expenses — they are buying your labor; need-based justifications are weak because they don't connect to your value, and they can create perception of financial desperation that weakens your leverage",
+      "who_it_affects": "Candidates with genuine financial pressure (student loans, relocation costs, family obligations) who frame it as their primary argument rather than as a supporting detail alongside market data",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Fabricating or exaggerating a competing offer",
+      "unstated_consequence": "Recruiters have access to detailed compensation benchmarks and professional networks; they can often detect implausible offers, and being caught in dishonesty permanently damages the relationship and can rescind the real offer",
+      "who_it_affects": "Candidates with no real competing offers who feel pressure to manufacture leverage",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "choice": "Accepting a high signing bonus as part of the offer",
+      "unstated_consequence": "The signing bonus inflates the perceived total comp, masking a below-market annual salary; once you model year 2 comp without it, the offer may be substantially weaker than alternatives",
+      "who_it_affects": "Early-career candidates who are cash-constrained and anchor emotionally on the large one-time number",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "choice": "Taking a startup offer with significant equity upside",
+      "unstated_consequence": "Options with a 90-day exercise window create a golden handcuff: leaving the company means either paying out-of-pocket to exercise vested options (often tens of thousands of dollars) or forfeiting them entirely",
+      "who_it_affects": "Candidates with limited liquid savings who cannot afford to exercise options when leaving, effectively trapping them regardless of job satisfaction",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "choice": "Negotiating via email instead of phone to feel less confrontational",
+      "unstated_consequence": "The recruiter cannot advocate internally on your behalf in real time; email reduces them to a passive relay and removes the social dynamic that makes recruiters want to 'fight for you'",
+      "who_it_affects": "Introverted or conflict-averse candidates who default to written communication as a comfort mechanism",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "choice": "Reneging on an accepted offer after signing",
+      "unstated_consequence": "While legal consequences are minimal, reputation damage within the industry is real and persistent, particularly in small or tight-knit sectors where recruiters and hiring managers move between companies",
+      "who_it_affects": "Candidates in niche technical domains or geographic markets where professional networks are dense and interconnected",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "choice": "Using levels.fyi data without specifying level in the negotiation",
+      "unstated_consequence": "Being vague about comp targets while citing market data allows the recruiter to assume a lower level benchmark; specificity about level is required for the data to support your ask",
+      "who_it_affects": "Candidates who research market rates but fail to confirm which level their offer corresponds to",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "choice": "Prioritizing base salary in negotiation when base is capped",
+      "unstated_consequence": "Spending political capital pushing against a fixed base leaves signing bonus and equity refresh untouched; these alternative levers are often approvable without escalation but are never offered proactively",
+      "who_it_affects": "First-time negotiators who treat base salary as the only meaningful dimension of compensation",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting the first offer out of fear that any counter will cost the sponsorship",
+      "why_it_happens": "Visa dependency creates asymmetric loss aversion — the perceived downside of losing sponsorship feels catastrophic, overriding the upside calculus of negotiating; fear is calibrated to the wrong level of risk",
+      "consequence": "10–30% systematic under-compensation relative to domestic peers; compounded over a career, this is hundreds of thousands of dollars in foregone earnings",
+      "warning_signs": [
+        "Thinking 'I should just be grateful they're willing to sponsor me'",
+        "Accepting without asking any questions about comp flexibility"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Disclosing visa status before the company is invested in hiring you",
+      "why_it_happens": "Students conflate honesty with timing — believing transparency requires early disclosure, or they fear being 'caught' later if they wait",
+      "consequence": "Sponsorship cost becomes an elimination filter before qualifications are weighed, reducing interview opportunities unnecessarily",
+      "warning_signs": [
+        "Mentioning OPT or H-1B need in a cover letter unprompted",
+        "Volunteering visa status in an initial phone screen before being asked"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Negotiating from personal financial need rather than market data",
+      "why_it_happens": "Students anchor to what they need to survive (student loan payments, living costs) rather than what the market pays, because personal need feels more concrete and urgent",
+      "consequence": "Reveals the negotiating floor to the employer, who can then anchor just above it — eliminating all upside from the range",
+      "warning_signs": [
+        "Framing a counter as 'I need at least X because of my loans'",
+        "Not having looked up compensation data on levels.fyi or H-1B disclosure databases before negotiating"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Accepting 'we'll figure out sponsorship' as a sufficient commitment before signing",
+      "why_it_happens": "Students are relieved to hear a positive sponsorship signal and don't want to seem demanding by pressing for specifics, especially after salary negotiation has already created perceived friction",
+      "consequence": "Onboarding into a company that lacks immigration infrastructure — no counsel, no prior H-1B experience — and facing a failed or delayed H-1B filing with status consequences",
+      "warning_signs": [
+        "No written confirmation of H-1B filing intent in the offer documentation",
+        "Company cannot name their immigration attorney when asked"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Believing H-1B dependency means you cannot credibly imply you might leave",
+      "why_it_happens": "Students overestimate the legal and logistical complexity of H-1B transfer and underestimate their rights under portability rules, making employer leverage feel absolute when it is not",
+      "consequence": "Surrenders all implied BATNA power in negotiations, allowing employers to make take-it-or-leave-it offers without credible pushback",
+      "warning_signs": [
+        "Not researching H-1B portability rules before entering a negotiation",
+        "Declining to explore competing offers because 'it's too complicated with my visa'"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Conflating sponsorship willingness with sponsorship execution capacity",
+      "why_it_happens": "Both are binary 'yes/no' answers in conversation, making them feel equivalent — students don't know what questions to ask to distinguish intent from capability",
+      "consequence": "Accepting an offer from a company that wants to sponsor but cannot execute, resulting in a failed H-1B and potential status loss",
+      "warning_signs": [
+        "Company has never sponsored an H-1B before but says they're willing to start",
+        "No current H-1B employees identifiable at the company"
+      ],
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "pattern": "Naming a specific salary number before the company has made an offer",
+      "why_it_happens": "Candidates interpret the question as a necessary formality or feel that providing a number demonstrates decisiveness and confidence",
+      "consequence": "Anchors the negotiation at the candidate's stated number rather than the company's ceiling; if the number is below what the company would have offered, the candidate has permanently reduced their own outcome",
+      "warning_signs": [
+        "Feeling relieved to 'get the salary question out of the way' early",
+        "Treating the compensation question as a qualification screening step rather than a negotiation move"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Accepting an offer on the spot during the verbal delivery call",
+      "why_it_happens": "Excitement and relief override deliberate decision-making; candidates fear appearing ungrateful or difficult, and recruiters often imply that immediate acceptance is the expected response",
+      "consequence": "Signals that the candidate did not know negotiation was possible or expected; leaves money on the table across all negotiable dimensions without any attempt to improve terms",
+      "warning_signs": [
+        "Saying 'Yes, absolutely!' before even hearing the full offer details",
+        "Not asking for the offer in writing before committing"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Revealing current compensation when asked without redirecting",
+      "why_it_happens": "Candidates assume the question is standard and that refusing to answer will harm their candidacy; the social pressure to answer direct questions overrides strategic awareness",
+      "consequence": "Provides the company an anchor for your offer based on your past underpayment rather than your market value; particularly costly for candidates currently earning below market",
+      "warning_signs": [
+        "Treating HR's request for current salary as a required form field",
+        "Not having a prepared deflection response before the first recruiter call"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Negotiating with visible frustration or declining enthusiasm when numbers disappoint",
+      "why_it_happens": "Genuine emotional reaction to a low offer; candidates conflate 'negotiating hard' with 'expressing disappointment' as a pressure tactic",
+      "consequence": "Makes the candidate less attractive at precisely the moment leverage is most needed; companies de-prioritize candidates who seem likely to accept unhappily or leave quickly",
+      "warning_signs": [
+        "Responding to a low offer with a long silence followed by a flat tone",
+        "Statements like 'I was hoping for significantly more than that'"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Letting an exploding offer deadline lapse without explicitly requesting an extension",
+      "why_it_happens": "Conflict-averse candidates assume that the company will proactively reach out or that their interest is self-evident; they also fear that challenging the deadline will signal wavering commitment",
+      "consequence": "Offer lapses; the candidate loses the option entirely when a single direct sentence would have extended the window in nearly every case",
+      "warning_signs": [
+        "Thinking 'they must know I'm still interested' without having communicated it",
+        "Treating the deadline as a genuine signal about the company's culture rather than a standard pressure tactic"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Negotiating solely on salary and stopping when salary hits a ceiling",
+      "why_it_happens": "Candidates frame compensation mentally as 'salary' rather than 'total package'; when one number stops moving, they conclude negotiation is over",
+      "consequence": "Misses signing bonuses, equity grants, professional development budgets, extra vacation, flexible work arrangements — all of which the company may grant freely once salary is exhausted",
+      "warning_signs": [
+        "Accepting 'our salary band is fixed' as the end of the conversation",
+        "Not having prepared a list of non-salary items before entering negotiation"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Treating negotiation as morally questionable or as 'haggling'",
+      "why_it_happens": "Cultural conditioning, particularly among engineers, frames compensation discussion as unseemly; candidates internalize this as a virtue signal about being 'not money-motivated'",
+      "consequence": "Creates systematic and permanent undercompensation that compounds across raises, future offers, and decades of career earnings",
+      "warning_signs": [
+        "Saying 'I don't want to seem greedy' when considering whether to counter",
+        "Feeling genuine discomfort or guilt when the recruiter pushes back on a counter-offer"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Using personal financial need rather than market data as the primary justification for a higher number",
+      "why_it_happens": "Candidates know their own expenses intimately and assume the employer will find them sympathetic; it feels honest and direct to explain personal circumstances",
+      "consequence": "Need-based justifications are weak because they're not connected to the candidate's labor value; they can also signal financial desperation, weakening leverage",
+      "warning_signs": [
+        "Opening a counter with 'I have significant student loans' as the primary argument",
+        "Not having researched market compensation data before the negotiation call"
+      ],
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "pattern": "Comparing offers by base salary only",
+      "why_it_happens": "Base salary is the most visible and legible number; equity and bonus require calculation and ask-specific questions to quantify, so candidates default to the easily comparable figure",
+      "consequence": "Candidates accept offers that are $50,000-$100,000+ lower in actual annual compensation because the base salary appeared competitive",
+      "warning_signs": [
+        "Saying 'both offers are about the same' without calculating annualized equity",
+        "Not knowing the bonus target percentage of either offer"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "pattern": "Accepting startup equity valuations from recruiters at face value",
+      "why_it_happens": "Recruiters present equity with optimistic future valuations that feel compelling; candidates lack the framework to apply stage-appropriate discounts",
+      "consequence": "Financial planning built on equity that never materializes, leading to compensation that is effectively just the base salary with no upside realized",
+      "warning_signs": [
+        "Recruiter describes equity value using projected post-IPO or next-round valuations",
+        "Candidate cannot answer what the current 409A valuation is"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "pattern": "Giving a number or accepting verbally on the first offer call",
+      "why_it_happens": "Candidates feel social pressure to respond positively in the moment; excitement or relief at receiving an offer overrides strategic patience",
+      "consequence": "Forfeits negotiating leverage before any counter has been made; the recruiter registers the candidate as satisfied at the initial number",
+      "warning_signs": [
+        "Saying 'that sounds great' or 'I think I can work with that' on the first call",
+        "Not knowing what questions to ask about the offer components in the moment"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "pattern": "Fabricating or exaggerating a competing offer",
+      "why_it_happens": "Candidates know competing offers are powerful leverage but don't have one; they inflate a real offer or invent one to gain negotiating power",
+      "consequence": "If the recruiter asks for documentation or the fabrication is discovered, trust is destroyed and the offer may be rescinded; the tactic is explicitly flagged as something never to do",
+      "warning_signs": [
+        "Citing a competing offer from a company whose process hasn't produced a written offer",
+        "Being unable to provide specifics when the recruiter asks follow-up questions about the competing offer"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "pattern": "Using Glassdoor or PayScale for tech compensation research",
+      "why_it_happens": "These platforms are widely known brand names for salary data; candidates don't realize they systematically mishandle equity and underreport tech compensation",
+      "consequence": "Candidates anchor their negotiation targets to artificially low benchmarks, leaving significant compensation on the table",
+      "warning_signs": [
+        "Citing a salary range from Glassdoor that is 20-30% below levels.fyi data for the same role",
+        "Not knowing whether the cited salary figure includes equity"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "pattern": "Using the final commitment close ('I'll sign today if you reach X') too early or insincerely",
+      "why_it_happens": "The tactic sounds powerful and candidates deploy it as a negotiating probe rather than a genuine commitment",
+      "consequence": "Destroys credibility with the recruiter; if the number is met and the candidate still doesn't sign, the recruiter loses trust and future negotiations are compromised",
+      "warning_signs": [
+        "Making the commitment close before having fully evaluated the offer",
+        "Using the phrase more than once in the same negotiation"
+      ],
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has this company sponsored H-1B before, and what is their historical approval rate?",
+      "what_it_reveals": "Whether the offer is executable on immigration — a company with no prior H-1B history or low approval rates is a fundamentally different risk than one with a track record",
+      "follow_up_if_yes": "Who is their immigration counsel, and can you get written confirmation of sponsorship intent in the offer?",
+      "follow_up_if_no": "Do they have immigration counsel retained? Are they willing to commit in writing? If neither, treat the immigration component of the offer as unconfirmed.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "What is your OPT end date, and when is the next H-1B cap filing window?",
+      "what_it_reveals": "How much time pressure you're actually under — which determines whether you have runway to run a multi-company search or whether you're in a deadline-driven single-offer scenario",
+      "follow_up_if_yes": "If you have 6+ months, you have time for parallel processes; treat this like any other negotiation with competing offers as the goal.",
+      "follow_up_if_no": "If you're within 90 days of OPT expiration, identify your real BATNA — STEM OPT extension, another degree, CPT, or another country's job market — before entering any negotiation.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "What is your real BATNA — what would you actually do if this offer fell through?",
+      "what_it_reveals": "Whether your negotiating leverage is genuine or performed — a BATNA only functions if you would credibly pursue it; an unconvincing alternative gives the employer all the power",
+      "follow_up_if_yes": "If you have a competing offer or credible alternative, your leverage is real — use it explicitly and anchor high.",
+      "follow_up_if_no": "If your BATNA is weak, invest in building one: run parallel processes, identify extension options, or explore other markets before negotiating.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "What OEWS wage level would the offered salary classify you at under the post-2025 H-1B lottery system?",
+      "what_it_reveals": "Whether there is an alignment between salary negotiation and immigration outcome — a Level I or II offer may be negotiable upward using the mutual lottery odds benefit as leverage",
+      "follow_up_if_yes": "If Level III or IV, confirm this in your negotiation framing as a shared benefit. If Level I or II, use the wage-weighted lottery argument explicitly to push for Level III classification.",
+      "follow_up_if_no": "If the company is unaware of the wage-weighted lottery system, educating them may itself open a salary conversation that wasn't available before.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "Are you anchoring your counter to market data, or to what feels safe given your visa situation?",
+      "what_it_reveals": "Whether you are negotiating as a rational market participant or as a fear-managed applicant — the answer determines whether your counter has external validity or just reflects anxiety",
+      "follow_up_if_yes": "If anchored to market data (levels.fyi, H-1B disclosures), your counter is defensible and credible — proceed with confidence.",
+      "follow_up_if_no": "If anchored to personal comfort or fear, stop and research market comps for your role, level, and company before sending any counter.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "Do you have written confirmation of H-1B sponsorship intent as part of the offer package?",
+      "what_it_reveals": "Whether the immigration component of the offer is real or informal — verbal commitments are unenforceable and leave you exposed if the company's circumstances or personnel change",
+      "follow_up_if_yes": "Confirm it specifies H-1B filing (not just OPT extension), the expected timeline, and names the immigration attorney or firm.",
+      "follow_up_if_no": "Do not sign until you have written confirmation — request it explicitly as a condition of acceptance and treat the absence of it as a yellow flag about execution capacity.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "Does the company know you're aware of H-1B portability rights and that you have real alternatives?",
+      "what_it_reveals": "Whether you have implicitly ceded BATNA power by signaling lock-in — employers who believe you cannot leave will price comp accordingly, even if the legal reality is more flexible",
+      "follow_up_if_yes": "If you've signaled awareness of portability and alternatives, you're negotiating from a stronger position than most visa holders in the same situation.",
+      "follow_up_if_no": "Consider whether your communication has inadvertently signaled desperation or lock-in — adjust framing to imply optionality without being adversarial.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "question": "Have you received a formal or informal signal that the company wants to hire you — or are you still in evaluation?",
+      "what_it_reveals": "Whether you are in 'Yes-If' (post-hiring-decision) or 'No-But' (still being evaluated) status, which determines how much leverage you actually have",
+      "follow_up_if_yes": "What specific comp dimensions have they discussed — salary only, or total package including bonus and equity?",
+      "follow_up_if_no": "Defer all compensation discussion until you receive an offer signal; negotiating during evaluation forces premature compromise",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "Do you have any competing offers, or imminent offers from companies you would actually work for?",
+      "what_it_reveals": "Whether you have real market leverage or are negotiating purely on assertion; competing offers are the most powerful single source of negotiating power",
+      "follow_up_if_yes": "Do the offer windows actually overlap — is the competing offer still active right now?",
+      "follow_up_if_no": "Are you actively interviewing elsewhere, and can you compress timelines to create overlap? If not, your leverage must come from other sources — quantified value propositions, market data, or demonstrated alternatives",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "Have you disclosed your current salary or named a specific salary number at any point in this process?",
+      "what_it_reveals": "Whether information asymmetry has already been compromised; if you've named a number, the negotiation is partially anchored and strategy must shift",
+      "follow_up_if_yes": "Was the number you named above or below what they've offered? If below, you need to reframe using market data rather than trying to walk back your stated floor",
+      "follow_up_if_no": "Good — maintain that asymmetry; prepare deflection scripts for when they ask again",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "When the company pushed back on your counter, what did you say and what was your tone?",
+      "what_it_reveals": "Whether the candidate is maintaining positive framing under pressure or letting frustration show; enthusiasm loss during negotiation is one of the most common and costly mistakes",
+      "follow_up_if_yes": "Did you reiterate excitement for the role before restating your ask, or did you lead with the counter?",
+      "follow_up_if_no": "Have you countered yet at all, or accepted the pushback as final?",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "Are you negotiating only on base salary, or have you mapped out all the dimensions you could adjust?",
+      "what_it_reveals": "Whether the candidate understands that negotiation is multi-dimensional and whether they know where company flexibility actually lives",
+      "follow_up_if_yes": "Which non-salary items have you already asked about — signing bonus, equity cliff, vacation, remote work, professional development budget?",
+      "follow_up_if_no": "Why not — do you believe those items aren't negotiable, or did salary seem like the highest-value target?",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "Does this offer come with a deadline, and have you explicitly addressed it with the recruiter?",
+      "what_it_reveals": "Whether there is an exploding offer dynamic in play, and whether the candidate knows they must explicitly request an extension rather than assuming it will be granted",
+      "follow_up_if_yes": "Have you stated clearly that the timeline doesn't work for you and asked for an extension?",
+      "follow_up_if_no": "How much time do you have? Is this enough to run your decision process deliberately, or are you being implicitly pressured?",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "What justification have you given or are you planning to give for your counter-request?",
+      "what_it_reveals": "Whether the candidate is using market-based framing (strong) or personal-need framing (weak), and whether they have a specific reason at all",
+      "follow_up_if_yes": "Is the reason tied to market data, your quantified impact, or personal circumstance? The first two are significantly more persuasive",
+      "follow_up_if_no": "You need a reason — requests without justification feel arbitrary; even a modest reason substantially increases acceptance rate",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "How many interview rounds has this company put you through, and how many people have they involved?",
+      "what_it_reveals": "The company's sunk investment in your candidacy; more rounds and more interviewers means stronger pressure on their side to reach agreement, which is leverage you can use",
+      "follow_up_if_yes": "Have you internalized that they are highly motivated to close you — or are you still treating yourself as the supplicant in this transaction?",
+      "follow_up_if_no": "Are you early in the process? If so, focus on establishing fit before any comp discussion",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "question": "Have you calculated the full annual total compensation for each offer, including annualized equity, target bonus, and base — excluding the signing bonus?",
+      "what_it_reveals": "Whether the candidate is comparing offers on a valid apples-to-apples basis or defaulting to base salary comparison",
+      "follow_up_if_yes": "What is the annualized equity value and what discount rate did you apply based on company stage?",
+      "follow_up_if_no": "The offer ranking may be reversed once full comp is modeled; what is the equity grant, vesting schedule, and bonus target for each offer?",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "What stage is the company — public, pre-IPO Series C/D, or early-stage Seed/A?",
+      "what_it_reveals": "Which equity valuation framework applies and how much weight to give the equity component in financial planning",
+      "follow_up_if_yes": "For pre-IPO: have you asked for the 409A valuation and the liquidation preference structure?",
+      "follow_up_if_no": "If company stage is unknown, the candidate cannot accurately value the equity or assess liquidity risk",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "Do you have a competing offer from a company you would genuinely consider working for?",
+      "what_it_reveals": "Whether the most powerful negotiation lever is available and can be used credibly",
+      "follow_up_if_yes": "Have you mentioned it to the recruiter, and have you framed your target company as the first choice?",
+      "follow_up_if_no": "Are there other processes in flight that could produce a competing offer before the current deadline?",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "What level is the offer, and have you confirmed whether it is at the low, mid, or high end of that band?",
+      "what_it_reveals": "Whether the candidate is evaluating near-term comp or long-term career trajectory; a misleveled offer has compounding consequences",
+      "follow_up_if_yes": "Does the offered level match the scope and expectations described in the role?",
+      "follow_up_if_no": "The candidate cannot accurately benchmark the offer or assess career progression potential without this information",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "For option grants specifically: what is the exercise window after leaving the company?",
+      "what_it_reveals": "Whether the equity creates a golden handcuff that limits the candidate's future job mobility",
+      "follow_up_if_yes": "If 90 days: can you afford to exercise vested options out of pocket if you leave before a liquidity event?",
+      "follow_up_if_no": "Candidate may be agreeing to equity terms that trap them financially without realizing it",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "Have you checked levels.fyi for the 25th, 50th, and 75th percentile total comp for your specific level and role at this company?",
+      "what_it_reveals": "Whether the candidate has objective market data to anchor their counter-offer or is negotiating without a benchmark",
+      "follow_up_if_yes": "Where does the current offer fall in that range, and what percentile are you targeting?",
+      "follow_up_if_no": "Candidate is likely to either anchor too low or make an ask that is not credibly supported by data",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "question": "Are you genuinely willing to walk away from this offer if the company does not meet your target number?",
+      "what_it_reveals": "Whether the negotiation is real or performative; the source states that the final close and firm counter only work if the candidate is actually willing to decline",
+      "follow_up_if_yes": "Then name a specific total comp target and hold to it through the negotiation",
+      "follow_up_if_no": "Adjust negotiation tactics accordingly; do not use the commitment close and do not make ultimatums you will not follow through on",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Sponsoring H-1B is expensive and justifies paying an international candidate below market",
+      "actual_reality": "H-1B sponsorship costs $3,000–$8,000/year in attorney and USCIS fees — less than 5% of a $150,000+ employee's total cost. It is not a meaningful financial justification for 20% below-market compensation.",
+      "implication": "When an employer uses sponsorship cost as a reason to offer less, it is a negotiation tactic, not a financial reality. Counter with the actual cost figures.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "Pushing back on an offer as an international student risks having it rescinded, especially with sponsorship at stake",
+      "actual_reality": "Offers are almost never rescinded for reasonable negotiation — companies have invested too much in the hiring process to withdraw over a counter. The fear of rescission is systematically miscalibrated.",
+      "implication": "International students should negotiate with the same assertiveness as domestic candidates. The sponsorship relationship is not made fragile by a salary counter; it is made fragile by poor performance or bad cultural fit.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "H-1B holders are legally locked in to their employer and cannot credibly threaten to leave",
+      "actual_reality": "H-1B portability rules allow you to switch employers without waiting for approval, as long as the new petition is filed within 60 days of the switch. You are not trapped.",
+      "implication": "Knowing and internalizing portability rights converts a perceived permanent constraint into a manageable one — and makes competing offer leverage genuinely credible for H-1B holders.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "Visa status is purely a negotiating liability — it makes you a more expensive, riskier hire",
+      "actual_reality": "Visa holders have a demonstrable retention advantage — they are significantly less likely to job-hop due to immigration switching costs, meaning employers get a longer-tenure employee for the same investment",
+      "implication": "Visa holders should explicitly surface retention value as a counter-narrative to the cost framing, reorienting the conversation from 'I cost more because of sponsorship' to 'I stay longer and that has real value.'",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "If a company says they will sponsor H-1B, the immigration component of the offer is settled",
+      "actual_reality": "Sponsorship willingness and execution capacity are entirely different things. A company without immigration counsel, prior H-1B filings, or current H-1B employees may be genuinely willing but structurally unable to deliver.",
+      "implication": "Verify execution infrastructure — not just intent — before signing. Ask about immigration counsel, prior H-1B history, and current H-1B employees as due diligence items equivalent to verifying salary.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "Under the H-1B lottery, salary negotiation and immigration strategy are separate concerns",
+      "actual_reality": "Under the post-2025 wage-weighted lottery, negotiating for a higher wage level directly improves lottery odds — salary negotiation and immigration outcomes are structurally linked",
+      "implication": "Frame salary negotiations in the context of wage level classification explicitly — a higher comp ask is simultaneously an immigration strategy, and both parties benefit from a Level III or IV classification.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "You need a competing job offer to have real negotiating leverage",
+      "actual_reality": "A BATNA can be any credible alternative you would genuinely pursue — another degree (resetting OPT clock), CPT positions, or another country's job market. It does not have to be a competing offer.",
+      "implication": "International students who believe they have no leverage because they lack a competing offer may still have real alternatives they haven't articulated. Identify and document your actual BATNA before entering any negotiation.",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "common_belief": "Negotiating a job offer is rude, risky, or signals that you only care about money",
+      "actual_reality": "Experienced hiring managers expect negotiation; candidates who accept immediately are often perceived as either inexperienced or unaware of their market value — both of which are competence signals that work against you",
+      "implication": "Always counter at least once, framed positively; negotiation signals professional sophistication, not greed",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "A salary increase of a few thousand dollars isn't worth the awkwardness of negotiating",
+      "actual_reality": "A $5,000 salary increase compounded over 10 years is worth approximately $100,000 gross; it also sets the baseline for every future raise and the anchor for your next employer's offer",
+      "implication": "Calculate the true long-term value before deciding a request is too small to make; the compounding effect makes early-career negotiations disproportionately important",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "The company is doing you a favor by hiring you",
+      "actual_reality": "By the time an offer is extended, the company has already invested tens of thousands of dollars in interviewing you and has decided they need you to solve a specific business problem; they are highly motivated not to lose you",
+      "implication": "Enter negotiation understanding that you have substantial leverage — the company wants to close this deal as much as you do",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "If you ask for more than they can give, they'll rescind the offer",
+      "actual_reality": "The absolute worst realistic outcome of a reasonable counter-offer is receiving the original offer unchanged; companies do not rescind offers because candidates negotiated in good faith",
+      "implication": "The asymmetry of outcomes (upside: more money; downside: original offer) makes negotiating always the correct expected-value decision",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "The salary the company offers reflects what the market says you're worth",
+      "actual_reality": "First offers reflect the company's budget target and what they think they can get away with based on information they have about you; it is not a market clearing price",
+      "implication": "Treat the first offer as the opening position in a negotiation, not as a take-it-or-leave-it assessment of your value",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "Exploding offer deadlines are genuine signals that the company needs a fast decision",
+      "actual_reality": "Exploding offers are pressure tactics; virtually every one extends when the candidate explicitly calls it out and requests more time",
+      "implication": "Never let an exploding offer deadline lapse silently; always request an extension explicitly and frame it around making an informed, committed decision",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "Salary is the main thing you can negotiate, and once it's fixed, negotiation is over",
+      "actual_reality": "Companies often have far more flexibility on signing bonuses, equity, vacation days, professional development budgets, remote work, and project assignment than on base salary, which is constrained by pay bands and internal equity concerns",
+      "implication": "When salary hits a ceiling, pivot immediately to other dimensions rather than accepting the ceiling as the end of the conversation",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "Having a competing offer is a form of bluffing or manipulation",
+      "actual_reality": "Companies rationally respond to competing offers because a single interview is a weak signal of capability; multiple companies making offers is a much stronger combined signal — demand breeds demand",
+      "implication": "Generating real competing offers through a serious parallel job search is both ethical and strategically essential; it is the most reliable lever available",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "Providing your current salary when asked is a routine step that doesn't affect the outcome",
+      "actual_reality": "Your current salary becomes the anchor for their offer; a company that knows you earn $70K will offer $75–80K even if they budgeted $95K, because your disclosure has justified underpaying you relative to market",
+      "implication": "Deflect current salary questions using prepared scripts; the information asymmetry created by not disclosing is directly worth thousands of dollars",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "A small salary increase is too trivial for a company to care about",
+      "actual_reality": "Employers view employees at 150–200% loaded cost; they think about headcount budget in aggregate, not individual salaries; a $5K salary increase in their budget view is literally 'mouse droppings'",
+      "implication": "Don't be embarrassed to make requests that seem large to you but are proportionally tiny in the company's budget context",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "common_belief": "Glassdoor and PayScale give you accurate salary benchmarks for tech roles",
+      "actual_reality": "These platforms wildly mishandle equity compensation and systematically underreport total comp for tech; levels.fyi and H-1B filings are the authoritative sources for tech compensation",
+      "implication": "Candidates who benchmark using Glassdoor anchor their negotiations too low and leave significant money on the table; switch to levels.fyi before any negotiation",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "Salary is the most important and negotiable component of an offer",
+      "actual_reality": "Equity is often 30-60% of total comp at large tech companies; signing bonuses are one-time and the easiest component for companies to approve; base salary is often the most constrained by band limits",
+      "implication": "When base is capped, shift negotiation focus to signing bonus and equity refresh rather than continuing to push on base",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "Recruiters will volunteer all relevant compensation details when making an offer",
+      "actual_reality": "Critical details like the option exercise window, fully diluted ownership percentage, liquidation preferences, and 409A valuations are almost never volunteered; they must be explicitly asked for",
+      "implication": "Candidates must run a structured checklist of equity questions on every offer call or risk agreeing to terms that significantly reduce actual compensation value",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "Asking for more will make you seem greedy and risk the offer being rescinded",
+      "actual_reality": "People who negotiate get an average 18.83% more than those who accept the first offer; offers are almost never rescinded for polite, well-framed negotiation",
+      "implication": "The expected value of negotiating is highly positive and the downside risk is near zero when done with warmth and professionalism",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "A competing offer from a company you wouldn't actually take is just as useful as a real one",
+      "actual_reality": "Fabricating or exaggerating competing offers is explicitly flagged as something to never do; the tactic only works when genuine and can destroy the offer if discovered",
+      "implication": "Only cite competing offers that are real, documented, and from companies you would actually consider; the leverage comes from credibility, not the existence of a number",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "The equity value the recruiter quotes is what the equity is worth",
+      "actual_reality": "Recruiter-quoted equity valuations for pre-IPO companies are based on hoped-for future valuations, not current 409A values; early-stage equity should be valued at $0 for budgeting",
+      "implication": "Apply stage-appropriate discount rates to all equity: public companies at 80-90% of market value, Series C-D at 60-90%, early-stage at $0 for planning purposes",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "common_belief": "Signing bonuses are part of your ongoing compensation",
+      "actual_reality": "Signing bonuses are one-time payments; your year-2 and beyond compensation is materially lower unless the bonus is renewed, which is not standard",
+      "implication": "Always model annual recurring compensation without the signing bonus to understand the true ongoing offer value; signing bonus is a bridge, not a salary component",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to receiving the first offer",
+      "junior_pattern": "Accepts immediately or counter-proposes a number based on personal need or what feels safe, driven by relief that the offer exists and fear that any friction will cost the sponsorship",
+      "senior_pattern": "Treats the first offer as an opening position, researches market comps before responding, and counters with a specific number grounded in levels.fyi and H-1B salary disclosure data",
+      "why_it_matters": "The difference between accepting and countering compounds to 10–30% salary differential annually, and hundreds of thousands of dollars over a career",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Framing of visa status in negotiations",
+      "junior_pattern": "Treats visa dependency as a liability to manage or hide — either over-apologizes for needing sponsorship or stays silent about immigration topics to avoid attention",
+      "senior_pattern": "Proactively reframes visa status as a retention differentiator and uses it as a negotiating asset — 'I stay longer, which means your investment in sponsoring me has a higher ROI'",
+      "why_it_matters": "Framing determines whether the employer sees sponsorship as a cost to minimize or an investment in a long-tenure employee — the same fact generates opposite leverage depending on who frames it first",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Timing of visa status disclosure",
+      "junior_pattern": "Discloses OPT/sponsorship need early — in cover letters, early applications, or first contact — out of a sense of obligation to be upfront",
+      "senior_pattern": "Delays disclosure until the company has decided they want to hire, then states it matter-of-factly as a researched, confident choice — 'I've confirmed this company sponsors H-1B, which is part of why I applied'",
+      "why_it_matters": "Early disclosure makes sponsorship cost a filter before qualifications are assessed; delayed disclosure ensures the employer weighs your value before weighing the cost",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Understanding of actual legal constraints",
+      "junior_pattern": "Believes H-1B dependency is a near-total lock-in — that switching employers is so complex and risky that it is not a real option, eliminating all implied BATNA credibility",
+      "senior_pattern": "Knows H-1B portability rules precisely — 60-day filing window, ability to start immediately — and uses this knowledge to maintain credible optionality in negotiations",
+      "why_it_matters": "Employers price compensation partly based on perceived switching costs; a candidate who knows they can leave commands more leverage than one who believes they cannot",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Due diligence on sponsorship execution",
+      "junior_pattern": "Treats any 'yes we'll sponsor' signal as confirmation that the immigration component is settled, and moves on to evaluating only the salary number",
+      "senior_pattern": "Distinguishes sponsorship willingness from execution capacity — asks about immigration counsel, prior H-1B history, current H-1B employees, and gets written confirmation before signing",
+      "why_it_matters": "A company that wants to sponsor but cannot execute is a material risk that looks identical to a capable sponsor in early conversation — only due diligence reveals the difference",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Construction of BATNA",
+      "junior_pattern": "Believes BATNA requires a competing job offer and, lacking one, concludes they have no leverage and must accept whatever is offered",
+      "senior_pattern": "Recognizes that any credible alternative counts — another degree, CPT, another country's market — and actively builds and articulates BATNA options before entering negotiation",
+      "why_it_matters": "Perceived optionality determines negotiating posture; a student who identifies real alternatives negotiates with authentic confidence rather than performed confidence",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Integration of immigration and compensation strategy",
+      "junior_pattern": "Treats salary negotiation and immigration planning as separate tracks — negotiates comp with HR and handles visa logistics separately with no connection between the two",
+      "senior_pattern": "Understands that post-2025 wage level classification directly affects H-1B lottery odds and explicitly uses this alignment to make a joint case for higher comp and better immigration outcomes",
+      "why_it_matters": "Using the wage-weighted lottery argument converts a one-sided salary ask into a mutual benefit conversation — structurally more persuasive and less adversarial",
+      "_source": "international_student_negotiation.txt"
+    },
+    {
+      "dimension": "Framing of the employment relationship",
+      "junior_pattern": "Treats the offer as a gift or favor from the employer; feels grateful and reluctant to 'push back' on a company that has chosen them",
+      "senior_pattern": "Treats the offer as a mutual market transaction; understands the company has a problem they need solved and has already invested heavily to find the right person",
+      "why_it_matters": "The mental model determines the entire negotiation posture; gratitude framing produces deference, while transaction framing produces calibrated confidence that recruiters read as competence",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Response to the first offer",
+      "junior_pattern": "Accepts on the spot or asks for time to think before accepting without countering",
+      "senior_pattern": "Always counters at least once across at least one dimension before accepting, treating the counter as a standard and expected step",
+      "why_it_matters": "First offers are opening positions, not final offers; experienced professionals know this and act accordingly — leaving the first offer unchanged signals either naivety or lack of self-advocacy",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Information management during negotiation",
+      "junior_pattern": "Answers recruiter questions directly and honestly, including current salary and specific salary expectations, treating transparency as a virtue",
+      "senior_pattern": "Manages information asymmetry deliberately; deflects current salary and specific number questions to preserve optionality, understanding that leverage is a function of what the employer doesn't know",
+      "why_it_matters": "Premature disclosure collapses negotiating power permanently; information asymmetry is itself a negotiating asset that can be worth thousands of dollars",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Scope of what's negotiable",
+      "junior_pattern": "Negotiates only on base salary; stops when told salary is fixed",
+      "senior_pattern": "Maps all negotiable dimensions before entering; when salary hits a ceiling, pivots immediately to signing bonus, equity, vacation, remote work, professional development, and project assignment",
+      "why_it_matters": "Companies have asymmetric flexibility across comp components; knowing where that flexibility lives means you can gain real value even when the obvious lever is stuck",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Handling pressure tactics from recruiters",
+      "junior_pattern": "Treats recruiter urgency and exploding deadlines as genuine constraints; accepts 'HR won't approve more' as a final answer",
+      "senior_pattern": "Recognizes pressure tactics as standard tools; explicitly calls out unrealistic deadlines, mirrors 'HR won't approve' by asking what they can approve on their own",
+      "why_it_matters": "Pressure tactics only work on people who don't recognize them; naming them neutralizes them and shifts the dynamic back toward collaborative problem-solving",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Emotional management during negotiation",
+      "junior_pattern": "Lets disappointment or frustration show when numbers are lower than expected; conflates expressing dissatisfaction with creating leverage",
+      "senior_pattern": "Maintains visible enthusiasm regardless of how disappointing the numbers are; understands that enthusiasm is a negotiating asset and that frustration reduces attractiveness at the worst moment",
+      "why_it_matters": "Companies deprioritize candidates who seem likely to accept unhappily or leave quickly; enthusiasm signals commitment and keeps the company investing in closing you",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Justification strategy for counter-requests",
+      "junior_pattern": "Justifies requests based on personal financial needs — rent, loans, lifestyle expenses — because these feel honest and direct",
+      "senior_pattern": "Justifies requests using market data and quantified personal impact; personal need is used as a supporting detail at most, not as the primary argument",
+      "why_it_matters": "Employers are buying labor value, not funding personal expenses; market-based justifications connect to the company's interests and are significantly more persuasive",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "View of competing offers",
+      "junior_pattern": "Views actively pursuing multiple offers simultaneously as aggressive, disloyal, or manipulative",
+      "senior_pattern": "Treats running parallel interview processes as standard professional practice; deliberately sequences interviews to maximize temporal overlap of active offers",
+      "why_it_matters": "Competing offers are the single most reliable source of leverage; candidates who don't create them are negotiating with much weaker hands than necessary",
+      "_source": "haseeb_patio11_negotiation_principles.txt"
+    },
+    {
+      "dimension": "Offer comparison methodology",
+      "junior_pattern": "Compares offers by base salary, gravitates toward whichever offer has the highest headline number",
+      "senior_pattern": "Builds a full annual total comp model for each offer: annualized equity at stage-appropriate discount, target bonus, and base; excludes signing bonus from recurring calc",
+      "why_it_matters": "Two offers at the same base can differ by $100,000+ annually; junior methodology produces wrong rankings and systematically undervalues public company offers",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Equity evaluation",
+      "junior_pattern": "Accepts recruiter's equity valuation and treats it as real money, excited by the large headline number",
+      "senior_pattern": "Asks for 409A valuation, liquidation preferences, fully diluted percentage, and exercise window; applies stage-appropriate discount before counting equity in financial planning",
+      "why_it_matters": "Inflated equity expectations lead to accepting lower base salaries in exchange for equity that may never materialize",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Response to first offer",
+      "junior_pattern": "Responds with immediate positivity or concern on the first call, either accepting verbally or revealing dissatisfaction",
+      "senior_pattern": "Expresses genuine excitement, asks structured clarifying questions, requests time to consider, and schedules a follow-up call before any decision",
+      "why_it_matters": "Responding on the first call forfeits leverage; the pause creates space for preparation and signals deliberateness that strengthens the negotiating position",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Negotiation framing",
+      "junior_pattern": "Frames compensation asks around personal need ('I need more because of my student loans') or vague dissatisfaction",
+      "senior_pattern": "Frames asks around objective market data (levels.fyi benchmarks, competing offers) or company-first reasoning ('I want to make it easy to choose you')",
+      "why_it_matters": "Personal need framing is easy for recruiters to dismiss; market data and competing offer framing creates external justification that is harder to counter and more credible",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Understanding of negotiation dimensions",
+      "junior_pattern": "Treats base salary as the only negotiable variable; gives up when told base is capped",
+      "senior_pattern": "Knows the full priority order of negotiable dimensions (equity refresh, signing bonus, vacation, remote flexibility, accelerated vesting, professional development, equipment) and moves through them systematically",
+      "why_it_matters": "Stopping at base salary leaves multiple high-value, easily approvable components untouched; companies expect candidates to ask across dimensions",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Use of research tools",
+      "junior_pattern": "Relies on Glassdoor or PayScale for salary benchmarks; cites ranges without specifying level",
+      "senior_pattern": "Uses levels.fyi for total comp by level and company, H-1B filings for authoritative base salary data, and Blind for peer compensation validation; always specifies the exact level when citing data",
+      "why_it_matters": "Inaccurate benchmark data produces low anchors; level-specific data is required for the benchmark to be credible in negotiation",
+      "_source": "total_comp_equity_tactics.txt"
+    },
+    {
+      "dimension": "Competing offer strategy",
+      "junior_pattern": "Runs interview processes sequentially or randomly; gets caught with misaligned timelines; may fabricate offers out of desperation",
+      "senior_pattern": "Deliberately sequences processes by company speed (large corps first, startups second) to engineer timeline convergence; only cites real offers; uses urgency scripts to accelerate lagging processes",
+      "why_it_matters": "Deliberate timing is what makes competing offers available simultaneously; without it, offers expire before alternatives are ready and leverage disappears",
+      "_source": "total_comp_equity_tactics.txt"
+    }
+  ],
+  "_meta": {
+    "skill": "Salary & Offer Negotiation Expert",
+    "source_count": 3,
+    "sources": [
+      "manual_international_student_negotiation",
+      "web_haseeb_patio11_negotiation_principles",
+      "web_total_comp_equity_tactics"
+    ]
+  }
+}

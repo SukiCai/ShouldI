@@ -1,0 +1,48 @@
+{
+  "skill_name": "Salary & Offer Negotiation Expert",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that synthesizes the canonical McKenzie/Qureshi negotiation wisdom with specific, actionable detail and a non-obvious international-student angle. The heuristics include scripts and reasoning, the failure patterns are recognizable, and the senior/junior table makes real distinctions — but a few areas (diagnostic depth on equity, post-acceptance scenarios, non-tech roles) lean lighter than the rest.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 4,
+    "industry_realities": 5,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The expert framing names a genuinely counterintuitive position: 'visa status is not primarily a liability but a retention asset, and the post-2025 wage-weighted H-1B lottery has made salary negotiation and immigration strategy structurally aligned rather than opposed.' This is the kind of reframe a novice would never reach on their own.",
+    "Heuristics include both script and rationale, e.g. 'If you could increase the signing bonus to X, I could accept this salary' paired with the 'companies have asymmetric flexibility — one-time costs don't affect pay-band precedent' reasoning. This is far better than generic 'negotiate the signing bonus.'",
+    "The Industry Realities section makes concrete, falsifiable claims with implications — e.g., 'Sponsorship totals $3K–$8K/year — under 5% of a $150K employee's cost' — which gives the AI real ammunition to counter recruiter framing rather than vague reassurance.",
+    "The junior/senior table includes meaningful behavioral differentiators like 'Deliberately sequences interviews (large corps first, startups second) to engineer overlap' — a specific tactic, not just a posture."
+  ],
+  "weaknesses": [
+    "The diagnostic framework underweights equity diligence. It asks whether the user modeled total comp but doesn't push the AI to ask about 409A valuation, preference stack, last round valuation, or dilution — despite the skill claiming expertise in equity negotiation. The 'startup equity-heavy' branch references these but the diagnostic itself doesn't drill in.",
+    "Heuristic #1 ('Never name a number first') is presented as absolute, but in practice many recruiters now refuse to proceed without a range, and pay-transparency laws (CA, NY, WA, CO) have shifted dynamics. The skill doesn't address what to do when deflection fails or when posted ranges already exist.",
+    "The 'How to Use This Skill' closer is somewhat generic ('apply the heuristics that fit their actual situation — not the generic playbook') — ironic given the skill otherwise avoids that pattern.",
+    "Limited coverage of post-offer scenarios: renegotiation after accepting, counter-offers from current employer, rescinded offers, and what to do when negotiation actually stalls or recruiter goes silent."
+  ],
+  "improvement_suggestions": [
+    "Add a dedicated equity diagnostic sub-checklist for startup offers: 409A valuation, preferred share price, last preferred round valuation, fully-diluted share count, liquidation preference multiple/participation, exercise window length, early-exercise availability, acceleration on change of control. Currently these are name-dropped but not operationalized.",
+    "Add a 'when deflection fails' branch to heuristic #1: scripts for handling 'we require a number to proceed,' how to use posted pay ranges as anchors in transparency-law states, and how to give a range without collapsing asymmetry (e.g., anchoring to top quartile of levels.fyi for the target level).",
+    "Add failure patterns specific to the closing phase: 'CHECK: Verbally accepting before written offer in hand,' 'CHECK: Resigning current job before background check clears,' 'CHECK: Negotiating after signing.' These are common, costly, and currently absent.",
+    "Add a section on recruiter psychology specifically: how internal approval works, who actually has authority (recruiter vs. hiring manager vs. comp committee), and why phone vs. email matters mechanically — the skill alludes to this but doesn't unpack it.",
+    "Either narrow the scope explicitly to 'tech and tech-adjacent roles' or add notes on how the playbook differs for consulting, finance (where lockstep pay is real), academia, or non-tech professional roles. Currently the title says 'professional roles' but the content is tech-only."
+  ],
+  "generic_advice_flags": [
+    "'Maintain visible enthusiasm throughout.' — While true, the heuristic doesn't give a concrete script or distinguish genuine enthusiasm from performative — a novice could read this as 'fake it' and undermine credibility.",
+    "'apply the heuristics that fit their actual situation — not the generic playbook' in the closing section is itself generic meta-advice; it should be replaced with a concrete decision tree or example walk-through.",
+    "'Attach a specific reason to every request' is correct but the heuristic doesn't enumerate what counts as a strong reason vs. a weak one (market data > quantified impact > personal need is implied elsewhere but not specified here)."
+  ],
+  "missing_coverage": [
+    "Pay transparency law implications (CA/NY/WA/CO) — posted ranges change anchoring dynamics significantly and aren't mentioned.",
+    "Negotiating internal promotions and level placement at offer time (e.g., L4 vs L5 at Google) — often worth more than salary deltas and not addressed.",
+    "Counter-offers from current employer when leaving — when to entertain, when they're traps, retention bonus structures.",
+    "Non-tech professional roles despite the title claiming coverage: consulting bonuses, finance lockstep, biglaw salary scales, academic offers.",
+    "Remote work / geographic pay differential negotiation — increasingly central post-2020 and absent here.",
+    "What to do when negotiation stalls or recruiter ghosts after a counter — recovery scripts.",
+    "Reference checks and background check phase — when offers can still legitimately be rescinded vs. when the candidate is safe to resign current role."
+  ]
+}

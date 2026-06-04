@@ -8,3 +8,14 @@ dist
 .env.*.local
 apps/api/dist
 coverage
+
+# Vendored Hermes agent — local env / build artifacts
+hermes-agent-private/.venv/
+hermes-agent-private/venv/
+hermes-agent-private/**/__pycache__/
+hermes-agent-private/.pytest_cache/
+hermes-agent-private/hermes_agent.egg-info/
+hermes-agent-private/node_modules/
+hermes-agent-private/hermes_cli/web_dist/
+hermes-agent-private/web/public/fonts/
+hermes-agent-private/web/public/ds-assets/

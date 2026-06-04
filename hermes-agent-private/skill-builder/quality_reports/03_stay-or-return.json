@@ -1,0 +1,49 @@
+{
+  "skill_name": "Stay or Return Decision Advisor",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that captures expert-level reasoning about a decision most advisors handle with platitudes. It names specific structural realities (Indian EB-2/EB-3 backlogs, savings rate vs. gross salary, peer-sample bias, depreciating return optionality) that materially change the analysis. Main weaknesses are some unverified-sounding statistics and gaps around specific home-country contexts beyond India/China.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The expert framing is genuinely counterintuitive and names the primary distortion explicitly: 'fear of failure masquerading as career analysis' and the reframe that 'a 26-year-old with a top-university degree, US work experience, English fluency, and an international network is elite-positioned in most home markets, not retreating.' This is the kind of reframing that actually changes a user's reasoning.",
+    "The 'depreciating asset' framing of the return option is non-obvious and powerful: 'Returning at 25 ≠ returning at 40.' This explicitly attacks the most common deferral fallacy ('I can always return later') with a specific mechanism (windows closing).",
+    "The diagnostic question on Indian EB-2/EB-3 backlogs ('50-100+ year') is a high-leverage filter — it instantly distinguishes a real plan from inertia. Similarly, 'Can the user name three returnees from their cohort who are thriving?' is a clever, operationalizable test for peer-sample bias.",
+    "The Junior vs. Senior table genuinely differentiates thinking patterns (e.g., 'Treats return as a depreciating asset' vs. 'Assumes return is always available'), not just experience levels.",
+    "Treating immigration legal cost ($20k–$100k) as a compensation deduction is a specific, actionable, and rarely-priced-in heuristic."
+  ],
+  "weaknesses": [
+    "Several statistics are stated without sourcing and feel suspiciously precise: '72% China cost differential,' '80% of visa holders report restricted career mobility, 50% feel trapped,' 'IIT Madras US-bound undergrads dropped from ~50% to 10–20%.' If any of these are wrong or outdated, the skill loses credibility. The skill should either source them or hedge them.",
+    "The skill is heavily India/China-centric despite claiming to cover 'international students.' A user from Nigeria, Brazil, Vietnam, or Eastern Europe has very different home-market dynamics (no 海归 premium, different family asset structures, different startup ecosystems) and the skill provides no specific guidance for them.",
+    "The 'elite trajectory' classification is under-specified. What concretely qualifies as 'realistically on a FAANG / top-tier path'? Without criteria, the AI may either rubber-stamp the user's self-assessment or be unable to challenge it.",
+    "Spousal/partner considerations are largely missing — H-4 EAD instability, dual-career coordination, and partner's home-country options are often the decisive factor and are not surfaced in diagnostic questions.",
+    "The framework underweights healthcare, eldercare obligations, and children's education systems — these are huge compounding factors at year 10 that are mentioned only obliquely under 'relational/personal capital.'"
+  ],
+  "improvement_suggestions": [
+    "Add a diagnostic question and tradeoff row on partner/spouse situation: visa status, career field, home-country ties. This is frequently the binding constraint and is currently invisible.",
+    "Source or version-date the statistics (priority date movement, cost differentials, survey data) or replace specific percentages with directional claims ('cost differentials of 50–70%+ are common') to avoid false precision.",
+    "Add a section or classification branch for non-India/China users — at minimum acknowledge that returnee premium, family asset structures, and home-market ceiling vary dramatically by country, and prompt the AI to ask about country-specific dynamics rather than defaulting to India/China heuristics.",
+    "Operationalize the 'elite trajectory' classification with concrete signals (e.g., L5+ at FAANG, top-tier PhD program, specific comp bands, demonstrated promotion velocity) so the AI can challenge self-assessment rather than accept it.",
+    "Add an explicit heuristic about eldercare and parents' aging — for only-children especially (common in China), this is a hard constraint that often forces a return at the worst possible time if not planned for."
+  ],
+  "generic_advice_flags": [
+    "'Expand the option set before deciding' — while the underlying point is good, the heuristic name is generic. The specific instantiation (Canada PR, Singapore EP, UAE, UK Global Talent) is what makes it useful; the heading should reflect that specificity.",
+    "'Frame as 10-year trajectory, not current conditions' is mentioned in expert framing, heuristics, and the junior/senior table. The repetition adds length without adding new operational guidance — by the third mention it reads as a slogan rather than a tool."
+  ],
+  "missing_coverage": [
+    "Spouse/partner visa dependency and dual-career coordination (H-4 EAD volatility, trailing-spouse problem)",
+    "Children's education considerations — US vs. home-country K-12 quality, citizenship-by-birth implications, return-with-kids friction",
+    "Eldercare and only-child obligations, especially relevant for Chinese nationals",
+    "Tax exit considerations — US expatriation tax, exit tax thresholds, FBAR/PFIC traps for returnees who keep US assets",
+    "Mental health and identity costs of long-term liminal status, beyond the 'feel trapped' statistic",
+    "Specific guidance for non-India/China nationals (Africa, Latin America, SE Asia, Eastern Europe) where returnee dynamics differ substantially",
+    "Concrete guidance on how to actually evaluate EB-1A/O-1 eligibility (publication counts, awards, citation thresholds) so the user can self-assess before paying for a consult"
+  ]
+}
