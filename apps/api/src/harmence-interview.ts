@@ -90,7 +90,8 @@ function defaultSmartTalkState(): SmartTalkState {
 }
 
 function computeAmbiguity(scores: SmartTalkState['scores']): number {
-  return 1 - (scores.intent * 0.35 + scores.reality * 0.25 + scores.signal * 0.25 + scores.stakes * 0.15);
+  const weighted = scores.intent * 0.35 + scores.reality * 0.25 + scores.signal * 0.25 + scores.stakes * 0.15;
+  return Math.min(1, Math.max(0, 1 - weighted));
 }
 
 function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simplifier' | 'reframer' | '' {
