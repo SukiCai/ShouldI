@@ -1288,6 +1288,9 @@ async function askSmartTalkForNextChoice(
     readyForFinal?: unknown;
   } | null;
 
+  if (!raw) {
+    return { ...fallback, activeExperts, newlyActivatedExperts };
+  }
   // Capture state before update for momentum tracking
   const ambiguityBefore = session.smartTalkState.ambiguity;
   const scoresBefore = { ...session.smartTalkState.scores };
