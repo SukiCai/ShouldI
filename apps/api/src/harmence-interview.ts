@@ -1201,7 +1201,7 @@ function fallbackExpertChoice(
 function formatAvailableSkillsForPrompt(experts: HarmenceExpert[]): string {
   if (experts.length === 0) return 'None — use smart_talk framework only.';
   return experts
-    .map((e) => `- ${e.skillName} (${e.title}): ${e.activationInstruction}`)
+    .map((e) => `- ${e.skillName} [id: ${e.id}] (${e.title}): ${e.activationInstruction}`)
     .join('\n');
 }
 
