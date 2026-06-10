@@ -27,9 +27,11 @@ export type DiscussDraftFields = {
   communityAiBecause: string;
   pollOptions: DiscussDraftPollOption[];
   aiSuggestedOptionId: string;
+  aiConfidenceScore?: number;
   discussionPreview: string[];
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
+  keyMoments?: DecideInterviewFinalDecision['keyMoments'];
 };
 
 type Props = {
@@ -37,6 +39,12 @@ type Props = {
   onChange(patch: Partial<DiscussDraftFields>): void;
   onBack?(): void;
 };
+
+function confidenceColor(pct: number): string {
+  if (pct >= 75) return '#10B981';
+  if (pct >= 55) return '#3B82F6';
+  return '#F59E0B';
+}
 
 function optionIndex(options: DiscussDraftPollOption[], optionId: string): number {
   const i = options.findIndex((o) => o.id === optionId);
@@ -52,6 +60,7 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
   const pollQuestion = draft.communityChallengeQuestion.trim() || draft.title.trim();
   const aiLeanId = draft.aiSuggestedOptionId || draft.pollOptions[0]?.id || 'yes';
   const aiLeanLabel = draft.pollOptions.find((o) => o.id === aiLeanId)?.label ?? null;
+  const confidenceScore = draft.aiConfidenceScore ?? null;
   const placeholder = profileTypography.subdued;
   const previewCount = draft.discussionPreview.filter((line) => line.trim().length > 0).length;
 
@@ -85,15 +94,6 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
     if (draft.discussionPreview.length >= 4) return;
     onChange({ discussionPreview: [...draft.discussionPreview, ''] });
   };
-
-  const aiSignalRows = React.useMemo(
-    () => [
-      { label: 'Decision', value: pollQuestion, key: 'decision' as const },
-      { label: 'Current context', value: draft.hook, key: 'hook' as const },
-      { label: 'Core tradeoff', value: draft.tension, key: 'tension' as const },
-    ],
-    [draft.hook, draft.tension, pollQuestion],
-  );
 
   return (
     <View style={styles.wrap} accessibilityLabel="Editable Explore discussion draft">
@@ -181,7 +181,14 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
               <View style={styles.aiDecisionBadge}>
                 <Text style={styles.aiDecisionBadgeText}>AI DECISION</Text>
               </View>
-              {aiLeanLabel ? <Text style={styles.aiDecisionPick}>Lean: {aiLeanLabel}</Text> : null}
+              {confidenceScore != null ? (
+                <View style={[styles.confidencePill, { backgroundColor: `${confidenceColor(confidenceScore)}18`, borderColor: `${confidenceColor(confidenceScore)}44` }]}>
+                  <View style={[styles.confidenceDot, { backgroundColor: confidenceColor(confidenceScore) }]} />
+                  <Text style={[styles.confidenceLabel, { color: confidenceColor(confidenceScore) }]}>
+                    {confidenceScore}% confidence
+                  </Text>
+                </View>
+              ) : null}
             </View>
 
             <TextInput
@@ -202,35 +209,31 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
               placeholderTextColor={placeholder}
               multiline
               textAlignVertical="top"
-              style={[styles.aiDecisionReason, styles.editableField, { minHeight: 84, maxHeight: 180 }]}
+              style={[styles.aiDecisionReason, styles.editableField, { minHeight: 56, maxHeight: 120 }]}
             />
 
-            <View style={styles.aiSignalsSection}>
-              <Text style={styles.aiSignalsEyebrow}>Signals AI used for you</Text>
-              <View style={styles.aiSignalsGrid}>
-                {aiSignalRows.map((row) => (
-                  <View key={row.key} style={styles.aiSignalTile}>
-                    <Text style={styles.aiSignalLabel}>{row.label}</Text>
-                    <TextInput
-                      value={row.value}
-                      onChangeText={(text) => {
-                        if (row.key === 'decision') {
-                          onChange({ communityChallengeQuestion: text, title: text });
-                        } else if (row.key === 'hook') {
-                          onChange({ hook: text });
-                        } else {
-                          onChange({ tension: text });
-                        }
-                      }}
-                      placeholder={`Edit ${row.label.toLowerCase()}`}
-                      placeholderTextColor={placeholder}
-                      multiline
-                      style={[styles.aiSignalValue, styles.editableField, { minHeight: 38 }]}
-                    />
-                  </View>
-                ))}
+            {draft.keyMoments && draft.keyMoments.length > 0 ? (
+              <View style={styles.keyContextSection}>
+                <Text style={styles.keyContextEyebrow}>Key context</Text>
+                {draft.keyMoments.map((moment, i) => {
+                  const accent =
+                    moment.type === 'expert_join' ? '#8b5cf6'
+                    : moment.type === 'complexity' ? '#f59e0b'
+                    : '#10b981';
+                  return (
+                    <View key={i} style={[styles.momentCard, { borderLeftWidth: 3, borderLeftColor: accent }]}>
+                      <Text style={styles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
+                      <Text style={styles.momentCardTitle} numberOfLines={2}>
+                        {moment.impact?.trim() || moment.answer}
+                      </Text>
+                      {moment.impact?.trim() ? (
+                        <Text style={styles.momentCardSub} numberOfLines={1}>"{moment.answer}"</Text>
+                      ) : null}
+                    </View>
+                  );
+                })}
               </View>
-            </View>
+            ) : null}
 
             <View style={styles.aiReactionRow}>
               <View style={styles.aiReactionPill} accessibilityRole="text">

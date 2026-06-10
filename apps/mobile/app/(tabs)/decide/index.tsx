@@ -12,10 +12,12 @@ import {
   Modal,
   Platform,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -71,6 +73,10 @@ function formatBubbleText(text: string): string {
 }
 
 function progressRatio(progress: NonNullable<DecideInterviewChoicePrompt['progress']>): number {
+  if (progress.ambiguity !== undefined) {
+    // ambiguity 1.0 → 0.20 maps to progress 0 → 0.90
+    return Math.min(0.90, Math.max(0, (1.0 - progress.ambiguity) / 0.80));
+  }
   if (progress.mode === 'adaptive' || !progress.total) {
     return Math.min(0.82, 0.34 + progress.checked * 0.08);
   }
@@ -166,6 +172,7 @@ export default function DecideCategoryScreen() {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
+  const { height: windowHeight } = useWindowDimensions();
   const isDark = scheme === 'dark';
   const chrom = React.useMemo(() => resolveAppChromatics(isDark, surface), [isDark, surface]);
 
@@ -205,6 +212,27 @@ export default function DecideCategoryScreen() {
   const [customChoice, setCustomChoice] = React.useState('');
   const [finalReady, setFinalReady] = React.useState(false);
   const [finalDecision, setFinalDecision] = React.useState<DecideInterviewFinalDecision | null>(null);
+  const [mode, setMode] = React.useState<'single' | 'complex'>('single');
+  const [sessionStarted, setSessionStarted] = React.useState(false);
+  const [bootKey, setBootKey] = React.useState(0);
+  const modeRef = React.useRef(mode);
+  modeRef.current = mode;
+
+  const handleModeChange = React.useCallback(
+    (newMode: 'single' | 'complex') => {
+      if (newMode === mode) return;
+      if (sessionStarted) return;
+      setMode(newMode);
+      setSessionId(null);
+      setMessages([]);
+      setFinalDecision(null);
+      setFinalReady(false);
+      setChoicePrompt(null);
+      setSessionStarted(false);
+      setBootKey((k) => k + 1);
+    },
+    [mode, sessionStarted],
+  );
 
   const listRef = React.useRef<FlatList>(null);
   const verdictAnim = React.useRef(new Animated.Value(0)).current;
@@ -333,6 +361,16 @@ export default function DecideCategoryScreen() {
           discussionPreview:
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: parsed.finalDecision?.expertVerdicts ?? d.expertVerdicts,
+          keyMoments: parsed.finalDecision?.keyMoments ?? d.keyMoments,
+          aiConfidenceScore: (() => {
+            if (parsed.finalDecision?.confidenceScore != null) {
+              return parsed.finalDecision.confidenceScore;
+            }
+            if (parsed.finalDecision) {
+              return { low: 35, medium: 60, high: 82 }[parsed.finalDecision.confidence] ?? 60;
+            }
+            return parsed.ambiguity != null ? Math.round((1 - parsed.ambiguity) * 100) : d.aiConfidenceScore;
+          })(),
         });
       }
 
@@ -348,7 +386,7 @@ export default function DecideCategoryScreen() {
       setBooting(true);
       setError(null);
       try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({}));
+        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
         if (!cancelled) applyTurnPayload(payload);
       } catch (e) {
         if (!cancelled) {
@@ -372,7 +410,7 @@ export default function DecideCategoryScreen() {
     return () => {
       cancelled = true;
     };
-  }, [applyTurnPayload]);
+  }, [applyTurnPayload, bootKey]);
 
   const openPastSessions = () => {
     setSessionsOpen(true);
@@ -411,6 +449,7 @@ export default function DecideCategoryScreen() {
     setActiveExperts([]);
     setNewlyActivatedExperts([]);
     setChoicePrompt(null);
+    setSessionStarted(false);
     setIsTypingCustomChoice(false);
     setCustomChoice('');
     setFinalReady(false);
@@ -434,6 +473,7 @@ export default function DecideCategoryScreen() {
     async (text: string) => {
       const trimmed = text.trim();
       if (!sessionId || !trimmed || sending) return;
+      setSessionStarted(true);
       setSending(true);
       setError(null);
       try {
@@ -462,6 +502,7 @@ export default function DecideCategoryScreen() {
   const handleChoiceSelect = async (option: DecideInterviewChoiceOption) => {
     if (!sessionId || !choicePrompt || sending) return;
     void Haptics.selectionAsync().catch(() => undefined);
+    setSessionStarted(true);
     setSending(true);
     setError(null);
     setIsTypingCustomChoice(false);
@@ -492,6 +533,8 @@ export default function DecideCategoryScreen() {
     });
   };
 
+  const hasUserMessages = messages.some((m) => m.role === 'user');
+  const modeLocked = sessionStarted || hasUserMessages;
   const canReview = finalReady && !!(draft.category && draft.title.trim().length > 0);
   const verdictText = finalDecision?.verdictLine ?? '';
   const verdictWord = React.useMemo(() => {
@@ -516,9 +559,11 @@ export default function DecideCategoryScreen() {
       ? `${activeExperts.length} experts helping`
       : primaryExpert?.title ?? choicePrompt?.specialistLabel ?? (draft.category ? readable[draft.category] : 'Intake assistant');
   const progressText = choicePrompt?.progress
-    ? choicePrompt.progress.mode === 'adaptive' || !choicePrompt.progress.total
-      ? `Check ${choicePrompt.progress.checked + 1} · adaptive`
-      : `${choicePrompt.progress.checked}/${choicePrompt.progress.total} ${choicePrompt.progress.label ?? 'checks'}`
+    ? choicePrompt.progress.ambiguity !== undefined
+      ? `Clarity ${Math.round((1 - choicePrompt.progress.ambiguity) * 100)}%`
+      : choicePrompt.progress.mode === 'adaptive' || !choicePrompt.progress.total
+        ? `Check ${choicePrompt.progress.checked + 1} · adaptive`
+        : `${choicePrompt.progress.checked}/${choicePrompt.progress.total} ${choicePrompt.progress.label ?? 'checks'}`
     : null;
   const progressPercent = choicePrompt?.progress ? progressRatio(choicePrompt.progress) * 100 : 0;
   const showStarterPrompts =
@@ -648,6 +693,10 @@ export default function DecideCategoryScreen() {
               },
             ]}
           />
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={styles.verdictScrollContent}>
           <Animated.View style={[styles.verdictOrb, { transform: [{ scale: verdictScale }] }]}>
             <LinearGradient
               colors={isDark ? [verdictAccent, chrom.sky] : [chrom.sky, verdictAccent]}
@@ -743,6 +792,7 @@ export default function DecideCategoryScreen() {
               <Text style={[styles.verdictSecondaryText, { color: colors.primaryTxt }]}>Ask another</Text>
             </Pressable>
           </View>
+          </ScrollView>
         </View>
       ) : (
         <FlatList
@@ -758,6 +808,32 @@ export default function DecideCategoryScreen() {
               <ThinkingRow accent={chrom.mint} muted={colors.muted} />
             ) : showStarterPrompts ? (
               <View style={[styles.starterWrap, styles.msgPadH]}>
+                <View style={[styles.modeSelectorRow, modeLocked && { opacity: 0.38 }]}>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Single mode — one expert"
+                    disabled={modeLocked}
+                    onPress={() => handleModeChange('single')}
+                    style={[
+                      styles.modeBtn,
+                      { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
+                    ]}>
+                    <Text style={[styles.modeBtnLabel, { color: mode === 'single' ? chrom.mint : colors.primaryTxt }]}>Single</Text>
+                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>One expert</Text>
+                  </Pressable>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Complex mode — expert council"
+                    disabled={modeLocked}
+                    onPress={() => handleModeChange('complex')}
+                    style={[
+                      styles.modeBtn,
+                      { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
+                    ]}>
+                    <Text style={[styles.modeBtnLabel, { color: mode === 'complex' ? chrom.mint : colors.primaryTxt }]}>Complex</Text>
+                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>Expert council</Text>
+                  </Pressable>
+                </View>
                 <Text style={[styles.starterEyebrow, { color: colors.muted }]}>Try asking</Text>
                 <View style={styles.starterList}>
                   {STARTER_PROMPTS.map((prompt) => (
@@ -871,7 +947,25 @@ export default function DecideCategoryScreen() {
           </Pressable>
         ) : (
           <View style={[styles.softHintWrap, styles.msgPadH]}>
-            <Text style={[styles.softHint, { color: colors.muted }]} numberOfLines={2}>
+            <View style={[styles.modeToggleRow, modeLocked && { opacity: 0.38 }]}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Single expert mode"
+                disabled={modeLocked}
+                onPress={() => handleModeChange('single')}
+                style={[styles.modeToggleBtn, { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
+                <Text style={[styles.modeToggleLabel, { color: mode === 'single' ? chrom.mint : colors.muted }]}>Single</Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Expert council mode"
+                disabled={modeLocked}
+                onPress={() => handleModeChange('complex')}
+                style={[styles.modeToggleBtn, { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
+                <Text style={[styles.modeToggleLabel, { color: mode === 'complex' ? chrom.mint : colors.muted }]}>Council</Text>
+              </Pressable>
+            </View>
+            <Text style={[styles.softHint, { color: colors.muted, flex: 1 }]} numberOfLines={2}>
               {softHint}
             </Text>
           </View>
@@ -905,8 +999,13 @@ export default function DecideCategoryScreen() {
                 borderColor: colors.composerBorder,
                 opacity: choiceCardAnim,
                 transform: [{ translateY: choiceCardTranslate }],
+                maxHeight: windowHeight * 0.58,
               },
             ]}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={styles.clarifyCardInner}>
             {sending ? (
               <View style={styles.clarifySendingRow}>
                 <ActivityIndicator size="small" color={chrom.mint} />
@@ -1087,6 +1186,7 @@ export default function DecideCategoryScreen() {
                 ) : null}
               </View>
             )}
+            </ScrollView>
           </Animated.View>
         ) : null}
 
@@ -1287,10 +1387,14 @@ const styles = StyleSheet.create({
   },
   verdictScreen: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: screenContentGutter,
     overflow: 'hidden',
+  },
+  verdictScrollContent: {
+    flexGrow: 1,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    paddingHorizontal: screenContentGutter,
+    paddingVertical: 32,
   },
   verdictHalo: {
     position: 'absolute',
@@ -1589,6 +1693,29 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontWeight: '600',
   },
+  modeSelectorRow: {
+    flexDirection: 'row',
+    gap: 10,
+    marginBottom: 16,
+  },
+  modeBtn: {
+    flex: 1,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    alignItems: 'center',
+    gap: 2,
+  },
+  modeBtnLabel: {
+    fontSize: 14,
+    fontWeight: '700',
+    lineHeight: 18,
+  },
+  modeBtnSub: {
+    fontSize: 11,
+    lineHeight: 15,
+  },
   errorBanner: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -1627,16 +1754,32 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   softHintWrap: {
+    flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 2,
     minHeight: 32,
-    justifyContent: 'center',
+    gap: 8,
   },
   softHint: {
     fontSize: 12,
     fontWeight: '500',
-    textAlign: 'center',
+    textAlign: 'right',
+    paddingHorizontal: 4,
+  },
+  modeToggleRow: {
+    flexDirection: 'row',
+    gap: 4,
+    flexShrink: 0,
+  },
+  modeToggleBtn: {
     paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  modeToggleLabel: {
+    fontSize: 11,
+    fontWeight: '600',
   },
   newExpertBanner: {
     flexDirection: 'row',
@@ -1776,6 +1919,9 @@ const styles = StyleSheet.create({
   clarifyCard: {
     borderRadius: 18,
     borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+  },
+  clarifyCardInner: {
     paddingVertical: 12,
     paddingHorizontal: 14,
     gap: 8,

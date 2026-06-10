@@ -13,6 +13,8 @@ import {
   type DecideInterviewFinalDecision,
 } from '@shouldi/contracts';
 
+type KeyMoment = DecideInterviewFinalDecision['keyMoments'][number];
+
 export type DiscussDraftPollOption = {
   id: string;
   label: string;
@@ -40,9 +42,12 @@ export type DecideDraft = {
   tension: string;
   pollOptions: DiscussDraftPollOption[];
   aiSuggestedOptionId: string;
+  /** 0-100 integer, derived from 1 - ambiguity at session completion */
+  aiConfidenceScore?: number;
   discussionPreview: string[];
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
+  keyMoments: KeyMoment[];
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
@@ -101,6 +106,7 @@ const blankDraft = (): DecideDraft => ({
   discussionPreview: [],
   rewardPoints: 10,
   expertVerdicts: [],
+  keyMoments: [],
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {
@@ -192,6 +198,19 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       return;
     }
     setError(null);
+    const keyContext = draft.keyMoments
+      .filter((m) => m.impact?.trim())
+      .map((m) => m.impact!.trim())
+      .slice(0, 4);
+    const aiValidation = {
+      verdictLine: draft.communityAiVerdictLine.trim(),
+      verdictBecause: draft.communityAiBecause.trim().slice(0, 400),
+      agreeWithAiVotes: 0,
+      disagreeWithAiVotes: 0,
+      ...(draft.aiConfidenceScore != null ? { confidenceScore: draft.aiConfidenceScore } : {}),
+      ...(keyContext.length > 0 ? { keyContext } : {}),
+    };
+    console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
     Alert.alert(
       'Sent to Explore',
       'Peers will thumbs up/down on Harmence stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',

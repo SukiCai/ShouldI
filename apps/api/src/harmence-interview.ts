@@ -23,6 +23,7 @@ import { randomUUID } from 'crypto';
 
 import {
   expertById,
+  expertBySkillName,
   expertPrelude,
   mergeExpertIds,
   publicExpert,
@@ -35,11 +36,14 @@ import {
   isHermesAgentLive,
 } from './hermes-client.js';
 import {
+  CHALLENGE_MODE_INSTRUCTIONS,
   HARMENCE_CHOICE_SYSTEM_PROMPT,
   HARMENCE_EXPERT_FINAL_PROMPT,
-  HARMENCE_EXPERT_NEXT_QUESTION_PROMPT,
+  HARMENCE_EXPERT_INDIVIDUAL_FINAL_PROMPT,
   HARMENCE_EXPERT_ROUTER_PROMPT,
   HARMENCE_FINAL_SYSTEM_PROMPT,
+  HARMENCE_SMART_TALK_DRIVER_PROMPT,
+  HARMENCE_SMART_TALK_SYNTHESIS_PROMPT,
 } from './hermes-prompts.js';
 
 type OfferContext = {
@@ -49,6 +53,53 @@ type OfferContext = {
   offerPhrase: string;
   rawQuestion: string;
 };
+
+type MomentEntry = {
+  round: number;
+  promptId: string;
+  question: string;
+  answer: string;
+  ambiguityBefore: number;
+  ambiguityAfter: number;
+  delta: number;
+  dimensionMoved: string;
+  scoreDelta: { intent: number; reality: number; signal: number; stakes: number };
+  expertsJoined: string[];
+};
+
+type SmartTalkState = {
+  rounds: number;
+  scores: { intent: number; reality: number; signal: number; stakes: number };
+  ambiguity: number;
+  dimensionDepths: { intent: number; reality: number; signal: number; stakes: number };
+  challengeModesUsed: ('contrarian' | 'simplifier' | 'reframer')[];
+  domainSkillsInvoked: string[];
+  momentumLog: MomentEntry[];
+};
+
+function defaultSmartTalkState(): SmartTalkState {
+  return {
+    rounds: 0,
+    scores: { intent: 0, reality: 0, signal: 0, stakes: 0 },
+    ambiguity: 1.0,
+    dimensionDepths: { intent: 0, reality: 0, signal: 0, stakes: 0 },
+    challengeModesUsed: [],
+    domainSkillsInvoked: [],
+    momentumLog: [],
+  };
+}
+
+function computeAmbiguity(scores: SmartTalkState['scores']): number {
+  return 1 - (scores.intent * 0.35 + scores.reality * 0.25 + scores.signal * 0.25 + scores.stakes * 0.15);
+}
+
+function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simplifier' | 'reframer' | '' {
+  const { rounds, challengeModesUsed, ambiguity } = state;
+  if (rounds >= 8 && ambiguity > 0.30 && !challengeModesUsed.includes('reframer')) return 'reframer';
+  if (rounds >= 6 && !challengeModesUsed.includes('simplifier')) return 'simplifier';
+  if (rounds >= 4 && !challengeModesUsed.includes('contrarian')) return 'contrarian';
+  return '';
+}
 
 type Session = {
   id: string;
@@ -61,6 +112,8 @@ type Session = {
   isComplete: boolean;
   finalDecision?: DecideInterviewFinalDecision;
   updatedAt: number;
+  mode: 'single' | 'complex';
+  smartTalkState: SmartTalkState;
 };
 
 type InterviewAnswer = {
@@ -1144,7 +1197,25 @@ function fallbackExpertChoice(
   };
 }
 
-async function askExpertForNextChoice(
+function formatAvailableSkillsForPrompt(experts: HarmenceExpert[]): string {
+  if (experts.length === 0) return 'None — use smart_talk framework only.';
+  return experts
+    .map((e) => `- ${e.skillName} (${e.title}): ${e.activationInstruction}`)
+    .join('\n');
+}
+
+function buildSmartTalkDriverPrompt(
+  availableSkills: HarmenceExpert[],
+  challengeMode: ReturnType<typeof buildChallengeInstruction>,
+): string {
+  const skillsList = formatAvailableSkillsForPrompt(availableSkills);
+  const challengeInstruction = challengeMode ? (CHALLENGE_MODE_INSTRUCTIONS[challengeMode] ?? '') : '';
+  return HARMENCE_SMART_TALK_DRIVER_PROMPT
+    .replace('{AVAILABLE_SKILLS}', skillsList)
+    .replace('{CHALLENGE_MODE}', challengeInstruction);
+}
+
+async function askSmartTalkForNextChoice(
   session: Session,
   latestText: string,
   hermesIntegrated: boolean,
@@ -1157,105 +1228,193 @@ async function askExpertForNextChoice(
   speaker: HarmenceExpert;
   supporting: HarmenceExpert[];
 }> {
-  const routed = await routeExpertsForTurn(session, latestText, hermesIntegrated);
-  const activeExperts = routed.activeExperts;
+  // Single mode: skip dynamic routing, keep initial expert locked
+  let activeExperts: HarmenceExpert[];
+  let newlyActivatedExperts: HarmenceExpert[] = [];
+  if (session.mode === 'single') {
+    activeExperts = expertsForSession(session);
+  } else {
+    const routed = await routeExpertsForTurn(session, latestText, hermesIntegrated);
+    activeExperts = routed.activeExperts;
+    newlyActivatedExperts = routed.newlyActivatedExperts;
+  }
+
   const fallback = fallbackExpertChoice(session, activeExperts);
+  const defaultSpeaker = activeExperts[0] ?? fallback.speaker;
 
-  if (hermesIntegrated) {
-    const result = await hermesChatCompletion({
-      sessionId: `${session.id}:expert-next`,
-      messages: [
-        { role: 'system', content: HARMENCE_EXPERT_NEXT_QUESTION_PROMPT },
-        {
-          role: 'user',
-          content: [
-            expertPrelude(activeExperts),
-            `Active experts:\n${JSON.stringify(activeExperts.map(publicExpert))}`,
-            `Newly activated experts:\n${JSON.stringify(routed.newlyActivatedExperts.map(publicExpert))}`,
-            `Original question:\n${initialQuestionFor(session)}`,
-            `Collected answers:\n${collectedSummary(session)}`,
-            `Latest user answer:\n${latestText}`,
-          ].join('\n\n'),
-        },
-      ],
-    });
+  if (!hermesIntegrated) {
+    return { ...fallback, activeExperts, newlyActivatedExperts };
+  }
 
-    if (result.ok) {
-      const raw = extractJsonObject(result.content);
-      const candidate = raw as {
-        assistantText?: unknown;
-        speakerExpertId?: unknown;
-        supportingExpertIds?: unknown;
-        newlyActivatedExpertIds?: unknown;
-        choicePrompt?: unknown;
-        readyForFinal?: unknown;
-      } | null;
-      const newlyIds = Array.isArray(candidate?.newlyActivatedExpertIds)
-        ? candidate!.newlyActivatedExpertIds.filter((id): id is string => typeof id === 'string')
-        : [];
-      if (newlyIds.length) {
-        session.activeExpertIds = mergeExpertIds(
-          session.activeExpertIds,
-          newlyIds.map((id) => expertById(id)).filter((expert): expert is HarmenceExpert => !!expert),
-        );
+  const challengeMode = buildChallengeInstruction(session.smartTalkState);
+  const systemPrompt = buildSmartTalkDriverPrompt(activeExperts, challengeMode);
+  const answerCount = session.answers.filter((a) => a.promptId !== 'initial_question').length;
+
+  const result = await hermesChatCompletion({
+    sessionId: `${session.id}:smart-talk`,
+    messages: [
+      { role: 'system', content: systemPrompt },
+      {
+        role: 'user',
+        content: [
+          `Mode: ${session.mode}`,
+          `Round: ${session.smartTalkState.rounds}`,
+          `Current 4D scores: ${JSON.stringify(session.smartTalkState.scores)}`,
+          `Dimension depths: ${JSON.stringify(session.smartTalkState.dimensionDepths)}`,
+          `Original question: ${initialQuestionFor(session)}`,
+          `Collected answers:\n${collectedSummary(session)}`,
+          `Latest answer: ${latestText}`,
+        ]
+          .filter(Boolean)
+          .join('\n\n'),
+      },
+    ],
+  });
+
+  if (!result.ok) {
+    return { ...fallback, activeExperts, newlyActivatedExperts };
+  }
+
+  const raw = extractJsonObject(result.content) as {
+    assistantText?: unknown;
+    choicePrompt?: unknown;
+    scores?: { intent?: number; reality?: number; signal?: number; stakes?: number };
+    dimensionTargeted?: unknown;
+    challengeModeApplied?: unknown;
+    domainSkillsCalledThisTurn?: unknown;
+    speakerExpertId?: unknown;
+    readyForFinal?: unknown;
+  } | null;
+
+  // Capture state before update for momentum tracking
+  const ambiguityBefore = session.smartTalkState.ambiguity;
+  const scoresBefore = { ...session.smartTalkState.scores };
+
+  // Update 4D scores from response
+  if (raw?.scores) {
+    const s = raw.scores;
+    session.smartTalkState.scores = {
+      intent: typeof s.intent === 'number' ? s.intent : session.smartTalkState.scores.intent,
+      reality: typeof s.reality === 'number' ? s.reality : session.smartTalkState.scores.reality,
+      signal: typeof s.signal === 'number' ? s.signal : session.smartTalkState.scores.signal,
+      stakes: typeof s.stakes === 'number' ? s.stakes : session.smartTalkState.scores.stakes,
+    };
+    const dim = typeof raw.dimensionTargeted === 'string'
+      ? (raw.dimensionTargeted as keyof SmartTalkState['dimensionDepths'])
+      : null;
+    if (dim && dim in session.smartTalkState.dimensionDepths) {
+      session.smartTalkState.dimensionDepths[dim] += 1;
+    }
+  }
+  session.smartTalkState.rounds += 1;
+
+  const validChallengeModes = ['contrarian', 'simplifier', 'reframer'] as const;
+  const appliedChallengeRaw = typeof raw?.challengeModeApplied === 'string' ? raw.challengeModeApplied : null;
+  const appliedChallenge = appliedChallengeRaw && (validChallengeModes as readonly string[]).includes(appliedChallengeRaw)
+    ? (appliedChallengeRaw as 'contrarian' | 'simplifier' | 'reframer')
+    : null;
+  if (appliedChallenge && !session.smartTalkState.challengeModesUsed.includes(appliedChallenge)) {
+    session.smartTalkState.challengeModesUsed.push(appliedChallenge);
+  }
+
+  if (Array.isArray(raw?.domainSkillsCalledThisTurn)) {
+    const calledSkillNames: string[] = [];
+    for (const skill of raw!.domainSkillsCalledThisTurn as unknown[]) {
+      if (typeof skill === 'string') {
+        if (!session.smartTalkState.domainSkillsInvoked.includes(skill)) {
+          session.smartTalkState.domainSkillsInvoked.push(skill);
+        }
+        calledSkillNames.push(skill);
       }
-      const refreshedExperts = expertsForSession(session);
-      const speakerId = typeof candidate?.speakerExpertId === 'string' ? candidate.speakerExpertId : fallback.speaker.id;
-      const speaker = expertById(speakerId) ?? refreshedExperts[0] ?? fallback.speaker;
-      const supportingIds = Array.isArray(candidate?.supportingExpertIds)
-        ? candidate!.supportingExpertIds.filter((id): id is string => typeof id === 'string')
-        : refreshedExperts.filter((expert) => expert.id !== speaker.id).map((expert) => expert.id);
-      const supporting = supportingIds.map((id) => expertById(id)).filter((expert): expert is HarmenceExpert => !!expert);
-      const parsedPrompt = DecideInterviewChoicePromptSchema.safeParse(candidate?.choicePrompt);
-      if (candidate?.readyForFinal === true && !parsedPrompt.success) {
-        return {
-          assistantText:
-            typeof candidate.assistantText === 'string' && candidate.assistantText.trim()
-              ? candidate.assistantText.trim()
-              : fallback.assistantText,
-          readyForFinal: true,
-          activeExperts: refreshedExperts,
-          newlyActivatedExperts: routed.newlyActivatedExperts,
-          speaker,
-          supporting,
-        };
-      }
-      if (parsedPrompt.success) {
-        const choicePrompt = DecideInterviewChoicePromptSchema.parse({
-          ...parsedPrompt.data,
-          speakerExpertId: parsedPrompt.data.speakerExpertId ?? speaker.id,
-          supportingExpertIds: parsedPrompt.data.supportingExpertIds?.length
-            ? parsedPrompt.data.supportingExpertIds
-            : supporting.map((expert) => expert.id),
-          specialistLabel: parsedPrompt.data.specialistLabel ?? speaker.title,
-          progress: {
-            checked: session.answers.filter((a) => a.promptId !== 'initial_question').length,
-            label: parsedPrompt.data.progress?.label ?? 'expert checks',
-            mode: 'adaptive',
-          },
-        });
-        return {
-          assistantText:
-            typeof candidate?.assistantText === 'string' && candidate.assistantText.trim()
-              ? candidate.assistantText.trim()
-              : fallback.assistantText,
-          choicePrompt,
-          readyForFinal: false,
-          activeExperts: refreshedExperts,
-          newlyActivatedExperts: routed.newlyActivatedExperts,
-          speaker,
-          supporting,
-        };
-      }
+    }
+    const calledExperts = calledSkillNames
+      .map((name) => expertBySkillName(name))
+      .filter((e): e is HarmenceExpert => !!e);
+    if (calledExperts.length > 0) {
+      session.activeExpertIds = mergeExpertIds(session.activeExpertIds, calledExperts);
     }
   }
 
+  // ShouldI layer: compute ambiguity + enforce hard termination
+  const ambiguity = computeAmbiguity(session.smartTalkState.scores);
+  session.smartTalkState.ambiguity = ambiguity;
+  const hardStop = ambiguity <= 0.20 || answerCount >= 10;
+  const readyForFinal = hardStop || raw?.readyForFinal === true;
+
+  // Record momentum entry for this turn
+  if (raw?.scores) {
+    const latestAnswer = session.answers.filter((a) => a.promptId !== 'initial_question').at(-1);
+    if (latestAnswer) {
+      session.smartTalkState.momentumLog.push({
+        round: session.smartTalkState.rounds - 1,
+        promptId: latestAnswer.promptId,
+        question: latestAnswer.question,
+        answer: latestAnswer.label,
+        ambiguityBefore,
+        ambiguityAfter: ambiguity,
+        delta: ambiguityBefore - ambiguity,
+        dimensionMoved: typeof raw?.dimensionTargeted === 'string' ? raw.dimensionTargeted : '',
+        scoreDelta: {
+          intent: session.smartTalkState.scores.intent - scoresBefore.intent,
+          reality: session.smartTalkState.scores.reality - scoresBefore.reality,
+          signal: session.smartTalkState.scores.signal - scoresBefore.signal,
+          stakes: session.smartTalkState.scores.stakes - scoresBefore.stakes,
+        },
+        expertsJoined: newlyActivatedExperts.map((e) => e.id),
+      });
+    }
+  }
+
+  const speakerId = typeof raw?.speakerExpertId === 'string' ? raw.speakerExpertId : null;
+  const speaker = (speakerId ? expertById(speakerId) : null) ?? defaultSpeaker;
+  const supporting = activeExperts.filter((e) => e.id !== speaker.id);
+
+  const resolvedAssistantText = typeof raw?.assistantText === 'string' && raw.assistantText.trim()
+    ? raw.assistantText.trim()
+    : fallback.assistantText;
+
+  if (readyForFinal) {
+    return {
+      assistantText: resolvedAssistantText,
+      readyForFinal: true,
+      activeExperts,
+      newlyActivatedExperts,
+      speaker,
+      supporting,
+    };
+  }
+
+  const parsedPrompt = DecideInterviewChoicePromptSchema.safeParse(raw?.choicePrompt);
+  if (!parsedPrompt.success) {
+    return { ...fallback, activeExperts, newlyActivatedExperts };
+  }
+
+  const choicePrompt = DecideInterviewChoicePromptSchema.parse({
+    ...parsedPrompt.data,
+    speakerExpertId: parsedPrompt.data.speakerExpertId ?? speaker.id,
+    supportingExpertIds: parsedPrompt.data.supportingExpertIds?.length
+      ? parsedPrompt.data.supportingExpertIds
+      : supporting.map((e) => e.id),
+    specialistLabel: parsedPrompt.data.specialistLabel ?? speaker.title,
+    progress: {
+      checked: answerCount,
+      label: parsedPrompt.data.progress?.label ?? 'clarity checks',
+      mode: 'adaptive',
+      ambiguity,
+    },
+  });
+
   return {
-    ...fallback,
+    assistantText: resolvedAssistantText,
+    choicePrompt,
+    readyForFinal: false,
     activeExperts,
-    newlyActivatedExperts: routed.newlyActivatedExperts,
+    newlyActivatedExperts,
+    speaker,
+    supporting,
   };
 }
+
 
 function fallbackFinal(session: Session): {
   assistantText: string;
@@ -1399,15 +1558,20 @@ function fallbackFinal(session: Session): {
   };
 }
 
+function requiresBinaryVerdict(session: Session): boolean {
+  return (
+    /^should\s+i\b/i.test(initialQuestionFor(session).trim()) ||
+    playbookForSession(session)?.verdictPolicy === 'binary'
+  );
+}
+
 async function askHermesForFinal(session: Session): Promise<{
   assistantText: string;
   finalDecision: DecideInterviewFinalDecision;
   previewCard: DecideInterviewPreviewCard;
 }> {
   const fallback = fallbackFinal(session);
-  const requiresBinaryVerdict =
-    /^should\s+i\b/i.test(initialQuestionFor(session).trim()) ||
-    playbookForSession(session)?.verdictPolicy === 'binary';
+
   const result = await hermesChatCompletion({
     sessionId: session.id,
     messages: [
@@ -1423,7 +1587,7 @@ async function askHermesForFinal(session: Session): Promise<{
   const finalDecision = DecideInterviewFinalDecisionSchema.safeParse(candidate.finalDecision);
   const previewCard = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
   if (!finalDecision.success || !previewCard.success) return fallback;
-  if (requiresBinaryVerdict && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
+  if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
     return fallback;
   }
 
@@ -1470,10 +1634,8 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
   const previewCard = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
   if (!finalDecision.success || !previewCard.success) return fallback;
 
-  const requiresBinaryVerdict =
-    /^should\s+i\b/i.test(initialQuestionFor(session).trim()) ||
-    playbookForSession(session)?.verdictPolicy === 'binary';
-  if (requiresBinaryVerdict && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
+
+  if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
     return fallback;
   }
 
@@ -1484,6 +1646,197 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
         : fallback.assistantText,
     finalDecision: finalDecision.data,
     previewCard: previewCard.data,
+  };
+}
+
+async function askExpertIndividualVerdict(
+  session: Session,
+  expert: HarmenceExpert,
+): Promise<{
+  expertId: string;
+  expertTitle: string;
+  verdictLine: string;
+  reasoning: string;
+  confidence: 'low' | 'medium' | 'high';
+  risks: string[];
+  nextQuestionsOrActions: string[];
+}> {
+  const fallbackVerdict = {
+    expertId: expert.id,
+    expertTitle: expert.title,
+    verdictLine: 'See overall recommendation',
+    reasoning: `${expert.title} analysis based on collected answers.`,
+    confidence: 'medium' as const,
+    risks: [] as string[],
+    nextQuestionsOrActions: [] as string[],
+  };
+
+  const result = await hermesChatCompletion({
+    sessionId: `${session.id}:expert-verdict:${expert.id}`,
+    messages: [
+      { role: 'system', content: HARMENCE_EXPERT_INDIVIDUAL_FINAL_PROMPT },
+      {
+        role: 'user',
+        content: [
+          `Expert id: ${expert.id}`,
+          `Expert title: ${expert.title}`,
+          `Skill: ${expert.skillName}`,
+          `Activation: ${expert.activationInstruction}`,
+          `Original question: ${initialQuestionFor(session)}`,
+          `Collected answers:\n${collectedSummary(session)}`,
+        ].join('\n'),
+      },
+    ],
+  });
+
+  if (!result.ok) return fallbackVerdict;
+  const raw = extractJsonObject(result.content) as {
+    expertId?: unknown;
+    expertTitle?: unknown;
+    verdictLine?: unknown;
+    reasoning?: unknown;
+    confidence?: unknown;
+    risks?: unknown;
+    nextQuestionsOrActions?: unknown;
+  } | null;
+  if (!raw) return fallbackVerdict;
+
+  const validConfidences = ['low', 'medium', 'high'] as const;
+  return {
+    expertId: typeof raw.expertId === 'string' ? raw.expertId : expert.id,
+    expertTitle: typeof raw.expertTitle === 'string' ? raw.expertTitle : expert.title,
+    verdictLine: typeof raw.verdictLine === 'string' ? raw.verdictLine : fallbackVerdict.verdictLine,
+    reasoning: typeof raw.reasoning === 'string' ? raw.reasoning : fallbackVerdict.reasoning,
+    confidence: validConfidences.includes(raw.confidence as (typeof validConfidences)[number])
+      ? (raw.confidence as 'low' | 'medium' | 'high')
+      : 'medium',
+    risks: Array.isArray(raw.risks) ? raw.risks.filter((r): r is string => typeof r === 'string') : [],
+    nextQuestionsOrActions: Array.isArray(raw.nextQuestionsOrActions)
+      ? raw.nextQuestionsOrActions.filter((a): a is string => typeof a === 'string')
+      : [],
+  };
+}
+
+function selectKeyMoments(log: MomentEntry[]): {
+  type: 'clarity' | 'expert_join' | 'complexity';
+  round: number;
+  answer: string;
+  question: string;
+  magnitude: number;
+  dimension: string;
+  expertsJoined: string[];
+}[] {
+  const CLARITY_THRESHOLD = 0.08;
+  const COMPLEXITY_THRESHOLD = -0.05;
+
+  const categorized = log.flatMap((entry) => {
+    const candidates: { type: 'clarity' | 'expert_join' | 'complexity'; entry: MomentEntry }[] = [];
+    if (entry.expertsJoined.length > 0) candidates.push({ type: 'expert_join', entry });
+    if (entry.delta >= CLARITY_THRESHOLD) candidates.push({ type: 'clarity', entry });
+    else if (entry.delta <= COMPLEXITY_THRESHOLD) candidates.push({ type: 'complexity', entry });
+    return candidates;
+  });
+
+  // Sort: expert_join first, then by magnitude
+  const sorted = categorized.sort((a, b) => {
+    if (a.type === 'expert_join' && b.type !== 'expert_join') return -1;
+    if (b.type === 'expert_join' && a.type !== 'expert_join') return 1;
+    return Math.abs(b.entry.delta) - Math.abs(a.entry.delta);
+  });
+
+  // Deduplicate by round, keep top 5, restore chronological order
+  const seen = new Set<number>();
+  return sorted
+    .filter(({ entry }) => {
+      if (seen.has(entry.round)) return false;
+      seen.add(entry.round);
+      return true;
+    })
+    .slice(0, 5)
+    .sort((a, b) => a.entry.round - b.entry.round)
+    .map(({ type, entry }) => ({
+      type,
+      round: entry.round,
+      answer: entry.answer,
+      question: entry.question,
+      magnitude: Math.abs(entry.delta),
+      dimension: entry.dimensionMoved,
+      expertsJoined: entry.expertsJoined,
+    }));
+}
+
+async function askSmartTalkComplexFinal(
+  session: Session,
+  hermesIntegrated: boolean,
+): Promise<{
+  assistantText: string;
+  finalDecision: DecideInterviewFinalDecision;
+  previewCard: DecideInterviewPreviewCard;
+}> {
+  const fallback = fallbackFinal(session);
+  const activeExperts = expertsForSession(session);
+  if (!hermesIntegrated) return fallback;
+
+  // Step 1: individual verdicts — parallel, each uses a distinct session ID
+  const expertVerdicts = await Promise.all(
+    activeExperts.map((expert) => askExpertIndividualVerdict(session, expert)),
+  );
+
+  // Step 2: smart_talk synthesizes all verdicts
+  const keyMomentCandidates = selectKeyMoments(session.smartTalkState.momentumLog);
+
+  const result = await hermesChatCompletion({
+    sessionId: `${session.id}:smart-talk-synthesis`,
+    messages: [
+      { role: 'system', content: HARMENCE_SMART_TALK_SYNTHESIS_PROMPT },
+      {
+        role: 'user',
+        content: [
+          `Original question: ${initialQuestionFor(session)}`,
+          `Collected answers:\n${collectedSummary(session)}`,
+          `Expert verdicts:\n${JSON.stringify(expertVerdicts, null, 2)}`,
+          keyMomentCandidates.length > 0
+            ? `Key decision moments (ranked by impact — write one-sentence impact for each):\n${JSON.stringify(keyMomentCandidates, null, 2)}`
+            : '',
+        ].filter(Boolean).join('\n\n'),
+      },
+    ],
+  });
+
+  const withVerdicts = (fd: DecideInterviewFinalDecision) => ({ ...fd, expertVerdicts });
+
+  if (!result.ok) return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+
+  const raw = extractJsonObject(result.content);
+  if (!raw || typeof raw !== 'object') return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+
+  const candidate = raw as { assistantText?: unknown; finalDecision?: unknown; previewCard?: unknown };
+  const rawFinalDecision = candidate.finalDecision && typeof candidate.finalDecision === 'object'
+    ? (candidate.finalDecision as Record<string, unknown>)
+    : {};
+  const finalDecisionParsed = DecideInterviewFinalDecisionSchema.safeParse({
+    ...rawFinalDecision,
+    expertVerdicts,
+    keyMoments: Array.isArray(rawFinalDecision.keyMoments) ? rawFinalDecision.keyMoments : [],
+  });
+  const previewCardParsed = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
+
+  if (!finalDecisionParsed.success || !previewCardParsed.success) {
+    return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  }
+
+
+  if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecisionParsed.data.verdictLine.trim())) {
+    return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  }
+
+  return {
+    assistantText:
+      typeof candidate.assistantText === 'string' && candidate.assistantText.trim()
+        ? candidate.assistantText.trim()
+        : fallback.assistantText,
+    finalDecision: finalDecisionParsed.data,
+    previewCard: previewCardParsed.data,
   };
 }
 
@@ -1575,6 +1928,7 @@ export async function handleInterviewTurn(
   sessionId: string | undefined | null,
   userTextRaw: string,
   selectedOptionId?: string,
+  requestedMode?: 'single' | 'complex',
 ): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
   let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
@@ -1592,6 +1946,8 @@ export async function handleInterviewTurn(
       activeExpertIds: [],
       isComplete: false,
       updatedAt: Date.now(),
+      mode: requestedMode ?? 'single',
+      smartTalkState: defaultSmartTalkState(),
     };
     STORE.set(session.id, session);
     session.bubbles.push(bubble('assistant', OPEN_GREETING));
@@ -1599,6 +1955,9 @@ export async function handleInterviewTurn(
   }
 
   session.updatedAt = Date.now();
+  // Backward-compat: sessions created before mode/smartTalkState were added
+  if (!session.mode) session.mode = 'single';
+  if (!session.smartTalkState) session.smartTalkState = defaultSmartTalkState();
 
   if (created && !userText && !selectedOptionId) {
     const lastBubble = session.bubbles[session.bubbles.length - 1]!;
@@ -1608,6 +1967,7 @@ export async function handleInterviewTurn(
       phase: 'initial_question',
       isComplete: false,
       hermesIntegrated,
+      mode: session.mode,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
       suggestedDraftHints: undefined,
@@ -1623,6 +1983,8 @@ export async function handleInterviewTurn(
       phase: session.lastPrompt?.id ?? 'complete',
       isComplete: session.isComplete,
       hermesIntegrated,
+      mode: session.mode,
+      ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
       suggestedDraftHints: undefined,
@@ -1638,6 +2000,8 @@ export async function handleInterviewTurn(
       phase: session.lastPrompt?.id ?? 'awaiting_choice',
       isComplete: false,
       hermesIntegrated,
+      mode: session.mode,
+      ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
       suggestedDraftHints: undefined,
@@ -1654,6 +2018,16 @@ export async function handleInterviewTurn(
   } else if (userText) {
     recordInitialQuestion(session, userText);
     session.bubbles.push(bubble('user', userText));
+    // Lock domain skills for smart_talk on the first real message
+    if (session.activeExpertIds.length === 0) {
+      const matched = selectExpertsFromText(userText);
+      if (session.mode === 'single') {
+        const top = matched[0];
+        session.activeExpertIds = top ? [top.id] : ['general-decision'];
+      } else {
+        session.activeExpertIds = matched.length > 0 ? matched.map((e) => e.id) : ['general-decision'];
+      }
+    }
   }
 
   let assistantText = '';
@@ -1667,7 +2041,7 @@ export async function handleInterviewTurn(
   let assistantMeta: Partial<Pick<DecideInterviewBubble, 'expertId' | 'expertTitle' | 'expertIcon' | 'expertColor' | 'supportingExpertIds'>> = {};
 
   if (initialQuestionFor(session)) {
-    const next = await askExpertForNextChoice(session, latestText, hermesIntegrated);
+    const next = await askSmartTalkForNextChoice(session, latestText, hermesIntegrated);
     activeExperts = next.activeExperts.map(publicExpert);
     newlyActivatedExperts = next.newlyActivatedExperts.map(publicExpert);
     if (!next.readyForFinal && next.choicePrompt) {
@@ -1677,7 +2051,9 @@ export async function handleInterviewTurn(
       session.lastPrompt = choicePrompt;
       assistantMeta = expertBubbleMeta(next.speaker, next.supporting);
     } else {
-      const final = await askExpertCouncilForFinal(session, hermesIntegrated);
+      const final = session.mode === 'complex'
+        ? await askSmartTalkComplexFinal(session, hermesIntegrated)
+        : hermesIntegrated ? await askHermesForFinal(session) : fallbackFinal(session);
       assistantText = [
         final.assistantText,
         ``,
@@ -1741,12 +2117,21 @@ export async function handleInterviewTurn(
 
   session.bubbles.push(bubble('assistant', assistantText, assistantMeta));
 
+  if (process.env.DEBUG) {
+    console.debug('[harmence-turn] choicePrompt:', JSON.stringify(choicePrompt, null, 2));
+    console.debug('[harmence-turn] activeExperts:', activeExperts.map((e) => `${e.id}(${e.skillName})`).join(', '));
+    console.debug('[harmence-turn] readyForFinal:', !choicePrompt, '| answerCount:', session.answers.filter((a) => a.promptId !== 'initial_question').length);
+    console.debug('[harmence-turn] ambiguity:', session.smartTalkState.ambiguity.toFixed(3), '| scores:', JSON.stringify(session.smartTalkState.scores));
+  }
+
   return DecideInterviewTurnResponseSchema.parse({
     sessionId: session.id,
     bubbles: session.bubbles.slice(-2),
     phase,
     isComplete: !choicePrompt,
     hermesIntegrated,
+    mode: session.mode,
+    ambiguity: session.smartTalkState.ambiguity,
     activeExperts,
     newlyActivatedExperts,
     suggestedDraftHints,

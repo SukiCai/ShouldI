@@ -289,22 +289,61 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
               <View style={styles.aiDecisionBadge}>
                 <Text style={styles.aiDecisionBadgeText}>AI DECISION</Text>
               </View>
-              {aiSuggestedLabel ? <Text style={styles.aiDecisionPick}>Lean: {aiSuggestedLabel}</Text> : null}
+              {card.aiValidation?.confidenceScore != null ? (
+                <View style={[
+                  styles.confidencePill,
+                  {
+                    borderColor: card.aiValidation.confidenceScore >= 70
+                      ? 'rgba(95,169,149,0.35)'
+                      : card.aiValidation.confidenceScore >= 45
+                        ? 'rgba(217,119,6,0.35)'
+                        : 'rgba(220,38,38,0.30)',
+                    backgroundColor: card.aiValidation.confidenceScore >= 70
+                      ? 'rgba(228,248,240,0.92)'
+                      : card.aiValidation.confidenceScore >= 45
+                        ? 'rgba(255,243,220,0.92)'
+                        : 'rgba(255,235,235,0.92)',
+                  }
+                ]}>
+                  <View style={[
+                    styles.confidenceDot,
+                    {
+                      backgroundColor: card.aiValidation.confidenceScore >= 70
+                        ? '#5fa995'
+                        : card.aiValidation.confidenceScore >= 45
+                          ? '#d97706'
+                          : '#dc2626',
+                    }
+                  ]} />
+                  <Text style={[
+                    styles.confidenceLabel,
+                    {
+                      color: card.aiValidation.confidenceScore >= 70
+                        ? '#5fa995'
+                        : card.aiValidation.confidenceScore >= 45
+                          ? '#d97706'
+                          : '#dc2626',
+                    }
+                  ]}>
+                    {card.aiValidation.confidenceScore}% confidence
+                  </Text>
+                </View>
+              ) : null}
             </View>
             <Text style={styles.aiDecisionHeadline}>{aiDecisionHeadline}</Text>
-            <Text style={styles.aiDecisionReason}>{aiDecisionReason}</Text>
+            <Text style={styles.aiDecisionReason} numberOfLines={3}>{aiDecisionReason}</Text>
 
-            <View style={styles.aiSignalsSection}>
-              <Text style={styles.aiSignalsEyebrow}>Signals AI used for you</Text>
-              <View style={styles.aiSignalsGrid}>
-                {aiSignalRows.map((row) => (
-                  <View key={row.label} style={styles.aiSignalTile}>
-                    <Text style={styles.aiSignalLabel}>{row.label}</Text>
-                    <Text style={styles.aiSignalValue}>{row.value}</Text>
+            {card.aiValidation?.keyContext && card.aiValidation.keyContext.length > 0 ? (
+              <View style={styles.keyContextSection}>
+                <Text style={styles.keyContextEyebrow}>Key context</Text>
+                {card.aiValidation.keyContext.map((ctx, i) => (
+                  <View key={i} style={[styles.momentCard, { borderLeftWidth: 3, borderLeftColor: palette.accent }]}>
+                    <Text style={styles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
+                    <Text style={styles.momentCardTitle} numberOfLines={2}>{ctx}</Text>
                   </View>
                 ))}
               </View>
-            </View>
+            ) : null}
 
             <View style={styles.aiReactionRow}>
               <Pressable
@@ -857,49 +896,58 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: '500',
   },
-  aiSignalsSection: {
-    gap: 10,
+  confidencePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+  },
+  confidenceDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  confidenceLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  keyContextSection: {
     marginTop: 2,
     paddingTop: 12,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: profileNeutralStroke(0.08),
+    gap: 8,
   },
-  aiSignalsEyebrow: {
+  keyContextEyebrow: {
     ...typography.caption,
     color: profileTypography.subdued,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
+    marginBottom: 2,
   },
-  aiSignalsGrid: {
+  keyContextRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
+    alignItems: 'flex-start',
+    gap: 8,
   },
-  aiSignalTile: {
-    flexBasis: '47%',
-    flexGrow: 1,
-    minWidth: 132,
-    gap: 5,
-    paddingHorizontal: 12,
-    paddingVertical: 11,
-    borderRadius: radius.md,
-    backgroundColor: 'rgba(255,255,255,0.84)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+  keyContextDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    marginTop: 5,
+    flexShrink: 0,
   },
-  aiSignalLabel: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    fontWeight: '800',
-    letterSpacing: 0.3,
-    textTransform: 'uppercase',
-  },
-  aiSignalValue: {
-    ...typography.compact,
-    color: profileTypography.body,
+  keyContextText: {
+    flex: 1,
+    fontSize: 13,
     lineHeight: 19,
     fontWeight: '600',
+    color: profileTypography.body,
   },
   aiReactionRow: {
     flexDirection: 'row',

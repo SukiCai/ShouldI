@@ -97,6 +97,7 @@ app.post('/v1/harmence/interview/turn', async (c) => {
       parsed.data.sessionId ?? null,
       parsed.data.userText ?? '',
       parsed.data.selectedOptionId,
+      parsed.data.mode,
     );
     return c.json(DecideInterviewTurnResponseSchema.parse(res));
   } catch {

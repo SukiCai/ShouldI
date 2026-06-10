@@ -5,7 +5,7 @@ version: 1.1.0
 metadata:
   hermes:
     tags: [interview, planning, clarification, ambiguity, decision, requirements]
-    related_skills: []
+    related_skills: [intl-job-search, intl-student-advisor, pm-career-expert]
 ---
 
 # Smart Talk: Socratic Clarification
@@ -15,6 +15,8 @@ metadata:
 Smart Talk reduces ambiguity through a focused conversation before acting. You ask one targeted question per round, semantically score clarity across four dimensions, and maintain a `cumulative_analysis` as your working memory. Stop when ambiguity ≤ 20% or the user says to proceed.
 
 **Required tools:** `smart_talk_state`, `clarify`, `write_file`
+
+**Optional domain skill tool-calls (Step C.5):** `intl-job-search`, `intl-student-advisor`, `pm-career-expert` — call these when the targeted dimension requires specialized domain knowledge. Available skills are listed in the session context provided by the caller.
 
 **Dimensions and weights:**
 | Dimension | Weight | What it captures |
@@ -91,6 +93,32 @@ Select the dimension with the lowest score. Use the question bank below at the a
 - Round 6+: **Simplifier** — probe for unnecessary complexity ("What's the minimum version of this that would still matter?")
 - Round 8+ (if ambiguity > 0.30): **Reframer** — zoom out on the core concept ("You've mentioned {ontology}. Which one is the real thing you're trying to change?")
 
+### Step C.5: Domain Check
+
+After selecting the target dimension in Step C, before generating the question:
+
+1. Check the session context for **available domain skills** (provided by the caller in the current message).
+2. Ask: "For the dimension I'm targeting AND the specific topic of this decision, does any available domain skill have specialized frameworks that would produce a sharper question?"
+
+**When domain calls are most valuable:**
+
+| Dimension | Domain call likely useful |
+|-----------|--------------------------|
+| **Reality** | Almost always — domain skills know which constraints are decision-critical in their field |
+| **Signal** | Often — domain skills know what "success" looks like in their field |
+| **Intent** | Rarely — intent is universal; only call if the domain has specific goal taxonomies |
+| **Stakes** | Rarely — stakes are universal; only call if the domain has specific risk classifications |
+
+**Decision matrix:**
+- `reality` + career / job / offer / co-op → call `intl-job-search`
+- `reality` + visa / immigration / permit / study permit → call `intl-student-advisor`
+- `reality` or `signal` + PM / promotion / career path → call `pm-career-expert`
+- `intent` or `stakes` + any topic → proceed without a domain call in most cases
+
+3. If a domain call is warranted: invoke the skill as a tool call to get relevant framework knowledge. Use that knowledge when generating the question in Step D.
+4. If no domain call is warranted: proceed directly to Step D.
+5. Record which domain skills were called this turn in `domain_skills_called_this_turn` in the JSON output (Step E).
+
 ### Step D: Ask the question
 
 **STRICT RULES — these are hard constraints, not suggestions:**
@@ -128,6 +156,7 @@ Persist via `smart_talk_state(action="set", session_id=..., state=<cumulative_an
   "round": 2,
   "dimension_targeted": "signal",
   "dimension_rationale": "intent and stakes are clear but no success signal has been defined",
+  "domain_skills_called_this_turn": [],
   "pre_scores": {"intent": 0.65, "reality": 0.30, "signal": 0.0, "stakes": 0.50},
   "post_scores": {"intent": 0.65, "reality": 0.30, "signal": 0.0, "stakes": 0.50},
   "ambiguity_before": 0.64,
@@ -225,6 +254,7 @@ Every round must output this structured JSON (apps consume this):
   "round": 3,
   "dimension_targeted": "signal",
   "dimension_rationale": "signal is lowest at 0.30; need success criteria",
+  "domain_skills_called_this_turn": [],
   "pre_scores": {"intent": 0.65, "reality": 0.50, "signal": 0.30, "stakes": 0.40},
   "post_scores": {"intent": 0.65, "reality": 0.50, "signal": 0.55, "stakes": 0.40},
   "ambiguity_before": 0.53,

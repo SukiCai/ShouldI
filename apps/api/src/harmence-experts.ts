@@ -55,6 +55,25 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
       'Use the intl-student-advisor skill. Diagnose country, current status, target country, timeline, work authorization, and immigration-security trade-offs before making career recommendations.',
   },
   {
+    id: 'stay-or-return',
+    title: 'Stay or Return Advisor',
+    subtitle: '10-year trajectory, savings rate, immigration trap',
+    skillName: 'stay-or-return',
+    icon: 'airplane-outline',
+    color: '#F59E0B',
+    priority: 95,
+    triggerPatterns: [
+      /\bstay or return\b/i,
+      /\bgo back\b/i,
+      /\breturn home\b/i,
+      /\bIndian backlog\b/i,
+      /\b(EB-2|EB-3).*backlog\b/i,
+      /回国|要不要回|回去还是留|留下来还是|绿卡.*等太久|值不值得留/,
+    ],
+    activationInstruction:
+      'Use the stay-or-return skill. Frame as a 10-year compounding question across career, financial, immigration, and relational dimensions — not a current-conditions comparison. Diagnose visa category and realistic GC timeline, actual savings rate, entrepreneurship intent, and whether the conclusion is driven by analysis or fear of failure.',
+  },
+  {
     id: 'pm-career',
     title: 'PM Career Expert',
     subtitle: 'Scope, title, growth path, promotion logic',
@@ -65,6 +84,28 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     triggerPatterns: [/\bPM\b/i, /\bproduct manager\b/i, /\bpromotion\b/i, /\bscope\b/i, /\bMBA\b/i],
     activationInstruction:
       'Use the pm-career-expert skill to evaluate scope, title, career growth, org ceiling vs skill gap, and long-term compounding.',
+  },
+  {
+    id: 'grad-school',
+    title: 'Grad School Advisor',
+    subtitle: 'PhD vs Masters, advisor fit, funding, immigration runway',
+    skillName: 'grad-school-advisor',
+    icon: 'school-outline',
+    color: '#818CF8',
+    priority: 85,
+    triggerPatterns: [
+      /\bPhD\b/,
+      /\bmaster'?s?\b/i,
+      /\bgrad(uate)?\s*(school|program|degree)\b/i,
+      /\bdoctorate\b/i,
+      /\badvisor\b.*\bprogram\b/i,
+      /\bfunded\b.*\b(PhD|program|offer)\b/i,
+      /\bSOP\b/,
+      /\bNSF\s*GRFP\b/i,
+      /读研|读博|研究生|申请.*学校|导师|硕士|博士|offer.*项目/,
+    ],
+    activationInstruction:
+      'Use the grad-school-advisor skill. Never give program advice before establishing research clarity, citizenship/immigration status, target geography, and funding structure. Evaluate at the advisor level, not program rank. For international students, model STEM OPT eligibility and PhD-as-immigration-runway explicitly.',
   },
   {
     id: 'relationship',
@@ -105,6 +146,10 @@ export function publicExpert(expert: HarmenceExpert): DecideInterviewExpert {
 
 export function expertById(id: string): HarmenceExpert | undefined {
   return HARMENCE_EXPERTS.find((expert) => expert.id === id);
+}
+
+export function expertBySkillName(skillName: string): HarmenceExpert | undefined {
+  return HARMENCE_EXPERTS.find((expert) => expert.skillName === skillName);
 }
 
 export function publicExperts(ids: string[]): DecideInterviewExpert[] {
