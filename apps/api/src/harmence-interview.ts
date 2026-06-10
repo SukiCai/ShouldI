@@ -1282,6 +1282,7 @@ async function askSmartTalkForNextChoice(
     dimensionTargeted?: unknown;
     challengeModeApplied?: unknown;
     domainSkillsCalledThisTurn?: unknown;
+    domain_skills_called_this_turn?: unknown;
     speakerExpertId?: unknown;
     readyForFinal?: unknown;
   } | null;
@@ -1317,9 +1318,10 @@ async function askSmartTalkForNextChoice(
     session.smartTalkState.challengeModesUsed.push(appliedChallenge);
   }
 
-  if (Array.isArray(raw?.domainSkillsCalledThisTurn)) {
+  const domainSkillsList = raw?.domainSkillsCalledThisTurn ?? raw?.domain_skills_called_this_turn;
+  if (Array.isArray(domainSkillsList)) {
     const calledSkillNames: string[] = [];
-    for (const skill of raw!.domainSkillsCalledThisTurn as unknown[]) {
+    for (const skill of domainSkillsList as unknown[]) {
       if (typeof skill === 'string') {
         if (!session.smartTalkState.domainSkillsInvoked.includes(skill)) {
           session.smartTalkState.domainSkillsInvoked.push(skill);

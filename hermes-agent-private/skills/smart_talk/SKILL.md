@@ -117,7 +117,7 @@ After selecting the target dimension in Step C, before generating the question:
 
 3. If a domain call is warranted: invoke the skill as a tool call to get relevant framework knowledge. Use that knowledge when generating the question in Step D.
 4. If no domain call is warranted: proceed directly to Step D.
-5. Record which domain skills were called this turn in `domain_skills_called_this_turn` in the JSON output (Step E).
+5. Record which domain skills were called this turn in `domainSkillsCalledThisTurn` in the JSON output (Step E).
 
 ### Step D: Ask the question
 
@@ -156,7 +156,7 @@ Persist via `smart_talk_state(action="set", session_id=..., state=<cumulative_an
   "round": 2,
   "dimension_targeted": "signal",
   "dimension_rationale": "intent and stakes are clear but no success signal has been defined",
-  "domain_skills_called_this_turn": [],
+  "domainSkillsCalledThisTurn": [],
   "pre_scores": {"intent": 0.65, "reality": 0.30, "signal": 0.0, "stakes": 0.50},
   "post_scores": {"intent": 0.65, "reality": 0.30, "signal": 0.0, "stakes": 0.50},
   "ambiguity_before": 0.64,
@@ -254,7 +254,7 @@ Every round must output this structured JSON (apps consume this):
   "round": 3,
   "dimension_targeted": "signal",
   "dimension_rationale": "signal is lowest at 0.30; need success criteria",
-  "domain_skills_called_this_turn": [],
+  "domainSkillsCalledThisTurn": [],
   "pre_scores": {"intent": 0.65, "reality": 0.50, "signal": 0.30, "stakes": 0.40},
   "post_scores": {"intent": 0.65, "reality": 0.50, "signal": 0.55, "stakes": 0.40},
   "ambiguity_before": 0.53,
