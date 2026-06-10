@@ -24,6 +24,7 @@ import {
   reelDiscussStyles,
   totalVotesFromDistribution,
 } from '@/components/explore/ReelDiscussChrome';
+import { discussCardStyles } from '@/components/decision/discussCardStyles';
 import { palette, profileNeutralStroke, profileTypography, radius, spacing, typography } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
@@ -337,9 +338,9 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
               <View style={styles.keyContextSection}>
                 <Text style={styles.keyContextEyebrow}>Key context</Text>
                 {card.aiValidation.keyContext.map((ctx, i) => (
-                  <View key={i} style={[styles.momentCard, { borderLeftWidth: 3, borderLeftColor: palette.accent }]}>
-                    <Text style={styles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
-                    <Text style={styles.momentCardTitle} numberOfLines={2}>{ctx}</Text>
+                  <View key={i} style={[discussCardStyles.momentCard, { borderLeftWidth: 3, borderLeftColor: palette.accent }]}>
+                    <Text style={discussCardStyles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
+                    <Text style={discussCardStyles.momentCardTitle} numberOfLines={2}>{ctx}</Text>
                   </View>
                 ))}
               </View>
