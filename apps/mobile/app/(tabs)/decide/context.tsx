@@ -210,7 +210,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       ...(draft.aiConfidenceScore != null ? { confidenceScore: draft.aiConfidenceScore } : {}),
       ...(keyContext.length > 0 ? { keyContext } : {}),
     };
-    console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
+    if (__DEV__) console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
     Alert.alert(
       'Sent to Explore',
       'Peers will thumbs up/down on Harmence stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
