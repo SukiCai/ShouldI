@@ -1341,6 +1341,16 @@ async function askSmartTalkForNextChoice(
     }
   }
 
+  // Refresh activeExperts/newlyActivatedExperts after domain-skill activations so the
+  // turn response and momentum log expertsJoined reflect experts added this turn.
+  const prevActiveIds = new Set(activeExperts.map((e) => e.id));
+  const refreshedExperts = expertsForSession(session);
+  const domainActivated = refreshedExperts.filter((e) => !prevActiveIds.has(e.id));
+  if (domainActivated.length > 0) {
+    activeExperts = refreshedExperts;
+    newlyActivatedExperts = [...newlyActivatedExperts, ...domainActivated];
+  }
+
   // ShouldI layer: compute ambiguity + enforce hard termination
   const ambiguity = computeAmbiguity(session.smartTalkState.scores);
   session.smartTalkState.ambiguity = ambiguity;
