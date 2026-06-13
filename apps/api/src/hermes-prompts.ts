@@ -136,7 +136,7 @@ Shape:
     "progress": {"checked": 0, "label": "clarity checks", "mode": "adaptive"},
     "options": [{"id": "stable_snake_id", "label": "short", "description": "optional"}],
     "allowCustomAnswer": true,
-    "speakerExpertId": "id of domain skill called in C.5, or null if none"
+    "speakerExpertId": "the [id: ...] value from AVAILABLE_SKILLS for the domain skill called in C.5 (not the skill tool name), or null if none"
   },
   "scores": {"intent": 0.0, "reality": 0.0, "signal": 0.0, "stakes": 0.0},
   "dimensionTargeted": "intent|reality|signal|stakes",
