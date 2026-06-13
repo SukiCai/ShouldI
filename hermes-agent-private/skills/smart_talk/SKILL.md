@@ -16,7 +16,7 @@ Smart Talk reduces ambiguity through a focused conversation before acting. You a
 
 **Required tools:** `smart_talk_state`, `clarify`, `write_file`
 
-**Optional domain skill tool-calls (Step C.5):** `intl-job-search`, `intl-student-advisor`, `pm-career-expert` — call these when the targeted dimension requires specialized domain knowledge. Available skills are listed in the session context provided by the caller.
+**Optional domain skill tool-calls (Step C.5):** `intl-job-search`, `intl-student-advisor`, `pm-career-expert`, `stay-or-return`, `grad-school-advisor` — call these when the targeted dimension requires specialized domain knowledge. Available skills are listed in the session context provided by the caller.
 
 **Dimensions and weights:**
 | Dimension | Weight | What it captures |
@@ -113,6 +113,8 @@ After selecting the target dimension in Step C, before generating the question:
 - `reality` + career / job / offer / co-op → call `intl-job-search`
 - `reality` + visa / immigration / permit / study permit → call `intl-student-advisor`
 - `reality` or `signal` + PM / promotion / career path → call `pm-career-expert`
+- `reality` or `signal` + stay abroad / return home / relocation / green card backlog → call `stay-or-return`
+- `reality` or `intent` + grad school / PhD / Masters / immigration runway via grad school → call `grad-school-advisor`
 - `intent` or `stakes` + any topic → proceed without a domain call in most cases
 
 3. If a domain call is warranted: invoke the skill as a tool call to get relevant framework knowledge. Use that knowledge when generating the question in Step D.
