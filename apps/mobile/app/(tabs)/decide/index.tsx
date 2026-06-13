@@ -459,7 +459,7 @@ export default function DecideCategoryScreen() {
     setBooting(true);
     void (async () => {
       try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({}));
+        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
         applyTurnPayload(payload);
       } catch (e) {
         setError(e instanceof Error ? e.message : 'Harmence unreachable');
