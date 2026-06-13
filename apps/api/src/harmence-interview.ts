@@ -1381,7 +1381,13 @@ async function askSmartTalkForNextChoice(
     }
   }
 
-  const speakerId = typeof raw?.speakerExpertId === 'string' ? raw.speakerExpertId : null;
+  const rawChoicePrompt = raw?.choicePrompt as Record<string, unknown> | undefined;
+  const speakerId =
+    typeof rawChoicePrompt?.speakerExpertId === 'string'
+      ? rawChoicePrompt.speakerExpertId
+      : typeof raw?.speakerExpertId === 'string'
+        ? raw.speakerExpertId
+        : null;
   const speaker = (speakerId ? expertById(speakerId) : null) ?? defaultSpeaker;
   const supporting = activeExperts.filter((e) => e.id !== speaker.id);
 
