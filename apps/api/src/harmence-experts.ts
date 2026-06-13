@@ -149,7 +149,9 @@ export function expertById(id: string): HarmenceExpert | undefined {
 }
 
 export function expertBySkillName(skillName: string): HarmenceExpert | undefined {
-  return HARMENCE_EXPERTS.find((expert) => expert.skillName === skillName);
+  return HARMENCE_EXPERTS
+    .filter((expert) => expert.skillName === skillName)
+    .sort((a, b) => b.priority - a.priority)[0];
 }
 
 export function publicExperts(ids: string[]): DecideInterviewExpert[] {
