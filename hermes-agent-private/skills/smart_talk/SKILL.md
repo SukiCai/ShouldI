@@ -5,7 +5,7 @@ version: 1.1.0
 metadata:
   hermes:
     tags: [interview, planning, clarification, ambiguity, decision, requirements]
-    related_skills: [intl-job-search, intl-student-advisor, pm-career-expert]
+    related_skills: [intl-job-search, intl-student-advisor, pm-career-expert, stay-or-return, grad-school-advisor]
 ---
 
 # Smart Talk: Socratic Clarification
