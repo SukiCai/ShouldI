@@ -1382,13 +1382,14 @@ async function askSmartTalkForNextChoice(
   }
 
   const rawChoicePrompt = raw?.choicePrompt as Record<string, unknown> | undefined;
-  const speakerId =
+  const speakerIdRaw =
     typeof rawChoicePrompt?.speakerExpertId === 'string'
       ? rawChoicePrompt.speakerExpertId
       : typeof raw?.speakerExpertId === 'string'
         ? raw.speakerExpertId
         : null;
-  const speaker = (speakerId ? expertById(speakerId) : null) ?? defaultSpeaker;
+  const speaker =
+    (speakerIdRaw ? expertById(speakerIdRaw) ?? expertBySkillName(speakerIdRaw) : null) ?? defaultSpeaker;
   const supporting = activeExperts.filter((e) => e.id !== speaker.id);
 
   const resolvedAssistantText = typeof raw?.assistantText === 'string' && raw.assistantText.trim()
