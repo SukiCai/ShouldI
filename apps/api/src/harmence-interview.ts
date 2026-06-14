@@ -1324,18 +1324,16 @@ async function askSmartTalkForNextChoice(
 
   const domainSkillsList = raw?.domainSkillsCalledThisTurn ?? raw?.domain_skills_called_this_turn;
   if (Array.isArray(domainSkillsList)) {
-    const calledSkillNames: string[] = [];
+    const calledExperts: HarmenceExpert[] = [];
     for (const skill of domainSkillsList as unknown[]) {
-      if (typeof skill === 'string') {
-        if (!session.smartTalkState.domainSkillsInvoked.includes(skill)) {
-          session.smartTalkState.domainSkillsInvoked.push(skill);
-        }
-        calledSkillNames.push(skill);
+      if (typeof skill !== 'string') continue;
+      const expert = expertBySkillName(skill) ?? expertById(skill);
+      if (!expert) continue;
+      if (!session.smartTalkState.domainSkillsInvoked.includes(expert.skillName)) {
+        session.smartTalkState.domainSkillsInvoked.push(expert.skillName);
       }
+      calledExperts.push(expert);
     }
-    const calledExperts = calledSkillNames
-      .map((name) => expertBySkillName(name))
-      .filter((e): e is HarmenceExpert => !!e);
     if (calledExperts.length > 0) {
       session.activeExpertIds = mergeExpertIds(session.activeExpertIds, calledExperts);
     }
