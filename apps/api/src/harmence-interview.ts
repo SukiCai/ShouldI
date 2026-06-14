@@ -1745,7 +1745,7 @@ function selectKeyMoments(log: MomentEntry[]): {
   question: string;
   magnitude: number;
   dimension: string;
-  expertsJoined: string[];
+  expertJoined: string | undefined;
 }[] {
   const CLARITY_THRESHOLD = 0.08;
   const COMPLEXITY_THRESHOLD = -0.05;
@@ -1782,7 +1782,7 @@ function selectKeyMoments(log: MomentEntry[]): {
       question: entry.question,
       magnitude: Math.abs(entry.delta),
       dimension: entry.dimensionMoved,
-      expertsJoined: entry.expertsJoined,
+      expertJoined: entry.expertsJoined[0],
     }));
 }
 
