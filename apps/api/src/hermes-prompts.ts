@@ -1,6 +1,6 @@
 /** System prompts for ShouldI → Hermes api_server proxying. */
 
-const LANGUAGE_RULE = "Language rule: detect the language of the user's original question and respond entirely in that language. Do not mix languages in any field. Exception: if a field requires a leading 'YES' or 'NO' token, keep that token exactly and translate the remainder.";
+const LANGUAGE_RULE = "Language rule: detect the language of the user's original question and respond entirely in that language for all natural-language text. Do not mix languages within the same free-text field. Do NOT translate schema-required enum literals or IDs (e.g. category: life|career|relationship|money; confidence: low|medium|high; keyMoments.type: clarity|expert_join|complexity; dimensionTargeted; challengeModeApplied; option ids). Exception: if a field requires a leading 'YES' or 'NO' token, keep that token exactly and translate the remainder.";
 
 export const HARMENCE_SYSTEM_PROMPT = `You are **Harmence**, the conversational intake agent for ShouldI — an AI-assisted decision companion.
 
