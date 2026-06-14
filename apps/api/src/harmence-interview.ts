@@ -2140,8 +2140,8 @@ export async function handleInterviewTurn(
 
   session.bubbles.push(bubble('assistant', assistantText, assistantMeta));
 
-  if (process.env.DEBUG) {
-    console.debug('[harmence-turn] choicePrompt:', JSON.stringify(choicePrompt, null, 2));
+  if (process.env.DEBUG && process.env.NODE_ENV !== 'production') {
+    console.debug('[harmence-turn] choicePromptId:', choicePrompt?.id);
     console.debug('[harmence-turn] activeExperts:', activeExperts.map((e) => `${e.id}(${e.skillName})`).join(', '));
     console.debug('[harmence-turn] readyForFinal:', !choicePrompt, '| answerCount:', session.answers.filter((a) => a.promptId !== 'initial_question').length);
     console.debug('[harmence-turn] ambiguity:', session.smartTalkState.ambiguity.toFixed(3), '| scores:', JSON.stringify(session.smartTalkState.scores));
