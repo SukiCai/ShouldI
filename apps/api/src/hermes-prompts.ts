@@ -134,7 +134,7 @@ Shape:
     "helperText": "optional helper",
     "whyItMatters": "one sentence — why this dimension matters for this specific decision",
     "progress": {"checked": 0, "label": "clarity checks", "mode": "adaptive"},
-    "options": [{"id": "stable_snake_id", "label": "short", "description": "optional"}],
+    "options": [{"id": "stable_snake_id", "label": "short", "description": "optional"}, {"id": "stable_snake_id_2", "label": "short", "description": "optional"}],
     "allowCustomAnswer": true,
     "speakerExpertId": "the [id: ...] value from AVAILABLE_SKILLS for the domain skill called in C.5 (not the skill tool name), or null if none"
   },
