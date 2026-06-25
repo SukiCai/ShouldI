@@ -1,0 +1,260 @@
+{
+  "source_file": "canadaimmigration_the_pgwp_program_change_trap_read_before_switching.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Before switching programs, calculate the PGWP length impact first",
+      "condition": "When a student is considering switching to a shorter program mid-degree for academic or personal reasons",
+      "action": "Consult your international student advisor to quantify the PGWP length difference before making the switch",
+      "because": "PGWP length is directly tied to program length; switching from a 2-year Master's to a 1-year Graduate Certificate costs 2 years of work permit and potentially 2 years of Canadian work experience toward PR",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Explore within-program changes before switching programs",
+      "condition": "When the academic issue (e.g., research focus, supervisor) can potentially be resolved without a formal program change",
+      "action": "Work with graduate advisors to change focus, supervisor, or track within the existing program rather than officially switching programs",
+      "because": "The OP achieved the same academic outcome (changed research focus) without losing PGWP eligibility by staying in the same program",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Consecutive programs at DLIs can be combined for PGWP length, but only with no meaningful gap",
+      "condition": "When a student has completed or will complete multiple programs sequentially",
+      "action": "Ensure programs are consecutive (typical academic gaps like April graduation to September start may be acceptable, but verify with IRCC guidance), both at DLIs, and combined length is accurate",
+      "because": "IRCC allows combining consecutive program lengths for PGWP calculation, but a gap between programs risks disqualifying the combination",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "PGWP length resulting from completed program",
+      "why_it_matters": "PGWP length directly determines how many years of Canadian work experience a graduate can accumulate, which feeds into Express Entry CRS score and PR eligibility timelines",
+      "how_to_assess": "Identify the length of the program you will actually complete; check IRCC's PGWP rules for single vs. combined programs; model out the PR timeline difference between PGWP lengths",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether programs are consecutive with no gap",
+      "why_it_matters": "Determines whether multiple programs can be combined for a longer PGWP; a gap between programs may reset or disqualify the combination",
+      "how_to_assess": "Check the end date of the first program and the start date of the next; consult IRCC guidance or a regulated consultant on what gap length, if any, is permissible",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether the academic issue can be resolved within the existing program",
+      "why_it_matters": "If the problem (research fit, supervisor, coursework) can be fixed without a formal program switch, the student avoids PGWP loss entirely",
+      "how_to_assess": "Meet with graduate advisor and DSO to explore internal options: changing thesis topic, supervisor, or specialization track without triggering a program change in IRCC records",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Institution's DLI status for both programs",
+      "why_it_matters": "Both programs must be at Designated Learning Institutions for the combined PGWP calculation to apply",
+      "how_to_assess": "Verify each institution's DLI status on IRCC's official DLI list before enrolling",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Switching from a longer program to a shorter one for academic fit or convenience",
+      "unstated_consequence": "Loses years of PGWP work authorization, which directly reduces Canadian work experience accumulated before PR application — a compounding immigration cost that wasn't visible at the time of switching",
+      "who_it_affects": "Students who prioritize short-term academic comfort or convenience without modeling the downstream PR timeline impact",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Completing a standalone short program (e.g., 1-year certificate) before a longer program with a gap in between",
+      "unstated_consequence": "The gap may prevent IRCC from combining the program lengths, resulting in a PGWP based only on the final program rather than the combined total",
+      "who_it_affects": "Students who strategically stack credentials across institutions or across time without understanding the consecutive requirement",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Switching to a shorter program for academic reasons without calculating PGWP impact",
+      "why_it_happens": "Academic advisors and professors recommend program changes based purely on academic or career fit, with no visibility into immigration consequences; students trust academic advisors as the authoritative voice",
+      "consequence": "Student loses 1–2 years of PGWP eligibility, reducing Canadian work experience accumulation and delaying or weakening PR applications through Express Entry",
+      "warning_signs": [
+        "A professor or academic advisor recommends a program switch without mentioning immigration implications",
+        "The new program is shorter than the current one",
+        "Student has not consulted their international student advisor or DSO before agreeing to switch"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Assuming program stacking always results in a longer PGWP regardless of gaps",
+      "why_it_happens": "The combining rule feels logical — more education should mean more PGWP — so students assume any sequence of programs adds up, without knowing the consecutive requirement",
+      "consequence": "Student plans their immigration timeline assuming a 3-year PGWP from combined programs but receives a shorter one due to a gap between programs",
+      "warning_signs": [
+        "Student has a gap between credential completion and next program start",
+        "Student has not verified with IRCC guidance or a regulated consultant whether the specific gap is permissible"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What will the length of the program you actually complete be — not the program you started, but the one you will finish?",
+      "what_it_reveals": "Determines PGWP eligibility length, which drives the entire post-graduation immigration timeline",
+      "follow_up_if_yes": "If it's 2+ years, confirm it's at a DLI and you will complete it without switching",
+      "follow_up_if_no": "If shorter than expected (due to switching), calculate the PGWP loss and model the PR timeline impact before committing",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Can the academic problem you're trying to solve be fixed within your current program without a formal program change?",
+      "what_it_reveals": "Determines whether a program switch is actually necessary or whether internal program changes (supervisor, focus, track) can achieve the same outcome",
+      "follow_up_if_yes": "Pursue the internal change; consult graduate advisor and DSO to ensure it doesn't trigger a program change in IRCC records",
+      "follow_up_if_no": "If a switch is unavoidable, calculate full PGWP impact and explore whether a program of equivalent or greater length is available as an alternative",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "If you are stacking two programs, are they consecutive with no gap between completion of one and start of the next?",
+      "what_it_reveals": "Determines whether IRCC will combine the program lengths for PGWP calculation or treat only the final program as the basis",
+      "follow_up_if_yes": "Verify with IRCC guidance what gap length, if any, is permissible — a standard April-to-September academic gap may or may not qualify",
+      "follow_up_if_no": "Assume the combined calculation may not apply and plan PGWP length based on the final program alone",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Has your program changed its name or structure due to institutional restructuring — and does IRCC's records reflect the program you are actually completing?",
+      "what_it_reveals": "A mid-degree program restructuring could create ambiguity in IRCC's assessment of program length and eligibility",
+      "follow_up_if_yes": "Obtain documentation from the institution confirming the program's length and DLI status; consider proactively contacting IRCC or a regulated consultant",
+      "follow_up_if_no": "No action needed on this dimension",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Switching programs within the same institution is a minor academic administrative change with no immigration consequences",
+      "actual_reality": "A formal program switch resets PGWP eligibility to the length of the newly completed program, regardless of how much time was spent in the original program — the OP would have lost 2 years of PGWP by switching from a 2-year Master's to a 1-year Graduate Certificate",
+      "implication": "Students must treat any program change as an immigration decision, not just an academic one, and consult their DSO or international student advisor before proceeding",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Completing more programs always results in a longer PGWP through stacking",
+      "actual_reality": "IRCC only combines program lengths if programs are consecutive at DLIs with no gap; a gap between programs may result in PGWP being based only on the final program, making additional earlier credentials irrelevant to PGWP length",
+      "implication": "Students who plan credential stacking strategies must verify the consecutiveness requirement and any permissible gap window before relying on a combined PGWP calculation",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Who to consult when considering a program change",
+      "naive_pattern": "Ask only the academic advisor or professor recommending the switch; treat it as a purely academic decision",
+      "informed_pattern": "Consult the international student advisor and DSO first, before agreeing to anything; model the PGWP and PR timeline impact as part of the decision",
+      "why_it_matters": "Academic advisors have no obligation to consider immigration consequences; only immigration-aware advisors will flag the PGWP cost of a program switch",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "How to think about program length",
+      "naive_pattern": "Think about program length in terms of time to graduation and tuition cost",
+      "informed_pattern": "Think about program length as the primary driver of PGWP duration, which determines years of Canadian work experience, which determines PR eligibility speed through Express Entry",
+      "why_it_matters": "A 1-year difference in program length can mean a 2-year difference in PR-eligible work experience accumulation, fundamentally changing the immigration timeline",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You can combine any programs you've completed to get a longer PGWP, as long as they're both at Canadian schools",
+      "why_believed": "The combining rule exists and feels logical — more education should equal more PGWP — so students assume any combination counts",
+      "actual_rule": "IRCC only combines program lengths for PGWP calculation if the programs are consecutive (no gap), both at designated learning institutions, and the combined length is accurate; a gap between programs may disqualify the combination",
+      "real_consequence": "Students plan their PR timeline assuming a 3-year PGWP from combined credentials but receive a shorter PGWP based only on the final program due to a gap",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Switching programs within the same university doesn't affect your PGWP",
+      "why_believed": "It feels like an internal administrative change at the same institution, so students assume IRCC treats it the same way",
+      "actual_rule": "PGWP length is based on the length of the program you actually complete; switching to a shorter program — even at the same institution — reduces PGWP eligibility to the length of the shorter completed program",
+      "real_consequence": "A student switching from a 2-year Master's to a 1-year Graduate Certificate loses a year of PGWP work authorization, reducing Canadian work experience toward PR",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student in a 2-year Master's program found the research focus was a poor fit in the second semester; a professor recommended switching to a 1-year Graduate Certificate at the same institution",
+      "decision": "Instead of switching programs, consulted graduate advisor and DSO, found a way to change research focus within the existing Master's program through internal channels",
+      "outcome": "Achieved the desired academic outcome (changed research focus), completed the 2-year Master's, retained eligibility for a 3-year PGWP",
+      "lesson": "Academic problems that seem to require a program switch can often be resolved internally; always explore within-program options before making a formal switch that triggers PGWP consequences",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student feels academic misfit (wrong research focus, poor supervisor relationship) and receives a trusted professor's recommendation to switch programs",
+      "underlying_state": "Immediate relief-seeking — the student is in discomfort and a credible authority figure (the professor) has offered a clear solution; the path of least resistance feels obviously correct",
+      "how_it_manifests": "Student moves toward the switch without questioning it or consulting immigration-aware advisors, framing it purely as an academic problem with an academic solution",
+      "expert_move": "Redirect the student to first consult their DSO or international student advisor before acting; reframe the switch as an immigration decision with academic dimensions, not purely an academic decision — then model out the PGWP and PR timeline cost in concrete years",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Student asks whether stacking a short program on top of a bachelor's will extend their PGWP beyond what the bachelor's alone would give",
+      "underlying_state": "Optimization mindset — student is looking for immigration hacks that maximize PGWP length through credential stacking, assuming more education always equals more PGWP",
+      "how_it_manifests": "Student plans a stacking strategy without verifying the consecutive requirement or gap rules, building a PR timeline on an assumption that may not hold",
+      "expert_move": "Validate the goal (longer PGWP) while immediately surfacing the consecutive requirement and gap rule; direct the student to verify their specific program sequence with IRCC guidance or a regulated consultant before relying on the combined calculation",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I switch programs to fix my academic situation?",
+      "reframe": "Before deciding on the academic question, calculate what this switch costs you in PGWP years and PR timeline — then decide if the academic benefit is worth that immigration cost",
+      "why_it_works": "Students frame program switches as purely academic decisions; the reframe forces them to treat it as a multi-domain decision where immigration consequences are quantified first, preventing an irreversible mistake made with incomplete information",
+      "example_language": "The short-term academic benefit might not be worth the long-term immigration cost",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_canadaimmigration_the_pgwp_program_change_trap_read_before_switching",
+  "_source_regions": [
+    "canada"
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "source_file": "f1visa_finally_got_my_h_1b_approved_after_3_lottery_attem.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Register for the master's cap if you have a US master's degree — it is a separate pool with better odds",
+      "condition": "When you hold a US master's degree and are registering for the H-1B lottery",
+      "action": "Register specifically for the master's cap exemption (20k pool), not only the general 65k cap",
+      "because": "Multiple commenters confirmed this is a separate, smaller pool that provides an additional selection chance at no extra cost — yet many eligible candidates miss it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Use a specific, accurate SOC code that matches the actual job duties rather than a generic catch-all code",
+      "condition": "When filing an H-1B petition for a role that could be classified multiple ways",
+      "action": "Work with an immigration-specialized attorney to identify the most precise SOC code with documented specialty occupation evidence",
+      "because": "The original poster attributed part of their success in year 3 to filing under a specific SOC code (15-2051 for data scientist) rather than a generic 'computer programmer' bucket, suggesting USCIS scrutiny is reduced with precise classification",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Use STEM OPT extension as a multi-year runway to survive multiple H-1B lottery cycles",
+      "condition": "When you are on F-1 OPT and have a STEM-eligible degree",
+      "action": "Apply for STEM OPT extension immediately to secure up to 3 years of total work authorization, covering up to 2 additional lottery rounds",
+      "because": "The original poster explicitly stated STEM OPT bought the extra 2 years needed to reach their third and successful lottery registration",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Use premium processing if your OPT is expiring soon and you need a timely decision",
+      "condition": "When H-1B is selected in the lottery and OPT expiration is imminent",
+      "action": "Pay for premium processing (~$2,805) to get a 15 business day decision",
+      "because": "A commenter with 98 upvotes recommended this for status certainty — avoiding a gap between OPT expiration and H-1B approval",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Hire an immigration-specialized attorney, not a general employment attorney, for H-1B filings",
+      "condition": "When preparing to file or re-file an H-1B petition",
+      "action": "Switch to a law firm with dedicated immigration specialization",
+      "because": "The original poster identified switching law firms as one of three concrete changes made in year 3 that contributed to approval",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer size and H-1B sponsorship history",
+      "why_it_matters": "Smaller employers may lack experience filing H-1B petitions correctly, increasing RFE or denial risk, and may be less willing to absorb legal and filing costs",
+      "how_to_assess": "Ask HR directly whether they have filed H-1B petitions before; check USCIS public H-1B employer data; ask for the name of the law firm they use",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Availability of cap-exempt employer bridge",
+      "why_it_matters": "Cap-exempt employers (universities, qualifying nonprofits) can sponsor H-1B outside the lottery at any time, providing a path forward even after multiple lottery losses",
+      "how_to_assess": "Research whether your employer has a nonprofit arm, affiliated university, or research entity with primary research purpose; ask HR about internal transfer options to affiliated entities",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "US master's degree eligibility for the master's cap pool",
+      "why_it_matters": "Eligible candidates get two chances in the lottery — the 20k master's cap pool and the general 65k cap — improving selection probability",
+      "how_to_assess": "Confirm whether your degree is from a US-accredited institution granting a qualifying master's degree; this is binary — you either qualify or you don't",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "SOC code precision and specialty occupation documentation",
+      "why_it_matters": "Vague or incorrect SOC codes invite USCIS RFEs or denials on specialty occupation grounds; precise codes with job duty evidence reduce scrutiny",
+      "how_to_assess": "Have an immigration attorney map actual job duties to the most specific applicable SOC code, not the most commonly used one for the field",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "STEM OPT eligibility",
+      "why_it_matters": "STEM OPT extends work authorization by 24 months, enabling participation in 2 additional H-1B lottery cycles before status expires",
+      "how_to_assess": "Confirm your degree field appears on the DHS STEM designated degree program list; confirm your employer meets E-Verify requirements",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying with a small employer through multiple lottery cycles",
+      "unstated_consequence": "Small employers (~50 people) may lack institutional knowledge of H-1B processes, increasing filing errors, RFE risk, and potentially being unwilling to re-file after losses — leaving the employee with no backup plan when OPT expires",
+      "who_it_affects": "F-1 students on STEM OPT at early-stage startups or small companies with no prior H-1B sponsorship history",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on H-1B lottery selection without a cap-exempt backup strategy",
+      "unstated_consequence": "Three failed lottery attempts with no bridge means forced departure after OPT exhaustion; the cap-exempt employer bridge option exists but is rarely surfaced by HR unless the employee asks directly",
+      "who_it_affects": "Any F-1 OPT holder whose employer does not proactively discuss contingency planning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Filing under a generic SOC code for convenience",
+      "unstated_consequence": "Generic codes like 'computer programmer' attract higher USCIS scrutiny and RFE rates for roles that are actually specialty occupations under more specific codes",
+      "who_it_affects": "Data scientists, ML engineers, and other emerging tech roles that straddle multiple SOC categories",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Registering only for the general H-1B cap when eligible for the master's cap",
+      "why_it_happens": "Candidates with US master's degrees are unaware that the master's cap is a separate pool, or assume their employer's attorney handles it correctly without verifying",
+      "consequence": "Loss of a free additional lottery entry, reducing selection probability unnecessarily across all attempts",
+      "warning_signs": [
+        "Candidate has never verified their master's cap eligibility with their attorney",
+        "Employer's attorney filed in prior years without confirming degree classification"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Using a general employment attorney instead of an immigration specialist for H-1B filings",
+      "why_it_happens": "Employers use the same law firm for all employment matters; cost-cutting; assumption that any attorney can handle immigration paperwork",
+      "consequence": "Poorly documented specialty occupation claims, incorrect SOC codes, higher RFE rates, and preventable denials",
+      "warning_signs": [
+        "Employer's law firm does not specialize in immigration",
+        "Attorney does not ask detailed questions about actual job duties when preparing the petition"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Not asking HR about cap-exempt bridge options until after lottery loss",
+      "why_it_happens": "Employees assume only direct H-1B sponsorship is available; HR departments rarely proactively disclose internal transfer or affiliated entity options",
+      "consequence": "Missing the window to arrange a cap-exempt bridge, forcing departure or career disruption",
+      "warning_signs": [
+        "Employer has never mentioned cap-exempt options",
+        "Employee has never asked HR whether the company has nonprofit or university-affiliated entities"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does your employer have an affiliated nonprofit, research entity, or university partnership that qualifies as cap-exempt?",
+      "what_it_reveals": "Whether a cap-exempt H-1B bridge is available, allowing work authorization outside the lottery",
+      "follow_up_if_yes": "Has HR or legal confirmed that the affiliated entity meets the USCIS primary purpose test for cap-exemption?",
+      "follow_up_if_no": "Are there other cap-exempt employers in your field you could transfer to while maintaining employment in a related role?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your employer successfully filed and received H-1B approvals for other employees before?",
+      "what_it_reveals": "Whether the employer has institutional competence and willingness to manage the H-1B process correctly",
+      "follow_up_if_yes": "Which law firm did they use, and do they have an immigration specialist on retainer?",
+      "follow_up_if_no": "What is the employer's contingency plan if the petition is denied or the employee loses the lottery?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you hold a US master's degree, and was your H-1B registration submitted under the master's cap pool?",
+      "what_it_reveals": "Whether the candidate has been receiving both available lottery chances or only one",
+      "follow_up_if_yes": "Confirm the registration explicitly selected master's cap exemption, not just the general cap",
+      "follow_up_if_no": "Assess whether a degree from a US-accredited institution qualifies under USCIS master's cap criteria",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What SOC code is your employer planning to use for the H-1B filing, and does it match your actual job duties?",
+      "what_it_reveals": "Whether the filing is at risk of an RFE or denial due to vague or mismatched specialty occupation classification",
+      "follow_up_if_yes": "Is there documented evidence — job description, salary benchmarks, degree requirements — supporting specialty occupation under that specific SOC code?",
+      "follow_up_if_no": "Have your attorney map your actual duties to the most precise applicable SOC code before filing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you currently in STEM OPT or still on initial OPT, and when does your work authorization expire?",
+      "what_it_reveals": "How many more lottery cycles you can survive before losing status, and whether STEM OPT extension is still available as a runway",
+      "follow_up_if_yes": "Calculate how many April lottery registrations fall within your remaining STEM OPT window",
+      "follow_up_if_no": "Apply for STEM OPT extension immediately if eligible — do not wait until initial OPT is near expiration",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The H-1B lottery is purely random and there is nothing you can do to improve your chances beyond registering",
+      "actual_reality": "While selection is random, post-selection approval probability is significantly affected by SOC code precision, quality of specialty occupation documentation, and the competence of the filing attorney — all controllable factors",
+      "implication": "Candidates should invest in petition quality even if they cannot control lottery odds; a selected petition that gets denied wastes the lottery slot",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Cap-exempt H-1B sponsorship is only available after you already hold H-1B status",
+      "actual_reality": "Cap-exempt employers can sponsor H-1B for F-1 OPT holders who have never held H-1B status — the cap-exempt path is available regardless of prior H-1B history",
+      "implication": "F-1 OPT holders who have lost the lottery should actively seek cap-exempt employers rather than assuming they are locked out",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "University hospital systems and large nonprofits automatically qualify as cap-exempt H-1B sponsors",
+      "actual_reality": "Cap-exempt status depends on whether the organization's primary purpose is nonprofit research or higher education — hospital systems sometimes qualify and sometimes do not, requiring case-by-case legal analysis",
+      "implication": "Do not assume a nonprofit employer is cap-exempt without confirming with an immigration attorney who has reviewed the organization's USCIS qualification",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to H-1B lottery loss",
+      "naive_pattern": "Assumes the only options are re-registering next year or leaving the country; waits passively for the next lottery window",
+      "informed_pattern": "Immediately maps available alternatives: cap-exempt bridge employers, STEM OPT extension runway, O-1 visa eligibility, Canada work permit as parallel track",
+      "why_it_matters": "Passive waiting consumes valuable status time and may foreclose options that required earlier action",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Employer vetting for visa sponsorship",
+      "naive_pattern": "Accepts employer's verbal assurance that they 'sponsor H-1B' without verifying prior filing history, law firm quality, or contingency planning",
+      "informed_pattern": "Checks USCIS public H-1B employer data, asks for the name of the immigration attorney, confirms the employer has successfully petitioned before, and asks what happens if the petition is denied",
+      "why_it_matters": "Small or inexperienced employers may fail the petition due to avoidable documentation errors, costing the employee their lottery slot",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Understanding the master's cap",
+      "naive_pattern": "Assumes the H-1B lottery is a single pool and trusts the employer's attorney to handle all registration details correctly",
+      "informed_pattern": "Independently verifies that the registration was submitted under the master's cap pool and understands the probability difference between the two pools",
+      "why_it_matters": "Missing the master's cap registration is a free improvement in odds that requires only awareness — failing to use it is a recoverable but unnecessary loss",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you have a US master's degree, you automatically get entered into the master's cap pool when your employer registers you for H-1B",
+      "why_believed": "Candidates assume their employer's attorney handles this correctly by default and do not verify the registration details themselves",
+      "actual_rule": "The master's cap pool registration must be explicitly selected during the H-1B electronic registration process — it is not automatic and requires the employer/attorney to affirmatively elect it",
+      "real_consequence": "Eligible candidates lose an additional free lottery entry, reducing their selection probability unnecessarily — confirmed by multiple commenters noting they have seen top-program graduates miss this",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You can only get a cap-exempt H-1B transfer if you are already in H-1B status",
+      "why_believed": "The term 'transfer' implies an existing H-1B, and most community advice focuses on cap-exempt paths after lottery loss as a post-H-1B strategy",
+      "actual_rule": "Cap-exempt employers can file H-1B petitions for F-1 OPT holders who have never had H-1B status — the cap-exemption applies to the employer, not the employee's prior visa history",
+      "real_consequence": "OPT holders who lose the lottery rule out cap-exempt employers as an option and fail to pursue a viable alternative path to H-1B status",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "F-1 student on STEM OPT lost H-1B lottery in 2022 and 2023; faced potential departure after OPT exhaustion",
+      "decision": "In year 3, switched to a larger employer with cap-exempt bridge capacity, hired an immigration-specialized law firm, and filed under a precise SOC code (15-2051) with strong specialty occupation documentation",
+      "outcome": "Selected in 2024 lottery and received H-1B approval; STEM OPT extension had provided the runway to reach the third attempt",
+      "lesson": "Multiple lottery failures are survivable if STEM OPT extension is secured early and concrete petition quality improvements — SOC code precision, attorney specialization, cap-exempt backup — are made rather than simply re-registering with the same strategy",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Being in STEM OPT year 1 at a small employer and asking whether to vet the employer's H-1B experience",
+      "underlying_state": "Fear of appearing demanding or ungrateful to a sponsoring employer; anxiety about raising the topic of potential failure before it happens",
+      "how_it_manifests": "Employee avoids directly asking HR about prior H-1B filings or contingency plans, deferring to hope that the employer 'will figure it out'",
+      "expert_move": "Reframe due diligence as a professional responsibility shared with the employer — frame questions around 'wanting to understand the process so I can support it' rather than implying distrust",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Asking about the 60-day grace period after a lottery non-selection",
+      "underlying_state": "Status anxiety and catastrophizing — the student is mentally rehearsing departure before exploring alternatives",
+      "how_it_manifests": "Focus narrows entirely to the grace period clock rather than the range of available status-preservation options (cap-exempt, STEM OPT extension, O-1, change of status)",
+      "expert_move": "Redirect attention from the countdown to an options audit: 'Before worrying about the 60 days, let's list every path that extends your authorized presence — STEM OPT, cap-exempt employer, O-1, even Canada PGWP if applicable'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Being terrified after losing two H-1B lotteries while watching peers succeed on first attempt",
+      "underlying_state": "Survivorship bias exposure and peer comparison anxiety — the community surfaces winners more visibly than people who needed multiple attempts or alternative paths",
+      "how_it_manifests": "Candidate interprets repeated lottery loss as a signal that H-1B is unachievable for them, rather than as a probabilistic outcome affecting a large share of eligible applicants",
+      "expert_move": "Surface base rates explicitly: with ~20-25% annual selection probability, a substantial portion of eligible applicants statistically require 3+ attempts; the original poster's story is not exceptional — it is representative of a large, underreported cohort",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I lost the H-1B lottery again — what do I do about the 60-day grace period?",
+      "reframe": "The 60-day grace period is a transition window, not an expiration date — the question is which of several available status-preservation paths you qualify for and which you can activate within that window",
+      "why_it_works": "Shifts the mental model from scarcity (time running out) to agency (options to activate), which opens the decision space and reduces paralysis",
+      "example_language": "Before worrying about the clock, map every path available to you — STEM OPT extension, cap-exempt employer, change of status — then work backward from deadlines",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "The SOC code is something my attorney decides — I don't need to be involved in that",
+      "reframe": "The SOC code is a joint decision because only you fully know what your job actually involves — the attorney translates duties into code, but you are the source of truth for the duties",
+      "why_it_works": "Transfers appropriate ownership to the candidate, prompting active participation in petition preparation rather than passive delegation that increases RFE risk",
+      "example_language": "Your attorney can't document specialty occupation without your detailed job description — this is a collaboration, not a hand-off",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_f1visa_finally_got_my_h_1b_approved_after_3_lottery_attem",
+  "_source_regions": [
+    "us"
+  ]
+}

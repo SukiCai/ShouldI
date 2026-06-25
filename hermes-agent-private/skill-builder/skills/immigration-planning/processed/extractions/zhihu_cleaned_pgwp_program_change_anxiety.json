@@ -1,0 +1,277 @@
+{
+  "source_file": "pgwp_program_change_anxiety.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "PGWP eligibility is determined by enrollment date, not program-change date",
+      "condition": "When a student changed programs after their initial enrollment but before a new PGWP policy took effect",
+      "action": "Check the original enrollment date against the grandfathering cutoff date (2024-11-01), not the date of the program change",
+      "because": "IRCC's 2024 November policy explicitly uses 'enrollment date' as the key eligibility trigger; the policy text states students enrolled before November 1, 2024 are exempt from new program requirements",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Apply for PGWP as early as eligible — do not delay post-graduation",
+      "condition": "When a student has already met PGWP eligibility requirements and is approaching or past graduation",
+      "action": "Submit the PGWP application as soon as possible after graduation, without waiting",
+      "because": "A real case in this thread shows a student whose PGWP was approved under old rules because she applied before new policy took effect; waiting increases risk of being caught by subsequent policy changes",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Preserve all enrollment and program-change documentation",
+      "condition": "When a student has changed programs during their studies and plans to apply for PGWP",
+      "action": "Retain original enrollment letter (showing initial enrollment date), program-change approval documents, and full-time status records",
+      "because": "Commenters with direct experience advise this as a practical safeguard for demonstrating grandfathering eligibility to IRCC",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Original enrollment date relative to PGWP policy cutoff",
+      "why_it_matters": "Determines whether a student is grandfathered under old rules, regardless of any subsequent program changes",
+      "how_to_assess": "Compare the date on the original enrollment letter against the policy cutoff (2024-11-01 for the 2024 PGWP reform)",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether the changed-to program appears on IRCC's eligible program list",
+      "why_it_matters": "For students NOT protected by grandfathering, the new program must be on the eligible list to qualify for PGWP at all; for grandfathered students it is less critical but still affects PGWP duration cap",
+      "how_to_assess": "Check IRCC's current eligible program list; note that the list changes (178 removed, 119 added in June 2025 alone)",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Duration of study and program category",
+      "why_it_matters": "PGWP duration is not simply equal to study duration; post-2024 policy caps non-eligible-list programs at 2 years maximum regardless of study length, reducing expected PGWP duration for 3-year program graduates",
+      "how_to_assess": "Map study duration against IRCC's tiered formula: <8 months = up to 1 year; 8 months–2 years = equal to study time; 2+ years = up to 3 years (subject to eligible-list cap of 2 years under new rules)",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Timing of PGWP application relative to policy announcement dates",
+      "why_it_matters": "Applications submitted before a policy change took effect may be processed under prior rules, as illustrated by the hospitality management case in this thread",
+      "how_to_assess": "Track IRCC policy announcement dates; if close to a policy transition, early application submission provides a meaningful buffer",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Changing programs mid-study without checking PGWP implications",
+      "unstated_consequence": "The new program may fall outside IRCC's eligible list, reducing or eliminating PGWP duration — a consequence not visible at the time of the program switch",
+      "who_it_affects": "Students who switch from STEM or in-demand fields (e.g., CS) to general business or hospitality programs, especially those not covered by grandfathering",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying solely on PGWP as the immigration pathway",
+      "unstated_consequence": "PGWP policy instability (multiple major adjustments in 2024–2025) means the pathway can change after enrollment, leaving students with fewer options than expected",
+      "who_it_affects": "International students who chose their program primarily for PGWP eligibility without building parallel immigration buffers (e.g., Canadian work experience, PNP pathways)",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Waiting until well after graduation to apply for PGWP",
+      "unstated_consequence": "A subsequent policy announcement can change eligibility or duration rules before the application is submitted, even if the student was eligible at graduation",
+      "who_it_affects": "Students who graduate but delay application due to job searching, travel, or uncertainty about their eligibility",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming PGWP duration equals length of study, without accounting for program-category caps",
+      "why_it_happens": "The old rule was relatively simple and widely circulated; the 2024 policy change introduced a program-list cap of 2 years for non-eligible programs, which was not widely understood",
+      "consequence": "Students who completed 3-year programs outside the eligible list received a 2-year PGWP instead of the expected 3-year PGWP, shortening their Canadian work experience window and potentially affecting Express Entry CRS timelines",
+      "warning_signs": [
+        "Student states 'I read 3 years so I get 3 years PGWP' without referencing the eligible program list",
+        "Student does not know whether their program appears on IRCC's eligible list"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Learning about a PGWP policy change only after it takes effect and retrospectively catastrophizing about past decisions",
+      "why_it_happens": "IRCC policy announcements are not proactively communicated to enrolled students; students often hear through community forums with delay, then apply the new rules retroactively to their own situations incorrectly",
+      "consequence": "Unnecessary anxiety and sometimes premature abandonment of a valid PGWP pathway due to misreading grandfathering protections",
+      "warning_signs": [
+        "Student asks 'am I completely ineligible now?' without referencing their enrollment date",
+        "Student conflates the program-change date with the enrollment date when assessing grandfathering"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your original enrollment date at your Canadian institution?",
+      "what_it_reveals": "Whether the student is protected by grandfathering under the 2024-11-01 PGWP policy cutoff, regardless of any subsequent program changes",
+      "follow_up_if_yes": "If enrolled before November 1, 2024: confirm full-time status has been maintained continuously; then advise to document and apply early",
+      "follow_up_if_no": "If enrolled after November 1, 2024: assess whether the specific program is on IRCC's current eligible program list before advising further",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your program (the one you will graduate from) currently appear on IRCC's eligible program list?",
+      "what_it_reveals": "Whether the student faces a PGWP duration cap of 2 years, or no PGWP eligibility at all, under the post-2024 framework",
+      "follow_up_if_yes": "Confirm the list version being checked is current (list changed significantly in June 2025); check for your specific institution's offering",
+      "follow_up_if_no": "Assess grandfathering protection; if not grandfathered, evaluate alternative pathways (PNP, in-Canada work experience accumulation, returning to eligible program)",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Have you already graduated, and if so, when did you graduate relative to the most recent PGWP policy announcement?",
+      "what_it_reveals": "Whether early application could capture eligibility under prior rules before the new policy fully takes effect",
+      "follow_up_if_yes": "If recently graduated and policy change is recent: advise immediate PGWP application to maximize chance of processing under prior rules",
+      "follow_up_if_no": "If still enrolled: plan program completion timeline with awareness of upcoming policy review cycles",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PGWP duration simply equals how long you studied — 2 years of study means 2 years of PGWP, 3 years means 3 years",
+      "actual_reality": "Post-2024 PGWP policy introduced a program-eligibility-list dimension: programs not on IRCC's eligible list are capped at a 2-year PGWP maximum, regardless of study duration; the duration formula is tiered and program-category-dependent",
+      "implication": "Students in 3-year programs outside the eligible list should not plan their immigration timeline (e.g., Express Entry CRS accumulation) assuming a 3-year work permit",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Once a PGWP policy is announced, the eligible program list is stable",
+      "actual_reality": "The eligible program list has undergone significant changes within months of initial publication — approximately 178 programs were removed and 119 added in June 2025 alone, less than a year after the November 2024 announcement",
+      "implication": "Students should not select programs based solely on a single snapshot of the eligible list; they should verify currency of the list and build redundancy into their immigration strategy",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to assess PGWP eligibility after a program change",
+      "naive_pattern": "Focuses on the program name and whether it appears on the eligible list today; assumes that if the current program is not on the list, PGWP is gone",
+      "informed_pattern": "First checks enrollment date against grandfathering cutoff; only then evaluates program-list status; understands that enrollment date, not program-change date, is the controlling variable",
+      "why_it_matters": "Misapplying the analysis leads to unnecessary panic and potentially incorrect decisions (e.g., scrambling to switch back to CS when grandfathering already provides protection)",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Immigration pathway planning",
+      "naive_pattern": "Treats PGWP as a reliable, single-track pathway; selects program for PGWP eligibility at enrollment and assumes the rules will hold through graduation",
+      "informed_pattern": "Treats PGWP as one component of a multi-track strategy; simultaneously accumulates Canadian work experience via on-campus jobs or co-op during studies to hedge against policy changes",
+      "why_it_matters": "Students who rely exclusively on PGWP are fully exposed to policy instability; those who accumulate Canadian work experience in parallel retain Express Entry eligibility even if PGWP rules tighten further",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you changed your program to one not on IRCC's eligible list, you have lost your PGWP eligibility entirely",
+      "why_believed": "The 2024 policy announcement emphasized program eligibility as a new requirement; students reading the announcement in isolation apply it without understanding the grandfathering clause that protects pre-November 2024 enrollees",
+      "actual_rule": "Students enrolled before November 1, 2024 are grandfathered under the old policy; eligibility is determined by enrollment date, not the program at time of graduation or the date a program change occurred",
+      "real_consequence": "Students may unnecessarily switch programs back, extend their studies, abandon their pathway, or experience severe anxiety based on a misreading of their actual eligibility status",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "PGWP duration equals your study duration: 2 years of study = 2-year PGWP, 3 years of study = 3-year PGWP",
+      "why_believed": "This was approximately true under the pre-2024 rules for many programs, and the simplified version circulates widely in student communities without the post-2024 program-list caveat",
+      "actual_rule": "Post-2024 policy caps PGWP at 2 years maximum for programs not on IRCC's eligible list, regardless of study duration; eligible programs retain the tiered formula up to 3 years",
+      "real_consequence": "Students in 3-year ineligible programs who planned a 3-year work permit window for Express Entry CRS accumulation will receive only 2 years, potentially missing their target CRS score or PR application window",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student enrolled in 2022 in hospitality management, a program later removed from IRCC's eligible list in June 2025; student was outside the grandfathering window (enrolled before 2024-11-01 cutoff technically qualifies, but the comment implies she was not protected — likely referencing a different cutoff or interpretation)",
+      "decision": "Applied for PGWP before the new policy removing her program from the list took effect",
+      "outcome": "PGWP was approved under the old rules because the application was submitted before the policy change took effect",
+      "lesson": "Submitting a PGWP application before a policy change is announced or takes effect can lock in eligibility under prior rules; early application is a meaningful risk-reduction strategy in an environment of frequent policy changes",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "situation": "Student enrolled September 2023 in CS, switched to Business Administration in March 2024, then learned in November 2024 that PGWP now requires programs to be on an eligible list; Business Administration at many schools is not on the list",
+      "decision": "Sought community guidance; informed commenters identified grandfathering protection based on the September 2023 enrollment date",
+      "outcome": "Determined to still be eligible for PGWP under grandfathering, provided full-time status maintained; advised to document enrollment date and program-change date and consult immigration lawyer before graduation",
+      "lesson": "For students who changed programs before a policy cutoff, the enrollment date (not the program-change date) is the controlling eligibility variable; early legal consultation before graduation is lower-risk than discovering issues at application time",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student learns about a new PGWP policy through community forums and immediately asks 'am I completely ineligible now? Is there any hope?'",
+      "underlying_state": "Catastrophizing — the student applies the most restrictive interpretation of the new rule to their own situation without first checking whether protective clauses (grandfathering) apply to them",
+      "how_it_manifests": "Framing the question as binary ('no PGWP at all') rather than conditional; expressing that the situation is '彻底没有资格' (completely ineligible) before examining the grandfathering facts",
+      "expert_move": "Redirect immediately to the controlling variable (enrollment date vs. policy cutoff) before engaging with the question on its own terms; show that the feared outcome is conditional, not certain",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Student discovers that PGWP rules changed after they made an enrollment or program-change decision",
+      "underlying_state": "Loss aversion combined with a sense of irrevocability — the student feels that a past decision has permanently foreclosed options, even when grandfathering or other protections exist",
+      "how_it_manifests": "Questions focus on 'is it too late' or 'I should have known' rather than 'what is my current actual eligibility and what are my options from here'",
+      "expert_move": "Separate what has already been decided (enrollment date, program change) from what is still actionable (application timing, documentation, legal consultation, co-op/work experience accumulation); reframe around what remains in the student's control",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I changed my program to one not on the eligible list — am I completely ineligible for PGWP now?",
+      "reframe": "The question is not whether your current program is on the list. The question is what your enrollment date was, because that determines whether you are grandfathered under the old policy.",
+      "why_it_works": "Shifts the student from evaluating a static program attribute (list membership) to evaluating a temporal fact (enrollment date) that they actually control the documentation of; this immediately opens a path forward that the original framing had closed",
+      "example_language": "先说结论：你的情况很可能仍然有资格申请PGWP，因为grandfathering条款。关键日期是'入学日期'，不是'换专业日期'。",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Will my PGWP be affected by the new policy?",
+      "reframe": "PGWP policy instability is now a structural risk, not a one-time event. The real question is whether your immigration strategy is robust enough to survive another policy change.",
+      "why_it_works": "Moves the student from a reactive, single-policy question to a strategic posture; reframes PGWP not as a guaranteed outcome to protect but as one variable in a multi-factor immigration plan that needs redundancy",
+      "example_language": "依赖PGWP作为唯一移民工具的风险在上升。更稳健的策略是：入学时就选择在IRCC list上的专业，同时在学期间就开始积累加拿大工作经验。",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_cleaned_pgwp_program_change_anxiety",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

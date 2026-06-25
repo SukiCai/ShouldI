@@ -1,0 +1,344 @@
+{
+  "source_file": "opt_stem_opt_guide.txt",
+  "heuristics": [
+    {
+      "rule": "Apply for OPT exactly 90 days before your program end date — not a day later.",
+      "condition": "When you are an F-1 student approaching graduation and planning to work in the US",
+      "action": "Submit your OPT application (Form I-765) to USCIS as close to 90 days before your program end date as possible",
+      "because": "USCIS processing takes 2–5 months; applying late risks a gap in work authorization that can cost you a job offer or trigger unemployment day accumulation",
+      "country_scope": "us"
+    },
+    {
+      "rule": "After your DSO recommends OPT in SEVIS, you have exactly 30 days to file Form I-765 — treat this as a hard deadline with zero flexibility.",
+      "condition": "When your Designated School Official has recommended OPT in the SEVIS system",
+      "action": "Submit Form I-765 to USCIS within 30 days of the DSO SEVIS recommendation",
+      "because": "Missing this 30-day window results in automatic denial — there is no grace period or appeal process for this specific deadline",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Before accepting any job offer for STEM OPT, verify E-Verify enrollment — not after signing.",
+      "condition": "When you hold a STEM degree and are negotiating a job offer during or leading into your STEM OPT extension period",
+      "action": "Confirm the employer is enrolled in E-Verify before accepting the offer, not after",
+      "because": "A non-E-Verify employer legally cannot employ you on STEM OPT; accepting the offer first creates pressure to join anyway, which violates your immigration status",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If your H-1B petition is filed and pending when OPT expires, do not file any separate cap-gap paperwork — it is automatic.",
+      "condition": "When an F-1 student's OPT expiration date falls before October 1 and an H-1B petition has been filed on their behalf",
+      "action": "Verify with employer that the H-1B petition has been filed, then continue working — no separate USCIS filing is needed for cap-gap",
+      "because": "Cap-gap extension of F-1 status and work authorization is automatic by regulation; filing unnecessary documents wastes money and can confuse the record",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Start tracking unemployment days from Day 1 of your OPT period — not from when you first notice you are approaching the limit.",
+      "condition": "When post-completion OPT begins",
+      "action": "Create a personal log of all unemployed days starting from the OPT start date on your EAD card",
+      "because": "The 90-day limit (regular OPT) and cumulative 150-day limit (STEM OPT) are strictly enforced; USCIS does not send warnings, and exceeding the limit terminates F-1 status automatically",
+      "country_scope": "us"
+    },
+    {
+      "rule": "When changing employers during STEM OPT, report the change to your DSO within 10 days and submit a new Form I-983 — do not wait until the next check-in.",
+      "condition": "When a student on STEM OPT accepts a new job or leaves a previous employer",
+      "action": "Notify DSO within 10 days and prepare a new I-983 Training Plan with the new employer before starting work",
+      "because": "Failure to report within 10 days is a SEVIS compliance violation; working without a valid I-983 on file exposes the student to status termination",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Negotiate the highest salary possible during STEM OPT — it directly affects H-1B lottery selection odds starting FY2027.",
+      "condition": "When a student on OPT or STEM OPT is evaluating a job offer and H-1B sponsorship is a future goal",
+      "action": "Prioritize compensation negotiation as a strategic immigration tool, not just a financial one",
+      "because": "Under the wage-based H-1B lottery system (FY2027+), higher wage level registrations are selected at higher rates, making salary a direct determinant of visa lottery success",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "STEM degree CIP code eligibility",
+      "why_it_matters": "Only degrees whose CIP code appears on the DHS STEM Designated Degree Program list qualify for the 24-month STEM OPT extension; a non-qualifying degree means only 12 months of OPT total",
+      "how_to_assess": "Check the DHS STEM Designated Degree Program list against your specific degree's CIP code via your university registrar or DSO before selecting a program or major",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer E-Verify enrollment status",
+      "why_it_matters": "Without E-Verify enrollment, an employer cannot legally hire a STEM OPT student; accepting an offer from a non-enrolled employer forces the student to choose between violating status or losing the job",
+      "how_to_assess": "Ask HR directly before the offer stage; alternatively search the E-Verify employer search tool at uscis.gov",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "OPT application timing relative to graduation",
+      "why_it_matters": "Late applications cause gaps in work authorization that accumulate unemployment days and can jeopardize job offers; early applications maximize the buffer for USCIS processing delays",
+      "how_to_assess": "Count back 90 days from your official program end date and mark that as the earliest filing date; build your graduation and job search timeline around this window",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Salary level relative to H-1B wage tiers",
+      "why_it_matters": "Under the FY2027+ wage-based H-1B selection system, higher-wage registrations have statistically better lottery odds; a lower salary at a prestigious firm may yield worse lottery outcomes than a higher salary at a smaller firm",
+      "how_to_assess": "Research the prevailing wage levels for your occupation and location using the DOL Foreign Labor Certification Data Center; assess where a given offer falls within wage levels I–IV",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Pre-completion vs. post-completion OPT usage",
+      "why_it_matters": "Pre-completion OPT hours count against the 12-month total; using pre-completion OPT reduces the post-graduation work buffer and can compress the timeline for finding H-1B-sponsoring employment",
+      "how_to_assess": "Calculate total pre-completion OPT hours used and subtract from the 12-month total to understand remaining post-completion eligibility",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Strength and clarity of Form I-983 Training Plan",
+      "why_it_matters": "Vague or poorly written I-983s attract DHS audit scrutiny; a strong I-983 clearly connects job duties to the STEM degree and reduces audit risk",
+      "how_to_assess": "Review whether each job duty in the I-983 can be explicitly mapped to a specific course, skill, or competency from the STEM degree curriculum",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Cumulative unemployment days across both OPT and STEM OPT periods",
+      "why_it_matters": "The 150-day limit during STEM OPT is cumulative across the entire extension period, not a fresh counter; students who had job gaps early in STEM OPT may hit the limit faster than they realize",
+      "how_to_assess": "Maintain a running total from the start of the STEM OPT extension period; do not reset the counter when switching employers",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using pre-completion OPT for early work experience",
+      "unstated_consequence": "Every hour worked on pre-completion OPT is deducted from the 12-month post-completion OPT total, leaving less runway after graduation to find an H-1B-sponsoring employer",
+      "who_it_affects": "Students in competitive fields where finding a sponsoring employer takes 6–12 months after graduation",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a job offer without verifying E-Verify enrollment for STEM OPT",
+      "unstated_consequence": "If the employer is not enrolled, the student cannot legally start work on STEM OPT, creating an immediate gap that counts toward the 150-day unemployment limit while also putting them in a contractually awkward position",
+      "who_it_affects": "Students who have already given notice to other opportunities or relocated for the role",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Choosing a non-STEM degree program to graduate faster or for other academic reasons",
+      "unstated_consequence": "Forfeiting the 24-month STEM OPT extension means only 12 months to secure H-1B sponsorship — significantly compressing the timeline and increasing risk of status gaps",
+      "who_it_affects": "Students who plan to stay in the US long-term but did not anticipate visa consequences when selecting their program",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Submitting a vague or generic Form I-983 to satisfy the employer quickly",
+      "unstated_consequence": "Increased probability of DHS audit; if the audit finds the I-983 insufficient, the student's STEM OPT authorization can be revoked retroactively, jeopardizing months of work history",
+      "who_it_affects": "Students working at employers unfamiliar with international student compliance who rely on HR to draft the I-983",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Prioritizing prestige of employer over salary level during OPT job search",
+      "unstated_consequence": "Under the FY2027+ wage-based H-1B lottery, a prestigious brand with a lower wage level may yield statistically worse H-1B selection odds than a less prominent firm offering higher compensation",
+      "who_it_affects": "Students in fields like consulting, research, or nonprofits where compensation is often below market and employer prestige is overweighted in decision-making",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on employer HR to manage OPT compliance reporting",
+      "unstated_consequence": "The legal obligation to report address changes, employer changes, and other status updates within 10 days rests with the student — not the employer; if HR misses a report, it is the student who loses status",
+      "who_it_affects": "Students at large corporations with overburdened HR teams or at startups without dedicated immigration compliance staff",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying for OPT fewer than 90 days before graduation, resulting in a work authorization gap",
+      "why_it_happens": "Students focus on academic completion and job searching, underestimating USCIS processing times and the complexity of the DSO recommendation step",
+      "consequence": "EAD card arrives after graduation and sometimes after a job start date, forcing the employer to delay onboarding or rescind the offer; every day without an EAD counts as an unemployment day",
+      "warning_signs": [
+        "Student has not contacted DSO about OPT until after receiving a job offer",
+        "Student believes OPT starts automatically at graduation without a separate application"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Missing the 30-day I-765 filing window after DSO SEVIS recommendation, resulting in automatic denial",
+      "why_it_happens": "Students do not realize the 30-day clock starts from DSO's action in SEVIS, not from when they receive notification or gather documents",
+      "consequence": "OPT application is automatically denied; student must restart the process, losing weeks or months and potentially missing the post-completion filing deadline entirely",
+      "warning_signs": [
+        "Student waiting to receive all supporting documents before initiating the I-765",
+        "Student unaware that DSO has already recommended OPT in SEVIS"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Exceeding the 90-day unemployment limit without realizing it, causing automatic F-1 status termination",
+      "why_it_happens": "Students do not track unemployment days systematically; they assume searching actively for work means they are not 'unemployed' in the immigration sense",
+      "consequence": "F-1 status is automatically terminated; the student is out of status and may be barred from re-entry or future visa applications",
+      "warning_signs": [
+        "No personal log of unemployment days exists",
+        "Student has experienced multiple short job gaps between positions"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Starting STEM OPT work at a non-E-Verify employer",
+      "why_it_happens": "Student assumes E-Verify is a formality or that the employer will enroll once the student joins; employer HR is unaware of the requirement",
+      "consequence": "Work performed without valid STEM OPT authorization; student is technically out of status and the employer faces E-Verify compliance violations",
+      "warning_signs": [
+        "HR has not mentioned E-Verify during onboarding",
+        "Employer is a small startup or sole proprietorship with no prior international hires"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Submitting a vague Form I-983 that does not clearly connect job duties to the STEM degree",
+      "why_it_happens": "Students defer entirely to employer HR to draft the I-983; HR writes a generic job description rather than a degree-linked training narrative",
+      "consequence": "DHS audit finds the I-983 insufficient; STEM OPT authorization may be revoked and the student is left without valid work authorization mid-employment",
+      "warning_signs": [
+        "I-983 uses phrases like 'general business skills' without naming specific courses or competencies",
+        "Supervisor has not read or meaningfully contributed to the I-983 content"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Failing to report employer or address changes within 10 days, resulting in SEVIS violations",
+      "why_it_happens": "Students assume changes are administrative and low-priority; they are unaware the 10-day window is a legal compliance requirement, not a courtesy guideline",
+      "consequence": "SEVIS record is flagged for non-compliance; in serious cases DSO must terminate the SEVIS record, immediately ending F-1 status",
+      "warning_signs": [
+        "Student changed jobs more than 10 days ago and has not contacted DSO",
+        "Student moved apartments and updated only the postal service, not SEVP Portal or DSO"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the student's DSO already recommended OPT in SEVIS, and if so, when?",
+      "what_it_reveals": "Whether the 30-day I-765 filing clock is already running and how much time remains before automatic denial",
+      "follow_up_if_yes": "Calculate exact days remaining in the 30-day window and prioritize immediate I-765 submission over all other application steps",
+      "follow_up_if_no": "Determine how far from graduation the student is and whether the 90-day early filing window is open yet",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the student's degree CIP code appear on the DHS STEM Designated Degree Program list?",
+      "what_it_reveals": "Whether the student is eligible for the 24-month STEM OPT extension, which changes the entire timeline and strategy for transitioning to H-1B",
+      "follow_up_if_yes": "Confirm E-Verify enrollment of any potential employers and begin STEM OPT extension application during the last 90 days of regular OPT",
+      "follow_up_if_no": "Student has only 12 months of OPT; H-1B strategy must account for a much tighter window and higher urgency to secure sponsoring employer",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the employer the student is considering for STEM OPT enrolled in E-Verify?",
+      "what_it_reveals": "Whether the job offer is legally compatible with STEM OPT or will force an immediate status crisis upon onboarding",
+      "follow_up_if_yes": "Proceed with I-983 Training Plan preparation and DSO notification",
+      "follow_up_if_no": "Do not accept or start the role; assess whether employer will enroll in E-Verify before the student's start date, and identify alternative offers",
+      "country_scope": "us"
+    },
+    {
+      "question": "How many unemployment days has the student accumulated since their OPT or STEM OPT period began?",
+      "what_it_reveals": "Whether the student is approaching or has exceeded the 90-day (OPT) or cumulative 150-day (STEM OPT) limit and whether F-1 status is currently at risk",
+      "follow_up_if_yes": "If approaching or over the limit, student must consult DSO immediately and assess whether a school transfer, reinstatement, or departure is necessary",
+      "follow_up_if_no": "Establish a tracking system immediately if none exists; do not rely on memory or estimates",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the student used any pre-completion OPT hours, and if so how many?",
+      "what_it_reveals": "How much of the 12-month OPT total remains for post-completion use, directly affecting the runway available to secure H-1B sponsorship",
+      "follow_up_if_yes": "Calculate remaining post-completion OPT months and build the H-1B application timeline (especially lottery registration in March) around that expiration date",
+      "follow_up_if_no": "Student has the full 12 months post-completion, providing maximum flexibility for job searching and employer evaluation",
+      "country_scope": "us"
+    },
+    {
+      "question": "Did the student change employers during STEM OPT, and if so, was a new Form I-983 submitted and the DSO notified within 10 days?",
+      "what_it_reveals": "Whether the student is currently in SEVIS compliance or has an unreported violation that could trigger status termination",
+      "follow_up_if_yes": "Confirm I-983 is fully signed by both student and supervisor and that new employer's E-Verify enrollment has been verified",
+      "follow_up_if_no": "If more than 10 days have passed since the employer change without reporting, student should contact DSO immediately to assess remediation options",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "OPT starts automatically when you graduate and you can apply whenever you are ready after finishing your degree",
+      "actual_reality": "OPT requires a proactive application with a strict timeline: the earliest you can apply is 90 days before graduation and the latest is 60 days after — missing these windows results in denial, not a delayed start",
+      "implication": "Students must build OPT application planning into their graduation timeline, treating it as equally important as thesis submission or final exams",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "As long as you are actively job searching, unemployment days do not count against your OPT limit",
+      "actual_reality": "Unemployment days are counted purely by calendar days without valid employment — job searching activity has zero legal bearing on the count; only being employed in a qualifying position stops the clock",
+      "implication": "Students must prioritize securing employment quickly after OPT start and treat any gap between jobs as a countdown, not a neutral period",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The STEM OPT 150-day unemployment limit is a fresh allowance on top of the regular OPT 90-day limit",
+      "actual_reality": "The 150-day limit is cumulative across the entire STEM OPT extension period — it is not a per-job-gap allowance nor a reset from regular OPT; gaps early in the STEM OPT period permanently reduce the remaining buffer",
+      "implication": "Students must track unemployment days from the very first day of STEM OPT and not assume they have three separate allowances across their OPT periods",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Any tech or engineering job qualifies for STEM OPT as long as the degree is in a STEM field",
+      "actual_reality": "STEM OPT requires that the specific job duties be directly related to the specific degree — a computer science graduate in a general sales or management role without technical duties may not satisfy the requirement, even at a tech company",
+      "implication": "Students must evaluate each job offer for degree-relatedness, not just employer industry, and ensure the I-983 can truthfully document that connection",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Cap-gap requires a separate filing or extension application to continue working after OPT expires",
+      "actual_reality": "Cap-gap extension of both F-1 status and work authorization is automatic when an H-1B petition is timely filed — no separate USCIS filing is needed",
+      "implication": "Students should focus energy on ensuring the employer files the H-1B petition on time rather than on preparing redundant paperwork; however they must confirm the petition has actually been filed",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Prestigious employers with strong brand names are the best choice during OPT because they improve H-1B prospects",
+      "actual_reality": "Under the FY2027+ wage-based H-1B lottery system, salary level is a direct mechanical determinant of lottery selection odds — a higher salary at a less recognized employer may statistically outperform a lower salary at a brand-name firm",
+      "implication": "Students should evaluate job offers through a dual lens of career development and compensation level relative to H-1B wage tiers, explicitly modeling lottery probability as part of the decision",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The employer or HR department is responsible for ensuring immigration compliance during OPT and STEM OPT",
+      "actual_reality": "The legal obligation for SEVIS reporting, unemployment day tracking, and status compliance rests with the student — employer failures are the student's legal problem, not the employer's",
+      "implication": "Students must treat themselves as their own immigration compliance officer, independently tracking all deadlines and reporting obligations regardless of what HR does or says",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Timing of OPT application initiation",
+      "naive_pattern": "Waits until receiving a job offer or until after graduation to ask DSO about OPT, assuming it can be sorted out quickly",
+      "informed_pattern": "Contacts DSO exactly 90 days before graduation to initiate OPT regardless of employment status, understanding that USCIS processing takes months",
+      "why_it_matters": "Late application creates EAD gaps that trigger unemployment day accumulation and can cause employers to rescind offers due to delayed start dates",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Unemployment day tracking",
+      "naive_pattern": "Assumes HR or the school tracks unemployment days; does not maintain a personal log; learns about the 90-day limit only after approaching it",
+      "informed_pattern": "Creates a spreadsheet on Day 1 of OPT tracking calendar days of employment and unemployment; sets an alert at 60 days to intensify job search if unemployed",
+      "why_it_matters": "Automatic F-1 status termination upon exceeding the limit has no cure other than departure or reinstatement — prevention through tracking is the only viable strategy",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Employer evaluation for STEM OPT compatibility",
+      "naive_pattern": "Evaluates employers on salary, role, and culture; asks about E-Verify only after receiving and accepting an offer, if at all",
+      "informed_pattern": "Treats E-Verify enrollment as a first-pass filter before substantive interviews; removes non-E-Verify employers from consideration during STEM OPT periods",
+      "why_it_matters": "Accepting a non-E-Verify employer offer during STEM OPT creates an immediate legal conflict that forces the student to choose between immigration status and the job",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Form I-983 preparation",
+      "naive_pattern": "Hands the I-983 entirely to HR and signs whatever is prepared; does not review whether job duties are explicitly linked to degree coursework",
+      "informed_pattern": "Drafts the I-983 personally or collaborates closely with the supervisor; maps each job duty to a specific course, skill, or learning outcome from the STEM degree curriculum before HR review",
+      "why_it_matters": "Vague I-983s attract DHS audits that can retroactively revoke STEM OPT authorization; a strong I-983 is the student's primary defense in an audit",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Job offer negotiation during OPT",
+      "naive_pattern": "Negotiates salary purely on financial grounds; does not connect compensation level to H-1B lottery probability under the wage-based selection system",
+      "informed_pattern": "Researches DOL prevailing wage levels for the target occupation and location; negotiates explicitly to reach a higher wage tier, understanding that each tier jump materially improves H-1B lottery odds",
+      "why_it_matters": "Under the FY2027+ system, a wage tier difference can be the difference between H-1B selection and status expiration — salary negotiation is immigration strategy, not just compensation strategy",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Compliance reporting after employer or address changes",
+      "naive_pattern": "Believes updating LinkedIn or informing the new employer's HR is sufficient; does not know the 10-day DSO reporting requirement exists",
+      "informed_pattern": "Treats the 10-day reporting window as a hard deadline; reports changes via SEVP Portal and DSO notification before or on the date of the change when possible",
+      "why_it_matters": "Unreported changes are SEVIS violations that can result in status termination; the student bears the legal risk regardless of whether their employer or school reminded them",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding of cap-gap mechanics",
+      "naive_pattern": "Panics when OPT expiration approaches without H-1B approval; attempts to file extensions or asks employer to do something proactively to maintain status",
+      "informed_pattern": "Understands cap-gap is automatic upon timely H-1B petition filing; focuses exclusively on confirming the petition was filed and monitoring approval rather than initiating unnecessary filings",
+      "why_it_matters": "Unnecessary filings waste money and can create conflicting records; understanding what is automatic versus what requires action prevents both panic and costly mistakes",
+      "country_scope": "us"
+    }
+  ]
+}

@@ -63,6 +63,20 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
     # For multicountry skills, pass the country-indexed view to give the model structured input
     insights_payload = merged.get("_country_index", merged) if countries else merged
 
+    # Extract community-specific categories separately so they are explicitly visible in the prompt.
+    # These are buried in the large insights JSON and models tend to miss them without a dedicated section.
+    community_categories = [
+        "community_misconceptions", "real_case_outcomes",
+        "psychological_barriers", "reframing_moves",
+    ]
+    community_data = {cat: merged.get(cat, []) for cat in community_categories}
+    has_community = any(len(v) > 0 for v in community_data.values())
+    community_json = json.dumps(community_data, indent=2, ensure_ascii=False) if has_community else ""
+
+    if has_community:
+        counts = {cat: len(v) for cat, v in community_data.items() if v}
+        print(f"  Community data: {counts}")
+
     prompt = (
         load_prompt(prompt_file)
         .replace("{{domain_description}}", config["domain_description"])
@@ -73,12 +87,14 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
         .replace("{{source_count}}", str(source_count))
         .replace("{{countries_list}}", countries_list)
         .replace("{{merged_insights_json}}", json.dumps(insights_payload, indent=2, ensure_ascii=False))
+        .replace("{{community_insights_json}}", community_json)
+        .replace("{{has_community}}", "true" if has_community else "false")
     )
 
     skill_content = LLMClient().chat(
         model=model,
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=8192,
+        max_tokens=16384,
     ).strip()
 
     # Strip wrapping code fences if model accidentally added them

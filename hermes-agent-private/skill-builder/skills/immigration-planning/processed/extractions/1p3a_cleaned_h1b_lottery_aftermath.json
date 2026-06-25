@@ -1,0 +1,300 @@
+{
+  "source_file": "h1b_lottery_aftermath.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Use L1-B as an H1B lottery bypass via overseas assignment, but plan the 5-year clock from day one",
+      "condition": "When an employer offers an L1-B transfer path requiring 1 year abroad and you have failed the H1B lottery multiple times...",
+      "action": "Accept the L1-B path but immediately start planning EB1B or EB2 green card filing within the 5-year L1-B window, not after it expires",
+      "because": "L1-B has a hard 5-year cap in the US; failure to convert within that window forces a return overseas for 1 year before a new L1 can be filed, resetting the clock",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Cap-exempt H1B positions at research universities are a viable low-lottery-risk path to green card, then back to industry",
+      "condition": "When you have failed H1B lottery multiple times and are open to a temporary salary reduction...",
+      "action": "Target cap-exempt research university or nonprofit positions to obtain H1B status without lottery, pursue green card, then return to industry",
+      "because": "A commenter reported this path yielded green card in ~3 years with less visa anxiety, and the total timeline was comparable to waiting for H1B lottery luck",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For EB1A self-petition, assess your credentials against all 10 USCIS criteria — meeting 3 is sufficient",
+      "condition": "When you are a non-Indian national with publications, open-source contributions, or documented professional influence...",
+      "action": "Evaluate EB1A self-petition seriously before defaulting to PERM-based EB2, since EB1A skips PERM (saving 2-4 years) and has minimal wait for non-Indian nationals",
+      "because": "Community commenter clarified EB1A criteria are broader than commonly assumed, and the PERM bypass is a substantial time advantage",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Nationality and EB green card priority date backlog",
+      "why_it_matters": "Indian nationals face decade-plus waits for EB2/EB3; non-Indian nationals may have near-current priority dates, making EB1A or even EB2 far more viable",
+      "how_to_assess": "Check the USCIS Visa Bulletin for your country of birth under the relevant EB category",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer's willingness and ability to support alternative visa paths (L1, EB1B, EB2)",
+      "why_it_matters": "Some employers offer L1 as a genuine bypass; others use it as a retention tool without intent to file green card; the difference determines whether this path resolves your status or extends dependency",
+      "how_to_assess": "Ask explicitly: will the company file I-140 for EB1B or EB2 during the L1 period? Get a timeline commitment in writing if possible",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Tolerance for status dependency on a single employer",
+      "why_it_matters": "All employer-sponsored paths (H1B, L1, PERM) tie you to one employer; loss of job means loss of status with limited grace periods",
+      "how_to_assess": "Assess your financial runway, risk tolerance, and whether you would accept a worse job to preserve status",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Canada Express Entry CRS score eligibility",
+      "why_it_matters": "A person with a strong tech background and Canadian work experience may be able to obtain Canadian PR in 1-2 years via CEC, which eliminates employer dependency entirely",
+      "how_to_assess": "Use the IRCC CRS calculator with your current profile; compare expected ITA timeline to expected US green card timeline",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting L1-B transfer to Canada office",
+      "unstated_consequence": "The 5-year US L1-B maximum duration clock starts the moment you re-enter on L1; if green card is not filed and progressing well before year 4, you may be forced to leave the US again before status resolves",
+      "who_it_affects": "People who accept the L1 path without understanding the hard cap, especially those whose employers deprioritize green card filing after the L1 is approved",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Waiting for H1B lottery year after year at a high-paying employer",
+      "unstated_consequence": "Each year of waiting is also a year during which Canadian Express Entry CRS score (and therefore invitation probability) may peak and then decline as younger candidates enter the pool; the optimal Canada window can close while you wait",
+      "who_it_affects": "Candidates who treat H1B lottery as the only option and do not track their Canada eligibility in parallel",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Taking a cap-exempt research university role at lower salary",
+      "unstated_consequence": "Salary drop of ~30% is real, but the tradeoff includes no lottery risk, faster green card timeline, and lower psychological burden — total career value may be higher depending on the individual's risk pricing",
+      "who_it_affects": "High earners at large tech companies who anchor their decision purely on current compensation without modeling the value of visa certainty",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating immigration lawyers as strategic advisors rather than execution agents",
+      "why_it_happens": "People assume that because lawyers are experts, they will proactively recommend the best path; in reality, most lawyers execute the path they are asked to execute",
+      "consequence": "Two people with identical profiles who ask different questions of the same lawyer end up on entirely different paths — one optimized, one default",
+      "warning_signs": [
+        "You hired a lawyer but never asked 'what is my optimal path given my full profile?'",
+        "Your lawyer only ever discussed one visa category with you"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Waiting until after H1B lottery failure to start evaluating alternatives",
+      "why_it_happens": "Optimism bias — each year feels like this might be the lucky year; planning for failure feels like giving up",
+      "consequence": "Alternative paths (L1 setup, EB1A preparation, Canada CRS optimization) require months to years of lead time; starting after the third or fourth lottery loss means years of additional delay",
+      "warning_signs": [
+        "You are applying for H1B lottery without a documented backup plan",
+        "You have not checked your Canada CRS score or EB1A eligibility despite multiple lottery failures"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth, and have you checked the current EB priority date for your category?",
+      "what_it_reveals": "Determines whether PERM-based EB2/EB3 is viable on a reasonable timeline or effectively closed, which changes which alternative paths are worth pursuing",
+      "follow_up_if_yes": "If non-Indian and EB2 is current or near-current, EB1A self-petition or employer-sponsored EB2 with PERM is viable — compare to L1 timeline",
+      "follow_up_if_no": "If Indian national, PERM-based paths are likely decade-long waits; focus evaluation on EB1A (no PERM required) or Canada PR as primary alternatives",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your employer explicitly committed to filing I-140 during your L1 period, and by what date?",
+      "what_it_reveals": "Distinguishes employers using L1 as a genuine green card bridge from those using it as a retention mechanism with no green card intent",
+      "follow_up_if_yes": "Validate that the I-140 category and timeline fits within your L1-B 5-year window with margin",
+      "follow_up_if_no": "Treat the L1 as a visa-only solution, not a green card path; evaluate independent routes (EB1A self-petition, Canada PR) in parallel",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have publications, open-source contributions, speaking invitations, or documented peer recognition in your field?",
+      "what_it_reveals": "Determines whether EB1A self-petition is worth a serious evaluation — three of the ten USCIS criteria met is sufficient",
+      "follow_up_if_yes": "Consult an EB1A-specialized attorney for a credential audit; the PERM bypass alone could save 2-4 years",
+      "follow_up_if_no": "Focus on building qualifying criteria proactively (peer review, open source, media citations) if EB1A is a medium-term goal",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "EB1A (extraordinary ability) is only for Nobel Prize winners or top academics — it is irrelevant for software engineers",
+      "actual_reality": "EB1A requires meeting 3 of 10 USCIS criteria; tech professionals with peer-reviewed publications, significant open-source contributions, or documented industry influence have successfully self-petitioned; the bar is high but not academic-elite-only",
+      "implication": "SWEs who dismiss EB1A without a credential audit may be forgoing the fastest available green card path (no PERM, no employer dependency, minimal wait for non-Indian nationals)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Cap-exempt H1B jobs at universities or nonprofits are a niche workaround not worth pursuing due to lower pay",
+      "actual_reality": "Multiple community members confirmed this path results in real H1B status without lottery risk, and the green card timeline can be shorter than waiting for H1B lottery luck plus PERM; some returned to industry afterward with green card in hand",
+      "implication": "The salary discount should be modeled as a time-bounded cost, not a permanent penalty; for people who have failed lottery 3+ times, the expected value calculation often favors the cap-exempt path",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The L1-B company transfer to Canada is a trap or unusual workaround",
+      "actual_reality": "Large tech companies routinely use L1-B as a structured H1B lottery bypass; the path is well-established — 1 year in Canada office → L1-B petition → return to US; the risk is the 5-year hard cap, not the path itself",
+      "implication": "Candidates should evaluate the L1-B offer on its merits (green card filing commitment, 5-year planning) rather than rejecting it out of unfamiliarity",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to use an immigration lawyer",
+      "naive_pattern": "Hire a lawyer and assume they will recommend the optimal path; defer entirely to whatever they suggest",
+      "informed_pattern": "Research the landscape of available paths independently, identify which options fit your profile, then direct the lawyer to evaluate and execute the chosen strategy",
+      "why_it_matters": "Lawyers are compliance executors, not strategic optimizers; the person who asks 'what is my optimal path' gets a different (and better) outcome than the person who asks 'help me file X'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Backup planning for H1B lottery",
+      "naive_pattern": "Apply for the lottery each year and wait for results before thinking about alternatives",
+      "informed_pattern": "Maintain a parallel track: assess EB1A eligibility, Canada CRS score, and L1 eligibility at all times; treat lottery as one bet among several, not the primary plan",
+      "why_it_matters": "Alternative paths require months to years of lead time; reactive planning after lottery failure wastes the preparation window",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "L1-B is a risky or unusual path that big companies only offer as a trap to get you to move abroad",
+      "why_believed": "The requirement to work abroad for a year feels punitive; employees interpret it as the company offloading risk onto them",
+      "actual_rule": "L1-B intracompany transfer for overseas employees is a well-established, legal H1B lottery bypass used routinely by large tech companies; the genuine risk is the 5-year US duration cap, not the path structure",
+      "real_consequence": "Candidates who reject L1-B based on this misconception may continue losing H1B lotteries indefinitely while a viable path was available",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Once a lawyer is handling your immigration, you don't need to understand the strategy — that's what you're paying them for",
+      "why_believed": "Professional services framing — you pay an expert so you don't have to think about it; this works for most professional services but not immigration strategy",
+      "actual_rule": "Immigration lawyers are responsible for document compliance and legal filings, not for identifying your optimal multi-path strategy; strategic decisions must be made by the applicant",
+      "real_consequence": "Applicants who abdicate strategy to their lawyer may be on a default path (e.g., PERM EB2) when a faster path (EB1A self-petition) was available and never mentioned",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "SDE at a major tech company (L4, $170K base), failed H1B lottery 3 consecutive years, employer offered L1-B via Canada office",
+      "decision": "The community provided the outcome data: one commenter took the cap-exempt university researcher path instead of L1-B",
+      "outcome": "Green card obtained in approximately 3 years via cap-exempt H1B + university employer sponsorship; subsequently returned to industry with green card in hand; total timeline comparable to L1 path but with lower anxiety and no employer lock-in during the critical period",
+      "lesson": "For repeated H1B lottery failures, cap-exempt university positions can be a faster and lower-stress green card path than waiting for lottery luck, even with a significant salary reduction",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Chinese national in similar H1B lottery failure situation, chose to pursue Canadian PR via Express Entry CEC",
+      "decision": "Transitioned to Canada, accumulated qualifying work experience, obtained PR through Canadian Experience Class",
+      "outcome": "After obtaining Canadian PR, salary negotiation leverage improved significantly because the candidate was no longer employer-dependent for immigration status; described as removing 'identity anxiety' and improving career decision clarity",
+      "lesson": "Obtaining PR in Canada (or any jurisdiction) removes employer-dependency and changes negotiating dynamics; the career value of status independence should be weighted against the salary or opportunity cost of the transition",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Asking whether L1-B is a 'trap' after multiple H1B lottery failures",
+      "underlying_state": "Sunk cost framing combined with loss aversion — each lottery attempt represents an investment in the US path; evaluating alternatives feels like admitting the investment was wasted",
+      "how_it_manifests": "User frames every alternative path through the lens of 'is this a trap?' rather than 'what is the expected value of each path given my goals?'",
+      "expert_move": "Reframe from 'trap vs. not trap' to 'what does year 10 look like under each scenario?' — this forces expected value thinking and reduces the emotional weight of the sunk cost",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Describing Canada PR or returning home as 'giving up' or 'failure' compared to getting a US green card",
+      "underlying_state": "Identity anchoring — the US green card has become a proxy for professional success or personal worth, rather than one of several tools for building a good career",
+      "how_it_manifests": "Users accept worse jobs, more employer dependency, or longer timelines specifically to preserve the US path, without modeling whether the US outcome actually serves their 10-year goals better",
+      "expert_move": "Directly challenge the framing: 'The question is not whether you got a US green card — the question is where you are in 10 years. Those are not the same question.'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I need to figure out whether the L1-B path my company is offering is a trap or not",
+      "reframe": "The question is not whether L1-B is a trap — it is whether your employer has committed to filing your green card during the L1 window, and whether that timeline fits within the 5-year hard cap",
+      "why_it_works": "Shifts the question from a binary trust judgment (trap vs. not trap) to a concrete, verifiable set of conditions the person can actually evaluate and negotiate",
+      "example_language": "L1-B本身不是坑，坑在于你的公司有没有承诺在L1期间帮你办绿卡，以及时间线是否在5年上限内",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I failed the H1B lottery three times — what are my options?",
+      "reframe": "Stop treating H1B as the primary plan with alternatives as fallbacks. You have three parallel tracks (L1-B, EB1A self-petition, Canada PR) that require lead time — the question is which combination to run simultaneously starting now",
+      "why_it_works": "Converts a reactive crisis mindset ('what do I do now that I failed') into a proactive portfolio mindset ('which tracks am I running in parallel'), which is how experienced candidates actually navigate this system",
+      "example_language": "真正的问题不是抽不中怎么办，而是你现在是否已经在同时推进多条路径",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Not getting a US green card feels like failure compared to my peers",
+      "reframe": "The real question is: 10 years from now, where will your comprehensive development be better? A US green card is one path among several — not the destination itself",
+      "why_it_works": "Breaks the identity anchoring on the green card as a success metric by substituting a longer time horizon and a broader outcome measure (career, life quality, autonomy)",
+      "example_language": "真正的问题是：10年后你在哪里的综合发展更好？美国绿卡只是众多路径之一，不是终点",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_cleaned_h1b_lottery_aftermath",
+  "_source_regions": [
+    "us"
+  ]
+}

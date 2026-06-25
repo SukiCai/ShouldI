@@ -1,0 +1,204 @@
+You are an expert analyst reading community forum data (Reddit, 一亩三分地, 知乎, or similar platforms) about {{domain_description}}.
+
+This skill covers multiple countries: {{countries_list}}.
+
+Community data has high noise and low signal density. Your job is to extract the signal — real failure stories, widespread misconceptions, and the psychological patterns driving bad decisions — while discarding the noise.
+
+## SKIP entirely (do not extract from):
+- "Same problem!", "following", "thanks!", mark-style posts
+- Pure emotional venting with no actionable content
+- Generic encouragement ("you got this!", "don't give up")
+- Single-person success stories with no transferable lesson (survivorship bias)
+- Hearsay chains ("my friend's lawyer said...")
+- Posts with no upvotes or engagement signals
+
+## CRITICAL rules for community data:
+- A rule described confidently but INCORRECTLY goes into `community_misconceptions`, NOT `heuristics`
+- Single-person anecdotes require corroboration — only extract if the lesson appears in 2+ comments
+- Always note approximately when a rule was described (if dateable) — immigration rules change
+- Psychological content (fear, anxiety, decision paralysis) is valuable — extract it into `psychological_barriers`
+- How high-voted replies reframe a question is valuable — extract it into `reframing_moves`
+
+## Source context
+This content comes primarily from: {{source_regions}}
+Use this as your starting point for regions tagging. Override if the content explicitly discusses a different country, or use ["us","canada"] if the post directly compares both.
+
+## CRITICAL: Regions Tagging
+
+Every insight MUST include a `regions` field — a JSON array:
+- `[]` — universal (applies regardless of region, e.g. decision frameworks, mindset)
+- `["us"]` — US-specific (OPT, H-1B, USCIS, F-1, EAD, etc.)
+- `["canada"]` — Canada-specific (PGWP, Express Entry, IRCC, PNP, CRS, etc.)
+- `["us", "canada"]` — explicitly applies to both (comparison posts, cross-border topics)
+
+---
+
+## STANDARD CATEGORIES (7)
+
+Extract these with community-appropriate skepticism. Require concrete details; reject platitudes.
+
+## 1. HEURISTICS
+Real decision rules that appear across multiple comments — validated by community agreement, not just one person's opinion.
+
+Format:
+{
+  "rule": "<the heuristic>",
+  "condition": "When <situation>...",
+  "action": "...<what to do>",
+  "because": "<reason — must be grounded in something from the source, not inferred>",
+  "regions": ["us"]
+}
+
+## 2. DECISION_FACTORS
+Variables that commenters identify as actually changing the outcome.
+
+Format:
+{
+  "factor": "<name>",
+  "why_it_matters": "<why this variable changes the decision>",
+  "how_to_assess": "<how to evaluate it in practice>",
+  "weight": "high | medium | low",
+  "regions": ["us"]
+}
+
+## 3. HIDDEN_TRADEOFFS
+Consequences that commenters discovered only after the fact — the "I wish I knew" moments.
+
+Format:
+{
+  "choice": "<the option>",
+  "unstated_consequence": "<what they discovered afterward>",
+  "who_it_affects": "<which type of person this hits hardest>",
+  "regions": ["us"]
+}
+
+## 4. FAILURE_PATTERNS
+Recurring mistakes that appear across multiple posts. Include the cognitive bias or situational cause.
+
+Format:
+{
+  "pattern": "<the mistake>",
+  "why_it_happens": "<cognitive or situational cause>",
+  "consequence": "<what it cost the person>",
+  "warning_signs": ["<sign 1>", "<sign 2>"],
+  "regions": ["us"]
+}
+
+## 5. DIAGNOSTIC_QUESTIONS
+Questions that help distinguish cases that look the same on the surface. Often surfaced by experienced commenters asking clarifying questions.
+
+Format:
+{
+  "question": "<the question>",
+  "what_it_reveals": "<what the answer tells you>",
+  "follow_up_if_yes": "<next question or inference>",
+  "follow_up_if_no": "<next question or inference>",
+  "regions": ["us"]
+}
+
+## 6. INDUSTRY_REALITIES
+Community belief vs. what well-informed commenters say is the reality. This often surfaces rules that are misunderstood at scale.
+
+Format:
+{
+  "common_belief": "<what many posters assume>",
+  "actual_reality": "<what the informed commenters clarify>",
+  "implication": "<how knowing the truth changes behavior>",
+  "regions": ["us"]
+}
+
+## 7. JUNIOR_VS_SENIOR_SIGNALS
+How someone new to the system thinks vs. how someone who's been through it thinks.
+
+Format:
+{
+  "dimension": "<what's being compared>",
+  "naive_pattern": "<how a first-timer thinks/acts>",
+  "informed_pattern": "<how someone experienced thinks/acts>",
+  "why_it_matters": "<consequence of the difference>",
+  "regions": ["us"]
+}
+
+---
+
+## COMMUNITY-SPECIFIC CATEGORIES (4)
+
+These are the unique value of community data. Extract these carefully.
+
+## 8. COMMUNITY_MISCONCEPTIONS
+Beliefs that are wrong, but widely held and confidently stated in the community. The goal is to capture beliefs that are frequently wrong — not merely incomplete.
+
+Criteria: appears in multiple posts OR is confidently stated AND contradicted by informed commenters.
+
+Format:
+{
+  "misconception": "<the wrong belief, stated as someone would say it>",
+  "why_believed": "<why this feels true — the cognitive hook>",
+  "actual_rule": "<what is actually correct>",
+  "real_consequence": "<what happens if someone acts on the misconception>",
+  "regions": ["us"]
+}
+
+## 9. REAL_CASE_OUTCOMES
+Specific situation → decision → outcome chains from real user stories. Only extract if the story is specific enough to be instructive and the lesson generalizes.
+
+Skip: pure venting, survivorship stories without transferable lesson, single-step stories.
+
+Format:
+{
+  "situation": "<the specific starting situation>",
+  "decision": "<what the person did>",
+  "outcome": "<what happened — be concrete>",
+  "lesson": "<the generalizable takeaway>",
+  "regions": ["us"]
+}
+
+## 10. PSYCHOLOGICAL_BARRIERS
+Fears, cognitive biases, or emotional states that drive bad decisions — inferred from user framing, not stated explicitly. Look for: questions that reveal catastrophizing, decision paralysis, sunk cost framing, survivorship bias, peer comparison anxiety.
+
+Format:
+{
+  "trigger": "<the situation or question pattern that reveals this barrier>",
+  "underlying_state": "<the fear or cognitive bias at work>",
+  "how_it_manifests": "<what the user actually says or does as a result>",
+  "expert_move": "<how an experienced advisor would respond to break through it>",
+  "regions": ["us"]
+}
+
+## 11. REFRAMING_MOVES
+How high-voted, high-impact replies reframe a question to help the poster think more clearly. The reframe is more valuable than the answer because it transfers.
+
+Format:
+{
+  "original_framing": "<how the poster framed their question or problem>",
+  "reframe": "<how the top reply reframed it>",
+  "why_it_works": "<what cognitive shift the reframe produces>",
+  "example_language": "<a short phrase or sentence from the reply that captures the reframe>",
+  "regions": ["us"]
+}
+
+---
+
+## Source file: {{source_file}}
+
+## Source text:
+---
+{{source_text}}
+---
+
+Return ONLY valid JSON. No markdown fences, no explanation:
+{
+  "source_file": "{{source_file}}",
+  "source_type": "community",
+  "heuristics": [...],
+  "decision_factors": [...],
+  "hidden_tradeoffs": [...],
+  "failure_patterns": [...],
+  "diagnostic_questions": [...],
+  "industry_realities": [...],
+  "junior_vs_senior_signals": [...],
+  "community_misconceptions": [...],
+  "real_case_outcomes": [...],
+  "psychological_barriers": [...],
+  "reframing_moves": [...]
+}

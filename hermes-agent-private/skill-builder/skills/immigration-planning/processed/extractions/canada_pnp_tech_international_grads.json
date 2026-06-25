@@ -1,0 +1,288 @@
+{
+  "source_file": "pnp_tech_international_grads.txt",
+  "heuristics": [
+    {
+      "rule": "If your CRS score is below the typical Express Entry cutoff (~490+), pursue a provincial nomination immediately — don't wait to accumulate more CRS points organically.",
+      "condition": "When a PGWP holder has 1+ year of Canadian work experience but a CRS score too low to receive an ITA through federal draws alone",
+      "action": "Simultaneously apply to eligible PNP streams (e.g., Saskatchewan Tech Talent Pathway for lower CRS, or Ontario HCP if no job offer) rather than waiting for CRS to improve passively",
+      "because": "A provincial nomination adds 600 CRS points, virtually guaranteeing an ITA — no amount of language or education points can replicate this lever as efficiently",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you have a tech job offer in BC, apply to BC PNP Tech Stream before exploring other immigration pathways — it processes in 2–3 months with no LMIA required.",
+      "condition": "When an international graduate on PGWP has a full-time, indeterminate or 1-year+ job offer from a BC employer in one of 29 eligible tech occupations",
+      "action": "File a BC PNP Tech Stream application immediately and in parallel maintain an active Express Entry profile to receive the +600 CRS boost upon nomination",
+      "because": "BC PNP processes faster than most federal pathways, requires no LMIA (which is costly and slow), and draws are run weekly — early application maximizes chances before employer circumstances change",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you lack a Canadian job offer but have Express Entry eligibility in a tech occupation, prioritize building an Ontario HCP-eligible Express Entry profile over waiting for a job offer to unlock other PNP streams.",
+      "condition": "When a tech worker is in the Express Entry pool without a provincial job offer",
+      "action": "Ensure your Express Entry profile is complete and active with a tech NOC code so Ontario can identify you for a Notification of Interest",
+      "because": "Ontario HCP is the primary PNP stream that does not require a job offer — missing this path by not having an active profile is a preventable error",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Pursue Express Entry CEC and provincial PNP simultaneously after 1 year of Canadian work experience — do not treat them as sequential alternatives.",
+      "condition": "When a PGWP holder reaches the 1-year mark of TEER 0/1/2/3 Canadian work experience",
+      "action": "File CEC Express Entry profile AND apply to all eligible PNP streams at the same time",
+      "because": "Whichever pathway resolves first wins; running both in parallel eliminates the opportunity cost of sequential applications and protects against any single stream's delays or rejections",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If your CRS score is low and you are open to smaller cities, target Saskatchewan Tech Talent Pathway specifically — it is designed for lower-CRS candidates with a job offer.",
+      "condition": "When a tech worker has a Saskatchewan employer job offer but a CRS score that would not be competitive in BC or Alberta PNP streams",
+      "action": "Apply to Saskatchewan Tech Talent Pathway and accept that geographic flexibility is a direct immigration advantage",
+      "because": "Saskatchewan explicitly accepts lower CRS scores than other provinces, making it one of the most accessible PNP routes for candidates who would otherwise be stuck in the Express Entry pool",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Current CRS Score",
+      "why_it_matters": "Determines how urgently a PNP nomination is needed and which streams are accessible — lower scores make PNP the primary (not backup) strategy",
+      "how_to_assess": "Calculate your current CRS score using the IRCC tool; compare against historical ITA cutoffs for CEC and Canadian Experience Class draws; if 50+ points below recent cutoffs, treat PNP as essential",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Existence and Location of Canadian Job Offer",
+      "why_it_matters": "Most PNP streams (BC, Alberta, Saskatchewan) require a provincial job offer; Ontario HCP does not — this single factor determines which streams you can access",
+      "how_to_assess": "Confirm whether your job offer is full-time, indeterminate or 1-year+, and from an employer in a province with an active tech PNP stream; verify the NOC code maps to eligible occupations",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Province of Employment or Intended Settlement",
+      "why_it_matters": "Provincial nominations carry an expectation of settlement in that province — applying to a province you have no intention of staying in creates compliance risk and ethical exposure",
+      "how_to_assess": "Assess where your employer, social network, and housing situation are anchored; avoid nominating provinces purely for immigration convenience if you plan to immediately relocate",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "NOC TEER Category of Current Job",
+      "why_it_matters": "Only TEER 0/1/2/3 experience counts toward CEC eligibility and most PNP tech streams; TEER 4/5 work does not qualify",
+      "how_to_assess": "Look up your job title on the IRCC NOC database and verify the TEER level; confirm with your employer's HR that the job duties match the NOC description",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "PGWP Remaining Validity",
+      "why_it_matters": "The entire PNP + PR process can take 12–24 months; if your PGWP expires before PR is granted, you need a bridge work permit — planning must account for this timeline gap",
+      "how_to_assess": "Calculate expiry date of PGWP; if less than 18 months remain, either accelerate PNP application or plan for a bridging open work permit application once PR is in process",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language Proficiency Score (CLB Level)",
+      "why_it_matters": "Most PNP streams require CLB 7+; falling below this threshold disqualifies candidates from streams that would otherwise fit them perfectly",
+      "how_to_assess": "Take IELTS or CELPIP and calculate CLB equivalent; if below CLB 7, prioritize retesting before applying to streams where this is a hard cutoff",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Tech vs. Non-Tech Field",
+      "why_it_matters": "Tech workers have significantly more dedicated PNP pathways (BC Tech Stream, Alberta Accelerated Tech, Saskatchewan Tech Talent) compared to other fields",
+      "how_to_assess": "Check whether your NOC code appears on the eligible occupation lists for tech-specific PNP streams; if not, you must rely on general skilled worker streams with less targeted access",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a provincial nomination from a province primarily for immigration advantage",
+      "unstated_consequence": "You are expected to settle in that province; while not legally enforceable post-PR, IRCC and nominating provinces monitor movement patterns, and serial province-hopping after nomination can affect program integrity and future applications",
+      "who_it_affects": "Students who nominate through Saskatchewan or a less-preferred province purely for the +600 CRS points while planning to move to Toronto or Vancouver immediately after receiving PR",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Waiting to accumulate CRS points organically before applying to Express Entry",
+      "unstated_consequence": "PGWP validity is finite — every month spent waiting is a month closer to work authorization expiry; if CRS score never reaches the ITA threshold and you haven't pursued PNP, you may run out of time with no PR and no bridge permit",
+      "who_it_affects": "PGWP holders with 2-year permits who graduated from shorter programs and have limited time before status expires",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Targeting Ontario HCP because it requires no job offer",
+      "unstated_consequence": "Ontario issues Notifications of Interest — you cannot self-initiate; the province selects you from the pool, meaning you have no control over timing and may wait indefinitely if your CRS score is not within Ontario's selection range",
+      "who_it_affects": "Candidates with mid-range CRS scores who assume no job offer requirement means easy access, and who deprioritize job searching as a result",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Applying to BC PNP Tech Stream with a 1-year job offer",
+      "unstated_consequence": "If the job ends before the PR process completes, the nomination is at risk; BC requires an ongoing job offer and employer support through the process — employer instability is a hidden vulnerability in the entire pathway",
+      "who_it_affects": "International graduates working at startups or in contract-adjacent roles where 1-year offers are the norm and renewal is uncertain",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Pursuing PR through PNP rather than prioritizing career mobility",
+      "unstated_consequence": "PNP nominations tie you to a specific province and often a specific employer, which can mean forgoing better job offers in other provinces during a critical early-career window when employer switching has high ROI",
+      "who_it_affects": "High-performing early-career tech workers in fields (AI, software engineering) where compensation and role quality vary dramatically by employer and city",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating Express Entry and PNP as sequential rather than parallel strategies",
+      "why_it_happens": "Students learn about Express Entry first (it's more widely discussed) and only investigate PNP after failing to receive an ITA — by which time PGWP validity may be critically short",
+      "consequence": "Lost 6–12 months of application time; may require bridge work permit or even departure from Canada while PR is processed",
+      "warning_signs": [
+        "Student has been in the Express Entry pool 6+ months with no ITA and has not yet explored any PNP stream",
+        "Student's PGWP expires within 18 months and they have no active PNP application"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Accepting a job in a province with no active tech PNP stream and assuming Express Entry alone will be sufficient",
+      "why_it_happens": "Job offers feel urgent and concrete; immigration strategy feels abstract — students optimize for employment without modeling downstream immigration implications",
+      "consequence": "Candidate is locked into a province with no PNP pathway and must rely solely on CRS score which may not reach ITA threshold",
+      "warning_signs": [
+        "Student accepted job in province with no tech PNP stream and has CRS score below 490",
+        "Student has never checked whether their employer's province has a targeted tech PNP stream"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying to PNP with incorrect or mismatched NOC code",
+      "why_it_happens": "Students self-classify their NOC based on job title rather than actual duties, leading to applications under ineligible NOC codes or TEER levels",
+      "consequence": "Application refused; time lost; in some cases, misrepresentation flags can affect future applications",
+      "warning_signs": [
+        "Student selected NOC code based on job title alone without reading the lead statement and main duties",
+        "Student's employer job offer letter does not reference a NOC code or uses a non-standard job title"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Assuming provincial nomination intention to settle is merely a formality",
+      "why_it_happens": "Students are told the obligation is 'not legally enforceable' and interpret this as permission to nominate from any province strategically with no follow-through",
+      "consequence": "Risk of program integrity issues; provinces may tighten criteria in response to abuse patterns; reputational and potential legal risk if misrepresentation in intention statement is later identified",
+      "warning_signs": [
+        "Student explicitly states in application they plan to move to another province after receiving PR",
+        "Student has no employer, housing, or social ties in the nominating province"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Not maintaining an active Express Entry profile while pursuing PNP",
+      "why_it_happens": "Students focus exclusively on PNP application and let their Express Entry profile expire or go inactive, eliminating the enhanced nomination pathway",
+      "consequence": "If nominated, the +600 CRS points cannot be applied to a non-existent or expired Express Entry profile, forcing a base nomination which has a longer, separate PR process",
+      "warning_signs": [
+        "Student's Express Entry profile has not been updated in 6+ months",
+        "Student is unaware of the difference between enhanced and base PNP nominations"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current CRS score and how does it compare to the last 6 months of Express Entry draw cutoffs?",
+      "what_it_reveals": "Whether the student can realistically receive an ITA through federal draws alone or must treat PNP as their primary pathway",
+      "follow_up_if_yes": "If within 30 points of cutoff: focus on CRS improvement levers (language retest, job offer points) while maintaining PNP as backup",
+      "follow_up_if_no": "If 50+ points below cutoff: redirect immediately to PNP streams and identify which provinces match their job situation and geography",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Do you have a current, full-time job offer in Canada, and if so, in which province?",
+      "what_it_reveals": "Immediately narrows which PNP streams are accessible — most require a provincial job offer, and the province determines which stream applies",
+      "follow_up_if_yes": "Verify NOC code, TEER level, and whether the province has an active tech PNP stream for that occupation",
+      "follow_up_if_no": "Direct to Ontario HCP (no job offer required) and flag that job searching in BC or Alberta would unlock additional streams",
+      "country_scope": "canada"
+    },
+    {
+      "question": "When does your PGWP expire, and have you calculated the full timeline from PNP application to PR grant?",
+      "what_it_reveals": "Whether the student has a timeline problem that requires bridging work permit planning or accelerated application strategy",
+      "follow_up_if_yes": "If PGWP expires in 18+ months: standard PNP + PR timeline is likely manageable with early action",
+      "follow_up_if_no": "If PGWP expires in under 18 months: immediately model bridge work permit eligibility and file PNP application at the earliest possible date",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Have you verified that your job's NOC code and TEER level appear on the eligible occupation list for the PNP stream you are considering?",
+      "what_it_reveals": "Whether the student has done the foundational eligibility check or is assuming eligibility based on job title or general 'tech worker' identity",
+      "follow_up_if_yes": "Confirm that job duties in the offer letter match the NOC lead statement to protect against misclassification",
+      "follow_up_if_no": "Do this immediately before investing time in any specific PNP application; a wrong NOC is a hard block on eligibility",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Are you genuinely willing and able to settle in the province you are considering for PNP nomination?",
+      "what_it_reveals": "Whether the student is pursuing a specific PNP stream for legitimate settlement reasons or purely for immigration arbitrage — the latter carries integrity risk",
+      "follow_up_if_yes": "Proceed with PNP application and document genuine ties (employer, housing, community) to strengthen the intention to settle",
+      "follow_up_if_no": "Counsel the student on the risks of misrepresenting settlement intention; redirect to streams aligned with where they genuinely plan to live",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Do you have an active Express Entry profile in the pool, and is it linked to your PNP application for an enhanced nomination?",
+      "what_it_reveals": "Whether the student understands the difference between enhanced and base nomination and whether they are positioned to receive the +600 CRS advantage",
+      "follow_up_if_yes": "Ensure the profile is current, accurate, and the NOC code is consistent across Express Entry profile and PNP application",
+      "follow_up_if_no": "Create and submit Express Entry profile immediately; a PNP nomination without an active Express Entry profile forces a slower base nomination process",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Express Entry is the main immigration pathway for skilled workers in Canada and PNP is a backup for people who don't qualify",
+      "actual_reality": "For most international graduates with CRS scores below the ITA threshold, PNP is not a backup — it is the primary pathway, and the +600 points from a nomination effectively guarantees an ITA that would otherwise be unachievable",
+      "implication": "Students should research and pursue PNP streams starting at the 1-year work experience mark, not after failing to receive an ITA through federal draws",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "You need a job offer to get a provincial nomination",
+      "actual_reality": "Ontario's Human Capital Priorities stream is a major exception — it draws directly from the Express Entry pool with no job offer requirement, and Ontario is Canada's largest tech employment market",
+      "implication": "Tech workers without a job offer should not assume they are ineligible for PNP; they should maintain an active Express Entry profile in a tech NOC to be eligible for Ontario NOIs",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The settlement intention requirement in PNP nominations is a formality that IRCC doesn't enforce",
+      "actual_reality": "While not legally enforceable post-PR, provinces actively monitor and have tightened criteria in response to abuse; repeated misrepresentation of settlement intent can constitute misrepresentation in an immigration application, which carries serious consequences",
+      "implication": "Students should apply to PNP streams in provinces where they have genuine ties or real employment, not purely as a CRS arbitrage mechanism",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "All tech jobs qualify for tech-specific PNP streams",
+      "actual_reality": "Eligibility is tied to specific NOC codes and TEER levels — a 'tech job' by industry convention may not be on a province's eligible occupation list, and TEER 4 or misclassified roles will result in rejection",
+      "implication": "Students must verify their exact NOC code against provincial occupation lists before applying, not assume that working in tech is sufficient",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Getting a 3-year PGWP means you have plenty of time to figure out immigration",
+      "actual_reality": "A 3-year PGWP sounds long, but the PNP + PR process can take 12–24 months, and the work experience accumulation clock doesn't start until after graduation — students who delay job searching or PNP research by even 6 months can end up in a precarious timeline",
+      "implication": "PGWP holders should begin immigration planning and job searching in tech-PNP-eligible provinces immediately after graduation, treating month 12 of employment as the critical action trigger",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of PNP vs. Express Entry relationship",
+      "naive_pattern": "Treats Express Entry and PNP as two separate, alternative pathways and plans to try Express Entry first, then PNP if that fails",
+      "informed_pattern": "Understands that enhanced PNP nomination feeds into Express Entry and adds +600 CRS points, making the two pathways synergistic — pursues both simultaneously from day one of eligibility",
+      "why_it_matters": "Sequential thinking loses 6–12 months and risks PGWP expiry; parallel pursuit maximizes the probability of PR within the work authorization window",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Job offer and province selection strategy",
+      "naive_pattern": "Accepts the best job offer available regardless of province, then figures out immigration afterward",
+      "informed_pattern": "Before accepting a job offer, checks whether the province has an active tech PNP stream for their NOC code and weights provincial immigration pathways as a material factor in the job decision",
+      "why_it_matters": "A marginally better job in a province with no PNP stream can trap a candidate in federal Express Entry dependency with a CRS score that never reaches the ITA threshold",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "NOC code verification",
+      "naive_pattern": "Self-assigns a NOC code based on job title or general category and assumes it qualifies for tech PNP streams",
+      "informed_pattern": "Reads the NOC lead statement and main duties description, cross-references with the exact occupation list for each target PNP stream, and confirms with an immigration consultant if any ambiguity exists",
+      "why_it_matters": "An incorrect NOC code leads to application refusal; in some cases, submitting with a wrong code to game eligibility constitutes misrepresentation",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Timeline awareness",
+      "naive_pattern": "Sees a 3-year PGWP as a generous runway and begins serious immigration planning in year 2 or after a failed Express Entry draw",
+      "informed_pattern": "Maps out the full timeline from graduation to PR grant, identifies the 12-month employment milestone as the earliest eligibility trigger, and begins PNP research and Express Entry profile preparation before that milestone arrives",
+      "why_it_matters": "Students who begin planning late may face a bridge work permit gap or must rush applications without proper documentation — early planning eliminates these compressible risks",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Settlement intention in PNP",
+      "naive_pattern": "Views the settlement intention statement as a checkbox and targets whichever province has the most accessible stream regardless of where they actually plan to live",
+      "informed_pattern": "Understands the ethical and legal implications of settlement intention, applies to provinces where they have genuine ties, and builds a documented record of provincial integration (employer, lease, community) to support the application",
+      "why_it_matters": "Misrepresenting settlement intention is an immigration integrity issue that can affect all future applications; informed students protect their long-term immigration record",
+      "country_scope": "canada"
+    }
+  ]
+}

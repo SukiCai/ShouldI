@@ -1,0 +1,300 @@
+{
+  "source_file": "zhihu_美国H_1B和加拿大PR_对于中国背景的留学生_哪条路更现实.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Clarify your primary goal — career ceiling vs. status stability — before choosing a country path",
+      "condition": "When a Chinese international student is deciding between pursuing H-1B/green card in the US vs. PR in Canada...",
+      "action": "Explicitly decide whether maximizing long-term earning potential or achieving immigration status certainty early is the higher priority, then select the geography accordingly",
+      "because": "The top answer (4521 upvotes) states these two goals 'currently correspond to different geographic choices in North America' — they are structurally in tension, not simultaneously optimizable",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "PGWP holders must proactively explain their open work permit status to Canadian employers",
+      "condition": "When a PGWP holder is job-searching in Canada and an employer's HR sees 'work permit' on paperwork...",
+      "action": "Explicitly tell HR: 'I can work for you without any sponsorship or application on your part' — do not assume they understand PGWP is employer-unrestricted",
+      "because": "HR commenter (634 upvotes) states many Canadian employers conflate 'work permit' with employer-specific permits requiring sponsorship, and will self-eliminate as potential employers based on that misunderstanding",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "For Chinese nationals, EB-2 wait time is 5–10 years — plan around it, not past it",
+      "condition": "When a Chinese national is evaluating the US green card path under EB-2...",
+      "action": "Model the 5–10 year wait as a real constraint in career and life planning, and assess whether you can tolerate that uncertainty window before committing to the US path",
+      "because": "Multiple comments cite EB-2 China priority dates at 2019–2020 as of the post date, implying a 5–10 year backlog for Chinese nationals (explicitly distinguished from the 50+ year wait for Indian nationals)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "H-1B lottery cumulative failure probability",
+      "why_it_matters": "A ~25–27% chance of never winning across 3 STEM OPT attempts means roughly 1 in 4 people on the US path are forced out — this is a non-trivial base rate that changes the risk calculus",
+      "how_to_assess": "Calculate: with ~35% single-draw probability, probability of losing all 3 draws ≈ (0.65)^3 ≈ 27.5%. Treat this as the probability of forced departure before green card process even begins",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Salary differential between US and Canada",
+      "why_it_matters": "Bay Area tech roles pay 40–60% more than Toronto equivalents — but this gap narrows when adjusted for cost of living, making the raw number misleading for lifestyle planning",
+      "how_to_assess": "Compare after-tax, after-cost-of-living income in your specific city and role, not gross salary figures",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Family formation plans (marriage, children)",
+      "why_it_matters": "Canada's child benefits, parental leave, and early childhood education subsidies materially alter the total economic comparison — the financial gap between the two countries shrinks or reverses for families",
+      "how_to_assess": "Model expected childcare costs, parental leave income replacement, and child benefit payments in both countries against your timeline for family formation",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "EB-1/NIW eligibility",
+      "why_it_matters": "Candidates who qualify for EB-1A, EB-1B, or NIW can bypass the backlog entirely or significantly reduce it — this changes the US path from a 5–10 year uncertainty to a potentially fast-tracked one",
+      "how_to_assess": "Evaluate publication record, patents, awards, salary level relative to peers, and advisory/judging roles against USCIS criteria for EB-1/NIW",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer willingness to sponsor continuously",
+      "why_it_matters": "The US path requires multi-year employer commitment (H-1B + PERM + I-140 + adjustment) — losing sponsorship mid-process resets the clock and may invalidate years of waiting",
+      "how_to_assess": "Assess employer stability, track record of sponsoring employees to green card completion, and HR/legal department capacity to manage long-term cases",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "CRS score competitiveness and boost factors",
+      "why_it_matters": "Canada's Express Entry is points-based with no lottery — having provincial nomination, French language skills, or Canadian work experience can push scores above the cut-off, making PR timing predictable",
+      "how_to_assess": "Calculate current CRS score, identify available boost factors (provincial streams, language testing, job offer), and compare against recent cut-off scores",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying on the US H-1B path for higher salary",
+      "unstated_consequence": "Chronic low-grade immigration anxiety persists even when the H-1B itself is approved — the green card backlog creates ongoing uncertainty about long-term stability that affects sleep, major life decisions, and mental health for years",
+      "who_it_affects": "People who optimized for salary and assumed H-1B approval would feel stable, without accounting for the psychological cost of the subsequent 5–10 year green card wait",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing Canada for PR certainty",
+      "unstated_consequence": "PGWP holders face a widespread employer misconception that 'work permit = requires sponsorship' — many companies self-screen out PGWP candidates without ever asking, meaning job search is harder than the legal status would suggest",
+      "who_it_affects": "Recent graduates in Canada on PGWP who assume their open work authorization removes them from visa-related hiring friction",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Comparing US vs. Canada on raw salary alone",
+      "unstated_consequence": "Family-stage economics — childcare costs, parental leave, child benefits — can significantly close or reverse the income gap, but this only becomes visible when family formation actually occurs",
+      "who_it_affects": "Single people in their mid-20s making the comparison without modeling a 5–10 year life horizon that includes family costs",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating the H-1B lottery as a binary win/lose without modeling cumulative risk across all 3 STEM OPT attempts",
+      "why_it_happens": "Each individual lottery feels like a coin-flip with decent odds (~35%); people mentally anchor on 'this draw' rather than the compound probability of losing all three",
+      "consequence": "~27% of STEM OPT users exhaust all draws and are forced to leave the US mid-career, having not prepared a backup plan",
+      "warning_signs": [
+        "Saying 'the odds are good enough' without calculating (0.65)^3",
+        "Not having a Canada or home-country contingency plan while on OPT"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming Canadian employer will understand PGWP = no sponsorship required, without explaining it",
+      "why_it_happens": "PGWP holders know their own status intimately; they project that knowledge onto HR departments who encounter international work authorization rarely",
+      "consequence": "Qualified candidates are filtered out before interview because HR assumed sponsorship cost/complexity, when none was actually required",
+      "warning_signs": [
+        "Applying to Canadian jobs without a cover letter or resume note clarifying work authorization",
+        "Not raising PGWP status proactively in early recruiter calls"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your primary optimization target: maximizing career earnings ceiling or achieving immigration status certainty as early as possible?",
+      "what_it_reveals": "These two goals currently map to different countries — clarifying priority eliminates the false premise that one path dominates the other on all dimensions",
+      "follow_up_if_yes": "If career ceiling: Are you in a field (finance, top-tier tech) where the US salary premium is large enough to justify 5–10 years of status uncertainty?",
+      "follow_up_if_no": "If status certainty: Do you have factors that boost your CRS score (French, provincial nomination, Canadian work experience) to make the Canada timeline predictable?",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Do you have a realistic path to EB-1A, EB-1B, or NIW?",
+      "what_it_reveals": "If yes, the US green card path compresses from 5–10 years to potentially 1–3 years, which fundamentally changes the uncertainty calculus",
+      "follow_up_if_yes": "Have you had an attorney evaluate your record specifically against EB-1/NIW criteria, or are you estimating based on general impressions?",
+      "follow_up_if_no": "Are you prepared to operate under EB-2 backlog uncertainty for the duration — and does your employer have a track record of sponsoring employees through full green card completion?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is your 5–10 year family formation plan, and have you modeled childcare/parental leave costs in both countries?",
+      "what_it_reveals": "The salary differential between the US and Canada looks very different before vs. after accounting for Canadian family benefits — the economic comparison changes materially for people planning to have children",
+      "follow_up_if_yes": "Have you run actual numbers on Canadian child benefit (CCB), Quebec/Ontario childcare subsidies, and parental leave replacement rates vs. US costs?",
+      "follow_up_if_no": "If family formation is not in your 5–10 year plan, raw salary differential is a more valid comparison metric",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canadian employers don't need to sponsor PGWP holders, so hiring them is friction-free and they'll be treated the same as citizens/PRs in hiring",
+      "actual_reality": "Many Canadian HR departments don't distinguish between PGWP (open, employer-unrestricted) and employer-specific work permits (which require LMIA sponsorship). Seeing 'work permit' on a profile, they assume sponsorship cost and complexity, and self-eliminate",
+      "implication": "PGWP holders must proactively educate recruiters and HR at the first contact point — the legal advantage of PGWP is not automatically communicated by the credential itself",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "China nationals face the same green card backlog as Indian nationals in the US, making the wait essentially career-length",
+      "actual_reality": "EB-2 China priority dates are approximately 5–10 years behind (circa 2019–2020 as of the post), while EB-2 India is 50+ years. Chinese nationals face a meaningful but potentially career-survivable wait — materially better than the Indian situation",
+      "implication": "Chinese nationals should not dismiss the US green card path as hopelessly long — the wait is significant but plannable, especially combined with EB-1/NIW strategies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing the US vs. Canada decision",
+      "naive_pattern": "Asks 'which path is more realistic?' as if one path objectively dominates — looks for a single correct answer applicable to all Chinese international students",
+      "informed_pattern": "Immediately asks clarifying questions about the individual's priorities, field, family plans, and risk tolerance before offering a comparison — treats it as a personal optimization problem with multiple valid solutions",
+      "why_it_matters": "The naive framing leads to copying others' decisions without modeling personal circumstances; the informed framing produces a decision that actually fits the individual's constraints",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Evaluating salary comparison between US and Canada",
+      "naive_pattern": "Compares gross salary figures and concludes the US is straightforwardly better financially",
+      "informed_pattern": "Adjusts for cost of living, taxes, family benefits (CCB, childcare), and life stage — recognizes the gap narrows or reverses depending on personal circumstances",
+      "why_it_matters": "Decisions made on gross salary alone systematically underestimate Canada's total compensation value for people with families or in high cost-of-living US cities",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "PGWP holders don't face any hiring friction in Canada because they don't require employer sponsorship",
+      "why_believed": "The legal reality is correct — PGWP is an open work permit requiring no employer action. The misconception extrapolates from legal fact to operational hiring reality without accounting for HR knowledge gaps",
+      "actual_rule": "PGWP is legally frictionless but operationally misunderstood at scale — many Canadian employers conflate it with employer-specific permits and screen out candidates unnecessarily",
+      "real_consequence": "PGWP holders who don't proactively explain their status lose job opportunities to candidates with PR/citizenship, even though they are legally equivalent for hiring purposes",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "The US vs. Canada financial comparison is settled — the US pays so much more that Canada only makes sense if you don't care about money",
+      "why_believed": "Raw salary comparisons between Bay Area and Toronto are striking (40–60% gap) and widely circulated; the family-stage economic comparison is less visible and requires more effort to calculate",
+      "actual_rule": "The financial comparison is life-stage dependent. The US salary premium is real but shrinks significantly when accounting for cost of living, childcare costs, Canadian child benefits, and parental leave — for families, the gap may be small or negligible",
+      "real_consequence": "People who choose the US purely on salary grounds without modeling family-stage costs may find the economic rationale weaker than expected when family formation occurs",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Chinese national worked in the US on H-1B for 5 years with successful lottery wins and no H-1B problems, but facing ongoing green card backlog anxiety",
+      "decision": "Voluntarily transferred to Canada instead of continuing to wait for US green card",
+      "outcome": "Obtained Canadian PR in 14 months. Reports higher sleep quality and reduced chronic anxiety compared to the US period — despite lower salary",
+      "lesson": "The psychological cost of multi-year green card uncertainty is real and persistent even when H-1B itself is stable. Some people find the trade-off (lower salary, earlier status certainty) favorable only after experiencing both states — not from theory alone",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Asking 'which path is more realistic for Chinese international students?' as a general question seeking a universal answer",
+      "underlying_state": "Decision paralysis combined with external validation-seeking — the poster is outsourcing a deeply personal optimization problem to crowd opinion, likely because the personal stakes feel too high to own the decision",
+      "how_it_manifests": "Framing the question as having a correct answer that applies to all Chinese students, rather than surfacing their own priorities and asking for a framework to evaluate them",
+      "expert_move": "Reframe: 'There's no universal answer — tell me what you're actually optimizing for, and I can help you think through which path fits that goal.' Force the poster to name their actual priority before offering comparison data",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Staying on the US H-1B path despite ongoing anxiety about green card timeline, while knowing the Canada PR path is available",
+      "underlying_state": "Sunk cost framing — years of US career investment, salary level, and professional network feel too costly to abandon, even when the ongoing psychological toll of status uncertainty is high",
+      "how_it_manifests": "Continuing on the US path not because it's the best fit for current priorities, but because switching feels like losing what was already invested",
+      "expert_move": "Ask: 'If you were starting fresh today with no prior investment in either country, which path would you choose?' This separates the sunk cost from the forward-looking decision",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Which path is more realistic — US H-1B or Canada PR — for Chinese international students?",
+      "reframe": "This isn't a question with a universal answer. The real question is: what are you personally optimizing for — maximum career earnings ceiling, or earliest possible immigration status certainty? Those two goals currently map to different countries.",
+      "why_it_works": "Dissolves the false premise that one path objectively dominates. Forces the poster to self-identify their actual priority, which immediately narrows the decision space and makes the comparison relevant rather than abstract",
+      "example_language": "这两个目标目前在北美往往对应不同的地理选择 ('These two goals currently correspond to different geographic choices in North America')",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "The US pays so much more — isn't the financial comparison obvious?",
+      "reframe": "The salary comparison is life-stage dependent, not fixed. The 40–60% gap is real at the gross level, but once you account for cost of living, childcare, Canadian child benefits, and parental leave, the effective gap may be much smaller — and for some families, may not favor the US at all",
+      "why_it_works": "Shifts the comparison from a static snapshot (current salary) to a dynamic model (total economic picture over a life stage), which is the actually relevant unit of analysis for long-term decisions",
+      "example_language": "如果你有结婚/生育计划，两国的经济账和你想象的不一样 ('If you have marriage/child plans, the economic calculation between the two countries is different from what you imagine')",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_cleaned_zhihu_美国H_1B和加拿大PR_对于中国背景的留学生_哪条路更现实",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}
