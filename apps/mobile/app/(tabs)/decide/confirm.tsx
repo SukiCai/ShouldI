@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import * as React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -9,7 +10,7 @@ import PrimaryButton from '@/components/ui/PrimaryButton';
 import { GhostAction } from '@/components/ui/Premium';
 import { useColorScheme } from '@/components/useColorScheme';
 import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
-import { palette, spacing, themeSurface, typography } from '@/constants/theme';
+import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
 
 import { useDecideWizard } from './context';
 
@@ -74,6 +75,101 @@ export default function DecideConfirmScreen() {
             },
           ]}>
           <DiscussDraftEditor draft={draft} onChange={updateDraft} onBack={() => router.back()} />
+
+          {draft.aiConfidenceScore != null ? (
+            <View
+              style={[
+                styles.insightCard,
+                {
+                  borderColor: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.10)',
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.85)',
+                  marginTop: spacing.md,
+                  marginHorizontal: screenContentGutter,
+                },
+              ]}>
+              <View style={styles.insightHeadRow}>
+                <Ionicons name="stats-chart-outline" size={15} color={isDark ? '#a3e635' : '#16a34a'} />
+                <Text style={[styles.insightHeadText, { color: isDark ? '#a3e635' : '#16a34a' }]}>
+                  AI Confidence
+                </Text>
+              </View>
+              <View style={styles.confidenceRow}>
+                <View
+                  style={[
+                    styles.confidenceTrack,
+                    { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' },
+                  ]}>
+                  <View
+                    style={[
+                      styles.confidenceFill,
+                      {
+                        width: `${draft.aiConfidenceScore}%`,
+                        backgroundColor:
+                          draft.aiConfidenceScore >= 70
+                            ? isDark ? '#a3e635' : '#16a34a'
+                            : draft.aiConfidenceScore >= 40
+                              ? isDark ? '#fbbf24' : '#d97706'
+                              : isDark ? '#f87171' : '#dc2626',
+                      },
+                    ]}
+                  />
+                </View>
+                <Text style={[styles.confidenceLabel, { color: surface.textPrimary }]}>
+                  {draft.aiConfidenceScore}%
+                </Text>
+              </View>
+              <Text style={[styles.insightSubText, { color: surface.textMuted }]}>
+                {draft.aiConfidenceScore >= 70
+                  ? 'High signal — the council has strong clarity on this decision.'
+                  : draft.aiConfidenceScore >= 40
+                    ? 'Moderate signal — some uncertainty remains, peer input helps.'
+                    : 'Low signal — this decision has genuine complexity or missing info.'}
+              </Text>
+            </View>
+          ) : null}
+
+          {draft.keyMoments.length > 0 ? (
+            <View style={{ marginTop: spacing.sm, gap: 8 }}>
+              <View style={[styles.insightHeadRow, { marginHorizontal: screenContentGutter }]}>
+                <Ionicons name="flash-outline" size={15} color={isDark ? '#7dd3fc' : '#0284c7'} />
+                <Text style={[styles.insightHeadText, { color: isDark ? '#7dd3fc' : '#0284c7' }]}>
+                  Key Context
+                </Text>
+              </View>
+              {draft.keyMoments.map((moment, index) => {
+                const accent =
+                  moment.type === 'expert_join' ? '#8b5cf6'
+                  : moment.type === 'complexity' ? '#f59e0b'
+                  : '#10b981';
+                return (
+                  <View
+                    key={index}
+                    style={[
+                      styles.momentCard,
+                      {
+                        marginHorizontal: screenContentGutter,
+                        borderColor: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.09)',
+                        backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.92)',
+                        borderLeftWidth: 3,
+                        borderLeftColor: accent,
+                      },
+                    ]}>
+                    <Text style={[styles.momentOrdinal, { color: surface.textMuted }]}>
+                      {String(index + 1).padStart(2, '0')}
+                    </Text>
+                    <Text style={[styles.momentCardTitle, { color: surface.textPrimary }]}>
+                      {moment.impact?.trim() || moment.answer}
+                    </Text>
+                    {moment.impact?.trim() ? (
+                      <Text style={[styles.momentCardSub, { color: surface.textMuted }]} numberOfLines={1}>
+                        "{moment.answer}"
+                      </Text>
+                    ) : null}
+                  </View>
+                );
+              })}
+            </View>
+          ) : null}
 
           {error ? (
             <View
@@ -175,5 +271,74 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 2,
     lineHeight: 18,
+  },
+  insightCard: {
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 6,
+  },
+  insightHeadRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 2,
+  },
+  insightHeadText: {
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  insightSubText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '500',
+  },
+  confidenceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  confidenceTrack: {
+    flex: 1,
+    height: 8,
+    borderRadius: 999,
+    overflow: 'hidden',
+  },
+  confidenceFill: {
+    height: '100%',
+    borderRadius: 999,
+  },
+  confidenceLabel: {
+    fontSize: 15,
+    fontWeight: '800',
+    minWidth: 36,
+    textAlign: 'right',
+  },
+  momentCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 4,
+  },
+  momentOrdinal: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+    lineHeight: 13,
+  },
+  momentCardTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    lineHeight: 20,
+  },
+  momentCardSub: {
+    fontSize: 12,
+    fontWeight: '500',
+    lineHeight: 16,
+    fontStyle: 'italic',
   },
 });

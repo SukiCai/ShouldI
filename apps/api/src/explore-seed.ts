@@ -40,6 +40,12 @@ const exploreCardsBase: ExploreCardDraft[] = [
         '在课业许可仍覆盖实习的前提下，用 8–12 周试岗换行业与人际信号，比一次性 all-in 担保全职更能降低「错赛道 + 身分卡死」联合风险。前提是每周小时数与 CPT/学期规则已书面核对。',
       agreeWithAiVotes: 156,
       disagreeWithAiVotes: 89,
+      confidenceScore: 74,
+      keyContext: [
+        '实习期是试探行业的低风险窗口',
+        'CPT 学期规则需书面确认才能安全接受',
+        '实习时间可能与毕业排期冲突',
+      ],
     },
   },
   {
