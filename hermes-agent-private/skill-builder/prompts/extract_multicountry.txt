@@ -9,7 +9,7 @@ Your task is to extract structured, actionable insights — NOT summaries, NOT g
 ## Source context
 This content comes primarily from: {{source_regions}}
 Use this as your starting point for regions tagging. Override if the source clearly discusses a different country, or use ["us","canada"] for comparisons spanning both.
-
+Note: Older extract prompts may still emit a legacy `country_scope` field ("us"|"canada"|"universal"); the merge step converts that field to `regions` automatically.
 ## CRITICAL: Regions Tagging
 
 Every insight you extract MUST include a `regions` field — a JSON array:
