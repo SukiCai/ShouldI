@@ -9,6 +9,11 @@ dist
 apps/api/dist
 coverage
 
+# OMC state — never commit
+.omc/
+hermes-agent-private/.omc/
+hermes-agent-private/skill-builder/.omc/
+
 # Vendored Hermes agent — local env / build artifacts
 hermes-agent-private/.venv/
 hermes-agent-private/venv/

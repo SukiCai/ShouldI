@@ -1,0 +1,354 @@
+{
+  "source_file": "nscc_pgwp_guide_raw.txt",
+  "heuristics": [
+    {
+      "rule": "Apply for PGWP as soon as you receive your letter of completion — do not wait for your diploma, certificate, or convocation ceremony.",
+      "condition": "When you have just finished your final coursework or placement and are waiting for official graduation documents",
+      "action": "Submit your PGWP application online within 180 days of receiving your letter of completion, using that letter plus unofficial transcript as proof",
+      "because": "The 180-day clock starts from the letter of completion date, not convocation. Waiting for a diploma wastes your window and risks missing the deadline entirely.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Submit your PGWP application before your study permit expires, not after — even a single day of expired status can disqualify you.",
+      "condition": "When your study permit expiry date is approaching and you have not yet graduated or applied for PGWP",
+      "action": "Confirm your study permit is valid at the time of PGWP submission; if it has expired, consult an RCIC immediately about restoration options",
+      "because": "IRCC requires your study permit to have been valid at some point during the 180 days after graduation AND at the time of application — both conditions must be met.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you submitted your study permit application on or after November 1, 2024, verify your program's CIP code against IRCC's eligible fields list before applying for PGWP.",
+      "condition": "When you are a post-November 2024 study permit holder preparing to apply for PGWP",
+      "action": "Cross-check your NSCC program's CIP code against IRCC's current eligible fields list (agriculture, healthcare, STEM, trades, transport) before submitting",
+      "because": "Field-of-study eligibility is now a hard requirement for this cohort — applying without confirming eligibility wastes the $255 fee and risks a denial that ends your legal status.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Do not travel outside Canada after submitting your PGWP application unless you have a valid TRV or eTA in your passport.",
+      "condition": "When your PGWP application is pending and you are considering international travel",
+      "action": "Check your TRV/eTA validity before booking travel; if expired, wait until your PGWP is approved before renewing, since TRV renewal requires new status",
+      "because": "You cannot renew a TRV while in PGWP-pending limbo; without a valid TRV or eTA you will be unable to re-enter Canada, stranding you outside the country.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Select 'No' for the job offer question during the PGWP application questionnaire even if you already have a job lined up.",
+      "condition": "When completing the IRCC online questionnaire for an open work permit / PGWP",
+      "action": "Answer 'No' to 'Do you have a written job offer?' to correctly route your application to an open work permit rather than an employer-specific permit",
+      "because": "Answering 'Yes' routes you to a closed, employer-specific work permit — losing the open-work-permit flexibility that is the entire value of the PGWP.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Upload your language test results under 'Client Information,' not under 'Proof of Language Proficiency,' because no such dedicated field exists in the IRCC portal.",
+      "condition": "When uploading documents for a PGWP application in the IRCC online system",
+      "action": "Place CELPIP/IELTS/PTE Core results in the 'Client Information' document upload section",
+      "because": "Students who look for a dedicated language proficiency field and find none may skip uploading their scores entirely, causing application refusal for missing evidence.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Once you submit your PGWP application with a valid study permit and qualifying program history, begin working full-time immediately — you do not need to wait for the permit to arrive.",
+      "condition": "When your study permit was valid at submission, your program was full-time and longer than eight months, and you did not violate your work-hour limits as a student",
+      "action": "Start full-time work as soon as the PGWP application is submitted and confirmed received by IRCC",
+      "because": "IRCC allows 'maintained status' work authorization during processing, but only if all three qualifying criteria are met — missing any one of them means you are not authorized to work and could face removal.",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Ensure your language test results are no older than 2 years at the time of PGWP application.",
+      "condition": "When you took an approved language test (CELPIP, IELTS General, PTE Core) more than 18 months ago and are approaching graduation",
+      "action": "Retake the test before submitting your PGWP application if results will be over 2 years old at submission date",
+      "because": "Expired language test scores are treated as if no test was submitted — the application will be refused regardless of your actual English proficiency.",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Study permit application date relative to November 1, 2024",
+      "why_it_matters": "Students who applied for their study permit on or after November 1, 2024 face an additional field-of-study eligibility requirement that earlier cohorts do not; this can render a completed degree worthless for PGWP purposes",
+      "how_to_assess": "Check the original study permit application submission date (not approval date) against November 1, 2024; then verify the program's CIP code against IRCC's current eligible fields list",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Study permit validity at time of PGWP application",
+      "why_it_matters": "A lapsed study permit at the moment of submission is a hard disqualifier — there is no grace period",
+      "how_to_assess": "Compare study permit expiry date against your intended application submission date; flag any gap greater than zero days as a critical risk requiring legal advice",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Full-time enrollment status throughout the program",
+      "why_it_matters": "A single semester (other than the final term) where you were enrolled part-time can disqualify you from PGWP entirely",
+      "how_to_assess": "Review official enrollment history with the registrar for every semester; flag any semester listed as part-time and consult an RCIC before applying",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language test score and recency",
+      "why_it_matters": "Minimum CLB 5 is required for college graduates; scores older than 2 years are rejected regardless of score level",
+      "how_to_assess": "Confirm test score meets CLB 5 equivalency for the specific test taken (CELPIP, IELTS General, or PTE Core) and that the test date is within 2 years of the intended PGWP submission date",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether the student worked more than authorized hours during studies",
+      "why_it_matters": "Exceeding authorized work hours as a student disqualifies you from the 'work while you wait' provision — meaning you cannot legally work during PGWP processing even after submitting",
+      "how_to_assess": "Review pay stubs, T4s, or employer records against the 20-hour weekly limit that applied while school was in session; flag any weeks of overwork",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Spouse's occupational TEER level and PGWP remaining validity",
+      "why_it_matters": "As of January 21, 2025, spousal open work permits are only available if the PGWP holder works in TEER 0/1 or select TEER 2/3 roles AND has at least 16 months remaining on the permit",
+      "how_to_assess": "Look up the NOC code of the PGWP holder's job and confirm TEER classification; calculate months remaining on PGWP at the time the spouse would apply",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Medical exam history and intended occupation",
+      "why_it_matters": "Certain occupations (healthcare, childcare, agricultural work) and prior residence in designated countries trigger mandatory medical exam requirements that add cost and time to the application",
+      "how_to_assess": "Check IRCC's designated country list and intended job duties against the public-health-contact criteria; budget extra time and $85+ in biometric fees if applicable",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "TRV or eTA validity for re-entry after travel",
+      "why_it_matters": "Traveling while PGWP is pending without a valid TRV or eTA means you cannot legally re-enter Canada until PGWP is approved — potentially months of being stranded abroad",
+      "how_to_assess": "Check passport for current TRV or eTA expiry before booking any international travel post-PGWP submission",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Waiting until convocation or diploma receipt to start PGWP application",
+      "unstated_consequence": "Significant portion of the 180-day application window is silently consumed, increasing risk of missing the deadline if any document delays occur; also delays work authorization start date",
+      "who_it_affects": "Students who assume the diploma is required before applying — a very common misunderstanding for first-generation international students",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Traveling internationally while PGWP application is pending",
+      "unstated_consequence": "If TRV or eTA has expired, you can re-enter Canada only after PGWP is approved; PGWP processing times are variable and you may be stuck outside Canada for weeks or months with no work authorization",
+      "who_it_affects": "Students who travel home for family visits immediately after graduation without checking re-entry document validity",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Applying for PGWP without verifying field-of-study CIP code eligibility (post-Nov 2024 cohort)",
+      "unstated_consequence": "A PGWP denial immediately terminates legal status in Canada — you must stop working and are required to leave the country; there is no automatic right to remain as a visitor",
+      "who_it_affects": "Post-November 2024 study permit holders in programs that may not map to IRCC's five eligible occupational categories",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Working full-time while PGWP is pending without confirming all three qualifying criteria are met",
+      "unstated_consequence": "If any one of the three criteria (valid study permit at submission, full-time program over 8 months, no work-hour violations as a student) is not met, working during the pending period is unauthorized — creating an inadmissibility record that can affect future immigration applications",
+      "who_it_affects": "Students who worked over 20 hours per week during busy academic periods and assume the 'work while you wait' rule applies to them automatically",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Enrolling as a part-time student in any non-final semester to manage workload or personal circumstances",
+      "unstated_consequence": "A single part-time semester (except the final semester) silently disqualifies you from the entire PGWP, regardless of how many full-time semesters preceded it",
+      "who_it_affects": "Students who reduce course load temporarily due to health, family, or work pressures without understanding the PGWP implications",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming a PGWP holder's spouse automatically qualifies for an open work permit",
+      "unstated_consequence": "Post-January 2025 rules restrict spousal OWPs to specific TEER levels and require the PGWP holder to have 16+ months remaining — many spouses who previously qualified no longer do under the new rules",
+      "who_it_affects": "Families where the PGWP holder works in TEER 2-4 occupations not on the shortage list, or where the PGWP has less than 16 months remaining",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Submitting the PGWP application after the 180-day window has closed",
+      "why_it_happens": "Students conflate the 180-day clock starting from graduation ceremony or diploma receipt rather than the letter of completion; some wait for 'official' documents that are not required",
+      "consequence": "Permanent loss of PGWP eligibility for that program — no appeals or extensions; must leave Canada or apply for a different status",
+      "warning_signs": [
+        "Student says 'I'm waiting for my diploma to arrive before applying'",
+        "Student graduated more than 4 months ago and has not yet applied",
+        "Student is unsure when their letter of completion was issued"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Selecting 'Yes' to the job offer question during the IRCC questionnaire, resulting in a closed work permit application instead of an open PGWP",
+      "why_it_happens": "The questionnaire wording is counterintuitive — students with jobs think honesty requires them to say yes, not understanding that 'yes' routes to an employer-specific permit",
+      "consequence": "Student receives a closed work permit tied to one employer instead of an open PGWP; loses the flexibility to change jobs freely and may need to restart the application process",
+      "warning_signs": [
+        "Student has already accepted a job offer before applying for PGWP",
+        "Student did not use an RCIC or consult the school's step-by-step guide before starting the questionnaire"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Assuming any Canadian college program qualifies for PGWP without checking the CIP code (post-November 2024 cohort)",
+      "why_it_happens": "Students and even some advisors are unaware of the field-of-study eligibility change that took effect November 1, 2024; the rule only applies to newer study permit holders, creating a two-tier system that is easy to misapply",
+      "consequence": "PGWP denial, immediate loss of legal status, required departure from Canada, potential bar on future applications depending on actions taken post-denial",
+      "warning_signs": [
+        "Student applied for study permit after November 2024 and is in a business, arts, or social science program",
+        "Student has not verified their program's CIP code against IRCC's eligible list"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Failing to upload language test scores because no dedicated field is visible in the IRCC portal",
+      "why_it_happens": "The IRCC portal does not label a specific field 'Proof of Language Proficiency' — students search for it, do not find it, and either skip it or contact IRCC assuming it is not required",
+      "consequence": "Application refused for missing mandatory evidence; $255 fee lost; student must refile and loses work authorization time",
+      "warning_signs": [
+        "Student says 'I couldn't find where to upload my IELTS scores'",
+        "Student submitted application without uploading any language document"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Traveling internationally after PGWP submission without a valid TRV or eTA, then being unable to re-enter Canada",
+      "why_it_happens": "Students know they submitted their application and assume 'pending status' allows normal international travel; they do not realize TRV/eTA renewal is impossible until PGWP is approved",
+      "consequence": "Student is stranded outside Canada, loses employment, potentially loses housing, and cannot return until PGWP is approved — a process that can take months",
+      "warning_signs": [
+        "Student's TRV or eTA expires within the next 3-6 months",
+        "Student is planning international travel immediately after graduation"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Working full-time during PGWP processing without meeting all three eligibility criteria for 'work while you wait'",
+      "why_it_happens": "Students hear that they can work while waiting and assume the rule applies universally, without checking whether they violated work-hour limits during studies or had a part-time enrollment period",
+      "consequence": "Unauthorized work record on immigration file; potential inadmissibility finding; jeopardizes future permanent residence applications through Express Entry or PNP",
+      "warning_signs": [
+        "Student worked more than 20 hours in any single week during the academic semester",
+        "Student had a semester of part-time enrollment",
+        "Student's study permit had a gap or expired briefly at any point"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What date did you submit your original study permit application — before or after November 1, 2024?",
+      "what_it_reveals": "Whether the field-of-study CIP code eligibility requirement applies to this student, which is a hard additional gate for PGWP eligibility",
+      "follow_up_if_yes": "What is your program's CIP code, and is it on IRCC's current list of eligible fields linked to agriculture, healthcare, STEM, trades, or transport?",
+      "follow_up_if_no": "You are not subject to the field-of-study restriction; proceed to verify the other eligibility criteria (full-time status, study permit validity, language test)",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Were you enrolled as a full-time student in every semester of your program except the final term?",
+      "what_it_reveals": "Whether there is a hidden PGWP disqualification due to a part-time semester that the student may not even remember or understand as problematic",
+      "follow_up_if_yes": "Confirm with the registrar's office that each semester's enrollment record officially shows full-time status before submitting",
+      "follow_up_if_no": "Immediately consult an RCIC — a part-time semester (other than the final term) disqualifies you from PGWP, and you need to explore alternative pathways before applying",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is your study permit currently valid, and will it still be valid on the date you plan to submit the PGWP application?",
+      "what_it_reveals": "Whether the student faces a hard eligibility barrier that cannot be overcome by simply filing the application quickly",
+      "follow_up_if_yes": "Proceed with application preparation; confirm the exact expiry date and build in a buffer for any document-gathering delays",
+      "follow_up_if_no": "Contact an RCIC immediately to assess whether status restoration is possible; do not submit a PGWP application with an expired study permit without legal advice",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did you at any point work more than 20 hours per week during a semester when school was in session?",
+      "what_it_reveals": "Whether the student qualifies for 'work while you wait' authorization during PGWP processing — unauthorized work during pending status creates an inadmissibility record",
+      "follow_up_if_yes": "Do not begin working after submitting the PGWP application until you receive the actual permit; consult an RCIC about whether to disclose the prior work violation in the application",
+      "follow_up_if_no": "You likely qualify for maintained-status work authorization during processing — confirm the other two criteria (valid study permit at submission, full-time program over 8 months) are also met",
+      "country_scope": "canada"
+    },
+    {
+      "question": "When was your language proficiency test taken, and will those results be less than 2 years old on your planned PGWP submission date?",
+      "what_it_reveals": "Whether the student needs to retake a language test before filing — submitting with expired scores guarantees refusal",
+      "follow_up_if_yes": "Confirm the test type is one of the three approved by IRCC (CELPIP General, IELTS General, PTE Core) and that the score meets CLB 5",
+      "follow_up_if_no": "Book a retake immediately; factor in test registration lead time and results turnaround time against the 180-day PGWP application deadline",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Are you planning to travel outside Canada at any point between now and when your PGWP is approved?",
+      "what_it_reveals": "Whether the student is at risk of being stranded outside Canada due to an expired TRV or eTA during the PGWP processing period",
+      "follow_up_if_yes": "Check TRV and eTA validity in your passport right now — if either expires before your expected PGWP approval date, you must either cancel travel plans or accept the risk of extended time outside Canada",
+      "follow_up_if_no": "No additional action needed on this dimension; focus on ensuring other eligibility criteria are met",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does your spouse intend to apply for an open work permit based on your PGWP status?",
+      "what_it_reveals": "Whether the post-January 2025 spousal OWP restrictions apply and whether the family's dual-income plan is achievable",
+      "follow_up_if_yes": "What is your NOC code and TEER classification, and how many months remain on your PGWP? — both must meet new thresholds (TEER 0/1 or qualifying TEER 2/3, plus 16+ months remaining)",
+      "follow_up_if_no": "No action needed on spousal OWP; focus on primary PGWP application",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You need to wait for your diploma or attend convocation before you can apply for the PGWP",
+      "actual_reality": "The PGWP application can and should be submitted as soon as you receive your letter of completion — the diploma and convocation are irrelevant to the application timeline",
+      "implication": "Students who wait for their diploma may unnecessarily consume weeks or months of their 180-day window, increasing risk of missing the deadline if any complications arise",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Any Canadian college program from a designated learning institution qualifies you for a PGWP",
+      "actual_reality": "Since November 1, 2024, students who applied for their study permit on or after that date must also have graduated from a program in one of five approved occupational fields (agriculture, healthcare, STEM, trades, transport); other programs do not qualify",
+      "implication": "Students in business, arts, humanities, and social science programs who applied for study permits after November 2024 may have no path to PGWP regardless of graduation status — they need to investigate this before completing their program, not after",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Once you submit your PGWP application, you can automatically work full-time while you wait",
+      "actual_reality": "The 'work while you wait' provision has three specific qualifying conditions — all must be met simultaneously; failing even one (e.g., having worked overtime during school) means you are not authorized to work and doing so creates an inadmissibility issue",
+      "implication": "Students should audit their own work history before assuming work authorization, rather than starting a full-time job the day after submission",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A PGWP holder's spouse is automatically eligible for an open work permit",
+      "actual_reality": "As of January 21, 2025, spousal OWPs require the PGWP holder to work in TEER 0 or 1, or select TEER 2/3 shortage occupations, AND to have at least 16 months remaining on their PGWP at the time of the spouse's application — most entry-level PGWP holders will not meet these thresholds",
+      "implication": "Families planning finances around dual income should verify the PGWP holder's TEER classification before the spouse declines other options; many couples who qualified under old rules no longer do",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "If your PGWP application is denied, you have some time to appeal or arrange your affairs before needing to leave Canada",
+      "actual_reality": "A PGWP denial immediately ends your legal status in Canada — you must stop working immediately and are required to leave; there is no automatic appeal period, though you may be able to apply for visitor status restoration",
+      "implication": "Students should treat a PGWP application with the same seriousness as a final job interview — getting it wrong has immediate, severe, and largely irreversible consequences in the short term",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Having a job offer before applying for PGWP is an advantage you should declare in the application",
+      "actual_reality": "Declaring a job offer in the IRCC questionnaire routes your application toward an employer-specific closed work permit, not the open PGWP; the correct answer is 'No' to the job offer question to obtain an open permit",
+      "implication": "Students should follow the step-by-step questionnaire guide exactly as written rather than trying to 'honestly' reflect their current situation — the system's logic is counterintuitive and correct answers are not always the most transparent-seeming ones",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Application timing",
+      "naive_pattern": "Waits for convocation or diploma before initiating PGWP application; treats graduation ceremony as the official start of the post-study clock",
+      "informed_pattern": "Begins preparing PGWP application documents as soon as final grades are submitted; submits the moment the letter of completion arrives by email",
+      "why_it_matters": "The 180-day window is fixed and non-extendable; every day of unnecessary delay is a day of lost buffer against processing complications, document issues, or IRCC delays",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Field-of-study eligibility verification",
+      "naive_pattern": "Assumes that attending a DLI and graduating is sufficient for PGWP eligibility; never checks CIP codes or IRCC eligible fields lists",
+      "informed_pattern": "Verifies program CIP code against IRCC's current eligible occupational fields list before starting the final year of study — and if studying post-November 2024, treats this as a go/no-go gate before investing further in the program",
+      "why_it_matters": "Discovering ineligibility after graduation means losing both the tuition investment and the immigration pathway simultaneously, with no recourse",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "IRCC portal navigation",
+      "naive_pattern": "Answers questionnaire questions based on intuitive logic (e.g., 'I have a job so I say yes to the job offer question'); uploads documents in whatever field seems closest in name",
+      "informed_pattern": "Follows institution-provided step-by-step guides or consults an RCIC; knows that the portal's logic is counterintuitive and that specific answer combinations (like 'no' to job offer) are mandatory for correct routing",
+      "why_it_matters": "A single incorrect questionnaire answer can generate a different type of work permit than intended, requiring a full restart and additional fees while your work authorization timeline shrinks",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Travel planning during pending application",
+      "naive_pattern": "Books international travel home after graduation without checking TRV or eTA expiry; assumes pending application status allows free movement in and out of Canada",
+      "informed_pattern": "Checks passport for TRV and eTA validity before making any travel plans post-submission; if either expires soon, delays travel until PGWP is approved or accepts consciously that re-entry may be delayed",
+      "why_it_matters": "Being stranded outside Canada during PGWP processing can result in job loss, housing loss, missed academic or professional opportunities, and significant financial harm",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Work authorization during pending PGWP",
+      "naive_pattern": "Starts working full-time the day after submitting the PGWP application, having heard that 'you can work while you wait,' without auditing personal compliance with the three qualifying conditions",
+      "informed_pattern": "Audits own enrollment history and work-hour records against the three qualifying conditions before starting work; if any condition is uncertain, consults an RCIC before working",
+      "why_it_matters": "Unauthorized work during a pending application creates an inadmissibility record that can permanently damage future permanent residence applications through Express Entry or PNP streams",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Spousal immigration planning",
+      "naive_pattern": "Assumes spouse will automatically receive an open work permit once PGWP is approved; plans family budget around two incomes without verifying TEER classification or permit remaining validity",
+      "informed_pattern": "Researches the PGWP holder's NOC/TEER classification and expected job at time of application; calculates PGWP remaining validity at the point when the spouse would apply; stress-tests the family financial plan against a scenario where the spouse's OWP is not approved",
+      "why_it_matters": "Post-January 2025 restrictions have significantly narrowed spousal OWP eligibility; families caught off guard by denial may face serious financial hardship with no immediate remedies",
+      "country_scope": "canada"
+    }
+  ]
+}

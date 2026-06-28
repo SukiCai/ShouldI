@@ -1,0 +1,278 @@
+{
+  "source_file": "immigration_stem_opt_employer_validation_horror_stories_and_ho.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Apply for STEM OPT extension 90 days before OPT expiry",
+      "condition": "When your OPT is approaching expiration and you intend to use the STEM extension",
+      "action": "Submit the I-765 application at least 90 days before your OPT EAD expires to create buffer for RFEs and processing delays",
+      "because": "The post author explicitly identified the 90-day window as 'correct' and noted that the grace period after OPT expiry is thin — the buffer absorbs RFE response time without causing a gap in work authorization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Involve your DSO early, not after an RFE arrives",
+      "condition": "When preparing STEM OPT paperwork, especially if the employer is filling out I-983 for the first time",
+      "action": "Loop in the school DSO before submission to review the I-983 and STEM connection narrative",
+      "because": "The post author's fix required DSO involvement to draft a supplemental letter — commenters noted the DSO is a free resource that is underused",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Know your timely-filed protection before your EAD expires",
+      "condition": "When an I-765 receipt notice is obtained before the current OPT EAD expires",
+      "action": "Continue working legally even if the new EAD card has not physically arrived — do not stop work based on employer panic",
+      "because": "Multiple high-voted comments (223 and 167 upvotes) confirmed that timely-filed notice allows continued employment; employers frequently do not know this and wrongly ask employees to stop",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether the employer is enrolled in E-Verify",
+      "why_it_matters": "STEM OPT is invalid if the employer is not E-Verify enrolled — this is a hard eligibility requirement, not a soft preference",
+      "how_to_assess": "Ask HR directly and verify at e-verify.uscis.gov employer search before filing; confirm enrollment status at I-765 submission time and at approval time",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the employer has had a STEM OPT employee before",
+      "why_it_matters": "First-time STEM OPT employers often fill out I-983 incorrectly — wrong NAICS codes, missing STEM connection narrative — triggering RFEs that delay or jeopardize the extension",
+      "how_to_assess": "Ask HR if they have processed I-983 before; if not, treat I-983 review by DSO or immigration attorney as mandatory rather than optional",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the actual work site employer differs from the legal employer (staffing/consulting arrangements)",
+      "why_it_matters": "In staffing agency or consulting firm placements, it is unclear whether the agency or the client fills out the I-983 — getting this wrong can invalidate the training plan",
+      "how_to_assess": "This was raised as an unresolved question with 134 upvotes in the thread — consult a DSO or immigration attorney before filing in this scenario",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Quality and specificity of the STEM connection narrative in the I-983",
+      "why_it_matters": "A vague or generic description of how the role relates to the degree is a primary trigger for USCIS RFEs on STEM OPT applications",
+      "how_to_assess": "The I-983 should name specific projects, tools, and methods that link the job duties to the STEM degree field — generic job descriptions are insufficient",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Relying on employer HR to handle the I-983 without independent review",
+      "unstated_consequence": "If HR uses the wrong NAICS code or fails to articulate the STEM connection clearly, an RFE is issued — creating a timeline crunch and risk of work authorization gap if filed late",
+      "who_it_affects": "Anyone whose employer is processing STEM OPT for the first time and who does not independently verify the filing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Stopping work when the EAD card has not arrived by the expiry date",
+      "unstated_consequence": "If a timely-filed receipt notice exists, stopping work is unnecessary and creates an unexplained employment gap — but most employees and employers do not know this protection exists",
+      "who_it_affects": "Any STEM OPT applicant whose employer HR is unfamiliar with timely-filed protections and demands the employee stop working",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Employer submits I-983 with incorrect NAICS code and no clear STEM connection narrative, triggering an RFE",
+      "why_it_happens": "HR departments that have not processed STEM OPT before treat I-983 as a generic form rather than a substantive legal document requiring degree-to-role justification; the student defers to HR assuming they know what they are doing",
+      "consequence": "USCIS issues an RFE requiring supplemental evidence, adding weeks or months to processing and creating risk of work authorization lapse if the original OPT was close to expiry",
+      "warning_signs": [
+        "HR says 'we've never done this before' or 'we'll figure it out'",
+        "I-983 submitted without DSO or attorney review",
+        "Job description in I-983 is copied from the offer letter rather than written to show STEM connection"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Employee stops working when EAD card does not arrive before OPT expiry, not knowing timely-filed protection applies",
+      "why_it_happens": "Neither the employee nor the employer knows that a receipt notice obtained before expiry allows continued employment — employer panics about I-9 compliance and instructs employee to stop",
+      "consequence": "Unnecessary employment gap, lost income, potential damage to work record — all avoidable with knowledge of the timely-filed rule",
+      "warning_signs": [
+        "Employer HR asks for the new EAD card itself rather than accepting the receipt notice",
+        "Employee has not proactively informed HR of timely-filed protections before expiry date approaches"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your employer enrolled in E-Verify, and can you confirm their enrollment before you file?",
+      "what_it_reveals": "Whether the foundational eligibility requirement for STEM OPT is met — without E-Verify enrollment, the extension cannot be approved regardless of other factors",
+      "follow_up_if_yes": "Confirm when they enrolled — enrollment must be active at time of filing and approval",
+      "follow_up_if_no": "The employer must enroll in E-Verify before the STEM OPT application can proceed; assess whether they are willing and able to do so in time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your employer processed an I-983 for a STEM OPT employee before?",
+      "what_it_reveals": "The likelihood that HR will fill out the form correctly without additional guidance — first-time employers are a high-risk scenario",
+      "follow_up_if_yes": "Still have your DSO review the completed I-983 before submission",
+      "follow_up_if_no": "Treat DSO or immigration attorney review of the I-983 as mandatory, not optional",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your legal employer the same entity as the company where you physically work and are supervised?",
+      "what_it_reveals": "Whether a staffing agency or consulting firm structure creates ambiguity about who must sign and submit the I-983",
+      "follow_up_if_yes": "Standard I-983 process applies",
+      "follow_up_if_no": "Consult DSO or immigration attorney immediately — the agency vs. client I-983 responsibility question is unresolved in community guidance and requires expert input",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does the I-983 contain specific project descriptions linking your degree field to your actual job duties?",
+      "what_it_reveals": "Whether the training plan is substantive enough to withstand USCIS scrutiny or is likely to trigger an RFE",
+      "follow_up_if_yes": "Review whether the NAICS code used matches the employer's actual industry classification",
+      "follow_up_if_no": "Revise before submission — generic job descriptions without degree linkage are a primary RFE trigger",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If your degree is on the STEM designated degree program list, your job automatically qualifies for STEM OPT",
+      "actual_reality": "The degree being on the STEM list is necessary but not sufficient — USCIS also evaluates whether the specific job duties have a direct relationship to the STEM degree, which must be documented in the I-983 with specificity",
+      "implication": "Even students with clearly STEM degrees (e.g., Information Systems) need to write a detailed STEM connection narrative — the credential alone does not carry the application",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "You must stop working once your current EAD expires if the new one hasn't arrived",
+      "actual_reality": "If the I-765 receipt notice was obtained before the current EAD's expiration date, the timely-filed rule allows continued employment — the receipt notice plus the expired EAD together serve as I-9 documentation",
+      "implication": "Students should proactively educate their employer's HR about this rule before the expiry date to prevent unnecessary work stoppages driven by employer misunderstanding",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Approach to I-983 preparation",
+      "naive_pattern": "Hand the I-983 entirely to employer HR and assume they know what they are doing because it is an employer-submitted form",
+      "informed_pattern": "Actively collaborate with HR, involve the DSO for review, and ensure the training plan contains specific project-level descriptions linking degree to job duties before submission",
+      "why_it_matters": "First-time STEM OPT employers routinely submit deficient I-983s; the student bears the consequences of the RFE delay, not HR",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Response to EAD not arriving before expiry",
+      "naive_pattern": "Stop working or panic when the physical EAD card does not arrive by the OPT expiry date",
+      "informed_pattern": "Confirm timely-filed receipt notice is in hand, inform HR of the legal basis for continued employment, and continue working without interruption",
+      "why_it_matters": "Unnecessary work stoppages create employment gaps and lost income that are entirely avoidable with knowledge of the timely-filed protection",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Use of the DSO",
+      "naive_pattern": "Contact the DSO only when a problem has already occurred (e.g., after receiving an RFE)",
+      "informed_pattern": "Engage the DSO proactively before filing — treat them as a free pre-submission review resource, especially for first-time employer situations",
+      "why_it_matters": "Post-RFE remediation is harder, slower, and more stressful than pre-filing prevention; DSO involvement before submission catches common errors",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You have to stop working the day your old EAD expires if the new one hasn't come in the mail yet",
+      "why_believed": "The EAD card is the tangible document people associate with work authorization; its expiry date feels like an absolute cutoff, and employer HR often reinforces this by demanding to see a valid card",
+      "actual_rule": "If the I-765 receipt notice was obtained before the old EAD's expiry date, the timely-filed rule permits continued employment — the combination of the expired EAD and receipt notice satisfies I-9 requirements",
+      "real_consequence": "Employees who follow this misconception stop working unnecessarily, lose income, and may create an employment gap — while employees who know the rule continue uninterrupted",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "E-Verify enrollment only needs to happen by the time USCIS approves the STEM OPT, not at the time of filing",
+      "why_believed": "The question appeared with 87 upvotes suggesting it is genuinely uncertain in the community — the timing of E-Verify enrollment relative to filing vs. approval is unclear to many applicants",
+      "actual_rule": "The community thread did not definitively resolve this — it is a point of confusion requiring DSO or attorney clarification; the misconception is assuming there is a grace period when the requirement may be stricter",
+      "real_consequence": "Filing with an employer who is not yet E-Verify enrolled may result in denial or RFE; applicants should not assume post-filing enrollment cures a pre-filing deficiency",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student applied for STEM OPT 90 days before expiry; employer (first-time STEM OPT) submitted I-983 with wrong NAICS code and a generic, non-specific STEM connection description",
+      "decision": "After receiving an RFE, the student worked with their DSO to draft a supplemental letter and had the employer's attorney submit an updated I-983 with specific project descriptions",
+      "outcome": "RFE was successfully responded to; STEM OPT extension was approved",
+      "lesson": "An RFE on STEM OPT is survivable if the underlying job genuinely qualifies — the fix is specificity: project-level descriptions of how degree skills apply to actual work. The 90-day lead time provided the buffer needed to respond without losing work authorization.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Employer HR says to stop working because the new EAD card has not arrived before the expiry date",
+      "underlying_state": "Authority deference and catastrophizing — the student assumes the employer must be correct about legal compliance, and fears that continuing to work could constitute an immigration violation",
+      "how_it_manifests": "Student stops working unnecessarily, accepts income loss, and does not push back or research the timely-filed rule",
+      "expert_move": "Reframe the employer as legally uninformed on this specific point, not legally authoritative — give the student the specific rule (timely-filed receipt notice + expired EAD = valid I-9) and a script to educate HR proactively before the expiry date arrives",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Receiving an RFE on a STEM OPT application",
+      "underlying_state": "Catastrophizing — interpreting an RFE as a near-certain denial or the beginning of a status crisis rather than a normal administrative process",
+      "how_it_manifests": "Panic posts, paralysis on how to respond, failure to immediately engage DSO and employer attorney who can actually fix the problem",
+      "expert_move": "Normalize RFEs as common and survivable; redirect energy immediately toward DSO engagement and gathering the specific evidence USCIS requested — the outcome is determined by response quality, not by the RFE itself",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "My EAD is expiring and the new one hasn't arrived — do I have to stop working?",
+      "reframe": "The question is not whether your card has arrived, but whether you have a timely-filed receipt notice — that receipt notice is your work authorization, not the card itself",
+      "why_it_works": "Shifts focus from the physical artifact (the card) to the legal status (the receipt notice), which is the actual basis for continued work authorization — breaks the false equivalence between card expiry and work authorization expiry",
+      "example_language": "The timely filed point is so important. A lot of people don't know they can keep working if the receipt is before expiry.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "My employer's HR handles the I-983 — that's not my job to worry about",
+      "reframe": "HR submitting it doesn't mean HR knows how to do it correctly — and you bear the consequences of their errors, not them",
+      "why_it_works": "Relocates accountability from the employer back to the student, motivating proactive engagement with DSO review rather than passive reliance on HR competence",
+      "example_language": "Your employer's HR might not know how to fill out I-983 correctly — especially if you're their first STEM OPT employee. The DSO at your school is a free resource. Use them more.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_immigration_stem_opt_employer_validation_horror_stories_and_ho",
+  "_source_regions": [
+    "us"
+  ]
+}

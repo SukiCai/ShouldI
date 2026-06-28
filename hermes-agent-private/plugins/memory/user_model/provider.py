@@ -101,7 +101,8 @@ class UserModelProvider(MemoryProvider):
         return ""
 
     def sync_turn(
-        self, user_content: str, assistant_content: str, *, session_id: str = ""
+        self, user_content: str, assistant_content: str, *, session_id: str = "",
+        messages: Optional[List[Dict[str, Any]]] = None,
     ) -> None:
         """Three-gate filter. Queue messages that pass all gates for session-end inference."""
         if not self._user_id or not self._model or not self._gate:

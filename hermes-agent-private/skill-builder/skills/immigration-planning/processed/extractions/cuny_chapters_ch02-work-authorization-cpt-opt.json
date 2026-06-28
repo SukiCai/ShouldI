@@ -1,0 +1,309 @@
+{
+  "source_file": "ch02-work-authorization-cpt-opt.md",
+  "heuristics": [
+    {
+      "rule": "Never start working on OPT until the physical EAD card is in hand — not when the application is approved, not when the receipt notice arrives.",
+      "condition": "When an F-1 student has applied for OPT and received an I-797C receipt or approval notice but the EAD card has not yet arrived physically",
+      "action": "Wait for the physical EAD card before beginning any work, even one day",
+      "because": "Even one day of unauthorized employment terminates F-1 status, bars reinstatement, and permanently closes pathways to H-1B and green card. The approval notice is not work authorization.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Keep full-time CPT under 12 cumulative months to preserve OPT eligibility — stop at 11 months if necessary.",
+      "condition": "When an F-1 student is considering or currently on full-time CPT for an extended internship or co-op",
+      "action": "Track cumulative full-time CPT months carefully and ensure total does not reach 12 months",
+      "because": "Full-time CPT of 12 or more cumulative months permanently and irreversibly eliminates OPT eligibility, closing the primary bridge to H-1B sponsorship after graduation.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Before accepting a job offer for STEM OPT extension, verify the employer is enrolled in E-Verify — not just willing to enroll, but actively enrolled.",
+      "condition": "When an F-1 STEM degree holder is negotiating or accepting a job offer intended to support a STEM OPT extension",
+      "action": "Ask the employer's HR team to confirm active E-Verify enrollment before signing the offer letter",
+      "because": "E-Verify enrollment is required at the time of STEM OPT extension filing; a non-enrolled employer disqualifies the extension regardless of willingness to sponsor.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "J-1 students must obtain written RO authorization before any on-campus work — do not assume it is automatic like F-1.",
+      "condition": "When a J-1 student wants to work on campus and assumes the rules are the same as for F-1 students",
+      "action": "Contact the Responsible Officer and obtain written authorization before starting any on-campus employment",
+      "because": "Unlike F-1 status where on-campus work is incident to status and requires no special authorization, J-1 students performing on-campus work without written RO authorization are in unauthorized employment status.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Begin OPT-authorized work within 90 days of the OPT start date on the EAD — do not treat the start date as flexible.",
+      "condition": "When an F-1 student has received their EAD but has not yet secured a job or is delaying start for any reason",
+      "action": "Track unemployment days from the OPT start date and ensure work begins within the 90-day window",
+      "because": "The 90-day unemployment limit begins on the OPT start date printed on the EAD, not on the date work actually begins; exceeding it violates status.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Use part-time CPT instead of full-time CPT when possible, as it does not affect OPT eligibility regardless of duration.",
+      "condition": "When a student needs CPT authorization and the role can be structured as part-time",
+      "action": "Request part-time CPT authorization from DSO rather than full-time CPT",
+      "because": "Part-time CPT has no cumulative limit that affects OPT; only full-time CPT counted at 12+ months triggers permanent OPT ineligibility.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Account for the part-time pre-completion OPT deduction when planning post-graduation work authorization — every 2 months part-time pre-OPT costs 1 month of post-OPT.",
+      "condition": "When an F-1 student is considering using pre-completion OPT during their final semesters",
+      "action": "Calculate how many months of post-completion OPT will remain after the pre-OPT deduction and assess whether that leaves enough time to bridge to H-1B",
+      "because": "Students who use 6 months of part-time pre-completion OPT lose 3 months from their 12-month post-OPT authorization, potentially disrupting H-1B cap-gap timing.",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cumulative full-time CPT months used",
+      "why_it_matters": "Crossing 12 cumulative months of full-time CPT permanently eliminates OPT eligibility — the single most irreversible decision in F-1 work authorization",
+      "how_to_assess": "Ask DSO for total cumulative full-time CPT months recorded on all I-20s; do not rely on employer or personal records",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer E-Verify enrollment status",
+      "why_it_matters": "Determines whether a STEM OPT extension is even possible with that employer; an unenrolled employer disqualifies the extension at filing",
+      "how_to_assess": "Ask HR directly and verify on the E-Verify employer search tool (everify.uscis.gov) before accepting the offer",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "OPT start date vs. expected job start date",
+      "why_it_matters": "If the OPT start date is set too early relative to when work will actually begin, unemployment days accumulate and the 90-day limit may be exceeded before a job starts",
+      "how_to_assess": "Coordinate with DSO to set the OPT start date as close as possible to the anticipated job start date without going earlier than needed",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the internship is integral and required by the degree program",
+      "why_it_matters": "CPT eligibility requires the work to be an integral, required part of the curriculum; elective or optional internships may not qualify and could constitute unauthorized employment",
+      "how_to_assess": "Confirm with DSO that a course exists that awards credit for the specific internship and that the program requires or formally integrates the experience",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Visa type: F-1 vs. J-1",
+      "why_it_matters": "Authorization rules differ significantly — J-1 students need written RO authorization for on-campus work while F-1 students do not; conflating the two leads to unauthorized employment",
+      "how_to_assess": "Check the student visa stamp and DS-2019 (J-1) or I-20 (F-1) to confirm status type before assuming any work authorization rule applies",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Pre-completion OPT usage and remaining post-OPT months",
+      "why_it_matters": "Pre-OPT reduces the post-completion OPT pool at a 2:1 ratio, potentially leaving insufficient time to bridge to an H-1B cap-gap if the student entered the lottery",
+      "how_to_assess": "Calculate remaining post-OPT months = 12 minus (months of pre-OPT used / 2); assess whether this window covers the next H-1B lottery cycle",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Graduate program requiring immediate CPT",
+      "why_it_matters": "The standard 1 full academic year enrollment requirement before CPT is waived for graduate programs where immediate CPT participation is a required curriculum element",
+      "how_to_assess": "Review the graduate program's official curriculum documentation and confirm with DSO whether an immediate CPT exception applies",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking full-time CPT for 12+ months to earn income during graduate studies",
+      "unstated_consequence": "Permanently and irrevocably eliminates OPT eligibility, removing the primary post-graduation bridge to H-1B sponsorship and forcing immediate alternative status arrangements",
+      "who_it_affects": "Graduate students in programs where extended paid internships are common and encouraged, particularly in engineering, business, and technology fields",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Using part-time pre-completion OPT to gain work experience before graduation",
+      "unstated_consequence": "Every 2 months of part-time pre-OPT consumes 1 month of post-completion OPT, reducing the window available to bridge to H-1B — potentially by enough to miss a lottery cycle",
+      "who_it_affects": "Students in programs with multiple semesters remaining who want early career experience but need maximum post-graduation work authorization time",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a job offer from an employer not enrolled in E-Verify for STEM OPT",
+      "unstated_consequence": "The STEM OPT extension cannot be filed with that employer at all, reducing work authorization from up to 36 months to only 12 months of standard OPT",
+      "who_it_affects": "STEM degree holders who receive attractive offers from smaller companies, startups, or non-tech firms that have not enrolled in E-Verify",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Setting an early OPT start date to maximize authorized time",
+      "unstated_consequence": "Unemployment days begin counting from the EAD start date regardless of when work begins; an early start date with a delayed job search erodes the 90-day unemployment buffer",
+      "who_it_affects": "Students who apply for OPT early and optimize for the longest possible authorization window without accounting for job search timelines",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on an employer's verbal assurance that CPT is 'fine' or 'unlimited'",
+      "unstated_consequence": "The employer's statement may be technically accurate about CPT itself but entirely miss the OPT eligibility consequence — leaving the student with no post-graduation work authorization pathway",
+      "who_it_affects": "Students at employers with established internship programs who trust HR or supervisors to understand immigration consequences they are not trained to advise on",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Starting work on the OPT approval notice before the physical EAD card arrives",
+      "why_it_happens": "Students conflate USCIS approval of the application with work authorization; the I-797C receipt or approval notice feels like permission because it confirms the application was accepted",
+      "consequence": "One day of work before EAD arrives constitutes unauthorized employment, terminating F-1 status with no reinstatement path and closing all routes to H-1B and green card",
+      "warning_signs": [
+        "Student asks 'can I start Monday since USCIS approved my OPT?'",
+        "Student receives job offer with start date before EAD is expected to arrive and does not push back"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Accumulating 12+ months of full-time CPT without realizing OPT is being permanently forfeited",
+      "why_it_happens": "Employers and program advisors describe CPT as 'unlimited' (which is true for CPT itself) without disclosing the separate OPT eligibility rule; students optimize for current income without understanding the long-term cost",
+      "consequence": "Permanent, irreversible loss of OPT eligibility; student cannot bridge to H-1B through standard OPT pathway and must find alternative status immediately upon graduation",
+      "warning_signs": [
+        "Student is approaching or has exceeded 11 months of full-time CPT and has not been warned by DSO",
+        "Student describes their internship as 'CPT, so it's fine' without knowing their cumulative total"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Accepting a STEM field job offer without verifying employer E-Verify enrollment",
+      "why_it_happens": "Students assume large or tech-adjacent employers are automatically E-Verify enrolled; they do not verify before signing because asking feels awkward or they fear the offer being rescinded",
+      "consequence": "STEM OPT extension is ineligible to be filed with that employer, cutting maximum authorized work period from 36 months to 12 months and narrowing the H-1B lottery window",
+      "warning_signs": [
+        "Student cannot confirm employer E-Verify enrollment from HR",
+        "Employer HR is unfamiliar with E-Verify when asked about STEM OPT extension requirements"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "J-1 student beginning on-campus work without obtaining written RO authorization, assuming it works like F-1",
+      "why_it_happens": "J-1 and F-1 students are often grouped together in orientation materials; the distinction in on-campus work rules is rarely emphasized, and students default to what they hear F-1 peers doing",
+      "consequence": "Unauthorized employment in violation of J-1 status, which can trigger status termination and bar future visa applications",
+      "warning_signs": [
+        "J-1 student mentions starting a campus job 'like my F-1 friends did'",
+        "J-1 student has not contacted their RO before beginning on-campus work"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Missing the 90-day employment start deadline on OPT by not tracking unemployment days from the EAD start date",
+      "why_it_happens": "Students believe the 90-day clock starts when they stop working or become unemployed, not from the EAD start date; they treat the clock as a 'gap between jobs' rule rather than a cumulative authorization rule",
+      "consequence": "Violation of OPT status conditions, potentially invalidating OPT authorization and jeopardizing any subsequent H-1B cap-gap or STEM extension",
+      "warning_signs": [
+        "Student has not begun working within 60 days of OPT start date and has no imminent job start",
+        "Student is unaware of what date is printed as the start date on their EAD"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many cumulative months of full-time CPT have you used across all semesters?",
+      "what_it_reveals": "Whether the student has already permanently lost OPT eligibility or is approaching the threshold that would eliminate it",
+      "follow_up_if_yes": "If 12 or more months: OPT is permanently gone — what alternative status arrangements are in place for post-graduation work authorization?",
+      "follow_up_if_no": "If under 12 months: how many more months of full-time CPT are planned, and will the total remain under 12?",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is your employer currently enrolled in E-Verify — not just willing to enroll, but actively enrolled right now?",
+      "what_it_reveals": "Whether the STEM OPT extension is actually available with this employer at time of filing, or whether the student will be limited to 12-month standard OPT",
+      "follow_up_if_yes": "If yes: confirm enrollment with HR in writing and note the employer's E-Verify company ID for the STEM extension application",
+      "follow_up_if_no": "If no or uncertain: assess whether employer will enroll before STEM OPT filing deadline, and evaluate alternative employers who are enrolled",
+      "country_scope": "us"
+    },
+    {
+      "question": "What is the start date printed on your EAD card, and have you begun working yet?",
+      "what_it_reveals": "Whether unemployment days are accumulating and how much of the 90-day buffer remains before a status violation occurs",
+      "follow_up_if_yes": "If working: confirm the employer's position qualifies as related to the field of study for OPT compliance",
+      "follow_up_if_no": "If not working: calculate days elapsed since EAD start date and determine urgency of securing employment",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are you on F-1 or J-1 status?",
+      "what_it_reveals": "Which set of work authorization rules applies — particularly for on-campus employment, where J-1 requires written RO authorization and F-1 does not",
+      "follow_up_if_yes": "If J-1: have you obtained written RO authorization for any on-campus work before starting?",
+      "follow_up_if_no": "If F-1: have you confirmed the on-campus employer is an authorized campus employer within the DSO's definition?",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the internship or co-op you are considering required by your degree program and does it award course credit?",
+      "what_it_reveals": "Whether CPT is the appropriate authorization mechanism or whether the student is attempting to use CPT for an experience that does not meet eligibility requirements",
+      "follow_up_if_yes": "If yes: confirm DSO authorization and I-20 endorsement are in place before the first day of work",
+      "follow_up_if_no": "If no: CPT may not be available; explore OPT pre-completion authorization or whether the program can be restructured to qualify",
+      "country_scope": "us"
+    },
+    {
+      "question": "How many months of pre-completion OPT have you used, and how many months of post-completion OPT will remain?",
+      "what_it_reveals": "Whether the student will have sufficient post-graduation OPT time to cover the period between graduation and the next H-1B cap selection and start date",
+      "follow_up_if_yes": "If sufficient time remains: confirm STEM extension eligibility to further extend the buffer if H-1B is not selected in first lottery",
+      "follow_up_if_no": "If insufficient time: advise on CPT vs. deferring pre-OPT use and recalculate whether H-1B cap-gap can be maintained",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "CPT is unlimited — you can use as much as you want without any long-term consequences",
+      "actual_reality": "CPT itself has no duration cap, but full-time CPT exceeding 12 cumulative months permanently and irrevocably eliminates OPT eligibility — a separate, devastating consequence that CPT rules themselves do not mention",
+      "implication": "Students must treat the 12-month full-time CPT threshold as a hard ceiling on career planning, not a guideline, and track cumulative months actively rather than trusting employers or program advisors to warn them",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Receiving the OPT approval notice from USCIS means you can start working",
+      "actual_reality": "Work cannot legally begin until the physical EAD card is in the student's possession; the approval notice and I-797C receipt are not work authorization documents",
+      "implication": "Students must factor EAD card delivery time into job start date negotiations and must refuse or defer job start dates that precede EAD card arrival, even if it creates friction with employers",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "All large or tech-sector employers are automatically enrolled in E-Verify and will qualify for STEM OPT extension",
+      "actual_reality": "E-Verify enrollment is not automatic for any employer regardless of size or sector; enrollment must be verified on a case-by-case basis before accepting an offer intended to enable STEM OPT extension",
+      "implication": "STEM degree holders should verify E-Verify enrollment status as part of the offer evaluation process — before signing — and should treat non-enrollment as a disqualifying factor unless the employer commits to enrolling before the STEM extension filing deadline",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "J-1 students can work on campus the same way F-1 students can — no special paperwork needed",
+      "actual_reality": "J-1 students must obtain written authorization from their Responsible Officer before beginning any on-campus work; this is a mandatory requirement with no exception, unlike F-1 where on-campus work is incident to status",
+      "implication": "J-1 students should never begin on-campus employment based on peer observation of F-1 norms; they must proactively contact their RO and obtain written authorization first",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Unauthorized employment is a minor administrative issue that can be corrected after the fact",
+      "actual_reality": "Even a single day of unauthorized employment terminates F-1 status, bars reinstatement, and permanently closes pathways to H-1B and green card — there is no cure once it occurs",
+      "implication": "Students and employers must treat work authorization compliance as a zero-tolerance issue; the asymmetry between the ease of the violation and the severity of the consequence requires extreme caution",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "CPT usage planning",
+      "naive_pattern": "Takes full-time CPT for as long as the employer offers, treating it as free work authorization with no downside; relies on employer HR or program supervisor to flag any issues",
+      "informed_pattern": "Tracks cumulative full-time CPT months against the 12-month OPT eligibility threshold proactively; structures internship terms to stay under the limit even if the employer would prefer longer engagement",
+      "why_it_matters": "The uninformed student can permanently lose OPT eligibility — and with it the H-1B bridge — in a single extended internship without any warning from those around them",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "OPT start date strategy",
+      "naive_pattern": "Requests the earliest possible OPT start date to maximize authorized time; does not account for 90-day unemployment clock or job search timeline",
+      "informed_pattern": "Coordinates OPT start date with DSO to align as closely as possible with anticipated employment start; understands that earlier is not always better when job start is uncertain",
+      "why_it_matters": "An early start date with a delayed job search consumes the 90-day unemployment buffer rapidly, creating a status violation risk before employment is secured",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "EAD card and work authorization timing",
+      "naive_pattern": "Interprets USCIS approval notice or employer's eagerness to onboard as sufficient to begin work; does not know the physical card is the legal trigger",
+      "informed_pattern": "Knows the physical EAD card is the only document that authorizes work; negotiates job start dates with employers based on expected EAD delivery and does not yield to pressure to start earlier",
+      "why_it_matters": "Starting even one day before EAD arrival is unauthorized employment with terminal consequences for immigration status",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "STEM OPT employer evaluation",
+      "naive_pattern": "Evaluates job offers based on compensation, role fit, and brand; assumes E-Verify and STEM extension are the employer's problem to handle after joining",
+      "informed_pattern": "Includes E-Verify enrollment verification as a non-negotiable pre-offer checklist item; declines or conditions acceptance on confirmed enrollment before signing",
+      "why_it_matters": "A non-enrolled employer at the time of STEM OPT filing disqualifies the extension entirely, reducing authorized work time by up to 24 months and compressing the H-1B lottery window",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding J-1 vs. F-1 work authorization rules",
+      "naive_pattern": "J-1 student assumes on-campus work rules are the same as what F-1 peers describe; begins campus employment without seeking RO authorization",
+      "informed_pattern": "J-1 student recognizes that J-1 and F-1 carry distinct work authorization frameworks; contacts RO proactively and waits for written authorization before any on-campus work begins",
+      "why_it_matters": "Unauthorized J-1 on-campus employment violates status and can result in termination of exchange visitor status, affecting both current and future visa eligibility",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Consequence severity calibration for immigration violations",
+      "naive_pattern": "Views immigration rules as bureaucratic formalities that can be corrected if violated; assumes violations can be explained away or fixed retroactively",
+      "informed_pattern": "Understands that unauthorized employment is a status-terminating event with no reinstatement path; treats every work authorization rule as a hard constraint, not a guideline",
+      "why_it_matters": "The student who underestimates severity may take calculated risks that seem minor but carry permanent, irreversible consequences for their entire US immigration trajectory",
+      "country_scope": "us"
+    }
+  ]
+}

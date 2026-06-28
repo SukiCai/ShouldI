@@ -1,0 +1,374 @@
+{
+  "source_file": "zhihu_美国绿卡排期对印度_中国大陆出生的申请人有多严重.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If you are China-born with research credentials, pursue EB-1B or EB-2 NIW before defaulting to employer-sponsored EB-2",
+      "condition": "When a China-born applicant has publications, citations, or research recognition in STEM fields...",
+      "action": "Seriously evaluate EB-1B (Outstanding Researcher) or EB-2 NIW as primary green card strategy rather than waiting in the standard EB-2 employer-sponsored queue",
+      "because": "EB-1 China priority date (~2022) is significantly shorter than EB-2 China, and EB-2 NIW removes the PERM dependency; commenters explicitly recommend this bifurcation based on credential availability",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For India-born applicants, EB-2 India wait time now exceeds most reasonable career planning horizons — treat Canada PR as a parallel or alternative path, not a fallback",
+      "condition": "When an India-born professional is early in their US career and evaluating green card strategy...",
+      "action": "Model the Canada Express Entry path concurrently, not as a plan B after EB-2 fails",
+      "because": "Multiple high-upvote comments confirm EB-2 India current priority date (~2012 as of 2024) implies 50+ year queue for new entrants; one commenter corroborates Canada PR via Express Entry as a realized alternative (14 months to PR)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "EB-1A (self-petition, no employer sponsor, no PERM) is a structurally different pathway that should be evaluated independently from EB-1B and EB-2",
+      "condition": "When a China-born or India-born applicant wants to reduce dependency on employer continuity...",
+      "action": "Assess EB-1A eligibility separately — it requires no employer sponsorship and bypasses PERM entirely",
+      "because": "A 678-upvote comment explicitly flags this as widely unknown, noting EB-1A has shorter backlog than EB-2 for China-born applicants and removes employer dependency risk",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth (not citizenship)",
+      "why_it_matters": "Green card quotas are allocated by country of birth, not citizenship. India-born and China-born applicants face backlogs of decades; all other nationalities face near-current priority dates for the same EB categories.",
+      "how_to_assess": "Identify your country of birth and look up the current Visa Bulletin priority date for your EB category + birth country combination",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "EB category eligibility (EB-1 vs EB-2 vs EB-3)",
+      "why_it_matters": "For China and India born applicants, the difference between EB-1 and EB-2 priority dates can be 10+ years. EB-1 categories (especially EB-1A self-petition) have materially shorter backlogs.",
+      "how_to_assess": "Audit publications, citations, awards, media coverage, high salary relative to peers — these are EB-1 qualifying evidence. If none exist, EB-2 is likely the only option.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer stability and PERM dependency",
+      "why_it_matters": "Each job change may require restarting the PERM labor certification process, resetting portions of the green card timeline. Company bankruptcy or acquisition can interrupt the entire petition.",
+      "how_to_assess": "Assess employer financial health, M&A likelihood, and whether the role is likely to exist in 5-10 years; also evaluate whether EB-1A or NIW (employer-independent) paths are viable",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Personal time horizon and life stage",
+      "why_it_matters": "A 20-50 year wait affects life decisions differently depending on age, family plans, and career flexibility. Someone at 25 and someone at 40 face categorically different decision trees.",
+      "how_to_assess": "Map current age + projected priority date advancement against major life milestones (children's education, retirement, aging parents) to assess true personal cost",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Salary differential tolerance for Canada alternative",
+      "why_it_matters": "Canada PR via Express Entry is faster (one commenter: 14 months) but typically involves a salary reduction. The trade-off is speed and status certainty vs. earning power.",
+      "how_to_assess": "Calculate the salary gap between comparable US and Canada roles in your field, then weigh against the psychological and practical cost of indefinite H-1B dependency",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying on H-1B and waiting in the EB-2 India queue",
+      "unstated_consequence": "US-born children become American citizens while the parent remains on H-1B with no permanent status — a generational inversion that commenters describe as 'not a joke, this actually happens'",
+      "who_it_affects": "India-born professionals who entered the EB-2 queue in the 2000s-2010s and are still waiting in 2024; anyone who entered the queue after ~2015 faces even longer waits",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Switching employers during green card processing",
+      "unstated_consequence": "May require restarting the PERM labor certification process, effectively losing years of queue position for parts of the green card process (though I-140 priority date may be preserved if already approved)",
+      "who_it_affects": "Anyone in EB-2 or EB-3 employer-sponsored green card process who receives a better job offer mid-process",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing Canada PR over continued US H-1B",
+      "unstated_consequence": "Faster permanent status (14 months cited) but ~25% salary reduction; the psychological relief is real but the financial cost is concrete and long-term",
+      "who_it_affects": "Mid-career professionals with families who prioritize stability over maximizing US tech compensation",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Defaulting to EB-2 employer-sponsored path without evaluating EB-1A",
+      "unstated_consequence": "Missing a self-petition option that bypasses PERM and has a shorter backlog — EB-1A is widely unknown in the community despite being potentially accessible to many STEM researchers",
+      "who_it_affects": "China-born and India-born applicants with strong research or achievement records who were never told EB-1A existed as an option",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating green card filing as an administrative formality rather than a multi-decade strategic commitment",
+      "why_it_happens": "H-1B approval feels like the hard part; green card feels like paperwork that follows naturally. The backlog reality is not visible until someone is already in it.",
+      "consequence": "Applicants discover 5-10 years in that their priority date has barely moved, by which point they are deeply embedded in US life (mortgages, children, aging parents) and have fewer exit options",
+      "warning_signs": [
+        "Describing green card as 'just a process' or 'the next step after H-1B'",
+        "Not looking up current Visa Bulletin priority dates before accepting a job offer or planning a family timeline"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "India-born applicants entering EB-2 queue without modeling realistic wait time",
+      "why_it_happens": "Priority date information exists publicly but requires active lookup and extrapolation; most people rely on word-of-mouth from slightly earlier cohorts whose wait times were shorter",
+      "consequence": "Committing to a US career path built around green card arrival that is realistically 40-50 years away, leading to either career paralysis or late-stage pivot to Canada with accumulated opportunity cost",
+      "warning_signs": [
+        "Asking 'how long does EB-2 take' without specifying country of birth",
+        "Assuming EB-2 wait time is similar to what colleagues from other countries experienced"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Not evaluating EB-1A until too late in career to accumulate qualifying evidence",
+      "why_it_happens": "EB-1A is perceived as 'for Nobel Prize winners' — the community widely underestimates who qualifies; early-career researchers don't build toward it because they don't know it's achievable",
+      "consequence": "Missed window to accumulate publications, citations, media coverage, and peer review credits that would have made EB-1A viable — instead stuck in EB-2 backlog",
+      "warning_signs": [
+        "Dismissing EB-1A as 'not for me' without consulting an immigration attorney",
+        "No awareness that EB-1A requires no employer sponsorship or PERM"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth (not citizenship)?",
+      "what_it_reveals": "Determines which per-country quota applies and which Visa Bulletin cutoff dates govern your wait time — the single most important variable in green card timeline",
+      "follow_up_if_yes": "If India or China: immediately model EB-1 vs EB-2 priority date gap and assess EB-1A/EB-1B/NIW eligibility",
+      "follow_up_if_no": "If neither India nor China: standard EB-2/EB-3 timelines apply and the backlog is dramatically shorter — different strategic calculus",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have peer-reviewed publications, citations, awards, or evidence of being in the top percentage of your field?",
+      "what_it_reveals": "Determines whether EB-1B (Outstanding Researcher) or EB-1A (Extraordinary Ability) pathways are viable, which have materially shorter backlogs for China and India born applicants",
+      "follow_up_if_yes": "Consult an immigration attorney specifically about EB-1A self-petition and EB-1B — do not default to EB-2 without exploring these first",
+      "follow_up_if_no": "EB-2 employer-sponsored or EB-2 NIW (if specialty qualifies) may be the primary path — model realistic wait time against personal life timeline",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How stable is your current employer, and what happens to your green card petition if the company is acquired or closes?",
+      "what_it_reveals": "Employer-sponsored green cards (EB-2, EB-3 via PERM) are tied to the employer; instability creates petition interruption risk that resets years of progress",
+      "follow_up_if_yes": "If employer is stable: proceed but build contingency awareness; if EB-1A or NIW viable, pursue in parallel as insurance",
+      "follow_up_if_no": "If employer is at risk: prioritize employer-independent pathways (EB-1A, NIW) or evaluate Canada PR as a decoupled alternative",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is your current age, and when do you need permanent status to make major life decisions (housing, children's schooling, caring for parents)?",
+      "what_it_reveals": "Aligns the abstract priority date timeline against concrete personal milestones — often reveals that the expected green card arrival date falls after the relevant life window",
+      "follow_up_if_yes": "If life milestones precede projected green card: forces honest reassessment of US-only strategy vs. Canada PR or other alternatives",
+      "follow_up_if_no": "If timeline is comfortable: can optimize within the US system without urgency pressure",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "H-1B is a temporary visa and green card is the straightforward next step that follows after a few years of work",
+      "actual_reality": "For India-born and China-born applicants, the green card backlog is so severe that H-1B effectively becomes a permanent status for decades — new EB-2 India entrants in 2024 face estimated waits into the 2070s",
+      "implication": "The decision to stay in the US on H-1B is not a short-term bridge to green card — it is a commitment to indefinite temporary status, which changes the entire risk calculus of career and life planning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "EB-1 is only for Nobel laureates or equivalent — not realistic for most people",
+      "actual_reality": "EB-1A (Extraordinary Ability) and EB-1B (Outstanding Researcher) have achievable standards for many STEM professionals with publication records, citations, peer review participation, and high compensation relative to peers — and EB-1A requires no employer sponsorship or PERM",
+      "implication": "Many China-born and India-born applicants who could qualify for EB-1 never pursue it because they self-screen out based on a misconception, missing a path with dramatically shorter backlogs",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Changing jobs during green card processing means starting over completely",
+      "actual_reality": "An approved I-140 priority date can often be preserved even after changing employers under AC21 portability rules, though PERM may need to be redone — the situation is nuanced, not binary",
+      "implication": "Fear of losing green card progress should not automatically prevent job changes — the actual impact depends on which stage the petition is at, but many people stay in bad jobs unnecessarily based on this misconception",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they frame the green card timeline",
+      "naive_pattern": "Asks 'how long does EB-2 take?' as if there is one answer; doesn't specify country of birth; assumes answer is 2-5 years based on colleagues from other countries",
+      "informed_pattern": "Looks up the current Visa Bulletin immediately; calculates priority date gap for their specific birth country and EB category; models multiple scenarios including EB-1 alternatives",
+      "why_it_matters": "The naive framing leads to multi-year life planning built on a false timeline; the informed framing surfaces that the real wait may exceed a career lifetime and forces earlier strategic decisions",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they evaluate employer offers during green card processing",
+      "naive_pattern": "Refuses all job changes out of fear of 'losing green card progress'; stays in suboptimal roles for years to protect perceived queue position",
+      "informed_pattern": "Understands AC21 portability; knows which elements of the petition transfer and which reset; makes job change decisions based on actual legal risk, not general fear",
+      "why_it_matters": "Naive pattern traps people in bad employment situations unnecessarily; informed pattern recovers career optionality without actually sacrificing more green card progress than necessary",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Whether they consider Canada as a parallel strategy",
+      "naive_pattern": "Treats Canada as a failure option — only considered if the US path fully collapses",
+      "informed_pattern": "Models Canada Express Entry timeline and eligibility concurrently with US green card strategy from early career; treats it as a genuine alternative with different trade-offs, not a consolation prize",
+      "why_it_matters": "Waiting until US options are exhausted means arriving at Canada PR evaluation from a position of desperation with less time, less flexibility, and potentially lower CRS scores due to age",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "EB-2 India is slow but manageable — probably 10-15 years at most",
+      "why_believed": "Early cohorts (pre-2010 filers) experienced shorter waits; people extrapolate from others' experiences without accounting for the exponential growth in India-born H-1B holders filing since 2010",
+      "actual_rule": "EB-2 India priority date as of 2024 is approximately 2012. New applicants filing in 2024 with a 2024 priority date face estimated waits into the 2070s based on current queue depth and annual quota consumption rates",
+      "real_consequence": "Applicants plan US lives around a green card arrival date that will not occur within their working lifetime, leading to deferred major decisions (housing, family, elder care planning) that never get made",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "EB-1 is not realistic for most people — it's basically only for world-famous scientists",
+      "why_believed": "The label 'Extraordinary Ability' sounds like it requires global recognition; most people self-screen without consulting an attorney",
+      "actual_rule": "EB-1A and EB-1B have documented, specific evidentiary criteria (publications, citations, peer review, high salary, awards, media coverage) that many mid-career STEM professionals can meet — immigration attorneys regularly approve petitions for people who assumed they didn't qualify",
+      "real_consequence": "People who could qualify for EB-1 (with shorter backlogs and, for EB-1A, no employer dependency) spend decades in the EB-2 queue instead",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The green card backlog only affects people who didn't plan well — if you start early, you'll be fine",
+      "why_believed": "'Starting early' is good advice for most immigration processes; people assume the same logic applies here",
+      "actual_rule": "The backlog is structural and quota-based — it affects everyone born in India or China regardless of when they file. Filing earlier gives you an earlier priority date, but the queue is so deep that even 2009 filers were still waiting in 2024",
+      "real_consequence": "People who 'started early' discover 15 years later they are still years away, having made life decisions premised on imminent green card arrival",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "India-born professional filed EB-2 India in 2009 and was still waiting in 2024 — 15 years later",
+      "decision": "Continued waiting on H-1B throughout, did not pursue Canada or EB-1 alternatives",
+      "outcome": "Children born in the US became American citizens. Parent remained on H-1B in 2024. Priority date had still not been reached after 15 years.",
+      "lesson": "EB-2 India queue depth means that even early filers from the 2000s have not received green cards by 2024. The backlog is not a temporary surge — it is structural. Children aging into citizenship before parents receive permanent status is a real outcome, not a hypothetical.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Professional (likely India-born based on context) worked 7 years in the US on H-1B, was in the green card queue, evaluated alternatives",
+      "decision": "Moved to Canada and applied via Express Entry",
+      "outcome": "Received Canadian PR in 14 months. Salary decreased approximately 25%. Reported significantly better psychological wellbeing ('slept better').",
+      "lesson": "Canada Express Entry can deliver permanent residency in ~14 months for qualified applicants — a fraction of the US EB-2 India timeline. The trade-off is real: lower salary and a different life context. The psychological cost of indefinite H-1B limbo is a legitimate factor that commenters explicitly name as decisive.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Person asks 'should I keep waiting for my EB-2 or consider Canada?' after years in the queue",
+      "underlying_state": "Sunk cost fallacy — years invested in the US queue make abandoning it feel like waste, even when the forward-looking math clearly favors Canada",
+      "how_it_manifests": "Framing Canada as 'giving up' or 'starting over'; anchoring on the years already spent rather than the years remaining; seeking confirmation that the US path will eventually pay off",
+      "expert_move": "Force a forward-looking calculation only: 'Ignore the years you've already spent. From today, how many years to Canadian PR vs. US green card? Now decide.' This breaks the sunk cost anchor.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Person says 'I don't think I qualify for EB-1' without having consulted an attorney",
+      "underlying_state": "Impostor syndrome combined with label-based self-screening — 'Extraordinary Ability' sounds unattainable, so the person doesn't investigate further",
+      "how_it_manifests": "Dismissing EB-1 paths in a single sentence; never requesting an EB-1 assessment; defaulting to EB-2 as the 'realistic' option without comparison",
+      "expert_move": "Challenge the self-assessment directly: 'Have you had an attorney review your CV against EB-1 criteria? The label is misleading — let someone who knows the standards evaluate you before you decide.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person describes staying in a bad job because they are afraid to lose green card progress",
+      "underlying_state": "Loss aversion amplified by immigration uncertainty — the perceived cost of losing queue position outweighs the concrete cost of remaining in a harmful or limiting work situation",
+      "how_it_manifests": "Tolerating low compensation, poor management, or career stagnation for years; framing any job change as catastrophic for green card status",
+      "expert_move": "Clarify the actual legal situation: 'Do you have an approved I-140? If so, your priority date likely transfers under AC21. The risk of changing jobs is much lower than you think — let's separate the real legal risk from the perceived risk.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person frames the question as 'is the green card backlog really that bad?' seeking reassurance",
+      "underlying_state": "Denial and hope bias — the true numbers are psychologically overwhelming, so the person looks for a more manageable interpretation",
+      "how_it_manifests": "Asking for optimistic scenarios; focusing on edge cases or policy change possibilities; avoiding looking up the actual Visa Bulletin data",
+      "expert_move": "Provide the unambiguous numbers without softening, then redirect to agency: 'Yes, it is this bad. The question is not whether the wait is long — it is what you want to do given that it is long. Here are your actual options.'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How long will my green card take? (asked without specifying country of birth or EB category)",
+      "reframe": "The question isn't 'how long does green card take' — it's 'what is the current priority date for YOUR birth country and category, and what year does that mean you'll get yours?'",
+      "why_it_works": "Forces the person to look up the actual Visa Bulletin and do the arithmetic themselves, converting a vague anxiety into a concrete number that enables real planning",
+      "example_language": "截至2024年，EB-2 India优先日期约在2012年。如果你今天排队，等到2070年代初。",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Should I stay in the US or go to Canada? (framed as a binary, often with emotional valence toward US)",
+      "reframe": "This isn't a question of which country is better — it's a question of what permanent status is worth to you in concrete life terms, and whether the US timeline is compatible with your actual life plan",
+      "why_it_works": "Removes the nationalistic or prestige framing and replaces it with a personal cost-benefit calculation anchored in the commenter's own reported experience (salary -25%, sleep improved)",
+      "example_language": "不是说哪个选择更好，只是说两条路的心理成本是完全不同的。",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I probably don't qualify for EB-1 so I'm planning on EB-2",
+      "reframe": "EB-1A is widely unknown and widely underestimated — the right question is not 'do I qualify?' based on the label, but 'has an attorney evaluated my CV against the specific evidentiary criteria?'",
+      "why_it_works": "Shifts from a self-assessment based on a misleading label to an expert-mediated assessment based on actual legal criteria, recovering a potentially superior pathway that was being discarded prematurely",
+      "example_language": "这是很多人不知道的：EB-1A不需要雇主担保，可以自己申请，且没有PERM流程。",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_cleaned_zhihu_美国绿卡排期对印度_中国大陆出生的申请人有多严重",
+  "_source_regions": [
+    "us"
+  ]
+}

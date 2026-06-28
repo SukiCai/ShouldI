@@ -327,9 +327,10 @@ export default function DecideCategoryScreen() {
       setFinalDecision(parsed.finalDecision ?? null);
       if (parsed.finalDecision) setVerdictExpanded(false);
 
-      if (parsed.isComplete && (parsed.suggestedDraftHints || parsed.previewCard)) {
+      if (parsed.isComplete && (parsed.suggestedDraftHints || parsed.previewCard || parsed.finalDecision)) {
         const h = parsed.suggestedDraftHints;
         const preview = parsed.previewCard;
+        const fd = parsed.finalDecision;
         const d = draftRef.current;
         const pollOptions =
           preview?.options?.length && preview.options.length >= 2
@@ -350,24 +351,26 @@ export default function DecideCategoryScreen() {
           communityAiVerdictLine:
             h?.communityAiVerdictLine?.trim()?.length
               ? h.communityAiVerdictLine.trim()
-              : preview?.aiVerdictLine?.trim() || d.communityAiVerdictLine,
+              : preview?.aiVerdictLine?.trim() || fd?.verdictLine?.trim() || d.communityAiVerdictLine,
           communityAiBecause:
             h?.communityAiBecause?.trim()?.length
               ? h.communityAiBecause.trim()
-              : preview?.aiBecause?.trim() || d.communityAiBecause,
+              : preview?.aiBecause?.trim()
+              || [fd?.recommendation, fd?.rationale].filter(Boolean).join('\n\n')
+              || d.communityAiBecause,
           hook: preview?.hook?.trim() || d.hook,
           tension: preview?.tension?.trim() || d.tension,
           pollOptions,
           discussionPreview:
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
-          expertVerdicts: parsed.finalDecision?.expertVerdicts ?? d.expertVerdicts,
-          keyMoments: parsed.finalDecision?.keyMoments ?? d.keyMoments,
+          expertVerdicts: fd?.expertVerdicts ?? d.expertVerdicts,
+          keyMoments: fd?.keyMoments ?? d.keyMoments,
           aiConfidenceScore: (() => {
-            if (parsed.finalDecision?.confidenceScore != null) {
-              return parsed.finalDecision.confidenceScore;
+            if (fd?.confidenceScore != null) {
+              return fd.confidenceScore;
             }
-            if (parsed.finalDecision) {
-              return { low: 35, medium: 60, high: 82 }[parsed.finalDecision.confidence] ?? 60;
+            if (fd) {
+              return ({ low: 35, medium: 60, high: 82 } as Record<string, number>)[fd.confidence] ?? 60;
             }
             return parsed.ambiguity != null ? Math.round((1 - parsed.ambiguity) * 100) : d.aiConfidenceScore;
           })(),

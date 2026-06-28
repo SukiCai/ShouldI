@@ -1,0 +1,258 @@
+{
+  "source_file": "USCIS_i_765_ead_processing_times_what_the_uscis_website_.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Submit the I-765 as early as possible within the 90-day window",
+      "condition": "When applying for OPT EAD and your program end date is approaching...",
+      "action": "File up to 90 days before your program end date to get earlier placement in the processing queue",
+      "because": "Earlier submission means earlier queue position; processing is batch-based and not strictly first-in-first-out, but submitting late compresses your buffer against delays",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If EAD hasn't arrived 30+ days before your needed start date, escalate immediately",
+      "condition": "When your EAD is pending and you are within 30 days of needing to begin work...",
+      "action": "Contact the USCIS contact center AND have your DSO submit a formal inquiry simultaneously",
+      "because": "Multiple commenters confirm that USCIS contact center inquiries alone yield boilerplate responses; dual escalation through DSO channels is more effective",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For severely delayed EAD cases, have your DSO submit a congressional inquiry",
+      "condition": "When your I-765 has been pending far beyond published processing times with no movement...",
+      "action": "Ask your DSO to submit an inquiry to your congressional representative's or senator's office on your behalf",
+      "because": "Multiple corroborated accounts confirm congressional inquiries often produce movement within weeks when standard USCIS contact center inquiries fail",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Service center assignment",
+      "why_it_matters": "Processing times vary significantly between Texas and Nebraska service centers; the assigned center affects how long an applicant waits",
+      "how_to_assess": "Check USCIS website for current per-center estimates; assignment is based on school address, not applicant mailing address",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Form completeness and accuracy",
+      "why_it_matters": "Errors or omissions on the I-765 trigger RFEs (Requests for Evidence), which can add weeks to processing time",
+      "how_to_assess": "Have DSO review the application before submission; cross-check all fields against official instructions",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Application timing within the eligibility window",
+      "why_it_matters": "Applying earlier within the 90-day window places the applicant earlier in the processing queue",
+      "how_to_assess": "Count back 90 days from program end date and target that date for submission",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Requesting a transfer to a different service center to get faster processing",
+      "unstated_consequence": "The transfer request resets your place in line, potentially making delays worse rather than better",
+      "who_it_affects": "Applicants who are already deep into the processing queue and assume switching centers will accelerate their case",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on the USCIS published average processing time as a planning benchmark",
+      "unstated_consequence": "Published times are averages, not guarantees; actual times ranged from 6-8 weeks to 6+ months for the same application type, making planning based on the published estimate unreliable",
+      "who_it_affects": "Students who set their job start dates or graduation timelines based on the USCIS website estimate without accounting for variance",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Submitting multiple USCIS contact center inquiries and assuming that is sufficient escalation",
+      "why_it_happens": "The USCIS website presents the contact center as the official escalation channel, so applicants exhaust it without exploring DSO-based escalation paths",
+      "consequence": "Cases stall for months with only boilerplate responses while more effective escalation channels (DSO inquiry, congressional inquiry) go unused",
+      "warning_signs": [
+        "Applicant has submitted two or more USCIS contact center inquiries with no substantive response",
+        "Applicant does not know that congressional inquiries are an option"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Confusing school address with personal mailing address when determining service center assignment",
+      "why_it_happens": "Applicants assume their mailing address determines which service center handles their case, when it is actually the school's address",
+      "consequence": "Confusion about case status, incorrect center checked for processing time estimates, potential errors on forms",
+      "warning_signs": [
+        "Applicant's school is in one state but personal mailing address is in another",
+        "Applicant checking processing times for the wrong service center"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Which service center was assigned to your I-765, and are you checking that center's specific processing time estimate?",
+      "what_it_reveals": "Whether the applicant is benchmarking against the correct center's data; reveals if confusion between school address and mailing address is distorting their expectations",
+      "follow_up_if_yes": "How does your actual pending time compare to that center's current published estimate?",
+      "follow_up_if_no": "Identify your school's state to determine correct center assignment, then check that center's published times on USCIS.gov",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your DSO submitted a formal inquiry or congressional inquiry on your behalf, or have you only contacted USCIS directly?",
+      "what_it_reveals": "Whether the applicant has exhausted the most effective escalation channels; DSO and congressional inquiry routes are distinct from and more effective than direct USCIS contact center inquiries",
+      "follow_up_if_yes": "How long ago was the DSO inquiry submitted, and has there been any case movement since?",
+      "follow_up_if_no": "Prompt immediate DSO engagement, especially if case is severely delayed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many days before your needed work start date is your EAD still pending?",
+      "what_it_reveals": "Urgency level and whether escalation is warranted; 30+ days before needed start is the threshold for active escalation per community consensus",
+      "follow_up_if_yes": "Initiate dual escalation: USCIS contact center + DSO inquiry immediately",
+      "follow_up_if_no": "Continue monitoring but prepare DSO inquiry materials in advance",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The processing time listed on the USCIS website tells you how long your EAD will take",
+      "actual_reality": "The published time is a statistical average; actual individual outcomes ranged from 6-8 weeks to 6+ months for the same application type in the same period, and processing is batch-based, not strictly first-in-first-out",
+      "implication": "Applicants should treat the published estimate as a rough midpoint and build significant buffer into job start date planning, not use it as a reliable deadline",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Premium processing is available for the I-765 OPT application and can speed up the process",
+      "actual_reality": "Premium processing is explicitly NOT available for OPT I-765 applications; there is no fee-based expedite option",
+      "implication": "Applicants who budget or plan around a premium processing option will find it unavailable; the only acceleration levers are early submission, clean forms, and DSO-mediated escalation for delayed cases",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Submitting a case inquiry through the USCIS website will produce meaningful movement or a real response",
+      "actual_reality": "Multiple applicants report receiving only boilerplate responses from USCIS contact center inquiries; DSO-submitted inquiries and congressional inquiries are reported to be significantly more effective for stalled cases",
+      "implication": "Applicants should not treat the USCIS online inquiry tool as an effective escalation mechanism and should route serious delays through their DSO",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Escalation strategy for delayed EAD",
+      "naive_pattern": "Submits multiple USCIS contact center inquiries, waits for responses, assumes this is the correct and sufficient escalation path",
+      "informed_pattern": "Contacts DSO proactively, asks DSO to submit a formal inquiry, and if severely delayed, requests a congressional inquiry through the DSO — treats DSO as the primary escalation lever, not USCIS directly",
+      "why_it_matters": "Congressional and DSO-mediated inquiries have documented effectiveness in producing movement on stalled cases; direct USCIS contact center inquiries consistently yield only boilerplate responses",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Planning job start dates around EAD",
+      "naive_pattern": "Uses the USCIS published processing time as a hard deadline and sets start date accordingly",
+      "informed_pattern": "Treats the published time as a floor, builds in a multi-week buffer, and negotiates a flexible start date with employers that accounts for processing variance",
+      "why_it_matters": "Processing variance is substantial (6 weeks to 6+ months documented in same period); planning to the average without buffer creates high risk of missing a committed start date",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Premium processing is available for OPT I-765 applications if you need your EAD faster",
+      "why_believed": "Premium processing exists for many other USCIS benefit types (H-1B, I-140, etc.) and applicants assume it applies broadly across all form types",
+      "actual_rule": "Premium processing is not available for I-765 OPT applications; USCIS does not offer a fee-based expedite option for this category",
+      "real_consequence": "Applicants who plan around premium processing as a backup option will discover it does not exist, leaving them with no paid acceleration path if processing runs long",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Your personal mailing address determines which service center processes your I-765",
+      "why_believed": "Most government applications route by the filer's address; applicants naturally assume the same logic applies here",
+      "actual_rule": "Service center assignment for OPT I-765 is based on the school's address, not the applicant's personal mailing address",
+      "real_consequence": "Applicants check processing time estimates at the wrong service center and have inaccurate expectations; may also cause confusion when trying to track or inquire about their case",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Requesting a transfer to a faster service center will speed up your EAD processing",
+      "why_believed": "If one center has shorter published times, switching seems like a logical shortcut",
+      "actual_rule": "Requesting a transfer resets the applicant's place in line; community consensus is that it rarely helps and often makes delays worse",
+      "real_consequence": "Applicant loses their position in the queue and may end up waiting longer than if they had remained at the original center",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "I-765 EAD pending for 5 months with no movement and no substantive response from USCIS contact center",
+      "decision": "DSO submitted an inquiry to the applicant's senator's office (congressional inquiry)",
+      "outcome": "EAD approval received approximately 3 weeks after the congressional inquiry was submitted",
+      "lesson": "Congressional inquiries routed through the DSO are an effective and underused escalation tool for severely stalled EAD cases; they should be pursued much earlier than most applicants attempt them",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Applicant has submitted multiple USCIS contact center inquiries with no results and feels they have exhausted their options",
+      "underlying_state": "Learned helplessness combined with institutional deference — the belief that the official channel is the only legitimate one, and if it isn't working, nothing will",
+      "how_it_manifests": "Applicant continues waiting passively, does not engage DSO for escalation, frames the situation as out of their control",
+      "expert_move": "Reframe: the USCIS contact center is not the escalation mechanism — your DSO is. Congressional inquiries exist precisely because the standard channel fails. You have not exhausted your options; you have only used the least effective one.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Applicant asks whether they can graduate and leave the university while their I-765 is still pending",
+      "underlying_state": "Fear that any action taken during a pending application will jeopardize the outcome; catastrophizing about immigration consequences of normal life decisions",
+      "how_it_manifests": "Delaying graduation, staying enrolled unnecessarily, or avoiding routine decisions out of fear of triggering a problem",
+      "expert_move": "Surface the specific rule at stake (program end date vs. enrollment status vs. EAD start date) and separate the regulatory question from the emotional fear; clarify what is and is not a triggering event",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I've submitted two USCIS contact center inquiries and gotten boilerplate responses — what else can I do?",
+      "reframe": "The USCIS contact center is not your escalation path — your DSO is. The most effective move is a DSO-submitted congressional inquiry, not more contact center submissions.",
+      "why_it_works": "Shifts the applicant from a passive, institution-facing posture to an active, advocate-mediated posture; breaks the assumption that the official self-service channel is the only or best lever",
+      "example_language": "DSO congressional inquiry thing is real — 5 months no movement, senator inquiry submitted, approval 3 weeks later",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_USCIS_i_765_ead_processing_times_what_the_uscis_website_",
+  "_source_regions": [
+    "us"
+  ]
+}

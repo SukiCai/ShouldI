@@ -1,0 +1,349 @@
+{
+  "source_file": "zhihu_F_1留学生从OPT到H_1B_中间有哪些需要注意的关键节点.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Apply for OPT 60-90 days before graduation; USCIS processing takes 3-5 months",
+      "condition": "When you are an F-1 student approaching graduation and planning to use OPT work authorization",
+      "action": "Submit the OPT application to your DSO and then USCIS 60-90 days before your program end date to ensure EAD arrives before you need to start working",
+      "because": "USCIS processing time for EAD is 3-5 months; late applications risk a gap between graduation and work authorization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Notify DSO and update SEVIS within 10 days of changing employers on OPT",
+      "condition": "When an OPT holder changes jobs or employers during the OPT period",
+      "action": "Report the employer change to your DSO within 10 days so SEVIS records are updated",
+      "because": "OPT requires active SEVIS maintenance; failure to update in time can be treated as a violation of status",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Start H-1B sponsorship conversations with your employer from OPT year one, not the final year of STEM OPT",
+      "condition": "When you are an F-1 student on OPT or STEM OPT who needs H-1B sponsorship",
+      "action": "Raise H-1B sponsorship intentions with your employer during your first OPT year to allow time for internal approval processes",
+      "because": "Most employers require time to navigate internal legal and budget approvals; waiting until the last year of STEM OPT leaves insufficient runway",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Confirm employer will pay for premium processing before H-1B is filed",
+      "condition": "When your employer is filing an H-1B petition on your behalf",
+      "action": "Confirm upfront that the employer will cover premium processing ($2,805) to receive a decision within 15 business days",
+      "because": "Without premium processing, the approval timeline creates a status limbo period where you cannot be certain of your authorization continuity",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Write a genuine, role-specific I-983 Training Plan — do not use a generic template",
+      "condition": "When applying for STEM OPT extension and submitting the I-983 Training Plan",
+      "action": "Customize the I-983 to specifically describe how the job tasks connect to your STEM degree field",
+      "because": "Multiple community members confirmed that copy-paste template I-983 forms triggered NOIDs (Notices of Intent to Deny)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cumulative OPT unemployment days remaining",
+      "why_it_matters": "The 90-day unemployment cap is cumulative across the entire OPT period; once exhausted, status is violated regardless of future employment",
+      "how_to_assess": "Track every gap between jobs carefully; subtract all previous unemployment periods from the 90-day total to know your remaining buffer",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether your degree appears on the official STEM OPT eligible list",
+      "why_it_matters": "STEM OPT extension is only available for designated STEM programs; an unlisted degree disqualifies you regardless of job function",
+      "how_to_assess": "Check the official DHS STEM Designated Degree Program List before assuming eligibility",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer E-Verify enrollment status",
+      "why_it_matters": "STEM OPT requires the employer to be enrolled in E-Verify; a non-enrolled employer blocks the extension even if all other conditions are met",
+      "how_to_assess": "Ask the employer HR or legal team directly whether they are registered on E-Verify before accepting an offer if STEM OPT is your plan",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B lottery probability across multiple attempts",
+      "why_it_matters": "Community-cited probability is approximately 50-60% per attempt over three tries; planning only for year one success without contingencies is risky",
+      "how_to_assess": "Calculate how many lottery attempts your current OPT and STEM OPT timeline allows, and identify fallback paths before the first attempt",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Availability of cap-exempt employer options",
+      "why_it_matters": "Universities and qualified nonprofit research institutions are exempt from the H-1B cap, offering a path to H-1B status without lottery exposure",
+      "how_to_assess": "Research whether target employers or adjacent institutions qualify as cap-exempt; evaluate whether the role type fits",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Changing jobs during OPT without tracking cumulative unemployment days",
+      "unstated_consequence": "A 60-day gap between job one and job two consumes most of the 90-day total, leaving only 30 days of buffer for any future gap — a fact many people discover only after the second transition",
+      "who_it_affects": "OPT holders in volatile industries or who job-hop early in their OPT period",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Waiting until the final year of STEM OPT to raise H-1B sponsorship with employer",
+      "unstated_consequence": "Internal employer approval processes can take months; by the time approval is granted, the H-1B registration window may have already passed",
+      "who_it_affects": "STEM OPT holders at large corporations or companies with bureaucratic HR and legal processes",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Using a generic template for the I-983 Training Plan",
+      "unstated_consequence": "USCIS may issue a Notice of Intent to Deny (NOID), requiring a burdensome response and potentially jeopardizing STEM OPT approval",
+      "who_it_affects": "Students who underestimate the I-983 as a formality and rely on shared or downloaded templates",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Not paying for H-1B premium processing",
+      "unstated_consequence": "Standard processing leaves a prolonged uncertainty window during which the applicant cannot confirm their work authorization status for the upcoming fiscal year",
+      "who_it_affects": "Applicants whose employers are unwilling to absorb the premium processing fee and who have no savings buffer for job disruption",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating the 90-day OPT unemployment limit as a per-episode cap rather than a cumulative total",
+      "why_it_happens": "The word 'cap' implies a reset or per-incident limit; the cumulative nature is counterintuitive and not prominently communicated by universities",
+      "consequence": "Students exhaust their buffer earlier than expected, triggering an out-of-status situation without realizing it",
+      "warning_signs": [
+        "Student has already had one employment gap of 45+ days",
+        "Student is between jobs and not actively tracking cumulative days"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Submitting a copy-paste generic I-983 Training Plan",
+      "why_it_happens": "Students perceive the I-983 as a bureaucratic checkbox rather than a substantive document; templates are widely shared in communities",
+      "consequence": "USCIS issues a NOID, requiring significant time and legal resources to respond, and potentially denying the STEM OPT extension",
+      "warning_signs": [
+        "Student downloaded an I-983 template from a forum or peer",
+        "Training plan descriptions are vague or not tied to specific job duties"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming H-1B sponsorship is implicitly agreed to without an explicit early conversation",
+      "why_it_happens": "Students conflate an employer being 'visa-friendly' with a firm commitment to sponsor; the topic feels awkward to raise early",
+      "consequence": "By the time the student raises H-1B in year two or three, internal processes, budget freezes, or policy changes prevent the employer from committing in time for the registration window",
+      "warning_signs": [
+        "Student has never explicitly discussed H-1B with HR or manager",
+        "Student is in final year of STEM OPT without a confirmed sponsor"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many cumulative days have you been unemployed since your OPT start date?",
+      "what_it_reveals": "Whether the person is approaching or has exceeded the 90-day cumulative unemployment cap",
+      "follow_up_if_yes": "If over 60 days: How quickly is your next job starting? Do you have documentation of active job search?",
+      "follow_up_if_no": "If under 30 days: You have meaningful buffer remaining — but track every future gap carefully",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your degree program on the official DHS STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether the person is actually eligible for STEM OPT or is assuming eligibility based on the field name alone",
+      "follow_up_if_yes": "Proceed to confirm employer E-Verify status",
+      "follow_up_if_no": "STEM OPT extension is not available; plan H-1B strategy around standard 12-month OPT only",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your employer registered on E-Verify?",
+      "what_it_reveals": "Whether STEM OPT is actually accessible at this employer, regardless of other eligibility factors",
+      "follow_up_if_yes": "Proceed with I-983 preparation and STEM OPT application",
+      "follow_up_if_no": "STEM OPT cannot be used at this employer; evaluate whether employer will register or whether a different employer is needed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you had an explicit, documented conversation with your employer about H-1B sponsorship?",
+      "what_it_reveals": "Whether the person has a real commitment or is operating on an assumption that could fail at the worst moment",
+      "follow_up_if_yes": "Has the employer confirmed they will cover premium processing costs?",
+      "follow_up_if_no": "Raise H-1B sponsorship immediately; do not wait — internal approvals take time",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "STEM OPT is tied to the employer, so changing jobs means restarting the STEM OPT application",
+      "actual_reality": "STEM OPT authorization is tied to the individual, not the employer. When changing jobs, the new employer simply needs to submit a new I-983 Training Plan; the authorization period itself does not restart",
+      "implication": "Students should not avoid job changes out of fear of losing STEM OPT; they just need to ensure the new employer is E-Verify enrolled and file the new I-983 promptly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "H-1B lottery and STEM OPT are mutually exclusive or interfere with each other",
+      "actual_reality": "H-1B registration and STEM OPT run concurrently without conflict. You can participate in the H-1B lottery while on STEM OPT, and if selected, transition to H-1B status on October 1st",
+      "implication": "Students should register for H-1B every eligible year regardless of STEM OPT status; missing a lottery year wastes an attempt",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The H-1B master's cap gives a significant advantage, effectively guaranteeing selection",
+      "actual_reality": "The 20,000 master's cap slots are drawn first, but unselected master's-cap applicants are then entered into the regular 65,000 pool — so master's degree holders get two chances per registration, not a guaranteed outcome",
+      "implication": "Master's holders should still plan for lottery failure; the advantage is meaningful but not determinative given overall selection rates",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Planning horizon for H-1B sponsorship conversations",
+      "naive_pattern": "Raises H-1B topic with employer only when STEM OPT is nearing expiration or after lottery registration opens",
+      "informed_pattern": "Initiates H-1B sponsorship conversation during OPT year one, well before any deadline, treating it as a career planning discussion rather than a visa emergency",
+      "why_it_matters": "Employer internal approval processes — legal review, budget allocation, policy vetting — can take months; early conversations create runway that last-minute conversations cannot",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Tracking OPT unemployment days",
+      "naive_pattern": "Assumes each job gap is evaluated independently and believes 90 days resets with each new employer",
+      "informed_pattern": "Maintains a running log of every unemployment day from OPT start date, treats the 90-day total as a finite, non-renewable resource",
+      "why_it_matters": "Students who misunderstand the cumulative nature burn through their buffer unknowingly and trigger out-of-status situations",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Contingency planning if H-1B is not selected",
+      "naive_pattern": "Focuses entirely on winning the lottery; has no defined fallback plan",
+      "informed_pattern": "Simultaneously evaluates cap-exempt employers, alternative visa categories (O-1, TN), further education for a new OPT cycle, and Canada as a backup jurisdiction before the first lottery attempt",
+      "why_it_matters": "With per-attempt odds of roughly 50-60% across three tries, students without contingencies face a crisis rather than a transition when they go unselected",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The 90-day OPT unemployment limit resets each time you start a new job",
+      "why_believed": "The phrase '90-day limit' sounds like a per-episode allowance; people intuitively expect a fresh start with each new employer",
+      "actual_rule": "The 90-day unemployment limit is a cumulative total across the entire OPT period; all gaps between jobs add together and count against a single shared total",
+      "real_consequence": "A student who had a 60-day gap early in OPT, then faces a second gap, may believe they still have 90 days available — in reality they have only 30, and may go out of status without knowing it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "STEM OPT is tied to the employer, so switching jobs requires reapplying for STEM OPT",
+      "why_believed": "The I-983 is employer-specific and must be resubmitted; students conflate resubmitting the form with restarting the entire authorization",
+      "actual_rule": "STEM OPT authorization belongs to the individual student; changing employers requires submitting a new I-983 with the new employer but does not reset or restart the authorization period",
+      "real_consequence": "Students may stay in jobs they want to leave — or pass on better opportunities — out of unfounded fear that switching will cost them their STEM OPT status",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The I-983 Training Plan is a formality that can be filled out using a standard template",
+      "why_believed": "It is framed as an administrative document; shared templates are widely available in student communities and feel like sufficient compliance",
+      "actual_rule": "USCIS evaluates the I-983 for substantive specificity; a generic or templated plan has resulted in NOIDs (Notices of Intent to Deny) for real applicants",
+      "real_consequence": "Receiving a NOID requires legal response, delays authorization, and risks denial of the STEM OPT extension entirely",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student submitted an I-983 Training Plan using a widely circulated generic template rather than writing job-specific content",
+      "decision": "Used copy-paste template language describing training in vague, non-role-specific terms",
+      "outcome": "Received a NOID from USCIS requiring a substantive written response, causing delays and legal costs",
+      "lesson": "The I-983 is evaluated for genuine specificity; using templates creates a documentable pattern USCIS recognizes and flags — every student's I-983 must reflect their actual job duties tied to their specific degree",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks whether they should raise H-1B sponsorship with their employer 'too early' and worries about seeming presumptuous or creating awkwardness",
+      "underlying_state": "Fear of rejection or of signaling desperation; avoidance of a high-stakes conversation that could reveal bad news",
+      "how_it_manifests": "Student delays the conversation year after year, reframing inaction as strategic patience, until the window for meaningful employer preparation has closed",
+      "expert_move": "Reframe the conversation as career planning, not visa begging — experienced advisors encourage framing H-1B as part of a long-term retention discussion, which most employers appreciate having early",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student asks 'what if I don't get H-1B three years in a row' and focuses the question entirely on lottery probability statistics",
+      "underlying_state": "Catastrophizing combined with decision paralysis; the student is seeking reassurance rather than actually planning contingencies",
+      "how_it_manifests": "Student continues to operate as if H-1B is the only viable path, ignoring cap-exempt employers, O-1 eligibility, TN visa (if applicable), Canadian pathways, or re-enrollment options",
+      "expert_move": "Shift from probability discussion to contingency mapping — force the student to name a specific Plan B before discussing Plan A odds, which dissolves the paralysis by making alternatives concrete",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "What are my chances of getting H-1B and what should I do if I don't get it?",
+      "reframe": "You have up to three lottery attempts during STEM OPT — treat each as one of several parallel tracks, not a single binary outcome. The question is not 'will I get H-1B' but 'what is my full portfolio of paths and which ones am I actively building?'",
+      "why_it_works": "Shifts the mental model from passive lottery participant to active multi-path strategist; reduces anxiety by distributing it across actionable options rather than concentrating it on a single uncertain event",
+      "example_language": "If 3年内没中H-1B: 继续读书、Cap-exempt雇主、O-1、TN、转赴加拿大 — treat these as a real list, not a footnote",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I need to wait and see if I get H-1B before talking to my employer about sponsorship",
+      "reframe": "The H-1B registration window is fixed, but your employer's internal approval process is not — it can take months. The conversation you delay today is the preparation your employer cannot do in time",
+      "why_it_works": "Exposes the hidden asymmetry: the student thinks they are waiting for the right moment, but the employer clock is already running; the reframe makes inaction visibly costly",
+      "example_language": "从OPT第一年就要和雇主谈H-1B意愿，不要等到STEM OPT最后一年才开始",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_cleaned_zhihu_F_1留学生从OPT到H_1B_中间有哪些需要注意的关键节点",
+  "_source_regions": [
+    "us"
+  ]
+}

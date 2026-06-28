@@ -1,0 +1,285 @@
+{
+  "source_file": "ch01-f1-status-maintenance.md",
+  "heuristics": [
+    {
+      "rule": "Obtain DSO approval for Reduced Course Load BEFORE dropping any course — never after",
+      "condition": "When an F-1 student faces any situation (medical, academic difficulty, final semester) that may require dropping below full-time enrollment",
+      "action": "Contact your DSO immediately, provide required documentation, and wait for written DSO authorization in SEVIS before submitting any course drop request",
+      "because": "Retroactive RCL approval does not exist in federal regulations — dropping first and asking later results in immediate out-of-status, which requires a USCIS reinstatement application to fix",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you have been out of F-1 status, file for USCIS reinstatement within 5 months — not after",
+      "condition": "When an F-1 student has violated their status (e.g., dropped below full-time without DSO approval)",
+      "action": "Initiate USCIS reinstatement application immediately and no later than the 5-month mark from the date of the violation",
+      "because": "After 5 months out of status, reinstatement requires proving exceptional circumstances — a significantly higher and harder-to-meet standard that USCIS rarely grants",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Count only ONE online course (up to 3 credits) toward your full-time enrollment minimum per semester",
+      "condition": "When an F-1 student is registering for courses that include online or distance-learning sections",
+      "action": "Ensure remaining credits needed to hit the full-time minimum (12 for undergrad, 9–12 for master's, 7+ for doctoral) come from in-person courses",
+      "because": "Federal regulations cap the online course credit that counts toward F-1 full-time load at one 3-credit course per semester — additional online courses do not satisfy the enrollment requirement",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Do not treat summer non-enrollment logic as transferable to fall or spring semesters",
+      "condition": "When an F-1 student considers skipping enrollment in a fall or spring semester without authorization",
+      "action": "Enroll full-time in all fall and spring semesters unless one of the 4 RCL exceptions applies and has been approved by the DSO",
+      "because": "The annual vacation exception only applies to summer; applying it to fall or spring results in immediate out-of-status",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Use the 60-day grace period deliberately — do not let it expire passively",
+      "condition": "When an F-1 student completes their academic program",
+      "action": "Within 60 days of program completion, take a concrete action: apply for OPT, transfer to another school, change immigration status, or depart the US",
+      "because": "The grace period is not an extension of status — it is a window to take action; failing to act within it results in unlawful presence accrual",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether DSO authorization was obtained before or after a course drop",
+      "why_it_matters": "This single sequencing fact determines whether the student is in status or out of status — the action itself (dropping below full-time) is not the violation; doing it without prior DSO approval is",
+      "how_to_assess": "Check whether the DSO has entered the RCL authorization in SEVIS and the student has received written confirmation before any course drop is submitted to the registrar",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Which of the 4 RCL exceptions applies to the student's situation",
+      "why_it_matters": "DSOs have zero discretion to create exceptions outside the 4 federally defined categories — if the student's situation does not fit one of the 4, RCL authorization is legally unavailable regardless of how sympathetic the circumstances are",
+      "how_to_assess": "Match the student's situation to: (1) academic difficulty, (2) medical condition with licensed provider documentation, (3) final semester with fewer credits needed, or (4) improper course level placement",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Time elapsed since the student fell out of status",
+      "why_it_matters": "The 5-month threshold is a legal dividing line — under 5 months allows standard reinstatement; over 5 months requires proving exceptional circumstances, which USCIS rarely approves",
+      "how_to_assess": "Calculate the exact date the violation began (date course was dropped without authorization or date enrollment fell below minimum) and count calendar days from that date",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "History of repeated or willful F-1 violations",
+      "why_it_matters": "USCIS denies reinstatement if the student has a record of repeated or willful status violations — a single accidental violation is treated very differently from a pattern",
+      "how_to_assess": "Review the student's SEVIS record history with the DSO for any prior violations, previous reinstatement applications, or prior unauthorized enrollment drops",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Type of academic program and its specific full-time credit hour threshold",
+      "why_it_matters": "The full-time minimum varies by program level — an incorrect assumption about the required credit load can lead to unknowing violations",
+      "how_to_assess": "Confirm with DSO: Undergrad = 12+ credits; Master's = 9–12 (school-dependent); Doctoral = 7+ credits; English Language Program = 18+ hours/week",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the student is in their final semester",
+      "why_it_matters": "Final semester students are the only group that can carry fewer credits as a matter of course completion need — this exception is commonly underused by students who don't realize it applies to them",
+      "how_to_assess": "Confirm with DSO that the reduced credits are literally all that remains to complete degree requirements — not just a preference for lighter load in the last term",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking multiple online courses to reduce commute or manage workload",
+      "unstated_consequence": "Only one online course counts toward the full-time enrollment minimum — a student taking 12 credits all online is technically out of status even though they are enrolled full-time by credit count",
+      "who_it_affects": "Students in online-heavy programs or those who shift to online courses mid-semester for convenience without consulting their DSO",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Waiting to see if the situation resolves before contacting the DSO about a potential enrollment problem",
+      "unstated_consequence": "Every day of waiting without DSO authorization after dropping below full-time is a day of accrued out-of-status time, counting toward the 5-month reinstatement window — delay shrinks the window for easier recovery",
+      "who_it_affects": "Students dealing with medical crises, mental health episodes, or family emergencies who delay administrative action while managing the personal situation",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on the school to manage and monitor your F-1 compliance",
+      "unstated_consequence": "F-1 status maintenance is legally the student's responsibility — schools report violations in SEVIS but are not obligated to proactively prevent individual students from falling out of status",
+      "who_it_affects": "Students who come from educational systems with strong institutional oversight and assume the university will alert them before a violation becomes serious",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Applying for reinstatement after 5 months out of status to avoid the cost and complexity of reapplying for a visa abroad",
+      "unstated_consequence": "Post-5-month reinstatement requires demonstrating exceptional circumstances — a standard most students cannot meet — making the gamble likely to fail and leaving the student with fewer options than if they had left and re-entered",
+      "who_it_affects": "Students who delay seeking help hoping the problem will resolve itself or who are unaware of the 5-month rule",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Enrolling concurrently at two SEVIS-approved schools to satisfy requirements",
+      "unstated_consequence": "Only the primary (degree-granting) school handles SEVIS reporting — if the student and secondary school do not coordinate, credits from the secondary school may not be recognized for full-time enrollment purposes in SEVIS",
+      "who_it_affects": "Students taking courses at community colleges or other institutions to supplement their primary program",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Dropping below full-time enrollment and assuming the DSO can fix it retroactively",
+      "why_it_happens": "Students conflate the DSO's administrative authority with legal authority — DSOs can update SEVIS records but cannot retroactively authorize an RCL that was never approved before the drop occurred",
+      "consequence": "Student is immediately out of status from the date of the unauthorized drop; must file USCIS reinstatement application; may be barred from re-entry if they travel internationally",
+      "warning_signs": [
+        "Student contacts DSO after already submitting course withdrawal",
+        "Student asks 'can you backdate the approval?' or 'can we say I told you earlier?'",
+        "Student was unaware they needed DSO approval before dropping"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Medical emergency causes enrollment drop without DSO involvement, and student waits until health improves to seek help",
+      "why_it_happens": "Students in crisis prioritize health over administrative process — understandably — but are unaware that the clock for status violation and the 5-month reinstatement window starts immediately",
+      "consequence": "By the time the student seeks DSO help, weeks or months of out-of-status time have accrued, potentially pushing them past the 5-month window for standard reinstatement",
+      "warning_signs": [
+        "Student mentions a health crisis that coincided with a semester where they dropped or stopped attending courses",
+        "Student is unsure exactly when they fell below full-time enrollment",
+        "Student has not spoken to DSO since the health event began"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Treating summer break non-enrollment as a model for other semester breaks",
+      "why_it_happens": "The summer vacation rule is a genuine exception that students overgeneralize — they reason that if they can skip summer, they can take a semester off in fall or spring with the same logic",
+      "consequence": "Student falls out of status during fall or spring non-enrollment; violation is not discovered until the next SEVIS check or until they apply for OPT/H-1B sponsorship",
+      "warning_signs": [
+        "Student asks 'Can I take a semester off like I did over summer?'",
+        "Student is planning a gap semester in fall or spring for personal or financial reasons without DSO consultation"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Counting all enrolled credits — including multiple online courses — as satisfying the full-time requirement",
+      "why_it_happens": "Students see total credit count on their transcript and assume it satisfies F-1 requirements without understanding the in-person credit rule for online courses",
+      "consequence": "Student is technically out of status despite being 'enrolled full-time' by credit count — violation may not surface until OPT or H-1B application when SEVIS history is reviewed",
+      "warning_signs": [
+        "Student's schedule shows more than one online or distance-learning course",
+        "Student enrolled primarily online due to work schedule, convenience, or COVID-era habits that continued",
+        "Student has never had the online course rule explained by their DSO"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Allowing the 60-day grace period to expire without taking any qualifying action",
+      "why_it_happens": "Students believe the grace period extends their authorized stay rather than understanding it is only a window to take action — they treat it as a 60-day vacation",
+      "consequence": "Student begins accruing unlawful presence after the grace period ends; this can trigger 3-year or 10-year bars to re-entry if they subsequently depart the US",
+      "warning_signs": [
+        "Student graduated more than 30 days ago and has not applied for OPT, transferred schools, or changed status",
+        "Student is 'figuring out next steps' without urgency after program completion",
+        "Student is unaware that the grace period has a hard end date"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Did you obtain written DSO authorization in SEVIS before dropping below full-time enrollment — or did you drop first and contact the DSO after?",
+      "what_it_reveals": "Whether the student is currently in status or already out of status — this single sequencing question determines the entire remediation path",
+      "follow_up_if_yes": "Which of the 4 RCL exceptions was cited, and is the supporting documentation (e.g., medical records) on file with the DSO?",
+      "follow_up_if_no": "How many days ago did the drop occur? You may be in a reinstatement scenario — calculate time elapsed against the 5-month window immediately",
+      "country_scope": "us"
+    },
+    {
+      "question": "How long ago did the status violation begin — and has it been more than 5 months?",
+      "what_it_reveals": "Whether the student qualifies for standard USCIS reinstatement or must meet the much harder 'exceptional circumstances' standard",
+      "follow_up_if_yes": "Document any exceptional circumstances carefully; consult an immigration attorney immediately — standard reinstatement is likely unavailable",
+      "follow_up_if_no": "File reinstatement application as soon as possible; every additional day of delay reduces the window further",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does your situation fit one of the 4 federally defined RCL exceptions: academic difficulty, medical condition, final semester, or improper course level placement?",
+      "what_it_reveals": "Whether DSO authorization for reduced course load is even legally available — if the answer is no, the student cannot legally drop below full-time regardless of the hardship",
+      "follow_up_if_yes": "Do you have the required documentation ready (e.g., licensed physician letter for medical RCL) to present to the DSO before submitting the course drop?",
+      "follow_up_if_no": "The student must maintain full-time enrollment or explore other options (medical leave of absence, program withdrawal, status change) — RCL is not available",
+      "country_scope": "us"
+    },
+    {
+      "question": "How many of your currently enrolled courses are online or distance-learning, and are you counting all of them toward your full-time minimum?",
+      "what_it_reveals": "Whether the student has an undiscovered enrollment compliance problem — students who assume all credits count equally may be unknowingly out of status",
+      "follow_up_if_yes": "Only one online course (up to 3 credits) counts toward the F-1 full-time minimum — recalculate in-person credits and assess whether the minimum is actually met",
+      "follow_up_if_no": "Confirm the single online course being counted does not exceed 3 credits and that remaining credits are from in-person sections",
+      "country_scope": "us"
+    },
+    {
+      "question": "Have you had any prior F-1 status violations, SEVIS terminations, or reinstatement applications in your history?",
+      "what_it_reveals": "Whether a new reinstatement application faces a higher bar — USCIS denies reinstatement for students with a record of repeated or willful violations",
+      "follow_up_if_yes": "Consult an immigration attorney before filing — the prior history must be addressed and the current violation must be clearly distinguishable as non-willful",
+      "follow_up_if_no": "Proceed with standard reinstatement process if within the 5-month window; document that the current violation was inadvertent",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is this your final semester, and are the credits you are enrolled in literally all that remains to complete your degree?",
+      "what_it_reveals": "Whether the student qualifies for the final semester RCL exception — this is an underused pathway that allows below-full-time enrollment without the other exception criteria",
+      "follow_up_if_yes": "Confirm this with your DSO and have it authorized in SEVIS — you do not need medical documentation; the degree audit confirming remaining requirements is sufficient",
+      "follow_up_if_no": "The final semester exception does not apply; assess which of the other 3 RCL exceptions, if any, fits the situation",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The school (DSO) is responsible for monitoring and maintaining your F-1 status — they will catch problems and alert you",
+      "actual_reality": "F-1 status maintenance is entirely the student's legal responsibility; DSOs report changes to SEVIS but are not obligated to proactively prevent individual students from falling out of compliance",
+      "implication": "Students must self-monitor their enrollment status every semester and proactively contact the DSO before any change that could affect full-time status — waiting to be told is a losing strategy",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Dropping one or two courses is a minor administrative matter that can be undone or explained away",
+      "actual_reality": "F-1 status operates as a binary — you are either in status or out of status; dropping one course that takes you below the full-time minimum without DSO approval is a federal immigration violation with no automatic remedy",
+      "implication": "Students must treat any enrollment change that could affect full-time status as an immigration event requiring DSO consultation, not just an academic scheduling decision",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "A compassionate DSO can approve a Reduced Course Load retroactively for a student who had a genuine emergency",
+      "actual_reality": "DSOs have zero legal authority to authorize RCL retroactively — federal regulations require authorization before the course drop; DSOs who attempt retroactive authorization are themselves violating SEVIS reporting obligations",
+      "implication": "Students in emerging crises (medical, family, mental health) must contact the DSO while the crisis is active — even a brief call or email before dropping courses protects status in a way no retroactive action can",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If you've been out of status for a while, it's better to quietly re-enroll full-time and hope no one notices before applying for OPT or other benefits",
+      "actual_reality": "SEVIS contains a complete enrollment history; any gap in full-time enrollment without authorized RCL will surface during OPT application review, H-1B sponsorship background checks, or visa renewal interviews — and misrepresentation of the gap is a separate, more serious violation",
+      "implication": "Students who discover a past status violation must address it proactively through reinstatement or legal counsel rather than hoping it goes undetected — the cost of discovery later vastly exceeds the cost of remediation now",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Summer break means you can freely skip enrollment without any immigration consequence",
+      "actual_reality": "Summer non-enrollment is permitted under the annual vacation rule only — it does not extend to any other term, and students must plan to enroll full-time in the fall following summer break",
+      "implication": "Students must confirm with their DSO that their planned summer non-enrollment qualifies under the annual vacation rule (not all students in all program stages qualify automatically) and must not carry this assumption into fall or spring planning",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to an enrollment problem",
+      "naive_pattern": "Drops courses first to resolve the immediate academic or personal pressure, then contacts DSO afterward to 'get it sorted out' — assumes the fix is administrative",
+      "informed_pattern": "Contacts DSO before any course drop, describes the situation, obtains written authorization in SEVIS, and only then submits the course drop to the registrar",
+      "why_it_matters": "The sequence is the entire legal difference between staying in status and being out of status — informed students know this; uninformed students learn it the hard way after the violation has already occurred",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding of who owns F-1 compliance",
+      "naive_pattern": "Assumes the international student office will send reminders, catch issues, and flag when something is wrong — treats compliance as the school's job",
+      "informed_pattern": "Treats F-1 status as personal legal liability — proactively tracks their own enrollment every semester, reads DSO communications, and consults before any change rather than waiting to be told",
+      "why_it_matters": "Students who outsource compliance monitoring to the school are statistically the ones who discover violations too late to use standard remediation pathways",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Knowledge of the RCL exception framework",
+      "naive_pattern": "Believes that genuine hardship — financial stress, mental health struggles, family emergencies — is a sufficient basis for dropping below full-time, and that the DSO will find a way to make it work",
+      "informed_pattern": "Knows that only 4 federally defined exceptions exist, that DSOs cannot create new ones regardless of circumstances, and maps their situation to one of the 4 before approaching the DSO",
+      "why_it_matters": "Students who expect hardship-based flexibility may be misled by well-meaning DSOs who 'do their best' — understanding the hard limits prevents reliance on advice that cannot legally be acted upon",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Urgency around out-of-status discovery",
+      "naive_pattern": "Discovers they fell out of status and waits to address it until life stabilizes, a new semester starts, or an OPT application triggers a review — underestimates the time-sensitivity",
+      "informed_pattern": "Upon discovering any potential status violation, immediately calculates days elapsed against the 5-month reinstatement window, contacts DSO and immigration attorney same day, and treats it as an urgent legal matter",
+      "why_it_matters": "The 5-month reinstatement window closes silently — students who delay because the problem feels distant often find themselves past the standard threshold with dramatically fewer options",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Enrollment planning with online courses",
+      "naive_pattern": "Registers for whichever mix of online and in-person courses fits their schedule, counts total credits as satisfying the full-time requirement, and never flags the course format breakdown to the DSO",
+      "informed_pattern": "Explicitly tracks how many of their enrolled credits come from online sections, ensures only one online course is counted toward the full-time minimum, and confirms the remaining credits are from in-person sections each semester",
+      "why_it_matters": "An online-heavy semester can produce a hidden status violation that remains undetected for years and then surfaces catastrophically during OPT or H-1B processing when SEVIS history is reviewed",
+      "country_scope": "us"
+    }
+  ]
+}
