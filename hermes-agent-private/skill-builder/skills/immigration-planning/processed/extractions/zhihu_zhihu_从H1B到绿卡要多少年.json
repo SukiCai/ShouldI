@@ -1,0 +1,406 @@
+{
+  "source_file": "zhihu_从H1B到绿卡要多少年.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Start the green card process as early as possible — priority date is the only thing that matters for queue position",
+      "condition": "When you are on any work-authorized status (OPT, H-1B, or other) and want a green card...",
+      "action": "Begin the EB green card process immediately, regardless of current visa status; the priority date clock starts only when you file, not when you get H-1B",
+      "because": "The poster explicitly states priority date cannot be backdated and current average wait for Chinese nationals is 0–5 years, making early filing the single highest-leverage action",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If your employer says you must wait X years before they will sponsor your green card, start planning to switch employers",
+      "condition": "When a company imposes an internal tenure requirement before initiating PERM/I-140...",
+      "action": "Treat that requirement as a signal to look for a more sponsorship-friendly employer, especially large tech companies",
+      "because": "The poster describes these internal rules as employer-serving retention mechanisms, not legal requirements, and notes large tech firms often start green card processing on day one",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Wait at least 6 months after I-140 approval before changing jobs",
+      "condition": "When you have an approved I-140 and are considering a job change...",
+      "action": "Do not change employers until at least 6 months after I-140 approval to preserve your priority date",
+      "because": "The poster explicitly warns that switching jobs before 6 months post-I-140 approval risks losing the priority date established under the original employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Never miss a biometrics (fingerprinting) appointment without immediately requesting a reschedule",
+      "condition": "When you receive a biometrics appointment notice as part of I-485 processing...",
+      "action": "Attend the appointment on time; if impossible, immediately notify USCIS to reschedule before the appointment date",
+      "because": "The poster's lawyer and USCIS both warned that missing the appointment without notice is treated as voluntary withdrawal of the green card application, requiring restart",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Large tech companies with bulk PERM processing can reduce PERM+I-140 timeline from 6–18 months to 1–3 months",
+      "condition": "When choosing between employers who both offer green card sponsorship...",
+      "action": "Prefer employers with rolling/bulk PERM advertising programs if minimizing time-to-priority-date is a priority",
+      "because": "The poster describes firsthand experience of completing PERM+I-140 in ~2 months at a large tech company due to pre-existing rolling job advertisement infrastructure",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer green card policy and timeline",
+      "why_it_matters": "Whether a company starts GC processing on day one versus after 2–3 years of tenure can shift total time-to-greencard by years; bulk PERM processing can further compress the PERM stage by months",
+      "how_to_assess": "Ask directly during offer negotiation: Does the company start GC on day one? Do they have bulk/rolling PERM processing? Is there a tenure requirement?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Field/job category alignment with degree",
+      "why_it_matters": "PERM requires demonstrating the job requires the applicant's qualifications; misalignment between US degree field and job title triggers RFE or audit, potentially adding 1–2 years",
+      "how_to_assess": "Evaluate whether your US degree field closely matches your job title and duties; consult immigration attorney before filing if alignment is questionable",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B lottery timing and attempt count",
+      "why_it_matters": "Each failed lottery attempt costs one year; multiple failed attempts (especially for bachelor's-cap applicants) can delay the entire GC timeline by 2–5+ years before the process even begins",
+      "how_to_assess": "Track number of attempts; if bachelor's-cap attempts fail twice, evaluate master's degree or alternative visa routes (L-1, O-1, Canada) as fallbacks",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "PERM audit or supervised recruitment (SR) risk",
+      "why_it_matters": "A standard PERM audit adds ~9 months; a supervised recruitment outcome or denial can reset the process entirely, costing 2+ years",
+      "how_to_assess": "Ask employer's immigration attorney about audit rates for similar job categories and whether any prior filings in the same role were audited",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Current EB-2/EB-3 China priority date backlog",
+      "why_it_matters": "Even with an approved I-140, Chinese nationals cannot file I-485 until their priority date is current; the backlog currently ranges from 0 to 20+ years depending on filing year and category",
+      "how_to_assess": "Check the USCIS Visa Bulletin monthly; project forward based on current cutoff date advancement rate",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Waiting at a company that delays green card sponsorship to meet internal tenure requirements",
+      "unstated_consequence": "Every year spent waiting to start GC is a year added to the back of the priority date queue, which may already be 10–20 years long for Chinese nationals; the compounding effect means a 2-year internal delay can translate to 2+ additional years at the end of a decades-long wait",
+      "who_it_affects": "Chinese nationals on H-1B at companies with 1–3 year tenure requirements before GC filing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Changing jobs within 6 months of I-140 approval",
+      "unstated_consequence": "Loss of the priority date established under the original employer's PERM filing, requiring restart of the PERM process and potentially resetting the queue position by years",
+      "who_it_affects": "Anyone who received a better offer shortly after I-140 approval and assumed the priority date was portable immediately",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Missing or ignoring a USCIS biometrics appointment",
+      "unstated_consequence": "USCIS treats non-attendance as voluntary abandonment of the I-485 application; restarting requires refiling fees, new wait times, and potentially losing a favorable priority date window",
+      "who_it_affects": "Anyone who assumed rescheduling was low-stakes or believed the appointment was optional",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing a GC via a smaller company with slower PERM processing",
+      "unstated_consequence": "Standard PERM can take 6–18+ months versus 1–3 months at large tech firms with bulk processing; this delay directly pushes back the priority date by the same duration",
+      "who_it_affects": "People who prioritize job fit or compensation over immigration efficiency without calculating the priority date cost",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting an employer's internal tenure requirement before GC sponsorship as a fixed, unavoidable rule",
+      "why_it_happens": "Employers present these requirements as policy without distinguishing them from legal requirements; visa holders in a dependent position lack negotiating confidence and assume the employer's framing is authoritative",
+      "consequence": "2–3 years of wasted queue time that permanently delays the priority date, potentially shifting final green card receipt by years at the back of a long backlog",
+      "warning_signs": [
+        "Employer says 'we require you to be with us for X years before we start GC'",
+        "No one at the company can cite a legal basis for the requirement"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Failing H-1B lottery multiple times without activating alternative pathways",
+      "why_it_happens": "Anchoring on the H-1B as the only viable route; each failed attempt triggers another year of OPT extension or cap-gap rather than triggering a strategic pivot",
+      "consequence": "In the pessimistic scenario described, 3 bachelor's-cap failures plus 2 more after a master's degree result in 5+ years of lottery attempts before any GC process can begin",
+      "warning_signs": [
+        "Second consecutive H-1B lottery failure with no backup plan",
+        "No investigation of O-1, L-1, or Canada PGWP/PR pathways after first failure"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "PERM filing with weak degree-to-job alignment",
+      "why_it_happens": "Applicants switch job roles after graduation or take positions outside their degree field without understanding the downstream immigration consequences; PERM requires tight alignment between degree and job requirements",
+      "consequence": "RFE or audit adding 1–2 years to the process; in worst cases, PERM denial requiring full restart",
+      "warning_signs": [
+        "Job title or duties differ significantly from field of US degree",
+        "Immigration attorney flags alignment concerns during initial review"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Company halting PERM processing mid-stream due to layoffs or reorganization",
+      "why_it_happens": "Applicants assume employer commitment to GC sponsorship is stable; corporate decisions about headcount supersede individual sponsorship commitments",
+      "consequence": "Years of PERM progress lost; priority date not established; must restart at new employer from scratch",
+      "warning_signs": [
+        "Company announces hiring freeze",
+        "Immigration team is downsized or outsourced",
+        "No written commitment to GC sponsorship in employment agreement"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does your employer start green card processing on day one of employment, or is there a tenure requirement?",
+      "what_it_reveals": "Whether the employer will help you establish a priority date immediately or whether years will be lost waiting for an internal policy gate",
+      "follow_up_if_yes": "Do they have bulk/rolling PERM processing that can compress the PERM stage to 1–3 months?",
+      "follow_up_if_no": "Is the tenure requirement negotiable, and is the total compensation package worth the priority date delay versus switching to a day-one sponsor?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How closely does your US degree field match the job title and duties you'll be performing?",
+      "what_it_reveals": "The likelihood of PERM RFE or audit, which is described as the single most time-consuming risk in the process",
+      "follow_up_if_yes": "Proceed with standard PERM; low audit risk",
+      "follow_up_if_no": "Consult immigration attorney before filing; misalignment can trigger 1–2 year audit delays or denial",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your I-140 been approved for at least 6 months before you consider changing employers?",
+      "what_it_reveals": "Whether your priority date is portable to a new employer or whether a job change risks losing your queue position entirely",
+      "follow_up_if_yes": "Priority date is likely portable under AC21; confirm with immigration attorney",
+      "follow_up_if_no": "Changing jobs now could reset your priority date; weigh the opportunity cost carefully",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is your current EB-2/EB-3 China priority date cutoff, and what year did you (or will you) establish your priority date?",
+      "what_it_reveals": "The realistic total wait time from today to I-485 filing eligibility, which can range from 0 to 20+ years",
+      "follow_up_if_yes": "If priority date is already past cutoff, I-485 can be filed immediately",
+      "follow_up_if_no": "Calculate projected wait based on current Visa Bulletin advancement rate to set realistic expectations",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You need to be on H-1B before you can start the green card process",
+      "actual_reality": "OPT, H-1B, and other statuses are not prerequisites for initiating PERM or I-140; these are employer and school-imposed gates, not legal requirements. The priority date clock starts at PERM filing regardless of current visa status",
+      "implication": "Students on OPT at sponsoring employers could theoretically begin GC process immediately rather than waiting for H-1B approval, saving potentially years of queue time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The green card process takes a fixed, predictable amount of time",
+      "actual_reality": "Total time varies enormously: best case (large tech, day-one sponsorship, no audit, favorable Visa Bulletin) can be 2–4 years; worst case (multiple H-1B lottery failures, PERM audits, SR, company layoffs, long China backlog) can exceed 20–40 years for Chinese nationals",
+      "implication": "Planning around an 'average' timeline is misleading; scenario planning for audit and backlog risk is essential",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Large companies are harder to get into and don't offer better immigration outcomes",
+      "actual_reality": "Large tech companies with bulk PERM processing can compress the PERM+I-140 stage from 6–18 months to 1–3 months, and many start GC on day one; this structural advantage compounds significantly given the China backlog",
+      "implication": "For Chinese nationals, choosing a large tech employer over a smaller one solely for immigration efficiency can shift the priority date by 1–2 years, which at the back of a 10–20 year queue is highly significant",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Missing a biometrics appointment is a minor administrative issue that can be rescheduled easily",
+      "actual_reality": "USCIS treats non-attendance at biometrics without prior notification as voluntary abandonment of the I-485 application; the application must be refiled and fees paid again, and the favorable filing window may have closed",
+      "implication": "Biometrics appointments must be treated as mandatory; any conflict requires immediate proactive communication with USCIS before the appointment date",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "View of employer's GC timeline requirements",
+      "naive_pattern": "Accepts the employer's stated tenure requirement (e.g., 'wait 2 years') as a legal or immovable constraint and plans around it",
+      "informed_pattern": "Recognizes employer requirements as retention mechanisms with no legal basis; treats them as a negotiating point and as a signal to evaluate whether to switch employers",
+      "why_it_matters": "Accepting the constraint passively can cost 2–3 years of priority date queue time, which is irreversible",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Mental model of the GC process",
+      "naive_pattern": "Treats the GC as a single process with a known endpoint; focuses on the current step",
+      "informed_pattern": "Understands the GC as two separate races: (1) completing PERM/I-140 to lock in a priority date, and (2) waiting for the Visa Bulletin to make that date current — and optimizes for locking in the priority date as early as possible",
+      "why_it_matters": "Optimizing only for the first race while ignoring the second leads to false confidence; the priority date queue is the dominant variable for Chinese nationals",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Emotional relationship with the GC process during the wait",
+      "naive_pattern": "Constantly monitors status, feels anxiety during any period of inactivity, and makes reactive decisions based on short-term fear",
+      "informed_pattern": "Files carefully, delegates monitoring to attorney, and emotionally detaches during the wait period — treating it as background process while living normally",
+      "why_it_matters": "Anxiety-driven monitoring produces no outcome benefit and often leads to premature job changes or unnecessary inquiries that can complicate cases",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Response to H-1B lottery failure",
+      "naive_pattern": "Waits another year and tries again with the same strategy",
+      "informed_pattern": "After first or second failure, actively evaluates parallel tracks: O-1 visa, L-1 intracompany transfer, Canada PR via PGWP/Express Entry as a bridge to US GC via TN or L-1",
+      "why_it_matters": "Each year of lottery failure delay is a year of priority date queue time lost that can never be recovered",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You need to be on H-1B status before your employer can start the green card (PERM/I-140) process",
+      "why_believed": "Most employers and universities present H-1B as the 'standard' work visa path, creating the impression it is a gateway to GC; the sequential OPT → H-1B → GC framing reinforces this",
+      "actual_rule": "PERM and I-140 can be filed for an employee on any work-authorized status, including OPT; H-1B is not a legal prerequisite for EB green card sponsorship",
+      "real_consequence": "Waiting for H-1B before pushing for GC initiation delays the priority date by 1–3 years, which at the back of a 10–20 year China queue compounds into a much longer total wait",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Missing a biometrics appointment is a minor inconvenience that can be rescheduled without serious consequences",
+      "why_believed": "Biometrics feel like a routine administrative step; people assume the system is flexible for scheduling conflicts the way most government appointments are",
+      "actual_rule": "USCIS treats non-attendance without prior notification as voluntary abandonment of the I-485 application; the case must be refiled",
+      "real_consequence": "Full I-485 restart, refiling fees, and potential loss of a favorable Visa Bulletin filing window",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Employer tenure requirements before GC sponsorship are legal requirements that cannot be challenged",
+      "why_believed": "Employers state these requirements as policy with authority; visa-dependent employees rarely push back on employer immigration policies for fear of jeopardizing their status",
+      "actual_rule": "These are internal HR/retention policies with no basis in US immigration law; the employer is using the GC process as a retention tool",
+      "real_consequence": "Employees accept years of avoidable delay in their priority date queue position that permanently increases their total wait time",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "2017 CS master's graduate, H-1B selected in 2018 lottery, joined a large tech company that started GC on day one with bulk PERM processing",
+      "decision": "Switched to large tech employer immediately; PERM+I-140 completed in ~2 months; filed I-485 when priority date became current; attended all biometrics appointments; completed without interview",
+      "outcome": "Green card approved in 2022 — approximately 4 years from H-1B approval to green card, with one PERM re-audit taking 9 months during a job change",
+      "lesson": "Day-one sponsorship at a large tech firm with bulk PERM processing is the single most powerful lever for compressing total GC timeline for Chinese nationals; the 4-year outcome is only possible with this combination",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Hypothetical pessimistic case for a 2023 Chinese new graduate: 3 H-1B lottery failures, master's degree obtained, 2 more failures, L-1 via Canada, multiple PERM audits, company layoffs, PERM denial, restart",
+      "decision": "Persisted through each setback without pivoting strategy; accepted each delay as unavoidable",
+      "outcome": "Priority date not established until ~2045; current backlog projects green card receipt at approximately age 65, assuming no further disruptions",
+      "lesson": "For Chinese nationals, the compounding effect of H-1B lottery failures, PERM delays, and the existing priority date backlog can make the GC timeline exceed 40 years in realistic adverse scenarios; early strategic pivots (alternative visas, Canada PR) are not optional contingencies but potentially necessary primary strategies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Visa holders who stay at companies with GC tenure requirements because they fear losing their current job stability or feel that leaving would reset everything",
+      "underlying_state": "Sunk cost fallacy combined with loss aversion; the certainty of current status feels more valuable than the probabilistic benefit of switching to a faster-sponsoring employer",
+      "how_it_manifests": "Rationalizing the delay ('just two more years and they'll start'), avoiding job search, interpreting the tenure requirement as a legal constraint rather than a negotiating point",
+      "expert_move": "Reframe the choice as: every year you stay without a priority date is a year permanently added to the back of a queue that may already be 10–20 years long; the 'safe' choice is actually the higher-risk long-term choice",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Applicants who obsessively monitor their I-485 case status and experience anxiety during quiet periods",
+      "underlying_state": "Illusion of control — believing that attention and monitoring can influence an outcome that is entirely in USCIS's hands",
+      "how_it_manifests": "Daily case status checks, posting anxious questions in forums, making unnecessary inquiries that may flag the case, considering premature job changes to feel more 'in control'",
+      "expert_move": "Name the illusion directly: monitoring does not accelerate processing; the only productive actions are filing correctly, attending required appointments, and responding promptly to RFEs — everything else is noise",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Chinese nationals who learn the full pessimistic timeline scenario (40+ year wait) and either catastrophize or become fatalistic",
+      "underlying_state": "Telescoping — treating a worst-case scenario as the expected scenario, leading to either paralysis or premature abandonment of the GC path",
+      "how_it_manifests": "Posts expressing despair about the GC process, seriously considering return to China as the only option, or abandoning job search in the US entirely",
+      "expert_move": "Separate controllable variables (employer choice, filing timing, degree alignment) from uncontrollable ones (Visa Bulletin advancement, lottery outcomes); focus decision-making energy exclusively on the controllable variables",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How long does it take to get a green card from H-1B? (implying a fixed, answerable timeline)",
+      "reframe": "The question is not how long the process takes — it is how early you lock in your priority date and which employer you choose; those two variables determine 80% of your outcome",
+      "why_it_works": "Shifts focus from an uncontrollable external timeline to the two highest-leverage decisions the person actually controls, replacing helplessness with agency",
+      "example_language": "越早排期越好 — the earlier you get in line, the better; everything else is secondary",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "My company says I need to wait X years before they'll sponsor my green card — how do I get through the wait?",
+      "reframe": "The question is not how to endure the wait — it is whether this company is the right employer for your immigration goals; employer choice is more important than working harder within a suboptimal situation",
+      "why_it_works": "Reframes a passive endurance problem as an active strategic choice, making the cost of inaction visible",
+      "example_language": "选择比改变（努力）重要 — choice matters more than effort",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "The green card process sounds terrifying based on everything I've read online",
+      "reframe": "The process is neither as terrifying as the worst stories nor as easy as the best ones; your experience will be determined by preparation quality and employer selection, not by the extreme cases you've read",
+      "why_it_works": "Counters availability bias (scary stories are more memorable and shareable than smooth cases) and redirects attention to controllable preparation steps",
+      "example_language": "战略上藐视敌人，战术上重视敌人 — strategically dismiss the fear, tactically take every step seriously",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_从H1B到绿卡要多少年",
+  "_source_regions": [
+    "us"
+  ]
+}

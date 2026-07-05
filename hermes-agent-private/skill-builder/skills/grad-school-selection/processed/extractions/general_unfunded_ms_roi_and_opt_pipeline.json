@@ -1,0 +1,301 @@
+{
+  "source_file": "unfunded_ms_roi_and_opt_pipeline.txt",
+  "heuristics": [
+    {
+      "rule": "Verify the CIP code before enrolling, not the program name",
+      "condition": "When an international student is evaluating any MS program that might qualify for STEM OPT...",
+      "action": "...confirm the exact CIP code with the DSO and cross-check it against the DHS STEM OPT Designated Degree Program List before accepting admission",
+      "because": "A program branded as 'Data Analytics' or 'Applied AI' may or may not qualify for STEM OPT depending on its CIP code — the name is marketing, the code is legal reality, and the difference is 24 months of work authorization"
+    },
+    {
+      "rule": "Use 3-attempt cumulative H-1B probability to set expectations, not single-year odds",
+      "condition": "When an international student is planning around STEM OPT as a pathway to permanent US employment...",
+      "action": "...calculate the probability of getting zero H-1B selections across all 3 attempts: 1 - (1 - annual_rate)^3, and treat that failure probability as a real scenario requiring a written Plan B",
+      "because": "At ~15% annual entry-level selection rate, roughly 6 in 10 STEM OPT holders will exhaust all 3 attempts without an H-1B — planning only for the success scenario is statistically irresponsible"
+    },
+    {
+      "rule": "Include opportunity cost in MS ROI or the calculation is fictitious",
+      "condition": "When calculating whether an unfunded MS is financially worth it...",
+      "action": "...add foregone salary (what you would have earned working instead) to tuition and living costs to get the true investment figure, then divide by realistic annual salary premium",
+      "because": "Students who calculate only tuition underestimate total cost by 40-80%, which systematically makes bad programs look viable — a $80K tuition degree can have a $200K real cost once opportunity cost is included"
+    },
+    {
+      "rule": "Target large known H-1B sponsors exclusively if you are an international new grad",
+      "condition": "When an international MS student is job-searching with a graduation within 12 months...",
+      "action": "...prioritize applications to companies with documented high H-1B approval volumes (Amazon, Microsoft, Apple, Google, TCS-tier) and de-prioritize SMEs that rarely sponsor",
+      "because": "Sponsorship requirement — not skill gap — is the primary cause of international students receiving 30% fewer offers; concentrating applications on proven sponsors is a structural fix, not an optimization"
+    },
+    {
+      "rule": "If country of birth is India or China, treat US permanent residency as effectively unavailable when modeling ROI",
+      "condition": "When an Indian or Chinese national is calculating whether an unfunded US MS makes financial sense...",
+      "action": "...model the career as ending at H-1B status with no realistic green card path, and recalculate break-even assuming eventual departure or third-country transition",
+      "because": "EB-2/EB-3 backlogs for India and China are 50+ years, meaning even a successful H-1B holder cannot achieve long-term US residency through employment-based pathways in a career-relevant timeframe"
+    },
+    {
+      "rule": "Ask for program-specific employment data, not school-wide data",
+      "condition": "When evaluating an MS program's career outcomes...",
+      "action": "...request placement rates and employer names specific to that program cohort for the last 2 years, and verify whether those employers are H-1B sponsors",
+      "because": "School-wide employment statistics aggregate high-performing programs with low-performing ones, making a 30% placement program look acceptable when aggregated with a 90% placement engineering program"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "STEM OPT CIP code eligibility",
+      "why_it_matters": "Determines whether a student gets 12 or 36 months of work authorization, which changes H-1B attempt count from 1 to 3 and fundamentally alters immigration probability",
+      "how_to_assess": "Request the exact 6-digit CIP code from the program's DSO and verify it appears on the official DHS STEM OPT Designated Degree Program List before enrolling",
+      "weight": "high"
+    },
+    {
+      "factor": "Country of birth EB backlog",
+      "why_it_matters": "For Indian and Chinese nationals, even a successful H-1B chain leads to a 50+ year green card wait, meaning the entire US career trajectory is built on a visa status that can be terminated — this negates the ROI assumption of long-term US employment",
+      "how_to_assess": "Check current EB-2/EB-3 priority dates for your country of birth on the USCIS Visa Bulletin; if the cutoff date is more than 10 years behind, model as effectively unavailable",
+      "weight": "high"
+    },
+    {
+      "factor": "Field-level MS ROI",
+      "why_it_matters": "43% of MS programs have negative lifetime ROI even for domestic students; for international students facing employment gaps and immigration risk, negative-ROI fields become catastrophically negative",
+      "how_to_assess": "Cross-reference field against FRREOP data: CS/Engineering are reliably positive; Education, Arts, Social Sciences, Humanities are frequently negative; Business/MBA is highly variable",
+      "weight": "high"
+    },
+    {
+      "factor": "Program-specific employer pipeline to H-1B sponsors",
+      "why_it_matters": "A program's value for international students is not its ranking but whether it places graduates at companies large enough and willing enough to sponsor H-1B",
+      "how_to_assess": "Ask admissions or current students which specific companies recruited on campus in the last 2 years; cross-check those companies against USCIS H-1B disclosure data to confirm sponsorship history",
+      "weight": "high"
+    },
+    {
+      "factor": "True total cost including opportunity cost",
+      "why_it_matters": "The break-even timeline — and therefore whether ROI is achievable within a realistic US employment window — depends on total real cost, not sticker tuition",
+      "how_to_assess": "Calculate: tuition + 2 years living expenses + foregone salary (what you would earn in your home country or current job during those 2 years)",
+      "weight": "high"
+    },
+    {
+      "factor": "Existing employer relationship with sponsorship intent",
+      "why_it_matters": "A student with a pre-existing employer who has committed to sponsoring H-1B bypasses the lottery dependency risk that invalidates most international MS ROI calculations",
+      "how_to_assess": "Confirm in writing — not verbally — whether the employer will sponsor; verbal commitments from managers who cannot authorize HR policy are not reliable",
+      "weight": "high"
+    },
+    {
+      "factor": "Viability of Plan B without H-1B",
+      "why_it_matters": "Because ~60% of STEM OPT holders statistically exhaust H-1B attempts, a student without a credible alternative path is taking a 60% chance of an unplanned outcome",
+      "how_to_assess": "Evaluate concretely: Canadian graduate stream PR eligibility, home country job market with US MS credential, third-country options — vague 'I'll figure it out' is not a plan",
+      "weight": "high"
+    },
+    {
+      "factor": "Annual salary premium of MS over next-best alternative",
+      "why_it_matters": "The break-even timeline is salary premium divided into total cost — a small premium means the student must remain employed in the US for many years to recover investment",
+      "how_to_assess": "Research median salary for your specific role with and without MS in your target geography; do not use national averages if you are targeting a specific metro",
+      "weight": "medium"
+    },
+    {
+      "factor": "Employment rate specific to that program cohort",
+      "why_it_matters": "A 44.6% average international student employment rate means some programs perform far worse; program-level data reveals actual pipeline strength",
+      "how_to_assess": "Request cohort-specific 6-month employment data from the program; if they cannot or will not provide it, that itself is signal",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Enrolling in an unfunded MS in a non-STEM or borderline-STEM field",
+      "unstated_consequence": "You get 12 months of OPT instead of 36, reducing H-1B attempts from 3 to 1, dropping cumulative selection probability from ~39% to ~15% — the degree's immigration value collapses even if academically equivalent",
+      "who_it_affects": "Students who chose programs based on branding or rankings without verifying CIP code, especially in data, analytics, or interdisciplinary programs"
+    },
+    {
+      "choice": "Taking out loans to fund an unfunded MS in a field with borderline ROI",
+      "unstated_consequence": "The debt must be serviced regardless of employment outcome; if the student fails to get H-1B and returns home, they are repaying a US dollar loan on a home-country salary — which can consume 30-50% of income for a decade",
+      "who_it_affects": "Students from lower-income countries where home-country salaries are a fraction of US debt service requirements"
+    },
+    {
+      "choice": "Targeting small or mid-size employers because they seem more accessible",
+      "unstated_consequence": "These employers typically cannot or will not sponsor H-1B, meaning any OPT job at such a company is a temporary bridge with no path to the H-1B needed for continued US employment",
+      "who_it_affects": "Students from non-CS fields where big tech is not the default employer pipeline, and first-generation international students without career guidance"
+    },
+    {
+      "choice": "Pursuing an unfunded US MS as an Indian or Chinese national",
+      "unstated_consequence": "Even perfect execution — graduating, finding H-1B sponsor, winning lottery — results in indefinite H-1B status with a 50+ year green card wait, meaning the student builds a life in the US with no legal permanence",
+      "who_it_affects": "Indian and Chinese nationals who model their career assuming eventual permanent residency and make life decisions (marriage, home purchase, children's schooling) on that assumption"
+    },
+    {
+      "choice": "Using school-wide employment statistics to evaluate a program",
+      "unstated_consequence": "High-placement programs in engineering or CS inflate the overall metric, masking 20-40% placement rates in lower-demand programs within the same institution",
+      "who_it_affects": "Students applying to non-CS MS programs at strong CS schools, who assume the school's brand translates uniformly across departments"
+    },
+    {
+      "choice": "Choosing an unfunded MS because 'I couldn't get into a PhD program'",
+      "unstated_consequence": "The MS does not automatically fix whatever prevented PhD admission; if the barrier was research experience or GPA, neither is addressed by coursework alone, making the second PhD application only marginally stronger while the student has spent $100K+",
+      "who_it_affects": "Students who view the MS instrumentally as a PhD stepping stone without a concrete plan for what research output the MS will produce"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Calculating MS ROI using tuition cost only, ignoring opportunity cost and employment probability",
+      "why_it_happens": "Tuition is a concrete, visible number; opportunity cost and employment risk require probabilistic reasoning that feels speculative — students anchor on the number they can see",
+      "consequence": "Students believe they are making a $60-80K investment when the true cost is $150-200K, and they underestimate break-even timelines by 5-10 years",
+      "warning_signs": [
+        "Student describes the investment as 'just the tuition'",
+        "Break-even calculation does not mention foregone salary",
+        "Student has no salary comparison between MS and non-MS roles in their target market"
+      ]
+    },
+    {
+      "pattern": "Assuming STEM OPT eligibility based on program branding rather than CIP code verification",
+      "why_it_happens": "Program names like 'Data Science,' 'Business Analytics,' or 'Applied Computing' sound technical and STEM-adjacent; students assume eligibility without checking the legal classification",
+      "consequence": "Student enrolls expecting 36 months of work authorization, graduates to 12 months, makes one H-1B attempt instead of three, and faces departure after a single failed lottery at ~15% odds",
+      "warning_signs": [
+        "Student cannot name the program's CIP code when asked",
+        "Student has not spoken with the program's DSO about STEM OPT",
+        "Program is in a business school but marketed as data/analytics"
+      ]
+    },
+    {
+      "pattern": "Treating OPT employment as equivalent to domestic employment for career planning",
+      "why_it_happens": "Students focus on getting the degree and getting a job, treating the visa layer as an administrative detail rather than a structural constraint that changes which employers are viable",
+      "consequence": "Student accepts OPT role at a company that does not sponsor H-1B, spends 1-2 years there, then faces forced departure or a lateral move under deadline pressure",
+      "warning_signs": [
+        "Student has not researched whether their target employers appear on USCIS H-1B disclosure data",
+        "Job search strategy does not filter by employer sponsorship history",
+        "Student is targeting companies with under 200 employees in cost-conscious industries"
+      ]
+    },
+    {
+      "pattern": "Indian and Chinese nationals pursuing unfunded US MS without modeling the EB backlog into their long-term plan",
+      "why_it_happens": "The green card backlog is abstract and far away; students optimize for the near-term milestone (get the degree, get the job) and defer the long-term problem because it feels distant and unchangeable",
+      "consequence": "Student builds 5-10 years of US career, life infrastructure, and identity, then faces the backlog reality with no viable path to permanence and a home-country job market where they are now overpriced and out of network",
+      "warning_signs": [
+        "Student's 10-year plan assumes permanent residency without acknowledging the backlog",
+        "Student is from India or China and has not researched current EB priority dates",
+        "Student dismisses the backlog as 'something that will get fixed'"
+      ]
+    },
+    {
+      "pattern": "Pursuing unfunded MS in a negative-ROI field without a non-US-employment scenario",
+      "why_it_happens": "Students in fields like education, social sciences, or arts apply to MS programs because they are passionate about the subject and model success as 'getting the degree and finding a job' — the financial math is never actually run",
+      "consequence": "Student graduates with $60-90K in debt, faces a salary of $45-55K with no STEM OPT, fails to find H-1B sponsorship (rare in these fields), and returns home with a degree that does not command a premium in their home market",
+      "warning_signs": [
+        "Student cannot articulate the salary premium the MS will generate",
+        "Student's target field rarely appears on H-1B sponsor lists",
+        "Student has not compared lifetime earnings with and without the degree"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the exact CIP code for this program, and have you verified it is on the DHS STEM OPT Designated Degree Program List?",
+      "what_it_reveals": "Whether the student will have 12 or 36 months of work authorization, which determines how many H-1B attempts they get and fundamentally changes the immigration risk profile",
+      "follow_up_if_yes": "Have you confirmed this with the DSO in writing, not just from the program website?",
+      "follow_up_if_no": "This is the single most important verification to do before accepting admission — do you have the DSO's contact information to check this week?"
+    },
+    {
+      "question": "What country were you born in?",
+      "what_it_reveals": "Whether long-term US permanent residency through employment is a realistic outcome within a career timeframe — for Indian and Chinese nationals, it is not",
+      "follow_up_if_yes": "If India or China: have you modeled your career assuming you will be on H-1B status indefinitely with no green card, and does that scenario still make the MS worthwhile?",
+      "follow_up_if_no": "If other country: what are current EB priority dates for your country, and how does that affect your long-term US residency timeline?"
+    },
+    {
+      "question": "What is your total cost including living expenses and foregone salary — not just tuition?",
+      "what_it_reveals": "Whether the student has done a realistic ROI calculation or is anchoring on the sticker price and underestimating the true investment by 50-150%",
+      "follow_up_if_yes": "What is the annual salary premium you expect from the MS over your next-best alternative, and how many years of US employment does that require to break even?",
+      "follow_up_if_no": "Calculate: tuition + living for program duration + what you would have earned working instead — that is your real investment figure"
+    },
+    {
+      "question": "Which specific employers recruited from this program in the last two years, and do those employers have a documented history of H-1B sponsorship?",
+      "what_it_reveals": "Whether the program has a real pipeline to viable employers for international students, versus general employment statistics that may include employers who will not sponsor",
+      "follow_up_if_yes": "Can you get the names of specific companies, not aggregated placement rates? Have you looked those companies up on USCIS H-1B disclosure data?",
+      "follow_up_if_no": "If the program cannot provide this, that is informative — programs with strong international pipelines can answer this question"
+    },
+    {
+      "question": "If you exhaust all H-1B attempts and do not get selected, what is your specific plan?",
+      "what_it_reveals": "Whether the student has a credible alternative path or is implicitly assuming success in a process where ~60% of STEM OPT holders fail across 3 attempts",
+      "follow_up_if_yes": "Is the plan concrete — Canadian graduate PR application, specific home-country employer, third-country option — or is it 'I'll figure it out at the time'?",
+      "follow_up_if_no": "A real Plan B should be evaluated now, before spending $100-200K, not after the H-1B attempts are exhausted"
+    },
+    {
+      "question": "Are you pursuing this MS because you could not get into a PhD program, and if so, what specifically will the MS change about your PhD application?",
+      "what_it_reveals": "Whether the student has a strategic reason to expect the MS to fix the PhD admission barrier, or whether they are spending $100K+ on a degree that will not address the root cause",
+      "follow_up_if_yes": "What research output — publications, thesis, conference presentations — will you produce during the MS that was missing from your PhD application?",
+      "follow_up_if_no": "If the answer is 'just better GPA' or 'more coursework,' that may not be sufficient — PhD admissions committees weight research experience heavily"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A master's degree always increases lifetime earnings over not having one",
+      "actual_reality": "43% of master's degree programs have negative lifetime ROI, and the median bachelor's degree has higher lifetime ROI (~$160K) than most master's degrees, because it costs less and takes less time",
+      "implication": "Field selection for an MS is not a preference question — it is a financial risk decision; students in negative-ROI fields are paying for a credential that statistically makes them worse off financially"
+    },
+    {
+      "common_belief": "Getting a job in the US after graduation is primarily a skills and networking problem",
+      "actual_reality": "International students apply to 2x as many jobs but receive 30% fewer offers than domestic students, and the primary cause is sponsorship requirement, not skill gap — this is a structural constraint, not a performance gap",
+      "implication": "Improving your resume or networking harder does not solve the sponsorship problem; job search strategy must be built around targeting only known H-1B sponsors from the start"
+    },
+    {
+      "common_belief": "STEM OPT gives you 3 H-1B attempts, so most people eventually get selected",
+      "actual_reality": "At entry-level selection rates of ~15%, cumulative probability of at least one selection in 3 attempts is ~39%, meaning approximately 6 in 10 entry-level international graduates with STEM OPT will exhaust all attempts without an H-1B",
+      "implication": "Plan B is not a pessimistic contingency — it is the statistically more likely outcome for entry-level international graduates and should be planned with equal seriousness to Plan A"
+    },
+    {
+      "common_belief": "Any program called 'Data Science,' 'Analytics,' or 'Applied Computing' qualifies for STEM OPT",
+      "actual_reality": "STEM OPT eligibility is determined by the program's CIP code, not its name or marketing; a Data Analytics MS in a business school may have a non-STEM CIP code and not qualify",
+      "implication": "Never assume STEM OPT eligibility from the program name — verify the CIP code with the DSO before enrolling, as this decision cannot be easily corrected after the fact"
+    },
+    {
+      "common_belief": "Getting H-1B sponsorship from any employer counts the same",
+      "actual_reality": "Small and mid-size companies often cannot or will not sponsor H-1B due to cost ($2,200–$6,400+ per petition plus attorney fees) and administrative burden; targeting them on OPT leads to a dead end when H-1B is required",
+      "implication": "For international students, employer size and H-1B sponsorship history must be treated as primary hiring filters, not secondary considerations after role fit and compensation"
+    },
+    {
+      "common_belief": "Indian and Chinese nationals who get H-1B sponsorship have solved the immigration problem",
+      "actual_reality": "H-1B is a temporary status; EB-2/EB-3 green card backlogs for India and China exceed 50 years at current rates, meaning H-1B holders from these countries cannot realistically achieve permanent residency through employment-based pathways",
+      "implication": "Indian and Chinese nationals should model their US career as H-1B-capped with no green card endpoint, and evaluate whether that scenario still justifies the investment and life disruption of an unfunded MS"
+    },
+    {
+      "common_belief": "The 90-day unemployment limit during OPT is a soft guideline",
+      "actual_reality": "Exceeding 90 aggregate days of unemployment during standard OPT jeopardizes F-1 status — this is a hard legal limit, not a soft guideline — meaning a student who struggles to find work faces both financial and legal consequences simultaneously",
+      "implication": "Students should begin job searching before graduation and have employer targets identified, not treat OPT as a gap year with a safety net"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "ROI calculation methodology",
+      "junior_pattern": "Compares tuition cost to expected salary increase; if the salary goes up, the degree seems worth it",
+      "senior_pattern": "Calculates total real cost (tuition + living + opportunity cost) divided by realistic annual salary premium, then stress-tests the break-even timeline against employment probability and immigration risk",
+      "why_it_matters": "A degree that looks positive on tuition-only math can be deeply negative when full cost and employment probability are included; the mistake is made at enrollment and cannot be undone"
+    },
+    {
+      "dimension": "Immigration path modeling",
+      "junior_pattern": "Plans to OPT → H-1B → green card, treating each step as a natural progression that happens if you work hard enough",
+      "senior_pattern": "Models each step as a probabilistic gate with specific failure rates, runs cumulative probability across the chain, and builds a concrete alternative plan for the most likely failure point",
+      "why_it_matters": "The chain OPT → H-1B → green card has an overall success rate below 20% for most international students; treating it as a deterministic path leads to catastrophic unplanned outcomes"
+    },
+    {
+      "dimension": "Program evaluation criteria",
+      "junior_pattern": "Evaluates programs based on rankings, brand name, and course curriculum; assumes a well-ranked school with good courses produces good employment outcomes",
+      "senior_pattern": "Evaluates programs based on CIP code for STEM OPT eligibility, program-specific placement rates with named employers, and whether those employers are documented H-1B sponsors",
+      "why_it_matters": "Brand name does not transfer to visa sponsorship; a top-ranked program in a field with few H-1B sponsors has worse practical outcomes for international students than a lower-ranked program with a strong big-tech pipeline"
+    },
+    {
+      "dimension": "Downside scenario planning",
+      "junior_pattern": "Plans for the success scenario in detail; describes downside scenarios vaguely as 'I'll figure it out' or 'cross that bridge when I come to it'",
+      "senior_pattern": "Treats the failure scenario (no H-1B after 3 attempts) as a concrete plan that requires the same specificity as the success scenario, because it is the statistically more likely outcome",
+      "why_it_matters": "At ~60% failure rate for STEM OPT → H-1B conversion, the downside is the base case; a student without a real Plan B is betting $100-200K on a 40% probability without acknowledging the bet"
+    },
+    {
+      "dimension": "Employer targeting strategy",
+      "junior_pattern": "Applies broadly to any company with an interesting role and competitive compensation; treats visa sponsorship as something to negotiate after an offer",
+      "senior_pattern": "Pre-filters the entire job search by documented H-1B sponsorship history; treats any company without sponsorship history as out of scope for primary applications",
+      "why_it_matters": "An OPT role at a non-sponsoring employer is a 1-2 year detour that ends in forced departure; the earlier this filter is applied, the less wasted effort and the lower the career disruption risk"
+    },
+    {
+      "dimension": "Country-of-birth impact awareness",
+      "junior_pattern": "Treats all international students as facing the same immigration path; does not distinguish between nationalities when modeling long-term US career prospects",
+      "senior_pattern": "Immediately adjusts the entire career model for Indian and Chinese nationals to account for 50+ year EB backlogs, treating permanent residency as unavailable and re-evaluating whether the US is the right destination at all",
+      "why_it_matters": "Identical credentials and identical career execution produce radically different long-term outcomes depending on country of birth; ignoring this leads Indian and Chinese nationals to make 10-year life investments in a path that has no legal endpoint"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_unfunded_ms_roi_and_opt_pipeline",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "source_file": "industry_vs_academic_phd_cs.txt",
+  "heuristics": [
+    {
+      "rule": "Ask the advisor's internship philosophy before committing — it immediately reveals which track they optimize for",
+      "condition": "When evaluating a prospective PhD advisor for an industry research career...",
+      "action": "...ask directly: 'What's your philosophy on PhD student internships?' and listen for whether they proactively name companies vs. express reluctance",
+      "because": "An advisor who views internships as disruptions creates a structural disadvantage for industry placement regardless of program rank or advisor reputation"
+    },
+    {
+      "rule": "Use LinkedIn to verify where an advisor's students actually interned — not where the advisor claims connections",
+      "condition": "When an advisor claims industry connections or a pipeline to top AI labs...",
+      "action": "...search LinkedIn for the advisor's past PhD students and trace their actual internship history",
+      "because": "Claimed connections are cheap; verifiable placement history (Google DeepMind, OpenAI, Meta AI) is the authoritative signal of real pipeline access"
+    },
+    {
+      "rule": "For academic-track PhDs, program rank matters more than advisor fit; for industry-track PhDs, advisor industry connections matter more than program rank",
+      "condition": "When choosing between a higher-ranked program with a less connected advisor vs. a lower-ranked program with an advisor who has strong industry lab relationships...",
+      "action": "...weight program rank heavily if targeting faculty positions, weight advisor industry connections heavily if targeting research scientist roles",
+      "because": "Academic hiring is top-heavy and credential-driven by institution; industry research hiring is relationship- and internship-pipeline-driven"
+    },
+    {
+      "rule": "If your actual goal is SWE, do not pursue a PhD — calculate the opportunity cost explicitly before applying",
+      "condition": "When a student is considering a PhD primarily to improve competitiveness for software engineering roles...",
+      "action": "...calculate the 4–5 year opportunity cost ($500,000–$600,000 pretax) against the marginal or negative PhD premium for SWE roles",
+      "because": "PhD SWEs and MS SWEs are compensated identically at the same level at most companies, and PhD candidates may be filtered as overqualified"
+    },
+    {
+      "rule": "Investigate co-supervision PhD programs at target industry labs before defaulting to a standard university PhD",
+      "condition": "When a student's target employer is a major AI lab (Google, Meta AI, Microsoft Research, OpenAI)...",
+      "action": "...research whether that lab has a formal PhD co-supervision or residency program before choosing a standard academic program",
+      "because": "Co-supervision programs offer faster publication timelines, more applied research, and supplemented compensation — a structurally different and often superior path for industry research goals"
+    },
+    {
+      "rule": "Ask for the placement list of the last 5 PhD graduates, not general claims about program quality",
+      "condition": "When evaluating any PhD program during visit days...",
+      "action": "...ask specifically: 'Where did your last 5 PhD graduates go?' and assess the ratio and quality of academic vs. industry placements",
+      "because": "Aggregate program reputation lags current advisor-specific placement reality; recent concrete placements are more predictive than rankings"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Target career track (academic vs. industry research vs. SWE)",
+      "why_it_matters": "The optimal program, advisor, and strategy differ fundamentally across tracks — optimizing for the wrong track wastes years",
+      "how_to_assess": "Honestly identify whether you want a faculty position, a research scientist role, or a software engineering role before applying — these are not equivalent endpoints",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor's student placement history",
+      "why_it_matters": "The advisor's network and track record directly determine internship access, letter quality, and job placement probability",
+      "how_to_assess": "LinkedIn search of past PhD students for internship history and post-graduation roles; ask directly which companies students have interned at in the last 3 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Program ranking",
+      "why_it_matters": "Matters significantly for academic track (top-5/10 programs dominate faculty placements); matters less for industry research track where advisor connections can compensate",
+      "how_to_assess": "Check assistant professor placement data by program; for industry track, rank-30 with strong industry advisor can outperform rank-10 with no industry connections",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor's internship philosophy",
+      "why_it_matters": "An advisor who discourages internships structurally disadvantages industry-track students regardless of other program strengths",
+      "how_to_assess": "Ask directly during visits; listen for specificity (names companies) vs. vagueness or discouragement",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor's industry research partnerships and consulting relationships",
+      "why_it_matters": "Active industry collaborations create internship pipelines, co-authored publications with industry researchers, and warm introductions to hiring managers",
+      "how_to_assess": "Ask: 'Do you have active research collaborations with industry labs? Which ones?' and verify against advisor's recent publications and acknowledgments",
+      "weight": "high"
+    },
+    {
+      "factor": "Subfield choice within CS",
+      "why_it_matters": "Industry demand and academic job market competitiveness vary dramatically by subfield — ML/AI has extreme industry demand but also the most competitive academic market; theory has moderate industry demand",
+      "how_to_assess": "Cross-reference the subfield table: ML/AI/NLP have highest industry demand; theory has moderate industry demand; HCI has moderate demand in both tracks",
+      "weight": "high"
+    },
+    {
+      "factor": "Existence of formal co-supervision programs at target industry labs",
+      "why_it_matters": "Represents a structurally distinct and potentially superior path for industry research goals — faster timelines, supplemented compensation, applied research",
+      "how_to_assess": "Research Google Brain Residency, Meta AI Research programs, Microsoft Research PhD fellowships, OpenAI collaborations before defaulting to standard programs",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor's h-index and academic network breadth (for academic track)",
+      "why_it_matters": "Authoritative recommendation letters from well-networked advisors are a prerequisite for competitive academic hiring committee access",
+      "how_to_assess": "Check h-index in the subfield; ask how many hiring committee relationships the advisor has across institutions; assess grant history for funding runway",
+      "weight": "high"
+    },
+    {
+      "factor": "Opportunity cost calculation (especially for SWE-bound students)",
+      "why_it_matters": "4–5 years of stipend ($32K–$40K/yr) vs. industry SWE salary ($150K–$200K/yr) represents $500K–$600K pretax foregone earnings",
+      "how_to_assess": "Calculate explicitly: multiply years-in-program by delta between stipend and market SWE salary; compare against realistic PhD premium for target role",
+      "weight": "high"
+    },
+    {
+      "factor": "Teaching assistant experience (academic vs. industry track)",
+      "why_it_matters": "TA experience is an asset for academic track (demonstrates teaching competency for faculty applications); it is not a meaningful differentiator for industry research roles",
+      "how_to_assess": "Assess whether TA requirements serve or distract from your target track",
+      "weight": "low"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Joining an academically prestigious advisor who discourages internships",
+      "unstated_consequence": "You systematically miss the internship pipeline that is the primary entry mechanism for top industry research labs — no matter how good your publications are",
+      "who_it_affects": "Students who believe publication quality alone will open industry research doors, not realizing internship relationships often precede and enable those hires"
+    },
+    {
+      "choice": "Choosing a high-ranked program primarily for ranking",
+      "unstated_consequence": "If the advisor at that program has no industry connections, a rank-10 program placement can underperform a rank-30 program with an advisor who has active Google DeepMind or OpenAI relationships",
+      "who_it_affects": "Industry-track students who conflate program prestige with advisor-specific industry pipeline access"
+    },
+    {
+      "choice": "Pursuing a PhD to improve SWE job prospects",
+      "unstated_consequence": "You may be filtered as overqualified for some SWE roles, and companies expect higher compensation to justify hiring a PhD SWE — creating a hiring disadvantage on top of the $500K+ opportunity cost",
+      "who_it_affects": "Students who assume a PhD universally increases competitiveness across all tech roles, not realizing the premium is concentrated in research-specific roles"
+    },
+    {
+      "choice": "Academic-track PhD without a postdoc plan",
+      "unstated_consequence": "The realistic path to a tenure-track faculty position includes 1–3 years as a postdoc at $55K–$80K/year after 5–7 years of PhD — total timeline to first faculty salary can be 8–10 years",
+      "who_it_affects": "Students who see the $120K–$180K first-year faculty salary without accounting for the postdoc bridge years that precede it"
+    },
+    {
+      "choice": "Industry research track PhD without verifying advisor's actual placement record",
+      "unstated_consequence": "An advisor who claims industry connections but has only placed students at product-team roles (not research labs) provides significantly less value for a research scientist career goal",
+      "who_it_affects": "Students who conflate 'students went to industry' with 'students went to top industry research positions' — the distinction between SWE/product roles and research scientist roles is large"
+    },
+    {
+      "choice": "Defaulting to a standard university PhD when a co-supervision program exists at your target lab",
+      "unstated_consequence": "You forego supplemented compensation, faster publication timelines, applied research relevance, and direct relationships with your target employer's researchers",
+      "who_it_affects": "Students who are unaware that formal co-supervision programs exist and apply only through traditional university admission channels"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying to PhD programs without distinguishing academic vs. industry track optimization",
+      "why_it_happens": "Most publicly available PhD advice assumes a single academic track; students don't realize the two tracks require different advisor selection, program evaluation, and application strategy",
+      "consequence": "Students end up in programs optimized for the wrong track — e.g., with an academic-oriented advisor who discourages internships when they want an industry research career",
+      "warning_signs": [
+        "Student says 'I want to go into industry eventually' but is evaluating advisors primarily by h-index and publications",
+        "Student prioritizes program ranking above advisor-specific placement history for an industry research goal"
+      ]
+    },
+    {
+      "pattern": "Treating 'went to industry' as equivalent to 'got a research scientist role at a top lab'",
+      "why_it_happens": "Students don't distinguish between SWE/product placements and research scientist placements when reviewing an advisor's student outcomes",
+      "consequence": "Student joins a program with an advisor whose 'industry placements' are all SWE roles, not research roles — misaligned with research scientist career goal",
+      "warning_signs": [
+        "Student accepts vague claims like 'my students go to Google and Meta' without asking which teams or roles",
+        "Student doesn't search LinkedIn to verify actual job titles of past PhD graduates"
+      ]
+    },
+    {
+      "pattern": "Pursuing a PhD with a SWE career goal",
+      "why_it_happens": "Students believe a PhD signals competence and increases hiring probability broadly; they don't calculate opportunity cost or understand that PhD premium is role-specific",
+      "consequence": "$500K–$600K opportunity cost with marginal or negative return for SWE roles; possible 'overqualified' filter at some companies",
+      "warning_signs": [
+        "Student says 'I want to work at Google/Meta as an engineer and the PhD will help me get in'",
+        "Student has not considered that new grad SWE compensation already exceeds PhD stipend by 4–5x"
+      ]
+    },
+    {
+      "pattern": "Assuming program rank is the dominant variable for all career outcomes",
+      "why_it_happens": "Program rankings are highly visible and easy to compare; advisor-specific variables like internship pipeline and industry connections are opaque and require active research",
+      "consequence": "Students at high-ranked programs with academically-oriented advisors get outcompeted for industry research roles by students from lower-ranked programs with strong industry advisor pipelines",
+      "warning_signs": [
+        "Student's primary evaluation criterion is US News or CSRankings position",
+        "Student has not asked any prospective advisor where their last 5 graduates went"
+      ]
+    },
+    {
+      "pattern": "Not investigating co-supervision programs before applying to standard PhD programs",
+      "why_it_happens": "These programs are relatively new (post-2020) and not widely discussed in standard PhD application guides; students apply through familiar university-only channels",
+      "consequence": "Students miss structurally superior arrangements that offer supplemented compensation, applied research relevance, and direct employer relationships",
+      "warning_signs": [
+        "Student's target employer is a major AI lab but student is only researching standard university admissions",
+        "Student has not searched whether their target lab has a formal PhD or residency program"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your actual target role — faculty position, research scientist at an AI lab, applied scientist, or software engineer?",
+      "what_it_reveals": "Whether the student needs academic-track or industry-track optimization, or whether a PhD is appropriate at all",
+      "follow_up_if_yes": "If faculty: Are you targeting top-5 research universities or are you open to a range? This determines how much program rank should dominate your decision.",
+      "follow_up_if_no": "If SWE: Have you calculated the opportunity cost of 4–5 years at stipend vs. market salary, and do you understand the PhD premium is marginal or negative for SWE roles?"
+    },
+    {
+      "question": "Have you looked up the last 5 PhD graduates of your prospective advisor on LinkedIn to see where they actually work and in what roles?",
+      "what_it_reveals": "Whether the student is evaluating advisors on verifiable placement reality vs. claimed reputation or h-index",
+      "follow_up_if_yes": "What is the ratio of research scientist vs. SWE/product roles? Are those research roles at top labs (Google Brain, OpenAI, FAIR) or at less prominent research positions?",
+      "follow_up_if_no": "This is the single most actionable research step — do this before accepting any offer; claimed connections vs. verifiable placement history are very different signals."
+    },
+    {
+      "question": "Have you directly asked your prospective advisor what their philosophy on student internships is?",
+      "what_it_reveals": "Whether the advisor is academic-track or industry-track oriented, and whether they will actively support or passively obstruct internship access",
+      "follow_up_if_yes": "Did they name specific companies proactively, or were they vague or discouraging? Specificity signals real pipeline; vagueness or discouragement signals academic-track orientation.",
+      "follow_up_if_no": "Ask this question explicitly — it is the single clearest diagnostic of advisor track orientation and should not be inferred indirectly"
+    },
+    {
+      "question": "What subfield of CS are you targeting, and have you mapped the industry vs. academic job market specifically for that subfield?",
+      "what_it_reveals": "Whether the student understands that ML/AI, systems, NLP, theory, HCI, security, and databases have meaningfully different industry demand and academic competitiveness profiles",
+      "follow_up_if_yes": "For ML/AI: Are you aware that the academic job market is dominated by top-5 programs, or are you relying on a lower-ranked program for a faculty goal?",
+      "follow_up_if_no": "Theory and HCI have moderate industry demand; ML/AI/NLP have extreme demand. Career strategy should be calibrated to the specific subfield, not CS broadly."
+    },
+    {
+      "question": "Have you researched whether your target industry employer has a formal co-supervision or PhD residency program?",
+      "what_it_reveals": "Whether the student is aware of the third track — industry co-supervised PhD — and whether they are applying through the optimal channel for their goals",
+      "follow_up_if_yes": "Have you compared the co-supervision program's research scope, compensation supplement, and publication culture against the standard university PhD programs you're considering?",
+      "follow_up_if_no": "Google, Meta AI, Microsoft Research, and OpenAI have formal programs post-2020 — research these before defaulting to standard university admission"
+    },
+    {
+      "question": "Are you targeting an academic faculty position, and if so, are you applying to top-10 programs in your subfield?",
+      "what_it_reveals": "Whether the student's program selection is consistent with the top-heavy reality of academic hiring — rank-20 to rank-20 faculty placement is achievable; rank-20 to MIT is not",
+      "follow_up_if_yes": "Within top-10 programs, are you selecting advisors with track records of placing students in faculty positions in the last 3 years specifically?",
+      "follow_up_if_no": "If targeting academia from a lower-ranked program, the student should explicitly assess whether their subfield has exceptions to the top-heaviness pattern"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A PhD universally improves your competitiveness in tech hiring",
+      "actual_reality": "The PhD premium is real and substantial only for research scientist and applied scientist roles; for SWE, data engineering, most PM tracks, and management tracks, the premium is marginal or negative",
+      "implication": "Students should identify their specific target role before pursuing a PhD — not assume it improves all career options"
+    },
+    {
+      "common_belief": "Program ranking is the dominant variable in PhD outcome quality",
+      "actual_reality": "For industry research track, a rank-30 program with an advisor who actively places students at Google DeepMind, OpenAI, and Meta AI can outperform a rank-10 program whose advisor has no industry relationships",
+      "implication": "Industry-track students should weight advisor-specific placement history and industry connections more heavily than aggregate program rank"
+    },
+    {
+      "common_belief": "The academic faculty path takes 5–7 years and then you get a faculty job",
+      "actual_reality": "Most CS faculty positions require a postdoc (1–3 years at $55K–$80K) after the PhD — total timeline to first faculty salary is often 8–10 years",
+      "implication": "Students planning for academic careers should model the full timeline including postdoc years when evaluating the financial and career trajectory"
+    },
+    {
+      "common_belief": "If a PhD advisor says their students 'go to industry,' that means they have strong industry research placement",
+      "actual_reality": "Industry placements range from SWE/product roles to top AI lab research scientist positions — these are vastly different outcomes that advisors routinely conflate in their claims",
+      "implication": "Always ask specifically about research scientist placements at named top labs, not just general 'industry' placements; verify on LinkedIn"
+    },
+    {
+      "common_belief": "The standard PhD application process is the only path into industry research labs",
+      "actual_reality": "Since ~2020, major AI labs have established formal co-supervision programs, residency programs, and PhD fellowships — these are structurally distinct tracks with supplemented compensation and applied research",
+      "implication": "Students targeting specific industry labs should research and apply to these programs directly before defaulting to standard university PhD applications"
+    },
+    {
+      "common_belief": "Teaching assistant experience is universally valuable in a PhD program",
+      "actual_reality": "TA experience is an asset on the academic track and a neutral-to-irrelevant factor on the industry research track — the time cost of TAing is a real tradeoff against research output",
+      "implication": "Industry-track students should assess whether TA requirements in their program compete with internship time or research output"
+    },
+    {
+      "common_belief": "PhD compensation eventually catches up with industry SWE compensation",
+      "actual_reality": "The stipend-to-industry-SWE gap during the PhD represents $500K–$600K in pretax foregone earnings over 4–5 years, and PhD SWEs and MS SWEs are paid identically at the same level at most companies",
+      "implication": "The financial calculus only favors the PhD for roles where a PhD is a hard requirement (research scientist) or provides a structural premium — not for general engineering roles"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a prospective advisor",
+      "junior_pattern": "Looks up advisor's h-index, publication count, and program ranking; treats high citation count as primary signal of advisor quality",
+      "senior_pattern": "Searches LinkedIn for past PhD students; asks directly about internship placements, specific company names, and the ratio of academic vs. industry research vs. product placements in the last 3 years",
+      "why_it_matters": "Academic metrics predict academic-track outcomes, not industry research placement — using the wrong evaluation criteria leads to joining a mismatched advisor"
+    },
+    {
+      "dimension": "How to think about program ranking",
+      "junior_pattern": "Uses ranking as a proxy for all quality dimensions — assumes higher rank means better outcomes across all career tracks",
+      "senior_pattern": "Disaggregates ranking by track: weights rank heavily for academic placements, weights advisor-specific industry connections heavily for industry research placements, recognizes rank is not the dominant variable for industry track",
+      "why_it_matters": "Optimizing for rank on the industry track causes students to overlook rank-30 advisors with superior industry pipelines"
+    },
+    {
+      "dimension": "Understanding what 'went to industry' means in a placement claim",
+      "junior_pattern": "Accepts 'my students go to Google and Meta' as evidence of strong industry research placement",
+      "senior_pattern": "Asks 'which teams and roles?' and distinguishes between research scientist positions at Google Brain/FAIR vs. SWE/product team placements — treats these as categorically different outcomes",
+      "why_it_matters": "Conflating SWE placements with research scientist placements leads to joining an advisor who cannot actually help you reach your research career goal"
+    },
+    {
+      "dimension": "How to evaluate the PhD decision itself",
+      "junior_pattern": "Assumes a PhD broadly improves career prospects in tech; views it as a credential that opens more doors than it closes",
+      "senior_pattern": "Calculates opportunity cost explicitly, maps the PhD premium by specific role type, recognizes that the premium is concentrated in research roles and marginal or negative for SWE — makes the PhD decision conditional on the target role",
+      "why_it_matters": "Pursuing a PhD for a SWE goal costs $500K+ in opportunity cost with no meaningful return"
+    },
+    {
+      "dimension": "Awareness of application pathways",
+      "junior_pattern": "Knows only the standard university PhD application process; applies through university portals and targets advisors at ranked programs",
+      "senior_pattern": "Is aware of co-supervision programs, industry lab residencies, and formal PhD fellowships at target employers; evaluates these against standard PhD programs before deciding on application strategy",
+      "why_it_matters": "Missing the co-supervision track means foregoing supplemented compensation, faster timelines, and direct employer relationships that are structurally superior for certain industry research goals"
+    },
+    {
+      "dimension": "How to interpret the advisor internship conversation",
+      "junior_pattern": "Asks about internships as a lifestyle question ('will I have time to intern?') rather than a placement pipeline question",
+      "senior_pattern": "Uses the internship question as a diagnostic to immediately classify the advisor as academic-track or industry-track oriented; listens for specificity of company names vs. vagueness or discouragement as the key signal",
+      "why_it_matters": "An advisor who discourages internships is a structural disadvantage for industry research placement — this should be a near-disqualifying factor for industry-track students"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "cs_ml_industry_vs_academic_phd_cs",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

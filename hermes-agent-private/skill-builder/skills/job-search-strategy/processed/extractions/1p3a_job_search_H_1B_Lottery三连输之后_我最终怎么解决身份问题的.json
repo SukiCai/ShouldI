@@ -1,0 +1,275 @@
+{
+  "source_file": "job_search_H_1B_Lottery三连输之后_我最终怎么解决身份问题的.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Cap-exempt employers (universities, non-profit research institutes, university-affiliated hospitals) can file H-1B petitions year-round without lottery participation",
+      "condition": "When an F-1/OPT holder has exhausted H-1B lottery chances or is approaching OPT expiration with no cap-subject H-1B approval",
+      "action": "Target cap-exempt employers — Top university-affiliated research institutes and hospital systems — as a legal bridge to maintain status without waiting for annual lottery",
+      "because": "The original poster successfully transferred to a cap-exempt role before STEM OPT expiration, confirmed by multiple commenters including one noting hospital systems also qualify; cap-exempt employers are not subject to the annual H-1B cap under INA",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Use premium processing (I-129) when timeline is tight against OPT expiration",
+      "condition": "When OPT expiration is within 30-60 days and an H-1B petition needs to be approved before that date",
+      "action": "Request premium processing to reduce adjudication to ~15 business days, even if the fee (~$2,805) must be paid out of pocket",
+      "because": "The poster submitted I-129 in mid-April and received approval in early May — within 15 days — allowing transfer before the May STEM OPT expiration with no status gap",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "After 180 days in a cap-exempt H-1B role, H-1B portability allows transfer to a private (cap-subject) employer without re-entering the lottery",
+      "condition": "When a worker holds an approved cap-exempt H-1B and wants to return to private sector employment",
+      "action": "Work at least 180 days at the cap-exempt employer before initiating transfer to a private employer; the H-1B remains portable to cap-subject employers after this threshold",
+      "because": "Stated explicitly by the original poster as part of their forward plan, corroborated by commenter [3] asking for confirmation of this rule — indicating it is a known but under-discussed pathway",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cap-exempt vs. cap-subject employer status",
+      "why_it_matters": "Determines whether an H-1B petition requires lottery selection (once per year, ~35% odds) or can be filed at any time with near-certain approval if qualifications are met",
+      "how_to_assess": "Check whether the employer is a university, non-profit research organization, or government research institution; university-affiliated hospitals often also qualify — verify employer's cap-exempt status with an immigration attorney before accepting an offer",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Time remaining on STEM OPT",
+      "why_it_matters": "The shorter the remaining window, the fewer options are viable — cap-subject H-1B requires October 1 start date, making it useless if OPT expires before then",
+      "how_to_assess": "Count months remaining; if fewer than 6 months remain before expiration and no cap-subject H-1B is already approved, cap-exempt or other visa categories should be evaluated immediately",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Salary differential between cap-exempt and private sector roles",
+      "why_it_matters": "Cap-exempt roles typically pay 20-40% less than equivalent private sector roles; this is a real financial cost that compounds over the bridge period",
+      "how_to_assess": "Calculate the dollar difference against the estimated cost of alternatives (relocation to Canada, lost career trajectory, lost future US earnings); multiple commenters endorsed the tradeoff as worthwhile for status preservation",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer willingness to pay premium processing fees",
+      "why_it_matters": "If the employer will not cover the ~$2,805 premium processing fee and the applicant must pay out of pocket, it adds financial pressure to an already stressful situation",
+      "how_to_assess": "Negotiate fee coverage during offer stage; commenter [2] flagged this as an open question indicating it is not universally covered by cap-exempt employers",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking a cap-exempt position to preserve status",
+      "unstated_consequence": "Salary is typically 20-40% lower than private sector equivalents, and this gap may persist for 1+ years before portability transfer is feasible — the financial cost is real, not just a temporary dip",
+      "who_it_affects": "High-earning tech workers comparing cap-exempt research institute compensation to FAANG or mid-size tech market rates",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Waiting through multiple H-1B lottery cycles without a backup plan",
+      "unstated_consequence": "After three losses, the applicant is left with less than one month of OPT remaining — the window to execute any alternative (cap-exempt transfer, change of status, departure) compresses drastically, increasing risk of status gap",
+      "who_it_affects": "Anyone who treats each lottery as a fresh start without building parallel contingency options after the first or second loss",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Transferring to private employer after 180 days of cap-exempt H-1B",
+      "unstated_consequence": "The transfer to a cap-subject private employer still requires a new I-129 petition and employer sponsorship — portability means no new lottery, but it does not mean automatic or self-initiated transfer; a willing private employer must still file",
+      "who_it_affects": "Workers who assume portability means they can freely move to any private employer without formal petitioning steps",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating H-1B lottery as the only path and making no contingency plans after the first or second loss",
+      "why_it_happens": "The lottery is the most visible and socially normalized path; each loss feels like bad luck rather than a signal to diversify strategy; social environment normalizes repeated attempts",
+      "consequence": "By the third loss, STEM OPT has nearly expired and the applicant is forced into emergency decision-making with very few options and little time — in this case resolved successfully, but the compressed timeline created unnecessary risk",
+      "warning_signs": [
+        "Still only researching H-1B cap-subject sponsoring companies after the second lottery loss",
+        "No conversations with an immigration attorney about alternatives (cap-exempt, O-1, EB-1, Canada) until the final OPT year"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Lack of awareness that cap-exempt employers exist as a viable H-1B pathway",
+      "why_it_happens": "Community discussion disproportionately focuses on cap-subject H-1B at tech companies; cap-exempt pathways are under-discussed and the salary reduction makes them feel like a lesser option",
+      "consequence": "Eligible candidates with relevant research backgrounds miss the cap-exempt window entirely and either leave the US or fall out of status, when a legal bridge was available all along",
+      "warning_signs": [
+        "Asking only 'which companies sponsor H-1B' without asking 'which employers are cap-exempt'",
+        "Believing the only H-1B option is the annual April lottery"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many months remain on your STEM OPT, and have you already lost the H-1B lottery at least once?",
+      "what_it_reveals": "Determines whether cap-exempt bridge strategy is urgent or whether there is still time for cap-subject lottery attempts",
+      "follow_up_if_yes": "If fewer than 6 months remain and lottery has been lost, immediately evaluate cap-exempt employers and premium processing feasibility",
+      "follow_up_if_no": "If more than 12 months remain, still worth researching cap-exempt options as a parallel track to reduce single-point-of-failure dependency on lottery",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your professional background (research, clinical, academic) make you competitive for university-affiliated or non-profit research institute roles?",
+      "what_it_reveals": "Determines whether cap-exempt pathway is practically accessible, not just theoretically available",
+      "follow_up_if_yes": "Begin actively sourcing cap-exempt roles and verify employer cap-exempt status before investing time in application process",
+      "follow_up_if_no": "Explore whether university-affiliated hospital systems (commenter [4] noted these also qualify) or other non-profit institutions in your field have relevant openings",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your employer confirmed they will cover premium processing fees if an H-1B petition needs to be filed urgently?",
+      "what_it_reveals": "Reveals whether the ~$2,805 premium processing cost will fall to the employee, affecting the financial calculus of the cap-exempt strategy",
+      "follow_up_if_yes": "Timeline risk is significantly reduced; proceed with petition preparation",
+      "follow_up_if_no": "Factor the out-of-pocket cost into decision; for most candidates preserving status still outweighs the fee, but it should be negotiated explicitly at offer stage",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "H-1B requires annual lottery participation and there is no way to get an H-1B without going through the April cap lottery",
+      "actual_reality": "A significant category of employers — universities, non-profit research institutions, university-affiliated hospitals, and certain government research entities — are cap-exempt and can file H-1B petitions at any time of year with no lottery requirement",
+      "implication": "Candidates who know about cap-exempt pathways have a meaningful alternative to lottery dependency; they can maintain legal status continuously by bridging through a cap-exempt role and later porting to a private employer after 180 days",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Once you lose the H-1B lottery three times, your only options are to leave the US or pursue a completely different visa category",
+      "actual_reality": "The cap-exempt H-1B pathway allows continued legal work authorization in the US without re-entering the lottery; it is the same visa category (H-1B) with the same work authorization rights, just filed outside the cap",
+      "implication": "Three lottery losses do not close the H-1B door — they close the cap-subject H-1B door; cap-exempt employers represent a parallel track that is accessible at any point during OPT",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "University or research institute jobs are only relevant for people who want academic careers",
+      "actual_reality": "Many university-affiliated research institutes work on applied technical problems (CS, engineering, data science, biotech) and their cap-exempt status makes them strategically valuable as bridge employers for anyone seeking to preserve US work authorization — regardless of long-term career goals",
+      "implication": "Even candidates with private-sector career goals should maintain a list of cap-exempt employers as a contingency track during OPT, not as a fallback for academic-track candidates only",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to H-1B lottery loss",
+      "naive_pattern": "Treats each lottery loss as an isolated bad-luck event; continues applying to cap-subject employers and hopes to win next year; does not build parallel contingency paths",
+      "informed_pattern": "After first loss, begins researching cap-exempt employers, O-1 eligibility, and Canadian pathways as parallel tracks; treats second loss as confirmation that a backup plan must be executed, not merely planned",
+      "why_it_matters": "By the third loss, the informed person has options ready to execute; the naive person is in crisis with one month of status remaining",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Framing of the cap-exempt salary reduction",
+      "naive_pattern": "Sees the 20-40% salary reduction as a dealbreaker or a humiliation — 'taking a pay cut just to survive'",
+      "informed_pattern": "Frames it as an investment in future US earning potential — the multi-decade income differential between staying in the US vs. returning home or moving to Canada far exceeds 1-2 years of reduced salary at a cap-exempt employer",
+      "why_it_matters": "Candidates who reject cap-exempt roles on salary grounds may leave the US when a legal, affordable bridge was available; commenter [5] made this expected-value reframe explicitly",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You can only apply for H-1B once per year in April, and if you lose the lottery you have to wait until next April",
+      "why_believed": "The cap-subject H-1B lottery is the dominant narrative in international student communities; cap-exempt pathways receive almost no visibility in standard job search advice forums",
+      "actual_rule": "Cap-exempt H-1B petitions can be filed at any time of year by qualifying employers (universities, non-profits, government research entities); there is no lottery and no waiting period tied to the annual cap",
+      "real_consequence": "Candidates who believe this misconception may depart the US or fall out of status when a year-round, lottery-free H-1B pathway was accessible to them",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "H-1B portability after 180 days means you can freely work for any employer once you hit that threshold",
+      "why_believed": "The term 'portability' sounds like freedom of movement; the 180-day rule is often summarized without the procedural requirements attached",
+      "actual_rule": "H-1B portability (AC21) allows transfer to a same or similar occupation without the new employer needing to win a new lottery cap number — but the new employer must still file a new I-129 petition; it is not automatic and requires an employer willing to sponsor",
+      "real_consequence": "Workers who assume portability means self-directed job mobility may not prompt their new employer to file promptly, creating status gaps or unauthorized employment periods",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "MS graduate, 3 years of OPT/STEM OPT, three consecutive H-1B lottery losses, STEM OPT expiring in approximately 30 days, currently employed at mid-size tech company",
+      "decision": "Found a cap-exempt position at a Top-20 university-affiliated research institute; attorney filed I-129 with premium processing in mid-April; transferred status before STEM OPT expiration in early May",
+      "outcome": "I-129 approved in approximately 15 days via premium processing; status transferred with no gap before OPT expiration; now planning to transfer to private employer via H-1B portability after 180 days",
+      "lesson": "Cap-exempt H-1B is a viable and legal bridge that can be executed in under 30 days with premium processing; it preserves US work authorization entirely and positions the candidate for private sector return via portability — the salary reduction is the primary cost, not a legal or procedural barrier",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Three consecutive lottery losses with OPT expiring in one month — poster describes searching for a solution only at the final stage",
+      "underlying_state": "Normalization of lottery dependency combined with status-threat anxiety; each lottery cycle feels like a fresh chance, suppressing urgency to build alternatives; when the threat becomes undeniable, panic compresses decision quality",
+      "how_it_manifests": "Candidate does not research or pursue cap-exempt options until forced to by proximity of expiration; the solution existed for three years but was only activated in the final month",
+      "expert_move": "Reframe the first lottery loss as a signal to immediately build a parallel track — not as bad luck requiring patience; introduce cap-exempt employer research as a standard Year 1 OPT task, not a Year 3 emergency measure",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Framing cap-exempt roles as a sacrifice or consolation prize due to lower salary",
+      "underlying_state": "Loss aversion and status comparison — the salary reduction feels like a concrete, immediate loss, while the benefit (maintained US work authorization and future earning potential) is abstract and future-oriented",
+      "how_it_manifests": "Candidates reject or delay pursuing cap-exempt options, continuing to wait for a lottery win while OPT time erodes",
+      "expert_move": "Force an expected-value calculation: compare the 1-2 year salary differential against the 10-20 year earning differential between US-based career continuation and departure; commenter [5] made this reframe and it received 189 likes, indicating high resonance",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "The cap-exempt job pays 30% less — is it really worth it?",
+      "reframe": "Compare the salary reduction not to your current salary, but to the opportunity cost of being forced out of the US entirely — the expected value of maintaining US status dwarfs a temporary pay cut",
+      "why_it_works": "Shifts the comparison from a local loss (salary vs. salary) to a global expected value calculation (US career trajectory vs. departure), making the decision mathematically obvious rather than emotionally difficult",
+      "example_language": "尤其是和被迫回国或者转去加拿大的机会成本比较的话 (especially when compared to the opportunity cost of being forced to return home or move to Canada)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I've lost the lottery three times — I'm running out of options",
+      "reframe": "You haven't lost access to H-1B — you've only lost access to cap-subject H-1B; cap-exempt H-1B is a different track with no lottery that was available to you the entire time",
+      "why_it_works": "Dissolves the perceived finality of lottery losses by revealing a structurally different pathway that was never closed; replaces scarcity framing with option-expansion framing",
+      "example_language": "大学附属的研究院是H-1B cap-exempt的，不用抽签，可以全年随时申请 (university-affiliated research institutes are H-1B cap-exempt, no lottery required, can be filed any time of year)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_job_search_H_1B_Lottery三连输之后_我最终怎么解决身份问题的",
+  "_source_regions": [
+    "us"
+  ]
+}

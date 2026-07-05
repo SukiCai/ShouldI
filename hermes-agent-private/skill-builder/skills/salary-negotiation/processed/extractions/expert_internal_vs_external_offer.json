@@ -1,0 +1,335 @@
+{
+  "source_file": "internal_vs_external_offer.txt",
+  "heuristics": [
+    {
+      "rule": "Don't negotiate an internal promotion without an external offer unless you're willing to accept a slower, weaker outcome",
+      "condition": "When pursuing an internal promotion salary negotiation...",
+      "action": "...obtain a real competing external offer before initiating the negotiation",
+      "because": "Without an external offer, the company knows your reservation price, the status quo is the default, and managers can delay or partially deliver without consequences"
+    },
+    {
+      "rule": "Negotiate promotion compensation before accepting the promotion, not after",
+      "condition": "When a company signals they are considering you for an internal promotion...",
+      "action": "...say 'I'd like to discuss compensation for the new level' before the promotion is finalized",
+      "because": "Once you've accepted the promotion, your leverage disappears — the company has already achieved their goal of keeping you in the new role"
+    },
+    {
+      "rule": "Anchor internal promotion comp on market rate for the new role, not your current salary",
+      "condition": "When negotiating pay for an internal promotion...",
+      "action": "...research and cite market comp for the new role level using external sources like levels.fyi",
+      "because": "Internal hires are systematically offered below market on the assumption they're 'already paid' — reframing to the new role's market rate counters this bias"
+    },
+    {
+      "rule": "Do not accept a retention counter-offer unless the root cause of your dissatisfaction is resolved, not just compensated",
+      "condition": "When a company makes a retention counter-offer after you reveal an external offer...",
+      "action": "...ask yourself 'If this job paid what they're now offering, would I have stayed?' and decline if the answer is no",
+      "because": "80% of people who accept retention counter-offers still leave within 12 months, and the counter-offer typically only buys the company time to find your replacement"
+    },
+    {
+      "rule": "Negotiate internal transfer compensation at the time of transfer, not after proving yourself",
+      "condition": "When accepting an internal transfer to a new team or role...",
+      "action": "...explicitly negotiate a comp increase reflecting the scope change before agreeing to the transfer",
+      "because": "Post-transfer, your leverage drops to near zero — you're now in the new role and the company has achieved their staffing goal"
+    },
+    {
+      "rule": "Calculate the hidden promo clock cost before accepting any internal transfer at the same level",
+      "condition": "When evaluating an internal transfer offer at your current level mid-promo-cycle...",
+      "action": "...calculate total months added to your next promotion eligibility (months elapsed + new 12–18 month clock)",
+      "because": "An internal transfer at the same level can push your next promotion 2+ years away, representing a significant hidden compensation and career cost"
+    },
+    {
+      "rule": "Request a market correction off-cycle when documented comp gap exceeds roughly 20%",
+      "condition": "When you have clear market data showing your comp is significantly below median and your performance is strong...",
+      "action": "...explicitly request a 'market correction' discussion rather than waiting for annual review",
+      "because": "Most companies have off-cycle adjustment mechanisms for documented gaps, but they are rarely proactively offered — you must initiate"
+    },
+    {
+      "rule": "Present an external offer with explicit preference to stay, then state the number",
+      "condition": "When using an external offer as leverage in an internal negotiation...",
+      "action": "...frame it as 'I received an offer I'm seriously considering — I'd prefer to stay and wanted to give you the chance to respond before I decide,' then name the number",
+      "because": "This framing removes adversarial tone, signals genuine openness to staying, and forces a concrete, time-bounded decision from the company"
+    },
+    {
+      "rule": "Nail down promotion criteria and timeline in writing before negotiating comp",
+      "condition": "When a promotion is discretionary and not yet formally approved...",
+      "action": "...secure written criteria and timeline for the promotion before discussing compensation",
+      "because": "A verbal promise of promotion has no enforceability; written criteria creates accountability and prevents indefinite deferral"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Presence of a real external competing offer",
+      "why_it_matters": "Transforms internal negotiation leverage from low to high by introducing a credible, time-bounded cost of inaction for the employer",
+      "how_to_assess": "Do you have a written offer with a specific number and deadline? A verbal interest or recruiter reach-out does not constitute real leverage",
+      "weight": "high"
+    },
+    {
+      "factor": "Root cause of considering a move",
+      "why_it_matters": "Determines whether a retention counter-offer can actually resolve your dissatisfaction or just delay inevitable departure",
+      "how_to_assess": "Ask: 'If comp were fixed, would I still want to leave?' If yes due to manager, scope, learning, or ceiling — comp alone won't fix it",
+      "weight": "high"
+    },
+    {
+      "factor": "Promotion clock position",
+      "why_it_matters": "Determines the true hidden cost of an internal transfer at the same level — it can add 2+ years to your next promotion eligibility",
+      "how_to_assess": "How many months into your current promo cycle are you? What is the company's minimum tenure before next promotion after a transfer?",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether promotion is discretionary vs. criteria-based",
+      "why_it_matters": "Discretionary promotions are subject to indefinite deferral; criteria-based promotions give you something concrete to negotiate around and hold the company accountable to",
+      "how_to_assess": "Ask your manager: 'What specifically would I need to demonstrate, and by when, to get promoted?' Vague answers indicate discretionary",
+      "weight": "high"
+    },
+    {
+      "factor": "Company retention posture",
+      "why_it_matters": "Determines whether emergency retention budget exists and whether a market correction request will be taken seriously",
+      "how_to_assess": "Is the company growing or in downsizing mode? Have you seen colleagues successfully negotiate off-cycle adjustments?",
+      "weight": "medium"
+    },
+    {
+      "factor": "Salary band constraints",
+      "why_it_matters": "Even a willing manager may be structurally unable to approve above-band comp — understanding band limits sets realistic expectations",
+      "how_to_assess": "Ask HR or your manager directly: 'What is the band for this role/level?' Some companies share this openly; others require indirect research",
+      "weight": "medium"
+    },
+    {
+      "factor": "Unvested equity and bonus proration impact of a transfer",
+      "why_it_matters": "An internal transfer may affect unvested equity vesting schedules or bonus eligibility, representing real hidden comp loss",
+      "how_to_assess": "Review your equity grant schedule and bonus plan terms; ask HR explicitly how a transfer affects both",
+      "weight": "medium"
+    },
+    {
+      "factor": "Quality of market comp data available",
+      "why_it_matters": "Objective external anchors like levels.fyi or competing offers make negotiation concrete and harder to dismiss — without them, the negotiation is subjective",
+      "how_to_assess": "Do you have recent, role-specific, level-specific data points with sample sizes? Single data points are weak; patterns across multiple sources are strong",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether you've already revealed you're looking",
+      "why_it_matters": "Revealing that you're job searching changes your relationship with your employer regardless of whether you stay — it signals flight risk and can affect future opportunities",
+      "how_to_assess": "Have you told your manager, HR, or skip-level that you've been interviewing or received an offer?",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a retention counter-offer",
+      "unstated_consequence": "The company now knows you're a flight risk and may deprioritize you for promotions, key projects, or new responsibilities while quietly searching for your replacement",
+      "who_it_affects": "People who accepted for comp reasons while the root cause was scope, manager fit, or career ceiling — they stay but the dynamic is permanently altered"
+    },
+    {
+      "choice": "Taking an internal transfer at the same level mid-promo-cycle",
+      "unstated_consequence": "Your promotion eligibility clock resets, potentially pushing your next promotion 2+ years out even though you accepted what looked like a lateral move",
+      "who_it_affects": "High performers who are 6–12 months into a promo cycle and don't calculate the full timeline cost before accepting"
+    },
+    {
+      "choice": "Negotiating for internal promotion without an external offer",
+      "unstated_consequence": "Manager can delay with vague promises ('we'll make it right at your next review') with no accountability, and you're locked in mid-cycle unable to credibly threaten to leave",
+      "who_it_affects": "Loyal employees who prefer stability and haven't maintained external market optionality"
+    },
+    {
+      "choice": "Revealing an external offer to your current employer",
+      "unstated_consequence": "Even if you stay via counter-offer, you've permanently signaled disloyalty — future career advancement may be quietly impeded",
+      "who_it_affects": "People who use the external offer as a negotiation tactic but genuinely intend to stay long-term"
+    },
+    {
+      "choice": "Waiting for the annual review cycle to address a significant comp gap",
+      "unstated_consequence": "Comp gaps compound over time — a 20% underpayment left unaddressed for 2–3 years becomes structural underpayment that's harder to correct in a single cycle",
+      "who_it_affects": "High performers at companies with modest annual raise percentages who don't proactively request off-cycle market corrections"
+    },
+    {
+      "choice": "Accepting a promotion verbally without written criteria or comp terms",
+      "unstated_consequence": "The promotion can be delayed, rescoped, or undercompensated with no recourse — verbal promises have no enforceability when managers change or budgets shift",
+      "who_it_affects": "Employees who trust manager relationships and don't formalize agreements in writing"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Negotiating internal promotion compensation after accepting the promotion",
+      "why_it_happens": "People feel grateful for being chosen and don't want to seem ungrateful or risk having the offer rescinded — they accept first, then try to negotiate",
+      "consequence": "Leverage is gone once the promotion is accepted; the company has achieved their goal and has little incentive to increase comp beyond what they already offered",
+      "warning_signs": [
+        "Saying 'thank you so much, I'm excited — can we also talk about comp?' after verbally accepting",
+        "Feeling like raising comp would seem greedy after being promoted"
+      ]
+    },
+    {
+      "pattern": "Accepting a retention counter-offer when the root cause was not compensation",
+      "why_it_happens": "Money is tangible and immediate; the real reasons for dissatisfaction (bad manager, no scope, stagnation) are harder to quantify and easier to temporarily rationalize away",
+      "consequence": "80% of people who accept retention counter-offers leave within 12 months anyway — you've burned the external opportunity and damaged your internal relationship",
+      "warning_signs": [
+        "Telling yourself 'the money makes it worth staying' while knowing the job itself hasn't changed",
+        "Feeling relief at the counter-offer without feeling excited about the work"
+      ]
+    },
+    {
+      "pattern": "Treating a verbal promotion promise as binding without written criteria",
+      "why_it_happens": "Employees trust their manager relationship and don't want to appear distrustful by asking for things in writing",
+      "consequence": "Promotions get delayed indefinitely, criteria shift, managers change — the employee has no accountability mechanism and loses months or years of career progression",
+      "warning_signs": [
+        "Manager says 'you're on track' but can't specify what 'on track' means",
+        "Promotion timeline keeps slipping with new reasons each cycle"
+      ]
+    },
+    {
+      "pattern": "Not calculating the promo clock impact before accepting an internal transfer",
+      "why_it_happens": "The promo clock reset is not prominently disclosed during transfer conversations — employees focus on role scope and immediate comp, not multi-year promotion trajectory",
+      "consequence": "A seemingly neutral lateral move delays the next promotion by 2+ years, representing significant lost comp and seniority",
+      "warning_signs": [
+        "Accepting a transfer at the same level without asking 'does this reset my promotion eligibility?'",
+        "Assuming the new team will count your prior tenure toward promotion"
+      ]
+    },
+    {
+      "pattern": "Anchoring internal promotion negotiations on current salary rather than market rate for the new role",
+      "why_it_happens": "Both employee and employer default to 'what you're making now plus a percentage' framing — it's the path of least resistance and feels fair",
+      "consequence": "Employee gets locked in below market for the new role level, and the underpayment compounds with each subsequent annual increase",
+      "warning_signs": [
+        "Thinking 'a 10% raise seems reasonable for a promotion'",
+        "Not researching market comp for the new role before the conversation"
+      ]
+    },
+    {
+      "pattern": "Using an external offer as leverage without being genuinely prepared to take it",
+      "why_it_happens": "People generate an offer to gain negotiating power but haven't fully decided — they reveal the offer but fold when the company makes any counter, signaling they were bluffing",
+      "consequence": "Company learns you're a flight risk but not a credible one — future negotiations are weakened and you may be deprioritized",
+      "warning_signs": [
+        "Getting an offer just to have 'something to show' without serious evaluation of taking it",
+        "Feeling relieved when the company counters so you don't have to decide"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have a real, written external offer with a specific number and deadline?",
+      "what_it_reveals": "Whether you have actual leverage in the internal negotiation or are negotiating from comfort",
+      "follow_up_if_yes": "Are you genuinely willing to take the external offer if the company doesn't match? If not, your leverage is partially a bluff",
+      "follow_up_if_no": "Is obtaining an external offer feasible before your internal negotiation window? If not, shift strategy to market data and business case framing"
+    },
+    {
+      "question": "If your current job paid exactly what you're asking for, would you still want to stay?",
+      "what_it_reveals": "Whether the dissatisfaction is purely compensation or driven by scope, manager, team, or career ceiling",
+      "follow_up_if_yes": "Then a retention counter-offer addresses the root cause — evaluate whether the comp offered is competitive",
+      "follow_up_if_no": "Then money alone won't fix the problem — a retention counter-offer buys time but not satisfaction; evaluate the external offer on its full merits"
+    },
+    {
+      "question": "How many months into your current promotion cycle are you?",
+      "what_it_reveals": "The true hidden cost of accepting an internal transfer at the same level — the more time elapsed, the more a clock reset costs you",
+      "follow_up_if_yes": "If 6+ months in, calculate: months elapsed + new promo clock length to understand total delay before negotiating transfer terms",
+      "follow_up_if_no": "If early in cycle, the promo clock impact is smaller but still worth quantifying and negotiating compensation for"
+    },
+    {
+      "question": "Is the promotion discretionary or criteria-based?",
+      "what_it_reveals": "Whether you have anything concrete to hold the company accountable to, or whether you're dependent entirely on manager goodwill",
+      "follow_up_if_yes": "If criteria-based, get the specific criteria and timeline in writing before any comp discussion",
+      "follow_up_if_no": "If discretionary, prioritize converting vague promises into written criteria before negotiating comp — otherwise the promotion itself is at risk of indefinite deferral"
+    },
+    {
+      "question": "Have you already told your employer you're considering leaving or received an external offer?",
+      "what_it_reveals": "Whether you've permanently altered the employment relationship and what risks come with the current path",
+      "follow_up_if_yes": "You're now in retention negotiation mode — be clear-eyed about whether the root cause can be addressed, not just compensated",
+      "follow_up_if_no": "You still have full optionality — decide whether to use the external offer as leverage internally or simply take it externally"
+    },
+    {
+      "question": "Does the internal transfer affect your unvested equity or bonus eligibility?",
+      "what_it_reveals": "The total real compensation cost of the transfer beyond just base salary and promo clock",
+      "follow_up_if_yes": "Quantify the unvested equity value and bonus impact; negotiate transfer terms that account for this loss",
+      "follow_up_if_no": "Confirm this explicitly in writing with HR before accepting — vague assurances are not binding"
+    },
+    {
+      "question": "Is your company in a growth and retention posture or a cost-reduction and downsizing mode?",
+      "what_it_reveals": "Whether emergency retention budget exists and whether a market correction request will be taken seriously",
+      "follow_up_if_yes": "If growth mode, retention budget likely exists — you have more room to negotiate and request off-cycle adjustments",
+      "follow_up_if_no": "If cost-reduction mode, even a strong business case may hit structural budget limits — factor this into whether to pursue external options more seriously"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Internal promotions are fairly compensated because the company knows your value",
+      "actual_reality": "Internal hires are systematically offered below market on the assumption they're 'already being paid' — the company anchors on your current salary plus an increment rather than market rate for the new role",
+      "implication": "Always research and anchor on market comp for the new role level, not a percentage increase on current salary"
+    },
+    {
+      "common_belief": "A retention counter-offer means the company truly values you and wants you to stay",
+      "actual_reality": "Companies often make retention counter-offers knowing the employee will probably leave anyway — it buys 6–12 months to find a replacement while the employee feels valued",
+      "implication": "Evaluate a retention offer on whether it fixes the root cause of dissatisfaction, not on the emotional signal of being wanted"
+    },
+    {
+      "common_belief": "An internal transfer to an interesting new role is a lateral move with no real cost",
+      "actual_reality": "Internal transfers typically reset the promotion eligibility clock, meaning a mid-cycle transfer can delay your next promotion by 2+ years while also reducing institutional knowledge capital on your current team",
+      "implication": "Always calculate the full promo clock and equity/bonus impact before accepting a transfer, and negotiate comp increases at the time of transfer"
+    },
+    {
+      "common_belief": "You need to wait for the annual review cycle to address a comp gap",
+      "actual_reality": "Most companies have off-cycle market correction mechanisms that are almost never proactively offered — they exist but require the employee to explicitly request them with documented market data",
+      "implication": "If you have clear evidence of a 15–20%+ comp gap and strong performance, don't wait for annual review — request a market correction conversation explicitly"
+    },
+    {
+      "common_belief": "Telling your employer you have an external offer gives you leverage with no downside if you stay",
+      "actual_reality": "Revealing that you're considering leaving permanently changes the relationship — even if you stay via counter-offer, you're now flagged as a flight risk and may be quietly deprioritized for promotions or key assignments",
+      "implication": "Only use an external offer as internal leverage if you are genuinely prepared to take it — treat revealing it as a one-way door"
+    },
+    {
+      "common_belief": "A manager's verbal promise of promotion is a commitment you can rely on",
+      "actual_reality": "Verbal promotion promises are unenforceable — managers change, budgets shift, and criteria drift without written documentation; employees lose months or years waiting on promises that never materialize",
+      "implication": "Always get promotion criteria, timeline, and comp expectations in writing before accepting any role change or continuing to wait for a promised promotion"
+    },
+    {
+      "common_belief": "HR can always approve what a manager wants to pay",
+      "actual_reality": "Salary bands structurally constrain what HR can approve regardless of manager intent — a manager who genuinely wants to pay you more may still be unable to do so within band limits",
+      "implication": "Ask about salary band limits early in the negotiation to understand the structural ceiling, and factor this into whether the internal path can ever match external market"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Timing of compensation negotiation relative to promotion acceptance",
+      "junior_pattern": "Accepts the promotion first, then tries to negotiate comp — feels that raising money before accepting would seem ungrateful or risky",
+      "senior_pattern": "Negotiates comp explicitly before formalizing acceptance — frames it as part of clarifying the full terms of the new role",
+      "why_it_matters": "Leverage disappears the moment you accept — senior professionals know the only negotiation window with real power is before the deal is done"
+    },
+    {
+      "dimension": "Anchoring in internal promotion negotiation",
+      "junior_pattern": "Anchors on current salary plus a percentage increase — thinks 'a 10–15% raise for a promotion seems fair'",
+      "senior_pattern": "Anchors on market rate for the new role using external data — reframes the conversation from 'what you're getting' to 'what the role is worth'",
+      "why_it_matters": "Current salary is an arbitrary historical number — anchoring on it systematically undervalues the new role and compounds underpayment over time"
+    },
+    {
+      "dimension": "Evaluating a retention counter-offer",
+      "junior_pattern": "Evaluates the retention offer primarily on the comp number — 'they matched it, so I should stay'",
+      "senior_pattern": "Evaluates whether the root cause of dissatisfaction is genuinely resolved — asks 'would this job be worth staying for if it had always paid this?'",
+      "why_it_matters": "Counter-offers that only address comp without fixing the underlying issue result in departure within 12 months 80% of the time"
+    },
+    {
+      "dimension": "Treating verbal commitments from management",
+      "junior_pattern": "Trusts manager relationships and takes verbal promotion promises at face value — doesn't want to seem distrustful by asking for things in writing",
+      "senior_pattern": "Insists on written criteria, timelines, and comp terms for any commitment — treats good relationships as compatible with formal documentation",
+      "why_it_matters": "Verbal promises have no accountability mechanism when managers change or business conditions shift — only written criteria create enforceable commitments"
+    },
+    {
+      "dimension": "Calculating the true cost of an internal transfer",
+      "junior_pattern": "Evaluates an internal transfer on role scope and immediate comp change — doesn't think about promo clock, equity vesting, or bonus proration",
+      "senior_pattern": "Calculates total compensation impact including promo clock reset, unvested equity impact, bonus proration, and institutional knowledge loss before deciding",
+      "why_it_matters": "A transfer that looks neutral or positive on the surface can represent 2+ years of delayed career progression when full costs are quantified"
+    },
+    {
+      "dimension": "Using an external offer as internal leverage",
+      "junior_pattern": "Generates an offer primarily to have something to show — isn't genuinely considering taking it and signals this by folding quickly when countered",
+      "senior_pattern": "Only uses an external offer as leverage when genuinely willing to take it — treats the decision as real and lets that genuine optionality create authentic leverage",
+      "why_it_matters": "A bluffed external offer signals flight risk without credible threat — it weakens future negotiations and damages internal positioning without extracting real value"
+    },
+    {
+      "dimension": "Maintaining external market optionality",
+      "junior_pattern": "Stops interviewing externally once comfortable in a role — only goes to market when already dissatisfied, limiting negotiation leverage",
+      "senior_pattern": "Maintains periodic external market awareness to understand real-time compensation benchmarks and keep optionality alive even when not actively considering leaving",
+      "why_it_matters": "Internal promotion leverage is maximized when external options are real and credible — people who only go to market when pushed have less leverage than those who maintain optionality continuously"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_internal_vs_external_offer",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

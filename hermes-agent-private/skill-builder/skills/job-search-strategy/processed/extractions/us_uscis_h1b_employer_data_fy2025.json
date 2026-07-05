@@ -1,0 +1,319 @@
+{
+  "source_file": "uscis_h1b_employer_data_fy2025.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Target direct-hire Fortune 100 tech employers over IT consulting/outsourcing firms for H-1B sponsorship",
+      "condition": "When an international student is evaluating which employers to target for H-1B sponsorship",
+      "action": "Prioritize direct-hire tech and finance companies (avg 97.4% approval, 0.9% denial, 6.1% RFE rate) over IT consulting/outsourcing firms (avg 78.2% approval, 12.7% denial, 38.8% RFE rate)",
+      "because": "USCIS FY2025 data shows a 19.2 percentage point gap in approval rates and a 32.7 percentage point gap in RFE rates between these employer categories",
+      "regulatory_basis": "USCIS H-1B Employer Data Hub FY2025; H1B Data Hub analysis of USCIS public disclosure data",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Employer must register H-1B candidate by March 1–18 for October 1 start date",
+      "condition": "When an employer intends to sponsor a new H-1B worker subject to the annual cap",
+      "action": "Secure offer and complete employer registration during the March 1–18 USCIS registration window; offer and processing must be in place by February at the latest",
+      "because": "USCIS H-1B lottery registration window is fixed at March 1–18 each year; selected registrants then file full petition for October 1 start date",
+      "regulatory_basis": "USCIS H-1B Annual Cap and Lottery structure; USCIS H-1B Employer Data Hub FY2025",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Employer must pay whichever is higher: prevailing wage or actual wage",
+      "condition": "When an employer files an H-1B petition for any worker",
+      "action": "Employer must certify and pay either (1) the prevailing wage — average wage paid to similarly employed workers in the same occupation and geographic area — or (2) the actual wage paid to other workers with similar skills/qualifications, whichever is higher",
+      "because": "DOL prevailing wage requirement creates a legal floor; paying below this floor constitutes a violation of the Labor Condition Application (LCA) terms",
+      "regulatory_basis": "DOL OFLC Performance Data; DOL prevailing wage requirements for H-1B",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Avoid IT staffing firms if H-1B approval certainty is a priority",
+      "condition": "When evaluating IT staffing firms as potential H-1B sponsors",
+      "action": "Treat IT staffing firm sponsorship as high-risk: approval rates of approximately 60–75%, denial rates approaching 20%, and RFE rates of 35%+",
+      "because": "USCIS FY2025 data identifies IT staffing firms as the lowest-performing employer category for H-1B approvals",
+      "regulatory_basis": "H1B Data Hub analysis of USCIS FY2025 public disclosure data",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Verify employer H-1B history using USCIS Employer Data Hub before accepting offer",
+      "condition": "When an international student is evaluating a job offer from a potential H-1B sponsor",
+      "action": "Search the employer on USCIS H-1B Employer Data Hub (uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub) to see petition counts and approval history; also check DOL OFLC Disclosure Data for prevailing wages for the specific occupation and location",
+      "because": "Approval rates vary dramatically by employer; an uninformed acceptance of an offer from a low-approval-rate sponsor creates material immigration risk",
+      "regulatory_basis": "USCIS H-1B Employer Data Hub; DOL OFLC Performance Data (dol.gov/agencies/eta/foreign-labor/performance)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Cap-exempt employers are not subject to the 85,000 annual H-1B cap",
+      "condition": "When an international student is considering employment at a university, affiliated research institution, government research organization, or nonprofit research organization",
+      "action": "Recognize that these employers can file H-1B petitions at any time of year without lottery participation and without being subject to the 85,000 annual cap",
+      "because": "USCIS designates universities, affiliated research institutions, government research organizations, and nonprofit research organizations as cap-exempt",
+      "regulatory_basis": "USCIS H-1B Annual Cap and Lottery structure; USCIS H-1B Employer Data Hub FY2025",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Employer must be E-Verify enrolled to sponsor STEM OPT",
+      "condition": "When an employer is evaluating sponsoring a student on STEM OPT extension",
+      "action": "Confirm employer is enrolled in E-Verify as a separate requirement from H-1B sponsorship capability",
+      "because": "E-Verify enrollment is a distinct and mandatory requirement for STEM OPT sponsorship, separate from H-1B sponsorship eligibility",
+      "regulatory_basis": "USCIS H-1B Employer Data Hub guidance; STEM OPT E-Verify requirement",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer type (direct-hire vs. IT consulting/outsourcing vs. staffing)",
+      "why_it_matters": "Employer category is the single strongest predictor of H-1B approval rate in FY2025 data, with a spread of over 37 percentage points between best and worst categories",
+      "how_to_assess": "Check employer against category benchmarks: direct-hire Fortune 100 tech (97.4% approval), IT consulting/outsourcing (78.2% approval), small companies <50 employees (65–80% approval), IT staffing firms (60–75% approval)",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Third-party placement at client site",
+      "why_it_matters": "USCIS identifies third-party placement as the single biggest red flag in H-1B adjudications, driving elevated RFE and denial rates across all IT staffing and body-shop consulting arrangements",
+      "how_to_assess": "Determine whether the H-1B worker will be working at the sponsoring employer's own location or placed at a third-party client site",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "DOL Wage Level filed (I through IV)",
+      "why_it_matters": "Level I filings face RFE rates 5x higher than Level IV filings (34.2% vs. 6.8%); USCIS scrutinizes lower-wage positions as potentially not qualifying as specialty occupations",
+      "how_to_assess": "Identify which DOL wage level the employer is certifying on the LCA: Level I (~17th percentile, entry-level), Level II (some experience), Level III (experienced), Level IV (~67th percentile, fully competent independent judgment)",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer petition volume",
+      "why_it_matters": "High-volume employers (e.g., Amazon: 4,644 approvals; Meta: 1,555; Microsoft: 1,394; Google: 1,050) demonstrate established H-1B infrastructure and consistent USCIS processing relationships",
+      "how_to_assess": "Check USCIS H-1B Employer Data Hub for number of new H-1B petitions approved in FY2025",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Advanced degree (US Master's or higher)",
+      "why_it_matters": "20,000 of the 85,000 annual H-1B cap slots are reserved exclusively for US advanced degree holders, increasing selection probability relative to the general cap pool",
+      "how_to_assess": "Confirm whether applicant holds a US Master's degree or higher to determine eligibility for the Master's cap exemption within the lottery",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "RFE rate of sponsoring employer",
+      "why_it_matters": "A high RFE rate (e.g., Cognizant 38.8%, TCS ~37%) indicates a pattern of USCIS scrutiny that extends processing time, increases legal costs, and creates uncertainty even before a final denial decision",
+      "how_to_assess": "Check employer RFE rate via USCIS H-1B Employer Data Hub or H1B Data Hub analysis; compare against category benchmarks (direct-hire tech: 6.1%, IT consulting: 38.8%)",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Cap-exempt status of employer",
+      "why_it_matters": "Cap-exempt employers (universities, affiliated research institutions, government research organizations, nonprofit research organizations) are not subject to the 85,000 annual cap or lottery, eliminating the ~64.7% rejection rate from the lottery process",
+      "how_to_assess": "Determine whether the employer qualifies as a university, affiliated research institution, government research organization, or nonprofit research organization under USCIS definitions",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting H-1B sponsorship from an IT consulting or outsourcing firm",
+      "unstated_consequence": "FY2025 data shows 12.7% denial rates and 38.8% RFE rates for IT consulting/outsourcing firms — even a successful petition may face USCIS challenges that delay start dates, increase legal costs, and create status uncertainty during adjudication",
+      "who_it_affects": "International students who accept consulting firm offers as a fallback path to H-1B sponsorship, assuming any sponsorship offer is equivalent",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a Level I wage H-1B filing from an employer",
+      "unstated_consequence": "Level I filings face RFE rates of 34.2% — 5x higher than Level IV filings at 6.8% — meaning the employer's cost-saving wage decision directly increases the applicant's immigration risk exposure",
+      "who_it_affects": "Entry-level international students whose employers file at the lowest prevailing wage tier to reduce payroll costs",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on the H-1B lottery for work authorization continuity",
+      "unstated_consequence": "FY2025 data shows only a ~35.3% overall selection rate with 442,000 unique beneficiaries competing for 85,000 slots; approximately 300,000–350,000 qualified applicants are blocked annually purely due to cap limitations, not merit",
+      "who_it_affects": "All cap-subject H-1B applicants, particularly those without a backup plan if not selected in the lottery",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Negotiating salary upward from Level I to Level II or III",
+      "unstated_consequence": "An employer who files at a higher wage level must legally pay that higher wage to comply with DOL prevailing wage requirements — the wage level on the LCA creates a binding legal floor, not just a benchmark",
+      "who_it_affects": "International students who do not realize that their salary negotiation directly affects and is constrained by the DOL LCA wage level filed",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Working for a small company (fewer than 50 employees) as H-1B sponsor",
+      "unstated_consequence": "Small companies have approval rates of only 65–80% and denial rates of approximately 15%, significantly below the 97.4% approval rate of Fortune 100 direct-hire tech employers",
+      "who_it_affects": "International students who prioritize role fit, equity, or startup experience without accounting for materially higher H-1B approval risk at small employers",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "H-1B petition filed by IT staffing firm placing worker at third-party client site",
+      "why_it_happens": "USCIS identifies third-party placement as the single biggest red flag in H-1B adjudications; body-shop and IT staffing arrangements face the highest scrutiny category",
+      "consequence": "Elevated denial rates (approaching 20%) and RFE rates (35%+); denial results in worker losing H-1B status and potentially falling out of authorized work status",
+      "warning_signs": [
+        "Employer business model involves placing workers at client sites rather than internal projects",
+        "Employer is categorized as IT staffing or body-shop consulting"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "H-1B petition filed at Level I (entry-level) wage",
+      "why_it_happens": "USCIS scrutinizes Level I filings as potentially not qualifying as specialty occupations; Level I RFE rate is 34.2% versus 6.8% for Level IV — a 5x difference",
+      "consequence": "RFE issued requiring additional evidence that the position qualifies as a specialty occupation; if RFE response is insufficient, petition is denied",
+      "warning_signs": [
+        "Employer offers salary at or near the 17th percentile for the occupation and location",
+        "LCA wage level certified at Level I"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Candidate not selected in H-1B lottery despite qualified petition",
+      "why_it_happens": "FY2025: 442,000 unique beneficiaries entered for 85,000 available slots (5x oversubscription); selection rate approximately 35.3%; 300,000–350,000 qualified applicants blocked annually due to cap limitations",
+      "consequence": "Petition not selected; employer cannot file full H-1B petition; worker cannot obtain H-1B status for that fiscal year and must wait for next lottery cycle or find alternative status",
+      "warning_signs": [
+        "Relying solely on H-1B lottery without backup status plan",
+        "Employer only participates in cap-subject lottery and is not cap-exempt"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Employer pays H-1B worker below certified LCA prevailing wage",
+      "why_it_happens": "DOL prevailing wage requirement mandates employer pay the higher of prevailing wage or actual wage; the LCA wage creates a binding legal floor",
+      "consequence": "DOL violation; potential back wages liability; employer debarment from future H-1B filings; adverse effect on worker's status",
+      "warning_signs": [
+        "Employer salary offer falls below DOL OFLC prevailing wage for occupation and location",
+        "Employer requests worker accept reduced hours or unpaid periods"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the employer place H-1B workers at third-party client sites, or do workers perform duties at the employer's own locations?",
+      "what_it_reveals": "Whether the petition will face the highest USCIS scrutiny category (third-party placement) associated with IT staffing and body-shop arrangements",
+      "follow_up_if_yes": "Treat as high-risk H-1B sponsorship; denial rates approaching 20% and RFE rates 35%+ apply to this model",
+      "follow_up_if_no": "Proceed to evaluate employer-specific approval and RFE rates via USCIS H-1B Employer Data Hub",
+      "country_scope": "us"
+    },
+    {
+      "question": "What DOL wage level will the employer certify on the Labor Condition Application for this position?",
+      "what_it_reveals": "Whether the petition faces elevated RFE risk: Level I carries a 34.2% RFE rate versus 6.8% for Level IV",
+      "follow_up_if_yes": "If Level I: assess whether position genuinely qualifies as specialty occupation and whether negotiating to Level II or III is possible to reduce RFE risk",
+      "follow_up_if_no": "If Level III or IV: substantially lower RFE exposure; verify the salary offer meets or exceeds the certified wage level",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the employer cap-exempt (university, affiliated research institution, government research organization, or nonprofit research organization)?",
+      "what_it_reveals": "Whether the applicant must compete in the annual H-1B lottery (85,000 cap, ~35.3% selection rate) or can receive H-1B status outside the cap at any time of year",
+      "follow_up_if_yes": "H-1B petition can be filed at any time without lottery; no cap exposure; proceed to evaluate petition-specific approval factors",
+      "follow_up_if_no": "Applicant must be registered in March lottery window; only ~35.3% chance of selection; backup status plan required",
+      "country_scope": "us"
+    },
+    {
+      "question": "What is the employer's historical H-1B approval rate and RFE rate as shown in the USCIS H-1B Employer Data Hub?",
+      "what_it_reveals": "Employer-specific sponsorship reliability; whether the employer falls in the high-approval (direct-hire tech: 97.4%) or low-approval (IT consulting: 78.2%, IT staffing: 60–75%) category",
+      "follow_up_if_yes": "If approval rate above 95%: low immigration risk from employer-side; proceed to evaluate wage level and role specifics",
+      "follow_up_if_no": "If approval rate below 85%: materially elevated risk; weigh against alternative offers from higher-approval employers",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the applicant hold a US Master's degree or higher?",
+      "what_it_reveals": "Eligibility for the 20,000-slot Master's cap exemption within the annual H-1B lottery, which provides an additional selection opportunity beyond the general 65,000-slot cap",
+      "follow_up_if_yes": "Applicant is eligible for both the general cap pool and the Master's cap pool, increasing overall selection probability",
+      "follow_up_if_no": "Applicant competes only in the general cap pool of 65,000 slots; no additional lottery entries via Master's cap",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the employer enrolled in E-Verify?",
+      "what_it_reveals": "Whether the employer can legally sponsor STEM OPT extension, which is a separate requirement from H-1B sponsorship capability",
+      "follow_up_if_yes": "Employer is eligible to sponsor STEM OPT; proceed to evaluate H-1B sponsorship history",
+      "follow_up_if_no": "Employer cannot sponsor STEM OPT extension regardless of H-1B sponsorship willingness; student may lose up to 24 months of additional work authorization",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any employer willing to sponsor H-1B provides equivalent immigration security",
+      "actual_reality": "FY2025 USCIS data shows approval rates range from 97.4% (direct-hire Fortune 100 tech) to 60–75% (IT staffing firms) — a spread of over 37 percentage points; sponsorship willingness does not equal sponsorship success",
+      "implication": "International students must verify employer-specific approval and denial rates via the USCIS H-1B Employer Data Hub before accepting an offer, not merely confirm willingness to sponsor",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "H-1B denial is primarily about the individual applicant's qualifications",
+      "actual_reality": "USCIS data identifies employer type and third-party placement model as the primary drivers of denial and RFE rates — IT consulting firms face 12.7% denial rates and 38.8% RFE rates regardless of individual applicant qualifications",
+      "implication": "Choosing the right employer category is as important as individual qualification strength in determining H-1B petition outcomes",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "A lower salary offer is simply a negotiation starting point with no other consequences",
+      "actual_reality": "DOL prevailing wage requirements create a binding legal floor; an employer cannot legally pay an H-1B worker below the prevailing wage for their certified level; additionally, Level I wage filings carry a 34.2% RFE rate vs. 6.8% for Level IV",
+      "implication": "Salary negotiation for H-1B workers is bounded by DOL wage levels on both the floor (legal minimum) and the risk dimension (wage level affects RFE exposure)",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B lottery is a meritocratic selection process where qualified candidates are approved",
+      "actual_reality": "FY2025 data shows 442,000 unique beneficiaries competed for 85,000 slots (5x oversubscription); approximately 300,000–350,000 qualified applicants are blocked annually purely due to cap limitations, not qualifications or petition merit",
+      "implication": "H-1B lottery non-selection is not a reflection of petition quality or candidate qualifications; backup status plans are essential given a ~64.7% non-selection rate",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Large Indian IT firms (Cognizant, Infosys, TCS, Wipro) are reliable H-1B sponsors because of their high petition volumes",
+      "actual_reality": "FY2025 USCIS data shows these firms have among the worst approval rates: Cognizant 78.3%, Infosys 80.1%, TCS 79.6%, Wipro ~78% — with RFE rates of 36–39% — due to third-party placement models and lower wage level filings",
+      "implication": "High petition volume does not correlate with high approval rates; candidates should evaluate employer-specific approval rates, not just petition counts",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "FY2025 marks an improvement or stable environment for H-1B approvals",
+      "actual_reality": "FY2025 data shows consistent year-over-year deterioration: overall denial rate rose from 4.9% (FY2024) to 5.8% (FY2025); RFE rate rose from 21.4% (FY2024) to 23% (FY2025); USCIS is identified as tightening scrutiny across the board",
+      "implication": "The regulatory environment for H-1B petitions is becoming more restrictive year-over-year, increasing the importance of selecting high-approval-rate employers",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating H-1B sponsor quality",
+      "naive_pattern": "Asks 'Does this company sponsor H-1B?' and treats a yes answer as sufficient due diligence; assumes all sponsors are equivalent",
+      "informed_pattern": "Looks up the specific employer on the USCIS H-1B Employer Data Hub to verify approval rate, denial rate, and RFE rate; compares against category benchmarks (direct-hire tech 97.4% vs. IT staffing 60–75%)",
+      "why_it_matters": "Accepting an offer from a 60–75% approval rate IT staffing firm vs. a 97.4% approval rate direct-hire tech firm creates materially different immigration risk, even though both employers 'sponsor H-1B'",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding third-party placement risk",
+      "naive_pattern": "Views consulting or staffing firm offers as valid H-1B pathways without recognizing that the work arrangement (not just the employer name) drives USCIS scrutiny",
+      "informed_pattern": "Identifies that third-party placement at client sites is the single biggest red flag in USCIS adjudications; avoids IT staffing and body-shop arrangements specifically because the placement model triggers elevated denial and RFE rates",
+      "why_it_matters": "USCIS FY2025 data shows IT staffing firms face denial rates approaching 20% and RFE rates of 35%+ precisely because of the third-party placement model",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Salary negotiation for H-1B positions",
+      "naive_pattern": "Negotiates salary purely on market rate and personal leverage, unaware that the DOL wage level on the LCA creates binding legal minimums and that wage level selection affects RFE exposure",
+      "informed_pattern": "Understands that the employer must pay the higher of prevailing wage or actual wage; uses DOL OFLC data to verify prevailing wage for specific occupation and location; recognizes that Level I filing carries 34.2% RFE rate vs. 6.8% for Level IV and factors this into offer evaluation",
+      "why_it_matters": "The DOL wage floor cannot be negotiated below; additionally, accepting a Level I wage filing increases petition RFE risk by 5x regardless of individual qualifications",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "H-1B lottery timing and job search planning",
+      "naive_pattern": "Assumes an offer can be secured at any time during the year and H-1B processing will follow; does not connect job search timeline to the fixed March 1–18 USCIS registration window",
+      "informed_pattern": "Works backward from the October 1 H-1B start date: knows the USCIS registration window is March 1–18; plans to have offer and employer processing ready by February; treats the lottery registration deadline as a hard constraint on job search completion timeline",
+      "why_it_matters": "Missing the March 1–18 registration window means waiting a full additional year for H-1B status, potentially exhausting OPT work authorization in the interim",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Assessing the H-1B lottery odds",
+      "naive_pattern": "Treats H-1B lottery selection as probable or likely given a strong application, or assumes that being selected is primarily a function of petition quality",
+      "informed_pattern": "Knows FY2025 data shows ~35.3% overall selection rate with 442,000 beneficiaries competing for 85,000 slots; understands approximately 300,000–350,000 qualified applicants are blocked annually purely due to cap constraints, not merit; builds backup status plans accordingly",
+      "why_it_matters": "Without a backup plan, the ~64.7% non-selection probability leaves an international worker without authorized work status despite a valid job offer and qualified petition",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Cap-exempt employer strategy",
+      "naive_pattern": "Views universities and nonprofit research organizations as less desirable employers for career reasons without recognizing the immigration advantage of cap-exempt status",
+      "informed_pattern": "Recognizes that cap-exempt employers (universities, affiliated research institutions, government research organizations, nonprofit research organizations) allow H-1B filing at any time without lottery exposure, eliminating the ~64.7% non-selection risk that applies to all cap-subject employers",
+      "why_it_matters": "Cap-exempt employment eliminates the single largest source of H-1B uncertainty (lottery non-selection) and allows year-round petition filing",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_uscis_h1b_employer_data_fy2025",
+  "_source_regions": [
+    "us"
+  ]
+}

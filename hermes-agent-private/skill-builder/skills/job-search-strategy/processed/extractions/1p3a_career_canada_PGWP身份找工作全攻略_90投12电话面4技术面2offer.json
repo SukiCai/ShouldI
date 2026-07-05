@@ -1,0 +1,285 @@
+{
+  "source_file": "career_canada_PGWP身份找工作全攻略_90投12电话面4技术面2offer.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "When describing PGWP work authorization to employers, lead with 'no employer action required'",
+      "condition": "When filling out work authorization fields or responding to HR questions about visa status on PGWP...",
+      "action": "State explicitly that PGWP is an open work permit, valid for any employer, requiring no employer sponsorship, filing, or fees",
+      "because": "PGWP is employer-agnostic; the most common employer hesitation is fear of paperwork or cost, and preemptively eliminating that concern removes the friction before it arises",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "When targeting hiring managers on LinkedIn, filter for those who have posted technical content in the last 6 months",
+      "condition": "When doing cold outreach to hiring managers on LinkedIn...",
+      "action": "Search for SWE/DE Manager titles at the target company, then filter for those who have been active on LinkedIn recently — they are more likely to respond",
+      "because": "Active LinkedIn users signal openness to platform engagement; inactive profiles are unlikely to respond regardless of message quality",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Do not invest time challenging 'citizens/PR only' job postings",
+      "condition": "When encountering a job posting or HR response stating they only hire citizens or permanent residents...",
+      "action": "Move on rather than attempting to change their position or pursue a complaint",
+      "because": "While the Canadian Human Rights Act has provisions against citizenship-based discrimination, enforcement is inconsistent and the cost of pursuing a complaint is high relative to the benefit for a job seeker in an active search",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Prioritize alumni network outreach before applying through job boards",
+      "condition": "When beginning a job search in Canada as an international student...",
+      "action": "Systematically work through the school's alumni directory before relying on LinkedIn Easy Apply or Indeed",
+      "because": "The Canadian job market is smaller than the US market, which increases the density of alumni connections and the likelihood that any given alumnus is willing to help — multiple commenters corroborate that alumni referral yields dramatically higher interview conversion",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "PGWP duration remaining",
+      "why_it_matters": "Employers — especially smaller ones — may informally factor in how long a candidate can work without any additional action; a 3-year PGWP signals more runway than a 1-year permit and reduces implicit risk perception",
+      "how_to_assess": "Know your exact PGWP expiry date and be prepared to state the remaining duration clearly; 3-year PGWP (granted for programs of 2+ years) is materially different from shorter durations",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Company size and HR sophistication",
+      "why_it_matters": "Large tech companies and major banks have HR staff familiar with PGWP; small and mid-size companies may not, requiring the candidate to do more education work and accept higher drop-off risk",
+      "how_to_assess": "Research whether the company has hired international students before; large brand-name employers (Shopify, RBC, TD, major tech) are low-friction; smaller companies require proactive explanation",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Job search channel selection",
+      "why_it_matters": "Channel choice has a large effect on interview conversion rate; the post documents a clear hierarchy with referrals vastly outperforming mass-apply platforms",
+      "how_to_assess": "Rank effort allocation as: referrals first, company career pages second, targeted LinkedIn outreach third, Easy Apply / Indeed last; adjust time investment proportionally",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Target city (Toronto vs. Vancouver)",
+      "why_it_matters": "The two major tech markets in Canada have different employer mixes, company sizes, and alumni network density; both were targeted by the OP suggesting dual-city strategy is viable but requires tracking",
+      "how_to_assess": "Assess where your alumni network is denser and where your target companies are headquartered; do not default to one city without checking where your referral sources are located",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing Canada over the US for post-graduation employment",
+      "unstated_consequence": "Canadian tech salaries are quoted in CAD; at current exchange rates $112k CAD is approximately $80k USD — a meaningful difference that is frequently overlooked when comparing offers or career trajectories across the border",
+      "who_it_affects": "International students comparing offers from both countries, or those with student debt denominated in USD or another currency",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying on LinkedIn Easy Apply and Indeed as primary application channels",
+      "unstated_consequence": "Very low interview conversion rate; high volume of applications produces minimal results relative to the time invested, while higher-signal channels (referrals, direct outreach) are neglected",
+      "who_it_affects": "Job seekers who default to mass-apply platforms because they feel productive without requiring the social friction of direct outreach",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Presenting PGWP as a visa requiring employer action, triggering unnecessary HR hesitation",
+      "why_it_happens": "Candidates conflate PGWP with employer-sponsored permits (like LMIA-based work permits) and either phrase their authorization ambiguously or fail to proactively clarify, leaving HR to assume complexity",
+      "consequence": "HR screens out the candidate before any substantive evaluation, treating a straightforward hire as a compliance risk",
+      "warning_signs": [
+        "Candidate writes only 'work permit' without specifying open/employer-specific distinction",
+        "Candidate waits for HR to ask questions rather than proactively stating 'no employer action required'"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Wasting time attempting to contest 'citizens/PR only' postings",
+      "why_it_happens": "Candidates are aware of human rights protections and believe pushing back will yield results; optimism bias about changing a stated policy",
+      "consequence": "Time and energy diverted from applications to companies that are genuinely open to PGWP holders; emotional drain without job outcome",
+      "warning_signs": [
+        "Spending more than a few minutes on a posting that explicitly excludes work permit holders",
+        "Drafting follow-up messages to explain PGWP to a company that has already stated its preference"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the company a large, brand-name employer or a small/mid-size company?",
+      "what_it_reveals": "Predicts how much HR education work the candidate will need to do about PGWP, and the likelihood of the application being dropped due to work authorization confusion",
+      "follow_up_if_yes": "Large employer: proceed normally; HR likely knows PGWP and has processes for it",
+      "follow_up_if_no": "Small/mid employer: prepare a one-paragraph plain-language PGWP explanation proactively; anticipate 1-2 rounds of clarification",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Have you mapped your alumni network before starting job board applications?",
+      "what_it_reveals": "Whether the candidate is starting from the highest-conversion channel or defaulting to lowest-effort mass-apply",
+      "follow_up_if_yes": "Good — prioritize activating those connections before any other channel",
+      "follow_up_if_no": "Stop applying on job boards temporarily; audit the school alumni directory and LinkedIn alumni filter first",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "What is the remaining duration on your PGWP?",
+      "what_it_reveals": "How much runway you can credibly offer an employer and how urgently you need to also be progressing toward PR status",
+      "follow_up_if_yes": "3 years remaining: relatively low pressure; can be selective",
+      "follow_up_if_no": "Under 1 year remaining: employer friction increases significantly; PR pathway urgency is high",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Hiring international students on a work permit always requires the employer to do something — file paperwork, pay fees, or sponsor the visa",
+      "actual_reality": "PGWP is an open work permit issued by IRCC directly to the graduate; the employer takes zero administrative action, pays no fees, and files nothing — the candidate can start work immediately on hire",
+      "implication": "Candidates should lead every work authorization conversation by eliminating this assumption; framing it as 'you don't need to do anything' removes the single biggest source of employer hesitation for smaller companies",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Canadian tech salaries are comparable to US tech salaries",
+      "actual_reality": "Canadian salaries are quoted in CAD; the USD/CAD exchange rate creates a meaningful real-terms gap — a $112k CAD offer is approximately $80k USD, a difference of ~30% in purchasing power for internationally benchmarked comparisons",
+      "implication": "Candidates choosing Canada primarily for immigration certainty should do so with clear eyes about the compensation differential; do not compare raw numbers across currencies",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Discrimination against work permit holders in hiring is illegal and can be effectively challenged",
+      "actual_reality": "While the Canadian Human Rights Act has provisions touching on citizenship-based discrimination in employment, enforcement is inconsistent, provincial in scope, and the cost of pursuing a complaint is high; most job seekers who encounter 'citizens/PR only' postings find it more practical to move on",
+      "implication": "Do not factor in the theoretical legal protection when planning job search strategy; treat 'citizens/PR only' postings as hard stops and reallocate effort",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Work authorization communication",
+      "naive_pattern": "Writes 'work permit' or 'PGWP' in the authorization field and waits to see if HR asks follow-up questions",
+      "informed_pattern": "Proactively writes the full explanation including 'open work permit,' 'any employer,' 'no employer action required,' and the exact validity period — eliminates objections before they arise",
+      "why_it_matters": "HR at smaller companies will screen out ambiguous work authorization responses; proactive clarity can be the difference between a call and a rejection",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Job search channel prioritization",
+      "naive_pattern": "Starts with LinkedIn Easy Apply and Indeed because they are easy to access and create a feeling of productivity through volume",
+      "informed_pattern": "Starts with alumni network mapping and direct referral activation; treats job boards as supplementary coverage rather than primary strategy",
+      "why_it_matters": "The conversion rate difference between referral and mass-apply channels is large enough that misallocating time here is the single biggest efficiency loss in a job search",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Salary benchmarking across borders",
+      "naive_pattern": "Compares Canadian offer numbers directly to US offer numbers without currency conversion",
+      "informed_pattern": "Converts all offers to the same currency before comparing; understands that Canada's primary value proposition for international students is immigration certainty, not compensation",
+      "why_it_matters": "Miscalibrated salary expectations lead to poor offer evaluation and poor country-of-work decisions",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "PGWP requires the employer to do paperwork or pay fees, just like a regular work permit sponsorship",
+      "why_believed": "Most people's mental model of 'work permit' in North America is anchored on employer-sponsored permits (H-1B in the US, LMIA-based permits in Canada); PGWP's open/employer-agnostic nature is a genuine exception that is not intuitively obvious",
+      "actual_rule": "PGWP is an open work permit issued by IRCC to the graduate; the employer has zero administrative role, zero cost, and zero filing requirement — the permit already exists when the candidate applies",
+      "real_consequence": "Candidates who fail to clarify this lose job opportunities at smaller companies where HR defaults to assuming complexity; companies that might have hired them self-select out based on a false assumption",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Canadian tech salary numbers are roughly equivalent to US tech salary numbers",
+      "why_believed": "Job postings in Canada and the US both show numbers in the same range (e.g. $100k–$120k) without the currency prominently flagged; anchoring on the number rather than the currency is cognitively easy",
+      "actual_rule": "Canadian salaries are in CAD; at recent exchange rates, $112k CAD ≈ $80k USD — a ~30% real-terms gap for any internationally normalized comparison",
+      "real_consequence": "International students overestimate Canadian compensation relative to US opportunities and make suboptimal job market or country-of-work decisions",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "CS Master's graduate from Canadian Top-5 university with 3-year PGWP, targeting Toronto and Vancouver tech/finance employers over 3 months",
+      "decision": "Applied to 90 positions across channels (referrals, company sites, LinkedIn direct outreach, Easy Apply/Indeed); proactively communicated PGWP open work permit status with explicit 'no employer action required' framing",
+      "outcome": "12 phone screens, 4 technical interviews, 2 offers; accepted the higher-paying offer at $112k CAD base",
+      "lesson": "A 90-application, 3-month search with clear work authorization communication and multi-channel strategy yields a ~13% phone screen rate and ~2% offer rate for a strong-profile CS candidate in Canada; referrals and direct outreach materially outperform mass-apply platforms",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Encountering a 'citizens/PR only' job posting or HR response",
+      "underlying_state": "Injustice sensitivity combined with sunk-cost bias — the candidate has already invested effort in this application and is reluctant to abandon it; awareness of legal protections creates false hope that pushing back will work",
+      "how_it_manifests": "Candidate spends time drafting responses, researching human rights complaints, or attempting to convince HR — all of which yield near-zero job search ROI",
+      "expert_move": "Reframe the question from 'can I fight this?' to 'what is the expected return on this hour of effort vs. applying elsewhere?' — makes the opportunity cost concrete and breaks the sunk-cost loop",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Comparing a Canadian CAD salary offer to US USD salary numbers",
+      "underlying_state": "Anchoring bias on the nominal number; the currency label is less salient than the magnitude, leading to inflated perception of Canadian compensation",
+      "how_it_manifests": "Candidate feels the Canadian offer is competitive without doing the conversion; may fail to accurately weigh the Canada vs. US decision or feel unexpectedly disappointed after starting",
+      "expert_move": "Build the currency conversion step explicitly into any offer evaluation framework; treat CAD and USD numbers as non-comparable until converted",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I deal with employers who are worried about my visa status as a PGWP holder?",
+      "reframe": "Your job is to eliminate the employer's assumption of complexity before they form it — not to overcome objections after they arise",
+      "why_it_works": "Shifts the candidate from a reactive posture (defending their status) to a proactive one (preemptively removing friction); changes the mental model from 'visa problem to explain' to 'administrative simplicity to communicate'",
+      "example_language": "「您完全不需要为我申请任何东西，我可以直接入职工作。」(You don't need to do anything for me — I can start work directly.)",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I chose Canada for the immigration pathway — how does it compare to the US in terms of career outcome?",
+      "reframe": "Canada's value proposition is immigration certainty, not compensation; evaluate the two countries on different dimensions rather than treating them as equivalent alternatives",
+      "why_it_works": "Prevents the false equivalence of comparing raw salary numbers across currencies; helps candidates make the decision with accurate expectations rather than discovering the gap post-arrival",
+      "example_language": "「选择加拿大主要是移民路径确定性，不是薪资。」(The reason to choose Canada is immigration pathway certainty, not salary.)",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_career_canada_PGWP身份找工作全攻略_90投12电话面4技术面2offer",
+  "_source_regions": [
+    "canada"
+  ]
+}

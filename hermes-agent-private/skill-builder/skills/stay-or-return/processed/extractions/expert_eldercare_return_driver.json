@@ -1,0 +1,238 @@
+{
+  "source_file": "eldercare_return_driver.txt",
+  "heuristics": [
+    {
+      "rule": "If a parent is 75+, eldercare pressure is no longer a future planning item — it is a current decision variable requiring active resolution now.",
+      "condition": "When your parent crosses 75 years of age...",
+      "action": "...treat eldercare as an active, live factor in your career and location decisions, not a deferred concern",
+      "because": "After 75, care needs become highly variable and can escalate rapidly; waiting until a crisis forces the decision leads to worse outcomes than planning ahead"
+    },
+    {
+      "rule": "If you have siblings already living in the home country, return for eldercare is rarely the only option — funded professional care plus frequent visits is a legitimate substitute.",
+      "condition": "When siblings are present in the home country and can share caregiving responsibility...",
+      "action": "...model the option of remaining abroad while funding professional care and visiting 3–4 times per year before defaulting to return",
+      "because": "The presence of local siblings materially reduces the care gap that your physical return would fill; financial support from a US salary can fund care quality unavailable otherwise"
+    },
+    {
+      "rule": "If you are the only child, treat eldercare return as a near-certain future event and build your career and financial planning around it having a defined timeline.",
+      "condition": "When you are an only child with no siblings to share elder care responsibility...",
+      "action": "...plan your career moves, financial compounding window, and immigration decisions with an explicit assumption that return will likely occur within 5–10 years",
+      "because": "There is no fallback option when you are the sole child; forced decisions made in crisis are reliably worse than planned transitions"
+    },
+    {
+      "rule": "Ask parents directly what they need and want before making a return decision on their behalf.",
+      "condition": "When eldercare is the stated or felt primary driver for returning...",
+      "action": "...have an explicit conversation with parents about whether they want you to return or prefer you stay and succeed, and model the decision on their actual answer",
+      "because": "Many professionals are returning for their own peace of mind rather than for a parent's actual expressed need; surfacing the parent's preference distinguishes genuine care need from anxiety-driven decision-making"
+    },
+    {
+      "rule": "If the urgency feels immediate but no acute health event has occurred, treat the feeling as future anxiety, not a current care requirement.",
+      "condition": "When the return impulse is driven by worry about what might happen rather than what is currently happening...",
+      "action": "...separately model what a planned response to a future crisis would look like, rather than acting on anticipatory anxiety as if it were a present crisis",
+      "because": "Anticipatory anxiety and actual care need produce the same emotional urgency but have different correct responses; conflating them leads to premature decisions"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Parent's current age and health status",
+      "why_it_matters": "Age and health determine the realistic timeline and intensity of care needs, which changes whether return is urgent, plannable, or deferrable",
+      "how_to_assess": "Map parent's current age to a rough care timeline: 60–65 typically means 5–10 years of independence remaining; 70–75 means 3–7 years; 75+ means care needs are already increasing with high variability",
+      "weight": "high"
+    },
+    {
+      "factor": "Sibling presence and care-sharing capacity in home country",
+      "why_it_matters": "The presence of siblings who can share physical caregiving directly determines whether your return is structurally necessary or whether alternatives exist",
+      "how_to_assess": "Assess whether siblings are geographically close to parents, willing and able to coordinate care, and whether care responsibility can be split between local presence and your financial support from abroad",
+      "weight": "high"
+    },
+    {
+      "factor": "Elder care infrastructure quality in the home city",
+      "why_it_matters": "Where professional care infrastructure exists and is affordable, remote management of care becomes viable; where it doesn't, physical presence becomes harder to substitute",
+      "how_to_assess": "Research availability of professional caregivers, elder care facilities, and care coordination services in the parent's specific city; tier-1 cities in China and India have increasingly viable options, rural areas much less so",
+      "weight": "high"
+    },
+    {
+      "factor": "What type of support the parent actually needs",
+      "why_it_matters": "Financial support and medical decision-making can be provided remotely; daily logistics and emotional presence require physical proximity — the specific care need determines whether return is necessary",
+      "how_to_assess": "Break down support needed into: financial (sendable from anywhere), emotional presence (requires proximity or very frequent visits), medical decisions (manageable remotely except in crises), daily logistics (requires local presence or a coordinator)",
+      "weight": "high"
+    },
+    {
+      "factor": "Parents' own stated preferences regarding your return",
+      "why_it_matters": "Many return decisions are driven by the professional's peace of mind rather than the parent's actual needs or wishes; the parent's preference is a key variable that is rarely explicitly surfaced",
+      "how_to_assess": "Have a direct conversation with parents about whether they want you to return or prefer you remain abroad and succeed; ask specifically if they would rather have your career success and professional care funding versus your physical presence",
+      "weight": "high"
+    },
+    {
+      "factor": "Career stage and mobility at the time eldercare pressure peaks",
+      "why_it_matters": "Eldercare pressure structurally peaks during the 30s–40s, which is also the peak career opportunity and mobility window; the cost of returning early is highest at exactly this moment",
+      "how_to_assess": "Estimate the lifetime earnings differential between remaining on the US trajectory versus returning at the current career stage; for senior tech professionals this can be $500,000–$2,000,000 over 20 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Partner and family alignment on eldercare response",
+      "why_it_matters": "A return decision driven by one partner's eldercare obligation affects the entire household; without partner alignment, the decision creates compounding personal and relationship costs",
+      "how_to_assess": "Assess explicitly whether partner is onboard with return, understands the drivers, and has a viable path in the home country",
+      "weight": "high"
+    },
+    {
+      "factor": "Cost of professional care relative to US income",
+      "why_it_matters": "On a US salary, high-quality professional elder care in China or India is often affordable, which changes the framing of whether physical return is the only way to fulfill care obligations",
+      "how_to_assess": "Compare actual cost of professional care (¥10,000–¥30,000/month in China tier-1; ₹15,000–₹40,000/month in India) against the career and earnings cost of returning; assess whether funded professional care is a genuine substitute for the specific care need",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Returning to personally provide elder care",
+      "unstated_consequence": "The lifetime earnings opportunity cost of returning during peak career years can reach $500,000–$2,000,000 for a senior professional — a sacrifice that may exceed what parents would want made on their behalf and may not be required by the actual care need",
+      "who_it_affects": "Senior tech professionals in their 30s–40s who are at peak earning and mobility but feel acute eldercare guilt"
+    },
+    {
+      "choice": "Deferring the eldercare decision until a health crisis forces it",
+      "unstated_consequence": "Crisis-driven return decisions are made under emotional duress with poor timing — poorly timed career transitions, unresolved partner situations, and no financial preparation — producing regret regardless of whether you return or stay",
+      "who_it_affects": "Anyone who treats eldercare as a future variable rather than a plannable present one, especially only children with no siblings to absorb the crisis response"
+    },
+    {
+      "choice": "Remaining in the US and funding professional care from abroad",
+      "unstated_consequence": "Financial support and professional care are real substitutes for some care needs but not for emotional presence; the professional may have funded excellent care while still experiencing guilt and regret about absence during a parent's final years",
+      "who_it_affects": "Professionals whose parents' primary need is emotional proximity rather than medical or logistical support, particularly in cultures where adult child presence is expected regardless of care quality"
+    },
+    {
+      "choice": "Making the return decision based on felt obligation without asking parents what they actually want",
+      "unstated_consequence": "The professional may return at significant personal and career cost for parents who would have preferred they stay and succeed — trading career capital for peace of mind that could have been obtained differently",
+      "who_it_affects": "First-generation immigrants with strong internalized filial obligation norms who have never explicitly surfaced their parents' actual preferences"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Making a rushed return decision within months of a parent's acute health crisis",
+      "why_it_happens": "A health crisis (heart attack, cancer diagnosis, fall) triggers acute guilt and urgency that collapses the distinction between an immediate emotional response and a considered life decision; the person acts on crisis-state emotion",
+      "consequence": "Career transition is poorly timed, partner situation is unresolved, financial planning was not done — the rushed decision produces regret about the rush even if the direction was correct",
+      "warning_signs": [
+        "Booking flights and researching job markets in the home country within weeks of a parent's diagnosis",
+        "Making location decisions before having explicit conversations with your partner about the move"
+      ]
+    },
+    {
+      "pattern": "Treating eldercare as a future variable to defer rather than a plannable present one",
+      "why_it_happens": "When no crisis has occurred, the eldercare variable feels abstract and deferrable; career and immigration concerns feel more immediate and tractable, so eldercare planning is repeatedly postponed",
+      "consequence": "When the inevitable crisis arrives, all decisions are made under duress with no prior planning, producing worse outcomes across career, financial, and personal dimensions",
+      "warning_signs": [
+        "Parents are in their late 60s or 70s and you have never explicitly modeled what you would do if their health declined",
+        "You think of eldercare as 'something I'll figure out when it happens'"
+      ]
+    },
+    {
+      "pattern": "Assuming return is necessary without modeling whether funded professional care is a genuine substitute",
+      "why_it_happens": "The default mental model in many Asian cultural contexts is that professional care is inferior or shameful compared to family care; this assumption is rarely examined against the actual availability and quality of modern professional care options",
+      "consequence": "The professional incurs a large career and earnings cost to provide care that could have been funded from abroad at high quality, often at a cost that parents themselves would not have endorsed",
+      "warning_signs": [
+        "You have not researched the cost and quality of professional elder care in your parents' city",
+        "Your return plan does not include a comparison of what funded professional care could provide versus what your physical presence would provide"
+      ]
+    },
+    {
+      "pattern": "Returning for parents who don't want or need you to return at this stage",
+      "why_it_happens": "The professional projects their own anxiety about a parent's aging onto the parent as a care need; the return is driven by the professional's peace of mind rather than an actual expressed need from the parent",
+      "consequence": "Career capital is sacrificed and life is disrupted to fulfill an obligation the parent did not actually request, while the professional's anxiety often persists regardless of location",
+      "warning_signs": [
+        "You have not had an explicit conversation with your parents about whether they want you to return",
+        "When you imagine your parents saying 'don't come back on our account,' you feel relief rather than concern — suggesting the urgency was self-generated"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How old are your parents, and what is their current health status?",
+      "what_it_reveals": "Whether eldercare is an immediate active need, a plannable near-term need, or a longer-horizon concern — the answer determines urgency and appropriate response",
+      "follow_up_if_yes": "If parents are 75+ or have a diagnosed condition: What specific care tasks are currently unmet, and who is currently providing what support?",
+      "follow_up_if_no": "If parents are 60–68 and healthy: Have you mapped what your response would be if their health declines in the next 5 years, and does your current career plan accommodate that?"
+    },
+    {
+      "question": "Do you have siblings in your home country, and what is their relationship to your parents?",
+      "what_it_reveals": "Whether you are the sole potential caregiver or whether care responsibility can be shared, which is the single largest structural factor in whether return is necessary versus optional",
+      "follow_up_if_yes": "If siblings are present: Have you had an explicit conversation with them about how care responsibility would be divided, and what role financial support from you would play?",
+      "follow_up_if_no": "If you are an only child: Have you built your career and financial timeline around the assumption that return is likely within a defined horizon?"
+    },
+    {
+      "question": "Have you actually talked to your parents about what they need and want from you specifically?",
+      "what_it_reveals": "Whether the return pressure is driven by a genuine expressed parental need or by the professional's internalized obligation and anticipatory anxiety",
+      "follow_up_if_yes": "If yes: What did they say, and does their stated preference match the decision you are currently leaning toward?",
+      "follow_up_if_no": "If no: Why not — and what would change about your current decision if they said 'don't return on our account'?"
+    },
+    {
+      "question": "What would it look like concretely if you remained in the US but maximized your support from here?",
+      "what_it_reveals": "Whether the professional has seriously modeled the remote support option or is treating it as obviously inadequate without examination",
+      "follow_up_if_yes": "If they have modeled it: What specific care need does this option fail to meet, and is that gap large enough to justify the career cost of returning?",
+      "follow_up_if_no": "If they haven't modeled it: What professional care options exist in the parents' city, and what would high-quality funded care cost relative to the earnings differential of staying?"
+    },
+    {
+      "question": "Is the urgency about an actual current need, or about anxiety about a future need that hasn't materialized yet?",
+      "what_it_reveals": "Whether the decision is being made in response to a real present situation or to anticipatory anxiety, which require different responses",
+      "follow_up_if_yes": "If it is a current need: What is the specific care gap, and what are the options for filling it other than your physical return?",
+      "follow_up_if_no": "If it is anticipatory: What is your planned response when the need does materialize, and does your current career trajectory preserve the optionality to execute that plan?"
+    },
+    {
+      "question": "If your parents said 'don't come back on our account — stay and succeed,' would that change your decision?",
+      "what_it_reveals": "Whether the return is being driven by the parent's actual need or by the professional's own need for peace of mind and relief from guilt — the most diagnostic question for distinguishing genuine obligation from self-generated pressure",
+      "follow_up_if_yes": "If yes, it would change the decision: Have you asked them this directly, and are you prepared to act on their answer?",
+      "follow_up_if_no": "If no, it wouldn't change the decision: What is the need you are returning to meet that exists independently of their stated preference, and is that need real or projected?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Professional elder care in China and India is inadequate and cannot substitute for family presence.",
+      "actual_reality": "High-quality professional elder care — including paid live-in caregivers, care facilities, and care coordination services — is increasingly available and affordable in tier-1 cities in both China and India; a US salary can fund care quality that would be unaffordable on a local salary",
+      "implication": "Before treating physical return as the only way to meet a care obligation, professionals should explicitly research the cost and quality of professional care in their parents' specific city and model whether funded care is a genuine substitute for the specific need"
+    },
+    {
+      "common_belief": "The decision about returning for eldercare is primarily about what the parent needs.",
+      "actual_reality": "In many cases, the return decision is as much or more about the professional's own peace of mind and guilt management as it is about an actual expressed parental need; parents in many cases would prefer the child succeed and visit frequently rather than return and disrupt their career",
+      "implication": "Professionals should have an explicit conversation with parents about their actual preferences before making a return decision on their behalf — the parent's answer is often different from what the professional assumes"
+    },
+    {
+      "common_belief": "The collision of peak career years with eldercare pressure is bad timing that could have been avoided.",
+      "actual_reality": "The overlap is structural and predictable: parents of typical international students are in their 60s–70s exactly when the student is in their peak career years in their 30s–40s; this is not an exception but the norm",
+      "implication": "This collision should be anticipated and planned for in advance rather than treated as an unexpected disruption; professionals in their late 20s and early 30s should already be modeling what their response will look like"
+    },
+    {
+      "common_belief": "Waiting until a health crisis to make a return decision is acceptable because you can respond quickly when needed.",
+      "actual_reality": "Forced decisions made in the acute phase of a health crisis are reliably worse than planned decisions — career timing is poor, financial preparation is absent, partner situations are unresolved — and produce regret regardless of the direction chosen",
+      "implication": "The eldercare return decision should be modeled and planned before a crisis, not after one; the practical value of the framework is to create a planned response that can be executed without crisis-state decision-making"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How eldercare is framed in the decision",
+      "junior_pattern": "Treats eldercare as an emotional variable to acknowledge and then set aside while focusing on career and financial optimization",
+      "senior_pattern": "Models eldercare as a structural decision variable with a predictable timeline, explicit care options, and a quantifiable opportunity cost — and builds career planning around it rather than deferring it",
+      "why_it_matters": "Deferring eldercare modeling means the decision will eventually be made in crisis, which produces worse outcomes; integrating it in advance preserves optionality and produces better-timed transitions"
+    },
+    {
+      "dimension": "Assumptions about care options",
+      "junior_pattern": "Assumes that professional care is an inadequate substitute for family presence and that return is therefore the only way to fulfill the obligation",
+      "senior_pattern": "Explicitly researches the cost and quality of professional care available in the parent's specific city, models what funded care could provide, and identifies the specific gap that physical presence would fill",
+      "why_it_matters": "The assumption that professional care is inadequate often goes unexamined; in many cases it is false, and acting on it produces an unnecessary career sacrifice"
+    },
+    {
+      "dimension": "Whose needs are driving the decision",
+      "junior_pattern": "Conflates the parent's actual care needs with the professional's own guilt and anxiety; treats the internal emotional pressure as evidence of an external obligation",
+      "senior_pattern": "Separates the question of what the parent actually needs and wants from the question of what would relieve the professional's anxiety; asks parents directly and distinguishes between the two",
+      "why_it_matters": "Decisions made to relieve personal guilt are often misattributed as being made for the parent's benefit; this mismatch leads to sacrifices the parent would not have wanted and peace of mind that often doesn't materialize even after return"
+    },
+    {
+      "dimension": "Response to a parent's acute health crisis",
+      "junior_pattern": "Treats the crisis as the moment to make the return decision; conflates the immediate emotional response with the long-term location decision",
+      "senior_pattern": "Recognizes that acute crisis is the worst time to make a permanent location decision; separates the immediate response (fly home, provide support) from the longer-term decision (whether to permanently relocate), and defers the latter until the acute phase has passed",
+      "why_it_matters": "Crisis-state decisions on permanent matters are reliably worse; professionals who have pre-modeled their response can act calmly in the crisis without making the permanent decision under duress"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_eldercare_return_driver",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

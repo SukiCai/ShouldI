@@ -1,0 +1,362 @@
+{
+  "source_file": "zhihu_互联网人跳槽的注意事项有哪些.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Every job switch should deliver at least one of: higher salary, promotion, brand-name project experience, or alignment with genuine interest",
+      "condition": "When considering whether to switch jobs",
+      "action": "Audit the opportunity against these four dimensions before committing; if none apply, reconsider",
+      "because": "Commenter explicitly states that each switch must achieve one of these or it is aimless movement, not career progression",
+      "regions": []
+    },
+    {
+      "rule": "Benchmark yourself on the job market continuously, not only when you decide to switch",
+      "condition": "When assessing your own market value at any career stage",
+      "action": "Regularly review job postings for peer roles to calibrate your actual skill level and compensation",
+      "because": "Commenter argues self-evaluation is systematically inflated; external market comparison is the corrective, and HR uses the same comparison to evaluate candidates",
+      "regions": []
+    },
+    {
+      "rule": "Treat job requirements as a skill progression map ('experience bar') to gamify and direct your development",
+      "condition": "When you feel unclear about what to work on next in your career",
+      "action": "Map concrete job posting requirements to specific deliverables and assign yourself milestone targets",
+      "because": "Commenter describes this framework explicitly as a way to make career progress visible and motivation-sustaining, analogous to game progress bars",
+      "regions": []
+    },
+    {
+      "rule": "Clarify the new team's expectations in the first weeks of joining, not after problems arise",
+      "condition": "When onboarding at a new company",
+      "action": "Proactively ask your manager and peers what success looks like at every level — from weekly deliverables to your long-term role",
+      "because": "Best-answer author describes leaving a promising role after half a month specifically because he failed to surface team product expectations early enough; mature teams have low tolerance for new hire misalignment",
+      "regions": []
+    },
+    {
+      "rule": "If an interviewer focuses only on technical skills and shows no curiosity about who you are as a person, treat it as a signal to decline",
+      "condition": "When evaluating a potential employer during the interview process",
+      "action": "Assess whether the interview is genuinely two-directional; one-sided skill interrogation indicates a team culture problem",
+      "because": "Best-answer author states this explicitly as a filtering heuristic — team quality is revealed by how they conduct hiring",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Team culture revealed during interview process",
+      "why_it_matters": "A team that treats interviews as purely technical screenings likely doesn't invest in people; this predicts your experience post-join",
+      "how_to_assess": "Ask substantive questions about product vision and team composition; observe whether the interviewer engages with you as a person or only tests skills",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Whether the new role offers love for the product and a sense of mission",
+      "why_it_matters": "The best-answer author (a PM) argues that without these two emotional connections, the work will be unsustainable regardless of compensation",
+      "how_to_assess": "Ask yourself: do I use this product daily? Do I believe in what this team is building? If neither, flag it",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Social insurance (social security / health insurance) continuity",
+      "why_it_matters": "Gaps in social insurance affect housing purchase eligibility, medical access, residency permits, and household registration in Chinese cities",
+      "how_to_assess": "Calculate the gap between last day at current employer and first day at new employer; if over 15 days, arrange self-payment to avoid lapse",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Primary goal for the next role (experience, skills, salary, network, growth)",
+      "why_it_matters": "Without a clear priority, you cannot evaluate competing offers rationally and will default to salary as a tiebreaker even if it isn't what you need most",
+      "how_to_assess": "Write down your single most important goal before looking at opportunities; use it as the primary filter",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Team orientation (KPI-driven vs. outcome-driven vs. learning-driven)",
+      "why_it_matters": "Team orientation directly determines your day-to-day work experience and what you will learn; misalignment causes rapid disengagement",
+      "how_to_assess": "Ask the hiring manager explicitly: 'What does success look like for this team in 6 months?' and 'How do you measure individual contribution?'",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Financial buffer to avoid rushed decisions",
+      "why_it_matters": "Without at least 2 months of savings, economic pressure forces acceptance of suboptimal offers",
+      "how_to_assess": "Calculate your monthly fixed expenses; confirm you have at least 2 months covered before resigning without another offer in hand",
+      "weight": "high",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Switching jobs while employed (moonlighting your job search)",
+      "unstated_consequence": "You cannot fully commit to either the old job or the new search; the best-answer author argues this creates dissatisfaction in both directions and disrespects both parties",
+      "who_it_affects": "People who try to reduce risk by job-hunting while still employed without telling their current employer",
+      "regions": []
+    },
+    {
+      "choice": "Joining a startup or small team without clarifying expectations upfront",
+      "unstated_consequence": "Mature startup teams have very low error tolerance for new hires; misaligned expectations in the first month can result in departure before you've had a chance to contribute",
+      "who_it_affects": "Experienced PMs joining smaller teams who assume their seniority will give them time to figure out the role",
+      "regions": []
+    },
+    {
+      "choice": "Optimizing for salary as the primary switching criterion",
+      "unstated_consequence": "Salary-chasing without industry trajectory analysis can lock you into a declining sector; short-term gains are erased by long-term obsolescence",
+      "who_it_affects": "Mid-career professionals who are competent but not yet senior enough to see industry-level trends",
+      "regions": []
+    },
+    {
+      "choice": "Resigning without documenting and transferring admin/system access",
+      "unstated_consequence": "Oversight creates loose ends that damage your professional reputation; in internet roles with many platform integrations, this is easy to miss",
+      "who_it_affects": "PMs and operators who accumulated access across many tools and projects over multi-year tenures",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Emotional or reactive resignation — quitting after a conflict without strategic planning",
+      "why_it_happens": "In-the-moment frustration overrides long-term reasoning; the pain of staying feels greater than the uncertainty of leaving",
+      "consequence": "The underlying interpersonal or execution problem follows you to the next role; the commenter states 'if you couldn't make it work here, you won't there either'",
+      "warning_signs": [
+        "The decision to leave followed a specific argument or incident rather than a pattern",
+        "You haven't identified what you're moving toward, only what you're fleeing"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Herd-following job switches during 'golden hiring season'",
+      "why_it_happens": "Social contagion — seeing colleagues interview creates FOMO and normalizes switching even without personal readiness",
+      "consequence": "Switches made without self-assessment land in roles that don't advance your career; you arrive at a new company without clear goals",
+      "warning_signs": [
+        "You started thinking about switching after a colleague announced their departure",
+        "You cannot articulate what specifically you want from the new role"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Overestimating personal market value when detached from a well-known company",
+      "why_it_happens": "Attribution error — confusing company brand for personal capability; the 'halo effect' of a large employer inflates perceived individual worth",
+      "consequence": "Shock when the market doesn't respond to your candidacy as expected; offers come in lower than anticipated",
+      "warning_signs": [
+        "Your confidence in switching is primarily based on your current company's reputation",
+        "You haven't independently validated your skills against job postings in the last year"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Failing to surface team expectations in the first weeks of a new role",
+      "why_it_happens": "New hires feel pressure to demonstrate competence by doing, not asking; onboarding urgency suppresses curiosity about alignment",
+      "consequence": "Best-answer author left a promising opportunity after half a month because misalignment was discovered too late; in mature teams there is little recovery room",
+      "warning_signs": [
+        "You have not explicitly discussed what your manager expects you to deliver in the first 30/60/90 days",
+        "You are defaulting to your previous company's ways of working without validating fit"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Can you name the single most important thing you want to gain from this next role?",
+      "what_it_reveals": "Whether the switch is goal-directed or reactive; vague answers indicate the person is running away rather than running toward",
+      "follow_up_if_yes": "Does the specific opportunity you're considering actually deliver that thing — or are you rationalizing?",
+      "follow_up_if_no": "You are not ready to switch yet; take two weeks to clarify your priority before engaging with any opportunity",
+      "regions": []
+    },
+    {
+      "question": "Do you use the product you would be working on daily, and do you feel a sense of mission about it?",
+      "what_it_reveals": "For PMs specifically, absence of both signals the role will feel hollow regardless of compensation or title",
+      "follow_up_if_yes": "Are those feelings durable — would they survive learning the messy internal reality of the company?",
+      "follow_up_if_no": "The best-answer author treats this as a hard filter: if neither condition is foreseeable, it is not the right move",
+      "regions": []
+    },
+    {
+      "question": "When you compare your current skill profile to job postings for your target next level, what specific gaps appear?",
+      "what_it_reveals": "Whether the person has done an honest market calibration or is relying on internal self-assessment alone",
+      "follow_up_if_yes": "Are those gaps closeable in your current role, or do you need external experience to close them?",
+      "follow_up_if_no": "The person has not yet done this exercise; recommend doing it before deciding to switch",
+      "regions": []
+    },
+    {
+      "question": "Did the interviewer ask about who you are as a person, or only about your technical skills?",
+      "what_it_reveals": "Whether the hiring team is investing in cultural and interpersonal fit, which predicts team health",
+      "follow_up_if_yes": "What specific questions did they ask — were they genuine or formulaic?",
+      "follow_up_if_no": "This is a warning signal about team culture; treat it as a reason to probe further or decline",
+      "regions": []
+    },
+    {
+      "question": "Do you have at least two months of living expenses saved?",
+      "what_it_reveals": "Whether economic pressure will force a rushed decision, degrading offer quality",
+      "follow_up_if_yes": "Then you have negotiating leverage; don't accept the first offer out of fear",
+      "follow_up_if_no": "Prioritize building this buffer before resigning, or secure the next offer before leaving",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Your value in the market is roughly equivalent to your performance at your current company",
+      "actual_reality": "Much of what feels like personal achievement is attributable to the company brand, team infrastructure, and resources; stripped of that context, market response is often significantly lower",
+      "implication": "Do a real market test — apply and interview — before anchoring your self-assessment to internal performance reviews or titles",
+      "regions": []
+    },
+    {
+      "common_belief": "The 'golden hiring season' (March-April post-Lunar New Year) is the best time to switch",
+      "actual_reality": "The season creates more competition, herd behavior, and rushed decisions; the best time to switch is when you are genuinely ready, not when the calendar suggests it",
+      "implication": "Seasonal timing should be a secondary factor, not a trigger; avoid switching just because others are",
+      "regions": []
+    },
+    {
+      "common_belief": "Salary data from published reports accurately reflects the market",
+      "actual_reality": "A commenter explicitly notes that published salary reports (e.g. Lagou 2014 data cited) skew approximately 25% high; they are directionally useful but not reliable for precise negotiation",
+      "implication": "Use salary benchmarks as rough orientation, not as justification for a specific ask; triangulate with multiple sources",
+      "regions": []
+    },
+    {
+      "common_belief": "Internet industry salaries rise indefinitely and the sector is always growing",
+      "actual_reality": "The post (written in a period of optimism) assumes continuous growth, but the industry reality is that sectors mature, consolidate, and shed workers; choosing an industry without assessing its trajectory is a long-term risk",
+      "implication": "Evaluate the 10-year arc of the sector you're entering, not just current compensation data",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Self-assessment methodology",
+      "naive_pattern": "Evaluates self against internal peers and manager feedback; feels confident about market value without testing it externally",
+      "informed_pattern": "Continuously benchmarks against job postings; treats internal feedback as one data point and market response as the ground truth",
+      "why_it_matters": "Overconfidence from internal metrics leads to poor negotiating positions and surprise at offer levels",
+      "regions": []
+    },
+    {
+      "dimension": "Reason for switching",
+      "naive_pattern": "Reacts to a negative event (conflict, low bonus, peer's departure) and justifies the switch post-hoc",
+      "informed_pattern": "Has a clear answer to 'what do I need to gain from this next role?' before evaluating any opportunity",
+      "why_it_matters": "Reactive switches optimize for escape, not progression; they often recreate the same problems in a new environment",
+      "regions": []
+    },
+    {
+      "dimension": "Onboarding behavior at a new company",
+      "naive_pattern": "Dives into doing the work assuming goals are understood; waits until a problem surfaces to clarify expectations",
+      "informed_pattern": "Proactively elicits explicit expectations from manager and peers in week one — from immediate deliverables to long-term role definition",
+      "why_it_matters": "Mature teams have low tolerance for misalignment; discovering it after the fact is often unrecoverable in the first month",
+      "regions": []
+    },
+    {
+      "dimension": "How job requirements are used",
+      "naive_pattern": "Reads job postings only when actively job searching; uses them as checklists to pass interviews",
+      "informed_pattern": "Uses job postings as a continuous development map — identifying skill gaps and setting deliberate learning goals between switches",
+      "why_it_matters": "Reactive skill-building creates lag; proactive development means you're already qualified before you start searching",
+      "regions": []
+    },
+    {
+      "dimension": "Career framing",
+      "naive_pattern": "Views career as a series of company decisions; switches companies to solve problems",
+      "informed_pattern": "Views career as personal brand management; each role, departure, and transition either builds or damages a long-term professional reputation",
+      "why_it_matters": "In tight industry networks (especially internet/tech), how you leave is as visible as where you go next",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Frequent job-hopping shows ambition and increases your market value",
+      "why_believed": "Each switch often comes with a salary bump, creating the illusion that more switches equal more growth",
+      "actual_rule": "Frequent switching prevents skill accumulation, signals low loyalty, and makes HR and hiring managers question whether you'll leave them too; it reduces your chances of being placed in high-trust or senior roles",
+      "real_consequence": "You are consistently considered for execution roles but not leadership or strategic positions; the resume pattern becomes a ceiling",
+      "regions": []
+    },
+    {
+      "misconception": "If you're unhappy, switching companies will fix the problem",
+      "why_believed": "The new environment feels different initially, providing temporary relief that confirms the theory",
+      "actual_rule": "Interpersonal, communication, and execution problems are personal patterns that follow you; if the root cause is your behavior or mindset, it reappears in the new role",
+      "real_consequence": "Serial unhappiness across companies with no self-insight into the common variable — yourself",
+      "regions": []
+    },
+    {
+      "misconception": "Verbal promises about salary, benefits, and scope made during the interview are binding",
+      "why_believed": "People in excited negotiation states want to believe commitments are genuine; challenging them feels aggressive",
+      "actual_rule": "Only written, signed offer terms are enforceable; verbal promises are routinely not honored, especially on variable comp, bonus structure, and title",
+      "real_consequence": "Arriving at a new job to find take-home pay or benefits differ from what was discussed; no recourse after joining",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Senior PM, 4 years at same company, left without a next role secured (bare resignation)",
+      "decision": "Took approximately 2 weeks off to decompress, reflect, and clarify what he wanted before beginning an active search; returned to a previous employer (now rebranded) with mostly the same team",
+      "outcome": "Successful re-integration; reflects positively on the decision 4+ years later; sees the return as rational given personal clarity and team quality",
+      "lesson": "A deliberate buffer period between jobs — used for reflection, not just rest — improves the quality of the next decision; returning to a previous employer is not failure if the team and mission are genuinely aligned",
+      "regions": []
+    },
+    {
+      "situation": "PM joined what he described as a strong team for a half-month trial period",
+      "decision": "Left after the month because he had not clarified the team's product expectations during the interview or onboarding period",
+      "outcome": "Departure from a potentially good opportunity; frames it as an own goal caused by assumption rather than due diligence",
+      "lesson": "In startup or product-driven teams, failing to surface and align on product expectations in the first weeks is a firing offense regardless of competence; this is especially true when the team is small and each role is critical",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Considering switching because colleagues are switching or it's hiring season",
+      "underlying_state": "Social contagion and FOMO — the behavior of peers normalizes a major decision and reduces the threshold for acting on vague dissatisfaction",
+      "how_it_manifests": "Person asks 'should I also switch?' without articulating what they want; the question is about permission, not strategy",
+      "expert_move": "Redirect immediately: 'What specifically do you want to get from a switch that you cannot get where you are?' If they can't answer, they're not ready",
+      "regions": []
+    },
+    {
+      "trigger": "Expressing confidence about market value based on current company's reputation or internal seniority",
+      "underlying_state": "Attribution error — conflating company brand with personal capability; the halo effect of a large employer inflates self-assessment",
+      "how_it_manifests": "Statements like 'I've been doing X at Company Y for N years, I should be worth Z in the market' without external validation",
+      "expert_move": "Ask them to apply to three comparable roles externally and see what happens; actual market feedback is the only antidote to inflated self-assessment",
+      "regions": []
+    },
+    {
+      "trigger": "Feeling unable to search for new roles while still employed without feeling guilty or disloyal",
+      "underlying_state": "Identity enmeshment with current employer; leaving feels like betrayal rather than a normal career event",
+      "how_it_manifests": "Person delays job search, stays in a suboptimal role too long, or feels they must quit first before looking",
+      "expert_move": "Reframe: 'You are managing your personal brand, not being disloyal. Your employer is simultaneously managing their talent pipeline. Both are normal.'",
+      "regions": []
+    },
+    {
+      "trigger": "Feeling rushed to accept an offer because savings are low or current situation is intolerable",
+      "underlying_state": "Scarcity mindset — economic pressure narrows cognitive bandwidth and inflates the apparent value of the first available escape",
+      "how_it_manifests": "Accepting offers without negotiating, joining roles that don't meet stated criteria, and regretting it within months",
+      "expert_move": "The financial buffer prescription (2 months savings minimum) is the structural fix; without it, advise building the buffer before resigning rather than trying to decide well under pressure",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I switch jobs? Is now a good time?",
+      "reframe": "What do you need to get from your next role — and does your current role have any path to delivering that?",
+      "why_it_works": "Shifts the question from a binary yes/no timing decision to a goal-clarity exercise; forces the person to articulate what they're optimizing for before evaluating any external option",
+      "example_language": "明确想要在下一份工作得到什么 (Clarify what you want to gain from your next job) — the goal must be explicit before any opportunity can be evaluated",
+      "regions": []
+    },
+    {
+      "original_framing": "I think I'm worth more than my current salary — I should switch for a raise",
+      "reframe": "Go look at job postings for your target role right now. What do they require that you don't have yet?",
+      "why_it_works": "Replaces inflated self-assessment with external market calibration; the gap revealed is more useful than either the confidence or the anxiety",
+      "example_language": "不怕不识货，就怕货比货 (Don't be afraid of not knowing your worth — be afraid of not comparing yourself to the market)",
+      "regions": []
+    },
+    {
+      "original_framing": "How do I make sure I'm making progress in my career?",
+      "reframe": "Treat job requirements as a skill progression map — assign yourself concrete milestones from real postings and track completion like a game",
+      "why_it_works": "Converts abstract career anxiety into specific, actionable, measurable tasks; the game metaphor reduces emotional weight and increases motivation",
+      "example_language": "经验条化 (experience-bar-ification) — make your career progress as visible and trackable as a game level bar",
+      "regions": []
+    },
+    {
+      "original_framing": "My career is about choosing the right companies to work for",
+      "reframe": "Your career is about managing your personal brand — every departure, every transition, and every role is a visible data point in a transparent industry",
+      "why_it_works": "Expands the time horizon and the audience; shifts from transactional ('get a job') to reputational ('build a track record') thinking",
+      "example_language": "互联网的最大特性就是'透明'，你是好的臭不了，你真搞臭了也遮不住 (The internet's defining feature is transparency — you can't hide quality, and you can't hide damage)",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_互联网人跳槽的注意事项有哪些",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

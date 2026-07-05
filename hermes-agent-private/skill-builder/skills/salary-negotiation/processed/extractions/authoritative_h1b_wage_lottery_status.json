@@ -1,0 +1,213 @@
+{
+  "source_file": "h1b_wage_lottery_status.txt",
+  "heuristics": [
+    {
+      "rule": "When negotiating salary as an H-1B candidate, identify the exact dollar threshold between your current wage level and the next one, then anchor your salary request to that threshold",
+      "condition": "When you are an H-1B candidate and your current offer sits at Wage Level II or III...",
+      "action": "...research the DOL prevailing wage thresholds for your specific SOC code and geographic area, then frame your salary request as 'To qualify for Wage Level III/IV, my salary needs to be at least X for this occupation in this location'",
+      "because": "This argument is structurally independent of market data and ties the salary request to a concrete immigration benefit — moving from 2 to 3 lottery entries is a 50% increase in selection probability, which is quantifiable value the employer can understand"
+    },
+    {
+      "rule": "Use lottery-risk avoidance as a retention argument once you are already on an approved H-1B at Level III or IV",
+      "condition": "When negotiating a raise or retention package as an existing H-1B employee at Wage Level III or IV...",
+      "action": "...frame the turnover cost argument explicitly: replacing you means re-entering the weighted lottery with no guaranteed selection, representing a 50%+ probability of failing to hire the replacement at all",
+      "because": "Under the wage-weighted system, the employer has already cleared lottery selection risk — replacing an existing H-1B holder means absorbing that risk again, which is a quantifiable and asymmetric cost to the employer"
+    },
+    {
+      "rule": "Treat each salary dollar as worth more than face value if it pushes you across a wage level threshold",
+      "condition": "When an H-1B candidate is close to a wage level boundary (e.g., $15,000–$30,000 away from Level III)...",
+      "action": "...prioritize closing that gap over negotiating equivalent amounts elsewhere in the comp package (e.g., signing bonus), because the marginal immigration value of crossing the threshold exceeds the dollar value alone",
+      "because": "A wage level increase buys both purchasing power and a structurally higher lottery selection probability — a dual return that US citizen candidates do not receive from the same salary increase"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Current wage level classification (I–IV) of the offer",
+      "why_it_matters": "Determines the number of lottery entries (1–4) and directly sets selection probability; the difference between Level II and III is a 50% increase in odds",
+      "how_to_assess": "Ask the employer's immigration attorney which wage level the LCA will be filed at, or independently look up the DOL OEWS prevailing wage tables for the specific SOC code and metro area",
+      "weight": "high"
+    },
+    {
+      "factor": "Proximity of offered salary to the next wage level threshold",
+      "why_it_matters": "If you are $10,000–$30,000 away from the next wage level, the immigration value of that increment is disproportionately high relative to its dollar value",
+      "how_to_assess": "Cross-reference the offered salary against DOL prevailing wage data for the role's SOC code and location to calculate the exact gap to the next threshold",
+      "weight": "high"
+    },
+    {
+      "factor": "SOC code and job duties classification",
+      "why_it_matters": "Wage level is tied to duties and SOC code, not salary alone — a higher salary without matching duties does not automatically move you to a higher wage level",
+      "how_to_assess": "Review the job description against DOL wage level definitions; confirm with the employer's immigration counsel what SOC code and level the LCA will use",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the candidate is already on an approved H-1B vs. entering the lottery",
+      "why_it_matters": "The weighted lottery rule only affects new lottery selection; existing approved H-1B holders are not retroactively affected, which changes the negotiation dynamic entirely",
+      "how_to_assess": "Determine current visa status: is this a first-time H-1B filing, a transfer, or a renewal? Only new cap-subject filings face the weighted lottery",
+      "weight": "high"
+    },
+    {
+      "factor": "Legal challenge risk to the final rule",
+      "why_it_matters": "Court injunctions could delay or block implementation before the FY2027 lottery, making wage-level-based negotiation arguments premature or moot",
+      "how_to_assess": "Monitor immigration law news sources for injunctions filed against the rule between publication (December 2025) and effective date (February 2026)",
+      "weight": "medium"
+    },
+    {
+      "factor": "Employer's cost basis for sponsorship",
+      "why_it_matters": "Employers who have already invested $3,000–$8,000 in fees and attorney costs for an existing H-1B employee face higher replacement costs under the new system, strengthening the candidate's retention leverage",
+      "how_to_assess": "Assess whether you are an existing sponsored employee (high employer sunk cost + lottery risk) vs. a new hire candidate (lower sunk cost)",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting an offer at Wage Level I or II without negotiating up to the next threshold",
+      "unstated_consequence": "Under the new system, a Level I candidate has approximately half the lottery odds of a Level IV candidate — accepting a lower wage level is not just a compensation concession, it is a probabilistic concession on immigration outcome",
+      "who_it_affects": "Entry-level H-1B candidates who are unaware of the wage-weighted system and negotiate only on compensation grounds without considering lottery probability"
+    },
+    {
+      "choice": "Framing a salary negotiation purely around market data rather than wage level thresholds",
+      "unstated_consequence": "You may successfully negotiate a $5,000–$10,000 increase that stays within the same wage level, gaining purchasing power but zero improvement in lottery selection probability",
+      "who_it_affects": "H-1B candidates who do not research DOL prevailing wage thresholds before negotiating and therefore leave the most asymmetric value on the table"
+    },
+    {
+      "choice": "Negotiating a higher salary without confirming the job duties will support the higher wage level classification",
+      "unstated_consequence": "The employer's attorney may file the LCA at a lower wage level regardless of salary, meaning the candidate receives more pay but no additional lottery entries — and may face LCA compliance issues",
+      "who_it_affects": "Candidates who assume salary and wage level are directly correlated and do not verify the duties-based classification with immigration counsel"
+    },
+    {
+      "choice": "Relying on the wage-weighted lottery rule as settled law for long-term career planning",
+      "unstated_consequence": "The rule faces potential legal challenges that could result in injunctions before the FY2027 lottery, leaving candidates who negotiated specifically around wage levels without the expected immigration benefit",
+      "who_it_affects": "Candidates who have structured their entire compensation negotiation strategy around the wage-level lottery differential before the rule survives legal challenge"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Negotiating salary as if you are a US citizen — optimizing only for total comp without accounting for wage level thresholds",
+      "why_it_happens": "Most salary negotiation advice is written for US citizens or permanent residents; H-1B candidates apply the same frameworks without adjusting for the asymmetric value of crossing a wage level boundary",
+      "consequence": "Candidate may secure a modest raise but remain at Wage Level II, missing a 50% increase in lottery selection probability for the difference of $15,000–$30,000 in salary",
+      "warning_signs": [
+        "Candidate references only market data (Levels, Glassdoor, competing offers) without mentioning DOL prevailing wage thresholds",
+        "Candidate negotiates for signing bonus or equity without first maximizing base salary to the next wage level threshold"
+      ]
+    },
+    {
+      "pattern": "Assuming a higher salary automatically means a higher wage level classification",
+      "why_it_happens": "The link between salary and wage level seems intuitive but is legally incorrect — wage level is determined by job duties and SOC code, not pay rate alone",
+      "consequence": "Candidate negotiates a higher salary expecting more lottery entries, but the LCA is filed at the same wage level because duties did not change, resulting in no improvement in selection odds",
+      "warning_signs": [
+        "Candidate has not consulted or asked the employer's immigration attorney about the wage level of the LCA",
+        "Candidate conflates 'I earn more than prevailing wage' with 'I am at a higher wage level'"
+      ]
+    },
+    {
+      "pattern": "Failing to use the retention/lottery-risk argument when already on an approved H-1B",
+      "why_it_happens": "Candidates focus on their own risk (fear of rocking the boat, visa dependency) rather than recognizing the employer's now-quantifiable cost of replacing them under the weighted lottery",
+      "consequence": "Existing H-1B holders leave significant leverage unused in salary reviews, accepting below-market compensation when they have asymmetric retention power",
+      "warning_signs": [
+        "Candidate says 'I can't negotiate aggressively because I depend on my employer for my visa'",
+        "Candidate does not frame the cost of their replacement in terms of lottery re-entry risk when asking for a raise"
+      ]
+    },
+    {
+      "pattern": "Treating the wage-weighted lottery as a done deal without monitoring for legal challenges",
+      "why_it_happens": "Final rules feel permanent once published; candidates and employers may not track litigation that could result in injunctions before the effective date",
+      "consequence": "Career and salary decisions made around the wage-level system may be premature if the rule is enjoined before FY2027 registration",
+      "warning_signs": [
+        "No mention of monitoring immigration litigation news between December 2025 and February 2026",
+        "Employer or candidate is making long-term hiring decisions based solely on the rule without a contingency plan"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What wage level (I, II, III, or IV) will the employer file the LCA at for this role?",
+      "what_it_reveals": "Determines the candidate's baseline lottery entry count and whether there is an actionable path to negotiate up to a higher level",
+      "follow_up_if_yes": "If Level III or IV: how close is the offered salary to the Level IV threshold? Is there room to negotiate further?",
+      "follow_up_if_no": "If Level I or II: what is the exact salary threshold to reach Level III for this SOC code and location, and is the gap closeable through negotiation?"
+    },
+    {
+      "question": "Is this a new cap-subject H-1B filing, a transfer, or a renewal of an existing approved H-1B?",
+      "what_it_reveals": "Determines whether the weighted lottery rule applies at all — existing approved H-1B holders are not subject to re-selection and have different negotiation leverage",
+      "follow_up_if_yes": "If new cap-subject filing: wage level is critical for lottery odds — prioritize wage level threshold analysis",
+      "follow_up_if_no": "If existing approved H-1B: the retention/lottery-risk-avoidance argument is the primary lever — focus on replacement cost framing"
+    },
+    {
+      "question": "Does the candidate know the DOL prevailing wage for their specific SOC code and metro area, and the salary breakpoints between wage levels?",
+      "what_it_reveals": "Determines whether the candidate can make a structurally grounded wage-level argument, or is relying only on market comp data which is insufficient for H-1B negotiation",
+      "follow_up_if_yes": "If yes: verify that the duties of the role actually support the higher wage level classification, not just the salary",
+      "follow_up_if_no": "If no: candidate needs to research DOL OEWS data or consult with an immigration attorney before entering salary negotiation"
+    },
+    {
+      "question": "How much has the employer already invested in this candidate's immigration process (fees, attorney time, prior filings)?",
+      "what_it_reveals": "Quantifies the employer's sunk cost and the incremental risk they face from turnover under the new lottery system, which calibrates how strong the retention argument is",
+      "follow_up_if_yes": "If significant investment: the retention premium argument is strong — frame replacement cost explicitly including lottery re-entry risk",
+      "follow_up_if_no": "If early stage with no prior investment: retention argument is weaker; focus on wage level threshold and market comp arguments instead"
+    },
+    {
+      "question": "Is the candidate aware that wage level is determined by job duties (SOC code) rather than salary alone?",
+      "what_it_reveals": "Identifies whether the candidate risks negotiating a salary increase that looks like a wage level upgrade but isn't, due to misunderstanding how the DOL classification works",
+      "follow_up_if_yes": "If yes: confirm they have verified with immigration counsel that the duties support the higher level classification before using it as a negotiation anchor",
+      "follow_up_if_no": "If no: candidate must understand this before negotiating — a higher salary without matching duties classification yields no additional lottery entries"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "H-1B candidates are in a weak negotiating position because they depend on employer sponsorship",
+      "actual_reality": "Under the wage-weighted lottery, employers who have already sponsored an H-1B at Level III or IV face a quantifiable and asymmetric cost to replacing that employee — they must re-enter a lottery where there is a 50%+ chance of not getting selected at all",
+      "implication": "Existing H-1B holders at Level III/IV have stronger retention leverage than most realize and should frame salary negotiations around the employer's lottery re-entry risk, not their own visa dependency"
+    },
+    {
+      "common_belief": "Salary negotiation for H-1B candidates is the same as for US citizens — maximize total comp using market data",
+      "actual_reality": "Each salary dollar has asymmetric value for H-1B candidates if it crosses a wage level threshold, because it simultaneously increases purchasing power and lottery selection probability — a dual return unavailable to US citizens",
+      "implication": "H-1B candidates should prioritize closing the gap to the next wage level threshold above other comp components (signing bonus, equity) when near a boundary, and should always negotiate with DOL prevailing wage data in hand"
+    },
+    {
+      "common_belief": "A higher salary means you will be classified at a higher wage level for H-1B purposes",
+      "actual_reality": "Wage level is determined by the DOL's assessment of job duties against the SOC code definition — salary alone does not determine wage level. An employer can pay above prevailing wage while still filing at Level I if the duties match Level I",
+      "implication": "Candidates must confirm both the salary and the duties-based wage level classification with immigration counsel; negotiating salary without confirming the LCA wage level may produce no improvement in lottery odds"
+    },
+    {
+      "common_belief": "The H-1B lottery is random and salary is irrelevant to selection odds",
+      "actual_reality": "As of the FY2027 lottery (registration March 2026), the system is wage-weighted: Level IV applicants have 4 entries vs. Level I's 1 entry, more than doubling selection probability at the high end and halving it at the low end",
+      "implication": "Any career or salary advice for H-1B candidates that does not account for the wage-weighted lottery is materially incomplete as of early 2026; wage level optimization is now a core component of H-1B career strategy"
+    },
+    {
+      "common_belief": "The wage-weighted lottery rule is a proposed regulation that may or may not pass",
+      "actual_reality": "The rule was finalized on December 23, 2025 (Federal Register document 2025-23853) and takes effect February 27, 2026 — it is settled law as of early 2026, not a proposal",
+      "implication": "Advisors, career coaches, and candidates referencing this as 'proposed' or 'pending' are operating on outdated information; decisions should be made as if the rule is in effect unless a court injunction is issued"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing the salary negotiation argument",
+      "junior_pattern": "Uses only market data (competing offers, Levels.fyi, Glassdoor) to justify a salary request, treating the negotiation identically to how a US citizen would approach it",
+      "senior_pattern": "Layers the DOL wage level threshold argument on top of market data — anchors the salary request to the specific dollar amount needed to cross into the next wage level for the exact SOC code and location",
+      "why_it_matters": "The wage level threshold argument is structurally independent of market data and ties the salary request to a concrete, quantifiable immigration benefit the employer can verify — it is a stronger and less contestable anchor"
+    },
+    {
+      "dimension": "Understanding of what determines wage level",
+      "junior_pattern": "Assumes wage level automatically increases with salary — believes negotiating a $20,000 raise will move them from Level II to Level III",
+      "senior_pattern": "Knows wage level is tied to job duties and SOC code classification, not salary alone — verifies with immigration counsel that the duties support the higher level before using it as a negotiation argument",
+      "why_it_matters": "Negotiating a salary increase that stays at the same wage level produces zero improvement in lottery odds; the senior approach closes the loop between salary, duties, and LCA classification"
+    },
+    {
+      "dimension": "Perception of visa dependency in negotiations",
+      "junior_pattern": "Treats visa dependency as pure weakness — avoids aggressive negotiation because 'I can't afford to lose sponsorship'",
+      "senior_pattern": "Recognizes that visa dependency is bidirectional — the employer who has already sponsored an H-1B at Level III/IV also depends on avoiding lottery re-entry risk, creating a retention premium the candidate can explicitly price",
+      "why_it_matters": "The junior framing leaves significant leverage unused; the senior framing converts a perceived weakness into a quantifiable retention argument that is grounded in the employer's actual replacement cost"
+    },
+    {
+      "dimension": "Treatment of regulatory status",
+      "junior_pattern": "Relies on secondhand career advice that may reference the wage-weighted lottery as 'proposed' or 'under consideration,' without verifying current legal status",
+      "senior_pattern": "Verifies the rule's status directly against primary sources (Federal Register, USCIS) before making decisions — knows it was finalized December 23, 2025 with an effective date of February 27, 2026",
+      "why_it_matters": "Acting on outdated regulatory information leads to miscalibrated negotiation strategy; the senior approach ensures decisions are grounded in the actual legal landscape, not stale secondhand summaries"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_h1b_wage_lottery_status",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

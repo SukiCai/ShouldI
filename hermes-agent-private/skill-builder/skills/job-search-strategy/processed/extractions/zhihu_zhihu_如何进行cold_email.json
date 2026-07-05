@@ -1,0 +1,268 @@
+{
+  "source_file": "zhihu_如何进行cold_email.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Research shared background before sending a cold email — find at least one genuine connection point",
+      "condition": "When preparing to send a cold email to a professional contact",
+      "action": "Check their LinkedIn, Google their name + company + school, and identify a real shared connection (same school, industry background, interests) before writing",
+      "because": "A Citi VP reviewing thousands of cold emails noted that 75% were unclear or generic — the ones that stood out demonstrated genuine knowledge of the recipient",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Use a dedicated non-.edu email for networking outreach",
+      "condition": "When building a networking contact list and sending cold emails",
+      "action": "Create a separate Gmail or similar personal email account for all networking activity; include full signature with name, school/company, phone, and email",
+      "because": ".edu addresses expire after graduation, which breaks ongoing communication threads and reduces professional credibility",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Deprioritize contacts with zero shared background when cold outreaching",
+      "condition": "When you cannot find any genuine connection point with a target contact",
+      "action": "Keep them on the list but move them lower priority; do not invest disproportionate follow-up effort",
+      "because": "Without a shared connection point, the email will likely read as generic and conversion rates are low — community guidance explicitly suggests not making these contacts a focus",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Shared background or connection with the recipient",
+      "why_it_matters": "A genuine connection point gives the recipient a reason to respond; without it, the email competes with hundreds of generic outreach messages",
+      "how_to_assess": "Check LinkedIn profile, Google name + company + school, look for same alma mater, overlapping industry trajectory, or shared interests",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Grammar and spelling quality of the email",
+      "why_it_matters": "A senior VP reviewed thousands of cold emails and found only 10% had no errors — errors signal low effort and are used as a filter to discard messages",
+      "how_to_assess": "Use grammar checkers and have a native speaker review before sending, especially for non-native English writers",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Clarity of ask in the email",
+      "why_it_matters": "50% of cold emails reviewed were dismissed because the recipient could not identify what the sender actually wanted",
+      "how_to_assess": "Read the email and ask: can someone answer 'what does this person want from me?' in one sentence?",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using a .edu email address for all networking outreach",
+      "unstated_consequence": "The email account expires after graduation, severing ongoing conversations and making you unreachable to contacts you built during school",
+      "who_it_affects": "International students on F-1/OPT who are actively networking during school and need continuity through the transition to post-graduation job search",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Sending cold emails without prior background research",
+      "unstated_consequence": "You exhaust your one-shot credibility with a contact before establishing any common ground — a bad first email is very hard to recover from",
+      "who_it_affects": "Job seekers who mass-send templated emails to maximize volume, assuming more outreach always equals more responses",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Sending cold emails with no background research on the recipient",
+      "why_it_happens": "Volume-focused mindset — senders assume cold email is a numbers game and skip personalization to send more messages faster",
+      "consequence": "Emails are ignored or deleted; no responses; reputation with that contact permanently damaged",
+      "warning_signs": [
+        "Using identical email templates for every contact with only the name swapped",
+        "Unable to name a single specific fact about the recipient before sending"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Cold email comes across as purely transactional — recipient can immediately detect the sender only wants something",
+      "why_it_happens": "Senders treat networking as a transaction rather than relationship-building, leading to emails that are transparently self-serving",
+      "consequence": "Contact disengages immediately; no referral or informational interview granted; sender reputation damaged within networks",
+      "warning_signs": [
+        "Email focuses entirely on what the recipient can provide (referral, job info, introduction)",
+        "No genuine curiosity expressed about the recipient's experience or work"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Over-sharing personal credentials and achievements in the opening of a cold email or networking conversation",
+      "why_it_happens": "Anxiety-driven self-promotion — senders fear being overlooked so they lead with everything they have, which overwhelms and alienates recipients",
+      "consequence": "Recipient does not know how to respond; conversation dies before relationship forms",
+      "warning_signs": [
+        "Email opening paragraph is entirely about the sender's background and accomplishments",
+        "No question or invitation for the recipient to share their perspective"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Can you articulate in one sentence what you are specifically asking for in your cold email?",
+      "what_it_reveals": "Whether the email has a clear, actionable ask — the most common failure mode is emails where the recipient cannot identify what the sender needs",
+      "follow_up_if_yes": "Is the ask appropriately scoped — a 15-minute informational call, not a job or referral in the first message?",
+      "follow_up_if_no": "Rewrite the email around a single concrete request before sending",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "What is the specific shared connection point between you and this recipient?",
+      "what_it_reveals": "Whether the outreach is personalized or generic — contacts with no shared background have materially lower response rates",
+      "follow_up_if_yes": "Is that connection point mentioned explicitly and naturally early in the email?",
+      "follow_up_if_no": "Deprioritize this contact or do additional research before sending",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Cold email is primarily a volume game — send more emails to get more responses",
+      "actual_reality": "A Citi VP reviewing thousands of cold emails found only 10% were worth responding to — quality filtering happens immediately, and low-quality volume sends harm sender reputation",
+      "implication": "Senders should invest in personalization per email rather than optimizing for volume; ten well-researched emails outperform 100 generic ones",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Networking is about leveraging people for job leads and referrals",
+      "actual_reality": "Experienced practitioners frame networking as genuinely meeting new people — the job lead is a byproduct, not the goal; contacts who sense purely transactional intent disengage",
+      "implication": "Approach cold outreach with genuine curiosity about the other person's experience; the referral or insight comes after trust is built, not as the opening ask",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Approach to cold email personalization",
+      "naive_pattern": "Sends bulk templated emails with minimal customization, prioritizing volume to maximize chances",
+      "informed_pattern": "Researches each contact individually before writing, identifies specific shared connection, and references it naturally in the opening",
+      "why_it_matters": "Generic emails are filtered out immediately by experienced professionals — personalization is the minimum bar for a response, not a nice-to-have",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Framing of the networking interaction",
+      "naive_pattern": "Treats the exchange as a favor request — focuses on what they need from the contact (job info, referral, interview tips)",
+      "informed_pattern": "Treats the exchange as a genuine conversation — expresses authentic curiosity about the contact's path and finds mutual ground before any ask",
+      "why_it_matters": "Contacts can immediately detect transactional intent and disengage; genuine relationship framing is the prerequisite for any eventual referral or help",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Email infrastructure setup",
+      "naive_pattern": "Uses .edu school email for all networking, treating it as the most credible address",
+      "informed_pattern": "Creates a dedicated personal Gmail for networking with a professional signature, knowing .edu addresses expire and break contact continuity",
+      "why_it_matters": "Graduating and losing access to your email severs every ongoing networking thread built during school — a permanent but easily preventable loss",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Having good qualifications means your cold email will get a response — content quality matters more than email craft",
+      "why_believed": "Senders assume recipients will read carefully enough to evaluate qualifications; they underestimate how quickly emails are screened and discarded",
+      "actual_rule": "According to a VP who reviewed thousands of cold emails, 75% were discarded due to unclear purpose or grammar errors alone — qualifications are never evaluated if the email fails the first-pass filter",
+      "real_consequence": "Highly qualified candidates get no responses because their emails fail basic clarity and grammar checks, while they assume the problem is their background",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "A senior professional (Citi VP) reviewed thousands of cold emails received over their career and categorized them",
+      "decision": "Shared the distribution: 50% incomprehensible, 25% vague with errors, 15% clear but with minor errors, 10% clear and error-free",
+      "outcome": "Only the top 10% received meaningful engagement; the 90% with clarity or grammar issues were deprioritized or ignored",
+      "lesson": "The bar for a cold email that actually gets read is not high in absolute terms, but the vast majority of senders fail it — investing in clarity and grammar alone puts a sender in the top 10%",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Sending cold emails without personalizing or researching, then getting no responses",
+      "underlying_state": "Volume-as-safety bias — sending more feels like taking more action and reduces anxiety about passivity, even when quality is what drives outcomes",
+      "how_it_manifests": "Sender reports 'I've sent 50 emails and heard nothing back' while using identical templates with minimal research",
+      "expert_move": "Reframe the goal from 'maximize sends' to 'maximize researched contacts per week' — even 5 well-researched emails beat 50 generic ones; track research depth, not send count",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Opening networking conversations with a long self-introduction and list of accomplishments",
+      "underlying_state": "Fear of being overlooked or underestimated — especially common among international students who feel their credentials need to compensate for perceived disadvantages",
+      "how_it_manifests": "Email or first message is a dense paragraph of credentials, GPA, internships, and skills with no question or invitation for the recipient",
+      "expert_move": "Point out that self-promotion in an opening message signals insecurity, not strength — experienced networkers lead with curiosity about the other person, which paradoxically signals more confidence",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I write a cold email that gets me a referral or job lead?",
+      "reframe": "Networking is about meeting new people — the referral is a possible byproduct, not the goal",
+      "why_it_works": "Shifts the sender's internal orientation from extraction to connection, which changes the tone of every sentence in the email and makes it more likely to generate a genuine response",
+      "example_language": "归根结底，networking的本质就是：认识新的朋友 (The essence of networking is simply: meeting new people)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_如何进行cold_email",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

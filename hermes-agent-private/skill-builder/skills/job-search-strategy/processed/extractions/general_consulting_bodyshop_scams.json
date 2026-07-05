@@ -1,0 +1,268 @@
+{
+  "source_file": "consulting_bodyshop_scams.txt",
+  "heuristics": [
+    {
+      "rule": "If a sponsor asks you to pay any H-1B filing fees, stop the process immediately regardless of how legitimate they otherwise appear",
+      "condition": "When any employer or staffing firm requests payment for I-129 petition fees, ACWIA training fees, premium processing, or attorney fees...",
+      "action": "...treat it as a definitive scam signal and exit the arrangement",
+      "because": "Charging workers for H-1B fees is explicitly illegal under INA § 212(n), so any company doing this is already in violation of federal law before you've even started"
+    },
+    {
+      "rule": "If a company offers H-1B sponsorship without being able to describe specific job duties, SOC code, wage level, and worksite, the petition is likely fraudulent",
+      "condition": "When a potential sponsor cannot articulate exactly what work you will do before filing...",
+      "action": "...decline the offer, because the H-1B will be filed with incorrect or fabricated information",
+      "because": "Legitimate H-1B sponsorship requires a specific job with specific details; vagueness means the employer is either misrepresenting the role or filing fraudulently"
+    },
+    {
+      "rule": "If an H-1B sponsorship offer arrives within days of a first conversation with a firm you don't know, treat it as a red flag, not a win",
+      "condition": "When sponsorship is offered extremely fast before any real vetting of your role...",
+      "action": "...slow down and conduct due diligence rather than accepting out of relief or urgency",
+      "because": "Legitimate sponsors have internal approval processes and established attorney relationships; speed signals the offer is not grounded in a real role"
+    },
+    {
+      "rule": "Never use the immigration attorney provided by the body shop to assess your compliance situation",
+      "condition": "When you are already in a problematic body shop arrangement and need legal advice...",
+      "action": "...hire an independent immigration attorney, even if it costs money",
+      "because": "The employer's attorney represents the employer, not you; their advice will protect the company's interests, not yours"
+    },
+    {
+      "rule": "If you've been in H-1B status for 180+ days, you are not trapped — begin looking for a transfer immediately",
+      "condition": "When you are in a fraudulent or exploitative body shop but fear losing status if you leave...",
+      "action": "...begin pursuing a new employer who can file an H-1B transfer rather than staying out of fear",
+      "because": "AC21 portability means your H-1B transfers to a new employer after 180 days without restarting the process"
+    },
+    {
+      "rule": "Search H-1Bdata.info or MyVisaJobs.com before accepting any offer from a small employer claiming to sponsor H-1B",
+      "condition": "When evaluating any small employer or staffing firm's sponsorship credibility...",
+      "action": "...verify their petition history, occupation categories, and denial rates before proceeding",
+      "because": "A company with no H-1B history or high denial rates signals either inexperience or a pattern of fraudulent filings"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether employer pays all H-1B fees without exception",
+      "why_it_matters": "Charging workers for fees is illegal and is the clearest single indicator of a fraudulent or non-compliant arrangement",
+      "how_to_assess": "Ask directly and in writing whether you will be charged any fees related to the H-1B petition, filing, or legal process",
+      "weight": "high"
+    },
+    {
+      "factor": "Specificity of the job role before petition filing",
+      "why_it_matters": "H-1B petitions require specific job duties, SOC codes, and worksites; vagueness predicts a fraudulent petition that can harm your immigration record",
+      "how_to_assess": "Ask the employer to describe the exact position, SOC code they intend to file under, and the specific worksite location before agreeing to anything",
+      "weight": "high"
+    },
+    {
+      "factor": "Verifiable H-1B petition history of the employer",
+      "why_it_matters": "A company that claims to sponsor regularly but has no public record of petitions is misrepresenting itself",
+      "how_to_assess": "Cross-reference company name on H-1Bdata.info, MyVisaJobs.com, and USCIS public employer data",
+      "weight": "high"
+    },
+    {
+      "factor": "Bench period pay policy",
+      "why_it_matters": "Not paying during non-placement periods violates 20 CFR 655.731 and signals both legal non-compliance and financial instability of the sponsor",
+      "how_to_assess": "Ask explicitly: 'What is your policy on pay during periods between client placements?' and get it in writing",
+      "weight": "high"
+    },
+    {
+      "factor": "Contract terms including non-compete and liquidated damages clauses",
+      "why_it_matters": "Unusual financial penalties for resignation are used as leverage to keep workers in exploitative conditions even if technically unenforceable",
+      "how_to_assess": "Have an independent attorney review any contract before signing; flag any clause requiring payment upon resignation",
+      "weight": "medium"
+    },
+    {
+      "factor": "Company's ability to name clients and connect you with current H-1B employees",
+      "why_it_matters": "Legitimate staffing firms have real client relationships and satisfied employees; inability or refusal to provide either suggests the company may be operating on paper only",
+      "how_to_assess": "Ask to speak with at least one current H-1B employee and ask for general client names; observe whether the firm hesitates or deflects",
+      "weight": "medium"
+    },
+    {
+      "factor": "Time remaining on OPT vs. urgency of accepting any sponsorship",
+      "why_it_matters": "The comparison is not between a body shop and nothing — it is between a body shop and continued legitimate job searching under OPT; the calculus changes depending on how much OPT time remains",
+      "how_to_assess": "Calculate actual OPT expiration date including any STEM extension eligibility; determine how many months of runway you have for legitimate searching",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting body shop H-1B sponsorship to secure immigration status quickly",
+      "unstated_consequence": "Two years in a body shop often produces a weak or uncreditable employment history, a potentially non-compliant immigration record, and difficulty explaining the experience to future legitimate employers",
+      "who_it_affects": "International students near OPT expiration who feel no other option exists and accept out of panic rather than calculation"
+    },
+    {
+      "choice": "Using the immigration attorney provided by the sponsoring body shop",
+      "unstated_consequence": "The attorney's professional obligation runs to the employer, not the worker; advice given will protect the company's interests, potentially at the worker's legal and immigration expense",
+      "who_it_affects": "Workers already in problematic arrangements who assume that having an attorney means having representation"
+    },
+    {
+      "choice": "Staying in a fraudulent body shop arrangement to avoid disrupting H-1B status",
+      "unstated_consequence": "If the H-1B petition was filed incorrectly by the fraudulent firm, the worker may already be out of status without knowing it — staying longer does not fix this and may worsen it",
+      "who_it_affects": "Workers who conflate 'having a visa document' with 'being in valid immigration status'"
+    },
+    {
+      "choice": "Accepting resume coaching from a body shop to inflate experience for client placements",
+      "unstated_consequence": "Resume misrepresentation can affect the underlying H-1B petition's validity and potentially result in removal proceedings, creating permanent immigration consequences",
+      "who_it_affects": "Students who feel pressure to comply with employer instructions and don't understand the immigration downstream effects"
+    },
+    {
+      "choice": "Staying in a body shop arrangement because leaving feels risky before the 180-day AC21 threshold",
+      "unstated_consequence": "Every additional day in a non-compliant arrangement increases potential immigration liability without providing the legal protection the worker believes they are accumulating",
+      "who_it_affects": "Workers who know about AC21 portability but misunderstand what it protects them from"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting H-1B sponsorship from a body shop because it was the only offer and OPT expiration was imminent",
+      "why_it_happens": "Visa deadline pressure creates tunnel vision — the comparison becomes 'this offer vs. deportation' rather than 'this offer vs. legitimate alternatives with remaining OPT time'",
+      "consequence": "Worker enters a fraudulent or non-compliant arrangement, may lose money, may have immigration record affected, and loses 12–24 months of legitimate career development",
+      "warning_signs": [
+        "Feeling relief rather than scrutiny when the sponsorship offer arrives",
+        "Skipping due diligence steps because 'there's no time'"
+      ]
+    },
+    {
+      "pattern": "Failing to verify the employer's H-1B history before accepting an offer",
+      "why_it_happens": "Students are not taught that public petition data exists or how to use it; they assume that a formal offer letter signals legitimacy",
+      "consequence": "Worker discovers post-filing — or post-admission into the U.S. — that the employer has a history of denied or fraudulent petitions",
+      "warning_signs": [
+        "Never having checked H-1Bdata.info or USCIS employer data",
+        "Accepting the employer's description of their sponsorship history at face value"
+      ]
+    },
+    {
+      "pattern": "Complying with instructions to misrepresent experience on resumes for client placements",
+      "why_it_happens": "Workers feel dependent on the sponsor for their immigration status and believe they cannot refuse employer instructions without risking their visa",
+      "consequence": "Resume fraud creates potential immigration fraud exposure that can affect all future visa applications and potentially result in removal proceedings",
+      "warning_signs": [
+        "Employer provides a 'template' resume to adapt rather than asking for your actual experience",
+        "Employer coaches you on what to say in client interviews beyond legitimate preparation"
+      ]
+    },
+    {
+      "pattern": "Assuming the body shop's attorney is providing independent legal protection",
+      "why_it_happens": "Workers conflate 'there is an attorney involved' with 'I have legal representation'; attorney involvement feels like procedural legitimacy",
+      "consequence": "Worker receives legal advice designed to protect the employer's interests, which may actively harm the worker's immigration position",
+      "warning_signs": [
+        "Attorney was introduced or arranged by the employer rather than sought independently",
+        "Attorney answers questions in ways that seem to minimize worker concerns rather than address them"
+      ]
+    },
+    {
+      "pattern": "Remaining in a body shop for two or more years because leaving felt risky",
+      "why_it_happens": "Fear of disrupting H-1B status paralyzes action; workers overestimate the risk of leaving and underestimate the risk of staying",
+      "consequence": "Extended weak employment history, potential immigration non-compliance record, and missed window for legitimate OPT and sponsor search",
+      "warning_signs": [
+        "Rationalizing staying because 'at least I have status'",
+        "Not knowing about AC21 portability rights after 180 days"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the employer asked you to pay any fees associated with the H-1B petition or immigration process?",
+      "what_it_reveals": "Immediate indicator of illegal conduct; this is a binary disqualifier regardless of any other positive signals from the employer",
+      "follow_up_if_yes": "Exit the arrangement immediately and consult an independent immigration attorney about your exposure",
+      "follow_up_if_no": "Get this confirmed in writing as part of the offer process and continue additional due diligence"
+    },
+    {
+      "question": "Can the employer describe your specific job duties, SOC code, wage level, and worksite before filing?",
+      "what_it_reveals": "Whether the H-1B petition will be filed with accurate information or fabricated to create the appearance of a real position",
+      "follow_up_if_yes": "Verify that what they describe matches the actual work you'll be doing and that the wage level is consistent with the prevailing wage for that role and location",
+      "follow_up_if_no": "The employer cannot file a legitimate H-1B on your behalf; the offer is either premature or fraudulent"
+    },
+    {
+      "question": "What is the company's policy on pay during bench periods between client placements?",
+      "what_it_reveals": "Whether the employer understands and intends to comply with H-1B wage regulations requiring pay for the entire validity period",
+      "follow_up_if_yes": "Get the policy in writing and confirm it matches the regulatory requirement under 20 CFR 655.731",
+      "follow_up_if_no": "The employer is either ignorant of or planning to violate H-1B wage requirements; either is a serious risk"
+    },
+    {
+      "question": "How much OPT time do you actually have remaining, including any STEM extension eligibility?",
+      "what_it_reveals": "Whether the student is making a panic decision under artificial urgency or genuinely has no runway for continued legitimate job searching",
+      "follow_up_if_yes": "If significant OPT time remains, the true comparison is between this offer and 12+ more weeks of legitimate searching — reframe the decision accordingly",
+      "follow_up_if_no": "If OPT is genuinely expiring, explore cap-exempt employment options (universities, nonprofits) before accepting any body shop offer"
+    },
+    {
+      "question": "Does the company appear in H-1Bdata.info or USCIS employer data with a credible petition history?",
+      "what_it_reveals": "Whether the company's claims about being an H-1B sponsor are consistent with public federal records",
+      "follow_up_if_yes": "Check the denial rate and the occupations they've sponsored for — a company that sponsors only one SOC code narrowly may be a body shop even if real",
+      "follow_up_if_no": "The company has misrepresented its sponsorship history; treat all other representations with skepticism"
+    },
+    {
+      "question": "Does your current or prospective contract include non-compete clauses or liquidated damages for resignation?",
+      "what_it_reveals": "Whether the employer is using contract terms as leverage to trap workers in exploitative conditions",
+      "follow_up_if_yes": "Have an independent attorney review enforceability in your state before signing; do not sign under pressure",
+      "follow_up_if_no": "Continue due diligence on other dimensions; absence of predatory contract terms is necessary but not sufficient"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If a company gives you an offer letter and has an attorney filing your H-1B, the arrangement is legitimate",
+      "actual_reality": "Fraudulent body shops routinely produce offer letters and use attorneys; the existence of paperwork and legal process involvement does not indicate compliance or legitimacy",
+      "implication": "Workers must verify independently using public data, direct questions, and their own independent legal counsel rather than treating process as a proxy for legitimacy"
+    },
+    {
+      "common_belief": "Not being paid during bench periods is unfair but legal — it's just part of the staffing model",
+      "actual_reality": "H-1B regulations at 20 CFR 655.731 require employers to pay the offered wage for the entire validity period of the petition, including non-productive time",
+      "implication": "Workers who are not paid during bench periods have a legal complaint they can file with the Department of Labor, and doing so is protected from retaliation"
+    },
+    {
+      "common_belief": "Leaving a bad body shop arrangement will destroy your H-1B status and you'll have to start over",
+      "actual_reality": "After 180 days of H-1B employment, AC21 portability allows workers to transfer to a new employer without restarting the H-1B cap process",
+      "implication": "Workers are not trapped after 180 days; fear of status loss used to keep workers compliant is often unfounded and should be verified with an independent attorney"
+    },
+    {
+      "common_belief": "The choice facing an international student near OPT expiration is between a body shop offer and losing status",
+      "actual_reality": "The actual alternatives include continued OPT job searching, STEM OPT extension, and cap-exempt employment at universities and nonprofits which are not subject to the H-1B lottery",
+      "implication": "Students should calculate their full runway of legitimate options before accepting any sponsorship offer under urgency pressure"
+    },
+    {
+      "common_belief": "Resume coaching from your employer to help you get placed at clients is normal interview preparation",
+      "actual_reality": "When body shops coach workers to misrepresent experience for client placements, this constitutes resume fraud that can affect the underlying H-1B petition and create permanent immigration consequences",
+      "implication": "Workers should refuse any instruction to misrepresent qualifications regardless of employer pressure, and understand that compliance does not protect them from the consequences"
+    },
+    {
+      "common_belief": "Financial penalties for leaving a job are standard and must be honored",
+      "actual_reality": "Liquidated damages clauses and unusually large financial penalties for resignation in body shop contracts are often legally unenforceable but are designed to psychologically trap workers",
+      "implication": "Workers should have an independent attorney assess enforceability before assuming they are bound, and should not let such clauses prevent them from leaving genuinely exploitative arrangements"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating a sponsorship offer",
+      "junior_pattern": "Treats receipt of an offer letter as validation of legitimacy; focuses on whether sponsorship is offered rather than how it is structured",
+      "senior_pattern": "Treats offer letter as the beginning of due diligence; cross-references public petition data, asks specific questions about job duties and wage compliance, and seeks independent legal review before proceeding",
+      "why_it_matters": "Fraudulent body shops are specifically designed to exploit the junior pattern; the offer letter is the bait, not the signal of safety"
+    },
+    {
+      "dimension": "Framing the immigration decision",
+      "junior_pattern": "Frames the choice as 'this body shop offer vs. losing my visa status' — a binary driven by fear",
+      "senior_pattern": "Frames the choice as 'this offer vs. all legitimate alternatives including OPT runway, STEM extension, and cap-exempt employers' — a multi-option calculation",
+      "why_it_matters": "The binary framing produces panic-driven decisions that benefit fraudulent sponsors; the multi-option framing reveals that the body shop is rarely the only path"
+    },
+    {
+      "dimension": "Understanding legal protections",
+      "junior_pattern": "Assumes immigration status is entirely controlled by the employer and that any non-compliance by the employer reflects on or harms the worker",
+      "senior_pattern": "Understands specific worker protections including wage violation complaint rights, retaliation protection, and AC21 portability; knows these rights exist and how to exercise them",
+      "why_it_matters": "Ignorance of worker protections is what makes exploitation possible; knowing your rights changes the power dynamic"
+    },
+    {
+      "dimension": "Responding to employer instructions",
+      "junior_pattern": "Complies with employer instructions including resume coaching and misrepresentation because the employer controls the visa and refusing feels dangerous",
+      "senior_pattern": "Distinguishes between legitimate employer direction and instructions that create legal exposure; understands that following illegal instructions does not protect you from their consequences",
+      "why_it_matters": "Workers who comply with resume fraud instructions absorb the immigration risk without receiving any protection from the employer who directed them"
+    },
+    {
+      "dimension": "Using the attorney in the process",
+      "junior_pattern": "Assumes the attorney involved in the H-1B process represents their interests because they are 'the worker the attorney is helping'",
+      "senior_pattern": "Understands that the employer's attorney represents the employer; seeks independent legal counsel for any assessment of their personal compliance situation or exposure",
+      "why_it_matters": "Relying on the employer's attorney for personal legal advice is one of the primary mechanisms by which workers in bad arrangements fail to understand or protect their position"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_consulting_bodyshop_scams",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

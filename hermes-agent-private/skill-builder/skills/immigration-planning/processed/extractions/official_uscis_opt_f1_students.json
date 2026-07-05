@@ -1,0 +1,403 @@
+{
+  "source_file": "uscis_opt_f1_students.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "All OPT must be directly related to the student's major area of study",
+      "condition": "When an F-1 student applies for or engages in any OPT (pre- or post-completion)",
+      "action": "Ensure all employment is directly related to the major area of study listed on the Form I-20",
+      "because": "OPT is defined as temporary employment directly related to the F-1 student's major area of study; unrelated employment does not qualify",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Pre-completion OPT requires one full academic year of full-time enrollment at an SEVP-certified institution",
+      "condition": "When an F-1 student wants to apply for pre-completion OPT",
+      "action": "Confirm the student has been lawfully enrolled on a full-time basis for one full academic year at an SEVP-certified institution before applying",
+      "because": "Enrollment for one full academic year is a prerequisite eligibility condition for pre-completion OPT",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "The one full academic year enrollment requirement can be satisfied under a prior nonimmigrant status",
+      "condition": "When an F-1 student has spent part of the academic year in a different nonimmigrant status",
+      "action": "Count time enrolled full-time regardless of whether the student held F-1 status during that time",
+      "because": "USCIS explicitly states the student does not need to have had F-1 status for the one full academic year",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Pre-completion OPT work is limited to 20 hours or less per week while school is in session",
+      "condition": "When a student is authorized for pre-completion OPT and school is in session",
+      "action": "Work no more than 20 hours per week",
+      "because": "USCIS explicitly caps pre-completion OPT hours at 20 per week during session; full-time is permitted only when school is not in session",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Post-completion OPT requires working at least 20 hours per week",
+      "condition": "When a student is authorized for post-completion OPT",
+      "action": "Work part time (at least 20 hours per week) or full time",
+      "because": "USCIS requires a minimum of 20 hours per week for post-completion OPT authorization to be valid",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "All pre-completion OPT periods are deducted from post-completion OPT",
+      "condition": "When a student has used any pre-completion OPT",
+      "action": "Subtract pre-completion OPT time used from the 12-month post-completion OPT allowance at the same rate: part-time pre-completion OPT is deducted at 50%, full-time pre-completion OPT at 100%",
+      "because": "USCIS states all periods of pre-completion OPT will be deducted from the available period of post-completion OPT",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "One year of full-time pre-completion OPT eliminates all post-completion OPT eligibility",
+      "condition": "When a student has already received 1 year of full-time (40 hours per week) pre-completion OPT",
+      "action": "Do not apply for post-completion OPT; no authorization remains",
+      "because": "Full-time pre-completion OPT is deducted at 100%, leaving zero months of post-completion OPT available",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "One year of part-time pre-completion OPT reduces post-completion OPT to 6 months",
+      "condition": "When a student has already received 1 year of part-time (20 hours per week) pre-completion OPT",
+      "action": "Recognize only 6 months of full-time post-completion OPT remains available",
+      "because": "Part-time pre-completion OPT is deducted at 50%; 50% of 12 months = 6 months deducted, leaving 6 months remaining",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "STEM OPT extension requires the employer to be enrolled in and using E-Verify",
+      "condition": "When an F-1 student with a STEM degree applies for the 24-month STEM OPT extension",
+      "action": "Confirm the employer is enrolled in and actively using E-Verify before applying",
+      "because": "E-Verify enrollment and use by the employer is a mandatory eligibility condition for the STEM OPT extension",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "STEM OPT extension requires that the initial post-completion OPT was based on the STEM degree",
+      "condition": "When a student seeks the 24-month STEM OPT extension",
+      "action": "Verify that the initial grant of post-completion OPT employment authorization was based on the student's STEM degree",
+      "because": "This is an explicit eligibility condition listed by USCIS for the STEM OPT extension",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Post-completion OPT application must be filed within 30 days of DSO SEVIS recommendation and no later than 60 days after degree completion",
+      "condition": "When an F-1 student applies for post-completion OPT",
+      "action": "File Form I-765 within 30 days after the DSO enters the recommendation into SEVIS, and no later than 60 days after completing the degree",
+      "because": "USCIS specifies both a 30-day filing window after DSO recommendation and a 60-day outer deadline after degree completion",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Post-completion OPT application may be filed up to 90 days before degree completion",
+      "condition": "When an F-1 student wants to begin OPT immediately after graduation",
+      "action": "Apply up to 90 days before completing the degree to allow USCIS processing time",
+      "because": "USCIS explicitly permits filing up to 90 days before degree completion for post-completion OPT",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "STEM OPT extension must be filed within 60 days of DSO SEVIS recommendation and up to 90 days before OPT expiration",
+      "condition": "When an F-1 student with a STEM degree applies for the 24-month extension",
+      "action": "File within 60 days after DSO recommendation; may file up to 90 days before current OPT expires",
+      "because": "USCIS specifies these exact filing windows for the STEM OPT extension application",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Timely filed STEM OPT extension triggers automatic 180-day employment authorization extension",
+      "condition": "When a student files the STEM OPT extension on time and OPT expires while the extension is pending",
+      "action": "USCIS will automatically extend employment authorization for 180 days while the application is pending",
+      "because": "USCIS explicitly states this automatic 180-day bridge applies when the extension is filed on time and OPT expires during adjudication",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "School transfer or new education level automatically terminates OPT employment authorization",
+      "condition": "When an F-1 student transfers to another school or begins studies at a new educational level while on OPT",
+      "action": "Cease employment; OPT authorization is automatically terminated upon transfer or new education level",
+      "because": "USCIS explicitly states OPT employment authorization will automatically terminate in these circumstances",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Cap-gap extension requires a timely filed H-1B petition with a change of status request",
+      "condition": "When an F-1 student's OPT will expire before October 1 and an H-1B petition has been filed",
+      "action": "Ensure the H-1B petition includes a change of status request and was timely filed to qualify for the cap-gap extension",
+      "because": "USCIS states both conditions — timely filing and inclusion of a change of status request — are required for cap-gap eligibility",
+      "regulatory_basis": "USCIS OPT policy page (last reviewed 2024-11-25)",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether the employment is directly related to the student's major area of study",
+      "why_it_matters": "OPT is only authorized for employment directly related to the major; unrelated work is unauthorized employment",
+      "how_to_assess": "Compare the job duties to the field of study listed on Form I-20",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Amount and type (full-time vs. part-time) of pre-completion OPT already used",
+      "why_it_matters": "Pre-completion OPT is deducted from post-completion OPT; full-time deduction is at 100%, part-time at 50%",
+      "how_to_assess": "Review SEVIS records for authorized pre-completion OPT periods and compute remaining post-completion OPT availability",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the degree is on the STEM Designated Degree Program List",
+      "why_it_matters": "Determines eligibility for the 24-month STEM OPT extension, which can provide up to 36 months total OPT",
+      "how_to_assess": "Check the STEM Designated Degree Program List published by USCIS/ICE",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the employer is enrolled in and using E-Verify",
+      "why_it_matters": "E-Verify enrollment and active use is a mandatory eligibility condition for the STEM OPT extension",
+      "how_to_assess": "Confirm employer E-Verify participation status before filing the STEM OPT extension",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Timing of Form I-765 filing relative to DSO SEVIS recommendation and degree completion",
+      "why_it_matters": "Post-completion OPT must be filed within 30 days of DSO recommendation and no later than 60 days after degree completion; missing these windows disqualifies the application",
+      "how_to_assess": "Track the date the DSO enters the SEVIS recommendation and the degree completion date; calculate both deadlines",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the initial post-completion OPT was based on the STEM degree",
+      "why_it_matters": "STEM OPT extension requires that the initial OPT grant was based on the STEM degree; OPT based on a different degree does not qualify",
+      "how_to_assess": "Verify the degree on which OPT was granted matches the STEM degree being cited for the extension",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the H-1B petition includes a change of status request and was timely filed",
+      "why_it_matters": "Both conditions are required to qualify for the cap-gap extension bridging F-1/OPT status to October 1",
+      "how_to_assess": "Confirm the petition includes Form I-539 change of status and was filed within the H-1B cap filing window",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using pre-completion OPT",
+      "unstated_consequence": "Every period of pre-completion OPT directly reduces post-completion OPT availability at the same education level; full-time pre-completion OPT eliminates all post-completion OPT",
+      "who_it_affects": "Students who use significant pre-completion OPT and then need maximum post-completion OPT time for job searching or H-1B cap-gap coverage",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Transferring to a new school or beginning a new education level while on OPT",
+      "unstated_consequence": "OPT employment authorization automatically terminates upon transfer or new education level, even though F-1 status itself is not affected",
+      "who_it_affects": "Students who plan to continue working on OPT while transitioning between institutions or degree levels",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Filing the STEM OPT extension late (after the 60-day DSO recommendation window)",
+      "unstated_consequence": "Loss of the automatic 180-day employment authorization bridge; if OPT expires during adjudication of a late filing, work authorization lapses",
+      "who_it_affects": "STEM students who delay working with their DSO or delay filing after the DSO recommendation is entered in SEVIS",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Applying for post-completion OPT close to the 60-day post-graduation deadline",
+      "unstated_consequence": "USCIS processing times may result in a gap between graduation and EAD receipt, as the application window closes 60 days after degree completion regardless of processing speed",
+      "who_it_affects": "Students who wait to apply after graduation rather than applying up to 90 days before degree completion",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Working without authorization — including working in a field unrelated to the major or exceeding hour limits",
+      "why_it_happens": "OPT is limited to employment directly related to the major; pre-completion OPT is capped at 20 hours per week while school is in session",
+      "consequence": "Removal from the United States and reentry bars",
+      "warning_signs": [
+        "Student accepts employment in a field unrelated to their I-20 major",
+        "Student works more than 20 hours per week during school session on pre-completion OPT"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Missing the post-completion OPT application deadlines",
+      "why_it_happens": "Application must be filed within 30 days of DSO SEVIS recommendation and no later than 60 days after degree completion; missing either deadline voids eligibility",
+      "consequence": "Loss of OPT employment authorization eligibility for that degree level",
+      "warning_signs": [
+        "Student delays asking DSO for recommendation until after graduation",
+        "Student waits more than 30 days after DSO enters recommendation to file Form I-765"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Filing STEM OPT extension after the 60-day DSO recommendation window",
+      "why_it_happens": "STEM OPT extension must be filed within 60 days of DSO SEVIS recommendation; late filing forfeits the automatic 180-day employment authorization bridge",
+      "consequence": "Loss of automatic 180-day employment authorization extension; potential gap in work authorization if OPT expires during adjudication",
+      "warning_signs": [
+        "Student delays consulting DSO about STEM extension",
+        "Student files Form I-765 more than 60 days after DSO enters SEVIS recommendation"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Continuing to work on OPT after transferring schools or starting a new education level",
+      "why_it_happens": "OPT employment authorization automatically terminates upon school transfer or new education level enrollment",
+      "consequence": "Unauthorized employment, with consequences including removal and reentry bars",
+      "warning_signs": [
+        "Student accepts transfer to a new SEVP-certified institution while on OPT",
+        "Student enrolls in a graduate program after completing an undergraduate degree while OPT is active"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming full post-completion OPT is available after having used full-time pre-completion OPT",
+      "why_it_happens": "Students may not realize that 1 year of full-time pre-completion OPT reduces post-completion OPT to zero",
+      "consequence": "No post-completion OPT employment authorization remains; unauthorized work if employment continues",
+      "warning_signs": [
+        "Student used 12 months of full-time (40 hours/week) pre-completion OPT",
+        "Student does not check remaining OPT balance before planning post-graduation employment"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the F-1 student been lawfully enrolled on a full-time basis for one full academic year at an SEVP-certified institution?",
+      "what_it_reveals": "Whether the student meets the minimum enrollment prerequisite for pre-completion OPT",
+      "follow_up_if_yes": "Proceed to evaluate other pre-completion OPT eligibility criteria",
+      "follow_up_if_no": "Student is not yet eligible for pre-completion OPT; must complete one full academic year first",
+      "country_scope": "us"
+    },
+    {
+      "question": "How much pre-completion OPT has the student already used, and was it part-time or full-time?",
+      "what_it_reveals": "The remaining post-completion OPT available; full-time pre-completion OPT deducts at 100%, part-time at 50%",
+      "follow_up_if_yes": "Calculate remaining post-completion OPT: subtract deduction from 12 months",
+      "follow_up_if_no": "If no pre-completion OPT used, full 12 months of post-completion OPT is available",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the student's degree on the STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether the student is eligible for the 24-month STEM OPT extension",
+      "follow_up_if_yes": "Confirm employer E-Verify enrollment and that initial OPT was based on the STEM degree; proceed with STEM extension application",
+      "follow_up_if_no": "Student is limited to the standard 12-month post-completion OPT; no STEM extension available",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the employer enrolled in and actively using E-Verify?",
+      "what_it_reveals": "Whether a mandatory eligibility condition for the STEM OPT extension is satisfied",
+      "follow_up_if_yes": "Proceed with STEM OPT extension application if other criteria are met",
+      "follow_up_if_no": "Student is ineligible for STEM OPT extension with this employer; must find an E-Verify employer or forego the extension",
+      "country_scope": "us"
+    },
+    {
+      "question": "Was the initial post-completion OPT granted based on the STEM degree now being cited for the extension?",
+      "what_it_reveals": "Whether the third eligibility condition for the STEM OPT extension is satisfied",
+      "follow_up_if_yes": "This condition is met; evaluate remaining STEM extension criteria",
+      "follow_up_if_no": "Student does not meet this condition and is ineligible for the STEM OPT extension",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the student filed Form I-765 within 30 days of the DSO's SEVIS recommendation and no later than 60 days after degree completion?",
+      "what_it_reveals": "Whether the post-completion OPT application was filed within both required time windows",
+      "follow_up_if_yes": "Application is timely; proceed with normal adjudication",
+      "follow_up_if_no": "Application is out of time; student has lost post-completion OPT eligibility for this degree level",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the student's H-1B petition include a change of status request and was it timely filed?",
+      "what_it_reveals": "Whether the student qualifies for a cap-gap extension to bridge F-1/OPT status to October 1",
+      "follow_up_if_yes": "Student may be eligible for cap-gap extension; confirm both conditions are met",
+      "follow_up_if_no": "Student does not qualify for cap-gap; must ensure OPT remains valid until H-1B start date or depart and reenter on H-1B",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the student planning to transfer schools or begin a new education level while OPT is active?",
+      "what_it_reveals": "Whether OPT employment authorization will automatically terminate",
+      "follow_up_if_yes": "OPT will automatically terminate; student must stop working and plan accordingly",
+      "follow_up_if_no": "OPT authorization is not affected by this factor; continue monitoring other compliance requirements",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Using pre-completion OPT does not affect the amount of post-completion OPT available",
+      "actual_reality": "All pre-completion OPT periods are deducted from post-completion OPT: part-time pre-completion OPT deducts at 50%, full-time at 100%; one year of full-time pre-completion OPT eliminates all post-completion OPT",
+      "implication": "Students must carefully weigh whether pre-completion OPT is worth the reduction in post-completion OPT, especially for H-1B cap-gap planning",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "F-1 status requires the student to have held F-1 status for the full academic year to qualify for OPT",
+      "actual_reality": "USCIS explicitly states the student does not need to have had F-1 status for the one full academic year; time in another nonimmigrant status counts toward the enrollment requirement",
+      "implication": "Students who changed from another nonimmigrant status (e.g., J-1) to F-1 mid-year may be eligible for OPT sooner than they realize",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "OPT employment authorization continues unaffected if a student transfers to a new school",
+      "actual_reality": "OPT employment authorization automatically terminates when a student transfers to another school or begins studies at a new educational level, even though F-1 status itself is not affected",
+      "implication": "Students who transfer while on OPT must immediately stop working; continuing to work after transfer constitutes unauthorized employment",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If a STEM OPT extension is pending when OPT expires, work authorization automatically continues indefinitely",
+      "actual_reality": "The automatic extension of employment authorization is exactly 180 days — not indefinite — and only applies if the STEM OPT extension was filed on time",
+      "implication": "Students filing STEM OPT extensions must file on time to receive the 180-day bridge; a late filing forfeits this protection",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Post-completion OPT can be applied for at any time after graduation",
+      "actual_reality": "Post-completion OPT must be applied for within 30 days of DSO SEVIS recommendation and no later than 60 days after degree completion; there is no ability to apply outside these windows",
+      "implication": "Students must engage their DSO proactively before or immediately after graduation to avoid missing the filing window",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Any employment after graduation on OPT is acceptable as long as the student has an EAD",
+      "actual_reality": "OPT employment must be directly related to the student's major area of study; an EAD alone does not authorize unrelated work",
+      "implication": "Students must evaluate each job offer against their declared major, not simply whether they hold an EAD card",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the pre-completion OPT deduction from post-completion OPT",
+      "naive_pattern": "Assumes pre- and post-completion OPT are independent 12-month buckets and uses both freely without calculating the deduction",
+      "informed_pattern": "Calculates remaining post-completion OPT by applying the 50% deduction for part-time and 100% deduction for full-time pre-completion OPT used before applying for post-completion OPT",
+      "why_it_matters": "Using too much pre-completion OPT can eliminate post-completion OPT entirely, leaving no H-1B cap-gap bridge or job search period after graduation",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Timing of post-completion OPT application",
+      "naive_pattern": "Waits until after graduation to start the OPT process, assuming there is ample time post-graduation to apply",
+      "informed_pattern": "Applies up to 90 days before degree completion to ensure the EAD is received promptly after graduation, while staying within the 30-day post-DSO-recommendation and 60-day post-graduation filing windows",
+      "why_it_matters": "Late application risks a gap in work authorization or missing the filing window entirely, forfeiting OPT eligibility",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "STEM OPT extension filing timing",
+      "naive_pattern": "Assumes the STEM extension can be filed anytime before OPT expires and that a pending application always provides continued work authorization",
+      "informed_pattern": "Files the STEM OPT extension within 60 days of DSO SEVIS recommendation and up to 90 days before OPT expiration to secure the automatic 180-day bridge authorization",
+      "why_it_matters": "A late filing forfeits the 180-day automatic extension, creating a gap in work authorization if adjudication is not completed before OPT expires",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Employer E-Verify check for STEM OPT",
+      "naive_pattern": "Assumes any employer can sponsor a STEM OPT extension as long as they are willing to employ the student",
+      "informed_pattern": "Verifies employer E-Verify enrollment and active use before accepting the job offer and filing the STEM OPT extension, knowing this is a hard eligibility condition",
+      "why_it_matters": "An employer not enrolled in E-Verify disqualifies the student from the STEM OPT extension regardless of other factors",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Impact of school transfer or new education level on OPT",
+      "naive_pattern": "Assumes OPT continues through a school transfer or when starting a graduate program because F-1 status is maintained",
+      "informed_pattern": "Recognizes that while F-1 status is not affected, OPT employment authorization automatically terminates upon transfer or new education level enrollment and plans work accordingly",
+      "why_it_matters": "Continuing to work after OPT terminates due to a transfer constitutes unauthorized employment, risking removal and reentry bars",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "official_uscis_opt_f1_students",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

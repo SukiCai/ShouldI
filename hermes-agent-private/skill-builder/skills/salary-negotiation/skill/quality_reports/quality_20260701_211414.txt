@@ -1,0 +1,52 @@
+
+============================================================
+  Quality Report: Salary & Offer Negotiation Expert
+  Overall: 4.4/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely strong skill that captures expert-level negotiation reasoning with specific, actionable heuristics and non-obvious tradeoffs. It stands out for integrating international student/visa considerations with core negotiation strategy — a rare and valuable combination. Minor weaknesses: some tactical scripts could be more concrete, and a few claims (e.g., wage-weighted lottery) assume policy states that need verification/date-anchoring.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       4/5  ██████████░░  Good
+  Diagnostic Questions         5/5  ████████████  Excellent
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • Expert framing captures a real mental model shift: 'Beginners treat negotiation as an event; experts treat it as a state that started at the first recruiter call.' This is genuinely how experienced negotiators think and reframes the whole domain.
+    • The equity treatment is unusually rigorous — distinguishing RSUs public vs. pre-IPO vs. NSO vs. ISO, valuing early-stage equity at $0 for planning, and calling out the 90-day exercise window as a 'golden handcuff.' This is expert-level and defeats the common recruiter framing.
+    • The visa integration is excellent and non-obvious: 'Reframe visa dependency as retention value' with the specific $3K–$8K/year sponsorship cost vs. loaded cost math, plus the 60-day portability reminder. Most negotiation skills ignore this entirely.
+    • The 'Yes-If vs. No-But' distinction (Step 1, Heuristic 3) is a subtle, real expert framing that novices miss — most people try to negotiate before they've been chosen.
+    • Industry Realities section directly attacks specific real beliefs — e.g., 'Glassdoor and PayScale... underreport tech comp by 20–30%. Use levels.fyi, H-1B disclosure data, and Blind instead' — this is prescriptive and correct.
+
+  ✗ Weaknesses:
+    • Several heuristics reference scripts but don't fully provide them. Heuristic 4 gives one line ('If you could increase the signing bonus to X, I could accept this salary') but Heuristic 8 ('Negotiate by phone, not email alone') gives no script for requesting the call or opening it. A skill this good should have a dedicated 'scripts' section.
+    • The 'post-2025 wage-weighted lottery' claim is stated as fact in Step 2 and Heuristic 9, but this is a proposed/pending H-1B rule change with uncertain implementation status. Presenting it as settled reality could mislead users about current lottery mechanics.
+    • Failure patterns are good but could name concrete numbers/examples. 'Comparing offers by base only' would land harder with 'e.g., Offer A base $160K + $40K equity/yr vs. Offer B base $170K + $10K equity/yr — most novices pick B.'
+    • The counter-offer amount question is under-covered. How much should someone counter by? 10%? 20%? Anchor high? The skill tells users to counter but not how aggressively, which is one of the most common real questions.
+    • No coverage of the 'walk-away' or BATNA calibration — how to actually decide when to walk vs. accept, or how to recognize when you've extracted the max.
+
+  → Improvement Suggestions:
+    • Add a dedicated 'Scripts' section with 5–8 verbatim templates: deflecting salary expectations pre-offer, requesting the phone counter call, opening a counter, responding to 'this is our best and final,' requesting an exploding-offer extension, and the signing-bonus pivot. The skill hints at these but doesn't deliver them.
+    • Add a 'Counter Sizing' subsection with concrete guidance: typical counter ranges (e.g., 10–20% on base for tech, higher on signing/equity), when to anchor above target, and how to handle 'what's your number' when you must give one.
+    • Date-anchor or hedge the wage-weighted lottery claim. Say 'as of the proposed 2025 DHS rule' or verify current status before treating it as an operating premise for advice.
+    • Add a section on multi-round negotiation dynamics — most skills treat it as one exchange, but real negotiations have 2–3 rounds. When to stop, how to close, how to handle 'we've moved as much as we can.'
+    • Consider adding a worked example: a full case study of a candidate with two offers, showing the TC modeling, the sequence of moves, and the outcome. This would ground the abstract heuristics.
+
+  ⚠ Generic Advice Flags:
+    • 'Maintain visible enthusiasm through pushback' — the heuristic is right but the operationalization ('reiterate excitement before restating the ask') is generic advice most negotiation books give. Could be sharpened with a specific phrase template.
+    • 'Negotiate by phone, not email alone' — true but stated without the deeper reasoning about how recruiters batch email requests vs. advocate live, or what to do if the recruiter refuses a call.
+
+  ○ Missing Coverage:
+    • How much to counter by (specific percentages/ranges by role level and company stage)
+    • Handling the 'what's your current salary?' question in states/countries where it's still legally askable, and what to do if you already disclosed
+    • Negotiating non-cash levers in depth: remote work, start date, title, reporting structure, PTO, professional development budget, relocation
+    • Multi-round negotiation dynamics and how/when to close the loop
+    • Sign-on bonus clawback provisions and how to negotiate them (a common trap)
+    • Verifying and stress-testing the wage-weighted H-1B lottery assumption, or a fallback framework if the policy doesn't take effect
+    • Handling internal promotions/retention counter-offers vs. external offers — a distinct negotiation situation

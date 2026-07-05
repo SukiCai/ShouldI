@@ -1,0 +1,265 @@
+{
+  "source_file": "pm_leveling_across_companies.txt",
+  "heuristics": [
+    {
+      "rule": "Get the level code, not just the title",
+      "condition": "When evaluating any PM offer across companies...",
+      "action": "...ask for the numeric or alphanumeric level code (L5, IC5, ICT4) and cross-reference it against the company's internal leveling structure before comparing to your current role",
+      "because": "Titles like 'Senior PM' are internally defined and not portable — the same title can represent radically different scope and compensation across companies"
+    },
+    {
+      "rule": "Use compensation as a level verification signal",
+      "condition": "When a company states a title but the total comp offer seems off...",
+      "action": "...check levels.fyi to verify the offer aligns with the median total comp for that stated level at that specific company",
+      "because": "If comp is below median for the stated level, the company may be soft-downleveling you while maintaining a flattering title"
+    },
+    {
+      "rule": "Ignore startup titles entirely; ask about decision rights instead",
+      "condition": "When evaluating a startup offer with an elevated title (Director, VP)...",
+      "action": "...ask 'What decisions can I make unilaterally? Who has override authority over the roadmap?' and map the answer to an equivalent FAANG scope level",
+      "because": "Startups use inflated titles as compensation substitutes for cash; the title signals nothing reliable about actual scope or organizational influence"
+    },
+    {
+      "rule": "A promotion without scope increase is a title bump, not a career move",
+      "condition": "When receiving an internal promotion where the new level has the same scope as the current role...",
+      "action": "...treat it as a lateral and evaluate whether it creates overleveling risk for future external moves",
+      "because": "An elevated title without expanded scope can make you look overleveled to future hiring managers who will ask about actual scope, not titles"
+    },
+    {
+      "rule": "Amazon L-numbers run one level inflated relative to FAANG peers",
+      "condition": "When comparing Amazon PM levels to Google or Meta...",
+      "action": "...subtract one level from Amazon's code to find the scope equivalent (Amazon L6 ≈ Google L5 ≈ Meta IC5)",
+      "because": "Amazon's L-scale is inflated relative to peer companies, so direct number comparisons create false equivalencies"
+    },
+    {
+      "rule": "Validate a downlevel by requiring a defined upgrade path with a stated timeline",
+      "condition": "When considering accepting a lower title at a target company...",
+      "action": "...only accept if the company provides explicit promotion criteria and a typical time-to-promo for moving to the next level",
+      "because": "Without a stated upgrade path, a downlevel at a prestigious company may become a permanent level reset rather than a temporary step"
+    },
+    {
+      "rule": "Test whether a lateral is actually a promotion by imagining the next hiring manager's reaction",
+      "condition": "When unsure whether a same-title move is a real step up...",
+      "action": "...ask 'Would a hiring manager at my next target company look at this new title and comp and consider me a more qualified candidate?'",
+      "because": "Career moves only compound if each step makes the next step easier; a move that doesn't improve external perception isn't advancing the career trajectory"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Level code vs. title",
+      "why_it_matters": "Titles are cosmetic and company-specific; level codes map to actual scope, compensation bands, and promotion timelines that can be compared across companies",
+      "how_to_assess": "Ask directly for the numeric or alphanumeric level code and cross-reference against a known leveling map (e.g., the FAANG equivalency table in this source)",
+      "weight": "high"
+    },
+    {
+      "factor": "Total compensation vs. market median for that level",
+      "why_it_matters": "Comp below the median for a stated level signals either a soft downlevel or a company underpaying relative to its own bands — both are red flags",
+      "how_to_assess": "Look up levels.fyi median total comp for the specific company and level code; flag any offer more than 10–15% below median",
+      "weight": "high"
+    },
+    {
+      "factor": "Decision rights and override authority",
+      "why_it_matters": "Real scope is defined by what decisions you can make unilaterally without escalation, not by what the title or org chart implies",
+      "how_to_assess": "Ask: 'What decisions can I make without approval?' and 'Who has override authority over my roadmap or prioritization?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Company tier and brand value",
+      "why_it_matters": "A lower title at a higher-tier company can open more future doors than a higher title at a lower-tier company, making the brand itself a compensating factor",
+      "how_to_assess": "Assess whether hiring managers at your next target companies would respond more favorably to the new company's name on your resume",
+      "weight": "high"
+    },
+    {
+      "factor": "Promotion criteria and time-to-promo",
+      "why_it_matters": "Accepting a downlevel only makes sense if there is a clear, stated path and realistic timeline back to your target level",
+      "how_to_assess": "Ask: 'What are the stated promotion criteria from this level to the next, and what is the typical time-to-promo for high performers?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Scope size relative to current role",
+      "why_it_matters": "A lower title with materially larger scope is a real promotion; a higher title with smaller scope is a real demotion regardless of what the offer letter says",
+      "how_to_assess": "Compare team size, product complexity, cross-functional reach, and autonomy between current and target roles",
+      "weight": "high"
+    },
+    {
+      "factor": "Equity upside and certainty",
+      "why_it_matters": "Startup titles often come with equity as the intended compensation premium, but equity value is highly uncertain and should not be treated as equivalent to cash or vested RSUs",
+      "how_to_assess": "Model equity at 0%, 1x, and 5x outcomes; only count equity as a compensating factor if the base + cash comp alone is acceptable",
+      "weight": "medium"
+    },
+    {
+      "factor": "Overleveling risk",
+      "why_it_matters": "An inflated title from a lower-tier company can make a PM look overleveled to hiring managers at target companies, reducing hiring appeal for roles that would actually be the right fit",
+      "how_to_assess": "Ask whether future target company hiring managers would view the current title as appropriately scoped or suspiciously senior",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting an elevated startup title (VP, Director) for equity upside",
+      "unstated_consequence": "The inflated title can create overleveling problems when returning to large tech — hiring managers see a VP title from a 30-person company and either discount the scope or expect VP-level compensation that the candidate can't justify",
+      "who_it_affects": "Mid-career PMs who plan to use startup experience as a stepping stone back into FAANG or large tech"
+    },
+    {
+      "choice": "Taking an internal promotion that is a title bump without scope increase",
+      "unstated_consequence": "The elevated title makes the PM look overleveled for roles they could realistically land, while the lack of real scope growth means they haven't built the skills to justify the title externally",
+      "who_it_affects": "PMs at companies with loose promotion criteria who plan to leverage the title in an external job search within 1–2 years"
+    },
+    {
+      "choice": "Accepting a downlevel at a prestigious company without a stated upgrade path",
+      "unstated_consequence": "The downlevel may become permanent if promotion criteria are opaque or if the org changes; the PM resets their compensation trajectory and may spend 2–3 years recovering to their previous level",
+      "who_it_affects": "PMs who accept FAANG downlevels expecting fast promotion but land in orgs with slow or competitive promotion processes"
+    },
+    {
+      "choice": "Comparing offers using title alone without checking level codes",
+      "unstated_consequence": "A PM may accept what appears to be a lateral or step up based on the title while actually taking a scope and compensation downgrade that takes years to reverse",
+      "who_it_affects": "PMs earlier in their careers who haven't yet learned that titles are not standardized across company boundaries"
+    },
+    {
+      "choice": "Moving from management back to IC at a new company",
+      "unstated_consequence": "Requires accepting a senior IC level while rebuilding a product work track record, which can feel like a step backward and delays return to management-track compensation and influence",
+      "who_it_affects": "PMs who moved into management and want to return to IC work, especially those who found management less fulfilling than expected"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting a title without verifying the level code or compensation band",
+      "why_it_happens": "PMs anchor on familiar title language ('Senior PM') and assume cross-company equivalence, not realizing titles are internally defined",
+      "consequence": "The PM accepts what they believe is a lateral or promotion but has actually taken a scope and compensation downgrade that compounds negatively over time",
+      "warning_signs": [
+        "Offer letter uses a title but no level code is provided or volunteered",
+        "Total comp is noticeably below levels.fyi median for the stated title at that company"
+      ]
+    },
+    {
+      "pattern": "Treating a startup VP or Director title as equivalent to a FAANG staff or principal role",
+      "why_it_happens": "Startups deliberately use senior titles as compensation substitutes, and PMs mistake the title for a signal of actual scope and influence",
+      "consequence": "When the PM tries to leverage the startup title for a FAANG return, hiring managers discount the scope, and the PM faces downleveling back to Senior PM despite years of elapsed time",
+      "warning_signs": [
+        "The startup has fewer than 50 employees but is offering a VP or Director PM title",
+        "The role description has the CEO or founder listed as the ultimate product decision-maker"
+      ]
+    },
+    {
+      "pattern": "Accepting a downlevel without securing a defined promotion path",
+      "why_it_happens": "Candidates are so motivated by the brand or comp upside that they rationalize the downlevel as temporary without getting explicit commitments on timeline or criteria",
+      "consequence": "The PM spends 2–3 years at a lower level due to opaque promotion processes, competitive calibration, or org changes, effectively resetting their career trajectory",
+      "warning_signs": [
+        "Recruiter or hiring manager gives vague answers about promotion timelines ('it depends on performance')",
+        "No written or formally stated promotion criteria exist for moving from the offered level to the next"
+      ]
+    },
+    {
+      "pattern": "Benchmarking Amazon L5 as equivalent to Google L5 due to matching number",
+      "why_it_happens": "PMs assume level numbers are standardized across companies and do direct numeric comparisons without knowing that Amazon's scale is inflated",
+      "consequence": "A PM moving from Amazon L5 to Google L4 believes they have been downleveled when they have actually been leveled appropriately for their scope",
+      "warning_signs": [
+        "PM compares offer levels by number alone without checking scope equivalency tables",
+        "PM expresses surprise or offense at a Google L4 offer after holding Amazon L5"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the level code for this role, and what is the next level code above it?",
+      "what_it_reveals": "Whether the company can articulate its own leveling structure clearly and whether the PM knows how to navigate it",
+      "follow_up_if_yes": "What are the stated promotion criteria and typical time-to-promo from this level to the next?",
+      "follow_up_if_no": "Treat this as a red flag — companies without clear level codes often have opaque promotion processes that favor incumbents over new hires"
+    },
+    {
+      "question": "What is the total compensation for this offer, and how does it compare to the levels.fyi median for this level at this company?",
+      "what_it_reveals": "Whether the company is offering within its own band or soft-downleveling by underpaying relative to the stated title",
+      "follow_up_if_yes": "Confirm the comp is at or above median; if significantly above, understand why (competing offer, specialized skills, or org urgency)",
+      "follow_up_if_no": "Probe whether the lower comp reflects a lower actual level than the title suggests, or a company-wide compensation issue"
+    },
+    {
+      "question": "Who has final override authority over the roadmap and prioritization for this role?",
+      "what_it_reveals": "The real scope and autonomy of the role, which can differ dramatically from what the title implies",
+      "follow_up_if_yes": "If the answer is 'you do,' map this to a staff or principal equivalent scope regardless of title",
+      "follow_up_if_no": "If the answer is 'the CEO' or 'a more senior PM,' the role has less scope than the title implies"
+    },
+    {
+      "question": "What level did the last person in this role hold, and why did they leave?",
+      "what_it_reveals": "Whether the company is trying to backfill with someone appropriately leveled or is attempting to hire above the role's actual scope",
+      "follow_up_if_yes": "If the previous person was at a lower level, ask why the company is now hiring higher",
+      "follow_up_if_no": "If the company can't answer, it may indicate poor people-process discipline or that the role is newly created without clear scope definition"
+    },
+    {
+      "question": "Is this move increasing total compensation by more than 20%?",
+      "what_it_reveals": "Whether the financial upside is sufficient to justify any title or scope tradeoff",
+      "follow_up_if_yes": "A 20%+ comp increase with brand upgrade is likely worth a title downlevel; evaluate scope and upgrade path",
+      "follow_up_if_no": "If comp is flat or declining and the title is the same or lower, the move has no compensating factors and the decision rests entirely on scope and future optionality"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The same title at different companies represents the same level of seniority and scope",
+      "actual_reality": "Titles are internally defined and not portable; 'Senior PM' at Google (L5) is roughly equivalent in scope to what many other companies call a mid-level PM, and 'Senior PM' at Amazon is L6, not L5",
+      "implication": "Always translate titles into level codes and cross-reference against a known equivalency map before comparing offers or accepting a role"
+    },
+    {
+      "common_belief": "A higher title is always a career step forward",
+      "actual_reality": "A promotion in title without scope increase is a lateral at best; an inflated title from a lower-tier company can actively harm future hiring prospects by creating overleveling optics",
+      "implication": "Evaluate career moves by scope, compensation, and future optionality — not by whether the title on the offer letter sounds more senior"
+    },
+    {
+      "common_belief": "Startups offer senior titles because the roles are genuinely more senior",
+      "actual_reality": "Startups inflate titles because they cannot compete on cash compensation; a 'VP of Product' at a 30-person startup may have less organizational reach than an L6 Staff PM at Meta",
+      "implication": "Evaluate startup offers by decision rights and scope, not by title; model equity at conservative outcomes before treating it as real compensation"
+    },
+    {
+      "common_belief": "Amazon L5 and Google L5 are equivalent because they share the same number",
+      "actual_reality": "Amazon's L-scale runs inflated relative to FAANG peers; Amazon L5 is approximately equivalent to Google L4 and Meta IC4 in scope",
+      "implication": "When moving between Amazon and other FAANG companies, expect and accept level code differences that look like downlevels but are actually accurate scope mappings"
+    },
+    {
+      "common_belief": "Accepting a lower title at a new company is always a career step backward",
+      "actual_reality": "A title downlevel at a higher-tier company can represent a real career step forward if total comp increases significantly, scope is materially larger, or brand opens future doors that the previous company could not",
+      "implication": "Evaluate downlevel offers on the full package — comp trajectory, scope, brand, and defined upgrade path — not on the title comparison alone"
+    },
+    {
+      "common_belief": "Total comp on the offer letter represents what you'll earn",
+      "actual_reality": "If total comp is below the levels.fyi median for the stated level at that company, the offer may reflect a soft downlevel or below-band placement that signals how the company actually values the hire",
+      "implication": "Always verify offer comp against levels.fyi medians for that specific company and level code; treat below-median comp as a diagnostic signal, not just a negotiation opportunity"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate an offer's level",
+      "junior_pattern": "Reads the title on the offer letter and compares it to their current title to determine whether it's a step up, lateral, or down",
+      "senior_pattern": "Asks for the level code, cross-references against a known equivalency map, verifies comp against levels.fyi median, and evaluates scope and decision rights independently of the title",
+      "why_it_matters": "Junior evaluation leads to accepting apparent promotions that are actually laterals or downgrades; senior evaluation surfaces the real career impact of the move"
+    },
+    {
+      "dimension": "How they assess startup opportunities",
+      "junior_pattern": "Is attracted to or concerned about the title (VP, Director) and models equity optimistically as a primary compensation factor",
+      "senior_pattern": "Ignores the title entirely, asks specifically about decision rights and override authority, and models equity conservatively — accepting the role only if base and cash comp alone are satisfactory",
+      "why_it_matters": "Overweighting titles and equity at startups can lock a PM into a role that looks impressive on paper but creates overleveling problems and doesn't deliver financial upside"
+    },
+    {
+      "dimension": "How they think about accepting a downlevel",
+      "junior_pattern": "Views any title downlevel as a step backward and declines on principle, or accepts without securing explicit promotion criteria and timeline",
+      "senior_pattern": "Evaluates whether the downlevel is compensated by a tier jump, scope jump, or comp increase, and only accepts if a defined upgrade path with stated timeline is part of the offer",
+      "why_it_matters": "Reflexive rejection of downlevels causes PMs to miss real career advances; accepting without an upgrade path turns a temporary step into a permanent reset"
+    },
+    {
+      "dimension": "How they interpret cross-company level numbers",
+      "junior_pattern": "Compares level numbers directly across companies (Amazon L5 = Google L5) and feels downleveled or overleveled when the numbers differ",
+      "senior_pattern": "Knows the equivalency offsets (Amazon runs one level inflated; Google L5 ≈ Amazon L6) and translates level codes into scope terms before making any comparison",
+      "why_it_matters": "Direct number comparisons lead to misreading offers, unnecessary negotiation friction, and potentially declining appropriately-leveled roles at target companies"
+    },
+    {
+      "dimension": "How they determine the 'real' level of a role",
+      "junior_pattern": "Relies on the title and job description to infer scope and seniority",
+      "senior_pattern": "Asks the four diagnostic questions: level code, promotion criteria and time-to-promo, levels of PMs they'd work with, and the level of the previous person in the role",
+      "why_it_matters": "Job descriptions are marketing; the four diagnostic questions surface the structural reality of the role, including whether the company is trying to underhire or overhire for the position"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_pm_leveling_across_companies",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

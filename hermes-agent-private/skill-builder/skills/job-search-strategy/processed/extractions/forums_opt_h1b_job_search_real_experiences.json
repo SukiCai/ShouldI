@@ -1,0 +1,567 @@
+{
+  "source_file": "opt_h1b_job_search_real_experiences.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Verify H-1B petition history before applying",
+      "condition": "When targeting any employer as an OPT student seeking eventual H-1B sponsorship",
+      "action": "Check H1BData.info to confirm the company has filed H-1B petitions before investing application time; prioritize companies with high petition volumes (500+) over low-volume filers (1–2)",
+      "because": "A company that has never filed an H-1B petition is extremely unlikely to sponsor one; high-volume filers have institutional knowledge and processes that make sponsorship more reliable",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Start applying 8+ months before graduation, not 2–3 months",
+      "condition": "When graduating in spring (May) and targeting H-1B-sponsoring employers",
+      "action": "Begin serious applications in September of the prior year to account for H-1B lottery closing in March and the fixed October 1 start date",
+      "because": "Students who start in January are already 6–9 months behind those who started the previous September; H-1B lottery registration has a hard March deadline that cannot be moved",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Ask about sponsorship process professionally, not as a favor request",
+      "condition": "When a recruiter contact is appropriate and you need to surface the sponsorship question",
+      "action": "Ask: 'I'm an international student on F-1 OPT. Do you have a process for sponsoring H-1B petitions for candidates like me?' rather than 'will you sponsor my visa?'",
+      "because": "The former frames you as a professional navigating a known process; the latter signals you're asking for a special favor and can trigger rejection at screening",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Negotiate salary after offer, before acceptance — not mid-filing",
+      "condition": "When you have received an offer and the employer is preparing to begin H-1B filing",
+      "action": "Complete all compensation negotiation before formally accepting; do not attempt to renegotiate after H-1B filing process has begun",
+      "because": "Mid-process compensation changes create administrative complications for the employer's LCA and H-1B petition; multiple community reports confirm this timing rule",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Apply at 50+ applications per week, not 10–15",
+      "condition": "When on OPT in a competitive hiring cycle and facing widespread employer rejection at screening due to sponsorship concerns",
+      "action": "Use systematically targeted, customized applications at high volume — not spray-and-pray, but verified-company-targeted at 50+ per week",
+      "because": "International students face 30–50% employer rejection at screening stage due to sponsorship concerns; traditional volumes produce too few responses to generate sufficient pipeline",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Verify employer is E-Verify enrolled before targeting for STEM OPT",
+      "condition": "When planning to file for STEM OPT extension",
+      "action": "Check dol.gov/agencies/whd/e-verify to confirm the employer is E-Verify enrolled before accepting an offer or prioritizing that employer",
+      "because": "E-Verify enrollment is a legal requirement for STEM OPT extension; an employer who is not enrolled cannot support your STEM OPT regardless of willingness",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Have a written Plan B by December before the lottery year",
+      "condition": "When any OPT student is targeting H-1B and the lottery is approaching",
+      "action": "Identify and document a concrete alternative plan (Canada, return home, enroll in new program) before March lottery — not 'I'll figure it out if not selected'",
+      "because": "If not selected, you have only 2–3 months to resolve status before OPT expires; students without a pre-identified plan face genuine visa crisis with no time to act",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer H-1B petition volume",
+      "why_it_matters": "A company with 2 prior petitions lacks the institutional knowledge, legal infrastructure, and process experience of a company with 500; even willing low-volume sponsors frequently fail to execute",
+      "how_to_assess": "Look up petition count on H1BData.info; treat <10 petitions as a yellow flag requiring direct recruiter confirmation; treat 0 petitions as a near-disqualifier",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Application start timing relative to H-1B lottery calendar",
+      "why_it_matters": "The H-1B lottery has a fixed March registration window and October 1 start; students who begin job searching late cannot retroactively enter the lottery cycle for that year",
+      "how_to_assess": "Count backward from March lottery registration: to be employed and petition-ready by March, you need an offer by January at the latest, which requires applying by September of the prior year",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "OPT unemployment day count",
+      "why_it_matters": "OPT includes a maximum 90 aggregate unemployment days (150 for STEM OPT); burning unemployment days before finding work can push students into violation before offers arrive",
+      "how_to_assess": "Count from OPT start date (not graduation date); track days not employed cumulatively; do not assume summer is 'free time'",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Cap-exempt vs. cap-subject employment",
+      "why_it_matters": "Cap-exempt positions (university research labs, qualifying non-profits) avoid the annual H-1B lottery entirely, eliminating lottery risk at the cost of typically lower compensation",
+      "how_to_assess": "Determine whether the hiring institution qualifies as cap-exempt; compare compensation trade-off ($20,000–$40,000 lower than equivalent industry roles per case study data)",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer type (direct hire vs. IT consulting/body shop)",
+      "why_it_matters": "IT consulting and body shop arrangements carry 12–20% H-1B denial rates and 35–40% RFE rates; denial means losing both the petition and the ability to work for the end client",
+      "how_to_assess": "Identify whether the employer is the end client or a staffing intermediary; if staffing, research their specific H-1B denial/RFE history on H1BData.info",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Written vs. verbal sponsorship commitment",
+      "why_it_matters": "A verbal or informal promise to sponsor is not a legal commitment; acting on an unwritten promise has led to students being left without status when the promise was not honored",
+      "how_to_assess": "Require at minimum an email explicitly stating the company intends to file an H-1B petition; verbal statements from hiring managers are insufficient",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "LCA prevailing wage level relative to negotiation ask",
+      "why_it_matters": "Asking for wages above the level already certified on the employer's LCA (e.g., requesting Level III when LCA was filed at Level I/II) creates a compliance issue for the employer and can trigger offer withdrawal",
+      "how_to_assess": "Understand what prevailing wage level the employer is offering relative to the role; do not negotiate base salary below the committed prevailing wage or above the certified level without understanding LCA implications",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing cap-exempt university or non-profit research employment to avoid H-1B lottery",
+      "unstated_consequence": "Compensation is typically $20,000–$40,000 lower than equivalent industry roles; this gap compounds over years if the student remains in cap-exempt employment",
+      "who_it_affects": "High-earning-potential CS/AI/engineering graduates who could command top industry salaries but sacrifice income for status stability",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Accepting an offer from an employer who verbally promises H-1B sponsorship without written confirmation",
+      "unstated_consequence": "The promise carries no legal weight; if the employer does not file, the student loses employment authorization and may have no recourse",
+      "who_it_affects": "Students who accepted lower offers or passed on other opportunities based on the sponsorship promise",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Getting selected in the H-1B lottery in March",
+      "unstated_consequence": "You cannot change employers to a new H-1B petition without complications during the cap-gap period; at-will employment rules still apply, so layoffs between March selection and October 1 start create a genuine status crisis",
+      "who_it_affects": "Students at companies undergoing layoffs or restructuring in the April–September window post-lottery",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Applying to startups that express willingness to 'figure out' sponsorship",
+      "unstated_consequence": "More than 70% of startups who say this do not successfully execute H-1B sponsorship before OPT expires; by the time this becomes clear, the student has lost months they could have spent targeting reliable sponsors",
+      "who_it_affects": "Students attracted to startup culture or equity compensation who deprioritize sponsorship infrastructure",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Waiting until OPT EAD arrives before beginning job applications",
+      "unstated_consequence": "The 90-day unemployment clock starts on the date printed on the EAD card, not when you find a job; every day between EAD start and first employment counts against the cap",
+      "who_it_affects": "Students who believe they cannot work until they have the physical card or who treat EAD arrival as the trigger to start searching",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on a single H-1B lottery attempt without a Plan B",
+      "unstated_consequence": "If not selected, you learn in April with only 2–3 months before OPT expiry; there is insufficient time to execute complex alternatives (Canada immigration, new school enrollment) from a standing start",
+      "who_it_affects": "Students who are confident they will be selected or who avoid thinking about the non-selection scenario",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Starting job search 2–3 months before graduation instead of 8–9 months before",
+      "why_it_happens": "Career services offices advise a 3-month timeline; students follow institutional guidance without understanding the H-1B lottery calendar imposes a separate, earlier deadline",
+      "consequence": "Miss the H-1B lottery registration window for that year; forced to spend a full additional year on OPT or leave the US",
+      "warning_signs": [
+        "Student says 'I'll start applying after I finish my thesis'",
+        "Student is graduating in May but has not applied anywhere by December"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Applying to IT consulting / body shop firms as a primary H-1B path",
+      "why_it_happens": "These firms actively recruit international students, promise sponsorship, and have visible H-1B petition histories; students interpret volume of petitions as reliability without understanding the denial/RFE rate differential",
+      "consequence": "12–20% denial rates and 35–40% RFE rates; denial means loss of work authorization for the end client role and months of processing time wasted",
+      "warning_signs": [
+        "Employer is a staffing intermediary placing the student at a client site",
+        "Employer emphasizes 'we sponsor many H-1Bs' without disclosing denial rates"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Burning OPT unemployment days during summer after graduation without tracking",
+      "why_it_happens": "Students treat the period after graduation as a natural break before job searching; the 90-day aggregate clock is not intuitive and schools often under-explain it",
+      "consequence": "Students who graduate in May, rest in summer, and start applying in September are often near or in violation of the 90-day cap before receiving any offer",
+      "warning_signs": [
+        "Student graduated in May but has not started working or actively applying by July",
+        "Student is unaware of the aggregate (not consecutive) nature of the unemployment clock"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Accepting a startup's verbal sponsorship promise without written confirmation and without maintaining other options",
+      "why_it_happens": "The promise feels real and the student wants to stop job searching; sunk cost from interview process makes it psychologically easier to trust the promise than to keep applying",
+      "consequence": "When the startup fails to execute, the student has lost months, lost competing offers, and may face status expiry",
+      "warning_signs": [
+        "Hiring manager says 'we'll figure out the visa stuff' without specifics",
+        "Offer letter is silent on H-1B sponsorship intention"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Asking about H-1B sponsorship before receiving an offer",
+      "why_it_happens": "Students want to avoid wasting time on non-sponsoring employers; the logic is efficient but the execution filters them out at screening",
+      "consequence": "Automatic rejection at screening stage at many companies that would otherwise consider the candidate",
+      "warning_signs": [
+        "Student mentions visa status in cover letter unprompted",
+        "Student asks 'do you sponsor H-1B?' as a first question to a recruiter"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the employer ever filed an H-1B petition, and if so, how many?",
+      "what_it_reveals": "Whether the employer has the legal infrastructure, institutional knowledge, and demonstrated willingness to sponsor H-1B petitions",
+      "follow_up_if_yes": "What is their RFE and denial rate? Are they a direct employer or a staffing intermediary?",
+      "follow_up_if_no": "This employer is a near-disqualifier for H-1B sponsorship; is there a compelling reason to apply anyway?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What date does your OPT EAD card show as the start date, and how many days have you not been employed since then?",
+      "what_it_reveals": "How many of your 90 (or 150 STEM) aggregate unemployment days you have already consumed",
+      "follow_up_if_yes": "If over 60 days, immediate employment or status change is urgent; all other job search strategy is secondary",
+      "follow_up_if_no": "If under 30 days, you have runway; focus on quality targeting rather than panic applications",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have a written document (email or letter) from the employer stating their intent to file an H-1B petition on your behalf?",
+      "what_it_reveals": "Whether the sponsorship commitment is real and actionable or merely a verbal/informal assurance",
+      "follow_up_if_yes": "Does it specify a timeline and the attorney/firm they will use? Is the LCA filed or in progress?",
+      "follow_up_if_no": "The commitment is not legally binding; you should continue applying or formally request written confirmation before stopping your search",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is your graduation month, and have you mapped it against the H-1B lottery calendar?",
+      "what_it_reveals": "Whether the student understands the timing constraints — specifically that March lottery registration requires employment offers in place well before that deadline",
+      "follow_up_if_yes": "Have they started applying at least 8 months before graduation to allow for offer, onboarding, and lottery registration?",
+      "follow_up_if_no": "They may be on a career-services timeline (3 months) that is incompatible with H-1B lottery requirements",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "If you are not selected in the H-1B lottery, what is your specific Plan B?",
+      "what_it_reveals": "Whether the student has genuinely prepared for non-selection or is assuming selection will happen",
+      "follow_up_if_yes": "Is the Plan B actually executable in 2–3 months (the window between April notification and OPT expiry)?",
+      "follow_up_if_no": "This is a critical gap; the student needs to develop a concrete alternative before March, not after",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your target employer a direct employer or a staffing intermediary placing you at a client site?",
+      "what_it_reveals": "Whether the student is exposed to the elevated denial and RFE rates associated with IT consulting and body shop arrangements",
+      "follow_up_if_yes": "If staffing: are they aware of the 12–20% denial and 35–40% RFE rates? Have they researched this specific firm's history?",
+      "follow_up_if_no": "Direct employment is the lower-risk path; confirm E-Verify enrollment if pursuing STEM OPT",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Most employers are open to H-1B sponsorship; you just need to find a job and ask",
+      "actual_reality": "International students face 30–50% employer rejection at screening stage specifically due to sponsorship concerns; the majority of employers either have no process or an explicit 'no OPT' filter",
+      "implication": "Job search strategy must be built around pre-verified sponsoring employers, not a general market search with visa status disclosed late",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "IT consulting and body shop firms are a reliable H-1B sponsorship pathway because they file many petitions",
+      "actual_reality": "These firms have 12–20% denial rates and 35–40% RFE rates — significantly higher than direct employers; volume of filings does not indicate reliability of outcomes",
+      "implication": "High petition volume is not a proxy for sponsorship quality; students should research denial rates specifically, not just filing counts",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Once selected in the H-1B lottery, your employment situation is secure until October 1",
+      "actual_reality": "At-will employment rules still apply during cap-gap; layoffs between March selection and October 1 start are a documented phenomenon and create genuine status crises",
+      "implication": "Lottery selection does not create employment security; students should maintain professional performance and relationships and understand their options if laid off during cap-gap",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Startups that say 'we'll figure out the visa' are a viable option if the job is a good fit",
+      "actual_reality": "More than 70% of startups who express informal willingness to sponsor do not successfully execute H-1B sponsorship before OPT expires",
+      "implication": "Startup sponsorship promises without prior H-1B petition history should be treated as near-disqualifiers, not a reason to stop searching",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Negotiating salary aggressively after receiving an offer is always the right move",
+      "actual_reality": "Asking for wages above the LCA-certified prevailing wage level creates a compliance problem for the employer and can trigger offer withdrawal; some negotiation levers (signing bonus, remote work) are safe while others (above-LCA base) are risky",
+      "implication": "Salary negotiation for H-1B candidates requires understanding the LCA prevailing wage structure before making any ask",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The OPT year gives you a full year to find a job after graduation",
+      "actual_reality": "The 90-day unemployment clock runs from the OPT EAD start date; students who delay job searching after graduation consume this window before they find work, sometimes triggering violations",
+      "implication": "Job searching must begin before graduation and accelerate immediately upon EAD activation, not after a post-graduation rest period",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Application volume and targeting strategy",
+      "naive_pattern": "Sends 10–15 applications per week to a broad mix of companies, assumes quality over quantity, does not pre-screen for H-1B history",
+      "informed_pattern": "Sends 50+ applications per week to a pre-verified list of employers with confirmed H-1B petition history; customizes for role type but screens employer eligibility first",
+      "why_it_matters": "30–50% of employers reject at screening due to sponsorship concerns; without pre-screening, a large fraction of application effort produces zero pipeline",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Timeline planning relative to H-1B lottery",
+      "naive_pattern": "Follows career services advice to start applying 3 months before graduation; unaware that H-1B lottery closes in March",
+      "informed_pattern": "Maps graduation date backward from the March lottery registration deadline; starts applying 8–9 months before graduation to ensure offers are in place in time",
+      "why_it_matters": "Missing the lottery cycle means spending an additional year on OPT (if eligible) or leaving the US; there is no way to enter the lottery retroactively",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Handling the sponsorship question with recruiters",
+      "naive_pattern": "Asks 'will you sponsor my H-1B?' early in recruiter conversations, or includes visa status in cover letter unprompted",
+      "informed_pattern": "Frames the question professionally after establishing fit: 'I'm on F-1 OPT — do you have a process for H-1B sponsorship for candidates like me?'; delays the question until appropriate in the process",
+      "why_it_matters": "Early framing as 'asking a favor' triggers rejection at screening; professional framing signals self-sufficiency and reduces friction",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating Plan B for lottery non-selection",
+      "naive_pattern": "Assumes they will be selected; has no Plan B or a vague notion of 'figuring it out' if not selected",
+      "informed_pattern": "Has a specific, executable alternative (Canada pathway, new degree program enrollment, return home plan) documented before the March lottery",
+      "why_it_matters": "Non-selection is notified in April; OPT may expire within 2–3 months; vague plans cannot be executed in that window",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating sponsorship commitment",
+      "naive_pattern": "Accepts a verbal or informal promise to sponsor as sufficient confirmation; stops applying after receiving such a promise",
+      "informed_pattern": "Requires written confirmation (email at minimum) explicitly stating intent to file H-1B petition; continues applying until petition is actually filed",
+      "why_it_matters": "Verbal commitments are not legally binding; students who relied on them have been left without status when employers did not follow through",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Starting to apply 3 months before graduation gives you enough time to get an H-1B sponsorship job",
+      "why_believed": "This is the standard advice from university career services offices; it sounds reasonable for a normal job search",
+      "actual_rule": "H-1B lottery registration closes in March with a fixed October 1 start date; to be petition-ready by March, students need offers by January, requiring applications to begin by September of the prior year — 8–9 months before graduation",
+      "real_consequence": "Students following the 3-month timeline miss the lottery registration window for that year and must spend an additional year on OPT or leave the US",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "If a startup says they'll figure out the visa, they will — they just need to hire the right attorney",
+      "why_believed": "It feels like a solvable administrative problem; the startup seems well-intentioned and motivated",
+      "actual_rule": "More than 70% of startups who informally promise H-1B sponsorship do not successfully execute before OPT expires; intent does not equal institutional capability",
+      "real_consequence": "Student's OPT expires while the startup is still 'figuring it out'; student loses work authorization with no fallback",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "A lot of H-1B petitions filed = reliable sponsor",
+      "why_believed": "More petitions seems to indicate more experience and willingness; the logic is directionally intuitive",
+      "actual_rule": "IT consulting and body shop firms file large volumes of H-1B petitions but carry 12–20% denial rates and 35–40% RFE rates; volume of filings does not indicate favorable outcomes for the individual",
+      "real_consequence": "Student targets high-volume filers assuming safety, ends up with a denied or RFE-riddled petition and months of lost time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Once you're in cap-gap, your job situation is stable until October 1",
+      "why_believed": "Cap-gap is presented as a protective bridge provision; students assume it protects their employment, not just their status",
+      "actual_rule": "Cap-gap extends immigration status automatically but does not change at-will employment; layoffs during the cap-gap window are a documented real phenomenon",
+      "real_consequence": "Student is laid off between March and October during cap-gap, loses both the job and the H-1B transition opportunity with no status fallback",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You have a full year on OPT to find a job — there's no rush after graduation",
+      "why_believed": "OPT is described as a 12-month (or 36-month STEM) authorization period, which sounds like 12 months of free time to search",
+      "actual_rule": "The 90-day aggregate unemployment cap runs from the EAD start date; taking the summer off after May graduation can exhaust the unemployment window before offers arrive",
+      "real_consequence": "Student violates OPT terms by exceeding 90 days of aggregate unemployment, jeopardizing current and future immigration status",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Asking a company 'will you sponsor my H-1B?' early shows that you're being transparent and efficient",
+      "why_believed": "Asking early feels mutually respectful — saving both parties time if the answer is no",
+      "actual_rule": "At many companies, this question triggers automatic rejection at screening; framing it as 'do you have a process for sponsoring candidates like me?' after establishing fit is the appropriate professional approach",
+      "real_consequence": "Qualified candidates are screened out before reaching interviews at companies that would otherwise have considered them",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "AI/ML international graduate student facing H-1B lottery uncertainty and competitive research job market",
+      "decision": "Pursued cap-exempt research associate positions at university labs rather than industry roles, avoiding the H-1B lottery entirely",
+      "outcome": "Secured research associate position under university's cap-exempt H-1B framework with no lottery participation required",
+      "lesson": "Cap-exempt university and non-profit research positions are a legitimate strategic alternative for international students seeking to avoid lottery risk; the trade-off is $20,000–$40,000 lower compensation than equivalent industry roles, which must be consciously evaluated",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "CS MS graduate targeting spring 2025 graduation, seeking H-1B-sponsoring employer",
+      "decision": "Started applications in September 2024 (8 months before graduation); pre-screened all target employers via H1BData.info; maintained two customized resume versions for different role types",
+      "outcome": "Two job offers by mid-2025; successfully selected in FY-2026 H-1B lottery",
+      "lesson": "Early start (8 months pre-graduation), pre-verified employer targeting, and tailored application materials produced offers and lottery success; the combination of timeline discipline and employer research was the differentiating factor",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'should I mention my visa status upfront so I don't waste time with companies that won't sponsor?'",
+      "underlying_state": "Rejection anxiety and a desire to regain control by filtering out bad outcomes early; feels like efficiency but is actually avoidance",
+      "how_it_manifests": "Disclosing visa status in cover letters or opening recruiter messages; asking about sponsorship as a first question before any fit assessment",
+      "expert_move": "Reframe: you are not responsible for pre-qualifying employers before they meet you. Your job is to get into the room. The sponsorship conversation happens after they want you — and many employers who 'don't usually sponsor' will for the right candidate",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student says 'I'll figure out Plan B if I don't get selected in the lottery' when asked about non-selection",
+      "underlying_state": "Optimism bias combined with decision avoidance; the probability of selection (~20–30% in recent years) is treated as a near-certainty because confronting the alternative is emotionally costly",
+      "how_it_manifests": "No concrete Plan B developed before March; student has never researched Canada PGWP pathways, new degree enrollment, or return-home options",
+      "expert_move": "Force the concrete: 'If you find out April 1 that you were not selected, and your OPT expires June 30, what is the first phone call you make?' If they cannot answer this, the Plan B doesn't exist",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student stops applying after receiving a verbal sponsorship promise from a startup or small employer",
+      "underlying_state": "Sunk cost and relief — the emotional exhaustion of job searching makes any positive signal feel like a resolution; continuing to apply after a 'yes' feels like betrayal of the relationship",
+      "how_it_manifests": "Student accepts verbal promise as sufficient confirmation; cancels other interviews; waits for formal offer that never comes or comes without H-1B commitment",
+      "expert_move": "Normalize continued searching: 'A verbal promise is a conversation, not a commitment. You're not betraying anyone by keeping your options open until you have a written offer with explicit H-1B language. Professional relationships survive this.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student asks whether to apply to a startup with good culture fit despite its lack of H-1B history, describing it as a 'tough decision'",
+      "underlying_state": "Cultural fit and excitement about the role create motivated reasoning to overlook structural red flags; the desire for a specific outcome distorts risk assessment",
+      "how_it_manifests": "Student seeks community validation to apply anyway; frames H-1B history absence as a minor concern rather than a near-disqualifier",
+      "expert_move": "Separate the job decision from the visa decision: 'Would you take this job if it required you to leave the US in 12 months with no path to stay? Because that's what 70% of startup sponsorship promises lead to. If yes, great — go in clear-eyed. If no, that's your answer.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student frames their situation as 'I have a year on OPT so I have time to be selective'",
+      "underlying_state": "Availability bias — the 12-month OPT authorization feels like 12 months of runway, when the effective window is the 90-day unemployment cap minus days already consumed",
+      "how_it_manifests": "Student takes a post-graduation summer break; begins serious applications in September when the unemployment clock has already consumed 3+ months",
+      "expert_move": "Make the clock visible: 'Your OPT isn't 12 months of job searching. It's 90 days of unemployment. Pull up your EAD and count from day one. How many days have you already used?'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I'm trying to figure out which companies will sponsor me before I apply, so I don't waste time",
+      "reframe": "You're not filtering employers — you're filtering yourself out. Verify H-1B history via H1BData.info, then apply and let the process surface the real answer",
+      "why_it_works": "Shifts the student from a defensive stance (pre-filtering to avoid rejection) to an offensive stance (targeted application with verification); separates legitimate due diligence (H-1B history check) from counterproductive self-filtering (asking about sponsorship before interviews)",
+      "example_language": "Check their petition history, not their willingness — willingness you earn in the interview, history you can verify in two minutes",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I'm waiting to see if I get selected in the lottery before I think about what to do next",
+      "reframe": "The lottery is not a decision — it's an event. Your decisions happen before and after it. What have you already decided to do if you're not selected?",
+      "why_it_works": "Breaks the passivity loop by separating the uncontrollable event (lottery outcome) from the controllable decision (Plan B preparation); forces concrete planning rather than suspended waiting",
+      "example_language": "By December, you should be able to answer 'what happens if I'm not selected' in one sentence with a real plan, not a shrug",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "My OPT gives me a year to find a job, so I can be selective and take my time",
+      "reframe": "Your OPT gives you 90 days of unemployment, not a year of searching. The year is how long you can work — not how long you can look",
+      "why_it_works": "Corrects a fundamental misunderstanding about the structure of OPT authorization; transforms urgency from abstract to concrete by anchoring on the actual constraint (90 days) rather than the perceived constraint (12 months)",
+      "example_language": "Pull up your EAD. Count the days since it started. That's how much unemployment time you've used. How many do you have left?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "The startup said they'll sponsor me — should I stop applying to other places?",
+      "reframe": "A sponsorship conversation is not a sponsorship commitment. You haven't received an offer yet, let alone a written H-1B intent. You're not in a relationship with them — you're in a process",
+      "why_it_works": "Names the emotional confusion between social commitment (feeling obligated to reciprocate the startup's enthusiasm) and legal/professional reality (nothing is binding without written commitment); removes the guilt from continued searching",
+      "example_language": "When they file the petition, you can stop applying. Until then, you're still a candidate everywhere",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "forums_opt_h1b_job_search_real_experiences",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

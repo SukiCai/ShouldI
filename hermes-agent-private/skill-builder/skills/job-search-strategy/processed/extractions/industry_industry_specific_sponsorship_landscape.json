@@ -1,0 +1,337 @@
+{
+  "source_file": "industry_specific_sponsorship_landscape.txt",
+  "heuristics": [
+    {
+      "rule": "Apply tech recruiting logic only to tech; each industry has a different sponsorship and recruiting structure",
+      "condition": "When an international student is job searching in finance, consulting, biotech, or policy...",
+      "action": "...use industry-specific sponsorship data, recruiting calendars, and target employer lists rather than generic international student advice",
+      "because": "Most international student job search advice is implicitly written for tech, producing systematically wrong guidance when applied to other industries"
+    },
+    {
+      "rule": "Target bulge-bracket banks and large asset managers for finance sponsorship; avoid boutiques unless verified",
+      "condition": "When an international student is pursuing investment banking or asset management...",
+      "action": "...prioritize Goldman Sachs, JPMorgan, Morgan Stanley, Citi, BofA, Barclays, Deutsche Bank and large asset managers over middle-market or boutique firms",
+      "because": "Middle-market banks sponsor inconsistently and boutique investment banks (10–30 people) often do not sponsor at all"
+    },
+    {
+      "rule": "Verify sponsorship via USCIS data before investing significant time in any smaller or unknown employer",
+      "condition": "When the employer is not a well-known large company in any sector...",
+      "action": "...look up their H-1B petition history in USCIS data before applying or pursuing their process",
+      "because": "Smaller firms rarely disclose sponsorship limitations upfront, and investing time in a non-sponsor wastes OPT runway"
+    },
+    {
+      "rule": "For finance recruiting, network to uncover sponsorship policies before applying because the information is opaque",
+      "condition": "When targeting finance firms where sponsorship status is unclear...",
+      "action": "...network into contacts at those firms to learn their sponsorship policy before committing to the application process",
+      "because": "Finance recruiting is much more opaque than tech, with less public information about which firms sponsor"
+    },
+    {
+      "rule": "Treat the internship-to-return-offer path as the primary strategy in tech and MBB consulting",
+      "condition": "When targeting large tech companies or MBB consulting firms...",
+      "action": "...prioritize securing an internship over directly applying for full-time roles",
+      "because": "The internship → return offer path works best in these industries, with MBB return offer rates at 70–85% for summer associates"
+    },
+    {
+      "rule": "Use cap-exempt employment as a bridge after multiple H-1B lottery losses",
+      "condition": "When an international student has lost the H-1B lottery multiple years in a row...",
+      "action": "...pursue employment at universities, research nonprofits, or affiliated research institutions that are cap-exempt",
+      "because": "Cap-exempt employers can file H-1B petitions at any time without lottery, eliminating the annual lottery risk"
+    },
+    {
+      "rule": "For tech startups, treat companies under 50 people as high-risk for sponsorship regardless of verbal assurances",
+      "condition": "When a small tech startup says they will 'figure out sponsorship'...",
+      "action": "...treat this as a red flag and verify whether they have ever successfully sponsored an H-1B before accepting an offer",
+      "because": "Tech startups under 50 people rarely have immigration infrastructure, and a CTO who has never done it before creates execution risk"
+    },
+    {
+      "rule": "For life sciences PhDs, prioritize large pharma and established biotech for maximum sponsorship reliability",
+      "condition": "When a PhD graduate in biology, chemistry, or pharmacology is job searching...",
+      "action": "...target Pfizer, Moderna, Genentech, Merck, J&J, BMS and other large established companies first",
+      "because": "Large pharma sponsors reliably while CROs and smaller biotechs are variable, and the STEM OPT + large pharma combination is one of the most reliable pathways in life sciences"
+    },
+    {
+      "rule": "Missing fall recruiting is nearly catastrophic for MBB consulting via on-campus routes",
+      "condition": "When targeting McKinsey, BCG, or Bain through campus recruiting...",
+      "action": "...prioritize fall recruiting (September–November) as the primary application window, treating it as non-negotiable",
+      "because": "MBB recruiting is heavily structured around fall campus cycles, and missing it forecloses the primary access route"
+    },
+    {
+      "rule": "Geographic flexibility significantly expands employer pool in biotech",
+      "condition": "When a life sciences candidate is restricting their job search geographically...",
+      "action": "...expand willingness to work in San Francisco Bay Area, Boston/Cambridge, San Diego, or Research Triangle (NC)",
+      "because": "Biotech sponsoring employers are geographically concentrated in these clusters, and geographic restriction artificially narrows an already concentrated market"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Industry-specific sponsorship reliability",
+      "why_it_matters": "Sponsorship rates differ dramatically by industry — applying the same strategy across industries produces wrong outcomes",
+      "how_to_assess": "Cross-reference USCIS H-1B petition data for specific employers in the target industry; consult the industry comparison matrix",
+      "weight": "high"
+    },
+    {
+      "factor": "Company size within the industry",
+      "why_it_matters": "Even in sponsorship-friendly industries, small companies (under 50 people in tech, boutiques in finance/consulting) often cannot or do not sponsor",
+      "how_to_assess": "Check USCIS historical petition data; ask directly whether the company has previously sponsored H-1B and who handled immigration",
+      "weight": "high"
+    },
+    {
+      "factor": "STEM OPT eligibility of the degree",
+      "why_it_matters": "STEM OPT extends work authorization to 3 years, dramatically changing the risk profile for employers and providing more time before H-1B dependency",
+      "how_to_assess": "Check whether the degree program is on the DHS STEM OPT designated degree program list; finance degrees are less often STEM-designated than CS or engineering",
+      "weight": "high"
+    },
+    {
+      "factor": "Recruiting calendar alignment",
+      "why_it_matters": "Each industry has a different recruiting calendar; applying at the wrong time makes candidates structurally invisible",
+      "how_to_assess": "Map target industry recruiting windows: finance is August–November (earliest), consulting is September–November, tech is year-round with fall/spring peaks",
+      "weight": "high"
+    },
+    {
+      "factor": "Cap-exempt vs. cap-subject employer status",
+      "why_it_matters": "Cap-exempt employers eliminate H-1B lottery risk entirely, which is the single largest source of employment uncertainty for international students",
+      "how_to_assess": "Determine if employer is a university, affiliated research institution, or nonprofit with primary research/educational purpose",
+      "weight": "high"
+    },
+    {
+      "factor": "H-1B petition complexity by role type",
+      "why_it_matters": "Some roles (e.g., finance) face higher RFE/denial rates because the specialty occupation requirement is more contested, creating additional risk even at sponsoring firms",
+      "how_to_assess": "Research whether the role type has historically faced specialty occupation challenges; finance roles are more contested than software engineering roles",
+      "weight": "medium"
+    },
+    {
+      "factor": "Geographic concentration of target industry",
+      "why_it_matters": "In concentrated industries like biotech, geographic flexibility directly expands the available pool of sponsoring employers",
+      "how_to_assess": "Identify geographic hubs for the target industry; assess whether candidate is willing to relocate to those hubs",
+      "weight": "medium"
+    },
+    {
+      "factor": "Degree level relative to industry norms",
+      "why_it_matters": "Sponsorship access differs significantly by degree level in some industries — biotech is excellent for PhDs but limited for undergrads",
+      "how_to_assess": "Research typical credential requirements at target employers; understand whether the role being targeted typically requires a specific degree level",
+      "weight": "medium"
+    },
+    {
+      "factor": "Compensation tolerance for immigration stability",
+      "why_it_matters": "Cap-exempt employers pay 20–40% less than private sector equivalents — candidates must decide whether immigration certainty is worth the pay cut",
+      "how_to_assess": "Compare compensation ranges at cap-exempt vs. cap-subject employers in the same field; calculate total expected value given lottery odds",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing boutique investment banks or consulting firms instead of large firms",
+      "unstated_consequence": "Many boutiques do not sponsor and will not tell you upfront, consuming significant recruiting time before the issue surfaces",
+      "who_it_affects": "Finance and consulting international students who optimize for prestige of boutique brand without verifying sponsorship first"
+    },
+    {
+      "choice": "Joining a cap-exempt employer (university, research nonprofit) for immigration stability",
+      "unstated_consequence": "Compensation is 20–40% lower than private sector equivalents, compounding over years if the role becomes long-term",
+      "who_it_affects": "International students who use cap-exempt employment as a bridge but stay longer than planned due to inertia or green card processing timelines"
+    },
+    {
+      "choice": "Accepting a role at a tech startup under 50 people based on a verbal promise to 'figure out sponsorship'",
+      "unstated_consequence": "The company may lack immigration infrastructure, causing the H-1B petition to be filed incorrectly, delayed, or abandoned under cost pressure",
+      "who_it_affects": "International students prioritizing role quality or startup equity over immigration certainty"
+    },
+    {
+      "choice": "Targeting finance roles at large banks for sponsorship reliability",
+      "unstated_consequence": "Finance H-1B petitions face higher specialty occupation scrutiny, meaning even well-resourced sponsors carry more petition risk than equivalent tech roles",
+      "who_it_affects": "International students who assume large bank = automatic H-1B approval analogous to large tech company"
+    },
+    {
+      "choice": "Restricting job search geography in biotech/life sciences",
+      "unstated_consequence": "The pool of sponsoring biotech employers is heavily concentrated in four geographic clusters, so geographic restriction dramatically shrinks the realistic employer target list",
+      "who_it_affects": "Life sciences candidates with geographic constraints due to family, relationships, or cost of living preferences"
+    },
+    {
+      "choice": "Waiting until offer stage to disclose visa status in finance",
+      "unstated_consequence": "Finance firms sometimes screen out international candidates during initial screens — early disclosure can save time even if it costs some opportunities",
+      "who_it_affects": "International students applying a tech-optimized disclosure strategy (wait until offer) to finance recruiting without understanding the sector difference"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying tech job search advice wholesale to non-tech industries",
+      "why_it_happens": "Most available international student job search resources are implicitly written for tech; candidates assume the advice generalizes",
+      "consequence": "Wrong recruiting calendar, wrong disclosure timing, wrong employer targeting — systematic misalignment with how non-tech industries actually hire",
+      "warning_signs": [
+        "Using year-round rolling application strategy for finance or MBB consulting",
+        "Targeting tech-style networking (LinkedIn cold outreach) as primary strategy for finance where in-person relationships dominate"
+      ]
+    },
+    {
+      "pattern": "Investing significant time in boutique finance or consulting firms without verifying sponsorship first",
+      "why_it_happens": "Boutique firms are prestigious and attractive, and they don't proactively disclose sponsorship limitations; candidates assume prestige correlates with sponsorship",
+      "consequence": "Wasted OPT runway and recruiting cycles on firms that will ultimately decline to sponsor",
+      "warning_signs": [
+        "No USCIS petition history found for the firm",
+        "Firm has fewer than 30 employees and no dedicated HR or legal infrastructure"
+      ]
+    },
+    {
+      "pattern": "Missing fall recruiting windows for finance and consulting by treating them like tech rolling applications",
+      "why_it_happens": "Candidates don't realize how early and structured finance and consulting recruiting is, especially for internships",
+      "consequence": "Structural exclusion from the primary internship pipeline for that year, with limited remediation options",
+      "warning_signs": [
+        "Starting finance or consulting job search in January or February expecting the same access as October",
+        "Not attending fall campus recruiting events at the start of the academic year"
+      ]
+    },
+    {
+      "pattern": "Assuming large company = automatic sponsorship in all industries",
+      "why_it_happens": "Large tech companies do sponsor aggressively and predictably, so candidates extrapolate this to large companies in other sectors",
+      "consequence": "Pursuing companies that are large but inconsistent sponsors (middle-market banks, Tier 2 consulting boutiques) without verification",
+      "warning_signs": [
+        "Not checking USCIS petition data for firms outside of FAANG-equivalent",
+        "Relying only on Glassdoor or word-of-mouth rather than actual petition records"
+      ]
+    },
+    {
+      "pattern": "Undergrads in life sciences targeting roles without accounting for degree-level sponsorship differences",
+      "why_it_happens": "Biotech's reputation as sponsorship-friendly is built primarily on PhD-level hiring; undergrads assume the same conditions apply",
+      "consequence": "Frustration and failed applications at biotech firms that sponsor PhDs but not undergrad research associates",
+      "warning_signs": [
+        "Targeting biotech companies known primarily as PhD employers without identifying undergrad-specific hiring programs",
+        "CROs or small biotechs appearing in the target list without sponsorship verification"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Which industry are you targeting, and are you using advice specific to that industry or general international student advice?",
+      "what_it_reveals": "Whether the candidate's strategy is calibrated to the actual sponsorship and recruiting dynamics of their target industry",
+      "follow_up_if_yes": "What is the recruiting calendar for that industry, and have you mapped your application timeline against it?",
+      "follow_up_if_no": "You may be applying tech-optimized advice to a non-tech context — revalidate your targeting, disclosure timing, and recruiting calendar"
+    },
+    {
+      "question": "Have you verified sponsorship for each target employer using USCIS petition data, not just reputation or verbal assurances?",
+      "what_it_reveals": "Whether the candidate's employer list is based on actual evidence or assumptions — reputation and size do not reliably predict sponsorship in non-tech industries",
+      "follow_up_if_yes": "What did the petition history show, and did you filter out firms with no prior H-1B filings?",
+      "follow_up_if_no": "Significant risk of investing time in non-sponsors, especially in finance boutiques and smaller consulting firms"
+    },
+    {
+      "question": "Is your degree program STEM-designated for OPT purposes?",
+      "what_it_reveals": "Whether the candidate has 1 year or 3 years of OPT, which fundamentally changes the timeline and risk exposure before H-1B dependency",
+      "follow_up_if_yes": "Are you targeting employers who are familiar with STEM OPT extensions and willing to wait through the OPT window before H-1B filing?",
+      "follow_up_if_no": "With only 1 year of OPT, your lottery exposure is immediate — prioritize large verified sponsors and consider cap-exempt employment as a contingency"
+    },
+    {
+      "question": "Have you lost the H-1B lottery, and if so, how many times?",
+      "what_it_reveals": "Whether the candidate needs to consider alternative immigration pathways, including cap-exempt employment",
+      "follow_up_if_yes": "Have you identified cap-exempt employers (universities, research nonprofits) in your field as a bridge option?",
+      "follow_up_if_no": "Continue primary strategy but build cap-exempt contingency into the plan from the start"
+    },
+    {
+      "question": "Are you geographically flexible, and does your target industry have geographic concentration?",
+      "what_it_reveals": "Whether geographic constraints are artificially limiting the available pool of sponsoring employers, especially in biotech",
+      "follow_up_if_yes": "Have you prioritized the key geographic clusters for your industry in your job search?",
+      "follow_up_if_no": "Understand that geographic restriction in a concentrated industry (like biotech) dramatically reduces your viable employer pool"
+    },
+    {
+      "question": "For finance or consulting: are you targeting bulge-bracket or MBB-tier firms, or are you targeting boutiques?",
+      "what_it_reveals": "Whether the candidate's target list is concentrated in reliable sponsors or distributed across firms with inconsistent or no sponsorship",
+      "follow_up_if_yes": "Good — but have you verified each firm individually rather than assuming tier equals sponsorship?",
+      "follow_up_if_no": "Boutique finance and consulting firms frequently do not sponsor; verify each one before investing recruiting effort"
+    },
+    {
+      "question": "What is your degree level — undergrad, master's, or PhD — and does it match the typical hiring profile at your target employers?",
+      "what_it_reveals": "Whether there is a mismatch between candidate credentials and the degree level at which the target employer typically sponsors",
+      "follow_up_if_yes": "Are you targeting roles with a realistic conversion to H-1B, or roles where sponsorship is inconsistent at your degree level?",
+      "follow_up_if_no": "Recalibrate target employer list to firms that sponsor at your degree level — especially critical in biotech where PhD vs. undergrad sponsorship rates diverge significantly"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Visa sponsorship advice applies uniformly across industries",
+      "actual_reality": "Sponsorship landscape, recruiting calendar, and strategy differ significantly by industry; tech advice applied to finance or consulting produces systematically wrong guidance",
+      "implication": "International students must research industry-specific sponsorship dynamics rather than applying generic advice"
+    },
+    {
+      "common_belief": "Large, well-known companies in any industry reliably sponsor H-1B",
+      "actual_reality": "Sponsorship reliability is excellent in tech and large pharma, good but not automatic at bulge-bracket banks, and inconsistent at mid-tier firms in finance and consulting",
+      "implication": "Company size and brand recognition are insufficient proxies for sponsorship reliability outside of tech; USCIS data verification is required"
+    },
+    {
+      "common_belief": "Boutique investment banks and consulting firms that are prestigious and well-known will sponsor international students",
+      "actual_reality": "Many boutique finance and consulting firms (10–30 people) do not sponsor at all and will not proactively disclose this",
+      "implication": "Candidates should verify sponsorship status before investing recruiting time in boutique firms, not after receiving an offer or late in the process"
+    },
+    {
+      "common_belief": "Finance H-1B sponsorship works the same as tech H-1B sponsorship at large employers",
+      "actual_reality": "Finance H-1B petitions face higher specialty occupation scrutiny and are more work for immigration counsel, creating additional risk even at large, experienced sponsors",
+      "implication": "Finance candidates should factor in petition complexity and potential RFE risk even when targeting top-tier banks that sponsor"
+    },
+    {
+      "common_belief": "The biotech/pharma industry is uniformly good for international student sponsorship",
+      "actual_reality": "Biotech sponsorship is excellent for STEM PhDs at large companies, but is limited and variable for undergrads, and CROs and small biotechs are inconsistent sponsors regardless of degree level",
+      "implication": "Life sciences candidates must assess sponsorship relative to their specific degree level and target company size, not the industry's aggregate reputation"
+    },
+    {
+      "common_belief": "Working for the US government or government contractors is a viable option for international students",
+      "actual_reality": "US federal employment requires citizenship or permanent residence in most agencies; government contractor roles often require security clearances that are unavailable to F-1/H-1B holders",
+      "implication": "International students should effectively exclude direct federal government and most government contractor roles from their target list unless specifically verified"
+    },
+    {
+      "common_belief": "Cap-exempt employers are a niche fallback option for unusual circumstances",
+      "actual_reality": "For international students who lose the H-1B lottery multiple years in a row, cap-exempt employment (universities, research nonprofits) is the primary structural solution — not a niche fallback",
+      "implication": "Cap-exempt employer targets should be built into every international student's job search strategy from the start as a planned contingency"
+    },
+    {
+      "common_belief": "Finance and consulting recruiting timelines are similar to tech — you can apply throughout the year",
+      "actual_reality": "Finance recruiting is the earliest of any major industry, with internship processes starting in August–October for the following summer; missing this window closes the primary pipeline",
+      "implication": "International students targeting finance or MBB consulting must start recruiting preparation earlier than any other industry — fall of the academic year is the primary window, not spring"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Sponsorship verification approach",
+      "junior_pattern": "Assumes large or prestigious companies sponsor based on reputation, word of mouth, or Glassdoor reviews",
+      "senior_pattern": "Verifies sponsorship for each target employer using USCIS H-1B petition data before investing recruiting time",
+      "why_it_matters": "Boutique firms and mid-tier companies frequently do not sponsor; reputation-based assumptions waste OPT runway on non-sponsors"
+    },
+    {
+      "dimension": "Industry-specificity of strategy",
+      "junior_pattern": "Applies a single job search strategy across all industries, often derived from tech-focused international student advice",
+      "senior_pattern": "Builds industry-specific strategies for recruiting calendar, disclosure timing, employer targeting, and petition risk",
+      "why_it_matters": "Using tech recruiting logic for finance or consulting produces structural misalignment with how those industries actually hire"
+    },
+    {
+      "dimension": "Recruiting calendar awareness",
+      "junior_pattern": "Starts finance or consulting applications in January or spring, treating it like rolling tech recruiting",
+      "senior_pattern": "Starts finance and consulting recruiting preparation in August–September, treating the fall window as the primary and non-negotiable application period",
+      "why_it_matters": "Missing fall recruiting for finance or MBB consulting structurally excludes candidates from the primary pipeline for that cycle"
+    },
+    {
+      "dimension": "Contingency planning for lottery risk",
+      "junior_pattern": "Focuses entirely on the primary target industry and employer list without building a cap-exempt contingency",
+      "senior_pattern": "Identifies cap-exempt employer options from the start and treats them as a planned secondary pathway, not a last resort",
+      "why_it_matters": "H-1B lottery failure is a real probabilistic outcome; not having a cap-exempt contingency means lottery loss becomes a crisis rather than a managed transition"
+    },
+    {
+      "dimension": "Evaluating startup sponsorship offers",
+      "junior_pattern": "Accepts verbal assurances from startup leadership ('we'll figure out the sponsorship') as sufficient due diligence",
+      "senior_pattern": "Asks specifically whether the company has previously sponsored H-1B, who handled immigration, and whether they have external immigration counsel engaged",
+      "why_it_matters": "Startups without immigration infrastructure can fail to execute on sponsorship commitments, leaving the candidate without status"
+    },
+    {
+      "dimension": "Understanding degree-level sponsorship differences",
+      "junior_pattern": "Assumes that an industry's general sponsorship reputation applies uniformly regardless of degree level",
+      "senior_pattern": "Assesses sponsorship likelihood at the specific intersection of degree level and company type — e.g., recognizing that biotech sponsorship for undergrads is fundamentally different from biotech sponsorship for PhDs",
+      "why_it_matters": "Targeting employers who sponsor at a different degree level than the candidate's credential produces mismatch and rejection without explanation"
+    },
+    {
+      "dimension": "Visa disclosure timing by sector",
+      "junior_pattern": "Applies a uniform disclosure timing rule (e.g., 'always wait until offer') derived from tech advice across all industries",
+      "senior_pattern": "Calibrates disclosure timing by industry — waiting in tech where OPT is normalized, but researching and disclosing earlier in finance where some firms screen out early",
+      "why_it_matters": "Wrong disclosure timing in finance can waste multiple rounds of interviews on firms that would have screened out earlier — or cause premature rejection in tech by disclosing too early"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "industry_industry_specific_sponsorship_landscape",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

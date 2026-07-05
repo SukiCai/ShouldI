@@ -1,0 +1,250 @@
+{
+  "source_file": "zhihu_在美国还是加拿大工作_对国内父母将来的团聚有多大影响.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Factor in parental reunification timeline when choosing between US and Canada — don't treat it as a post-immigration problem",
+      "condition": "When you are a Chinese international student deciding between US and Canada career paths and parental co-living is a meaningful life goal",
+      "action": "Explicitly model the expected age of your parents at the point when reunification becomes legally possible under each path, and choose accordingly",
+      "because": "The best answer explicitly notes that if you wait 10 years for a US green card before initiating a parent petition, your parents may already be in their 70s — the time axis simply doesn't align with the goal",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Use Canada's Super Visa as a near-term parental co-living solution while pursuing long-term PR sponsorship",
+      "condition": "When you are a Canadian PR or citizen whose parents want to live nearby for extended periods",
+      "action": "Apply for Super Visa (up to 5 years, 2 years per entry, renewable) rather than waiting for the annual PR lottery",
+      "because": "Commenter with 456 upvotes reports parents have lived in Canada for nearly 3 years on Super Visa by cycling entries, confirming the strategy works in practice",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Expected parental age at the earliest possible reunification date",
+      "why_it_matters": "If parents are already in their 60s and the US green card wait is 10+ years, the reunification window may not arrive until parents are too old to emigrate or benefit from co-living",
+      "how_to_assess": "Estimate current parental age + expected years to green card (or PR) + processing time for parent petition; compare against desired reunification age",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Immigration status at time of parent petition (green card holder vs. US citizen)",
+      "why_it_matters": "US citizens petitioning parents face no numerical cap and ~1 year wait; green card holders face a capped queue with 5–10+ year backlogs — a massive difference in practical timeline",
+      "how_to_assess": "Determine whether you are likely to naturalize before needing to petition, or whether you will still be a green card holder when the need arises",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Availability of interim visit mechanisms (Super Visa vs. B-2 tourist visa)",
+      "why_it_matters": "Canada's Super Visa allows up to 2 years per entry and is renewable, providing a near-PR-quality co-living arrangement without full immigration; the US B-2 tourist visa allows only ~6 months and is harder to extend",
+      "how_to_assess": "Check whether Super Visa eligibility applies; compare typical approval rates and processing times (3–8 months) against family timeline needs",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Canadian parent PR lottery win rate and predictability",
+      "why_it_matters": "Canada's parent PR program runs via lottery or first-come-first-served with ~20–30% selection rate annually — not guaranteed, adding uncertainty to long-term planning",
+      "how_to_assess": "Model the probability of winning within 3–5 years; plan Super Visa as a parallel track rather than waiting for PR",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing the US immigration path (H-1B → green card) without accounting for parental reunification",
+      "unstated_consequence": "By the time you obtain a green card and become eligible to petition parents without a decade-long backlog (i.e., after naturalizing), your parents may be 75+ and the window for meaningful co-living has passed",
+      "who_it_affects": "Chinese nationals on H-1B with Indian or Chinese EB backlog delays, whose parents are already in their late 50s or 60s at the time the career decision is made",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Treating parental reunification as a secondary concern to be handled 'later'",
+      "unstated_consequence": "The decision about where to build your career structurally determines which parental reunification mechanisms are available — by the time you realize the US path creates a 15-20 year gap, the career and immigration investment is too deep to reverse easily",
+      "who_it_affects": "Anyone who optimizes purely on salary, H-1B sponsorship availability, or career prestige without modeling family lifecycle",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming that getting a green card solves the parental reunification problem without understanding the green card holder vs. citizen distinction",
+      "why_it_happens": "People conflate 'permanent resident' with 'can sponsor parents quickly' — the word 'permanent' implies a finality that doesn't reflect the actual quota-limited backlog for green card holder parent petitions",
+      "consequence": "A green card holder who petitions parents faces a 5–10+ year additional wait on top of the years already spent waiting for the green card itself",
+      "warning_signs": [
+        "Person says 'once I get my green card I can bring my parents over' without specifying citizenship vs. PR",
+        "No mention of IR-5 vs. F-4 category distinction in reunification planning"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Ignoring Super Visa as a practical near-term solution in favor of waiting for full PR sponsorship",
+      "why_it_happens": "People anchor on the 'permanent' outcome (PR/citizenship) and discount interim solutions as temporary or inferior, even when the interim solution provides years of co-living",
+      "consequence": "Parents spend years separated while a 3–8 month Super Visa application could have enabled co-living within the same year",
+      "warning_signs": [
+        "Person asks only about parent PR timelines without asking about Super Visa",
+        "Person describes waiting 'until I get citizenship' before inviting parents"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your parents' current age, and at what age do you expect to be in a position to initiate a parent immigrant visa petition?",
+      "what_it_reveals": "Whether the biological and bureaucratic timelines are compatible — if the gap is 15+ years and parents are already 60, the US path may make reunification practically impossible before significant health decline",
+      "follow_up_if_yes": "If compatible: which country's path gets you to petitioner status faster — US citizenship vs. Canadian PR?",
+      "follow_up_if_no": "If not compatible: is Super Visa or another interim mechanism available to bridge the gap while pursuing the long-term path?",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you planning to naturalize as a US citizen, or do you expect to remain a green card holder when you need to petition parents?",
+      "what_it_reveals": "This determines whether you face an uncapped ~1-year process (citizen) or a capped 5–10+ year backlog (green card holder) — a difference that entirely changes the reunification feasibility calculation",
+      "follow_up_if_yes": "If planning to naturalize: how many years post-green card until naturalization eligibility, and add that to the green card wait?",
+      "follow_up_if_no": "If remaining a green card holder: model the F-2A/IR-5 backlog and compare against Canada's Super Visa + PR lottery path",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Once you get a US green card, you can sponsor your parents relatively quickly",
+      "actual_reality": "Only US citizens can sponsor parents without a numerical cap (current wait ~1 year). Green card holders sponsoring parents face a capped visa category with backlogs of 5–10+ years. Getting a green card does not unlock fast parental sponsorship.",
+      "implication": "Anyone who wants parental reunification needs to plan for the full timeline to citizenship, not just green card — adding potentially 5+ more years to the estimate",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Canada's parent reunification is difficult and slow, so it's not much better than the US",
+      "actual_reality": "Canada offers the Super Visa — a multi-entry visa allowing up to 2 years per stay, renewable, with 3–8 month processing. This provides a practical co-living arrangement far faster than any US mechanism for non-citizens, and is corroborated by a commenter whose parents have lived in Canada ~3 years via this route",
+      "implication": "For families where extended co-living (not permanent immigration) is the primary goal, Canada's Super Visa is materially superior to anything available in the US for green card holders",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How parental reunification is weighted in the US vs. Canada career decision",
+      "naive_pattern": "Treats parental reunification as a downstream problem to solve after immigration is settled; focuses on salary, visa sponsorship, and career prestige in the near term",
+      "informed_pattern": "Models the full parental reunification timeline — including years to green card, years to citizenship, petition processing — against parents' current age, and treats the result as a first-order input into the country choice",
+      "why_it_matters": "By the time a naive decision-maker realizes the US timeline doesn't align with parental reunification, they are 10 years deep into a path that is difficult to reverse",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Knowledge of interim parental visit mechanisms",
+      "naive_pattern": "Knows only about immigrant visa (PR/citizenship) routes for parents; sees Super Visa as a lesser or unknown option",
+      "informed_pattern": "Uses Super Visa proactively as a near-term co-living bridge while pursuing long-term PR sponsorship; understands the 2-year-per-entry / renewable structure",
+      "why_it_matters": "Years of potential co-living are lost while waiting for the 'real' solution",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Green card holders can bring parents to the US on a similar timeline to US citizens",
+      "why_believed": "Both green card holders and citizens are 'permanent' US residents with sponsorship rights — people assume the difference is procedural, not a decade-long backlog",
+      "actual_rule": "US citizens petitioning parents face no numerical cap (~1 year wait). Green card holders face a numerically limited category (F-2A does not cover parents; parents of LPRs fall under a backlogged preference category) with waits that can exceed 5–10 years",
+      "real_consequence": "A green card holder who petitions parents at age 40 after a 10-year green card wait may not complete parental reunification until their parents are 80+",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Chinese national on H-1B in the US, researching parent immigrant visa options while still in non-immigrant status",
+      "decision": "Calculated that getting a green card would take ~10 years, meaning parents would be in their 70s before even initiating the (potentially 5–10 year) green card holder parent petition",
+      "outcome": "Concluded the US timeline is fundamentally misaligned with the goal of parental co-living — described as 'the time axis simply doesn't work'",
+      "lesson": "For Chinese nationals facing long EB green card backlogs, the compound wait (H-1B → green card → parent petition) means parental reunification via the US path may be structurally impossible within a meaningful window unless naturalization is achieved",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Chinese national with Canadian PR whose parents wanted to live nearby",
+      "decision": "Applied for Super Visa for parents rather than waiting for the annual parent PR lottery",
+      "outcome": "Parents have lived in Canada for nearly 3 years by cycling entries (up to 2 years per entry, then briefly exiting and re-entering)",
+      "lesson": "Super Visa enables practical long-term co-living without requiring parents to obtain PR — the cycling strategy extends effective residence well beyond a single visa entry",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Framing the parental reunification question as 'I'll figure it out after I get my green card / citizenship'",
+      "underlying_state": "Temporal discounting and avoidance — the problem feels distant and the cost of confronting it now (potentially changing career/country plans) is high, so it gets deferred",
+      "how_it_manifests": "Person focuses exclusively on near-term immigration milestones (OPT, H-1B, green card) and mentions parental reunification only as a vague future goal with no timeline modeling",
+      "expert_move": "Force the timeline calculation now: 'Your parents are X years old. Your green card ETA is Y years. Add Z years for the parent petition. How old will they be? Is that acceptable to you?' Make the abstract future concrete and present.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Dismissing Super Visa as 'not real' reunification because it isn't permanent residency",
+      "underlying_state": "All-or-nothing thinking — interim solutions feel like failure or compromise, so they are discounted even when they solve the practical problem",
+      "how_it_manifests": "Person waits years for parent PR lottery or US citizenship without exploring Super Visa, missing years of potential co-living",
+      "expert_move": "Reframe: 'If your parents can legally live with you for 2 years at a time and you can renew it, what exactly is missing compared to PR for your actual goal of being together?'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'Which country is better for eventually bringing my parents over?'",
+      "reframe": "'At what age will your parents be when the earliest possible reunification mechanism becomes available to you under each path — and is that age acceptable?'",
+      "why_it_works": "Shifts from a vague comparative question to a concrete arithmetic exercise that makes the stakes of timing visceral and actionable",
+      "example_language": "如果你在美国等绿卡等了10年，父母可能已经70多岁了才能开始团聚申请",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "'How do I get my parents permanent residency in Canada?'",
+      "reframe": "'Do you actually need them to have PR, or do you need them to be able to live with you for extended periods? Those are different problems with different solutions.'",
+      "why_it_works": "Separates the legal status goal (PR) from the underlying human goal (co-living), revealing that Super Visa may fully satisfy the real need without the uncertainty of the PR lottery",
+      "example_language": "Super Visa的好处被很多人忽视",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_在美国还是加拿大工作_对国内父母将来的团聚有多大影响",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

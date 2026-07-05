@@ -1,0 +1,448 @@
+{
+  "source_file": "zhihu_求问美国it公司的rsu和bonus是怎么回事.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Evaluate total compensation as Base + Bonus + Equity + Benefits + Growth, not just base salary",
+      "condition": "When comparing offers from different companies or negotiating a new offer",
+      "action": "Calculate the annualized value of each component separately, including RSU vesting schedule, bonus percentage of base, and 401K match, before comparing",
+      "because": "The author explicitly states that focusing only on salary causes Chinese international students to leave value on the table during offer negotiation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Account for equity refresh when calculating long-term compensation at a company",
+      "condition": "When evaluating whether to stay at a company or accept a competing offer after 2+ years",
+      "action": "Ask the recruiter or hiring manager explicitly about the equity refresh policy and timeline before deciding",
+      "because": "Without equity refresh, a 4-year RSU grant creates a cliff where compensation drops sharply in years 3-4, making the employee an easy target for competing offers — the author calls this a structural retention problem",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "When leaving a company with unvested options, ask the next employer to cover exercise costs in the sign-on bonus",
+      "condition": "When you have vested ISO/NQSO options that must be exercised within 90 days of leaving",
+      "action": "Quantify the total exercise cost and request that amount (or partial coverage) as a sign-on bonus from the new employer",
+      "because": "The author states this is an established negotiation tactic in Silicon Valley, and some employers fully cover the cost to secure the candidate",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If leaving a company before year-end bonus is paid, adjust 401K contribution to maximize employer match on the bonus payout",
+      "condition": "When you plan to leave a job and your current employer's 401K match rate significantly exceeds the new employer's",
+      "action": "One month before the bonus payout, increase your 401K personal contribution percentage to capture as much of the bonus as possible under the higher match rate",
+      "because": "The author explicitly describes this tactic as capable of generating several thousand dollars of additional personal asset growth due to pre-tax compounding",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For back-weighted vesting schedules (e.g., Amazon 5/15/20/20 or Snapchat 10/20/30/40), calculate expected tenure-weighted value before accepting",
+      "condition": "When an offer contains a vesting schedule where later years have disproportionately larger grants",
+      "action": "Model out your expected tenure (e.g., 2 years vs. 4 years) and calculate what percentage of total equity you would actually realize, then negotiate accordingly",
+      "because": "The author explicitly labels these structures as 'golden handcuffs' and says they are unfair to employees who leave before full vesting",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Vesting schedule structure (uniform vs. back-weighted)",
+      "why_it_matters": "A back-weighted schedule (e.g., Snapchat 10/20/30/40) means an employee who leaves at year 2 captures only 30% of total grant value, while a uniform schedule (25% per year) would yield 50% — a massive difference in realized compensation",
+      "how_to_assess": "Read the offer letter carefully for the vest percentage per year; if not specified, ask HR directly. Compare to standard 4-year/1-year-cliff model",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Geographic location and state tax rate",
+      "why_it_matters": "Companies adjust compensation based on local labor market demand and state tax burden. A Seattle or Austin offer may have lower nominal comp than a San Francisco equivalent, but higher take-home due to absence of state income tax",
+      "how_to_assess": "Compare after-tax income using state tax rates; California has 13%+ marginal state income tax vs. 0% in Washington and Texas",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Company stage (public vs. pre-IPO vs. early startup) for equity valuation",
+      "why_it_matters": "RSUs at a public company have immediate liquid value; options at an early startup may take 9+ years to become liquid and carry risk of total loss",
+      "how_to_assess": "Determine if the company is public, pre-IPO, or early-stage; ask about liquidity timeline and exercise window if leaving",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Equity refresh policy and timeline",
+      "why_it_matters": "Without equity refresh, total comp declines significantly in years 3-4 of employment, making the employee vulnerable to being poached by any company offering above base salary",
+      "how_to_assess": "Ask HR: 'Does the company have an equity refresh program? When does it kick in — at 1 year, 2 years? How is the refresh amount determined?'",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "401K employer match rate and basis",
+      "why_it_matters": "A 50% match vs. a 10% match on the same base salary represents thousands of dollars annually in pre-tax wealth accumulation with compounding advantages",
+      "how_to_assess": "Ask the exact match percentage, the cap (e.g., match up to 6% of salary), and whether it's based on base salary only or total compensation",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Option exercise window after leaving (90 days vs. extended)",
+      "why_it_matters": "Standard 90-day exercise window forces employees to come up with potentially tens of thousands of dollars cash within 3 months or forfeit vested options; extended windows (3-7 years) at some companies eliminate this pressure",
+      "how_to_assess": "Check offer letter or equity plan documents for post-termination exercise period; ask HR if not specified",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting RSUs at a startup that then goes bankrupt",
+      "unstated_consequence": "Because RSU income is taxed as ordinary income at vest time, employees who vest RSUs at a company that subsequently fails have already paid income tax on shares that are now worthless — a permanent loss with no tax recovery equivalent to the option holder's ability to simply not exercise",
+      "who_it_affects": "Employees at pre-IPO companies that grant RSUs rather than options, particularly those who vest shortly before a company downturn",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying at a company until the full 4-year RSU cliff without negotiating equity refresh",
+      "unstated_consequence": "At the 2-year mark, the employee's forward-looking compensation drops sharply (from e.g., 125K/year to 100K/year projected), making them financially vulnerable to being poached — but many employees don't realize this until they do the math themselves",
+      "who_it_affects": "Mid-level employees who accepted strong initial RSU packages but never asked about or received equity refresh grants",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Leaving a company with vested ISO options without planning the exercise",
+      "unstated_consequence": "The 90-day post-termination exercise window requires immediate cash outlay of potentially $10K–$100K+ to exercise vested options, with AMT tax exposure on top. Many employees forfeit valuable vested options simply because they lack the liquidity",
+      "who_it_affects": "Early employees at fast-growing private companies who have accumulated significant vested options but limited liquid savings",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Exercising ISOs and holding shares to qualify for long-term capital gains treatment",
+      "unstated_consequence": "Holding exercised ISO shares triggers AMT (Alternative Minimum Tax) liability in the exercise year, even though no cash has been received — creating a tax bill without liquidity to pay it",
+      "who_it_affects": "High-earning employees at well-valued private companies who exercise large ISO blocks hoping to convert to long-term capital gains",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing a role based on nominal RSU grant value stated in the offer letter",
+      "unstated_consequence": "The number of shares is not fixed at offer time — it is determined on the first day of employment based on the stock price that day. If the stock price rises between offer acceptance and start date, the employee receives fewer shares than mentally modeled",
+      "who_it_affects": "First-time offer recipients at public tech companies who do not understand that dollar value is fixed but share count floats",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Evaluating an offer based only on base salary without modeling annualized equity value",
+      "why_it_happens": "Base salary is the most salient, immediately legible number; equity vesting schedules require multi-step calculation that most first-time job seekers haven't been taught",
+      "consequence": "Candidates accept lower total compensation packages or negotiate the wrong component, leaving significant money on the table",
+      "warning_signs": [
+        "Candidate asks only 'what is the base salary?' and stops there",
+        "Candidate compares offers by base salary alone without building a year-by-year compensation model"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Forfeiting vested options at departure because the 90-day exercise window is not planned for",
+      "why_it_happens": "Employees focus on the new job excitement and don't calculate the cash needed to exercise options until it's too late; the 90-day clock starts immediately at termination",
+      "consequence": "Potentially tens to hundreds of thousands of dollars in vested compensation permanently forfeited",
+      "warning_signs": [
+        "Employee is leaving a company without having checked the post-termination exercise period",
+        "Employee has not calculated the cash required to exercise all vested options"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Not asking new employer to cover option exercise costs as part of sign-on negotiation",
+      "why_it_happens": "Candidates don't know this is a negotiable item; they assume sign-on bonus is a fixed goodwill gesture, not a tool to compensate for leaving money behind",
+      "consequence": "Employee either forfeits vested options (loss of asset) or funds the exercise personally (cash strain) when the new employer could have covered it",
+      "warning_signs": [
+        "Candidate mentions they have unvested equity or options costs but doesn't raise it with new employer",
+        "Candidate accepts sign-on bonus without disclosing what they are leaving behind at current company"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Ignoring equity refresh when evaluating long-term compensation trajectory at a company",
+      "why_it_happens": "Equity refresh is almost never mentioned in the offer letter; candidates assume the original grant represents the steady-state compensation indefinitely",
+      "consequence": "Employee reaches year 3-4 with declining forward compensation and no leverage to negotiate internally, or is blindsided when their total comp drops",
+      "warning_signs": [
+        "Candidate can state their initial RSU grant but cannot describe the refresh policy",
+        "Candidate has been at a company 2+ years and has never received an equity refresh discussion in performance review"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the vesting schedule structure — is it uniform (25% per year) or back-weighted?",
+      "what_it_reveals": "Back-weighted schedules disproportionately reward long tenure and punish early departure; they change the break-even tenure calculation significantly",
+      "follow_up_if_yes": "If back-weighted, model the equity captured at your expected tenure (e.g., 2 years) and compare to what a uniform schedule would yield — then negotiate for a more favorable structure or higher total grant",
+      "follow_up_if_no": "If uniform, standard 4-year/1-year-cliff model applies; focus negotiation on total grant size and refresh policy",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does the company have an equity refresh program, and when does it start?",
+      "what_it_reveals": "Whether the company is committed to retaining employees past the initial grant period; absence of refresh means compensation cliff risk at year 3-4",
+      "follow_up_if_yes": "Ask: how is the refresh amount determined? Is it tied to performance review, market benchmarking, or discretionary? How frequently is it granted?",
+      "follow_up_if_no": "Factor in the compensation cliff when evaluating the offer; the effective annual compensation drops significantly in years 3-4 without refresh",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "If this is an option grant at a private company, what is the post-termination exercise window?",
+      "what_it_reveals": "Whether the employee will face a cash-and-AMT trap if they leave before liquidity; standard 90 days is highly restrictive, extended windows (3-7 years) are employee-friendly",
+      "follow_up_if_yes": "If extended window (3+ years), the options have more option value — you can wait for a favorable liquidity event without being forced to exercise immediately",
+      "follow_up_if_no": "If standard 90 days, build an exercise cost estimate (shares × strike price) and plan for this as a potential liability when leaving",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the equity grant in the form of RSUs, ISO options, or NQSO options?",
+      "what_it_reveals": "The tax treatment differs materially: RSUs are taxed as ordinary income at vest; ISOs have AMT exposure but potential capital gains treatment; NQSOs are taxed as ordinary income at exercise on the spread",
+      "follow_up_if_yes": "If RSUs at a public company: model the withholding mechanism and plan for share-based tax withholding reducing the number of shares received",
+      "follow_up_if_no": "If options at a private company: evaluate liquidity timeline, strike price relative to current 409A valuation, and exercise cost before accepting",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The RSU grant amount in your offer letter is the number of shares you'll receive",
+      "actual_reality": "The offer letter states a dollar value; the actual share count is calculated on your first day of employment based on the stock's closing price that day (or a recent average, per company policy). The share count is not known at offer acceptance",
+      "implication": "Candidates should model scenarios where the stock price moves between signing and start date, and should not fixate on a specific share count until Day 1",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "When RSUs vest, you receive the full value of the shares in cash or stock",
+      "actual_reality": "RSU vesting is a taxable event treated as ordinary W-2 income. The company withholds shares to cover estimated tax (often 35-40%+ of vest value), so the employee receives significantly fewer shares than vested. Some of the withheld amount may be refunded in cash if the withheld shares slightly over-cover the tax",
+      "implication": "Employees should calculate after-tax RSU value using their marginal income tax rate, not the face value of the vest — the actual cash/stock received is 55-65% of the gross vest value",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "RSUs are always better than options because options require you to spend money",
+      "actual_reality": "At an early-stage startup that fails, RSU holders lose more: they already paid ordinary income tax on vested RSUs, while option holders can simply decline to exercise and lose nothing beyond foregone opportunity cost",
+      "implication": "For early-stage startup compensation, options (especially ISOs) offer asymmetric downside protection that RSUs do not — the choice between them depends on company stage and failure probability",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Equity refresh is part of the offer and will be clearly explained",
+      "actual_reality": "Equity refresh is almost never mentioned in the offer letter. It is an ongoing employment benefit governed by internal policies that can change, and its terms are determined by performance reviews and management discretion, not contract",
+      "implication": "Candidates must proactively ask about refresh policies before accepting; they cannot rely on the offer letter to represent steady-state long-term compensation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "ESPP is a major wealth-building vehicle like RSUs",
+      "actual_reality": "ESPP is closer to a company benefit (like 401K match) than a primary wealth-building tool. The author explicitly states it rarely generates significant wealth growth; if you believe in the company's stock, you can buy it on the open market without being employed there",
+      "implication": "Candidates should not over-weight ESPP in compensation comparisons; focus negotiation energy on base, RSU grant, and refresh policy instead",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "A candidate leveled as Senior must earn more than a Junior at the same company",
+      "actual_reality": "Due to offer negotiation dynamics and external market benchmarking, a strong Junior candidate can receive a higher base salary than a newly-leveled Senior if the Junior's external offers or skills justify it. Level and salary are set through partially independent processes",
+      "implication": "Candidates should negotiate both level and base independently; accepting a level bump without negotiating base can leave money on the table",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they read an offer letter",
+      "naive_pattern": "Looks at base salary and maybe the total RSU dollar value; accepts these numbers at face value as representing annual income",
+      "informed_pattern": "Builds a year-by-year compensation model including vesting schedule, bonus percentage, 401K match, and equity refresh; computes after-tax take-home for each component",
+      "why_it_matters": "Two offers with identical base salaries can differ by $20K–$50K annually in realized total compensation due to equity structure and benefit differences",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "What they negotiate",
+      "naive_pattern": "Asks if the base salary can be increased; treats the equity grant as fixed",
+      "informed_pattern": "Negotiates across all levers: base, sign-on, RSU grant size, vesting schedule, equity refresh timing, and relocation/exercise cost coverage",
+      "why_it_matters": "Experienced negotiators extract value from components that naive candidates don't know are negotiable, often achieving equivalent outcomes through non-base channels that are easier for companies to approve",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they think about equity at private companies",
+      "naive_pattern": "Calculates paper value of options as (current valuation × share count) and treats it as real income",
+      "informed_pattern": "Discounts private company equity heavily for illiquidity, failure probability, and dilution; models realistic exit scenarios and timeline; evaluates exercise cost and AMT risk before accepting",
+      "why_it_matters": "Overvaluing illiquid private equity leads to accepting below-market cash compensation; undervaluing it leads to missing legitimate upside at high-quality pre-IPO companies",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Awareness of equity cliff risk",
+      "naive_pattern": "Views the 4-year RSU grant as a static feature of employment; doesn't think about what happens when it fully vests",
+      "informed_pattern": "Proactively asks about equity refresh before joining; monitors their forward-looking compensation trajectory annually; uses upcoming equity cliff as negotiation leverage for refresh grants or competing offers",
+      "why_it_matters": "Employees who don't manage their equity cliff become easy poaching targets and may leave significant money on the table by not negotiating refresh grants",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "RSU share count is locked in at the time you receive your offer",
+      "why_believed": "The offer letter specifies a dollar value which feels like a contract; candidates naturally assume the share count is also determined at that point",
+      "actual_rule": "Share count is calculated on the employee's first day of employment based on the stock price that day (or a recent rolling average per company policy); only the dollar value commitment is made at offer time",
+      "real_consequence": "Candidates who model compensation based on an assumed share count may be surprised — positively or negatively — when the actual share count is set at a different stock price",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "When RSUs vest, you get to keep all the shares",
+      "why_believed": "The vesting event feels like receiving a paycheck; the concept of shares being withheld for taxes is non-intuitive for people unfamiliar with equity compensation",
+      "actual_rule": "RSU vesting triggers ordinary income tax; the company withholds a portion of the vested shares (typically 30-40%) and sells them to cover the estimated tax liability. The employee receives the remainder",
+      "real_consequence": "Employees who expect to receive 2,500 shares at vesting may actually receive ~1,500 shares; planning for large share accumulations or stock concentration management will be off if this is not understood",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Options are worse than RSUs because you have to pay to exercise them",
+      "why_believed": "The requirement to spend money to exercise options feels like a disadvantage versus RSUs which are 'free'; the downside protection of options is non-intuitive",
+      "actual_rule": "At failing companies, RSU holders have already paid ordinary income tax on vested shares that are now worthless — a real economic loss. Option holders can simply not exercise, losing only the opportunity cost. Options provide asymmetric downside protection that RSUs lack",
+      "real_consequence": "Candidates at risky early-stage startups who discount option grants in favor of RSU grants may actually be accepting worse risk-adjusted compensation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Bonus is paid in December at year end",
+      "why_believed": "The term 'annual bonus' and 'year-end bonus' implies payment coincides with the calendar year end",
+      "actual_rule": "Annual bonuses in US tech companies are typically paid in January through March of the following year, so they are taxed as income in the year they are received (the new year), not the performance year",
+      "real_consequence": "Employees who plan to leave in December may miss their bonus entirely if they don't understand the actual payout timing; those who leave in January after receiving the bonus correctly capture it",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Employee A joins Company X with 100K base + 100K RSU over 4 years (25K/year); two years later approaches the compensation review with no equity refresh granted",
+      "decision": "Employee did not ask about equity refresh at offer time and did not proactively negotiate for a refresh grant in performance reviews",
+      "outcome": "At the 2-year mark, the employee's forward-looking annual compensation drops from 125K to 100K for years 3-4, making any competing offer above 100K base financially attractive and giving the employer minimal retention leverage",
+      "lesson": "Equity refresh is a critical retention and compensation tool that must be proactively negotiated — both at offer time (ask about the policy) and at performance reviews (ask for a refresh grant). Ignoring it creates a self-inflicted compensation cliff",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Silicon Valley employee leaves a company with significant vested ISO options; strike price is $1, current 409A valuation is $11, with 10,000 vested shares",
+      "decision": "Must decide whether to exercise 10,000 ISOs within 90 days of departure, requiring $10,000 cash outlay plus potential AMT exposure on $100,000 paper gain",
+      "outcome": "The author frames this as a genuine financial trap; employees who lack liquidity either forfeit the vested options or are forced to exercise under pressure without optimal tax planning",
+      "lesson": "Before leaving a company with vested options, calculate the full exercise cost (shares × strike price) plus potential AMT liability, and negotiate with the new employer to cover this cost via a sign-on bonus if possible — some Silicon Valley companies will fully cover this amount to secure the candidate",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "First-time offer recipients asking 'is this offer good?' without specifying any components other than base salary",
+      "underlying_state": "Anchoring bias combined with information overload; the base salary is the most legible number so it becomes the proxy for total offer quality",
+      "how_it_manifests": "Candidate evaluates and negotiates only the base salary, treating equity, bonus structure, and refresh policy as fixed background noise",
+      "expert_move": "Force a full compensation breakdown exercise: 'Write out base + expected bonus + year 1 RSU vest + 401K match. Now do the same for year 3 and year 4. Does your total comp hold up, or does it cliff?' This makes the multi-component structure visceral",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "International students (F-1/OPT) asking whether they can negotiate at all given visa dependency on the employer",
+      "underlying_state": "Catastrophizing: the student perceives any negotiation as risking offer rescission, which conflates with visa status loss — a disproportionate fear response",
+      "how_it_manifests": "Student accepts first offer without negotiating any component; may not even ask clarifying questions about equity structure for fear of appearing difficult",
+      "expert_move": "Reframe the risk: 'Companies spend $20K–$30K recruiting you. Rescinding an offer for asking a reasonable compensation question has almost never been documented. The risk of not negotiating is guaranteed undercompensation; the risk of negotiating is near-zero.' This recalibrates the probability assessment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Candidates who feel overwhelmed by equity complexity and say 'I'll just focus on the base salary since I understand that'",
+      "underlying_state": "Complexity aversion leading to motivated reasoning — the candidate avoids the equity analysis because it's cognitively demanding, not because it's unimportant",
+      "how_it_manifests": "Candidate systematically underweights or ignores equity in compensation comparisons, leading to choices that favor simpler (often lower total comp) offers",
+      "expert_move": "Reduce the equity calculation to a single number: 'Annual equity value = total grant ÷ 4 (for standard vesting). Add that to your base. Now compare.' Make the calculation trivially simple to overcome the avoidance",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How much is my RSU worth?",
+      "reframe": "Your RSU grant is a dollar commitment, not a share commitment — and the after-tax value is what you actually receive. Model it as: (vest value at that day's price) × (1 - your marginal tax rate) = actual shares/cash received",
+      "why_it_works": "Shifts the candidate from treating equity as a fixed asset to treating it as a variable cash flow with tax drag — a more accurate mental model that prevents both over- and under-valuation",
+      "example_language": "当你vest RSU时，那笔收入是算作个人基本工资收入类别上税的，假设你个人税率是40%, 你实际收到的是60%的价值",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "My offer says 100K base + 100K RSU over 4 years, so I'll make 125K per year",
+      "reframe": "That's only true for the first two years. What does your compensation look like in year 3 and year 4 — and is there an equity refresh? Without it, you're projecting a future pay cut",
+      "why_it_works": "Forces the candidate to think in a forward trajectory rather than a static annual snapshot, revealing the compensation cliff that is invisible in naive year-1 analysis",
+      "example_language": "假设A接了Offer并在X公司开开心心地奋斗了两年，有一天突然意识到那时自己未来四年每年的收益为 (125k, 125k, 100k, 100k)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Options are risky because I have to pay for them, while RSUs are free",
+      "reframe": "RSUs are not free — you pay income tax on them at vest. If the company fails after you vest RSUs, you've permanently overpaid taxes on worthless shares. Options let you choose not to exercise, so your downside is zero. The question isn't 'which one costs money' but 'which one has better risk-adjusted value at this company's stage'",
+      "why_it_works": "Corrects the framing error by making the tax cost of RSUs visible and introducing the concept of optionality value — changing the decision axis from 'which requires cash' to 'which has better expected value given company risk'",
+      "example_language": "如果是持有RSU的员工，因为RSU grant时已经交了一波个人所得税，公司倒闭时这些RSU就一文不值了，意味着她凭空多交了那么多个人所得税",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_求问美国it公司的rsu和bonus是怎么回事",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

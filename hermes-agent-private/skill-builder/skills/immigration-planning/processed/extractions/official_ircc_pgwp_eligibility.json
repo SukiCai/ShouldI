@@ -1,0 +1,459 @@
+{
+  "source_file": "ircc_pgwp_eligibility.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Apply for PGWP within 180 days of program completion confirmation",
+      "condition": "When a student has completed their program of study at a PGWP-eligible DLI",
+      "action": "Submit PGWP application within 180 days of receiving official confirmation of program completion",
+      "because": "Applications submitted after the 180-day window are ineligible; study permit must also have been valid at some point during those 180 days",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Minimum 8-month program length required for PGWP eligibility (or 900 hours for Quebec programs)",
+      "condition": "When a student is assessing whether their completed program qualifies for a PGWP",
+      "action": "Confirm program length is at least 8 months (or 900 hours if in Quebec) at a PGWP-eligible DLI",
+      "because": "Programs shorter than 8 months (or 900 hours in Quebec) do not satisfy the minimum duration requirement for PGWP eligibility",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PGWP valid for 3 years if program is 2 years or more, or if program is a master's or doctoral degree of any length",
+      "condition": "When a student completes a program of 2 years or more, or a master's or doctoral degree",
+      "action": "Expect PGWP duration of 3 years",
+      "because": "IRCC ties PGWP length to study program length; master's/doctoral programs receive 3 years regardless of duration since February 2024 rule change",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca (February 2024 rule change)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PGWP duration equals program length for programs 8 months to less than 2 years",
+      "condition": "When a student completes a program between 8 months and less than 2 years",
+      "action": "Expect PGWP valid for the same duration as the program length",
+      "because": "IRCC policy ties PGWP length directly to study program duration for sub-2-year programs",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "At least 50% of program must be completed in class within Canada for lock-in dates on or after September 1, 2024",
+      "condition": "When a student's lock-in date is on or after September 1, 2024 and they completed any portion of their program outside Canada",
+      "action": "Ensure at least 50% of the program was completed in class within Canada; time studied outside Canada will be deducted from PGWP length",
+      "because": "Distance learning outside Canada reduces PGWP validity and failure to meet the 50% in-Canada in-class threshold renders the student ineligible",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca (September 1, 2024 rule)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "For lock-in dates between September 1, 2022 and August 31, 2024, at least 50% of program must be completed within Canada (online or in class)",
+      "condition": "When a student's lock-in date falls between September 1, 2022 and August 31, 2024",
+      "action": "Confirm at least 50% of the program was completed within Canada; online study from outside Canada before August 31, 2024 counts toward PGWP length only if it constitutes less than 50% of the program",
+      "because": "Transitional rules distinguish between in-Canada online study and outside-Canada online study for PGWP length calculation",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Transfers from non-DLI to DLI: only time at the DLI counts toward the 8-month minimum",
+      "condition": "When a student transferred from a non-DLI institution to a DLI",
+      "action": "Count only the time spent at the DLI; must be at least 8 months at the DLI to be eligible",
+      "because": "Non-DLI study time is not creditable toward PGWP eligibility even if the student later transfers to a qualifying DLI",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Accelerated program completion may still yield PGWP for full normal program length",
+      "condition": "When a student completes their study program in less time than the normal program length",
+      "action": "Apply for PGWP valid for the full normal length of the program (not the accelerated completion time)",
+      "because": "IRCC policy allows PGWP duration based on the normal program length even when completion was accelerated",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Programs with an overseas component: PGWP valid only for time studied in Canada",
+      "condition": "When a student's Canadian program includes an overseas component",
+      "action": "Calculate PGWP duration based only on time studied in Canada, excluding the overseas portion",
+      "because": "IRCC policy explicitly excludes overseas study time from PGWP length calculations",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Language requirement: CLB/NCLC 7 in all four skills required for degree, college diploma, and graduate certificate programs",
+      "condition": "When a student completed a bachelor's, master's, doctoral degree, college diploma, or graduate certificate and is applying for a PGWP",
+      "action": "Prove English or French language proficiency at minimum CLB/NCLC 7 in reading, writing, listening, and speaking",
+      "because": "Failure to meet language threshold is an explicit PGWP eligibility disqualifier for these program types",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Field of study must be in an IRCC-eligible field for degree, college diploma, and graduate certificate programs",
+      "condition": "When a student completed a bachelor's, master's, doctoral degree, college diploma, or graduate certificate",
+      "action": "Verify that the program's field of study is on IRCC's list of eligible fields of study",
+      "because": "Programs in non-eligible fields of study do not satisfy PGWP requirements for these program types",
+      "regulatory_basis": "IRCC PGWP eligibility — canada.ca",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Program length",
+      "why_it_matters": "Determines both basic PGWP eligibility (minimum 8 months / 900 hours in Quebec) and the duration of the PGWP issued",
+      "how_to_assess": "Check total program length: under 8 months = ineligible; 8 months to less than 2 years = PGWP equals program length; 2 years or more = 3-year PGWP; master's or doctoral (any length) = 3-year PGWP",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "DLI PGWP-eligibility status",
+      "why_it_matters": "A student must have completed their program at a PGWP-eligible designated learning institution; non-eligible DLIs disqualify the applicant",
+      "how_to_assess": "Confirm the institution is on IRCC's list of PGWP-eligible DLIs at the time of study",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Full-time student status throughout program",
+      "why_it_matters": "Students must have maintained full-time status during each semester; part-time is only allowed in the final semester",
+      "how_to_assess": "Review enrollment records for each semester; any non-final semester with part-time status may disqualify",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Application timing (180-day window)",
+      "why_it_matters": "PGWP application must be submitted within 180 days of program completion confirmation; missing this window forfeits eligibility",
+      "how_to_assess": "Identify the official date of program completion confirmation and count forward 180 days",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Study permit validity during 180-day post-completion period",
+      "why_it_matters": "The study permit must have been valid at some point during the 180 days after program completion",
+      "how_to_assess": "Confirm study permit expiry date overlaps with the 180-day post-completion window",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Proportion of program completed in Canada vs. outside Canada",
+      "why_it_matters": "Studying more than 50% of the program outside Canada (or via distance learning) results in ineligibility or reduced PGWP length depending on the lock-in date",
+      "how_to_assess": "Calculate percentage of program completed within Canada; check lock-in date to determine applicable rule (pre/post September 1, 2024)",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Field of study eligibility",
+      "why_it_matters": "For degree, college diploma, and graduate certificate programs, the program must be in an IRCC-eligible field of study",
+      "how_to_assess": "Cross-reference program field against IRCC's eligible fields of study list",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language proficiency (CLB/NCLC 7)",
+      "why_it_matters": "Applicants for degree, college diploma, and graduate certificate programs must demonstrate minimum CLB/NCLC 7 in all four language skills",
+      "how_to_assess": "Submit approved language test results showing CLB/NCLC 7 or higher in reading, writing, listening, and speaking",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether student has previously received a PGWP",
+      "why_it_matters": "A student who has already received a PGWP is categorically ineligible for another",
+      "how_to_assess": "Check immigration history for any prior PGWP issuance",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Public-private partnership (curriculum licensing agreement) structure",
+      "why_it_matters": "Programs delivered by a private career college under a public institution's name are generally not PGWP-eligible, with narrow time-limited exceptions",
+      "how_to_assess": "Determine if the program was delivered under a curriculum licensing agreement; check program start date against the applicable exception deadline (May 15, 2024 for same-province; January 31, 2023 for inter-province)",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Source of funding (government scholarship requiring return home)",
+      "why_it_matters": "Students who received GAC funding or scholarships requiring return to their home country after graduation are explicitly ineligible",
+      "how_to_assess": "Review scholarship or funding terms for repatriation requirements",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Completing a program through significant distance/online learning outside Canada",
+      "unstated_consequence": "Time studied outside Canada is deducted from PGWP length (for lock-in dates on or after September 1, 2024), potentially reducing a 2-year program's associated PGWP below 3 years or even below eligibility threshold",
+      "who_it_affects": "Students who studied partially abroad or completed online segments from outside Canada after September 1, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Enrolling in a program delivered by a private college under a public institution's curriculum licensing agreement",
+      "unstated_consequence": "The program is generally NOT PGWP-eligible despite being associated with a public institution name; narrow exceptions only apply to programs started before May 15, 2024 (same province) or January 31, 2023 (cross-province)",
+      "who_it_affects": "Students who enrolled in private career college programs branded under public institution partnerships after the cutoff dates",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Studying part-time in any semester other than the final semester",
+      "unstated_consequence": "Part-time enrollment in non-final semesters violates the full-time status requirement and can disqualify the student from PGWP eligibility entirely",
+      "who_it_affects": "Students who reduced course loads due to work, health, or personal circumstances in non-final semesters",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Completing a Canadian program with an overseas study component",
+      "unstated_consequence": "The PGWP will only be valid for the time studied in Canada; the overseas portion does not count toward PGWP duration, potentially shortening the permit significantly",
+      "who_it_affects": "Students in exchange programs or programs with mandatory international components",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Transferring from a non-DLI institution to a DLI",
+      "unstated_consequence": "Only the time spent at the DLI counts toward the 8-month minimum; prior studies at the non-DLI are entirely excluded from the PGWP eligibility calculation",
+      "who_it_affects": "Students who spent significant time at a non-DLI institution before transferring",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Accepting a government scholarship with a repatriation requirement (e.g., GAC funding)",
+      "unstated_consequence": "Accepting such funding categorically disqualifies the student from PGWP eligibility regardless of other criteria met",
+      "who_it_affects": "Students who accepted government-funded awards without reading post-graduation conditions",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Completing an accelerated program faster than its normal duration",
+      "unstated_consequence": "While the PGWP may be valid for the full normal program length, the student still must apply within 180 days of actual completion — the earlier completion date starts the clock, not the normal program end date",
+      "who_it_affects": "Students in accelerated programs who may not realize their 180-day window opens earlier than classmates on standard timelines",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying for a PGWP after the 180-day post-completion window has expired",
+      "why_it_happens": "Students may be unaware that the 180-day clock starts from the date of official program completion confirmation, not from a subjective awareness of completion",
+      "consequence": "PGWP application ineligibility; student cannot obtain a PGWP",
+      "warning_signs": [
+        "Student delays applying while waiting for official transcripts or final grades",
+        "Student is unaware of the exact date their institution issued program completion confirmation"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Completing more than 50% of the program through distance learning or outside Canada",
+      "why_it_happens": "Students who enrolled during pandemic-era flexibility or studied abroad exceed the allowable distance learning threshold",
+      "consequence": "PGWP ineligibility (program completed over 50% through distance learning is an explicit disqualifier)",
+      "warning_signs": [
+        "Majority of courses were online from a location outside Canada",
+        "Student spent extended periods outside Canada during their study program"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Attending a private college program delivered under a public institution's curriculum licensing agreement after the cutoff dates",
+      "why_it_happens": "Students enroll assuming the public institution's name on the program confers PGWP eligibility without verifying the delivery model",
+      "consequence": "PGWP ineligibility; the program is not PGWP-eligible if started after May 15, 2024 (same province) or January 31, 2023 (cross-province)",
+      "warning_signs": [
+        "Program is physically delivered at a private career college campus",
+        "Tuition or administrative correspondence comes from a private institution despite the public institution branding"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Studying part-time during a non-final semester",
+      "why_it_happens": "Students reduce course loads for personal, financial, or health reasons without understanding it violates PGWP full-time status requirements",
+      "consequence": "PGWP ineligibility due to failure to maintain full-time status throughout the program",
+      "warning_signs": [
+        "Enrollment records show below full-time credit load in a non-final semester",
+        "Student took a reduced load semester mid-program"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Transferring from a non-DLI to a DLI but spending less than 8 months at the DLI",
+      "why_it_happens": "Students assume their total combined study time counts; only time at the DLI is creditable",
+      "consequence": "PGWP ineligibility; minimum 8 months at the DLI not met",
+      "warning_signs": [
+        "Total study time in Canada exceeds 8 months but less than 8 months was at a DLI",
+        "Student transferred to a DLI late in their program"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying for a second PGWP after having already received one",
+      "why_it_happens": "Students complete an additional Canadian program and assume a second PGWP is available",
+      "consequence": "PGWP ineligibility; individuals who already received a PGWP are categorically excluded",
+      "warning_signs": [
+        "Student has prior Canadian immigration history showing a PGWP was issued",
+        "Student returning to Canada for a second degree after using PGWP from a first degree"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Was the program completed at a PGWP-eligible designated learning institution (DLI)?",
+      "what_it_reveals": "Whether the institution meets the foundational eligibility requirement for PGWP",
+      "follow_up_if_yes": "Proceed to assess program length, field of study, and other requirements",
+      "follow_up_if_no": "Student is categorically ineligible for a PGWP",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Was the program at least 8 months long (or 900 hours for Quebec programs)?",
+      "what_it_reveals": "Whether the program meets the minimum duration threshold for PGWP eligibility",
+      "follow_up_if_yes": "Proceed to assess PGWP duration based on program length",
+      "follow_up_if_no": "Student is ineligible for a PGWP",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did the student maintain full-time status in every semester except possibly the final semester?",
+      "what_it_reveals": "Whether the student meets the continuous full-time enrollment requirement",
+      "follow_up_if_yes": "Proceed to assess other eligibility criteria",
+      "follow_up_if_no": "Student may be ineligible unless part-time was only in the final semester",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the application being submitted within 180 days of official program completion confirmation?",
+      "what_it_reveals": "Whether the application falls within the mandatory filing window",
+      "follow_up_if_yes": "Confirm study permit was also valid at some point during the 180-day post-completion period",
+      "follow_up_if_no": "Student is ineligible; the 180-day window has expired",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Was the study permit valid at any point during the 180 days after program completion?",
+      "what_it_reveals": "Whether the student's legal study status was maintained through the post-completion period",
+      "follow_up_if_yes": "Proceed with PGWP application",
+      "follow_up_if_no": "Student is ineligible for a PGWP",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did the student complete more than 50% of the program through distance learning or outside Canada?",
+      "what_it_reveals": "Whether the student exceeds the distance learning threshold that disqualifies PGWP eligibility",
+      "follow_up_if_yes": "Student is ineligible for a PGWP",
+      "follow_up_if_no": "Proceed; also assess whether any time outside Canada must be deducted from PGWP duration under applicable lock-in date rules",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Has the student previously received a PGWP?",
+      "what_it_reveals": "Whether the categorical one-time-only restriction applies",
+      "follow_up_if_yes": "Student is categorically ineligible for another PGWP",
+      "follow_up_if_no": "Proceed to assess remaining eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Was the program delivered by a private career college under a curriculum licensing agreement with a public institution?",
+      "what_it_reveals": "Whether the public-private partnership exception rules apply and whether the program is PGWP-eligible",
+      "follow_up_if_yes": "Check program start date against applicable cutoff (May 15, 2024 for same-province; January 31, 2023 for inter-province); programs started after these dates are not PGWP-eligible",
+      "follow_up_if_no": "Proceed with standard DLI eligibility assessment",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did the student receive GAC funding or a scholarship requiring return to their home country after graduation?",
+      "what_it_reveals": "Whether a government funding condition categorically disqualifies the student",
+      "follow_up_if_yes": "Student is ineligible for a PGWP",
+      "follow_up_if_no": "Proceed to assess other eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "question": "For degree, college diploma, or graduate certificate programs: Does the student have CLB/NCLC 7 in all four language skills, and is the field of study IRCC-eligible?",
+      "what_it_reveals": "Whether the student meets the program-type-specific language and field of study requirements",
+      "follow_up_if_yes": "Student meets these additional eligibility criteria",
+      "follow_up_if_no": "Student is ineligible for a PGWP if either the language threshold or field of study requirement is not met",
+      "country_scope": "canada"
+    },
+    {
+      "question": "If the student transferred between DLIs, does the total time at DLIs amount to at least 8 months?",
+      "what_it_reveals": "Whether combined DLI study time meets the minimum program length threshold",
+      "follow_up_if_yes": "Student meets the duration requirement for the transfer scenario",
+      "follow_up_if_no": "Student is ineligible if total DLI time is under 8 months",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any program at a Canadian school qualifies for a PGWP",
+      "actual_reality": "Only programs at PGWP-eligible designated learning institutions (DLIs) qualify; programs at non-PGWP-eligible DLIs, non-Canadian institutions located in Canada, and private colleges under curriculum licensing agreements (after applicable cutoff dates) do not qualify",
+      "implication": "Students must verify their specific institution AND program are PGWP-eligible before enrolling, not after completing the program",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Studying online from outside Canada counts the same as studying in Canada for PGWP purposes",
+      "actual_reality": "For lock-in dates on or after September 1, 2024, only in-class study within Canada counts; time studied outside Canada is deducted from PGWP length. For earlier lock-in dates, transitional rules apply with different treatment for online-in-Canada vs. online-outside-Canada",
+      "implication": "Students must track where they were physically located during all online coursework, as location — not just modality — determines PGWP impact",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A second Canadian degree entitles a graduate to a second PGWP",
+      "actual_reality": "A PGWP can only be issued once per person; having already received a PGWP is an explicit disqualifier regardless of additional Canadian credentials earned",
+      "implication": "Students who already used a PGWP must pursue alternative immigration pathways after completing a second Canadian program",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The 180-day application window begins after the student feels done with their program",
+      "actual_reality": "The 180-day window begins from the date of official confirmation of program completion (e.g., official letter, transcript notation), not from the student's subjective sense of completion or from when final grades are received informally",
+      "implication": "Students must track the official confirmation date precisely and apply promptly to avoid missing the deadline",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Taking a lighter course load in one semester to manage work or stress does not affect PGWP eligibility",
+      "actual_reality": "Full-time enrollment is required in every semester; part-time is only permitted in the final semester. A single part-time non-final semester can disqualify the student",
+      "implication": "Students considering a reduced load must exhaust all alternatives (medical deferrals, leaves of absence) rather than simply enrolling part-time mid-program",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Completing a program faster than its scheduled length means a shorter PGWP",
+      "actual_reality": "If a student completes a program in less time than the normal length, they may be eligible for a PGWP valid for the full normal length of the program",
+      "implication": "Students in accelerated programs should apply for the PGWP duration corresponding to the normal program length, not their actual completion time",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A program labeled under a public university's name is automatically PGWP-eligible",
+      "actual_reality": "Programs delivered by a private career college under a curriculum licensing agreement with a public institution are generally NOT PGWP-eligible, with only narrow time-limited exceptions for programs started before specified cutoff dates",
+      "implication": "Students must verify the delivery entity of their program, not just the branding, to confirm PGWP eligibility before enrolling",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Master's degree PGWP duration depends on the length of the master's program",
+      "actual_reality": "Since February 2024, master's and doctoral degrees of any length receive a 3-year PGWP, regardless of whether the program was shorter than 2 years",
+      "implication": "Students in accelerated or 1-year master's programs now receive the same 3-year PGWP as those in 2-year programs, changing the cost-benefit calculation of program length selection",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating program PGWP eligibility",
+      "naive_pattern": "Checks only whether the institution is a 'Canadian university or college' and assumes any degree program qualifies",
+      "informed_pattern": "Verifies the specific DLI is on the PGWP-eligible list, confirms the program is not delivered under a curriculum licensing agreement with a private college, and checks the field of study against IRCC's eligible fields list",
+      "why_it_matters": "Enrollment at an ineligible institution or in an ineligible program type forfeits PGWP access entirely with no recourse after graduation",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Understanding PGWP duration for master's programs",
+      "naive_pattern": "Assumes a 1-year master's program yields only a 1-year PGWP and may choose a longer program solely to get a 3-year PGWP",
+      "informed_pattern": "Knows that since February 2024, all master's and doctoral degrees receive a 3-year PGWP regardless of program length, making program length selection independent of PGWP duration for graduate students",
+      "why_it_matters": "Students who are unaware of the February 2024 rule change may unnecessarily enroll in longer programs or incorrectly advise peers",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Managing the 180-day application window",
+      "naive_pattern": "Starts the 180-day countdown from when they receive their degree parchment or feel finished with exams",
+      "informed_pattern": "Identifies the exact date of official program completion confirmation from the institution and schedules PGWP application submission well before the 180-day deadline",
+      "why_it_matters": "Missing the 180-day window results in permanent loss of PGWP eligibility for that program; there is no extension or appeal",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Assessing distance learning impact on PGWP",
+      "naive_pattern": "Treats all online courses the same regardless of where the student was physically located when taking them",
+      "informed_pattern": "Tracks physical location during all online coursework; understands that post-September 1, 2024 lock-in date rules require in-class in-Canada study for at least 50% of the program and deduct outside-Canada time from PGWP duration",
+      "why_it_matters": "Students who fail to track their physical location during online study may find their PGWP significantly shortened or be rendered ineligible",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Advising students on second Canadian programs after PGWP use",
+      "naive_pattern": "Tells a friend completing a second Canadian degree that they can get another PGWP after graduation",
+      "informed_pattern": "Recognizes that the PGWP is a one-time benefit; advises the student to explore Express Entry, Provincial Nominee Programs, or spousal work permits instead",
+      "why_it_matters": "Students who plan their immigration strategy around a second PGWP will find themselves without a work authorization pathway after completing their second program",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Part-time enrollment decisions mid-program",
+      "naive_pattern": "Advises a struggling student to simply take fewer courses for one semester to manage workload, unaware of PGWP implications",
+      "informed_pattern": "Warns that part-time enrollment in any non-final semester violates PGWP full-time status requirements; recommends exploring medical deferrals, authorized leaves, or other IRCC-recognized exceptions instead",
+      "why_it_matters": "A single non-final semester of part-time study can permanently disqualify an otherwise eligible student from the PGWP",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "official_ircc_pgwp_eligibility",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

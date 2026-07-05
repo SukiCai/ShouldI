@@ -1,0 +1,53 @@
+
+============================================================
+  Quality Report: International Student Immigration & Career Advisor
+  Overall: 4.5/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely expert-level skill with unusually strong specificity, current regulatory knowledge (FY2027 wage-based H-1B, March 2025 CRS changes, Nov 2024 PGWP rules), and sharp psychological framing. It goes well beyond generic immigration advice by anchoring on country-of-birth backlogs, cumulative CPT tracking, CIP codes, and NOC TEER classifications — variables novices rarely surface. Minor weaknesses: some heuristics restate the diagnostic factor rather than teaching a non-obvious inference, and coverage of edge cases (dependents, cross-border commuting, refugee/humanitarian pathways) is thin.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       5/5  ████████████  Excellent
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           5/5  ████████████  Excellent
+  Junior vs Senior Table       4/5  ██████████░░  Good
+  Overall Actionability        5/5  ████████████  Excellent
+
+  ✓ Strengths:
+    • Expert framing is genuinely counterintuitive and specific — the claim that 'decisions that most constrain your immigration options are made 3–5 years before the relevant deadline' plus the example 'a job offer at Level I vs. Level III OEWS can quadruple H-1B lottery odds under the FY2027 wage-based system' names concrete leverage points novices miss.
+    • Heuristics are unusually operational and time-bound — e.g., 'File I-765 within 30 days of DSO SEVIS recommendation and no later than 60 days after program completion' and 'CEC's 1-year threshold is 1,560 hours, not calendar time' — these are the exact numbers that determine outcomes.
+    • Country-of-birth as anchor variable is handled correctly and consistently — the skill repeatedly refuses to let the user compare countries without checking the Visa Bulletin first, which mirrors how competent immigration attorneys actually reason.
+    • Psychological reframes are sharp and specific: 'You're already paying the cost of leaving without the benefit of being here' for anticipatory grief, and reframing CRS 450 as 'a portfolio problem with unpulled levers' rather than a stuck number.
+    • Common Misconceptions section is calibrated — beliefs like 'The 90-day OPT unemployment limit resets with each new job' and 'A verbal H-1B sponsorship promise is binding' are things students actually believe, not straw men.
+
+  ✗ Weaknesses:
+    • Several 'heuristics' are really just restatements of the decision factor rather than a decision rule — e.g., US #1 'Never work a single day before the physical EAD card is in hand' is essentially the same content as the belief/reality item above it, doubling word count without adding leverage. A cleaner version would compress or cross-reference.
+    • The junior vs. senior table has strong rows (CPT tracking, EAD interpretation, EB-2 evaluation) but some rows are weak differentiators — 'Contingency planning: One plan vs. Plan A, B, C' is generic project management language that doesn't teach anything domain-specific.
+    • Failure patterns section is somewhat abstract — 'Treating immigration as an urgent problem rather than a continuous system' is true but doesn't give the AI a specific pattern to detect. Compare with the misconceptions section, which is much more concrete.
+    • Diagnostic questions in the universal section lean on rhetorical/therapeutic questions ('Are you staying because it compounds better, or because returning home would feel like failure?') which are useful once but not repeatable across cases. The country-specific diagnostics are much stronger.
+    • The skill implicitly assumes the user is a graduate student or recent graduate on a standard track — it doesn't address dependents (H-4, spousal PGWP eligibility changes), dual-intent nuances, or students already out of status seeking reinstatement.
+
+  → Improvement Suggestions:
+    • Add a compressed 'critical dates table' at the top of each country section — a scannable list of every hard deadline (I-765 30-day rule, PGWP 180-day letter-of-completion clock, STEM OPT 60-day window) so the AI can immediately flag time-sensitive situations without reading the whole file.
+    • Add coverage for dependent status: H-4 EAD eligibility rules and current litigation risk, spousal PGWP changes (spouses of master's students no longer automatically eligible post-2024), and how family situation changes optimal pathway (e.g., spouse's independent PR eligibility as a hedge).
+    • Add a short 'red flag phrases' checklist — specific things the user might say that should trigger immediate expert intervention (e.g., 'I already started working before my EAD arrived', 'my employer said they'll figure out sponsorship later', 'I've done 14 months of full-time CPT', 'I have a Day 1 CPT program lined up'). This would sharpen the AI's pattern recognition.
+    • Consolidate overlapping content between 'Common Misconceptions,' 'How the System Actually Works,' and 'Heuristics' — several facts (job offer no longer boosts CRS, 12-month CPT rule, verbal sponsorship non-enforceability) appear in three places. Consolidate into one authoritative section with cross-references.
+    • Add a decision tree or worked example for the most common composite case (India-born F-1 STEM master's graduate weighing US H-1B track vs. Canada PGWP pivot) — showing how the frameworks combine in practice would model the reasoning better than parallel country sections.
+
+  ⚠ Generic Advice Flags:
+    • 'Plan 3–5 years ahead, not 6–12 months ahead' as a standalone heuristic — the framing sentence above the heuristics list already makes this point better; as a numbered heuristic it reads as generic life advice without an operational trigger.
+    • 'Always have a Plan A, B, and C for each status transition' — true but generic; would be stronger as 'For each status transition, name a specific backup employer/program/country that would be executable within your current status's grace period.'
+    • 'Use forums to generate questions, not to make decisions' — sound advice but appears in almost any expert skill; more useful would be naming which specific forum claims are systematically wrong (e.g., Day 1 CPT safety, CRS job-offer boost) so the AI can flag them directly.
+    • Universal diagnostic 'Are you staying in this country because it compounds better over 10 years, or because returning home would feel like failure?' — good therapeutic reframe but not really diagnostic; it doesn't reveal an actionable fact, it prompts reflection.
+
+  ○ Missing Coverage:
+    • Dependents and family: H-4 EAD status, spousal PGWP eligibility post-2024 changes, whether children's status is derivative, aging-out risk for dependent children approaching 21 (CSPA calculations).
+    • Reinstatement and out-of-status recovery: what to do if a student has already fallen out of F-1 status, missed the OPT filing window, or overstayed a grace period — this is a high-stakes scenario the current skill doesn't address.
+    • Cross-border and treaty visas beyond H-1B: TN (Canadian/Mexican citizens), E-3 (Australian), H-1B1 (Chilean/Singaporean), O-1 pathway details, and how these interact with a student's country of citizenship (distinct from country of birth).
+    • Startup/entrepreneurship pathways: International Entrepreneur Parole (US), Canada Start-up Visa, and the immigration constraints on founding a company while on F-1 or PGWP.
+    • Tax and financial implications of status transitions: substantial presence test, treaty benefits, and how five-year F-1 tax exemption interacts with H-1B start dates — students routinely make suboptimal timing decisions here.
+    • UK, Australia, EU as alternatives: the skill scopes itself to US/Canada but many students weigh Graduate Route (UK), Temporary Graduate 485 (Australia), or EU Blue Card as parallel options; at minimum a note directing users elsewhere for those jurisdictions.

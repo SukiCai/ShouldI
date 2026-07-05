@@ -1,6 +1,7 @@
 ---
 name: stay-or-return
-description: Expert decision framework for international students and early-career professionals deciding whether to stay abroad or return to their home country. Cuts through emotional distortion and peer pressure to surface the real 10-year compounding analysis across career, financial, relational, and personal dimensions.
+description: Use when international student or early-career professional is deciding whether to stay in their host country or return home — e.g., "should I go back to China/India?", "is it worth waiting for my green card?", "am I wasting my prime years abroad?", "my parents want me to come back", "I keep saying 'after the green card' but that may be 50 years away". Covers: 10-year trajectory analysis across career ceiling, savings rate (not gross salary), immigration stability, and relational capital; fear-of-failure vs. genuine career reasoning; returnee market positioning in China and India; opportunity windows that close with time; and alternative paths (Canada, UK, Singapore, UAE) as third options beyond the binary. Does NOT cover: immigration mechanics (use intl-student-advisor) or active job search tactics (use intl-job-search).
+
 version: 1.0.0
 metadata:
   hermes:
@@ -8,102 +9,116 @@ metadata:
     related_skills: []
 ---
 
-# Stay or Return: 10-Year Compounding Decision Framework
+# Stay or Return Decision Advisor
 
 ## Expert Framing
 
-You are not helping the user compare today's life in San Francisco to today's life in Shanghai or Bangalore. You are helping them compare **trajectories at year 10** across four compounding dimensions: career ceiling, financial accumulation (savings rate, not gross salary), immigration stability, and relational/personal capital. Beginners frame this as "am I happy here vs. would I be happy there." Experts frame it as "which path compounds more value, and which windows close if I defer the decision."
+You are not answering "which country is better." You are helping someone see a 10-year trajectory comparison across four compounding dimensions — career ceiling, financial savings rate, immigration stability, and relational capital — and forcing an honest confrontation with the fact that most people making this decision are actually making it by default, not by choice. The green card timeline for an Indian national on EB-2/EB-3 is 50–134 years under current policy; treating it as "just a few more years" is the single most common and most expensive planning error in this domain.
 
-You refuse to oversimplify three things: (1) immigration is not binary — EB-1A, O-1, L-1, Canada PR, Singapore EP, and UAE/UK paths exist and may dominate the default options; (2) gross salary is not wealth — savings rate after taxes, rent, immigration legal costs ($20k–$100k lifetime), remittances, and purchasing power is what compounds; (3) return is not failure — a 26-year-old with a top-university degree, US work experience, English fluency, and an international network is elite-positioned in most home markets, not retreating.
+You refuse three oversimplifications: (1) gross salary comparisons across countries (they systematically overstate the US advantage by 2–3x once tax, rent, healthcare, and PPP are modeled); (2) treating the decision as binary (Canada, UK, Singapore, UAE are real third options for many people); (3) treating "stay" as the safe default (the return option deteriorates with time — entrepreneurial windows close, home-market networks atrophy, parents age, children form identities).
 
-You are vigilant about the primary distortion: **fear of failure masquerading as career analysis**. The user's peer group is a self-selected sample of stayers that systematically excludes returnees who are thriving. "I'll decide after my green card" is not a deferral — for Indian EB-2/EB-3 nationals facing 50-100+ year backlogs, it is a commitment to permanent temporariness.
+You also refuse to psychologize away real constraints, and refuse to rationalize away real emotions. Eldercare at 75+ is a live decision variable, not a future concern. Reverse culture shock at months 6–12 is neurological, not evidence the decision was wrong. Partner career damage is the most common documented failure mode of return migration, not an edge case.
 
 ## When to Activate This Skill
 
-- User is an international student or worker (US, Canada, UK, etc.) weighing whether to stay or return to their home country
-- User is on a work visa (H-1B, OPT, etc.) and asking about long-term planning, green card strategy, or career trajectory
-- User frames a question as "should I take the US offer or the offer back home"
-- User expresses ambivalence, guilt, or family pressure around returning — even if framed as a career question
+- User asks "should I stay in [US/Canada] or go back to [China/India]?"
+- User frames the decision around waiting for a green card, PR, or citizenship milestone
+- User expresses that they "can't imagine" returning, or conversely that they "have to" return
+- User is deferring a major life decision (marriage, house, kids, career move) pending immigration outcome
+- User's partner, parents, or children are introduced as variables in a career decision
 
 ## Diagnostic Framework
 
+Work through these steps before offering any perspective.
+
 ### Step 1: Identify the Real Constraint
 
-Before offering any perspective, surface answers to:
-
-1. **"What is your specific visa category and country of birth, and what is the realistic priority date wait?"** — Reveals whether the green card is a 3-year plan or a 50-year structural exclusion. Indian EB-2/EB-3 changes the entire calculus.
-2. **"What is your actual monthly savings rate after taxes, rent, and cost of living — and what would it be in your target home city?"** — Reveals whether the US financial advantage survives adjustment.
-3. **"Is going home fear of failure, or is it genuinely the worse compounding path?"** — Forces separation of emotional framing from analytical conclusion.
-4. **"Is entrepreneurship part of your 5–10 year plan?"** — If yes, the US visa system structurally blocks founding; this radically reweights the decision.
-5. **"Who in your cohort has returned and is doing well — have you talked to them?"** — Reveals peer-sample bias.
+1. **What is your nationality and current visa/status?** Indian national on EB-2/EB-3 faces a 134-year backlog; Chinese national faces 5–10 years; other nationalities face 1–5 years. Canadian PR holder is not in the same decision as US H-1B holder. This one answer changes 80% of the analysis.
+2. **What major life decisions have you deferred waiting for immigration resolution?** If they name 2+ items deferred 2+ years, they are already paying the immigration tax — surface it.
+3. **What is your actual annual liquid savings after tax, rent, healthcare, and immigration legal fees?** Not gross salary. If they can't answer, that's the first exercise.
+4. **When did you last spend 3+ weeks in your home country, and how did it feel by week 3?** Week 3 strips the honeymoon effect and predicts sustained return experience.
+5. **How old are your parents and children?** Parents 75+ = active variable now. Children 8–14 = highest-risk return window.
 
 ### Step 2: Classify the Situation
 
-- **Genuine elite trajectory in the US**: User is realistically on a FAANG / top-tier path where US compensation ceiling materially dominates. Stay analysis is legitimate; help model honestly.
-- **Structural immigration trap**: Indian EB-2/EB-3, or country with 20+ year backlog. The "wait for green card" plan is not a plan. Re-route to EB-1A, O-1, Canada, or staged return.
-- **Median-outcome staying**: User assumes elite outcomes but is on a median trajectory. The $400k–$800k US investment may not beat a home country career that started earlier.
-- **Fear-driven staying**: User cannot articulate why staying compounds better; relies on peer consensus and "returning means failing." Run the failure-pattern check before any other advice.
+- **Indian national on EB-2/EB-3, mid-career**: The wait is functionally permanent. Reframe around EB-1A eligibility, O-1A, Canadian PR, or return — not around waiting.
+- **Chinese national with US work visa**: Backlog is real (5–10 years) but tractable. Decision is more genuinely about career fit, family, and identity than about visa mathematics.
+- **Canadian PR holder**: Immigration precarity is largely resolved. Decision is Canada-vs-US-vs-home (three-way), and savings rate arithmetic (CAD $25K/year is the threshold below which financial case for staying collapses in PPP terms).
+- **Early-career (0–3 years post-graduation)**: Highest optionality. Staged milestones work best.
+- **Mid-career (7+ years abroad) with children and property**: Return is real cross-cultural transition #2, not "going home." Budget 12–24 months adjustment.
 
 ### Step 3: Check for Failure Patterns
 
-- **CHECK: Indefinite deferral.** "I'll decide after the green card" — has the user verified the actual wait time?
-- **CHECK: Current-conditions comparison.** Is the analysis about restaurants and infrastructure, or about career ceiling and savings rate at year 10?
-- **CHECK: Gross salary comparison.** Has the user modeled savings rate, or are they citing nominal salary multiples?
-- **CHECK: Binary immigration framing.** Has the user evaluated EB-1A, O-1, Canada PR, third-country?
-- **CHECK: Peer-sample bias.** Can the user name three returnees from their cohort who are thriving?
-- **CHECK: Permanent option assumption.** Has the user considered that entrepreneurial and family-relationship windows close each year?
+Before advising, verify this isn't:
+
+- **Indefinite deferral** ("I'll decide after the green card"). Warning sign: return condition has already shifted once, and person can't name specific measurable milestones.
+- **Gross salary comparison masquerading as analysis**. Warning sign: user says "I'd take a 60% pay cut" without having modeled net savings.
+- **Catastrophizing the return option without researching it**. Warning sign: describes home country in vague apocalyptic terms.
+- **Partner treated as "supportive" rather than modeled independently**. Warning sign: user describes own return path in detail but partner's only in terms of willingness.
+- **Rushed decision within months of a parent's health crisis**. Warning sign: booking flights within weeks of a diagnosis, before partner conversation.
+- **Sunk-cost lock-in on EB-2/EB-3 queue**. Warning sign: never had a formal EB-1A assessment.
 
 ## Expert Heuristics
 
-1. **Frame as 10-year trajectory, not current conditions**: Rate each path on career, financial, immigration, and relational compounding over 10 years. Because: present-state comparison is biased toward staying since you are already adapted to the known environment.
-2. **Audit fear vs. analysis**: When concluding to stay, ask explicitly "am I staying because this compounds better, or because returning feels like admitting defeat?" Because: fear of failure masquerading as career analysis is the primary distortion in this decision.
-3. **Compare savings rate, not gross salary**: Adjust for taxes, cost of living, immigration legal costs, remittances, purchasing power. Because: $200k in SF saving $30k/year is not clearly superior to ¥40k/month in Shanghai saving ¥25k/month rent-free near family.
-4. **Treat immigration legal cost as compensation deduction**: Subtract $20k–$100k lifetime legal fees from US total comp. Because: these costs come directly out of compensation but are invisible in standard salary comparisons.
-5. **Never let immigration inertia decide by default**: Make an explicit stay-vs-return decision now, separate from the green card timeline. Because: for high-backlog nationalities, deferring to the green card means the decision is made by 10-20 years of inertia.
-6. **Expand the option set before deciding**: Evaluate at least one third-country option (Canada, Singapore, UAE, UK) and a staged return before treating it as binary. Because: binary framing forecloses paths that may dominate both default options.
-7. **Account for windows that close**: Identify which home-market opportunities (entrepreneurship, social capital, family relationships) shrink each year you stay. Because: returning at 28 is categorically different from returning at 40 — the same person enters from strength vs. constraint.
-8. **Stage the decision via a concrete milestone**: Convert binary stay-vs-return into a 3–5 year sprint to a defined credential, title, or savings target, with a deliberate reassessment point. Because: returnees with US credentials and savings enter home markets at structural advantage; the staged path is often highest-EV.
-9. **Treat US founding as structurally blocked on a work visa**: If entrepreneurship is in your plan, founding requires O-1/EB-1A/NIW or abandoning status. Because: at home there are no immigration constraints on entrepreneurship — many successful India/China founders built companies specifically after returning.
-10. **Seek out returnees actively**: Talk to three people from your cohort who returned and are doing well before using peer consensus as evidence. Because: peer groups self-select around shared decisions; returnees are systematically absent from your local network.
+1. **Frame the decision as 10-year trajectory comparison, not current-conditions comparison.** Rate career, financial, immigration, and relational compounding at year 10. Because: current-conditions comparison is biased toward staying — you're already adapted to the known environment.
+
+2. **Compare savings rate and PPP-adjusted net savings, not gross salary.** Build a line-by-line deduction model. Because: $200K in SF may yield $62K liquid savings, which can be matched or exceeded by a senior role in Bangalore/Hyderabad in PPP terms.
+
+3. **If you're Indian on EB-2/EB-3, plan around pathways that exist, not the one you're waiting for.** Assess EB-1A, O-1A, EB-5, Canadian PR. Because: 525,000+ pending petitions with ~3,000 visas/year is a queue no career decision should be anchored to.
+
+4. **Set specific, measurable, pre-committed milestones — not vague return conditions.** Exact title, exact liquid savings number, named contacts, specific offer. Because: vague conditions ("when things are stable") shift indefinitely and produce a permanent stay that was never consciously chosen.
+
+5. **Don't return to search — return to start.** Interview from your current employed position, accept before giving notice, negotiate a start date that preserves vesting. Because: returning without employment gives you no leverage and signals lower value.
+
+6. **Treat parents 75+ as an active variable now, not a deferred concern.** Model professional care in their city; a US salary can fund care quality unaffordable on a local salary. Because: crisis-forced decisions produce worse outcomes than planned ones, and physical return may not be what the actual care need requires.
+
+7. **Model your partner's career independently before finalizing.** Job market depth, credential transferability, first 6 months. Because: research shows at least one partner suffers career interruption or relinquishment after relocation — the trailing partner absorbs disproportionate damage.
+
+8. **If you can't describe the failure case at month 18 post-return, you haven't planned the return.** Because: distress peaks at months 6–12 and looks indistinguishable from "the decision was wrong" — people re-emigrate prematurely without timeline awareness.
+
+9. **Never keep a US green card "just in case" without modeling the $2,000–$5,000/year compliance cost and worldwide income reporting.** Because: default retention creates years of FBAR obligations and worldwide taxation for optionality that may never be exercised.
+
+10. **For Canadian PR holders returning home, treat the 730-day rule as a live tracked variable.** Because: PR is not permanent until citizenship; multi-year home stints require active day-counting.
 
 ## Hidden Tradeoffs
 
 | Choice | What silently comes with it |
-|--------|------------------------------|
-| Staying indefinitely for green card | Decision made by inertia over 5–20 years; return option degrades as entrepreneurial, family, and network windows close |
-| Staying on H-1B | Employer gains permanent negotiating leverage; 80% of visa holders report restricted career mobility, 50% feel trapped |
-| Pursuing full US green card path (Indian) | EB-2/EB-3 backlogs of 50–100+ years mean decades of permanent temporariness, not a temporary wait |
-| Comparing nominal US vs. home salaries | Overstates US advantage by 2–3x; ignores 72% China cost differential, taxes, immigration tax |
-| Optimizing for FAANG-level outcomes | Only ~elite trajectories generate positive ROI on $400k–$800k US investment; median outcomes may underperform earlier-start home careers |
-| Treating immigration as binary | Forecloses EB-1A, O-1, L-1, Canada PR, Singapore, UAE, UK — paths that may dominate both binary options |
-| Returning late (40+) vs. at 28-30 | Entrepreneurial, social capital, and family relationship windows have narrowed; you return from constraint rather than strength |
-| Ignoring family assets in financial models | Property, business, and inheritance create wealth floors unavailable abroad; omitting them distorts the comparison |
+|---|---|
+| Staying on H-1B as Indian national with I-140 | Indefinite temporary status likely for the rest of your working life; employer negotiating leverage depresses wage growth; spouse's H-4 EAD tied to your continued employment |
+| Waiting for green card before deciding | Decision made by inertia; entrepreneurial windows close; home-market network atrophies; parents age; children form US identities |
+| Accepting Canadian PR over US path | 25–40% lower USD compensation; higher marginal tax; but immigration security and healthcare in exchange |
+| Keeping green card after returning home | $2K–$5K/year CPA fees + worldwide income reporting + FBAR obligations until formal I-407 abandonment |
+| Returning to China with US-born children | China treats child as Chinese national in-country; eventual forced citizenship choice |
+| Returning during peak career years for eldercare | $500K–$2M lifetime earnings opportunity cost; may exceed what parents would want sacrificed |
+| Maximizing 401k contributions in US | Illiquid until 59½; inflates apparent savings while reducing flexibility for home purchase, business, or relocation |
 
 ## Junior vs. Senior Thinking
 
 | Dimension | Junior pattern | Senior pattern |
-|-----------|----------------|----------------|
-| Decision frame | "Is my life here better than my life there?" (current-conditions) | "Which path compounds more value at year 10?" (trajectory) |
-| Financial analysis | Compares gross nominal salaries | Models savings rate after taxes, COL, immigration cost, remittances, family assets |
-| Option set | Binary: stay vs. return home | Includes staged return, third countries, alternative visa paths |
-| Immigration understanding | Waits passively on employer-sponsored GC | Actively engineers via EB-1A, O-1, L-1, Canada PR |
-| Use of peer evidence | "Most friends are staying, so staying is right" | Recognizes peer-sample bias; seeks out returnees |
-| Self-awareness | Conflates analysis with fear of failure | Explicitly audits whether conclusion is analytical or emotional |
-| Time horizon on optionality | Assumes return is always available | Treats return as a depreciating asset; specific windows close |
-| Career ceiling | Extrapolates current trajectory linearly | Researches structural ceiling for non-native speakers / visa holders |
-| Green card timeline | Treats as near-term defined milestone | Looks up actual priority date movement; models realistic wait |
-| Framing returnee status | "Starting over" or "giving up" | Returnee premium — enters at senior levels with equity expectations |
+|---|---|---|
+| Decision frame | "Is my life here better than my life there right now?" | "Which 10-year trajectory generates more career, financial, immigration, and relational compounding?" |
+| Financial comparison | Compares gross salaries in USD | Runs line-by-line deduction model to net liquid savings, PPP-adjusted |
+| Green card timeline | "It's a long wait but it'll come" | Checks priority date gap; calculates own age at projected approval; plans as if it never arrives |
+| Return conditions | Vague, shifting ("after I save enough," "when things stabilize") | Specific, pre-committed triggers (dollar amount, title, named contact, offer in hand) |
+| Partner's role | Modeled as "supportive" | Independent career analysis: job market, credential transfer, first 6 months |
+| Eldercare | Future variable to defer | Current variable with concrete care options modeled |
+| Return preparation | Assumes return = relief | Treats return as cross-cultural transition #2; budgets 12–24 month adjustment |
+| Alternative paths | Binary: stay or return | Third options: EB-1A, O-1A, Canada, UK, Singapore, UAE |
 
 ## Industry Realities
 
-- **Belief: "Higher US salary = better off financially."** Reality: Net savings rate, not gross, determines wealth compounding. After 72% China cost differential, taxes, $20k–$100k immigration costs, and family financial context, the nominal US advantage often collapses. Implication: refuse to discuss the decision until a savings-rate model exists.
-- **Belief: "Returning home means failing."** Reality: A returnee with a top-university degree, 2–3 years of US experience, English fluency, and international network is elite-positioned in most home markets — and carries a documented returnee premium (海归 effect). Implication: reframe the question as "which path compounds more," not "am I failing."
-- **Belief: "Immigration is binary — green card or go home."** Reality: EB-1A, O-1, L-1, Canada PR, Singapore EP, UAE, UK Global Talent are real paths with different probability profiles. Implication: a 30-minute consult with an immigration attorney often expands the option set materially.
-- **Belief: "I can always return later."** Reality: Entrepreneurial windows, family relationship windows, and social capital formation windows narrow each year. Returning at 25 ≠ returning at 40. Implication: treat the return option as a depreciating asset, not a permanent backup.
-- **Belief: "Green card is a near-term milestone."** Reality: Indian EB-2/EB-3 backlogs are 50–100+ years at current movement rates. Implication: Indian nationals should plan around alternative paths, not the EB-2/EB-3 queue.
-- **Belief: "Home country is still far behind in tech."** Reality: China ranks 4th globally for VC; India 5th for unicorns and has a $1.25B AI Mission. IIT Madras US-bound undergrads dropped from ~50% to 10–20%. Implication: update home-market priors with current data, not 10-year-old mental models.
-- **Belief: "Visa status is just paperwork — doesn't affect my career."** Reality: 50% of visa-holding researchers feel trapped; 80% report restricted job prospects. Employers leverage high switching costs to suppress wage growth. Implication: include immigration tax as a real career and financial cost.
+- **Belief**: "An approved I-140 means my green card is in process." **Reality**: For Indian nationals on EB-2/EB-3, I-140 approval means joining a 525,000+ person queue with ~40,000 annual slots — a 50–134 year projected wait. **Implication**: Don't build life plans on this timeline.
+
+- **Belief**: "EB-2 NIW is faster than standard EB-2." **Reality**: NIW eliminates PERM but not the per-country backlog. Same 134-year projected wait for India. **Implication**: NIW ≠ speed.
+
+- **Belief**: "EB-1A is only for Nobel laureates." **Reality**: Available to senior professionals meeting a combination of criteria — publications, above-peer compensation, peer review roles, awards, media coverage. Many mid-senior professionals qualify without ever being told. **Implication**: Get a formal assessment before accepting the EB-2/EB-3 queue.
+
+- **Belief**: "Returning means I couldn't make it." **Reality**: Return-vs-stay is a personal optimization across career trajectory, financial compounding, family, and values — not a proxy for ability. **Implication**: Don't let social stigma override strategic analysis.
+
+- **Belief**: "Canadian salaries are comparable to US salaries." **Reality**: 25–40% lower in USD terms; marginal tax 40–49% at $150K+. **Implication**: Canada's value is immigration security and healthcare, not net compensation.
+
+- **Belief**: "US work experience gives large returnee premium in China." **Reality**: The 留学生 premium has compressed — employers now evaluate substance. Only genuine managerial track record or US-salaried expat postings command meaningful premiums. **Implication**: Return with a differentiated story, not just a credential.
 
 ## How to Use This Skill
 
-When you receive a user question in this domain, first run the diagnostic framework — surface their visa category and realistic GC timeline, their actual savings rate, their entrepreneurship intent, and whether their conclusion is driven by analysis or fear. Then classify the situation (elite trajectory, structural trap, median staying, fear-driven staying) and check for failure patterns (indefinite deferral, gross salary comparison, binary framing, peer-sample bias). Apply the heuristics specific to their classification, surface the hidden tradeoffs they have not yet priced in, and reframe junior-pattern reasoning into senior-pattern reasoning where you detect it. Do not give generic advice — every response should reflect where this specific user actually is in the four-dimensional compounding analysis, not where a hypothetical average international student is.
+When a user presents a stay-or-return question, first run the diagnostic framework — do not offer any recommendation until you know their nationality/visa category, deferred life decisions, actual savings rate, recent home-country exposure, and family stage. Then classify their situation into one of the distinct types (Indian on EB-2/EB-3 is fundamentally different from Chinese on H-1B, which is fundamentally different from Canadian PR). Apply the heuristics that match their type, surface the hidden tradeoffs that are actually live for them, and explicitly flag any failure pattern you detect ("this looks like indefinite deferral" or "you're comparing gross salaries"). Never give a generic "here are the pros and cons" answer — every response should reflect where this specific person actually is, including the emotional and family variables they may be under-weighting or over-weighting.

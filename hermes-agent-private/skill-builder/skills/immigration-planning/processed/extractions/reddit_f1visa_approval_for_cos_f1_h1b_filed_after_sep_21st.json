@@ -1,0 +1,185 @@
+{
+  "source_file": "f1visa_approval_for_cos_f1_h1b_filed_after_sep_21st.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Change of Status petitions (COS), transfers, and extensions are not subject to the September 21, 2025 proclamation restrictions — only consular processing petitions filed after that date are affected",
+      "condition": "When an H-1B petition is filed as a Change of Status from inside the US after September 21, 2025...",
+      "action": "Proceed with filing COS without treating the proclamation as a blocking event",
+      "because": "The DSO cites the official Travel.State.Gov language: 'restrictions apply only to aliens seeking visa issuance or entry into the United States' — meaning those outside the US going through consular processing, not COS filers already in the US",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether petition is COS vs. Consular Processing",
+      "why_it_matters": "The September 2025 proclamation and its associated $100k fee restriction apply only to consular processing petitions, not COS filings — making this the single most important variable in determining whether the new rules affect a given applicant",
+      "how_to_assess": "Determine whether the applicant is currently inside the US on a valid status (eligible for COS) or outside the US requiring visa stamp issuance at a consulate",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Cap-exempt vs. cap-subject employer",
+      "why_it_matters": "Cap-exempt employers (universities, nonprofit hospitals) bypass the H-1B lottery entirely, allowing petitions to be filed and approved year-round with faster timelines, and appear unaffected by the new proclamation as well",
+      "how_to_assess": "Confirm whether the employer is a university, nonprofit research organization, or nonprofit/government-affiliated healthcare institution — these qualify for cap-exemption",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Premium Processing election",
+      "why_it_matters": "Electing Premium Processing significantly shortens approval timelines — in this case a petition filed 9/22 received approval by 10/7, roughly 15 days",
+      "how_to_assess": "Check whether employer is willing to pay Premium Processing fee; evaluate urgency of status change relative to OPT/CPT expiration dates",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Traveling abroad for visa stamping after H-1B approval",
+      "unstated_consequence": "Traveling to a country like India for visa stamping after an H-1B is approved may trigger the proclamation's entry restrictions, potentially subjecting the applicant to new rules (including possible $100k fee requirement) upon re-entry — even if the original petition was filed as COS and was unaffected",
+      "who_it_affects": "H-1B holders whose COS was approved but who need to travel internationally and return on a visa stamp",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Employers halting H-1B filings for cap-exempt roles due to misreading the proclamation as applying universally",
+      "why_it_happens": "The September 2025 proclamation was widely reported without the key consular processing distinction, causing employers and HR teams to apply a blanket hold on all H-1B filings including COS and cap-exempt cases",
+      "consequence": "Delayed or cancelled petitions for eligible workers, unnecessary anxiety, and potential gaps in work authorization",
+      "warning_signs": [
+        "Employer says they are 'waiting to see' if the proclamation affects COS or cap-exempt cases",
+        "No immigration counsel consulted — decision made by HR reading news coverage"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the applicant currently inside the United States on a valid status, or outside the US?",
+      "what_it_reveals": "Determines whether the petition qualifies for Change of Status (inside US) vs. requires consular processing (outside US) — the key variable for whether the September 2025 proclamation applies",
+      "follow_up_if_yes": "Are they eligible for COS from their current status (e.g., F-1 OPT/CPT)? If so, the proclamation restrictions likely do not apply",
+      "follow_up_if_no": "The proclamation's restrictions on entry and the associated fee requirements may apply — consult an immigration attorney before filing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the employer cap-exempt (university, nonprofit hospital, government research)?",
+      "what_it_reveals": "Cap-exempt employers can file H-1B petitions year-round without lottery participation, and this thread confirms approvals are still being issued post-proclamation for such petitions",
+      "follow_up_if_yes": "Proceed with filing; monitor for any new guidance specifically targeting cap-exempt petitions",
+      "follow_up_if_no": "Lottery-based (cap-subject) timing constraints apply; assess whether COS route is still available and whether proclamation fee applies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The $100,000 H-1B fee introduced by the September 2025 proclamation applies to all new H-1B petitions including Change of Status filings",
+      "actual_reality": "The proclamation's restrictions apply only to petitions where the applicant is outside the US seeking visa issuance or entry through consular processing — COS, transfers, and extensions filed from inside the US are not affected",
+      "implication": "Applicants already in the US on F-1 or other statuses who are eligible for COS should not let the $100k fee announcement deter them or their employers from filing; clarifying this distinction could prevent unnecessary petition delays",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The $100,000 fee is paid by the visa applicant/employee",
+      "actual_reality": "The fee is paid by the sponsoring company, not the individual applicant",
+      "implication": "Applicants should not self-select out of employer conversations about H-1B sponsorship based on personal inability to pay — the financial burden falls on the employer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Reading and applying new immigration proclamations",
+      "naive_pattern": "Reads headline about $100k H-1B fee or proclamation and assumes it applies to all H-1B scenarios including their own COS case; freezes or assumes ineligibility without reading the actual regulatory text",
+      "informed_pattern": "Immediately checks the primary source (Travel.State.Gov, USCIS.gov) to identify the exact scope language; distinguishes consular processing from COS; files promptly if COS is unaffected",
+      "why_it_matters": "Naive reading causes unnecessary delays, missed filing windows, or abandoned job offers; informed reading allows continued progress with appropriate risk management",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If an H-1B petition is filed after September 21, 2025, the $100k fee and proclamation restrictions automatically apply",
+      "why_believed": "News coverage of the proclamation did not prominently distinguish between consular processing and Change of Status; the effective date language sounds universal",
+      "actual_rule": "The proclamation applies only to 'aliens seeking visa issuance or entry into the United States' based on H-1B petitions filed after September 21, 2025 — i.e., those going through consular processing from outside the US; COS, transfers, and extensions are explicitly not covered",
+      "real_consequence": "Employers put legitimate COS filings on hold unnecessarily, creating authorization gaps and delaying start dates for workers already in the US on valid status",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Cap-exempt H-1B petitions are subject to special additional scrutiny or different rules under the new proclamation",
+      "why_believed": "The proclamation created general uncertainty and people assumed any 'new' petition filed after the date would be scrutinized differently regardless of cap status",
+      "actual_rule": "As of the time of this thread, there is 'not any special consideration for Cap-Exempt at the moment' — cap-exempt petitions filed as COS are processed and approved normally",
+      "real_consequence": "Cap-exempt employers (hospitals, universities) unnecessarily delay filings for roles they could legally proceed with immediately",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "DSO filed a cap-exempt H-1B COS petition (F-1 to H-1B) for a university employee on September 22, 2025 — one day after the proclamation's effective date — with Premium Processing elected",
+      "decision": "Filed as normal COS with standard filing fees and Premium Processing; did not treat the proclamation as a blocker",
+      "outcome": "Received email approval on October 7, 2025 — approximately 15 days after filing; DSO subsequently received 2 additional approvals from similarly structured petitions filed in the same window",
+      "lesson": "COS petitions filed after the September 21 proclamation are being approved on normal timelines; the proclamation does not affect COS filings regardless of whether cap-exempt or (based on DSO's interpretation) cap-subject",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Employer tells applicant they are 'waiting' to file H-1B after the proclamation; applicant asks community whether to push back or accept the delay",
+      "underlying_state": "Catastrophizing and learned helplessness — applicant assumes the employer's caution is legally grounded and that any advocacy on their part would be inappropriate or futile",
+      "how_it_manifests": "Passive waiting, asking community for reassurance rather than presenting the employer with the actual regulatory text, and framing the situation as out of their control",
+      "expert_move": "Direct the applicant to the Travel.State.Gov source language and encourage them to share it with their employer's HR or immigration counsel — reframe the situation as 'your employer may be acting on a misreading that you can help correct'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Community members expressing anxiety about whether their pending or upcoming cap-exempt H-1B filings will be approved post-proclamation",
+      "underlying_state": "Uncertainty aversion combined with recency bias — a dramatic policy announcement (the proclamation) dominates their mental model even when the legal scope is narrow",
+      "how_it_manifests": "Asking for reassurance, monitoring for any approval to use as a proxy signal, stating 'fingers crossed' rather than engaging with the actual legal scope",
+      "expert_move": "Anchor the conversation to primary source language and concrete approval data points; reframe from 'will it be approved' to 'what does the regulatory text actually say about this case type'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Will my H-1B COS be affected by the September 21 proclamation and the new $100k fee?",
+      "reframe": "The proclamation only applies to people outside the US seeking to enter — if you're already here and filing COS, you're not the target of this rule",
+      "why_it_works": "Shifts the question from 'am I affected by this scary new rule' to 'does this rule's scope even cover my situation' — moves from emotional reaction to legal scoping",
+      "example_language": "'The Proclamation's restrictions apply only to aliens seeking visa issuance or entry into the United States' — COS is neither of those things",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_f1visa_approval_for_cos_f1_h1b_filed_after_sep_21st",
+  "_source_regions": [
+    "us"
+  ]
+}

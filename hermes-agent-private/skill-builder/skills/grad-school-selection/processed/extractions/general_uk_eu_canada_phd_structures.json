@@ -1,0 +1,296 @@
+{
+  "source_file": "uk_eu_canada_phd_structures.txt",
+  "heuristics": [
+    {
+      "rule": "Verify international student eligibility explicitly before investing time in a UK PhD application",
+      "condition": "When a UK PhD advertisement says 'funding available'...",
+      "action": "...contact the department directly to confirm whether the funding is open to international (non-UK/EU) applicants before writing any application materials",
+      "because": "Many UK PhD advertisements describe funding that is structurally restricted to UK/EU citizens — international students who don't check waste significant application effort on ineligible positions"
+    },
+    {
+      "rule": "For students from India or China prioritizing long-term settlement, treat Canadian PhD as the default comparator against US PhD",
+      "condition": "When an international student from a high-backlog nationality (India, China) is comparing US vs. non-US PhD options...",
+      "action": "...explicitly model the PR timeline under each pathway before comparing stipend or program prestige",
+      "because": "US green card backlogs for Indian and Chinese nationals can exceed 20 years, while Canada's Express Entry pathway can deliver PR within 3–5 years of PhD completion — this asymmetry can outweigh stipend differences"
+    },
+    {
+      "rule": "Treat EU MSCA Doctoral Network positions as the primary funding target for international students considering Europe",
+      "condition": "When an international student is applying to EU PhD programs and needs funded positions with no citizenship restriction...",
+      "action": "...prioritize MSCA DN positions over country-specific or university-specific funding since MSCA is explicitly open to any nationality",
+      "because": "Most EU national and university PhD funding has citizenship or residency preferences; MSCA is structurally designed for international mobility and has no nationality restriction"
+    },
+    {
+      "rule": "Ask UK supervisors whether recent students graduated within the funded period as a proxy for project viability",
+      "condition": "When evaluating a UK PhD supervisor whose project sounds well-scoped...",
+      "action": "...ask directly 'Have any of your recent students graduated within the funded period (3–3.5 years)?' before accepting",
+      "because": "UK funding typically covers only 3–3.5 years; a supervisor whose students consistently run over is signaling either poor scoping, poor mentorship, or both — and the unfunded tail falls entirely on the student"
+    },
+    {
+      "rule": "For Canadian PhD students, apply for tri-council fellowships in year one regardless of stipend adequacy",
+      "condition": "When a Canadian PhD student has adequate RA/TA funding and is not feeling financial pressure...",
+      "action": "...still apply for NSERC CGS-D, SSHRC Doctoral, or CIHR fellowships in year one because they are portable and prestigious",
+      "because": "Tri-council fellowships follow you to any eligible institution, strengthen your CV for academic and industry job markets, and signal research independence to future employers — the opportunity cost of not applying is permanently foregone"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Immigration pathway clarity",
+      "why_it_matters": "The PhD destination determines which post-graduation immigration route is available — and those routes differ radically in probability, speed, and employer dependence",
+      "how_to_assess": "Map the full timeline from PhD completion to permanent residence for your specific nationality under each country's system; account for lottery risk (US H-1B), backlog years (US EB categories), and open-permit duration (UK Graduate Route, Canadian PGWP)",
+      "weight": "high"
+    },
+    {
+      "factor": "Program length vs. career stage alignment",
+      "why_it_matters": "A 3-year UK/EU PhD versus a 5–7-year US PhD represents 2–4 years of lost compounding on salary, investment, and career seniority — but also potentially a weaker foundation if the shorter program doesn't fit the student's preparation level",
+      "how_to_assess": "Assess whether the student has a well-defined research question before starting; shorter programs (UK/EU) require research clarity on day one; US programs allow exploration through coursework and rotations",
+      "weight": "high"
+    },
+    {
+      "factor": "Nationality-specific green card backlog",
+      "why_it_matters": "For Indian and Chinese nationals, US permanent residence through employer sponsorship can take decades; this fundamentally changes the value proposition of a US PhD relative to Canadian or European alternatives",
+      "how_to_assess": "Check current USCIS Visa Bulletin for EB-2/EB-3 cutoff dates for the applicant's country of birth; compare against Canadian Express Entry draw history for PhD-level candidates",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding structure: employment contract vs. stipend vs. scholarship",
+      "why_it_matters": "Employment contracts (Germany, Netherlands, Sweden, many EU countries) include social security contributions, benefits, and legal worker protections; stipends do not — this affects financial security, healthcare access, and long-term immigration point accumulation",
+      "how_to_assess": "Ask the program directly whether the PhD position is a Arbeitsvertrag/employment contract or a scholarship; verify whether social insurance contributions are included",
+      "weight": "high"
+    },
+    {
+      "factor": "Research project flexibility vs. fixedness",
+      "why_it_matters": "UK and many EU PhDs admit students to execute pre-defined projects; US and Canadian programs typically allow students to develop their own direction — misalignment between student's desire for intellectual autonomy and program structure causes dropout and dissatisfaction",
+      "how_to_assess": "Ask the supervisor directly: 'Is the research project fixed, or is there scope for me to develop my own direction within it?'; cross-check with current students in the lab",
+      "weight": "high"
+    },
+    {
+      "factor": "Academic job market geography",
+      "why_it_matters": "US PhD programs have structural advantages for US academic placements through network effects, recommendation letter weight, and conference visibility; European PhD holders face friction when competing for US academic jobs",
+      "how_to_assess": "Review the placement record of the specific program (not just university prestige); ask where graduates in the last 5 cohorts ended up; distinguish between 'some graduates got academic jobs' and 'graduates got jobs at institutions comparable to your target'",
+      "weight": "medium"
+    },
+    {
+      "factor": "Stipend in purchasing-power-adjusted terms",
+      "why_it_matters": "Raw stipend comparisons are misleading; CAD $25K in Halifax has different purchasing power than USD $30K in Boston or £20K in London",
+      "how_to_assess": "Calculate monthly take-home after taxes and mandatory deductions; compare against local rent for a single person; assess whether stipend covers living costs without supplemental work",
+      "weight": "medium"
+    },
+    {
+      "factor": "MSCA mobility requirement compatibility",
+      "why_it_matters": "MSCA DN positions require that applicants have not resided in the host country for 12+ months in the past 3 years — students who have already studied or worked in the target country are ineligible",
+      "how_to_assess": "Verify residency history against MSCA eligibility rules before investing time in MSCA applications",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a UK PhD for its 3-year completion timeline",
+      "unstated_consequence": "The funded period is 3–3.5 years, but if the project runs over — which is common — the student enters an unfunded extension period where they must self-finance or find emergency support with no structural safety net",
+      "who_it_affects": "International students without family financial backing who assumed the funded period was a completion guarantee"
+    },
+    {
+      "choice": "Choosing a US PhD for its higher stipend and research funding",
+      "unstated_consequence": "For Indian and Chinese nationals, accepting a US PhD implicitly accepts a likely multi-decade wait for permanent residence, requiring continued H-1B renewals, employer dependence, and inability to freely change jobs or start a company",
+      "who_it_affects": "Students from high-backlog nationalities who are optimizing for program prestige without modeling long-term immigration consequences"
+    },
+    {
+      "choice": "Accepting a European PhD position structured as an employment contract",
+      "unstated_consequence": "The employment framing feels financially secure, but shorter program length (3–4 years) means less time to develop an independent research profile, which creates disadvantages when competing for US academic jobs or US industry positions that implicitly calibrate expectations to 5–6-year US PhDs",
+      "who_it_affects": "Students who complete a European PhD and then attempt to enter the US academic or research job market without US network connections"
+    },
+    {
+      "choice": "Choosing a Canadian PhD for its PR pathway advantage",
+      "unstated_consequence": "Canada's academic job market is significantly smaller than the US, and students who optimize for Canadian PR but want academic careers may find fewer tenure-track positions available relative to their US-trained peers",
+      "who_it_affects": "Students who want both a clear immigration pathway and a tenure-track academic career — the two goals create tension in the Canadian context"
+    },
+    {
+      "choice": "Pursuing a Chevening Scholarship expecting it to lead to a funded UK PhD",
+      "unstated_consequence": "Chevening funds master's degrees only, not PhDs — students who use Chevening to do a UK master's then attempt to leverage it into a self-funded PhD face full international tuition rates of £15K–£35K/year with no automatic funding bridge",
+      "who_it_affects": "Students from Commonwealth or developing-country backgrounds who assume UK government scholarship support extends to PhD level"
+    },
+    {
+      "choice": "Applying for MSCA DN positions without checking residency eligibility",
+      "unstated_consequence": "Students who have previously studied or worked in the target EU country for 12+ months in the past 3 years are structurally ineligible for MSCA positions at that institution — discovering this after submitting wastes application cycles and may delay PhD start by a full year",
+      "who_it_affects": "Students who did exchange programs, internships, or master's degrees in the EU country where they are applying for MSCA"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying to UK PhDs as if they are US PhDs — without a defined research project",
+      "why_it_happens": "Most PhD application advice assumes a US structure where students are admitted to a program and develop research direction through rotations and coursework; students apply to UK programs with vague research interests rather than a specific executable project",
+      "consequence": "Applications are rejected or supervisors decline to take on the student because there is no clear project-supervisor fit; alternatively, students are admitted but founder in year 1 without the coursework scaffolding they expected",
+      "warning_signs": [
+        "Student's research statement says 'I am interested in X field' rather than 'I want to investigate Y specific question using Z approach'",
+        "Student has not identified specific supervisors whose current or recent projects align with their proposed work"
+      ]
+    },
+    {
+      "pattern": "Treating 'funding available' in UK PhD listings as confirmation of international eligibility",
+      "why_it_happens": "UK PhD advertisements are written for a domestic audience where 'funded' is understood to mean UK/EU eligible; international students reading the same ads assume funding availability is universal",
+      "consequence": "Students spend weeks preparing applications, writing proposals, and securing references for positions they are categorically ineligible for",
+      "warning_signs": [
+        "The advertisement does not explicitly state 'open to international students' or list eligible nationalities",
+        "The funding source is listed as UKRI without specifying an international allocation"
+      ]
+    },
+    {
+      "pattern": "Choosing a US PhD without modeling immigration timeline for high-backlog nationalities",
+      "why_it_happens": "Immigration consequences are invisible at application time; students optimize for visible variables (stipend, ranking, supervisor prestige) and defer immigration planning to 'after I finish'",
+      "consequence": "Students complete a US PhD, enter the H-1B lottery with employer dependence, discover their EB-2/EB-3 priority date will not be current for 20–40 years, and find themselves unable to change employers, pursue entrepreneurship, or relocate freely for career optimization",
+      "warning_signs": [
+        "Student from India or China has not checked the current Visa Bulletin before committing to a US program",
+        "Student's plan is 'get the PhD, then figure out immigration'"
+      ]
+    },
+    {
+      "pattern": "Underestimating the publication pressure of compressed European PhDs",
+      "why_it_happens": "Students hear '3-year PhD' and assume it is easier or lower-stakes than a 5-year US program; in reality, the compressed timeline requires research productivity almost immediately, with no coursework period to delay that pressure",
+      "consequence": "Students arrive expecting to spend year 1 orienting and learning; instead face pressure to have preliminary results within 6 months; those who need time to develop foundational knowledge are poorly served by the structure",
+      "warning_signs": [
+        "Student does not have prior research experience or publications at the master's level before starting",
+        "Student chose the European program primarily for the shorter duration without assessing their day-one research readiness"
+      ]
+    },
+    {
+      "pattern": "Failing to apply for Canadian tri-council fellowships because stipend seems adequate",
+      "why_it_happens": "Students who are financially comfortable on RA/TA funding deprioritize fellowship applications as unnecessary work; they don't recognize that fellowship prestige has career value independent of the money",
+      "consequence": "Students miss a permanent career asset — tri-council fellowship on a CV signals research independence, is recognized by both academic and industry hiring committees, and the opportunity is time-limited to graduate student status",
+      "warning_signs": [
+        "Student says 'I don't need the money so I didn't bother applying'",
+        "Student is in year 2 or later and has not yet attempted a tri-council application"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth, and have you checked the current USCIS Visa Bulletin priority dates for EB-2/EB-3 for your nationality?",
+      "what_it_reveals": "Whether the student has quantified the actual immigration timeline under a US PhD path — this single factor can shift the entire country comparison for Indian and Chinese nationals",
+      "follow_up_if_yes": "How many years until your priority date would be current, and how does that compare to the Canadian Express Entry timeline?",
+      "follow_up_if_no": "Before comparing program stipends or rankings, look up the current cutoff date — if you are Indian or Chinese, this may be the most important variable in your decision"
+    },
+    {
+      "question": "Do you have a specific research question you want to investigate, or are you still exploring what you want to study?",
+      "what_it_reveals": "Whether the student is ready for a UK/EU research-only PhD structure or needs the coursework and exploration period built into US/Canadian programs",
+      "follow_up_if_yes": "Have you identified specific supervisors working on that exact question whose recent publications align with your proposed approach?",
+      "follow_up_if_no": "A UK or EU PhD where you begin research on day one is likely a poor fit — consider US or Canadian programs with coursework phases, or do a master's first to develop research focus"
+    },
+    {
+      "question": "Have you verified that the UK PhD funding you are applying for explicitly lists international students as eligible?",
+      "what_it_reveals": "Whether the student has caught the UK funding eligibility trap before investing significant application effort",
+      "follow_up_if_yes": "Which funding mechanism specifically — UKRI, university scholarship, Industrial CASE, Commonwealth — and have you confirmed this in writing with the department?",
+      "follow_up_if_no": "Stop application preparation until you receive explicit written confirmation of international eligibility; do not rely on the advertisement text alone"
+    },
+    {
+      "question": "For EU programs: Have you resided in the target country for more than 12 months in the past 3 years?",
+      "what_it_reveals": "Whether the student is eligible for MSCA DN positions at that institution — the primary internationally-open funding mechanism in EU PhD programs",
+      "follow_up_if_yes": "You are ineligible for MSCA positions at that specific institution; look at MSCA positions in other EU countries where you have not recently resided, or pursue non-MSCA funding routes",
+      "follow_up_if_no": "You are eligible for MSCA positions — prioritize these over non-MSCA EU positions since they have no nationality restrictions and provide stronger funding"
+    },
+    {
+      "question": "Is your long-term goal to stay in the PhD country, return home, or move to a third country (e.g., US industry) after graduating?",
+      "what_it_reveals": "Whether the immigration pathway of the PhD country is relevant to the student's actual goals — students who plan to return home or move to the US after graduation should weight immigration pathway much less heavily",
+      "follow_up_if_yes": "The immigration pathway and PR timeline of the PhD country should be a primary decision factor — map it explicitly before comparing programs",
+      "follow_up_if_no": "Deprioritize immigration pathway and focus on research fit, supervisor quality, stipend adequacy, and program length relative to your career timeline"
+    },
+    {
+      "question": "For students considering academic careers: Have you reviewed the actual placement record of the specific program, not just the university's overall reputation?",
+      "what_it_reveals": "Whether the student is confusing institutional prestige with departmental placement outcomes — a top-10 university can have a poorly-connected subfield group with weak placement",
+      "follow_up_if_yes": "Where did the last 5 cohorts' graduates end up, and do those placements align with your target institution type?",
+      "follow_up_if_no": "Request placement data from the program before applying — ask specifically for names of recent PhD graduates and where they went; this is public information and any program should provide it"
+    },
+    {
+      "question": "In the context of a UK PhD: Have you asked the supervisor whether recent students graduated within the funded period?",
+      "what_it_reveals": "Whether the supervisor has a track record of scoping projects to fit the 3–3.5-year funded window, or whether students routinely enter unfunded extensions",
+      "follow_up_if_yes": "What was the answer, and did you triangulate it by talking to current or recent students directly rather than only through the supervisor?",
+      "follow_up_if_no": "Ask this question before accepting — unfunded extension years are one of the most common and financially damaging outcomes for UK international PhD students"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "UK PhD funding listed in advertisements is generally available to international students",
+      "actual_reality": "The majority of UK PhD funding — particularly UKRI studentships — is restricted to UK and EU nationals; 'funding available' in an advertisement almost always means UK/EU only unless explicitly stated otherwise",
+      "implication": "International students must verify eligibility before preparing any application materials; assume ineligible unless explicitly confirmed otherwise"
+    },
+    {
+      "common_belief": "A shorter PhD (3–4 years in UK/EU) means less work and lower pressure",
+      "actual_reality": "Shorter PhDs require research productivity almost immediately — there is no coursework buffer or rotation period; the compressed timeline means the first year must produce usable results, creating higher immediate pressure than a US program's first year",
+      "implication": "Only students with well-developed research questions, strong prior experimental or methodological skills, and high self-direction should pursue UK/EU PhDs; students who need structured learning time are likely to struggle"
+    },
+    {
+      "common_belief": "European PhD salary/employment structures are similar to US PhD stipends",
+      "actual_reality": "Many EU PhD positions — particularly in Germany, Netherlands, and Sweden — are formal employment contracts with social security contributions, healthcare benefits, and legal worker protections; these are structurally different from US stipends and have long-term immigration and benefits implications",
+      "implication": "Students should explicitly ask whether a position is an Arbeitsvertrag/employment contract rather than a scholarship, because the financial security, social insurance accumulation, and visa implications differ significantly"
+    },
+    {
+      "common_belief": "Completing a PhD at a prestigious European institution gives equivalent academic job market positioning as a US PhD for US academic positions",
+      "actual_reality": "US PhD programs have structural advantages for US academic placements through advisor network effects, letter-writer recognition, and conference ecosystem presence; European PhD holders face measurable friction when competing for US academic jobs against US-trained graduates",
+      "implication": "Students who want to pursue US academic careers should weight US PhD programs more heavily unless they have exceptional European advisors with strong US networks, or are targeting fields where European training is particularly prestigious"
+    },
+    {
+      "common_belief": "Canada is just a lower-stipend version of a US PhD with fewer opportunities",
+      "actual_reality": "For international students from high-backlog nationalities, Canada's combination of PGWP + Express Entry creates a PR pathway that can be completed in 3–5 years post-PhD, compared to potentially 20–40-year waits under US EB categories — this is a structural difference, not a marginal one",
+      "implication": "Students from India and China should treat Canadian PhD programs as a primary option rather than a fallback, and explicitly compare immigration timelines rather than treating the US as the default aspirational choice"
+    },
+    {
+      "common_belief": "The UK Graduate Route visa is a minor benefit of completing a UK PhD",
+      "actual_reality": "The Graduate Route provides 2 years (3 for PhD holders) of open work authorization with no employer e-verify requirement, no lottery, and no cap — it is structurally more accessible than US OPT/STEM OPT and allows genuine open-market job searching",
+      "implication": "For students considering UK vs. US, the Graduate Route's reliability and openness is a meaningful advantage over OPT/H-1B dependency, particularly for students in fields with lower H-1B sponsorship rates"
+    },
+    {
+      "common_belief": "MSCA fellowships are highly competitive and practically inaccessible for most international students",
+      "actual_reality": "MSCA Doctoral Network positions are genuinely open to any nationality and are actively designed to attract international mobility — the competitiveness varies by network and position, but the structural openness is real and distinct from most other EU funding mechanisms",
+      "implication": "International students interested in EU PhDs should actively search and apply for MSCA DN positions as the primary funding target, not treat them as a long-shot after applying to university-specific programs"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How PhD destination decisions are framed",
+      "junior_pattern": "Compares programs on stipend, university ranking, and supervisor publication count; treats US as default and other countries as fallbacks",
+      "senior_pattern": "Compares programs across immigration pathway, purchasing-power-adjusted stipend, program structure fit to current research readiness, and long-term settlement goal — treats country choice as a primary variable, not a secondary one",
+      "why_it_matters": "Optimizing on visible prestige metrics while ignoring structural immigration differences can lock a student into a decades-long waiting period for permanent residence that limits career optionality"
+    },
+    {
+      "dimension": "Reading UK PhD funding advertisements",
+      "junior_pattern": "Sees 'fully funded PhD opportunity' and begins preparing an application",
+      "senior_pattern": "Immediately checks whether the funding is explicitly stated as open to international students; contacts the department to confirm before writing a single word of the application",
+      "why_it_matters": "UK funding advertisements are written for a domestic audience; international students who don't verify eligibility waste significant time on structurally ineligible applications"
+    },
+    {
+      "dimension": "Evaluating a UK supervisor",
+      "junior_pattern": "Assesses supervisor by publication volume, lab website quality, and whether the research topic sounds interesting",
+      "senior_pattern": "Asks specifically whether recent students graduated within the funded period, how often the supervisor meets with students, and whether the project is fixed or allows intellectual development — then cross-checks with current students, not just the supervisor",
+      "why_it_matters": "A UK PhD that runs over the funded period creates severe financial and visa stress for international students; supervisor completion track record is a direct proxy for this risk"
+    },
+    {
+      "dimension": "Modeling immigration outcomes",
+      "junior_pattern": "Plans to 'figure out immigration after I finish the PhD'; treats visa status as an administrative detail to resolve at graduation",
+      "senior_pattern": "Maps the full immigration pathway from program start to permanent residence at the time of application decision; for nationalities with US green card backlogs, explicitly calculates expected PR year under each country option before choosing a program",
+      "why_it_matters": "Immigration status determines employer negotiating power, geographic mobility, and ability to pursue entrepreneurship — students who defer this planning discover constraints that limit the career benefits the PhD was meant to enable"
+    },
+    {
+      "dimension": "Thinking about EU MSCA eligibility",
+      "junior_pattern": "Applies to EU PhD positions based on research fit and lab prestige; treats MSCA vs. non-MSCA as a funding detail",
+      "senior_pattern": "Checks MSCA residency eligibility before targeting any EU institution; treats MSCA DN positions as the primary funding target due to nationality-open structure; verifies that prior study or work history in the target country does not disqualify them",
+      "why_it_matters": "Students who don't check MSCA eligibility rules may apply for positions they are structurally ineligible for, or miss MSCA positions at institutions where they are eligible"
+    },
+    {
+      "dimension": "Assessing Canadian PhD value",
+      "junior_pattern": "Sees lower CAD stipend and smaller academic job market and deprioritizes Canadian programs as inferior US alternatives",
+      "senior_pattern": "Recognizes that for high-backlog nationalities, Canada's PGWP + Express Entry pathway provides a PR timeline that is 15–35 years faster than US routes; weighs this structural advantage against the stipend difference and explicitly models both scenarios",
+      "why_it_matters": "Dismissing Canadian programs on raw stipend comparison ignores the most consequential variable for long-term career and life optionality for Indian and Chinese nationals"
+    },
+    {
+      "dimension": "Understanding European PhD employment contracts",
+      "junior_pattern": "Treats EU PhD salary and US PhD stipend as equivalent concepts with different numbers attached",
+      "senior_pattern": "Distinguishes between employment contract (social security contributions, benefits, legal worker status) and scholarship/stipend (no benefits, different visa category, no social insurance accumulation); asks explicitly which structure applies and what the implications are for healthcare and future residency points",
+      "why_it_matters": "Employment contract status in Germany or Netherlands contributes to social insurance history that can accelerate permanent residence eligibility; treating it as equivalent to a stipend misses a structural long-term benefit"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_uk_eu_canada_phd_structures",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

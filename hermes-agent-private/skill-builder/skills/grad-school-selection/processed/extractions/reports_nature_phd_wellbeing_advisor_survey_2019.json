@@ -1,0 +1,250 @@
+{
+  "source_file": "nature_phd_wellbeing_advisor_survey_2019.txt",
+  "heuristics": [
+    {
+      "rule": "If 1 in 4 PhD students would change advisors in retrospect, advisor selection is the highest-variance decision in the entire PhD application process — not program rank, not funding type.",
+      "condition": "When choosing between PhD programs where multiple offers are on the table...",
+      "action": "...weight the specific advisor relationship above program prestige or location, and conduct structured due diligence on the advisor before committing",
+      "because": "25% advisor regret rate means the prior probability of choosing a bad advisor without deliberate vetting is extremely high"
+    },
+    {
+      "rule": "Ask a prospective advisor directly: 'How often do you meet one-on-one with PhD students and what does that look like weekly?' — and treat vague answers as a red flag.",
+      "condition": "When evaluating a potential PhD advisor...",
+      "action": "...demand specifics on meeting cadence and mentoring style, not just research fit",
+      "because": "50% of PhD students get less than one hour per week with their advisor; access asymmetry is common and predictable, not exceptional"
+    },
+    {
+      "rule": "Treat institutional mental health resources as a near-zero asset unless independently verified — only 26% of students who used them found them helpful.",
+      "condition": "When a program touts its 'student wellness resources' as a selling point...",
+      "action": "...discount that claim heavily and instead ask current students whether they have actually used those services and found them useful",
+      "because": "Formal availability of mental health resources does not correlate with actual effectiveness; 2 out of 3 users found institutional support unhelpful"
+    },
+    {
+      "rule": "High satisfaction scores in PhD surveys do not validate structural conditions — they reflect socialization and sunk-cost commitment, not absence of problems.",
+      "condition": "When a program cites high student satisfaction rates as evidence of program quality...",
+      "action": "...look past the aggregate satisfaction number and probe specific structural variables: advisor access, bullying rates, career placement, mental health outcomes",
+      "because": "75% satisfaction coexists with 36% seeking mental health help, 21% being bullied, and 79% reporting career uncertainty — satisfaction is not a proxy for healthy conditions"
+    },
+    {
+      "rule": "Ask programs for concrete placement data — specifically: what percentage of graduates get faculty positions, what percentage go to industry, and who are recent graduates working for — before accepting any offer.",
+      "condition": "When evaluating career preparation quality of a PhD program...",
+      "action": "...request actual graduate outcomes data rather than accepting vague statements about career support",
+      "because": "Only 29% of students received useful non-academic career advice from their program, and 60% relied on personal research for career planning — programs systematically overstate career preparation"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor meeting frequency and mentoring structure",
+      "why_it_matters": "Direct access to your advisor determines feedback quality, progress speed, and psychological safety — and 50% of students get under one hour per week, making this highly variable and consequential",
+      "how_to_assess": "Ask the advisor directly about typical meeting cadence; ask current and former students in the lab independently to verify; ask how the advisor handled a student who was struggling",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor accountability mechanisms in the program",
+      "why_it_matters": "When supervisors are the primary perpetrators in 48% of bullying cases and over 50% of bullied students feel unable to speak out, the presence or absence of formal oversight structures determines whether abuse can be addressed",
+      "how_to_assess": "Ask whether there is a thesis committee with mandatory annual reviews, a formal ombudsperson process, and whether students can change advisors without academic penalty",
+      "weight": "high"
+    },
+    {
+      "factor": "Program's non-academic career support infrastructure",
+      "why_it_matters": "Over 50% of PhD students plan academic careers but the academic job market cannot absorb them — programs with no industry placement infrastructure leave students stranded",
+      "how_to_assess": "Ask for placement outcomes data by career type for the last five cohorts; ask whether the program has industry partnerships, career workshops, or alumni networks outside academia",
+      "weight": "high"
+    },
+    {
+      "factor": "Institutional mental health resource quality (not just availability)",
+      "why_it_matters": "39% of PhD students score in moderate-to-severe depression range — 6x the general population rate — making mental health support a functional necessity, not a nice-to-have",
+      "how_to_assess": "Ask current students whether they have used mental health services and found them useful; ask about wait times and whether counselors have experience with PhD-specific stressors",
+      "weight": "high"
+    },
+    {
+      "factor": "Lab/advisor culture around work hours",
+      "why_it_matters": "~50% of programs have a long-hours culture; 25% of students work 51-60 hours per week — this directly determines sustainability of the PhD and mental health outcomes",
+      "how_to_assess": "Ask current lab members what a typical week looks like; ask whether there are explicit expectations around evenings and weekends; observe whether the advisor emails students on weekends",
+      "weight": "medium"
+    },
+    {
+      "factor": "Financial sufficiency of funding",
+      "why_it_matters": "19% of PhD students hold outside jobs, 53% of them out of financial necessity — financial stress compounds mental health and career uncertainty pressures",
+      "how_to_assess": "Calculate whether the stipend covers actual cost of living in the program city including rent, not just nominal funding adequacy; ask students whether they can live on the stipend without supplementing",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a high-prestige program with a less accessible advisor",
+      "unstated_consequence": "You inherit the advisor's inaccessibility as a structural feature of your daily experience — brand name provides credential value at graduation but does not protect you from the 50% who get under one hour per week of mentoring",
+      "who_it_affects": "Students who need iterative feedback, come from less elite academic backgrounds, or are working in a new subfield without prior research experience"
+    },
+    {
+      "choice": "Relying on institutional mental health services when struggling",
+      "unstated_consequence": "74% of students who use institutional support do not find it helpful — you may experience the delay of seeking help AND the disappointment of it not working, compounding the crisis",
+      "who_it_affects": "International students who may already have limited external support networks outside the institution and who may face cultural or visa-related barriers to seeking outside care"
+    },
+    {
+      "choice": "Entering a PhD with the explicit goal of becoming a professor",
+      "unstated_consequence": "Over 50% plan academic careers but only 6% expect to become an assistant professor directly after PhD — the gap between aspiration and outcome is built into the structure, not the individual's failure, but programs rarely communicate this proactively",
+      "who_it_affects": "Students who have not built industry-transferable skills or networks during the PhD, and who discover the career gap only after graduating"
+    },
+    {
+      "choice": "Accepting that high satisfaction rates among current students signal a healthy program",
+      "unstated_consequence": "Satisfaction is contaminated by sunk-cost commitment and socialization into academic culture — students who are bullied, depressed, or career-uncertain still report 75% overall satisfaction, meaning satisfaction scores actively obscure structural problems",
+      "who_it_affects": "Prospective students conducting due diligence who use student satisfaction surveys as a primary signal of program quality"
+    },
+    {
+      "choice": "Staying silent about bullying or harassment by a supervisor",
+      "unstated_consequence": "Over 50% of bullied students feel unable to speak out — the power asymmetry that makes speaking up risky also ensures the behavior continues and the student absorbs the psychological cost alone",
+      "who_it_affects": "International students whose visa status is tied to their enrollment and who have greater material risk attached to confronting or leaving an abusive advisor relationship"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Selecting an advisor based on research fit alone without vetting mentoring behavior",
+      "why_it_happens": "Applicants are trained to optimize for intellectual alignment and publication record — advisor interpersonal behavior is harder to assess from the outside and rarely discussed in application advice",
+      "consequence": "1 in 4 PhD students ends up wishing they had chosen a different advisor — the single highest-regret decision in the PhD",
+      "warning_signs": [
+        "Advisor gives vague or evasive answers when asked directly about meeting frequency with students",
+        "Current lab members seem reluctant to discuss their advisor candidly or give uniformly positive but generic responses"
+      ]
+    },
+    {
+      "pattern": "Assuming institutional mental health resources will be adequate when selecting a program",
+      "why_it_happens": "Programs advertise wellness services in recruitment materials; prospective students have no basis to evaluate quality before enrolling and take availability as a proxy for adequacy",
+      "consequence": "Students reach a crisis point, seek institutional help, find it unhelpful, and have no backup plan — delaying recovery and compounding the academic and mental health damage",
+      "warning_signs": [
+        "Program describes mental health resources in marketing language without specifying wait times or PhD-specialist availability",
+        "No current students can give a specific account of actually using and benefiting from the service"
+      ]
+    },
+    {
+      "pattern": "Planning exclusively for an academic career without building industry-exit options",
+      "why_it_happens": "Academic culture frames industry as a fallback for those who 'couldn't make it' — students internalize this and avoid developing non-academic skills or networks to signal commitment to academia",
+      "consequence": "When the academic job market fails them — as it does the majority — they graduate with no industry network, no translated resume, and no relationships with non-academic employers",
+      "warning_signs": [
+        "Student cannot name a single non-academic employer who has hired recent graduates from their program",
+        "Student has never attended an industry networking event or informational interview during their PhD"
+      ]
+    },
+    {
+      "pattern": "Taking a PhD offer without asking about advisor accountability structures",
+      "why_it_happens": "Applicants focus on research opportunities and funding; questions about what happens if the advisor relationship breaks down feel presumptuous or negative before starting",
+      "consequence": "When bullying or mismanagement occurs — which it does to roughly 1 in 10 PhD students via their supervisor — the student has no mapped pathway to address it without jeopardizing their degree",
+      "warning_signs": [
+        "Program has no mandatory thesis committee with independent oversight of student progress",
+        "There is no formal process for changing advisors that doesn't require withdrawing from the program"
+      ]
+    },
+    {
+      "pattern": "Using high overall PhD satisfaction rates as a signal of structural program health",
+      "why_it_happens": "Satisfaction is the most visible and easily communicated metric; it aligns with what programs want to advertise and what prospective students want to hear",
+      "consequence": "Students enroll in programs with serious structural deficits — mental health crises, bullying, career preparation gaps — that were masked by surface-level satisfaction data",
+      "warning_signs": [
+        "Program cites satisfaction survey results but cannot provide data on depression rates, bullying incidence, or career placement by type",
+        "All student testimonials in program materials are positive with no discussion of challenges"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How often does your prospective advisor meet one-on-one with PhD students, and what does that typically look like in a given week?",
+      "what_it_reveals": "Whether you will have adequate mentoring access — the single most predictive structural variable for PhD success and satisfaction given that 50% of students receive under one hour per week",
+      "follow_up_if_yes": "If they claim frequent meetings, ask current students independently to verify — ask 'how often do you actually sit down with your advisor one-on-one?'",
+      "follow_up_if_no": "If meeting frequency is low or vague, ask what the alternative feedback mechanisms are — does the lab have senior PhD students or postdocs who provide day-to-day mentorship?"
+    },
+    {
+      "question": "Has anyone in the lab or department changed advisors in the last three years, and what was that process like?",
+      "what_it_reveals": "Whether the program has functional advisor accountability and whether students have a real exit option if the relationship deteriorates — relevant given that 25% of students would change advisors retrospectively",
+      "follow_up_if_yes": "Ask whether the student who changed advisors was able to stay in the program and whether it delayed their degree — this reveals whether the exit option is real or theoretical",
+      "follow_up_if_no": "Absence of any advisor changes in a large program may indicate either a healthy culture or a culture where students feel unable to raise concerns — probe which by asking about formal grievance mechanisms"
+    },
+    {
+      "question": "What percentage of PhD graduates from this program over the last five years are in faculty positions versus industry versus other careers?",
+      "what_it_reveals": "Whether the program's career outcomes match your goals and whether the program is honest about the academic job market's limits",
+      "follow_up_if_yes": "If they provide data, ask whether career support for non-academic paths is proactive or reactive — do they run industry workshops or only help students who individually ask?",
+      "follow_up_if_no": "If they cannot or will not provide placement data, treat that as a signal that outcomes are poor or that career support is not tracked — both are red flags"
+    },
+    {
+      "question": "Have you personally used the campus mental health services, and if so, did you find them useful?",
+      "what_it_reveals": "Whether institutional mental health resources function in practice — given that only 26% of users found institutional support helpful, direct user experience from current students is far more informative than program descriptions",
+      "follow_up_if_yes": "Ask specifically what made it helpful or unhelpful — wait times, therapist familiarity with PhD-specific stress, and session limits are the most predictive variables",
+      "follow_up_if_no": "Ask what they would do if they were struggling — their answer reveals what the real support infrastructure is, which is often informal peer networks rather than formal services"
+    },
+    {
+      "question": "Is there a mandatory thesis committee with annual reviews that involves faculty other than your primary advisor?",
+      "what_it_reveals": "Whether there is structural oversight of the advisor-student relationship — programs without independent committee oversight have no mechanism to catch or correct advisor mismanagement or bullying",
+      "follow_up_if_yes": "Ask whether the committee is truly independent or whether advisors effectively control committee composition and whether students can raise concerns with committee members privately",
+      "follow_up_if_no": "If there is no mandatory independent committee, the advisor has near-total power over the student's academic fate — this amplifies the risk of the 21% bullying rate with supervisor as perpetrator"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PhD student mental health struggles are primarily caused by individual resilience or adjustment issues",
+      "actual_reality": "39% of PhD students score in moderate-to-severe depression range compared to 6% of the general population — a 6x higher rate that is structural, not individual. The PhD environment itself is the primary causal factor.",
+      "implication": "Prospective students should evaluate program structures and advisor behaviors as mental health risk factors, not assume their own resilience will be sufficient to offset structural problems"
+    },
+    {
+      "common_belief": "Bullying by supervisors in PhD programs is rare or limited to a few bad actors",
+      "actual_reality": "21% of PhD students report being bullied, and of those, 48% identify their supervisor as the perpetrator — meaning roughly 1 in 10 PhD students is bullied by their own advisor",
+      "implication": "Advisor vetting should include explicit investigation of supervisory behavior, not just research output — and programs should be evaluated on whether they have structural mechanisms to address supervisor misconduct"
+    },
+    {
+      "common_belief": "High student satisfaction rates in a PhD program indicate a healthy, well-functioning environment",
+      "actual_reality": "75% satisfaction coexists with 36% seeking mental health help, 21% experiencing bullying, and 79% reporting career uncertainty — satisfaction reflects sunk-cost commitment and meaning-making, not absence of structural problems",
+      "implication": "Do not use program satisfaction scores as a primary quality signal; instead probe specific structural variables: advisor access, bullying incidence, mental health outcomes, and career placement data"
+    },
+    {
+      "common_belief": "Campus mental health services provide adequate support for PhD students who are struggling",
+      "actual_reality": "Only 26% of PhD students who used institutional mental health support found it helpful — meaning 74% of users did not benefit from the resources their institution provided",
+      "implication": "Prospective students should identify mental health support options outside their institution before enrolling, including private therapists covered by student insurance, and should not assume institutional availability equals functional support"
+    },
+    {
+      "common_belief": "More than half of PhD students who want academic careers will achieve permanent academic positions within a few years of graduating",
+      "actual_reality": "Over 50% plan academic careers but only 6% expect to become assistant professors immediately after PhD, and 46% anticipate a postdoc first — and the actual rate of permanent academic placement has been declining for decades",
+      "implication": "Every PhD student should build non-academic career options in parallel, regardless of academic career intent — the structural mismatch between aspiration and outcomes is too large to ignore"
+    },
+    {
+      "common_belief": "PhD programs provide adequate career guidance for both academic and non-academic paths",
+      "actual_reality": "Only 29% of PhD students received useful non-academic career advice from their program, and 60% relied on personal research for career planning — programs systematically under-deliver on career preparation",
+      "implication": "Career preparation must be treated as an individual responsibility requiring active external networking, not something the program will provide — students should seek industry contacts and informational interviews independently from day one"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Advisor selection criteria",
+      "junior_pattern": "Evaluates advisor primarily on research fit, publication record, and funding — treats the relationship as a given once intellectual alignment exists",
+      "senior_pattern": "Treats advisor selection as a behavioral and structural vetting process — asks current and former students about mentoring style, meeting frequency, and conflict handling; checks whether the program has accountability mechanisms",
+      "why_it_matters": "25% of PhD students would change advisors in retrospect — junior selection criteria miss the variables that predict whether the relationship will be functional or damaging"
+    },
+    {
+      "dimension": "Interpreting program quality signals",
+      "junior_pattern": "Uses program ranking, satisfaction scores, and faculty prestige as primary quality proxies — accepts program-provided information at face value",
+      "senior_pattern": "Disaggregates satisfaction data and looks at structural indicators: actual placement rates by career type, bullying incidence, advisor accountability mechanisms, and mental health resource effectiveness as reported by current users",
+      "why_it_matters": "Surface quality signals mask structural problems that determine day-to-day experience — junior proxies produce high regret rates; senior proxies identify functional program health"
+    },
+    {
+      "dimension": "Career planning during the PhD",
+      "junior_pattern": "Plans exclusively for an academic career and avoids industry engagement to signal commitment — relies on the program to provide career guidance when needed",
+      "senior_pattern": "Builds industry networks and non-academic skills in parallel with academic work regardless of career intent — recognizes that only 29% of programs provide useful non-academic career advice and acts accordingly",
+      "why_it_matters": "Academic job market contraction means exclusive academic career planning is high-variance — students who don't build parallel options are exposed to significant downside risk with no fallback"
+    },
+    {
+      "dimension": "Assessing mental health risk before enrolling",
+      "junior_pattern": "Treats mental health as a personal variable — assumes their own resilience will determine outcomes and takes comfort in a program listing wellness services",
+      "senior_pattern": "Treats mental health as a structural variable determined by advisor behavior, work-hours culture, and the quality of actual (not listed) support resources — investigates these specifically before committing",
+      "why_it_matters": "6x higher depression rate in PhD students versus general population is structural, not individual — treating it as personal means not vetting the environmental factors that will drive it"
+    },
+    {
+      "dimension": "Response to bullying or supervisor misconduct",
+      "junior_pattern": "Stays silent because speaking out feels career-threatening — assumes that tolerating the situation is necessary to protect degree progress",
+      "senior_pattern": "Identifies formal and informal escalation pathways before a problem arises — knows whether advisor-change processes exist, whether thesis committee members are accessible independently, and whether an ombudsperson is available",
+      "why_it_matters": "Over 50% of bullied students feel unable to speak out — lack of pre-mapped pathways means students absorb the cost alone; knowing the infrastructure before it's needed changes the risk calculus"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "reports_nature_phd_wellbeing_advisor_survey_2019",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

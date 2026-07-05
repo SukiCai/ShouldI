@@ -1,0 +1,48 @@
+
+============================================================
+  Quality Report: Graduate School Selection Advisor
+  Overall: 4.5/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely strong expert skill with specific, data-backed heuristics and a clear advisor-first framing that cuts against the dominant ranking-first mental model. It occasionally overreaches with confident-sounding statistics that would benefit from source qualifiers, and it's US/Canada-heavy despite claiming EU/UK coverage, but it would materially improve AI advice quality in this domain.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       5/5  ████████████  Excellent
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The advisor-first framing is genuinely counterintuitive and well-defended: 'The single highest-variance decision in a PhD is who you work for, not where' — backed by the 1-in-4 regret statistic and threaded consistently through heuristics, tradeoffs, and the junior/senior table. This is a real mental model, not a platitude.
+    • Heuristics have specific triggers, thresholds, and reasoning. Heuristic 4 (CIP code with DSO before accepting) is the kind of thing that would only come from someone who has watched students get burned — including the specific example that 'Information Systems (CIP 52.12xx) does not qualify despite the name.' Similarly heuristic 5 on pre-contacting 4–8 Canadian supervisors names the exact structural difference (supervisor-first vs. committee-first).
+    • Hidden tradeoffs table is exceptional — the GRFP substitution trap, the co-advised coordination cost, the 'brilliant-jerk advisor lukewarm letter' insight, and the small-city PNP vs. industry network tradeoff are all genuinely invisible at decision time.
+    • The junior vs. senior table has real differentiators: cold emailing volume-vs-targeted, treating advisor career advice as authoritative vs. checking when they entered academia, reapplication with 'stronger version of same' vs. diagnosis-first.
+
+  ✗ Weaknesses:
+    • Several statistics are cited with confidence but no source or year attached ('50+ year US green card queues', '$52K–$65K postdoc', '48% identify their supervisor as the perpetrator'). Some of these are real Nature 2019 survey numbers but presentation as flat facts risks staleness — the skill itself warns against pre-2010 data but doesn't date its own claims.
+    • The description claims coverage of 'Canadian/US/UK/EU program differences' but UK and EU-specific mechanics are essentially absent. There is nothing on UK viva/thesis-only PhDs, DTP/CDT funding structures, ERC/Marie Curie fellowships, EU dual-degree programs, or the fact that UK PhDs are typically 3–4 years with different completion norms.
+    • Diagnostic Step 2 classifies situations well but Step 1 questions, while good, occasionally read as checklist items rather than probing questions. 'What is the user's citizenship/visa status and target country?' is procedural; the deeper diagnostic question ('what has the user actually verified vs. assumed') is stronger and could be expanded into its own probing sequence.
+    • The skill lacks concrete scripts/templates — e.g., what a targeted cold email actually looks like, what to ask a 5th-year student on a call, what an ombudsperson conversation should cover. For a skill that emphasizes doing due diligence, showing the *shape* of that due diligence would improve actionability.
+
+  → Improvement Suggestions:
+    • Add a 'Verification Scripts' section with concrete question lists: (a) questions to ask 4th–5th year students on the visit, (b) questions to ask the DGS about funding continuity, (c) questions to ask a former student found on LinkedIn. This would convert the advisor-due-diligence heuristics from prescription into executable action.
+    • Expand UK/EU coverage or narrow the skill's stated scope. Add at least: UK 3-year PhD norms and viva risk, DTP/CDT vs. direct-entry funding, EU ERC/Marie Curie/DAAD landscape, and language-of-instruction/residency implications for EU immigration pathways.
+    • Date-stamp the statistics or add a 'statistics current as of' note, plus flag which numbers should be re-verified before citing (e.g., NSF SED updates annually, immigration queues shift, satisfaction surveys are point-in-time). This aligns the skill with its own 'discount pre-2010 advice' heuristic.
+    • Add a failure pattern for 'sunk-cost persistence in year 3–4' — the specific decision point where students should consider mastering-out but don't. This is a very common real-world scenario the skill gestures at (funding cliff, attrition concentration) but doesn't give explicit decision guidance for.
+
+  ⚠ Generic Advice Flags:
+    • 'Give the base rate before the recommendation' — good instruction, but the skill doesn't itself always provide field-specific base rates beyond math/bio/geosciences. For CS, ECE, humanities, social sciences the base rates aren't given, so the AI can only follow this instruction for the fields the skill happens to cover.
+    • 'Universal advice is almost always wrong advice' is a strong framing sentence, but the skill's own heuristics occasionally are universal (e.g., '60% floor on 10-year completion rates') without acknowledging that this threshold may differ by field — humanities completion rates are structurally lower and a 60% floor may be unrealistic there.
+
+  ○ Missing Coverage:
+    • Mastering-out strategy: when and how to convert a stalled PhD into an MS exit without burning bridges — a common real scenario given the 25–43% attrition rate the skill cites.
+    • Two-body problem and family/partner constraints in program selection, which materially shift geographic optionality and are among the top reasons for advisor/program regret.
+    • UK/EU program mechanics as noted (viva, DTP/CDT, ERC/MSCA, 3-year timelines, residency-for-tuition rules).
+    • Field-specific base rates beyond math/bio/geo — CS, ECE, chemistry, humanities, social sciences all have different completion rates, funding norms, and academic placement realities.
+    • Handling advisor death, departure, or tenure denial mid-PhD — low probability but catastrophic, and structurally distinct from advisor conflict.
+    • How to evaluate a program's ombudsperson / Title IX / grievance infrastructure before accepting, which the skill mentions in the senior column but never explains how to actually assess.

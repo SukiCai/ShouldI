@@ -1,0 +1,291 @@
+{
+  "source_file": "savings_rate_modeling.txt",
+  "heuristics": [
+    {
+      "rule": "Compare savings rate and PPP-adjusted net savings, not gross salary",
+      "condition": "When evaluating whether a US salary is financially superior to a home-country offer",
+      "action": "Build a line-by-line deduction model for both scenarios and convert to comparable units using PPP factors before concluding",
+      "because": "Gross salary comparisons systematically overstate the US advantage by ignoring taxes, housing, immigration costs, and purchasing power differences that can flip the outcome"
+    },
+    {
+      "rule": "401k contributions are not liquid savings — treat them separately in the comparison",
+      "condition": "When calculating actual annual net savings in the US scenario",
+      "action": "Separate 401k balance from liquid savings; count it as a distinct long-term asset locked until 59½, not as spendable wealth",
+      "because": "Including 401k in net savings overstates short-term financial flexibility and conflates wealth accumulation with accessible capital"
+    },
+    {
+      "rule": "PPP adjustment applies only to local goods, not to USD-denominated or internationally priced items",
+      "condition": "When using PPP to make home-country savings look comparable to US savings",
+      "action": "Apply PPP only to food, domestic services, and local rent; keep international school fees, imported goods, US assets, and international travel at nominal exchange rates",
+      "because": "Overapplying PPP inflates the apparent value of home-country savings and produces an artificially favorable comparison for returning"
+    },
+    {
+      "rule": "If the two financial outcomes are within 10–20% of each other, stop optimizing the math and shift to non-financial variables",
+      "condition": "When a stay-vs-return model produces results that are close but not definitively one-sided",
+      "action": "Treat the financial question as resolved and make the decision on family proximity, career ceiling, reverse culture shock risk, and sense of belonging",
+      "because": "Within a 10–20% band, financial projections are within modeling error and life quality variables have larger actual impact on outcomes"
+    },
+    {
+      "rule": "Include immigration legal fees as a recurring annual cost in the US scenario, not a one-time expense",
+      "condition": "When comparing ongoing cost of living in the US during H-1B or green card processing years",
+      "action": "Add $5,000–$15,000/year for immigration legal costs to the US deduction column as a recurring line item",
+      "because": "These fees are paid annually during the multi-year H-1B and green card process and materially reduce net savings but are routinely omitted from comparisons"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Net annual savings rate (PPP-adjusted)",
+      "why_it_matters": "This is the actual unit of wealth accumulation; gross salary comparisons are misleading and this is the corrected metric",
+      "how_to_assess": "Run the full deduction template for both scenarios, convert home-country savings using PPP factors for local goods only, and compare as a percentage of gross",
+      "weight": "high"
+    },
+    {
+      "factor": "State income tax in US location",
+      "why_it_matters": "Ranges from 0% to 13.3%, creating up to a $20K+ annual difference for the same job depending on state — this alone can swing the savings rate comparison",
+      "how_to_assess": "Identify the specific state; apply the correct marginal and effective rate to the gross salary in the model",
+      "weight": "high"
+    },
+    {
+      "factor": "Housing cost in specific city",
+      "why_it_matters": "Rent in major US tech hubs runs $30K–$66K/year and is the single largest post-tax expenditure, often exceeding the tax burden",
+      "how_to_assess": "Use current market rent for a realistic unit size (not minimum) in the actual city of employment, not national averages",
+      "weight": "high"
+    },
+    {
+      "factor": "Children and education costs",
+      "why_it_matters": "Childcare in US cities adds $18K–$42K/year per child; international school in China adds ¥200K–¥350K/year — these costs can eliminate savings entirely in either scenario",
+      "how_to_assess": "Determine number of children, ages, and schooling needs; apply city-specific childcare or international school cost to the relevant scenario",
+      "weight": "high"
+    },
+    {
+      "factor": "Currency risk on home-country savings",
+      "why_it_matters": "RMB and INR have experienced significant depreciation vs. USD in certain periods; savings in local currency may lose real value relative to USD-denominated wealth",
+      "how_to_assess": "Review 10-year historical exchange rate trajectory for the home currency; assess whether savings will remain in local currency or be converted",
+      "weight": "high"
+    },
+    {
+      "factor": "Immigration legal costs",
+      "why_it_matters": "H-1B and green card legal fees of $5K–$15K/year reduce US net savings materially and represent a cost with no equivalent in the home-country scenario",
+      "how_to_assess": "Determine current visa stage and expected timeline to green card; annualize total projected legal and filing costs over that period",
+      "weight": "medium"
+    },
+    {
+      "factor": "Job mobility constraints under H-1B",
+      "why_it_matters": "The inability to freely switch employers without visa risk limits career optionality and may suppress compensation growth relative to what a free agent could achieve",
+      "how_to_assess": "Assess how close you are to green card; determine whether your employer and role constrain your ability to pursue better offers",
+      "weight": "medium"
+    },
+    {
+      "factor": "Home-country investment return environment",
+      "why_it_matters": "Local stock market and real estate returns determine whether home-country savings compound effectively; Chinese real estate has been in a downturn 2023–2025",
+      "how_to_assess": "Research current and historical returns for home-country equity and real estate markets; compare to US equity market baseline",
+      "weight": "medium"
+    },
+    {
+      "factor": "One-time transition costs of returning",
+      "why_it_matters": "Tax filing for departure year, cross-border CPA fees, income gap during job search, and relocation costs can total $20K–$50K+ in the return year",
+      "how_to_assess": "Enumerate: departure-year tax filing cost, months of expected job search gap, relocation costs, and any covered expatriate tax exposure",
+      "weight": "medium"
+    },
+    {
+      "factor": "US network maintenance cost if returning",
+      "why_it_matters": "Preserving professional relationships in the US after return requires $5K–$15K/year in travel costs that reduce the financial benefit of returning",
+      "how_to_assess": "Estimate number of trips per year needed to maintain relevant US professional relationships and price at current airfare",
+      "weight": "low"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Maximizing 401k contributions in the US",
+      "unstated_consequence": "The money reduces current tax liability but is illiquid until age 59½ — it inflates apparent savings while reducing actual financial flexibility for life decisions before retirement age",
+      "who_it_affects": "Professionals in their 30s–40s who may need capital for a home purchase, business investment, or international relocation before retirement"
+    },
+    {
+      "choice": "Staying in a high-cost US city for a high gross salary",
+      "unstated_consequence": "After federal tax, state tax, FICA, rent, healthcare, and immigration fees, the net liquid savings can be lower than a mid-tier home-country role — but the gross number creates a persistent illusion of wealth accumulation",
+      "who_it_affects": "Single professionals in California or New York comparing offers without running the full deduction model"
+    },
+    {
+      "choice": "Returning to home country with children of school age",
+      "unstated_consequence": "International school fees of $15K–$50K/year per child can consume most or all of the savings advantage that the home-country role appeared to offer",
+      "who_it_affects": "Families with two or more school-age children who assume lower cost of living in the home country will translate to higher savings"
+    },
+    {
+      "choice": "Accumulating savings in home-country currency",
+      "unstated_consequence": "Currency depreciation can silently erode the real value of those savings relative to USD-denominated wealth over a 10–20 year horizon, even if nominal savings rates look comparable",
+      "who_it_affects": "Professionals who plan to eventually purchase US assets or retire with USD-denominated costs"
+    },
+    {
+      "choice": "Omitting immigration legal fees from US cost modeling",
+      "unstated_consequence": "The US scenario is systematically overstated in its savings potential; the multi-year legal process costs $5K–$15K/year and reduces the actual net savings rate by 5–15% at mid-level salaries",
+      "who_it_affects": "H-1B holders in early green card processing who treat immigration as a sunk cost rather than an ongoing annual expense"
+    },
+    {
+      "choice": "Applying PPP adjustment to all home-country expenses",
+      "unstated_consequence": "Internationally priced goods — electronics, imported items, international schooling, international travel — do not benefit from PPP and will cost the same or more in home-country terms, making the effective purchasing power lower than the adjusted figure suggests",
+      "who_it_affects": "Professionals who consume a high proportion of internationally priced goods or plan international travel frequently"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Comparing gross salaries across countries without running a deduction model",
+      "why_it_happens": "Gross salary is the most visible and easily comparable number; the deduction cascade requires effort and country-specific knowledge that most people lack",
+      "consequence": "The person concludes the US option is financially dominant when net savings rates may be comparable or even favor the home country after full accounting",
+      "warning_signs": [
+        "Person states their US salary is '2–3x higher' without mentioning tax rates or housing costs",
+        "Person has never calculated their actual annual liquid savings number"
+      ]
+    },
+    {
+      "pattern": "Treating 401k balance as equivalent to liquid savings",
+      "why_it_happens": "401k appears on net worth statements and reduces tax bills, creating the cognitive impression that it is available wealth",
+      "consequence": "Person overestimates their actual financial position and underestimates how little liquid capital they are accumulating annually",
+      "warning_signs": [
+        "Person cites combined 401k + liquid savings as a single net savings figure",
+        "Person plans to use retirement funds for near-term goals like home purchase or relocation"
+      ]
+    },
+    {
+      "pattern": "Applying PPP adjustment uniformly to all home-country costs and savings",
+      "why_it_happens": "PPP is taught as a general correction for purchasing power and people apply it broadly without understanding its scope limitations",
+      "consequence": "Home-country savings are overstated; actual purchasing power for imported goods, international schooling, and travel is lower than the adjusted figure implies",
+      "warning_signs": [
+        "Person claims their home-country salary 'effectively' equals their US salary after PPP",
+        "Person's lifestyle involves significant imported goods, international schools, or frequent international travel"
+      ]
+    },
+    {
+      "pattern": "Excluding one-time return transition costs from the comparison",
+      "why_it_happens": "These costs are in the future, uncertain, and psychologically feel separate from the steady-state financial comparison",
+      "consequence": "The financial benefit of returning is overstated in year one and potentially year two; person may face a capital crunch during transition",
+      "warning_signs": [
+        "Person's return plan does not account for income gap during job search",
+        "Person has not consulted a cross-border CPA about departure-year tax obligations"
+      ]
+    },
+    {
+      "pattern": "Continuing to optimize the financial model after both scenarios are within 10–20% of each other",
+      "why_it_happens": "Financial modeling feels objective and controllable; non-financial variables like belonging and culture feel subjective and hard to weigh",
+      "consequence": "Person delays decision or makes it on marginal financial differences that are within modeling error, while ignoring variables that will dominate their actual life satisfaction",
+      "warning_signs": [
+        "Person keeps asking for more precise tax calculations when scenarios are already close",
+        "Person avoids discussing family, culture, or career ceiling factors in the decision"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your actual annual liquid savings number — after all taxes, rent, healthcare, and immigration fees?",
+      "what_it_reveals": "Whether the person has run a real deduction model or is reasoning from gross salary; reveals actual financial accumulation rate",
+      "follow_up_if_yes": "What percentage of gross is that, and have you included immigration legal fees as a recurring line item?",
+      "follow_up_if_no": "Walk through the deduction template together before making any financial comparison to a home-country scenario"
+    },
+    {
+      "question": "Do you have children, and if so, are they school-age?",
+      "what_it_reveals": "Whether international school fees need to be modeled in the home-country scenario, which can eliminate the savings advantage of returning",
+      "follow_up_if_yes": "How many children, and have you priced international school fees in the specific city you would return to?",
+      "follow_up_if_no": "Do you plan to have children within the 5-year horizon of this decision, and if so, in which country?"
+    },
+    {
+      "question": "Which US state are you in, or would you be in?",
+      "what_it_reveals": "State income tax rate, which ranges from 0% to 13.3% and can shift the net savings comparison by $15K–$25K annually at high incomes",
+      "follow_up_if_yes": "Are you in California or New York? If so, the combined federal and state tax burden makes the US savings rate significantly lower than the gross suggests.",
+      "follow_up_if_no": "If Texas or Florida, the no-state-income-tax advantage materially improves the US scenario and should be explicitly modeled"
+    },
+    {
+      "question": "Where will your savings be held and in what currency — and have you modeled currency depreciation risk?",
+      "what_it_reveals": "Whether the person understands that nominally equal savings in local currency may lose real value against USD over a 10–20 year horizon",
+      "follow_up_if_yes": "Have you looked at the 10-year historical trajectory of that currency against USD, and does your plan depend on converting back to USD at any point?",
+      "follow_up_if_no": "Review historical RMB or INR depreciation periods against USD before treating local savings as equivalent to USD savings"
+    },
+    {
+      "question": "Have you consulted a cross-border CPA about departure-year US tax obligations?",
+      "what_it_reveals": "Whether the person has accounted for the one-time cost of exit — departure-year filing complexity, potential covered expatriate status, and transition-year income gaps",
+      "follow_up_if_yes": "What is the estimated all-in cost of the transition year, and is it included in your return scenario model?",
+      "follow_up_if_no": "This is a required step before finalizing any return plan; the cost ranges from $3K to significantly higher and is frequently omitted from comparisons"
+    },
+    {
+      "question": "What is the home-country gross salary in USD at current exchange rates, and what is the effective income tax rate at that level?",
+      "what_it_reveals": "Whether the person knows their actual home-country net income or is reasoning from a nominal figure without applying local tax rates",
+      "follow_up_if_yes": "Have you applied the correct progressive tax bracket for that income level in the specific country and city?",
+      "follow_up_if_no": "China's IIT at ¥600K is approximately ¥120K–¥150K — the effective rate is significant and must be modeled, not assumed to be low"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A $200K US salary is obviously superior to any home-country equivalent because it's 2–3× higher in gross terms",
+      "actual_reality": "After federal tax, California state tax, FICA, San Francisco rent, healthcare, and immigration legal fees, $200K in SF may yield only $62K in liquid annual savings — which can be comparable to or lower than a well-compensated home-country role in PPP-adjusted terms",
+      "implication": "Never compare gross salaries across countries; always run the full deduction model to net liquid savings before drawing conclusions"
+    },
+    {
+      "common_belief": "PPP adjustment makes home-country salaries comparable to US salaries across the board",
+      "actual_reality": "PPP applies only to locally produced goods and services; internationally priced items — electronics, imported goods, international schools, international travel — are priced at or near global rates and do not benefit from PPP",
+      "implication": "Segment your spending into local and international buckets before applying PPP; professionals with internationally oriented lifestyles will find their effective PPP benefit is significantly lower than headline figures suggest"
+    },
+    {
+      "common_belief": "401k savings are real savings that count toward your financial position",
+      "actual_reality": "401k funds are locked until age 59½ (with 10% penalty plus taxes for early withdrawal); for professionals making major life decisions in their 30s and 40s, this capital is not available and should not be treated as equivalent to liquid savings",
+      "implication": "Maintain two separate mental accounts: liquid annual savings (decision-relevant) and retirement accumulation (long-term); compare scenarios on the liquid number"
+    },
+    {
+      "common_belief": "Immigration fees are a one-time cost that you pay once and forget",
+      "actual_reality": "H-1B and green card legal and filing fees recur annually over a multi-year process, typically totaling $5K–$15K/year during the green card processing period, which can last 5–15+ years",
+      "implication": "Model immigration costs as a recurring annual line item in the US scenario for as long as you remain in the green card queue, not as a sunk cost or one-time expense"
+    },
+    {
+      "common_belief": "Home-country real estate is a reliable wealth-building vehicle that improves the financial case for returning",
+      "actual_reality": "Chinese real estate has been in a significant downturn as of 2023–2025; historical strong performance does not guarantee future returns, and local real estate markets carry country-specific regulatory and economic risks",
+      "implication": "Do not assume home-country real estate will replicate past performance; model real estate appreciation conservatively and separately from the salary comparison"
+    },
+    {
+      "common_belief": "The financial comparison between staying and returning will clearly favor one option",
+      "actual_reality": "After running a complete model, many people find the two scenarios are within 10–20% of each other financially — the model's value is in removing false certainty, not in producing a clear winner",
+      "implication": "Expect the model to narrow the decision to a range, not resolve it; prepare to make the final call on non-financial variables rather than waiting for the math to decide"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Unit of comparison",
+      "junior_pattern": "Compares gross salary figures across countries and concludes the higher gross number represents greater wealth accumulation",
+      "senior_pattern": "Builds a line-by-line deduction model for both scenarios and compares net liquid savings rates in PPP-adjusted terms",
+      "why_it_matters": "Gross salary comparisons can invert the actual financial outcome; the person who looks financially ahead may be saving less in real terms"
+    },
+    {
+      "dimension": "Treatment of 401k",
+      "junior_pattern": "Counts 401k contributions as part of annual savings and feels financially ahead because of growing retirement balance",
+      "senior_pattern": "Separates 401k into a distinct long-term illiquid asset category and focuses on liquid annual savings for near-term decision-making",
+      "why_it_matters": "Conflating locked and liquid savings produces false confidence in financial position and distorts the stay-vs-return comparison"
+    },
+    {
+      "dimension": "Application of PPP",
+      "junior_pattern": "Applies PPP broadly to conclude that home-country salary 'effectively' equals US salary, without distinguishing local vs. internationally priced goods",
+      "senior_pattern": "Applies PPP selectively to locally produced goods and services; keeps internationally priced items at nominal exchange rates; notes the caveat explicitly in the model",
+      "why_it_matters": "Overapplying PPP inflates the apparent value of home-country savings and leads to overconfidence in the return scenario"
+    },
+    {
+      "dimension": "Scope of cost modeling",
+      "junior_pattern": "Models salary, rent, and taxes; omits immigration legal fees, childcare, international school costs, and return transition costs",
+      "senior_pattern": "Enumerates all material cost categories including immigration fees, children's education, one-time transition costs, and ongoing network maintenance travel",
+      "why_it_matters": "Omitted costs systematically bias the comparison; the omissions are not random — they tend to understate the true cost of staying in the US and understate the one-time cost of returning"
+    },
+    {
+      "dimension": "Decision timing relative to model output",
+      "junior_pattern": "Keeps refining the financial model looking for a definitive answer, treating non-financial factors as secondary until the math resolves",
+      "senior_pattern": "Recognizes when two scenarios are within modeling error (10–20%), stops optimizing the financial model, and shifts decision weight to non-financial variables",
+      "why_it_matters": "Excessive financial modeling in a close-outcome scenario is a form of decision avoidance; the factors that will dominate life satisfaction are being deprioritized"
+    },
+    {
+      "dimension": "Currency risk awareness",
+      "junior_pattern": "Converts home-country savings to USD at current exchange rate and treats the result as a stable, comparable figure",
+      "senior_pattern": "Reviews historical exchange rate volatility, models depreciation scenarios, and treats local-currency savings as carrying currency risk relative to USD-denominated wealth",
+      "why_it_matters": "A savings rate that looks comparable today may significantly underperform over a 10–20 year horizon if the home currency depreciates, which has happened with both RMB and INR in specific periods"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_savings_rate_modeling",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

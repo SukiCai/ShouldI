@@ -1,0 +1,369 @@
+{
+  "source_file": "zhihu_那些35岁以上的产品经理都去做什么了.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Switch from skill accumulation to influence expansion once core PM skills are solid",
+      "condition": "When a PM has mastered user research, competitive analysis, product design, project management, and data analysis...",
+      "action": "Shift focus to expanding organizational influence — mentoring, methodology documentation, cross-team impact — rather than accumulating more execution skills",
+      "because": "Multiple commenters cite a CEO's direct advice: doing more of the same core modules only produces quantitative change, not qualitative capability growth; influence expansion is what separates senior from mid-level PMs",
+      "regions": []
+    },
+    {
+      "rule": "Early-career PMs should not treat foundational tasks as beneath them",
+      "condition": "When a junior PM (1-3 years) finds wireframing, user interviews, or dev follow-up repetitive or boring...",
+      "action": "Stay in those tasks deliberately — they are the fastest path to deep business understanding",
+      "because": "Commenter explicitly states these 'seemingly trivial tasks are actually the best way to quickly and deeply understand the business' — consistent across multiple answers",
+      "regions": []
+    },
+    {
+      "rule": "Pick a domain and go deep rather than rotating across industries",
+      "condition": "When a PM is considering switching industries frequently to gain breadth...",
+      "action": "Choose one direction aligned with strengths and interests, and deepen expertise in that domain",
+      "because": "Commenter states that frequent cross-industry job hopping prevents reaching expert-level depth; domain specialization is the only path to becoming a recognized expert",
+      "regions": []
+    },
+    {
+      "rule": "For 35+ PMs stuck in large companies, the survival playbook splits by ambition level",
+      "condition": "When a senior PM at a large company faces a ceiling and is evaluating options...",
+      "action": "If upward-oriented: push for management track or jump to smaller company as product head. If stability-oriented: find a sustainable low-profile mode and avoid errors.",
+      "because": "Multiple real cases in answer [2] document both patterns — 'old white rabbit' mode and aggressive upward push — as distinct but viable survival strategies at 35+",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Relationship with direct leadership",
+      "why_it_matters": "Determines which career path is accessible — strong relationship unlocks internal management track; weak relationship means external moves are necessary",
+      "how_to_assess": "Ask: does your manager actively advocate for your promotion? Have you been given expanded scope or resources proactively?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Whether you are the household's primary economic provider",
+      "why_it_matters": "High financial dependency severely constrains career risk tolerance — limits ability to take lower-comp roles for scope, or to hold out during job searches",
+      "how_to_assess": "Assess: can household sustain 6-12 months without your current income? Does partner have stable independent income?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Family status (married/children vs. single/DINK)",
+      "why_it_matters": "Multiple female PM cases show family obligations directly constrain career trajectory — particularly the willingness to work late, take on high-stress roles, or relocate",
+      "how_to_assess": "Explicit self-assessment: is your revealed preference career-leaning or family-leaning? Have you made career sacrifices for family in the past 2 years?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Company tier and whether you are the product leader (一号位) vs. a manager within a larger org",
+      "why_it_matters": "Being a product director at a tier-4 company reads very differently than being a product director at a tier-1 company; external market interprets these titles differently",
+      "how_to_assess": "Ask: can you independently own P&L or major business outcomes at your current company? Or are you executing within someone else's strategy?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Desire for autonomy vs. stability",
+      "why_it_matters": "Strong autonomy drive pushes toward small company leadership or entrepreneurship; stability preference pushes toward staying in large company tracks even at lower growth rates",
+      "how_to_assess": "Look at past behavior: have you previously left stable roles for smaller opportunities? Do you find large-company politics energizing or draining?",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying at a large company until 35+ to accumulate seniority",
+      "unstated_consequence": "High comp and level become a trap — compensation and title are too high for equivalent roles elsewhere, making lateral moves feel like regression and creating involuntary lock-in",
+      "who_it_affects": "PMs who reach senior individual contributor or mid-management levels at tier-1 companies and have high fixed living costs",
+      "regions": []
+    },
+    {
+      "choice": "Taking a product director title at a small/mid-tier company",
+      "unstated_consequence": "The title doesn't transfer cleanly to tier-1 companies — you'd re-enter as a middle manager with limited scope, and the small company equity is often illusory (options described as '虚头巴脑的期权')",
+      "who_it_affects": "Mid-career PMs who leave large companies for leadership titles at smaller firms expecting the title to compound their market value",
+      "regions": []
+    },
+    {
+      "choice": "Choosing the 'old white rabbit' (老白兔) survival mode — staying quiet, avoiding errors, not seeking growth",
+      "unstated_consequence": "Feels like stability but is actually a slow skill decay; when involuntary layoff comes (which it eventually does), the person has neither current skills nor recent accomplishments to market",
+      "who_it_affects": "35+ PMs at large companies who have been in the same role for 3+ years without scope change",
+      "regions": []
+    },
+    {
+      "choice": "Leaving to start a business or pursue self-media/content creation after a PM career",
+      "unstated_consequence": "Income can drop sharply — one case describes a PM who left for self-media and reported 'tight income' despite claiming to be happier; the PM-to-content-creator path is not financially reliable",
+      "who_it_affects": "PMs who conflate job satisfaction with income sustainability when evaluating exit options",
+      "regions": []
+    },
+    {
+      "choice": "Reaching product leadership through persistence and luck without strong boss recognition",
+      "unstated_consequence": "Leadership position is fragile — multiple cases show PMs who reached one-number-position through opportunity/luck being replaced when the boss decides capability is insufficient, then facing cascading downgrade across companies",
+      "who_it_affects": "Female PMs in particular, per the case data — those who reach leadership without being clearly recognized as capable by their direct manager",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Mistaking title accumulation at lower-tier companies for career capital",
+      "why_it_happens": "PMs equate 'product director' label with actual market value; small company gives the title freely because it's cheap compensation — the PM anchors to the title rather than the scope and business impact",
+      "consequence": "Returns to job market with a director title but no tier-1 company credibility, limited team size experience, and often lower comp than their previous large-company role",
+      "warning_signs": [
+        "Accepting a title bump with a comp decrease or flat comp",
+        "The new company's product organization has fewer than 10 PMs total",
+        "Peers at previous company view the move as a lateral or downgrade"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Staying in execution mode past the 5-year mark without building influence or business ownership",
+      "why_it_happens": "Execution is comfortable, measurable, and safe; influence-building is ambiguous and politically risky; PMs default to doing more of what they're already good at",
+      "consequence": "At 35+, they are competing directly with lower-cost junior PMs on execution tasks and cannot justify their seniority premium",
+      "warning_signs": [
+        "Your most recent performance review is defined entirely by feature delivery metrics",
+        "You have not mentored or grown any junior PMs in the past year",
+        "Your work product could be replicated by someone with 2-3 years less experience"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Female PMs underinvesting in 'political' skills (撕逼扯皮能力 — resource negotiation, organizational maneuvering) because they find them distasteful",
+      "why_it_happens": "The skills required at senior PM levels shift from product craft to organizational politics; many PMs — disproportionately women per the case data — are promoted for craft but underprepared for the political demands of leadership",
+      "consequence": "Reaches a leadership position but is perceived as 'not capable enough' by bosses; gets replaced and experiences a cascading downgrade across subsequent roles",
+      "warning_signs": [
+        "You describe your job as 'just doing good product work' without mentioning stakeholder management",
+        "You avoid cross-functional conflicts rather than resolving them",
+        "Your boss has given feedback about 'leadership presence' or 'influence' rather than product skills"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Treating early-career task diversity as a goal rather than a means",
+      "why_it_happens": "Junior PMs see rotational exposure as building breadth; they mistake variety for learning without recognizing that depth in one domain is what generates promotable expertise",
+      "consequence": "5-6 years in, they have broad but shallow experience and cannot credibly claim domain expertise in any area",
+      "warning_signs": [
+        "You have worked in 3+ different product domains in under 5 years",
+        "You describe your experience as 'versatile' but struggle to articulate a specific domain thesis",
+        "You are applying for senior roles but cannot point to a product you owned end-to-end for 2+ years"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Are you being constrained by your own skill ceiling, or by your organization's structure and politics?",
+      "what_it_reveals": "Whether the career stall is an internal problem (solvable by upskilling) or an external problem (solvable only by moving)",
+      "follow_up_if_yes": "If skill gap: what specific capability is missing — product craft, business acumen, or organizational influence?",
+      "follow_up_if_no": "If org ceiling: is the ceiling at your direct manager level, or structural to the company tier/stage?",
+      "regions": []
+    },
+    {
+      "question": "Is your current income level making you functionally unable to take any risk?",
+      "what_it_reveals": "Whether financial lock-in is driving career decisions that are being rationalized as strategic preferences",
+      "follow_up_if_yes": "If yes: you are likely optimizing for safety, not growth — acknowledge this explicitly before evaluating any move",
+      "follow_up_if_no": "If no: what is the actual constraint? Identify whether fear or genuine strategic logic is driving inertia",
+      "regions": []
+    },
+    {
+      "question": "When you describe your career achievements, are they defined by features shipped or by business outcomes and organizational impact?",
+      "what_it_reveals": "Whether the PM is still operating at an execution level or has genuinely developed senior-level thinking and accountability",
+      "follow_up_if_yes": "If business outcomes: can you quantify the P&L, growth metric, or team capability impact? That's your promotion case.",
+      "follow_up_if_no": "If feature delivery: you are likely underprepared for senior roles regardless of years of experience",
+      "regions": []
+    },
+    {
+      "question": "Do you have a genuine preference between management track and individual contributor expert track — or are you defaulting to management because it seems like the only path up?",
+      "what_it_reveals": "Whether the person is suited for people management or is chasing it as a proxy for seniority when a technical expert path might be more authentic and sustainable",
+      "follow_up_if_yes": "If genuine management preference: are you actively developing people management skills now, not waiting for the title?",
+      "follow_up_if_no": "If defaulting: explore the IC expert path — some large companies (Alibaba, JD) have explicit product expert tracks that don't require managing people",
+      "regions": []
+    },
+    {
+      "question": "Has your boss explicitly told you what is blocking your promotion, or are you inferring it?",
+      "what_it_reveals": "Whether the PM has real signal about their promotion ceiling or is operating on assumptions that may be wrong",
+      "follow_up_if_yes": "If explicit feedback exists: is the feedback about skill, about headcount, or about organizational timing?",
+      "follow_up_if_no": "If inferred: the first action is to have a direct conversation — many PMs leave prematurely because they misread ambiguous signals as rejection",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PM is a role defined by deliverables — wireframes, PRDs, competitive analysis — and the fear is being outcompeted by younger, cheaper talent on these outputs",
+      "actual_reality": "Senior PM value is defined by judgment, business ownership, and influence — not execution speed. The career risk at 35+ is not being out-executed by juniors; it is failing to have transitioned your value proposition from execution to strategy and leadership",
+      "implication": "PMs who are still defining their value through deliverable quality at 5+ years are actively creating the vulnerability they fear — the fix is scope expansion, not execution optimization",
+      "regions": []
+    },
+    {
+      "common_belief": "A 'product director' title means you've made it to senior PM level regardless of company tier",
+      "actual_reality": "Tencent reportedly redefined 'product manager' to only include level 12 (P4-1) and above — the vast majority of people with PM titles are not actually functioning as product managers in the full sense. Title inflation is endemic, and the market reads company tier and team size alongside the title",
+      "implication": "Stop using title as the primary proxy for seniority; use scope of autonomous decision-making, team size, and business outcome ownership as the real metrics",
+      "regions": []
+    },
+    {
+      "common_belief": "35+ is the career cliff for product managers in China's tech industry",
+      "actual_reality": "The data shows multiple viable 35+ paths: large company senior management (P8+), small company product leadership, business unit GM, VC/investment, and entrepreneurship — the '35-year-old cliff' is real for execution-only PMs but not for those who have built genuine business and leadership capability",
+      "implication": "The question to ask is not 'can I survive to 35' but 'have I built the right capability profile by 35' — the ceiling is capability-dependent, not age-dependent",
+      "regions": []
+    },
+    {
+      "common_belief": "Jumping to a smaller company as product head is a clear upgrade from being a mid-level manager at a large company",
+      "actual_reality": "Small company product leadership (一号位) often means 100-150k RMB packages with largely illusory equity, high operational stress, and limited ability to return to large company roles at comparable levels — it is a tradeoff, not a straightforward upgrade",
+      "implication": "Evaluate the small company move on: real equity value (not paper), the boss's track record of supporting PMs, and your personal financial runway — not just the title",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they define their core value",
+      "naive_pattern": "Defines value through deliverable quality and execution speed — 'I ship clean PRDs, I run tight sprints, I do thorough competitive analysis'",
+      "informed_pattern": "Defines value through business impact and organizational leverage — 'I own this P&L, I built the team's methodology, I made the call that saved this product line'",
+      "why_it_matters": "At 35+, the execution-defined PM is commoditized; the leverage-defined PM is scarce and promotable",
+      "regions": []
+    },
+    {
+      "dimension": "How they think about career moves",
+      "naive_pattern": "Evaluates moves based on title change and nominal compensation — 'I'll be director at this new company'",
+      "informed_pattern": "Evaluates moves based on scope of autonomous ownership, quality of the boss, and business trajectory of the team — 'what will I be accountable for, and will this boss let me succeed?'",
+      "why_it_matters": "Title-chasing leads to the hidden tradeoff of small-company director roles that don't compound market value",
+      "regions": []
+    },
+    {
+      "dimension": "How they respond to organizational politics",
+      "naive_pattern": "Avoids cross-functional conflict, focuses on 'just doing good product work,' views political navigation as distasteful or unnecessary",
+      "informed_pattern": "Treats organizational influence, resource negotiation, and stakeholder management as core professional skills to be actively developed — not optional",
+      "why_it_matters": "PM leaders who lack political skills get replaced even when their product judgment is sound, as multiple cases in the data illustrate",
+      "regions": []
+    },
+    {
+      "dimension": "How they think about domain breadth vs. depth",
+      "naive_pattern": "Rotates across multiple product domains to 'build versatility'; treats variety as a signal of adaptability",
+      "informed_pattern": "Picks a domain with strategic intent early and goes deep; treats breadth as a secondary benefit, not a primary strategy",
+      "why_it_matters": "Domain expertise is the primary driver of the expert track career path; breadth without depth produces generalists who struggle to command senior compensation",
+      "regions": []
+    },
+    {
+      "dimension": "How they assess whether a company is a ceiling situation",
+      "naive_pattern": "Reads ambiguous manager signals as rejection and starts job searching; or conversely, waits passively hoping the promotion comes",
+      "informed_pattern": "Proactively seeks explicit feedback on promotion blockers, distinguishes between skill gaps and structural/headcount constraints, and makes the move decision based on real signal",
+      "why_it_matters": "Premature exits leave comp and learning on the table; delayed exits in genuine ceiling situations waste prime career years",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Product management is about making wireframes, writing PRDs, and doing competitive analysis — so at 35 you'll be out-competed by younger people who can do these things faster and cheaper",
+      "why_believed": "This is genuinely what most entry-level PM work looks like, so people extrapolate that this is what PM is permanently — they mistake the entry-level role for the full definition of the career",
+      "actual_rule": "Execution skills are only the foundation layer (years 1-2). Senior PM value is built on business judgment, commercial thinking, team leadership, and organizational influence — domains where experience compounds and young talent cannot easily substitute",
+      "real_consequence": "PMs who hold this misconception either quit the profession prematurely out of manufactured fear, or stay in execution mode too long and actually create the vulnerability they feared",
+      "regions": []
+    },
+    {
+      "misconception": "Having a 'product director' or 'product VP' title means you've achieved senior PM status that will transfer to your next employer",
+      "why_believed": "Title is the most visible signal of seniority; people assume the market interprets all director titles equivalently",
+      "actual_rule": "The market heavily discounts titles from lower-tier companies; a director at a tier-4 company re-enters a tier-1 company as a mid-level manager. Company tier, team size managed, and business outcomes are weighted far more than the title alone",
+      "real_consequence": "PMs take VP/director titles at small companies expecting a career upgrade, then discover their external market value has not increased — or has decreased — because they left the credibility infrastructure of a larger organization",
+      "regions": []
+    },
+    {
+      "misconception": "35 is a hard career cliff for product managers in tech — you will be pushed out regardless of your capabilities",
+      "why_believed": "China's tech industry ageism is real and widely discussed; '35岁危机' is a cultural meme that gets repeated and amplified in community forums, creating a self-fulfilling anxiety spiral",
+      "actual_rule": "The 35-year ceiling is real for execution-only PMs who have not transitioned their value proposition. PMs who have built leadership, business ownership, and domain expertise have multiple viable high-compensation paths past 35 — including large company senior management, small company leadership, VC, and business unit GM roles",
+      "real_consequence": "PMs make premature career pivots (leaving tech, abandoning the PM track) driven by the meme rather than their actual situation, foregoing the compound returns of a senior PM career",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Female PM reached product line leadership position at a large company through a combination of effort and timing, but without strong boss conviction in her capabilities",
+      "decision": "Stayed in the role; was eventually replaced by the boss who deemed her 'not capable enough'; moved to a tier-2 company in a similar leadership role; was replaced again; ended up unemployed with family financial pressure",
+      "outcome": "Two consecutive leadership failures at different companies, each resulting in replacement — cascading downgrade and unemployment during a bad market (2022)",
+      "lesson": "Leadership positions obtained through luck/opportunity without genuine boss buy-in are fragile; the fragility compounds across moves because each replacement reduces your negotiating position for the next role",
+      "regions": []
+    },
+    {
+      "situation": "PM expert at a large company, single, financially stable, recognized that external market value would not increase through a move",
+      "decision": "Stayed at large company, adopted a sustainable low-profile operational mode — completing work well, not seeking expansion, maintaining equilibrium",
+      "outcome": "Stable long-term; described as a viable path for those who have found their comfort level and are not motivated by further advancement",
+      "lesson": "The 'old white rabbit' mode is a real and sustainable strategy for some 35+ PMs — but it requires financial security, low dependence on career advancement for identity, and conscious acceptance of the tradeoff",
+      "regions": []
+    },
+    {
+      "situation": "PM at an e-commerce platform (考拉) who spent 2 years building supplier relationships as part of the product role",
+      "decision": "Left the PM role to start an independent e-commerce business using the supplier network built during the PM job",
+      "outcome": "Reportedly purchased a 14 million RMB villa in Beijing's suburbs by 2019 — financial success attributed to combining PM analytical skills with direct supplier relationships",
+      "lesson": "Resource accumulation during PM roles (supplier networks, user communities, domain expertise) can be more valuable than the PM job itself as a foundation for entrepreneurship — deliberately invest in these assets, not just product skills",
+      "regions": []
+    },
+    {
+      "situation": "PM at a tier-2 company who had strong product ability but an average relationship with leadership",
+      "decision": "Left for a smaller company to take a product leadership role with direct business ownership",
+      "outcome": "Multiple cases in this pattern — one went to Pinduoduo in 2017 and succeeded; one went to Good Future (好未来) in 2018 and independently owned a business line; one became product head at a mid-size e-commerce company with a team of 5 FTEs and 4 interns",
+      "lesson": "For PMs with strong ability but weak political positioning at current company, the small-company leadership path is a legitimate and often successful exit — but the outcome depends heavily on the specific company's growth trajectory",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Asking 'can I survive as a PM until 35?' or 'will I be replaced by younger talent?' before age 30",
+      "underlying_state": "Anticipatory anxiety driven by cultural ageism meme ('35岁危机') rather than actual career evidence; catastrophizing based on peer discussion rather than personal situation assessment",
+      "how_it_manifests": "PM seeks external validation that the career is 'safe'; over-optimizes for credentials and titles as insurance; avoids taking on risky high-ownership roles that would actually build senior-level capability",
+      "expert_move": "Reframe: the question is not 'will I survive to 35' but 'am I building the right capability profile that makes me valuable at 35.' Shift from threat-avoidance to capability-building orientation.",
+      "regions": []
+    },
+    {
+      "trigger": "Senior PM describing their situation as 'stable' while simultaneously noting they haven't changed scope in 2-3 years and are avoiding visibility",
+      "underlying_state": "Sunk cost + loss aversion: the person has invested years in a company and fears that any change (internal or external) risks losing the accumulated status; mistaking inertia for stability",
+      "how_it_manifests": "Rationalizes staying as strategic ('I know this company, I have relationships here') while avoiding the harder question of whether the current role is building any new capability",
+      "expert_move": "Ask: if your current role disappeared tomorrow, what specifically would you point to from the last 2 years that makes you more valuable than before? If the answer is unclear, the 'stability' is actually risk accumulation.",
+      "regions": []
+    },
+    {
+      "trigger": "Female PM framing career decisions primarily around family obligations ('已婚有娃') when discussing career stalls or job search difficulty",
+      "underlying_state": "Identity conflict between professional ambition and social expectations; may be using family obligations as a face-saving explanation for career stalls that have other causes",
+      "how_it_manifests": "Attributes career ceiling to family situation rather than investigating skill gaps or organizational dynamics; may underinvest in capability development because 'it won't matter anyway given my family situation'",
+      "expert_move": "Separate the diagnosis from the constraint: first establish clearly whether the gap is skill-based or org-based, then assess family constraints as a separate decision variable. Don't let one explain away the other.",
+      "regions": []
+    },
+    {
+      "trigger": "PM describing a major career decision (joining a startup, leaving for self-media) in terms of happiness and meaning without any financial sustainability analysis",
+      "underlying_state": "Reactance and escapism — after years of high-pressure PM work, the person is so depleted that any alternative feels appealing; conflating relief from current pain with genuine positive value of the alternative",
+      "how_it_manifests": "Makes a major career exit without a financial model; discovers income is 'tight' afterward but maintains the framing of 'I'm happier' to avoid confronting the decision's cost",
+      "expert_move": "Before any exit decision, require a 24-month financial model: what does income look like in months 1, 6, 12, 18, 24 under the new path? Separate the question of 'am I in the wrong current role' from 'is this specific alternative the right move.'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Will I be replaced by cheaper, younger talent at 35 since they can do the same PM tasks faster?",
+      "reframe": "You are asking the wrong question — the question is whether you have transitioned your value from execution to judgment and leverage. If you haven't, the fear is correct. If you have, it's irrelevant.",
+      "why_it_works": "Shifts the locus of control from external threat (younger talent) to internal capability (your own development trajectory); turns an anxiety spiral into an actionable diagnostic",
+      "example_language": "'如果你有这样的想法，那只能说明，你对这个职业还有很深的误解' — if you're thinking this way, it only shows you have a deep misunderstanding of what the career actually is",
+      "regions": []
+    },
+    {
+      "original_framing": "I've been doing core product modules for years — I should keep building more module experience to become more senior",
+      "reframe": "More modules only gives you quantitative change. The qualitative leap comes from taking your methodology and using it to influence more people — document it, teach it, expand your organizational footprint.",
+      "why_it_works": "Redefines 'seniority' from breadth of execution to depth of organizational impact; gives the PM a concrete alternative action (methodology output, mentoring) rather than just telling them to 'think more strategically'",
+      "example_language": "'继续做其他模块只能给你带来量变，但是对于能力提升不能带来质变' — doing more modules only gives you quantitative change, not qualitative capability growth",
+      "regions": []
+    },
+    {
+      "original_framing": "35-year-old PM asking: what are the 'exit options' for someone like me?",
+      "reframe": "The real question is not what exit options exist, but what is your current capability profile — and which of the four paths (large company management, small company leadership, business unit GM, entrepreneurship/VC) does your specific profile best match?",
+      "why_it_works": "Prevents the poster from treating all paths as equally available regardless of preparation; forces a capability self-assessment before path selection, which is the correct sequencing",
+      "example_language": "The answer maps out four distinct paths and assigns rough probabilities (30%/30%/20%/10%) — signaling that path availability is not random but correlated with what you've built",
+      "regions": []
+    },
+    {
+      "original_framing": "I have a product director title at a mid-size company — am I a senior PM?",
+      "reframe": "The title doesn't tell you anything. The real question is: are you the autonomous decision-maker for a business with real P&L consequence, or are you an executor with a senior label?",
+      "why_it_works": "Decouples seniority from title and re-anchors it to accountability and autonomy — which are the actual market-facing signals that determine comp and external opportunity",
+      "example_language": "Tencent reportedly stripped the PM title from everyone below level 12 because only those who 'independently own a complete business with resource and decision authority' qualify as product managers in the real sense",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_那些35岁以上的产品经理都去做什么了",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

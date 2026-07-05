@@ -1,0 +1,48 @@
+{
+  "skill_name": "Senior PM Career Decisions",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that goes well beyond generic career advice — it establishes a clear diagnostic frame (skill gap vs. org ceiling vs. stage transition vs. track fit) and reinforces it consistently throughout heuristics, tradeoffs, and mental models. It has real teeth in places (level-code translation, scope-before-title, MBA named-doors test), though a few sections lean on well-known PM commentary and some heuristics could be more surgical about edge cases.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 4,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The core reframe — 'PM careers as a scope problem, not a title problem' — is threaded consistently through diagnostics, heuristics, tradeoffs, and the junior/senior table. This coherence is rare and makes the skill actually usable, not just a bag of tips.",
+    "Several heuristics are genuinely non-obvious and operational: 'Get the level code, not just the title...Amazon L6 = Google/Meta Senior PM, not L5' and 'Only pursue an MBA if you can name specific closed doors' provide clear tests a user can run themselves.",
+    "The four-way classification (skill gap / org ceiling / stage transition failure / wrong-track fit) is a meaningful diagnostic taxonomy — these really do look identical from the inside, and naming the confusion is high leverage.",
+    "The junior vs. senior table has strong differentiators, particularly 'Makes the we shouldn't build any of these argument when the problem is wrong' and 'Builds conviction from user/market signals first, then brings stakeholders along' — these are actual senior behaviors, not just 'more strategic.'"
+  ],
+  "weaknesses": [
+    "Some heuristics are directionally correct but under-specified. 'Block strategic time on your calendar explicitly' is close to generic time-management advice — an expert version would name the ratio (e.g., 20% minimum, protected pre-9am block) and the specific artifacts to produce during it (strategy docs, teardown analyses).",
+    "The 8/10 satisfaction rule feels arbitrary and unearned — 'Below 7 for six months = act. Below 5 for three months = act urgently' is presented as a rule but there's no reasoning for why these thresholds vs. others. Feels like it was invented rather than distilled from experience.",
+    "The 'Stage transition failure' category is the most interesting one but least developed. It says 'Rework the approach, not the effort' but never explains what the reworked approach looks like — this is where a user would most need concrete guidance.",
+    "Diagnostic question 4 ('Can you name a strategic framework for your area that you authored?') is a strong test, but 'strategic framework' is under-defined. A user who genuinely can't tell may answer yes based on a Miro board they made.",
+    "Missing calibration on WHEN structural blocks resolve vs. don't. The skill implies static feedback = leave, but sometimes orgs restructure, managers change, or headcount opens. No guidance on how long to wait or what signals suggest a block is about to break."
+  ],
+  "improvement_suggestions": [
+    "Add a concrete section on 'What Stage 2 looks like operationally' — what does scope-defining behavior actually look like in a week? (e.g., writing the quarterly strategy doc unprompted, killing a project sponsored by a VP, running a discovery sprint no one asked for). Without this, users can't self-assess against the framework.",
+    "Replace or justify the 8/10 satisfaction rule. Either ground it in a specific mechanism (e.g., 'below 7 = you stop investing in relationships and learning, which compounds negatively within 6 months') or remove it — arbitrary numbers weaken the credibility of the surrounding heuristics.",
+    "Add a heuristic on evaluating org ceilings before joining, not just after being stuck. E.g., 'Before accepting an offer, ask: how many people were promoted from this level to the next in the last 12 months, and what did they own?' This turns diagnosis into prevention.",
+    "Add explicit content on the Staff/Principal IC track — it's mentioned in Industry Realities but the skill has no diagnostic for 'am I on a Senior PM plateau or heading toward Staff?' This is one of the most confused decisions at the exact level the skill targets.",
+    "Include a section on how to have the promotion conversation with a manager — the skill says 'ask your manager directly whether a role exists to promote into' but doesn't model the actual language, which is where most PMs fail (they ask 'am I on track?' instead of 'is there headroom?')."
+  ],
+  "generic_advice_flags": [
+    "'Block strategic time on your calendar explicitly. Strategic work is non-urgent but high-importance; reactive work always wins if unprotected.' — This is standard Covey/time-management advice repackaged. A senior PM version would specify what strategic work produces (artifacts, decisions), not just that it should be protected.",
+    "'Test career hypotheses through small experiments before full moves. Side projects, informational interviews, cross-functional work.' — True but broadly known. The expert version would specify which experiments distinguish which hypotheses (e.g., 'take a 6-week rotation to test management fit; do 5 informational interviews with the specific role, not the general function').",
+    "'Invest in communication disproportionately to how much of the job it is.' — The 5%/50% framing is good but the advice itself ('invest in communication') is a career-advice cliché. Missing: which artifacts specifically move promo committees (written strategy docs, exec readouts, not slide polish)."
+  ],
+  "missing_coverage": [
+    "How to evaluate an org ceiling BEFORE joining — interviewing questions, org signals (recent promotion velocity, VP tenure, layers between PM and CEO).",
+    "The Staff/Principal PM decision — this is the natural next question after Senior PM and the skill implies its existence but never diagnoses when to pursue it vs. management vs. lateral.",
+    "How to actually pitch scope expansion to a manager — the skill says to do it but not how (framing as risk reduction, tying to business outcome, naming the specific area you'd own).",
+    "Compensation/level dynamics when switching — the level-code heuristic is great, but no guidance on how downleveling works, when to accept it, and how to negotiate against inflated-title penalties.",
+    "PM-to-founder transition specifics — mentioned in tradeoffs but no diagnostic for whether someone should actually do it (e.g., have they run a 0-to-1 launch inside a company first?).",
+    "Post-layoff / involuntary transition scenarios — much of the skill assumes the user has agency and a job. 2022-2024 PM market realities (layoffs, role compression) aren't addressed."
+  ]
+}

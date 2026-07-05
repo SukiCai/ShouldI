@@ -1,0 +1,291 @@
+{
+  "source_file": "multi_round_negotiation.txt",
+  "heuristics": [
+    {
+      "rule": "Counter at 10–20% above the initial offer in round one",
+      "condition": "When you receive an initial offer and are preparing your first counter",
+      "action": "Ask for 10–20% above the initial number as your opening counter",
+      "because": "Companies typically move 40–60% toward your ask in round one, so anchoring higher gives you room to land at your actual target"
+    },
+    {
+      "rule": "If base feels locked, shift to signing bonus or equity",
+      "condition": "When the company signals the base salary is at its ceiling but negotiation isn't fully resolved",
+      "action": "Move the conversation to signing bonus, equity, or other levers instead of continuing to push base",
+      "because": "Different budget pools exist for different comp components; what's frozen in one lever may be available in another"
+    },
+    {
+      "rule": "Stop at round three; never push to round four or five",
+      "condition": "When you've already completed two or three rounds of back-and-forth",
+      "action": "Treat round three as the closing round and make your final ask there",
+      "because": "Pushing to a fourth or fifth round signals you're maximizing extraction rather than finding mutual agreement, damaging the relationship before day one"
+    },
+    {
+      "rule": "'Final offer' in an email still has room; 'final offer' on a phone call with a hard deadline does not",
+      "condition": "When the recruiter uses the phrase 'final offer'",
+      "action": "Assess the delivery channel and tone — if email, request a call; if phone with a deadline and matter-of-fact tone, treat it as genuinely final",
+      "because": "The phrase 'final offer' is often a negotiating position, not a hard limit, but context signals whether room remains"
+    },
+    {
+      "rule": "Use the closing script when you're within 5% of your target number",
+      "condition": "When total comp is close to your goal and you want to close without damaging goodwill",
+      "action": "Say: 'Thank you for going to bat for me on this. If we can get to [final number], I'm ready to sign today.'",
+      "because": "This creates urgency, preserves the relationship, and gives the company a clear path to resolution rather than leaving them uncertain"
+    },
+    {
+      "rule": "Share the competing offer number but not the company name",
+      "condition": "When you have a competing offer and want to use it as leverage",
+      "action": "Disclose the dollar amount without naming the competing employer",
+      "because": "The number is what creates leverage; naming the company invites verification and comparison that can derail the conversation"
+    },
+    {
+      "rule": "Calculate your BATNA before entering any negotiation conversation",
+      "condition": "Before you begin any salary negotiation",
+      "action": "Determine the specific number below which you will walk away, based on your current comp, financial needs, and non-cash factors",
+      "because": "Without a walk-away number you'll either accept something bad or overplay your hand; the BATNA is the anchor that keeps both mistakes in check"
+    },
+    {
+      "rule": "Request a deadline extension first, then use that time to generate a competing offer",
+      "condition": "When you have an offer but no competing offer yet and need more time",
+      "action": "Ask for an extension framed as needing time for a thoughtful decision, then actively interview during that window",
+      "because": "Extensions are almost always granted, and the time can be used to manufacture real leverage rather than artificial urgency"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "BATNA strength",
+      "why_it_matters": "Your walk-away alternative determines how much pressure you can credibly apply; weak BATNA means the company can hold firm and you have no exit",
+      "how_to_assess": "Identify your actual best alternative — current job, competing offer, or nothing — and honestly evaluate whether you would act on it",
+      "weight": "high"
+    },
+    {
+      "factor": "Presence of a competing offer",
+      "why_it_matters": "A real competing offer is the single strongest lever in negotiation; it creates urgency, imports a deadline, and forces the target company to act",
+      "how_to_assess": "Do you have a written or verbal offer with a specific number from another employer that you would genuinely consider accepting?",
+      "weight": "high"
+    },
+    {
+      "factor": "Where current total comp sits relative to levels.fyi median",
+      "why_it_matters": "If the offer is already at or above market median, there is structurally less room to push; continuing signals you are extracting rather than calibrating to market",
+      "how_to_assess": "Look up the role, level, and location on levels.fyi and compare the full offer package — base, equity, bonus — against the median",
+      "weight": "high"
+    },
+    {
+      "factor": "Recruiter tone shift",
+      "why_it_matters": "The recruiter's affect is a real-time signal of whether room remains; a shift from collaborative to administrative signals you've reached the ceiling",
+      "how_to_assess": "Notice whether the recruiter is still problem-solving with you or has become transactional and matter-of-fact in their language",
+      "weight": "medium"
+    },
+    {
+      "factor": "Number of levers already exercised",
+      "why_it_matters": "Once you've moved on base, equity, and signing bonus and the company has responded to all three, the negotiation space is exhausted",
+      "how_to_assess": "Count how many compensation components you've negotiated; if all three major levers are resolved, treat the package as final",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether the candidate would actually leave for the BATNA",
+      "why_it_matters": "Leverage that you would not actually use is not real leverage; the company may sense this and hold firm accordingly",
+      "how_to_assess": "Ask yourself honestly: if this company doesn't move, will I actually take my alternative? If the answer is no, your stated leverage is weaker than it appears",
+      "weight": "high"
+    },
+    {
+      "factor": "Post-acceptance performance track record",
+      "why_it_matters": "Post-acceptance negotiation only works if backed by demonstrated delivery; without it, the ask reads as entitlement rather than market correction",
+      "how_to_assess": "Have you delivered measurably beyond the original job scope, received strong feedback, or seen your responsibilities expand since joining?",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pushing to a fourth or fifth negotiation round",
+      "unstated_consequence": "You enter day one with the perception of being a difficult or extractive employee, which can subtly affect your manager's advocacy for you in future reviews",
+      "who_it_affects": "Candidates who optimize for maximum extraction without understanding the relationship cost"
+    },
+    {
+      "choice": "Manufacturing a fake competing offer to gain leverage",
+      "unstated_consequence": "Recruiters verify offers and if caught, the offer is typically rescinded and your professional reputation in that company's network is damaged",
+      "who_it_affects": "Candidates without real competing offers who feel pressured to fabricate one"
+    },
+    {
+      "choice": "Accepting an offer without knowing your BATNA",
+      "unstated_consequence": "You lose the ability to walk away when you should, meaning you may accept a package below your actual floor because you have no pre-committed reference point",
+      "who_it_affects": "First-time negotiators and people who are emotionally attached to a specific offer or company"
+    },
+    {
+      "choice": "Backing out of an accepted offer after receiving a competing offer",
+      "unstated_consequence": "While there is no legal liability before a start date, there is a real reputational cost that can follow you, especially in tight-knit industries or if the recruiter moves to another company",
+      "who_it_affects": "Candidates in small industries or who may encounter the same recruiters again"
+    },
+    {
+      "choice": "Using speed creation ('I'll sign today if you hit X') as a closing tactic",
+      "unstated_consequence": "If the company calls your bluff and doesn't move, you've either signed at a number you settled for or you must back down, weakening your credibility in the negotiation",
+      "who_it_affects": "Candidates who use urgency tactics without being genuinely prepared to follow through"
+    },
+    {
+      "choice": "Framing post-acceptance negotiation as a comp ask without performance data",
+      "unstated_consequence": "It signals to your manager that you were strategically underbidding at hire, which can erode trust even if the ask is granted",
+      "who_it_affects": "New employees who attempt post-acceptance negotiation too early or without clear delivery evidence"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Stopping negotiation after the first company counter",
+      "why_it_happens": "Candidates experience relief when the company moves at all and interpret any upward movement as the ceiling, not understanding the typical three-round arc",
+      "consequence": "Leaves money on the table — often 5–15% of comp — because the candidate didn't realize the first company counter is typically only 40–60% movement toward the ask",
+      "warning_signs": [
+        "You feel grateful rather than strategic after the first counter",
+        "You haven't yet attempted to shift levers like signing bonus or equity"
+      ]
+    },
+    {
+      "pattern": "Negotiating without a BATNA",
+      "why_it_happens": "Candidates focus on what they want rather than what they'll do if they don't get it, treating the negotiation as a one-sided request rather than a bilateral decision",
+      "consequence": "Either accepts a package below their real floor, or overplays their hand with an arbitrary anchor and damages the offer",
+      "warning_signs": [
+        "You haven't identified a specific walk-away number before the conversation",
+        "You're not sure whether you'd actually decline if the company doesn't move"
+      ]
+    },
+    {
+      "pattern": "Fabricating a competing offer",
+      "why_it_happens": "Candidates know competing offers are the strongest lever but don't have one, so they invent one to create urgency",
+      "consequence": "Recruiters verify offers; if caught, the offer is rescinded and professional trust is destroyed",
+      "warning_signs": [
+        "You're tempted to reference a competing offer you don't actually have",
+        "You're unsure what details the company might ask to verify"
+      ]
+    },
+    {
+      "pattern": "Continuing to push after all three levers have been addressed",
+      "why_it_happens": "Candidates don't track how many components they've already negotiated and keep pushing without recognizing that the negotiation space is exhausted",
+      "consequence": "Signals extraction-maximizing behavior, damages goodwill, and can cause a company to rescind or reduce advocacy for the candidate",
+      "warning_signs": [
+        "You've already moved on base, equity, and signing bonus",
+        "The recruiter has volunteered that they've gone back to the hiring manager multiple times"
+      ]
+    },
+    {
+      "pattern": "Misreading 'final offer' as always having room",
+      "why_it_happens": "Candidates learn that 'final offer' is often a negotiating tactic and apply that heuristic uniformly, even when the signal has shifted to genuinely final",
+      "consequence": "Pushes past the real ceiling, damages relationship, and occasionally triggers offer rescission",
+      "warning_signs": [
+        "The recruiter's tone has shifted from sympathetic to matter-of-fact",
+        "A hard deadline has been attached to the final offer statement"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have a specific number below which you will walk away from this offer?",
+      "what_it_reveals": "Whether the candidate has a real BATNA or is negotiating without an anchor",
+      "follow_up_if_yes": "Is that number based on a real alternative — current comp, competing offer — or an arbitrary preference?",
+      "follow_up_if_no": "Stop negotiating until you identify your walk-away number; without it you cannot negotiate effectively"
+    },
+    {
+      "question": "Do you have a competing offer, and would you genuinely consider taking it?",
+      "what_it_reveals": "The actual strength of your leverage; a competing offer you wouldn't take is weak leverage",
+      "follow_up_if_yes": "Share the number with the target company; you don't have to name the employer",
+      "follow_up_if_no": "Assess whether you have time to generate one before your decision deadline"
+    },
+    {
+      "question": "How many rounds have you already completed, and which levers have you moved?",
+      "what_it_reveals": "Where you are in the negotiation arc and how much room remains",
+      "follow_up_if_yes": "If you've addressed base, equity, and signing bonus across two or more rounds, you may be at or near the ceiling",
+      "follow_up_if_no": "If you've only pushed on base, shift to other levers before concluding there's no room"
+    },
+    {
+      "question": "What is the recruiter's current tone — collaborative or administrative?",
+      "what_it_reveals": "Whether the company still sees room to move or has shifted into closure mode",
+      "follow_up_if_yes": "If collaborative, one more ask is likely acceptable; the recruiter may still be advocating for you",
+      "follow_up_if_no": "If administrative or matter-of-fact, treat the current offer as the ceiling and decide whether to accept"
+    },
+    {
+      "question": "Where does this offer sit relative to the levels.fyi median for this role and level?",
+      "what_it_reveals": "Whether market data supports continued negotiation or whether the offer is already at or above market",
+      "follow_up_if_yes": "If at or above median, your negotiating argument loses market-data support; focus on closing or non-cash levers",
+      "follow_up_if_no": "If below median, market data is your strongest anchor for continued negotiation"
+    },
+    {
+      "question": "Is your offer deadline real or manufactured by the company?",
+      "what_it_reveals": "Whether you have room to request an extension and use that time to generate competing offers",
+      "follow_up_if_yes": "If the deadline is company-imposed, request an extension framed as needing time for a thoughtful decision",
+      "follow_up_if_no": "If the deadline is tied to a genuine competing offer expiration, use it as urgency with the target company"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Salary negotiation is a single conversation where you make one ask",
+      "actual_reality": "Negotiation is a structured multi-round process with a predictable arc; the first counter is rarely the final one, and companies expect at least one or two rounds",
+      "implication": "Candidates who stop after the first company counter routinely leave money on the table because they don't understand the expected arc"
+    },
+    {
+      "common_belief": "'Final offer' means the negotiation is over",
+      "actual_reality": "The phrase 'final offer' is often a negotiating position, not a hard limit; the signal's meaning depends on delivery channel, tone, and whether a hard deadline is attached",
+      "implication": "Assess context before taking 'final offer' at face value — an emailed 'final offer' from a sympathetic recruiter is different from the same phrase with a deadline on a phone call"
+    },
+    {
+      "common_belief": "You need to name the competing company to make a competing offer credible",
+      "actual_reality": "You only need to share the number; companies don't require — and recruiters don't always verify — the specific employer",
+      "implication": "Share the dollar amount but withhold the company name to avoid unnecessary comparison and maintain negotiating simplicity"
+    },
+    {
+      "common_belief": "Once you've signed an offer, negotiation is over",
+      "actual_reality": "Post-acceptance negotiation is possible at 90-day reviews, when scope expands, or when market rates shift materially — but requires strong performance as the foundation",
+      "implication": "Candidates who underestimate their value at signing can recover ground post-hire if they build a track record quickly and frame the ask around market data and delivered scope"
+    },
+    {
+      "common_belief": "Companies have a fixed budget and all levers are equally constrained",
+      "actual_reality": "Different comp components — base, signing bonus, equity — come from different budget pools with different levels of flexibility; base may be at ceiling while signing bonus has room",
+      "implication": "When one lever is locked, shift to another rather than treating the whole package as immovable"
+    },
+    {
+      "common_belief": "Generating urgency through a fake competing offer is a safe strategy",
+      "actual_reality": "Recruiters verify competing offers, and fabricated offers are caught often enough that the risk is material; discovery leads to rescission and reputational damage",
+      "implication": "Only use competing offer leverage when you have a real one; invest time in generating genuine competing offers rather than manufacturing fictitious ones"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of negotiation structure",
+      "junior_pattern": "Treats negotiation as a single event — makes one ask and either accepts or doesn't based on the response",
+      "senior_pattern": "Understands the multi-round arc and paces asks across rounds, knowing when to push and when to close",
+      "why_it_matters": "Juniors often stop at round one and leave 5–15% of comp on the table; seniors extract value across the full arc without damaging the relationship"
+    },
+    {
+      "dimension": "BATNA preparation",
+      "junior_pattern": "Enters negotiation hoping for a good outcome without pre-committing to a walk-away number",
+      "senior_pattern": "Calculates a specific BATNA before the first conversation and treats it as a non-negotiable anchor throughout",
+      "why_it_matters": "Without a BATNA, candidates either accept below their floor or overplay their hand; the BATNA prevents both mistakes"
+    },
+    {
+      "dimension": "Interpreting recruiter signals",
+      "junior_pattern": "Treats recruiter language as face value — takes 'final offer' literally, misses tone shifts",
+      "senior_pattern": "Reads recruiter tone, delivery channel, and word choice as real-time signals of remaining room",
+      "why_it_matters": "Misreading signals leads to either leaving money on the table or pushing past the real ceiling and damaging the offer"
+    },
+    {
+      "dimension": "Lever management",
+      "junior_pattern": "Focuses exclusively on base salary and treats a ceiling there as the end of negotiation",
+      "senior_pattern": "Tracks which levers have been used, shifts between base, equity, and signing bonus strategically, and only closes when all levers are exhausted",
+      "why_it_matters": "Juniors miss compensation available in signing bonus or equity because they anchor entirely on base; seniors capture the full package"
+    },
+    {
+      "dimension": "Use of competing offers",
+      "junior_pattern": "Either doesn't have a competing offer or doesn't know how to use one; sometimes fabricates one",
+      "senior_pattern": "Actively generates competing offers before deadlines to create real leverage, or uses the extension window strategically to do so",
+      "why_it_matters": "Real competing offers are the strongest negotiation lever; seniors engineer the conditions to have one rather than hoping for it"
+    },
+    {
+      "dimension": "Relationship cost awareness",
+      "junior_pattern": "Optimizes purely for maximum extraction without considering how the negotiation process affects their reputation on day one",
+      "senior_pattern": "Balances extraction with relationship preservation, knowing that goodwill with a hiring manager has long-term comp implications beyond the offer",
+      "why_it_matters": "A candidate perceived as difficult before starting may receive weaker advocacy in future reviews, costing them more than they gained in the negotiation"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_multi_round_negotiation",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

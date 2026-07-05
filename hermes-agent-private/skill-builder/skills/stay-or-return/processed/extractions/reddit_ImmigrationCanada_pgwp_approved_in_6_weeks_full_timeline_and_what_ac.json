@@ -1,0 +1,268 @@
+{
+  "source_file": "ImmigrationCanada_pgwp_approved_in_6_weeks_full_timeline_and_what_ac.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Apply for PGWP within 180 days of receiving final marks/transcript — do not wait for the physical degree parchment",
+      "condition": "When a student has completed their program and is eligible for PGWP...",
+      "action": "Submit PGWP application as soon as official transcript or registrar completion letter is available, not when the physical degree arrives",
+      "because": "IRCC has denied PGWP applications from people who waited beyond the 180-day window believing they had more time; the clock starts from final marks, not convocation ceremony",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Use the official registrar completion letter as proof of graduation — not a program completion email from a professor or department",
+      "condition": "When assembling PGWP application documents...",
+      "action": "Obtain and submit the convocation/completion letter issued by the registrar's office specifically",
+      "because": "IRCC requires the official registrar document; informal communications from faculty are not accepted as equivalent proof",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "If valid biometrics exist from a study permit, do not re-enroll for new biometrics when applying for PGWP",
+      "condition": "When a PGWP applicant already has valid biometrics on file from their study permit...",
+      "action": "Proceed with application without scheduling new biometrics; existing valid biometrics carry over",
+      "because": "Multiple commenters confirmed biometrics from a study permit remain valid and IRCC will use them, saving time and cost",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Program length and type (standard vs. co-op/joint)",
+      "why_it_matters": "PGWP duration is tied to program length with a 3-year maximum; co-op and integrated programs may have ambiguous length calculations that affect PGWP duration",
+      "how_to_assess": "Check whether the completion letter specifies the full integrated program duration including co-op; confirm whether IRCC counts total enrollment months or academic-only months",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Physical presence in Canada at time of PGWP application",
+      "why_it_matters": "Students completing their final semester remotely from abroad may face eligibility or status complications when applying for PGWP",
+      "how_to_assess": "Confirm with IRCC guidelines or an immigration consultant whether remote completion abroad affects PGWP eligibility before the final semester begins",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Study permit expiry date relative to PGWP processing time",
+      "why_it_matters": "If the study permit expires before the PGWP is approved, the applicant enters implied/maintained status — they can remain in Canada but cannot work during that gap",
+      "how_to_assess": "Compare study permit expiry date against average PGWP processing times; apply as early as possible after program completion to minimize the gap",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining in Canada while PGWP application is pending after study permit expires",
+      "unstated_consequence": "Applicant enters implied/maintained status and can legally remain in Canada but loses the right to work until the PGWP is issued — this gap is not widely understood and can cause financial hardship or missed job start dates",
+      "who_it_affects": "Students whose study permits expire before PGWP processing completes, especially those who apply late or during high-volume processing periods",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Completing final semester remotely from outside Canada",
+      "unstated_consequence": "May affect PGWP eligibility or require applicant to be physically present in Canada to apply; this is an unresolved question flagged by the community with no clear answer in this thread",
+      "who_it_affects": "International students doing hybrid or remote final semesters, a pattern that became more common post-pandemic",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Waiting for the physical degree parchment before applying for PGWP, causing the application to fall outside the 180-day window",
+      "why_it_happens": "Students associate 'proof of graduation' with the physical degree document, not realizing IRCC's 180-day clock starts from final marks/transcript receipt; physical parchments often arrive months after grades are posted",
+      "consequence": "PGWP application denied; student loses eligibility entirely despite having completed a qualifying program",
+      "warning_signs": [
+        "Student has not yet applied for PGWP but graduation ceremony was more than 2-3 months ago",
+        "Student is waiting to 'get their degree in the mail' before starting the PGWP process"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Submitting unofficial or informal completion documentation instead of the official registrar letter",
+      "why_it_happens": "Students receive congratulatory emails from professors or department advisors and assume these serve as official proof of program completion",
+      "consequence": "IRCC rejects or delays the application pending submission of proper documentation; risks missing the 180-day window if correction takes time",
+      "warning_signs": [
+        "Applicant mentions using a 'program completion email' as graduation proof",
+        "Applicant has not contacted the registrar's office directly for an official letter"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What date did you receive your final marks or official transcript?",
+      "what_it_reveals": "Whether the applicant is still within the 180-day PGWP application window",
+      "follow_up_if_yes": "Have you already obtained the official registrar completion letter and begun your application?",
+      "follow_up_if_no": "If more than 150 days have passed, applicant should treat this as urgent and apply immediately",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Were you physically present in Canada for your entire program, or did you complete any portion remotely from outside Canada?",
+      "what_it_reveals": "Whether there may be a physical presence complication affecting PGWP eligibility",
+      "follow_up_if_yes": "Confirm with IRCC or a regulated immigration consultant whether remote completion affects eligibility before applying",
+      "follow_up_if_no": "Standard PGWP application process likely applies without additional complications",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your program include a co-op, internship, or other integrated work component?",
+      "what_it_reveals": "Whether the PGWP duration calculation is straightforward or potentially ambiguous (academic months only vs. full program including work terms)",
+      "follow_up_if_yes": "Verify whether the completion letter specifies the total program duration including co-op, and research whether IRCC counts the full integrated period",
+      "follow_up_if_no": "PGWP duration calculation is straightforward based on total program length, capped at 3 years",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "When does your current study permit expire relative to your expected PGWP approval date?",
+      "what_it_reveals": "Whether the applicant will enter a period of implied/maintained status during which they cannot work",
+      "follow_up_if_yes": "Plan financially and with any employer for a potential gap period with no work authorization",
+      "follow_up_if_no": "Study permit likely covers the processing window; standard timeline applies",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Students have 90 days after program completion before they need to worry about status or work authorization",
+      "actual_reality": "The 90-day implied status period allows the student to remain in Canada legally, but work authorization is not automatic during this gap — if the study permit has expired and the PGWP is not yet approved, the student cannot work",
+      "implication": "Students who line up jobs starting immediately after graduation may find themselves unable to legally work during the PGWP processing gap; employers and students both need to build in this contingency",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "PGWP length exactly matches the length of the degree program completed",
+      "actual_reality": "PGWP is capped at a maximum of 3 years regardless of program length; a 4-year bachelor's degree does not result in a 4-year PGWP",
+      "implication": "Students completing 4+ year programs should not assume they receive more than 3 years of post-graduation work authorization; Express Entry and PR planning should account for the 3-year cap",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of when the PGWP application clock starts",
+      "naive_pattern": "Waits for the physical degree diploma to arrive before beginning the PGWP application, assuming that is the required proof of graduation",
+      "informed_pattern": "Applies immediately after receiving official transcript or registrar completion letter, knowing the 180-day clock runs from final marks and that physical parchments are irrelevant to IRCC",
+      "why_it_matters": "Missing the 180-day window results in permanent ineligibility for PGWP from that program; the mistake is irreversible",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Understanding of work authorization during implied status",
+      "naive_pattern": "Assumes that because they can legally stay in Canada after study permit expiry, they can also continue working or begin a new job while PGWP is pending",
+      "informed_pattern": "Knows that implied/maintained status preserves the right to remain in Canada but does NOT include work authorization if the study permit has lapsed; waits for PGWP before starting work",
+      "why_it_matters": "Working without authorization during this gap is a violation of immigration conditions and can jeopardize PR applications and future immigration eligibility",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You need the physical degree parchment to apply for a PGWP",
+      "why_believed": "In most non-immigration contexts, the physical degree is the definitive credential; students equate 'proof of graduation' with the diploma document they receive at convocation",
+      "actual_rule": "IRCC accepts an official transcript showing program completion or an official letter from the registrar as proof; the physical parchment is not required and often arrives months after the 180-day window opens",
+      "real_consequence": "Students who wait for the physical degree may miss the 180-day application window entirely, losing PGWP eligibility despite completing a qualifying program",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "PGWP length matches your degree length exactly — a 4-year bachelor's gets a 4-year PGWP",
+      "why_believed": "IRCC's general rule that PGWP duration equals program length leads people to extrapolate linearly without knowing about the 3-year cap",
+      "actual_rule": "PGWP is capped at 3 years maximum regardless of program length; programs of 2 years or more receive a 3-year PGWP, not a duration equal to program length",
+      "real_consequence": "Students with 4-year programs who expect a 4-year PGWP may miscalculate their timeline for meeting Express Entry CRS requirements or PR application deadlines",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "During implied/maintained status you can continue working because your status is still valid",
+      "why_believed": "The term 'maintained status' implies that conditions of the previous permit are maintained, which feels like it should include work authorization",
+      "actual_rule": "Maintained status allows the person to remain in Canada legally but does not extend work authorization from an expired study permit; work authorization requires the actual PGWP to be issued",
+      "real_consequence": "Working during this gap constitutes working without authorization, which is an immigration violation that can affect PR eligibility and future applications",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Master's graduate applied for PGWP the day after graduation ceremony with convocation letter from registrar, valid biometrics on file from study permit, submitted online through IRCC portal",
+      "decision": "Applied immediately with complete documentation package including registrar letter rather than waiting for physical degree; did not re-apply for biometrics",
+      "outcome": "PGWP approved in 42 days, physical permit arrived by day 46; eTA issued same day as approval",
+      "lesson": "Early application with the correct official registrar document (not informal emails) and leveraging existing valid biometrics produces fast PGWP outcomes; the 6-week timeline is achievable when documentation is complete at submission",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'should I wait until I have my actual degree before applying?' or delays application while waiting for convocation ceremony",
+      "underlying_state": "Completion anxiety — the student does not feel their graduation is 'real' or 'official' until they hold the physical diploma; this emotional milestone is confused with the legal/administrative milestone IRCC recognizes",
+      "how_it_manifests": "Student waits weeks or months for the physical degree parchment, burning through the 180-day window without realizing the clock is running",
+      "expert_move": "Decouple the emotional significance of the physical degree from the administrative process: 'IRCC does not care about the ceremony or the parchment — the registrar letter is the trigger, and your clock started when your grades were posted'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Student completing final semester remotely asks whether they can apply for PGWP from abroad",
+      "underlying_state": "Status uncertainty anxiety — the student is unsure whether their non-standard completion path disqualifies them and is seeking reassurance rather than precise information",
+      "how_it_manifests": "Posts a question in community forums rather than consulting official IRCC guidance or a regulated consultant; may delay application out of fear of rejection",
+      "expert_move": "Redirect from seeking community reassurance to getting authoritative confirmation: 'This is an eligibility question that requires a definitive answer before you apply — contact IRCC directly or consult a regulated immigration consultant (RCIC); acting on forum speculation here could cost you your PGWP'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I need to wait until I have all my graduation documents together before applying for PGWP",
+      "reframe": "The 180-day clock is already running from the moment your final marks were released — 'gathering documents' is not a pause button",
+      "why_it_works": "Shifts the mental model from 'preparation before a future deadline' to 'you are already inside a countdown'; creates urgency grounded in real consequence rather than abstract rule",
+      "example_language": "IRCC has denied PGWP applications from people who waited too long thinking they had more time",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "My study permit is still technically valid so I can work while waiting for my PGWP",
+      "reframe": "Maintained status and work authorization are two separate things — being allowed to stay is not the same as being allowed to work",
+      "why_it_works": "Breaks a false equivalence that feels intuitive; forces the person to evaluate their work authorization status independently from their residency status, preventing an inadvertent immigration violation",
+      "example_language": "You can stay but cannot work during that gap until PGWP arrives",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_ImmigrationCanada_pgwp_approved_in_6_weeks_full_timeline_and_what_ac",
+  "_source_regions": [
+    "canada"
+  ]
+}

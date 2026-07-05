@@ -1,0 +1,203 @@
+{
+  "source_file": "us_visa_Day_1_CPT的真实风险_一个差点中招的故事.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If your goal is long-term US residence, avoid Day 1 CPT — the short-term work authorization is not worth the downstream immigration risk",
+      "condition": "When a student is considering Day 1 CPT primarily to extend work authorization and their end goal is permanent US residence or H-1B",
+      "action": "Use STEM OPT as the standard pathway and plan around it instead",
+      "because": "If USCIS later deems the CPT authorization invalid, all prior work becomes unauthorized employment, potentially triggering unlawful presence and a 3- or 10-year entry ban — a risk that compounds at every future immigration stage",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Always consult a licensed immigration attorney before using any non-standard work authorization pathway, not just school advisors or friends",
+      "condition": "When considering any alternative authorization scheme such as Day 1 CPT programs",
+      "action": "Pay for an independent immigration attorney consultation before enrolling",
+      "because": "Schools offering Day 1 CPT have financial incentive to downplay risk; attorneys are professionally liable for their advice and can assess USCIS scrutiny patterns",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Long-term immigration intent",
+      "why_it_matters": "Someone planning to leave the US after a few years faces lower risk from Day 1 CPT than someone seeking H-1B, green card, or permanent residence, where every prior immigration record is scrutinized",
+      "how_to_assess": "Ask explicitly: do I want to stay in the US for 5+ years and pursue H-1B or permanent residence? If yes, the risk calculation changes dramatically",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the CPT school has received SEVP warnings or scrutiny",
+      "why_it_matters": "USCIS and ICE can retroactively invalidate CPT authorizations from schools deemed non-compliant, making all prior work unauthorized regardless of individual good faith",
+      "how_to_assess": "Research whether the school appears on any public SEVP enforcement actions; ask attorney to vet the school before enrolling",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B RFE exposure from prior CPT history",
+      "why_it_matters": "USCIS RFEs on H-1B petitions can specifically challenge the legitimacy of prior CPT authorizations, causing months of delay, significant legal costs, and potential denial",
+      "how_to_assess": "Assess whether CPT use will appear in the H-1B petition record and whether the authorizing school has a clean SEVP record",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using Day 1 CPT to extend US work authorization",
+      "unstated_consequence": "If USCIS retroactively deems the CPT invalid, all work performed under that authorization becomes unauthorized employment — triggering unlawful presence accrual and potential 3-year or 10-year re-entry bans",
+      "who_it_affects": "Students who complete 2+ years of Day 1 CPT work and then attempt to transition to H-1B or other long-term status, where the full immigration history is reviewed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on Day 1 CPT and then applying for H-1B",
+      "unstated_consequence": "Even if H-1B is ultimately approved, USCIS may issue an RFE specifically challenging the CPT legitimacy, adding months of uncertainty and thousands of dollars in additional attorney fees",
+      "who_it_affects": "Anyone who used Day 1 CPT and then pursues H-1B — the risk does not disappear after the CPT period ends",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Enrolling in Day 1 CPT based on peer social proof without independently verifying legal risk",
+      "why_it_happens": "Social proof bias — 'many people are doing it' feels like validation of safety; the upfront outcome (work authorization) is visible while the downstream risk (RFE, unlawful presence) is invisible until years later",
+      "consequence": "Students work for 1-2 years under potentially invalid authorization, then face RFEs, costly legal remediation, and possible bars to re-entry when attempting to transition to H-1B or green card",
+      "warning_signs": [
+        "The recommendation comes from a friend or the school itself, not an independent attorney",
+        "The framing is 'many people do this' or 'it's a gray area' without concrete legal analysis",
+        "The school markets itself specifically on Day 1 CPT availability rather than academic reputation"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your goal to stay in the US long-term and pursue H-1B or a green card, or are you primarily seeking short-term work experience before returning home or moving elsewhere?",
+      "what_it_reveals": "The risk profile of Day 1 CPT is asymmetric — it is potentially catastrophic for long-term stayers and more limited for those with no future US immigration plans",
+      "follow_up_if_yes": "If long-term, have you assessed whether prior Day 1 CPT use will trigger an RFE or unlawful presence finding during your H-1B or green card process?",
+      "follow_up_if_no": "If short-term only, are you certain you will not change your mind and seek to return to the US in the future? A 3 or 10-year ban forecloses that option.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has an independent licensed immigration attorney (not the school's advisor) reviewed the specific CPT program and authorizing school for SEVP compliance?",
+      "what_it_reveals": "Whether the person has obtained genuinely independent legal assessment or is relying solely on self-interested parties (school, friends) who benefit from enrollment",
+      "follow_up_if_yes": "What specifically did the attorney say about the school's SEVP standing and the CPT authorization's defensibility in an RFE scenario?",
+      "follow_up_if_no": "This is the minimum due diligence required before proceeding — the risk is too consequential to rely on informal advice.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Day 1 CPT is a gray area that USCIS tolerates — if it were really illegal, they would have shut it down already",
+      "actual_reality": "USCIS has not issued a blanket prohibition but does challenge CPT legitimacy case-by-case through RFEs and denials. The absence of a formal ban does not equal safety — it means the risk is unpredictable and surfaces at the worst possible time (H-1B or green card adjudication)",
+      "implication": "Students should not interpret USCIS silence as approval; the enforcement mechanism is delayed and individualized, making it harder to detect until it is too late to remediate",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "If USCIS approves my H-1B, my prior CPT history is no longer a problem",
+      "actual_reality": "H-1B approval does not retroactively validate prior CPT use. Future immigration stages (green card, re-entry after travel, naturalization) can still surface unlawful presence issues arising from invalidated CPT periods",
+      "implication": "A successful H-1B approval should not be treated as a clean slate — the underlying CPT risk persists through all subsequent immigration proceedings",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate whether an immigration pathway is safe",
+      "naive_pattern": "Relies on peer anecdotes ('many people are doing it and they're fine') and school marketing as evidence of safety; equates popularity with legality",
+      "informed_pattern": "Distinguishes between enforcement action not yet taken and legal validity; understands that USCIS risk surfaces years later at H-1B or green card stage, not immediately; consults independent attorney to assess the specific school's SEVP record",
+      "why_it_matters": "Acting on the naive pattern leads to a false sense of security; the actual cost only becomes visible 2-4 years later when transitioning status, by which point remediation options are very limited",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Day 1 CPT is fine because USCIS has never officially said it's illegal",
+      "why_believed": "The absence of an explicit regulatory prohibition feels like implicit permission; students conflate 'not formally banned' with 'legally safe'",
+      "actual_rule": "USCIS evaluates CPT legitimacy on a case-by-case basis through RFEs and denials. CPT must be an integral part of the curriculum under 8 CFR 214.2(f)(10). Day 1 CPT programs that lack genuine academic integration can be retroactively deemed invalid, converting past work into unauthorized employment",
+      "real_consequence": "Students who work under invalidated Day 1 CPT authorization may accumulate unlawful presence, triggering a 3-year or 10-year bar from re-entering the United States",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Once H-1B is approved, any issues with prior CPT are resolved",
+      "why_believed": "H-1B approval feels like a definitive government endorsement of one's immigration history; people assume adjudicators reviewed everything",
+      "actual_rule": "H-1B adjudication does not comprehensively audit or validate prior work authorization history. Unlawful presence findings can be raised at re-entry, adjustment of status, or naturalization — long after H-1B approval",
+      "real_consequence": "Someone who believes their CPT history was cleared by H-1B approval may encounter bars to re-entry or green card denial years later",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student used Day 1 CPT to work for two years after completing undergraduate studies, then applied for H-1B",
+      "decision": "Proceeded with H-1B petition with prior Day 1 CPT work history in record",
+      "outcome": "Received an RFE specifically challenging the legitimacy of the CPT authorization; petition was ultimately approved but required six months of additional waiting and thousands of dollars in extra attorney fees",
+      "lesson": "Day 1 CPT does not become invisible at the H-1B stage — USCIS will question it, and even a successful outcome involves significant cost, delay, and anxiety that should be factored into the original risk calculation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student is told 'many people are doing Day 1 CPT and they're fine' and considers enrolling",
+      "underlying_state": "Survivorship bias combined with social proof dependency — visible peers who succeeded feel more representative than the invisible population who faced consequences; also status anxiety driving urgency to find any path to remain in the US",
+      "how_it_manifests": "Student discounts low-probability but catastrophic outcomes (unlawful presence bar) in favor of the high-probability short-term benefit (immediate work authorization); frames the decision as 'everyone does it so it must be OK'",
+      "expert_move": "Redirect attention from observed peer outcomes to the specific mechanism of harm: 'The people who are fine haven't hit their H-1B or green card stage yet — that's when this surfaces. Can you afford to find out then?' Force the student to reason about the timeline of risk, not just current peer status.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student who already used Day 1 CPT asks whether they can use O-1 or EB-1 to 'escape' the problem",
+      "underlying_state": "Magical thinking and escape-hatch seeking — once committed to a risky path, the mind searches for a resolution that avoids confronting the consequences of the original decision",
+      "how_it_manifests": "Asking whether extraordinary ability visas can bypass the unlawful presence issue rather than directly addressing whether remediation is possible",
+      "expert_move": "Validate the concern but redirect to the actual question: 'O-1/EB-1 doesn't erase unlawful presence — consult an attorney now about what your actual exposure is and whether you have remediation options before your next immigration step, not after.'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Day 1 CPT seems risky but lots of people do it and they seem fine — is it really that dangerous?",
+      "reframe": "The question is not whether people are fine now, but whether they will be fine at the H-1B or green card stage — that is when USCIS actually interrogates your CPT history, not during the CPT period itself",
+      "why_it_works": "Shifts the evaluation horizon from present peer observation (survivorship bias) to the actual decision point where harm materializes, making the risk concrete and temporally specific rather than abstract",
+      "example_language": "The risk doesn't show up when you're doing the CPT — it shows up when you file for H-1B two years later and get an RFE asking you to justify the authorization",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_us_visa_Day_1_CPT的真实风险_一个差点中招的故事",
+  "_source_regions": [
+    "us"
+  ]
+}

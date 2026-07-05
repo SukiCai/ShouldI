@@ -1,0 +1,281 @@
+{
+  "source_file": "zhihu_产品经理应该如何进行职业规划.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "PM market value = Foundation Skills × Domain Expertise × Industry Knowledge × Track Record × Network",
+      "condition": "When diagnosing why a PM is stuck or not getting promoted...",
+      "action": "Score yourself on each of the five multiplicative factors to find the bottleneck — a zero in any dimension collapses total value",
+      "because": "The formula uses multiplication, not addition, meaning weakness in any single dimension disproportionately limits overall market value — stated explicitly by the top answer",
+      "regions": []
+    },
+    {
+      "rule": "In the 0–1 phase (0–3 years), prioritize foundational craft over business depth",
+      "condition": "When a PM is early-career and tempted to jump into strategy or leadership roles...",
+      "action": "Focus on professional fundamentals — product thinking, tooling, communication, project execution — before specializing in a business domain",
+      "because": "Most PMs are not formally trained in the discipline, so the foundation gap must be closed first or it compounds negatively over time",
+      "regions": []
+    },
+    {
+      "rule": "In the 1–10 phase (3–5 years), go deep in one business domain rather than staying generalist",
+      "condition": "When a PM has passed the early growth stage and is deciding what to specialize in...",
+      "action": "Pick a business domain and accumulate domain-specific know-how, becoming the go-to person in that vertical",
+      "because": "The top answer states that at this stage, proximity to the business becomes the primary differentiator — generalists lose to domain specialists in mid-career competition",
+      "regions": []
+    },
+    {
+      "rule": "Network (圈子) is a force multiplier that most PMs underweight",
+      "condition": "When a PM has strong skills and track record but keeps hitting promotion ceilings...",
+      "action": "Actively build visibility and relationships outside your immediate team",
+      "because": "Promotion panels at large companies like Alibaba and Tencent involve evaluators who don't know you — internal visibility gaps mean strong work goes unrecognized in the critical promotion defense window",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Proximity to core business (离业务有多近)",
+      "why_it_matters": "At senior levels, the PM closest to where revenue and decisions are made becomes most indispensable — this determines both compensation and job security",
+      "how_to_assess": "Ask: does my work directly touch a revenue-generating or cost-saving business process, or am I receiving requirements filtered through ops/BD/sales layers?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Internal visibility outside your immediate team",
+      "why_it_matters": "Promotion decisions at large tech companies involve cross-team panels — being unknown outside your pod is a structural block regardless of skill level",
+      "how_to_assess": "Ask: can people in adjacent teams or functions articulate what you've built and its impact? If not, you have a visibility gap",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Stage of PM career (0-1 vs 1-10 vs 10-100)",
+      "why_it_matters": "The right investment changes completely by stage — craft in early career, domain depth in mid career, industry standing in senior career",
+      "how_to_assess": "Map years of experience and scope of ownership against the 0-1/1-10/10-100 framework to diagnose current phase",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Ability to leverage external resources (outside the company)",
+      "why_it_matters": "The 5+ year PM marker is the ability to coordinate cross-company resources and solve complex problems — this is what separates senior ICs from leads",
+      "how_to_assess": "Ask: can you get things done that require people or assets outside your organization to say yes?",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in a role that filters business requirements through ops/BD/sales layers",
+      "unstated_consequence": "The PM gradually loses direct contact with actual user and business needs — the core skill atrophies even while career metrics look fine on paper",
+      "who_it_affects": "Mid-career PMs (3–6 years) at large companies where role specialization has created buffer layers between PM and end users",
+      "regions": []
+    },
+    {
+      "choice": "Optimizing for PM career advancement within a single company or industry",
+      "unstated_consequence": "The underlying skill set (discover need → propose solution → drive to launch) is transferable to entirely different industries, but this is rarely recognized until a layoff forces the realization",
+      "who_it_affects": "PMs at 5+ years who have been optimizing for title progression rather than transferable capability building",
+      "regions": []
+    },
+    {
+      "choice": "Focusing only on the five-factor formula dimensions that feel comfortable (e.g., craft and domain knowledge) while ignoring network-building",
+      "unstated_consequence": "Because the formula is multiplicative, a near-zero on network collapses total market value even when other factors are strong — discovered only when a promotion or job search fails unexpectedly",
+      "who_it_affects": "Introverted or execution-focused PMs who assume quality of work speaks for itself",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Framing career anxiety as 'what happens to me after 35' instead of 'how do I become more valuable'",
+      "why_it_happens": "Age-based layoff anxiety (35岁危机) is culturally pervasive in Chinese tech — it creates a defensive, scarcity mindset that displaces productive career investment thinking",
+      "consequence": "PM invests energy in worry and hedging rather than compounding the five value-multiplying factors, accelerating the very outcome they fear",
+      "warning_signs": [
+        "PM frequently discusses the '35-year-old crisis' framing in career conversations",
+        "PM asks 'what do I do after mid-career' rather than 'what am I building toward'"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Staying in the 0-1 mindset (skill-building mode) past year 3–5",
+      "why_it_happens": "Foundational skill development feels safe and measurable; committing to a specific business domain feels constraining and risky",
+      "consequence": "PM remains a generalist executor while peers who went deep in a domain pull ahead in compensation and title — becomes harder to course-correct as years pass",
+      "warning_signs": [
+        "Still describing career goals primarily in terms of tools or methodologies at year 4+",
+        "Resisting domain specialization because 'I want to keep my options open'"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Treating promotion criteria from direct managers as the actual promotion criteria",
+      "why_it_happens": "Managers at large companies cite official level rubrics (P6, P7, P8) but often don't fully understand what actually drives promotion decisions — structural visibility and political capital matter as much as documented criteria",
+      "consequence": "PM meets all stated criteria and is still passed over, feeling blindsided and demoralized",
+      "warning_signs": [
+        "PM can recite the level rubric precisely but has not mapped their internal visibility across teams",
+        "PM's promotion strategy is purely about deliverables, not about who knows their name"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Which of the five factors — foundation skills, domain expertise, industry knowledge, track record, or network — is closest to zero for you right now?",
+      "what_it_reveals": "Because the formula is multiplicative, the weakest factor is the binding constraint on total market value — this identifies where to invest next",
+      "follow_up_if_yes": "If network is the gap: who outside your immediate team could describe your impact in a promotion panel today?",
+      "follow_up_if_no": "If no single factor stands out as weak: you may be spread thin across all five — rank them and invest asymmetrically",
+      "regions": []
+    },
+    {
+      "question": "How many layers sit between you and the actual business problem or user need your product serves?",
+      "what_it_reveals": "Reveals whether the PM is gaining real business proximity or acting as a translation layer for filtered requirements — a key predictor of senior trajectory",
+      "follow_up_if_yes": "If directly exposed: are you accumulating transferable domain know-how or just executing against a defined roadmap?",
+      "follow_up_if_no": "If heavily filtered: is this a structural feature of the role or a temporary phase — and can you change it?",
+      "regions": []
+    },
+    {
+      "question": "What career stage are you actually in — 0-1, 1-10, or 10-100 — and is your investment strategy matched to that stage?",
+      "what_it_reveals": "PMs frequently apply the wrong development strategy for their actual stage — early-career PMs chase strategy, senior PMs keep polishing craft instead of building external presence",
+      "follow_up_if_yes": "If in 1-10 stage: have you committed to a specific business domain to go deep in, or are you still moving across domains?",
+      "follow_up_if_no": "If stage is unclear: map scope of ownership and accountability — if you cannot name a specific business outcome you own end-to-end, you are likely still in 0-1",
+      "regions": []
+    },
+    {
+      "question": "Can you solve problems that require people outside your company to cooperate with you?",
+      "what_it_reveals": "The ability to leverage external resources is cited as the distinguishing capability of the 5+ year senior PM — if the answer is no, there is a hard ceiling on scope",
+      "follow_up_if_yes": "If yes: document examples for promotion defense and job search narratives",
+      "follow_up_if_no": "If no: identify what external dependencies your current problems have and begin building those relationships proactively",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Product management is a young person's career — after 35, you're done",
+      "actual_reality": "The field itself is young, so most practitioners happen to be young — the age distribution reflects industry age, not a structural ceiling on PM longevity. PMs who build domain depth and business proximity become harder to replace with age, not easier",
+      "implication": "Investing in the five-factor formula compounds over time — the '35 crisis' framing is a distraction that causes PMs to underinvest in exactly the skills that make age irrelevant",
+      "regions": []
+    },
+    {
+      "common_belief": "Meeting the official level rubric criteria (P6, P7, P8 requirements) is sufficient for promotion at large tech companies",
+      "actual_reality": "Managers who cite these rubrics often don't fully understand what drives actual promotion decisions. Internal visibility, sponsorship, and political capital matter substantially — a PM unknown outside their small team struggles to make a case in a 30-minute promotion panel",
+      "implication": "PMs should treat internal visibility-building as a primary career investment alongside meeting documented criteria, not as optional",
+      "regions": []
+    },
+    {
+      "common_belief": "Product management skills are specific to the PM job title and role",
+      "actual_reality": "The core PM capability — discover need, propose solution, drive to launch — is the fundamental commercial skill underlying all business roles. Senior PMs who internalize this can transition into founding, GM, or business-owner roles without retraining",
+      "implication": "Career planning should include scenarios where the 'PM' title is not the end goal — the skill is more portable than the job description suggests",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they define the career problem",
+      "naive_pattern": "Asks 'what will happen to me after 35?' — defensive, future-threat framing focused on external forces",
+      "informed_pattern": "Asks 'what makes me more valuable in the market?' — offensive, compound-growth framing focused on controllable factors",
+      "why_it_matters": "The framing determines where effort goes — anxiety-driven PMs hedge and stall; value-building PMs invest and compound",
+      "regions": []
+    },
+    {
+      "dimension": "How they think about promotions",
+      "naive_pattern": "Learns the level rubric, hits documented criteria, assumes promotion follows",
+      "informed_pattern": "Treats internal visibility and cross-team reputation as a parallel requirement — actively manages who knows their name and impact before the promotion window opens",
+      "why_it_matters": "PMs who only meet documented criteria without managing visibility are frequently blindsided by promotion failures at large companies",
+      "regions": []
+    },
+    {
+      "dimension": "What 'good PM work' means at senior levels",
+      "naive_pattern": "Defines success as shipping features, hitting OKRs, and managing stakeholders well within their designated scope",
+      "informed_pattern": "Defines success as whether they are close to where actual business decisions get made — and actively moves toward that proximity regardless of title",
+      "why_it_matters": "Scope proximity to the business is the senior-level differentiator; feature execution is table stakes",
+      "regions": []
+    },
+    {
+      "dimension": "Relationship to the PM job title itself",
+      "naive_pattern": "Career planning is entirely organized around advancing within the PM track — title and role are synonymous with identity",
+      "informed_pattern": "Holds the PM title loosely — the underlying capability (discover need → solve → ship) is what matters, and the title is just one vehicle for applying it",
+      "why_it_matters": "PMs who conflate title with capability close off high-value transitions to GM, founder, or business-owner roles that use the same core skills",
+      "regions": []
+    },
+    {
+      "dimension": "Resource leverage scope",
+      "naive_pattern": "Gets things done by working within their team and immediate stakeholders (internal leverage only)",
+      "informed_pattern": "At 5+ years, can coordinate and activate resources across companies and external partners — this is explicitly named as the senior PM capability marker",
+      "why_it_matters": "External leverage is the ceiling-breaker for senior scope — without it, impact is bounded by organizational authority rather than problem size",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Product management is a 'youth career' (吃青春饭) with a hard expiration date around 35",
+      "why_believed": "The Chinese tech industry is structurally young, layoffs of mid-career employees are visible and heavily discussed, and the '35-year-old crisis' narrative has strong cultural resonance — making age feel like a structural barrier",
+      "actual_rule": "The age skew reflects the youth of the industry itself, not a biological or structural ceiling. PMs who compound domain knowledge, business proximity, track record, and network become more valuable over time — the crisis hits PMs who stayed generic, not those who built depth",
+      "real_consequence": "PMs who believe this misconception underinvest in long-term compounding and overinvest in hedging — producing exactly the vulnerable mid-career profile they feared",
+      "regions": []
+    },
+    {
+      "misconception": "Your direct manager's explanation of promotion criteria is the authoritative guide to what actually gets you promoted",
+      "why_believed": "Managers are the most visible and accessible source of career guidance, and they do have real influence — so their rubric explanations feel authoritative",
+      "actual_rule": "Even managers at large companies like Alibaba and Tencent often don't fully understand what drives promotion decisions in practice. Network visibility, political sponsorship, and how you present in a multi-evaluator promotion panel are often equally determinative",
+      "real_consequence": "PMs who optimize only for documented criteria while neglecting internal visibility get passed over and can't diagnose why — creating career bitterness and misattributed lessons",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "PM with 5+ years of experience operating within large tech company structures, receiving requirements filtered through multiple layers between PM and actual business/user",
+      "decision": "Stepped back from the PM career identity entirely and reframed the core skill set (need discovery → solution → execution) as transferable to any commercial context",
+      "outcome": "Reached a mental model where being 'ready to not be a PM' at any point became the strategic posture — reducing anxiety and opening higher-value opportunities outside the constrained corporate PM track",
+      "lesson": "Senior PMs who abstract their skill to 'commercial problem-solving' rather than 'product management' become more resilient to both layoffs and title ceilings — the PM job is one instantiation of a more general and more durable capability",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "PM asks career questions organized around 'what happens to me after 35' or 'am I in the wrong career for long-term safety'",
+      "underlying_state": "Age-triggered scarcity anxiety (35岁危机) producing defensive, threat-avoidance framing rather than growth framing — the career is experienced as something happening to them, not something they are building",
+      "how_it_manifests": "Seeking reassurance about industry survival rather than concrete investment in the five value-multiplying factors; hedging career moves rather than compounding on a direction",
+      "expert_move": "Reframe the question from 'will the industry accept me at 35?' to 'what makes me more valuable regardless of age?' — then score the five-factor formula to find the concrete gap to close",
+      "regions": []
+    },
+    {
+      "trigger": "PM who has hit a promotion ceiling despite meeting all documented criteria they were told to meet",
+      "underlying_state": "Attribution error combined with institutional trust — the PM trusted the official rubric as the complete picture and now experiences the outcome as arbitrary or unfair rather than diagnosable",
+      "how_it_manifests": "Venting about process unfairness, considering leaving the company without diagnosing the actual gap (often internal visibility), or doubling down on craft improvement when the real gap is political",
+      "expert_move": "Ask: 'Who outside your immediate team could walk a panel through your impact right now?' If the answer is 'nobody,' the problem is visibility, not performance — these require completely different interventions",
+      "regions": []
+    },
+    {
+      "trigger": "Senior PM (5+ years) feeling like they should still be investing primarily in product craft and methodology",
+      "underlying_state": "Competence safety bias — foundational skill-building feels measurable and safe; business domain commitment and external visibility feel ambiguous and risky",
+      "how_it_manifests": "Continuing to invest in tools, frameworks, and methodology at mid/senior career instead of building domain depth or external reputation — staying in '0-1 mode' mentally while expecting '10-100 outcomes'",
+      "expert_move": "Name the stage mismatch explicitly: 'The investment that got you here is not the investment that gets you to the next level — the formula changes by phase'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I survive as a PM after 35? / Is product management a dead-end career past mid-life?",
+      "reframe": "The question is not 'will the market accept me at 35?' — it is 'how do I make myself more valuable?' The five-factor formula tells you exactly where to invest.",
+      "why_it_works": "Shifts from external threat (age, market) to internal controllable factors — transforms a scarcity anxiety question into a compounding investment question",
+      "example_language": "每位产品经理应该考虑的是'如何让自己更加值钱'，而不是'中年之后我该怎么办' — What every PM should ask is 'how do I become more valuable,' not 'what do I do after middle age'",
+      "regions": []
+    },
+    {
+      "original_framing": "I'm a product manager and need to plan my PM career path",
+      "reframe": "The PM title is just one vehicle — the underlying skill is commercial problem-solving (discover need → propose solution → drive to launch), which applies in any industry. Plan for the skill, not the title.",
+      "why_it_works": "Breaks the identity lock on the PM title — opens up a much larger option space and reduces anxiety about PM-specific market dynamics",
+      "example_language": "把产品工作的内核抽象出来，似乎放在任何行业都适用 — Abstract the core of PM work out, and it seems to apply in any industry",
+      "regions": []
+    },
+    {
+      "original_framing": "What level requirements do I need to meet to get promoted to the next PM level?",
+      "reframe": "Meeting the rubric is necessary but not sufficient — the real question is: who outside your immediate team knows your name and impact, and could advocate for you in a 30-minute panel?",
+      "why_it_works": "Surfaces the hidden visibility variable that most PMs ignore — converts a checklist mentality into a relationship and influence-building problem",
+      "example_language": "出了你这个小团队别人都不了解你，在升职答辩的时候，怎么能够在几十分钟的时候就展现清楚呢 — If no one outside your small team knows you, how can you make your case clear in a promotion panel that lasts only a few dozen minutes?",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_产品经理应该如何进行职业规划",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

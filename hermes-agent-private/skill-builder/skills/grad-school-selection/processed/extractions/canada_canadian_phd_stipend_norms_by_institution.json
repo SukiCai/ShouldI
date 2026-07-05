@@ -1,0 +1,284 @@
+{
+  "source_file": "canadian_phd_stipend_norms_by_institution.txt",
+  "heuristics": [
+    {
+      "rule": "Ask current 3rd-5th year students what they actually earn, not what the offer letter states",
+      "condition": "When evaluating a Canadian PhD funding offer...",
+      "action": "...contact current advanced PhD students in the lab/department and ask their annual total income directly",
+      "because": "Offer letters often reflect first-year or best-case funding; later years frequently drop when fellowships expire or supervisor grants shrink"
+    },
+    {
+      "rule": "If any portion of the stipend is contingent on winning external competitions, discount it entirely when assessing baseline livability",
+      "condition": "When a Canadian PhD offer includes OGS, CGRS-D, or Vanier as part of the funding package...",
+      "action": "...calculate whether the guaranteed floor (excluding competitive awards) covers your cost of living before accepting",
+      "because": "External award competitions are not guaranteed; students who budget assuming they will win and then don't face severe financial stress mid-PhD"
+    },
+    {
+      "rule": "Apply a CAD-to-USD haircut of ~25-27% when comparing Canadian and US stipends, then add back ~$2,000-$6,000 USD for avoided US health insurance costs",
+      "condition": "When an international student is comparing a Canadian PhD offer to a US PhD offer on dollar amounts...",
+      "action": "...convert CAD to USD at current exchange rate, then adjust upward by $2,000-$4,000 to account for Canadian universal healthcare savings",
+      "because": "Raw dollar comparisons overstate the US advantage; health insurance is a major hidden cost in the US system that Canada eliminates"
+    },
+    {
+      "rule": "Treat any PhD offer below CAD $28,000/year in Toronto or Vancouver as financially precarious, not just 'modest'",
+      "condition": "When evaluating stipend adequacy in high cost-of-living Canadian cities...",
+      "action": "...use $28,000-$32,000 CAD/year as the practical comfort threshold, not the published institutional minimum",
+      "because": "A $24,000 CAD stipend in Toronto equals ~$1,833/month pre-tax, which barely covers rent for a 1BR apartment leaving near-zero margin for all other expenses"
+    },
+    {
+      "rule": "Treat Montreal and Edmonton as structurally better financial environments for PhD students than Toronto or Vancouver, all else equal",
+      "condition": "When choosing between Canadian universities with similar research fit and stipend levels...",
+      "action": "...weight cost of living heavily; a $26,000 CAD stipend in Montreal is meaningfully more livable than the same amount in Vancouver or Toronto",
+      "because": "Montreal 1BR rent is $1,300-$1,800/month versus $2,100-$3,000/month in Vancouver — the same dollar amount produces radically different quality of life"
+    },
+    {
+      "rule": "Ask explicitly what happens to your funding if your supervisor's grant runs out before you finish",
+      "condition": "When finalizing a PhD offer with a specific supervisor...",
+      "action": "...directly ask the supervisor this question and assess the clarity and confidence of their answer before committing",
+      "because": "Supervisor grant expiry is a common but rarely disclosed risk that can leave students mid-PhD with no funding and no clear resolution path"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Guaranteed funding floor vs. total package headline",
+      "why_it_matters": "The headline package often includes competitive awards that may not materialize; the floor determines actual financial security",
+      "how_to_assess": "Ask: 'What is my funding if I win no external competitions?' and get a specific number; compare that floor to local cost of living",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding duration (all 5 years vs. first 2 years only)",
+      "why_it_matters": "Some Canadian programs guarantee funding only for initial years; students in years 4-6 face funding gaps that force them to over-TA or take on debt",
+      "how_to_assess": "Ask specifically: 'Is this funding guaranteed for all 4-5 years or just the first 2?' and request this in writing if possible",
+      "weight": "high"
+    },
+    {
+      "factor": "City cost of living relative to stipend level",
+      "why_it_matters": "The same nominal stipend produces radically different financial stress depending on the city; a stipend adequate in Waterloo or Edmonton is precarious in Toronto or Vancouver",
+      "how_to_assess": "Check current 1BR rental prices in the program city; calculate post-tax monthly stipend and compare to monthly rent as a ratio",
+      "weight": "high"
+    },
+    {
+      "factor": "Field (STEM vs. humanities/social sciences)",
+      "why_it_matters": "STEM PhD stipends in Canada ($22,000-$45,000+) vastly exceed humanities stipends ($17,000-$28,000); the risk of funding gaps in years 5+ is concentrated in non-STEM fields",
+      "how_to_assess": "Identify the typical stipend range for the specific department and field, not just the university average",
+      "weight": "high"
+    },
+    {
+      "factor": "TAship hours requirement",
+      "why_it_matters": "TAships supplement income but consume research time; heavy TAship loads (15+ hours/week) significantly delay thesis completion and extend time-to-degree",
+      "how_to_assess": "Ask current students how many hours per week TAships actually require vs. stated hours; ask if TAing is mandatory or optional",
+      "weight": "medium"
+    },
+    {
+      "factor": "Supervisor grant stability and funding track record",
+      "why_it_matters": "In Canada, most non-Tri-Council PhD funding flows through supervisor research grants; a supervisor with expiring or thin grants is a direct financial risk to the student",
+      "how_to_assess": "Ask the supervisor directly about grant status and renewal timeline; check NSERC/CIHR/SSHRC public databases for recent awards to the supervisor",
+      "weight": "high"
+    },
+    {
+      "factor": "CAD/USD exchange rate impact for international students",
+      "why_it_matters": "International students sending remittances home or comparing Canadian offers to US offers must account for the ~25-27% CAD discount against USD",
+      "how_to_assess": "Convert all Canadian stipend figures to USD at current exchange rate (~0.73-0.75) before comparing to US program offers",
+      "weight": "medium"
+    },
+    {
+      "factor": "Healthcare cost savings vs. US equivalent",
+      "why_it_matters": "Canadian provincial health coverage eliminates $2,000-$6,000/year in health insurance costs that US PhD students face; this meaningfully adjusts real purchasing power comparisons",
+      "how_to_assess": "Check provincial health plan costs for international students (e.g., Ontario UHIP ~$756/year, BC MSP subsidized); subtract from US health insurance cost to compute benefit",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a Canadian PhD offer based on total package including competitive fellowship components",
+      "unstated_consequence": "If the student fails to win OGS, CGRS-D, or other competitive awards, the actual annual income drops to the institutional minimum, which may be $10,000-$15,000 CAD less than the stated package — potentially below cost-of-living threshold in major cities",
+      "who_it_affects": "International students unfamiliar with Canadian funding structures who treat offer letters as guaranteed income"
+    },
+    {
+      "choice": "Choosing a PhD program at UBC or UofT for prestige in high-cost cities",
+      "unstated_consequence": "Stipends at these universities, while nominally higher than lower-ranked Canadian schools, are consumed by rent that can equal or exceed 100% of monthly take-home pay, creating financial stress that directly impairs research quality and mental health",
+      "who_it_affects": "Students from lower-cost countries who underestimate Toronto and Vancouver rent levels"
+    },
+    {
+      "choice": "Relying on TAship income as a stable supplement to base stipend",
+      "unstated_consequence": "TAship hours requirements are frequently underreported; actual weekly demands during term can reach 15-20 hours, leaving insufficient time for research and silently extending time-to-degree by 1-2 years",
+      "who_it_affects": "Students in programs where TAship is mandatory or where the base stipend is too low to live without TA income"
+    },
+    {
+      "choice": "Accepting Canada's 2024 federal stipend increase at face value as a sign of improved PhD financial conditions",
+      "unstated_consequence": "The increases apply only to Tri-Council award holders — a minority of all PhD students. The vast majority funded through supervisor grants see no increase, meaning the headline policy change masks ongoing financial hardship for most",
+      "who_it_affects": "Prospective PhD students who read news coverage of the 2024 budget announcement and assume all Canadian PhD students will receive $40,000/year"
+    },
+    {
+      "choice": "Choosing humanities or social science PhD programs in Canada",
+      "unstated_consequence": "Funding in years 5+ is frequently not guaranteed; students face a high probability of funding gaps requiring emergency TAing, external employment, or debt — a structural feature of humanities PhD funding in Canada, not an exception",
+      "who_it_affects": "Students in social sciences and humanities who plan to finish in 4-5 years but realistically need 6-7 years"
+    },
+    {
+      "choice": "Comparing Canadian PhD stipends to US stipends using nominal dollar amounts without exchange rate adjustment",
+      "unstated_consequence": "A $40,000 CAD stipend looks competitive against a $35,000 USD US offer, but after exchange rate conversion equals only ~$29,000 USD — meaningfully below the US offer in absolute purchasing power for internationally mobile students",
+      "who_it_affects": "International students making simultaneous decisions between Canadian and US PhD offers"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting a PhD offer without asking what the guaranteed funding floor is if no external awards are won",
+      "why_it_happens": "Offer letters present a total package figure that sounds sufficient; students are excited about admission and don't probe the contingency structure of the funding",
+      "consequence": "Student arrives and discovers their base institutional funding is $18,000-$22,000 CAD/year rather than the $35,000+ stated in the offer, creating immediate financial crisis in an expensive city",
+      "warning_signs": [
+        "Offer letter lists multiple funding sources without specifying which are guaranteed vs. competitive",
+        "Program mentions 'expected' or 'anticipated' funding rather than 'guaranteed' funding"
+      ]
+    },
+    {
+      "pattern": "Assuming the 2024 federal stipend increases apply to all Canadian PhD students",
+      "why_it_happens": "Media coverage of the federal budget announcement was widely circulated; the critical caveat — that increases only apply to Tri-Council award holders — was buried or omitted in most reporting",
+      "consequence": "Students choose Canadian programs over US alternatives expecting $40,000/year, then receive $22,000-$26,000 CAD/year base funding with no path to the higher rate without winning competitive awards",
+      "warning_signs": [
+        "Student cites the 2024 federal announcement as a reason Canadian stipends are now competitive without verifying their specific program's actual funding",
+        "Student has not asked the specific program what percentage of entering PhD students win CGRS-D"
+      ]
+    },
+    {
+      "pattern": "Underestimating Vancouver and Toronto rent relative to stipend",
+      "why_it_happens": "Students research stipend levels but use national or home-country cost-of-living intuitions rather than current local rental market data; rent in these cities has risen sharply since pre-pandemic norms",
+      "consequence": "Student cannot cover basic living expenses on stipend alone, leading to financial stress, side employment that delays research, or early program departure",
+      "warning_signs": [
+        "Student has not checked current Craigslist or Rentals.ca listings for the specific city",
+        "Student's budget assumes rent below $1,500/month in Toronto or Vancouver"
+      ]
+    },
+    {
+      "pattern": "Treating TAship income as reliable supplemental income rather than a time-cost tradeoff",
+      "why_it_happens": "Students see TA stipends as 'free money' added to base funding without accounting for the 10-20 hours/week of actual labor involved during teaching terms",
+      "consequence": "Research progress slows significantly during TA terms; thesis timeline extends; students who TA heavily in years 1-3 often face compressed, low-quality dissertation completion in later years",
+      "warning_signs": [
+        "Student is relying on TAship income to meet basic budget rather than treating it as optional",
+        "Student has not asked current PhD students how many hours per week TAships actually require"
+      ]
+    },
+    {
+      "pattern": "Choosing a Canadian PhD program without asking what happens to funding if the supervisor's grant expires",
+      "why_it_happens": "Students focus on advisor research fit and reputation; funding continuity feels like an awkward question to ask a potential supervisor during the courtship phase of application",
+      "consequence": "Mid-PhD funding loss forces the student to scramble for alternative funding, switch supervisors, or abandon the program entirely — all costly outcomes that disproportionately affect international students with visa tied to enrollment",
+      "warning_signs": [
+        "Supervisor has not proactively mentioned grant renewal timeline or funding guarantee duration",
+        "Supervisor's most recent major grant was awarded more than 3-4 years ago with no visible renewal"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is any portion of your offered PhD funding contingent on winning an external competition like OGS or CGRS-D?",
+      "what_it_reveals": "Distinguishes between guaranteed income and aspirational package; determines real financial floor",
+      "follow_up_if_yes": "What is your guaranteed annual funding if you win zero external awards? Is that amount enough to live on in your program city?",
+      "follow_up_if_no": "Is the full amount guaranteed for all years of the program, or only the first 2-3 years?"
+    },
+    {
+      "question": "What city is the program in, and what is the current market rent for a 1BR apartment there?",
+      "what_it_reveals": "Determines whether the stipend is livable or merely nominal; city choice dramatically affects financial stress regardless of stipend level",
+      "follow_up_if_yes": "Have you calculated your post-tax monthly stipend and compared it to current rental listings on Rentals.ca or Craigslist?",
+      "follow_up_if_no": "If you haven't researched current rents, your budget assumptions may be based on outdated or national average data that understates costs in Toronto and Vancouver"
+    },
+    {
+      "question": "What field are you entering — STEM, social sciences, or humanities?",
+      "what_it_reveals": "Field is a major predictor of funding level and funding gap risk; humanities students face structurally different financial conditions than STEM students at the same university",
+      "follow_up_if_yes": "If STEM: Is your supervisor's grant recently renewed or mid-cycle? If humanities: Is funding guaranteed beyond year 3?",
+      "follow_up_if_no": "N/A — answer is categorical"
+    },
+    {
+      "question": "Are you also considering US PhD programs, and if so, have you adjusted the Canadian stipend for the CAD/USD exchange rate?",
+      "what_it_reveals": "Reveals whether the student is making an apples-to-apples comparison or being misled by nominal dollar equivalence",
+      "follow_up_if_yes": "After exchange rate conversion, is the Canadian offer still competitive? Have you also added back $2,000-$4,000 for healthcare savings?",
+      "follow_up_if_no": "If not comparing to US programs, this factor is less relevant — but cost of living in Canada still requires city-specific assessment"
+    },
+    {
+      "question": "What is the mandatory TAship requirement in your program, and how many hours per week do current students actually spend on TA duties?",
+      "what_it_reveals": "Distinguishes between official stated TA hours (often 5-10/week) and actual TA hours (often 12-20/week during term); reveals real research time available",
+      "follow_up_if_yes": "If TA hours are high: Have you calculated how many research hours per week remain after TA duties, coursework, and administrative time?",
+      "follow_up_if_no": "If TA is optional: Are you financially dependent on TA income to meet your budget, which would make it functionally mandatory?"
+    },
+    {
+      "question": "When was your potential supervisor's most recent major grant funded, and when does it expire?",
+      "what_it_reveals": "Identifies the financial risk horizon of the supervisory relationship; a supervisor with a grant expiring in year 2 of a 5-year PhD is a material financial risk",
+      "follow_up_if_yes": "Has the supervisor explicitly discussed what happens to your funding if the grant is not renewed?",
+      "follow_up_if_no": "If the supervisor hasn't raised this: Ask directly — a good supervisor will have a clear and reassuring answer; evasiveness is a warning sign"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canada's 2024 federal budget raised PhD stipends to $40,000/year, making Canadian programs newly competitive with US programs",
+      "actual_reality": "The $40,000/year increase applies only to Tri-Council award holders (CGRS-D, Vanier). The vast majority of PhD students funded through supervisor research grants see no increase and continue receiving $22,000-$30,000 CAD/year at most institutions",
+      "implication": "Prospective students must ask specifically whether their funding comes from Tri-Council awards or supervisor grants before treating the $40,000 figure as relevant to their situation"
+    },
+    {
+      "common_belief": "Canadian PhD stipends are lower than US stipends, making Canada a financially inferior option",
+      "actual_reality": "After adjusting for CAD/USD exchange rate and adding back $2,000-$6,000 in health insurance savings, a $30,000 CAD Canadian stipend is roughly equivalent in real purchasing power to a $22,000-$24,000 USD US stipend with employer-covered insurance",
+      "implication": "The financial comparison is closer than nominal dollar figures suggest, but still favors US programs at the top end; students should do the adjusted math rather than accepting surface-level comparisons"
+    },
+    {
+      "common_belief": "The stipend listed in a PhD offer letter is what you will receive throughout your program",
+      "actual_reality": "Canadian PhD offers frequently include competitive fellowship amounts that are not guaranteed; the baseline institutional guarantee is often $5,000-$15,000 CAD/year less than the headline figure",
+      "implication": "Students must explicitly ask for the guaranteed funding floor and assess livability on that basis, not the advertised package"
+    },
+    {
+      "common_belief": "Major Canadian research universities (UofT, UBC) offer the best financial conditions for PhD students because they have the largest budgets",
+      "actual_reality": "UofT and UBC are located in Canada's two most expensive cities; their higher nominal stipends are substantially offset by rent that can consume 80-100% of monthly take-home pay. McGill (Montreal) and University of Waterloo often provide better real purchasing power despite lower headline numbers",
+      "implication": "Ranking programs by nominal stipend without adjusting for city cost of living produces systematically misleading financial comparisons"
+    },
+    {
+      "common_belief": "TAship income is free money added to research stipend that improves PhD financial conditions",
+      "actual_reality": "TAships are labor that consumes 10-20 hours per week during term; students who rely on TA income to meet basic expenses are effectively trading research time for survival income, which extends time-to-degree and increases total cost of the PhD",
+      "implication": "TAship dependency should be treated as a financial red flag about the base stipend level, not a feature of the offer"
+    },
+    {
+      "common_belief": "90% of PhD students at major Canadian universities receive full funding covering tuition and living expenses",
+      "actual_reality": "A 2023 national survey found nearly 90% of Canadian graduate students reported financial stress, with almost one-third considering leaving academia due to money pressures — indicating that nominal funding coverage does not translate to actual financial adequacy",
+      "implication": "Coverage of tuition and provision of a stipend does not mean the stipend is livable; students must assess the actual dollar amounts against real cost of living, not just whether funding exists"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a PhD funding offer",
+      "junior_pattern": "Reads the total package figure in the offer letter, confirms it's above a round-number threshold (e.g., 'over $30,000'), and concludes the funding is adequate",
+      "senior_pattern": "Decomposes the package into guaranteed vs. contingent components, calculates post-tax monthly income, compares to current rental listings in the specific city, and asks current 4th-5th year students what they actually earn",
+      "why_it_matters": "The headline figure routinely overstates guaranteed income by $5,000-$15,000 CAD/year; juniors make acceptance decisions on misleading numbers while seniors verify the actual floor"
+    },
+    {
+      "dimension": "Interpreting policy announcements about stipend increases",
+      "junior_pattern": "Reads that Canada raised PhD stipends to $40,000/year and updates their mental model of all Canadian PhD funding to reflect this",
+      "senior_pattern": "Immediately asks 'who does this apply to?' and identifies that the increase applies only to Tri-Council award holders, leaving the majority of PhD students unaffected",
+      "why_it_matters": "Policy announcements in graduate funding frequently have critical carve-outs that determine whether the change is relevant to any specific student; failing to identify the caveat produces systematically wrong financial expectations"
+    },
+    {
+      "dimension": "Comparing Canadian vs. US PhD offers",
+      "junior_pattern": "Compares headline dollar amounts directly (e.g., '$35,000 CAD vs. $32,000 USD — Canada is higher!') without exchange rate conversion or healthcare adjustment",
+      "senior_pattern": "Converts CAD to USD at current exchange rate (~0.73-0.75), then adjusts for healthcare cost differential ($2,000-$6,000 USD savings in Canada), then compares city cost of living for each offer location",
+      "why_it_matters": "Direct nominal comparisons can reverse the actual financial ranking of offers; seniors make multi-variable adjusted comparisons while juniors use single-variable surface comparisons"
+    },
+    {
+      "dimension": "Assessing supervisor funding risk",
+      "junior_pattern": "Focuses entirely on supervisor's research reputation, publication record, and personality fit; does not think to ask about grant status or funding continuity",
+      "senior_pattern": "Treats supervisor grant status as a material financial risk variable; asks explicitly about grant renewal timelines and what happens to student funding if a grant expires before thesis completion",
+      "why_it_matters": "Grant expiry mid-PhD is a real and common event in Canadian academia; students who don't assess this risk in advance have no contingency plan when it occurs"
+    },
+    {
+      "dimension": "Accounting for city cost of living",
+      "junior_pattern": "Evaluates funding adequacy using national average cost-of-living intuitions or pre-pandemic rent data; concludes $24,000 CAD is livable because 'Canada is affordable'",
+      "senior_pattern": "Checks current rental listings on Rentals.ca or Craigslist for the specific city and neighborhood; recognizes that Toronto and Vancouver have among the highest rent-to-income ratios of any academic city in North America",
+      "why_it_matters": "City-specific rent variation in Canada is extreme (Edmonton 1BR at $1,200 vs. Vancouver at $2,600); using national averages produces errors large enough to determine whether a student can afford to eat, not just save"
+    },
+    {
+      "dimension": "Treating TAship as income vs. labor",
+      "junior_pattern": "Sees TAship stipend as a straightforward income supplement that makes the financial package better",
+      "senior_pattern": "Calculates the hourly rate implied by TA stipend vs. actual TA hours, recognizes that TA obligations are a time tax on research, and assesses whether base stipend alone covers living expenses",
+      "why_it_matters": "Students financially dependent on TAship income cannot say no to TA assignments even when they conflict with critical research milestones, creating a structural incentive that extends time-to-degree"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canadian_phd_stipend_norms_by_institution",
+  "_source_regions": [
+    "canada"
+  ]
+}

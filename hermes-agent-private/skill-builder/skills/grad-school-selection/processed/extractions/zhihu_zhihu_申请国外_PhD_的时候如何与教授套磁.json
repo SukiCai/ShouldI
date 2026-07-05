@@ -1,0 +1,470 @@
+{
+  "source_file": "zhihu_申请国外_PhD_的时候如何与教授套磁.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Time cold emails to arrive near the professor's local office hours window",
+      "condition": "When cold-emailing CS professors at US research universities who receive high email volume",
+      "action": "Calculate the professor's local time and send the email just before or just after their scheduled office hours, when they are more likely to be at their desk and checking email",
+      "because": "The top answer, written by someone who screened emails for a professor, states that email timing matters more than email quality for high-volume programs — professors at top-30 CS programs don't have time to read every cold email, so catching them at a natural inbox-checking moment increases read probability",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Target newly joining (pre-arrival) assistant professors for cold emails",
+      "condition": "When you have average-to-competitive but not exceptional credentials and want higher response rates",
+      "action": "Search individual faculty personal websites for phrases like 'I will be joining [university] in 2024/2025' to find professors who haven't yet appeared on the department page, and email them directly",
+      "because": "These professors have unfilled labs, no established student pipeline, and receive far fewer cold emails than listed faculty — the top answer describes being 'counter-cold-emailed' twice by such professors who found the applicant's profile independently",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "For CS applications, include a personal website with GitHub before emailing; a CV PDF attachment alone is insufficient",
+      "condition": "When applying to CS or CS-adjacent PhD programs at US universities",
+      "action": "Build a personal website that hosts your CV, GitHub projects, and publications before sending any cold emails; reference it in the email body instead of attaching a PDF",
+      "because": "Multiple answers independently state that CS professors use GitHub activity to assess coding ability for applicants without publications, and that lacking a personal website signals ignorance of academic community norms — the top answer explicitly says 'no personal website = extremely disadvantaged, even for career-changers'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Open cold emails by naming the professor's research interests first, not by introducing yourself",
+      "condition": "When writing cold emails to professors whose papers you may not have read in depth",
+      "action": "Lead with one to two sentences identifying the professor's specific research focus or a paper title, explain why that direction matters, then introduce your own background",
+      "because": "Answer [2] explicitly frames cold-emailing as 'selling yourself to a customer' and states that professors, like anyone, are more likely to engage with someone who demonstrates interest in them first — this structure is described as the key differentiator between template emails that get ignored and ones that get replies",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Use Gmail or institutional .edu email for cold emails; avoid QQ, 163, or 126 email addresses",
+      "condition": "When sending cold emails to US or international professors from China",
+      "action": "Send all cold emails from a Gmail account or your university's official email address",
+      "because": "Answer [1] includes a firsthand account of a professor confirming that 126.com emails were automatically routed to spam by his institution's mail system, nearly costing the applicant an offer",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "For senior (full) professors, read their high-citation representative works, not just recent papers",
+      "condition": "When cold-emailing established full professors rather than assistant professors",
+      "action": "Find their top-cited papers via Google Scholar and reference those in your email, not their most recent publications",
+      "because": "The top answer explains that full professors' recent papers are often written entirely by students or postdocs with the professor's name added — their representative works are what they care about personally and remember as defining contributions",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Professor rank and career stage",
+      "why_it_matters": "Assistant professors (especially non-Chinese, non-Indian AP) have more time, more need for students, less cold-email volume, and are more likely to evaluate applicants on potential rather than credentials alone; full professors have fewer open slots and higher credential thresholds",
+      "how_to_assess": "Check department page for rank designation; check personal website for years since PhD and current lab size (8-10+ students = likely full, harder to get in)",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Professor's national/cultural background",
+      "why_it_matters": "The top answer argues that Chinese and Indian APs prioritize publications and undergraduate institution prestige above other factors and have the highest cold-email volume; non-Asian Western APs are described as more likely to evaluate potential and unique strengths",
+      "how_to_assess": "Review professor's personal website, lab page, and hiring patterns of current students; note whether the lab page says 'self-motivated' (Chinese AP signal) vs. describes mentorship or training",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Current lab size",
+      "why_it_matters": "A lab with 8-10+ students has little capacity to add more; a lab with 0-3 students is actively seeking people",
+      "how_to_assess": "Count current PhD students listed on the professor's lab page or personal website",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether a professor explicitly states they are recruiting",
+      "why_it_matters": "Professors who post 'looking for PhD students' on their websites have self-selected as actively recruiting, making cold emails far more likely to receive responses",
+      "how_to_assess": "Check the professor's personal website 'Join' or 'Prospective Students' section for explicit recruiting statements",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Publication-to-project ratio in the applicant's CV",
+      "why_it_matters": "The top answer warns that listing many high-profile projects (Microsoft, large labs) with few publications creates a negative signal — professors infer the applicant is inefficient or exaggerated their contributions",
+      "how_to_assess": "Count listed projects vs. listed publications; if projects far outnumber outputs, the ratio will raise flags with research-focused professors",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Getting a strongly encouraging response ('your background is impressive, I encourage you to apply') from a professor",
+      "unstated_consequence": "This language is largely templated and does not indicate genuine interest or admission advantage — the professor may send identical replies to dozens of applicants, and if stronger candidates apply later, the encouraging reply becomes irrelevant; some APs use this to block slots for competing professors",
+      "who_it_affects": "Applicants who receive encouraging replies and interpret them as soft commitments, then reduce their application breadth or deprioritize other schools",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Following a Chinese AP's instruction to list them as first-choice advisor in your SOP",
+      "unstated_consequence": "The top answer describes cases where APs who already have their preferred student use this tactic to prevent competing APs in the same subfield from recruiting the applicant — the encouragement is strategic, not genuine",
+      "who_it_affects": "Applicants who comply with this request without verifying the professor has actual open slots and genuine interest",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Mass cold-emailing (100+ emails) without personalizing",
+      "unstated_consequence": "A 2% success rate; also, early encouraging replies become stale as stronger applicants contact the same professors later in the cycle — the professor's interest level resets",
+      "who_it_affects": "Applicants who treat cold-emailing as a numbers game and exhaust their effort early in the cycle without strategic targeting",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Applying only to schools where a professor responded positively to cold email",
+      "unstated_consequence": "Professors who haven't yet joined the department won't appear on any school website, so their email contact information isn't findable through cold-email discovery — these are often the highest-ROI targets",
+      "who_it_affects": "Applicants who use 'no cold email response' as a proxy for 'no chance at this school', thereby self-eliminating from programs with incoming faculty who are actively recruiting",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Listing many prestigious-sounding projects with few publications, implying inflated role claims",
+      "why_it_happens": "Applicants and agents believe volume of impressive-sounding experience signals high capability; they don't consider that research professors evaluate output ratios, not input volume",
+      "consequence": "The top answer describes this as a deduction — professors infer inefficiency, exaggeration, or inability to produce research output, and deprioritize the applicant",
+      "warning_signs": [
+        "CV lists 7-8 projects at well-known organizations (Microsoft, major labs) but fewer than 2 publications",
+        "Application agent coached the student to 'add more projects' to strengthen the application"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Mass-sending identical template emails to 100+ professors",
+      "why_it_happens": "Applicants treat cold-emailing like job applications — more volume = more chances; they underestimate how quickly professors recognize boilerplate",
+      "consequence": "Answer [1] reports a personal experience of 108 emails yielding a 2% success rate before changing to targeted, personalized emails that yielded 13% — the template approach also burns time and generates false hope from vague positive replies",
+      "warning_signs": [
+        "Email opens with 'I am writing to express my interest in your lab' without naming any specific research",
+        "Same email body sent without changing the professor's name or research area"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Claiming to be 'self-motivated' in response to a professor's lab page stating 'looking for self-motivated students'",
+      "why_it_happens": "Applicants take the phrase literally and respond by asserting the trait; they don't understand that the phrase is code for 'I won't manage you closely, so you must demonstrate independent research capacity'",
+      "consequence": "The top answer, written by someone who screened emails for a professor, says this response is immediately dismissed — the correct response is to demonstrate independent research conduct through evidence, not claim the label",
+      "warning_signs": [
+        "SOP or cold email contains the phrase 'I am a self-motivated student' or 'I am highly motivated'",
+        "Letter of recommendation describes 'participated in' projects rather than 'conducted' or 'led' research"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Using QQ, 163, or 126 email addresses for cold emails to US professors",
+      "why_it_happens": "These are the applicant's primary personal email accounts; they don't realize that Chinese consumer email domains are frequently filtered as spam by US university mail systems",
+      "consequence": "Answer [1] documents a confirmed case where a 126.com email was silently routed to spam, and the professor only discovered the missed messages after a follow-up from a different address",
+      "warning_signs": [
+        "Cold emails sent from a @qq.com, @163.com, or @126.com address",
+        "No response after two weeks despite professor being known to reply to others"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating an encouraging reply ('strongly encourage you to apply') as a near-certain admission signal and reducing application effort",
+      "why_it_happens": "The language feels unusually strong and personal; applicants want to believe the positive signal is real and reduce anxiety by anchoring on it",
+      "consequence": "The top answer explicitly states this is template language used by many professors regardless of actual interest level — applicants who reduce their application pool based on this signal may end up without competitive alternatives",
+      "warning_signs": [
+        "Professor's reply uses 'strongly encourage' or 'feel free to mention me in your statement'",
+        "Applicant receives this reply early in the cycle before application review has begun"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many current PhD students does this professor's lab page list?",
+      "what_it_reveals": "Lab capacity and actual likelihood of accepting a new student this cycle",
+      "follow_up_if_yes": "If 0-3 students: high probability of active recruiting; cold email is high-value",
+      "follow_up_if_no": "If 8-10+ students: even a positive cold-email reply may not translate to an offer; the professor may be blocking competing advisors rather than genuinely recruiting",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does the professor's personal website (not department page) say they are 'joining [university] in [upcoming year]'?",
+      "what_it_reveals": "Whether this is a pre-arrival faculty hire with an unfilled lab who receives very few cold emails",
+      "follow_up_if_yes": "This is a high-ROI cold-email target — low competition, high need for students, and the professor is likely actively seeking applicants through informal channels",
+      "follow_up_if_no": "Standard approach applies; evaluate based on rank, lab size, and research fit",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is the ratio of listed projects to listed publications on your CV?",
+      "what_it_reveals": "Whether your CV creates a negative inference about research productivity for research-focused professors",
+      "follow_up_if_yes": "If projects >> publications: revise to emphasize depth over breadth, or add GitHub/personal website to demonstrate tangible output",
+      "follow_up_if_no": "If publications exist and are relevant: lead with them; they are the primary filter for Chinese and Indian APs",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the professor an assistant professor who recently joined from outside academia (e.g., from Google Brain, Microsoft Research)?",
+      "what_it_reveals": "This profile indicates a professor with no prior student pipeline, a small lab, and potentially high need for students — but also lower cold-email exposure than a faculty-track AP",
+      "follow_up_if_yes": "Prioritize this professor in your cold-email list; the top answer describes being contacted by such professors who found the applicant's profile independently",
+      "follow_up_if_no": "Standard rank-based assessment applies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A professor who says 'feel free to mention me in your SOP' or 'put me as your first POI' is genuinely interested in admitting you",
+      "actual_reality": "The top answer, written by someone who screened professor emails, states this is sometimes a deliberate tactic by APs who already have a preferred candidate — by getting you to list them as first choice, they prevent other APs in the same subfield from seeing you as a free candidate, without committing to admit you",
+      "implication": "Do not reduce your application breadth or change your SOP strategy based on this language alone; verify by checking lab capacity and asking directly whether the professor has funded slots",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Senior full professors at top programs are too busy to read cold emails and are poor cold-email targets",
+      "actual_reality": "Full professors who receive unexpected funding (e.g., a new industrial partnership outside their current expertise) sometimes actively need students with different backgrounds and will engage seriously with cold emails, or even initiate contact themselves",
+      "implication": "Don't write off full professors categorically — monitor for signals like new grants, new industry partnerships, or lab pages listing needs in adjacent areas",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The quality and content of a cold email is the primary determinant of whether it gets a response",
+      "actual_reality": "For high-volume programs (top-30 CS), the top answer argues that send timing relative to the professor's schedule is as important as content quality — a well-written email sent at 3am local time competes against a backlog; one sent just before or after office hours is more likely to be seen fresh",
+      "implication": "Optimize both content and timing; calculate the professor's local time zone and avoid sending during nights or weekends",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Recent publications on a senior professor's Google Scholar page represent their current active research interests",
+      "actual_reality": "The top answer states that established full professors' recent papers are often written entirely by students or postdocs, with the professor's name added as a courtesy — their actual intellectual passions are reflected in their high-citation representative works from earlier in their career",
+      "implication": "Reference a professor's representative or landmark papers in cold emails, not just the most recent ones, especially for senior faculty",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "US PhD admissions are more straightforward than UK/Hong Kong because they don't require a research proposal",
+      "actual_reality": "The top answer argues that US admissions operate with more hidden dimensions — GitHub activity, personal website professionalism, cold-email timing, lab political dynamics — making the process more opaque, not less complex",
+      "implication": "Don't interpret the absence of a formal research proposal requirement as a simpler or more transparent process; invest in the informal signals (personal website, GitHub, targeted outreach) that are evaluated covertly",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to interpret a professor's encouraging cold-email reply",
+      "naive_pattern": "Treats 'strongly encourage you to apply' as a meaningful positive signal; reduces anxiety by anchoring on it; may reduce application breadth",
+      "informed_pattern": "Treats the reply as confirmation of baseline competitiveness only; understands that the same language is sent to many applicants; continues applying broadly and does not change SOP strategy based on the reply alone",
+      "why_it_matters": "Misreading a form reply as a near-offer can cause applicants to under-invest in alternative applications and end up without options",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How to select which professors to cold-email",
+      "naive_pattern": "Searches department pages, identifies well-known professors in their area, sends emails to the most prominent names; prioritizes fame and ranking",
+      "informed_pattern": "Cross-references department pages with personal websites to find pre-arrival faculty; checks lab size; identifies APs from industry transitioning to academia; prioritizes low-competition, high-need targets over prestige",
+      "why_it_matters": "Targeting famous, established professors yields the lowest response rates and highest competition; targeting incoming or under-staffed faculty yields disproportionately higher success rates",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How to demonstrate research capability in a cold email",
+      "naive_pattern": "States 'I am self-motivated' or 'I participated in X project at Y company' to signal ambition and experience",
+      "informed_pattern": "Demonstrates independent research conduct through concrete evidence: GitHub repositories, personal website, publications as first author, or direct framing of what they designed and executed (vs. participated in)",
+      "why_it_matters": "Professors screening for PhD candidates want evidence of the ability to conduct independent research; participation signals are weak; conduct signals are strong",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Which professors to prioritize in cold-email strategy",
+      "naive_pattern": "Targets Chinese AP professors because of perceived cultural affinity and ease of communication",
+      "informed_pattern": "Deprioritizes Chinese APs unless the applicant has exceptional credentials (top-2 Chinese university, strong publications) because Chinese APs have the highest cold-email volume, the most rigid credential filters, and recruit aggressively from top-tier Chinese institutions; prioritizes non-Asian Western APs who evaluate potential more holistically",
+      "why_it_matters": "Investing significant effort in cold emails to Chinese APs with average credentials yields very low returns; redirecting that effort to Western APs or incoming faculty significantly improves outcomes",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "More prestigious projects on your CV always strengthen your PhD application",
+      "why_believed": "In job markets and MBA applications, brand-name experience is a strong positive signal; applicants and agents transfer this logic to PhD applications",
+      "actual_rule": "Research professors evaluate an output-to-input ratio: many high-profile projects with few publications creates a negative inference that the applicant either exaggerated their role or is inefficient at producing research",
+      "real_consequence": "Applicants coached by agents to pad CVs with brand-name project experience may actually score lower with research-focused professors than applicants with fewer but more clearly self-conducted projects",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Sending more cold emails (100+) is the best strategy for getting PhD offers",
+      "why_believed": "This is modeled on job application logic where volume increases chances; early forum advice often cited '海投' (mass application) as a legitimate strategy",
+      "actual_rule": "Mass template emails have approximately 2% success rates; targeted, personalized emails to appropriately selected professors yield 6-13x higher success rates according to the firsthand accounts in both top answers",
+      "real_consequence": "Applicants who mass-email exhaust their energy on low-return outreach, receive vague positive replies that create false confidence, and fail to invest in the targeted relationships that actually lead to offers",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "misconception": "If a professor hasn't responded to your cold email, there's no point applying to that school",
+      "why_believed": "Cold-email response feels like a precondition for admission interest; silence feels like rejection",
+      "actual_rule": "Incoming faculty who haven't yet joined the department won't have a cold-email address available, but may be the most actively recruiting; other professors may miss emails due to spam filtering or volume; absence of cold-email response is not a signal of admission unviability",
+      "real_consequence": "Applicants eliminate strong-fit programs from their list based on cold-email silence, missing opportunities with professors who would have been high-value matches",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Attaching a PDF CV to your cold email is the professional standard",
+      "why_believed": "PDF CVs are the standard in job applications and feel more polished than directing someone to a website",
+      "actual_rule": "Multiple answers independently state that PDF CV attachments are considered annoying in academic cold-email contexts; a personal website with a CV link is the expected norm in CS and adjacent fields, and its absence signals unfamiliarity with academic culture",
+      "real_consequence": "Applicants who attach PDFs may have their emails deprioritized; more importantly, lacking a personal website removes the professor's ability to quickly assess GitHub activity and publication record in one place",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Applicant sent 108 cold emails with standard template format across related CS fields; received fewer than 20 replies, 13 explicit rejections, 5 expressions of interest, 2 interviews or offers",
+      "decision": "Changed strategy to write fewer, more targeted and properly formatted cold emails (15 total)",
+      "outcome": "2 offers from 15 emails (13% success rate) vs. 2 offers from 108 emails (2% success rate) — same absolute outcome with 86% less effort after strategy change",
+      "lesson": "Cold-email ROI is driven by targeting quality and format professionalism, not volume; switching from mass-template to targeted-personalized approach can multiply success rates 6x without changing the applicant's underlying credentials",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "985 university math-to-CS applicant with no extraordinary credentials sent the templated 'not-a-template' format described in Answer [2] to 150 professors",
+      "decision": "Used the structured template: open with professor's research interests, explain why it matters, connect to own background, close with soft call to action",
+      "outcome": "30 replies from 150 emails (20% reply rate), 2 offers including UCI statistical learning summer research and UW Seattle exchange",
+      "lesson": "A well-structured template that simulates personalization (naming research interests, connecting background to professor's work) achieves significantly higher reply rates than a purely generic template, even without deep paper-by-paper personalization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Applicant using a 126.com email address received initial positive interest from a professor, then received no replies to follow-up emails",
+      "decision": "Sent a follow-up from the same address after extended silence",
+      "outcome": "Professor eventually confirmed that 126.com emails were automatically routed to spam by the university mail system; the opportunity was nearly lost",
+      "lesson": "Consumer Chinese email domains (126, 163, QQ) are frequently spam-filtered by US university systems; use Gmail or institutional email for all cold-email outreach",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "White assistant professor at a US university recruited a PhD student who had weaker math skills and fewer publications than competing Chinese and Indian applicants, based on 'active thinking' signals during interview",
+      "decision": "Professor selected the candidate based on intellectual curiosity and reasoning style rather than credential benchmarks",
+      "outcome": "Student eventually joined Google AI in a significant role with multiple publications; professor described this as a career highlight",
+      "lesson": "Non-Asian Western APs may apply qualitatively different selection criteria than credential-maximizing filters; applicants with unusual strengths or intellectual distinctiveness may find better fit with these professors even if they would be screened out by Chinese or Indian APs",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Applicant obsessively checking email after sending cold emails, reporting 'phantom notification' experiences and anxiety about reply timing",
+      "underlying_state": "Outcome dependency — the applicant has placed their entire self-evaluation on admission outcomes, making the waiting period psychologically destabilizing",
+      "how_it_manifests": "Answer [2] author describes personally experiencing phantom phone notification sounds while waiting for replies, and describes heart rate elevation upon seeing new emails even years after the application period",
+      "expert_move": "Reframe cold-email sending as a batched, scheduled process rather than a live feedback loop — send in batches of 3-4 per week on a fixed schedule, then deliberately close the email client; the outcome is not available faster by checking more often",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Applicant asks whether receiving 'strongly encourage you to apply' or 'feel free to mention me' means the professor wants them specifically",
+      "underlying_state": "Ambiguity intolerance driving wishful interpretation — the applicant wants certainty in an uncertain process and latches onto any positive signal as confirmation",
+      "how_it_manifests": "Applicants treat template encouragement language as soft offers, reduce application breadth, change SOP priorities, and experience disproportionate disappointment when not admitted",
+      "expert_move": "Explicitly name the template nature of the language: 'This reply means you met the threshold to be considered, not that you've been selected — treat it as confirmation to apply, not as a commitment, and keep your full application list intact'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Applicant from a non-top-2 Chinese university asks whether to cold-email Chinese AP professors at top-30 US programs",
+      "underlying_state": "Credential shame combined with in-group bias — the applicant assumes shared cultural background will create preference, but underweights how credential-focused Chinese APs actually are",
+      "how_it_manifests": "Applicants invest heavily in cold-emailing Chinese APs who share their research area, receive low response rates, and interpret this as personal rejection rather than a structural targeting mismatch",
+      "expert_move": "Redirect effort to Western APs and incoming faculty; explain that Chinese APs with high cold-email volume have the most rigid credential filters and that the applicant's comparative advantage is in situations where potential and unique strengths are evaluated",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I write a good cold email that will impress a professor?",
+      "reframe": "Cold-emailing is sales, not application — you are selling yourself to a customer; the first question is whether the customer is in the market, not whether your pitch is good",
+      "why_it_works": "Shifts the applicant's attention from perfecting the email text to selecting the right targets (professors who are actively recruiting, have lab capacity, and whose needs match the applicant's profile) — target selection matters more than message quality",
+      "example_language": "套磁, 说白了就是销售产品(自己)给客户(Professor) — cold-emailing is simply selling yourself to a customer",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Which professors should I cold-email at my target schools?",
+      "reframe": "Don't limit your target list to professors currently listed on department pages — the highest-ROI targets may be professors who haven't joined yet but have announced their hire on personal websites",
+      "why_it_works": "Breaks the assumption that the department website is the complete universe of recruiting faculty; redirects applicants toward a systematically under-competed segment of the market",
+      "example_language": "很多即将加入学校的老师不会出现在学校主页上，他们的个人主页会写2021我将加入… — many soon-to-join faculty don't appear on department pages yet; their personal websites say 'I will be joining [school] in 2021'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "The professor hasn't replied — does that mean I shouldn't apply to this school?",
+      "reframe": "No reply is not a rejection signal — it is noise; the question is whether you have evidence that a professor with capacity and matching research interests exists at that program, not whether any professor replied to your cold email",
+      "why_it_works": "Separates the cold-email process (which has high noise) from the admissions decision process (which has different inputs); prevents applicants from self-eliminating based on an unreliable signal",
+      "example_language": "申请博士考什么？没错靠命！大胆申请，不一定老师因为你哪一个行，哪一句话看上你了 — PhD admissions involve luck; apply boldly, you never know which detail makes a professor interested",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_申请国外_PhD_的时候如何与教授套磁",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

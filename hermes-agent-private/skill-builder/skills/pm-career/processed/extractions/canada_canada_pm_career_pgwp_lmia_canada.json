@@ -1,0 +1,252 @@
+{
+  "source_file": "canada_pm_career_pgwp_lmia_canada.txt",
+  "heuristics": [
+    {
+      "rule": "If you are on PGWP, treat your job search as open-market; do not self-filter for LMIA-sponsoring employers",
+      "condition": "When a PM candidate is on PGWP and job searching in Canada...",
+      "action": "...apply to any Canadian employer including startups and mid-size companies that do not sponsor LMIA, because PGWP is employer-unrestricted",
+      "because": "PGWP requires no LMIA and is open work authorization, so self-filtering to large LMIA sponsors artificially shrinks the candidate pool and wastes competitive advantage"
+    },
+    {
+      "rule": "Target 12 continuous months in a NOC TEER 1 PM role immediately after receiving PGWP",
+      "condition": "When a PM on PGWP wants to maximize PR optionality via Express Entry...",
+      "action": "...prioritize securing a qualifying PM role quickly and tracking 12-month clock from day one of employment",
+      "because": "12 months of TEER 1 experience unlocks Canadian Experience Class eligibility, which is the most reliable PR pathway for international graduates without requiring LMIA or employer sponsorship"
+    },
+    {
+      "rule": "If you are a US-based PM at a company with Canadian offices, use ICT transfer rather than LMIA to enter Canada",
+      "condition": "When a US-based PM wants to relocate to Canada and their employer has Canadian operations...",
+      "action": "...pursue Intra-Company Transfer (C-12 exemption) instead of triggering LMIA process",
+      "because": "ICT is LMIA-exempt and avoids 2–5 month LMIA wait, making employment start immediate and reducing employer friction"
+    },
+    {
+      "rule": "For Indian or Chinese nationals, plan a 3-year horizon to Canadian citizenship before the Canada → US TN pathway becomes viable",
+      "condition": "When an Indian or Chinese national is building a Canada → US career path and expecting to use TN visa...",
+      "action": "...factor in Canadian citizenship timeline (3 years of PR) before the TN option unlocks, and evaluate H-1B or EB-1A alternatives in parallel",
+      "because": "TN visa is only available to Canadian and Mexican citizens, not PR holders of non-North American nationality, making the timeline significantly longer for this group"
+    },
+    {
+      "rule": "Use Canada as a base for early-career PM experience and immigration security; plan US transition for mid-career scope maximization",
+      "condition": "When an ambitious PM is deciding whether to build their career in Canada or US long-term...",
+      "action": "...treat Canada as a 2–4 year strategic platform for securing immigration status and building foundational experience, then evaluate US transition for principal/director-level scope",
+      "because": "Canadian PM experience is respected but Canadian market size structurally limits product scope and total comp relative to US; early career benefits outweigh later-career ceiling"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Current work authorization type",
+      "why_it_matters": "Determines whether LMIA is required and which employers will realistically consider you, dramatically affecting the size of the job market you can access",
+      "how_to_assess": "Identify exactly: PGWP (open), Canadian PR/citizen (open), employer-specific permit (restricted), expired/no authorization (LMIA or new permit required)",
+      "weight": "high"
+    },
+    {
+      "factor": "Nationality relative to TN visa eligibility",
+      "why_it_matters": "Determines whether the Canada → US TN pathway is accessible and on what timeline, which changes the long-term strategic value of pursuing Canadian PR",
+      "how_to_assess": "Canadian or Mexican citizen = TN available now; non-North American national = TN requires citizenship, adding 3+ years to the path",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer size and LMIA willingness",
+      "why_it_matters": "Many Canadian startups and mid-size companies refuse to do LMIA due to cost and time, effectively excluding candidates who require it from a large portion of the market",
+      "how_to_assess": "Determine employer category: large tech (Amazon CA, Microsoft CA, major banks) = will do LMIA; startups/mid-size = often will not; assess via job posting language or direct recruiter inquiry",
+      "weight": "high"
+    },
+    {
+      "factor": "Career ambition horizon: scope vs. stability",
+      "why_it_matters": "Canada offers immigration security and lifestyle advantages; US offers higher comp and larger product scope — the right choice depends on which dimension the candidate is optimizing for",
+      "how_to_assess": "Ask whether the candidate's priority is maximizing PM career portfolio and comp, or securing long-term residency and work-life balance; these favor different geographies at different career stages",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether an intra-company transfer pathway exists",
+      "why_it_matters": "ICT is LMIA-exempt and fast; if a candidate's current employer has Canadian operations, this is significantly easier than any external hiring pathway",
+      "how_to_assess": "Check whether current employer (especially US-based tech) has a Canadian entity; if yes, ICT C-12 exemption is likely available",
+      "weight": "medium"
+    },
+    {
+      "factor": "Global Talent Stream eligibility for the specific PM role",
+      "why_it_matters": "GTS reduces LMIA processing from 2–5 months to 2 weeks, making it viable where standard LMIA is not; eligibility depends on NOC code of the PM role",
+      "how_to_assess": "Verify whether the PM role is classified under NOC 20012; if so, employer may qualify for GTS expedited processing",
+      "weight": "medium"
+    },
+    {
+      "factor": "Time already accrued in TEER 1 Canadian work experience",
+      "why_it_matters": "12 months of TEER 1 experience is the threshold for CEC eligibility; every month matters when calculating how close the candidate is to PR eligibility",
+      "how_to_assess": "Count continuous months in NOC TEER 0 or 1 role on valid Canadian work authorization; assess gap to 12-month threshold",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Building a PM career in Canada rather than pursuing US roles directly",
+      "unstated_consequence": "Canadian PM product scope is structurally smaller due to market size, meaning portfolio stories are calibrated to a fraction of the user base and revenue of US equivalents — this creates a credibility gap when later competing for senior US PM roles",
+      "who_it_affects": "Ambitious PMs who spend 5+ years in Canada and then try to compete for staff/principal US PM roles against candidates with global-product experience"
+    },
+    {
+      "choice": "Accepting a PM role at a Canadian bank's digital division for stability and LMIA sponsorship",
+      "unstated_consequence": "Heavily regulated financial services environment shapes PM skills toward compliance-constrained, risk-averse product development — these skills transfer less cleanly to consumer tech or high-growth startup PM roles",
+      "who_it_affects": "PMs who want to eventually move into consumer tech or growth-stage startups after banking PM experience"
+    },
+    {
+      "choice": "Pursuing Canadian PR via Express Entry CEC pathway",
+      "unstated_consequence": "For Indian and Chinese nationals, Canadian PR alone does not unlock TN to the US — citizenship (3 additional years) is required, meaning the full Canada → US path is 5–6+ years, not 2–3",
+      "who_it_affects": "Indian and Chinese nationals who assume Canadian PR gives equivalent US access as it does for other nationalities"
+    },
+    {
+      "choice": "Targeting only large LMIA-sponsoring employers (Amazon CA, major banks) due to work authorization constraints",
+      "unstated_consequence": "Excludes the majority of Canadian tech PM roles at startups and high-growth mid-size companies where PM scope, culture, and equity upside may be more valuable career investments",
+      "who_it_affects": "PM candidates on employer-specific permits who self-restrict to large sponsors without exploring PGWP or GTS alternatives first"
+    },
+    {
+      "choice": "Staying in Canada for lifestyle and immigration security rather than relocating to US for PM career growth",
+      "unstated_consequence": "Total compensation delta of 1.5–2.5× USD persists over an entire career, compounding significantly in savings, equity value, and retirement assets — the lifestyle trade has a quantifiable long-term financial cost",
+      "who_it_affects": "PMs in mid-career who frame the Canada vs. US decision as annual salary difference rather than compounded lifetime earnings gap"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming Canadian PR gives TN visa access to the US for non-North American nationals",
+      "why_it_happens": "Candidates conflate immigration status with citizenship; PR grants Canadian residency rights but TN specifically requires citizenship of Canada or Mexico under CUSMA",
+      "consequence": "Indian and Chinese nationals plan a 2–3 year Canada → US timeline that is actually 5–6+ years, causing career planning miscalculations and missed US opportunities",
+      "warning_signs": [
+        "Candidate says 'once I get Canadian PR I can use TN to go to the US'",
+        "Candidate is Indian or Chinese national who has not verified TN citizenship requirement"
+      ]
+    },
+    {
+      "pattern": "Self-filtering to LMIA-sponsoring employers while on PGWP",
+      "why_it_happens": "Candidates carry over the mental model from post-study visa anxiety and conflate PGWP (open work authorization) with employer-specific permit restrictions",
+      "consequence": "PM candidates on PGWP unnecessarily exclude startups and high-growth companies, reducing job options and potentially settling for lower-quality roles at large institutions",
+      "warning_signs": [
+        "PGWP holder only applies to Fortune 500 or major bank PM roles",
+        "Candidate asks startups about LMIA sponsorship before receiving an offer"
+      ]
+    },
+    {
+      "pattern": "Treating Canadian PM experience as equivalent to US FAANG PM experience when targeting senior US roles",
+      "why_it_happens": "Candidates underestimate how much product scope and user base scale affects perceived seniority in US PM hiring; Canadian market size creates structurally smaller impact metrics",
+      "consequence": "PMs face unexpected leveling-down when interviewing for US roles, or fail to land roles they expected to qualify for based on title and years of experience",
+      "warning_signs": [
+        "PM's portfolio stories reference Canadian-market-only products with limited scale metrics",
+        "PM assumes Director title in Canada translates directly to Director-level consideration at US companies"
+      ]
+    },
+    {
+      "pattern": "Waiting out LMIA processing without securing interim work authorization or income",
+      "why_it_happens": "Candidates and employers underestimate LMIA processing time (2–5 months) and do not plan for the gap, assuming it will resolve faster than it does",
+      "consequence": "PM candidate cannot start work for months after expected start date; candidate may lose offer to another candidate or face financial hardship during wait",
+      "warning_signs": [
+        "Employer says 'we'll start the LMIA process after you sign the offer'",
+        "Candidate has no bridging work authorization and is relying solely on LMIA approval timeline"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current work authorization status in Canada — PGWP, Canadian PR, employer-specific permit, or none?",
+      "what_it_reveals": "Determines whether LMIA is required and which segment of the PM job market is accessible, which is the single most important structural constraint in Canadian PM job searching",
+      "follow_up_if_yes": "If PGWP: confirm expiry date and months remaining; calculate whether CEC 12-month threshold is achievable within PGWP validity",
+      "follow_up_if_no": "If no valid authorization: determine whether LMIA, GTS, ICT, or a new study/work permit is the most viable pathway before job searching"
+    },
+    {
+      "question": "What is your citizenship — Canadian, US/Mexican, or other nationality?",
+      "what_it_reveals": "Determines TN visa eligibility and therefore the viability and timeline of the Canada → US career path, which changes the long-term strategic value of pursuing Canadian PR",
+      "follow_up_if_yes": "If Canadian citizen: TN to US is immediately available; Canada → US path is 1–2 years, not 5+",
+      "follow_up_if_no": "If Indian, Chinese, or other non-North American national: map out citizenship timeline; evaluate H-1B lottery and EB-1A as parallel paths to US"
+    },
+    {
+      "question": "Does your current or most recent employer have a Canadian legal entity?",
+      "what_it_reveals": "If yes, Intra-Company Transfer (ICT C-12 exemption) may be available, which is LMIA-exempt and significantly faster than any external hiring pathway",
+      "follow_up_if_yes": "Determine whether the Canadian entity is large enough to support an ICT transfer and whether the PM role has a Canadian equivalent; engage HR on ICT process",
+      "follow_up_if_no": "Rule out ICT; assess Global Talent Stream eligibility based on NOC code of target PM role as next best LMIA-expedited option"
+    },
+    {
+      "question": "Are you optimizing for maximum PM career scope and compensation, or for immigration security and lifestyle stability?",
+      "what_it_reveals": "Reveals which geography and employer type the candidate should prioritize — these goals favor fundamentally different career paths in Canada vs. US",
+      "follow_up_if_yes": "If scope and comp: Canada is appropriate for early-career base and PR, but US transition should be planned for mid-career principal/director level",
+      "follow_up_if_no": "If stability and lifestyle: Canadian PM market at major banks or established tech companies is well-suited; accept comp ceiling as part of the tradeoff explicitly"
+    },
+    {
+      "question": "How many months of continuous NOC TEER 1 Canadian work experience have you accrued?",
+      "what_it_reveals": "Determines proximity to the 12-month CEC eligibility threshold for Express Entry PR, which is the most actionable immigration milestone for PM candidates on PGWP",
+      "follow_up_if_yes": "If 12+ months: assess current Express Entry CRS score and determine whether CEC draw is feasible in current cycle",
+      "follow_up_if_no": "If less than 12 months: calculate exact months remaining; ensure current role's NOC code qualifies and that employment is continuous"
+    },
+    {
+      "question": "Are you targeting Canadian-headquartered companies, Canadian offices of US companies, or both?",
+      "what_it_reveals": "Canadian offices of US companies (Amazon CA, Google CA) often offer stronger comp and global product scope, but hire fewer PMs; Canadian HQ companies offer more seats but smaller product scope and lower comp",
+      "follow_up_if_yes": "If US company Canadian offices: prepare for fewer total roles, more competitive process, and potentially global product context in interviews",
+      "follow_up_if_no": "If Canadian HQ only: calibrate comp expectations to Canadian market rates and prepare for regulated-environment or domestic-market product cases"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canadian PM compensation is roughly comparable to US PM compensation after adjusting for cost of living",
+      "actual_reality": "Canadian PM total comp is 1.5–2.5× lower in USD terms than comparable US PM roles, and this gap is not fully offset by cost of living differences in Toronto or Vancouver, which have high housing costs",
+      "implication": "PMs should model the lifetime earnings gap explicitly rather than assuming cost of living adjustment neutralizes it; the compounded financial difference over a 20-year career is substantial"
+    },
+    {
+      "common_belief": "Getting Canadian PR means you can easily move to the US on a TN visa",
+      "actual_reality": "TN visa requires Canadian or Mexican citizenship, not just PR; for non-North American nationals, the path to TN is PR (1–2 years) plus citizenship (3 more years), totaling 4–5 years minimum",
+      "implication": "Non-North American nationals should not rely on TN as their Canada → US pathway without planning for the full citizenship timeline; H-1B or EB-1A may be more time-efficient alternatives"
+    },
+    {
+      "common_belief": "LMIA is a standard process that most Canadian employers will do for a strong PM candidate",
+      "actual_reality": "Many Canadian startups and mid-size companies explicitly refuse to do LMIA due to cost ($1,000+) and 2–5 month processing time; only large employers routinely sponsor LMIA",
+      "implication": "PM candidates who require LMIA should proactively qualify employer willingness before investing time in interview processes, and should prioritize pursuing PGWP or PR to remove this constraint"
+    },
+    {
+      "common_belief": "Canadian PM interviews are just easier versions of US PM interviews with the same structure",
+      "actual_reality": "Canadian PM interviews are structurally different: more behavioral/culture emphasis, fewer rounds (3–4 vs. 5–7), less pressure on estimation questions, and no Leetcode-style technical screens",
+      "implication": "Candidates over-preparing for FAANG-style loops may over-invest in estimation and technical prep at the expense of behavioral depth, which is actually the higher-weight component in Canadian processes"
+    },
+    {
+      "common_belief": "A Senior PM or Director title earned in Canada transfers directly to equivalent US leveling",
+      "actual_reality": "Canadian PM Directors often oversee smaller product scope than US equivalents due to market size; US hiring committees calibrate on scope, user base, and revenue impact, not title alone",
+      "implication": "PMs transitioning from Canada to US should reframe portfolio stories around relative impact and complexity rather than assuming title parity, and should anticipate potential leveling-down discussions"
+    },
+    {
+      "common_belief": "Global Talent Stream is only for engineering roles, not PM roles",
+      "actual_reality": "PM roles classified under NOC 20012 (Computer and Information Systems Managers) may qualify for Global Talent Stream, reducing LMIA processing from 2–5 months to approximately 2 weeks",
+      "implication": "Employers and candidates should verify NOC code before defaulting to standard LMIA timelines; GTS can make PM hiring viable at companies that would otherwise decline to sponsor"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding work authorization constraints in job searching",
+      "junior_pattern": "Focuses only on qualifications and interview prep; treats work authorization as HR's problem to solve after an offer is received",
+      "senior_pattern": "Maps work authorization status to employer eligibility before applying; qualifies LMIA willingness early in recruiter conversations to avoid wasted cycles",
+      "why_it_matters": "Discovering authorization mismatch late in the process wastes months and damages candidate reputation with hiring teams who have invested interview time"
+    },
+    {
+      "dimension": "Geographic career planning",
+      "junior_pattern": "Evaluates Canada vs. US based on immediate salary number or current visa situation; does not model long-term career trajectory implications",
+      "senior_pattern": "Models the full career arc: Canada for immigration security and early experience, with explicit decision point for US transition at mid-career to maximize scope and comp compounding",
+      "why_it_matters": "Short-term optimization (take the Canadian offer now) can create structural career ceilings that are costly to overcome after 5+ years"
+    },
+    {
+      "dimension": "Assessing PM role quality beyond title and comp",
+      "junior_pattern": "Evaluates offers primarily on base salary and job title; assumes Canadian bank Senior PM is equivalent to US tech Senior PM for future optionality",
+      "senior_pattern": "Evaluates offers on product scope, user base scale, regulated vs. unregulated environment, and transferability of portfolio stories to future target roles",
+      "why_it_matters": "A regulated bank PM role may offer LMIA sponsorship and stability but produce a portfolio that limits future mobility to consumer tech or global product companies"
+    },
+    {
+      "dimension": "Immigration pathway planning",
+      "junior_pattern": "Treats immigration status as a background constraint; assumes things will work out and focuses on the job search",
+      "senior_pattern": "Maintains a live model of immigration milestones (months accrued toward CEC, Express Entry CRS score, PGWP expiry date) and proactively sequences job decisions to hit immigration thresholds",
+      "why_it_matters": "A passive approach to immigration timing can result in authorization gaps that force accepting inferior roles or exiting Canada entirely due to status expiry"
+    },
+    {
+      "dimension": "Framing the Canada → US career path",
+      "junior_pattern": "Views Canada and US as either/or choices; does not understand the structural mechanisms (TN, ICT, H-1B) that enable transitions between markets",
+      "senior_pattern": "Understands each pathway mechanism and its conditions; uses Canada strategically as a platform with a planned US on-ramp once immigration and experience milestones are met",
+      "why_it_matters": "Without understanding the mechanisms, candidates either stay in Canada by default or attempt US moves without the right authorization structure, creating unnecessary risk"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canada_pm_career_pgwp_lmia_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

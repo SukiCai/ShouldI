@@ -1,0 +1,340 @@
+{
+  "source_file": "canada_PGWP申请全流程_从毕业到拿到permit只用了5週.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Apply for PGWP within 3 days of graduation to maximize buffer before 180-day deadline",
+      "condition": "When you have just graduated and have your registrar's completion letter in hand...",
+      "action": "Submit the PGWP application online as soon as possible after receiving official proof of completion, ideally within the first week",
+      "because": "The 180-day post-graduation window is a hard deadline; earlier submission gives more buffer if IRCC requests additional documents or there are delays",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "If biometrics were previously collected, expect a faster processing step at that stage",
+      "condition": "When you have already provided biometrics for a prior permit (e.g., study permit)...",
+      "action": "Note on your application that biometrics are on file; expect that step to be waived or expedited",
+      "because": "The original poster's timeline shows biometric exemption on day 15, which shortened overall processing to ~40 days",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Do not exit Canada while PGWP is pending under implied status",
+      "condition": "When your study permit has expired but PGWP application is in progress...",
+      "action": "Remain inside Canada until the PGWP is approved and in hand",
+      "because": "Leaving Canada while on implied status voids implied status; re-entry without a valid permit is not guaranteed, as raised in comment [3] with 123 likes",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Apply within 180 days of graduation or lose PGWP eligibility entirely",
+      "condition": "When a student has completed their eligible program...",
+      "action": "Track the 180-day deadline from the official program completion date and submit before it expires",
+      "because": "IRCC regulations make the 180-day window a hard cutoff — missing it eliminates PGWP eligibility with no exception pathway mentioned in the community",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Program length (determines PGWP duration)",
+      "why_it_matters": "PGWP duration is tied directly to the length of the study program; a 2-year program yields a 3-year PGWP while shorter programs yield shorter permits, affecting time available for Express Entry points accumulation",
+      "how_to_assess": "Check official program length as registered with the institution — not calendar time enrolled, but the designated program length; comments [2] and [5] both ask about sub-2-year programs",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether biometrics have already been collected",
+      "why_it_matters": "Previously collected biometrics can be waived, shortening processing time meaningfully",
+      "how_to_assess": "Check your IRCC account or prior permit application history to confirm if biometrics are on file and still valid (valid for 10 years)",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Availability of registrar's completion letter vs. formal degree certificate",
+      "why_it_matters": "IRCC requires proof of program completion, but a formal degree certificate often takes months to issue; a registrar's letter with degree name and completion date is accepted and allows earlier application",
+      "how_to_assess": "Contact registrar's office immediately after final grades are posted to request a completion letter; comment [1] (178 likes) flags confusion about what content makes the letter valid",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Current study permit work authorization clause",
+      "why_it_matters": "Whether the student permit allows work during implied status affects income continuity while waiting for PGWP approval",
+      "how_to_assess": "Review the conditions printed on the study permit; comment [4] (98 likes) asks whether work authorization carries over automatically",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in Canada on implied status while PGWP is pending",
+      "unstated_consequence": "You cannot legally work full-time during implied status unless your study permit explicitly authorized work; many students assume implied status = work authorization, which is incorrect",
+      "who_it_affects": "Students who planned to start work immediately after graduation and have job offers lined up",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Choosing a program shorter than 2 years to save time and money",
+      "unstated_consequence": "A sub-2-year program yields a shorter PGWP (potentially 1 or 1.5 years), significantly compressing the window to accumulate Canadian work experience for Express Entry CRS points",
+      "who_it_affects": "Students optimizing for cost or speed of graduation without accounting for post-graduation immigration strategy",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Traveling outside Canada while waiting for PGWP under implied status",
+      "unstated_consequence": "Exiting Canada voids implied status; the applicant may be unable to re-enter without a valid permit, potentially abandoning the PGWP application",
+      "who_it_affects": "Students with family obligations or travel plans immediately after graduation",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming you can work full-time during implied status while PGWP is pending",
+      "why_it_happens": "Students conflate 'implied status lets me stay legally' with 'implied status lets me work'; the distinction is non-obvious and not well-publicized",
+      "consequence": "Unauthorized work during implied status is a violation of immigration conditions, potentially jeopardizing the PGWP application and future PR applications",
+      "warning_signs": [
+        "Student says 'my permit expired but I'm still here so I can work'",
+        "Student starts a job offer on day 1 after graduation without confirming PGWP is approved"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Waiting too long after graduation to gather documents before applying",
+      "why_it_happens": "Students wait for the formal degree certificate rather than obtaining a registrar's completion letter, not knowing the letter is sufficient",
+      "consequence": "Weeks or months of unnecessary delay, eating into the 180-day window and delaying PGWP and thus lawful employment start date",
+      "warning_signs": [
+        "Student says 'I'm waiting for my official degree to arrive before applying'",
+        "Student is unaware that a registrar's letter can substitute for the degree certificate"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Leaving Canada during implied status without understanding the consequence",
+      "why_it_happens": "Students treat implied status as equivalent to having a valid permit, not realizing it is a domestic-only protection",
+      "consequence": "Implied status is voided upon exit; re-entry denied or complicated; PGWP application potentially abandoned",
+      "warning_signs": [
+        "Student books travel immediately after graduation assuming they can return freely",
+        "Student asks 'can I just go home for a month and come back?'"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the official designated length of your study program as registered with the institution?",
+      "what_it_reveals": "Determines the maximum PGWP duration you are eligible for — not how long you actually took, but the program's official length",
+      "follow_up_if_yes": "If 2 years or more: eligible for up to 3-year PGWP — confirm exact duration with IRCC table",
+      "follow_up_if_no": "If less than 2 years (e.g., 1 or 1.5 years): PGWP duration will match program length, significantly shortening your Canadian work experience window",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your current study permit include a condition that authorizes you to work?",
+      "what_it_reveals": "Determines whether you can work during the implied status period while PGWP is being processed",
+      "follow_up_if_yes": "You may be able to continue working under study permit work conditions during implied status — verify exact conditions",
+      "follow_up_if_no": "You cannot work until PGWP is approved; plan finances accordingly for the processing gap",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Have you already provided biometrics for a Canadian permit in the last 10 years?",
+      "what_it_reveals": "Whether you will need to attend a biometrics appointment, which adds time and an in-person step to the process",
+      "follow_up_if_yes": "Biometrics likely waived — processing may be faster; confirm valid biometrics are on file in IRCC portal",
+      "follow_up_if_no": "Budget extra time and locate a nearby Service Canada or biometrics collection site",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you planning to travel outside Canada before your PGWP is approved?",
+      "what_it_reveals": "Whether the applicant is at risk of voiding their implied status and jeopardizing the PGWP application",
+      "follow_up_if_yes": "Strong warning: exiting Canada during implied status voids it; advise against travel until PGWP is in hand",
+      "follow_up_if_no": "No immediate risk; remind to stay in Canada until approval is received",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Implied status means you have the same rights as when your study permit was valid, including the right to work",
+      "actual_reality": "Implied status only means you can legally remain in Canada while your application is processed; it does not grant work authorization unless your original study permit explicitly included a work condition",
+      "implication": "Students must not start full-time employment during the PGWP processing gap unless their study permit work clause explicitly covers this period",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "You need your official degree certificate (the physical diploma) to apply for PGWP",
+      "actual_reality": "A completion letter from the registrar's office — stating your degree name and official completion date — is accepted by IRCC and allows you to apply weeks or months before the physical diploma arrives",
+      "implication": "Students should contact the registrar immediately after program completion to request a letter, enabling much earlier application submission",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "PGWP duration for a 1.5-year program will be rounded up to 2 years or 3 years",
+      "actual_reality": "PGWP duration mirrors the official program length without rounding up to a longer tier; a 1.5-year program yields approximately a 1.5-year PGWP, not a 3-year one (comment [5] reveals widespread uncertainty about this)",
+      "implication": "Students choosing between program lengths for immigration purposes should understand there is no rounding benefit — program length maps directly to PGWP length",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Paper applications (纸申) are still a valid and comparable option to online applications",
+      "actual_reality": "IRCC has moved PGWP applications to online-only; paper applications are no longer the standard pathway (comment [6] reflects this transition period confusion)",
+      "implication": "Students should default to the online portal (IRCC My Account) and not spend time preparing paper applications",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of implied status",
+      "naive_pattern": "Treats implied status as equivalent to having a valid permit — assumes they can work, travel, and operate normally while waiting",
+      "informed_pattern": "Knows implied status is Canada-only, does not grant work rights beyond original permit conditions, and is voided by leaving the country",
+      "why_it_matters": "Acting on the naive understanding can result in unauthorized work violations or losing immigration status entirely by exiting Canada",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Document preparation strategy",
+      "naive_pattern": "Waits for the formal degree certificate to arrive before starting the PGWP application",
+      "informed_pattern": "Immediately contacts the registrar for a completion letter and submits the PGWP application within days of program completion",
+      "why_it_matters": "The naive approach can waste weeks or months of the 180-day window and delay lawful employment start",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Program length selection for immigration purposes",
+      "naive_pattern": "Chooses program length based on academic or cost factors alone, assuming PGWP will be 'long enough'",
+      "informed_pattern": "Selects program length with awareness of how it maps to PGWP duration and downstream Express Entry CRS scoring timelines",
+      "why_it_matters": "A 1-year program may yield only a 1-year PGWP, leaving insufficient time to accumulate Canadian work experience before PR application",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "During implied status, I can work full-time because my old permit allowed it",
+      "why_believed": "The logic feels linear: old permit allowed work → implied status extends the permit → implied status allows work. The distinction between 'right to remain' and 'right to work' is not intuitive",
+      "actual_rule": "Implied status preserves only the right to remain in Canada while the new application is processed. Work authorization during implied status depends on whether the original permit explicitly included a work condition — it is not automatically extended",
+      "real_consequence": "Working without authorization is a violation of immigration conditions; it can result in PGWP refusal, a removal order, or a record that damages future PR applications",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "I can leave Canada briefly while my PGWP is pending and implied status will still protect me when I return",
+      "why_believed": "Students assume 'implied status' is a full legal status that travels with them, similar to a valid permit",
+      "actual_rule": "Implied status only exists while the person is physically inside Canada. Leaving Canada voids implied status; re-entry requires a valid permit, which the applicant does not yet have",
+      "real_consequence": "The applicant may be denied re-entry at the border, stranding them outside Canada with a pending PGWP application they can no longer benefit from",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "A 1.5-year or 20-month program will get me a 3-year PGWP because it's 'close enough' to 2 years",
+      "why_believed": "Students hear the '2-year program = 3-year PGWP' rule and assume there is rounding or a grace margin below the 2-year threshold",
+      "actual_rule": "PGWP duration matches the program's official length for programs under 2 years; only programs of 2 years or longer qualify for the maximum 3-year PGWP. There is no rounding up",
+      "real_consequence": "A student expecting 3 years of work permit receives 1.5 years, dramatically compressing their Express Entry timeline and potentially forcing them to leave or switch status sooner than planned",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "2-year master's graduate in Canada; applied for PGWP 3 days after graduation; had prior biometrics on file; submitted all required documents including registrar's completion letter",
+      "decision": "Submitted online application immediately after graduation with complete documentation package",
+      "outcome": "Received AOR in 2 days, biometrics waived on day 15, approval letter on day 35, physical work permit on day 40 — total ~5 weeks",
+      "lesson": "Early submission with a complete document package and pre-existing biometrics can result in PGWP approval in approximately 5 weeks; the bottleneck is often document readiness, not IRCC processing speed",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Questions like 'can I just go home for a few weeks and come back?' or 'I need to visit family — my PGWP is still being processed'",
+      "underlying_state": "Separation anxiety and family obligation pressure overriding rational assessment of immigration risk; underestimation of how serious loss of implied status is",
+      "how_it_manifests": "Student frames the travel as low-risk or temporary, seeking reassurance rather than accurate information",
+      "expert_move": "Reframe the cost asymmetry clearly: 'A 2-week visit home could cost you your entire PGWP and years of immigration progress. The risk is not symmetric — the downside is catastrophic and the upside is a short trip.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Student asks 'my program was 1.5 years, will I get rounded up to a 3-year PGWP?'",
+      "underlying_state": "Hope bias — the student wants the answer to be yes and is seeking confirmation, not information. Underlying anxiety about whether their program choice was sufficient for their immigration goals",
+      "how_it_manifests": "Question is framed as seeking clarification but is actually seeking reassurance; student may resist or re-ask when given an unfavorable answer",
+      "expert_move": "Deliver the accurate rule directly without softening, then immediately pivot to actionable alternatives: 'No rounding — you'll get 1.5 years. Here's what that means for your Express Entry timeline and what you should do now.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Student delays PGWP application while waiting for official degree certificate to arrive",
+      "underlying_state": "Perfectionism and risk aversion — fear that submitting without the 'official' document will result in rejection, leading to inaction that is actually riskier than acting",
+      "how_it_manifests": "Student waits weeks or months, framing it as 'being thorough' when in fact they are eroding their 180-day window unnecessarily",
+      "expert_move": "Clarify that the registrar's letter is IRCC-accepted and that delay itself carries real risk: 'Waiting for your diploma is the riskier choice, not the safer one — every week you wait is a week less to find a job while on valid status.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Student asks whether implied status lets them work while waiting for PGWP, treating it as a status extension question",
+      "reframe": "Implied status gives you the right to stay, not the right to work — these are two separate permissions and one does not imply the other",
+      "why_it_works": "Separates two concepts the student has merged; makes the student evaluate their original permit's work condition independently rather than assuming continuity",
+      "example_language": "'Implied status means IRCC knows you're here legally — it doesn't renew your work permission. Check what your study permit actually says about work.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Student frames PGWP application as something to do 'once everything is ready' (i.e., after diploma arrives)",
+      "reframe": "The 180-day clock is already running; the question is not 'am I ready?' but 'what is the minimum I need to submit now and what can I add later?'",
+      "why_it_works": "Shifts the student from a completeness mindset to a deadline mindset; the registrar's letter is sufficient to start the clock, and waiting costs real immigration runway",
+      "example_language": "'The 180 days started the day you finished your last exam — apply with your registrar's letter now, don't wait for the diploma.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_canada_PGWP申请全流程_从毕业到拿到permit只用了5周",
+  "_source_regions": [
+    "canada"
+  ]
+}

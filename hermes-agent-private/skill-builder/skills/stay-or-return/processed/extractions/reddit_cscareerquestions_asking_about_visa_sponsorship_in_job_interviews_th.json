@@ -1,0 +1,268 @@
+{
+  "source_file": "cscareerquestions_asking_about_visa_sponsorship_in_job_interviews_th.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Don't raise visa sponsorship in a phone screen unless directly asked",
+      "condition": "When you are an international student on OPT in early-stage interview rounds (phone screen)...",
+      "action": "Wait until onsite or final rounds to proactively raise the sponsorship question",
+      "because": "Raising it too early signals anxiety and filters you out before the company has invested in evaluating you — multiple commenters and the OP converged on this timing rule",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Clarify what 'no sponsorship' means before self-eliminating",
+      "condition": "When a company says 'we don't sponsor visas'...",
+      "action": "Ask whether that applies to OPT and STEM OPT extension, or only H-1B — many companies mean only H-1B when they say 'no sponsorship'",
+      "because": "A commenter with 198 upvotes noted that some companies saying 'no sponsorship' will still do STEM OPT extension forms, and a 176-upvote comment confirmed a recruiter who said 'we don't sponsor' reversed course once OPT was explained",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Answer 'authorized to work in the US?' with confident yes while on OPT",
+      "condition": "When a recruiter asks if you are authorized to work in the US and you hold F-1 OPT status...",
+      "action": "Answer yes without hedging — OPT is your own work authorization, not employer sponsorship",
+      "because": "OPT is the student's own authorization; the employer has not petitioned for anything at that stage — this distinction is explicitly stated in the post and corroborated by the 387-upvote comment noting recruiters themselves misunderstand this",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Use a direct, non-apologetic script to raise the sponsorship question",
+      "condition": "When you need to disclose your visa situation before accepting an offer...",
+      "action": "Use plain, confident language: 'I'm currently on OPT and authorized to work. I'd need H-1B sponsorship in the future. Is that something [company] does?'",
+      "because": "The 534-upvote top comment explicitly called out that anxiety-driven hedging makes candidates come across worse than the actual visa situation warrants",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Company size and sponsorship track record",
+      "why_it_matters": "Big tech sponsors routinely; small startups and consulting firms often cannot or will not — this determines whether H-1B sponsorship is even a realistic outcome regardless of your qualifications",
+      "how_to_assess": "Ask the recruiter directly; check LinkedIn for current employees with H-1B status; research company E-Verify enrollment for STEM OPT eligibility",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Which stage of immigration you are currently in (OPT vs. STEM OPT vs. H-1B needed)",
+      "why_it_matters": "OPT requires nothing from the employer; STEM OPT extension requires minor paperwork and E-Verify enrollment; H-1B requires a full employer petition and legal fees — each stage changes the employer's cost and willingness",
+      "how_to_assess": "Know your own visa expiration timeline and be precise about which authorization you currently hold versus what you will need",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Recruiter visa literacy",
+      "why_it_matters": "Many recruiters do not understand the OPT/H-1B distinction — a recruiter who says 'no sponsorship' may not know they are already able to hire you on OPT",
+      "how_to_assess": "Listen for whether the recruiter conflates 'work authorization' with 'sponsorship'; be prepared to educate briefly and professionally",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Raising the visa question very late (after technical rounds but before final)",
+      "unstated_consequence": "Candidates feel it is 'too late' to ask mid-process, creating a window where neither party has confirmed alignment — this can lead to offer rescission or wasted interview cycles if the company cannot sponsor",
+      "who_it_affects": "International students who delay disclosure out of fear of rejection, particularly those in STEM fields interviewing at mid-size companies with ambiguous sponsorship policies",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Accepting a role at a company that handles STEM OPT extension but has not committed to H-1B sponsorship",
+      "unstated_consequence": "STEM OPT extension buys two additional years but does not guarantee H-1B filing — the candidate may need to restart a job search at a more vulnerable point in their immigration timeline",
+      "who_it_affects": "F-1 students who take a 'foot in the door' approach at companies with unclear H-1B sponsorship policies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Hedging or apologizing when disclosing visa status, signaling anxiety that hurts the candidacy more than the visa situation itself",
+      "why_it_happens": "Candidates internalize the visa requirement as a liability and unconsciously frame it as an ask for a favor rather than a factual disclosure — anxiety from repeated rejections reinforces apologetic language",
+      "consequence": "Recruiters and hiring managers perceive the candidate as less confident or less senior, potentially filtering them out for reasons unrelated to actual visa complexity",
+      "warning_signs": [
+        "Using phrases like 'I know this might be a problem but...' or 'I hope it's okay that...' when disclosing OPT status",
+        "Bringing up visa status in the first phone screen before being asked"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Self-eliminating from roles at companies that say 'no sponsorship' without clarifying scope",
+      "why_it_happens": "Candidates assume 'no sponsorship' is a binary, blanket policy covering all visa types including OPT — they do not probe whether the policy means only H-1B",
+      "consequence": "Missed opportunities at companies that would have hired them on OPT or even covered STEM OPT extension paperwork",
+      "warning_signs": [
+        "Immediately removing a company from consideration after a 'no sponsorship' statement without follow-up questions",
+        "Never asking the recruiter to specify what 'sponsorship' means in their context"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "When a company says 'we don't sponsor visas,' have you asked whether that applies to OPT and STEM OPT extension, or only H-1B petitions?",
+      "what_it_reveals": "Whether the candidate has correctly scoped the company's actual policy versus a blanket statement that the recruiter may not have thought through",
+      "follow_up_if_yes": "If they clarified and the company confirmed no H-1B either, that is a genuine hard constraint — assess whether your timeline allows you to work on OPT there and find H-1B sponsorship elsewhere later",
+      "follow_up_if_no": "Go back and ask — the recruiter's 'no sponsorship' may only mean no H-1B, and you may be able to work there on OPT or STEM OPT for years",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the company enrolled in E-Verify?",
+      "what_it_reveals": "E-Verify enrollment is required for employers to participate in STEM OPT extension — if they are not enrolled, STEM OPT extension is not an option regardless of their stated willingness",
+      "follow_up_if_yes": "STEM OPT extension is feasible pending the employer's willingness to file I-983 forms",
+      "follow_up_if_no": "The candidate cannot do STEM OPT extension there even if the company is otherwise willing — factor this into the decision",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Consulting and staffing firms are good fallback options for international students who need sponsorship",
+      "actual_reality": "Consulting and staffing firms often explicitly prohibit sponsorship due to client site restrictions — the client may not allow sponsored workers, making this category one of the least viable for international students needing H-1B",
+      "implication": "International students should deprioritize or carefully vet consulting and staffing roles early in their job search rather than treating them as safe fallbacks",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Asking 'will you require sponsorship in the future?' is discriminatory and potentially illegal",
+      "actual_reality": "This question is legally permitted because it asks about work authorization status, not national origin — employers cannot discriminate based on citizenship status but can legally ask about future sponsorship needs",
+      "implication": "Candidates who refuse to answer or who push back on the question as discriminatory are misinformed and may create friction unnecessarily — answer honestly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "STEM OPT extension is essentially the same as visa sponsorship and creates the same burden for employers",
+      "actual_reality": "STEM OPT extension requires the employer to fill out I-983 forms and be E-Verify enrolled — a much lighter lift than H-1B, which requires a full petition, lottery participation, and attorney fees of $3,000–$8,000",
+      "implication": "When negotiating with companies that are hesitant about 'sponsorship,' drawing a clear distinction between STEM OPT extension and H-1B can unlock offers that would otherwise be declined",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they handle visa disclosure timing",
+      "naive_pattern": "Discloses visa status in the first phone screen or opening message to 'get it out of the way,' often with apologetic framing",
+      "informed_pattern": "Waits until onsite or final rounds to raise it proactively, uses confident factual language, and has a scripted answer ready that distinguishes OPT from H-1B",
+      "why_it_matters": "Early, anxious disclosure filters candidates out before the company has invested in evaluating them — timing and framing together determine whether the visa is treated as a dealbreaker or a manageable administrative step",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Understanding of their own work authorization",
+      "naive_pattern": "Conflates OPT with 'needing sponsorship' and answers 'yes' to sponsorship questions even when currently authorized under OPT",
+      "informed_pattern": "Knows that OPT is their own authorization — answers 'yes, I am authorized to work' confidently while separately acknowledging future H-1B need when asked about future sponsorship",
+      "why_it_matters": "Incorrectly saying you need sponsorship when you do not can disqualify you from companies that would have hired you — this is a factual error with real consequences, not just a framing issue",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If a company says 'we don't sponsor visas,' that means they won't hire international students at all",
+      "why_believed": "The phrase 'no sponsorship' sounds like a blanket exclusion, and many candidates assume any future immigration need disqualifies them — the phrase is also used inconsistently by recruiters who do not understand the OPT/H-1B distinction",
+      "actual_rule": "'No sponsorship' typically means no H-1B petition — it usually does not preclude hiring someone on OPT or processing STEM OPT extension paperwork, which are lower-burden asks",
+      "real_consequence": "Candidates self-eliminate from viable opportunities, shrinking their job market unnecessarily at an already competitive stage",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Asking about future sponsorship requirements is discriminatory and illegal",
+      "why_believed": "Questions about national origin are prohibited in hiring, and many candidates conflate citizenship status with national origin — the phrasing of the question sounds like it could be probing immigration background",
+      "actual_rule": "Employers are legally permitted to ask about future work authorization and sponsorship needs because this is about employment eligibility, not national origin — the prohibition is on discriminating based on citizenship status, not on asking about it",
+      "real_consequence": "Candidates who push back on the question or refuse to answer come across as uninformed or combative, damaging their candidacy unnecessarily",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "STEM OPT extension requires the same level of employer commitment as H-1B sponsorship",
+      "why_believed": "Both involve the employer taking an action related to immigration, so candidates (and some recruiters) mentally bucket them together as 'sponsorship'",
+      "actual_rule": "STEM OPT extension requires I-983 paperwork and E-Verify enrollment — a minor administrative burden — while H-1B requires a full petition, lottery, and thousands of dollars in legal fees",
+      "real_consequence": "Candidates preemptively rule out companies for STEM OPT extension that would have agreed if asked clearly — or fail to make the distinction when negotiating, losing leverage",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Candidate received a 'we don't sponsor visas' statement from a recruiter during screening",
+      "decision": "Instead of withdrawing, the candidate explained they were on OPT and did not need sponsorship at that time",
+      "outcome": "The recruiter reversed position immediately — the company was willing to hire on OPT; the blanket 'no sponsorship' statement had reflected recruiter ignorance rather than company policy",
+      "lesson": "Recruiter-level 'no sponsorship' statements often reflect a misunderstanding of OPT — a brief, factual clarification can reopen doors that candidates prematurely close; this pattern appeared in both a 176-upvote comment and a 198-upvote comment independently",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "International candidates framing visa disclosure as something they need to apologize for or 'warn' the company about",
+      "underlying_state": "Internalized liability framing — the candidate has absorbed the message that their visa status is a burden imposed on the employer, creating shame-adjacent anxiety that distorts their communication",
+      "how_it_manifests": "Hedging language ('I know this might be a problem'), apologetic tone, raising it too early to 'get it over with', or over-explaining in ways that make the situation sound more complex than it is",
+      "expert_move": "Reframe visa status as a factual administrative detail, not a personal deficiency — coach candidates to practice the disclosure script until it feels as neutral as stating their start date availability; the 534-upvote comment's 'Don't apologize. Don't hedge.' is the core instruction",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Feeling it is 'too late' to ask about sponsorship mid-process (after technical but before final)",
+      "underlying_state": "Sunk cost anxiety combined with fear of rejection — the candidate has invested time and emotional energy and fears that raising the question now will retroactively disqualify them or signal they were 'hiding' something",
+      "how_it_manifests": "Delaying the sponsorship conversation until after an offer is received, creating worse outcomes for both parties and sometimes leading to offer rescission",
+      "expert_move": "Normalize that mid-process disclosure (after technical, before final) is actually the ideal timing — the company has enough signal to want you but hasn't yet extended an offer, so both parties can make an informed decision without wasted effort",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I disclose my visa situation without it hurting my chances?",
+      "reframe": "Your visa situation is a factual detail about work authorization — the way you disclose it matters more than the fact itself; anxiety in your delivery is doing more damage than the visa status ever could",
+      "why_it_works": "Shifts the candidate's locus of control from an external factor they cannot change (visa status) to a behavioral factor they can control (communication style and timing) — reduces helplessness and redirects energy productively",
+      "example_language": "'Don't apologize. Don't hedge.' — the anxiety around this question makes candidates come across worse than the actual visa situation warrants",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'We don't sponsor visas' means this company is not an option for me",
+      "reframe": "That statement tells you about H-1B policy, not about whether they can hire you today — the real question is whether they understand what OPT is",
+      "why_it_works": "Breaks a false binary (sponsorship = all immigration support vs. no sponsorship = no hire) and introduces a middle ground the candidate can actively probe — converts a rejection signal into an information gap",
+      "example_language": "Worth clarifying what they mean by 'no sponsorship' — some say that meaning no H-1B but will do STEM OPT extension forms",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cscareerquestions_asking_about_visa_sponsorship_in_job_interviews_th",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

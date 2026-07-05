@@ -1,0 +1,280 @@
+{
+  "source_file": "canada_pgwp_employment_outcomes.txt",
+  "heuristics": [
+    {
+      "rule": "If you are working in Retail or Food Services on a PGWP, your PR clock has not started",
+      "condition": "When a PGWP holder is employed in TEER 4/5 occupations (retail, food services) and believes they are accumulating PR-qualifying experience...",
+      "action": "...recognize that CEC requires TEER 0-3 experience, and begin actively transitioning to a TEER 0-3 role before the PGWP expires",
+      "because": "TEER 4/5 employment is legally valid on an open work permit but does not count toward Canadian Experience Class — you can work for years and still be ineligible for the most common PR pathway"
+    },
+    {
+      "rule": "French CLB 7 is worth more CRS points than 2-3 years of additional Canadian work experience for most PGWP holders",
+      "condition": "When a PGWP holder is stuck below the general Express Entry cut-off (480-520) and does not speak French...",
+      "action": "...calculate whether investing in French language training to reach CLB 7 would yield more points faster than waiting for work experience points to accumulate",
+      "because": "French CLB 7+ adds ~25 points and unlocks French-language proficiency draws with cut-offs 80-120 points lower than general draws, which is equivalent to several years of additional Canadian work experience in CRS terms"
+    },
+    {
+      "rule": "When an employer says 'we don't sponsor,' proactively clarify you hold an open work permit before accepting the rejection",
+      "condition": "When a PGWP holder encounters an employer who declines to proceed citing sponsorship or immigration compliance concerns...",
+      "action": "...state explicitly: 'I hold an open work permit — no employer action, cost, or paperwork is required to hire me'",
+      "because": "22% of Canadian employers surveyed misunderstood PGWP rules and believed they needed to sponsor; most objections are based on misinformation, not actual policy"
+    },
+    {
+      "rule": "Master's degree holders should prioritize CEC or OINP Masters Graduate stream first, not FSW",
+      "condition": "When a Canadian master's graduate with a PGWP is evaluating PR pathways...",
+      "action": "...default toward CEC (if TEER 0-3 employment is secured) or OINP Masters Graduate stream (if not yet in skilled employment), rather than Federal Skilled Worker",
+      "because": "CEC was the PR pathway for ~55% of successful PGWP PR conversions; OINP Masters Graduate stream uniquely does not require skilled work experience, providing a workaround for graduates without TEER 0-3 roles"
+    },
+    {
+      "rule": "Plan financially assuming a 10-25% wage discount versus domestic peers for the first 2-3 years",
+      "condition": "When an international student is budgeting for post-graduation life in Canada...",
+      "action": "...model your first salary at 10-25% below what a comparable domestic graduate earns, and do not base housing or debt repayment plans on domestic graduate salary benchmarks",
+      "because": "Statistics Canada data shows a persistent initial wage gap that is real even if temporary — over-leveraging on cost-of-living assumptions based on domestic salary expectations creates financial risk"
+    },
+    {
+      "rule": "If you cannot secure TEER 0-3 employment in Ontario, explore smaller provinces before the PGWP expires",
+      "condition": "When a PGWP holder in a major urban centre is struggling to secure skilled employment and PR-eligible experience...",
+      "action": "...evaluate Saskatchewan, Manitoba, or Nova Scotia where PNP streams are specifically designed for international graduates of provincial institutions and CRS cut-offs are lower",
+      "because": "Smaller provinces have less competition, dedicated PNP streams for international graduates, and lower CRS nomination thresholds — the PR path may be faster even if salaries are lower"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "TEER level of current or target employment",
+      "why_it_matters": "Determines whether work experience counts toward Canadian Experience Class PR eligibility — the most common PR pathway for PGWP holders",
+      "how_to_assess": "Look up the NOC code for your role on the IRCC NOC database and confirm whether it is classified TEER 0, 1, 2, or 3 (eligible) versus TEER 4 or 5 (not eligible for CEC)",
+      "weight": "high"
+    },
+    {
+      "factor": "French language proficiency level",
+      "why_it_matters": "French CLB 7+ unlocks dedicated Express Entry draws with cut-offs 80-120 points below general draws, dramatically changing the feasibility timeline for PR",
+      "how_to_assess": "Take a diagnostic TEF Canada or TCF Canada practice test; assess gap between current level and CLB 7 threshold; estimate time investment required to reach it",
+      "weight": "high"
+    },
+    {
+      "factor": "PGWP duration remaining",
+      "why_it_matters": "Time remaining on PGWP determines how much CEC-eligible experience can be accumulated before needing to either obtain PR or secure employer-sponsored status",
+      "how_to_assess": "Calculate months remaining; determine if enough time exists to accumulate the 1 year of TEER 0-3 experience required for CEC before permit expiry",
+      "weight": "high"
+    },
+    {
+      "factor": "Province of residence and employer location",
+      "why_it_matters": "Provincial variation in PNP streams, CRS cut-offs, cost of living, and sector concentration significantly changes the feasibility and speed of different PR pathways",
+      "how_to_assess": "Map current location to available PNP streams; compare BC PNP Tech, OINP, QSWP, and prairie province programs against your NOC code and education level",
+      "weight": "high"
+    },
+    {
+      "factor": "Education level (bachelor's vs. master's vs. PhD)",
+      "why_it_matters": "Directly affects CRS score (120/135/140 points respectively) and PGWP duration (master's and PhD typically receive 3-year PGWPs vs. shorter for bachelor's)",
+      "how_to_assess": "Identify your CRS education points; check PGWP duration issued on your permit; determine if OINP Masters Graduate stream is available to you",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer awareness of open work permit rules",
+      "why_it_matters": "22% of employers misunderstand PGWP — they may self-eliminate as hiring options before the candidate has a chance to clarify, artificially shrinking the opportunity pool",
+      "how_to_assess": "Listen for phrases like 'we don't sponsor' or 'immigration compliance concerns' in early screening; treat these as education opportunities rather than hard rejections",
+      "weight": "medium"
+    },
+    {
+      "factor": "Field of study alignment with employment sector",
+      "why_it_matters": "PGWP holders disproportionately end up in TEER 4/5 retail and food service roles that do not align with their education — field alignment predicts whether TEER 0-3 employment is achievable without sector transition",
+      "how_to_assess": "Assess whether your degree directly maps to TEER 0-3 occupations in demand; check whether your sector has dedicated Express Entry category-based draws (STEM, healthcare)",
+      "weight": "medium"
+    },
+    {
+      "factor": "CRS score relative to current draw cut-offs",
+      "why_it_matters": "Determines which Express Entry streams you are competitive in and which optimization levers (language, experience, PNP) will yield the most points most quickly",
+      "how_to_assess": "Calculate your current CRS score using the official IRCC tool; compare to recent general draw cut-offs (480-520), French-language draw cut-offs (365-400), and occupation-specific draw cut-offs",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking any available job quickly after graduation to secure income",
+      "unstated_consequence": "If that job is TEER 4/5 (retail, food service), the CEC clock never starts — a graduate can be legally employed for the full PGWP duration and still be ineligible for the most common PR pathway",
+      "who_it_affects": "Graduates in non-STEM fields, recent arrivals with limited professional networks, and those under financial pressure who cannot afford to wait for skilled employment"
+    },
+    {
+      "choice": "Choosing Toronto or Vancouver for post-graduation employment due to largest job markets",
+      "unstated_consequence": "Highest competition for PGWP holders AND highest cost of living, meaning the initial wage gap (10-25% below domestic graduates) is most painful in exactly the cities with the most PGWP holders",
+      "who_it_affects": "Graduates who over-indexed on city prestige and did not model actual take-home pay against local cost of living"
+    },
+    {
+      "choice": "Focusing exclusively on accumulating Canadian work experience to improve CRS score",
+      "unstated_consequence": "Ignores French language as a lever — for most PGWP holders, learning French to CLB 7 will yield more CRS points faster than 2-3 additional years of work experience, but requires upfront time investment",
+      "who_it_affects": "Non-Francophone PGWP holders who are stuck just below Express Entry cut-offs and don't realize French is the fastest available optimization"
+    },
+    {
+      "choice": "Staying in Quebec for lower cost of living and French immersion",
+      "unstated_consequence": "Quebec operates an entirely separate immigration system (CSQ/QSWP) — PGWP holders in Quebec cannot use Express Entry CEC directly and must navigate a different process with French proficiency as an effective requirement",
+      "who_it_affects": "Graduates who moved to Montreal for economic reasons without understanding the Quebec immigration system's independence from federal Express Entry"
+    },
+    {
+      "choice": "Accepting a lower salary to break into the Canadian labour market",
+      "unstated_consequence": "The initial wage gap is real and documented (10-25%), but graduates who don't plan for it financially risk over-leveraging on debt or housing costs that domestic salary benchmarks would support but their actual salary does not",
+      "who_it_affects": "International graduates who based post-graduation financial plans on domestic graduate salary data rather than actual PGWP holder wage outcomes"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Working in TEER 4/5 roles for the full PGWP duration without recognizing CEC ineligibility",
+      "why_it_happens": "PGWP holders conflate 'legally working in Canada' with 'accumulating PR-eligible experience' — the permit allows work at any level, but CEC requires TEER 0-3; this distinction is not surfaced at the time of employment",
+      "consequence": "Graduate reaches end of PGWP with no CEC-eligible experience, facing permit expiry without a clear PR pathway despite years of Canadian employment",
+      "warning_signs": [
+        "Current job is in retail, food service, or accommodation sector",
+        "NOC code for current role is TEER 4 or 5 on the IRCC classification table"
+      ]
+    },
+    {
+      "pattern": "Accepting employer 'no sponsorship' rejections at face value without clarifying PGWP open work permit status",
+      "why_it_happens": "PGWP holders assume the employer knows what a PGWP is; 22% of employers don't and conflate it with work permit sponsorship; candidates interpret the rejection as employer hostility rather than employer confusion",
+      "consequence": "Artificially shrinks the candidate's effective employer pool by ~22%, missing companies that would hire if they understood no sponsorship is required",
+      "warning_signs": [
+        "Consistently rejected at screening stage with vague immigration compliance language",
+        "Employer says 'we don't sponsor' before asking about specific visa status"
+      ]
+    },
+    {
+      "pattern": "Ignoring French language as a CRS optimization lever",
+      "why_it_happens": "Non-Francophone PGWP holders focus on variables they are already working on (work experience, IELTS retakes) and view French as a long-term aspiration rather than a calculable point opportunity",
+      "consequence": "Spends 2-3 additional years waiting for work experience CRS points that French CLB 7 could have delivered in months at a lower Express Entry cut-off",
+      "warning_signs": [
+        "CRS score is consistently 30-80 points below general draw cut-offs",
+        "Candidate has not calculated the point value of French CLB 7 against their current score"
+      ]
+    },
+    {
+      "pattern": "Over-leveraging financially based on domestic graduate salary expectations",
+      "why_it_happens": "PGWP holders benchmark their expected salary against domestic graduate peers in their field without accounting for the documented 10-25% initial wage gap; financial planning (rent, debt repayment) assumes the higher number",
+      "consequence": "Financial stress in first 1-2 years post-graduation; pressure to accept unsuitable jobs quickly; inability to wait for TEER 0-3 opportunities",
+      "warning_signs": [
+        "Post-graduation budget was built on domestic graduate salary benchmarks",
+        "Significant student debt with repayment schedule calibrated to domestic salary levels"
+      ]
+    },
+    {
+      "pattern": "Moving to Quebec without understanding the separate provincial immigration system",
+      "why_it_happens": "Graduates choose Montreal for cost-of-living and cultural reasons without researching that Quebec operates independently from federal Express Entry — the PGWP is still valid, but the PR pathway is entirely different",
+      "consequence": "Must navigate CSQ/QSWP instead of CEC, with French proficiency as an effective requirement, and without being able to use accumulated CEC-eligible experience for federal Express Entry draws",
+      "warning_signs": [
+        "Planning to use CEC as PR pathway while living and working in Quebec",
+        "No French language training plan despite working in a predominantly francophone province"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the TEER level of your current or most recent Canadian job?",
+      "what_it_reveals": "Whether the person is accumulating CEC-eligible work experience or spending their PGWP window in roles that do not qualify for the most common PR pathway",
+      "follow_up_if_yes": "If TEER 0-3: How many months have you accumulated? Are you on track to reach 12 months before your PGWP expires?",
+      "follow_up_if_no": "If TEER 4/5: How long have you been in this role? Do you have a plan to transition to a TEER 0-3 role, and does your remaining PGWP time allow for it?"
+    },
+    {
+      "question": "Have you calculated your current CRS score and compared it to recent Express Entry draw cut-offs by stream?",
+      "what_it_reveals": "Whether the person understands their specific gap and which optimization levers (French, PNP, additional experience) are most efficient for their situation",
+      "follow_up_if_yes": "Which streams have you looked at? Have you included French-language proficiency draws and occupation-specific draws in your comparison?",
+      "follow_up_if_no": "What is your education level, language score, and months of Canadian work experience? Let's calculate your score and identify the most efficient path to the relevant cut-off."
+    },
+    {
+      "question": "Have you assessed your French language proficiency and calculated how many CRS points reaching CLB 7 would add?",
+      "what_it_reveals": "Whether the person has considered the fastest available CRS optimization or is solely focused on work experience accumulation",
+      "follow_up_if_yes": "What is your current French level? How long would reaching CLB 7 realistically take given your current proficiency?",
+      "follow_up_if_no": "Your CRS gap may be closable faster through French than through additional work experience — this should be evaluated before committing to a multi-year waiting strategy."
+    },
+    {
+      "question": "Which province are you living and working in, and do you understand the PR pathway differences between provinces?",
+      "what_it_reveals": "Whether the person is eligible for province-specific streams (BC PNP Tech, OINP Masters Graduate, SINP) that may offer faster or more accessible PR pathways than general Express Entry",
+      "follow_up_if_yes": "Have you mapped your NOC code against the specific draws available in your province? Are you tracking provincial draw frequency and cut-offs?",
+      "follow_up_if_no": "Provincial pathways can be significantly faster and less competitive than federal Express Entry — especially for smaller provinces. What is your NOC code and education level?"
+    },
+    {
+      "question": "When employers say they don't sponsor, do you explain that you hold an open work permit requiring no employer action?",
+      "what_it_reveals": "Whether the person is losing job opportunities due to employer misunderstanding of PGWP rules rather than actual employer unwillingness to hire international graduates",
+      "follow_up_if_yes": "How do employers typically respond when you explain this? Are you still encountering rejections after the clarification?",
+      "follow_up_if_no": "22% of Canadian employers misunderstand PGWP rules — you may be self-eliminating from companies that would hire you if they understood no sponsorship is required. Prepare a one-sentence clarification for screening calls."
+    },
+    {
+      "question": "What is your PGWP expiry date, and have you mapped the time required for each PR pathway against that deadline?",
+      "what_it_reveals": "Whether the person has a realistic timeline for achieving PR before their open work authorization expires, or is at risk of status gaps",
+      "follow_up_if_yes": "Which pathway are you targeting and what milestones need to be hit by what dates? What is your contingency if the primary pathway timeline slips?",
+      "follow_up_if_no": "Without a timeline map, there is a risk of reaching PGWP expiry without PR or a bridge pathway in place — this is one of the most common and consequential planning failures."
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you are legally working in Canada on a PGWP, you are automatically accumulating experience toward permanent residence",
+      "actual_reality": "Only TEER 0-3 work experience counts toward Canadian Experience Class. TEER 4/5 employment — which accounts for the largest volume of PGWP holder employment in Retail Trade and Food Services — does not qualify, regardless of how long you hold the job",
+      "implication": "PGWP holders must actively verify the TEER level of any role before accepting it and plan for TEER 0-3 employment specifically if CEC is their target PR pathway"
+    },
+    {
+      "common_belief": "To hire an international student, a Canadian employer needs to sponsor them or go through a special process",
+      "actual_reality": "PGWP holders hold open work permits — no employer Labour Market Impact Assessment, sponsorship, or paperwork is required. The employer simply hires them as they would any worker. 22% of Canadian employers do not understand this.",
+      "implication": "PGWP holders should proactively educate employers at the first sign of sponsorship hesitation rather than accepting rejections as final — most objections are based on misinformation, not policy"
+    },
+    {
+      "common_belief": "Accumulating more Canadian work experience is the primary lever for improving CRS scores and qualifying for Express Entry",
+      "actual_reality": "French language proficiency is the single most impactful CRS optimization for most PGWP holders. French CLB 7 unlocks draw streams with cut-offs 80-120 points below general draws — equivalent to several years of additional work experience in CRS point terms",
+      "implication": "Before committing to a multi-year work experience accumulation strategy, PGWP holders should calculate whether French language training to CLB 7 would achieve the same CRS gap closure faster"
+    },
+    {
+      "common_belief": "International graduates who study and work hard in Canada earn roughly the same starting salaries as domestic graduates in their field",
+      "actual_reality": "Statistics Canada data shows a persistent initial wage gap of 10-25% between international graduates and comparable domestic graduates in first Canadian employment. The gap is smallest in STEM (8-12%) and largest in finance/business (15-25%)",
+      "implication": "Financial planning for post-graduation must account for this documented gap — budgets, debt repayment plans, and housing decisions based on domestic graduate salary benchmarks will be systematically miscalibrated"
+    },
+    {
+      "common_belief": "Only 25-30% of PGWP holders successfully obtain permanent residence, suggesting the pathway is difficult for most",
+      "actual_reality": "Among PGWP holders from the 2015-2018 cohort, 35-40% obtained PR within 5 years — but outcomes vary significantly by education level, province, field of study, and whether TEER 0-3 employment was secured. The aggregate statistic masks large variation in outcomes by subgroup",
+      "implication": "Generic PGWP success rates are not predictive for individual outcomes — what matters is whether you specifically secure TEER 0-3 employment, optimize CRS correctly, and select the right pathway for your profile"
+    },
+    {
+      "common_belief": "Montreal is a straightforward option for PGWP holders who want lower cost of living with a Canadian career",
+      "actual_reality": "Quebec operates an entirely separate immigration system. PGWP holders in Quebec must apply through QSWP or PRTQ rather than federal Express Entry CEC, and French proficiency is an effective requirement for Quebec PR pathways",
+      "implication": "Choosing Quebec as a base requires a fundamentally different PR strategy — it is not simply a lower-cost version of Toronto or Vancouver, it is a different immigration jurisdiction with different rules"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding what 'working in Canada' means for PR eligibility",
+      "junior_pattern": "Assumes any paid employment in Canada on a PGWP is building toward permanent residence — equates legal employment with PR-eligible experience",
+      "senior_pattern": "Verifies the TEER level of any role before accepting and tracks TEER 0-3 months specifically, treating CEC clock management as a deliberate strategy from day one",
+      "why_it_matters": "TEER 4/5 employment consumes PGWP time without advancing CEC eligibility — a graduate who doesn't understand this distinction can exhaust their permit window with no viable PR pathway remaining"
+    },
+    {
+      "dimension": "Response to employer 'no sponsorship' statements",
+      "junior_pattern": "Accepts the rejection as final, moves on, and mentally categorizes the employer as unavailable",
+      "senior_pattern": "Recognizes that 22% of Canadian employers conflate PGWP with work permit sponsorship, proactively clarifies open work permit status, and converts the misunderstanding into a hiring conversation",
+      "why_it_matters": "Passively accepting misinformation-based rejections artificially shrinks the opportunity pool by roughly one-fifth of available employers"
+    },
+    {
+      "dimension": "CRS optimization strategy",
+      "junior_pattern": "Focuses on accumulating more work experience as the primary (or only) lever for improving CRS score, treating French language as a long-term aspiration unrelated to current PR planning",
+      "senior_pattern": "Calculates the point value of all available levers (French proficiency, PNP, education, experience) against current CRS gap and selects the combination with the best time-to-ITA return",
+      "why_it_matters": "For many PGWP holders, French to CLB 7 is faster than 2-3 years of additional work experience for the same CRS improvement — not calculating this means choosing a slower path by default"
+    },
+    {
+      "dimension": "Financial planning for post-graduation",
+      "junior_pattern": "Benchmarks post-graduation salary expectations against domestic graduate salary data, then plans housing and debt repayment on those numbers",
+      "senior_pattern": "Models the first 2-3 years at 10-25% below domestic graduate benchmarks based on documented wage gap data, and stress-tests the financial plan against the lower number",
+      "why_it_matters": "Over-leveraging on domestic salary assumptions creates financial fragility that forces suboptimal job decisions — taking any available role rather than waiting for TEER 0-3 opportunities"
+    },
+    {
+      "dimension": "Provincial strategy",
+      "junior_pattern": "Defaults to Toronto or Vancouver as the obvious choices due to job market size, without modeling how provincial variation in PNP streams, competition levels, and cost of living affects the PR timeline",
+      "senior_pattern": "Evaluates provinces as distinct immigration jurisdictions with different pathways, cut-offs, and time-to-PR implications — considers smaller provinces as potentially faster routes depending on NOC code and education level",
+      "why_it_matters": "Concentrating in Toronto/Vancouver means facing the highest competition for PGWP holders while paying the highest cost of living on a discounted salary — smaller provinces may offer faster PR timelines for certain profiles"
+    },
+    {
+      "dimension": "PR pathway selection",
+      "junior_pattern": "Treats PR as a single process ('I'll apply for PR after I get my work experience') without understanding the differences between CEC, PNP streams, FSW, and Quebec pathways and which applies to their specific profile",
+      "senior_pattern": "Maps their specific profile (education level, NOC code, province, language scores) to 2-3 viable pathways early, models the timeline for each, and maintains awareness of which pathway is primary and which serves as a contingency",
+      "why_it_matters": "Without pathway-specific planning, graduates can inadvertently disqualify themselves from time-sensitive streams (like OINP Masters Graduate) by not applying while eligible, or can exhaust their PGWP without a clear bridge mechanism"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "reports_canada_pgwp_employment_outcomes",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

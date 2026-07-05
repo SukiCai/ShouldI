@@ -1,0 +1,48 @@
+{
+  "skill_name": "International Student Immigration & Career Advisor",
+  "overall_score": 4.5,
+  "summary": "This is a genuinely strong, expert-grade skill that goes well beyond generic immigration advice. It surfaces non-obvious mechanics (cumulative CPT eliminating OPT, wage-weighted H-1B lottery, March 2025 elimination of job-offer CRS points, PGWP one-per-lifetime) and pairs them with operational heuristics and psychological reframes. A few claims need verification or hedging (the $100K proclamation, wage-weighted lottery as 'FY2027' fact, EB-2 priority date specifics), and the framework for non-US/Canada destinations and J-1/dependent scenarios is thin, but the core content is unusually sharp.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 5,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "Expert framing names the core counterintuitive truth that 'the decisions that most constrain immigration options are made years before the visa deadline that exposes them' and follows through by repeatedly anchoring on program selection, study permit submission date, and country of birth as primary variables rather than downstream visa filings.",
+    "Heuristics are unusually specific and operational, e.g., 'Select No to the job offer question in the IRCC questionnaire even if you have a job' (because Yes routes to a closed permit) and 'Negotiate salary to reach OEWS Wage Level III or IV before H-1B filing' — these are the kind of non-obvious moves a novice would never know.",
+    "The User Psychology section is exceptional — mapping verbatim user phrasings ('Researching Canada feels like giving up on the US') to underlying psychological states and a specific expert response is rare in skill files and genuinely improves AI behavior.",
+    "Hidden tradeoffs like '1-year full-time CPT for income permanently eliminates OPT eligibility' and 'Departing the US during a pending COS petition retroactively triggers the $100,000 fee' are exactly the silent-cost-at-time-of-decision pattern the rubric calls for.",
+    "Common Misconceptions section directly attacks high-frequency dangerous beliefs (90-day OPT unemployment resets, implied status = work authorization in Canada, Day 1 CPT safety) with concrete downstream consequences."
+  ],
+  "weaknesses": [
+    "Several factual claims are stated with high confidence but are time-sensitive or contested: the '$100,000 proclamation fee' for departing during pending COS, 'FY2027 wage-weighted lottery,' and 'EB-2 India priority dates around 2012 with wait into the 2070s' — these may be accurate as of authoring but the skill doesn't flag them as policy-volatile or instruct the AI to verify current status before relying on them.",
+    "Failure patterns are solid but lean toward the same handful of themes (reactive planning, verbal sponsorship, forum reliance). Missing real-world patterns like: misclassifying a 'specialty occupation' job duties for H-1B, taking an unpaid role during STEM OPT that fails the 20-hour/week requirement, or PGWP applicants who lose status during the gap between study permit expiry and PGWP submission.",
+    "The skill scopes itself to US and Canada only, which is reasonable, but doesn't acknowledge this limit prominently or tell the AI how to handle UK Graduate Route, Australia 485, Germany Job Seeker Visa, etc. — common comparison points for the same student population.",
+    "Spouse/dependent dynamics are underdeveloped: H-4 EAD eligibility (and its policy volatility), spousal open work permit changes in Canada (the 2024 restrictions are significant and unmentioned), and how dependent status creates concentration risk get one diagnostic line but no dedicated treatment.",
+    "The Universal Decision Framework heuristics ('Plan 3–5 years ahead', 'Always have Plan A, B, and C') are weaker than the country-specific ones — they edge toward the kind of advice the rubric warns against ('Plan ahead' = worthless), though the 'why' clauses partially rescue them."
+  ],
+  "improvement_suggestions": [
+    "Add a 'Policy Volatility Warnings' callout listing items that change frequently (H-1B fees/proclamations, wage-weighting rules, PGWP eligibility lists, CRS draw cutoffs, spousal OWP rules) with explicit instruction: 'Before relying on these in advice, state the as-of date and recommend the user verify current USCIS/IRCC policy.' This protects against the skill aging poorly.",
+    "Add a dedicated subsection on H-4/spouse and dependent dynamics for both countries: H-4 EAD eligibility (only for H-1B principals with approved I-140), the 2024 Canada SOWP restrictions limiting it to spouses of master's/doctoral students and TEER 0/1 workers, and how this changes the household calculus.",
+    "Expand failure patterns with 2-3 more operationally specific ones: STEM OPT employer dropping below 20 hours/week (terminates status silently), PGWP-pending applicants who travel and cannot re-enter, and J-1 students who discover the 212(e) two-year home residency requirement after accepting an H-1B offer.",
+    "Add a brief 'Other Destinations — When to Redirect' section noting UK Graduate Route, Australia 485, Ireland Stamp 1G, Germany — even one sentence each on duration and PR pathway — so the AI knows when the US/Canada framing is insufficient and can flag the gap.",
+    "Tighten or replace the weakest Universal Heuristic ('Plan 3–5 years ahead, not 6–12 months') with something more operational like 'Map the full status chain from today to PR before accepting any program or job offer — if you cannot name every visa category and trigger event, you do not have a plan.'"
+  ],
+  "generic_advice_flags": [
+    "'Plan 3–5 years ahead, not 6–12 months' — this is closer to a slogan than a heuristic. The 'why' clause helps, but the rule itself is what every advisor says; it would be stronger as a concrete checklist (e.g., 'before enrolling, you should be able to name: PGWP duration, CEC hour requirement, target CRS, age at filing').",
+    "'Spend $200–500 on an attorney consultation before any major decision' — useful but generic. A senior version would specify: which decisions specifically warrant it (status change, EB filing, J-1 waiver, cross-border move), what to bring to the consultation, and how to evaluate whether the attorney is competent (e.g., AILA membership, has handled your specific visa category, asks about country of birth)."
+  ],
+  "missing_coverage": [
+    "H-4 EAD and Canadian spousal open work permit rules (especially the 2024 IRCC restrictions) — household-level immigration strategy is mentioned only in passing.",
+    "J-1 students and the 212(e) two-year home residency requirement is mentioned once in a US decision factor table but not unpacked — this is a frequent and devastating surprise for research/exchange students.",
+    "O-1 and EB-1A pathways are referenced ('build evidence continuously') but never explained operationally — what evidence types, what thresholds, what timeline.",
+    "Cross-border movement scenarios: TN visa for Canadians/Mexicans, dual-intent considerations, and what happens when a Canadian PR applicant takes a US H-1B job mid-process.",
+    "Tax and financial-planning side effects of long-term visa holding (substantial presence test, exit tax implications, retirement account portability) — these influence stay-vs-return decisions but are absent.",
+    "How to evaluate immigration attorneys (red flags, AILA, fee structures) — the skill recommends consulting one but offers no framework for selecting a competent one."
+  ]
+}

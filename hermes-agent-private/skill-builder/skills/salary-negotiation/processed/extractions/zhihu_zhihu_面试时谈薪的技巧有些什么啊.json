@@ -1,0 +1,455 @@
+{
+  "source_file": "zhihu_面试时谈薪的技巧有些什么啊.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Always ask about compensation structure before stating your number",
+      "condition": "When entering the salary negotiation phase of an offer discussion...",
+      "action": "Ask about base salary structure, performance bonuses, supplements, social insurance contribution rates, and number of months paid before revealing your expectations",
+      "because": "The source explicitly warns against jumping straight to a number without understanding what you're comparing; a 12-month base at one company versus a 13-month base at another creates large differences that make raw monthly figures misleading",
+      "regions": []
+    },
+    {
+      "rule": "Report your expected salary (期望薪资), not your acceptable floor (底线薪资), as your opening number",
+      "condition": "When asked for your salary expectation in a first round...",
+      "action": "Quote your target number, leaving room for the recruiter to negotiate downward — never lead with your minimum",
+      "because": "The source states explicitly: 'report price should be expected salary, leaving HR room to bargain' — if you open at your floor there is no room left",
+      "regions": []
+    },
+    {
+      "rule": "Use a competing offer (real or imminent) as leverage only after the recruiter has shown they want you",
+      "condition": "When the recruiter has made an offer below your target and signaled strong interest in you...",
+      "action": "Mention the competing offer without naming the company, express preference for the current employer, and ask for a specific number you would accept",
+      "because": "The case study in the source shows this sequence worked: candidate disclosed competing offer at 37k, expressed preference for current company, asked for 36k specifically, and got it via special approval",
+      "regions": []
+    },
+    {
+      "rule": "Prepare written documentation of every component of current compensation before negotiations begin",
+      "condition": "When preparing to negotiate a job change...",
+      "action": "Compile a spreadsheet covering monthly base, number of months, all supplements (meal, transport, housing), bonuses for the last 3 years, equity, and benefits — with proof for each line item",
+      "because": "The source's Case A shows that failing to communicate full comp upfront leads to an awkward post-offer renegotiation that damages trust and risks losing the offer entirely",
+      "regions": []
+    },
+    {
+      "rule": "Counter HR's 'maximum raise is 10%' by reframing the base, not fighting the percentage",
+      "condition": "When HR claims a company policy caps raises at a fixed percentage...",
+      "action": "Argue that the correct base to apply the percentage to is your market-adjusted or soon-to-be-adjusted salary, not your current depressed salary",
+      "because": "The source provides explicit sample language: 'using last month's salary with a 10% raise to assess my current experience and ability is not reasonable'",
+      "regions": []
+    },
+    {
+      "rule": "Treat verbal promises of future raises, stock options, or growth opportunities as non-binding and exclude them from base salary negotiation",
+      "condition": "When a recruiter pivots to equity, future raises, or 'great growth opportunities' to justify a lower base...",
+      "action": "Acknowledge the upside, then redirect: 'those represent future value I create; right now we're agreeing on what my current experience is worth'",
+      "because": "The source explicitly categorizes all such items as '各种各样的饼（全都是泡沫）' and provides scripts to deflect them",
+      "regions": []
+    },
+    {
+      "rule": "Watch for hedging language from HR as a signal that the offer is negotiable",
+      "condition": "When HR says phrases like 'normally...', 'generally speaking...', 'I'll need to check on that', or 'let me ask internally'...",
+      "action": "Take this as confirmation that flexibility exists and push harder for your target number",
+      "because": "The source explicitly lists these phrases as signals that 'the company's compensation is elastically adjustable'",
+      "regions": []
+    },
+    {
+      "rule": "If your bonus history is volatile, present a multi-year average as your compensation base",
+      "condition": "When your most recent year had an unusually low bonus that would make your total comp appear artificially low...",
+      "action": "Provide a 3-year average with supporting bank statements, and negotiate the new offer against that average",
+      "because": "Case B in the source shows a candidate got 8% above the 3-year average — more than 15% above last year's actual — by presenting the multi-year data proactively",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Candidate-to-role match percentage",
+      "why_it_matters": "The higher the match, the more leverage the candidate has — a weak match means the employer can easily look at other candidates if the negotiation stalls",
+      "how_to_assess": "Honestly map your actual experience against each listed job requirement; the source suggests 80%+ match as the threshold for aggressive negotiation",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Company urgency to fill the role",
+      "why_it_matters": "A company that is actively understaffed will approve higher-than-normal offers to close quickly; a company recruiting speculatively will not",
+      "how_to_assess": "Research via professional networks (e.g., 脉脉) to see how long the role has been open and whether the team is visibly short-handed",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Whether you hold at least one other competing offer",
+      "why_it_matters": "A real competing offer transforms negotiation from 'please give me more' to 'I have alternatives' — it shifts power and creates genuine urgency for the recruiter",
+      "how_to_assess": "The source advises not to negotiate aggressively on your first-ever offer if you have no backup; wait until you have a baseline offer before pushing hard at any single employer",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Compensation structure differences between old and new employer",
+      "why_it_matters": "Direct monthly salary comparisons are misleading when one employer pays 12 months and the other pays 13, or one provides housing while the other does not",
+      "how_to_assess": "Convert all compensation to a single annual total-comp number before comparing; monetize non-cash benefits at market rates",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "HR's actual authority level vs. stated authority",
+      "why_it_matters": "HR often claims a ceiling that is actually their personal approval limit, not the true maximum — a strong candidate can trigger a special approval process above that limit",
+      "how_to_assess": "Watch for hedging phrases; ask whether a special exception process exists; reference the recruiter's interest in closing to motivate them to escalate",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Gap between current salary and market rate for the role",
+      "why_it_matters": "If your current salary is significantly below market, using it as the negotiation base disadvantages you; framing the ask around market rate is more defensible",
+      "how_to_assess": "Check job boards and salary tools for the same title, years of experience, and city; document the gap explicitly",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Leaving compensation details vague during early recruiter calls to avoid 'anchoring low'",
+      "unstated_consequence": "After the offer is issued, trying to add overlooked components (13th month, meal stipend, housing benefit) feels like bad faith to the recruiter and can collapse the deal entirely",
+      "who_it_affects": "Candidates who are disorganized about their own compensation or who assume the recruiter will figure it out",
+      "regions": []
+    },
+    {
+      "choice": "Accepting a salary figure that seems like a 20–30% raise over monthly base",
+      "unstated_consequence": "The raise disappears or reverses when the new company pays 12 months vs. 13, has lower bonus averages, lower social insurance contributions, or removes non-monetary benefits like subsidized housing or meal cards",
+      "who_it_affects": "Candidates who compare only headline monthly base figures without converting to total annual compensation",
+      "regions": []
+    },
+    {
+      "choice": "Negotiating purely on base salary while ignoring bonus structure",
+      "unstated_consequence": "At companies where bonus is a large share of total comp, winning a higher base but accepting a lower expected bonus can result in lower total comp than an alternative offer with lower base but reliable bonus",
+      "who_it_affects": "Candidates at companies or levels where bonus is material (finance, tech, senior roles)",
+      "regions": []
+    },
+    {
+      "choice": "Verbally accepting or strongly signaling acceptance before clarifying all terms",
+      "unstated_consequence": "Once the recruiter believes the deal is done, they lose motivation to re-open any aspect of it; asking to adjust afterward is perceived as reneging and damages the relationship",
+      "who_it_affects": "Candidates who are conflict-averse and signal agreement prematurely to avoid tension",
+      "regions": []
+    },
+    {
+      "choice": "Relying on verbal promises about future salary increases or performance bonuses as part of the total package",
+      "unstated_consequence": "Verbal commitments are unenforceable; the source explicitly flags that year-end bonuses paid in June of the following year, discretionary raises, and unwritten equity grants may never materialize",
+      "who_it_affects": "First-time job changers or anyone joining a company without verifying what is written into the contract",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Giving a vague salary range instead of a specific number",
+      "why_it_happens": "Candidates fear commitment and hope flexibility will help them; they anchor low with the floor of their range without realizing it",
+      "consequence": "Recruiter anchors to the low end of the range; candidate feels underpaid but has no grounds to push back since they gave the number",
+      "warning_signs": [
+        "Saying '5k–10k is fine'",
+        "Saying 'somewhere around X to Y'"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Failing to document all components of current compensation before negotiating",
+      "why_it_happens": "Candidates know their monthly take-home intuitively but have never summed the full package; they assume the recruiter will ask follow-up questions",
+      "consequence": "Post-offer renegotiation attempts look dishonest and damage trust; the recruiter may move to the second-choice candidate rather than re-open the approval process",
+      "warning_signs": [
+        "Can only quote monthly base when asked about compensation",
+        "Has never computed annual total comp including bonuses and benefits"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Accepting HR's framing that 'maximum raise is X%' as a fixed constraint",
+      "why_it_happens": "The policy sounds official and candidates feel they have no standing to challenge a stated company rule",
+      "consequence": "Candidate leaves money on the table; the real ceiling (with special approval) was higher, but candidate never triggered the escalation process",
+      "warning_signs": [
+        "Immediately accepting the first number after HR mentions a policy",
+        "Not asking whether exceptions or special approvals exist"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Treating future equity, bonuses, and growth opportunities as equivalent to current base salary in negotiations",
+      "why_it_happens": "HR actively promotes these as substitutes; candidates are susceptible to optimistic narratives, especially at growing companies",
+      "consequence": "Candidate accepts a lower base on the strength of uncertain future payouts that may never arrive; they are locked into the lower base for all future raise calculations",
+      "warning_signs": [
+        "Feeling satisfied after recruiter mentions 'great stock options'",
+        "Mentally adding unconfirmed bonus to base to reach a target number"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Negotiating without a competing offer or any leverage when market conditions are weak",
+      "why_it_happens": "Candidates feel pressure to close quickly in a tough job market and overestimate their negotiating position",
+      "consequence": "Pushing too hard without leverage leads to offer rescission or the recruiter turning to other candidates; candidate ends up with nothing",
+      "warning_signs": [
+        "Only one active application",
+        "Long job search with no other offers pending",
+        "Candidate has told the recruiter they have no other options"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Inflating or fabricating salary history to anchor the negotiation higher",
+      "why_it_happens": "Candidates believe they can get away with unverifiable claims; they want to establish a higher baseline",
+      "consequence": "Employers increasingly cross-check via bank statements, tax records, and background checks; fabrication can result in offer rescission, contract termination, and industry blacklisting",
+      "warning_signs": [
+        "Candidate is slow or evasive when asked for salary proof",
+        "Stated salary is inconsistent across documents"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have at least one other offer at or near your target number?",
+      "what_it_reveals": "Whether you have real leverage or are negotiating from pure desire",
+      "follow_up_if_yes": "Use the competing offer as a reference point; express preference for this employer and ask for a specific number you would accept to close",
+      "follow_up_if_no": "Build leverage through match quality and company urgency arguments rather than competing offers; avoid aggressive tactics that could kill the deal",
+      "regions": []
+    },
+    {
+      "question": "Have you converted your current total compensation to a single annual number including all components?",
+      "what_it_reveals": "Whether you can make an apples-to-apples comparison with the new offer",
+      "follow_up_if_yes": "Use that number as your negotiation anchor and document each component with proof",
+      "follow_up_if_no": "Stop and build the full picture before entering any salary discussion; missing components discovered post-offer create damaging renegotiations",
+      "regions": []
+    },
+    {
+      "question": "What is the compensation structure of the new company — how many months of base, how is bonus calculated, what benefits are included?",
+      "what_it_reveals": "Whether the headline monthly number is directly comparable to your current comp or requires adjustment",
+      "follow_up_if_yes": "If structure is known, recalculate both sides on the same basis before setting your target number",
+      "follow_up_if_no": "Ask these questions before revealing your number; the source provides exact scripts for this inquiry",
+      "regions": []
+    },
+    {
+      "question": "How well do you match the specific requirements of this role, honestly assessed?",
+      "what_it_reveals": "How much negotiating leverage you actually have — a high-match candidate is harder to replace, giving them more room to push",
+      "follow_up_if_yes": "If match is 80%+, negotiate assertively and invoke match quality as a reason for the premium",
+      "follow_up_if_no": "If match is below 70%, prioritize getting the offer over maximizing the number; aggressive negotiation risks losing the offer to a better-matched candidate",
+      "regions": []
+    },
+    {
+      "question": "Is the HR representative using hedging language like 'normally', 'generally', or 'I'll need to check'?",
+      "what_it_reveals": "Whether the stated compensation ceiling is a hard limit or a soft starting position",
+      "follow_up_if_yes": "Push for a specific number above their initial offer and ask them to escalate internally",
+      "follow_up_if_no": "If language is firm and definitive, assess whether the gap between offer and expectation is worth risking the deal",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "HR's stated maximum salary or raise cap is a fixed company policy that cannot be exceeded",
+      "actual_reality": "HR often has a personal approval limit below the true ceiling; exceeding it requires going to a higher manager for special approval, which HR will do if the candidate is strong enough and they are motivated to close",
+      "implication": "Candidates should not accept HR's first ceiling as final — they should give HR the motivation and supporting evidence to escalate by making the case for their own value clearly",
+      "regions": []
+    },
+    {
+      "common_belief": "The right time to discuss salary expectations is at the formal offer stage",
+      "actual_reality": "Recruiters and headhunters begin forming compensation expectations from the very first contact; questions about current salary and job-change motivation in the first call are already part of the compensation negotiation",
+      "implication": "Candidates must have their full compensation picture ready from the first recruiter call, not just when the formal offer arrives",
+      "regions": []
+    },
+    {
+      "common_belief": "Normal job-change salary increases are 20–30%",
+      "actual_reality": "As of recent years (2024–2025 based on context), the market for successful negotiated increases has compressed to 10–15% in many industries; 20–30% is achievable but requires strong leverage",
+      "implication": "Candidates anchoring their expectations to the old 20–30% norm may need to adjust targets or accept that they need unusually strong leverage to achieve it",
+      "regions": []
+    },
+    {
+      "common_belief": "Once an offer is issued in writing, the negotiation is over",
+      "actual_reality": "A written offer can still be renegotiated if done quickly and professionally, but it is significantly harder — the recruiter must restart the approval process, which they are reluctant to do",
+      "implication": "All clarifications and counter-requests should be made before the offer is formally issued, not after",
+      "regions": []
+    },
+    {
+      "common_belief": "Mentioning a competing offer is risky and may offend the recruiter",
+      "actual_reality": "A real competing offer at or above your target is one of the most effective pieces of leverage available; experienced recruiters expect it and respond to it by seeking special approval",
+      "implication": "Candidates should not hide competing offers out of politeness; they should disclose them strategically while expressing genuine preference for the current employer to avoid appearing mercenary",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they respond when asked their salary expectation",
+      "naive_pattern": "Gives a vague range ('5k to 10k is fine') or says 'I trust the company to give me a fair number'",
+      "informed_pattern": "States a specific number grounded in documented current comp plus a justified market-rate adjustment, and can explain the logic component by component",
+      "why_it_matters": "A vague answer anchors the negotiation at the low end; an informed specific ask anchors it at the right level and signals competence",
+      "regions": []
+    },
+    {
+      "dimension": "How they handle HR's 'we can only do X% raise' response",
+      "naive_pattern": "Accepts the constraint and tries to negotiate within the stated percentage",
+      "informed_pattern": "Challenges the base the percentage is applied to — argues that current salary is below market or that an upcoming internal raise should be the true base",
+      "why_it_matters": "Accepting the percentage framing means fighting over small dollars; reframing the base can result in thousands more even at the same percentage",
+      "regions": []
+    },
+    {
+      "dimension": "How they treat future bonuses, equity, and growth promises during negotiation",
+      "naive_pattern": "Mentally counts verbal promises as part of the package and reduces their base salary ask accordingly",
+      "informed_pattern": "Explicitly separates current base from future and uncertain elements; negotiates each independently and insists that promises be written into the contract",
+      "why_it_matters": "Verbal upside that never materializes leaves the candidate locked into a lower base with no recourse",
+      "regions": []
+    },
+    {
+      "dimension": "Preparation before the first recruiter call",
+      "naive_pattern": "Thinks about salary only when asked; knows their monthly take-home but not their full annual comp",
+      "informed_pattern": "Has already built a full compensation spreadsheet with every component documented and proof materials ready to send within minutes",
+      "why_it_matters": "Being caught unprepared forces improvisation; improvisation leads to underquoting, overlooked components, and post-offer renegotiations that damage trust",
+      "regions": []
+    },
+    {
+      "dimension": "Timing of negotiation",
+      "naive_pattern": "Waits for the 'salary negotiation phase' and treats early recruiter calls as purely informational",
+      "informed_pattern": "Understands that compensation positioning begins at first contact and treats every question about current salary as part of the negotiation",
+      "why_it_matters": "By the time a formal offer is made, the recruiter has already formed a comp ceiling based on what the candidate communicated earlier; late corrections are much harder",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "HR will give you a fair salary if you trust the process — no need to negotiate aggressively",
+      "why_believed": "It feels confrontational to push back; many candidates want to appear agreeable and assume companies act in good faith on compensation",
+      "actual_rule": "HR is optimizing for the company's budget, not the candidate's wellbeing; the opening offer almost always has negotiation room built in",
+      "real_consequence": "Candidates who don't negotiate leave 20–60% of achievable compensation on the table, according to the source",
+      "regions": []
+    },
+    {
+      "misconception": "Giving a wide salary range is safer because it gives you flexibility",
+      "why_believed": "A range feels less committal and candidates think it avoids conflict while still conveying their general expectations",
+      "actual_rule": "Recruiters anchor to the bottom of any range you give; a range signals indecision and gives the employer a free anchor at your minimum",
+      "real_consequence": "Candidate gets offered the floor of their stated range or lower, having anchored the negotiation against themselves",
+      "regions": []
+    },
+    {
+      "misconception": "You can negotiate salary only at the formal offer stage",
+      "why_believed": "The offer stage feels like the 'official' moment for compensation discussion; earlier conversations feel premature",
+      "actual_rule": "Compensation framing begins at the first recruiter call when they ask about current salary and job-change motivation; the formal offer stage just confirms what was already established",
+      "real_consequence": "Candidates who don't manage the comp framing early find the recruiter has already anchored internally to a number, making later negotiation much harder",
+      "regions": []
+    },
+    {
+      "misconception": "HR's stated salary ceiling or raise-cap policy is a hard limit you cannot exceed",
+      "why_believed": "The phrasing 'company policy' sounds official and non-negotiable; candidates don't want to appear unreasonable by challenging a stated rule",
+      "actual_rule": "HR's stated ceiling is often their personal approval authority, not the company's true maximum; strong candidates can trigger a special approval process",
+      "real_consequence": "Candidates accept a below-potential offer when a special approval would have yielded their target number",
+      "regions": []
+    },
+    {
+      "misconception": "Inflating your salary history slightly is a safe way to get a higher offer since it's hard to verify",
+      "why_believed": "In the past, salary verification was rare; candidates assume the recruiter takes their word for it",
+      "actual_rule": "Employers increasingly require bank statements, tax records, and original offer letters; background checks include HR-to-HR salary verification calls",
+      "real_consequence": "Fabrication is discoverable; if caught it results in offer rescission, contract termination, and potential industry blacklisting",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Candidate (小王) negotiated salary without disclosing full compensation details upfront; failed to mention 13th-month salary and various supplements during initial call",
+      "decision": "Let the recruiter issue an offer based on incomplete information, then tried to raise the 13th month, meal stipend, and transport allowance after the written offer was issued",
+      "outcome": "Recruiter became frustrated, offer re-approval was burdensome, recruiter began considering second-choice candidate; deal stalled with neither party advancing it",
+      "lesson": "All compensation components must be communicated proactively before the offer is issued — post-offer discovery attempts are perceived as bad faith and can kill the deal",
+      "regions": []
+    },
+    {
+      "situation": "Same candidate (小王, improved version) prepared a full compensation breakdown including 13th month, 3-year bonus average, and imminent pay raise; disclosed a competing offer during negotiations",
+      "decision": "Presented documented comp total of ~430k/year, argued for 55k/year target based on upcoming raise as base; later disclosed a competing offer at target level and expressed genuine preference for current company; asked for specific number (36k/month) to close",
+      "outcome": "Recruiter escalated to special approval process with hiring manager; candidate received 36k/month offer, above the initially stated ceiling of 35k",
+      "lesson": "Documented comp history, a competing offer, and a specific closing ask (not a range) together can unlock special approval processes that exceed stated HR ceilings",
+      "regions": []
+    },
+    {
+      "situation": "Candidate (小陈) had a volatile bonus history — 1 month last year but 4 months average the two prior years",
+      "decision": "Headhunter presented a 3-year average compensation figure with supporting bank statements, requesting 10% above that average",
+      "outcome": "Employer offered 8% above the 3-year average — lower than the 10% ask but substantially higher than 15% above last year's actual comp would have produced",
+      "lesson": "When recent comp is anomalously low, anchoring the negotiation to a documented multi-year average is more effective than fighting over a percentage of the bad year",
+      "regions": []
+    },
+    {
+      "situation": "Friend of poster received initial max offer of 10k vs. expected 14k; company had pressing hiring need and candidate had 4+ years relevant experience with 80%+ role match",
+      "decision": "Candidate itemized specific differentials between old and new company benefits (social insurance contribution levels, absence of overtime pay), then mentioned a competing offer to create urgency",
+      "outcome": "HR called the next day and confirmed 14k offer had been approved",
+      "lesson": "Concrete benefit-differential arguments combined with competing offer leverage are more effective than simply restating a desired number; the combination triggers HR escalation",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Candidate says 'HR already said the maximum is X, I don't think it's possible to negotiate further'",
+      "underlying_state": "Authority deference — treating an institutional-sounding statement as immovable fact; fear of appearing difficult or unreasonable",
+      "how_it_manifests": "Candidate immediately accepts stated ceiling, abandons negotiation, and either accepts a below-market offer or walks away without trying",
+      "expert_move": "Reframe HR's ceiling as their personal authority limit, not the company's true maximum; explain that a strong candidate case gives HR the ammunition to escalate — your job is to provide that ammunition",
+      "regions": []
+    },
+    {
+      "trigger": "Candidate says 'the job market is bad right now, I should just take what they give me'",
+      "underlying_state": "Scarcity mindset and catastrophizing — overweighting the risk of losing the offer relative to the benefit of negotiating",
+      "how_it_manifests": "Candidate accepts the first offer without negotiating, even when the company clearly needs them and has flexibility",
+      "expert_move": "Point out that by the offer stage the company has already invested significantly in the candidate; the cost of restarting the search is real for them too — the candidate has more leverage than they feel they do",
+      "regions": []
+    },
+    {
+      "trigger": "Candidate feels excitement and relief at receiving an offer and wants to close quickly to avoid risking it",
+      "underlying_state": "Loss aversion activated by finally having an offer in hand — fear that any push-back will cause the offer to be rescinded",
+      "how_it_manifests": "Candidate accepts immediately without counter-offering, or makes a token counter well below their actual target",
+      "expert_move": "Normalize the expectation that negotiation is standard and expected; a well-framed counter virtually never results in offer rescission — recruiters build in buffer precisely because they expect negotiation",
+      "regions": []
+    },
+    {
+      "trigger": "Candidate receives an offer below their target and asks 'should I just accept? I don't want to rock the boat'",
+      "underlying_state": "Conflict avoidance — discomfort with assertiveness framed as pragmatism",
+      "how_it_manifests": "Candidate frames accepting a below-target offer as 'being realistic' rather than acknowledging they are avoiding a difficult conversation",
+      "expert_move": "Separate the emotional discomfort from the financial stakes; provide a script so the candidate only needs to repeat prepared language rather than improvise under pressure",
+      "regions": []
+    },
+    {
+      "trigger": "Candidate hesitates to mention a competing offer because it 'feels dishonest' or 'too aggressive'",
+      "underlying_state": "Social norm violation anxiety — fear that using leverage will be perceived as manipulative or will damage the relationship with the recruiter",
+      "how_it_manifests": "Candidate withholds their strongest piece of leverage out of politeness, leaving thousands on the table",
+      "expert_move": "Frame competing offers as market information, not threats — 'I want to be transparent that I'm evaluating another opportunity, and I'd prefer to be here, but I need the numbers to make sense'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'My current salary is low, so I don't deserve a big raise' or 'HR is using my current salary as the baseline'",
+      "reframe": "Your current salary reflects what you were worth when you joined that company years ago — it does not reflect what your current experience is worth on the market today",
+      "why_it_works": "Separates historical accident (underpaid entry) from current market value; shifts the anchor from a number that disadvantages the candidate to one grounded in what the role actually requires",
+      "example_language": "'My current salary reflects my compensation 3 years ago when I joined; my growth since then is not captured in that number, and it is already below market average'",
+      "regions": []
+    },
+    {
+      "original_framing": "'They promised good bonuses and growth opportunities, so maybe the lower base is okay'",
+      "reframe": "Future bonuses are future value you will create then — they are a separate question from what your current experience is worth today",
+      "why_it_works": "Forces a clean separation between present compensation for present skills versus future compensation for future performance; prevents the candidate from discounting certain present-value dollars for uncertain future ones",
+      "example_language": "'Future raises represent the extra value I create after I join; what we're negotiating now is what my existing experience is worth — those are two different questions'",
+      "regions": []
+    },
+    {
+      "original_framing": "'The company's policy is a maximum 10% raise, so I can only push within that range'",
+      "reframe": "The percentage is not the constraint — the base the percentage is applied to is the constraint; change the base and the same percentage yields a very different number",
+      "why_it_works": "Breaks the false assumption that accepting the percentage framing means accepting the employer's preferred base; opens up a new axis of negotiation",
+      "example_language": "'If we apply 10% to my salary as it will be after next month's internal adjustment, the number looks quite different from applying it to today's below-market figure'",
+      "regions": []
+    },
+    {
+      "original_framing": "'I need to convince HR to give me more money'",
+      "reframe": "You need to give HR the ammunition to go to their manager and fight for you — your job is to make their internal case as easy as possible",
+      "why_it_works": "Shifts the candidate from an adversarial 'demanding' posture to a collaborative 'enabling' posture; aligns the candidate's interest with the recruiter's interest in closing the deal",
+      "example_language": "'Here is the documentation of my current comp and market data — I hope this gives you what you need to make the case internally'",
+      "regions": []
+    },
+    {
+      "original_framing": "'I should ask for a range to seem flexible and reasonable'",
+      "reframe": "Giving a range means you have already named your floor — the recruiter will anchor to it and call it your expectation",
+      "why_it_works": "Reveals the hidden cost of appearing 'flexible'; transforms the candidate's instinct for politeness into a concrete numerical disadvantage they can see clearly",
+      "example_language": "'A range just tells them the lowest number you'll accept — give them one number, the right one'",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_面试时谈薪的技巧有些什么啊",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

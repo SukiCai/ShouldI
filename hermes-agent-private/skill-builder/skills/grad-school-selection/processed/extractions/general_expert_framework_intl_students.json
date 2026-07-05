@@ -1,0 +1,330 @@
+{
+  "source_file": "expert_framework_intl_students.txt",
+  "heuristics": [
+    {
+      "rule": "You are applying to an advisor, not a program",
+      "condition": "When evaluating PhD programs...",
+      "action": "...prioritize identifying and confirming interest from a specific advisor over program prestige or ranking",
+      "because": "The advisor controls your funding, research direction, graduation timeline, and career network — a bad advisor at a top program produces worse outcomes than a good advisor at a lower-ranked program"
+    },
+    {
+      "rule": "Apply to 8–12 programs total, no more and no less",
+      "condition": "When building your graduate school application portfolio...",
+      "action": "...target exactly 8–12 programs split across 2–3 reach, 4–5 core, and 2–3 safe programs",
+      "because": "Fewer than 8 creates catastrophic risk in a bad admissions cycle; more than 12 yields diminishing returns while consuming significant time and application fees"
+    },
+    {
+      "rule": "Confirm advisor interest at 5+ programs before submitting applications",
+      "condition": "When applying to PhD programs cold without prior faculty contact...",
+      "action": "...reach out to potential advisors and secure confirmed interest before finalizing your list",
+      "because": "Applications where an advisor already knows your name convert at significantly higher rates than cold applications submitted without any faculty contact"
+    },
+    {
+      "rule": "Ask former lab members whether they would choose the advisor again",
+      "condition": "When screening a potential PhD advisor...",
+      "action": "...speak to 3–5 current and recent students, specifically including those who have already left the lab, and ask explicitly whether they would choose that advisor again",
+      "because": "Current students may feel social pressure to respond positively; recently departed students are more likely to give unfiltered assessments of the actual advising relationship"
+    },
+    {
+      "rule": "Track where the last 5 graduated students are now",
+      "condition": "When evaluating a potential PhD advisor's quality...",
+      "action": "...look up the employment outcomes, job titles, and time-to-degree of the advisor's last 5 PhD graduates",
+      "because": "Past placement outcomes are a concrete, verifiable indicator of advisor effectiveness and network quality — more reliable than reputation or self-reported metrics"
+    },
+    {
+      "rule": "For US immigration stability goals, treat a funded PhD as an immigration instrument, not just an academic credential",
+      "condition": "When an international student wants to remain in the US long-term and is concerned about H-1B lottery odds...",
+      "action": "...factor in that a funded PhD provides 5+ years of F-1 legal stay, resets OPT, and builds the publication record that may qualify for EB-1A or O-1 visa pathways that bypass the lottery",
+      "because": "A funded PhD provides compounding immigration benefits (extended legal stay, OPT reset, advanced degree H-1B pool access, lottery-bypass visa eligibility) that a self-funded MS does not"
+    },
+    {
+      "rule": "Choose program location based on OPT job search geography, not just academic fit",
+      "condition": "When comparing otherwise similar programs in different locations...",
+      "action": "...weight programs in major tech hubs (Bay Area, NYC, Seattle, Boston) more heavily for students targeting US employment",
+      "because": "Programs in tech hubs provide 3–6 months of practical job search advantage through denser employer presence, stronger alumni networks, and on-campus recruiting — a structural advantage that compounds during the limited OPT window"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Full funding status (tuition + stipend)",
+      "why_it_matters": "Determines whether the degree costs money or generates income — a fully funded PhD eliminates tuition debt and provides living expenses, while an unfunded MS may require significant financial outlay",
+      "how_to_assess": "Confirm explicitly in the offer letter whether tuition is covered and whether a stipend is included; do not assume funding based on program reputation",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor funding continuity and graduation record",
+      "why_it_matters": "If an advisor's grant ends, student funding may end; if an advisor has not successfully graduated students recently, the risk of degree completion failure increases substantially",
+      "how_to_assess": "Ask the advisor directly about their current grant status; check how many students have graduated from the lab in the last 3 years and where those students are now",
+      "weight": "high"
+    },
+    {
+      "factor": "Genuine interest in research as a practice",
+      "why_it_matters": "PhD programs require 5–6 years of deep, slow, often frustrating research work; students without genuine research motivation face 40–50% dropout rates and significant opportunity cost if they leave without a degree",
+      "how_to_assess": "Honestly assess whether you have already done research and whether you found it intrinsically engaging — not just whether you performed well academically",
+      "weight": "high"
+    },
+    {
+      "factor": "Program location relative to target job market",
+      "why_it_matters": "OPT job search must occur within a limited post-graduation window; proximity to employer density and alumni networks creates a structural advantage that cannot be replicated by applicant quality alone",
+      "how_to_assess": "Map the program's location against target employer presence; check whether major employers in your sector conduct on-campus recruiting at the program",
+      "weight": "high"
+    },
+    {
+      "factor": "STEM Designated Degree Program status",
+      "why_it_matters": "Determines whether the degree qualifies for 36-month STEM OPT extension versus standard 12-month OPT — a 24-month difference in legally authorized post-graduation work time",
+      "how_to_assess": "Verify the specific degree program's presence on the official STEM Designated Degree Program List; do not assume STEM OPT based on program subject area alone",
+      "weight": "high"
+    },
+    {
+      "factor": "Industry placement track record for international students",
+      "why_it_matters": "General placement statistics may not reflect outcomes for international students specifically, who face visa sponsorship requirements that narrow the eligible employer pool",
+      "how_to_assess": "Ask the program directly for placement data broken out by visa status or international student outcomes; speak to current international students about their job search experience",
+      "weight": "high"
+    },
+    {
+      "factor": "Average time-to-degree and funding in later years",
+      "why_it_matters": "Programs that offer strong first-year funding packages but do not guarantee funding in years 4–6 create financial risk exactly when students are most vulnerable — near completion but not yet graduated",
+      "how_to_assess": "Ask explicitly what funding looks like in years 4, 5, and 6 of the program; ask current students how funding continuity has worked in practice",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor contingency plan if advisor leaves mid-degree",
+      "why_it_matters": "If an advisor leaves the university, student funding and research support may be disrupted or terminated, potentially stranding the student mid-degree",
+      "how_to_assess": "Ask the program coordinator and the advisor directly what the policy is if a student's primary advisor departs; assess whether the department has a strong enough faculty bench for reassignment",
+      "weight": "medium"
+    },
+    {
+      "factor": "Type of funding mechanism (RA vs. TA vs. Fellowship)",
+      "why_it_matters": "RA ties your degree work to the advisor's grant and research agenda; TA trades research time for teaching stability; fellowships provide independence but are rare and have eligibility restrictions for international students",
+      "how_to_assess": "Read the offer letter carefully to identify the specific funding mechanism; ask what percentage of students in the program receive each type and how funding typically transitions across years",
+      "weight": "medium"
+    },
+    {
+      "factor": "Career target specificity",
+      "why_it_matters": "A clearly defined industry career target may not require a PhD and may be better served by a 2-year MS with strong industry placement, while a research or academic career target strongly favors PhD",
+      "how_to_assess": "Identify specific job titles you want within 5 years and research whether those roles require a PhD, prefer a PhD, or are equally accessible with an MS",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing a PhD for prestige or immigration purposes without genuine research interest",
+      "unstated_consequence": "40–50% PhD dropout rate means a significant probability of spending 2–3 years and leaving with no degree, no OPT, and a gap in your resume — worse than if you had entered industry directly",
+      "who_it_affects": "Students who are academically strong but have not done research before and are drawn to the PhD label rather than the work itself"
+    },
+    {
+      "choice": "Accepting an RA-funded PhD position",
+      "unstated_consequence": "Your dissertation topic is partially or fully controlled by the advisor's grant needs, not your own intellectual agenda — your research independence is structurally limited even if the advisor is supportive",
+      "who_it_affects": "Students with strong independent research ideas who assume funded PhD means freedom to pursue their own questions"
+    },
+    {
+      "choice": "Choosing a high-ranking program in a non-hub location over a lower-ranked program in a tech hub",
+      "unstated_consequence": "The prestige advantage may be partially or fully offset by the 3–6 month practical job search disadvantage during the limited OPT window — a window that cannot be extended if the job search fails",
+      "who_it_affects": "International students targeting US industry employment who prioritize rankings over placement infrastructure"
+    },
+    {
+      "choice": "Accepting a TA-funded PhD position",
+      "unstated_consequence": "10–20 hours per week of teaching load reduces research output and can extend time-to-degree — a cost that compounds over multiple years and delays graduation, OPT start, and career entry",
+      "who_it_affects": "Students who underestimate how much time teaching actually consumes and assume they can maintain full research productivity alongside teaching responsibilities"
+    },
+    {
+      "choice": "Relying on a university fellowship (1-year award) as your primary funding source",
+      "unstated_consequence": "University fellowships are typically 1-year awards, not multi-year guarantees — after year one, students often transition to RA or TA funding under conditions that were not fully specified in the original offer",
+      "who_it_affects": "Students who interpret a first-year fellowship offer as indicative of multi-year financial security"
+    },
+    {
+      "choice": "Accepting an advisor who has no recent funded graduates",
+      "unstated_consequence": "The advisor's ability to write strong, credible reference letters for industry or academic jobs declines over time without recent placement success — your career launch is partially dependent on their recent track record",
+      "who_it_affects": "Students evaluating advisors primarily on publication quality or prestige without checking whether those advisors actively place students"
+    },
+    {
+      "choice": "Pursuing an MS to transition to industry quickly",
+      "unstated_consequence": "If the MS program is not fully funded, the cost of tuition plus living expenses represents a financial investment that requires rapid employment at a salary premium to recover — failure to convert to a job during OPT creates compounding financial and immigration pressure simultaneously",
+      "who_it_affects": "International students self-funding an MS who underestimate how competitive OPT job conversion is, especially in down hiring cycles"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Choosing a PhD program based on prestige without confirming advisor quality or genuine research interest",
+      "why_it_happens": "International students have been conditioned to optimize for brand names and rankings through the undergraduate admissions process; they apply the same heuristic to PhD programs without understanding that the advisor relationship is the primary determinant of outcomes",
+      "consequence": "High probability of leaving the PhD program without a degree after 2–3 years, representing a major opportunity cost in time, immigration status, and career trajectory",
+      "warning_signs": [
+        "Student cannot name a specific faculty member they want to work with at their target programs",
+        "Student's primary stated reason for PhD is prestige, immigration stability, or not knowing what else to do"
+      ]
+    },
+    {
+      "pattern": "Submitting applications without prior contact with potential advisors",
+      "why_it_happens": "Students treat PhD applications like undergraduate admissions — a centralized process evaluated by an admissions committee — without understanding that in most STEM PhD programs, faculty interest is the primary gate for admission",
+      "consequence": "Dramatically lower conversion rate on applications; rejection from programs where the student would have been admitted if they had established prior advisor contact",
+      "warning_signs": [
+        "Student plans to apply to 12 programs without emailing any faculty",
+        "Student believes the statement of purpose alone will convey research fit to admissions committees"
+      ]
+    },
+    {
+      "pattern": "Ignoring immigration implications of program type, location, and funding structure",
+      "why_it_happens": "Students compartmentalize the academic decision and the immigration decision, treating them as separate — often because they lack knowledge of how F-1 OPT, STEM OPT, H-1B, and employment-based green card pathways interact with graduate degree choices",
+      "consequence": "Students choose programs that are academically strong but structurally disadvantaged for US employment — wrong location, wrong degree type for STEM OPT, or wrong credential for advanced degree H-1B pool",
+      "warning_signs": [
+        "Student has not verified whether their target program is on the STEM Designated Degree Program List",
+        "Student has not considered how program location affects OPT job search logistics"
+      ]
+    },
+    {
+      "pattern": "Accepting funding offers without understanding the mechanism or multi-year continuity",
+      "why_it_happens": "The relief of receiving any funding offer creates a cognitive bias toward acceptance; students do not ask hard questions about what happens to funding in years 4–6 or what the funding is contingent on",
+      "consequence": "Students reach years 4–5 of a PhD and discover funding is no longer guaranteed, forcing them to choose between finishing under financial strain or leaving without a degree",
+      "warning_signs": [
+        "Student cannot describe what type of funding they have been offered (RA, TA, or fellowship)",
+        "Student has not asked about funding continuity beyond year 1 or 2"
+      ]
+    },
+    {
+      "pattern": "Failing to screen the advisor before committing to a program",
+      "why_it_happens": "Students feel it would be inappropriate or presumptuous to ask hard questions of faculty during the application and decision phase; they defer to politeness norms at the expense of due diligence",
+      "consequence": "Students discover advisor misalignment (poor mentorship, grant ending, ownership of publications, high lab turnover) only after they have relocated and begun the program — at which point exit costs are very high",
+      "warning_signs": [
+        "Student has not spoken to any current or former students in the target lab",
+        "Student cannot find placement information for the advisor's recent graduates"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is this program fully funded — meaning tuition covered plus a living stipend — or will you be paying tuition?",
+      "what_it_reveals": "Whether the student understands the full financial structure of their offer and whether they are comparing programs on a like-for-like financial basis",
+      "follow_up_if_yes": "What is the funding mechanism (RA, TA, fellowship), and have you confirmed what happens to funding in years 4–6?",
+      "follow_up_if_no": "Do you have the financial resources to cover tuition and living expenses, and have you modeled the return on investment if OPT job conversion is delayed?"
+    },
+    {
+      "question": "Have you verified the potential advisor's current funding status and looked up where their last 5 graduated students are now?",
+      "what_it_reveals": "Whether the student is evaluating the advisor as an operational mentor and career launcher versus evaluating them solely on academic reputation or paper quality",
+      "follow_up_if_yes": "What did you find, and did you speak to any of those former students directly?",
+      "follow_up_if_no": "This is the single highest-leverage due diligence action for a PhD admit — what is preventing you from doing it before your decision deadline?"
+    },
+    {
+      "question": "Do you genuinely want to do research as a practice, or are you pursuing a PhD primarily for immigration stability, prestige, or because you are unsure what else to do?",
+      "what_it_reveals": "The root motivation for PhD pursuit — which determines whether the student is likely to sustain the commitment through the slow, frustrating middle years of a PhD",
+      "follow_up_if_yes": "Have you already done research and found it intrinsically engaging, or is your interest primarily based on expectation rather than experience?",
+      "follow_up_if_no": "Have you fully explored whether a well-placed MS program would better serve your actual career and immigration goals with less risk and in less time?"
+    },
+    {
+      "question": "Is the program located in a city with dense employer presence for your target sector, and do major employers in your field conduct on-campus recruiting at this program?",
+      "what_it_reveals": "Whether the student has factored geographic constraints on OPT job search into their program selection, or is treating location as a lifestyle preference rather than a structural career variable",
+      "follow_up_if_yes": "Have you spoken to recent international graduates from this program about their actual OPT job search experience?",
+      "follow_up_if_no": "Have you modeled what your job search would look like if you needed to relocate during a 12–36 month OPT window in a competitive hiring market?"
+    },
+    {
+      "question": "Have you verified that the specific degree program you are entering is on the STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether the student has done the specific verification required for STEM OPT eligibility versus assuming eligibility based on the general subject area of the program",
+      "follow_up_if_yes": "Did you verify the specific CIP code for your degree, not just the department name?",
+      "follow_up_if_no": "A non-STEM-designated degree loses 24 months of authorized post-graduation work time — this should be verified before accepting an offer."
+    },
+    {
+      "question": "Have you spoken to at least 2–3 current or recently graduated international students from this program about their actual experience?",
+      "what_it_reveals": "Whether the student is relying on official program materials and rankings versus ground-level intelligence from peers who have navigated the same constraints",
+      "follow_up_if_yes": "Did you speak to anyone who has already left the program — not just current students who may feel social pressure to respond positively?",
+      "follow_up_if_no": "What is preventing direct peer outreach, and are you willing to make a multi-year commitment based solely on official program marketing?"
+    },
+    {
+      "question": "What happens to your visa status if you need to leave this program before completing the degree?",
+      "what_it_reveals": "Whether the student has thought through the immigration downside scenario — a critical risk assessment for international students given the 40–50% PhD dropout rate",
+      "follow_up_if_yes": "Have you consulted with an immigration advisor about your specific contingency options if you leave mid-degree?",
+      "follow_up_if_no": "This is a material risk that should be understood before committing — have you consulted the program's international student advisor about departure scenarios?"
+    },
+    {
+      "question": "If your primary PhD advisor left the university mid-degree, what would happen to your funding and research support?",
+      "what_it_reveals": "Whether the student has assessed advisor-departure risk and whether the program has structural safeguards or whether the student's entire degree is contingent on one person remaining",
+      "follow_up_if_yes": "Has the department given you a written or clearly stated policy on advisor transitions, or is this verbal reassurance?",
+      "follow_up_if_no": "Faculty mobility is a real risk — have you identified a secondary faculty member in the department who could theoretically serve as a backup advisor?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PhD admissions work like undergraduate admissions — a centralized committee reviews all applications and selects the best candidates based on GPA, test scores, and essays",
+      "actual_reality": "In most STEM PhD programs, faculty interest is the primary gate for admission. Professors advocate for students they want to fund and work with. A cold application with no prior faculty contact is structurally disadvantaged relative to an application where an advisor already knows the student's name and research interests.",
+      "implication": "Students should contact potential advisors before submitting applications and confirm interest from at least one faculty member at each program on their list before finalizing where to apply"
+    },
+    {
+      "common_belief": "A world-class program (high ranking) produces better outcomes than a lower-ranked program regardless of other factors",
+      "actual_reality": "A world-class program with a bad advisor produces a worse outcome than a good program with an exceptional advisor. The advisor relationship is the primary determinant of PhD outcomes — not program prestige.",
+      "implication": "Students should weight advisor quality, mentorship track record, and placement outcomes above program ranking when making PhD program decisions"
+    },
+    {
+      "common_belief": "A fellowship offer means your funding is secure for the duration of your PhD",
+      "actual_reality": "University fellowships are typically 1-year awards given to top incoming students — not multi-year guarantees. After year one, students typically transition to RA or TA funding under conditions that may not have been clearly specified at the time of the offer.",
+      "implication": "Students must ask explicitly about multi-year funding continuity and understand what mechanism will replace fellowship funding after year one"
+    },
+    {
+      "common_belief": "NSF GRFP is an external fellowship option that international PhD students should pursue",
+      "actual_reality": "NSF GRFP is restricted to US citizens and permanent residents. International students are ineligible.",
+      "implication": "International students should research fellowship eligibility explicitly before investing time in applications; do not assume that prestigious fellowships are universally accessible"
+    },
+    {
+      "common_belief": "A PhD is always more prestigious and career-valuable than a Masters, so when in doubt, pursue the PhD",
+      "actual_reality": "For students targeting industry employment within 2 years with a specific technical skill need, a well-placed MS program may provide faster, lower-risk career entry than a 5–6 year PhD with 40–50% dropout rates. The PhD is not superior in all career contexts.",
+      "implication": "Students should map their target job titles and timelines first, then determine which credential structure — MS or PhD — is actually required or preferred by employers in that specific sector"
+    },
+    {
+      "common_belief": "Program location is primarily a lifestyle consideration — the actual degree and credential is what matters for career outcomes",
+      "actual_reality": "During the OPT window (12–36 months post-graduation), students must find employment within a constrained timeframe. Programs in major tech hubs have structural recruiting advantages — denser employer networks, stronger alumni presence, and on-campus recruiting from target employers — that translate to a 3–6 month practical job search advantage.",
+      "implication": "For international students dependent on OPT, program location should be treated as a career infrastructure variable, not a lifestyle preference — especially for students without existing US employer networks"
+    },
+    {
+      "common_belief": "The H-1B advanced degree exemption means any Masters degree from a US university improves lottery odds equally",
+      "actual_reality": "Under post-2025 wage-weighted H-1B lottery systems, PhD graduates entering at higher salary levels (OEWS Level III–IV) have better odds. The type of degree and the salary it commands interact with the lottery mechanics — a PhD at a higher salary tier is meaningfully advantaged over an MS at a lower salary tier.",
+      "implication": "International students who are deciding between MS and PhD and who plan to seek H-1B sponsorship should factor in not just the credential tier but the salary level associated with the roles they are targeting"
+    },
+    {
+      "common_belief": "Once you are enrolled in a PhD program, your primary obligation is to your research and dissertation",
+      "actual_reality": "RA-funded students are partially or fully working on their advisor's grant-funded research agenda, which may not fully align with their own dissertation goals. The advisor's grant needs and the student's intellectual development are often in tension, and the power asymmetry typically means the grant wins.",
+      "implication": "Students considering RA-funded positions should explicitly discuss with potential advisors how much latitude they will have to shape their own research direction, and should look at whether prior students from that lab published work that was clearly their own intellectual contribution"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate PhD programs",
+      "junior_pattern": "Ranks programs by prestige, US News ranking, or name recognition; selects target programs based on where they have heard of the institution",
+      "senior_pattern": "Identifies specific faculty whose research agenda matches their interests, verifies those advisors' funding and placement track records, and builds a program list around confirmed advisor interest",
+      "why_it_matters": "Program prestige does not determine PhD outcomes — the advisor relationship does. Optimizing for prestige while ignoring advisor quality is the single most common decision error in PhD program selection"
+    },
+    {
+      "dimension": "How they think about funding offers",
+      "junior_pattern": "Treats any funded offer as equivalent to any other funded offer; focuses on whether funding is present rather than what kind it is and whether it is sustainable through completion",
+      "senior_pattern": "Distinguishes between RA, TA, and fellowship funding; asks about multi-year continuity; models what happens to funding in years 4–6; understands the tradeoffs of each mechanism for research independence and time-to-degree",
+      "why_it_matters": "Funding structure determines research independence, time allocation, and graduation timeline — accepting the wrong funding structure creates compounding costs that are invisible at the time of the offer"
+    },
+    {
+      "dimension": "How they think about the PhD vs. MS decision",
+      "junior_pattern": "Defaults to PhD as the more prestigious option; uses PhD as a hedge against not knowing what they want; treats the decision as primarily academic",
+      "senior_pattern": "Maps the decision to specific career targets, immigration goals, and risk tolerance; evaluates whether 5–6 years of research commitment is actually required for their target outcomes; explicitly assesses whether they have demonstrated genuine research interest",
+      "why_it_matters": "The PhD vs. MS decision has major financial, immigration, and career implications — treating it as purely an academic prestige question leads to choices that are misaligned with actual goals"
+    },
+    {
+      "dimension": "How they think about immigration implications of grad school choice",
+      "junior_pattern": "Treats immigration planning and graduate school selection as separate decisions to be handled at different times; is unaware of how OPT mechanics, STEM designation, H-1B lottery tiers, and EB-1A pathways interact with program type and funding",
+      "senior_pattern": "Integrates immigration strategy directly into program selection criteria; verifies STEM OPT eligibility, evaluates location for OPT job search infrastructure, and explicitly considers how a funded PhD's extended F-1 period and publication record could create lottery-bypass visa options",
+      "why_it_matters": "Immigration outcomes are not separable from academic decisions for international students — failing to integrate them leads to choices that are academically sound but structurally disadvantaged for long-term US career and residency goals"
+    },
+    {
+      "dimension": "How they conduct due diligence on potential advisors",
+      "junior_pattern": "Reads the advisor's faculty webpage and recent papers; forms an opinion based on research topics and publication count; avoids asking probing questions during visits out of politeness or deference",
+      "senior_pattern": "Speaks to 3–5 current and former lab members including people who have left; asks explicitly whether they would choose the advisor again; tracks where recent graduates landed and how long it took; notes how the advisor treats them during the application process as a signal of future behavior",
+      "why_it_matters": "The quality of your PhD experience and career launch is more dependent on this one relationship than any other variable in your application — insufficient due diligence here is the highest-stakes mistake in the entire process"
+    },
+    {
+      "dimension": "How they construct their application portfolio",
+      "junior_pattern": "Applies to as many programs as possible to maximize options; or applies to only 3–4 programs to minimize effort and fees; does not differentiate between reach, core, and safe tiers",
+      "senior_pattern": "Applies to a deliberate 8–12 program portfolio structured across reach, core, and safe tiers; ensures at least 5 programs have confirmed advisor interest before submitting; treats the portfolio construction as a risk management exercise",
+      "why_it_matters": "Too few applications creates catastrophic risk in a bad admissions cycle; too many dilutes effort without improving outcomes; unbalanced portfolios without confirmed advisor interest convert at significantly lower rates"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_expert_framework_intl_students",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

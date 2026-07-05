@@ -22,6 +22,7 @@ Usage:
 import argparse
 import re
 import sys
+import re
 import time
 from datetime import datetime
 from pathlib import Path
@@ -46,10 +47,34 @@ BOARDS = {
         "label": "加拿大签证&移民",
         "country": "canada",
     },
+    # grad-school-selection boards
+    "phd_application": {
+        "url": "https://www.1point3acres.com/bbs/forum-198-1.html",
+        "label": "PhD申请",
+        "country": "us",
+    },
+    "academia": {
+        "url": "https://www.1point3acres.com/bbs/forum-247-1.html",
+        "label": "学术/科研",
+        "country": "us",
+    },
+    # job-search-strategy boards
+    "job_search": {
+        "url": "https://www.1point3acres.com/bbs/forum-94-1.html",
+        "label": "求职/工作",
+        "country": "us",
+    },
+    "career_canada": {
+        "url": "https://www.1point3acres.com/bbs/forum-242-1.html",
+        "label": "加拿大求职",
+        "country": "canada",
+    },
 }
 
 SKILL_BOARDS: dict[str, list[str]] = {
     "immigration-planning": ["us_visa", "immigration", "canada"],
+    "grad-school-selection": ["phd_application", "academia"],
+    "job-search-strategy": ["job_search", "career_canada"],
 }
 
 MIN_REPLIES = 5
@@ -61,6 +86,10 @@ BOARD_REGIONS: dict[str, list[str]] = {
     "us_visa": ["us"],
     "immigration": ["us"],
     "canada": ["canada"],
+    "phd_application": ["us", "canada"],
+    "academia": ["us", "canada"],
+    "job_search": ["us"],
+    "career_canada": ["canada"],
 }
 
 
@@ -101,72 +130,80 @@ def _format_post(section: str, title: str, body: str, likes: int, url: str,
 
 def scrape_with_scrapling(boards: list[str], posts_per_board: int,
                           out_dir: Path) -> list[Path]:
+    # Scrapling v0.4.9+: use class-method .fetch() — no instantiation needed
     try:
-        from scrapling import Fetcher
+        from scrapling.fetchers import StealthyFetcher
     except ImportError:
-        sys.exit("scrapling not installed. Run: pip install scrapling")
+        sys.exit("scrapling[all] not installed. Run: pip install 'scrapling[all]'")
 
     written: list[Path] = []
     scraped_at = datetime.utcnow().strftime("%Y-%m-%d")
-    fetcher = Fetcher(auto_match=True)
 
     for board_key in boards:
         board = BOARDS[board_key]
         print(f"  Scraping 一亩三分地 [{board['label']}]…")
         try:
-            page = fetcher.get(board["url"])
+            page = StealthyFetcher.fetch(board["url"], headless=True, network_idle=True)
         except Exception as e:
             print(f"    Warning: could not load board {board_key}: {e}")
             continue
 
-        # Extract post links from the thread list
-        links = page.css("a[href*='/bbs/thread-']")
+        # html_content is empty due to GBK encoding confusion in Scrapling.
+        # _raw_body contains the full GBK response bytes — decode and regex-extract thread IDs.
+        raw = page._raw_body if hasattr(page, "_raw_body") else None
+        if raw:
+            # Playwright converts GBK→Unicode internally, so _raw_body bytes are UTF-8
+            decoded = raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            thread_ids = list(dict.fromkeys(re.findall(r"thread-(\d+)-", decoded)))
+        else:
+            thread_ids = []
+
+        if not thread_ids:
+            print(f"    Warning: no thread IDs found in raw body for {board_key}")
+            continue
+
+        hrefs = [f"https://www.1point3acres.com/bbs/thread-{tid}-1-1.html"
+                 for tid in thread_ids[:posts_per_board * 4]]
         count = 0
-        for link in links[:posts_per_board * 4]:
-            href = link.attrib.get("href", "")
-            if not href.startswith("http"):
-                href = "https://www.1point3acres.com" + href
+        for href in hrefs:
 
             try:
-                post_page = fetcher.get(href)
+                post_page = StealthyFetcher.fetch(href, headless=True)
                 time.sleep(1.5)  # polite delay
             except Exception as e:
                 print(f"    Skipping {href}: {e}")
                 continue
 
-            title_el = post_page.css("h1.posthead")
-            if not title_el:
+            # html_content is always empty on 1p3a (GBK page; Playwright converts
+            # internally to UTF-8 stored in _raw_body) — use _raw_body + regex
+            post_raw = post_page._raw_body if hasattr(post_page, "_raw_body") else None
+            if not post_raw:
                 continue
-            title = title_el[0].text.strip()
+            post_decoded = post_raw.decode("utf-8", errors="replace") if isinstance(post_raw, bytes) else post_raw
 
-            body_el = post_page.css("div.postmessage")
-            if not body_el:
+            title_m = re.search(r'id="thread_subject"[^>]*>([^<]+)<', post_decoded)
+            if not title_m:
                 continue
-            body = body_el[0].text.strip()
+            title = title_m.group(1).strip()
 
-            # Parse likes
-            likes_el = post_page.css("span.likenum")
-            try:
-                likes = int(likes_el[0].text.strip()) if likes_el else 0
-            except ValueError:
-                likes = 0
+            # div.t_f contains the post body in Discuz/1p3a
+            body_blocks = re.findall(r'class="t_f"[^>]*>(.*?)</td>', post_decoded, re.DOTALL)
+            if not body_blocks:
+                continue
+            body = re.sub(r'<[^>]+>', ' ', body_blocks[0]).strip()
+            body = re.sub(r'\s+', ' ', body).strip()
 
-            if likes < MIN_LIKES:
+            # Skip paywalled posts (login required message)
+            if '您需要 登录' in body or '登录才可以' in body or len(body) < 100:
                 continue
 
-            # Parse replies
-            reply_els = post_page.css("div.postmessage")[1:]
+            likes = 0  # like counts not accessible without login
             replies: list[tuple[str, int]] = []
-            for rel in reply_els[:MAX_REPLIES_PER_POST]:
-                rtext = rel.text.strip()
-                rl_el = rel.parent.css("span.likenum")
-                try:
-                    rl = int(rl_el[0].text.strip()) if rl_el else 0
-                except ValueError:
-                    rl = 0
-                if rl >= MIN_LIKES and rtext:
-                    replies.append((rtext, rl))
-
+            for rb in body_blocks[1:MAX_REPLIES_PER_POST + 1]:
+                rtext = re.sub(r'<[^>]+>', ' ', rb).strip()
+                rtext = re.sub(r'\s+', ' ', rtext).strip()
+                if rtext and '您需要 登录' not in rtext and len(rtext) >= 50:
+                    replies.append((rtext, 0))
             replies.sort(key=lambda x: x[1], reverse=True)
 
             content = _format_post(
@@ -590,6 +627,263 @@ PGWP的年限 = 你完成的项目的年限（上限3年）
             ("技术类岗位的情况怎么样？我是做数据科学的，感觉岗位没有美国那么多", 123),
             ("co-op如果没机会做（学校没有），有没有其他办法获得'加拿大经验'？", 98),
             ("只招public resident（PR/公民）这种要求是合法的吗？我以为加拿大不允许这种歧视", 87),
+        ],
+    },
+    # ═══════════════════════════════════════════════════════════
+    # job-search-strategy
+    # ═══════════════════════════════════════════════════════════
+    {
+        "board": "job_search",
+        "section": "求职/工作",
+        "title": "冷邮件找工作——真实成功案例和模板（OPT身份）",
+        "likes": 567,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-job1",
+        "body": """毕业两个月，海投没结果，转向冷邮件找到工作。分享一下方法。
+
+背景：CS硕士，OPT，目标软件工程师岗位，主要在湾区和西雅图投递。
+
+之前的方法（失败）：
+- 海投LinkedIn Easy Apply：投了200份，3个电话面
+- 简历发招聘网站：几乎零响应
+- 直接联系HR：回复率极低，而且HR会直接问"你需要sponsorship吗"，然后就没了
+
+转向方法（成功）：冷邮件联系hiring manager
+
+**模板：**
+
+Subject: 关于[公司]的[具体产品/团队]的问题
+
+Hi [姓名],
+
+我注意到您最近在[平台]分享的关于[具体主题]的[文章/演讲]，您提到的[具体观点]和我在[项目]里遇到的问题高度相关。
+
+我是[大学]的应届CS硕士，做过[一行描述项目]。我对贵团队在[具体方向]的工作特别感兴趣。
+
+请问您方便在接下来几周安排一个20分钟的电话交流吗？
+
+[姓名]
+
+关键原则：
+1. **全文不超过100字**——manager没时间看长邮件
+2. **只要求一个call，不提工作机会**——第一封邮件要求工作是关系破坏者
+3. **找具体的人，不找HR**——找LinkedIn上实际可能是你未来老板的manager
+4. **OPT身份不要在第一封邮件提**——先让对方对你这个人感兴趣
+
+发了约40封邮件，回复率约15%，进入面试流程4个，拿到offer 1个。""",
+        "replies": [
+            ("冷邮件方向对了，但我想补充：找manager的时候，最好找入职1-2年的新manager。他们通常正在建团队，回复率比老manager高很多。", 312),
+            ("请问不提OPT身份的话，对方如果直接问怎么办？", 234),
+            ("这个回复率挺高的。你找的是什么level的人？Senior engineer还是manager？", 189),
+            ("我试了类似方法，但总是被说'我们现在不招人'——碰到这个情况怎么回？", 156),
+            ("关于只发100字：有没有例外情况？比如对方是非常资深的人，要不要多写背景？", 123),
+        ],
+    },
+    {
+        "board": "job_search",
+        "section": "求职/工作",
+        "title": "H-1B Lottery三连输之后——我最终怎么解决身份问题的",
+        "likes": 892,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-job2",
+        "body": """三年抽签，三次落选。STEM OPT快到期了，但最后找到了出路。记录一下这段经历。
+
+时间线：
+- 2021年5月：MS毕业，开始OPT，在一家mid-size tech公司工作
+- 2022年3月：第一次H-1B抽签，落选。继续OPT
+- 2022年5月：申请STEM OPT延期，获批，再2年（到2024年5月）
+- 2023年3月：第二次H-1B抽签，落选
+- 2024年3月：第三次H-1B抽签，落选
+- 2024年4月：距STEM OPT到期只剩一个月
+
+最终解决方案：Cap-exempt H-1B
+
+朋友介绍了一个路子：部分大学附属的研究院是H-1B cap-exempt的，不用抽签，可以全年随时申请。我找到了一所Top-20大学的附属研究院的岗位，薪资比private sector低30%但工作比较有意思，更重要的是——可以立刻transfer过去，不用等10月1日。
+
+Cap-exempt申请：
+- 2024年4月初：找到cap-exempt岗位
+- 2024年4月中：律师提交I-129
+- 2024年5月初：I-129获批（加急premium processing，15天）
+- OPT到期前完成transfer，从未有gap
+
+现在的计划：
+Cap-exempt职位工作一年左右，再通过已工作的公司回去走regular cap lottery——已经积累了一年多工作经验的人，很多sponsoring公司会愿意给priority processing。
+
+给卡在STEM OPT快到期的同学：
+1. 大学/非营利研究机构 = cap-exempt，不用抽签，全年可申请
+2. 代价是薪资通常低20-40%
+3. 但这是合法的bridge，保住身份比什么都重要
+4. 在cap-exempt工作180天后，H-1B具有portability，可以transfer到private employer""",
+        "replies": [
+            ("这个cap-exempt路子太重要了！很多人不知道大学附属研究院可以用H-1B不用抽签。你能分享一下找这类岗位去哪里搜吗？", 456),
+            ("Premium processing现在要$2805，公司付还是自己付的？如果是cap-exempt，费用分担是怎样的？", 312),
+            ("180天portability这条：如果在cap-exempt工作满180天然后transfer到private company，transfer还需要抽签吗？", 267),
+            ("同是三连输的人，正在走类似的路。补充一点：很多医院系统（特别是大学附属医院）也是cap-exempt，职位选择比纯研究院多很多。", 234),
+            ("薪资低30%其实对于保住身份来说很值。尤其是和被迫回国或者转去加拿大的机会成本比较的话。", 189),
+        ],
+    },
+    {
+        "board": "career_canada",
+        "section": "加拿大求职",
+        "title": "PGWP身份找工作全攻略——90投12电话面4技术面2offer",
+        "likes": 734,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-job3",
+        "body": """在加拿大用PGWP找到了两个offer，分享完整经历。
+
+背景：
+- 学校：加拿大某Top-5大学，2年制硕士
+- 专业：计算机
+- PGWP：3年（2年+项目对应3年上限）
+- 目标城市：多伦多和温哥华
+- 求职时长：3个月
+
+关于PGWP身份怎么跟雇主说：
+
+**关键认知**：PGWP是open work permit，不是employer-specific。你不需要雇主"帮你做任何事"，不需要他们提交任何文件，不需要他们支付任何费用。
+
+**怎么在申请中写**：
+在工作授权那一栏：「Open Work Permit (Post-Graduation Work Permit) – Authorized to work for any employer in Canada. No employer action required.」
+
+**如果HR问**：
+「我持有PGWP，这是加拿大移民局颁发给国际学生的开放工作许可。有效期3年，您完全不需要为我申请任何东西，我可以直接入职工作。」
+
+实际经验：
+- 大公司（Shopify, RBC, TD, 各大tech）：HR基本懂PGWP，没问题
+- 中小公司：可能需要解释1-2次，耐心说明即可
+- 偶尔遇到说"只招公民/PR"的：这是他们的权力（在联邦法里有争议），不要浪费时间
+
+求职渠道效果排名（根据我的经验）：
+1. 内推（朋友/校友）- 最高效，投1拿1面试率
+2. 公司官网直接投 - 效果好
+3. LinkedIn联系hiring manager - 有效但需要技巧
+4. LinkedIn Easy Apply / Indeed - 效率最低，但覆盖面广
+
+三个月总结：投90份，12个电话面，4个技术面，2个offer，最终选了薪资更高的那个（$112k CAD base）。""",
+        "replies": [
+            ("关于'只招公民/PR'：加拿大《人权法》禁止因公民身份歧视就业，但执行力度参差不齐。遇到这种要求可以向各省人权委员会投诉，但维权成本确实高，大多数人选择放弃。", 298),
+            ("加拿大工资单位是CAD，和美国USD差距比较大。$112k CAD现在大概$80k USD左右。选择加拿大主要是移民路径确定性，不是薪资。", 267),
+            ("联系hiring manager的方法：我一般搜LinkedIn上该公司的SWE/DE Manager头衔，找最近6个月发过技术帖子的人——说明他们活跃在LinkedIn上，更可能回复。", 234),
+            ("校友网络在加拿大比美国更重要——市场更小，人与人之间更熟，校友愿意帮忙的比例更高。把学校校友录找一遍很值得。", 198),
+        ],
+    },
+    # ═══════════════════════════════════════════════════════════
+    # grad-school-selection
+    # ═══════════════════════════════════════════════════════════
+    {
+        "board": "phd_application",
+        "section": "PhD申请",
+        "title": "选导师比选学校重要100倍——我的血泪教训",
+        "likes": 445,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-phd1",
+        "body": """申请季结束两年了，现在PhD在读，来说说我当时做对和做错的事情。
+
+背景：拿到了A校（全美top5，导师方向一般）和B校（全美top25，导师方向完全match）两个offer。最后选了A校，理由是"排名更高，牌子更好"。
+
+现在的情况：
+- A校导师每学期见我一次，基本放养
+- 我发邮件平均2周才回
+- 他的grant快到期了，我的RA funding下学期有问题
+- B校我想要的那个导师，她组里刚出了两篇顶会，学生人手一篇
+
+我犯的三个错误：
+
+1. 没有check导师的grant状态。可以在NIH Reporter或者NSF Award Search查到导师的在研项目，以及项目结束时间。我的导师那时候主grant只剩一年了。
+
+2. 没有联系他组里的前学生。现在的学生会保留好话，离开的学生才说实话。LinkedIn上找到他组里过去5年毕业的学生，发消息问问。
+
+3. 把排名当成导师质量的proxy。导师质量和系排名的相关性其实很低。同一个系里可以有publication机器，也可以有让学生毕不了业的ghost advisor。
+
+选校建议：
+- 先确定3个以上你愿意和他/她工作5年的导师
+- 每个目标导师都联系，看看谁回复、谁有bandwidth
+- offer比较时，问每个导师：funding是部门保证的还是你的grant来的？你最近5个毕业生去了哪里？
+- 排名只作为同等条件下的tiebreaker，不是主要指标""",
+        "replies": [
+            ("NIH Reporter查grant这个方法真的很实用！我申请前就是这么筛的，直接排除了几个grant快断的导师", 178),
+            ("联系已经毕业的学生这个太关键了。我套磁时特意LinkedIn找到了目标导师的前两届学生，一个直接跟我说'他不适合做主导师，最好有co-advisor'，这个信息我绝对问不到现在的学生", 145),
+            ("补充：还可以看导师最近的publication，author里学生名字出现频率。一个好导师的学生应该经常是一作或者二作，如果每篇都是导师一作、学生不在前三，要注意", 112),
+            ("我在B校，我们组的情况就是楼主说的那种。导师每周组会，每两周一对一，每个人都有paper在投。当初我拒了排名更高的offer，现在完全不后悔", 98),
+            ("请问funding是部门保证的怎么问？直接这么问导师会不会尴尬？", 67),
+            ("不尴尬的。我直接问过：'Can you tell me about the funding structure for this position — is the stipend guaranteed by the department for multiple years, or does it depend on your current grant funding?' 好的导师会直接回答", 56),
+        ],
+    },
+    {
+        "board": "phd_application",
+        "section": "PhD申请",
+        "title": "套磁经验分享：发了60封邮件，8个回复，3个offer",
+        "likes": 389,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-phd2",
+        "body": """申请季结束，来分享一下套磁的经验，因为我看到太多人套磁方式有问题。
+
+我的背景：CS方向，主要申请ML/AI相关的PhD项目，最终录取3个，全funded。
+
+套磁有效率：60封邮件 → 8个有实质回复 → 3个offer，这个比例我觉得还算正常。
+
+有效的套磁长什么样：
+
+第一段：一句话说你是谁，你在读什么，你为什么联系他/她（具体到论文名字和你的问题）
+
+第二段：你做过的最相关的研究，要非常具体，不要说"我对机器学习很感兴趣"，要说"我在X项目里用了Y方法解决Z问题，遇到了W的limitation，我看到您2024年的论文在这个方向有新的进展"
+
+第三段：你的具体问题或者表达希望聊聊
+
+长度：3段，每段2-4句，总共不超过250字。导师不会读超过一屏的邮件。
+
+最无效的套磁（我见过同学发的）：
+- 复制粘贴模板，只改了名字和学校名
+- "我对您所有的研究都很感兴趣"（没有读过任何论文的标志）
+- 超过500字的长邮件
+- 附件里放了简历但邮件正文什么都没说
+- 套磁时间太晚（deadline前一个月才发，很多导师已经决定名额了）
+
+最佳时间：比申请deadline早3-6个月，也就是大概7-9月发秋季申请的套磁邮件。
+
+一个实际有用的技巧：找到导师最新的一篇论文（3个月内发表的），问一个具体的问题。导师回不回取决于你的问题够不够有趣，不只是你的背景强不强。""",
+        "replies": [
+            ("250字限制这个建议太好了。我以前写的套磁邮件都是500+字，后来改成简短版之后回复率明显提高", 167),
+            ("时间节点很关键。我10月发的套磁，很多教授直接回说名额已经定了。后来发现很多CS方向的导师在暑假就已经确定要招谁了", 134),
+            ("补充：套磁前先看看导师的主页，有些导师写了'我不接受unsolicited emails'或者'请通过正式申请系统联系'，这种就不要套磁了，直接写SOP里表达兴趣", 112),
+            ("关于具体问题这点：我问了一个导师他最新论文里某个实验设计的问题，他不仅回了，还花了20分钟Zoom给我解释。直接进了shortlist。有时候真的就是一个好问题", 89),
+            ("回复率8/60=13%，我发了30封只有1个回复，可能我的背景不够强还是邮件方式有问题？", 45),
+            ("建议你把邮件内容贴出来大家帮看看。另外，不同方向差异很大，有些细分方向导师特别少，竞争特别激烈", 38),
+        ],
+    },
+    {
+        "board": "academia",
+        "section": "学术/科研",
+        "title": "读博第三年换导师全过程记录，给后来人参考",
+        "likes": 312,
+        "url": "https://www.1point3acres.com/bbs/thread-demo-phd3",
+        "body": """读博三年后换了导师，整个过程比我想象的难，但结果好于预期。把经历记录下来给有需要的人参考。
+
+为什么换：
+我的导师属于典型的Ghost advisor。每学期见面3-4次，邮件平均10天回，对我的研究方向没有实质帮助。他的grant在我入学第二年就结束了，我一直在靠TA funding，每学期教课20小时，研究进展极慢。入学三年，零publication。
+
+我怎么确定要换：
+1. 问了组里唯一一个快毕业的学生（入学7年），他的情况跟我一样
+2. 发现导师有个合作者，风格完全不同，每年出3-4篇paper，学生都有一作
+3. 做了最坏情况分析：如果继续下去，我最快几年能毕业？答案是"不确定"
+
+换导师的过程：
+
+第一步：先确定接收方。我非正式问了那个合作教授愿不愿意接我，她说愿意但需要我自己处理和原导师的关系。
+
+第二步：和原导师谈。这是最难的部分。我直接说：我觉得我们的研究方向不太match，我想转到X教授组。他有些不高兴，但没有阻拦。
+
+第三步：DGS（研究生项目主任）介入。我和DGS谈了情况，他帮助正式完成了导师变更，包括committee重新组建。
+
+第四步：重新入轨。新导师给我3个月时间了解她的研究，然后一起确定了新的研究方向。
+
+时间代价：大概损失了8-10个月的进度。
+
+结果：换导师后18个月，投出第一篇顶会论文。现在在读第五年，预计明年毕业。
+
+如果你也在考虑换导师：越早越好。三年比五年损失小太多。不要因为沉没成本留下去。""",
+        "replies": [
+            ("第二步直接跟导师谈这个需要很大勇气。请问你是怎么措辞的？说了'研究方向不match'，导师有没有问很多问题或者刁难你？", 134),
+            ("我现在第四年，情况跟你很像。但我担心换了之后毕不了业……请问你的学分、已经完成的coursework这些换了导师还有效吗？", 112),
+            ("coursework是有效的，看你们学校的规定，一般换导师不影响之前的学分。需要重新组建committee，可能会要求补一些方向相关的课，但主体是保留的。", 89),
+            ("我是第五年换的，损失了差不多一年半。现在第七年在写论文。如果你在考虑换，不要等到第四五年再行动，代价比你想的大", 78),
+            ("国际学生换导师有个实际问题：如果延期毕业，OPT的开始时间会推迟，如果超过了签证有效期可能还需要续签F-1。建议去找DSO（国际学生顾问）提前咨询", 67),
+            ("DGS在这件事里的角色很关键。有些系DGS会积极帮学生，有些系DGS会向着导师。建议在正式谈之前先侧面了解你们系DGS的风格", 56),
         ],
     },
 ]

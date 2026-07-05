@@ -1,0 +1,302 @@
+{
+  "source_file": "f1visa_lost_my_indian_passport_with_f1_visa_in_the_usa_to.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Always maintain digital backups of all immigration documents before any loss event occurs",
+      "condition": "When you are an international student holding F-1 status in the US...",
+      "action": "Scan every page of your passport, visa page, I-20, and current I-94 printout; email to yourself and save to cloud storage",
+      "because": "The original poster explicitly states having some copies made the replacement process significantly easier, and recommends this as the single most important preventive step",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "File a police report immediately upon discovering passport loss — before any other step",
+      "condition": "When a passport is lost or stolen while in the US...",
+      "action": "Go to the nearest police station or campus police immediately and obtain a physical copy of the report, then scan and store it in multiple places",
+      "because": "The poster documents that the police report was required at every single subsequent step — passport reissuance, consulate communications, and visa reapplication",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Do not pay the SEVIS fee again when reapplying for a lost F-1 visa stamp if your SEVIS record remains active",
+      "condition": "When a continuing F-1 student needs to reapply for a visa stamp after losing their passport...",
+      "action": "Check your SEVIS record status before paying fees — if the record is still active, you do not owe another $350 SEVIS fee",
+      "because": "The poster explicitly confirmed they did not have to repay the SEVIS fee because their record remained active throughout, saving $350",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Notify your DSO at the university early in the passport loss process",
+      "condition": "When an F-1 student loses their passport...",
+      "action": "Contact your Designated School Official alongside notifying the consulate and police — do not treat the DSO as an afterthought",
+      "because": "The poster reports that their DSO helped calm them down and walked them through what the school specifically required, suggesting DSOs have practical experience with this situation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Availability of passport document copies prior to loss",
+      "why_it_matters": "Having scanned copies of the old passport accelerates the reissuance process at VFS Global and reduces friction at every documentation step",
+      "how_to_assess": "Check whether you have digital or physical copies of the bio page, all visa stamps, and entry stamps before the loss event",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Academic calendar timing relative to visa reapplication window",
+      "why_it_matters": "F-1 visa restamping requires traveling abroad; if appointment slots conflict with semester start dates, students must choose between delaying visa resolution or missing classes",
+      "how_to_assess": "Compare available consulate appointment slots against your university's academic calendar; the poster waited through two semesters because no viable slots existed during breaks",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Eligibility for Tatkal (expedited) passport processing",
+      "why_it_matters": "Tatkal processing significantly reduces wait time for Indian passport reissuance through VFS Global; not all applicants qualify",
+      "how_to_assess": "Check VFS Global and Passport Seva eligibility criteria for Tatkal; the poster was not eligible but noted others may qualify",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether SEVIS record remains active throughout the period without a visa stamp",
+      "why_it_matters": "An active SEVIS record is what maintains legal F-1 status inside the US and determines whether SEVIS fee is owed again on reapplication",
+      "how_to_assess": "Confirm with your DSO that your SEVIS record has not been terminated; verify on the SEVP portal",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in the US through multiple semesters without a valid visa stamp after passport loss",
+      "unstated_consequence": "You are legally fine inside the US but are effectively locked out of international travel until the visa is restamped — any family emergency, conference, or personal trip abroad becomes impossible until the stamp is obtained",
+      "who_it_affects": "Students with family overseas, those who attend international conferences, or anyone who did not anticipate needing to travel unexpectedly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Applying for the replacement visa stamp only during a convenient travel window (e.g., summer)",
+      "unstated_consequence": "Consulate appointment slots in India fill up months in advance; waiting until you are ready to travel does not mean appointments will be available — the poster booked in late February for a May appointment",
+      "who_it_affects": "Students who assume they can schedule visa appointments on short notice",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing mail-in vs. in-person VFS appointment for passport reissuance",
+      "unstated_consequence": "In-person is described as faster and smoother but requires living within a reasonable distance of a VFS center; students in cities without nearby centers face additional travel burden",
+      "who_it_affects": "Students at universities in smaller cities or rural areas far from VFS Global service centers",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming that losing a passport means losing F-1 status or facing deportation",
+      "why_it_happens": "Passport is the most visible immigration document; students conflate the travel document with the legal status document",
+      "consequence": "Extreme panic, potential poor decisions made under stress, unnecessary fear of authorities, delayed reporting",
+      "warning_signs": [
+        "Student's first reaction is 'am I getting deported?'",
+        "Student avoids contacting DSO out of fear of triggering status review"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Failing to maintain any backup copies of immigration documents before a loss event",
+      "why_it_happens": "Availability bias — students do not anticipate losing their passport, so document backup feels unnecessary until the crisis occurs",
+      "consequence": "Significantly harder passport reissuance process; difficulty proving identity and prior visa history at every step",
+      "warning_signs": [
+        "Student cannot produce any scanned or photographed copy of their passport or visa",
+        "Student has never printed or saved their I-94 record"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have any digital or physical copies of your lost or damaged passport?",
+      "what_it_reveals": "Whether the reissuance process will be straightforward or complicated by lack of identity documentation",
+      "follow_up_if_yes": "Which pages do you have? Bio page + visa stamps + entry stamps are the most critical",
+      "follow_up_if_no": "What other Indian identity documents do you have (Aadhaar, PAN) that can substitute for proof of identity at VFS?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your SEVIS record currently active?",
+      "what_it_reveals": "Whether your F-1 legal status inside the US is intact and whether you will owe the SEVIS fee again on visa reapplication",
+      "follow_up_if_yes": "You do not need to repay the $350 SEVIS fee and your status inside the US is unaffected",
+      "follow_up_if_no": "You may need to work with your DSO to reinstate your SEVIS record before proceeding with any visa reapplication",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have any travel obligations or need to leave the US before you can schedule a consulate appointment?",
+      "what_it_reveals": "Whether the student is effectively stranded from international travel and how urgent the restamping timeline is",
+      "follow_up_if_yes": "Start checking consulate appointment availability immediately — slots fill months out; you may need to book as soon as possible even if travel is weeks away",
+      "follow_up_if_no": "You can legally remain in the US and attend classes without the visa stamp; prioritize getting a new passport first, then plan restamping around academic breaks",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you on STEM OPT or standard OPT at the time of the passport loss?",
+      "what_it_reveals": "Whether additional EAD card complications or employer notification requirements apply on top of the passport replacement process",
+      "follow_up_if_yes": "Consult your DSO specifically about STEM OPT implications — this use case was flagged in comments as potentially different from the standard student scenario",
+      "follow_up_if_no": "Standard passport replacement and visa restamping process applies as described",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you lose your passport with your F-1 visa in it, your F-1 status is lost or at risk",
+      "actual_reality": "Your F-1 legal status inside the US is determined by your I-20, active SEVIS record, and I-94 — not by the visa stamp. The visa stamp is only required to re-enter the US from abroad. Loss of passport has no effect on status.",
+      "implication": "Students who understand this can remain calm, continue their studies normally, and plan the restamping process on a reasonable timeline rather than making panicked decisions",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "You can get your F-1 visa re-stamped at a US Embassy or consulate while inside the United States",
+      "actual_reality": "F-1 visa restamping cannot be done inside the US. It must be done at a US Embassy or Consulate abroad, requiring the student to travel out of the country.",
+      "implication": "Students must plan an international trip to resolve this — they cannot simply visit the local US consulate. This affects timeline planning significantly.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Replacing a lost passport-with-visa requires paying the SEVIS fee again",
+      "actual_reality": "If your SEVIS record is still active, you do not need to repay the $350 SEVIS fee when reapplying for the visa stamp after a passport is replaced",
+      "implication": "Students should verify their SEVIS record status before paying fees — this is a $350 saving that is not widely known",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "First reaction to passport loss",
+      "naive_pattern": "Immediate catastrophizing — 'am I getting deported?' — conflating travel document loss with status loss",
+      "informed_pattern": "Immediate triage — file police report, contact DSO, confirm I-94 and SEVIS status are intact, then proceed methodically through replacement steps",
+      "why_it_matters": "Panic leads to delayed action or poor decisions; understanding that status is separate from the passport allows clear-headed sequential problem solving",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Document backup habits",
+      "naive_pattern": "Never scans or saves copies of passport, visa, or I-20 because 'I have the originals'",
+      "informed_pattern": "Proactively scans all critical immigration documents and stores them in multiple locations (email, cloud) before any loss event",
+      "why_it_matters": "Lack of copies significantly complicates every downstream step in the replacement process; having copies is described as having made things 'way easier'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Visa appointment planning",
+      "naive_pattern": "Assumes visa appointments can be scheduled when convenient, close to desired travel date",
+      "informed_pattern": "Knows consulate appointment slots fill months in advance and books as early as possible — poster booked in late February for a May slot",
+      "why_it_matters": "Students who wait until they are 'ready' to travel may find no appointments available for months, extending the period of travel restriction",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Losing your passport with your F-1 visa means you are out of status and risk deportation",
+      "why_believed": "The passport is the most tangible, visible proof of legal presence — students assume the document IS the status, not merely evidence of it",
+      "actual_rule": "F-1 status is maintained through the I-20, active SEVIS record, and I-94. The visa stamp is only required for re-entry at a port of entry, not to remain legally present inside the US.",
+      "real_consequence": "Students who believe this may make panicked decisions — attempting to leave the US quickly to 'fix' the situation, or being afraid to contact DSO or other officials out of fear of status consequences",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You need to pay the SEVIS fee again when reapplying for an F-1 visa after a passport is lost",
+      "why_believed": "Students associate the visa application process with all its associated fees and assume everything resets when reapplying",
+      "actual_rule": "If your SEVIS record was never terminated and remains active, you do not owe the $350 SEVIS fee on the new visa application",
+      "real_consequence": "Students unnecessarily pay $350 out of pocket due to ignorance of this rule",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Indian F-1 student in first year of graduate study loses passport containing F-1 visa in the US during summer break (July 2024); no immediate travel plans; second semester starting August 2024",
+      "decision": "Filed police report immediately; notified consulate, DSO, and US Embassy; applied for new Indian passport through VFS Global in person; decided to remain in the US through fall and spring semesters without restamping, then flew to India in late April 2025 to complete visa interview during summer",
+      "outcome": "New Indian passport received in approximately 3 weeks from VFS appointment. Remained legally enrolled and in status throughout. Visa interview in India lasted approximately 2 minutes and was approved immediately. Returned to US with valid F-1 stamp by late June 2025. Total elapsed time: approximately one year.",
+      "lesson": "Losing a passport with an F-1 visa does not require immediate resolution — a student can legally remain enrolled and in status for an extended period and address restamping during a convenient travel window. The consulate interview for a replacement after passport loss is typically straightforward. Planning around academic calendar is viable and sensible.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Discovering that a passport containing an F-1 visa has been lost",
+      "underlying_state": "Catastrophizing — immediate leap to worst-case scenario (deportation) based on incomplete understanding of how F-1 status actually works",
+      "how_it_manifests": "Student describes brain going 'straight to am I getting deported?'; likely causes delayed or panicked contact with authorities rather than calm sequential action",
+      "expert_move": "Immediately clarify the status-vs-travel-document distinction: 'Your I-20, SEVIS record, and I-94 are your status. The visa stamp is only your re-entry key. You are not out of status.' This single reframe eliminates most of the panic and enables rational decision-making.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Being on STEM OPT and losing a passport, as flagged in the final comment",
+      "underlying_state": "Uncertainty amplification — student senses their situation may be different from the baseline case described and fears additional hidden consequences",
+      "how_it_manifests": "Asks whether STEM OPT status 'is going to cause any issues' without being able to specify what those issues might be — the fear is undefined but paralyzing",
+      "expert_move": "Acknowledge the valid distinction (STEM OPT involves EAD card, employer, and different status maintenance rules) and direct to DSO immediately for STEM OPT-specific guidance rather than letting undefined fear prevent action",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I lost my passport — does this mean I lost my F-1 status or am I at risk of deportation?",
+      "reframe": "Your passport is a travel document. Your F-1 status is determined by your I-20, SEVIS record, and I-94 — none of which are affected by passport loss. These are different things.",
+      "why_it_works": "Separates two concepts the student has conflated — travel document and legal status — which immediately eliminates the most catastrophic feared outcome and allows rational problem-solving to begin",
+      "example_language": "Losing your passport does NOT mean losing your F1 status. Your I-20, SEVIS record, and I-94 are what matter inside the U.S. The visa stamp is only for re-entry.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I need to fix the visa stamp situation urgently because I have no visa in my passport",
+      "reframe": "Inside the US, you don't need the visa stamp for anything. The urgency is only if you need to travel internationally — otherwise you can plan the restamping around a convenient academic break window.",
+      "why_it_works": "Removes false time pressure by clarifying what the visa stamp is actually used for, converting a perceived emergency into a plannable logistics problem",
+      "example_language": "You genuinely do not need the visa stamp for anything inside the US. Just always carry your I-20 and I-94.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_f1visa_lost_my_indian_passport_with_f1_visa_in_the_usa_to",
+  "_source_regions": [
+    "us"
+  ]
+}

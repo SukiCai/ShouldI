@@ -1,0 +1,316 @@
+{
+  "source_file": "canada_加拿大vs美国移民路线的真实对比_从两边都走过的角度.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If you are from India or China, seriously evaluate the Canada route before committing to the US green card path",
+      "condition": "When a student or worker from India or China is deciding between US and Canada immigration routes",
+      "action": "Model out realistic EB-2/EB-3 wait times for your country of birth before assuming US permanent residency is achievable within your career timeline",
+      "because": "The original poster calculated that EB-2 India priority dates (stuck around 2012 as of post time) made it realistically impossible to receive a green card before retirement; this was corroborated by a commenter whose colleague has been waiting since 2009",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Treat Express Entry as a rules-based process, not a lottery",
+      "condition": "When comparing the psychological burden of US H-1B lottery vs. Canadian Express Entry",
+      "action": "If you meet CRS score thresholds, you can receive an ITA — the outcome is deterministic, not random",
+      "because": "The poster explicitly contrasts H-1B as a lottery with Express Entry as 'rules you can follow,' framing predictability as a major psychological and planning advantage",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Account for job-change constraints when evaluating US vs. Canada work authorization",
+      "condition": "When a visa holder is evaluating career flexibility under H-1B vs. PGWP",
+      "action": "Factor in the 60-day H-1B portability window and transfer costs when assessing true career mobility under each system",
+      "because": "The poster identifies the 60-day H-1B transfer window as a significant ongoing psychological and practical constraint; PGWP as an open work permit eliminates this friction entirely",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth for immigration backlog purposes",
+      "why_it_matters": "EB-2 and EB-3 green card wait times differ by orders of magnitude depending on country of birth — Indian and Chinese nationals face multi-decade backlogs while other nationalities may wait only a few years",
+      "how_to_assess": "Look up the current USCIS Visa Bulletin priority date for your country of birth and category; compare to your graduation or entry year to estimate realistic wait",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Salary differential tolerance between US and Canada",
+      "why_it_matters": "Senior engineers in particular face a 30–50% compensation gap between Bay Area and Toronto/Vancouver; whether this gap is acceptable depends on individual financial goals and lifestyle priorities",
+      "how_to_assess": "Compare total compensation (including equity, benefits, cost of living, housing) rather than base salary alone; note that commenters questioned whether the gap has narrowed recently",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Psychological cost of immigration uncertainty",
+      "why_it_matters": "Repeated H-1B lottery attempts, annual renewal anxiety, and indefinite green card wait timelines impose measurable psychological costs that affect career performance and life decisions",
+      "how_to_assess": "Assess your personal tolerance for uncertainty and multi-year planning horizons; the poster notes 'two people who've done both paths say Canada's psychological pressure is much lower'",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Industry and employer concentration",
+      "why_it_matters": "Certain sectors (top-tier tech, finance, specific professional fields) have dominant presence in the US with fewer Canadian equivalents; Canada route may mean career opportunity cost in these fields",
+      "how_to_assess": "Identify whether your target employers or roles have comparable Canadian operations; assess whether remote work for US offices is feasible as a hybrid option",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Housing cost at target Canadian city",
+      "why_it_matters": "Toronto and Vancouver have severe housing affordability problems that partially offset the lower immigration burden; smaller cities are more affordable but have fewer job opportunities",
+      "how_to_assess": "Compare housing cost-to-income ratios in target Canadian cities vs. US alternatives; consider whether remote work options open up smaller Canadian cities",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing US H-1B and green card path as an Indian or Chinese national",
+      "unstated_consequence": "The green card may never arrive within your working career — the EB-2 India priority date was stuck at 2012 as of this post, meaning someone entering the queue today could wait 30+ years",
+      "who_it_affects": "Indian and Chinese nationals in EB-2/EB-3 categories who assume the green card is a matter of 'waiting a few years'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying on H-1B for career stability",
+      "unstated_consequence": "Every job change requires an H-1B transfer, and the 60-day portability window creates high-pressure job searches that limit negotiating leverage and career optionality",
+      "who_it_affects": "Mid-career professionals who want to change jobs for growth or due to layoffs but underestimate the legal and timing constraints of H-1B transfers",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Moving to Canada for PR and lower immigration stress",
+      "unstated_consequence": "Senior-level compensation gap is larger, not smaller — the salary disadvantage compounds over time at senior levels where equity and total comp diverge most from Canadian norms",
+      "who_it_affects": "Senior engineers and specialists who are at or near peak earning years and face the largest absolute dollar gap between US and Canadian total compensation",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming the US green card is achievable within a normal career timeline without modeling country-of-birth backlog",
+      "why_it_happens": "Priority date information is publicly available but not intuitive; students from India and China see peers on H-1B and assume the green card path is 'just a matter of time' without doing the math",
+      "consequence": "Committing 5–10 years to the US path, passing the window to build Canadian PR eligibility, and eventually facing the same impossible backlog with fewer alternatives",
+      "warning_signs": [
+        "Saying 'I'll apply for green card after H-1B' without having checked the Visa Bulletin for your country of birth",
+        "Planning major life decisions (buying a home, family timing) around an assumed green card timeline without verification"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating H-1B lottery failure as a temporary setback rather than a structural risk to plan around",
+      "why_it_happens": "Each lottery feels like an independent probabilistic event; the cumulative psychological and career cost of multiple failures is underweighted in advance",
+      "consequence": "The original poster describes two years of lottery failure as mentally exhausting; people who lose multiple years of career optionality and status stability without having built a Canada backup plan",
+      "warning_signs": [
+        "No Canada backup plan while in OPT/STEM OPT",
+        "Deferring consideration of Express Entry until after H-1B lottery results"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth, and what is the current EB-2 or EB-3 priority date for that country?",
+      "what_it_reveals": "Whether the US green card path is realistically achievable within your career — the most important variable that most students do not check before committing to the US route",
+      "follow_up_if_yes": "If your country's priority date is within 5–7 years, the US path may still be viable; model total compensation advantage over that period vs. Canada alternative",
+      "follow_up_if_no": "If priority date gap exceeds 10–15 years (common for India, China EB-2), the Canada route should be evaluated as the primary path, not a backup",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "After receiving Canadian PR, does living outside Canada affect your PR status?",
+      "what_it_reveals": "Whether maintaining Canadian PR while working in the US (or elsewhere) is feasible — a common question from those considering hybrid strategies",
+      "follow_up_if_yes": "PR holders must meet residency obligations (730 days in 5 years); extended US work assignments can jeopardize PR if not tracked carefully",
+      "follow_up_if_no": "If the person is asking about short-term travel vs. long-term relocation, the answer and risk level differ significantly",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Is your H-1B transfer petition in portability status (filed and pending) when you start work at the new employer?",
+      "what_it_reveals": "Whether beginning work at a new employer before H-1B transfer approval is legally permissible — a nuanced point that many workers get wrong",
+      "follow_up_if_yes": "Under AC21 portability, you can begin working for the new employer once the transfer petition is filed and receipt notice is received, not after approval",
+      "follow_up_if_no": "Starting work before filing is a status violation; clarify timeline and filing date with an immigration attorney",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The US-Canada salary gap has narrowed significantly in recent years",
+      "actual_reality": "Commenters in this thread questioned the 30–50% figure but did not provide contradicting data; the original poster (with direct experience in both markets) maintained the gap is real and senior-level gaps are larger, not smaller",
+      "implication": "Do not assume compensation parity when making the Canada decision; verify current total compensation data for your specific role and level before concluding the gap is negligible",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Express Entry is like a lottery — your application may or may not get picked",
+      "actual_reality": "Express Entry is a points-based system (CRS score); if your score meets or exceeds the cutoff for a draw, you receive an Invitation to Apply. It is deterministic given sufficient score, not random",
+      "implication": "Candidates should focus on actively improving their CRS score (language tests, Canadian work experience, job offers, PNP nominations) rather than treating it as a waiting game",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "You can freely change jobs in the US once you have an approved H-1B",
+      "actual_reality": "Each job change requires a new H-1B transfer petition; during the transition you have a 60-day window to secure a new position and file the transfer, creating real career mobility constraints especially during layoffs",
+      "implication": "H-1B holders should maintain a financial buffer and contingency job search readiness at all times, and should not treat their employment situation as equivalent in stability to a green card or open work permit holder",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate the US vs. Canada immigration decision",
+      "naive_pattern": "Focuses on salary comparison and name-brand employer prestige; assumes green card will come eventually; treats H-1B lottery as a solvable problem",
+      "informed_pattern": "First checks country-of-birth backlog data; models realistic green card timeline before any other factor; treats psychological and career mobility costs as quantifiable variables, not soft concerns",
+      "why_it_matters": "Failing to check the Visa Bulletin early leads to 5–10 year path commitments that cannot be unwound once the backlog reality becomes clear",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Framing of career risk under H-1B",
+      "naive_pattern": "Sees H-1B as stable once obtained; plans job changes on a normal timeline without factoring in transfer requirements and 60-day windows",
+      "informed_pattern": "Treats every H-1B job change as a legal event requiring advance planning; maintains emergency financial runway; understands that PGWP or PR fundamentally changes career optionality",
+      "why_it_matters": "Naive framing leads to being caught in a high-pressure job search during layoffs or performance issues with no status buffer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you've been on H-1B for a few years, the green card is just a matter of time",
+      "why_believed": "H-1B to green card is the standard narrative; most people in tech know someone who eventually got their green card, and the path feels linear",
+      "actual_rule": "Green card wait time is determined by country of birth and visa category, not time on H-1B. For EB-2 India, the priority date was approximately 2012 as of this post — meaning new applicants could face 30+ year waits regardless of how long they've been on H-1B",
+      "real_consequence": "People from high-backlog countries spend 10–15 years on H-1B believing the green card is coming, missing the window to build Canadian PR eligibility, and eventually facing the same impossible backlog with fewer alternatives",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You cannot start working for a new employer until your H-1B transfer is approved",
+      "why_believed": "The general rule that you need work authorization before starting a job leads people to assume approval is required; the portability provision is not widely understood",
+      "actual_rule": "Under AC21 H-1B portability, you can begin working for the new employer once the transfer petition has been filed and a receipt notice issued — approval is not required to start work",
+      "real_consequence": "Workers unnecessarily delay starting new positions, sometimes losing offers, or conversely start work before even filing (a status violation), because they misunderstand the filing-vs-approval distinction",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Chinese/non-India background professional on F-1→OPT→STEM OPT→H-1B in the US for 5 years; H-1B lottery failed twice, succeeded third year; EB-2 backlog for their country made green card timeline unworkable within career",
+      "decision": "Transferred to Canada in 2022, pursued Express Entry, obtained PR",
+      "outcome": "PR received approximately 8 months after application; describes psychological pressure as significantly lower than US path; acknowledges real salary gap but frames it as acceptable tradeoff given status certainty",
+      "lesson": "For nationals from high-backlog countries, the Canada route can deliver permanent residency within a career-realistic timeline while the US route cannot; the decision point should be made early, not after exhausting US options",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "Indian national in EB-2 queue; colleague entered queue around 2009",
+      "decision": "Continued waiting on US green card path",
+      "outcome": "As of post date (2026), still has not received green card — approximately 17 years in queue",
+      "lesson": "EB-2 India backlog is not a theoretical risk; real people are experiencing multi-decade waits. This corroborates the original poster's calculation and should be treated as a base rate, not an outlier",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Repeatedly asking 'should I stay in the US or go to Canada?' without doing backlog math first",
+      "underlying_state": "Ambiguity aversion combined with sunk cost bias — years invested in US path make it hard to objectively evaluate whether the path is viable; the question is framed as a lifestyle choice when it is actually a data problem",
+      "how_it_manifests": "Asking for salary comparisons, quality of life opinions, and personal stories rather than first checking the Visa Bulletin priority date for their country of birth",
+      "expert_move": "Redirect to the Visa Bulletin immediately: 'Before any other factor, look up the current priority date for your country of birth and category. That one number determines whether the US green card path is even on the table for your timeline.'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Describing H-1B lottery failure as emotionally exhausting across multiple attempts",
+      "underlying_state": "Anticipatory anxiety and learned helplessness — repeated exposure to a random, high-stakes outcome outside personal control creates chronic stress that impairs decision-making about alternatives",
+      "how_it_manifests": "Continuing to enter the lottery and defer Canada planning because 'maybe this year I'll get it,' even when the expected value of continuing to wait is negative given backlog timelines",
+      "expert_move": "Reframe the lottery as a binary event with a Canada backup that should be built in parallel, not as the primary strategy with Canada as a fallback: 'You should be working toward Canadian Express Entry eligibility regardless of lottery outcome — they are not mutually exclusive'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Asking whether Canadian PR can be maintained while working in the US",
+      "underlying_state": "Desire to preserve optionality and avoid commitment — wanting the security of Canadian PR without fully committing to Canada; fear that choosing Canada closes the US door permanently",
+      "how_it_manifests": "Asking hybrid or 'best of both worlds' questions rather than making a directional decision; stalling on Express Entry applications while exploring theoretical scenarios",
+      "expert_move": "Validate the hybrid question as legitimate but ground it in residency obligation math: 'PR requires 730 days in Canada over 5 years. Map out what that actually looks like against your work situation before treating it as a theoretical option.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I go to Canada or stay in the US? Which is better?",
+      "reframe": "The answer is almost entirely determined by your country of birth and the current EB-2/EB-3 priority date for that country — that one variable should anchor the entire decision before lifestyle or salary comparisons enter the picture",
+      "why_it_works": "Converts an open-ended values question into a data lookup task, which breaks decision paralysis and gives the person a concrete first action rather than more factors to weigh",
+      "example_language": "The original poster: 'If you are India/China background, seriously consider Canada. Not because the US is bad — but because the green card may not be achievable within your career.'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "The salary in Canada is lower so the US is probably still better overall",
+      "reframe": "The salary gap is real, but the correct comparison is salary premium vs. the probability-weighted expected cost of never achieving permanent status — which includes career mobility loss, psychological cost, and the option value of permanent residency itself",
+      "why_it_works": "Forces the person to treat immigration uncertainty as a quantifiable cost rather than a vague background risk, making the Canada salary discount look different when set against the full cost of US status uncertainty",
+      "example_language": "Implicit in the poster's framing: 'In the US the visa uncertainty cost is real and ongoing. In Canada once you have PR, that cost goes to zero.'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_canada_加拿大vs美国移民路线的真实对比_从两边都走过的角度",
+  "_source_regions": [
+    "canada"
+  ]
+}

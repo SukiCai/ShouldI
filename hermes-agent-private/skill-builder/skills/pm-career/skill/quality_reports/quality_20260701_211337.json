@@ -1,0 +1,47 @@
+{
+  "skill_name": "Senior PM Career Decisions",
+  "overall_score": 4.4,
+  "summary": "A genuinely strong skill that captures how senior PMs actually think about career decisions, with the scope-vs-title distinction as its organizing insight and diagnostic scaffolding that would meaningfully change AI outputs. It occasionally leans on aphorism over mechanism (the 8/10 heuristic, the age-skew claim) and lacks depth on concrete scenarios like level-downleveling on switch, IC vs. manager fork, and PM-adjacent pivots.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 4,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The HR-senior vs. market-senior distinction is a genuinely non-obvious framing that reframes the whole conversation: 'When a user says I'm a Senior PM, you probe what they actually own before treating them as senior.' This is the kind of move that separates expert from novice.",
+    "Diagnostic Q3 ('Can your manager describe your last 6 months of impact specifically and compellingly without your help?') is excellent — it operationalizes the invisible variable of impact legibility in a way a user can actually test.",
+    "The four-way classification (skill gap / org ceiling / visibility gap / wrong stage) with distinct responses is a real diagnostic tree, not a checklist. The pairing with the symmetric misdiagnosis warnings ('urge to leave feels like relief rather than strategy') is sharp.",
+    "Hidden tradeoffs table is unusually strong — e.g., 'Being excellent at Stage 1 execution → Comfortable dead end at PM2' names a specific trap that PMs actually fall into and wouldn't self-diagnose."
+  ],
+  "weaknesses": [
+    "Heuristic #10 ('Aim for 8/10 job satisfaction, act if below 7 for six months') is presented as expert wisdom but is essentially arbitrary — the numeric anchoring is not grounded and reads like life-coach advice rather than a PM-specific insight.",
+    "The MBA treatment is directionally correct but thin. It doesn't distinguish M7 vs. non-M7, PM-to-PM vs. PM-to-adjacent-pivot use cases, or the specific network/recruiting mechanics (e.g., APM/RPM re-entry, consulting-to-PM). 'Only pursue if it unlocks something otherwise unavailable' is true but under-specified.",
+    "The junior-vs-senior table has a few dimensions that are more platitude than differentiator — e.g., 'Network building: Reactive vs. Proactive during stable times' is true but generic across all knowledge work, not PM-specific.",
+    "The 'PM is a young person's career' reality claim ('age skew reflects industry youth, not a ceiling') is asserted without engaging the real counter-evidence (documented age discrimination in tech hiring). This underplays a legitimate constraint."
+  ],
+  "improvement_suggestions": [
+    "Add a section on the level-match question when switching companies: when to accept a downlevel for scope, when a lateral is actually a promotion in disguise (bigger company, smaller pond), and how to evaluate leveling inflation at the target company. This is a top-3 real question for senior PMs and is missing.",
+    "Replace or ground Heuristic #10 with something PM-specific — e.g., a heuristic tied to learning velocity ('If you can predict how the next quarter will go with 80%+ accuracy, your learning curve has flattened') rather than a satisfaction score.",
+    "Expand the MBA section into its own mini-framework: (a) what specifically is unavailable to you now that MBA unlocks? (b) opportunity cost = 2 years × current comp × compounding × network you'd build anyway; (c) named legitimate use cases (career pivot into PM from non-tech; international candidate needing US work authorization + recruiting funnel; brand reset from a weak resume).",
+    "Add a diagnostic question about the IC-vs-management fork, which is a defining senior PM decision the current framework doesn't touch: 'Do you want to be evaluated on your own product judgment or on the judgment of PMs you develop?'",
+    "Add scenario-specific playbooks (2-3 sentences each) for the 4 classifications — e.g., for 'visibility gap,' concrete moves like weekly written updates to skip-level, quarterly business-impact memos, presenting at leadership review — because the diagnosis is only useful if the response is specific."
+  ],
+  "generic_advice_flags": [
+    "'Aim for 8/10 job satisfaction, act if below 7 for six months.' — The numeric threshold is unmotivated and could apply to any job; nothing PM-specific about it.",
+    "'Network building: Reactive — reaches out when needed / Proactive during stable times' — True but generic to all knowledge-work careers; doesn't differentiate PM specifically.",
+    "'Switch companies only after you've absorbed the current environment's lessons... Because problems relocate; they don't reset.' — Directionally right but this is generic career wisdom, not PM-specific insight. Could be sharpened by naming which PM-specific lessons tend to travel (e.g., 'if you haven't shipped through a re-org, you haven't learned to defend scope')."
+  ],
+  "missing_coverage": [
+    "The IC vs. people-management fork at the Senior PM → Group PM / Principal PM stage — one of the defining senior PM decisions.",
+    "Downleveling tradeoffs when switching companies (accepting SPM at a top-tier company after being GPM at a mid-tier).",
+    "How to evaluate a startup PM offer vs. a big-tech PM offer at the same career stage — equity math, scope math, resume math.",
+    "The 'PM to founder / PM to VC / PM to Chief of Staff' adjacent pivots, which are increasingly common at the senior level.",
+    "How to read leveling signals in an offer (Meta E5 vs. Google L5 vs. Amazon L6 vs. startup 'Senior PM') — the market-vs-HR distinction should extend to inter-company leveling.",
+    "PM in non-tech-native industries (fintech, healthtech, enterprise) where the promotion dynamics differ meaningfully from consumer tech."
+  ]
+}

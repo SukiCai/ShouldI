@@ -191,7 +191,7 @@ def extract_file(
     raw = strip_json_fences(LLMClient().chat(
         model=model,
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=16384,
+        max_tokens=12000,
     ))
 
     try:

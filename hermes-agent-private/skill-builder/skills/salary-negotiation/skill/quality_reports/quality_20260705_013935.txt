@@ -1,0 +1,47 @@
+
+============================================================
+  Quality Report: Salary & Offer Negotiation Expert
+  Overall: 4.4/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely strong, expert-level skill that goes well beyond generic negotiation advice. It integrates specialized domain knowledge (H-1B wage-weighted lottery, PGWP mobility, provincial tax arbitrage, clawback structure) that most negotiation guides omit, and consistently ties heuristics to underlying mechanisms. Minor weaknesses: a few claims need sourcing/caveats, and it under-addresses some common scenarios (multi-round tactics scripting, competing offer fabrication risk, and comp modeling worked examples).
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       5/5  ████████████  Excellent
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             5/5  ████████████  Excellent
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • Expert framing is genuinely non-obvious and specific — e.g., 'a Level III → IV wage jump can improve H-1B lottery odds by 33% relative' and 'voluntarily disclosed salary loses its legal protection even in ban states' are the kind of counterintuitive facts that separate specialists from generalists.
+    • Heuristics carry precise conditions and reasoning — e.g., 'Counter 10–20% above the initial offer when at market; 20–25% when >15% below market' with the mechanism 'companies typically move 40–60% toward your ask in round one.' The lever-sequencing heuristic (base → signing → equity → non-cash, never simultaneously, because 'different levers have different budget owners') is the kind of tactical detail novices miss.
+    • Hidden tradeoffs table is exceptionally strong — 'Signing bonus doesn't compound into raises, refreshes, or bonus targets — all anchored to base' and 'Large pre-IPO RSU grant... Vesting triggers ordinary income tax; post-IPO drop means you paid tax on value you no longer have' are precisely the delayed consequences that a novice cannot see at decision time.
+    • The Junior vs. Senior table is meaningfully differentiating — the contrast between 'I was hoping for more' vs. 'Market median for this level at this company is X per levels.fyi — I need Y' is the kind of concrete linguistic shift an AI could actually operationalize.
+
+  ✗ Weaknesses:
+    • The 'Feb 27, 2026 wage-weighted rule' claim is stated as fact with a Federal Register cite (2025-23853), but as of the skill's stated content this is a proposed/finalized rule whose enforcement history and implementation details matter enormously — the skill should caveat that this is subject to litigation/change and recommend verifying current status, not treat it as settled operating reality.
+    • Diagnostic Step 1 is strong but Step 2 ('Classify the Situation') mostly repeats categories already implicit rather than adding decision-forcing questions — e.g., it doesn't ask 'Is this a lateral or level-up move?' or 'What's the recruiter's timeline pressure vs. hiring manager's?' which materially change tactics.
+    • The '~6% withdrawal rate' statistic is presented without a source — for a skill built on hard numbers and legal claims, this specific figure deserves attribution (or a hedge like 'commonly cited estimates suggest ~5–7%').
+    • Missing worked example / script library. The skill tells the AI to give 'specific, condition-qualified moves' but doesn't include even one end-to-end example of applying the diagnostic to a realistic case, which would anchor the AI's output style.
+
+  → Improvement Suggestions:
+    • Add a 'Worked Example' section showing the diagnostic applied to 1–2 canonical cases (e.g., 'F-1 OPT candidate with $180K base offer from Series C startup and competing offer from public FAANG' → step-through of BATNA, equity discount, wage-level implication, counter-script). This would dramatically improve output quality by giving the AI a reasoning template to imitate.
+    • Add explicit caveats/verification triggers for time-sensitive legal claims — the H-1B wage-weighted rule, salary history ban jurisdictions, and pay transparency laws change frequently. A short 'Verification required before citing' block would prevent the AI from stating outdated law as fact.
+    • Add a section on 'Competing Offer Ethics and Risks' — covering how to leverage a real competing offer without lying, what happens if a company asks for written proof, and the reputational risk of a 'phantom' competing offer in tight ecosystems. This is a common failure mode not currently addressed.
+    • Include specific comp-modeling scaffolding — e.g., 'To compute 4-year TC: (Base × 4) + (Sign / 1 if no clawback risk) + (RSU_grant × discount_factor) + (Bonus_target × Base × 4 × payout_probability) − (State/Provincial tax delta)'. Right now the skill tells the AI to model total comp but doesn't specify the model.
+
+  ⚠ Generic Advice Flags:
+    • 'Without one, they cannot negotiate — they can only ask.' — This is punchy but stated as absolute; a senior would recognize that limited leverage negotiation is still possible via non-monetary levers, timing, and information asymmetry. Slightly oversimplified.
+    • 'A retention counter-offer solves compensation, not scope or manager... 80% of people leave within 12 months anyway.' — The 80% figure is a widely-repeated but poorly-sourced statistic (originally from a consulting firm's marketing material). Presenting it as fact weakens credibility; either source it or hedge.
+
+  ○ Missing Coverage:
+    • Multi-round negotiation pacing — the skill mentions '40–60% move on round one' but doesn't detail round 2 and round 3 tactics, when to stop, or how to close gracefully.
+    • Non-cash levers are mentioned but never enumerated — e.g., start date flexibility, remote work provisions, PTO, education stipend, sabbatical eligibility, title, reporting line, guaranteed first-year bonus, severance floor.
+    • Post-acceptance leverage windows — the period between verbal acceptance and signed offer, and between signing and start date, still has some leverage (e.g., discovering counteroffers, requesting relocation adjustments) which isn't discussed.
+    • How to handle offer negotiation via recruiter vs. hiring manager — recruiter incentives (close-rate KPIs, negotiation-buffer budget) differ materially from hiring manager incentives (headcount budget, team parity), and the skill doesn't unpack this.
+    • UK/EU/APAC roles — the skill covers US and Canada well but implies exhaustiveness; a scope note or brief coverage of London/Dublin/Singapore tech comp structures would strengthen it, or the description should narrow explicitly to US+Canada.

@@ -1,0 +1,315 @@
+{
+  "source_file": "negotiation_scripts.txt",
+  "heuristics": [
+    {
+      "rule": "Never give a number first — always redirect to their budget range",
+      "condition": "When a recruiter asks for your salary expectations or current compensation before an offer is made...",
+      "action": "...deflect with enthusiasm and ask what the budgeted range is for the role",
+      "because": "Their number is almost always more useful than anchoring with yours — you risk leaving money on the table or pricing yourself out unnecessarily"
+    },
+    {
+      "rule": "Never accept or reject a verbal offer on the spot",
+      "condition": "When a recruiter delivers a verbal offer during a call...",
+      "action": "...express enthusiasm, request the formal written offer, and set a 24–48 hour review window",
+      "because": "You need time to compare to market data and the act of reviewing is not a negotiation — it creates no friction while buying you leverage time"
+    },
+    {
+      "rule": "Give a specific number, not a range, when countering",
+      "condition": "When making a counter-offer on salary...",
+      "action": "...state one precise target number rather than a range",
+      "because": "Ranges anchor at the low end — the company will interpret a range as permission to offer the bottom of it"
+    },
+    {
+      "rule": "Express genuine enthusiasm before making any ask",
+      "condition": "When opening a counter-offer conversation...",
+      "action": "...lead with specific, sincere excitement about the role before naming your number",
+      "because": "Enthusiasm signals good faith and keeps the tone collaborative rather than adversarial, which makes the recruiter more willing to advocate for you internally"
+    },
+    {
+      "rule": "After giving your number, stop talking",
+      "condition": "When you have just stated your counter number in a negotiation...",
+      "action": "...remain silent and let the recruiter respond",
+      "because": "The discomfort of silence belongs to the recruiter, not you — filling it weakens your position by inviting you to walk back your ask"
+    },
+    {
+      "rule": "Always ask about the signing bonus as a separate lever, even after 'best and final'",
+      "condition": "When a company says the base salary cannot move due to band constraints...",
+      "action": "...pivot explicitly to signing bonus as an alternative lever",
+      "because": "Signing bonuses come from a different budget, don't affect payroll or salary bands, and companies frequently have flexibility there even when base is locked"
+    },
+    {
+      "rule": "Negotiate on the phone, confirm in writing",
+      "condition": "When a recruiter is handling negotiations over email...",
+      "action": "...request a 15-minute phone call before responding with any specific counter",
+      "because": "Recruiters batch and can easily decline email negotiations; on a live call they are actively advocating for you in real time, which is where movement actually happens"
+    },
+    {
+      "rule": "Counter one ask at a time, not five simultaneously",
+      "condition": "When you have multiple things you want to negotiate...",
+      "action": "...prioritize and sequence your asks rather than stacking them all at once",
+      "because": "Simultaneous asks feel like demands, create friction, and reduce the recruiter's ability to say yes to anything — sequencing keeps momentum"
+    },
+    {
+      "rule": "Offer to sign today when you're close to your number",
+      "condition": "When the negotiation is near resolution and you're close to an acceptable number...",
+      "action": "...explicitly offer to sign the same day if they can reach your final number",
+      "because": "It creates urgency on their side while signaling you are negotiating in good faith and not stringing them along"
+    },
+    {
+      "rule": "Frame a deadline extension request around decision quality, not personal need",
+      "condition": "When facing an exploding offer with a tight deadline...",
+      "action": "...request more time by invoking that a confident, thoughtful decision benefits both parties",
+      "because": "Companies have invested 10–20 hours interviewing you and don't want to lose you over a few days — framing around decision quality is harder to refuse than 'I need more time'"
+    },
+    {
+      "rule": "Get every verbal commitment in the offer letter before signing",
+      "condition": "When a company agrees in principle to a signing bonus or non-cash benefit during negotiation...",
+      "action": "...explicitly ask for it to be written into the offer letter before you sign",
+      "because": "'We'll figure it out later' is not a commitment — verbal agreements before signing have no enforceability"
+    },
+    {
+      "rule": "Align on compensation before formally accepting a promotion, not after",
+      "condition": "When a manager announces you are being promoted...",
+      "action": "...ask about the comp adjustment before expressing full acceptance of the new role",
+      "because": "Once you've visibly accepted the promotion, your leverage to negotiate the associated comp drops significantly"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether you have a competing offer",
+      "why_it_matters": "A competing offer transforms negotiation from a one-sided ask into a bilateral decision the company must respond to — it provides concrete external validation of your market value",
+      "how_to_assess": "You either have one or you don't — if you do, know the exact number and timeline attached to it before using it as leverage",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the negotiation is happening by phone or email",
+      "why_it_matters": "Phone calls put recruiters in real-time advocacy mode; email allows easy, low-friction 'no' responses and loses nuance",
+      "how_to_assess": "Assess the channel being used — if email, proactively request a call before counter-offering",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the base salary band is actually locked",
+      "why_it_matters": "If base truly cannot move, knowing this quickly redirects your energy to signing bonus, equity, or non-cash levers that have real budget flexibility",
+      "how_to_assess": "Ask HR directly whether the band is the constraint; test by asking about signing bonus separately even after being told base is final",
+      "weight": "high"
+    },
+    {
+      "factor": "Specificity of your target number",
+      "why_it_matters": "Vague asks ('something closer to $200K') anchor less effectively than precise numbers ('I'm looking for $195K') — precision signals market research and confidence",
+      "how_to_assess": "Before negotiating, research the role on levels.fyi or equivalent sources and commit to a single specific number",
+      "weight": "high"
+    },
+    {
+      "factor": "Timing of the ask relative to offer stage",
+      "why_it_matters": "Giving a number before an offer is made anchors you downward; negotiating only after receiving the written offer maximizes leverage",
+      "how_to_assess": "Track whether you are pre-offer, post-verbal-offer, or post-written-offer — each stage has a different appropriate script",
+      "weight": "high"
+    },
+    {
+      "factor": "State-level salary history ban applicability",
+      "why_it_matters": "In states with salary history bans, you have legal cover to refuse sharing current compensation, removing a key pressure tactic recruiters use",
+      "how_to_assess": "Know whether your state has a salary history ban before any recruiter call; your deflection script differs depending on this",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether non-cash levers are on the table",
+      "why_it_matters": "Remote work arrangements, in-office day counts, and other non-cash terms have real life impact and are often more negotiable than base salary",
+      "how_to_assess": "Scan the offer letter for what is unspecified — unspecified terms are open negotiation opportunities",
+      "weight": "medium"
+    },
+    {
+      "factor": "Deadline pressure on the offer",
+      "why_it_matters": "An exploding offer compresses your ability to gather competing offers and make comparisons — extensions are almost always negotiable but require proactive action",
+      "how_to_assess": "Note the stated deadline and immediately assess whether you need more time; the sooner you request an extension, the more reasonable it appears",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Negotiating over email instead of requesting a phone call",
+      "unstated_consequence": "Recruiter can respond with a templated 'no' in seconds with no social friction — the path of least resistance is always to decline in writing",
+      "who_it_affects": "People who are conflict-averse and prefer written communication, believing it is more comfortable or professional"
+    },
+    {
+      "choice": "Giving a salary range instead of a single number when counter-offering",
+      "unstated_consequence": "The company anchors to the bottom of your range and treats it as your actual ask, not a midpoint",
+      "who_it_affects": "Candidates who believe showing flexibility signals reasonableness — it actually signals willingness to accept the lower number"
+    },
+    {
+      "choice": "Expressing full enthusiasm for a promotion before discussing compensation",
+      "unstated_consequence": "You implicitly signal acceptance of the role under any terms, eliminating your negotiating leverage before comp is even discussed",
+      "who_it_affects": "High performers who are excited and grateful for recognition and lead with emotion before thinking strategically"
+    },
+    {
+      "choice": "Accepting a verbal commitment on signing bonus or remote work without written confirmation",
+      "unstated_consequence": "The commitment has no legal enforceability and the specific person who made it may not be around when you join",
+      "who_it_affects": "Candidates who build trust-based relationships with recruiters and assume goodwill will carry through to onboarding"
+    },
+    {
+      "choice": "Countering on multiple items simultaneously",
+      "unstated_consequence": "It signals that no single concession will close the deal, which reduces recruiter motivation to push internally for any of them",
+      "who_it_affects": "Analytically-minded candidates who want to optimize everything at once and believe comprehensive asks are efficient"
+    },
+    {
+      "choice": "Not asking for an extension on an exploding offer deadline",
+      "unstated_consequence": "You make a consequential financial decision without adequate market comparison data, and implicitly accept terms that may have been improvable with one more competing offer",
+      "who_it_affects": "Candidates who fear appearing difficult or non-committal, especially those who are relieved to have any offer"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Giving a number first when asked for salary expectations pre-offer",
+      "why_it_happens": "Social pressure in the moment makes silence or deflection feel rude; candidates assume they must answer the question directly",
+      "consequence": "You anchor the entire negotiation at or below your stated number — the company has no reason to offer more than what you said you expected",
+      "warning_signs": [
+        "You feel obligated to answer every recruiter question directly",
+        "You give a range 'to seem flexible' before you have any offer"
+      ]
+    },
+    {
+      "pattern": "Accepting or declining a verbal offer on the spot",
+      "why_it_happens": "Emotional response to good news triggers immediate acceptance; or anxiety about seeming indecisive triggers quick response",
+      "consequence": "You lose the window to do market research and negotiate from a position of information rather than gratitude or panic",
+      "warning_signs": [
+        "You say 'yes' or signal strong acceptance during the call where the offer is delivered",
+        "You ask no clarifying questions when the offer is presented"
+      ]
+    },
+    {
+      "pattern": "Folding after the first 'this is our best and final offer'",
+      "why_it_happens": "The phrase sounds definitive and candidates interpret it as a true hard stop rather than a negotiating position",
+      "consequence": "You leave money on the table — signing bonus and other levers often remain available even when base is genuinely capped",
+      "warning_signs": [
+        "You treat 'best and final' as equivalent to 'nothing else is possible'",
+        "You never ask about signing bonus after being told base cannot move"
+      ]
+    },
+    {
+      "pattern": "Paralysis in the moment — knowing you should negotiate but not knowing the words",
+      "why_it_happens": "Candidates understand the principle but have no rehearsed scripts, so anxiety in the moment prevents execution",
+      "consequence": "Either no negotiation happens at all, or the ask is framed poorly and creates unnecessary friction without achieving movement",
+      "warning_signs": [
+        "You have researched market data but still say nothing when the offer comes",
+        "You plan to negotiate 'if the number feels low' but have no script prepared"
+      ]
+    },
+    {
+      "pattern": "Conducting all negotiation over email when a phone call would be more effective",
+      "why_it_happens": "Email feels safer, less confrontational, and gives candidates time to craft responses carefully",
+      "consequence": "Recruiters can batch-process and decline easily in writing; live advocacy and real-time movement almost never happen over email",
+      "warning_signs": [
+        "You have never asked to move the negotiation to a phone call",
+        "You respond to offer details in the same email thread they were sent in"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have a competing offer, and if so, what is the exact number and deadline?",
+      "what_it_reveals": "Whether you have external leverage to use — a competing offer fundamentally changes the negotiation dynamic and the scripts available to you",
+      "follow_up_if_yes": "Is it from a company the hiring company would consider a credible competitor, and are you willing to name it?",
+      "follow_up_if_no": "What market data do you have from sources like levels.fyi that can serve as a proxy for external validation?"
+    },
+    {
+      "question": "At what stage are you — pre-offer, post-verbal-offer, or post-written-offer?",
+      "what_it_reveals": "Which phase of negotiation strategy applies — deflection scripts, time-buying scripts, or active counter scripts are each stage-specific",
+      "follow_up_if_yes": "If post-written-offer: have you identified every unspecified term in the letter that could be negotiated?",
+      "follow_up_if_no": "If pre-offer: are you being asked for salary expectations, and do you know whether your state has a salary history ban?"
+    },
+    {
+      "question": "Is the negotiation happening by phone or email?",
+      "what_it_reveals": "Whether you have real-time advocacy from the recruiter or whether you're getting batched, low-friction responses",
+      "follow_up_if_yes": "If phone: have you prepared your specific number and practiced the silence after delivering it?",
+      "follow_up_if_no": "If email: have you requested a 15-minute call before submitting any counter?"
+    },
+    {
+      "question": "Has the recruiter said 'this is best and final' — and have you asked about signing bonus separately?",
+      "what_it_reveals": "Whether you've exhausted only one lever (base) or tested all available ones — signing bonus often has a different budget and different answer",
+      "follow_up_if_yes": "If you asked about signing bonus and were also told no: are there non-cash terms like remote work or start date that still haven't been addressed?",
+      "follow_up_if_no": "If you haven't asked about signing bonus yet: what specific amount would bridge the gap between the current offer and your target?"
+    },
+    {
+      "question": "For a promotion: did you discuss compensation before or after expressing acceptance of the new role?",
+      "what_it_reveals": "Whether your leverage has already been spent — accepting the role emotionally before negotiating comp eliminates your primary bargaining chip",
+      "follow_up_if_yes": "If before: what market data do you have for the new title to anchor your counter?",
+      "follow_up_if_no": "If after: is there still an opening to reframe the conversation as 'aligning before we finalize' rather than renegotiating after acceptance?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Exploding offer deadlines are firm and non-negotiable",
+      "actual_reality": "Most exploding offer deadlines are negotiable — companies have invested 10–20 hours interviewing a candidate and will not lose them over a 3–7 day extension",
+      "implication": "Always request an extension framed around making a confident decision; treat the deadline as a starting position, not a hard constraint"
+    },
+    {
+      "common_belief": "'This is our best and final offer' means there is nothing left to negotiate",
+      "actual_reality": "Base salary band may genuinely be locked, but signing bonus often comes from a completely different budget and may still have flexibility even after 'best and final'",
+      "implication": "After hearing 'best and final,' pivot specifically to signing bonus before accepting or walking away"
+    },
+    {
+      "common_belief": "Negotiating aggressively will make you seem difficult and cost you the offer",
+      "actual_reality": "Enthusiastic, specific, collaborative counter-offers are expected by recruiters — the scripts that work are not adversarial; they are good-faith conversations",
+      "implication": "Tone and framing matter more than the act of negotiating — enthusiasm before any ask is not a tactic, it is what makes the ask land well"
+    },
+    {
+      "common_belief": "Email is a professional and effective channel for salary negotiation",
+      "actual_reality": "Recruiters can batch and decline email negotiations with minimal friction — live phone calls are where real advocacy and movement happen",
+      "implication": "Proactively request a phone call before submitting any counter-offer, even if the entire process has been conducted via email"
+    },
+    {
+      "common_belief": "Giving a salary range signals flexibility and makes you easier to work with",
+      "actual_reality": "Ranges anchor at the low end — the company treats the bottom of your range as your actual ask and has no incentive to offer more",
+      "implication": "Always give one specific number when counter-offering, never a range"
+    },
+    {
+      "common_belief": "Unspecified terms in an offer letter will be worked out after you join",
+      "actual_reality": "Terms that are not in the offer letter are not commitments — verbal agreements made during recruitment have no enforceability after you sign",
+      "implication": "Any agreed-upon term — signing bonus, remote work arrangement, in-office day count — must be in the written offer letter before you sign"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to recruiter salary questions pre-offer",
+      "junior_pattern": "Answers directly with a number or range, believing it is rude or evasive to deflect",
+      "senior_pattern": "Deflects with enthusiasm and redirects to the company's budgeted range, understanding that the first number sets the ceiling",
+      "why_it_matters": "Giving your number first anchors the entire negotiation downward — seniors understand that information asymmetry at this stage is entirely in the company's favor"
+    },
+    {
+      "dimension": "Reaction to a verbal offer",
+      "junior_pattern": "Responds emotionally with excitement or relief, sometimes accepting on the spot or signaling strong acceptance",
+      "senior_pattern": "Expresses genuine enthusiasm while immediately establishing a review window, treating the verbal offer as the start of a process",
+      "why_it_matters": "Accepting on the spot eliminates all negotiating leverage; seniors know that a short review window is both expected and costless"
+    },
+    {
+      "dimension": "Handling 'best and final' statements",
+      "junior_pattern": "Treats 'best and final' as the true end of negotiation and either accepts or declines without probing other levers",
+      "senior_pattern": "Acknowledges 'best and final' on base salary but immediately pivots to signing bonus as a separate budget lever",
+      "why_it_matters": "Seniors understand that 'best and final' on base does not mean 'best and final on everything' — signing bonuses are structurally different and frequently still available"
+    },
+    {
+      "dimension": "Precision in counter-offers",
+      "junior_pattern": "Uses vague language like 'something in the $190s' or gives a range to seem flexible",
+      "senior_pattern": "States one precise number — 'I'm looking for $195,000' — after researching market data from a named source",
+      "why_it_matters": "Precision signals preparation, confidence, and market awareness; vagueness signals uncertainty and invites the company to anchor at the low end"
+    },
+    {
+      "dimension": "Negotiation channel selection",
+      "junior_pattern": "Conducts negotiation by email because it feels safer and allows more time to craft responses",
+      "senior_pattern": "Proactively requests a phone call before counter-offering, knowing that real-time advocacy is where movement happens",
+      "why_it_matters": "Email creates a low-friction path to 'no'; phone calls require the recruiter to engage in real time and advocate internally on your behalf"
+    },
+    {
+      "dimension": "Promotion negotiation timing",
+      "junior_pattern": "Expresses excitement and gratitude for the promotion announcement before asking about compensation",
+      "senior_pattern": "Asks about compensation before signaling full acceptance, framing it as wanting to start the next chapter aligned",
+      "why_it_matters": "Expressing acceptance before negotiating comp permanently reduces leverage — the company has already achieved their goal of getting you to take the role"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_negotiation_scripts",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,0 +1,494 @@
+{
+  "source_file": "zhihu_未来应留在美国还是回国生活.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Return before 35 or don't bother",
+      "condition": "When considering returning to China after living in the US for an extended period...",
+      "action": "Return before age 35, otherwise lifestyle habits are too entrenched to readjust",
+      "because": "The top answer explicitly states that returning after 35 means suffering because life habits can no longer be changed — the person has been acculturated too deeply",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Only return with a specific advantage, not just vaguely",
+      "condition": "When considering returning to China without a clear career edge...",
+      "action": "Identify which of the three returnee archetypes you are: no-edge local competitor, experienced manager with title upgrade, or US-salaried China-posted employee — and only return if you clearly fit the second or third",
+      "because": "The top answer outlines three returnee outcomes explicitly, with only the second and third being meaningfully better than staying or staying locally competitive",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Assess whether your work experience is portable before returning",
+      "condition": "When evaluating whether US work experience will transfer value back to China...",
+      "action": "Ask whether the skills, tools, or systems you use are recognized and valued in the Chinese market — if they are internal-only or niche, the experience may not transfer",
+      "because": "The top answer warns that some company-internal experience is non-transferable: 'some companies develop things internally that the industry doesn't use — that work experience is basically worthless'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Five years is a natural career inflection point for job switching",
+      "condition": "When deciding when to switch jobs or make a major career move...",
+      "action": "Target the five-year mark as a natural transition window — by then you've hit roughly 10,000 hours and new platforms become accessible",
+      "because": "Answer [1] explicitly frames year five as when business capability is sufficiently developed and previously inaccessible platforms open up",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Age at time of return decision",
+      "why_it_matters": "Lifestyle habits, social network roots, and career positioning all compound with time — returning later means higher readjustment cost and less upside from China's growth trajectory",
+      "how_to_assess": "Are you under 35? Do you still feel culturally fluid between both environments?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Type of returnee profile",
+      "why_it_matters": "The three returnee archetypes have radically different financial and career outcomes — the first (no edge) barely outperforms locals, the third (US-salaried expat post) is the best economic outcome",
+      "how_to_assess": "Do you have a clear managerial track record in the US? Is your company sending you back with US compensation? Or are you returning without a structured offer?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Work-life balance tolerance",
+      "why_it_matters": "China's work intensity is described as roughly 2x that of the US, with overtime being the norm at companies of all sizes",
+      "how_to_assess": "How strongly do you value work-life balance? Have you experienced or could you sustain sustained overtime culture?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Career field and US job market access",
+      "why_it_matters": "Non-CS/accounting international students in the US are effectively locked out of major employers (Boeing, NASA, GE, government) due to citizenship requirements, making the US opportunity set much narrower than it appears",
+      "how_to_assess": "Is your field one where employers broadly hire non-citizens? Or are you in a field where the best employers are de facto closed to you?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Net purchasing power parity at your experience level",
+      "why_it_matters": "Early career, US compensation is significantly better in real purchasing power; but by mid-career the gap narrows substantially",
+      "how_to_assess": "The top answer suggests $60K after-tax in the US requires ¥200K after-tax in Beijing for equivalent purchasing power — map your current and projected compensation against this benchmark",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Family proximity and emotional rootedness",
+      "why_it_matters": "Multiple answers cite family separation and cultural identity as primary drivers of the return decision — these factors are often underweighted in financial calculations but end up dominating long-term satisfaction",
+      "how_to_assess": "How often do you feel acute longing for family? Do you envision raising children in a Chinese-language cultural environment?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Social capital utility by profession",
+      "why_it_matters": "In China's relationship-based society, professions that carry social resource access (doctors, teachers, bankers) command disproportionate informal status — engineers/programmers have high income but zero social resource leverage",
+      "how_to_assess": "Can your profession help family and friends navigate China's system (healthcare, education, finance)? Or is your value purely market-transactional?",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Identity and cultural continuity for future children",
+      "why_it_matters": "Multiple commenters flag that US-born or US-raised children of Chinese immigrants become culturally American — for those with strong cultural identity attachment, this is an irreversible loss",
+      "how_to_assess": "Do you want your children to grow up fluent in Chinese, embedded in Chinese cultural practices? Would an ABC identity for your children feel like a loss?",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in the US long-term in a technical role",
+      "unstated_consequence": "Ethnic hierarchy in Silicon Valley means Chinese engineers occupy a structural labor tier below Indian managers and white executives — the ceiling is real and positional, not just cultural",
+      "who_it_affects": "Chinese tech workers in the US who assume meritocracy is the primary determinant of advancement",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying in the US to accumulate income advantage",
+      "unstated_consequence": "By mid-career (~10+ years experience), the net purchasing power gap between US and China narrows significantly — the financial case for staying weakens over time just as family/cultural costs compound",
+      "who_it_affects": "Mid-career professionals who deferred the return decision assuming the financial gap would persist indefinitely",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying on a visa for immigration purposes in a job you dislike",
+      "unstated_consequence": "Visa dependency (OPT → H-1B → green card) traps workers in narrow career tracks — legally required to work in the field matching your degree, preventing career pivots that might reveal better fit",
+      "who_it_affects": "International students who chose CS or accounting not by passion but by job market necessity, and who are now locked in",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Returning to China after extensive US acculturation",
+      "unstated_consequence": "Deep habits formed in the US (diet, pace, social norms, work-life expectations) make readjustment genuinely painful — the returnee may feel like a foreigner in their home country",
+      "who_it_affects": "Anyone who has lived in the US for 8+ years, particularly those who went as young adults",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Prioritizing networking and social capital building",
+      "unstated_consequence": "Networking without underlying personal value yields little — the benefit of connections is gated by what you can offer; investing time in networking before building core competence is wasted effort",
+      "who_it_affects": "Early-career professionals who follow MBA-style 'networking is king' advice before establishing real expertise",
+      "regions": []
+    },
+    {
+      "choice": "Raising children in the US",
+      "unstated_consequence": "First-generation immigrant parents often describe deep loneliness in old age — US-raised children become culturally American and lack the emotional and cultural closeness that Chinese family structures provide",
+      "who_it_affects": "Immigrants who prioritize their children's opportunities over their own late-life social support structures",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying in the US in a job that feels stable but unfulfilling",
+      "unstated_consequence": "Inertia compounds — the longer you stay in work you dislike, the harder it becomes to leave because you've adapted to the stability. The 'I could have done better if I'd returned' counterfactual grows but the ability to act on it shrinks",
+      "who_it_affects": "Visa-dependent workers who rationalize staying with increasingly elaborate justifications rather than addressing the underlying dissatisfaction",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Returning to China without a differentiated advantage and competing directly with locals",
+      "why_it_happens": "The cultural prestige of a 'sea turtle' returnee creates false confidence that foreign experience alone commands premium positioning",
+      "consequence": "Ends up earning only slightly above local average — the 'returnee premium' is small without genuine managerial or technical differentiation",
+      "warning_signs": [
+        "No managerial track record from the US stint",
+        "Returning without a structured offer from a multinational",
+        "Assuming the US brand name alone will open doors"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating technical skill as the primary career asset in China",
+      "why_it_happens": "Chinese engineers in the US observe that technical depth is rewarded in US tech culture and assume the same logic applies in China's corporate environment",
+      "consequence": "Gets stuck at individual contributor level while less technically skilled but better politically positioned peers advance — the top answer explicitly warns that pure technical focus without business/management orientation leads to being sidelined",
+      "warning_signs": [
+        "Dismissing the importance of internal visibility and business framing",
+        "No interest in moving toward team lead or project ownership roles",
+        "Belief that code quality alone drives career advancement"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Staying indefinitely in a mismatched career due to visa dependency",
+      "why_it_happens": "Sunk cost and status quo bias — having invested years obtaining the H-1B and working toward green card, the psychological cost of abandoning the path feels enormous",
+      "consequence": "Spends the majority of working life in a role that produces no internal satisfaction, with the implicit comfort that 'I could have done more if I'd gone back' remaining permanently unresolved",
+      "warning_signs": [
+        "Counting down to 5pm daily",
+        "Justifying continued stay with external reasons only (green card, stability, salary) with no positive internal motivations",
+        "Frequent fantasy about alternative paths not taken"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Over-investing in networking activities before establishing core competence",
+      "why_it_happens": "MBA culture and career advice strongly emphasize networking as a primary career lever — this feels actionable and social, unlike the slow grind of skill-building",
+      "consequence": "Collects contacts and business cards but has no real value to offer, resulting in no material career benefit from the networking investment",
+      "warning_signs": [
+        "Attending multiple networking events per week while feeling career is stagnant",
+        "Measuring networking success by volume of contacts rather than quality of exchanges",
+        "Startup founder attending pitch events before product-market fit exists"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Are you returning with a structured offer (especially a US-company China posting) or just returning open-endedly?",
+      "what_it_reveals": "Determines which of the three returnee archetypes applies — the structured expat posting is the economically dominant outcome; the unstructured return is the weakest",
+      "follow_up_if_yes": "Is the compensation package maintaining US-level pay? If so, this is likely the best financial outcome available",
+      "follow_up_if_no": "Do you have genuine managerial experience (led teams, owned projects) that commands a title upgrade in China? If not, you may be competing directly with locals at minimal premium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you in a field where the top US employers (government, defense, major industrials) actually hire non-citizens?",
+      "what_it_reveals": "Determines whether your US career ceiling is artificially constrained by citizenship requirements rather than merit — relevant for EE, physics, aerospace, government-adjacent roles",
+      "follow_up_if_yes": "Your US career path is genuinely open — evaluate stay/return on full merits",
+      "follow_up_if_no": "You may be in CS or accounting by necessity rather than passion, which compounds with visa lock-in to create long-term career dissatisfaction",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What happens to your professional identity and social capital if you leave your current company?",
+      "what_it_reveals": "Distinguishes between personal competence (portable) and positional prestige (non-portable) — if your value disappears when you leave the company, you have positional not personal capital",
+      "follow_up_if_yes": "Your skills are portable — you have real options and career capital that transfers",
+      "follow_up_if_no": "Your identity is company-dependent — headhunter interest is because of employer brand, not personal value; this should factor heavily into any return calculation",
+      "regions": []
+    },
+    {
+      "question": "How do you feel about your children potentially not speaking Chinese fluently or being culturally ABC?",
+      "what_it_reveals": "Surfaces depth of cultural identity attachment — if this produces genuine distress, staying long-term will generate persistent psychological cost regardless of financial outcome",
+      "follow_up_if_yes": "Cultural continuity is a high-weight factor for you — factor it explicitly into the decision rather than treating it as a soft preference",
+      "follow_up_if_no": "Cultural continuity is lower weight — financial and career factors can dominate the decision calculus",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you staying in your current job for positive reasons or primarily to avoid losing what you've accumulated (status, green card progress, salary)?",
+      "what_it_reveals": "Distinguishes forward-looking motivation from sunk cost and loss aversion — staying to avoid loss while miserable is a failure pattern, not a rational strategy",
+      "follow_up_if_yes": "There are genuine pull factors keeping you — evaluate them explicitly",
+      "follow_up_if_no": "You may be in a sunk cost trap — the question is not 'what have I invested' but 'what does the next ten years look like from here'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "International students choose CS and tech because they love coding and it's a great career",
+      "actual_reality": "Most Chinese international students in CS chose it because it is one of very few fields where non-citizens can realistically find employment — defense, aerospace, government, and most traditional industries are effectively closed to them",
+      "implication": "The apparent concentration of Chinese immigrants in CS is a structural artifact of citizenship-based employment restrictions, not revealed preference — many are in careers they didn't truly choose",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Silicon Valley is a meritocracy where hard work and technical skill determine advancement",
+      "actual_reality": "There is a documented ethnic hierarchy: white/Jewish investors and CEOs at top, white and Indian management in middle, Indian and Chinese engineers at lower-middle tiers — Indian professionals occupy a bridging role that Chinese professionals structurally cannot fill due to English fluency and political navigation skills",
+      "implication": "Chinese engineers should plan careers with the glass ceiling in mind rather than assuming it doesn't exist or that outperforming technically will break through it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Networking is one of the most important career activities and more of it is better",
+      "actual_reality": "Networking is a value exchange — without strong personal competence and something concrete to offer, networking produces almost no career benefit regardless of volume; it becomes a substitute for the harder work of skill development",
+      "implication": "Early-career professionals should prioritize skill depth over social capital accumulation; networking becomes high-value only once underlying expertise is established",
+      "regions": []
+    },
+    {
+      "common_belief": "Engineers in the US are respected professionals with high social status",
+      "actual_reality": "In US popular culture, engineers are stereotyped as socially awkward geeks; open-plan offices are glorified assembly lines; the social status of the profession is largely self-perception among the engineering community",
+      "implication": "Chinese engineers who feel undervalued socially in China and expect US tech culture to be more validating may find the social status differential is smaller than assumed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The financial advantage of staying in the US compounds over time",
+      "actual_reality": "Early career the US financial advantage is large, but by mid-career and senior levels the net purchasing power gap between US and China narrows substantially — the argument for staying purely on financial grounds weakens significantly after the first 5-8 years",
+      "implication": "Financial calculations should model purchasing power parity at projected future income levels, not current entry-level differentials",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate career options",
+      "naive_pattern": "Focuses on current salary differential and assumes the gap persists or grows — sees US compensation as an unambiguous long-term win",
+      "informed_pattern": "Models purchasing power parity at mid-career levels and recognizes the gap narrows; weighs career ceiling, field constraints, and optionality alongside raw compensation",
+      "why_it_matters": "Optimizing for early-career compensation without modeling mid-career dynamics leads to decisions that look correct at 27 but feel like traps at 40",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Understanding of networking value",
+      "naive_pattern": "Attends every networking event, collects contacts, believes relationship volume drives career outcomes",
+      "informed_pattern": "Recognizes networking as a value exchange — invests in networking only after building demonstrable expertise, and evaluates networking activities by what concrete value they produce",
+      "why_it_matters": "Time spent on unproductive networking is time not spent on skill development — the opportunity cost is highest in early career when skill compounding matters most",
+      "regions": []
+    },
+    {
+      "dimension": "Assessment of US career ceiling",
+      "naive_pattern": "Believes the glass ceiling is breakable through effort and performance, or dismisses it as not personally relevant",
+      "informed_pattern": "Accepts the structural reality of ethnic hierarchy in US corporate environments and plans career architecture around it — either by building toward independence (entrepreneurship, specialized expertise) or by treating US tenure as a finite credentialing phase before a return",
+      "why_it_matters": "Ignoring the ceiling leads to investing decades in a path that hits structural limits — recognizing it early allows for more strategic positioning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they frame the stay-vs-return decision",
+      "naive_pattern": "Frames it as a permanent binary choice requiring certainty — paralyzed by the finality",
+      "informed_pattern": "Treats it as a sequenced, time-bounded decision with reversible components — e.g., return before 35 preserves readjustment optionality; staying past that point closes certain doors",
+      "why_it_matters": "Framing it as irreversible amplifies decision anxiety and delays action — the experienced framing creates actionable timelines",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "What they think drives success in China's market",
+      "naive_pattern": "Believes technical excellence and hard work will be recognized and rewarded in China the same way they expect it to work in the US",
+      "informed_pattern": "Understands China's market rewards people who combine technical or managerial specialization with business development orientation and relationship capital — pure technical workers without these layers have limited upside",
+      "why_it_matters": "Returning with the wrong mental model means replicating the same career ceiling problem in a different geography",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Having US work experience automatically gives you a significant salary premium when returning to China",
+      "why_believed": "The 'sea turtle' returnee narrative has historically commanded premium salaries — early returnees in the 2000s did receive large premiums",
+      "actual_rule": "Only two of three returnee archetypes receive meaningful premiums — those with genuine managerial track records and those on US-salaried expat postings. Returning without differentiated experience means competing directly with locals at minimal premium",
+      "real_consequence": "People return expecting a large salary premium, find they are only earning slightly above local market rate, and feel the return was a failure",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Switching to CS from another field means you had a genuine career option, just chose the more practical one",
+      "why_believed": "Career switches to CS feel like pragmatic choices made freely",
+      "actual_rule": "For non-citizen international students, most major US employers in non-CS fields (defense, aerospace, government, industrials) are effectively closed by law or practice — the switch to CS was often not a free choice but a forced response to a severely constrained job market",
+      "real_consequence": "People spend careers in fields they didn't genuinely choose, experience chronic dissatisfaction, and are structurally locked in by visa requirements that mandate work in their degree field",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "More networking leads to more career opportunities",
+      "why_believed": "Business school culture, career advice books, and successful people who attribute success to their networks all reinforce this belief",
+      "actual_rule": "Networking is a value exchange — without underlying personal competence and something concrete to offer, contact volume produces no material career benefit. The value flows from your expertise, not your rolodex",
+      "real_consequence": "Early-career professionals spend time building shallow contact networks instead of developing deep expertise, then wonder why the networking produced no results",
+      "regions": []
+    },
+    {
+      "misconception": "The US financial advantage over China compounds over a career and the gap keeps growing",
+      "why_believed": "Entry-level US salaries, especially in tech, are dramatically higher than equivalent Chinese salaries — the gap is viscerally real at career start",
+      "actual_rule": "The purchasing power gap narrows substantially at mid and senior career levels — the top answer explicitly states that by the time professionals are in mid-career, net purchasing power is approximately comparable",
+      "real_consequence": "People defer the return decision assuming the financial case for staying keeps improving, then find at 40+ that the gap is smaller than expected while readjustment costs and family separation costs have compounded",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "PhD graduate, 5 years in the US across multiple cities (Ithaca, Pittsburgh, Seattle, NYC, Bay Area), genuinely happy with American life and social environment",
+      "decision": "Decided to return to China immediately after PhD graduation, driven entirely by family proximity, cultural identity, and desire for children to grow up in Chinese culture — not financial or career calculation",
+      "outcome": "Made the decision without ambivalence — explicitly not optimizing for career or income. Framed as identity-driven, not opportunity-driven. Still felt preemptive nostalgia for the US life being left behind before even departing",
+      "lesson": "When family, cultural identity, and sense of self are the primary drivers, the stay-vs-return decision resolves cleanly without financial optimization — but people often bury these real drivers under career and financial framing, which creates false complexity",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "US-based professional lived and worked in America for 11 years (3 years study, 8 years work), returned to China in 2015",
+      "decision": "Returned to China after 11 years",
+      "outcome": "Found deep American habits (asking for ice water at Chinese restaurants) persisted years after return. Described the American environment as genuinely peaceful and pleasant, but characterized prolonged stay as enabling 'inertia and comfort' that obscured real dissatisfaction",
+      "lesson": "Long-term US residents who return discover that 8+ years of acculturation creates persistent behavioral habits that mark them as 'foreign' at home — the readjustment is real and multi-year, supporting the 'return before 35' heuristic from the top answer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Person is unhappy in their US job but continues listing only external reasons for staying (green card progress, stability, don't want to waste investment)",
+      "underlying_state": "Sunk cost fallacy compounded by loss aversion — the accumulated investment in the immigration path makes abandoning it feel like a waste, even when continuing produces ongoing misery",
+      "how_it_manifests": "User frames staying as rational while privately fantasizing about alternatives; constructs increasingly elaborate justifications for why the current path is the right one; defers the decision indefinitely",
+      "expert_move": "Reframe: 'The years you've already spent are gone regardless of what you decide next. The question is only what the next ten years look like from here — what does that path look like if you're honest with yourself?'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person frames the decision as permanent and irreversible ('if I go back I can never come back', 'if I stay I'll lose China forever')",
+      "underlying_state": "Binary thinking and catastrophizing — treating a complex, partially reversible decision as a one-time irreversible choice amplifies anxiety and causes paralysis",
+      "how_it_manifests": "Decision paralysis, endless deferral, seeking reassurance from others rather than building personal decision criteria",
+      "expert_move": "Introduce time-bounding: 'What would you decide if you knew you could revisit this in 3 years? The age-35 window is a real constraint — but most other parameters are more reversible than they feel right now'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person compares themselves to high-visibility returnees who did well or to peers who stayed and seem to be thriving",
+      "underlying_state": "Survivorship bias and social comparison anxiety — visible successful returnees and successful stayers are both selection effects; the average outcomes for each path are not represented by the most visible examples",
+      "how_it_manifests": "Person alternates between 'everyone who went back is doing great' and 'everyone who stayed got their green card and is happy' — neither observation is grounded in base rates",
+      "expert_move": "Ask: 'Who are the people you're not seeing? What happened to the returnees who didn't do well? What's happening to the people who stayed but are quietly miserable?' Base the comparison on realistic distributions, not highlights",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person expresses strong cultural or family longing but immediately dismisses it as 'soft' or 'irrational' and returns to financial analysis",
+      "underlying_state": "Emotional suppression and rationalization — the real drivers of the decision (family, identity, belonging) are treated as illegitimate compared to 'hard' financial factors, so they go unaddressed while generating chronic background dissatisfaction",
+      "how_it_manifests": "Person repeatedly mentions missing family or cultural disconnection but qualifies it as 'not a real reason' — the financial analysis keeps getting redone while the emotional factor stays unresolved",
+      "expert_move": "Validate the emotional factor as a legitimate first-order input: 'Feeling disconnected from family and culture for 10-20 years is not a soft preference — it's a significant quality of life variable. What weight would you give it if it were a financial cost you had to put a number on?'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person attributes their career success or recruiter interest to their personal abilities without questioning whether it's their employer brand that's generating the attention",
+      "underlying_state": "Self-serving attribution bias — conflating positional prestige (working at a well-known company) with personal capability, leading to overestimation of portable career capital",
+      "how_it_manifests": "Person feels confident about return prospects because they are being recruited, without asking whether the interest would persist if they left the current employer",
+      "expert_move": "Ask directly: 'If you left your current company tomorrow and went to an unknown startup, how many of those recruiters would still call? What can you take with you that has nothing to do with your employer's name?'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I stay in the US or return to China? — framed as a binary life choice",
+      "reframe": "China is an unregulated hunting ground where you might catch a bear or get killed; the US is a regulated shooting range where everyone gets a rabbit but no one gets a bear — which game are you actually trying to play?",
+      "why_it_works": "Replaces the abstract binary with a concrete risk/reward framing — forces the person to identify their actual risk appetite and ambition level rather than debating which country is 'better'",
+      "example_language": "中国好比是一个混乱的狩猎场，有人能打到熊，有人只能打只兔子，有人可能被别人打死了。美国好比是一个成熟的射击场，大家都只能打规定的兔子，保证人人都打得到。想打熊没门。",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I'm not succeeding because I haven't networked enough or met the right people",
+      "reframe": "Networking is a value exchange, not a discovery mechanism — the question isn't 'do I know the right people' but 'do I have something worth exchanging?'",
+      "why_it_works": "Shifts agency from external (who you know) to internal (what you can offer) — breaks the pattern of investing in networking as a substitute for skill development",
+      "example_language": "人脉的本质就是一种基于利益交换的信任，除非你个人在工作中拥了有足够强的个人价值，否则周围的人不是人脉，只是认识的人罢了",
+      "regions": []
+    },
+    {
+      "original_framing": "I should keep working hard at my current job — maybe I'm just not trying hard enough",
+      "reframe": "Ask not whether you're working hard enough but whether continuing this job serves your internal needs or only external ones — sustained misery while externally compliant is not a temporary problem to push through",
+      "why_it_works": "Breaks the 'effort will fix it' loop by distinguishing internal motivation from external compliance — reorients the question from 'how hard am I working' to 'why am I working'",
+      "example_language": "如果工作的理由仅仅是为了满足外部需求而不是内心的冲动，那么这个人一生的大部分时间都会过得很痛苦",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I need to break the glass ceiling — I need to fight for a higher position",
+      "reframe": "Ask whether you actually want to be at the top of that hierarchy, or whether you just want to confirm the grass isn't greener — most people find that a solid floor matters more than breaking the ceiling",
+      "why_it_works": "Distinguishes genuine ambition from status anxiety and social comparison — most people, when honestly asked, want comfort and security more than power, and recognizing this makes the ceiling less psychologically threatening",
+      "example_language": "与其说打破天花板，更让我们关心的其实是脚下的地板是不是足够厚实",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_未来应留在美国还是回国生活",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

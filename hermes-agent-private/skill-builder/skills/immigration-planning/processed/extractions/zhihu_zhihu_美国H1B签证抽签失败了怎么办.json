@@ -1,0 +1,350 @@
+{
+  "source_file": "zhihu_美国H1B签证抽签失败了怎么ijom.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If H-1B lottery fails, exhaust visa alternatives in priority order before resorting to consultancy/ICC routes",
+      "condition": "When H-1B lottery is not selected and the person needs to maintain US work authorization",
+      "action": "Evaluate O-1, L-1, EB-1/EB-2 direct green card, exempt-employer H-1B, STEM OPT extension, or J-1 before engaging a consultancy sponsorship arrangement",
+      "because": "The post explicitly lists 10 alternatives with pros/cons, and the consultancy route is characterized as high-risk with exploitative conditions by the Indian worker's firsthand account",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Retain all enrollment documentation if using CPT to maintain F-1 status while re-entering H-1B lottery",
+      "condition": "When using CPT as a bridge strategy to re-attempt H-1B in subsequent years",
+      "action": "Keep I-20s, transcripts, assignments, tuition payment receipts, transportation records, and course syllabi",
+      "because": "The post explicitly warns that CPT-based applicants should be prepared for RFE and need these documents as evidence of genuine enrollment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Target cap-exempt employers (universities, affiliated nonprofits, government research institutions) if you need H-1B without lottery exposure",
+      "condition": "When H-1B lottery odds are unacceptable and the person can accept a role at a qualifying institution",
+      "action": "Seek positions at universities (all roles, not just faculty), university-affiliated nonprofits, nonprofit research orgs, or government research orgs",
+      "because": "The post explicitly states these employers can file H-1B at any time, without cap or lottery, effective immediately upon approval",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Years of verifiable work experience",
+      "why_it_matters": "Consultancy-based H-1B sponsorship arrangements require candidates to have real experience and self-sufficient interviewing ability; without it, this route is closed. With it, hourly rate and take-home compensation vary substantially.",
+      "how_to_assess": "Count years of experience on actual projects; assess ability to pass technical interviews independently without coaching or resume fabrication",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Financial runway before first paycheck",
+      "why_it_matters": "The consultancy model can delay first payment by 3-4 months due to invoice cycles (monthly billing + 45-day vendor payment cycle + 15-day processing). Without savings, the person faces severe financial distress.",
+      "how_to_assess": "Calculate whether you can cover 4-5 months of US living expenses from personal savings before committing to a consultancy-sponsored arrival",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Field of work",
+      "why_it_matters": "Consultancy-based bulk lottery sponsorship exists across many fields (IT, accounting, sales, legal, bioinfo, supply chain, civil engineering), not just software — broadening or narrowing options depending on the person's industry",
+      "how_to_assess": "Research whether your specific field has an active consultancy/contract staffing ecosystem in the US",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Eligibility for O-1 or EB-1 direct path",
+      "why_it_matters": "These routes bypass the lottery entirely with no annual cap, but require evidence of extraordinary ability — available to fewer people but dramatically better terms",
+      "how_to_assess": "Assess whether you have: major awards, media coverage, high-impact publications, judging roles, or critical organizational roles that meet USCIS criteria",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "J-1 two-year home residency requirement",
+      "why_it_matters": "J-1 visa holders subject to the two-year rule must obtain a waiver (4-6 month process) before applying for H-1B, adding significant delay",
+      "how_to_assess": "Check DS-2019 and program type to determine if two-year rule applies; factor in waiver processing time if planning J-1 as a bridge",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting consultancy-sponsored H-1B (ICC/body shop route)",
+      "unstated_consequence": "First paycheck may not arrive for 3-4 months after joining a client site due to cascading invoice cycles (monthly billing → 45-day vendor payment → 15-day consultancy processing). Living costs, LCA amendment fees (~$1200 per location change), and no employer-covered relocation compound rapidly into $10,000+ out-of-pocket before any income arrives.",
+      "who_it_affects": "Anyone who arrives in the US with limited savings relying on the consultancy's promise of rapid project placement",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Using CPT to maintain F-1 status and re-attempt H-1B lottery",
+      "unstated_consequence": "Exposes the applicant to RFE scrutiny in future H-1B filings; requires genuine course attendance and documentation burden on top of full-time work; tuition is an additional cost; re-entry to the US carries risk",
+      "who_it_affects": "People treating CPT as a paperwork formality rather than genuine enrollment, or those with low academic backgrounds",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Cap-exempt employer H-1B (university, nonprofit research)",
+      "unstated_consequence": "If you later want to move to a private-sector employer subject to the cap, you re-enter the lottery and lose cap-exempt protection — the H-1B does not transfer cap-exempt status",
+      "who_it_affects": "People using cap-exempt employment as a long-term career strategy rather than a temporary bridge",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "H-4 EAD as work authorization while spouse holds H-1B",
+      "unstated_consequence": "H-4 EAD work authorization only becomes available after the H-1B holder's employment-based green card has reached a specific stage (I-140 approved or in 6th-year extension) — not available immediately upon marriage",
+      "who_it_affects": "Couples where the H-4 spouse plans to work immediately, not understanding the prerequisite conditions",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Arriving in the US via consultancy sponsorship without adequate savings, trusting the '15-day project placement' promise",
+      "why_it_happens": "Optimism bias and the consultancy's sales framing ('we'll take care of everything, just come') creates an underestimation of actual time-to-first-paycheck",
+      "consequence": "Financial distress for 3-5 months: no income, out-of-pocket LCA amendment costs, no health insurance, no car, substandard shared housing — total cash outflow of $20,000-$30,000 before breaking even",
+      "warning_signs": [
+        "Consultancy promises project placement within 15 days",
+        "Consultancy offers housing as part of the arrangement",
+        "No clarity provided on payment cycle or when first paycheck arrives"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating CPT enrollment as a paperwork formality rather than genuine coursework",
+      "why_it_happens": "Students are focused on maintaining work authorization and view the course requirement as bureaucratic overhead, not understanding USCIS scrutiny of CPT patterns",
+      "consequence": "H-1B RFE in subsequent year requiring extensive documentation that was never collected; potential status violation if enrollment was not genuine",
+      "warning_signs": [
+        "Student selects school primarily for CPT access, not academic quality",
+        "Student does not attend class or retain course materials",
+        "Student cannot produce transcripts, assignments, or tuition receipts"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Underestimating the LCA amendment cost as a recurring expense when changing client locations under consultancy H-1B",
+      "why_it_happens": "Workers focus on the hourly rate and the 80/20 or 70/30 split, failing to account for the $1,200 per-location amendment fee that recurs every time the client or work location changes",
+      "consequence": "Repeated unexpected out-of-pocket costs eroding effective take-home pay, especially for contractors who rotate client sites frequently",
+      "warning_signs": [
+        "Consultancy does not proactively disclose amendment fees at time of offer",
+        "Worker is placed in a contract role that involves frequent client site changes"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have at least 1-2 years of real, verifiable project experience and can you pass technical interviews independently?",
+      "what_it_reveals": "Determines eligibility for consultancy-based bulk lottery sponsorship — these companies require genuine experience and interviewing ability, unlike training-based ICCs",
+      "follow_up_if_yes": "Assess your financial runway: can you cover 4-5 months of US living expenses before your first paycheck?",
+      "follow_up_if_no": "Consultancy route is not viable; focus on employer-sponsored paths, OPT extension, or further education",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your current or target employer qualify as cap-exempt (university, university-affiliated nonprofit, government research org)?",
+      "what_it_reveals": "If yes, H-1B can be filed at any time without lottery — fundamentally changes the urgency and strategy of H-1B planning",
+      "follow_up_if_yes": "Negotiate directly with that employer for H-1B sponsorship outside the lottery cycle",
+      "follow_up_if_no": "Must plan around the annual April lottery window and evaluate bridge visa options for gap years",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "If considering J-1 as an alternative, are you subject to the two-year home residency requirement?",
+      "what_it_reveals": "Determines whether J-1 is a viable bridge strategy or adds a 4-6 month waiver process before any H-1B can be filed",
+      "follow_up_if_yes": "Factor in J-1 waiver timeline (4-6 months) into your overall status planning; J-1 may not be a clean bridge",
+      "follow_up_if_no": "J-1 as trainee may be a viable bridge if you can find a DS-2019-issuing employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have documented evidence of extraordinary ability — major awards, significant media coverage, judging roles, critical organizational contributions?",
+      "what_it_reveals": "Determines whether O-1 or EB-1A is a realistic alternative to H-1B, bypassing the lottery entirely",
+      "follow_up_if_yes": "Consult an immigration attorney to assess O-1 or EB-1A eligibility — these paths have no cap and no lottery",
+      "follow_up_if_no": "O-1/EB-1A are unlikely viable; focus on H-1B lottery, cap-exempt employers, or EB-2/EB-3 with employer support",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Consultancy-based H-1B sponsorship (ICC/body shop) is primarily a phenomenon in the software/IT industry",
+      "actual_reality": "According to the post, consultancy-based bulk lottery sponsorship exists across accounting, sales, legal, bioinformatics, supply chain, civil engineering, and other contract-staffing industries — it is structurally similar to what Indian workers call 'consultancy' and is standard practice in any field that uses contract workers",
+      "implication": "Workers in non-IT fields should be aware this model exists in their industry and evaluate the same risks (payment delays, exploitative splits, amendment costs)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The consultancy will cover your expenses and get you placed quickly after you arrive in the US",
+      "actual_reality": "Consultancies typically cover only a token portion of shared housing; all other expenses (SIM, SSN, transportation, food, LCA amendments) are borne by the worker. First paycheck routinely arrives 3-4 months after joining due to cascading billing cycles, not the implied 1-2 months.",
+      "implication": "Anyone relying on consultancy support must arrive with substantial personal savings ($10,000-$15,000 minimum) to survive the gap period",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Transferring an existing project from one ICC to another ICC that sponsored your H-1B is a gray area that 'nobody enforces'",
+      "actual_reality": "The post explicitly flags this as illegal — transferring a project from a previous ICC to the new H-1B sponsor is a violation, even if enforcement is rare. The legal path requires finding a genuinely new project.",
+      "implication": "Workers who transfer projects to their new H-1B sponsor are taking on legal risk; they should source new projects to remain fully compliant",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "H-4 visa holders can work as soon as their spouse gets H-1B status",
+      "actual_reality": "H-4 EAD work authorization requires the H-1B principal to have reached a specific green card milestone (approved I-140 or in 6th-year H-1B extension) — it is not automatically available at H-1B approval",
+      "implication": "Couples planning around H-4 work authorization need to map the H-1B holder's green card timeline before assuming the H-4 spouse can work",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to H-1B lottery failure",
+      "naive_pattern": "Treats lottery failure as a binary dead end — either find another lottery attempt or give up on the US; defaults to the most immediately available option (consultancy sponsorship) without evaluating alternatives",
+      "informed_pattern": "Immediately maps all alternative visa pathways (O-1, L-1, J-1, cap-exempt H-1B, EB-1/EB-2 direct, STEM OPT extension, spouse visa) and evaluates each against their specific profile before deciding",
+      "why_it_matters": "Defaulting to consultancy sponsorship without evaluation exposes the person to 3-4 months of financial hardship and exploitative contract terms that could have been avoided with a better-matched alternative",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating a consultancy H-1B offer",
+      "naive_pattern": "Focuses on the advertised hourly rate and the 80/20 split; accepts verbal promises about project placement speed and housing support at face value",
+      "informed_pattern": "Calculates true take-home after the split AND recurring amendment fees; models time-to-first-paycheck based on actual billing cycles (monthly invoice + 45-day vendor payment + 15-day processing); verifies savings adequacy before committing",
+      "why_it_matters": "The naive calculation makes the arrangement look viable; the informed calculation often reveals a 3-5 month cash-negative period that is financially dangerous without sufficient reserves",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "CPT as a bridge strategy",
+      "naive_pattern": "Views CPT purely as a work authorization mechanism; selects school for CPT access and treats coursework as administrative overhead",
+      "informed_pattern": "Understands CPT creates RFE exposure in future H-1B filings; treats enrollment as genuine and proactively collects all documentation (I-20s, transcripts, assignments, tuition receipts) from day one",
+      "why_it_matters": "Failure to document genuine enrollment can result in H-1B denial via RFE and potential retrospective status violations",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you use CPT to stay in the US after H-1B lottery failure, your next H-1B application will be treated the same as any other applicant",
+      "why_believed": "CPT is a legitimate F-1 benefit and the connection between CPT usage and increased H-1B scrutiny is not widely publicized",
+      "actual_rule": "USCIS may issue an RFE for H-1B applicants who used CPT, requiring extensive documentation proving the CPT enrollment was genuine (I-20, transcripts, assignments, syllabi, tuition payments, transportation records)",
+      "real_consequence": "Applicants who treated CPT as a formality and did not retain documentation may have their H-1B denied or delayed due to inability to respond to RFE",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The consultancy model is unique to the Indian IT community and doesn't affect other nationalities or industries",
+      "why_believed": "Most visible discussions of ICCs and body shops in Chinese-language communities focus on Indian-run IT consultancies, creating a perception of narrow demographic scope",
+      "actual_rule": "Consultancy-based contract staffing and bulk H-1B sponsorship exists across all contract-heavy industries (accounting, legal, bioinfo, supply chain, civil engineering, sales) and is not limited to any nationality or field",
+      "real_consequence": "Workers in non-IT fields may walk into exploitative consultancy arrangements without recognizing the pattern because they don't associate the warning signs with their industry",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "H-4 visa holders can work in the US as soon as their H-1B spouse's petition is approved",
+      "why_believed": "People conflate H-4 status (granted at H-1B approval) with H-4 EAD (work authorization), which has different and more restrictive eligibility requirements",
+      "actual_rule": "H-4 EAD requires the H-1B principal to have an approved I-140 or to be in a 6th-year H-1B extension — work authorization is not automatic at H-1B approval",
+      "real_consequence": "H-4 holders who begin working without EAD authorization are working illegally; couples who planned financially around dual income may face an unexpected gap",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Indian software developer with 11 years of experience, H-1B sponsored by a consultancy firm, arrived in the US with promise of housing and project placement within 15 days",
+      "decision": "Accepted the consultancy's terms, paid $4,000 in H-1B fees, booked a flight, arrived expecting to be self-sufficient within 1-2 months",
+      "outcome": "Found a project in 3 weeks but SSN delays pushed start date to 1.5 months post-arrival. Consultancy did not pay until 3-4 months after joining due to monthly billing + 45-day vendor cycle + 15-day processing. Forced to pay $1,200 LCA amendment fee upon client location change. Lived in overcrowded shared housing. No health insurance, no car, severe financial and emotional stress. Total out-of-pocket before earning: ~$30,000 USD including opportunity cost.",
+      "lesson": "The consultancy model structurally delays income by 3-4 months while front-loading all financial risk onto the worker. Anyone entering this arrangement must have $15,000-$30,000 in savings and must not rely on consultancy promises of fast placement or expense coverage. The 80/20 split sounds favorable but recurring amendment fees and payment delays erode actual compensation significantly.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "H-1B lottery failure — person asks 'what do I do now?' with urgency, often framing it as an either/or between consultancy sponsorship and leaving the US",
+      "underlying_state": "Loss aversion and tunnel vision — the person has invested years in building a US career and frames any path that keeps them in the US as acceptable, without evaluating the actual costs of each path",
+      "how_it_manifests": "Jumps to the first available option (consultancy sponsorship) without comparing alternatives; accepts consultancy promises at face value because the alternative (leaving) feels catastrophic",
+      "expert_move": "Reframe: lottery failure is not a binary between 'consultancy' and 'leaving' — map all 10 alternatives first, then evaluate each against your specific profile. The consultancy route often costs more (financially and emotionally) than the alternatives appear to.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person is already committed to a consultancy arrangement and is asking about when they'll get paid or how the process works",
+      "underlying_state": "Sunk cost fallacy — having already paid fees, booked flights, and arrived in the US, the person is psychologically committed and seeks reassurance rather than honest evaluation",
+      "how_it_manifests": "Asks narrow tactical questions ('when will I get paid?') rather than stepping back to evaluate whether the arrangement is viable given their savings; dismisses red flags as temporary",
+      "expert_move": "Surface the full payment timeline math explicitly: monthly billing + 45-day vendor cycle + 15-day processing = 3-4 months minimum. Ask: 'Do you have enough savings to cover that entire period plus unexpected costs like LCA amendments?' Make the financial model concrete before they're trapped.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person compares the consultancy worker's eventual $100K+ salary to current situation and finds it aspirational, minimizing the hardship story",
+      "underlying_state": "Survivorship bias and outcome bias — the person focuses on the eventual income outcome and discounts the process costs (financial, emotional, health, family separation)",
+      "how_it_manifests": "Comments like 'sounds worth it to me, $10K-$18K take-home a year is great' without accounting for the $30K upfront cost, 4-5 months of zero income, health risk from no insurance, and sustained emotional distress",
+      "expert_move": "Make the full cost-benefit calculation explicit: total investment ($30K+), months of negative cash flow, health insurance gap, opportunity cost of foregone India income, and the 'treated like shit' quality-of-life dimension. Ask: 'Would you accept a job that required a $30K loan, no pay for 4 months, no health insurance, and exploitative working conditions to start?'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "H-1B lottery failed — how do I get an H-1B through a consultancy?",
+      "reframe": "H-1B lottery failure is not the end of your US career path — there are 10 structurally different alternatives, each with different eligibility requirements, costs, and risk profiles. The consultancy route is one of the worst options for most people.",
+      "why_it_works": "Shifts from a single-path scarcity mindset to a portfolio evaluation mindset, reducing the psychological pressure that makes people accept bad consultancy terms",
+      "example_language": "Plan A行不通，不是还有Plan B、Plan C、Plan D排队等着你嘛 ('If Plan A doesn't work, aren't Plan B, C, and D lined up waiting for you?')",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Is the consultancy H-1B route worth it given the eventual salary?",
+      "reframe": "The question is not whether the eventual salary is good — it's whether the total cost of getting there (fees, months without pay, amendment costs, health risk, emotional toll, family separation) justifies the path compared to alternatives",
+      "why_it_works": "Shifts from outcome anchoring (focusing only on the destination salary) to full lifecycle cost accounting, revealing that the consultancy path often costs $30K+ before any income arrives",
+      "example_language": "至于大家有没有觉得这位印度老哥被自己人坑了活的很惨，还是觉着他非但没有被退休，反而还能一年能拿10几万美金过的很爽…就请自行判断 ('Whether you think this Indian guy was exploited and miserable, or that he's doing well earning $100K+ — judge for yourself')",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_美国H1B签证抽签失败了怎么办",
+  "_source_regions": [
+    "us"
+  ]
+}

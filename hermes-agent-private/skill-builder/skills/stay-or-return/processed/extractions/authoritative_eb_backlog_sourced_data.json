@@ -1,0 +1,301 @@
+{
+  "source_file": "eb_backlog_sourced_data.txt",
+  "heuristics": [
+    {
+      "rule": "If you are an Indian national on H-1B with an approved I-140 in EB-2 or EB-3, treat your green card timeline as 50–100+ years under current policy, not as a near-term event",
+      "condition": "When an Indian national is planning their US stay assuming a green card will eventually arrive on a reasonable timeline",
+      "action": "Reframe the immigration timeline as effectively permanent temporary status and make career and life decisions accordingly",
+      "because": "With 525,000+ approved petitions and only ~40,000 visas available annually, the queue is structurally impossible to clear in a human lifespan under current law"
+    },
+    {
+      "rule": "If you are an Indian national seeking a green card in the US, evaluate EB-1A or EB-5 first, not EB-2 or EB-3",
+      "condition": "When an Indian national is deciding which green card pathway to pursue",
+      "action": "Assess eligibility for EB-1A (extraordinary ability) or EB-5 (investor) before defaulting to employer-sponsored EB-2/EB-3",
+      "because": "EB-1A and EB-5 currently have no per-country backlog for India, meaning a 2–3 year or 4–12 month path versus a projected 134-year path"
+    },
+    {
+      "rule": "Use O-1A as a bridge visa while building toward EB-1A if you are an Indian national stuck in H-1B dependency",
+      "condition": "When an Indian national wants to decouple their US work authorization from employer H-1B sponsorship and the EB-2/EB-3 queue",
+      "action": "Pursue O-1A classification to remove H-1B cap and lottery constraints while accumulating extraordinary ability evidence for EB-1A",
+      "because": "O-1A is renewable indefinitely, has no per-country backlog, and directly builds the evidentiary record needed for EB-1A self-petition"
+    },
+    {
+      "rule": "When modeling your US career trajectory as an Indian national, never count a future green card as a planning assumption unless you are on EB-1A or EB-5",
+      "condition": "When making long-term financial, career, or family decisions that assume eventual permanent residency",
+      "action": "Run your life plan assuming the green card never arrives and evaluate whether that plan still makes sense",
+      "because": "EB-2 India priority dates are at May 2012 — meaning even people who filed 12+ years ago are still waiting — making any forward projection speculative"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Green card pathway category",
+      "why_it_matters": "The difference between EB-2/EB-3 and EB-1A/EB-5 for Indian nationals is the difference between a 100+ year wait and a 2–4 year path — it fundamentally changes whether staying in the US is viable",
+      "how_to_assess": "Determine current I-140 category; check whether extraordinary ability or investor criteria could be met; get a legal opinion on EB-1A eligibility",
+      "weight": "high"
+    },
+    {
+      "factor": "Per-country backlog position (priority date)",
+      "why_it_matters": "Your priority date determines where you are in the queue; a 2012 priority date means 12+ years have passed and you still cannot file — this is the single most concrete measure of how trapped you are",
+      "how_to_assess": "Compare your priority date against the current Visa Bulletin cut-off date for your category and country; calculate the gap in years",
+      "weight": "high"
+    },
+    {
+      "factor": "Nationality (India vs. China vs. all others)",
+      "why_it_matters": "Per-country caps create wildly unequal wait times despite identical legal treatment — an Indian national faces 134-year EB-2 backlog while most other nationalities face 1–5 years",
+      "how_to_assess": "Simply identify passport country; Indian and Chinese nationals require completely different analysis than all others",
+      "weight": "high"
+    },
+    {
+      "factor": "Family size and dependent visa status",
+      "why_it_matters": "Each dependent consumes one visa slot from the same per-country annual quota — a family of 4 uses 4 slots, effectively quadrupling the personal cost of the backlog",
+      "how_to_assess": "Count total family members who would need to be included in the green card application; multiply by the annual visa slot cost",
+      "weight": "high"
+    },
+    {
+      "factor": "H-4 EAD dependency for spouse",
+      "why_it_matters": "A spouse's ability to work in the US legally depends on the principal's I-140 approval and H-1B stage — if the principal loses their job, the spouse's work authorization is also at risk",
+      "how_to_assess": "Determine whether spouse holds H-4 EAD; assess whether principal's I-140 is approved; model the household income risk if principal is laid off",
+      "weight": "high"
+    },
+    {
+      "factor": "Job change flexibility under H-1B",
+      "why_it_matters": "H-1B holders cannot freely change employers without restarting certain processes; AC21 portability helps but has conditions — this creates career ceiling effects independent of skill",
+      "how_to_assess": "Assess whether AC21 conditions are met (I-140 approved 180+ days, same or similar occupation); evaluate how many career moves have been foregone due to visa constraints",
+      "weight": "high"
+    },
+    {
+      "factor": "Legislative risk and policy change probability",
+      "why_it_matters": "Visa recapture acts or country-neutral allocation could dramatically accelerate priority dates — but Congress has repeatedly debated and not enacted these; basing a life plan on legislative hope is high-risk",
+      "how_to_assess": "Track active legislation; assess historical passage rate of similar bills; treat legislative relief as a low-probability upside, not a planning assumption",
+      "weight": "medium"
+    },
+    {
+      "factor": "Extraordinary ability eligibility (EB-1A criteria)",
+      "why_it_matters": "EB-1A bypasses the entire per-country backlog with no employer sponsorship required — it is the primary escape hatch from the EB-2/EB-3 trap for Indian nationals",
+      "how_to_assess": "Evaluate against USCIS criteria: publications, citations, awards, media coverage, salary relative to peers, judging others' work, memberships in distinguished associations",
+      "weight": "high"
+    },
+    {
+      "factor": "Capital availability for EB-5",
+      "why_it_matters": "EB-5 requires $800K–$1.05M investment but currently has no India backlog — for high-earning Indian professionals with savings or family capital, this may be the fastest permanent residency path",
+      "how_to_assess": "Assess liquid or accessible capital; evaluate risk tolerance for investment; compare EB-5 processing timeline (4–12 months for rural/TEA) against career and family timeline",
+      "weight": "medium"
+    },
+    {
+      "factor": "Annual fiscal year visa exhaustion timing",
+      "why_it_matters": "Even approved petitions go unfilled when annual caps are hit — EB-3/EW visas for FY2025 were exhausted by September 9, meaning the practical wait is longer than the queue position alone suggests",
+      "how_to_assess": "Monitor USCIS Visa Bulletin monthly; track when prior fiscal years exhausted EB-3/EW supply; factor in that exhaustion is recurring, not exceptional",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in the US on H-1B as an Indian national with an EB-2 or EB-3 I-140 approved",
+      "unstated_consequence": "You are accepting indefinite temporary status — likely for the rest of your working life — with all the career, mobility, and psychological constraints that entails, regardless of how senior you become professionally",
+      "who_it_affects": "High-performing Indian nationals who assume that career success will eventually translate into immigration security"
+    },
+    {
+      "choice": "Filing an I-140 in EB-2 or EB-3 as an Indian national to 'get in the queue'",
+      "unstated_consequence": "You are not meaningfully progressing toward a green card — you are joining a queue of 525,000+ people competing for ~40,000 annual slots with a 134-year projected wait; the psychological comfort of 'having a petition' is misleading",
+      "who_it_affects": "Indian nationals early in their US careers who treat I-140 approval as a milestone rather than recognizing it is effectively symbolic under current quotas"
+    },
+    {
+      "choice": "Relying on H-4 EAD for spouse's work authorization",
+      "unstated_consequence": "Household income and the spouse's career are directly contingent on the principal applicant's employment continuity — a layoff triggers a 60-day clock that jeopardizes both people's US status simultaneously",
+      "who_it_affects": "Dual-income households where the spouse has built a career in the US under H-4 EAD and has no independent immigration status"
+    },
+    {
+      "choice": "Waiting for Congressional legislative relief to solve the backlog",
+      "unstated_consequence": "Visa recapture and country-neutral bills have been repeatedly introduced and not passed — anchoring a multi-decade life plan to low-probability legislation is a structural planning error that forecloses other options over time",
+      "who_it_affects": "Mid-career Indian professionals in their 30s and 40s who have already spent 10+ years in the queue and continue to defer major life decisions waiting for relief"
+    },
+    {
+      "choice": "Prioritizing EB-2 NIW over EB-1A to avoid PERM complexity",
+      "unstated_consequence": "NIW still carries the full India EB-2 per-country backlog — it only eliminates PERM labor certification, not the 134-year wait. Many professionals choose NIW thinking it is a faster path when it is not",
+      "who_it_affects": "Indian nationals who mistake reduced administrative complexity for reduced wait time"
+    },
+    {
+      "choice": "Changing employers under AC21 portability",
+      "unstated_consequence": "While AC21 preserves your priority date and I-140 when conditions are met, each job change introduces new risk vectors — conditions must be carefully verified, and a mistake can reset years of queue position",
+      "who_it_affects": "Indian professionals who feel trapped in underperforming jobs or toxic environments and see AC21 as freely enabling mobility"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating I-140 approval as meaningful immigration progress when on EB-2/EB-3 India",
+      "why_it_happens": "I-140 approval is a real legal milestone that takes effort and feels significant; most people do not intuitively understand that 525,000 others have the same milestone and only 40,000 slots open annually",
+      "consequence": "Professionals build 10–15 year life plans in the US assuming the green card is coming, only to realize mid-career that the wait is effectively infinite under current policy",
+      "warning_signs": [
+        "Describing yourself as 'having a green card pending' without knowing your priority date gap",
+        "Making home purchase, family, or location decisions assuming green card arrival within 10 years on EB-2/EB-3 India"
+      ]
+    },
+    {
+      "pattern": "Defaulting to EB-2/EB-3 employer sponsorship without evaluating EB-1A eligibility",
+      "why_it_happens": "EB-2/EB-3 is the standard employer-offered pathway and requires no self-advocacy; EB-1A requires the individual to build and document their own case, which feels uncertain and requires immigration attorney investment",
+      "consequence": "Professionals who could qualify for EB-1A spend years or decades in the EB-2/EB-3 queue when a 2–3 year path was available to them",
+      "warning_signs": [
+        "Never having asked an immigration attorney specifically about EB-1A eligibility",
+        "Assuming EB-1A is only for Nobel laureates or Olympic athletes rather than senior professionals with publications, high compensation, or peer recognition"
+      ]
+    },
+    {
+      "pattern": "Planning around legislative relief as a primary strategy",
+      "why_it_happens": "Visa recapture and country-neutral bills generate significant media coverage in Indian professional communities; availability heuristic makes passage feel more likely than the historical base rate justifies",
+      "consequence": "Professionals defer return-to-India decisions, alternative visa strategies, and major life investments for years while legislation repeatedly fails to pass",
+      "warning_signs": [
+        "Tracking immigration bills closely and citing them as a reason not to pursue EB-1A or EB-5",
+        "Having deferred a significant decision ('we'll buy a house when the bill passes') more than once"
+      ]
+    },
+    {
+      "pattern": "Underestimating the family slot multiplication effect on wait times",
+      "why_it_happens": "People naturally think of their own individual place in the queue and do not intuitively model that each family member consumes a separate annual visa slot from the same constrained pool",
+      "consequence": "A family of 4 that models a 40-year EB-3 wait is actually in a far worse position per person because their 4-slot consumption means they collectively displace others and worsen aggregate congestion",
+      "warning_signs": [
+        "Citing a backlog estimate without adjusting for family size",
+        "Planning to sponsor a spouse for H-4 without modeling what happens if the primary applicant is laid off"
+      ]
+    },
+    {
+      "pattern": "Ignoring fiscal year visa exhaustion as a recurring structural constraint",
+      "why_it_happens": "Annual cap exhaustion in August or September feels like a one-time anomaly rather than a predictable annual pattern; people assume the following year will be different",
+      "consequence": "Even professionals whose priority date becomes technically current cannot file because annual supply is exhausted before fiscal year end — the practical wait is longer than the queue model suggests",
+      "warning_signs": [
+        "Monitoring only Visa Bulletin priority dates without tracking annual cap exhaustion timing",
+        "Assuming that a current priority date means you can file immediately"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current I-140 category and country of chargeability?",
+      "what_it_reveals": "Determines whether you face a 1–5 year wait (most nationalities, EB-1A) or a 40–134 year structural trap (Indian national EB-2/EB-3) — the entire decision framework changes based on this answer",
+      "follow_up_if_yes": "If Indian national on EB-2/EB-3: What is your priority date and how does it compare to current Visa Bulletin cut-offs?",
+      "follow_up_if_no": "If not Indian or Chinese: What is your current priority date gap and how many years realistically remain?"
+    },
+    {
+      "question": "Have you ever had a formal assessment of your EB-1A eligibility from an immigration attorney?",
+      "what_it_reveals": "Reveals whether the person has explored the primary escape hatch from the EB-2/EB-3 trap; most people who would qualify have never been told they might",
+      "follow_up_if_yes": "What criteria did the attorney assess, and what was the outcome? When was this assessment done relative to your current career stage?",
+      "follow_up_if_no": "What is your current publication record, salary percentile relative to peers, awards, media coverage, or roles judging others' work? These are the EB-1A evidentiary pillars."
+    },
+    {
+      "question": "Does your spouse work in the US, and if so, under what visa status?",
+      "what_it_reveals": "If the spouse is on H-4 EAD, the household has a hidden single point of failure — the principal applicant's employment continuity determines both people's work authorization simultaneously",
+      "follow_up_if_yes": "Is the H-4 EAD dependent on an approved I-140? What is the household's financial plan if the primary applicant faces a 60-day grace period clock?",
+      "follow_up_if_no": "Does the spouse have independent immigration status, or are they currently unable to work? This affects the financial calculus of staying vs. returning significantly."
+    },
+    {
+      "question": "What major life decisions have you deferred because you are waiting for your green card?",
+      "what_it_reveals": "Surfaces the hidden cost of the wait — if someone has deferred homeownership, children, eldercare for parents, or career moves for 5+ years, they are already paying the 'immigration tax' whether they name it or not",
+      "follow_up_if_yes": "How long have these decisions been deferred? What is the compounding cost of continued deferral if the wait extends another 10–20 years?",
+      "follow_up_if_no": "Have you fully internalized that EB-2/EB-3 India timelines are 50–134 years under current policy, or are you operating on an assumption of resolution within 10–15 years?"
+    },
+    {
+      "question": "Do you have or could you access $800K–$1.05M for an EB-5 investment?",
+      "what_it_reveals": "Determines whether the fastest current no-backlog green card path is available; for high-earning professionals or those with family capital, this may be a live option that has never been seriously evaluated",
+      "follow_up_if_yes": "Have you consulted with an EB-5 attorney about rural or TEA project timelines (4–12 months processing)? How does that compare to your EB-2/EB-3 wait?",
+      "follow_up_if_no": "At your current savings rate and compensation trajectory, when would this capital threshold become accessible? Is that timeline competitive with other options?"
+    },
+    {
+      "question": "When did you last check the Visa Bulletin, and do you know whether annual EB-3 visas were exhausted before fiscal year end in the last two years?",
+      "what_it_reveals": "Tests whether the person understands that annual cap exhaustion is a recurring structural problem — not just queue position — that makes practical filing impossible even when priority dates appear current",
+      "follow_up_if_yes": "If aware of exhaustion: How have you adjusted your planning to account for the gap between apparent priority date currency and actual ability to file?",
+      "follow_up_if_no": "This is a critical gap in understanding your actual timeline — the EB-3/EW cap was exhausted by September 9, 2025 for FY2025 and August 16, 2024 for FY2024."
+    },
+    {
+      "question": "Are you tracking any specific immigration legislation, and has an anticipated bill affected any decision you have made in the last two years?",
+      "what_it_reveals": "Identifies whether the person is making real decisions based on low-probability legislative outcomes — a major failure pattern that can defer action for years",
+      "follow_up_if_yes": "What is your assessment of the historical passage rate of similar bills? What is your contingency plan if the bill does not pass in the next two years?",
+      "follow_up_if_no": "Good — are you aware that visa recapture and country-neutral proposals have been debated for over a decade without enactment?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you have an approved I-140, you are on your way to a green card — it's just a matter of waiting",
+      "actual_reality": "For Indian nationals in EB-2 or EB-3, an approved I-140 means you have joined a queue of 525,000+ people competing for ~40,000 annual slots, with projected waits of 40–134 years. The I-140 is a queue ticket, not a path.",
+      "implication": "Indian nationals should not make life decisions based on the assumption that their EB-2/EB-3 I-140 will result in a green card within their working lifetime under current law"
+    },
+    {
+      "common_belief": "The green card backlog is a temporary problem that Congress will fix",
+      "actual_reality": "Visa recapture and country-neutral allocation bills have been introduced and debated for over a decade without passage. The backlog has grown, not shrunk, during this period.",
+      "implication": "Legislative relief should be modeled as a low-probability upside scenario, not a planning assumption — decisions should be made that are sound even if no legislation passes"
+    },
+    {
+      "common_belief": "EB-1A (Extraordinary Ability) is only for world-class talents like Nobel laureates, Olympic athletes, or globally famous researchers",
+      "actual_reality": "EB-1A is available to senior professionals who meet a combination of criteria including above-peer compensation, publications, peer review roles, industry awards, and media coverage — many mid-to-senior level professionals qualify without being globally famous",
+      "implication": "Any Indian national in EB-2/EB-3 who has not had a formal EB-1A eligibility assessment is leaving open the possibility of a 2–3 year path they have never evaluated"
+    },
+    {
+      "common_belief": "India and China face similar green card backlogs because both have large applicant pools",
+      "actual_reality": "EB-2 India has a projected 134-year wait; EB-2 China has a 5–10 year wait. Despite identical per-country caps, India's applicant volume is catastrophically larger, creating a fundamentally different situation despite equal legal treatment.",
+      "implication": "Career and immigration advice that is appropriate for a Chinese national on EB-2 (plan around a 7-year wait) is dangerously wrong when applied to an Indian national (plan around an indefinite permanent temporary status)"
+    },
+    {
+      "common_belief": "If your priority date becomes current in the Visa Bulletin, you can file for your green card",
+      "actual_reality": "Annual visa caps are regularly exhausted before fiscal year end — EB-3/EW visas for FY2025 ran out by September 9. A current priority date does not guarantee you can actually file and receive a visa that year.",
+      "implication": "Effective wait times are longer than queue position alone suggests; planning must account for annual cap exhaustion as a recurring event, not an anomaly"
+    },
+    {
+      "common_belief": "EB-2 NIW (National Interest Waiver) is a faster path than standard EB-2 for Indian nationals",
+      "actual_reality": "NIW only eliminates the PERM labor certification process — it does not affect the per-country backlog queue. An Indian national on EB-2 NIW faces the same 134-year projected wait as one on standard EB-2.",
+      "implication": "Choosing NIW over standard EB-2 to 'go faster' is a category error — it reduces administrative burden but does nothing to address the fundamental backlog problem"
+    },
+    {
+      "common_belief": "A family of 4 Indian nationals waits the same amount of time as a single applicant for a green card",
+      "actual_reality": "Each family member consumes one visa slot from the same annual per-country quota. A family of 4 uses 4 slots, effectively multiplying the household's impact on and exposure to the backlog.",
+      "implication": "Backlog wait time estimates that do not account for family size understate the true household-level cost of pursuing EB-2/EB-3 as an Indian national with dependents"
+    },
+    {
+      "common_belief": "O-1A is just an alternative to H-1B and does not help with the green card situation",
+      "actual_reality": "O-1A removes H-1B cap and lottery constraints, is renewable indefinitely, and directly builds the evidentiary record for EB-1A self-petition — making it a strategic bridge toward the only no-backlog path available to most Indian nationals",
+      "implication": "For Indian nationals who can qualify for O-1A, it is not merely an H-1B alternative — it is the beginning of a deliberate EB-1A strategy that bypasses the entire per-country backlog system"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of what I-140 approval means",
+      "junior_pattern": "Celebrates I-140 approval as meaningful progress toward a green card; tells peers 'my green card is in process'",
+      "senior_pattern": "Recognizes that I-140 approval for Indian nationals on EB-2/EB-3 is entry into a 525,000+ person queue with ~40,000 annual slots — and immediately evaluates alternative pathways",
+      "why_it_matters": "Misinterpreting I-140 approval as progress leads to a decade or more of deferred decisions based on an immigration outcome that will not arrive"
+    },
+    {
+      "dimension": "How they model immigration timelines",
+      "junior_pattern": "Uses a single point estimate ('the wait is about 10 years') or accepts employer HR's characterization without verifying against current Visa Bulletin data",
+      "senior_pattern": "Checks current priority date cut-offs against their own priority date, understands the annual cap exhaustion pattern, and models a range of scenarios including no legislative relief",
+      "why_it_matters": "Single-point estimates that are wrong by an order of magnitude (10 years vs. 134 years) lead to catastrophically wrong life decisions"
+    },
+    {
+      "dimension": "Evaluating alternative green card pathways",
+      "junior_pattern": "Accepts the pathway their employer offers (usually EB-2 or EB-3) without independently evaluating EB-1A eligibility or EB-5 feasibility",
+      "senior_pattern": "Proactively seeks an independent immigration attorney assessment of EB-1A eligibility; evaluates EB-5 against current savings trajectory; treats employer-offered pathway as one option, not the only option",
+      "why_it_matters": "The difference between EB-2 and EB-1A for an Indian national is potentially 130+ years of wait time — not evaluating alternatives is one of the highest-cost passive decisions available"
+    },
+    {
+      "dimension": "Planning around legislative uncertainty",
+      "junior_pattern": "Monitors immigration bills closely and makes real decisions contingent on passage ('we'll decide when the bill passes')",
+      "senior_pattern": "Treats legislative relief as a low-probability upside; makes all primary decisions assuming no legislation passes; if relief arrives, treats it as a bonus, not a plan",
+      "why_it_matters": "Basing multi-year life plans on bills that have repeatedly failed over a decade is a systematic planning error that compounds over time"
+    },
+    {
+      "dimension": "Understanding household-level immigration risk",
+      "junior_pattern": "Models immigration status at the individual level; assumes spouse's H-4 EAD is stable as long as their own status is stable",
+      "senior_pattern": "Models immigration risk at the household level; understands that a layoff triggers a 60-day clock that simultaneously threatens both the principal's and spouse's US work authorization",
+      "why_it_matters": "A household that has two incomes but one immigration anchor is structurally fragile in ways that individual-level analysis does not reveal"
+    },
+    {
+      "dimension": "Interpreting Visa Bulletin currency",
+      "junior_pattern": "Checks whether their priority date is 'current' in the Visa Bulletin and assumes that means they can file",
+      "senior_pattern": "Tracks both priority date currency AND annual cap exhaustion timing; knows that EB-3/EW visas ran out in August–September in both FY2024 and FY2025, making apparent currency practically irrelevant for many applicants",
+      "why_it_matters": "Misreading Visa Bulletin currency as actionability leads to planning errors where professionals believe resolution is closer than it actually is"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_eb_backlog_sourced_data",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

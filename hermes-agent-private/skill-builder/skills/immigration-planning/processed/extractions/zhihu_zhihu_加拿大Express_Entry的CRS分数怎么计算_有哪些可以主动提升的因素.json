@@ -1,0 +1,320 @@
+{
+  "source_file": "zhihu_加拿大Express_Entry的CRS分数怎么计算_有哪些可以主动提升的因素.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If CRS is below 450, prioritize French language study before any other score-boosting action",
+      "condition": "When a candidate's CRS score is below the competitive threshold (~450) and they have 3-6 months available",
+      "action": "Study for TEF Canada and achieve CLB 7 (approximately B1 level) to gain +50 points",
+      "because": "The top answer with 1654 upvotes identifies French as the highest ROI score booster — +50 points for B1-level French, achievable in 3-6 months for ~3,000-8,000 RMB, versus years needed to gain equivalent points through work experience",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Plan CRS improvement on a multi-year timeline, not a single snapshot",
+      "condition": "When a candidate in PGWP Year 1 feels their CRS is insufficient for a near-term draw",
+      "action": "Map out the score trajectory: Year 1 score vs. Year 2 score after accumulating another year of Canadian work experience plus potential French study",
+      "because": "Comment with 423 upvotes notes that many people who couldn't qualify in PGWP Year 1 reached the threshold in Year 2 due to work experience gains plus French — confirming the timeline planning approach works in practice",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Research your NOC code's provincial alignment before choosing which province to work in",
+      "condition": "When a candidate is evaluating job offers or job searches across Canadian provinces",
+      "action": "Check which provincial PNP streams specifically target your NOC code before accepting a position, not after",
+      "because": "Comment with 356 upvotes explicitly warns not to wait until nomination time to check — different provinces have different occupational priority lists (e.g., BC Tech Pilot, Ontario Human Capital Priority)",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Treat provincial nomination as a strategy requiring job placement, not a passive waiting game",
+      "condition": "When federal CRS is unlikely to reach ITA threshold through individual score improvements alone",
+      "action": "Actively target employment in a province with a PNP stream matching your NOC code, and engage a provincial immigration consultant",
+      "because": "Top answer explains that PNP adds +600 points (near-guaranteed ITA) but is employer/province-driven — the correct move is engineering the conditions for nomination, not just waiting in the federal pool",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Age trajectory relative to score-building timeline",
+      "why_it_matters": "Age points decrease each year after 35, partially offsetting gains from work experience accumulation — the net score change year-over-year depends on the balance between these two opposing forces",
+      "how_to_assess": "Calculate current age score vs. projected age score in 1-2 years, then compare against projected work experience gains to determine if waiting is net positive or negative",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "NOC code alignment with provincial PNP streams",
+      "why_it_matters": "The same occupation may qualify for a dedicated PNP stream in one province but not another — this 600-point difference is transformative and determines whether federal CRS competition is even necessary",
+      "how_to_assess": "Look up your NOC TEER category against current active provincial streams; check BC Tech Pilot, Ontario HCP, Alberta Advantage Tech, and others for occupation lists",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "French language starting level",
+      "why_it_matters": "Candidates with zero French face a longer study timeline to reach CLB 7; those with prior Romance language background may reach it faster, changing the cost-benefit of pursuing this path",
+      "how_to_assess": "Take a free diagnostic test (Duolingo or Alliance Française placement) to estimate months needed to reach B1/CLB 7",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Spouse's language ability",
+      "why_it_matters": "A spouse who takes a language test and reaches CLB 7 adds approximately +20 points to the principal applicant's CRS — this is a free score gain if the spouse is willing and able",
+      "how_to_assess": "Assess spouse's English or French baseline; determine if CLB 7 is achievable within the planning window",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Overseas work experience in equivalent NOC category",
+      "why_it_matters": "Foreign work experience in the same NOC category adds 13-25 CRS points — a factor frequently overlooked by candidates who focus only on Canadian experience",
+      "how_to_assess": "Document overseas job titles and map them to Canadian NOC codes; verify years of experience in each category",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Canadian vs. foreign credential level",
+      "why_it_matters": "A Canadian degree at any level scores 15 points higher than an equivalent foreign degree — this affects whether pursuing Canadian education (e.g., a second master's) is worth the investment",
+      "how_to_assess": "Compare current credential score against Canadian equivalent; calculate whether the 15-point premium justifies additional study cost and time",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Waiting for more Canadian work experience to accumulate before applying",
+      "unstated_consequence": "Age-related point decay partially offsets annual work experience gains — candidates who feel 'safe' accumulating experience may find their net CRS gain is smaller than expected, or even negative past age 35",
+      "who_it_affects": "Candidates in their mid-30s who are close to but not yet at the competitive threshold and assume one more year of work experience will push them over",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying solely on federal Express Entry pool without pursuing PNP",
+      "unstated_consequence": "Federal CRS competition is zero-sum — if draw cutoffs stay high, a candidate with a 'good' score (e.g., 480) may wait years without an ITA, while the same candidate with a PNP nomination would receive one immediately via the +600 points",
+      "who_it_affects": "Candidates who are unaware of or intimidated by provincial nomination processes and default to passive federal pool waiting",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Skipping French study because 'English is enough'",
+      "unstated_consequence": "In competitive draw cycles, the +50 French bonus is frequently the margin between receiving an ITA and not — candidates who skip it for convenience may spend years in the pool that 3-6 months of language study would have resolved",
+      "who_it_affects": "Non-Francophone candidates who view French as optional rather than strategically critical in a tight CRS environment",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Researching provincial PNP streams only after reaching the point of needing a nomination, rather than planning job search around PNP alignment from the start",
+      "why_it_happens": "Candidates treat immigration strategy and job search as sequential steps — find job first, then figure out immigration — rather than integrating them from the beginning",
+      "consequence": "Ending up employed in a province or occupation that has no active PNP stream for their NOC code, forcing reliance on the competitive federal pool",
+      "warning_signs": [
+        "Candidate accepts a job offer based only on salary/title without checking provincial immigration eligibility",
+        "Candidate asks about PNP only after already being employed for 1+ years in a mismatched province"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Treating CRS as a static snapshot rather than a dynamic trajectory, and panicking or giving up when the current score is below the draw cutoff",
+      "why_it_happens": "Availability bias — candidates see the current draw cutoff and their current score and treat the gap as fixed, rather than modeling how multiple factors (experience, French, spouse) will change it over 12-24 months",
+      "consequence": "Premature abandonment of the Express Entry pathway or expensive/unnecessary interventions (e.g., returning to school) when patience plus targeted actions would have been sufficient",
+      "warning_signs": [
+        "Candidate says 'my CRS is only X, I'll never get ITA' without doing a trajectory calculation",
+        "Candidate considers abandoning Canada pathway after only 6-12 months in the pool"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current NOC TEER category, and have you checked which provincial PNP streams are currently active for that occupation?",
+      "what_it_reveals": "Whether the candidate has a viable PNP pathway that would make federal CRS competition largely irrelevant",
+      "follow_up_if_yes": "Which province are you currently working or planning to work in — does it match the province with the best PNP alignment for your NOC?",
+      "follow_up_if_no": "Before optimizing any other CRS factor, map your NOC to active provincial streams — this single variable may change your entire strategy",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Have you or your spouse taken a French language test, and if not, what is your estimated starting level?",
+      "what_it_reveals": "Whether the highest ROI score boost (+50 for French, +20 for spouse language) has been pursued or is still available as an untapped option",
+      "follow_up_if_yes": "What score did you achieve — did you reach CLB 7 to unlock the bilingual bonus?",
+      "follow_up_if_no": "Take a diagnostic to estimate time to CLB 7; if under 6 months, this should be the immediate priority before any other optimization",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "How old are you now, and what will your age score be in 1, 2, and 3 years?",
+      "what_it_reveals": "Whether the time-based strategy of accumulating Canadian work experience is net positive or whether age decay will erode gains, making faster interventions (French, PNP) more urgent",
+      "follow_up_if_yes": "If age score loss per year exceeds expected work experience gain, prioritize French and PNP immediately rather than waiting",
+      "follow_up_if_no": "If under 35, time is working in your favor — a multi-year accumulation strategy is viable alongside other improvements",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Do you have overseas work experience in a role that maps to a Canadian NOC category, and for how many years?",
+      "what_it_reveals": "Whether the candidate is leaving 13-25 CRS points unclaimed by not properly documenting and claiming foreign work experience",
+      "follow_up_if_yes": "Have you formally mapped those roles to NOC codes in your EE profile and documented them correctly?",
+      "follow_up_if_no": "No action needed, but confirm the mapping — some candidates undercount because they don't realize foreign experience counts",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Provincial nomination (PNP) is something the government does to you passively — you just wait and hope to be selected",
+      "actual_reality": "PNP is largely strategy-driven: candidates who work in a target province in a targeted NOC code and actively apply through the relevant stream dramatically increase their nomination probability — it rewards proactive positioning, not passive waiting",
+      "implication": "Candidates should integrate provincial targeting into their job search from day one, treating PNP as an engineered outcome rather than a lottery",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Improving CRS is mainly about increasing English language scores or waiting for more Canadian work experience",
+      "actual_reality": "French language study (TEF Canada CLB 7) offers +50 points — often more impactful than another year of work experience — and is achievable in 3-6 months at relatively low cost; it is systematically underutilized by non-Francophone candidates",
+      "implication": "For most candidates below the draw threshold, French study should be the first active intervention considered, not a last resort",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Overseas (non-Canadian) work experience does not count toward CRS",
+      "actual_reality": "Foreign work experience in an equivalent NOC category adds 13-25 CRS points depending on years — this is a legitimate and frequently overlooked source of points",
+      "implication": "Candidates who worked abroad before coming to Canada should carefully document and claim these points in their EE profile rather than assuming only Canadian experience counts",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to think about CRS score improvement",
+      "naive_pattern": "Looks at current CRS vs. latest draw cutoff, concludes the gap is too large, feels stuck, and asks 'what can I do?' without a framework",
+      "informed_pattern": "Maps out a multi-variable trajectory: current score + French (+50) + spouse language (+20) + one more year work experience (+13) + overseas experience claim (+13-25) = projected score in 12-18 months, then evaluates whether that clears the threshold",
+      "why_it_matters": "The trajectory analysis almost always reveals a clearer path than the static snapshot suggests — preventing premature abandonment of the pathway or expensive unnecessary interventions",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Relationship between job search and immigration strategy",
+      "naive_pattern": "Searches for jobs based on career fit and salary, then figures out immigration pathway after accepting an offer",
+      "informed_pattern": "Screens job opportunities partly on provincial PNP stream alignment with their NOC code — treats the province of employment as a strategic immigration variable, not just a lifestyle choice",
+      "why_it_matters": "Working in the wrong province can mean years of federal pool waiting that could have been avoided with a PNP nomination achievable in the right province",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Attitude toward French language requirement",
+      "naive_pattern": "Views French as an optional nice-to-have, deprioritizes it because 'I'm not going to live in Quebec anyway'",
+      "informed_pattern": "Views CLB 7 French as a +50 point unlock that is province-agnostic — achievable at B1 level, not fluency — and treats it as a high-priority investment regardless of intended province of residence",
+      "why_it_matters": "In tight draw cycles, the bilingual bonus is frequently the decisive margin between receiving an ITA and not receiving one",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "You need to be fluent in French to claim the bilingual CRS bonus",
+      "why_believed": "Language fluency is naturally associated with being 'bilingual' — candidates assume the bar is conversational or professional fluency, which feels unachievable",
+      "actual_rule": "The bilingual bonus requires CLB 7 on TEF Canada, which corresponds approximately to B1 level — functional but not fluent; achievable for most people in 3-6 months of focused study",
+      "real_consequence": "Candidates self-screen out of the highest-ROI score boost based on an inflated perception of the required level, leaving +50 points unclaimed",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Only Canadian work experience counts toward CRS work experience points",
+      "why_believed": "The emphasis in most EE guidance materials on 'Canadian experience' creates an implicit assumption that foreign experience is irrelevant to CRS scoring",
+      "actual_rule": "Foreign work experience in equivalent NOC categories adds 13 points (1-2 years) or 25 points (3+ years) to CRS — it is a separate scoring category from Canadian experience",
+      "real_consequence": "Candidates who worked abroad before immigrating fail to claim legitimate points, underreporting their true CRS potential and potentially waiting longer than necessary",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "PGWP holder in Year 1 with CRS below competitive draw threshold, feeling stuck and anxious about timing",
+      "decision": "Instead of panicking or pursuing expensive interventions, the person planned a 12-24 month trajectory: accumulated a second year of Canadian work experience while studying for TEF Canada French test",
+      "outcome": "By Year 2, combined work experience gain plus French bilingual bonus pushed CRS above the draw threshold, resulting in an ITA",
+      "lesson": "The PGWP window is long enough for a staged improvement strategy — early-stage CRS shortfall is a solvable problem with time and targeted action, not a permanent disqualifier",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Candidate compares their current CRS score to the latest draw cutoff, sees a large gap, and frames the question as 'is there any hope for me?'",
+      "underlying_state": "Catastrophizing triggered by a static comparison — treating one data point (today's score vs. today's cutoff) as a permanent verdict rather than a moment in a dynamic process",
+      "how_it_manifests": "Posts asking 'my CRS is only 440, should I give up on Express Entry?'; considering returning home; researching unrelated alternative pathways out of panic rather than systematic evaluation",
+      "expert_move": "Reframe from static gap to dynamic trajectory: walk the person through calculating their score in 12-18 months after French (+50), spouse language (+20), and one more year of work experience (+13), then ask if that number clears the historical draw range",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Candidate perceives PNP as something that 'happens to you' and expresses learned helplessness about factors outside their control",
+      "underlying_state": "Locus of control misattribution — believing the immigration outcome is externally determined, when in fact strategic job placement and occupational targeting significantly influence nomination probability",
+      "how_it_manifests": "Statements like 'I just have to wait and hope a province picks me' or 'there's nothing I can do about PNP'; failure to research provincial streams proactively",
+      "expert_move": "Shift the frame from 'waiting to be selected' to 'engineering the conditions for selection' — explain that working in a target province in a targeted NOC is the active lever, not passive waiting",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "My CRS score isn't high enough right now — what can I do to improve it?",
+      "reframe": "Don't ask what your score is today; ask what your score will be in 12-18 months after French, spouse language, and another year of work experience — then decide if you need to do anything else",
+      "why_it_works": "Shifts the candidate from reacting to a snapshot to planning a trajectory, which reveals that most 'stuck' candidates have a viable path that just requires time and targeted actions",
+      "example_language": "很多人在PGWP第一年觉得CRS不够，到第二年因为多了一年工作经验+考了法语，就够了。不用慌，在时间轴上规划好。",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Provincial nomination is a big unknown — I don't know if a province will ever pick me",
+      "reframe": "PNP isn't a lottery you enter passively — it's a strategy you engineer by working in the right province in the right occupation; the question isn't whether a province will pick you, but whether you've positioned yourself in a province that has an active stream for your NOC code",
+      "why_it_works": "Converts a perceived external uncertainty into an internal strategic question the candidate can actually act on, eliminating the learned helplessness framing",
+      "example_language": "很多人的策略是：在目标省找工作，争取省提名",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_加拿大Express_Entry的CRS分数怎么计算_有哪些可以主动提升的因素",
+  "_source_regions": [
+    "canada"
+  ]
+}

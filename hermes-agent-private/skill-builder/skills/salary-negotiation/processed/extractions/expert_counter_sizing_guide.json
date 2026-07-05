@@ -1,0 +1,286 @@
+{
+  "source_file": "counter_sizing_guide.txt",
+  "heuristics": [
+    {
+      "rule": "Counter 10–20% above initial offer as a baseline when you have no competing offer",
+      "condition": "When you have a single offer and the initial offer is at or near market rate",
+      "action": "Counter 10–12% above initial to leave room for the company to 'meet in the middle' at 5–8% above initial",
+      "because": "Recruiters are trained to move toward the middle — anchoring above your target lets the company feel they won while you land at your actual number"
+    },
+    {
+      "rule": "Counter 20–25% above initial when the offer is more than 15% below the levels.fyi median",
+      "condition": "When the initial offer is significantly below market rate",
+      "action": "Justify the counter with specific market data from levels.fyi framed as market alignment, not personal need",
+      "because": "A data-anchored counter is harder to dismiss and reframes the ask from 'I want more' to 'here's what the market looks like'"
+    },
+    {
+      "rule": "When you have a competing offer, counter to your target number directly — not 10–20% above initial",
+      "condition": "When you hold a competing offer",
+      "action": "Use the competing offer number as your anchor and ask the preferred company to match it",
+      "because": "The competing offer replaces the initial offer as the psychological anchor, removing the need to inflate your ask"
+    },
+    {
+      "rule": "Use precise numbers in late-round negotiation, round numbers early",
+      "condition": "When you are in round 2+ and both sides have narrowed, or when you have a specific data point to justify",
+      "action": "Switch from round numbers (anchoring signal) to precise numbers (research signal)",
+      "because": "Precise numbers like $192,400 signal you've done research; round numbers signal anchoring — each works best at different moments"
+    },
+    {
+      "rule": "Counter base first, then re-open equity separately after base is settled",
+      "condition": "When negotiating total compensation",
+      "action": "Isolate base in the first exchange; after base is settled, ask 'The equity grant — is that negotiable as well?'",
+      "because": "Mixing base and equity math in the first exchange muddies the negotiation and reduces your leverage on each component"
+    },
+    {
+      "rule": "When base is locked, pivot to signing bonus as it doesn't affect headcount budget",
+      "condition": "When the company says base is fixed and cannot move",
+      "action": "Ask for signing bonus increase framed as bridging the first-year comp gap",
+      "because": "Signing bonuses come from a different budget than base salary, so companies have more flexibility even after declaring base is final"
+    },
+    {
+      "rule": "Stop pushing after 'final offer' if it meets 90%+ of your target, but probe signing bonus first",
+      "condition": "When a company says 'this is our best and final offer'",
+      "action": "Accept if it meets 90%+ of target, but first test whether signing bonus has 5–10% more room",
+      "because": "'Best and final' often still has signing bonus flexibility even when base is truly locked, and pushing further without new leverage risks damaging the relationship"
+    },
+    {
+      "rule": "Anchor your counter at or slightly above the levels.fyi median, not above the initial offer",
+      "condition": "When building your counter number",
+      "action": "Start from market data, not from the initial offer, so your ask is framed as market alignment",
+      "because": "Framing the counter as market alignment rather than a personal demand makes it structurally harder for the recruiter to push back"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Distance of initial offer from market rate",
+      "why_it_matters": "Determines how aggressive your counter should be — a below-market offer justifies a larger counter with market data as justification",
+      "how_to_assess": "Pull levels.fyi data for the specific company, level, and location and compare to the initial offer",
+      "weight": "high"
+    },
+    {
+      "factor": "Competing offer leverage (BATNA)",
+      "why_it_matters": "Changes the entire counter structure — with a competing offer you counter to your target directly rather than anchoring above it",
+      "how_to_assess": "Determine whether you have a written competing offer with a specific number you can reference",
+      "weight": "high"
+    },
+    {
+      "factor": "Exploding offer pressure",
+      "why_it_matters": "Time pressure reduces your negotiating room and ability to generate competing offers",
+      "how_to_assess": "Ask whether the offer has a hard deadline and how much time you have to respond",
+      "weight": "high"
+    },
+    {
+      "factor": "Company stage (startup vs. public company)",
+      "why_it_matters": "Affects which levers are flexible — equity is often more negotiable at growth-stage companies while base and signing bonus are more flexible at large public companies",
+      "how_to_assess": "Identify whether the company is pre-IPO, growth-stage, or a large public tech company and adjust which components you prioritize",
+      "weight": "high"
+    },
+    {
+      "factor": "Round of negotiation",
+      "why_it_matters": "Determines whether to use round anchor numbers or precise research-backed numbers",
+      "how_to_assess": "Track how many exchanges have occurred and how close both sides are to convergence",
+      "weight": "medium"
+    },
+    {
+      "factor": "Underlying reason for considering a move (in retention counter-offer scenarios)",
+      "why_it_matters": "If the reason for leaving is not purely financial, a counter-offer that only addresses money will not solve the problem",
+      "how_to_assess": "Ask yourself whether compensation was the primary driver or whether there are role, growth, or culture factors also at play",
+      "weight": "high"
+    },
+    {
+      "factor": "Current tech salary growth market conditions",
+      "why_it_matters": "Counter offer effectiveness remains high even as market conditions change, but baseline expectations should be calibrated accordingly",
+      "how_to_assess": "Check current industry salary growth rates — as of 2025, tech salary growth has slowed to 1.6% vs. 3.5% in 2023",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a retention counter-offer from your current employer",
+      "unstated_consequence": "80% of people who accept counter-offers leave within 12 months anyway — the underlying reasons for considering leaving typically remain unresolved",
+      "who_it_affects": "Anyone who is leaving for non-compensation reasons (growth ceiling, culture, management) but gets matched on salary"
+    },
+    {
+      "choice": "Countering with a signing bonus instead of base when base is locked",
+      "unstated_consequence": "Signing bonus is immediate cash but does not compound — it does not raise the baseline for future raises, bonuses, or equity refreshes, which are all anchored to base salary",
+      "who_it_affects": "Candidates planning to stay long-term at a company where annual raises and refresh grants are base-dependent"
+    },
+    {
+      "choice": "Negotiating equity and base simultaneously in the first exchange",
+      "unstated_consequence": "Muddying the negotiation with total comp math reduces clarity and gives the recruiter room to trade off components against each other unfavorably",
+      "who_it_affects": "Candidates who are less experienced at negotiation and do not realize that sequential negotiation of components preserves more leverage"
+    },
+    {
+      "choice": "Continuing to push after a company says 'this is our final offer' without new leverage",
+      "unstated_consequence": "Risks damaging the relationship with the hiring team even if the offer is not withdrawn",
+      "who_it_affects": "Candidates who have already met 90%+ of their target but push for marginal gains beyond the final offer threshold"
+    },
+    {
+      "choice": "Disclosing the competing company name when using a competing offer as leverage",
+      "unstated_consequence": "Not required and potentially harmful — you have leverage from the number alone; disclosing the company name adds no benefit and may create complications",
+      "who_it_affects": "Candidates negotiating between companies in the same industry or network where relationships between hiring teams exist"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Not countering at all due to fear of offer withdrawal",
+      "why_it_happens": "Candidates overestimate withdrawal risk — the fear feels disproportionate because losing an offer feels catastrophic even though the statistical rate is only 6%",
+      "consequence": "Leaving an average of $27,000/year on the table — compounded over a career this is a significant wealth gap",
+      "warning_signs": [
+        "Thinking 'I don't want to seem greedy'",
+        "Accepting the first offer without asking any questions about flexibility"
+      ]
+    },
+    {
+      "pattern": "Countering based on personal need rather than market data",
+      "why_it_happens": "Candidates frame their counter as 'I need more to pay rent/student loans' rather than anchoring to external market benchmarks",
+      "consequence": "Recruiter has an easy rebuttal since personal need is not their problem; data-anchored counters are structurally harder to dismiss",
+      "warning_signs": [
+        "Using phrases like 'I was hoping for more'",
+        "Not pulling levels.fyi data before the negotiation conversation"
+      ]
+    },
+    {
+      "pattern": "Negotiating all compensation components simultaneously in the first exchange",
+      "why_it_happens": "Candidates want to optimize total comp and bundle everything together, not realizing this reduces leverage on each individual component",
+      "consequence": "Recruiter can trade off components against each other; candidate ends up with less on each lever than if negotiated sequentially",
+      "warning_signs": [
+        "Sending a counter that includes a new base, new equity, and new signing bonus all at once",
+        "Framing the ask as 'I need total comp of X' without separating components"
+      ]
+    },
+    {
+      "pattern": "Accepting 'base is fixed' without pivoting to signing bonus or equity",
+      "why_it_happens": "Candidates interpret 'base is fixed' as 'the entire offer is fixed' and disengage from negotiation prematurely",
+      "consequence": "Leaves signing bonus and equity upside on the table — both of which come from different budget pools and remain negotiable even when base is locked",
+      "warning_signs": [
+        "Immediately accepting after hearing 'base is our final number'",
+        "Not asking whether signing bonus or equity are separately negotiable"
+      ]
+    },
+    {
+      "pattern": "Using the initial offer as the anchor for the counter rather than market data",
+      "why_it_happens": "The initial offer is salient and emotionally anchors the candidate, causing them to think in terms of percentage above what they were offered rather than what the market pays",
+      "consequence": "Counter lands below market rate even after negotiation, especially when the initial offer was significantly below median",
+      "warning_signs": [
+        "Calculating counter as 'X% above what they offered' without checking levels.fyi",
+        "Not knowing the levels.fyi median before entering the negotiation"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have a competing offer with a specific number?",
+      "what_it_reveals": "Whether you have BATNA leverage that changes the entire counter structure",
+      "follow_up_if_yes": "Is the competing offer from a company you would genuinely consider joining? If yes, use that number as your direct anchor rather than a 10–20% counter above the initial offer.",
+      "follow_up_if_no": "Are you in a position to generate a competing offer before the deadline? If not, proceed with market data as your anchor."
+    },
+    {
+      "question": "How does the initial offer compare to the levels.fyi median for this specific company, level, and location?",
+      "what_it_reveals": "How aggressive your counter should be — a below-market offer justifies a 20–25% counter vs. 10–12% for a market-rate offer",
+      "follow_up_if_yes": "If the offer is more than 15% below median, prepare specific data points to justify the larger counter.",
+      "follow_up_if_no": "If the offer is at or above median, a 10–12% counter is appropriate and a larger counter may face pushback without stronger justification."
+    },
+    {
+      "question": "Is the offer exploding — do you have a hard deadline, and how much time do you have?",
+      "what_it_reveals": "Whether you have time to generate competing offers or whether you must negotiate from your current position",
+      "follow_up_if_yes": "Prioritize negotiating the current offer aggressively since you cannot create additional leverage in the available time.",
+      "follow_up_if_no": "Consider whether generating a competing offer before engaging in negotiation would strengthen your position."
+    },
+    {
+      "question": "In a retention counter-offer scenario: what was the primary reason you considered leaving?",
+      "what_it_reveals": "Whether a money-only counter-offer from the current employer will actually resolve the situation",
+      "follow_up_if_yes": "If compensation was the sole driver, a retention counter may work — but get specifics on timeline and structure.",
+      "follow_up_if_no": "If role scope, growth ceiling, management, or culture were factors, a salary match does not address the underlying issue and the 80% within-12-months departure statistic becomes highly relevant."
+    },
+    {
+      "question": "What round of negotiation are you in — is this your first counter or have you already exchanged multiple rounds?",
+      "what_it_reveals": "Whether to use a high round-number anchor or a precise research-backed number",
+      "follow_up_if_yes": "If this is round 1, use a round number anchor above your target.",
+      "follow_up_if_no": "If this is round 2 or later and both sides have narrowed, switch to a precise number to signal seriousness and research."
+    },
+    {
+      "question": "Has the company said 'this is our best and final offer' on base?",
+      "what_it_reveals": "Whether to stop pushing on base and pivot to signing bonus or equity as separate negotiable levers",
+      "follow_up_if_yes": "Ask specifically whether signing bonus is separately negotiable, framing it as bridging the first-year gap.",
+      "follow_up_if_no": "Continue the base negotiation — 'final' has not been declared so room likely still exists."
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Asking for more after receiving an offer risks getting the offer pulled",
+      "actual_reality": "Only 6% of offers are withdrawn after a counter — employers expect negotiation and withdrawal is almost exclusively reserved for candidates who are aggressive or disrespectful in tone, not those who simply ask for more",
+      "implication": "The fear of withdrawal is statistically unjustified and should not be the reason you don't counter — the expected value of countering is strongly positive"
+    },
+    {
+      "common_belief": "When a company says 'base is our final number,' the entire negotiation is over",
+      "actual_reality": "Signing bonuses come from a different budget than base salary headcount and are almost always still negotiable even after base is declared final",
+      "implication": "Always pivot to signing bonus when base is locked — $20K–$80K in signing bonus is standard at large tech companies for senior roles and does not require reopening base"
+    },
+    {
+      "common_belief": "Accepting a retention counter-offer from your current employer solves the problem",
+      "actual_reality": "80% of people who accept counter-offers leave within 12 months anyway because the underlying non-compensation reasons for considering leaving remain unresolved",
+      "implication": "Before accepting a retention counter-offer, explicitly assess whether the reason you considered leaving was purely financial — if not, the counter-offer is a temporary fix"
+    },
+    {
+      "common_belief": "The right counter is a percentage above what the company offered",
+      "actual_reality": "The right counter is anchored to market data (levels.fyi median for the specific company, level, and location), not to the initial offer — using the initial offer as your anchor can result in landing below market even after negotiation",
+      "implication": "Always pull levels.fyi before building your counter number and start from market, not from the offer"
+    },
+    {
+      "common_belief": "You need to disclose the competing company's name to use a competing offer as leverage",
+      "actual_reality": "The competing offer number is the leverage — you are not required to disclose the company name and doing so adds no benefit while potentially creating complications",
+      "implication": "When using a competing offer, share the number but decline to name the company if uncomfortable doing so"
+    },
+    {
+      "common_belief": "Negotiating hard signals you are difficult to work with",
+      "actual_reality": "66% of candidates who negotiate get what they ask for — employers budget for negotiation and the process is expected, not penalized",
+      "implication": "Framing your counter professionally and with market data is sufficient to preserve the relationship while capturing significant value"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Anchor reference point for counter",
+      "junior_pattern": "Counters as a percentage above the initial offer because that number is salient and emotionally anchoring",
+      "senior_pattern": "Starts from the levels.fyi market median for the specific company, level, and location — the initial offer is irrelevant to the counter structure",
+      "why_it_matters": "A junior anchored to a below-market initial offer can negotiate hard and still land below market; a senior anchored to market data ensures the counter is calibrated correctly regardless of where the company started"
+    },
+    {
+      "dimension": "Framing of the counter request",
+      "junior_pattern": "Frames the ask in terms of personal need: 'I was hoping for more' or 'I need X to make this work'",
+      "senior_pattern": "Frames the ask as market alignment: 'levels.fyi shows median for this level at X — I'd need to be at Y to align with market'",
+      "why_it_matters": "Personal need framing gives the recruiter an easy rebuttal; market data framing is structurally harder to dismiss and signals research capability"
+    },
+    {
+      "dimension": "Sequencing of compensation components",
+      "junior_pattern": "Negotiates all components simultaneously — base, equity, and signing bonus in the same breath to maximize total comp",
+      "senior_pattern": "Negotiates base first, then re-opens equity separately after base is settled, then uses signing bonus as a final lever if needed",
+      "why_it_matters": "Simultaneous negotiation lets the recruiter trade off components against each other; sequential negotiation preserves leverage on each component independently"
+    },
+    {
+      "dimension": "Response to 'best and final offer'",
+      "junior_pattern": "Accepts or disengages — interprets 'final' as meaning all negotiation is over",
+      "senior_pattern": "Tests whether signing bonus has 5–10% more room before accepting, since signing bonus comes from a different budget than base",
+      "why_it_matters": "Seniors capture additional value that juniors leave on the table by treating 'final on base' as 'final on everything'"
+    },
+    {
+      "dimension": "Use of number precision as a negotiating signal",
+      "junior_pattern": "Uses either round numbers or precise numbers without strategic intent — picks a number and sticks to it",
+      "senior_pattern": "Uses round numbers early (anchoring signal) and precise numbers late (research signal), switching deliberately based on which round of negotiation they are in",
+      "why_it_matters": "The right number format at the right time signals either anchoring intent or research depth — using them at the wrong time sends the wrong message to the recruiter"
+    },
+    {
+      "dimension": "Evaluating a retention counter-offer",
+      "junior_pattern": "Evaluates the retention counter purely on whether the number matches or exceeds the external offer",
+      "senior_pattern": "First diagnoses whether the reason for considering leaving was purely financial — if not, recognizes that a money match does not solve the underlying problem",
+      "why_it_matters": "Accepting a retention counter for non-financial reasons leads to departure within 12 months in 80% of cases — seniors avoid this trap by separating the compensation question from the root cause question"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_counter_sizing_guide",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "source_file": "zhihu_美国绿卡排期对印度_中国大陆出生的申请人有多严重.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If you have research publications and citations, pursue EB-1B or EB-2 NIW before defaulting to employer-sponsored EB-2",
+      "condition": "When a China-born applicant in tech/academia has a measurable publication or citation record...",
+      "action": "Seriously evaluate EB-1B (Outstanding Researcher) or EB-2 NIW as primary GC strategy rather than waiting for employer PERM",
+      "because": "EB-1 China backlog is significantly shorter than EB-2 China, and EB-1B/NIW paths exist independently of PERM labor certification timelines",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "EB-1A is the only employment-based category that does not require employer sponsorship or PERM",
+      "condition": "When an applicant wants to avoid dependency on a single employer during a multi-year GC process...",
+      "action": "Pursue EB-1A (Extraordinary Ability) self-petition if qualifications allow, bypassing PERM entirely",
+      "because": "EB-1A has no employer sponsorship requirement and no PERM process, and as of 2024 EB-1A China priority dates are significantly ahead of EB-2 India/China",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For India-born applicants, treat Canada PR as a parallel track rather than a fallback",
+      "condition": "When an India-born applicant faces EB-2 India wait times exceeding their career planning horizon...",
+      "action": "Begin Express Entry preparation concurrently with US H-1B employment rather than waiting to see if US GC resolves",
+      "because": "EB-2 India priority date as of 2024 is ~2012, implying 50+ year wait for new filers; Canada Express Entry has delivered PR in ~14 months for comparable profiles",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth (not citizenship)",
+      "why_it_matters": "Green card backlog is determined by country of birth, not current nationality. India and China-born applicants face drastically longer queues under the 7% per-country annual cap.",
+      "how_to_assess": "Identify your country of birth and look up the current USCIS Visa Bulletin priority date for your birth country and target EB category",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "EB category eligibility (EB-1 vs EB-2 vs EB-3)",
+      "why_it_matters": "EB-1 has a dramatically shorter backlog than EB-2 for both China and India-born applicants. Qualifying for EB-1 can shorten wait time by decades.",
+      "how_to_assess": "Evaluate publication record, citations, awards, peer review history for EB-1B; evaluate national interest argument for EB-2 NIW",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer stability and continuity",
+      "why_it_matters": "Company acquisition, closure, or layoff can interrupt a PERM-based GC application mid-process, requiring restart of the labor certification process",
+      "how_to_assess": "Assess company financial health, acquisition risk, and whether your role is likely to exist in 3-5 years",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Career planning time horizon vs. backlog wait time",
+      "why_it_matters": "If the expected GC wait exceeds a person's intended US career duration or retirement horizon, the GC process may never complete within their active career",
+      "how_to_assess": "Compare current priority date movement rate against your filing year to estimate realistic approval year; compare to personal career timeline",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Willingness to accept salary reduction for PR certainty in Canada",
+      "why_it_matters": "Canada PR via Express Entry is achievable in ~14 months but often involves a ~25% salary reduction vs. US tech salaries",
+      "how_to_assess": "Model net compensation after cost of living adjustment; evaluate personal tolerance for salary vs. status security tradeoff",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying on H-1B while waiting for EB-2 India GC",
+      "unstated_consequence": "The wait can exceed an entire career span. Children born in the US become citizens while the parent remains on H-1B for 15+ years. The psychological cost of indefinite status uncertainty compounds over time.",
+      "who_it_affects": "India-born applicants who entered the EB-2 queue in the 2010s or later; anyone who assumed the GC process was a formality rather than a multi-decade commitment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Changing employers during an active PERM-based GC process",
+      "unstated_consequence": "Changing jobs requires restarting the PERM labor certification process with the new employer, which can partially or fully reset the GC timeline depending on priority date portability eligibility",
+      "who_it_affects": "H-1B holders who want career mobility but have an active GC filing, particularly those early in the process without an approved I-140",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing Canada over the US for immigration certainty",
+      "unstated_consequence": "Realizing the psychological cost of indefinite US visa status only after years of H-1B renewals; the salary reduction (~25%) may be offset by lower stress, but this tradeoff is not apparent until experienced firsthand",
+      "who_it_affects": "High-earning US tech workers who prioritize status security over maximum compensation, particularly after experiencing H-1B renewal anxiety repeatedly",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating GC sponsorship as a routine HR process rather than a multi-decade personal commitment",
+      "why_it_happens": "Employers frame PERM filing as a standard benefit, and early in a career the wait times feel abstract and distant; the backlog only becomes viscerally real years later",
+      "consequence": "Applicants reach mid-career still on H-1B, with limited job mobility, career decisions constrained by GC status, and no clear resolution date",
+      "warning_signs": [
+        "Applicant cannot state their current priority date or what year it maps to in expected approval",
+        "Applicant assumes they can freely change jobs without GC impact",
+        "Applicant has not researched EB-1 eligibility despite years of professional experience"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Defaulting to EB-2 employer-sponsored path without evaluating EB-1 eligibility",
+      "why_it_happens": "Employers default to EB-2 PERM because it is their standard process; applicants rarely initiate an independent EB-1 assessment unless specifically advised",
+      "consequence": "Years lost in a slower queue when EB-1B or EB-1A may have been achievable, resulting in a 10-20 year difference in expected approval",
+      "warning_signs": [
+        "Applicant has peer-reviewed publications or citations but has never discussed EB-1B with an immigration attorney",
+        "Applicant assumes the employer's chosen GC path is the only or best path"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current priority date, and what year does the USCIS Visa Bulletin suggest that date will become current?",
+      "what_it_reveals": "Whether the applicant has a realistic understanding of their actual GC timeline, or is operating on vague optimism",
+      "follow_up_if_yes": "Have you modeled what your career and life situation will look like in that year? Does it still make sense to wait?",
+      "follow_up_if_no": "You need to look this up immediately — many people discover their realistic approval year is after their planned retirement",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have peer-reviewed publications, significant citations, or other evidence of outstanding research contributions?",
+      "what_it_reveals": "Whether EB-1B (Outstanding Researcher) or EB-2 NIW is a realistic alternative to employer-sponsored EB-2, potentially shortening the wait by decades",
+      "follow_up_if_yes": "Have you had an immigration attorney assess your EB-1B eligibility? EB-1 China dates are significantly ahead of EB-2 China.",
+      "follow_up_if_no": "Are you building toward those qualifications, or does your profile fit EB-1A (Extraordinary Ability) in another dimension?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "If your employer closed or was acquired tomorrow, what happens to your GC process?",
+      "what_it_reveals": "Whether the applicant understands PERM portability rules and has an I-140 approved, which is the key threshold for job change flexibility",
+      "follow_up_if_yes": "Is your I-140 approved? If yes, you may have portability rights after 180 days in a similar role.",
+      "follow_up_if_no": "You are fully dependent on this employer for your GC path — this is a significant concentration risk that should factor into career decisions",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you seriously modeled what a Canada Express Entry path would look like for your profile?",
+      "what_it_reveals": "Whether the applicant is anchored on the US path by inertia rather than by genuine comparison of outcomes",
+      "follow_up_if_yes": "What is your CRS score estimate, and have you compared the expected timeline and salary tradeoff explicitly?",
+      "follow_up_if_no": "For India-born applicants especially, this comparison is essential given EB-2 India timelines — not running this analysis is a form of decision avoidance",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "H-1B is a temporary visa and the GC process is just a formality you complete on the way to permanent status",
+      "actual_reality": "For India-born applicants, EB-2 India priority dates as of 2024 are ~2012, meaning new filers face an estimated 50+ year wait. The GC process is not a formality — it is a multi-decade commitment with no guaranteed outcome within a career lifespan.",
+      "implication": "India-born applicants should treat EB-2 as essentially inaccessible and immediately evaluate EB-1, NIW, or alternative country paths",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "You can freely change jobs while your GC is in process",
+      "actual_reality": "Changing employers before I-140 approval typically requires restarting the PERM labor certification with the new employer. After I-140 approval and 180+ days, portability may apply — but only to similar roles and only if the priority date is preserved.",
+      "implication": "Job mobility decisions must be coordinated with GC stage; changing jobs at the wrong stage can cost years of queue position",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "EB-1A requires a Nobel Prize-level achievement and is not realistic for most people",
+      "actual_reality": "EB-1A (Extraordinary Ability) has a high bar but is self-petitioned with no employer sponsorship and no PERM process. For China-born applicants, EB-1A priority dates are significantly shorter than EB-2, making it worth a serious eligibility assessment even for strong-but-not-famous professionals.",
+      "implication": "Applicants should get a formal EB-1A eligibility assessment from an experienced immigration attorney rather than self-disqualifying based on perceived bar",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of GC timeline reality",
+      "naive_pattern": "Assumes that filing for GC means it will eventually come through in a reasonable timeframe; treats 'my company is sponsoring my GC' as equivalent to 'I will get a GC'",
+      "informed_pattern": "Immediately looks up current priority date for their birth country and EB category, calculates realistic approval year, and stress-tests their career plan against that timeline",
+      "why_it_matters": "Acting on the naive assumption leads to a decade or more of career decisions (job loyalty, geographic choices, life planning) made on a false premise",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "GC strategy selection",
+      "naive_pattern": "Accepts whatever GC path the employer initiates (typically EB-2 PERM) without independently evaluating EB-1 eligibility",
+      "informed_pattern": "Proactively evaluates EB-1B, EB-1A, and EB-2 NIW options independently of employer default, understanding that employer convenience and applicant optimization are not the same thing",
+      "why_it_matters": "The difference between EB-1 and EB-2 for China/India-born applicants can be 10-30 years of wait time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Cross-border optionality",
+      "naive_pattern": "Treats US GC as the only valid immigration goal; views Canada PR as a consolation prize or last resort",
+      "informed_pattern": "Models Canada Express Entry as a parallel track with concrete timeline (14 months achievable), and explicitly trades off salary reduction against status certainty and psychological cost of indefinite H-1B status",
+      "why_it_matters": "Failing to model the Canada path means making the US-stay decision by default rather than by comparison, which is a form of decision avoidance with major long-term consequences",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The 7% per-country cap is based on citizenship, so if you naturalized or hold a passport from another country, you can use a shorter queue",
+      "why_believed": "People conflate nationality/citizenship with country of birth; many immigrants hold multiple passports or have changed citizenship",
+      "actual_rule": "The per-country cap is based on country of birth, not citizenship or current nationality. A China-born person with Canadian citizenship still files under the China-born quota.",
+      "real_consequence": "Applicants who believe they can 'escape' the backlog via naturalization elsewhere are wrong and may waste years on a strategy that does not work",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "H-1B can only be renewed a limited number of times, so you must get GC before you 'run out' of H-1B",
+      "why_believed": "H-1B is nominally a 6-year visa (3+3), and many people believe there is a hard cap after which you must leave",
+      "actual_rule": "H-1B can be extended beyond the initial 6 years in 1-year or 3-year increments once a GC application has been pending for 365+ days (under AC21). In practice, people with active GC filings can remain on H-1B indefinitely while waiting.",
+      "real_consequence": "Applicants may make premature or panicked decisions (accepting worse jobs, rushing GC steps) based on a false belief that their H-1B will expire before GC approval",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "India-born engineer filed EB-2 India in 2009 while on H-1B; continued working in the US at the same employer",
+      "decision": "Stayed on H-1B waiting for GC through the standard EB-2 India queue",
+      "outcome": "As of 2024 (15 years later), still waiting. Children born in the US are US citizens. The parent remains on H-1B with no clear resolution date.",
+      "lesson": "For India-born applicants, EB-2 India is not a viable GC strategy for anyone filing after approximately 2008-2010. The wait exceeds most people's career horizons. Alternative paths (EB-1, Canada PR) must be evaluated early.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "China-born professional on H-1B in the US for 7 years; had active GC filing but no near-term resolution",
+      "decision": "Relocated to Canada and applied via Express Entry",
+      "outcome": "Received Canada PR in 14 months. Accepted ~25% salary reduction. Reports significantly lower psychological stress.",
+      "lesson": "Canada Express Entry is a realistic 12-18 month path to permanent status for qualified professionals. The salary tradeoff is real (~25%) but the psychological cost of indefinite H-1B status is also real and often underweighted in the US-vs-Canada decision.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "An applicant who has been on H-1B for 5+ years with an active GC filing asks whether they should 'just wait it out' because they've already invested so much time",
+      "underlying_state": "Sunk cost fallacy — years already spent in the US GC queue feel like an investment that must be protected, making it psychologically difficult to evaluate alternative paths on their current merits",
+      "how_it_manifests": "Reluctance to seriously model Canada or other alternatives; framing the question as 'how much longer do I need to wait' rather than 'what is the optimal decision now given current information'",
+      "expert_move": "Reframe: 'The years you've spent do not change what happens from today forward. If you filed EB-2 India today, you'd wait until the 2070s. The question is not how to honor past investment — it's what path maximizes your next 20 years.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Applicant frames the GC backlog as a problem they need to 'solve' or 'fix' rather than a structural reality they need to plan around",
+      "underlying_state": "Illusion of control — believing that finding the right trick, attorney, or category will resolve what is fundamentally a supply/demand problem baked into US immigration law",
+      "how_it_manifests": "Excessive research into obscure GC strategies; asking 'is there any way to speed this up' repeatedly without acting on the answers; paralysis from information overload",
+      "expert_move": "Name the structural reality directly: 'There is no trick. The backlog is real. Your decision is whether to wait, pursue EB-1 if eligible, or exit to Canada. All three are valid. Paralysis is the only truly bad choice.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "India or China-born applicant asks whether they should stay in the US or go to Canada, framing it as a quality-of-life question",
+      "underlying_state": "Avoidance of the core fear: that the US GC may never come, which would mean years of H-1B were 'wasted' — so the person avoids making the comparison explicit",
+      "how_it_manifests": "Asking about abstract lifestyle factors (weather, culture, salary) rather than directly comparing immigration status timelines; seeking permission to leave rather than making a decision",
+      "expert_move": "Force the timeline comparison: 'Write down the year you expect to get a US GC. Write down the year you'd get Canada PR. Now decide.' The comparison, made concrete, usually resolves the paralysis.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How long will I have to wait for my green card? (asked as if seeking reassurance or a manageable number)",
+      "reframe": "The question is not how long you will wait — it is whether the wait fits inside your career and life planning horizon at all",
+      "why_it_works": "Shifts from a passive waiting mindset to an active planning mindset; forces the applicant to confront whether the GC is actually a viable goal given their specific situation rather than an abstract eventual outcome",
+      "example_language": "If you filed EB-2 India today, your expected approval year is in the 2070s. Does that fit your plan?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Should I go to Canada or stay in the US and wait for my GC? (framed as a values/lifestyle tradeoff)",
+      "reframe": "This is not a lifestyle question — it is an immigration timeline question. Map both timelines concretely first, then decide.",
+      "why_it_works": "Removes the emotional weight from a decision that has a largely quantitative answer; most people who do the concrete timeline comparison find the decision becomes clearer",
+      "example_language": "One path gives you PR in 14 months. The other gives you PR in 40+ years. That's the actual comparison. Everything else is secondary.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_美国绿卡排期对印度_中国大陆出生的申请人有多严重",
+  "_source_regions": [
+    "us"
+  ]
+}

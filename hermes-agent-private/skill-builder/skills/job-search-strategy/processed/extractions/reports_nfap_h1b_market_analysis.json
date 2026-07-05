@@ -1,0 +1,247 @@
+{
+  "source_file": "nfap_h1b_market_analysis.txt",
+  "heuristics": [
+    {
+      "rule": "When a small company says 'we don't sponsor,' treat it as a cost objection, not a policy rejection",
+      "condition": "When a company with fewer than 200 employees declines to sponsor H-1B",
+      "action": "Probe whether the barrier is legal cost/compliance uncertainty rather than opposition to hiring internationally, and explore whether a sponsorship assistance arrangement is negotiable",
+      "because": "The real blocker for small companies is $5,000–$15,000 in filing and attorney fees per petition, not ideological opposition — removing the cost barrier can change the outcome"
+    },
+    {
+      "rule": "Target cap-exempt employers first if you want to eliminate lottery risk entirely",
+      "condition": "When an international graduate is evaluating first post-OPT employer options and wants to avoid the 35% annual H-1B lottery odds",
+      "action": "Prioritize roles at universities, non-profit research organizations, or government research labs (NIH, NASA, national labs) which are fully exempt from the 85,000 annual cap",
+      "because": "Cap-exempt H-1B filings are approved without entering the lottery, eliminating a structural risk that blocks 65% of new applicants annually"
+    },
+    {
+      "rule": "Once your first H-1B is approved, treat employer lock-in as solved — not ongoing",
+      "condition": "When an H-1B worker is evaluating whether to stay at a first employer out of immigration fear",
+      "action": "Recognize that H-1B portability under AC21 allows immediate employer transfer upon new petition filing, without re-entering the cap or waiting for new approval",
+      "because": "The lock-in risk is concentrated at the first-petition stage; after approval the worker can change jobs administratively without lottery re-entry"
+    },
+    {
+      "rule": "Use publicly available LCA wage data to benchmark H-1B offers before accepting",
+      "condition": "When evaluating a compensation offer tied to an H-1B sponsorship",
+      "action": "Cross-reference the offered salary against DOL H-1B LCA disclosure data at H1BData.info for the specific role level and metro area",
+      "because": "H-1B wage data is public by law; a below-market offer combined with sponsorship dependency is a structural disadvantage that can be identified and negotiated before signing"
+    },
+    {
+      "rule": "If long-term US residency is the goal, model the full immigration timeline — not just the H-1B step",
+      "condition": "When a job seeker from India or China is planning a US-only career strategy",
+      "action": "Factor in 50+ year green card backlogs for India/China against 18–30 month Canadian PR timelines for the same profile, and treat Canada as a legitimate parallel path rather than fallback",
+      "because": "The H-1B is only one step; the green card backlog can mean permanent temporary status for decades, which changes the risk calculus of a US-only strategy fundamentally"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer cap-exempt status",
+      "why_it_matters": "Determines whether the candidate must survive a 35% annual lottery or can receive H-1B approval with certainty",
+      "how_to_assess": "Check whether employer is a university, non-profit research organization, or government research entity — these categories are explicitly exempt from the 85,000 annual cap",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer H-1B petition volume",
+      "why_it_matters": "High-volume filers have established immigration compliance infrastructure; low-volume or first-time filers introduce legal uncertainty and processing risk",
+      "how_to_assess": "Search employer petition history on H1BData.info; employers with 100+ annual petitions have demonstrated compliance infrastructure; first-time filers have higher procedural risk",
+      "weight": "high"
+    },
+    {
+      "factor": "Country of birth relative to green card backlog",
+      "why_it_matters": "India and China nationals face 50+ year green card backlogs; all other nationalities face 5–15 years — this fundamentally changes whether US-only strategy is viable long-term",
+      "how_to_assess": "Check USCIS Visa Bulletin for current priority dates by country and employment-based category; compare against Canadian Express Entry processing time of 18–30 months for the same profile",
+      "weight": "high"
+    },
+    {
+      "factor": "Company size relative to sponsorship cost burden",
+      "why_it_matters": "For a 30-person startup, $10,000 per sponsorship is a real budget constraint; for a large employer it is negligible — this predicts actual sponsorship willingness",
+      "how_to_assess": "Estimate headcount and funding stage; seed/Series A startups under 50 people are highest risk for sponsorship refusal due to cost; companies over 500 employees rarely decline on cost grounds alone",
+      "weight": "high"
+    },
+    {
+      "factor": "H-1B denial and RFE trend for the specific employer",
+      "why_it_matters": "An employer with a history of RFEs or denials signals either non-compliance, body shop patterns, or weak petition quality — all of which increase personal immigration risk",
+      "how_to_assess": "Search employer-specific denial and RFE rates on public LCA/H-1B data tools; NFAP data shows overall denial rate is 5.8% but varies significantly by employer type",
+      "weight": "medium"
+    },
+    {
+      "factor": "Geographic location relative to H-1B wage levels",
+      "why_it_matters": "LCA prevailing wage requirements vary by metro; Bay Area wages run 30–50% above national H-1B median — location determines both compensation floor and market competitiveness",
+      "how_to_assess": "Cross-reference role title and level against DOL LCA public data for the specific metro area at H1BData.info before evaluating any offer",
+      "weight": "medium"
+    },
+    {
+      "factor": "Current OPT/STEM OPT remaining time",
+      "why_it_matters": "The number of H-1B lottery attempts available before OPT expires determines how much risk a candidate can absorb; a student with one lottery attempt left has no margin for error",
+      "how_to_assess": "Calculate remaining OPT months, determine how many April lottery cycles remain, and model worst-case scenarios if cap-subject H-1B is not obtained",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Joining a prestigious large tech company (top 4 sponsor) for first H-1B",
+      "unstated_consequence": "High employer volume provides sponsorship certainty, but the same employer concentration means layoffs at Amazon/Meta/Microsoft/Google simultaneously flood the H-1B transfer market with thousands of workers, creating intense competition for portability transfers at precisely the moment you need one",
+      "who_it_affects": "H-1B holders at high-volume tech employers during industry downturns or mass layoff cycles"
+    },
+    {
+      "choice": "Accepting H-1B sponsorship from a small startup",
+      "unstated_consequence": "If the startup fails or does a reduction in force before the H-1B is approved, the petition is withdrawn and the worker reverts to OPT status with no backup — small companies also lack in-house immigration counsel, increasing petition error rates",
+      "who_it_affects": "International candidates at early-stage companies who trade compensation upside for sponsorship without modeling downside scenarios"
+    },
+    {
+      "choice": "Staying in a cap-exempt university research role to avoid lottery risk",
+      "unstated_consequence": "University roles typically pay 20–40% below industry for equivalent skill levels, and the research career track has a narrower exit into industry the longer you stay — the lottery risk is eliminated but compensation and optionality costs compound over time",
+      "who_it_affects": "High-skill international graduates in computer science or engineering who could command $130,000–$160,000 in industry but take $80,000–$100,000 university roles for immigration certainty"
+    },
+    {
+      "choice": "Pursuing US-only career strategy as an India or China national",
+      "unstated_consequence": "The H-1B lottery gives 35% annual odds, but surviving the lottery does not solve the problem — the employment-based green card backlog for India nationals can exceed 50 years at current rates, meaning decades of renewal dependency, restrictions on job changes, and inability to start a company without abandoning green card priority dates",
+      "who_it_affects": "India and China nationals who focus on H-1B acquisition as the finish line without modeling the full permanent residency timeline"
+    },
+    {
+      "choice": "Negotiating a sponsorship assistance clause where the employee contributes to attorney costs",
+      "unstated_consequence": "While it may unlock sponsorship from a reluctant small employer, paying toward your own H-1B petition creates legal complications, may violate DOL regulations depending on structure, and sets a precedent that immigration costs are employee-borne — requires immigration attorney review before execution",
+      "who_it_affects": "Candidates at small companies with no prior immigration infrastructure who are eager enough to accept financial risk to secure sponsorship"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming only large tech companies sponsor H-1B and ignoring mid-sized employers",
+      "why_it_happens": "Brand salience bias — Amazon, Google, Microsoft are visible as top sponsors; the 28,277 unique employers and the fact that 70% of petitions go to companies filing 100 or fewer applications is not intuitive",
+      "consequence": "Job seekers over-compete for a small number of high-brand employers while ignoring the majority of the sponsorship market, reducing their odds and limiting their options",
+      "warning_signs": [
+        "Job search list consists only of FAANG and top-10 tech companies",
+        "Candidate dismisses mid-market or regional companies without checking their H-1B petition history"
+      ]
+    },
+    {
+      "pattern": "Treating H-1B approval as the endpoint of immigration planning",
+      "why_it_happens": "The H-1B is the most visible and immediate immigration milestone; the green card backlog is abstract and distant-seeming at career entry, so candidates from high-backlog countries do not model long-term implications",
+      "consequence": "India and China nationals find themselves 10+ years into a US career still on H-1B status, unable to change jobs freely, unable to start companies, and facing indefinite renewal dependency",
+      "warning_signs": [
+        "Candidate from India or China has no awareness of per-country employment-based green card quota limits",
+        "Career planning horizon stops at 'get H-1B approved' with no subsequent steps modeled"
+      ]
+    },
+    {
+      "pattern": "Accepting below-market compensation because sponsorship feels like a favor",
+      "why_it_happens": "The perceived scarcity of sponsoring employers creates a power imbalance in negotiation; candidates undervalue their own market rate because they conflate immigration dependency with reduced leverage",
+      "consequence": "Candidates accept offers 15–30% below market rate, and because LCA wages are locked at offer, underpayment is legally documented and persists through the H-1B period",
+      "warning_signs": [
+        "Candidate does not cross-reference offer against DOL LCA public data before accepting",
+        "Candidate expresses gratitude for sponsorship as a reason not to negotiate compensation"
+      ]
+    },
+    {
+      "pattern": "Joining a first employer without verifying H-1B petition history or compliance infrastructure",
+      "why_it_happens": "Candidates are relieved to find any sponsoring employer and do not conduct due diligence on petition quality or denial rates — the information is publicly available but rarely used",
+      "consequence": "Higher RFE rates and denial risk from employers with weak immigration counsel or non-compliant petition practices; in worst case, petition denial during OPT gap period triggers status loss",
+      "warning_signs": [
+        "Employer has never filed an H-1B petition before",
+        "Employer cannot provide name of immigration attorney handling the petition"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth, and have you modeled the employment-based green card backlog for your category?",
+      "what_it_reveals": "Determines whether US-only strategy is viable long-term; India and China nationals face fundamentally different multi-decade timelines than all other nationalities",
+      "follow_up_if_yes": "Have you compared the US green card timeline against Canadian Express Entry processing time for your profile, and do you have a threshold at which you would pivot to Canada?",
+      "follow_up_if_no": "Before committing to a US-only strategy, calculate your estimated priority date wait using the USCIS Visa Bulletin and current cutoff dates — this changes the entire decision framework"
+    },
+    {
+      "question": "How many H-1B lottery cycles do you have remaining before your OPT or STEM OPT expires?",
+      "what_it_reveals": "Determines risk tolerance for cap-subject versus cap-exempt employer targeting; one remaining lottery attempt means zero margin for error and should trigger immediate pivot toward cap-exempt options",
+      "follow_up_if_yes": "If you have two or more attempts remaining, are you actively building a parallel cap-exempt employer pipeline as insurance while pursuing cap-subject roles?",
+      "follow_up_if_no": "If you have only one attempt remaining, have you identified at least three cap-exempt employers (universities, non-profit research organizations, government labs) that match your skill profile?"
+    },
+    {
+      "question": "Have you searched your target employer's H-1B petition history on H1BData.info before accepting their offer?",
+      "what_it_reveals": "Reveals whether the employer has proven compliance infrastructure, their denial and RFE rates, and the wage levels they have historically filed — directly predicts petition quality and compensation floor",
+      "follow_up_if_yes": "What was the employer's denial rate and RFE rate over the last three fiscal years, and how does their LCA wage for your role compare to the metro median?",
+      "follow_up_if_no": "This data is public, free, and legally required to be disclosed — not checking it before accepting sponsorship is accepting avoidable risk on the most consequential career decision you will make"
+    },
+    {
+      "question": "Is the company that is declining to sponsor a small or mid-sized employer, and do you know whether their stated reason is policy or cost?",
+      "what_it_reveals": "Distinguishes between genuine policy opposition and a cost/compliance objection that may be negotiable — the majority of small company refusals are cost-driven, not ideological",
+      "follow_up_if_yes": "Have you explored whether the company would reconsider if you offered to facilitate the immigration attorney relationship or if sponsorship cost could be structured differently?",
+      "follow_up_if_no": "Before walking away from an otherwise strong opportunity, ask the hiring manager directly: 'Is the concern about the cost and process, or is there a policy against sponsoring visas?' — the answer determines whether the objection is solvable"
+    },
+    {
+      "question": "Are you currently on H-1B with an approved petition, and are you staying at your employer primarily out of immigration fear?",
+      "what_it_reveals": "Determines whether the candidate understands H-1B portability under AC21 — many H-1B holders vastly overestimate lock-in after first approval",
+      "follow_up_if_yes": "Do you understand that under AC21 portability you can begin work at a new employer immediately upon filing of a new petition, without waiting for approval and without re-entering the cap?",
+      "follow_up_if_no": "If you are not yet on H-1B, the lock-in concern is valid for your first petition — but you should be planning now for how you will use portability after approval to ensure you are not permanently bound to a first employer on unfavorable terms"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Only big tech companies (Amazon, Google, Microsoft, Meta) realistically sponsor H-1B visas",
+      "actual_reality": "70% of new H-1B petitions go to employers that filed 100 or fewer applications; 28,277 unique US employers had at least one H-1B petition approved in FY2025 — the majority of sponsorship is at mid-sized companies, not tech giants",
+      "implication": "Job seekers should build employer targeting lists that include mid-market companies with demonstrated H-1B history rather than competing exclusively for a small number of high-brand employers; the real market is much larger than commonly assumed"
+    },
+    {
+      "common_belief": "H-1B workers are locked into their sponsoring employer and cannot change jobs without restarting immigration from scratch",
+      "actual_reality": "Under AC21 portability, once a first H-1B petition is approved, the worker can change employers by having the new employer file a new petition — the worker can start the new job immediately upon filing, not upon approval, and does not re-enter the lottery cap",
+      "implication": "The employer lock-in risk is concentrated at the first-petition stage; after first approval, strategic job changes are administratively manageable and the leverage balance shifts significantly toward the worker"
+    },
+    {
+      "common_belief": "The H-1B is the only viable path to US work authorization for international STEM graduates",
+      "actual_reality": "Cap-exempt H-1B pathways through universities, non-profit research organizations, and government research entities allow approval without any lottery — these are permanent, well-compensated career options, not just stopgaps",
+      "implication": "Candidates with research profiles or academic career interests should evaluate cap-exempt employers as a primary strategy rather than treating them as consolation options after lottery failure"
+    },
+    {
+      "common_belief": "Small companies that decline to sponsor are philosophically opposed to hiring international workers",
+      "actual_reality": "The typical cost of H-1B sponsorship is $5,000–$15,000+ per petition; for a 30-person company this is a real budget constraint, and many refusals are cost and compliance uncertainty driven rather than policy-driven",
+      "implication": "Candidates should diagnose the actual objection before accepting a refusal as final; cost objections are sometimes negotiable in ways that policy objections are not"
+    },
+    {
+      "common_belief": "Getting an H-1B approved effectively solves the US immigration problem for a skilled worker",
+      "actual_reality": "The H-1B is a temporary visa requiring renewal; the employment-based green card backlog runs 5–15 years for most countries and 50+ years for India and China nationals — surviving the lottery is only the first step in a multi-decade immigration timeline",
+      "implication": "Career strategy must model the full immigration timeline, not just the H-1B step; for India and China nationals especially, Canadian PR in 18–30 months may be a structurally superior outcome despite requiring relocation"
+    },
+    {
+      "common_belief": "The H-1B system has become more restrictive and harder to obtain in recent years",
+      "actual_reality": "Current denial rates (5.8% in FY2025) are near historic lows for straightforward petitions; the 2019 spike to 24% was a policy anomaly later reversed in courts — however, RFE rates are creeping upward (23% in FY2025) indicating increasing scrutiny even when petitions are ultimately approved",
+      "implication": "Petition quality and employer compliance infrastructure matter more than the aggregate denial rate suggests; an approved petition with multiple RFEs costs the employer and candidate significant time and legal fees even when ultimately successful"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Employer targeting strategy",
+      "junior_pattern": "Targets a short list of top-brand tech companies because they are known H-1B sponsors, does not research mid-market employer petition history",
+      "senior_pattern": "Uses H1BData.info to identify the 28,277-employer sponsorship market, builds a tiered list by company size, petition volume, denial rate, and wage level — treats employer targeting as a data problem",
+      "why_it_matters": "Over-indexing on brand-name employers concentrates competition and ignores 70% of the available sponsorship market, reducing both odds and negotiating leverage"
+    },
+    {
+      "dimension": "Immigration timeline planning",
+      "junior_pattern": "Plans to 'get the H-1B' as the immigration goal, treats green card as a distant future problem",
+      "senior_pattern": "Models the full immigration timeline including green card backlog by country of birth, calculates expected years to permanent residency under US versus Canadian pathways, and makes employer and location choices that optimize the full trajectory",
+      "why_it_matters": "India and China nationals who plan only to H-1B approval can find themselves a decade into a career still on temporary status with no clear path to permanence — a foreseeable outcome that early modeling could have redirected"
+    },
+    {
+      "dimension": "Response to employer sponsorship refusal",
+      "junior_pattern": "Accepts 'we don't sponsor' as a final answer and moves on",
+      "senior_pattern": "Diagnoses whether the refusal is cost-driven or policy-driven by asking directly, then explores whether the cost objection is addressable before accepting the refusal as final",
+      "why_it_matters": "A significant portion of small company refusals are cost and compliance objections that can be negotiated — treating all refusals as equivalent loses opportunities that could be recovered with one diagnostic conversation"
+    },
+    {
+      "dimension": "Compensation negotiation under sponsorship dependency",
+      "junior_pattern": "Accepts below-market offer because sponsorship feels like a concession granted by the employer — does not verify against LCA public data",
+      "senior_pattern": "Benchmarks every offer against DOL LCA public wage data for the specific role level and metro area, negotiates from market data rather than from gratitude, understands that underpayment at offer is legally locked into the LCA filing",
+      "why_it_matters": "Because H-1B LCA wages are public legal documents, the compensation agreed at offer becomes a documented floor — accepting below-market at offer is not a temporary concession, it is a legal record that can persist through the H-1B period"
+    },
+    {
+      "dimension": "Risk modeling for first employer choice",
+      "junior_pattern": "Prioritizes securing any sponsoring employer, does not conduct due diligence on petition quality, attorney infrastructure, or company stability",
+      "senior_pattern": "Treats first employer selection as a high-stakes risk decision: verifies petition history, confirms immigration attorney relationship, assesses company financial stability relative to OPT expiration timing, and models worst-case scenarios before signing",
+      "why_it_matters": "A petition denial or company failure before H-1B approval during OPT expiration can trigger status loss — the consequences of first employer failure are asymmetrically severe compared to any other job change later in career"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "reports_nfap_h1b_market_analysis",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

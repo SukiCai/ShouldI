@@ -1,0 +1,49 @@
+{
+  "skill_name": "Graduate School Selection Advisor",
+  "overall_score": 4.5,
+  "summary": "This is a genuinely strong skill that captures expert-level reasoning about graduate school selection with specific, actionable, and often counterintuitive guidance. It excels at reframing the decision around advisor quality and immigration calculus, with concrete numbers (40-50% dropout, $150-200K MS cost, 12 vs 36 months OPT) anchoring the advice. Minor gaps exist around field-specific variation (humanities/lab sciences vs. CS) and some heuristics could go deeper, but it would meaningfully improve an AI's advice in this domain.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 5,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The opening reframe — 'You are choosing an advisor, not a program' — is the correct counterintuitive expert anchor and is then reinforced consistently across heuristics, tradeoffs, and the junior/senior table. This is the hallmark of a well-designed skill.",
+    "Immigration is integrated as a first-order variable rather than an afterthought, with specific facts (Canada Express Entry 3-5 years vs. US 20+ year backlogs for Indian/Chinese nationals, STEM CIP codes, OPT reset). This is the kind of cross-domain synthesis a novice wouldn't think to bring in.",
+    "Hidden tradeoffs are genuinely non-obvious — e.g., 'Pre-tenure advisor's high engagement → you may be a first-cohort beta case; tenure denial in years 1-3 is the highest-cost disruption' is a real failure mode invisible at decision time.",
+    "Survivorship bias is explicitly named ('students who were harmed left the field and are absent from the networks applicants consult') with an actionable correction ('contact people who left') — this is sophisticated epistemic guidance.",
+    "Concrete language patterns to decode: '\"very independent\" from current students as a warning, not a compliment' and '\"subject to availability of funds\" language' give the AI specific verbal signals to flag."
+  ],
+  "weaknesses": [
+    "The skill is heavily US-centric (with Canada as the comparator) but the description claims international student coverage broadly. Europe (no tuition, shorter PhDs, different funding norms), UK, Australia, and Singapore aren't addressed despite being major destinations for international students.",
+    "Field-specific variation is underweighted. Humanities is mentioned once (the 8.4-9.5 year time-to-degree note), but lab sciences vs. theoretical fields vs. CS have very different advisor dynamics, lab funding cycles, and authorship norms — a one-size framework risks misfiring.",
+    "Heuristic #10 on cold outreach is good but could be sharper — e.g., what subject lines work, whether to attach CV, when to follow up. The 'under 250 words' rule is concrete but the rest is high-level.",
+    "The diagnostic framework doesn't address the case of a current PhD student considering leaving — only applicants and acceptors. Given the 40-50% dropout rate the skill emphasizes, this is a major scenario gap.",
+    "No guidance on evaluating the lab itself as a unit (group size, postdoc-to-student ratio, internal collaboration culture) beyond the advisor — yet this strongly predicts day-to-day experience."
+  ],
+  "improvement_suggestions": [
+    "Add a section or table on field-specific variation: CS/ML (advisor industry connections, internships, rapid publishing), lab sciences (group funding, equipment access, first-author negotiations), humanities (solo work, longer timelines, dismal job market), social sciences (mixed). Each has different failure modes.",
+    "Expand international coverage beyond US-vs-Canada. Add at minimum: Germany/Netherlands (free tuition, employee-status PhDs), UK (3-4 year PhDs but weak funding for internationals), and note when these dominate US options for specific profiles.",
+    "Add a 'mid-PhD' diagnostic branch: when to leave with a master's, how to switch advisors, sunk-cost recognition. This is implied by the dropout statistics but not actually addressed.",
+    "Sharpen heuristic #4 with the specific questions to ask alumni: not just 'would you choose this advisor again' but e.g., 'how many first-author papers did you have at graduation?', 'how often did meetings get cancelled?', 'did the advisor read your drafts?'",
+    "Add quantitative benchmarks for advisor due diligence: e.g., 'lab attrition above 30% is a red flag', 'fewer than 2 first-author papers per student at graduation in experimental fields suggests a problem' — give the AI numeric anchors."
+  ],
+  "generic_advice_flags": [
+    "'Never give generic \"follow your passion\" advice' — this is meta-instruction rather than a flag in the content itself; the content is largely free of this issue, which is a credit to the skill.",
+    "'A gap year only helps if it produces a measurable new input' is correct but a bit thin — what counts as a measurable new input (publications? a research assistantship? a specific test score increase?) isn't specified, leaving the AI to fill in vague gestures."
+  ],
+  "missing_coverage": [
+    "Current PhD students considering quitting, switching advisors, or mastering out — major gap given the dropout statistics cited.",
+    "European, UK, Australian, and Singaporean programs as alternatives for international students.",
+    "Field-specific guidance (humanities, lab sciences, theoretical fields, professional doctorates like EdD/DBA).",
+    "How to handle the two-body problem (academic couples) which materially constrains program choice.",
+    "Evaluating co-advising and committee composition strategy beyond the single 'co-advising risk' tradeoff line.",
+    "Specific guidance on standardized tests in the current GRE-optional era and how that has changed admissions.",
+    "Mental health resources, leave policies, and how to evaluate a program's support infrastructure — flagged as important in the framing but never operationalized."
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "source_file": "canada_tech_salary_benchmarks_canada.txt",
+  "heuristics": [
+    {
+      "rule": "Use Canadian-specific salary sources (Robert Half Canada, Glassdoor CA) — never US sources — when negotiating Canadian offers",
+      "condition": "When negotiating a salary offer for a tech role in Canada...",
+      "action": "...anchor to Robert Half Canada ranges and Glassdoor CA medians, not levels.fyi US or Glassdoor US",
+      "because": "US benchmarks are 25–40% higher in USD terms and will either cause you to anchor too high (seeming out of touch) or too low (leaving money on the table at Canadian ceiling)"
+    },
+    {
+      "rule": "At Canadian tech employers, negotiate signing bonus first — not base salary — because it is the most flexible component",
+      "condition": "When a Canadian employer says 'the band is set' on base salary...",
+      "action": "...shift negotiation to signing bonus rather than continuing to push on base",
+      "because": "Canadian offers have narrower negotiating bands (3–10%) than US (10–20%), and employers at established companies often genuinely cannot move the base but have more discretion on signing"
+    },
+    {
+      "rule": "When comparing a Calgary offer to a Toronto/Vancouver offer, add 8–12% to the Calgary gross salary before comparing take-home",
+      "condition": "When evaluating a tech job offer in Calgary (Alberta) vs. Ontario or BC...",
+      "action": "...adjust for Alberta's zero provincial income tax, which increases effective take-home by approximately 8–12% on the same gross",
+      "because": "A CAD $130,000 gross in Calgary yields materially more take-home than the same gross in Toronto or Vancouver due to the absence of provincial income tax"
+    },
+    {
+      "rule": "At FAANG Canada (Amazon, Google, Microsoft, Shopify), expect total comp to significantly exceed base — negotiate RSU grants and refresh schedules, not just base",
+      "condition": "When negotiating at a large tech employer in Canada that offers RSUs...",
+      "action": "...evaluate and negotiate total comp including RSU vesting schedules, not just base salary",
+      "because": "Senior SWE total comp at FAANG Canada ($175K–$260K+ CAD) can exceed base ($145K–$185K) by 30–50%, making base-only negotiation leave significant value uncaptured"
+    },
+    {
+      "rule": "Discount Montreal salaries by 15–25% versus Toronto when comparing raw numbers, then partially offset for lower cost of living",
+      "condition": "When evaluating a Montreal tech offer against a Toronto benchmark...",
+      "action": "...recognize the posted salary will be 15–25% lower than Toronto equivalents, but factor in lower Montreal cost of living before concluding it's a worse deal",
+      "because": "Montreal's lower salary market is structural (bilingual requirements, different labor market) but cost of living partially compensates, so direct gross salary comparison overstates the real gap"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "City / Province of role",
+      "why_it_matters": "Salary benchmarks vary 10–25% across Canadian cities, and Alberta's no-provincial-income-tax rule changes effective take-home independently of gross salary",
+      "how_to_assess": "Compare gross offer to city-specific benchmarks (Toronto/Vancouver as baseline); for Calgary/Edmonton add 8–12% take-home premium; for Montreal discount 15–25% but adjust for COL",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer type: FAANG Canada vs. mid-tier tech vs. enterprise",
+      "why_it_matters": "FAANG Canada pays materially more in total comp (especially RSUs) than the broad market — mid-tier Canadian tech often pays near Robert Half ranges with no equity",
+      "how_to_assess": "Check whether offer includes RSUs; compare to FAANG Canada benchmarks (Amazon, Google, Shopify) vs. Robert Half ranges for non-FAANG",
+      "weight": "high"
+    },
+    {
+      "factor": "Equity (RSU) structure and vesting schedule",
+      "why_it_matters": "For senior roles, RSUs can add 30–50% above base salary; not negotiating or understanding them means treating a $170K total comp role as a $145K base role",
+      "how_to_assess": "Request full RSU grant amount, vesting cliff, annual refresh rate; compare to role-level benchmarks at FAANG Canada",
+      "weight": "high"
+    },
+    {
+      "factor": "Pay transparency legislation (BC and Ontario, Jan 2026)",
+      "why_it_matters": "Posted salary ranges will become mandatory, removing information asymmetry and allowing candidates to see the full band before negotiating",
+      "how_to_assess": "Check whether the job posting already includes a salary range (early compliers exist); if not, ask recruiter for the band directly",
+      "weight": "medium"
+    },
+    {
+      "factor": "Canadian vs. US immigration status and path to PR",
+      "why_it_matters": "The Canada–US comp gap is severe at FAANG level (senior SWE: $161K USD Canada vs. $400K USD US FAANG), but US H-1B uncertainty and 134-year India-born green card wait changes the real expected value calculation",
+      "how_to_assess": "For international candidates: compare expected compensation over 5–10 year horizon including immigration stability premium; Canadian PR achievable in 1–2 years vs. H-1B uncertainty",
+      "weight": "high"
+    },
+    {
+      "factor": "RRSP matching terms",
+      "why_it_matters": "RRSP matching is a form of deferred compensation not captured in base salary; it affects total comp comparison across employers",
+      "how_to_assess": "Request specifics on RRSP match percentage and vesting; include in total comp calculation alongside base and equity",
+      "weight": "medium"
+    },
+    {
+      "factor": "Years of experience relative to role level benchmarks",
+      "why_it_matters": "Canadian salary bands are meaningfully different by seniority level (junior $65K–$95K vs. senior $120K–$165K); being mis-leveled down costs $25K–$40K annually",
+      "how_to_assess": "Match your YOE (0–3, 3–6, 6–10) to published Robert Half Canada ranges for your role; flag if offer falls below median for your experience tier",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a Canadian tech role over a US FAANG offer",
+      "unstated_consequence": "At senior levels, the total compensation gap is severe — a senior SWE earns $150K–$220K CAD ($110K–$161K USD) in Canada vs. $250K–$400K USD at US FAANG. Over a 5-year career the gap can exceed $500K–$1M USD in forgone earnings.",
+      "who_it_affects": "High-performing senior engineers who qualify for US FAANG roles but choose Canada for immigration stability or lifestyle reasons"
+    },
+    {
+      "choice": "Negotiating with US salary data in a Canadian interview process",
+      "unstated_consequence": "You appear out of touch with Canadian market norms, which signals poor market research to the recruiter and can damage your candidacy even if your target number is individually reasonable",
+      "who_it_affects": "International students or recent US-based candidates who apply to Canadian roles without recalibrating their salary expectations to the Canadian market"
+    },
+    {
+      "choice": "Focusing negotiation only on base salary in Canada",
+      "unstated_consequence": "The most movable component (signing bonus) goes unasked, and the highest-value component at FAANG Canada (RSU grants) goes unoptimized — both represent more negotiable upside than base",
+      "who_it_affects": "Junior and mid-level candidates negotiating their first Canadian tech offer, who default to base salary as the only lever"
+    },
+    {
+      "choice": "Taking a Montreal role because the salary looks close to Toronto after reading the job posting",
+      "unstated_consequence": "Montreal salaries are structurally 15–25% below Toronto; bilingual requirements can also constrain future mobility within the Montreal market for non-French speakers",
+      "who_it_affects": "Candidates relocating to Montreal from other provinces or countries who don't adjust for the structural salary discount"
+    },
+    {
+      "choice": "Accepting the first offer at a Canadian established company after being told 'the band is set'",
+      "unstated_consequence": "The signing bonus — which is expected to be asked for at Canadian tech companies — is left entirely on the table, representing $5K–$20K+ in immediately accessible compensation",
+      "who_it_affects": "First-time negotiators who take 'the band is set' as a signal that all negotiation is closed"
+    },
+    {
+      "choice": "Comparing a Calgary gross salary offer directly to a Toronto gross salary offer",
+      "unstated_consequence": "Alberta's absence of provincial income tax means the Calgary offer is worth 8–12% more in take-home than the identical gross in Toronto — ignoring this makes Calgary look worse than it is",
+      "who_it_affects": "Candidates choosing between Alberta and Ontario/BC roles who evaluate offers by gross salary alone"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Anchoring Canadian salary negotiation to US market data from levels.fyi or Glassdoor US",
+      "why_it_happens": "Most widely available English-language salary content is US-centric; candidates assume it's globally applicable or don't know Canadian-specific sources exist",
+      "consequence": "Either anchoring 25–40% too high (seeming delusional to Canadian recruiters, losing offers) or using US data to validate accepting a below-market Canadian offer",
+      "warning_signs": [
+        "Candidate cites levels.fyi numbers without specifying 'Canada' data",
+        "Candidate quotes USD figures when discussing CAD-denominated roles"
+      ]
+    },
+    {
+      "pattern": "Treating Robert Half Canada ranges as the ceiling rather than the floor for FAANG Canada negotiation",
+      "why_it_happens": "Robert Half ranges represent the broad Canadian market including non-tech employers; candidates don't realize FAANG Canada (Amazon, Google, Shopify) pays 20–40% above these ranges",
+      "consequence": "Underanchoring at major tech companies — e.g., targeting $138K CAD for a senior SWE role where Amazon Canada pays $145K–$170K base and Google Canada pays $155K–$185K",
+      "warning_signs": [
+        "Candidate treats Robert Half midpoint as the target rather than the floor",
+        "Candidate doesn't distinguish between FAANG Canada and general market benchmarks"
+      ]
+    },
+    {
+      "pattern": "Not asking about signing bonus because the base salary feels acceptable",
+      "why_it_happens": "Candidates conflate 'I'm happy with the base' with 'negotiation is complete'; don't know that signing bonus is expected to be requested at Canadian tech companies",
+      "consequence": "Leaving $5K–$20K+ in immediately vested compensation unclaimed simply by not asking",
+      "warning_signs": [
+        "Candidate verbally accepts offer on the spot without asking about signing bonus",
+        "Candidate says 'I don't want to push my luck' after getting base adjusted slightly"
+      ]
+    },
+    {
+      "pattern": "Evaluating Canadian city offers on gross salary alone without adjusting for provincial tax differences",
+      "why_it_happens": "Gross salary is the visible number; provincial tax rates require a separate calculation that candidates don't bother to do at decision time",
+      "consequence": "Systematically undervaluing Alberta offers (no provincial tax = 8–12% more take-home) and overvaluing equivalent gross salaries in Ontario or BC",
+      "warning_signs": [
+        "Candidate declines Calgary offer because 'it's lower than Toronto' without doing tax-adjusted comparison",
+        "Candidate doesn't ask about provincial tax implications when comparing multi-city offers"
+      ]
+    },
+    {
+      "pattern": "Accepting a Research Scientist / Vector Institute postdoc-adjacent role without understanding the compensation gap vs. industry",
+      "why_it_happens": "Academic prestige and research affiliation make low-compensation roles feel like career investments; candidates don't calculate the $60K–$90K postdoc vs. $120K–$200K industry researcher gap",
+      "consequence": "Forgoing $30K–$110K annually relative to industry researcher roles at Vector-affiliated companies doing equivalent work",
+      "warning_signs": [
+        "Candidate accepts 'research track' framing without asking whether the role has industry or academic compensation structure",
+        "Candidate doesn't compare Vector-affiliated company researcher comp vs. Vector Institute direct compensation"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Are you comparing this offer to Canadian market data or US market data?",
+      "what_it_reveals": "Whether the candidate's reference point is calibrated to the Canadian market or will systematically mislead their negotiation",
+      "follow_up_if_yes": "Which Canadian sources are you using — Robert Half Canada, Glassdoor CA, or something else?",
+      "follow_up_if_no": "You need to recalibrate entirely — US benchmarks are 25–40% higher and will cause you to either lose the offer or leave money on the table"
+    },
+    {
+      "question": "Is this offer from a FAANG Canada employer (Amazon, Google, Microsoft, Shopify) or a mid-tier / enterprise Canadian company?",
+      "what_it_reveals": "Whether to benchmark against FAANG Canada ranges (20–40% above Robert Half) or against the broad Robert Half / Glassdoor CA market ranges",
+      "follow_up_if_yes": "Are you negotiating RSU grants and vesting schedule, or only base salary?",
+      "follow_up_if_no": "Focus on signing bonus as the primary negotiating lever since base bands tend to be narrower and more fixed"
+    },
+    {
+      "question": "Does the offer include RSUs or stock options, and do you know the 4-year vesting value?",
+      "what_it_reveals": "Whether the candidate understands their actual total compensation or is only evaluating base salary",
+      "follow_up_if_yes": "Have you compared the RSU grant size to benchmarks for your level at this company?",
+      "follow_up_if_no": "Request the full equity breakdown immediately — at senior levels RSUs can represent 30–50% of total comp and are negotiable"
+    },
+    {
+      "question": "Is the role in Alberta (Calgary/Edmonton) or in Ontario/BC?",
+      "what_it_reveals": "Whether the candidate needs to apply an 8–12% take-home premium to Alberta gross salary before comparing to Ontario/BC offers",
+      "follow_up_if_yes": "Have you calculated the after-tax take-home difference, not just gross salary comparison?",
+      "follow_up_if_no": "Are you aware that Ontario and BC provincial income taxes will reduce take-home by 8–12% more than an equivalent Alberta salary?"
+    },
+    {
+      "question": "Have you asked about the signing bonus yet?",
+      "what_it_reveals": "Whether the candidate has left the most immediately negotiable component of a Canadian tech offer unclaimed",
+      "follow_up_if_yes": "What number did you ask for, and what was the response?",
+      "follow_up_if_no": "Ask before you accept — signing bonuses are expected to be requested at Canadian tech companies even when base is fixed"
+    },
+    {
+      "question": "Are you an international candidate comparing a Canadian offer to a US offer, and what is your immigration pathway in each country?",
+      "what_it_reveals": "Whether the candidate is factoring in immigration stability premium (Canadian PR in 1–2 years vs. H-1B uncertainty + potential 134-year green card wait) into the compensation comparison",
+      "follow_up_if_yes": "How are you weighting immigration security vs. the compensation gap — especially at FAANG level where the US gap is severe?",
+      "follow_up_if_no": "Even if both offers are from Canadian employers, understanding your PR timeline affects how much negotiating risk you can afford to take"
+    },
+    {
+      "question": "What is your years of experience, and what level/title is the role being offered?",
+      "what_it_reveals": "Whether the candidate is being correctly leveled — mis-leveling down costs $25K–$40K annually in Canada",
+      "follow_up_if_yes": "Does the offered base salary align with Robert Half Canada ranges for that experience tier in your city?",
+      "follow_up_if_no": "Map your YOE to the junior/mid/senior bands and verify the offer falls within the correct range before negotiating the number"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Salary negotiation advice and benchmarks are globally applicable — the same tactics and numbers work everywhere",
+      "actual_reality": "Canadian tech salaries are 25–40% lower in USD terms than US equivalents, and the compensation structure is fundamentally different (base-heavy, less equity, narrower negotiating bands). US-calibrated advice actively misleads Canadian job seekers.",
+      "implication": "Always source Canadian-specific benchmarks (Robert Half Canada, Glassdoor CA) before any Canadian negotiation — treat US data as a separate market entirely"
+    },
+    {
+      "common_belief": "When a Canadian employer says 'the band is set,' negotiation is over",
+      "actual_reality": "Canadian employers typically have less flexibility on base salary (3–10% negotiating band) but retain meaningful discretion on signing bonuses, which are expected to be asked for at tech companies",
+      "implication": "When base is closed, immediately pivot to asking for a signing bonus rather than accepting the conversation as finished"
+    },
+    {
+      "common_belief": "Robert Half Canada salary ranges represent the ceiling for what you can negotiate",
+      "actual_reality": "Robert Half ranges represent the broad market including non-tech employers. FAANG Canada (Amazon, Google, Shopify) pays 20–40% above Robert Half ranges, with senior SWE total comp reaching $175K–$260K+ CAD",
+      "implication": "Use Robert Half as a floor benchmark to avoid being underpaid, but calibrate upward to FAANG Canada-specific data when negotiating with major tech employers"
+    },
+    {
+      "common_belief": "A higher gross salary in Toronto always means more money than a lower gross salary in Calgary",
+      "actual_reality": "Alberta has no provincial income tax, so a Calgary gross salary yields approximately 8–12% more take-home than the same gross in Ontario or BC",
+      "implication": "Always compute after-tax take-home when comparing multi-city Canadian offers — do not compare gross salary figures across provinces without adjusting for provincial tax"
+    },
+    {
+      "common_belief": "The Canada–US compensation gap is modest and mainly affects senior roles",
+      "actual_reality": "For early/mid career in non-FAANG US, the gap is 20–40% and meaningful but not catastrophic. For FAANG: a senior SWE earns $150K–$220K CAD ($110K–$161K USD) in Canada vs. $250K–$400K USD at US FAANG — a gap that compounds severely over a career",
+      "implication": "The decision to pursue a Canadian vs. US career path is a high-stakes financial decision that should be made with full awareness of the FAANG-level gap; immigration stability is a real but quantifiable offset"
+    },
+    {
+      "common_belief": "A Vector Institute research role and an industry researcher role at a Vector-affiliated company are comparable in compensation",
+      "actual_reality": "Vector Institute direct (academic/postdoc-adjacent) pays $60K–$90K CAD. Industry researcher roles at Vector-affiliated companies pay $120K–$200K CAD — a gap of $30K–$110K+ annually for potentially equivalent work",
+      "implication": "Candidates should explicitly clarify whether a research role has academic or industry compensation structure before accepting; the affiliation name alone does not determine pay level"
+    },
+    {
+      "common_belief": "Statistics Canada data is the most reliable source for tech salary benchmarks",
+      "actual_reality": "Statistics Canada SEPH data is based on payroll records and systematically undercounts tech compensation. Robert Half Canada and Glassdoor CA are more accurate for individual negotiation benchmarks.",
+      "implication": "Do not use Statistics Canada SEPH as your primary negotiation reference; use it only for occupational trend analysis and rely on Robert Half Canada and Glassdoor CA for actual benchmarks"
+    },
+    {
+      "common_belief": "Pay transparency laws don't matter until they're fully in force",
+      "actual_reality": "BC and Ontario pay transparency legislation (effective Jan 2026 for Ontario employers with 25+ employees) will require posted salary ranges, eliminating information asymmetry that currently disadvantages candidates",
+      "implication": "Early-complying employers already post ranges; candidates should ask for the salary band directly even before legislation takes full effect, since many employers will now share it"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Benchmark calibration",
+      "junior_pattern": "Uses whatever salary data appears first in Google search results, which is typically US-centric (levels.fyi, Glassdoor US) — does not distinguish between US and Canadian markets",
+      "senior_pattern": "Immediately identifies Canadian-specific sources (Robert Half Canada, Glassdoor CA, National Job Bank) and understands that US benchmarks are a different dataset requiring explicit adjustment",
+      "why_it_matters": "Miscalibrated anchors either cost the candidate the offer (too high) or thousands of dollars annually (too low)"
+    },
+    {
+      "dimension": "What to negotiate",
+      "junior_pattern": "Focuses exclusively on base salary as the negotiation target; accepts outcome when told 'the band is set'",
+      "senior_pattern": "Treats base, signing bonus, RSU grant size, vesting schedule, and RRSP match as separate negotiation levers — pivots to signing bonus when base is closed",
+      "why_it_matters": "Leaving signing bonus unasked at Canadian tech companies is free money foregone; RSU negotiation at senior levels can represent 30–50% of total comp"
+    },
+    {
+      "dimension": "Total compensation understanding",
+      "junior_pattern": "Evaluates offers based on base salary number alone; treats equity and benefits as secondary or unclear",
+      "senior_pattern": "Calculates 4-year total comp including RSU vesting, signing bonus, RRSP match, and after-tax take-home adjusted for province",
+      "why_it_matters": "Two offers with the same base salary can differ by 30–50% in actual 4-year value depending on equity and provincial tax structure"
+    },
+    {
+      "dimension": "Geographic salary adjustment",
+      "junior_pattern": "Compares gross salary numbers across Canadian cities at face value; assumes higher gross = better offer",
+      "senior_pattern": "Adjusts for Alberta's provincial income tax absence (8–12% take-home premium) and Montreal's lower COL offset when comparing offers across provinces",
+      "why_it_matters": "Candidates who don't make this adjustment systematically undervalue Calgary offers and potentially make suboptimal relocation decisions"
+    },
+    {
+      "dimension": "Canada vs. US career path decision",
+      "junior_pattern": "Focuses on immediate salary comparison; may either overvalue US FAANG comp without accounting for immigration risk, or undervalue it without realizing the magnitude of the long-term gap",
+      "senior_pattern": "Frames Canada vs. US as a multi-variable expected value calculation: compensation gap (severe at FAANG level) vs. immigration stability premium (Canadian PR in 1–2 years vs. H-1B + potential 134-year GC wait)",
+      "why_it_matters": "This is potentially a multi-million dollar career decision; treating it as a simple salary comparison misses the immigration stability variable that meaningfully changes the calculus for international candidates"
+    },
+    {
+      "dimension": "Employer type differentiation",
+      "junior_pattern": "Treats all tech employer salary benchmarks as interchangeable; applies Robert Half ranges uniformly across FAANG Canada and mid-tier employers",
+      "senior_pattern": "Maintains separate mental benchmarks for FAANG Canada (Amazon, Google, Shopify — 20–40% above Robert Half) vs. broad market employers, and adjusts negotiation expectations accordingly",
+      "why_it_matters": "Using Robert Half ranges at a FAANG Canada negotiation means anchoring $20K–$50K below the employer's actual pay ceiling for the role"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "canada_canada_tech_salary_benchmarks_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

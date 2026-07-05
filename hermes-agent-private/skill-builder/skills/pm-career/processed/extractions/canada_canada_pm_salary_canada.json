@@ -1,0 +1,246 @@
+{
+  "source_file": "canada_pm_salary_canada.txt",
+  "heuristics": [
+    {
+      "rule": "Model the US→Canada comp cut explicitly in dollar terms before accepting a Canadian role",
+      "condition": "When a US-based PM is considering a Canadian opportunity",
+      "action": "Convert both offers to USD using current exchange rate and compare total comp including equity, not just base salary",
+      "because": "A CAD $150K offer vs. a USD $200K offer looks closer than it is — it's actually a ~46% total comp reduction, which is easy to underestimate when comparing raw numbers"
+    },
+    {
+      "rule": "Only accept a lateral Canadian role at a comp cut if Canadian PR is the explicit primary goal",
+      "condition": "When the Canadian role is the same seniority level as your current US role and comes with lower total comp",
+      "action": "Treat the comp reduction as the price of immigration security, not a career move",
+      "because": "A lateral move with a comp cut has no career upside to offset the financial loss unless immigration status is the actual objective"
+    },
+    {
+      "rule": "At Canadian companies without recent funding rounds, treat equity as near-zero in your compensation calculation",
+      "condition": "When evaluating an offer from a Canadian-founded startup that is not publicly traded and has not recently raised a significant round",
+      "action": "Base your financial decision on base salary and bonus only; assign minimal value to equity",
+      "because": "Non-public Canadian companies' equity is illiquid with uncertain upside — it cannot be treated as equivalent to vested RSUs at US public companies"
+    },
+    {
+      "rule": "At Amazon Canada, do not evaluate the offer on Year 1 compensation",
+      "condition": "When evaluating an Amazon Canada PM offer",
+      "action": "Model total comp across all 4 years of the RSU vesting schedule, weighting Years 3–4 heavily",
+      "because": "Amazon's compensation is front-loaded with RSUs on an uneven vesting schedule — Year 1 is the lowest total comp year and misrepresents the actual package value"
+    },
+    {
+      "rule": "To close the Canada–US comp gap without relocating, target Principal PM or Director level at a major Canadian employer",
+      "condition": "When a Canadian-based PM is evaluating whether the comp gap justifies relocating to the US",
+      "action": "Assess whether a realistic level progression to Principal or Director in Canada would close the gap relative to mid-level US roles before deciding to relocate",
+      "because": "A Principal PM or Director in Canada at a major employer can reach CAD $220,000–$280,000, which is competitive with non-FAANG mid-level US roles when quality of life and immigration security are factored in"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Title and scope jump vs. lateral move",
+      "why_it_matters": "A significantly more senior Canadian role may justify a total comp reduction; a lateral move does not",
+      "how_to_assess": "Compare the scope, team size, and title level of the Canadian offer against what you would realistically achieve in the US within 12–18 months",
+      "weight": "high"
+    },
+    {
+      "factor": "Immigration security / Canadian PR status",
+      "why_it_matters": "For some candidates, Canadian permanent residency is the primary goal, which changes the entire comp calculus",
+      "how_to_assess": "Determine whether the candidate is actively pursuing PR or has existing status — if PR is the goal, a comp cut is effectively the price of that security",
+      "weight": "high"
+    },
+    {
+      "factor": "Equity liquidity",
+      "why_it_matters": "RSUs at US public companies are liquid from vest date; equity at Canadian private companies is illiquid and may never pay out",
+      "how_to_assess": "Identify whether the company is publicly traded, recently funded, or pre-IPO — then discount equity accordingly",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer type: US-parented vs. Canadian-founded",
+      "why_it_matters": "US-parented companies operating in Canada (Amazon, Google, Microsoft) offer RSU compensation that meaningfully closes the Canada–US gap; Canadian-founded companies generally do not",
+      "how_to_assess": "Check whether the company is a subsidiary of a US public company or a Canadian-founded entity with or without recent funding",
+      "weight": "high"
+    },
+    {
+      "factor": "Marginal tax rate differential",
+      "why_it_matters": "Ontario marginal tax at $150K+ is 43–49%, versus typical US tech worker effective rates of 22–24% federal — this compounds the headline comp gap",
+      "how_to_assess": "Calculate after-tax take-home on both offers, not just gross total comp",
+      "weight": "high"
+    },
+    {
+      "factor": "Career stage and level progression runway",
+      "why_it_matters": "The Canada–US comp gap narrows significantly at senior levels; the absolute gap is largest at mid-career PM roles",
+      "how_to_assess": "Map current level to realistic next 1–2 promotions and model total comp at those levels in both markets",
+      "weight": "medium"
+    },
+    {
+      "factor": "Quality of life and non-financial factors",
+      "why_it_matters": "The source explicitly frames these as legitimate offsets to the comp gap for Canadian-based PMs",
+      "how_to_assess": "Treat as a personal weighting factor — the source does not quantify this but presents it as a real variable in the stay-vs-relocate decision",
+      "weight": "medium"
+    },
+    {
+      "factor": "Company funding stage for Canadian scale-ups",
+      "why_it_matters": "Equity compensation at Canadian fintech and scale-ups varies significantly by funding stage and growth trajectory",
+      "how_to_assess": "Review most recent funding round, revenue trajectory, and IPO likelihood before assigning any value to equity component",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a Canadian role for immigration security at a lateral level",
+      "unstated_consequence": "The comp reduction is permanent in baseline terms — future raises and equity grants are anchored to a lower starting point, compounding the gap over time",
+      "who_it_affects": "US-based PMs mid-career who underestimate how long they will stay in Canada and how the anchoring effect compounds"
+    },
+    {
+      "choice": "Choosing a Canadian bank digital division over a tech company for PM stability",
+      "unstated_consequence": "Lower RSU exposure means lower upside, but bonus structures at banks are larger — the comp mix is different, not just lower, which affects how you should negotiate and plan",
+      "who_it_affects": "PMs who benchmark their Canadian bank offer against tech company offers without adjusting for the bonus-vs-equity composition difference"
+    },
+    {
+      "choice": "Joining Amazon Canada for the brand name and RSUs",
+      "unstated_consequence": "Year 1 total comp is significantly lower than the offer appears due to uneven RSU vesting — cash flow in Year 1 may be insufficient if the candidate has high fixed costs",
+      "who_it_affects": "PMs who optimize for the 4-year average comp number without stress-testing Year 1 cash flow"
+    },
+    {
+      "choice": "Staying in Canada and targeting level progression to close the comp gap",
+      "unstated_consequence": "The path to Principal PM or Director to close the gap requires 3–6+ more years and is not guaranteed — the opportunity cost of that time versus relocating to the US is rarely modeled explicitly",
+      "who_it_affects": "Mid-career Canadian PMs who treat level progression as a certain path rather than a probabilistic one"
+    },
+    {
+      "choice": "Evaluating Canadian startup equity as meaningful compensation",
+      "unstated_consequence": "Illiquid equity at Canadian-founded private companies has historically underdelivered relative to US counterparts — treating it as equivalent to US RSUs systematically overstates total comp",
+      "who_it_affects": "PMs transitioning from US roles who are accustomed to liquid RSU compensation and apply the same mental model to Canadian startup equity"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Comparing Canadian and US offers using gross base salary only",
+      "why_it_happens": "Base salary is the most visible number in an offer letter; equity and tax implications require active modeling that most candidates do not do",
+      "consequence": "Candidate accepts a Canadian offer believing the gap is small, then realizes after-tax take-home and total comp including equity is 40–50% lower than the US alternative",
+      "warning_signs": [
+        "Candidate says 'the salaries are pretty close' when comparing CAD and USD figures without converting",
+        "Candidate does not ask about RSU vesting schedule or grant size during negotiation"
+      ]
+    },
+    {
+      "pattern": "Treating Government of Canada Job Bank salary data as representative of tech PM compensation",
+      "why_it_happens": "It is a government authoritative source and appears credible; candidates may not realize it captures all industries and company sizes, systematically understating tech-sector pay",
+      "consequence": "PM undervalues their market rate, accepts below-market offers, and has a weak negotiation anchor",
+      "warning_signs": [
+        "Candidate cites Job Bank median as their comp benchmark without cross-referencing Glassdoor or Robert Half tech-specific data",
+        "Candidate believes $112K national median is the ceiling for PM roles rather than a cross-industry floor"
+      ]
+    },
+    {
+      "pattern": "Accepting a US→Canada lateral move framed as a 'career opportunity' without modeling the comp reduction",
+      "why_it_happens": "The framing of the opportunity — new city, new company, new challenge — obscures the financial reality; candidates anchor on the narrative rather than the numbers",
+      "consequence": "A 46% total comp reduction that was avoidable, with no career upside to compensate",
+      "warning_signs": [
+        "Candidate is excited about the company or city but has not converted the offer to USD and compared it to current total comp",
+        "Candidate describes the move as 'a slight pay cut' when the actual gap is 30–50%"
+      ]
+    },
+    {
+      "pattern": "Assuming Canadian FAANG offices (Amazon, Google, Microsoft Canada) pay the same as US headquarters",
+      "why_it_happens": "Same brand, same manager title, same interview process — candidates assume compensation is globally standardized",
+      "consequence": "Candidate is surprised post-offer that Canadian FAANG total comp is significantly lower than US FAANG, and may have already declined US opportunities",
+      "warning_signs": [
+        "Candidate has not looked up Canadian-specific Glassdoor data before entering the interview process",
+        "Candidate negotiates using US FAANG comp bands as leverage without verifying whether Canadian bands are equivalent"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is immigration status or Canadian PR a primary goal, or is this purely a career and compensation decision?",
+      "what_it_reveals": "Whether the comp reduction of a Canadian role is acceptable as the price of a non-financial goal or whether it needs to be justified on career/financial terms alone",
+      "follow_up_if_yes": "Model the comp reduction explicitly as the cost of PR — is it within an acceptable range given the timeline to PR status?",
+      "follow_up_if_no": "The decision should be evaluated purely on total comp in USD terms and career scope — apply the lateral vs. senior-role filter"
+    },
+    {
+      "question": "Is the Canadian employer a US-parented public company, a Canadian public company, or a Canadian private company?",
+      "what_it_reveals": "How to value the equity component of the offer — liquid RSUs vs. illiquid startup equity vs. no equity",
+      "follow_up_if_yes": "If US-parented public: include RSU value in total comp at current market price; model vesting schedule carefully (especially for Amazon)",
+      "follow_up_if_no": "If Canadian private: assign near-zero value to equity for financial planning purposes; evaluate the role on base and bonus only"
+    },
+    {
+      "question": "Have you converted both offers to USD and compared after-tax take-home, not just gross total comp?",
+      "what_it_reveals": "Whether the candidate is aware of the full magnitude of the Canada–US gap including the tax differential",
+      "follow_up_if_yes": "What is the USD after-tax delta, and what non-financial factors are you treating as offsets to that delta?",
+      "follow_up_if_no": "Do this calculation before proceeding — the gap is typically 40–50% larger than it appears when comparing gross numbers in local currencies"
+    },
+    {
+      "question": "Is the Canadian role a title and scope increase relative to your current role, or a lateral move?",
+      "what_it_reveals": "Whether there is career upside to offset the comp reduction",
+      "follow_up_if_yes": "How many years would it take to reach that level organically at your current employer, and what is the comp difference over that period?",
+      "follow_up_if_no": "A lateral move to Canada with a comp cut has no career justification — the only justification is immigration or quality of life"
+    },
+    {
+      "question": "For Amazon Canada offers: have you modeled Year 1 cash flow specifically, not just the 4-year average?",
+      "what_it_reveals": "Whether the candidate understands Amazon's uneven RSU vesting and can sustain their financial obligations in Year 1",
+      "follow_up_if_yes": "Is Year 1 take-home sufficient for your fixed costs in the new location including Toronto or Vancouver housing costs?",
+      "follow_up_if_no": "Request the RSU vesting schedule breakdown by year before accepting — Year 1 is the lowest and may be significantly below the headline number"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canadian FAANG offices pay comparable salaries to US offices because they're the same companies",
+      "actual_reality": "Canadian FAANG total comp is 25–40% lower in USD terms than US equivalents at the same seniority level — the same employer operates different compensation bands by country",
+      "implication": "Never use US FAANG comp data as a negotiation anchor for a Canadian FAANG role without first researching Canadian-specific bands on Glassdoor CA"
+    },
+    {
+      "common_belief": "The Government of Canada Job Bank is a reliable benchmark for tech PM salaries",
+      "actual_reality": "Job Bank data (NOC 20012 national median: $112K) captures all industries and company sizes and systematically understates tech-sector PM compensation at major employers",
+      "implication": "Use Job Bank data only as a cross-industry floor, not a ceiling or a negotiation anchor — Senior PMs at major tech employers earn $155K–$230K CAD, well above the national median"
+    },
+    {
+      "common_belief": "Canadian startup equity is comparable in value to RSUs at US public companies",
+      "actual_reality": "Non-public Canadian company equity is illiquid and has historically uncertain upside; US public company RSUs are liquid from vest date and benchmarkable at current market price",
+      "implication": "When evaluating Canadian startup offers, strip out the equity value for financial planning purposes and make your decision based on cash compensation alone"
+    },
+    {
+      "common_belief": "The Canada–US PM salary gap is a fixed, permanent disadvantage regardless of level",
+      "actual_reality": "The gap narrows significantly at senior levels — a Principal PM or Director in Canada at a major employer can reach CAD $220,000–$280,000, which is competitive with non-FAANG mid-level US roles",
+      "implication": "Level progression in Canada is a legitimate strategy for closing the gap — but it must be modeled against the time cost and probability of promotion, not assumed as automatic"
+    },
+    {
+      "common_belief": "Canadian PM compensation is primarily base salary plus a small bonus, similar to the US structure",
+      "actual_reality": "Base salary is 80–90% of total cash comp for most Canadian roles — RSU compensation is significant only at Shopify and US-parented companies; Canadian bank digital roles have larger bonus components instead",
+      "implication": "The comp mix matters for negotiation strategy — at a Canadian bank, negotiate the bonus structure and percentage; at Shopify or Amazon Canada, negotiate the RSU grant size and vesting terms"
+    },
+    {
+      "common_belief": "Vancouver PM salaries are lower than Toronto because it is a smaller market",
+      "actual_reality": "Vancouver PM salary levels are comparable to Toronto within ±5–10%, but housing costs in Vancouver are higher — making Vancouver effectively more expensive on a comp-to-cost basis despite similar nominal salaries",
+      "implication": "When comparing Toronto vs. Vancouver offers at similar comp levels, factor in the higher Vancouver housing cost as a real reduction in effective compensation"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating a job offer",
+      "junior_pattern": "Compares gross base salary numbers across offers, possibly without converting currencies, and anchors on the largest headline number",
+      "senior_pattern": "Converts all offers to the same currency, models after-tax take-home, assigns liquidity-adjusted value to equity, and compares total comp including vesting schedules year by year",
+      "why_it_matters": "A $200K USD offer vs. CAD $150K offer looks much closer than it is — a junior framing leads to accepting a 46% effective pay cut while believing it was a minor reduction"
+    },
+    {
+      "dimension": "Assessing equity compensation",
+      "junior_pattern": "Treats all equity as equivalent — a $50K RSU grant at a Canadian private startup is mentally equivalent to a $50K RSU grant at Amazon",
+      "senior_pattern": "Discounts illiquid private equity heavily or to zero for financial planning; assigns full value only to vested RSUs at public companies with liquid markets",
+      "why_it_matters": "Overvaluing illiquid equity leads to accepting below-market cash compensation in exchange for an upside that may never materialize"
+    },
+    {
+      "dimension": "Using salary benchmarks",
+      "junior_pattern": "Cites government or national median data (e.g., Job Bank $112K national median) as the relevant benchmark for a tech PM role",
+      "senior_pattern": "Uses role-specific, industry-specific, and city-specific data (Robert Half, Glassdoor CA, company-specific ranges) and treats national medians as a cross-industry floor only",
+      "why_it_matters": "Using the wrong benchmark anchor results in undervaluing your market rate and entering negotiations from a position of artificial weakness"
+    },
+    {
+      "dimension": "Reasoning about the Canada–US comp decision",
+      "junior_pattern": "Frames the decision as binary: Canada or the US, based on which total comp number is higher",
+      "senior_pattern": "Frames the decision as multi-variable: models comp gap in USD after tax, weights immigration security as an explicit variable with a dollar value, assesses level progression probability in each market, and factors in quality-of-life offsets",
+      "why_it_matters": "The binary framing leads to suboptimal decisions — a Canadian who could close the gap via promotion in 2 years may unnecessarily relocate; a US PM may accept a comp cut without understanding its permanence"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "canada_canada_pm_salary_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

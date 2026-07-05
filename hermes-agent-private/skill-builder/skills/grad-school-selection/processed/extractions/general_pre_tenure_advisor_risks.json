@@ -1,0 +1,296 @@
+{
+  "source_file": "pre_tenure_advisor_risks.txt",
+  "heuristics": [
+    {
+      "rule": "Check faculty rank before evaluating research fit — 'Assistant Professor' means pre-tenure risk exists regardless of how exciting the research is",
+      "condition": "When evaluating a prospective PhD advisor...",
+      "action": "...look up their faculty rank and years at institution first, before going deep on research alignment",
+      "because": "Research fit is irrelevant if the advisor leaves mid-program; rank is publicly available and takes 30 seconds to verify"
+    },
+    {
+      "rule": "A pre-tenure advisor who has already graduated 1–2 PhD students is substantially safer than one whose first cohort is still in early years",
+      "condition": "When a pre-tenure advisor seems like a strong fit...",
+      "action": "...search Google Scholar, dissertation acknowledgments, and thesis databases to verify whether they have prior PhD graduates",
+      "because": "Successfully guiding someone to completion is the one demonstrated capability that most reduces first-cohort risk; everything else is untested"
+    },
+    {
+      "rule": "If an advisor evades or becomes uncomfortable answering direct questions about their tenure timeline, treat that evasiveness as a red flag, not just an awkward moment",
+      "condition": "When you ask a prospective advisor 'where are you in your tenure process?' and they deflect...",
+      "action": "...weigh their response style as data about how they handle uncomfortable professional realities with students",
+      "because": "A mentor who can't discuss institutional risk with a prospective student under low stakes is unlikely to communicate well about harder problems later"
+    },
+    {
+      "rule": "An assistant professor in year 5 or 6 of a 6–7 year tenure clock is approaching a binary outcome — treat this as a near-term disruption risk, not a theoretical one",
+      "condition": "When a pre-tenure advisor is within 1–2 years of their tenure review...",
+      "action": "...factor in that a tenure decision will occur while you are likely still in years 1–3 of your program, the highest-cost period for advisor departure",
+      "because": "Students in years 1–3 bear the highest cost of advisor departure; timing the overlap between your early years and the advisor's tenure review is a concrete risk calculation"
+    },
+    {
+      "rule": "Verify active funded grants via NSF/NIH Award Search before accepting any offer from a pre-tenure advisor",
+      "condition": "When assessing funding stability with a pre-tenure advisor...",
+      "action": "...run their name through NSF and NIH public award databases to confirm active grants",
+      "because": "Active funded grants substantially reduce voluntary departure risk because transferring grant management is costly and complex — it creates institutional friction against leaving"
+    },
+    {
+      "rule": "Establish a co-advisor relationship with a tenured faculty member from day one, not as a fallback plan but as a genuine mentorship structure",
+      "condition": "When you decide to accept an offer with a pre-tenure advisor...",
+      "action": "...formalize a co-advisor relationship with a tenured faculty member before or immediately upon arrival",
+      "because": "An existing relationship with another faculty member dramatically reduces disruption cost if the primary advisor leaves; a relationship formed in crisis is worth much less"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor tenure status and years on tenure clock",
+      "why_it_matters": "Determines whether institutional departure risk exists at all; an advisor denied tenure must leave within 1–2 years, potentially mid-program",
+      "how_to_assess": "Check faculty rank on department website (Assistant = pre-tenure), ask directly about tenure timeline, calculate years at institution against typical 6–7 year clock",
+      "weight": "high"
+    },
+    {
+      "factor": "Prior PhD graduation record of the advisor",
+      "why_it_matters": "The single strongest signal that an advisor can actually guide someone to completion; pre-tenure advisors without prior graduates are unproven at the most critical capability",
+      "how_to_assess": "Search Google Scholar for dissertation acknowledgments, check institution thesis databases, ask current students directly",
+      "weight": "high"
+    },
+    {
+      "factor": "Active funded grant status",
+      "why_it_matters": "Determines both funding stability for your stipend and the practical friction against advisor departure; unfunded advisors have both incentive and ability to leave more easily",
+      "how_to_assess": "Run advisor name through NSF Award Search and NIH Reporter; look for active (not expired) grants with multi-year durations remaining",
+      "weight": "high"
+    },
+    {
+      "factor": "Department policy on advisor departure and bridge funding",
+      "why_it_matters": "Determines what safety net exists if your advisor leaves; departments without clear policies leave students vulnerable to funding gaps and administrative limbo",
+      "how_to_assess": "Ask the DGS directly: 'What is your policy if a student's advisor leaves or is denied tenure?' Vague answers are a negative signal",
+      "weight": "high"
+    },
+    {
+      "factor": "International student visa implications of program disruption",
+      "why_it_matters": "Advisor departure creates visa complications (I-20 transfer, SEVIS coverage gaps, OPT timeline shifts) that domestic students don't face, making the same disruption more costly",
+      "how_to_assess": "Ask prospective advisor explicitly what would happen to your visa and OPT timeline if they left mid-program; assess whether they have thought through this scenario",
+      "weight": "high"
+    },
+    {
+      "factor": "Student's year in program at time of potential advisor departure",
+      "why_it_matters": "Students in years 1–3 bear the highest cost of disruption; students in years 4–6 are often close enough to completion to weather it",
+      "how_to_assess": "Calculate whether the advisor's tenure review timeline overlaps with your first three years in the program",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor accessibility and mentoring bandwidth",
+      "why_it_matters": "Pre-tenure advisors under grant pressure may have unpredictable availability; high stress can create difficult lab environments despite good intentions",
+      "how_to_assess": "Ask current students privately: 'How available is [Advisor] week to week?' and 'Has lab stress affected the working environment?'",
+      "weight": "medium"
+    },
+    {
+      "factor": "Student's own independent intellectual thread",
+      "why_it_matters": "Students whose work is fully embedded in an advisor's project are more vulnerable to advisor departure; students with their own intellectual identity can continue through transitions",
+      "how_to_assess": "Evaluate whether your proposed research could exist independently of the advisor's specific grant or project trajectory",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Working with a pre-tenure advisor for their accessibility and personal investment",
+      "unstated_consequence": "You become a beta-test case for their advising capability; if they haven't graduated anyone before, there is no proven template for your mentorship trajectory",
+      "who_it_affects": "Students who need structured guidance most — those from non-elite undergraduate backgrounds or those new to research — and international students who cannot absorb program delays"
+    },
+    {
+      "choice": "Choosing an exciting pre-tenure advisor over a tenured one with less novel research",
+      "unstated_consequence": "If tenure is denied in year 5–6 of your program and you're in years 1–3, you absorb the full cost of disruption — new advisor search, potential institutional transfer, 6–12 month delay — during the period you are least equipped to handle it",
+      "who_it_affects": "Students who prioritize research excitement over structural stability, and international students for whom any program delay has visa and OPT consequences"
+    },
+    {
+      "choice": "Following an advisor who moves voluntarily to a better position",
+      "unstated_consequence": "Requires not just academic re-enrollment but visa transfer, new I-20, SEVIS re-registration, and potentially re-negotiated stipend terms — compressing multiple bureaucratic processes into a short window",
+      "who_it_affects": "International students on F-1 or J-1 visas disproportionately; domestic students face only the academic transition"
+    },
+    {
+      "choice": "Deferring the co-advisor relationship — planning to set it up 'if something goes wrong'",
+      "unstated_consequence": "A relationship formed in crisis after advisor departure is worth far less than one built over years; faculty are less likely to advocate strongly for a student they barely know",
+      "who_it_affects": "Students who treat risk mitigation as contingency planning rather than proactive infrastructure"
+    },
+    {
+      "choice": "Not asking about funding continuity in writing before accepting an offer",
+      "unstated_consequence": "If your advisor leaves and their grant ends, your stipend may have no guaranteed continuation unless the department has an explicit bridge policy — verbal assurances are not enforceable",
+      "who_it_affects": "All students, but especially international students who cannot legally work outside their program funding structure"
+    },
+    {
+      "choice": "Choosing a pre-tenure advisor in year 5 or 6 of their tenure clock",
+      "unstated_consequence": "The tenure decision will almost certainly occur while you are in your most vulnerable program years (1–3), meaning the worst-case scenario is near-certain to be tested rather than theoretical",
+      "who_it_affects": "Any student who hasn't calculated the overlap between the advisor's tenure timeline and their own early program years"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applicants evaluate advisor fit on research alignment and reputation without checking tenure status",
+      "why_it_happens": "Research fit is what admissions materials, advisor websites, and campus visit conversations naturally emphasize; tenure status is never mentioned in recruitment materials and requires proactive inquiry",
+      "consequence": "Students discover mid-program that their advisor is approaching a tenure review or has been denied, with no contingency relationships or institutional knowledge to fall back on",
+      "warning_signs": [
+        "Applicant cannot name the advisor's faculty rank when discussing the opportunity",
+        "Applicant has never asked when the advisor's tenure review is scheduled"
+      ]
+    },
+    {
+      "pattern": "Students in years 1–3 assume advisor departure is a solvable problem they'll handle when it happens",
+      "why_it_happens": "Optimism bias and the high activation cost of proactive risk mitigation; building a co-advisor relationship or asking uncomfortable questions feels unnecessary when everything is going well",
+      "consequence": "When departure occurs, students have no existing faculty relationships to draw on, no written funding guarantees, and no knowledge of department policies — navigating all of this simultaneously in a crisis",
+      "warning_signs": [
+        "Student has only one meaningful faculty relationship in the department after year 1",
+        "Student has never met the DGS or learned the department's advisor departure policy"
+      ]
+    },
+    {
+      "pattern": "International students accept offers with pre-tenure advisors without asking about visa implications of program disruption",
+      "why_it_happens": "Visa implications are not raised in offer letters or advisor conversations; students assume program disruptions are purely academic problems and don't surface the immigration dimension until a crisis occurs",
+      "consequence": "Advisor departure triggers simultaneous academic, financial, and immigration complications that must all be resolved in a compressed timeframe, with potential for SEVIS status gaps",
+      "warning_signs": [
+        "Student has never asked the prospective advisor about OPT timeline implications of program delays",
+        "Student does not know whether the department has a bridge funding policy applicable to international students"
+      ]
+    },
+    {
+      "pattern": "Students treat co-advisor relationships as a fallback to activate in emergencies rather than as proactive infrastructure",
+      "why_it_happens": "It feels socially awkward to formalize a 'backup' relationship with another faculty member when the primary advisor relationship is functioning; students avoid signaling distrust",
+      "consequence": "When a fallback is needed, no real relationship exists — faculty who barely know the student cannot advocate effectively, write meaningful letters, or take on advising mid-project",
+      "warning_signs": [
+        "Student has never had a substantive research conversation with any tenured faculty member other than their advisor",
+        "Student's entire publication record is co-authored only with their primary advisor"
+      ]
+    },
+    {
+      "pattern": "Applicants interpret a pre-tenure advisor's high engagement and personal investment as a signal of low risk",
+      "why_it_happens": "High engagement and accessibility are genuine benefits that are visible and salient; tenure risk is invisible and abstract until it materializes",
+      "consequence": "Students overweight the interpersonal upside and underweight the structural downside, resulting in higher-risk placements than they consciously intended to accept",
+      "warning_signs": [
+        "Applicant describes the pre-tenure advisor as 'really invested' and 'so accessible' but cannot describe the advisor's grant situation or tenure timeline",
+        "Applicant is comparing the pre-tenure advisor favorably to tenured advisors who seemed 'less available'"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your prospective advisor's faculty rank?",
+      "what_it_reveals": "Whether institutional departure risk exists at all; 'Assistant Professor' means pre-tenure, 'Associate' or 'Full' means tenured",
+      "follow_up_if_yes": "If Assistant Professor: how many years have they been at the institution, and when is their tenure review?",
+      "follow_up_if_no": "If Associate or Full: tenure risk is essentially eliminated — shift evaluation to research fit, lab culture, and funding"
+    },
+    {
+      "question": "Has your prospective advisor graduated any PhD students?",
+      "what_it_reveals": "Whether the advisor has demonstrated the core capability of guiding someone to completion, and whether you would be a first-cohort beta student",
+      "follow_up_if_yes": "How many, and how long did it take? Were completions on a normal timeline or extended?",
+      "follow_up_if_no": "Are you comfortable being the first person this advisor has ever guided through the full PhD process, with no proven template for your mentorship?"
+    },
+    {
+      "question": "Does your prospective advisor have active funded grants, and have you verified this independently?",
+      "what_it_reveals": "Both your stipend stability and the institutional friction against the advisor voluntarily departing; unfunded advisors have both financial incentive and structural freedom to leave",
+      "follow_up_if_yes": "When do the grants expire, and are there renewal cycles during your expected program years?",
+      "follow_up_if_no": "What is your funding source if not from advisor grants, and what does the department guarantee in writing if that funding ends?"
+    },
+    {
+      "question": "What is the department's written policy for students whose advisor leaves or is denied tenure?",
+      "what_it_reveals": "Whether the department has institutional infrastructure for this scenario or leaves students to navigate it ad hoc; vague answers indicate the situation hasn't been well-managed before",
+      "follow_up_if_yes": "Is there explicit bridge funding coverage, and does it apply to international students?",
+      "follow_up_if_no": "The absence of a clear policy is itself a high-risk signal — escalate questions to the DGS before accepting the offer"
+    },
+    {
+      "question": "Are you an international student on F-1 or J-1 visa?",
+      "what_it_reveals": "Whether advisor departure would trigger immigration complications in addition to academic ones, substantially raising the cost of any disruption",
+      "follow_up_if_yes": "Have you asked your prospective advisor what would happen to your I-20, SEVIS status, and OPT timeline if they left the institution mid-program?",
+      "follow_up_if_no": "Advisor departure risk is still present but without the additional immigration layer — standard mitigation strategies apply"
+    },
+    {
+      "question": "If your advisor left tomorrow, which other faculty member in the department would be willing and able to take you on?",
+      "what_it_reveals": "Whether the student has proactively built relationships that would function as real fallback infrastructure, or is entirely dependent on a single faculty relationship",
+      "follow_up_if_yes": "Have you had substantive research conversations with that person, or is this a hypothetical relationship that doesn't yet exist?",
+      "follow_up_if_no": "The student has no fallback infrastructure — this is a high-risk position regardless of how stable the primary advisor appears"
+    },
+    {
+      "question": "When in your program years would your advisor's tenure review occur?",
+      "what_it_reveals": "Whether the highest-risk event (tenure decision) overlaps with your most vulnerable program years (1–3) or your more resilient later years (4–6)",
+      "follow_up_if_yes": "If overlap is in years 1–3: the worst-case scenario is near-certain to be tested during the period you are least able to absorb it",
+      "follow_up_if_no": "If review occurs after year 3: risk is reduced but not eliminated — voluntary departure can happen at any time"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Advisor research fit is the most important factor in choosing a PhD program",
+      "actual_reality": "Research fit is irrelevant if the advisor leaves the institution mid-program; structural factors like tenure status, funded grants, and department support policies determine whether you can actually complete a degree under that advisor",
+      "implication": "Evaluate structural stability before going deep on research alignment — a structurally unstable situation with perfect research fit is worse than a structurally stable situation with good-but-not-perfect fit"
+    },
+    {
+      "common_belief": "Asking a prospective advisor about their tenure status is rude or inappropriate",
+      "actual_reality": "It is a professional question with direct relevance to your decision; any advisor with a healthy relationship with students will answer directly, and evasiveness is itself informative",
+      "implication": "Ask directly and early; frame it as due diligence, not distrust — the response reveals both the factual answer and something about how the advisor handles uncomfortable professional conversations"
+    },
+    {
+      "common_belief": "If your advisor leaves, the department will take care of you",
+      "actual_reality": "Departments vary enormously in their actual support infrastructure; some have clear bridge funding policies, others leave students to navigate the situation ad hoc with the DGS as a starting point but no guaranteed resources",
+      "implication": "Ask the department for their written policy before accepting an offer, not after a crisis — and treat vague or dismissive answers as a negative signal about the department's track record on this"
+    },
+    {
+      "common_belief": "Pre-tenure advisors are riskier choices and should generally be avoided",
+      "actual_reality": "Pre-tenure advisors offer genuine benefits — higher personal investment, greater accessibility, near-peer collaboration, faster-moving research — and can be excellent choices when risk is assessed and mitigated proactively",
+      "implication": "The decision is not binary avoid/accept; it is about accurately pricing the risk, verifying the mitigating factors (prior graduates, active grants, years on clock), and building proactive infrastructure if you proceed"
+    },
+    {
+      "common_belief": "For international students, advisor departure is primarily an academic problem",
+      "actual_reality": "Advisor departure triggers simultaneous academic, financial, and immigration complications; I-20 transfer, SEVIS re-registration, and OPT timeline disruption are all activated by the same event that domestic students experience as purely academic",
+      "implication": "International students must explicitly raise visa implications with their prospective advisor before accepting an offer — this dimension will not be raised for them, and the cost of not knowing is higher than for domestic students"
+    },
+    {
+      "common_belief": "A co-advisor relationship can be set up as a contingency if something goes wrong",
+      "actual_reality": "A relationship formed in crisis after advisor departure is worth substantially less than one built over years of genuine mentorship; faculty who barely know a student cannot advocate effectively, take on advising mid-project meaningfully, or write strong letters",
+      "implication": "Establish a co-advisor relationship with a tenured faculty member from the start of the program as proactive infrastructure, not as a reactive fallback — the value of the relationship depends on its depth at the moment it is needed"
+    },
+    {
+      "common_belief": "Students whose work is embedded in their advisor's project are more protected because they're central to the lab's mission",
+      "actual_reality": "Students whose work is fully embedded in an advisor's project are more vulnerable if the advisor leaves, because their intellectual thread cannot continue independently without the advisor's project context",
+      "implication": "Maintain your own independent intellectual thread and publication record from early in the program — this is both a career asset and a structural protection against advisor departure"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "What they evaluate first when assessing an advisor opportunity",
+      "junior_pattern": "Starts with research fit, lab website, recent publications, and perceived prestige; structural factors like tenure status are afterthoughts or not considered",
+      "senior_pattern": "Runs structural due diligence first (faculty rank, tenure timeline, grant status, prior graduates) before going deep on research fit — treats structural instability as a filter, not a tradeoff",
+      "why_it_matters": "Research fit that exists inside a structurally unstable situation produces worse outcomes than slightly weaker fit inside a stable one; evaluating in the wrong order leads to over-investment in unviable options"
+    },
+    {
+      "dimension": "How they interpret a pre-tenure advisor's high engagement and accessibility",
+      "junior_pattern": "Reads high engagement as a signal of low risk — 'they're really invested in me, so this will work out'",
+      "senior_pattern": "Separates the interpersonal upside (real and valuable) from the structural risk (independent of interpersonal quality) — understands that an advisor can be both genuinely invested and structurally risky simultaneously",
+      "why_it_matters": "Conflating interpersonal warmth with structural stability is a predictable cognitive error that leads students to accept higher risk than they intend"
+    },
+    {
+      "dimension": "How they approach uncomfortable due diligence questions",
+      "junior_pattern": "Avoids asking about tenure timeline or funding because it feels rude, awkward, or like signaling distrust",
+      "senior_pattern": "Asks directly and early, frames it as professional due diligence, and treats the advisor's response style as additional data about the working relationship",
+      "why_it_matters": "Not asking because it feels awkward means making a multi-year commitment without material information; the discomfort cost is trivial relative to the informational value"
+    },
+    {
+      "dimension": "How they think about contingency relationships with other faculty",
+      "junior_pattern": "Treats a co-advisor or secondary faculty relationship as a fallback to activate if something goes wrong — plans to build it reactively",
+      "senior_pattern": "Builds genuine relationships with multiple faculty members from year 1 as proactive infrastructure, understanding that the value of the relationship depends entirely on its depth before it is needed",
+      "why_it_matters": "A crisis-built relationship cannot substitute for a year-built one; students who plan to set up fallbacks reactively discover they have no real fallback when they need one"
+    },
+    {
+      "dimension": "How they think about the international student visa dimension of program disruption",
+      "junior_pattern": "Treats advisor departure as primarily an academic problem; doesn't surface the immigration dimension unless or until a crisis occurs",
+      "senior_pattern": "Proactively asks the prospective advisor about visa and OPT implications of program disruption before accepting an offer, understanding that immigration and academic risks are activated by the same events",
+      "why_it_matters": "International students who don't proactively surface this dimension discover it mid-crisis, when they are simultaneously managing academic, financial, and immigration complications with no prior preparation"
+    },
+    {
+      "dimension": "What they verify before accepting an offer vs. what they take on faith",
+      "junior_pattern": "Accepts verbal assurances about funding, support, and department culture; does not independently verify grant status, prior graduates, or written department policies",
+      "senior_pattern": "Independently verifies grant status via public databases, confirms prior PhD graduates through dissertation records, asks the DGS for written department policies on advisor departure — treats verbal assurances as unverifiable",
+      "why_it_matters": "Verbal assurances are not enforceable; written policies and independently verified facts are the only reliable basis for a multi-year commitment"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_pre_tenure_advisor_risks",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

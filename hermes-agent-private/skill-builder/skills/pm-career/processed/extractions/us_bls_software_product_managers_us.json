@@ -1,0 +1,264 @@
+{
+  "source_file": "bls_software_product_managers_us.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Most tech PM H-1B petitions file under SOC 11-3021 (Computer and Information Systems Managers)",
+      "condition": "When an employer is filing an H-1B petition for a tech product manager role",
+      "action": "Use SOC 11-3021 as the occupational classification for prevailing wage determination and petition filing",
+      "because": "BLS and DOL classify most tech PM roles under SOC 11-3021; incorrect SOC code can affect prevailing wage level and petition validity",
+      "regulatory_basis": "BLS OOH SOC 11-3021; DOL Foreign Labor Certification Data Center",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Under the wage-weighted H-1B lottery system effective February 2026, a PM at DOL Wage Level IV receives 4 lottery entries vs. 1 entry for Level I",
+      "condition": "When an H-1B petition for a PM is filed under SOC 11-3021 under the wage-weighted lottery system",
+      "action": "Assign the highest defensible DOL wage level to maximize lottery entries",
+      "because": "The wage-weighted H-1B system (effective February 2026) allocates lottery entries proportional to wage level: Level IV = 4 entries, Level I = 1 entry",
+      "regulatory_basis": "DOL wage-weighted H-1B lottery system, effective February 2026",
+      "country_scope": "us"
+    },
+    {
+      "rule": "BLS OEWS wage data captures base salary only and may undercount total compensation for tech PMs",
+      "condition": "When using BLS OEWS data to benchmark PM compensation for prevailing wage or offer evaluation purposes",
+      "action": "Supplement BLS data with industry surveys (levels.fyi, Glassdoor) for total compensation benchmarking",
+      "because": "RSUs and bonuses are a significant part of tech PM packages; BLS data does not capture these, potentially understating true market compensation by 1.5–2.5× at FAANG firms",
+      "regulatory_basis": "BLS OEWS methodology note, May 2023",
+      "country_scope": "us"
+    },
+    {
+      "rule": "BLS OEWS data is collected in May each year and published approximately 12–14 months later",
+      "condition": "When using BLS wage data for real-time compensation benchmarking",
+      "action": "Use BLS data for trend direction, geographic differentials, and occupational projections only — not for offer benchmarking",
+      "because": "May 2023 data was published March 2024; a 12–14 month lag makes it unsuitable for current offer-level precision",
+      "regulatory_basis": "BLS OEWS Data Freshness Note",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "SOC Code Selection for PM Roles",
+      "why_it_matters": "Determines which prevailing wage schedule applies for H-1B filing; incorrect classification can invalidate the Labor Condition Application",
+      "how_to_assess": "Default to SOC 11-3021 for tech PM roles; use SOC 11-2021 for growth PM or product marketing manager roles; use SOC 11-1021 for non-tech company PM roles",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "DOL Wage Level Assignment (Level I–IV) under SOC 11-3021",
+      "why_it_matters": "Directly determines the number of H-1B lottery entries under the wage-weighted system effective February 2026; also determines LCA compliance",
+      "how_to_assess": "Compare offered salary against DOL FLC Data Center prevailing wage thresholds for the specific occupation × location combination; approximate 2024–2025 thresholds vary by metro (e.g., SF Level I ~$170,000, Level IV ~$260,000+; NYC Level I ~$159,000, Level IV ~$245,000+; Austin Level I ~$130,000, Level IV ~$202,000+)",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Geographic Location of Employment",
+      "why_it_matters": "Prevailing wages differ significantly by metro area; the same role can carry a Level I wage in Austin that would be below Level I in San Francisco",
+      "how_to_assess": "Use DOL FLC Data Center prevailing wage by metro: SF Bay Area median SOC 11-3021 = $248,400; Seattle = $217,400; NYC = $201,300; Austin = $185,200; national median = $169,510",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Work Experience Prior to Management Appointment",
+      "why_it_matters": "BLS OOH states 3–5 years in subordinate roles is required before typical management appointment; relevant to establishing qualifications for H-1B specialty occupation",
+      "how_to_assess": "Verify petitioner has 3–5 years of relevant subordinate-role experience per BLS OOH standard for SOC 11-3021",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Educational Background",
+      "why_it_matters": "BLS states most Computer and Information Systems Managers have a bachelor's degree in CS, IT, or related field; relevant to specialty occupation determination for H-1B",
+      "how_to_assess": "Confirm bachelor's degree in CS, IT, or related field; note MBA is increasingly common for senior PM leadership roles per BLS OOH",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Industry Sector of Employing Company",
+      "why_it_matters": "SOC 11-3021 employment is distributed across industries; pure tech ('Information' sector) accounts for only 9% of employment, affecting wage benchmarks and petition context",
+      "how_to_assess": "Identify employer industry: Professional/scientific/technical services (24%), Finance/insurance (17%), Manufacturing (10%), Information/tech (9%), Government (8%)",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a PM offer priced at BLS median wage without supplementing with RSU/bonus data",
+      "unstated_consequence": "BLS OEWS captures base salary only; total compensation at FAANG firms is typically 1.5–2.5× the BLS median when RSUs and bonuses are included — meaning a BLS-median base offer may be significantly below true market rate",
+      "who_it_affects": "H-1B workers and candidates using BLS data alone to evaluate offer competitiveness",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Filing H-1B at DOL Wage Level I to minimize employer cost",
+      "unstated_consequence": "Under the wage-weighted H-1B lottery effective February 2026, Level I receives only 1 lottery entry vs. 4 entries at Level IV — dramatically reducing selection probability",
+      "who_it_affects": "H-1B petitioners and employers optimizing for cost over lottery selection odds",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Using BLS OEWS data for real-time offer benchmarking",
+      "unstated_consequence": "BLS OEWS data has a 12–14 month publication lag; May 2023 data published March 2024 may not reflect current market conditions, especially in volatile tech hiring cycles",
+      "who_it_affects": "Anyone using BLS data to benchmark current PM offers or set prevailing wage expectations",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Classifying a tech PM role under SOC 11-1021 (General and Operations Managers) instead of SOC 11-3021",
+      "unstated_consequence": "SOC 11-1021 carries a lower median wage ($123,370 vs. $169,510) which may affect prevailing wage determination and could expose the petition to challenge if the role is functionally a tech PM role",
+      "who_it_affects": "Employers filing H-1B for PM roles at non-tech companies or using a broad SOC classification",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relocating a PM role from San Francisco to a lower-cost market",
+      "unstated_consequence": "DOL prevailing wage thresholds drop significantly outside high-cost hubs (e.g., SF Level I ~$170,000 vs. Austin Level I ~$130,000), which affects H-1B LCA compliance if the worker moves but the LCA wage is not updated",
+      "who_it_affects": "H-1B workers whose employers allow remote work or relocate them across metro areas",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Filing H-1B LCA at a wage below the DOL prevailing wage threshold for the correct SOC code and location",
+      "why_it_happens": "Employer uses incorrect SOC code (e.g., SOC 11-1021 instead of SOC 11-3021) or an outdated wage survey, resulting in an LCA wage below the applicable prevailing wage level",
+      "consequence": "LCA non-compliance; potential denial of H-1B petition; back-wage liability",
+      "warning_signs": [
+        "Offered base salary below DOL Level I for the metro (e.g., below ~$170,000 in SF Bay Area for SOC 11-3021)",
+        "Employer classifies tech PM under SOC 11-1021 General and Operations Managers to access lower prevailing wage"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Using BLS OEWS data alone to set or evaluate PM compensation benchmarks",
+      "why_it_happens": "BLS OEWS captures base salary only and has a 12–14 month publication lag; does not include RSUs or bonuses that represent significant tech PM compensation",
+      "consequence": "Systematic undervaluation of market compensation; offers that appear compliant with BLS data may be materially below true market rates",
+      "warning_signs": [
+        "PM offer at or near BLS median ($169,510) without RSU or bonus component at a FAANG-tier company",
+        "Compensation benchmarking not supplemented with levels.fyi or Glassdoor data"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Failing to update LCA prevailing wage when an H-1B PM worker relocates across metro areas",
+      "why_it_happens": "Prevailing wages vary substantially by metro (e.g., SF vs. Austin); a worker moving from lower-cost to higher-cost market without LCA amendment may trigger underpayment",
+      "consequence": "LCA violation; potential back-wage liability; exposure to DOL audit",
+      "warning_signs": [
+        "Remote work arrangement that places worker in a different metro than the certified LCA worksite",
+        "Salary unchanged after relocation from lower-cost to higher-cost metro"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the PM role at a tech company being filed under SOC 11-3021 (Computer and Information Systems Managers)?",
+      "what_it_reveals": "Whether the correct occupational classification is being used for prevailing wage determination and H-1B petition purposes",
+      "follow_up_if_yes": "Confirm offered wage meets DOL prevailing wage threshold for SOC 11-3021 in the specific metro area",
+      "follow_up_if_no": "Evaluate whether SOC 11-1021 or SOC 11-2021 is more appropriate based on actual job duties; misclassification creates LCA and petition risk",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the offered base salary meet or exceed the DOL prevailing wage Level I threshold for SOC 11-3021 in the employment metro area?",
+      "what_it_reveals": "Minimum LCA compliance for H-1B filing",
+      "follow_up_if_yes": "Determine which wage level (I–IV) applies and how many lottery entries result under the wage-weighted system effective February 2026",
+      "follow_up_if_no": "Petition cannot be filed without adjusting the offered wage to at least Level I prevailing wage for the location",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the PM candidate have 3–5 years of experience in subordinate roles prior to the management appointment?",
+      "what_it_reveals": "Whether the candidate meets the BLS OOH-stated standard experience requirement for SOC 11-3021 roles, relevant to specialty occupation qualification",
+      "follow_up_if_yes": "Candidate meets standard experience threshold; document subordinate-role experience in petition",
+      "follow_up_if_no": "Candidate may not meet typical qualifications for SOC 11-3021; consider whether role should be classified differently or whether exceptional education compensates",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the PM candidate hold a bachelor's degree in CS, IT, or a related field?",
+      "what_it_reveals": "Whether the candidate meets the BLS OOH-stated educational standard for Computer and Information Systems Managers, relevant to H-1B specialty occupation determination",
+      "follow_up_if_yes": "Educational requirement satisfied; note MBA is increasingly common for senior PM roles per BLS",
+      "follow_up_if_no": "May need to establish equivalent education or experience; specialty occupation determination may face challenge",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the employment location in a high-cost tech hub (SF, Seattle, NYC) or a lower-cost market (Austin, rural/non-metro)?",
+      "what_it_reveals": "Which prevailing wage schedule applies; determines LCA wage floor and wage level classification",
+      "follow_up_if_yes": "Apply metro-specific DOL prevailing wage thresholds (e.g., SF SOC 11-3021 Level I ~$170,000)",
+      "follow_up_if_no": "Apply lower prevailing wage thresholds (e.g., Austin Level I ~$130,000; rural/non-metro often $90,000–$130,000 base salary range)",
+      "country_scope": "us"
+    },
+    {
+      "question": "Under the wage-weighted H-1B lottery (effective February 2026), at which DOL wage level is the PM petition being filed?",
+      "what_it_reveals": "Number of lottery entries the petition receives: Level I = 1 entry, Level IV = 4 entries",
+      "follow_up_if_yes": "If Level III or IV: petition receives 3–4 lottery entries, significantly improving selection odds",
+      "follow_up_if_no": "If Level I or II: petition receives 1–2 entries; consider whether wage can be increased to reach higher level",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Product Manager is a recognized standalone occupational category in official US government labor statistics",
+      "actual_reality": "The BLS does not have a standalone 'Product Manager' occupational code; PM roles are captured primarily under SOC 11-3021 (Computer and Information Systems Managers), with some filed under SOC 11-1021 or SOC 11-2021 depending on context",
+      "implication": "H-1B petitions and prevailing wage determinations for PMs must use the closest applicable SOC code; SOC 11-3021 is the standard for tech PM roles",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Tech PM salaries are close to the BLS median of $169,510 for SOC 11-3021",
+      "actual_reality": "BLS OEWS data captures base salary only; industry surveys show total compensation for PMs at FAANG is typically 1.5–2.5× the BLS median when RSUs and bonuses are included",
+      "implication": "BLS data should not be used for offer benchmarking at tech companies; levels.fyi and Glassdoor data must supplement BLS figures for accurate total compensation assessment",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Tech companies (pure tech / 'Information' sector) are the dominant employer of Computer and Information Systems Managers",
+      "actual_reality": "The 'Information' industry sector accounts for only 9% of SOC 11-3021 employment; professional/scientific/technical services (24%) and finance/insurance (17%) employ larger shares",
+      "implication": "PM-equivalent roles exist across many non-tech industries; SOC 11-3021 wage benchmarks reflect a broad industry mix, not just FAANG-level tech compensation",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B lottery gives all petitions an equal chance of selection regardless of wage offered",
+      "actual_reality": "Effective February 2026, the H-1B system is wage-weighted: a PM petition at DOL Wage Level IV receives 4 lottery entries vs. 1 entry for Level I",
+      "implication": "Employers and workers benefit from offering the highest defensible wage level to maximize lottery selection probability under the new system",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "BLS wage data is current and suitable for real-time offer benchmarking",
+      "actual_reality": "BLS OEWS data has a 12–14 month publication lag; May 2023 data was published March 2024 and is best used for trend direction and geographic differentials, not current offer benchmarking",
+      "implication": "Anyone using BLS data to evaluate a current PM offer should supplement with real-time sources; relying solely on BLS risks misjudging current market rates",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Growth PM and product marketing manager roles use the same SOC code as core tech PM roles",
+      "actual_reality": "Growth PM and product marketing manager roles may be classified under SOC 11-2021 (Marketing Managers, median $140,040) rather than SOC 11-3021 (median $169,510)",
+      "implication": "SOC code selection affects prevailing wage floor; misclassifying a growth PM under the wrong SOC code affects LCA compliance and wage level determination",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Using BLS data for compensation benchmarking",
+      "naive_pattern": "Cites BLS median of $169,510 as the market rate for a senior PM role and evaluates offers against that figure alone",
+      "informed_pattern": "Recognizes BLS captures base salary only with a 12–14 month lag; uses BLS for trend and geographic differential analysis while supplementing with levels.fyi and Glassdoor for total compensation benchmarking",
+      "why_it_matters": "Relying on BLS alone can lead to accepting offers that are materially below market total compensation, particularly at FAANG where RSUs and bonuses add 50–150% above base",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "SOC code selection for H-1B filing",
+      "naive_pattern": "Assumes all PM roles file under the same SOC code or defaults to SOC 11-1021 (General and Operations Managers) for simplicity",
+      "informed_pattern": "Selects SOC code based on role type: SOC 11-3021 for tech PM, SOC 11-2021 for growth PM or product marketing, SOC 11-1021 only for non-tech PM roles — and understands each carries a different prevailing wage floor",
+      "why_it_matters": "Incorrect SOC classification affects prevailing wage determination, LCA compliance, and potentially the specialty occupation finding for the H-1B petition",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "H-1B lottery strategy under wage-weighted system",
+      "naive_pattern": "Treats H-1B lottery as a fixed-odds random draw and does not consider wage level as a lever for improving selection probability",
+      "informed_pattern": "Understands that effective February 2026, offering DOL Wage Level IV yields 4 lottery entries vs. 1 at Level I; advises employers to offer the highest defensible wage to maximize selection odds",
+      "why_it_matters": "Under the wage-weighted system, wage level directly determines lottery entries and selection probability — a critical strategic variable that naive filers ignore",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Geographic wage variation awareness",
+      "naive_pattern": "Uses the national BLS median ($169,510) as the prevailing wage reference regardless of where the role is located",
+      "informed_pattern": "Applies metro-specific DOL prevailing wage thresholds: recognizes SF Level I (~$170,000) is already near the national median, while Austin Level I (~$130,000) is substantially lower, requiring location-specific LCA filings",
+      "why_it_matters": "Using national averages instead of metro-specific prevailing wages risks LCA non-compliance in high-cost markets and over-payment obligations in lower-cost markets",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_bls_software_product_managers_us",
+  "_source_regions": [
+    "us"
+  ]
+}

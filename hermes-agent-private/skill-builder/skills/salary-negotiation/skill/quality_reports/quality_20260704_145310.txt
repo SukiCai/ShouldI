@@ -1,0 +1,50 @@
+
+============================================================
+  Quality Report: Salary & Offer Negotiation Expert
+  Overall: 4.3/5.0  ████████████████░░░░
+============================================================
+
+  A genuinely strong skill that goes well beyond generic negotiation advice. Its integration of H-1B wage-level lottery mechanics with salary strategy is a standout differentiator, and the tradeoffs and heuristics show real practitioner knowledge. Some sections (particularly a few heuristics and the industry realities) are excellent, while a few claims lean on specific stats that need sourcing or nuance.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       4/5  ██████████░░  Good
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The Expert Framing section is genuinely non-obvious and correctly names the three most common wrong frames: 'equity is not cash,' 'the first number named is the anchor,' and the H-1B/salary alignment under the wage-weighted lottery. The observation that 'different levers come from different budget pools with different approvers' is a specific insider mechanic novices don't know.
+    • The Hidden Tradeoffs table is exceptional — items like 'Countering with signing bonus instead of base — doesn't compound; future raises, refreshes, and bonuses are all anchored to base' and 'Accepting retention counter-offer — 80% leave within 12 months anyway; you're now flagged as a flight risk' are precisely the kind of invisible-at-decision-time consequences a real expert would surface.
+    • The H-1B integration is a rare and valuable differentiator: 'For H-1B candidates, calculate the exact salary threshold to the next wage level and anchor there' turns visa status from a weakness into a quantifiable leverage point — this is genuinely expert-level cross-domain synthesis.
+    • Junior vs. Senior table has real differentiators. 'Handling base is final — Junior: accepts; Senior: pivots to signing bonus and equity (different budgets)' is exactly the kind of tacit knowledge that separates practitioners.
+
+  ✗ Weaknesses:
+    • The '6% of offers withdrawn after a counter' and '80% leave within 12 months of accepting a retention offer' statistics are asserted without sourcing. These are commonly-cited numbers of dubious provenance; a senior skill should either source them or hedge ('surveys suggest fewer than 10%').
+    • Heuristic #9 ('Stop at round three') is asserted flatly with no conditions. In reality, round count depends on level (senior/staff negotiations routinely go 4+ rounds), company culture, and whether new information is entering each round. This borders on generic advice.
+    • The diagnostic framework doesn't address the very common case of a candidate with only a verbal offer being pressed for a decision before written terms arrive — a distinct scenario with its own script that deserves explicit classification.
+    • Equity coverage is thinner than it should be given the framing. RSU vs. options distinction is mentioned but no heuristic addresses double-trigger acceleration, ISO/NSO tax treatment, secondary sale windows, or how to value late-stage private RSUs (pre-IPO liquidity risk) — all things a senior negotiator handles routinely.
+
+  → Improvement Suggestions:
+    • Add a concrete 'threshold math' worked example for the H-1B section: e.g., 'Level II SWE in SF Bay Area is $X; Level III is $Y. If offer is $Z, ask for $Y+$1K to cross threshold.' The current text asserts the strategy but doesn't operationalize it.
+    • Add scripts/language templates. The skill tells the user what to do ('deflect to their range') but a truly expert skill would include 3-4 exact phrasings for common inflection points: the salary expectation deflection, the counter-with-market-data ask, the 'base is final' pivot, and the 24-48 hour think-time request.
+    • Add a heuristic on sequencing asks: which lever to negotiate first, second, third, and why. The skill warns against 'negotiating everything simultaneously' but doesn't specify the correct sequence (typically base → equity → signing → other).
+    • Expand equity heuristics: add specific guidance on 409A vs. preferred price ratio as a dilution signal, double-trigger acceleration ask on acquisition, and the specific question to ask about post-termination exercise window extension (some companies extend to 7-10 years on request).
+    • Source or soften the specific statistics (6%, 80%, '80-90% of startups fail') — either cite the survey or reframe as 'the empirical evidence strongly suggests'.
+
+  ⚠ Generic Advice Flags:
+    • 'Stop at round three' — asserted as universal but actually depends heavily on level, information flow, and company. This is closer to a rule of thumb than an expert heuristic without conditions.
+    • 'Always counter at least once' — while directionally correct, this is table-stakes advice that any career blog gives. It needs the specific reasoning about EV asymmetry to earn its place, which it partially has but could sharpen.
+    • 'Never accept or reject verbally on the offer call' — correct but common; the value-add would be the exact script for how to buy time gracefully, which the skill doesn't provide.
+
+  ○ Missing Coverage:
+    • Level/title negotiation as a distinct lever — often more valuable long-term than any comp component, and requires different tactics (calibration data, scope arguments, downleveling risk).
+    • How to handle multiple concurrent processes with different timelines — accelerating slow processes and slowing exploding offers to create real competing-offer leverage.
+    • Written offer letter review checklist: at-will language, non-compete/non-solicit scope, IP assignment, arbitration clauses, mandatory PTO cash-out on exit — negotiable items most candidates miss.
+    • Public-sector, non-profit, and academic offer dynamics (limited flexibility, band-based comp) — the skill assumes tech/private-sector throughout.
+    • How to respond when a recruiter says 'this is our best and final and we can't move' — verifying whether it's truly final vs. a common closing tactic.
+    • Contractor-to-FTE conversion negotiations, which have unique anchoring problems (current hourly rate becomes de facto anchor).

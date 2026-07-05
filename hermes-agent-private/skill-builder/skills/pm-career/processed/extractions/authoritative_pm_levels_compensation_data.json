@@ -1,0 +1,247 @@
+{
+  "source_file": "pm_levels_compensation_data.txt",
+  "heuristics": [
+    {
+      "rule": "If a 'Senior PM' offer's total comp is below the levels.fyi median for that stated level, treat it as a signal that something is misrepresented before accepting.",
+      "condition": "When evaluating an offer where the title says Senior PM but total comp is significantly below market median (e.g., $180K total vs. $350K+ median),",
+      "action": "...verify the actual level code, not just the title, and determine whether the company has a sub-market comp culture or is back-loading equity in a way that reduces current value",
+      "because": "Title inflation is common; the level code and total comp structure reveal the true seniority and compensation band more accurately than the title alone"
+    },
+    {
+      "rule": "Use Amazon L5/L6 level codes as a translation layer when benchmarking across companies — Amazon L6 Senior PM is equivalent to Google/Meta Senior PM, not Amazon L5.",
+      "condition": "When comparing offers or leveling across Amazon and other major tech companies,",
+      "action": "...map Amazon L6 to 'Senior PM' at Google/Meta rather than treating all 'PM' titles as equivalent",
+      "because": "Amazon's leveling nomenclature runs one step behind other companies; treating titles as equivalent without level-code mapping leads to systematic undervaluation or overestimation of seniority"
+    },
+    {
+      "rule": "Treat signing bonus size ($50K–$150K at FAANG) as a proxy for how much unvested equity you are leaving behind at your current company.",
+      "condition": "When evaluating whether a signing bonus in a new offer is generous or merely standard,",
+      "action": "...calculate your unvested equity cliff at current employer and compare it against the signing bonus being offered to determine if the switch is financially net-positive in year one",
+      "because": "Signing bonuses are structurally designed to cover unvested equity left behind; a mismatch means you are absorbing real financial loss that compounds over the vest schedule"
+    },
+    {
+      "rule": "At FAANG, negotiate equity and signing bonus first — these are the most negotiable components and where the largest dollar variance occurs.",
+      "condition": "When entering compensation negotiation at a major tech company for a Senior PM role,",
+      "action": "...anchor negotiation on RSU grant size and signing bonus rather than base salary, since base has a narrower band and equity/signing are where companies have more flexibility",
+      "because": "Base salary ranges are rigid and constrained by band; RSU grants and signing bonuses are deal-closing tools companies use with more discretion"
+    },
+    {
+      "rule": "Non-FAANG Principal PM comp can match FAANG Senior PM comp — do not automatically assume FAANG is the only path to top-quartile compensation.",
+      "condition": "When a Senior PM is evaluating whether to join or stay at a non-FAANG company like Intuit versus pursuing a FAANG role,",
+      "action": "...compare total comp at the target level (e.g., Principal PM at Intuit ~$482K) directly against FAANG Senior PM benchmarks (~$528K at Google L5) before assuming FAANG is materially better",
+      "because": "At senior individual contributor levels, well-compensated non-FAANG companies are competitive with FAANG; the prestige premium does not always translate to a compensation premium"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Equity vesting structure and liquidity",
+      "why_it_matters": "The same dollar value of equity has different real-world value depending on vesting cadence, cliff length, and refresh schedule — quarterly vesting (Meta) provides far higher liquidity than annual cliff structures",
+      "how_to_assess": "Ask for the full vesting schedule, whether there are annual refresh grants, and whether the company vests monthly, quarterly, or annually after the cliff; calculate what you would actually receive in years 1 and 2",
+      "weight": "high"
+    },
+    {
+      "factor": "Level code vs. title",
+      "why_it_matters": "Title inflation means a 'Senior PM' offer at one company may correspond to a lower level band than the same title at another; the level code determines the compensation band and career progression track",
+      "how_to_assess": "Request the internal level code explicitly (e.g., L5 at Google, L6 at Amazon, IC5 at Meta) and cross-reference against levels.fyi median for that specific level code",
+      "weight": "high"
+    },
+    {
+      "factor": "Geographic location premium",
+      "why_it_matters": "Equivalent roles pay materially more in NY/SF than Seattle or Austin; a role that appears below market may simply reflect a location adjustment, or a role that appears competitive may be inflated by location",
+      "how_to_assess": "Filter levels.fyi data by the specific metro area of the role; compare NY/SF comp to Seattle or Austin benchmarks for the same level to isolate the location effect",
+      "weight": "medium"
+    },
+    {
+      "factor": "Stock price trajectory of the offering company",
+      "why_it_matters": "RSU grants are quoted at current stock price but vest over 4 years; a company whose stock declines 40% over the vest period delivers far less than the stated total comp",
+      "how_to_assess": "Evaluate the company's stock performance trajectory, refresh grant policies, and whether the company reprices or issues additional grants during downturns",
+      "weight": "high"
+    },
+    {
+      "factor": "Market timing — entry-level vs. senior-level demand",
+      "why_it_matters": "The current market (2024–2025) is strong for Staff/Principal PM roles but compressed for entry and mid-level; this asymmetry changes negotiation leverage and job availability depending on where you are in your career",
+      "how_to_assess": "Assess your current level against where hiring demand is concentrated; if you are at Senior+ with 7–10 years at quality companies, leverage is high; if you are APM or early PM, supply exceeds demand",
+      "weight": "high"
+    },
+    {
+      "factor": "Cash-to-equity mix preference",
+      "why_it_matters": "Amazon's historically cash-heavy structure at L5/L6 provides more predictable income but lower upside compared to Google or Meta's equity-heavy structures; personal financial situation affects which mix is preferable",
+      "how_to_assess": "Calculate your personal financial need for liquid cash income versus tolerance for equity risk; compare the base + bonus cash component across offers before factoring in equity",
+      "weight": "medium"
+    },
+    {
+      "factor": "Refresh grant timing and performance rating cycle",
+      "why_it_matters": "Total comp at a company like Meta or Google compounds significantly if you receive strong performance ratings that trigger above-band refresh grants; a flat performer at the same level receives materially less over time",
+      "how_to_assess": "Ask about the refresh grant process, how performance ratings translate to equity refresh, and what the typical range of refresh grants looks like at the target level",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a high-total-comp offer at a company with equity-heavy, back-loaded vesting",
+      "unstated_consequence": "Year 1 and Year 2 actual cash-in-hand is significantly lower than the stated total comp figure; the headline number is only realized if you stay through the full vest and the stock price holds",
+      "who_it_affects": "PMs who have financial obligations in the near term or who overweight the headline total comp number without modeling year-by-year cash flow"
+    },
+    {
+      "choice": "Choosing Amazon L6 for its cash-heavy compensation structure",
+      "unstated_consequence": "Lower equity upside means you miss disproportionate gains if the company's stock appreciates significantly; the stability premium costs you asymmetric upside that equity-heavy companies provide",
+      "who_it_affects": "PMs who are financially stable and could tolerate equity risk but defaulted to cash certainty without fully pricing the opportunity cost"
+    },
+    {
+      "choice": "Accepting a non-FAANG 'Senior PM' title without verifying compensation against FAANG benchmarks",
+      "unstated_consequence": "You may be accepting a title that sounds equivalent but carries a compensation band 30–50% below what the same title commands at a major tech company, with no clear path to close that gap internally",
+      "who_it_affects": "PMs who optimize for title over compensation band, particularly those early in their Senior PM tenure who anchor on the prestige of the title"
+    },
+    {
+      "choice": "Joining a FAANG as an entry-level or early PM in the 2024–2025 market",
+      "unstated_consequence": "APM and early PM hiring has compressed significantly; the pathway that was viable in 2021 is now far narrower, meaning candidates are competing for fewer spots while senior roles remain open — the market is bifurcated, not uniformly strong",
+      "who_it_affects": "New graduates and early-career PMs who assume the FAANG PM market is as accessible as it was during the 2021 hiring peak"
+    },
+    {
+      "choice": "Prioritizing base salary negotiation over equity negotiation at FAANG",
+      "unstated_consequence": "You leave the largest dollar variance on the table because base salary bands are rigid and the incremental gain from base negotiation is a fraction of what a better RSU grant or signing bonus would yield",
+      "who_it_affects": "PMs who are less experienced with equity negotiation or who are uncomfortable with variable income and therefore anchor on the most tangible, predictable number"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting an offer based on title without verifying the level code and corresponding compensation band",
+      "why_it_happens": "Title inflation is pervasive and companies exploit the ambiguity; candidates anchor on titles they recognize ('Senior PM') without probing the internal level taxonomy that determines actual comp and career trajectory",
+      "consequence": "PM accepts a role underpaid relative to their actual market value and seniority, with limited internal recourse to correct the band mismatch without leaving",
+      "warning_signs": [
+        "Offer total comp is materially below levels.fyi median for the stated title",
+        "The hiring manager or recruiter is vague or evasive when asked for the internal level code"
+      ]
+    },
+    {
+      "pattern": "Treating the stated total comp figure as equivalent to annual take-home pay",
+      "why_it_happens": "Total comp figures combine cash, equity, and bonuses in a way that flatters the annual number; candidates unfamiliar with RSU vesting mechanics conflate the grant value with realized income",
+      "consequence": "PM is financially surprised in year 1 and year 2 when actual cash received is significantly below expectations, sometimes creating real financial strain if they made decisions (e.g., housing) based on the headline figure",
+      "warning_signs": [
+        "PM cannot articulate how much of their total comp vests in year 1 vs. year 4",
+        "PM has not modeled a scenario where the stock price drops 30% over the vest period"
+      ]
+    },
+    {
+      "pattern": "Benchmarking compensation against the overall median ($229K) rather than the relevant level and company tier",
+      "why_it_happens": "The overall market median includes mid-market, startup, and FAANG roles across all levels; using it as a reference point systematically underestimates what senior PMs at major tech companies should expect",
+      "consequence": "PM undervalues their offer or fails to negotiate aggressively because they believe market median is $229K when their actual relevant benchmark is $400–600K",
+      "warning_signs": [
+        "PM cites overall market median as their compensation anchor during negotiation",
+        "PM has not filtered levels.fyi data by company, level code, and location before forming an opinion on what is fair"
+      ]
+    },
+    {
+      "pattern": "Conflating Amazon's level nomenclature with other companies' and accepting an L5 role when targeting Senior PM equivalency",
+      "why_it_happens": "Amazon's PM titles do not map cleanly to the rest of the industry; L5 at Amazon is 'PM' while L6 is 'Senior PM' at Google/Meta equivalency — candidates who don't know this accept a lower level than intended",
+      "consequence": "PM joins Amazon at a level below their actual seniority, accepts a lower compensation band, and must spend additional years re-earning a promotion to achieve the level they already held at their prior company",
+      "warning_signs": [
+        "PM is targeting a Senior PM role and receives an Amazon offer without independently verifying whether it is L5 or L6",
+        "Recruiter uses title 'Product Manager' without specifying the level code during initial discussions"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the internal level code for this offer, not just the title?",
+      "what_it_reveals": "Whether the title reflects the actual seniority band the company uses internally for compensation and promotion purposes",
+      "follow_up_if_yes": "Cross-reference the level code against levels.fyi median total comp for that specific code at that company — does the offer match?",
+      "follow_up_if_no": "Treat the lack of a clear level code as a red flag and push the recruiter to specify it before proceeding with compensation discussion"
+    },
+    {
+      "question": "What is the year-by-year vesting schedule, and are there annual refresh grants?",
+      "what_it_reveals": "Your actual realized income in years 1 through 4, which may be dramatically different from the headline total comp figure",
+      "follow_up_if_yes": "Model the cash flow scenario with and without stock price appreciation to understand the range of outcomes you are actually accepting",
+      "follow_up_if_no": "If there are no refresh grants, the total comp degrades significantly in years 3 and 4 after the initial grant vests — this changes the long-term value of the offer substantially"
+    },
+    {
+      "question": "How does this offer compare to the levels.fyi median filtered by company, level code, AND metro area?",
+      "what_it_reveals": "Whether the offer is below-band, at-band, or above-band for your specific situation — the unfiltered median is not a useful benchmark",
+      "follow_up_if_yes": "If the offer is at or above median, determine whether there is still room to negotiate equity and signing bonus upward before accepting",
+      "follow_up_if_no": "If the offer is below median after filtering, determine whether this reflects a negotiation gap (addressable) or a structural comp culture issue at the company (less addressable)"
+    },
+    {
+      "question": "What is the signing bonus, and does it cover your unvested equity at your current company?",
+      "what_it_reveals": "Whether the financial switch is net positive or net negative in year one after accounting for equity you are leaving on the table",
+      "follow_up_if_yes": "If signing bonus exceeds unvested equity, the switch is financially safe in year one — evaluate the multi-year comp trajectory next",
+      "follow_up_if_no": "If signing bonus does not cover unvested equity, calculate the break-even point and determine whether the long-term comp upside justifies the short-term loss"
+    },
+    {
+      "question": "Is the role at a FAANG or equivalent major tech company, or a non-FAANG large tech company?",
+      "what_it_reveals": "Whether you should benchmark against FAANG comp tables or non-FAANG benchmarks, since conflating them leads to systematic misvaluation in either direction",
+      "follow_up_if_yes": "Use company-specific levels.fyi data for Google, Meta, Amazon, or LinkedIn rather than aggregate PM salary data",
+      "follow_up_if_no": "Compare against Intuit-equivalent benchmarks; note that Principal PM at strong non-FAANG can match FAANG Senior PM total comp, so do not automatically assume FAANG is superior"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The PM job market is strong right now, so entry-level and senior PMs are both in high demand.",
+      "actual_reality": "The market is bifurcated: Staff and Principal level PMs with 7–10 years at quality companies are in high demand, but APM and entry-level PM hiring has compressed significantly since the 2021 peak and remains tight in 2024–2025.",
+      "implication": "Early-career PMs should not assume the same market conditions that made APM programs accessible in 2021 still apply; they are competing for fewer spots while senior PMs have leverage they may not be fully using"
+    },
+    {
+      "common_belief": "FAANG always pays more than non-FAANG, so joining a major tech company is the only path to top-quartile PM compensation.",
+      "actual_reality": "At senior individual contributor levels (Principal PM and above), well-compensated non-FAANG companies like Intuit pay in the same range as FAANG Senior PM — Intuit Principal PM median is ~$482K versus Google Senior PM median of ~$528K.",
+      "implication": "PMs should evaluate non-FAANG Principal PM roles on total comp merit rather than dismissing them as inferior; the FAANG prestige premium does not always translate to a meaningful compensation premium at senior levels"
+    },
+    {
+      "common_belief": "A higher total comp number means you will take home more money annually.",
+      "actual_reality": "Total comp is a blended figure that includes equity that vests over 4 years, signing bonuses that are one-time, and bonuses that are performance-contingent; actual year-1 take-home is often materially lower than the headline total comp figure.",
+      "implication": "PMs must model year-by-year realized income rather than dividing total comp by four; the structure of when equity vests and whether refresh grants exist changes the actual financial trajectory significantly"
+    },
+    {
+      "common_belief": "Negotiating base salary is the most impactful lever in a compensation negotiation.",
+      "actual_reality": "At FAANG, base salary bands are rigid and have a narrow range; equity (RSU grant size) and signing bonus are where companies have the most flexibility and where the largest dollar variance occurs.",
+      "implication": "PMs should anchor their negotiation energy on RSU grant size and signing bonus, treating base salary as a secondary lever; focusing primarily on base salary leaves the most money on the table"
+    },
+    {
+      "common_belief": "Amazon 'Senior PM' and Google 'Senior PM' are equivalent roles at equivalent levels.",
+      "actual_reality": "Amazon's leveling runs one step behind: Amazon L5 is equivalent to 'PM' at Google/Meta, and Amazon L6 is equivalent to 'Senior PM' at Google/Meta. A candidate who accepts an Amazon PM offer (L5) when they held a Senior PM title elsewhere has effectively accepted a demotion in level band.",
+      "implication": "Always verify the Amazon level code before comparing offers or accepting; do not treat 'Senior PM' title equivalency across companies without checking the internal level code"
+    },
+    {
+      "common_belief": "The overall PM market median salary ($229K) is a reliable benchmark for evaluating whether an offer is fair.",
+      "actual_reality": "The $229K median includes all levels, all company types, and all geographies blended together; Senior PM at FAANG in a major metro has a relevant benchmark of $400–600K+ in total comp, making the overall median useless as a negotiation anchor.",
+      "implication": "Always filter compensation benchmarks by company, level code, and metro area before forming a view on whether an offer is fair; using the overall median systematically undervalues Senior PM offers at major tech companies"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Compensation benchmarking approach",
+      "junior_pattern": "Uses overall PM market median ($229K) or generic salary ranges from broad job sites as their reference point; does not filter by company, level code, or location",
+      "senior_pattern": "Filters levels.fyi data by the specific company, internal level code, and metro area before forming any view on whether an offer is fair or what to negotiate toward",
+      "why_it_matters": "Using the wrong benchmark causes PMs to under-negotiate or accept below-market offers; the overall median can be 50–70% below the actual relevant benchmark for a Senior PM at FAANG"
+    },
+    {
+      "dimension": "Offer evaluation framing",
+      "junior_pattern": "Evaluates an offer by looking at the headline total comp number and dividing by four to estimate annual income",
+      "senior_pattern": "Models year-by-year realized income accounting for vesting schedule, cliff structure, refresh grant eligibility, signing bonus one-time nature, and stock price sensitivity",
+      "why_it_matters": "Headline total comp can be misleading by 30–50% in early vest years; a PM who doesn't model year-by-year cash flow makes decisions based on income they may not actually receive"
+    },
+    {
+      "dimension": "Negotiation focus",
+      "junior_pattern": "Anchors negotiation on base salary because it is the most tangible and predictable component; views equity negotiation as secondary or uncomfortable",
+      "senior_pattern": "Treats base salary as the least flexible lever and directs negotiation energy toward RSU grant size and signing bonus, which have the highest dollar variance and most company flexibility",
+      "why_it_matters": "A PM who focuses on base salary negotiation at FAANG might gain $10–20K; the same energy directed at equity and signing bonus can yield $50–150K+ in incremental value"
+    },
+    {
+      "dimension": "Cross-company level translation",
+      "junior_pattern": "Takes job titles at face value and assumes 'Senior PM' means the same level and band at every company",
+      "senior_pattern": "Immediately asks for the internal level code and translates it against known benchmarks (e.g., knows Amazon L6 = Google L5 = Meta IC5 for Senior PM equivalency)",
+      "why_it_matters": "Accepting a title without verifying the level code can result in joining a company at a lower level than your prior role, with a lower comp band and longer time to the next promotion"
+    },
+    {
+      "dimension": "Market timing awareness",
+      "junior_pattern": "Assumes the PM job market is uniformly strong or uniformly weak based on headline narratives about tech layoffs or hiring booms",
+      "senior_pattern": "Recognizes the market is bifurcated: senior-level PM roles (Staff/Principal) are in demand with strong leverage, while entry and mid-level PM hiring is compressed — and calibrates job search strategy and negotiation posture accordingly",
+      "why_it_matters": "A senior PM who doesn't recognize their leverage in the current market will under-negotiate; an early PM who assumes the 2021 market still exists will be surprised by how competitive and limited APM pathways have become"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_pm_levels_compensation_data",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

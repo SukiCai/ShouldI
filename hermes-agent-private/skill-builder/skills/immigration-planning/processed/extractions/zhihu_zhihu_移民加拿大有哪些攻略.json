@@ -1,0 +1,491 @@
+{
+  "source_file": "zhihu_移民加拿大有哪些攻略.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If you can qualify for LMIA job offer + EE, don't use provincial nomination",
+      "condition": "When an applicant has CRS score around 440-450 and can obtain a legitimate LMIA job offer (NOC 0/A/B)",
+      "action": "Use EE federal pathway directly rather than provincial nomination routes",
+      "because": "Provincial nomination adds an extra layer of process at the provincial level, lengthening total timeline and introducing more complexity and potential failure points, with no benefit over direct EE if LMIA job offer is available",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Prepare WES credential evaluation early — do not wait for EE invitation",
+      "condition": "When an applicant with foreign credentials is planning to apply via federal EE",
+      "action": "Start WES credential evaluation process before receiving ITA",
+      "because": "After receiving ITA, document submission window was shortened from 90 days to 60 days (as of June 26, 2018), and WES evaluation alone can take up to 2 months",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Manitoba PNP is viable even with out-of-province study/work penalty if base score is high enough",
+      "condition": "When an applicant studied or worked outside Manitoba before coming to Manitoba",
+      "action": "Still apply to Manitoba PNP — the -100 points per out-of-province factor is offset by the 500-point employer continuity bonus",
+      "because": "Historical invitation scores dropped as low as 567-585, meaning even after -200 points deduction for out-of-province study AND work, most applicants with Manitoba employer still exceed the threshold",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "For Manitoba PNP, working for the same Manitoba employer for 6+ months (local grad) or 1+ year (out-of-province grad) is the single most important factor",
+      "condition": "When a student is planning immigration pathway through Manitoba",
+      "action": "Prioritize finding and retaining a legitimate Manitoba employer over optimizing other scoring factors",
+      "because": "The Manitoba employer continuity factor adds 500 points — the single largest scoring component by far, making it the decisive variable in EOI scoring",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Never accept a provincial nomination offer that promises permanent residency without first entering Canada to work",
+      "condition": "When a provincial nomination immigration company claims you can obtain PR and then land in Canada afterward",
+      "action": "Reject the offer and walk away",
+      "because": "No provincial nomination program today allows land-after-PR; federal officials will question the authenticity of the job if the applicant never worked during the 2-year provincial nomination to PR window, and provincial nomination can be revoked",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "CRS score threshold relative to current draw levels",
+      "why_it_matters": "Determines whether federal EE is a viable pathway at all, or whether alternative routes (PNP, LMIA job offer boost) are necessary",
+      "how_to_assess": "Calculate personal CRS score using official IRCC calculator; compare against last 10-20 draw scores for relevant category (all-program vs CEC draws)",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether the job offer and employer are genuinely legitimate and background-matched",
+      "why_it_matters": "Immigration officers verify employer authenticity and applicant-role fit; mismatched or fabricated offers are investigated and can result in permanent inadmissibility",
+      "how_to_assess": "Ask: does the applicant's educational and work background plausibly match the offered role? Is the employer in a region/industry where recruiting locally is genuinely difficult? Can the applicant answer detailed questions about the workplace?",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Province of study and work (Manitoba vs. other provinces)",
+      "why_it_matters": "Manitoba PNP awards 500 points for working with a Manitoba employer, while penalizes -100 per out-of-province study or work experience; studying/working in Ontario or BC carries no equivalent provincial bonus",
+      "how_to_assess": "Check applicant's current province of study/work and intended province of settlement; calculate EOI score with and without penalty",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether applicant has genuine entrepreneurial or self-employment background",
+      "why_it_matters": "Federal SUV and self-employed programs are only viable for applicants whose backgrounds are credible to immigration officers; mismatch leads to rejection or multi-year delays",
+      "how_to_assess": "Does the applicant have verifiable prior startup/business management experience? Does the business plan align with actual skills? Would an immigration officer find the claim credible?",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "French language ability (NCLC 7+)",
+      "why_it_matters": "As of June 2017, French proficiency at NCLC 7 or above adds 15 bonus points to federal EE CRS score",
+      "how_to_assess": "Check whether applicant has or can realistically obtain NCLC 7 French; compare marginal cost of French study against value of 15 CRS points",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Having a sibling who is a Canadian citizen or PR, aged 18+",
+      "why_it_matters": "As of June 6, 2017, having a qualifying sibling in Canada adds 15 bonus points to EE CRS score",
+      "how_to_assess": "Verify sibling's status and age; claim in Express Entry profile",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Canadian education duration (1-2 years vs. 3+ years)",
+      "why_it_matters": "Post-November 2016 EE update: 1-2 years of Canadian study adds 15 CRS points; 3+ years adds 30 points",
+      "how_to_assess": "Check length of Canadian credential against this threshold; may influence program length decision for prospective students",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Purchasing an LMIA job offer from a high-volume immigration company",
+      "unstated_consequence": "High-volume LMIA sellers are already on IRCC radar; if investigated, the fraud attaches to the applicant not the company, resulting in permanent inadmissibility",
+      "who_it_affects": "Applicants who prioritize cost savings or choose large-scale immigration brokers over boutique firms with genuine employer relationships",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Applying for caregiver immigration pathway (Home Child Care Provider / Home Support Worker)",
+      "unstated_consequence": "The open but occupation-restricted work permit means any non-caregiving work is illegal; immigration officers conduct detailed household-specific interviews, and inability to answer specific questions about the home environment immediately reveals fake employment",
+      "who_it_affects": "Applicants with strong educational backgrounds who are placed into caregiver roles by immigration companies without genuine employer matching",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Pursuing Atlantic Immigration Program with a purchased job offer without genuinely working",
+      "unstated_consequence": "IRCC specifically scrutinizes Chinese applicants in this program; officers verify detailed job and company knowledge; getting caught results in removal and ban from future applications",
+      "who_it_affects": "Applicants with polished white-collar backgrounds taking low-skilled Atlantic region offers that don't match their profile",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Choosing provincial entrepreneur/investor immigration over federal SUV",
+      "unstated_consequence": "Provincial entrepreneur programs require meeting performance milestones (investment amounts, local hiring, profitability) over a 2-year operating period; business failure or underperformance can result in nomination revocation even after years of compliance effort",
+      "who_it_affects": "Applicants who lack genuine business operational experience but are sold provincial entrepreneur immigration as a 'lower barrier' alternative",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Choosing Manitoba PNP pathway via a college in another province then relocating",
+      "unstated_consequence": "Out-of-province study deducts 100 points; out-of-province work deducts another 100 points — total -200 penalty still survivable given 500-point employer bonus, but many applicants don't realize the penalty exists until after enrollment decisions are made",
+      "who_it_affects": "Students who chose Ontario or BC colleges for quality reasons and then try to redirect to Manitoba for immigration purposes",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Purchasing batch-produced LMIA job offers from high-volume immigration companies",
+      "why_it_happens": "Price anchoring and false safety in numbers — applicants reason that if a company does hundreds of these cases per year, it must be legitimate and safe",
+      "consequence": "IRCC flags bulk LMIA sellers; applications linked to known fraudulent employers are denied, and applicants receive misrepresentation findings that can result in 5-year bans",
+      "warning_signs": [
+        "Immigration company claims to process hundreds or thousands of LMIA clients per year",
+        "Job offer price is significantly below market (below 150,000 CAD)",
+        "Company cannot explain specific employer background or provide verifiable employer references"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Applying for caregiver or Atlantic immigration with a profile that obviously doesn't match the role",
+      "why_it_happens": "Applicants focus on meeting the minimum threshold requirements on paper, not on whether the overall profile is credible to an immigration officer",
+      "consequence": "Application flagged for detailed verification interview; applicant cannot answer specific questions about their supposed employer or work environment; application rejected with potential misrepresentation finding",
+      "warning_signs": [
+        "Applicant has graduate degree or white-collar professional background",
+        "Job offer is for NOC C/D category role with no plausible connection to applicant's history",
+        "Immigration company does not ask detailed questions about applicant's work history before suggesting the program"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Pursuing provincial entrepreneur immigration without genuine business operational capability",
+      "why_it_happens": "Applicants are told the program has low barriers and that local service providers will handle operations; they underestimate the requirement for genuine personal involvement and milestone achievement",
+      "consequence": "Failure to meet investment, hiring, or profitability commitments in the performance agreement; provincial nomination revoked after 2+ years of time and money spent",
+      "warning_signs": [
+        "Immigration company promises 'full management service' with no need for personal involvement",
+        "Applicant has no prior business ownership or management experience",
+        "Program fee is unusually low for what is promised"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Over-relying on federal EE as the only pathway without calculating actual CRS score first",
+      "why_it_happens": "EE is the most publicly discussed pathway; applicants assume that meeting minimum eligibility thresholds means being competitive in draws",
+      "consequence": "Applicants enter the EE pool with scores of 410-440 and wait indefinitely while draw cutoffs remain above 470-490 for all-program draws; lose years of optimal immigration window age points",
+      "warning_signs": [
+        "Applicant has not calculated their actual CRS score before committing to the EE pathway",
+        "Applicant conflates 'eligible for EE pool' with 'likely to receive ITA'"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Accepting startup visa / self-employed program from immigration companies without verifying the quality of the supporting organization",
+      "why_it_happens": "Applicants cannot distinguish between Tier 1 designated organizations (e.g., CDL, GTAN) and weak incubators; immigration companies exploit this information asymmetry",
+      "consequence": "Application fails at IRCC review stage despite paying full fees; in worst cases, immigration company collects deposit then delays or disappears without delivering the support letter",
+      "warning_signs": [
+        "Company cannot name the specific designated organization that will issue the support letter",
+        "Support letter comes from an obscure incubator with no verifiable track record",
+        "Company does not offer contractual protection allowing withdrawal if team composition is unsatisfactory"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your actual calculated CRS score right now?",
+      "what_it_reveals": "Whether federal EE is viable, whether LMIA job offer boost is needed, or whether provincial nomination is the only realistic pathway",
+      "follow_up_if_yes": "If above 490: consider direct EE application; if 440-490: explore LMIA job offer options; if below 440: evaluate provincial nomination or other federal programs",
+      "follow_up_if_no": "Calculate score immediately using IRCC tool before committing to any pathway — all subsequent advice is meaningless without this number",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does the immigration company you're considering claim to process hundreds or thousands of similar cases per year?",
+      "what_it_reveals": "Whether the company is running a high-volume, batch-processed operation that is likely using weak or fabricated employer relationships",
+      "follow_up_if_yes": "Treat as a red flag; programs requiring genuine employer matching (LMIA, Atlantic, caregiver, provincial entrepreneur) cannot be legitimately scaled to hundreds of clients per year",
+      "follow_up_if_no": "Still verify employer authenticity and company track record independently",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your educational background and work history plausibly match the job offer being arranged for you?",
+      "what_it_reveals": "Whether the application will survive IRCC officer scrutiny on the role-applicant fit dimension",
+      "follow_up_if_yes": "Application has a credible foundation; proceed with verifying employer authenticity",
+      "follow_up_if_no": "High risk of detailed investigation and rejection; reconsider whether this pathway is appropriate regardless of technical eligibility",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "If applying via Manitoba PNP: did you study or work outside Manitoba before coming to Manitoba?",
+      "what_it_reveals": "Whether the -100 point penalty per out-of-province factor applies, and whether total EOI score still clears historical invitation thresholds",
+      "follow_up_if_yes": "Calculate total score after penalty; as long as Manitoba employer 500-point bonus applies, most applicants still qualify based on historical draw data",
+      "follow_up_if_no": "No penalty applies; score calculation is straightforward",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "For SUV applicants: what specific designated organization will issue your support letter, and what is that organization's track record with IRCC approvals?",
+      "what_it_reveals": "Whether the core bottleneck of the startup visa — the quality of the support letter source — is genuinely solved",
+      "follow_up_if_yes": "Verify the organization is on IRCC's current designated list and has a verifiable approval history",
+      "follow_up_if_no": "The application is not ready to proceed; do not pay fees until this is answered concretely",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canada still has an investor immigration program where you invest money and directly receive permanent residency",
+      "actual_reality": "The Quebec investor immigration program (the last pure investment-for-PR program) closed in 2019. All current Canadian pathways require genuine work, business operation, or skills-based competition — there is no invest-and-receive-PR route",
+      "implication": "Applicants marketed 'investor immigration' products should immediately question what they are actually being sold, as the product category no longer exists at the federal level",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Getting a provincial nomination means you have essentially completed the immigration process",
+      "actual_reality": "Provincial nomination is only the first half; federal permanent residency application still takes 1.5-2 years after nomination, and the nominated person must continue working in the province during this period or risk having the nomination reviewed",
+      "implication": "Applicants must plan for 3-4 total years of Canadian residence and genuine work, not just the time to obtain the provincial nomination letter",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "LMIA job offers are a reliable way to add points to EE CRS score",
+      "actual_reality": "As of the 2025 update referenced in the post, IRCC removed LMIA-based CRS score additions, eliminating one of the main paid pathways to boost scores. The EE system is now more purely merit-based",
+      "implication": "Applicants who were planning to purchase LMIA job offers specifically to boost CRS score (rather than as a genuine employment arrangement) need to reassess their strategy entirely",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Low-barrier immigration programs (caregiver, Atlantic Immigration Program) are safe choices for applicants who don't meet higher-tier program requirements",
+      "actual_reality": "Low-barrier programs attract heavier IRCC scrutiny precisely because they are low-barrier; IRCC has specifically increased verification intensity for Chinese applicants in Atlantic Immigration Program and caregivers after widespread abuse",
+      "implication": "A technically eligible application with a mismatched profile faces higher actual rejection risk in these programs than a competitive application in a harder program",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "The EE pool score just needs to be above the minimum eligibility threshold (67 points for FSW) to have a reasonable chance of being drawn",
+      "actual_reality": "Entering the EE pool and being competitive in draws are completely different thresholds. FSW applicants need CRS scores around 490-500+ to be drawn in all-program rounds, while minimum pool eligibility only requires 67 FSW points",
+      "implication": "Many applicants spend months or years in the EE pool with no realistic chance of being drawn, when they should be exploring PNP or other alternatives from the start",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating immigration pathways",
+      "naive_pattern": "Looks at whether they technically meet the minimum eligibility requirements for a program and assumes that means it's viable",
+      "informed_pattern": "Calculates actual competitive ranking within the program (CRS score vs. draw history, EOI score vs. invitation history) before committing to any pathway",
+      "why_it_matters": "Meeting minimum eligibility and having a realistic chance of success are entirely different things in points-based systems; confusing the two leads to years of wasted waiting",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Evaluating immigration companies and agents",
+      "naive_pattern": "Treats high client volume as a trust signal ('they must know what they're doing if they handle thousands of cases')",
+      "informed_pattern": "Treats high client volume as a red flag for programs requiring genuine employer matching, and asks specific questions about employer identity, support letter source, and Barrister resources for appeal",
+      "why_it_matters": "Batch-processed immigration products are systematically detected and flagged by IRCC; the applicant bears all the consequences while the company retains the fees",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Understanding provincial nomination",
+      "naive_pattern": "Sees provincial nomination as the finish line and calculates timeline to nomination letter",
+      "informed_pattern": "Treats provincial nomination as the midpoint and plans for an additional 1.5-2 years of genuine provincial work before federal PR is granted",
+      "why_it_matters": "Applicants who don't plan for the post-nomination federal process, or who leave the province after nomination, risk having their nomination revoked",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Profile-to-program matching",
+      "naive_pattern": "Asks 'which program has the lowest requirements I can technically meet?'",
+      "informed_pattern": "Asks 'which program will an IRCC officer find my application most credible given my actual background?'",
+      "why_it_matters": "Technical eligibility and officer credibility assessment are separate filters; mismatched profiles in low-barrier programs face higher scrutiny and rejection rates than matched profiles in harder programs",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Canada has an investor immigration program where you invest money and get permanent residency",
+      "why_believed": "Investor immigration programs existed historically in Canada (including Quebec) and are still widely marketed by immigration companies; the concept of 'money = visa' is intuitive and has precedent",
+      "actual_rule": "The Quebec investor immigration program closed in 2019. All federal and provincial programs now require genuine work, business operation, skills competition, or family ties — no pure investment-for-PR pathway exists",
+      "real_consequence": "Applicants pay immigration companies for products that don't exist or are misrepresented; they either lose money on undeliverable promises or are directed into fraudulent arrangements",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Getting a provincial nomination means immigration is essentially done — you just wait for paperwork",
+      "why_believed": "The nomination letter is a tangible milestone that feels decisive; the federal stage is framed as a formality by immigration companies incentivized to close the sale",
+      "actual_rule": "After provincial nomination, applicants still need to complete federal PR application (1.5-2 years), must continue genuine employment in the nominated province, and nomination can be revoked if employment conditions change",
+      "real_consequence": "Applicants who stop working or leave the province after nomination face revocation; those who planned their finances around a shorter timeline run into serious problems",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "You can do a provincial nomination, get PR approved, and then land in Canada for the first time",
+      "why_believed": "Some older immigration pathways allowed overseas applicants to receive PR without prior Canadian presence; immigration companies sometimes still imply this is possible",
+      "actual_rule": "No current provincial nomination program allows land-after-PR; IRCC requires the applicant to have genuinely been working in Canada during the nomination period, and absence during this period flags the job offer's authenticity",
+      "real_consequence": "Applications structured this way are flagged for investigation; the job offer's authenticity is questioned, provincial nomination may be revoked, and the federal PR application is rejected",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Buying an LMIA job offer adds reliable CRS points and is a standard, safe way to boost scores",
+      "why_believed": "LMIA job offers did historically add CRS points, and the practice was widespread enough to be normalized in Chinese immigration communities; the transactional framing ('buy points') made it feel like a straightforward product",
+      "actual_rule": "As of 2025, IRCC removed LMIA-based CRS score additions. Even before removal, bulk LMIA sellers were flagged by IRCC, and applications linked to known fraudulent employers carried misrepresentation risk for the applicant",
+      "real_consequence": "Applicants who purchased LMIA job offers from flagged employers received rejection plus misrepresentation findings, potentially resulting in 5-year bars from Canadian immigration",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Low-barrier programs like Atlantic Immigration or caregiver pathways are safer choices for weaker applicants",
+      "why_believed": "Lower minimum requirements feel like lower risk; the logic 'if I barely qualify for the hard program, I should do the easy program' is intuitive",
+      "actual_rule": "IRCC applies heightened scrutiny to low-barrier programs because they attract abuse; Chinese applicants in Atlantic Immigration Program specifically face more rigorous verification of job authenticity and applicant-role fit",
+      "real_consequence": "A weaker applicant with a mismatched profile in a low-barrier program often faces higher practical rejection probability than a strong applicant in a competitive program",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Applicant studied 2 years at Ontario college, graduated, obtained 3-year PGWP, then relocated to Manitoba and worked for a Manitoba employer for 1+ year",
+      "decision": "Applied for Manitoba PNP despite -100 point out-of-province study penalty",
+      "outcome": "EOI score of 718 (above invitation thresholds), received invitation, submitted materials in June, received provincial nomination in October of same year (~4 months processing), successfully obtained provincial nomination letter",
+      "lesson": "Out-of-province study penalty is survivable in Manitoba PNP if the 500-point employer continuity bonus is earned; applicants should not be deterred by the penalty from pursuing Manitoba PNP after relocating",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "situation": "Typical Chinese international student profile: under 30, domestic Chinese bachelor's degree, Canadian college diploma, 1-2 years Canadian work experience, IELTS 4x6",
+      "decision": "Relied solely on federal EE pathway without exploring alternatives",
+      "outcome": "CRS score approximately 424 — consistently below the 450+ draw thresholds that persisted across all 28 draws observed by the original poster, making federal EE draws essentially inaccessible",
+      "lesson": "The most common international student profile in Canada is structurally uncompetitive in federal EE all-program draws; alternative pathways (PNP, language improvement, additional credentials) must be considered from the start rather than as fallbacks",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Applicant asks 'which immigration program has the lowest requirements I can meet?' without asking about officer scrutiny or profile fit",
+      "underlying_state": "Risk minimization through threshold thinking — focusing on getting past the gate rather than on what happens during review; anxiety about being rejected from competitive programs leads to seeking any technically valid option",
+      "how_it_manifests": "Pursuing low-barrier programs (caregiver, Atlantic, provincial entrepreneur) despite obvious profile mismatches; treating minimum eligibility as sufficient",
+      "expert_move": "Reframe: 'Meeting minimum requirements is the entry condition, not the success condition. The question is whether an immigration officer looking at your entire profile will find this application credible. Let's evaluate that.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Applicant has been in EE pool for months or years without receiving ITA, becomes increasingly desperate for any pathway forward",
+      "underlying_state": "Sunk cost + escalating commitment — having invested time in EE makes switching strategies feel like giving up, even when the evidence clearly shows the score is non-competitive",
+      "how_it_manifests": "Continuing to wait in EE pool with sub-450 scores while draw cutoffs remain 490+; becoming vulnerable to exploitative 'guaranteed pathway' sales pitches from immigration companies",
+      "expert_move": "Reframe: 'The time you've spent in the pool is not wasted, but staying in a non-competitive position has a real opportunity cost — your age score is decreasing every year. What would you do differently if you were starting fresh today?'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Applicant who wants to immigrate to Canada is being sold an immigration program by a company that says 'don't worry, we handle everything, many clients have succeeded'",
+      "underlying_state": "Authority transfer and social proof bias — delegating due diligence to the company because the applicant doesn't have domain expertise, and using other people's claimed success as a proxy for safety",
+      "how_it_manifests": "Paying fees without asking for specific employer names, support letter organization names, or Barrister details; accepting 'we've done hundreds of these' as a sufficient answer",
+      "expert_move": "Provide a concrete set of questions the applicant can ask: 'What is the name of the specific employer / designated organization? What is their track record with IRCC? What happens if the officer questions the application — who handles the appeal and what is their name and background?'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Applicant is evaluating staying in Canada vs. returning to China, and lists domestic China problems (pollution, housing costs, education) as primary reasons to stay",
+      "underlying_state": "Push-factor framing and negativity bias about the origin country — immigration decision is being driven by what they're running from rather than a clear-eyed assessment of what they can realistically achieve in Canada",
+      "how_it_manifests": "Committing to any available immigration pathway regardless of fit or risk, because 'I can't go back'; vulnerability to exploitative products because the bar for 'acceptable' is set by fear of the alternative",
+      "expert_move": "Reframe: 'Your motivation to stay is valid. But the question isn't stay-or-go — it's which specific pathway gives you the highest probability of a stable legal status in Canada. Let's focus on what you can actually control.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I want to immigrate to Canada — which program should I choose?",
+      "reframe": "Before asking which program to choose, calculate your actual CRS score and compare it to real draw history; the answer to 'which program' is entirely determined by where your score puts you relative to what's competitive",
+      "why_it_works": "Shifts from a product-selection mindset (which the immigration industry exploits) to a data-first diagnostic mindset; forces the applicant to engage with their actual competitive position rather than abstract program descriptions",
+      "example_language": "'The question isn't which program sounds good — it's what your score is and where that puts you in the queue. Everything else follows from that number.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "This immigration company does hundreds of cases per year, so they must be experienced and trustworthy",
+      "reframe": "For programs requiring genuine employer matching (LMIA, Atlantic, caregiver, provincial entrepreneur), volume is a red flag not a trust signal — these programs structurally cannot be legitimately batch-processed",
+      "why_it_works": "Inverts a cognitive heuristic (scale = competence) that is specifically exploited by fraudulent immigration companies; gives the applicant a concrete counter-signal to act on",
+      "example_language": "'Any company that claims to do hundreds of LMIA job offers per year — ask yourself: where are all these real employers coming from? This isn't a business you can batch-produce.'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I got the provincial nomination letter, so my immigration is basically done",
+      "reframe": "Provincial nomination is the halfway point, not the finish line — you still have 1.5-2 years of federal processing ahead, and you need to keep genuinely working in the province throughout",
+      "why_it_works": "Corrects a dangerous milestone illusion before the applicant makes decisions (leaving the province, stopping work) that would trigger nomination revocation",
+      "example_language": "'Think of the provincial nomination as getting accepted to university — it's great news, but you still have to show up and do the work, or they take it back.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_移民加拿大有哪些攻略",
+  "_source_regions": [
+    "canada"
+  ]
+}

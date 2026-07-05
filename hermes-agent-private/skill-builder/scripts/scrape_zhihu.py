@@ -33,17 +33,73 @@ from utils import get_skill_dir
 # ── 目标问题 ID（已知的移民相关知乎问题）────────────────────────────────────
 SKILL_QUESTIONS: dict[str, list[str]] = {
     "immigration-planning": [
-        # 美国签证/移民
-        "21561791",   # H-1B 相关
-        "19864430",   # OPT 转 H-1B
-        "20399714",   # 美国绿卡
-        "23020116",   # F-1 签证
+        # 美国签证/H-1B
+        "21014657",   # 美国H1B签证抽签失败了怎么办？
+        "43629089",   # 美国四大工作一年，h1b连续两年没抽中，接下来该咋走？
+        "596304593",  # H-1B没中签，还想留在美国怎么办？
+        "29165411",   # 去美国读CS研究生，最终能留下工作甚至拿到绿卡有多难？
+        # 美国绿卡
+        "473514443",  # 从H1B到绿卡要多少年？
         # 加拿大移民
-        "24259711",   # Express Entry
-        "22578394",   # PGWP
-        "21304289",   # 加拿大 PR
-        # 美加对比
-        "20987654",   # 美国 vs 加拿大移民
+        "34491996",   # 在加拿大申请毕业工签PGWP过程（网申和边境申请）
+        "324882228",  # 加拿大PGWP能毕业后先回国再出国办理吗？
+        "19684217",   # 移民加拿大有哪些攻略？
+    ],
+    "grad-school-selection": [
+        # 套磁/联系教授
+        "460081164",  # 申请国外博士如何与教授「套磁」？
+        "25380930",   # 申请国外 PhD 的时候如何与教授套磁？
+        "376167481",  # 美国的PhD是都需要套磁吗？
+        # 导师选择
+        "9313552960", # 海外PhD申请中，如何选择导师？
+        # 读博 vs 工作决策
+        "418370837",  # 计算机视觉读博还是工作？
+        "654583143",  # 读博还是工作？
+        # 国内 vs 国外读博
+        "23482329",   # 国内读博和国外读博的优劣各在那些方面？
+    ],
+    "job-search-strategy": [
+        # 留学生美国求职
+        "37852933",   # 留学生在美国找工作怎么找？
+        "28302246",   # CS专业留学生毕业之后留美的难度有多大？
+        "68214796",   # 在美国名校毕业后找工作有多难？
+        # Cold email
+        "58641447",   # 如何进行cold email？
+        "50714531",   # 加拿大留学生在本地找工作有多难？
+        # H1B cap-exempt / 非盈利路线
+        "460879945",  # 美国留学：留学生如何拿到非盈利机构的H1B？
+    ],
+    "pm-career": [
+        # 职业规划/晋升
+        "20791021",   # 产品经理的职业生涯规划是怎么样的？
+        "20785803",   # 产品经理的职业发展、岗位晋升方面怎么样，是否很困难？
+        "534288159",  # 产品经理要如何晋升？有哪些晋升路径？
+        "290236275",  # 产品经理工作 3-5 年后有哪些发展路径？
+        "585866628",  # 产品经理应该如何进行职业规划？
+        # 35岁/跳槽
+        "376753435",  # 那些35岁以上的产品经理都去做什么了？
+        "22179195",   # 互联网人跳槽的注意事项有哪些？
+    ],
+    "salary-negotiation": [
+        # Offer谈判
+        "365593505",  # 收到offer了还能不能再谈薪资？
+        "19972942",   # 收到 offer 后能重新谈吗？
+        "300000799",  # 接到了不同的 OFFER 应该怎么比较？
+        "23273036",   # 应聘时何时适合谈薪资？
+        "667374182",  # 面试时谈薪的技巧有些什么啊？
+        # 股权/RSU
+        "19853693",   # 受限股票单位（RSU）与股票期权（Stock Option）的区别
+        "29939373",   # 求问美国it公司的rsu和bonus是怎么回事？
+    ],
+    "stay-or-return": [
+        # 留美 vs 回国
+        "28965134",   # 未来应留在美国还是回国生活？
+        "452317991",  # 留在美国还是回中国？
+        "496079523",  # 出国留学后应不应该回国？
+        "41981949",   # 海归女硕士，快毕业了是继续留在美国还是回国工作？
+        "269916009",  # 出国留学后到底是否回国工作？
+        "452485057",  # 如果你已经有了美国工作签，你会选择留美还是回国？
+        "275084689",  # 要不要回国？
     ],
 }
 
@@ -86,26 +142,12 @@ def _format_post(question: str, answer_body: str, upvotes: int,
 
 def _scrape_scrapling(question_ids: list[str], posts_per_q: int,
                       out_dir: Path) -> list[Path]:
-    # 优先用 StealthyFetcher（curl_cffi，TLS 指纹伪装，不需要 Playwright）
-    # 若不可用则尝试 DynamicFetcher（Playwright）
-    fetcher = None
+    # Scrapling v0.4.9+: use class-method .fetch() — no instantiation needed
     try:
         from scrapling.fetchers import StealthyFetcher
-        fetcher = StealthyFetcher(auto_match=True)
-        print("  [Scrapling] 使用 StealthyFetcher (curl_cffi)")
-    except Exception:
-        pass
-
-    if fetcher is None:
-        try:
-            from scrapling.fetchers import DynamicFetcher
-            fetcher = DynamicFetcher(auto_match=True)
-            print("  [Scrapling] 使用 DynamicFetcher (Playwright)")
-        except Exception:
-            pass
-
-    if fetcher is None:
-        print("  Scrapling 不可用，尝试 httpx 模式...")
+        print("  [Scrapling] 使用 StealthyFetcher.fetch() (patchright + stealth)")
+    except ImportError:
+        print("  scrapling[all] 未安装，切换到 httpx 模式...")
         return _scrape_httpx(question_ids, posts_per_q, out_dir)
 
     scraped_at = datetime.utcnow().strftime("%Y-%m-%d")
@@ -115,7 +157,7 @@ def _scrape_scrapling(question_ids: list[str], posts_per_q: int,
         url = f"https://www.zhihu.com/question/{qid}"
         print(f"  [Scrapling] 抓取问题 {qid}...")
         try:
-            page = fetcher.get(url, headless=True, network_idle=True)
+            page = StealthyFetcher.fetch(url, headless=True, network_idle=True)
             time.sleep(2)
         except Exception as e:
             print(f"    跳过 {qid}: {e}")
@@ -128,19 +170,25 @@ def _scrape_scrapling(question_ids: list[str], posts_per_q: int,
             continue
         question = title_el[0].text.strip()
 
-        # 回答列表
+        # 回答列表 — iterate answers independently of vote buttons
+        # (vote counts may not be visible without login; zip with vote_els causes all
+        # answers to be skipped if vote_els is empty)
         answer_els = page.css("div.RichContent-inner")
         vote_els = page.css("button.VoteButton--up")
+        vote_texts = [v.text.strip() for v in vote_els]
 
         results: list[tuple[str, int]] = []
-        for ans_el, vote_el in zip(answer_els[:posts_per_q + 3], vote_els):
-            text = ans_el.text.strip()
+        for i, ans_el in enumerate(answer_els[:posts_per_q + 3]):
+            # .text only returns direct text nodes; get_all_text() traverses children
+            raw_text = ans_el.get_all_text(separator=" ")
+            text = (raw_text if isinstance(raw_text, str) else " ".join(raw_text)).strip()
+            if len(text) < 100:
+                continue
             try:
-                votes = int(re.sub(r"[^\d]", "", vote_el.text.strip()) or "0")
-            except ValueError:
+                votes = int(re.sub(r"[^\d]", "", vote_texts[i]) or "0") if i < len(vote_texts) else 0
+            except (ValueError, IndexError):
                 votes = 0
-            if votes >= MIN_UPVOTES and len(text) > 100:
-                results.append((text, votes))
+            results.append((text, votes))
 
         if not results:
             print(f"    {qid}: 无有效回答，跳过")
@@ -620,16 +668,391 @@ Super Visa：父母/祖父母可以申请最长5年的访客签证，每次入�
             ("美国绿卡持有者申请父母这条路我研究过，排期真的很长。我现在H-1B身份，估计等我拿到绿卡，最快也是10年后的事，那时候父母七十多了再申请父母移民……时间轴根本不对。", 378),
         ],
     },
+    # ═══════ grad-school-selection ════════
+    {
+        "skill": "grad-school-selection",
+        "question": "申请PhD时排名重要还是导师重要？怎么权衡？",
+        "regions": ["us", "canada"],
+        "url": "https://www.zhihu.com/question/gs-demo1",
+        "upvotes": 3241,
+        "answer": """直接结论：**导师远比排名重要**，但这个结论需要几个重要的前提条件。
+
+**为什么导师比排名重要**
+
+PhD录取和培养的核心机制是「局部竞争」而非「全局竞争」——你不是在和全球所有申请者竞争，你是在和对同一个导师感兴趣的一小批人竞争。一个和某导师有很强研究匹配的普通申请者，往往比一个背景强但方向不匹配的申请者更容易被录取。
+
+毕业后的去向更是由导师决定的：推荐信是导师写的，合作网络是导师建立的，第一份工作的敲门砖是导师打开的。
+
+一个数据点：全美排名第一的项目里有Ghost advisor，也有Exploiter（榨取学生的导师）。排名第25的项目里有每年帮学生发3篇顶会的好导师。你最后去哪里，取决于你在哪个实验室，不是你在哪个系。
+
+**排名真正有影响的情形**
+
+1. **学术职场**：如果你目标是当教授，top-5/top-10项目确实在academic job market上有优势。但即便如此，导师的推荐信和学生的publication record才是核心，不是系名。
+
+2. **信息不足时的proxy**：如果你对导师完全没有研究，排名可以作为平均质量的粗略代理。但这是信息不足时的fallback，不是真正的决策依据。
+
+3. **完全同等条件下**：如果两个导师的所有维度都相同（publication speed、mentorship quality、grant stability、placement record），那排名更高的项目是合理的tiebreaker。
+
+**如何真正评估导师**
+
+不要只看h-index和论文数量。看：
+1. **最近5个毕业生去了哪里**（是你想去的方向吗？）
+2. **学生的一作论文数量**（学生有没有独立的publication track record？）
+3. **Grant状态**（NSF/NIH Award Search可以查到在研项目和结束时间）
+4. **实验室规模**（20个学生的明星导师不等于你能得到充足的mentorship）
+5. **现任和前任学生的真实反馈**（LinkedIn找前学生，私信问"Would you choose this advisor again?"）
+
+一个"很独立"的导师描述几乎从来不是优点。它的实际含义是：你在自己摸索，导师不管你。""",
+        "more_answers": [
+            ("补充一个具体建议：套磁时问导师'您最近毕业的5个学生现在在哪里？'这个问题很难造假，答案直接告诉你这个实验室的培养质量。如果导师回答不上来或者含糊其辞，这本身就是信息。", 891),
+            ("我亲身经历：拒了top3，去了top20，原因是top20那个导师的组平均毕业时间4.5年且人人有顶会，top3那个导师的组平均6年+有人毕不了业。现在第三年，两篇顶会，完全不后悔。", 734),
+            ("学术方向补充：如果你的目标是美国教职，学校排名确实在academic job market上有作用，但没有大家想的那么绝对。看AcademicJobsOnline的数据，tenured/tenure-track职位有相当比例来自top10以外的项目，关键在于publication在领域的影响力。", 456),
+        ],
+    },
+    {
+        "skill": "grad-school-selection",
+        "question": "读PhD值不值？从移民、职业、个人发展三个角度分析",
+        "regions": ["us", "canada"],
+        "url": "https://www.zhihu.com/question/gs-demo2",
+        "upvotes": 2876,
+        "answer": """这个问题没有统一答案，但有清晰的分析框架。我从三个角度拆解。
+
+**移民角度（针对国际学生）**
+
+Funded PhD是一种被严重低估的移民工具：
+- F-1身份持续5-6年（甚至更长）
+- 毕业后有新的12个月OPT，加STEM OPT可延长到3年
+- 相当于总共多了4-7年的合法居留时间，多3次参与H-1B抽签的机会
+- PhD期间可以积累EB-1A/O-1的资质（顶刊论文、审稿人经历、获奖）
+
+对比：自费MS给你1-3年OPT窗口，花费15-20万美元，没有H-1B之外的immigration pathway积累。
+
+这不是说PhD比MS好，而是说如果你要读研究生，funded PhD的immigration value远高于self-funded MS。
+
+**职业角度**
+
+PhD值不值取决于你想做什么：
+
+| 目标职位 | PhD价值 |
+|--------|--------|
+| 学术研究/教职 | 必须的，没有选项 |
+| 工业界Research Scientist | 高，大多数顶级职位要求PhD |
+| Applied Scientist/ML Engineer | 中，PhD有溢价但不是门槛 |
+| 普通SWE/数据工程师 | 低，4-5年机会成本很难回收 |
+| 管理/产品方向 | 几乎没有额外价值 |
+
+**个人发展角度**
+
+读PhD的隐性代价经常被低估：
+- 5-6年是人生最黄金的职业积累期
+- Stipend（$30K-40K）在消费物价较高的大学城往往很紧张
+- 导师关系的好坏对心理健康影响极大，这不是小事
+- PhD dropout率40-50%，进去不一定能出来
+
+读PhD的隐性收益也经常被低估：
+- 真正的研究方法论训练
+- 高密度的领域专家网络
+- 5年时间慢慢确认你真正想做什么
+
+**我的建议**
+
+在决定读不读PhD之前，先回答这一个问题：「你能说出一个具体的研究问题，它让你觉得值得花5年去回答吗？」
+
+如果答案是yes——读。如果答案是「我对这个领域感兴趣」但说不出具体问题——先工作1-2年再决定。""",
+        "more_answers": [
+            ("关于EB-1A那段：需要说明，PhD毕业直接申EB-1A通过率不高，通常需要postdoc或工业界研究职位积累更多成果。但PhD期间确实可以开始积累（审稿人、领域获奖），方向是对的，只是不能高估速度。", 678),
+            ("补充一个很多人忽略的点：Funded PhD期间通常有医疗保险（学校提供），这对国际学生来说价值不小。自费MS的医疗保险经常是单独购买的，一年额外几千美元。", 512),
+        ],
+    },
+    {
+        "skill": "grad-school-selection",
+        "question": "CS/ML方向工业界PhD和学术PhD有什么实质区别？",
+        "regions": ["us"],
+        "url": "https://www.zhihu.com/question/gs-demo3",
+        "upvotes": 2134,
+        "answer": """这两条路在申请阶段看起来类似，但实际上培养逻辑、选择标准、毕业后的竞争力都有明显不同。
+
+**核心区别**
+
+| 维度 | 学术导向PhD | 工业界导向PhD |
+|-----|-----------|------------|
+| 发表目标 | NeurIPS/ICML/ICLR等顶会，追求理论novelty | 顶会发表+应用相关性，两者都要 |
+| 导师重要性 | 极高，影响学术job market的推荐信 | 高，但更看重导师的工业界connection |
+| 导师选择标准 | h-index、citation、学术声誉 | 在Google/Meta/OpenAI等地的合作项目、前学生的去向 |
+| 实习重要性 | 中等，不影响学术轨道 | 极高，实习是进入工业界lab的核心pathway |
+| 程序排名 | 更重要（学术job market偏好top5） | 相对不那么重要，导师connection > 程序排名 |
+| 毕业时间 | 5-6年 | 4-5年更常见 |
+
+**如何判断一个导师是工业界导向还是学术导向**
+
+看这几个维度：
+1. 他/她的学生毕业后主要去了哪里？（学术vs工业界比例）
+2. 他/她有没有Google/Meta/Microsoft的合作项目或consulting关系？
+3. 他/她的学生每年internship在哪里？（DeepMind/OpenAI > 普通科技公司 > 没有实习）
+4. 他/她自己有没有工业界经历？
+
+**一个常见的误区**
+
+很多人以为「工业界PhD」只是指去工业界lab（如Google Brain）做的PhD。实际上，大多数工业界导向的PhD还是在大学，只是导师风格不同。
+
+另外，工业界lab（Google、Meta、Microsoft）现在也有自己的PhD项目或合作项目，和大学联合培养。这是第三条路，不完全等同于传统大学PhD。
+
+**我的建议**
+
+如果你目标是工业界research scientist：
+- 选有工业界connection的导师 > 选顶排名的程序
+- 实习track record > 论文数量（但要有足够的publication）
+- 申请时主动问：「您的学生在哪里实习过？有没有和工业界lab的合作项目？」""",
+        "more_answers": [
+            ("补充工业界PhD申请中经常被忽视的一点：问清楚导师对internship的态度。有些学术导向的导师不鼓励学生实习（'影响研究进度'），有些工业界导向的导师主动帮学生找实习。这个差别在毕业找工作时影响巨大。", 567),
+            ("Applied Scientist（AS）和Research Scientist（RS）在大厂的区别：RS通常要求PhD，做更偏基础的研究；AS门槛更低，硕士也可以申请，工作更偏应用。如果你的目标是RS，PhD几乎是必须的；如果目标是AS，PhD溢价存在但不是硬性要求。", 434),
+        ],
+    },
+    {
+        "skill": "grad-school-selection",
+        "question": "如何判断一个PhD导师是好导师还是坏导师？有什么具体指标？",
+        "regions": ["us", "canada"],
+        "url": "https://www.zhihu.com/question/gs-demo4",
+        "upvotes": 1987,
+        "answer": """判断导师质量是申请PhD过程中最重要也最容易被忽视的步骤。给几个具体可操作的指标。
+
+**可以直接查的客观指标**
+
+1. **最近毕业生去向**：Google Scholar或LinkedIn查他/她指导的学生，看过去5年毕业的学生现在在哪里。这是最难造假的指标。
+
+2. **学生publication track record**：看学生是不是一作/二作出现在论文里。如果一个导师发了很多论文但学生名字总是排在第5位之后，说明学生没有得到应有的credit。
+
+3. **Grant状态**：NSF Award Search或NIH Reporter查导师的在研项目。grant快断掉意味着RA funding可能有风险。
+
+4. **实验室规模**：一个导师带20个学生和带5个学生，你能得到的attention完全不同。
+
+**需要主动问的定性指标**
+
+联系实验室的在读学生，问：
+- 「每周/每月和导师见几次面？」
+- 「导师一般多久回邮件？」
+- 「你们有问题可以随时找导师还是只有固定的meeting？」
+
+联系已经毕业或离开的学生（更重要！），问：
+- **「如果重来一次，你还会选择这个导师吗？」**
+- 「你毕业用了几年？」
+- 「你觉得导师对你的职业发展有什么帮助？」
+
+**四种导师类型**
+
+- **理想型**：定期meeting，快速回复，推学生publication，有industry/academic connection帮助就业
+- **Ghost型**：消失不见，不管你，见面靠你追，发表靠你自己——很多人说的"很独立的导师"
+- **Exploiter型**：让你做项目但不给你author credit，或者让你做大量tech支持而不是真正研究
+- **Pre-tenure高风险型**：本人很好，但可能tenure失败或中途离开，你面临换导师或换学校
+
+最重要的一点：**"很独立"这个词出现在学生评价里，几乎永远是警告而不是优点。** 它的实际含义是导师不管学生，学生被迫自己摸索。""",
+        "more_answers": [
+            ("补充一个简单粗暴但很有效的方法：去看导师指导的学生的毕业年份。正常PhD 4-6年毕业。如果一个导师的学生普遍7-9年才毕业，或者有人入学很多年了还没有毕业在读，这是很大的红旗。", 734),
+            ("关于联系学生：很多学生不方便公开说导师的坏话（毕竟还在实验室），但在私信里通常更坦诚。问问题的方式也很重要，不要直接问'你导师怎么样'，而是问具体的问题，比如'你觉得在这个实验室做research最困难的地方是什么'。", 589),
+        ],
+    },
+    {
+        "skill": "job-search-strategy",
+        "question": "国际留学生在美国找工作，如何应对雇主对visa sponsorship的顾虑？",
+        "regions": ["us"],
+        "url": "https://www.zhihu.com/question/jss-demo1",
+        "upvotes": 3421,
+        "answer": """这是国际学生找工作最核心的心理和策略问题。分几个层面回答。
+
+**首先要理解雇主的顾虑是什么**
+
+雇主说"我们不sponsor"通常不是因为他们有什么原则性反对，而是因为：
+1. H-1B有lottery（抽签），他们不确定你能留下来
+2. 他们不清楚流程，觉得很复杂
+3. 他们有过不好的经历（之前帮人sponsor了，然后人走了）
+4. 公司规模小，没有immigration attorney
+
+这意味着不同的公司有不同的objection，需要不同的应对方式。
+
+**策略一：用数据降低他们对lottery的顾虑**
+
+H-1B抽签概率大约是35-40%（近年）。如果雇主赞助了你但你没被选上，意味着他们前功尽弃。
+
+可以这样说：「我了解H-1B的流程。我有3年STEM OPT，不管lottery结果怎样，我都可以持续工作。如果第一年没中，我还有两次机会。在这段时间内，我和普通美国员工没有任何区别。」
+
+**策略二：目标公司先做sponsorship调研**
+
+在投简历之前，先查H1Bdata.info或MyVisaJobs——看这家公司过去几年sponsor了多少H-1B，什么职位，批准率多少。没有sponsorship记录的公司基本不值得投入时间。
+
+**策略三：internship路径比full-time cold apply更可靠**
+
+在一家公司实习过并拿到return offer，比从外部cold apply好10-20倍。公司已经认识你，已经invest过training，他们的sponsor意愿比对陌生人高得多。
+
+Internship → return offer是国际学生最reliable的H-1B sponsorship路径。
+
+**策略四：networking先于投简历**
+
+通过内推进入面试流程的人，在offer阶段很少被因为visa问题拒掉——因为已经有人在内部为你背书了。
+
+冷申请被以「我们不sponsor」直接刷掉，很多时候是因为根本没有人在内部了解你是谁。
+
+**关于visa问题什么时候提**
+
+最好的时机是offer阶段，而不是第一轮面试。到了offer阶段，他们已经决定要你了，visa只是一个需要解决的行政问题，不是决定要不要你的因素。
+
+如果他们在电话面试里直接问，诚实回答，但要把重点放在"我可以合法工作X年"上，而不是"我需要你帮我做Y件事"上。""",
+        "more_answers": [
+            ("补充一点关于中小公司：很多中小公司说'我们不sponsor'不是因为他们不愿意，而是因为他们从来没做过，不知道流程，觉得很麻烦。如果你面试进展顺利，可以说：'关于H-1B我可以介绍一下流程，实际上公司的工作量没有想象中那么大。'有些公司是可以被说服的。", 1234),
+            ("关于timing：研究显示大多数international student在拿到offer之前就提visa的话，rejection率显著更高。拿到offer之后再谈，双方都更有motivation解决这个问题。", 876),
+        ],
+    },
+    {
+        "skill": "job-search-strategy",
+        "question": "如何用冷邮件/LinkedIn冷链接找到工作？有没有具体有效的模板？",
+        "regions": ["us", "canada"],
+        "url": "https://www.zhihu.com/question/jss-demo2",
+        "upvotes": 2876,
+        "answer": """冷邮件找工作的核心误区是：大家把它当成"发简历的另一种方式"，但实际上它是"建立关系的第一步"。这个认知的差别决定了一切。
+
+**结构：三段话，不多不少**
+
+第一段（1-2句）：具体的共同点或连接
+- 不要写：「我对贵公司非常感兴趣」
+- 要写：「我看了你上周在[大会]分享的[具体话题]，你提到的[某个具体观点]恰好解决了我在[项目]里遇到的一个问题」
+
+第二段（1句）：一行证明你是相关的人
+- 不要写：「我有扎实的编程能力和良好的沟通能力」
+- 要写：「我在[某项目]做了[具体的事]，结果是[具体的数字]」
+
+第三段（1句）：唯一的要求——一个20分钟的电话
+- 不要写：「希望有机会加入贵公司」
+- 要写：「请问您接下来几周有没有方便的时间通个20分钟的电话？」
+
+**总字数：100字以内（英文）或200字以内（中文邮件）**
+
+**找谁发？**
+
+目标是你未来可能的直属manager，不是HR，不是VP，不是CEO。
+
+LinkedIn搜索：[公司名] + [你目标的team名] + [Manager/Lead级别] → 找最近6个月在LinkedIn上发过技术帖子的人（说明他们活跃，更可能回复）。
+
+**跟进节奏**
+
+- 发出后第4天：如果没回复，发一条1句话的跟进（「Hi XX，上周发过一封邮件，不知道是否有机会聊聊」）
+- 第9天：再跟进一次，这次可以加一个具体的问题或者分享一个相关的东西
+- 第14天：最后一次，给对方一个台阶下（「如果现在不是好时机，完全理解，之后有机会再联系」）
+- 三次之后没回复：移步联系同公司的另一个人
+
+**回复率参考**：精准执行这个方法，对tech岗位通常有15-25%的回复率（远高于海投的1-3%）。""",
+        "more_answers": [
+            ("关于什么时候ask for referral（内推）：不要在第一封邮件里要内推，也不要在第一个call里要内推。做法是：第一个call好好聊，结束后当天发感谢邮件（提一个具体的聊天内容），2-4周后如果有合适的职位再ask for referral。这时候社交债务已经建立，成功率高很多。", 987),
+            ("LinkedIn InMail vs 邮件：邮件的回复率通常高于InMail，因为InMail太多人用，已经有了spam的感觉。如果能找到对方的工作邮箱（公司官网、GitHub、学术主页）优先用邮件。找不到邮箱再用InMail。", 756),
+        ],
+    },
+    {
+        "skill": "job-search-strategy",
+        "question": "国际学生在美国拿到offer之后可以谈薪吗？谈了会影响visa sponsorship吗？",
+        "regions": ["us"],
+        "url": "https://www.zhihu.com/question/jss-demo3",
+        "upvotes": 4123,
+        "answer": """可以谈，而且应该谈。「谈薪会影响visa sponsorship」这个担心是错误的，但它让很多国际学生每年损失数万美元。
+
+**为什么这个担心是错的**
+
+雇主决定是否sponsor visa，和雇主决定给你多少薪资，是两个独立的决策。
+
+到了offer阶段，sponsor的决策已经做完了——他们已经决定要你，已经愿意承担sponsorship的成本和流程。谈薪是在这个决定之后进行的，它不会"撤销"sponsorship决定。
+
+公司因为专业的薪资谈判而撤回offer，在正规公司几乎不存在。这样做对公司的声誉伤害远大于多付几千美元薪资。
+
+**H-1B的prevailing wage要求实际上帮了你**
+
+H-1B要求雇主支付"prevailing wage"——也就是该职位在该地区的市场平均工资水平。如果雇主在sponsor H-1B，他们的底价已经被法规锚定了。你从这个底价往上谈，完全正当。
+
+**怎么谈**
+
+拿到offer之后，给recruiting coordinator或recruiter打电话：
+
+「感谢贵公司的offer，我非常excited。在正式接受之前，我想就薪资聊一聊。Base是$X，根据我对这个职位在[城市]的市场行情的了解，我希望能讨论一个接近$Y的数字。请问这方面有灵活性吗？」
+
+然后保持沉默，等对方回应。
+
+**如果对方说"这个price是固定的"**
+
+大公司的pay band可能确实有限制，但你还有：
+1. Signing bonus（通常在band之外，更灵活）
+2. Equity（RSU数量，通常可谈）
+3. 如果有competing offer，这是最强的筹码
+
+国际学生谈薪的心理障碍主要来自感觉自己"应该感激对方愿意sponsor"。但这个框架是错的——你是一个有市场价值的专业人士，visa只是一个需要处理的行政事项，不是你的身份定义。""",
+        "more_answers": [
+            ("补充数据：根据各种调查，不谈薪的人和谈薪的人，第一年薪资差距平均在$10,000-$20,000之间，而且这个差距会随着每次涨薪百分比积累，长期差距更大。国际学生群体不谈薪比例显著高于本地学生，差距来自于这个错误的担心。", 1567),
+            ("关于timing：最好在oral offer之后（written offer之前）谈，这个时间窗口双方都还在'一起把事情做成'的心态里，而不是正式的合同阶段。", 1023),
+        ],
+    },
+    {
+        "skill": "job-search-strategy",
+        "question": "加拿大PGWP毕业生如何规划从找工作到拿到PR的完整路径？",
+        "regions": ["canada"],
+        "url": "https://www.zhihu.com/question/jss-demo4",
+        "upvotes": 2654,
+        "answer": """PGWP到PR是一个可以清晰规划的路径，但需要理解几个关键节点。
+
+**第一步：理解PGWP的年限**
+
+PGWP年限 = 你完成的项目年限，上限3年。
+- 2年制硕士 → 3年PGWP
+- 1年制硕士/Graduate Certificate → 1年PGWP
+
+年限的重要性：1年PGWP意味着你必须在1年内找到工作、积累1年经验、启动PR申请，时间非常紧；3年PGWP则有充裕的时间。项目选择很大程度上决定了移民路径的难度。
+
+**第二步：找工作期间的核心优势**
+
+PGWP是open work permit，不是employer-specific。你告诉雇主：「我有3年开放工作许可，不需要您做任何申请或提交任何文件。」
+
+这和美国的OPT/H-1B体验完全不同——加拿大雇主不需要为你做任何移民相关的事情。
+
+**第三步：1年工作经验后进入CEC（加拿大经验类别）**
+
+在加拿大技术性工作（NOC TEER 0/1/2/3）满1年后，你有资格申请Canadian Experience Class（CEC）。
+
+CEC通过Express Entry系统运作：
+- 创建Express Entry profile
+- 系统根据CRS（综合排名分数）排名
+- 分数够高的人收到ITA（邀请申请）
+- 提交申请 → PR（处理时间约6-12个月）
+
+**第四步：提升CRS分数的具体方法**
+
+CRS分数由年龄、教育、工作经验、语言成绩决定。可以主动提升的部分：
+
+1. **语言成绩（最重要）**：IELTS Academic或CELPIP要尽量拿高分。CLB 9-10分对应的CRS分明显更高。
+2. **法语成绩**：有法语能力（TEF/TCF）可以额外加分，且进入法语bilingual池，CRS门槛低很多。哪怕B1/B2水平都有帮助。
+3. **省提名（PNP）**：很多省有tech-specific的提名项目（BC Tech Pilot、Ontario OINP等），被省提名后可以额外加600分，基本等于直接拿到PR邀请。
+4. **Job offer加分**：LMIA支持的job offer可以加50-200分（但获得LMIA本身需要雇主主动操作）
+
+**整体时间线（以3年PGWP为例）**：
+
+- Year 1：找工作，开始工作
+- Month 12-18：满足CEC 1年经验要求，语言考试（提前准备）
+- Month 18-24：创建Express Entry profile，等待ITA
+- Month 24-36：提交PR申请，等待批准（通常6-12个月）
+
+最理想的情况：在PGWP到期前就能拿到PR，之后不再依赖任何work permit。""",
+        "more_answers": [
+            ("关于PNP的补充：各省的tech PNP池子经常开放和关闭，而且对NOC代码有要求。BC Tech Pilot和Ontario Masters Graduate Stream是最常被推荐的两个。建议关注各省移民局官网，有新批次时第一时间申请。", 876),
+            ("法语加分这点被很多人低估了。进入French bilingual pool的CRS门槛通常比regular pool低30-50分。如果你有法语背景（甚至只是高中学过），认真备考TEF或TCF很值得。3-6个月的准备可能让你早一两年拿到PR。", 734),
+        ],
+    },
 ]
 
 
 def scrape_demo(posts_per_q: int, out_dir: Path,
-                question_ids: Optional[list[str]] = None) -> list[Path]:
+                question_ids: Optional[list[str]] = None,
+                skill: str = "immigration-planning") -> list[Path]:
     scraped_at = datetime.utcnow().strftime("%Y-%m-%d")
-    posts = DEMO_POSTS if not question_ids else DEMO_POSTS[:len(question_ids)]
+    # Filter by skill field; posts without a skill field default to immigration-planning
+    posts = [p for p in DEMO_POSTS if p.get("skill", "immigration-planning") == skill]
+    if not posts:
+        posts = DEMO_POSTS  # fallback: return all if no skill match
 
     written: list[Path] = []
-    for post in posts[:max(posts_per_q * 2, len(DEMO_POSTS))]:
+    for post in posts[:max(posts_per_q * 2, len(posts))]:
         more = post.get("more_answers", [])
         content = _format_post(
             question=post["question"],
@@ -675,13 +1098,13 @@ def main() -> None:
 
     if args.demo:
         print(f"[demo 模式] 生成知乎合成数据 ({args.skill})")
-        written = scrape_demo(args.posts, out_dir, question_ids)
+        written = scrape_demo(args.posts, out_dir, question_ids, skill=args.skill)
     else:
         print(f"[知乎抓取] 目标问题数: {len(question_ids)}")
         written = _scrape_scrapling(question_ids, args.posts, out_dir)
         if not written:
             print("真实抓取未返回结果，切换到 demo 模式")
-            written = scrape_demo(args.posts, out_dir, question_ids)
+            written = scrape_demo(args.posts, out_dir, question_ids, skill=args.skill)
 
     print(f"\n写入 {len(written)} 个文件 → {out_dir.relative_to(skill_dir.parent.parent)}/")
     for p in written:

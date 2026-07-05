@@ -1,0 +1,49 @@
+{
+  "skill_name": "International Student Job Search Strategist",
+  "overall_score": 4.4,
+  "summary": "This is a genuinely strong skill that demonstrates real domain expertise — specific numbers, immigration-law-aware framing, and concrete tactical heuristics that go well beyond standard career advice. It loses points primarily on a few unverified statistics, some US-centric blind spots, and missing coverage of important scenarios (STEM OPT employer requirements, day-1 CPT schools, in-person networking).",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 5,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 4,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The 'two clocks' framing ('sales funnel against two clocks: the hiring cycle and the immigration calendar') is genuinely expert and non-obvious — it reframes the entire problem from 'find a job' to 'align two independent timelines,' which is the core insight novices miss.",
+    "Heuristics are unusually specific and operational: 'Keep cold emails to 50–125 words,' 'Target managers 1–2 levels above the target role with <2 years tenure,' and 'Never exceed 11 months of cumulative full-time CPT' are precise, conditioned, and include the why. The CPT warning in particular reflects deep knowledge of an irreversible trap.",
+    "Hidden tradeoffs section is excellent — the cap-exempt 20–40% comp tradeoff, the India/China 50+ year backlog framing, and the '12-month co-op wipes out OPT' point are exactly the kind of late-revealed downsides that separate expert from generic advice.",
+    "Domain-specific scam awareness ('If a sponsor asks you to pay any H-1B fees, exit immediately — INA §212(n)') reflects real-world bodyshop dynamics that generic career advice ignores entirely."
+  ],
+  "weaknesses": [
+    "Several statistics are presented with high precision but uncertain provenance: '70%+ of startup verbal sponsorship promises do not execute,' 'referrals are 7–15x more likely to hire,' 'portal applications convert at 4–10%; personalized cold outreach at 25–50%.' These ranges feel directionally right but the specificity implies a source that isn't cited, and overconfident numbers can mislead users into false precision.",
+    "The diagnostic framework underweights one critical variable: STEM OPT requires an E-Verify employer and a formal training plan (I-983). The Diagnostic Step 1 asks about degree level but doesn't surface that many small/mid employers aren't E-Verify enrolled, which silently eliminates STEM OPT candidates from much of the long tail of sponsors mentioned in 'Industry Realities.'",
+    "Failure patterns are good but missing some high-frequency ones: over-relying on university career services (which mostly serve domestic students), targeting only alumni from one's own program, and not distinguishing between 'will interview internationals' vs. 'will actually file' at the recruiter screen stage.",
+    "The Junior/Senior table's 'Interview prep: Drill out loud with another person' is true but generic — it's not international-student-specific and could be in any career skill. Same with 'Read about STAR mentally' as the junior pattern."
+  ],
+  "improvement_suggestions": [
+    "Add a section or expand Step 1 to explicitly cover E-Verify requirement for STEM OPT, the I-983 training plan, and how to verify E-Verify enrollment (E-Verify.gov employer search) before investing in outreach to a target. This is a structural filter that's currently invisible in the skill.",
+    "Either cite sources for the precise statistics (FY2025 USCIS, LinkedIn talent reports, Jobvite benchmarks) or convert them to ranges with explicit uncertainty markers. As written, '7–15x' and '25–50%' read as authoritative but unverifiable, which undermines the skill's credibility on the points it gets right.",
+    "Add coverage of a few missing scenarios: (a) the 'day-1 CPT' diploma-mill trap, which is adjacent to bodyshops but distinct; (b) the cap-gap extension mechanics for F-1s with pending H-1Bs; (c) the O-1 alternative for high-achiever candidates; (d) what to do during the 60-day OPT grace period if unemployed.",
+    "Replace the generic interview-prep row in the Junior/Senior table with something international-specific — e.g., 'Junior: Avoids salary questions because of visa anxiety. Senior: Anchors salary based on market data before sponsorship is discussed, treats them as separate negotiations.'",
+    "Add a heuristic about reading the recruiter screen: the question 'Will you now or in the future require sponsorship?' is a yes/no operational question — practice the exact phrasing of the answer ('Yes, I'll require sponsorship after [date]; I'm on F-1 with [X] years of OPT/STEM OPT eligibility'). Currently the skill says 'disclose matter-of-factly' but doesn't give the script."
+  ],
+  "generic_advice_flags": [
+    "'Interview prep: Drill out loud with another person' — this is universally true career advice, not international-student-specific expertise, and weakens the Junior/Senior table by occupying a slot that could differentiate the domain.",
+    "'Always surface hidden tradeoffs relevant to their specific choice' in the How to Use section — meta-instruction that just restates what good advice is; doesn't add operational guidance.",
+    "'Apply heuristics with their conditions and reasoning, not as commandments' — sound but generic AI-instruction-writing language that adds no domain value."
+  ],
+  "missing_coverage": [
+    "STEM OPT E-Verify employer requirement and I-983 training plan — a structural filter on which employers are even reachable.",
+    "Day-1 CPT universities and the immigration-status risks of using them to extend work authorization.",
+    "Cap-gap extension rules for F-1 students with pending/approved H-1Bs filed before OPT expiry.",
+    "The 60-day OPT unemployment grace period and what to do (volunteer work, unpaid internships that count, transfer to new program) before it expires.",
+    "O-1 visa as a sponsorship alternative for candidates with strong publication/award/patent profiles — relevant for PhDs and senior ICs.",
+    "Concrete cold-email template structure (subject line conventions, opening line, ask) — the skill says messages should be 50–125 words but doesn't model what one looks like.",
+    "How to handle the recruiter screen sponsorship question with exact phrasing — this is the single highest-stakes 10 seconds in the funnel and gets only abstract guidance.",
+    "Canada-specific tactical content beyond 'job search like a domestic candidate' — Express Entry CRS optimization, provincial nominee streams, French-language CRS bonus, NOC TEER categories."
+  ]
+}

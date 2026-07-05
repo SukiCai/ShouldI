@@ -1,0 +1,319 @@
+{
+  "source_file": "canada_pr_stay_or_return_canada.txt",
+  "heuristics": [
+    {
+      "rule": "Canadian PR holders have a realistic circular migration option that US Green Card holders do not — treat Canadian PR as an optionality asset, not just a residency status",
+      "condition": "When a Canadian PR holder is considering returning to their home country for 2–5 years",
+      "action": "Model the circular path explicitly: return home, maintain 730-day requirement, preserve PR, then decide on citizenship later — rather than treating the decision as permanent",
+      "because": "Canadian PR only requires 730 days of physical presence in Canada over 5 years, making multi-year home-country stints structurally feasible in a way US Green Card status does not allow"
+    },
+    {
+      "rule": "If your savings rate in Canada in CAD is equivalent to your home-country savings rate in PPP terms, the financial case for staying in Canada is weak",
+      "condition": "When a Canadian-based professional is earning ~CAD $130K with ~$18,000–$20,000 annual savings",
+      "action": "Run a PPP-adjusted savings comparison against a concrete home-country offer before defaulting to 'staying is safer'",
+      "because": "The Canadian savings floor for mid-career tech professionals in Toronto is low enough (~$13,000–$15,000 USD/year) that home-country purchasing power may be comparable or superior"
+    },
+    {
+      "rule": "Do not conflate 'stay in Canada' with 'stay in North America' — the Canada-vs-US decision and the Canada-vs-home-country decision require separate frameworks",
+      "condition": "When a Canadian PR holder is dissatisfied with income or career trajectory",
+      "action": "First determine whether the issue is Canada specifically or North America generally; if it's income, the US comparison is the relevant one, not the home-country comparison",
+      "because": "Canadian tech salaries are 25–40% lower than US equivalents in USD, making the US a distinct and often superior third option that gets collapsed into 'staying' by default"
+    },
+    {
+      "rule": "Canadian citizenship should be evaluated as a passport asset, not just a residency endpoint",
+      "condition": "When an Indian or Chinese national is deciding whether to complete Canadian citizenship before returning home",
+      "action": "Calculate the visa-free access differential between a Canadian passport (185+ countries) and the home-country passport before deciding how urgently to obtain citizenship",
+      "because": "For Indian and Chinese nationals whose home passports have significantly restricted global mobility, Canadian citizenship is a durable travel and re-entry asset independent of where the person lives"
+    },
+    {
+      "rule": "If your partner cannot get US work authorization but can work freely in Canada, that asymmetry overrides most income differential arguments",
+      "condition": "When a household is weighing Canada vs. US migration for income maximization",
+      "action": "Model household income, not individual income — if the partner earns freely in Canada but would be on dependent status in the US, the household total may favor Canada",
+      "because": "Dual-income households in Canada often offset the individual salary gap with the US; visa dependency for one partner in the US eliminates that offset"
+    },
+    {
+      "rule": "Track your 730-day physical presence window actively from the day you receive PR — not when you're planning a long trip",
+      "condition": "When a Canadian PR holder begins making extended home-country visits or considering a return",
+      "action": "Use Service Canada's travel history tool to calculate remaining days in the current 5-year window before booking any extended absence",
+      "because": "PR holders who don't track proactively often discover they've inadvertently jeopardized their status only when questioned at the border on return"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Immigration status and PR security",
+      "why_it_matters": "The entire stay-or-return calculus changes depending on whether the person has secured Canadian PR or is still on PGWP — PR eliminates visa precarity as a forcing function",
+      "how_to_assess": "Determine current status (PGWP, PR application in process, PR confirmed, citizenship) and calculate 730-day compliance in the current 5-year window",
+      "weight": "high"
+    },
+    {
+      "factor": "Savings rate differential (CAD vs. home country PPP)",
+      "why_it_matters": "Canadian net savings for a typical Toronto tech professional (~$18,000–$20,000 CAD/year) are low enough that home-country purchasing power may be comparable, weakening the financial case for staying",
+      "how_to_assess": "Calculate monthly net savings in CAD after Toronto expenses; convert to USD; then model equivalent savings in home city using PPP-adjusted cost of living",
+      "weight": "high"
+    },
+    {
+      "factor": "Partner's work authorization and career mobility",
+      "why_it_matters": "Canada allows partners to work freely on open work permits; the US does not for H-4 dependents (with limited exceptions) — this asymmetry materially affects household income and partner satisfaction",
+      "how_to_assess": "Determine partner's current visa status in Canada and whether they are employed; model what happens to their employment status in each scenario (stay, move to US, return home)",
+      "weight": "high"
+    },
+    {
+      "factor": "Canadian passport value relative to home country passport",
+      "why_it_matters": "For Indian and Chinese nationals, Canadian citizenship represents a significant upgrade in global visa-free access (185+ countries vs. significantly fewer for Indian/Chinese passports)",
+      "how_to_assess": "Compare visa-free country count between current passport and Canadian passport; assess how frequently the individual travels internationally for work or personal reasons",
+      "weight": "high"
+    },
+    {
+      "factor": "Aging parent proximity and care obligations",
+      "why_it_matters": "Canada does not solve geographic distance from aging parents; if care needs are real and immediate, financial and immigration advantages do not offset the proximity problem",
+      "how_to_assess": "Assess parents' current health status, whether siblings or other family can provide care, and whether the care need is imminent or speculative",
+      "weight": "high"
+    },
+    {
+      "factor": "Canada-US salary differential for the specific role",
+      "why_it_matters": "The 3–5× annual savings gap between comparable Canadian and US tech roles is large enough to materially affect long-term wealth compounding; staying in Canada vs. moving to the US is not financially neutral",
+      "how_to_assess": "Compare total compensation for the specific role in Canadian city vs. comparable US city (e.g., Toronto SWE vs. Seattle SWE); model after-tax savings over 5 and 10 years",
+      "weight": "high"
+    },
+    {
+      "factor": "Children's schooling and settlement depth",
+      "why_it_matters": "Once children are enrolled in Canadian schools and have formed local social connections, return disruption costs rise significantly and become a real constraint on the decision",
+      "how_to_assess": "Assess children's ages, years in Canadian school system, and language/social integration level; younger children have lower disruption costs than teenagers",
+      "weight": "medium"
+    },
+    {
+      "factor": "Concreteness of home-country opportunity",
+      "why_it_matters": "Returning to a vague 'idea' of home-country opportunity versus a specific job offer or business plan has dramatically different risk profiles",
+      "how_to_assess": "Ask whether the person has a specific offer, a business plan with identified customers/funding, or is returning to 'figure it out' — only the first two justify treating it as a concrete opportunity",
+      "weight": "medium"
+    },
+    {
+      "factor": "Universal healthcare and social safety net valuation",
+      "why_it_matters": "Unlike US H-1B holders for whom employer-sponsored health insurance is a significant stay-anchor, Canadian PR holders already have universal healthcare — this is not a reason to stay in Canada vs. return home, but it is a reason Canada beats the US on security",
+      "how_to_assess": "Assess whether the individual or family has ongoing healthcare needs that would be costly to manage privately; evaluate childcare costs under CWELCC subsidy vs. home country",
+      "weight": "medium"
+    },
+    {
+      "factor": "Local Canadian network strength",
+      "why_it_matters": "Canadian career mobility and opportunity discovery depend heavily on local professional networks; someone without an established network has lower switching costs for leaving",
+      "how_to_assess": "Ask whether the person has Canadian professional references, a local peer group in their field, and has been promoted or changed jobs within Canada successfully",
+      "weight": "medium"
+    },
+    {
+      "factor": "Profile type (international student vs. experienced hire vs. US transit)",
+      "why_it_matters": "The three profiles (PGWP grad, Express Entry mid-career, US H-1B transit) have different risk exposures, financial baselines, and optionality sets — advice that is correct for one profile may be wrong for another",
+      "how_to_assess": "Identify which profile the person belongs to; adjust the decision framework based on their age, career stage, immigration status, and original motivation for being in Canada",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Returning to home country from Canada while maintaining PR",
+      "unstated_consequence": "The 730-day requirement creates an ongoing administrative obligation — the person must track travel days, return to Canada periodically, and navigate border questioning on reentry, potentially for years",
+      "who_it_affects": "PR holders who return home for eldercare or entrepreneurship and assume their PR is 'banked' without actively managing physical presence compliance"
+    },
+    {
+      "choice": "Staying in Canada instead of moving to the US for higher income",
+      "unstated_consequence": "The 3–5× annual savings gap compounds over a decade into a very large wealth differential; the person is not just earning less annually but forfeiting compounding returns on the delta",
+      "who_it_affects": "Mid-career tech professionals in Toronto who are comfortable enough in Canada to not feel urgency about the US move, but haven't modeled the 10-year compounding cost of inaction"
+    },
+    {
+      "choice": "Securing Canadian citizenship before returning home",
+      "unstated_consequence": "Canadian citizenship requires meeting physical presence requirements that may conflict with a return-home timeline; delaying the return to obtain citizenship may cost years of home-country career or family time",
+      "who_it_affects": "PR holders who feel pressure to 'get the passport first' before executing their return plan, potentially over-optimizing for optionality at the cost of present-value life decisions"
+    },
+    {
+      "choice": "Using Canada as a transit/hedge country on the way to eventual US Green Card",
+      "unstated_consequence": "The Canada PR residency obligation (730 days / 5 years) and the US Green Card physical presence requirements can conflict — holding both simultaneously may require the person to split time in a way that satisfies neither",
+      "who_it_affects": "US H-1B holders who obtained Canadian PR as a hedge and then received US Green Card approval, creating competing residency obligations"
+    },
+    {
+      "choice": "Staying in Canada because of universal healthcare and social safety net",
+      "unstated_consequence": "Healthcare is not an anchor the same way it is in the US — Canadian PR holders can access home-country healthcare on visits and the safety net argument does not differentiate Canada from returning home if home country has adequate healthcare",
+      "who_it_affects": "Professionals from countries with functional public healthcare (e.g., some Gulf states, parts of India for certain income levels) who over-weight the Canadian healthcare anchor when it may not apply to their specific situation"
+    },
+    {
+      "choice": "Waiting in Canada until PR is secured before deciding",
+      "unstated_consequence": "By the time PR is secured (1–2 years from application), children may be further enrolled in Canadian schools, partner more established in local career, and social roots deeper — the decision window quietly narrows without a deliberate choice being made",
+      "who_it_affects": "Families who intend to make a deliberate stay-or-return decision post-PR but allow inertia to make the decision for them through accumulated settlement depth"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating 'stay in Canada' and 'stay in North America' as the same decision",
+      "why_it_happens": "Dissatisfaction with Canadian income or career trajectory gets framed as a stay-vs-return question when it is actually a Canada-vs-US question; the US option gets overlooked because it requires additional immigration steps",
+      "consequence": "The person either stays in Canada earning significantly less than they could in the US, or returns home prematurely when a US transition would have achieved their actual goal (higher income, more career scope)",
+      "warning_signs": [
+        "Person cites low savings rate as a reason to return home without having modeled US income",
+        "Person compares Toronto salary to Indian salary without computing Seattle or New York alternative"
+      ]
+    },
+    {
+      "pattern": "Assuming Canadian PR is 'safe' without actively tracking the 730-day requirement",
+      "why_it_happens": "PR feels permanent once received; the residency obligation is an abstraction until it becomes a border crisis; people don't think in 5-year rolling windows",
+      "consequence": "PR holder returns to Canada after extended home-country absence and faces questioning or findings of non-compliance at the border; in worst cases, PR status is at risk",
+      "warning_signs": [
+        "Person cannot state how many days they have remaining in their current 5-year window",
+        "Person has made multiple extended trips home (3–6 months each) without calculating cumulative absence"
+      ]
+    },
+    {
+      "pattern": "Returning home based on the 'idea' of a home-country opportunity rather than a specific one",
+      "why_it_happens": "Emotional pull of home, family, and nostalgia creates a strong motivational state that gets rationalized as career logic; the absence of a concrete offer is papered over by optimism",
+      "consequence": "Person returns home, cannot find comparable opportunity quickly, faces a difficult re-entry to Canadian labor market if they return, and has spent years in career limbo",
+      "warning_signs": [
+        "Person describes home-country plan in vague terms ('I'll figure something out', 'the market is growing')",
+        "Person has not had a single exploratory job conversation or interview in the home country before deciding"
+      ]
+    },
+    {
+      "pattern": "Over-weighting the Canadian healthcare anchor when it doesn't apply",
+      "why_it_happens": "The framework for US H-1B holders (where employer-sponsored healthcare is a real anchor) gets incorrectly imported into the Canadian context; people hear the argument and accept it without testing whether it applies to their situation",
+      "consequence": "Person stays in Canada partly because of a healthcare argument that doesn't actually differentiate their options, missing a return-home or US-move decision that would have been better on net",
+      "warning_signs": [
+        "Person cites healthcare as a primary stay reason without having healthcare-dependent family members or chronic conditions",
+        "Person from a country with adequate public healthcare treating Canadian healthcare as uniquely irreplaceable"
+      ]
+    },
+    {
+      "pattern": "Allowing inertia to make the stay-or-return decision by default as settlement depth accumulates",
+      "why_it_happens": "Each year of Canadian life adds a layer of settlement (children in school, partner's career, social network) that raises the cost of leaving; the decision is deferred repeatedly until it no longer feels reversible",
+      "consequence": "Person never makes a deliberate stay-or-return decision; they stay by default and may experience persistent regret or resentment about not having returned when the window was open",
+      "warning_signs": [
+        "Person has been 'about to decide' for 2+ years without a decision",
+        "Person's children are in middle school or older and the parent cites this as a reason they 'can't' leave now"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current immigration status in Canada — PGWP, PR application in process, or confirmed PR?",
+      "what_it_reveals": "Determines whether visa precarity is still a live variable in the decision; PGWP holders face real uncertainty that PR holders do not, which changes the urgency and risk profile of the decision",
+      "follow_up_if_yes": "If PR confirmed: have you calculated your 730-day compliance for the current 5-year window, and how much margin do you have?",
+      "follow_up_if_no": "If still on PGWP: what is your timeline to PR eligibility, and is your current employer sponsoring or are you applying independently via Express Entry?"
+    },
+    {
+      "question": "Are you comparing Canada to the US, or Canada to returning home — have you separated these into two distinct decisions?",
+      "what_it_reveals": "Determines whether the person has correctly scoped their decision; conflating these two comparisons leads to missing the US option entirely or framing a salary dissatisfaction as a return-home question",
+      "follow_up_if_yes": "If they've separated them: which comparison are you actually making, and what is the specific US alternative you've modeled?",
+      "follow_up_if_no": "If they haven't separated them: walk through the Canada-vs-US income model first before evaluating Canada-vs-home-country"
+    },
+    {
+      "question": "What is your actual monthly savings rate in CAD, and what would it be if you returned home (in PPP-adjusted terms)?",
+      "what_it_reveals": "Tests whether the person has done the actual financial math or is operating on impressions; reveals whether the financial case for staying is as strong as assumed",
+      "follow_up_if_yes": "If they've modeled it: what is the delta, and have you accounted for Toronto housing costs, childcare subsidies, and tax rates?",
+      "follow_up_if_no": "If they haven't modeled it: walk through the Toronto expense model and compare against a specific home-city scenario before treating finances as a known variable"
+    },
+    {
+      "question": "Is your partner able to work freely in Canada, and what would happen to their employment in each scenario?",
+      "what_it_reveals": "Surfaces whether household income is being correctly modeled; partner's work authorization in Canada vs. the US vs. home country is often the decisive variable that gets overlooked in individual income comparisons",
+      "follow_up_if_yes": "If partner works freely in Canada: what is the household income, and how does that change the Canada-vs-US savings comparison?",
+      "follow_up_if_no": "If partner cannot work or is not working: is that a visa constraint or a preference, and how does it affect the household financial model?"
+    },
+    {
+      "question": "Do you have a specific, concrete home-country opportunity — a job offer, a funded business plan, a confirmed client — or is it an intention?",
+      "what_it_reveals": "Distinguishes emotionally-motivated return decisions from economically-grounded ones; the presence or absence of a concrete opportunity dramatically changes the risk profile of returning",
+      "follow_up_if_yes": "If concrete opportunity exists: what is the compensation, and have you modeled the after-tax, PPP-adjusted savings rate against your current Canadian rate?",
+      "follow_up_if_no": "If it's an intention: what is the plan to test the home-country market while still in Canada, and what is your re-entry path if the opportunity doesn't materialize within 12 months?"
+    },
+    {
+      "question": "What does Canadian citizenship give you that returning now doesn't — have you evaluated the passport value specifically?",
+      "what_it_reveals": "Tests whether the person has thought about citizenship as an asset (global mobility, visa-free access) vs. just a residency endpoint; for Indian and Chinese nationals this calculation is often significantly in favor of obtaining citizenship before returning",
+      "follow_up_if_yes": "If they've evaluated it: how much longer until you can apply for citizenship, and what is the opportunity cost of that delay vs. the passport value gain?",
+      "follow_up_if_no": "If they haven't evaluated it: compare visa-free access between Canadian passport and home country passport and model how frequently that differential would affect their actual travel needs"
+    },
+    {
+      "question": "Are your parents' care needs currently real and imminent, or anticipated and speculative?",
+      "what_it_reveals": "Distinguishes a genuine proximity imperative from a guilt-driven emotional pull that gets rationalized as a care obligation; real vs. anticipated care needs have very different urgency profiles and should be weighted differently in the decision",
+      "follow_up_if_yes": "If needs are imminent: is there a sibling or family member currently managing care, and what specifically requires your physical presence vs. financial support?",
+      "follow_up_if_no": "If speculative: what is the realistic timeline to when proximity matters, and can you obtain Canadian citizenship in that window while building optionality?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The stay-or-return framework for immigrants applies equally to US H-1B holders and Canadian PR holders",
+      "actual_reality": "Canadian PR is achievable in 1–2 years vs. a 134-year EB-2 backlog for Indian nationals in the US; the visa precarity driver that dominates US stay-or-return decisions is substantially absent for Canadian PR holders, changing almost every part of the framework",
+      "implication": "Frameworks written for US H-1B holders should not be applied to Canadian PR holders without significant adjustment; the Canadian decision is structurally less urgent and more flexible"
+    },
+    {
+      "common_belief": "Staying in Canada is financially comparable to staying in the US for tech professionals",
+      "actual_reality": "Canadian tech salaries are 25–40% lower than US equivalents in USD terms; the after-tax annual savings differential for comparable roles (e.g., Toronto SWE vs. Seattle SWE) is approximately 3–5× in favor of the US",
+      "implication": "Tech professionals who frame the decision as 'stay in North America vs. return home' are missing a significant financial variable; the Canada-vs-US decision deserves its own explicit analysis"
+    },
+    {
+      "common_belief": "Healthcare is a major reason to stay in Canada, just as it is in the US",
+      "actual_reality": "Universal healthcare is already included in the Canadian system and does not differentiate 'stay in Canada' from other options for most people; it is an anchor that distinguishes Canada from the US, not Canada from the home country",
+      "implication": "Healthcare should be removed from the stay-in-Canada argument unless the person has chronic conditions or family members with significant health needs; it is not a universal stay-factor in the Canadian context"
+    },
+    {
+      "common_belief": "Canadian PR, once obtained, is effectively permanent and requires no active management",
+      "actual_reality": "Canadian PR requires 730 days of physical presence in Canada in every rolling 5-year window; extended home-country absences can accumulate to jeopardize PR status, and border officers can make compliance findings on reentry",
+      "implication": "PR holders who plan extended home-country trips or return-and-visit patterns must actively track their physical presence using Service Canada tools and plan trips to remain compliant"
+    },
+    {
+      "common_belief": "Returning to your home country means losing your Canadian PR",
+      "actual_reality": "Canadian PR holders can live outside Canada for up to 3 consecutive years while maintaining PR as long as they meet the 730-day requirement over the 5-year window; the circular migration path (return home, maintain PR, return to Canada later) is a realistic and structurally supported option",
+      "implication": "The stay-or-return decision in Canada is not necessarily permanent; PR holders can return home for substantial periods without forfeiting their status if they plan the physical presence compliance carefully"
+    },
+    {
+      "common_belief": "Getting Canadian citizenship is just a formality after PR and doesn't need to be strategically timed",
+      "actual_reality": "Canadian citizenship requires 3 years of physical presence within a 5-year window; for someone considering returning home, delaying to obtain citizenship creates a time cost that may conflict with home-country career or family timelines, while early return forfeits the passport's global mobility value",
+      "implication": "Citizenship timing should be evaluated as a deliberate strategic decision against the home-country return timeline, not deferred as an assumed eventual step"
+    },
+    {
+      "common_belief": "Childcare costs in Toronto are prohibitively high and eliminate the savings advantage of Canadian income",
+      "actual_reality": "Canada's CWELCC program subsidizes childcare costs significantly, reducing market rates from $2,000+/month to $700–$1,000/month for eligible families in Ontario — this subsidy is real and material but still leaves net monthly savings thin at ~$1,400–$1,700 CAD for a typical profile",
+      "implication": "The childcare subsidy should be factored into financial models but does not eliminate the savings gap; the correct conclusion is that savings are thin, not negative — which is a different and important distinction for the decision"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How the decision is scoped",
+      "junior_pattern": "Frames the decision as binary: stay in Canada vs. return home",
+      "senior_pattern": "Identifies three distinct decisions: stay in Canada, move to the US, or return home — and analyzes each pair separately before synthesizing",
+      "why_it_matters": "Collapsing Canada-vs-US and Canada-vs-home into a single binary causes the person to miss the US option entirely, which is often the financially dominant path for tech professionals"
+    },
+    {
+      "dimension": "How immigration status is treated",
+      "junior_pattern": "Treats Canadian PR as either 'done' (and therefore irrelevant) or 'not yet obtained' (and therefore the only priority)",
+      "senior_pattern": "Treats Canadian PR as an ongoing compliance obligation with active tracking requirements, and evaluates the 730-day window as a live planning constraint in every return-home scenario",
+      "why_it_matters": "PR holders who don't track compliance proactively risk status at the border; those who do can design circular migration paths that maintain optionality"
+    },
+    {
+      "dimension": "How financial comparison is made",
+      "junior_pattern": "Compares gross salary figures or general impressions of cost of living between Canada and home country",
+      "senior_pattern": "Models after-tax take-home, actual monthly expenses by line item, net monthly savings, and PPP-adjusted equivalent in the home country — then compares those figures, not the gross salaries",
+      "why_it_matters": "Gross salary comparisons systematically mislead; the actual savings differential is often much smaller than expected in Canada, which changes the financial case for staying"
+    },
+    {
+      "dimension": "How the return-home opportunity is evaluated",
+      "junior_pattern": "Accepts the existence of a 'home-country opportunity' as a given when considering return, based on market growth narratives or peer success stories",
+      "senior_pattern": "Requires a specific, concrete opportunity (job offer, funded business, confirmed client) before treating return as economically justified; treats vague intentions as emotional pull, not economic logic",
+      "why_it_matters": "Returning to an intention rather than an opportunity is the most common cause of career limbo in returnee populations; the distinction is the single highest-leverage diagnostic"
+    },
+    {
+      "dimension": "How household dynamics are incorporated",
+      "junior_pattern": "Models the decision on individual income and individual career trajectory",
+      "senior_pattern": "Models household income (including partner's earnings and work authorization), household savings rate, and the impact of each scenario on both partners' career trajectories",
+      "why_it_matters": "Partner's work authorization in Canada (open work permit) vs. the US (H-4 dependent restrictions) vs. home country is often the decisive variable; individual-only modeling systematically undercounts Canada's advantage"
+    },
+    {
+      "dimension": "How Canadian citizenship is valued",
+      "junior_pattern": "Treats citizenship as a distant formality to be obtained eventually after the 'real' decision is made",
+      "senior_pattern": "Evaluates Canadian citizenship as a passport asset with specific, quantifiable global mobility value — particularly for Indian and Chinese nationals — and times the citizenship application deliberately relative to the return-home plan",
+      "why_it_matters": "For nationals of countries with restricted passport access, Canadian citizenship represents a durable, high-value asset that may justify delaying return by 1–2 years; not evaluating this is leaving a significant optionality asset on the table"
+    },
+    {
+      "dimension": "How inertia is recognized",
+      "junior_pattern": "Treats the current situation as the default and requires a compelling reason to change; defers the decision repeatedly",
+      "senior_pattern": "Recognizes that inertia is itself a decision with compounding consequences (deepening settlement, narrowing return window) and forces a deliberate, time-bounded decision process",
+      "why_it_matters": "The cost of not deciding accumulates silently through settlement depth; people who don't recognize inertia as a decision often find themselves 'stuck' in Canada not by choice but by accumulated circumstance"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canada_pr_stay_or_return_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}
