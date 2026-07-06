@@ -325,6 +325,55 @@ If score is below 4.3: add more raw files (target source types with lowest repre
 
 ---
 
+## 7b. Location Pre-check Integration (Mandatory for All Expert Skills)
+
+Every expert skill that gives country-specific advice MUST complete both steps below before the skill is considered production-ready. This applies to ALL new skills and any skill that gains US/Canada content.
+
+### Step A — Add explicit Step 0 to the SKILL.md
+
+The skill's SKILL.md must have a `## Step 0: Location Diagnosis — Run First` block immediately after the Expert Framing section. This tells the expert what country context it needs before it applies any country-specific heuristics.
+
+**Minimum content for Step 0:**
+
+```markdown
+## Step 0: Location Diagnosis — Run First
+
+Before giving specific advice, confirm:
+1. **Which country?** (US / Canada / Other) — determines which legal framework, salary benchmarks, and immigration context apply.
+2. **Which state/province?** (for US: relevant for salary history ban, tax; for Canada: BC, Ontario, Alberta, Quebec have different rules)
+
+Do NOT assume US. If the user is in Canada, apply Canadian salary benchmarks, PGWP/LMIA dynamics, provincial pay transparency laws, and Canadian immigration context. If Other, note the limitation of this skill's coverage.
+```
+
+Adapt the content to the skill's domain (salary vs. PM career vs. job search).
+
+### Step B — Add the skill slug to the location pre-check in hermes-prompts.ts
+
+**File:** `apps/api/src/hermes-prompts.ts`  
+**Line to update:** The `Location pre-check` rule in the ShouldI overrides section.
+
+Current list (as of 2026-07-06):
+```
+intl-student-advisor, stay-or-return, grad-school-advisor, pm-career-expert, salary-negotiation
+```
+
+Add new skill slug to the comma-separated list in the `if ... is in the available domain skills` clause.
+
+### Compliance status (update when adding new skills)
+
+| Skill slug | Step 0 in SKILL.md | In pre-check prompt |
+|---|---|---|
+| `intl-student-advisor` | ✅ (Step 0: Location Diagnosis) | ✅ |
+| `stay-or-return` | ✅ (Step 0: Location Diagnosis) | ✅ |
+| `grad-school-advisor` | ✅ | ✅ |
+| `intl-job-search` | ✅ (Step 0: Location Diagnosis) | ✅ |
+| `pm-career-expert` | ✅ (Step 0 + Canada PM Market section) | ✅ |
+| `salary-negotiation` | ✅ (Step 1 item 1 asks country) | ✅ |
+
+> **Rule:** A skill should NOT be in the pre-check prompt unless its SKILL.md has Canada-specific content that changes the advice. Adding it to the prompt without country-differentiated content wastes a question.
+
+---
+
 ## 8. Skills Reference
 
 Current skills in this skill-builder instance:
