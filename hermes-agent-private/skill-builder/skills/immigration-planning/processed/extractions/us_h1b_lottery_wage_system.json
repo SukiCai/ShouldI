@@ -1,0 +1,287 @@
+{
+  "source_file": "h1b_lottery_wage_system.txt",
+  "heuristics": [
+    {
+      "rule": "Negotiate your starting salary as high as possible on OPT — it directly multiplies your H-1B lottery entries",
+      "condition": "When you are an international student on OPT negotiating a job offer with a company that may sponsor H-1B",
+      "action": "Push salary to reach DOL wage Level III or IV (OEWS-based), because the registration wage level determines lottery entries (3x or 4x vs. 1x), not just your take-home pay",
+      "because": "Under the FY2027 wage-based system, a Level IV salary gets 4 entries vs. 1 entry for Level I — this can shift selection probability from near-zero to near-certain if total registrations drop as projected",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If your employer misses the 14-day March registration window, your H-1B opportunity for that fiscal year is gone — there is no late filing exception",
+      "condition": "When you are on OPT approaching the March H-1B registration period",
+      "action": "Confirm with your employer's HR or immigration counsel no later than February that they have your registration prepared and the $215 fee ready",
+      "because": "The registration window is only 14 days (March 4–19) and USCIS grants zero exceptions — missing it means waiting a full additional year",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If not selected in the H-1B lottery, immediately evaluate cap-exempt employer options before giving up on US work authorization",
+      "condition": "When an H-1B registration comes back as 'Not Selected'",
+      "action": "Target universities, nonprofit research organizations, and government research organizations that are cap-exempt and can hire H-1B workers year-round without lottery",
+      "because": "Cap-exempt employers bypass the lottery entirely, allowing indefinite US employment authorization without competing in annual selection rounds",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Do not let an employer register you at the salary's actual OEWS level if a higher level is technically eligible — insist on the highest level the salary qualifies for",
+      "condition": "When an employer is preparing your H-1B registration and your offered salary is at or near a level threshold",
+      "action": "Ask your employer's immigration attorney to register at the highest OEWS wage level the offered salary meets, regardless of job title classification",
+      "because": "OEWS registration level is determined by salary amount, not job title — registering one level higher can mean 1–2 additional lottery entries, multiplying selection probability",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you hold an advanced degree from a US institution, confirm your employer is filing under the master's cap exemption, not just the regular cap",
+      "condition": "When you have a US master's degree or higher and your employer is registering you for H-1B",
+      "action": "Verify with your employer's counsel that you are being entered in the 20,000 advanced degree exemption pool in addition to (or instead of) the regular 65,000 cap pool",
+      "because": "The master's cap provides an additional 20,000 visas annually — failure to use it wastes a significant statistical advantage you are entitled to",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Offered salary relative to DOL OEWS prevailing wage levels",
+      "why_it_matters": "Under the wage-based lottery, salary determines the number of entries (1–4), which directly and dramatically changes selection probability",
+      "how_to_assess": "Look up the DOL OEWS wage levels for your specific occupation and geographic area; determine which level (I–IV) your offered salary meets or exceeds",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether employer is cap-exempt",
+      "why_it_matters": "Cap-exempt employers can file H-1B petitions at any time without lottery — this eliminates annual selection risk entirely",
+      "how_to_assess": "Check if the employer is a university, nonprofit research organization affiliated with a university, or government research organization",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether applicant holds a US master's degree or higher",
+      "why_it_matters": "US advanced degree holders qualify for the additional 20,000 master's cap exemption pool, improving statistical odds",
+      "how_to_assess": "Confirm degree conferral date and institution; degree must be from a US institution to qualify",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Total number of H-1B registrations projected for the filing year",
+      "why_it_matters": "If total registrations drop significantly (50%+ as projected under wage-based deterrence), selection rates for higher-wage entries could reach 50–90%",
+      "how_to_assess": "Monitor USCIS and immigration news in February–March for early registration volume signals and policy updates",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Availability of alternative visa pathways if lottery fails",
+      "why_it_matters": "Students with L-1, O-1, TN, E-3, or J-1 eligibility have fallback options that preserve US work authorization without re-entering the lottery",
+      "how_to_assess": "Assess nationality (TN for Canada/Mexico, E-3 for Australia), extraordinary ability evidence (O-1), and multinational employer structure (L-1)",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer's awareness of the new wage-based registration rules",
+      "why_it_matters": "An employer who registers at the wrong OEWS level or misses the window due to process unfamiliarity can cost the employee their entire year's lottery chance",
+      "how_to_assess": "Ask directly whether their immigration counsel has briefed them on the FY2027 wage-level entry system and OEWS vs. LCA distinction",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a lower starting salary on OPT to get a foot in the door at a desirable company",
+      "unstated_consequence": "A lower salary may place you at OEWS Level I or II, reducing your H-1B lottery entries to 1–2 instead of 3–4, potentially cutting your selection probability by 75%",
+      "who_it_affects": "Entry-level international students at brand-name companies known for underpaying early-career roles",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on your employer to handle all H-1B registration logistics without independent verification",
+      "unstated_consequence": "If the employer's HR misses the 14-day window, submits a duplicate, or registers at the wrong OEWS level, you lose a full year with no recourse",
+      "who_it_affects": "International students at companies with inexperienced immigration teams or high employee-to-HR ratios",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Working only for lottery-subject employers to maximize career options",
+      "unstated_consequence": "You subject yourself to annual lottery risk for potentially years, while cap-exempt employers would provide immediate, perpetual H-1B access without uncertainty",
+      "who_it_affects": "Students in academia-adjacent fields (research, data science, policy) who could realistically work at universities or nonprofits",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Targeting extremely large employers for H-1B sponsorship due to perceived stability",
+      "unstated_consequence": "Large employers with many H-1B registrations historically had more exposure to lottery stacking abuse; under the new beneficiary-centric rule, multiple employer submissions no longer help — only the salary level matters",
+      "who_it_affects": "Students who have multiple companies willing to register them, believing this increases odds",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Not pursuing O-1 or other alternatives after a lottery loss because they seem out of reach",
+      "unstated_consequence": "O-1 and L-1 have no numerical cap and no lottery — students who dismiss them early lose months of preparation time that could have secured continued status",
+      "who_it_affects": "High-achieving students in STEM, arts, or business with publication records, awards, or specialized expertise who underestimate their eligibility",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Employer submits duplicate H-1B registrations for the same beneficiary, resulting in automatic denial",
+      "why_it_happens": "Employer has multiple internal teams or staffing agencies each submitting independently, or attempts to game the system with multiple entries",
+      "consequence": "All registrations for that beneficiary are invalidated — the student gets zero entries in the lottery for that year",
+      "warning_signs": [
+        "Student is working with a staffing agency AND a direct employer simultaneously",
+        "Employer has decentralized HR with multiple immigration vendors"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Missing the 14-day H-1B registration window due to delayed employer preparation",
+      "why_it_happens": "Employers assume the window is longer than it is, or HR teams deprioritize visa administration until it's too late",
+      "consequence": "Student loses an entire fiscal year of H-1B eligibility and must remain on OPT or leave the US",
+      "warning_signs": [
+        "Employer has not mentioned H-1B registration by early February",
+        "HR is unclear on what documentation they need from the student"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Student registers at OEWS Level I because the job title is 'entry-level,' even though the salary qualifies for Level III",
+      "why_it_happens": "Employer or attorney conflates job title seniority with OEWS wage level; Level is determined by salary amount, not title",
+      "consequence": "Student receives 1 lottery entry instead of 3, dramatically reducing selection probability",
+      "warning_signs": [
+        "Employer says 'you're entry-level so you'll be at Level I' without checking the actual OEWS salary thresholds",
+        "Immigration attorney doesn't ask for the specific offered salary before assigning wage level"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Student waits for H-1B lottery result before researching alternative visa options",
+      "why_it_happens": "Optimism bias — students assume they will be selected and don't prepare contingencies until a denial forces them to act urgently",
+      "consequence": "By the time 'Not Selected' is confirmed (late March), there is insufficient time to build a strong O-1 case or find a cap-exempt employer before OPT expires",
+      "warning_signs": [
+        "Student has never researched O-1 criteria or cap-exempt employers",
+        "Student's OPT expiration is within 6 months of expected lottery result"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Form I-129 filed at the wrong USCIS service center after selection",
+      "why_it_happens": "Employer files at a default location instead of the location specified in the selection notice",
+      "consequence": "Petition is rejected or significantly delayed, jeopardizing October 1 employment start date",
+      "warning_signs": [
+        "Employer's immigration counsel does not reference the specific selection notice when preparing the filing",
+        "Employer reuses a prior-year filing template without updating the service center"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does your offered salary meet DOL OEWS Level III or Level IV thresholds for your occupation and location?",
+      "what_it_reveals": "Whether you will receive 3–4 lottery entries (strong odds) or only 1–2 (weak odds) under the wage-based selection system",
+      "follow_up_if_yes": "Confirm employer will register at the highest eligible OEWS level, not just the job title's assumed level",
+      "follow_up_if_no": "Evaluate whether salary negotiation is possible, or whether a cap-exempt employer is a better path",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is your employer a cap-exempt organization (university, nonprofit research org, government research org)?",
+      "what_it_reveals": "Whether the H-1B lottery applies to you at all — cap-exempt employers can hire you year-round without lottery participation",
+      "follow_up_if_yes": "Confirm the specific exemption category and ensure the petition cites it correctly; no lottery preparation needed",
+      "follow_up_if_no": "Proceed with lottery strategy; assess salary level, registration timing, and alternative pathways",
+      "country_scope": "us"
+    },
+    {
+      "question": "Do you hold a master's degree or higher from a US institution?",
+      "what_it_reveals": "Whether you qualify for the additional 20,000 advanced degree exemption pool on top of the regular 65,000 cap",
+      "follow_up_if_yes": "Ensure your employer's counsel registers you under the master's cap exemption and confirm degree conferral date is before the filing deadline",
+      "follow_up_if_no": "You compete only in the regular 65,000 cap; salary level becomes even more critical to maximize entries",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has your employer confirmed they have immigration counsel briefed on the FY2027 wage-based OEWS registration rules?",
+      "what_it_reveals": "Whether the employer is likely to make a critical procedural error (wrong wage level, duplicate submission, missed window) that invalidates your registration",
+      "follow_up_if_yes": "Ask for the name of the firm and verify they have filed H-1B petitions in 2026 or later",
+      "follow_up_if_no": "Escalate urgency with HR; offer to share official USCIS/DHS guidance; consider consulting your own immigration attorney independently",
+      "country_scope": "us"
+    },
+    {
+      "question": "If you are not selected in the H-1B lottery, do you have a viable alternative visa category (O-1, L-1, TN, E-3, J-1)?",
+      "what_it_reveals": "Whether a lottery failure means leaving the US or whether you have a legitimate path to continued legal work authorization",
+      "follow_up_if_yes": "Begin preparing the alternative petition in parallel before lottery results so you can file immediately after a 'Not Selected' outcome",
+      "follow_up_if_no": "Evaluate Canada immigration pathways (Express Entry, PGWP) or return-home career options as genuine contingency plans now, not after denial",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are multiple employers or staffing agencies submitting H-1B registrations on your behalf?",
+      "what_it_reveals": "Risk of duplicate submission — under the beneficiary-centric rule, multiple registrations for the same person from the same employer are invalidated",
+      "follow_up_if_yes": "Clarify whether the submissions are from the same or different legal employers; same-employer duplicates result in denial, cross-employer duplicates are now prohibited under the one-entry-per-beneficiary rule",
+      "follow_up_if_no": "No duplicate risk; focus on salary level optimization and registration timing",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The H-1B lottery is purely random, so salary and job level don't affect your chances",
+      "actual_reality": "As of FY2027, the lottery is wage-weighted — a Level IV salary earns 4 entries vs. 1 for Level I, potentially increasing odds by 4x before accounting for reduced total registrations",
+      "implication": "International students should treat salary negotiation as immigration strategy, not just financial planning — a $10K salary bump that crosses a wage level threshold could be worth more than years of career advancement",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Having multiple companies register you in the H-1B lottery increases your chances of selection",
+      "actual_reality": "Under the beneficiary-centric rule effective FY2027, each unique individual gets only one entry regardless of how many employers submit — and duplicate submissions from the same employer result in denial",
+      "implication": "Students should focus entirely on salary optimization at a single high-quality employer rather than seeking multiple registrations",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Cap-exempt employers (universities, nonprofits) are less desirable because they pay less",
+      "actual_reality": "Cap-exempt employers provide H-1B access year-round with no lottery risk, no annual uncertainty, and the ability to transfer to a lottery-subject employer later while maintaining H-1B status",
+      "implication": "For students in research, data, policy, or technical fields, cap-exempt employers are strategically superior immigration vehicles — even at slightly lower salaries — especially during high-uncertainty lottery years",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "An 'entry-level' job title means you will be registered at OEWS Level I",
+      "actual_reality": "OEWS wage level is determined by the offered salary relative to prevailing wage benchmarks for your occupation and location — not by job title. A high-paying 'junior' role can qualify for Level III or IV registration",
+      "implication": "Students and employers should actively check OEWS thresholds and register at the highest level the salary supports, regardless of title — this is legal and explicitly permitted under the DHS rules",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B lottery is your only or primary path to long-term US work authorization as an international student",
+      "actual_reality": "Multiple cap-exempt and non-cap pathways exist (O-1, L-1, TN, E-3, J-1, cap-exempt H-1B employers), and under the new wage system, better-positioned candidates may see selection rates approaching 50–90%",
+      "implication": "Students should build a multi-track strategy: optimize for lottery while simultaneously preparing alternative petitions, rather than treating the lottery as the single make-or-break event",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B registration fee ($215) is refundable if not selected",
+      "actual_reality": "The $215 registration fee is explicitly non-refundable regardless of selection outcome",
+      "implication": "Employers bear a real per-head cost for each registration, which may influence whether smaller or less committed employers bother to register lower-priority candidates — students should confirm employer commitment early",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing salary negotiation",
+      "naive_pattern": "Negotiates salary based on cost of living, peer comparisons, and what feels fair — treats immigration implications as separate",
+      "informed_pattern": "Treats every salary dollar above an OEWS wage level threshold as an immigration asset — negotiates specifically to reach Level III or IV to maximize lottery entries",
+      "why_it_matters": "The difference between Level II and Level III registration can mean the difference between 2 and 3 lottery entries — a 50% increase in selection probability",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Handling lottery risk",
+      "naive_pattern": "Assumes selection is likely, waits for March results, and then scrambles to find alternatives if not selected",
+      "informed_pattern": "Prepares a parallel alternative visa strategy (O-1, cap-exempt employer, Canada Express Entry) before March results arrive so they can act immediately on any outcome",
+      "why_it_matters": "OPT windows are short — losing 3–4 months to post-denial panic can mean the difference between maintaining status and having to leave the US",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Evaluating employer suitability for immigration purposes",
+      "naive_pattern": "Evaluates employers on salary, culture, and career growth — asks HR 'do you sponsor H-1B?' and accepts 'yes' as sufficient",
+      "informed_pattern": "Asks specifically: 'Which immigration counsel do you use?', 'At what OEWS level will you register my salary?', 'Have you filed under the new FY2027 wage-based rules before?', and verifies cap-exempt status independently",
+      "why_it_matters": "An employer who answers 'yes' to sponsorship but lacks experienced immigration counsel can still cost the student a full lottery year through procedural errors",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding cap-exempt employers",
+      "naive_pattern": "Dismisses universities and nonprofits as stepping stones or fallbacks with lower pay and lower prestige",
+      "informed_pattern": "Recognizes cap-exempt employers as strategic immigration anchors — uses them to secure H-1B status without lottery risk, then transfers to desired industry employers later from a position of strength",
+      "why_it_matters": "Students who secure cap-exempt H-1B status can transfer to any H-1B employer at any time without re-entering the lottery, giving them full career flexibility",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding the beneficiary-centric rule",
+      "naive_pattern": "Tries to maximize lottery chances by having multiple employers or staffing agencies submit registrations simultaneously",
+      "informed_pattern": "Knows the beneficiary-centric rule means multiple registrations provide no benefit and same-employer duplicates cause denial — focuses on optimizing a single, high-quality registration",
+      "why_it_matters": "Attempting to game the system through multiple registrations now results in worse outcomes (denial) rather than better odds",
+      "country_scope": "us"
+    }
+  ]
+}

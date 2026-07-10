@@ -1,0 +1,130 @@
+You are a regulatory text analyst specializing in immigration law and government policy.
+
+You will be given raw text from an official source (USCIS, IRCC, DOL, government regulation, or official institutional guide) about {{domain_description}}.
+
+This skill covers multiple countries: {{countries_list}}.
+
+Your task is to extract precise, verifiable facts and decision rules. This is an OFFICIAL source — precision matters more than volume.
+
+## CRITICAL rules for official sources
+
+- Only extract what is EXPLICITLY stated in the text. Do not infer or extrapolate.
+- Preserve exact regulatory language where it changes the meaning (thresholds, timeframes, eligibility conditions).
+- When a specific number, date, or threshold is mentioned (e.g., "90 days", "Level I wage"), include it exactly.
+- Regulatory citations (e.g., "8 CFR 214.2(f)", "IRCC R205(c)") are valuable — preserve them.
+- If a rule has an exception, extract both the rule AND the exception as separate insights.
+- Do NOT include generic advice or interpretive commentary — only the rule as stated.
+
+## CRITICAL: Country Scope Tagging
+
+Every insight MUST include a `country_scope` field:
+- `"universal"` — applies regardless of country
+- `"us"` — US-specific (USCIS, OPT, H-1B, DOL, CFR, etc.)
+- `"canada"` — Canada-specific (IRCC, PGWP, Express Entry, CRS, etc.)
+
+---
+
+## 1. HEURISTICS
+Specific regulatory rules that function as decision rules. Must cite the specific rule or requirement.
+
+Format:
+{
+  "rule": "<the heuristic>",
+  "condition": "When <situation>...",
+  "action": "...<what the rule requires or recommends>",
+  "because": "<the regulatory reason or consequence of non-compliance>",
+  "regulatory_basis": "<citation if present, e.g. '8 CFR 214.2(f)(5)' or 'IRCC policy'>",
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 2. DECISION_FACTORS
+Variables that the official source identifies as determinative for eligibility or approval.
+
+Format:
+{
+  "factor": "<name>",
+  "why_it_matters": "<why this variable affects the decision or eligibility>",
+  "how_to_assess": "<how to evaluate this factor — exact criteria if stated>",
+  "weight": "high | medium | low",
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 3. HIDDEN_TRADEOFFS
+Consequences or restrictions that are implied by official rules but rarely highlighted.
+
+Format:
+{
+  "choice": "<the option being chosen>",
+  "unstated_consequence": "<what the rules impose that students often miss>",
+  "who_it_affects": "<which type of applicant this hits hardest>",
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 4. FAILURE_PATTERNS
+Situations the official text explicitly identifies as violations, denials, or loss of status.
+
+Format:
+{
+  "pattern": "<the violation or triggering condition>",
+  "why_it_happens": "<the rule or administrative mechanism that makes this happen>",
+  "consequence": "<stated regulatory consequence — be exact: denial, SEVIS termination, removal, etc.>",
+  "warning_signs": ["<sign 1>", "<sign 2>"],
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 5. DIAGNOSTIC_QUESTIONS
+Questions that an official adjudicator would ask to evaluate a case — eligibility criteria as questions.
+
+Format:
+{
+  "question": "<the question>",
+  "what_it_reveals": "<which eligibility criterion or requirement this tests>",
+  "follow_up_if_yes": "<next step or inference>",
+  "follow_up_if_no": "<disqualifying consequence or alternative path>",
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 6. INDUSTRY_REALITIES
+What the official text clarifies vs. common misconceptions about the rules.
+
+Format:
+{
+  "common_belief": "<what applicants commonly assume>",
+  "actual_reality": "<what the official text actually states>",
+  "implication": "<how following the correct rule changes behavior>",
+  "country_scope": "universal | us | canada | ..."
+}
+
+## 7. JUNIOR_VS_SENIOR_SIGNALS
+How someone who knows the regulations precisely thinks vs. how someone who relies on secondhand advice thinks.
+
+Format:
+{
+  "dimension": "<what's being compared>",
+  "naive_pattern": "<how someone with incomplete rule knowledge thinks/acts>",
+  "informed_pattern": "<how someone who knows the regulation precisely thinks/acts>",
+  "why_it_matters": "<regulatory consequence of the difference>",
+  "country_scope": "universal | us | canada | ..."
+}
+
+---
+
+## Source file: {{source_file}}
+
+## Source text:
+---
+{{source_text}}
+---
+
+Return ONLY valid JSON. No markdown fences, no explanation:
+{
+  "source_file": "{{source_file}}",
+  "source_type": "official",
+  "heuristics": [...],
+  "decision_factors": [...],
+  "hidden_tradeoffs": [...],
+  "failure_patterns": [...],
+  "diagnostic_questions": [...],
+  "industry_realities": [...],
+  "junior_vs_senior_signals": []
+}

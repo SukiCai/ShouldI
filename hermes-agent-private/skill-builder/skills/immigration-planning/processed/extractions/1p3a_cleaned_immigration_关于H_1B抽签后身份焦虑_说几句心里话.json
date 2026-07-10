@@ -1,0 +1,273 @@
+{
+  "source_file": "immigration_关于H_1B抽签后身份焦虑_说几句心里话.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Actively research Plan B until it becomes a genuinely acceptable option, not just a fallback",
+      "condition": "When facing repeated H-1B lottery failures and anxiety about future status...",
+      "action": "Spend real time researching alternative paths (Canada PGWP/Express Entry, return home) in enough depth that they feel like real choices rather than admissions of defeat",
+      "because": "Multiple high-voted comments confirm that treating Plan B as real — not hypothetical — reduces chronic anxiety and paralysis; the poster explicitly states that researching Canada made it 'genuinely acceptable, not just a backup'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Have an explicit conversation with your employer about contingency plans before the third lottery cycle",
+      "condition": "When you have already missed the H-1B lottery twice and are approaching a third attempt...",
+      "action": "Proactively discuss with HR whether the company can support a transfer to a Canadian office or alternative visa route if the third lottery also fails",
+      "because": "The poster reports doing exactly this and achieving a concrete agreement; waiting until after a third failure leaves no time to execute alternatives before status expires",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Employer willingness to support alternative visa or relocation pathways",
+      "why_it_matters": "If the employer will sponsor a Canadian office transfer or explore alternative visa categories, the stakes of each individual H-1B lottery round are lower and contingency planning becomes actionable",
+      "how_to_assess": "Have a direct conversation with HR before the third lottery cycle; ask specifically whether the company has a Canadian entity and what their policy is on cross-border transfers for visa-challenged employees",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Genuine acceptability of Plan B options",
+      "why_it_matters": "If alternative paths (Canada, home country) are only theoretically considered but never seriously evaluated, they cannot reduce anxiety or inform real decisions; the psychological benefit of having a real Plan B depends on it being genuinely researched",
+      "how_to_assess": "Research Canadian immigration pathways (PGWP eligibility, Express Entry CRS score estimate) or home-country career options in enough concrete detail to form an actual preference, not just awareness",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Number of H-1B lottery attempts already used",
+      "why_it_matters": "Each failed lottery year narrows the OPT/STEM OPT runway; by the third failure the window to execute alternatives is tight, making earlier contingency planning critical",
+      "how_to_assess": "Count current lottery attempts against remaining authorized stay; model out the earliest date status would expire if the next lottery also fails",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying emotionally non-committed to life in the US as a psychological self-protection strategy while awaiting H-1B results",
+      "unstated_consequence": "The person fails to build relationships, professional visibility, and roots — which are precisely the things that would help them either succeed in the US long-term or cope with leaving; the protective strategy accelerates the negative outcome it was meant to cushion",
+      "who_it_affects": "F-1/OPT holders who have experienced one or more lottery failures and are in a multi-year waiting pattern",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying deliberately low-profile at work to avoid becoming 'indispensable' in ways that might discourage employers from finding visa solutions",
+      "unstated_consequence": "Reduced visibility weakens the case for employer sponsorship investment; companies are more likely to absorb H-1B costs and explore alternatives for employees who have demonstrated clear value, not those who have been invisible",
+      "who_it_affects": "International employees in companies where sponsorship decisions are made on a case-by-case basis based on perceived employee value",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Avoiding research into Plan B options to avoid feeling like a failure",
+      "unstated_consequence": "When the lottery fails, the person is forced to make high-stakes decisions (Canada immigration application, job search, relocation) under time pressure and emotional distress, with no prior research — worse outcomes than if they had prepared calmly",
+      "who_it_affects": "Anyone whose identity is heavily invested in the US path; particularly common among those who framed the US as the primary goal from the start of their academic journey",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating uncertainty about future visa status as a reason to not fully invest in current life, relationships, or career",
+      "why_it_happens": "Anticipatory loss aversion — the person pre-grieves a loss that hasn't happened yet, and withdraws investment to minimize the pain of a potential future departure",
+      "consequence": "Reduced quality of life during the waiting period, weaker professional relationships, lower career visibility — all of which reduce the probability of a good outcome regardless of whether the lottery succeeds",
+      "warning_signs": [
+        "Saying 'I might have to leave anyway' when declining social invitations or career opportunities",
+        "Deliberately avoiding being seen as high-performing or essential at work",
+        "Feeling unable to make any long-term personal decisions (housing, relationships) between March and May each year"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Refusing to seriously research or plan for alternative immigration paths until forced to by a failed lottery",
+      "why_it_happens": "Equating Plan B research with admitting defeat — a cognitive reframe where considering alternatives feels like abandoning the primary goal",
+      "consequence": "When the H-1B fails, the person is in emotional crisis AND lacks any prepared alternative path, leading to rushed decisions under maximum stress",
+      "warning_signs": [
+        "Saying 'I'll figure out Canada/going home if it comes to that'",
+        "Never having looked up PGWP eligibility or Express Entry CRS score despite multiple lottery failures",
+        "Experiencing the lottery result as binary (success = stay, failure = catastrophe) with no middle ground"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you researched your Canadian immigration options (PGWP, Express Entry) in enough detail to know your approximate CRS score or eligibility window?",
+      "what_it_reveals": "Whether the person has a real Plan B or only a theoretical one; also reveals how much runway they have under Canadian pathways",
+      "follow_up_if_yes": "Does your current employer have a Canadian office, and have you discussed transfer options with HR?",
+      "follow_up_if_no": "How many H-1B lottery attempts do you have remaining before your authorized status expires? This determines how urgently you need to build that plan.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you making career or life decisions differently because of visa uncertainty — avoiding visibility, relationships, or long-term commitments?",
+      "what_it_reveals": "Whether the person is in the anticipatory withdrawal pattern; if yes, they are likely compounding the harm of visa uncertainty beyond what is necessary",
+      "follow_up_if_yes": "Is the behavior actually protecting you, or is it reducing the quality of your current life and your chances of a good outcome in any scenario?",
+      "follow_up_if_no": "How are you managing the psychological pressure of the March-May lottery window? What coping mechanisms are in place?",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Being too visible or indispensable at work will discourage your employer from helping you find visa alternatives, because they'll just rely on you and not want to lose you to another country",
+      "actual_reality": "Employers invest in visa solutions for employees they value highly; low visibility reduces the business case for absorbing H-1B costs or arranging cross-border transfers. Indispensability is more likely to motivate employer support, not suppress it.",
+      "implication": "International workers should focus on demonstrating clear value rather than staying invisible; the 'be invisible to stay safe' strategy is likely counterproductive for securing employer-sponsored solutions",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Researching or planning for Canada or returning home means giving up on the US path",
+      "actual_reality": "Seriously researching Plan B options reduces anxiety and improves decision quality for all scenarios, including the US path; it does not commit you to leaving and does not signal defeat to employers",
+      "implication": "Reframe Plan B research as risk management, not concession; people who do this report lower chronic anxiety and better outcomes regardless of lottery result",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Relationship to visa uncertainty",
+      "naive_pattern": "Treats each lottery cycle as an existential binary; puts major life decisions on hold from March to May; cannot invest fully in current life because 'I might have to leave'",
+      "informed_pattern": "Acknowledges uncertainty as structural and permanent; chooses to invest fully in the present while maintaining a real (researched, negotiated) contingency plan; as one senior engineer said: 'I also don't know if this is permanent, but I choose to live in the present'",
+      "why_it_matters": "The naive pattern produces years of diminished life quality and weakened career positioning regardless of lottery outcome; the informed pattern preserves both wellbeing and optionality",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Plan B preparation",
+      "naive_pattern": "Avoids thinking about alternatives because it feels like admitting failure; has no concrete knowledge of Canadian immigration pathways or home-country career options despite multiple lottery failures",
+      "informed_pattern": "Proactively researches alternatives in enough depth to form genuine preferences; negotiates contingency arrangements with employer before crisis; discovers that alternatives are 'genuinely acceptable options, not just backups'",
+      "why_it_matters": "Under time pressure after a lottery failure, unprepared people make rushed high-stakes decisions; prepared people execute a plan they've already thought through",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Staying low-profile and not being too visible at work protects you as a visa holder because it keeps your options open and doesn't create complications",
+      "why_believed": "There is a real logic that being dispensable makes it easier for a company to 'let you go' gracefully or figure out alternatives; it feels like reducing exposure to risk",
+      "actual_rule": "Employer willingness to invest in visa sponsorship, explore alternatives, and support cross-border transfers is driven by perceived employee value; low visibility reduces that value signal and therefore reduces the employer's motivation to find solutions",
+      "real_consequence": "The person weakens their own negotiating position for visa support while also reducing their quality of work life and career growth — a double loss",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Researching Plan B (Canada, going home) is equivalent to giving up on the US path and signals a lack of commitment",
+      "why_believed": "Psychologically, considering alternatives feels like divided loyalty; culturally among high-achieving immigrant student communities, the US path is often framed as the primary goal and anything else as failure",
+      "actual_rule": "Researching alternatives is standard risk management; it does not commit you to any path and empirically reduces anxiety, which improves decision-making on the primary path as well",
+      "real_consequence": "People who avoid Plan B research are caught unprepared when the lottery fails, making rushed decisions under emotional duress with no prior information — worse outcomes on all paths",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "F-1/OPT holder missed H-1B lottery two consecutive years; experiencing chronic anxiety March-May, avoiding long-term decisions, refusing to research alternatives",
+      "decision": "Seriously researched Canadian PGWP and Express Entry pathways; negotiated explicitly with employer for a Canadian office transfer if third lottery also failed; spoke with a senior engineer who modeled living with uncertainty",
+      "outcome": "Achieved a concrete employer commitment for Canadian transfer as contingency; experienced reduced anxiety; reframed Canada from 'backup' to 'genuinely acceptable option'",
+      "lesson": "Active preparation of a real contingency plan — researched deeply enough to feel like a genuine choice — reduces the psychological cost of H-1B uncertainty more effectively than avoidance or passive waiting",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "Person missed H-1B lottery three consecutive years",
+      "decision": "Returned to home country",
+      "outcome": "Post-return life was not as bad as anticipated; the catastrophized outcome did not materialize",
+      "lesson": "The feared outcome of 'having to leave' is frequently worse in anticipation than in reality; this corroborates the value of genuinely researching alternatives before being forced to execute them",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Repeated H-1B lottery failures combined with a multi-year waiting pattern; especially March-May window each year",
+      "underlying_state": "Chronic anticipatory grief and loss aversion — the person is pre-mourning a loss that has not yet occurred, leading to pre-emptive emotional withdrawal from their current life",
+      "how_it_manifests": "Avoiding visible career moves, not building deep relationships, inability to make long-term personal decisions, framing current life as provisional; described explicitly by the poster and corroborated by multiple high-voted comments",
+      "expert_move": "Reframe: 'You are already paying the psychological cost of leaving without getting any of the benefit of actually being here. The withdrawal is not protecting you — it's just costing you twice.' Then redirect to concrete Plan B research as a way to regain agency.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Being asked to consider or research Canadian immigration or returning home as alternatives",
+      "underlying_state": "Identity threat — the US immigration path has become so central to the person's self-concept and narrative that considering alternatives feels like self-betrayal or public failure, especially given family and peer expectations",
+      "how_it_manifests": "Framing Plan B research as 'admitting defeat'; emotional resistance to even gathering information; described directly in the post ('奇怪的抗拒') and corroborated in comment about parental pressure",
+      "expert_move": "Decouple information-gathering from commitment: 'Looking up your CRS score is not the same as deciding to go to Canada. You are just adding information. The decision comes later.' Normalize that senior, successful immigrants also maintain contingency thinking.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Parents asking repeatedly when the visa situation will be resolved",
+      "underlying_state": "Compounded shame and accountability pressure — the person is already managing their own anxiety and must also manage the anxiety and expectations of family members who don't understand the system",
+      "how_it_manifests": "Avoidance of the topic with family; inability to give clear answers; feeling that uncertainty itself is a personal failure to be explained or apologized for",
+      "expert_move": "Help the person develop a prepared, honest script for family: 'H-1B is a lottery with a fixed probability. My status is secure until [date]. I have a concrete Plan B if needed. There is nothing more I can do to change the odds.' Separates their agency from the structural randomness of the lottery.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I can't fully commit to life here because I might have to leave — it would be worse to invest and then lose it",
+      "reframe": "You are already paying the cost of leaving (lost relationships, lost career investment, diminished presence) without actually leaving — the self-protection strategy is producing the harm it was meant to prevent",
+      "why_it_works": "It exposes the logical flaw in the protective withdrawal: the anticipated loss is being pre-paid in the present, which means the person loses regardless of the lottery outcome; reframes the choice as 'invest and maybe lose' vs. 'definitely lose now'",
+      "example_language": "我们常常把'可能要离开'变成了'现在就不能完全在这里'，这个逻辑对我们自己最不公平",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Researching Plan B (Canada/going home) feels like giving up or admitting failure on the US path",
+      "reframe": "Seriously researching Plan B transforms it from a feared catastrophe into a known, navigable option — which reduces the psychological weight of the H-1B lottery and improves decision quality on all paths including the US one",
+      "why_it_works": "It decouples information-gathering from commitment; reframes research as expanding optionality rather than narrowing it; corroborated by the 198-like comment: 'recognizing Plan B makes Plan B less frightening'",
+      "example_language": "认真研究了加拿大的PGWP和Express Entry路线，发现它是一个我genuinely可以接受的选项，不只是backup",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_cleaned_immigration_关于H_1B抽签后身份焦虑_说几句心里话",
+  "_source_regions": [
+    "us"
+  ]
+}

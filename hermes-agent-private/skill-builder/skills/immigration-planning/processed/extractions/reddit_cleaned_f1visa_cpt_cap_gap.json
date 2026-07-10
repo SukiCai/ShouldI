@@ -1,0 +1,288 @@
+{
+  "source_file": "f1visa_cpt_cap_gap.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Track your own CPT hours — do not rely on your DSO or co-op office to flag the 12-month limit",
+      "condition": "When you are an F-1 student doing full-time CPT (20+ hours/week) across multiple semesters or co-ops",
+      "action": "Maintain a personal log of all full-time CPT start and end dates, sum total days yourself, and alert your DSO proactively before any new authorization",
+      "because": "Multiple commenters report that DSOs approved CPT without ever mentioning the OPT-elimination rule; one commenter lost OPT eligibility by 3 weeks because the internship ran long and no one flagged it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Verify E-Verify enrollment before accepting an offer if you are relying on STEM OPT extension",
+      "condition": "When you are a STEM-degree holder approaching the end of your 12-month OPT and planning to apply for the 24-month STEM OPT extension",
+      "action": "Confirm employer E-Verify enrollment status before signing the offer letter — treat it as a non-negotiable due-diligence step",
+      "because": "A commenter lost 24 months of authorized work because their startup would not enroll in E-Verify; STEM OPT extension is legally unavailable from non-E-Verify employers regardless of employer intent",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "File your H-1B petition before your OPT EAD expiration date to preserve cap-gap protection",
+      "condition": "When you are on OPT and applying for H-1B in the April lottery, and your OPT EAD expires before or near September 30",
+      "action": "Monitor your EAD expiration date and confirm the H-1B petition is filed before that date — cap-gap only applies if the petition was filed while OPT was still valid",
+      "because": "Commenters flag that students assume automatic cap-gap coverage but miss that the protection requires a timely-filed petition before OPT expiry; those whose OPT expires before April 1 have no protection at all",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Total full-time CPT months accumulated",
+      "why_it_matters": "Crossing 12 months of full-time CPT (20+ hrs/week) permanently eliminates OPT eligibility — the threshold is binary and irreversible",
+      "how_to_assess": "Sum all CPT authorization periods where hours were 20 or more per week; part-time CPT does not count toward the limit",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer E-Verify enrollment status",
+      "why_it_matters": "STEM OPT extension is legally unavailable unless the employer is E-Verify enrolled; employer intent or company size does not override this requirement",
+      "how_to_assess": "Ask the employer HR directly and verify via the E-Verify employer search tool before accepting the offer",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "OPT EAD expiration date relative to H-1B filing window",
+      "why_it_matters": "Cap-gap protection only applies if the H-1B petition is filed while OPT status is still valid; students whose EAD expires before April 1 have no cap-gap bridge",
+      "how_to_assess": "Check exact EAD expiration date on the card and compare to the H-1B filing window (April 1 start); if EAD expires before April, cap-gap protection is unavailable",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Completing a full co-op or internship that pushes total full-time CPT past 12 months",
+      "unstated_consequence": "Permanent loss of OPT eligibility — not disclosed proactively by many DSOs or co-op offices; students discover it only when planning post-graduation work authorization",
+      "who_it_affects": "Engineering and technical program students where multi-semester co-ops are standard or 'strongly encouraged' by academic advisors",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Accepting an offer at a startup or small company without checking E-Verify status",
+      "unstated_consequence": "Loss of the 24-month STEM OPT extension even if the employer wants to retain you — the employer cannot retroactively enroll to fix the problem mid-authorization",
+      "who_it_affects": "STEM graduates who prioritize role fit or compensation over immigration compliance checkboxes",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Assuming cap-gap protection is automatic after H-1B lottery selection",
+      "unstated_consequence": "Students whose OPT EAD expires before the petition filing date have no cap-gap bridge and may fall out of status without realizing it",
+      "who_it_affects": "F-1 students with short OPT windows (e.g., late graduation dates, limited OPT start flexibility) who enter the H-1B lottery without checking EAD expiry alignment",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Delegating CPT compliance tracking entirely to the DSO or university co-op office",
+      "why_it_happens": "Students reasonably assume the institution that approves CPT is responsible for flagging eligibility limits; the institutional incentive is to facilitate co-ops, not to protect individual OPT eligibility",
+      "consequence": "OPT eligibility lost permanently — in one reported case, by only 3 weeks of overage on a final-semester internship",
+      "warning_signs": [
+        "DSO has never mentioned the 12-month CPT rule during any authorization",
+        "Student is completing a third or fourth CPT authorization without having personally summed their hours"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Accepting a STEM OPT employer without verifying E-Verify enrollment",
+      "why_it_happens": "Students focus on job quality, compensation, and sponsorship willingness — E-Verify enrollment is a bureaucratic checkbox that feels like a technicality rather than a hard legal barrier",
+      "consequence": "24 months of authorized work time forfeited; student must find a new employer or exit the US",
+      "warning_signs": [
+        "Employer is a small startup or non-US-facing company",
+        "Student has not explicitly asked HR about E-Verify enrollment before signing the offer"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming cap-gap coverage without checking EAD expiration timing",
+      "why_it_happens": "The cap-gap rule is widely discussed but the precondition (petition must be filed before OPT expires) is frequently omitted in community explanations, creating false confidence",
+      "consequence": "Student falls out of status between OPT expiration and H-1B start date, potentially triggering unlawful presence",
+      "warning_signs": [
+        "Student knows they applied for H-1B but has not checked whether their EAD will still be valid on April 1",
+        "Student describes cap-gap as 'automatic' without referencing petition timing"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many total weeks of full-time CPT (20+ hours/week) have you completed across all employers and semesters?",
+      "what_it_reveals": "Whether the student is at risk of crossing or has already crossed the 12-month OPT-elimination threshold",
+      "follow_up_if_yes": "If total is close to or over 52 weeks, immediately consult DSO and an immigration attorney before any further CPT authorization",
+      "follow_up_if_no": "If well under 12 months, calculate remaining headroom and establish a hard personal cutoff date for future CPT",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is the exact expiration date on your OPT EAD card, and does it fall before April 1?",
+      "what_it_reveals": "Whether cap-gap protection is available to the student if they enter the H-1B lottery",
+      "follow_up_if_yes": "If EAD expires before April 1, cap-gap is not available — student must explore alternatives (change of status, departure, cap-exempt employers)",
+      "follow_up_if_no": "If EAD is valid through April 1 or later, cap-gap protection is available as long as the petition is timely filed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your current or prospective employer enrolled in E-Verify?",
+      "what_it_reveals": "Whether STEM OPT extension is legally accessible at that employer",
+      "follow_up_if_yes": "Confirm enrollment is active and employer is willing to complete the STEM OPT I-983 training plan",
+      "follow_up_if_no": "STEM OPT extension is not possible at this employer regardless of any other factor — evaluate whether to negotiate E-Verify enrollment or seek a different employer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Part-time CPT counts toward the 12-month limit that eliminates OPT eligibility",
+      "actual_reality": "Only full-time CPT (20+ hours/week) counts toward the 12-month limit; part-time CPT (under 20 hours/week) does not count regardless of duration or number of semesters",
+      "implication": "Students who have done extensive part-time CPT need not worry about OPT eligibility loss from that work; students should precisely categorize each authorization as full-time or part-time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Losing OPT eligibility due to CPT overage means you cannot legally work in the US after graduation",
+      "actual_reality": "Cap-exempt H-1B employment (universities, nonprofits, government research organizations) remains available and is not subject to the annual lottery; at least one commenter recovered by working as a research assistant at their university under a cap-exempt H-1B",
+      "implication": "Students who lose OPT eligibility should research cap-exempt employer pathways before concluding US employment is impossible",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Cap-gap protection automatically applies to any F-1 student whose H-1B was filed for the upcoming fiscal year",
+      "actual_reality": "Cap-gap protection requires that the H-1B petition was filed before the OPT EAD expired; students whose EAD expires before the April 1 filing window open have no cap-gap coverage",
+      "implication": "Students must proactively check EAD expiration date against the H-1B filing window and plan status accordingly — automatic assumption of cap-gap coverage is a documented source of out-of-status incidents",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Immigration compliance ownership",
+      "naive_pattern": "Assumes the DSO, co-op office, or employer HR will flag eligibility limits and compliance risks proactively; treats approvals as implicit certification that everything is fine",
+      "informed_pattern": "Treats immigration compliance as a personal responsibility; independently tracks CPT hours, EAD dates, and employer E-Verify status regardless of what institutions say or don't say",
+      "why_it_matters": "Institutional actors have incentives misaligned with the student's OPT eligibility; students who delegate tracking are the ones who lose OPT by a few weeks",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating a job offer as a visa holder",
+      "naive_pattern": "Evaluates offer on role fit, compensation, and whether employer 'will sponsor' — treats immigration compliance details as fine print to sort out later",
+      "informed_pattern": "Treats E-Verify enrollment, cap-gap timing, and sponsorship track record as first-order screening criteria before evaluating role quality",
+      "why_it_matters": "An employer who cannot support STEM OPT or future H-1B forecloses years of authorized work regardless of how good the role is",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you use more than 12 months of CPT, you lose OPT — so any CPT near that threshold is dangerous",
+      "why_believed": "The 12-month rule is correctly remembered but the full-time qualifier is dropped; students aggregate all CPT (full-time and part-time) when assessing their risk",
+      "actual_rule": "Only full-time CPT (20+ hours/week) counts toward the 12-month OPT-elimination threshold; part-time CPT has no cap",
+      "real_consequence": "Students with heavy part-time CPT history may unnecessarily forgo OPT-eligible CPT opportunities, or conversely, students with full-time CPT near the limit may not realize how close they actually are",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Cap-gap automatically protects you if your H-1B was filed for October 1 and your OPT runs out before then",
+      "why_believed": "Cap-gap is discussed as if it is an automatic status bridge for all OPT holders in the H-1B lottery; the precondition requiring a filed petition before OPT expiry is routinely omitted",
+      "actual_rule": "Cap-gap only applies if the H-1B petition was filed before the OPT EAD expiration date; students whose OPT expires before the April 1 filing window opens have no cap-gap protection",
+      "real_consequence": "Students fall out of status believing they are covered, creating unlawful presence that can trigger multi-year bars to re-entry",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Losing OPT eligibility through CPT overage ends your ability to work legally in the US after graduation",
+      "why_believed": "OPT is presented as the primary or only post-graduation work authorization pathway for F-1 students; alternatives like cap-exempt H-1B are rarely discussed in mainstream student communities",
+      "actual_rule": "Cap-exempt H-1B positions (universities, qualifying nonprofits, government research) remain available to students who lost OPT eligibility and are not subject to the annual lottery cap",
+      "real_consequence": "Students who lose OPT eligibility may prematurely abandon US career plans without exploring cap-exempt employer alternatives",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "F-1 master's student completed multiple co-ops; final semester internship ran 3 weeks long, pushing total full-time CPT to just over 12 months",
+      "decision": "The overage was not caught in time; OPT application was either denied or flagged post-graduation",
+      "outcome": "Lost entire OPT eligibility; pivoted to part-time research assistant role at university, obtained cap-exempt H-1B through university employer, eventually pursued green card via university — process took 2 additional years",
+      "lesson": "CPT overage is recoverable via cap-exempt pathways but adds years to the immigration timeline; catching the overage risk before the final semester is the only way to avoid the detour",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "STEM OPT-eligible graduate accepted position at startup without verifying E-Verify enrollment; relied on employer's stated willingness to 'support' STEM OPT",
+      "decision": "Accepted offer and began work on 12-month OPT; employer declined to enroll in E-Verify when the time came",
+      "outcome": "Lost 24 months of authorized STEM OPT work time; forced to find new employer or exit",
+      "lesson": "Employer intent to support STEM OPT is meaningless without E-Verify enrollment; enrollment status must be verified before signing the offer, not after starting work",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Poster asks 'Should I just go back home?' after encountering another unexpected immigration rule or setback",
+      "underlying_state": "Cumulative anxiety and decision fatigue from repeated system complexity; comparison anxiety triggered by seeing peers at home appear to be thriving without immigration stress",
+      "how_it_manifests": "Framing a long-term financial and career trajectory decision as an immediate emotional escape from a specific stressor; using the immigration system's difficulty as the primary input rather than 10-year outcome data",
+      "expert_move": "Reframe the question from 'is the immigration system worth it' to 'what does the 10-year financial and career trajectory look like if I stay vs. leave' — separate the short-term pain signal from the long-term value calculation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student discovers they are at 11.5 months of CPT and panics, asking if they are 'okay'",
+      "underlying_state": "Catastrophizing around proximity to a binary cliff; fear of irreversible mistake despite being technically compliant",
+      "how_it_manifests": "Treating being close to the limit as equivalent to crossing it; seeking reassurance rather than actionable next steps",
+      "expert_move": "Confirm current compliance clearly and immediately, then redirect to the actionable question: how to manage remaining CPT authorizations to stay under the threshold going forward",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'Should I just go back home? The US immigration system is designed to trap you and I can't keep up with all these hidden rules.'",
+      "reframe": "This is not an immigration question — it is a 10-year financial and life trajectory question being asked at the worst possible emotional moment",
+      "why_it_works": "It separates the acute emotional state (immigration anxiety, peer comparison) from the structural decision (long-term career and compensation compounding), preventing a permanent decision from being made on temporary pain",
+      "example_language": "'Almost everyone who left in the panic phase wishes they had stayed 2 more years.'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_f1visa_cpt_cap_gap",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

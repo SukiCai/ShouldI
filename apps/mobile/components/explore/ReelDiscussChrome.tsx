@@ -899,6 +899,7 @@ export const reelDiscussStyles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: -0.7,
     lineHeight: 36,
+    minHeight: 72,
     color: profileTypography.emphasis,
   },
   /** Question + optional 积分 chip on one wrapping row */

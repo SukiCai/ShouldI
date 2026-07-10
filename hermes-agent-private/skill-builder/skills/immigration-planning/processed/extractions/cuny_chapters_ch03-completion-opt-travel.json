@@ -1,0 +1,345 @@
+{
+  "source_file": "ch03-completion-opt-travel.md",
+  "heuristics": [
+    {
+      "rule": "Apply for OPT 60–90 days before your program completion date, not after graduation",
+      "condition": "When you are an F-1 student approaching the end of your degree program",
+      "action": "File I-765 with USCIS after DSO authorizes in SEVIS, targeting submission 60–90 days before academic completion",
+      "because": "USCIS processing takes 3–5 months; applying at or after graduation creates a work authorization gap during which you cannot legally work",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Set your SEVIS transfer release date AFTER your OPT end date if you plan to continue OPT",
+      "condition": "When you are on post-completion OPT and considering transferring to a new school",
+      "action": "Delay setting the transfer release date in SEVIS until after your OPT authorization period ends",
+      "because": "OPT authorization terminates automatically the moment a transfer release date is set; there are zero exceptions and OPT cannot be transferred to the new school",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Get your I-20 travel-endorsed by your DSO before every international departure during OPT",
+      "condition": "When you are on OPT and planning to travel outside the US",
+      "action": "Visit your DSO to obtain a travel signature on your I-20 (valid for 6 months) before leaving the country",
+      "because": "CBP will deny re-entry if the I-20 travel signature is missing or expired, regardless of your valid visa or EAD",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Track your OPT unemployment days as a hard-count depleting balance starting from OPT start date",
+      "condition": "When you are on post-completion OPT and between jobs or waiting for USCIS processing",
+      "action": "Count every calendar day without authorized employment against your 90-day limit and alert your DSO when approaching 60 days",
+      "because": "Exceeding 90 cumulative unemployment days terminates OPT status automatically — USCIS does not send a warning before termination",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Apply for STEM OPT extension before your current OPT EAD expires",
+      "condition": "When you hold a STEM degree, are employed by an E-Verify employer, and are in the final months of standard 12-month OPT",
+      "action": "Submit the STEM extension application (with I-983 Training Plan signed by employer) while current OPT is still valid",
+      "because": "Filing after OPT expiration means your work authorization has already lapsed; there is no grace period for late STEM extension filings",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Identify your program completion date from academic records, not from the graduation ceremony calendar",
+      "condition": "When calculating the start of your F-1 60-day grace period",
+      "action": "Confirm with your registrar the exact date all academic requirements are fulfilled — this is the legal completion date",
+      "because": "Graduation ceremonies often occur months after actual academic completion; relying on ceremony date causes students to miscalculate the grace period and accrue unlawful presence",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If planning to pursue a second degree after the first, preserve each degree level's independent OPT eligibility",
+      "condition": "When an F-1 student is strategically considering enrollment in a new degree program to reset OPT eligibility",
+      "action": "Enroll in a degree at a different level (e.g., bachelor's → master's → PhD) to access a fresh 12-month OPT authorization",
+      "because": "Each degree level independently qualifies for its own 12-month OPT; this is a legal mechanism to extend total authorized work time in the US",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Program completion date vs. graduation ceremony date",
+      "why_it_matters": "The 60-day grace period and OPT application window are triggered by academic completion, not the ceremony — conflating them causes students to miscalculate all downstream deadlines",
+      "how_to_assess": "Request the official program completion date from the registrar; compare it to the graduation ceremony date on the academic calendar",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "STEM degree eligibility for OPT extension",
+      "why_it_matters": "STEM-eligible students can extend OPT by 24 months beyond the standard 12, dramatically increasing time to secure H-1B sponsorship or alternative status",
+      "how_to_assess": "Check whether your CIP code appears on the DHS STEM designated degree program list; confirm employer is enrolled in E-Verify",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Cumulative unemployment days consumed",
+      "why_it_matters": "Crossing 90 days (standard OPT) or 150 days (STEM extension) triggers automatic termination with no reinstatement option",
+      "how_to_assess": "Maintain a personal log tracking every day without an active employer on record since OPT start date; count USCIS processing gaps if EAD was delayed",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer E-Verify enrollment status",
+      "why_it_matters": "STEM OPT extension is only available when employed by an E-Verify employer; a non-E-Verify employer disqualifies the student from STEM extension regardless of degree",
+      "how_to_assess": "Ask the HR or legal team directly and verify on the E-Verify employer search portal before accepting an offer",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Timing of planned international travel relative to I-20 travel signature validity",
+      "why_it_matters": "An expired or missing travel signature on the I-20 results in CBP re-entry denial even with a valid visa and EAD",
+      "how_to_assess": "Check the travel endorsement date on your I-20; it must be within the past 6 months at the time of re-entry",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "School transfer timing relative to OPT end date",
+      "why_it_matters": "Setting a transfer release date in SEVIS before OPT ends immediately terminates work authorization with no recovery path",
+      "how_to_assess": "Confirm current OPT EAD expiration date; only initiate transfer release after that date has passed",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Degree level already used for OPT",
+      "why_it_matters": "Students who have already used OPT at a given degree level cannot reuse it at the same level; a new degree at a higher level unlocks fresh eligibility",
+      "how_to_assess": "Review SEVIS history or DSO records to identify which degree levels have had OPT authorized",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Waiting until graduation day to start the OPT application",
+      "unstated_consequence": "Creates a 3–5 month unauthorized work gap between graduation and EAD arrival; unemployment days may begin accumulating immediately against the 90-day limit even before the student can legally work",
+      "who_it_affects": "Students who receive job offers contingent on immediate work authorization and students in competitive fields with early start date expectations",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Transferring to a new school while on post-completion OPT",
+      "unstated_consequence": "The act of setting the SEVIS transfer release date instantly and irrevocably terminates OPT work authorization — the student cannot undo this or continue OPT at the new school",
+      "who_it_affects": "Students who believe their OPT will follow them to their new institution, particularly those mid-employment who don't consult a DSO before initiating the transfer",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on the 90-day unemployment limit as a buffer between jobs",
+      "unstated_consequence": "USCIS processing delays, employer onboarding gaps, and the grace period itself all consume the same 90-day pool; what feels like ample buffer can vanish before the student has started a single job",
+      "who_it_affects": "Students changing employers, students whose OPT EAD was delayed, and students in industries with slow hiring cycles",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Traveling internationally during OPT without verifying I-20 travel signature",
+      "unstated_consequence": "Re-entry is denied at the port of entry regardless of visa validity or employment status; the student may be stranded abroad and lose their OPT authorization period",
+      "who_it_affects": "Students who travel urgently (family emergencies, weddings) and do not have time to visit their DSO; students whose DSO office has long appointment wait times",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Enrolling in a second degree to reset OPT eligibility",
+      "unstated_consequence": "Extends time in the US legally but restarts the H-1B lottery exposure clock; the student may spend additional years and tuition cost only to face the same lottery odds without guaranteed sponsorship",
+      "who_it_affects": "Students who treat degree enrollment as a pure immigration strategy without genuine academic or career rationale",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Treating the 60-day grace period as free time after graduation",
+      "unstated_consequence": "Unemployment days on OPT accumulate during the grace period countdown; inaction on status decisions during this window may permanently foreclose options",
+      "who_it_affects": "Students who do not understand the difference between a grace period (transition window) and a holiday; particularly affects students in December graduation cohorts who assume they have until spring",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Confusing program completion date with graduation ceremony date when calculating the 60-day grace period",
+      "why_it_happens": "Universities prominently advertise graduation ceremonies; the academic completion date buried in registrar records is less visible and emotionally less salient",
+      "consequence": "Student believes they have weeks or months more than they actually do; accrues unlawful presence without realizing it, triggering 3-year or 10-year bars on re-entry",
+      "warning_signs": [
+        "Student references graduation ceremony date when asked about their completion date",
+        "Student has not confirmed completion date with registrar or DSO"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Applying for OPT on or after graduation day instead of 60–90 days before",
+      "why_it_happens": "Students treat OPT as something to do 'after' graduation; they underestimate USCIS processing time and overestimate how quickly they need authorization",
+      "consequence": "Multi-month work authorization gap; job offers rescinded or deferred; unemployment days accumulate before any work is possible",
+      "warning_signs": [
+        "Student plans to 'celebrate graduation first then deal with OPT paperwork'",
+        "Student has not contacted DSO to initiate SEVIS authorization"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Failing to track cumulative unemployment days on OPT",
+      "why_it_happens": "Students mentally anchor to the 90-day number as large and safe; they do not account for compounding gaps — USCIS delays, job search time, onboarding gaps — that all draw from the same pool",
+      "consequence": "Automatic OPT termination and immediate out-of-status; no reinstatement mechanism; forced departure or status violation",
+      "warning_signs": [
+        "Student cannot state how many unemployment days they have used when asked",
+        "Student is on second job search without having tracked days from first gap"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Traveling internationally during OPT without obtaining an updated I-20 travel signature",
+      "why_it_happens": "Students assume that if their visa stamp and EAD are valid, re-entry is guaranteed; the I-20 travel endorsement requirement is not widely understood and is easy to overlook during travel planning",
+      "consequence": "CBP denies re-entry at port of entry; student stranded abroad; possible OPT abandonment and need to restart immigration process",
+      "warning_signs": [
+        "Student books international travel without scheduling a DSO appointment first",
+        "Student's last I-20 travel signature is more than 6 months old"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming OPT transfers automatically to a new school when transferring SEVIS",
+      "why_it_happens": "Students conflate SEVIS record transfer (administrative) with OPT authorization (school-specific legal status); the distinction is not intuitively obvious",
+      "consequence": "Work authorization terminates the moment transfer release date is set; student is immediately unauthorized to work without recourse",
+      "warning_signs": [
+        "Student says they plan to 'transfer their OPT' to the new school",
+        "Student initiates transfer in SEVIS without consulting DSO about OPT timing"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "DSO-triggered SEVIS termination due to unreported address change or missed registration",
+      "why_it_happens": "Students focus on employment and visa milestones while treating administrative compliance as low-priority bureaucracy; 15-day address reporting window is short and easily missed during moves",
+      "consequence": "DSO must terminate SEVIS record; student falls out of F-1 status; all downstream OPT and work authorization is voided",
+      "warning_signs": [
+        "Student moved apartments and has not updated address with DSO within 15 days",
+        "Student deferred registration without formal DSO approval"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the exact date your academic requirements were fulfilled — not your graduation ceremony date?",
+      "what_it_reveals": "Whether the student understands when their 60-day grace period actually started and whether they may already be accruing unlawful presence",
+      "follow_up_if_yes": "Have you confirmed this date with your registrar and DSO, and have you already filed or initiated your OPT application?",
+      "follow_up_if_no": "Contact your registrar immediately to get the official program completion date before making any other immigration decision",
+      "country_scope": "us"
+    },
+    {
+      "question": "How many cumulative unemployment days have you used since your OPT start date?",
+      "what_it_reveals": "Whether the student is at risk of automatic OPT termination and whether they have enough buffer to conduct a job search or change employers",
+      "follow_up_if_yes": "If under 60 days used, proceed with job search but set a hard deadline to secure employment before day 80; if over 75 days, escalate to DSO immediately",
+      "follow_up_if_no": "If student cannot answer, they are not tracking — treat as high risk and reconstruct the count from employment records immediately",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is your current or prospective employer enrolled in E-Verify?",
+      "what_it_reveals": "Whether the student is eligible for STEM OPT extension, which determines if they have 12 or 36 total months of OPT work authorization",
+      "follow_up_if_yes": "Confirm STEM degree CIP code eligibility and begin STEM extension application before current OPT expires",
+      "follow_up_if_no": "Assess whether employer can enroll in E-Verify; if not, evaluate whether a different employer or freelance arrangement is possible before OPT expires",
+      "country_scope": "us"
+    },
+    {
+      "question": "When was the travel signature on your I-20 last endorsed by your DSO?",
+      "what_it_reveals": "Whether the student can legally re-enter the US after international travel without risk of CBP denial",
+      "follow_up_if_yes": "If within 6 months, travel is permissible; remind student to also carry EAD and employment letter",
+      "follow_up_if_no": "If more than 6 months ago or unsigned, student must visit DSO for endorsement before any international departure",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are you planning to transfer to a new school while your OPT is still active?",
+      "what_it_reveals": "Whether the student is about to unknowingly terminate their work authorization by setting a SEVIS transfer release date",
+      "follow_up_if_yes": "Advise student to delay setting the transfer release date until after OPT end date; connect them with DSO to coordinate timing",
+      "follow_up_if_no": "Confirm student understands the rule for future planning; if they are considering future enrollment, document the OPT end date for reference",
+      "country_scope": "us"
+    },
+    {
+      "question": "Have you used OPT at this degree level before?",
+      "what_it_reveals": "Whether the student has already exhausted OPT eligibility at their current degree level and whether a new degree enrollment could unlock additional eligibility",
+      "follow_up_if_yes": "Explore whether enrollment in a higher degree level is academically and strategically viable to access a fresh 12-month OPT",
+      "follow_up_if_no": "Student retains full OPT eligibility at current degree level; ensure application timing is optimized",
+      "country_scope": "us"
+    },
+    {
+      "question": "Have you reported your current address to your DSO within the past 15 days of any move?",
+      "what_it_reveals": "Whether the student is at risk of a DSO-triggered SEVIS termination due to administrative non-compliance",
+      "follow_up_if_yes": "Confirm records are current; no further action needed on this dimension",
+      "follow_up_if_no": "Student must update address with DSO immediately; failure to do so is a mandatory SEVIS termination trigger",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The 60-day grace period after graduation is a safety buffer that gives you time to figure out your next steps",
+      "actual_reality": "The 60-day grace period is a hard-deadline transition window; it begins at academic completion (not ceremony), and every day of inaction in it consumes irreplaceable time — there is no extension",
+      "implication": "Students must initiate OPT applications or status change decisions before graduation, not after; treating the grace period as buffer almost guarantees procedural failure",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "OPT belongs to the student and travels with them when they transfer to a new school",
+      "actual_reality": "OPT is school-specific and is legally tied to the authorizing institution's SEVIS record; it terminates automatically and immediately when a SEVIS transfer release date is set — no exceptions",
+      "implication": "Any student on OPT who is considering school transfer must delay the SEVIS transfer release until after OPT ends or they will lose work authorization with no recovery option",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "90 unemployment days is a generous window to find a new job during OPT",
+      "actual_reality": "The 90 days is a cumulative lifetime limit across the entire OPT period, not a per-job-search reset; USCIS processing delays, gaps between jobs, and onboarding delays all count against it simultaneously",
+      "implication": "Students must treat each day without an active employer on record as a resource expenditure, maintain a running count, and treat approaching 75 days as an emergency threshold",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "As long as your visa and EAD are valid, you can re-enter the US after international travel",
+      "actual_reality": "CBP requires a valid passport, unexpired F-1 visa stamp, I-20 with a travel signature dated within the past 6 months, EAD card, and an employment letter — any missing document can result in re-entry denial",
+      "implication": "International travel during OPT must be planned with a DSO appointment as a mandatory pre-departure step; last-minute travel without updated I-20 endorsement is high risk",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Graduation ceremony date and program completion date are the same thing",
+      "actual_reality": "Graduation ceremonies are often held months after the actual academic completion date; the immigration clock starts at academic completion, which is often in December for spring ceremony graduates",
+      "implication": "Students must obtain their official academic completion date from the registrar and use that — not the ceremony date — as the basis for all immigration timeline calculations",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "You can enroll in a new degree program at the same level to get a fresh OPT authorization",
+      "actual_reality": "OPT eligibility resets only when the new degree is at a different level (e.g., completing a bachelor's and then completing a master's); same-level degrees do not grant a new OPT period",
+      "implication": "Students who plan to use additional degrees as an immigration bridge must ensure the new degree is at a higher academic level than the one that already generated OPT",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of the grace period",
+      "naive_pattern": "Treats the 60-day grace period as vacation time after graduation; plans to 'start the OPT process' after the ceremony and take a few weeks off",
+      "informed_pattern": "Applies for OPT 60–90 days before academic completion so the EAD arrives close to graduation; understands the grace period is a procedural transition window, not free time",
+      "why_it_matters": "Students who wait create a multi-month unauthorized work gap and risk accruing unlawful presence if they misidentify the start of the grace period",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Tracking unemployment days",
+      "naive_pattern": "Knows vaguely that there is a '90-day limit somewhere' but cannot state how many days they have used; assumes they have plenty left",
+      "informed_pattern": "Maintains a running log of every day without an active employer from OPT start date; treats day 75 as a hard alarm threshold requiring immediate escalation to DSO",
+      "why_it_matters": "Exceeding 90 days causes automatic, unrecoverable OPT termination; students who are not counting are flying blind toward a cliff",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Travel preparation during OPT",
+      "naive_pattern": "Checks that their visa and EAD are valid before booking international travel; assumes that is sufficient for re-entry",
+      "informed_pattern": "Builds a pre-departure checklist: valid passport, valid F-1 visa stamp, I-20 with travel signature within 6 months, EAD, employment letter; schedules DSO appointment before every international trip",
+      "why_it_matters": "Missing the I-20 travel signature is the most common cause of CBP re-entry denial for OPT students; a valid visa and EAD do not substitute for it",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "OPT portability when transferring schools",
+      "naive_pattern": "Believes OPT can be 'transferred' to a new school the same way a SEVIS record is transferred; plans to transfer mid-OPT without consulting DSO",
+      "informed_pattern": "Knows OPT is school-specific and non-portable; strategically times SEVIS transfer release date to occur after OPT expiration to preserve work authorization",
+      "why_it_matters": "Setting the transfer release date while OPT is active immediately and permanently terminates work authorization — the error cannot be reversed",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Identifying program completion date",
+      "naive_pattern": "Uses graduation ceremony date for all immigration planning; has not verified actual academic completion date with registrar",
+      "informed_pattern": "Requests official program completion date from registrar at the beginning of final semester; anchors all OPT application timing and grace period calculations to that date",
+      "why_it_matters": "Using the wrong date by even a few months can cause a student to unknowingly accrue unlawful presence, triggering multi-year re-entry bars",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Strategic use of degree levels for OPT eligibility",
+      "naive_pattern": "Assumes OPT is a one-time benefit that expires after graduation; does not know that each degree level independently generates OPT eligibility",
+      "informed_pattern": "Maps out OPT eligibility across all degree levels already completed and not yet completed; incorporates degree-level strategy into long-term immigration planning alongside H-1B lottery timelines",
+      "why_it_matters": "Strategic enrollment at a new degree level can legally extend total US work authorization by years, buying additional H-1B lottery chances or time to pursue alternative immigration pathways",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "STEM OPT extension preparation",
+      "naive_pattern": "Plans to 'look into the STEM extension' after standard OPT expires; has not confirmed employer E-Verify status or prepared I-983",
+      "informed_pattern": "Verifies employer E-Verify enrollment on day one of employment; prepares I-983 Training Plan with employer months before standard OPT expires; files extension while current EAD is still valid",
+      "why_it_matters": "Filing after OPT expiration means work authorization has already lapsed; early preparation ensures continuity of authorized employment and maximizes total OPT time available",
+      "country_scope": "us"
+    }
+  ]
+}

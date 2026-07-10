@@ -1,0 +1,445 @@
+{
+  "source_file": "cuny_intl_student_guide_raw.txt",
+  "heuristics": [
+    {
+      "rule": "If you are an F-1 student who needs to drop below full-time enrollment, get DSO approval BEFORE dropping the course — not after.",
+      "condition": "When an F-1 student is considering dropping below a full course load for any reason",
+      "action": "Obtain written authorization from the Designated School Official prior to dropping any course, and only if the reason falls within the four permitted exceptions (academic difficulty, medical condition, final semester, or annual vacation).",
+      "because": "A student who drops below full-time without prior DSO approval is automatically considered out of status under 8 CFR 214.2(f)(6)(iii), regardless of how legitimate the reason may seem. Out-of-status requires a full USCIS reinstatement process.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are an F-1 student who has been out of status, file for reinstatement within 5 months — waiting longer makes you ineligible for reinstatement through the school.",
+      "condition": "When an F-1 student has fallen out of status for any reason",
+      "action": "Contact the DSO immediately and initiate the reinstatement process through USCIS before the 5-month threshold passes.",
+      "because": "Students out of status for more than 5 months cannot request reinstatement unless they can prove exceptional circumstances prevented earlier filing. Missing this window may require departure from the US.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are an F-1 student planning to use full-time CPT for 12 or more months during your program, you will forfeit all post-completion OPT eligibility.",
+      "condition": "When an F-1 student is considering extended full-time CPT engagement",
+      "action": "Use CPT part-time when possible, or limit full-time CPT to under 12 cumulative months if post-graduation OPT is a career priority.",
+      "because": "12 or more months of full-time CPT eliminates OPT eligibility entirely under 8 CFR 214.2(f)(10)(i), cutting off the primary post-graduation work authorization pathway.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Apply for OPT 60 to 90 days before your program completion date — do not wait until graduation day.",
+      "condition": "When an F-1 student is approaching program completion",
+      "action": "Submit OPT application to DSO and USCIS within the 60–90 day pre-completion window; confirm employment begins within 90 days of OPT approval start date.",
+      "because": "OPT processing takes time, and employment cannot legally begin until the EAD is approved and the authorized start date arrives. Missing the filing window can delay or forfeit work authorization.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are traveling outside the US on OPT, secure all four required documents before departure — not just your passport and visa.",
+      "condition": "When an F-1 student on OPT plans to travel internationally",
+      "action": "Carry: (1) unexpired passport with valid F-1 visa, (2) SEVIS I-20 endorsed for OPT travel, (3) EAD card, and (4) employer confirmation letter including salary if visa renewal is needed.",
+      "because": "CBP officers at the port of entry require all four documents for re-admission on OPT. Missing any one of them can result in denial of re-entry.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are a J-1 student who lets health insurance lapse, your status can be terminated and you cannot reinstate it.",
+      "condition": "When a J-1 student considers canceling or allowing health insurance to expire",
+      "action": "Maintain continuous J-1 compliant health insurance coverage throughout the entire duration of status, including during Academic Training periods.",
+      "because": "Under 22 CFR 62.14(h)(i), willful failure to maintain health insurance requires the RO to terminate J-1 status in SEVIS, and terminated J-1 students cannot reinstate under 22 CFR 62.45(f)(1). This is a non-recoverable status loss.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Get your DSO to sign and date your I-20 for travel at least 3 to 4 weeks before you leave the US.",
+      "condition": "When an F-1 or J-1 student plans to travel outside the United States",
+      "action": "Request a travel signature on the Certificate of Eligibility from your DSO or RO at least 3–4 weeks before departure to allow time to gather financial documents for possible visa renewal.",
+      "because": "Re-entry requires a valid travel-endorsed I-20 or DS-2019. Without adequate lead time, students may be unable to gather required financial documentation for visa reissuance at a consulate abroad.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If your OPT ends and you transfer to another school, set the transfer release date after OPT completion — not before.",
+      "condition": "When an F-1 student on OPT wants to transfer to another SEVP-certified school",
+      "action": "Coordinate with your DSO to set the SEVIS transfer release date for a date after your OPT end date, not before or during active OPT.",
+      "because": "OPT authorization automatically terminates on the transfer release date. If release happens before OPT ends, the remaining OPT is forfeited and cannot be transferred to the new school.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are a J-1 student who used 12 months of Academic Training at a prior institution, your post-doctoral AT is capped at 24 months, not 36.",
+      "condition": "When a J-1 PhD student plans post-doctoral Academic Training",
+      "action": "Track all prior AT usage across all institutions and programs before assuming maximum eligibility, and verify the cumulative total with your RO.",
+      "because": "AT is counted cumulatively across all institutions. Students who assume fresh 36-month eligibility after each program level will miscalculate their remaining authorized training period.",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Do not begin on-campus employment as an F-1 student more than 30 days before classes actually start, even if you arrived earlier.",
+      "condition": "When an F-1 student arrives in the US before the program start date and is offered on-campus work",
+      "action": "Delay start of any on-campus employment until within the 30-day pre-class window.",
+      "because": "Commencing on-campus work more than 30 days before the actual start of classes violates F-1 status conditions under 8 CFR 214.2(f)(9)(i).",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cumulative full-time CPT usage",
+      "why_it_matters": "Using 12 or more months of full-time CPT eliminates OPT eligibility entirely, removing the primary post-graduation work authorization pathway for F-1 students.",
+      "how_to_assess": "Ask DSO for a CPT authorization history. Count all full-time CPT months. If approaching 12 months, switch to part-time CPT or stop CPT entirely to preserve OPT.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether reason for reduced course load falls within the four permitted exceptions",
+      "why_it_matters": "No discretion exists outside the four regulatory exceptions. A reason that seems valid but doesn't qualify results in automatic out-of-status.",
+      "how_to_assess": "Verify the reason against the four categories: (1) academic difficulty with English/methods/placement, (2) documented medical condition, (3) final semester completion, (4) annual vacation. If none apply, do not drop below full-time.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "J-1 student's primary funding source",
+      "why_it_matters": "J-1 students must have government, university, or international organization as primary/major sponsor. Individual or personal funds are treated as secondary. This affects visa issuance and program eligibility.",
+      "how_to_assess": "Review the DS-2019 application funding breakdown. If personal funds constitute the majority of support, the application may not qualify for J-1 status.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the student has maintained continuous full-time enrollment",
+      "why_it_matters": "Status maintenance is contingent on full-time enrollment each semester. A single unauthorized under-enrollment creates out-of-status, which can block OPT, AT, transfer, and reinstatement options.",
+      "how_to_assess": "Review SEVIS record and enrollment history each semester. Any gap or under-enrollment without documented DSO authorization is a red flag.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Degree type and STEM classification",
+      "why_it_matters": "STEM-classified degrees unlock an additional 17-month OPT extension (total 29 months), dramatically increasing the window to transition to employer-sponsored status in the US.",
+      "how_to_assess": "Check whether the degree CIP code appears on DHS's STEM designated degree program list. Confirm with DSO before assuming STEM eligibility.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Time elapsed since falling out of status",
+      "why_it_matters": "The 5-month threshold determines whether reinstatement is even possible. Beyond 5 months without exceptional circumstances, the student cannot reinstate and must typically depart.",
+      "how_to_assess": "Calculate from the date the status violation began (e.g., date of unauthorized drop or missed registration). If under 5 months, reinstatement is possible; over 5 months requires proving exceptional circumstances.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether employer is enrolled in E-Verify",
+      "why_it_matters": "F-1 STEM OPT extension requires the employer to be enrolled in E-Verify. Without this, STEM OPT cannot be approved regardless of the student's degree or qualifications.",
+      "how_to_assess": "Ask the hiring manager or HR department directly. Check the E-Verify employer search tool before accepting an offer if STEM OPT is the intended pathway.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Part-time vs. full-time pre-completion OPT usage",
+      "why_it_matters": "Part-time pre-completion OPT is deducted from post-completion OPT at a half-time rate, reducing the total available post-graduation work authorization.",
+      "how_to_assess": "Calculate: every 2 months of part-time pre-completion OPT = 1 month deducted from the 12-month post-completion OPT cap. Plan accordingly.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the student is subject to the J-1 two-year home residency requirement",
+      "why_it_matters": "J-1 students subject to the 212(e) two-year home residency requirement cannot directly change to most nonimmigrant or immigrant statuses without first fulfilling it or obtaining a waiver.",
+      "how_to_assess": "Check the DS-2019 and visa stamp for the 212(e) notation. Consult with an immigration attorney if uncertain, as this significantly restricts post-program pathways.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Number of online courses in a semester",
+      "why_it_matters": "F-1 and J-1 students may only count one 3-credit online course toward their full course of study requirement per semester. Exceeding this limit risks status compliance.",
+      "how_to_assess": "Count online courses in the registration each semester. If the student needs more than one online course, verify with DSO whether remaining credits can be fulfilled in-person or at a second institution.",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using full-time CPT for a well-paying internship during the degree program",
+      "unstated_consequence": "If cumulative full-time CPT reaches 12 months, the student permanently forfeits all OPT eligibility — including the STEM extension — for that degree level.",
+      "who_it_affects": "Students in programs that require or encourage long-term co-ops or internships, particularly in engineering, computer science, and business programs.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Enrolling in primarily online courses to manage schedule or location flexibility",
+      "unstated_consequence": "F-1 and J-1 students are limited to one 3-credit online course per semester counting toward full-time status. Exceeding this limit creates an unauthorized reduced course load and risks status violation.",
+      "who_it_affects": "Students managing work, family, or commuting constraints who assume online enrollment flexibility mirrors that of domestic students.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Taking pre-completion OPT part-time to earn income while finishing the degree",
+      "unstated_consequence": "Every 2 months of part-time pre-completion OPT reduces the post-graduation OPT period by 1 month, shrinking the window to secure H-1B sponsorship or other status transitions.",
+      "who_it_affects": "Students who need income during their final year but plan to rely on full post-graduation OPT for job searching.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Transferring to a new school while on OPT without carefully setting the release date",
+      "unstated_consequence": "OPT automatically terminates on the SEVIS transfer release date. If the release is set before OPT ends, remaining OPT work authorization is lost and cannot be transferred.",
+      "who_it_affects": "Students who want to pursue an additional degree immediately after graduation while finishing OPT employment.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a J-1 visa sponsorship from a government or university program",
+      "unstated_consequence": "Government-funded J-1 programs often trigger the 212(e) two-year home residency requirement, which blocks direct transitions to H-1B, green card, or other statuses without a waiver or home return.",
+      "who_it_affects": "Students from countries with skills-shortage designations or those whose J-1 funding comes from a government agency.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Not purchasing health insurance as an F-1 student because it is not mandatory",
+      "unstated_consequence": "A single medical emergency without insurance can result in catastrophic out-of-pocket costs, and students who become sick may find themselves uninsurable for existing conditions under new plans, jeopardizing continued enrollment.",
+      "who_it_affects": "F-1 students from countries with universal healthcare who underestimate US medical costs and lack familiarity with the private insurance system.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Allowing an F-2 dependent spouse to provide financial support documentation for another international student's I-20",
+      "unstated_consequence": "J-2 authorized income explicitly cannot be used as financial support for issuing a Certificate of Eligibility for the J-1 principal or any other international student — doing so can invalidate the I-20/DS-2019.",
+      "who_it_affects": "Married international students whose spouse works on J-2 authorization and who attempt to use that income to sponsor a sibling or friend's enrollment.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Waiting for the department to recommend reduced enrollment due to GPA or academic probation",
+      "unstated_consequence": "A departmental recommendation to reduce course load is not a recognized RCL exception. Following it without DSO authorization puts the student out of status, even if the department issued the instruction.",
+      "who_it_affects": "Students with GPA difficulties who trust academic department guidance over immigration compliance requirements.",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Dropping below full-time enrollment without DSO authorization because all desired courses were full",
+      "why_it_happens": "Students and even academic advisors assume that course unavailability is a reasonable exception, but it is not listed among the four permitted RCL exceptions.",
+      "consequence": "The student falls out of F-1 status and must apply for reinstatement through USCIS, which is costly, time-consuming, and not guaranteed.",
+      "warning_signs": [
+        "Student reports courses are full and asks if they can take fewer credits this semester",
+        "Academic advisor recommends reduced load without mentioning DSO consultation"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "J-1 student allowing health insurance to lapse, assuming it can be renewed retroactively",
+      "why_it_happens": "Students treat health insurance as optional or assume a brief gap is tolerable. J-1 regulations have zero tolerance for willful non-compliance.",
+      "consequence": "RO is required to terminate J-1 status in SEVIS. Terminated J-1 students cannot reinstate. They must depart the US.",
+      "warning_signs": [
+        "Student asks about switching insurance plans and mentions a gap in coverage",
+        "Student reports financial hardship and asks what they can cut from their budget"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "F-1 student accumulating 12+ months of full-time CPT without realizing OPT is forfeited",
+      "why_it_happens": "CPT is approved semester by semester without a cumulative tracker being shown to the student. Students focus on the immediate benefit of paid work, not the long-term cost.",
+      "consequence": "The student graduates with no OPT eligibility, leaving them with no legal work authorization and no time to transition to employer sponsorship.",
+      "warning_signs": [
+        "Student asks about CPT for a third or fourth consecutive semester",
+        "Student has been on full-time CPT for more than 8 months"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Student fails to report to the DSO within 15 days of US entry, leaving I-94 unverified",
+      "why_it_happens": "Students are preoccupied with settling in and assume the arrival process is complete once they clear customs. The 15-day reporting requirement is not prominently emphasized.",
+      "consequence": "Failure to activate the SEVIS record and confirm I-94 status can result in auto-termination of the student's SEVIS record, effectively ending their legal status.",
+      "warning_signs": [
+        "New student does not appear at the international student office before the first week of classes",
+        "Student mentions they never received an orientation email or letter after arrival"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Student assumes academic transfer automatically handles immigration transfer",
+      "why_it_happens": "Students conflate academic transfer (registrar process) with immigration transfer (SEVIS release process). They believe being accepted to a new school is sufficient.",
+      "consequence": "The student's SEVIS record is not released to the new school, leaving them in a status limbo that can be treated as unauthorized presence.",
+      "warning_signs": [
+        "Student mentions they 'transferred' to a new school but has not contacted the DSO",
+        "Student asks why their new school won't issue an I-20 when they were just accepted"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Student seeking reinstatement after being out of status for more than 5 months",
+      "why_it_happens": "Students are unaware of or underestimate the 5-month reinstatement deadline, often hoping the problem will resolve itself or waiting for the school year to end.",
+      "consequence": "Loss of reinstatement eligibility. The student may be required to depart the US and re-enter on a new I-20, if the school is willing to reissue.",
+      "warning_signs": [
+        "Student mentions they stopped attending classes 'a few months ago' without notifying the DSO",
+        "Student asks if they can fix their status at the beginning of next semester"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "On-campus employee starts work more than 30 days before classes begin after arriving early",
+      "why_it_happens": "Students arrive 30 days early (as permitted) and assume that work authorization begins upon arrival, not upon the opening of the 30-day pre-class window.",
+      "consequence": "Unauthorized employment violation, which is a serious status breach that can result in status termination and bars to future immigration benefits.",
+      "warning_signs": [
+        "HR or department asks DSO to verify student status for I-9 before the 30-day pre-class window opens",
+        "Student mentions they started working the week they arrived"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "DSO fails to manually terminate non-enrolled students in SEVIS after the 30-day grace period, resulting in auto-termination",
+      "why_it_happens": "DSOs do not follow up on non-compliant students within the mandated 10-day and 21-day notice windows, leaving SEVIS records to auto-terminate.",
+      "consequence": "The school is out of compliance with 8 CFR 214.3(g), students lose status without notice, and the institution risks sanctions from DHS.",
+      "warning_signs": [
+        "No structured process exists for identifying non-enrolled international students at the start of each semester",
+        "DSO has not sent the required 10-day non-compliance notice"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has this F-1 student ever been authorized for full-time CPT, and if so, for how many cumulative months?",
+      "what_it_reveals": "Whether the student has already forfeited OPT eligibility or is approaching the 12-month threshold that would eliminate it.",
+      "follow_up_if_yes": "Calculate total cumulative full-time CPT months. If at or near 12, advise the student to switch to part-time CPT or discontinue CPT entirely to protect OPT.",
+      "follow_up_if_no": "Confirm the student's CPT history is clean and OPT is fully available. Proceed with standard OPT planning.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the reason this student wants to drop below full-time enrollment one of the four permitted RCL exceptions?",
+      "what_it_reveals": "Whether a reduced course load can be legally authorized or whether the student must maintain full enrollment regardless of personal circumstances.",
+      "follow_up_if_yes": "Document the exception, obtain required supporting materials (medical documentation, academic advisor letter, etc.), and authorize RCL in SEVIS before the drop occurs.",
+      "follow_up_if_no": "Advise the student they cannot drop below full-time. Explore alternatives: adding a course at another CUNY school, concurrent enrollment, or transferring temporarily to a school where full-time enrollment is feasible.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is this J-1 student's primary source of funding from a government, university, or international organization?",
+      "what_it_reveals": "Whether the student meets J-1 visa program funding requirements, and whether they may be subject to the 212(e) two-year home residency requirement.",
+      "follow_up_if_yes": "Confirm the funding source is listed as primary on the DS-2019. Check whether the program or funding source triggers 212(e). If so, advise the student early about post-program pathway limitations.",
+      "follow_up_if_no": "Determine if the student qualifies for J-1 at all, since individual/personal funds can only be secondary. If not eligible for J-1, explore F-1 as an alternative status.",
+      "country_scope": "us"
+    },
+    {
+      "question": "How long has this F-1 student been out of status?",
+      "what_it_reveals": "Whether reinstatement through USCIS is still a viable option or whether the student must depart the US.",
+      "follow_up_if_yes": "If under 5 months: initiate reinstatement process immediately through the DSO and USCIS. If over 5 months: assess whether exceptional circumstances apply; if not, the student likely needs to depart and re-enter.",
+      "follow_up_if_no": "Confirm the student is still in valid status and identify what triggered the concern — then verify SEVIS record is active and enrollment is compliant.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is this student's degree classified as STEM under the DHS designated degree program list?",
+      "what_it_reveals": "Whether the student is eligible for an additional 17-month OPT extension, providing up to 29 months of total post-graduation work authorization.",
+      "follow_up_if_yes": "Confirm the employer is enrolled in E-Verify. If yes, advise the student to apply for STEM OPT extension before standard OPT expires. If no, the employer must enroll before STEM OPT can be granted.",
+      "follow_up_if_no": "The student is limited to 12 months of OPT. Advise that they must secure employer H-1B sponsorship or alternative status within this window.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has this J-1 student previously used Academic Training at another institution or program level?",
+      "what_it_reveals": "The student's remaining AT eligibility, since AT is counted cumulatively across all programs and institutions.",
+      "follow_up_if_yes": "Subtract prior AT usage from the applicable maximum (18 months for undergrad/grad; 36 months for post-doctoral). Authorize only the remaining balance.",
+      "follow_up_if_no": "The student has the full maximum available, subject to program duration caps. Proceed with standard AT authorization process.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Did this student physically report to the International Student Office and provide their I-94 within 15 days of arriving in the US?",
+      "what_it_reveals": "Whether the student's SEVIS record has been properly activated and whether the student is in compliance with initial reporting requirements.",
+      "follow_up_if_yes": "Confirm the SEVIS record has been activated. File all initial documents and ensure the student's address and status are correctly recorded.",
+      "follow_up_if_no": "Treat as urgent. Contact the student immediately, verify their I-94 status, and activate the SEVIS record before the 30-day program start deadline to prevent auto-termination.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is this student planning to transfer to a new school while currently on OPT, and if so, when is the proposed transfer release date?",
+      "what_it_reveals": "Whether the student risks losing remaining OPT work authorization by setting the transfer release date before OPT ends.",
+      "follow_up_if_yes": "Confirm the transfer release date is set after the OPT end date. If not, work with the student to delay the transfer release date or reconsider the transfer timing.",
+      "follow_up_if_no": "No immediate OPT risk. Proceed with standard transfer planning.",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any staff member at a university can answer immigration-related questions for international students.",
+      "actual_reality": "Only a CUNY Designated School Official (DSO) or Responsible Officer (RO) is federally authorized to provide immigration advisement to F-1 and J-1 students. Non-authorized staff who provide immigration guidance create personal and institutional liability.",
+      "implication": "International students should always be redirected to the official DSO or RO office for any immigration question, no matter how minor it seems. Other staff should never attempt to interpret immigration regulations.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If a student has a valid visa stamp, they are maintaining valid immigration status in the US.",
+      "actual_reality": "A visa stamp and immigration status are completely separate legal concepts. A visa stamp allows entry at the border; status is determined by SEVIS record, I-20/DS-2019 validity, and compliance with enrollment and employment rules. A student can have an expired visa but valid status, or a valid visa but be out of status.",
+      "implication": "Students and advisors must track status compliance (enrollment, employment, address reporting) independently of visa stamp expiration. Never assume a valid visa means valid status.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Being placed on academic probation or being told by a department not to register for courses is a valid reason to take fewer than full-time credits.",
+      "actual_reality": "Academic probation is not a recognized reduced course load exception under 8 CFR 214.2(f)(6)(iii). A student who follows their department's instruction to reduce enrollment without DSO authorization falls out of status, regardless of the departmental guidance.",
+      "implication": "Students on academic probation must consult the DSO before reducing enrollment. If no valid RCL exception applies, they may need to transfer temporarily to another school to maintain full-time enrollment.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Health insurance is optional for F-1 students, so it is a reasonable budget item to skip.",
+      "actual_reality": "While CUNY does not mandate health insurance for F-1 students, a single medical emergency can generate bills exceeding tens of thousands of dollars. Additionally, becoming sick without insurance can make students uninsurable for pre-existing conditions, affecting their ability to obtain coverage later.",
+      "implication": "F-1 students should be strongly advised to purchase health insurance that includes medical evacuation and repatriation coverage, even if not mandated, as uninsured illness can derail enrollment entirely.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If all the classes a student needs are full, they can just take fewer credits that semester and fix it next term.",
+      "actual_reality": "Course unavailability is explicitly not a recognized exception to the full-time enrollment requirement. The student must register for other available courses to reach the full-time threshold or explore concurrent enrollment at another school.",
+      "implication": "Students must maintain full-time enrollment regardless of course availability. DSOs should proactively inform students about concurrent enrollment options at other CUNY schools or external institutions as a compliance strategy.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Transferring to a new school handles all immigration paperwork automatically.",
+      "actual_reality": "Academic acceptance at a new school does not transfer the student's SEVIS record. The student must formally notify the current DSO, submit a transfer recommendation form, and have the DSO release the SEVIS record to the new school. Only then can the new school issue an I-20.",
+      "implication": "Students planning to transfer must initiate the SEVIS transfer process explicitly with their current DSO, separate from the academic admission process. Failure to do so can result in a status gap.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "J-2 dependent income can be used to help support another international student's enrollment costs.",
+      "actual_reality": "J-2 authorized employment income is explicitly prohibited from being used as financial support for issuing a Certificate of Eligibility to any other student, including the J-1 principal holder.",
+      "implication": "Students who plan to use a spouse's J-2 employment income to cover costs for another international student's enrollment documentation will find the application rejected or the I-20/DS-2019 invalidated.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If I start working on campus right when I arrive in the US, I am fine as long as I have a valid I-20.",
+      "actual_reality": "F-1 students may not begin on-campus employment more than 30 days before the actual start of classes, even if they arrived 30 days before the program start date and have a valid I-20.",
+      "implication": "Students who arrive early and begin work immediately may be engaging in unauthorized employment. Employment start must be coordinated with the class start calendar, not the arrival date.",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the visa vs. status distinction",
+      "naive_pattern": "Assumes that having a valid F-1 or J-1 visa stamp in their passport means they are in valid immigration status and can work or travel freely.",
+      "informed_pattern": "Tracks status compliance separately from visa stamp validity. Knows that status depends on SEVIS record activity, full-time enrollment, and authorized employment — and that an expired visa stamp does not affect status while inside the US.",
+      "why_it_matters": "Confusing visa and status leads students to make decisions (travel, drop courses, accept work) based on the wrong legal framework, resulting in status violations.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Planning CPT usage across the degree program",
+      "naive_pattern": "Accepts every CPT opportunity offered by their program without tracking cumulative full-time months, assuming CPT and OPT are independent benefits.",
+      "informed_pattern": "Tracks cumulative full-time CPT months from the start. Knows the 12-month threshold eliminates OPT and switches to part-time CPT strategically to preserve post-graduation work authorization.",
+      "why_it_matters": "Students who exhaust OPT eligibility through CPT graduate with no legal work authorization and no runway to secure employer sponsorship.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Responding to course availability problems",
+      "naive_pattern": "Assumes that if no courses are available, taking fewer credits is acceptable or that the school will handle it administratively.",
+      "informed_pattern": "Immediately contacts the DSO, explores concurrent enrollment at another CUNY or external school, and understands that course unavailability is not an RCL exception.",
+      "why_it_matters": "Students who take unauthorized reduced course loads fall out of status and face USCIS reinstatement costs, delays, and uncertainty.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Preparing for international travel while in F-1 or J-1 status",
+      "naive_pattern": "Grabs their passport, assumes the existing visa stamp is fine, and books a flight without thinking about document requirements.",
+      "informed_pattern": "Gets DSO travel signature on I-20/DS-2019 at least 3–4 weeks before departure. Checks visa stamp expiration. Carries all required documents. Understands what is needed specifically for re-entry on OPT.",
+      "why_it_matters": "Improper travel preparation can result in visa denial abroad or CBP refusal at re-entry, stranding the student outside the US.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Handling J-1 health insurance as an ongoing obligation",
+      "naive_pattern": "Treats health insurance as a one-time enrollment task at the start of the program and doesn't monitor continuous coverage or renewal.",
+      "informed_pattern": "Tracks insurance expiration dates, renews before any lapse, maintains coverage through Academic Training, and keeps proof of insurance available for the RO.",
+      "why_it_matters": "A single lapse that the RO deems willful requires mandatory status termination with no reinstatement path — a non-recoverable outcome.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Responding to falling out of status",
+      "naive_pattern": "Waits, hopes the situation resolves itself, or plans to address it at the start of the next semester.",
+      "informed_pattern": "Contacts the DSO immediately upon realizing status may have been violated. Initiates reinstatement within the 5-month window and treats every day of delay as reducing the probability of a successful outcome.",
+      "why_it_matters": "The 5-month reinstatement deadline is hard. Students who wait past it lose the option and may be forced to depart the US entirely.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding who is authorized to provide immigration advice",
+      "naive_pattern": "Accepts immigration guidance from any helpful staff member, faculty advisor, or classmate who seems knowledgeable.",
+      "informed_pattern": "Directs all immigration questions exclusively to the DSO or RO. Understands that only federally designated officials can legally provide immigration advisement, and that acting on unauthorized advice creates personal liability.",
+      "why_it_matters": "Incorrect immigration advice from unauthorized sources can result in status violations, arrests, deportation proceedings, and institutional liability — with no recourse if the advice was informal.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Planning OPT timing around graduation",
+      "naive_pattern": "Assumes OPT starts automatically at graduation and will be ready by the time they need to work.",
+      "informed_pattern": "Applies 60–90 days before program completion, knows employment cannot begin until the EAD is in hand and the authorized start date has arrived, and builds a buffer for USCIS processing time.",
+      "why_it_matters": "Late OPT applications result in delayed work authorization, which can cause students to miss job start dates or lose offers that require immediate employment.",
+      "country_scope": "us"
+    }
+  ]
+}

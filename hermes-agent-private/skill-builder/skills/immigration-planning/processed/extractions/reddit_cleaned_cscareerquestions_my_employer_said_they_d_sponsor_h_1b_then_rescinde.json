@@ -1,0 +1,261 @@
+{
+  "source_file": "cscareerquestions_my_employer_said_they_d_sponsor_h_1b_then_rescinde.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Get H-1B sponsorship commitment in writing before accepting an offer",
+      "condition": "When accepting a job offer as an F-1/OPT holder who will need H-1B sponsorship...",
+      "action": "Request explicit written language in the offer letter — e.g., 'Company will file H-1B petition on employee's behalf for the next available cap season' — and do not accept based on verbal assurances alone",
+      "because": "Verbal promises are not legally binding for H-1B commitments; companies can change policy at any time and the employee has no enforceable recourse without written documentation (corroborated by top comment at 287 upvotes and OP's own lesson)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Be upfront about visa status and sponsorship timeline during job interviews",
+      "condition": "When job searching on STEM OPT with a hard deadline for H-1B filing...",
+      "action": "Disclose OPT status and H-1B sponsorship need early in the interview process, including the specific cap-season deadline",
+      "because": "Honest screening saves time for both parties; a commenter with 176 upvotes confirmed finding a new sponsor within 8 months using this approach",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Identify your H-1B filing deadline and reverse-engineer your job search timeline",
+      "condition": "When on STEM OPT and needing to secure H-1B sponsorship...",
+      "action": "Calculate backward from the April cap registration window (early March deadline) to determine the latest acceptable start date for a new job search, and treat that date as a hard constraint",
+      "because": "H-1B cap season has fixed annual windows; missing one means waiting another full year, which may exceed remaining OPT authorization (OP's own timeline analysis, no contradicting comments)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Remaining OPT time vs. H-1B cap season alignment",
+      "why_it_matters": "If remaining OPT expires before the next H-1B approval date, the person falls out of status regardless of job quality or employer willingness",
+      "how_to_assess": "Calculate OPT expiration date, then check whether it overlaps with the next H-1B cap season start (October 1). If less than ~18 months remain, urgency is critical.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether immigration commitments are documented in writing",
+      "why_it_matters": "Written commitments create at minimum a paper trail and at most a legally enforceable basis; verbal commitments have no enforceability and can be retracted without consequence",
+      "how_to_assess": "Review offer letter and any written communications (email, Slack, contract) for explicit sponsorship language; absence of written commitment is a red flag regardless of verbal assurances",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Availability of alternative visa pathways (L-1, O-1, marriage-based, F-1 bridge)",
+      "why_it_matters": "Each alternative has strict eligibility requirements and different career/time costs; over-relying on an inaccessible alternative wastes critical runway",
+      "how_to_assess": "L-1 requires 1+ year abroad with multinational employer; O-1 requires demonstrable extraordinary ability; F-1 bridge requires genuine degree enrollment; marriage-based requires applicable personal situation — each must be individually verified",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Existence of written or digital communications about sponsorship promise",
+      "why_it_matters": "Slack messages, emails, or other documented communications may support a promissory estoppel claim in some jurisdictions, creating leverage even when no formal contract exists",
+      "how_to_assess": "Search email, Slack, and offer-related documents for any written mention of H-1B sponsorship by employer representatives",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Going back to school (F-1 bridge) to buy immigration time",
+      "unstated_consequence": "Buying OPT time through a new degree requires genuine enrollment and academic commitment, and comes with real career momentum loss — it is not a low-cost delay tactic",
+      "who_it_affects": "Mid-career professionals who are progressing well and for whom a 1-2 year academic detour has significant opportunity cost",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Accepting a job offer based on verbal H-1B sponsorship promises",
+      "unstated_consequence": "Company policy can change after hiring, leaving the employee with no legal recourse and a depleted OPT timeline — the anxiety and job search cost falls entirely on the employee",
+      "who_it_affects": "Any F-1/OPT holder who relies on employer goodwill rather than contractual commitment for immigration continuity",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting immigration promises verbally without written documentation in the offer letter",
+      "why_it_happens": "Employees feel it would be awkward or adversarial to demand written immigration commitments from a seemingly good-faith employer; social norms around new job offers discourage hard negotiations on terms perceived as secondary",
+      "consequence": "Employer rescinded sponsorship 18 months later with no legal recourse for the employee; employee left with 15 months of OPT runway and forced job search under time pressure",
+      "warning_signs": [
+        "Sponsorship discussed only verbally during offer conversation, not included in offer letter",
+        "Employer says 'we always sponsor our OPT employees' without putting it in writing",
+        "Employee accepts offer without asking for written confirmation of immigration support"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming a company's reputation or size guarantees immigration follow-through",
+      "why_it_happens": "Students associate company prestige or scale with institutional reliability, assuming large or well-regarded companies won't change immigration policies mid-employment",
+      "consequence": "Sponsorship rescinded despite prior commitment; company policy changes are independent of company reputation",
+      "warning_signs": [
+        "Reasoning like 'they're a big company, they sponsor everyone'",
+        "No independent verification of current sponsorship policy at time of offer"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the H-1B sponsorship commitment documented anywhere in writing — offer letter, email, or messaging platforms like Slack?",
+      "what_it_reveals": "Whether the person has any legal or practical leverage against the employer, and whether a promissory estoppel claim is worth exploring",
+      "follow_up_if_yes": "What is the specificity of the language? Does it name a timeline or cap season? Collect and preserve all documentation immediately.",
+      "follow_up_if_no": "Verbal promises are not enforceable; shift focus to new employer search and calculate remaining OPT runway against next cap season.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many months of OPT remain, and does that runway overlap with the next H-1B cap registration window (typically early March)?",
+      "what_it_reveals": "Whether the person has time to find a new sponsor and file in time, or whether they need to consider bridge strategies like F-1 re-enrollment or cap-exempt employers",
+      "follow_up_if_yes": "Prioritize job search immediately; target offers by November-December to allow time for filing preparation.",
+      "follow_up_if_no": "Evaluate cap-exempt employer bridge, F-1 bridge, or other visa categories as interim solutions.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does the person qualify for any alternative visa category — L-1, O-1, or marriage-based?",
+      "what_it_reveals": "Whether there are realistic fallback pathways beyond H-1B cap or F-1 bridge",
+      "follow_up_if_yes": "Consult an immigration attorney immediately to assess eligibility timeline and filing requirements.",
+      "follow_up_if_no": "Options narrow to new H-1B sponsor, cap-exempt bridge employer, or F-1 re-enrollment; do not waste time planning around inaccessible pathways.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If a reputable company verbally promises H-1B sponsorship during hiring, you can count on it",
+      "actual_reality": "Verbal promises carry no legal weight for immigration commitments; company policy can change at any time and employees have no enforceable claim without written documentation, making promissory estoppel claims difficult and costly to pursue",
+      "implication": "OPT holders must treat written offer-letter language as the only reliable form of sponsorship commitment, regardless of company reputation or recruiter assurances",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "L-1 and O-1 visas are accessible fallback options when H-1B sponsorship falls through",
+      "actual_reality": "L-1 requires at least 1 year of employment abroad with a qualifying multinational employer; O-1 requires demonstrable extraordinary ability — most early-to-mid career professionals do not qualify for either",
+      "implication": "These should not be treated as realistic contingency plans for most OPT holders; planning should center on finding a new H-1B cap-subject sponsor or a cap-exempt bridge employer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Approach to employer immigration commitments",
+      "naive_pattern": "Accepts verbal promise of H-1B sponsorship during offer conversation; assumes company goodwill and reputation are sufficient guarantee; does not push for written confirmation",
+      "informed_pattern": "Requires explicit written language in the offer letter specifying the company's obligation to file; knows that verbal commitments have no legal enforceability and treats any offer without written immigration terms as unconfirmed",
+      "why_it_matters": "Without written commitment, the employee has zero recourse if the company reverses policy — a situation that costs months of runway and significant career disruption",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Immigration timeline awareness during job search",
+      "naive_pattern": "Searches for jobs without factoring in H-1B cap season deadlines; discovers the timing constraint only after receiving an offer or being near OPT expiration",
+      "informed_pattern": "Reverse-engineers the job search from the April cap registration deadline; knows offers must be secured and sponsorship confirmed well in advance of early March registration; communicates visa timeline proactively in interviews",
+      "why_it_matters": "Missing the cap season by even a few weeks forces a full additional year of uncertainty or requires costly bridge strategies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If a company verbally commits to H-1B sponsorship during your hiring process, they're legally obligated to follow through",
+      "why_believed": "Employment offers feel like binding agreements once accepted; the hiring conversation feels like a contract moment; it is counterintuitive that such a significant term would be unenforceable",
+      "actual_rule": "Verbal promises are not legally binding for H-1B sponsorship; promissory estoppel is theoretically possible but extremely difficult to prove and litigate in practice; only written documentation in an offer letter or contract creates meaningful recourse",
+      "real_consequence": "Employee spends 18 months building career assuming immigration continuity, then faces forced job search with depleted OPT runway and no legal recourse against the employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "L-1 and O-1 visas are viable backup options for most international workers whose H-1B falls through",
+      "why_believed": "These visa categories are frequently listed alongside H-1B in immigration discussions, creating the impression they are broadly accessible alternatives",
+      "actual_rule": "L-1 requires 1+ years of employment abroad with a qualifying multinational company; O-1 requires extraordinary ability with high evidentiary bar — the vast majority of early-to-mid career professionals do not qualify for either",
+      "real_consequence": "Individuals over-rely on these alternatives in their contingency planning, only to discover ineligibility when they need them most, leaving them with fewer options and less time",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Software professional hired 18 months ago with verbal H-1B sponsorship promise; now 9 months into STEM OPT with 15 months remaining; employer rescinded sponsorship citing policy change",
+      "decision": "OP documented the situation, identified realistic options (new sponsor, cap-exempt bridge, alternative visa, F-1 bridge), and committed to being upfront about visa needs in future job searches; planned to require written sponsorship commitment in any new offer",
+      "outcome": "Resolution still in progress at time of post; a commenter in similar situation found new sponsor within 8 months by being transparent about OPT status and H-1B deadline in interviews",
+      "lesson": "Verbal H-1B promises are unenforceable; the practical recovery path is aggressive transparent job searching with a hard cap-season deadline in mind, and the key preventive measure is written offer-letter commitment",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Discovering that an employer has rescinded a previously promised H-1B sponsorship with OPT runway shrinking",
+      "underlying_state": "Catastrophizing and decision paralysis — the person simultaneously fears all options are foreclosed while being overwhelmed by the number of variables (legal recourse, alternative visas, new job search, school re-enrollment)",
+      "how_it_manifests": "OP lists all options in a structured way but frames it as anxiety about having assumed safety that wasn't real; the question pattern suggests fear of running out of time rather than clear-headed evaluation of next steps",
+      "expert_move": "Immediately quantify the actual runway (months of OPT remaining vs. cap season deadline), eliminate ineligible options (L-1, O-1 unless qualifying criteria are met), and reduce the decision to one executable path: new sponsor job search with transparent visa disclosure and written commitment requirement",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Contemplating whether to push back or negotiate hard on immigration terms during a new job offer",
+      "underlying_state": "Social discomfort and fear of damaging offer dynamics by seeming demanding or difficult around immigration paperwork",
+      "how_it_manifests": "Implied by the widespread failure to get sponsorship in writing — the OP's situation suggests this discomfort is common enough to be a systemic failure pattern, not an individual oversight",
+      "expert_move": "Reframe the written commitment request as a professional and mutual clarification ('I want to make sure we're aligned on the timeline so I can plan accordingly') rather than a confrontational demand; experienced advisors normalize this as standard due diligence",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "My company broke their promise — what are my options now?",
+      "reframe": "The promise was never legally real to begin with; the actual question is: given your remaining OPT runway, which executable path gets you to valid status by the cap season deadline?",
+      "why_it_works": "Shifts the person from a victim/betrayal frame (which produces anger and litigation thinking) to a resource allocation frame (which produces executable planning); eliminates the false hope of legal recourse as a primary path",
+      "example_language": "Verbal promises aren't legally binding for H-1B. Your only claim would be promissory estoppel which is hard to prove and even harder to litigate.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I need to find a company that will sponsor my H-1B",
+      "reframe": "You need to find a company that will sponsor AND confirm it in writing in the offer letter — 'willing to sponsor' is not the same as 'committed to sponsor'",
+      "why_it_works": "Surfaces the precise failure mode that created the original problem; forces the job seeker to treat written documentation as a non-negotiable screening criterion rather than an afterthought",
+      "example_language": "Include specific language like 'Company will file H-1B petition on employee's behalf for the next available cap season.' Get it in the offer letter.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_cscareerquestions_my_employer_said_they_d_sponsor_h_1b_then_rescinde",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

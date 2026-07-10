@@ -1,0 +1,330 @@
+{
+  "source_file": "ch04-potential-risks-violations.md",
+  "heuristics": [
+    {
+      "rule": "Report address changes to your DSO within 15 days (F-1) or 10 days (J-1) — no exceptions, no delays",
+      "condition": "When you move to a new apartment, dorm, or residence at any point during your program",
+      "action": "Send the address update email to your DSO the same day you move or within the first week at the latest; do not wait until it feels convenient",
+      "because": "Failure to report is a recorded SEVIS violation that surfaces during OPT, H-1B, and green card processing — causing RFEs, delays, and potential denial even years after the move",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Never work a single day before your EAD card is physically in your hands",
+      "condition": "When you are waiting for an Employment Authorization Document and your start date is approaching",
+      "action": "Do not begin any compensated work — not one hour — until the physical EAD card is received, regardless of what your employer says about approval likelihood",
+      "because": "One unauthorized workday creates a permanent SEVIS record that can block H-1B approval and green card processing; the rationalization 'the EAD is almost here' does not constitute authorization",
+      "country_scope": "us"
+    },
+    {
+      "rule": "File for F-1 reinstatement within 5 months of the status violation — every day past that window dramatically reduces your chances",
+      "condition": "When you discover you have fallen out of F-1 status for any reason",
+      "action": "Immediately consult your DSO and an immigration attorney; begin assembling reinstatement paperwork without waiting to see if the situation resolves itself",
+      "because": "The 5-month window is a hard legal deadline; past it, USCIS reinstatement is unavailable, and unlawful presence continues accumulating toward the 180-day and 365-day re-entry bars",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are on J-1, maintain health insurance continuously — treat a lapse as a five-alarm emergency, not an administrative inconvenience",
+      "condition": "When your J-1 health insurance coverage expires, lapses, or is about to lapse for any reason",
+      "action": "Reinstate or purchase qualifying coverage immediately and notify your DSO; document the lapse duration and cause",
+      "because": "Willful failure to maintain J-1 health insurance is uniquely catastrophic: it terminates J-1 status AND bars reinstatement permanently — there is no recovery path",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Treat pre-graduation status violations as active threats even after you receive your degree",
+      "condition": "When you are applying for OPT, H-1B, or any post-completion benefit after graduating",
+      "action": "Before filing any post-graduation immigration benefit, review your full SEVIS compliance history with a DSO or attorney and resolve any outstanding issues proactively",
+      "because": "USCIS cross-references SEVIS records against immigration applications; violations that occurred before graduation surface during OPT and H-1B processing and cause denials or RFEs",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If on J-1, check whether you are subject to the two-year home residency requirement before making any H-1B or immigrant visa plans",
+      "condition": "When a J-1 student begins planning their post-graduation immigration pathway",
+      "action": "Request a two-year rule determination from your DSO or review your DS-2019 and funding source; if subject, pursue waiver options early",
+      "because": "The two-year home residency requirement blocks H-1B and immigrant visa applications; students who ignore it build career plans on a foundation that collapses at visa application time",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Willfulness of the violation",
+      "why_it_matters": "Willful violations permanently disqualify a student from reinstatement and are treated far more severely in future immigration proceedings than technical or unknowing violations",
+      "how_to_assess": "Determine whether the student had knowledge of the rule at the time of violation; documented DSO communications, enrollment records, and prior warnings are evidence of knowledge",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Duration of unlawful presence accumulated",
+      "why_it_matters": "At 180 days, a 3-year re-entry bar triggers; at 365 days, a 10-year bar triggers — these bars apply even if the student was unaware of the violation",
+      "how_to_assess": "Calculate from the date the status violation occurred (not the date of discovery); cross-reference I-94 records, SEVIS history, and enrollment records",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Type of visa status at time of violation (F-1 vs. J-1)",
+      "why_it_matters": "J-1 violations are categorically more severe: J-1 termination requires immediate departure with no grace period, and certain J-1 violations (health insurance) have no reinstatement path",
+      "how_to_assess": "Identify the student's exact visa classification; do not assume F-1 and J-1 rules are interchangeable",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether the violation involved unauthorized employment",
+      "why_it_matters": "Unauthorized employment is the most severe individual violation; it typically ends F-1 status with no reinstatement option and creates a permanent SEVIS record",
+      "how_to_assess": "Review any compensated activity, including consulting, freelance, stipends, or informal arrangements, against the student's authorized work status at the time",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Time elapsed since violation occurred",
+      "why_it_matters": "The 5-month reinstatement window is a hard cutoff; students who discover violations late lose their reinstatement eligibility before they can act",
+      "how_to_assess": "Pinpoint the exact date the violation began (e.g., first day of reduced course load, date of move without reporting) and calculate how many days have elapsed",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Institutional SEVIS certification risk",
+      "why_it_matters": "DHS can revoke a university's F-1 certification and State Department can revoke J-1 program designation, affecting all international students at that institution — not just the individual violator",
+      "how_to_assess": "Consider whether the student's violation involves systemic DSO failures (e.g., improper I-20 issuance, inadequate financial verification) that expose the institution",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Criminal record or disciplinary history",
+      "why_it_matters": "Criminal conviction is an automatic J-1 termination trigger; any criminal record also blocks F-1 reinstatement eligibility",
+      "how_to_assess": "Review whether any arrests, charges, or institutional disciplinary actions are on record; even pending charges can affect immigration status",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Skipping health insurance as a J-1 student to save money",
+      "unstated_consequence": "A lapse classified as willful permanently terminates J-1 status with zero reinstatement path — the student must depart immediately and cannot recover their status through any domestic process",
+      "who_it_affects": "Healthy J-1 students who perceive health insurance as unnecessary expense and let coverage lapse between semesters or during breaks",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Starting work one day before EAD physically arrives",
+      "unstated_consequence": "That single day becomes a permanent unauthorized employment record in SEVIS that can block H-1B approvals and green card petitions years in the future, long after the student has forgotten the incident",
+      "who_it_affects": "Students in time-pressured job start situations where employers pressure early starts and students assume imminent EAD approval equals authorization",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Waiting to see if a status violation resolves itself before acting",
+      "unstated_consequence": "Each day of inaction is a day of accumulating unlawful presence; the student may cross the 180-day or 365-day bar before discovering the violation, triggering multi-year re-entry bars that apply even if the student later departs voluntarily",
+      "who_it_affects": "Students who are unaware of the violation at the time it occurs and only discover it during a future immigration filing",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Assuming graduation erases prior compliance issues",
+      "unstated_consequence": "SEVIS records are permanent; violations from sophomore year surface during H-1B or green card processing 3–5 years later, creating RFEs, delays, and potential denial at a high-stakes career moment",
+      "who_it_affects": "Students who had minor violations earlier in their program and assumed time or graduation would erase the record",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Not disclosing a known status violation on immigration forms",
+      "unstated_consequence": "USCIS compares student self-reporting against SEVIS records; discrepancies constitute misrepresentation, which is a separate and more severe immigration violation that can result in permanent inadmissibility",
+      "who_it_affects": "Students who know about a past violation and hope to conceal it on H-1B or green card applications",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting a J-1 visa instead of F-1 for the added institutional support",
+      "unstated_consequence": "J-1 comes with significantly harsher violation consequences, a potential two-year home residency requirement, and mandatory health insurance; students who choose J-1 for its benefits often do not understand the asymmetric downside risk",
+      "who_it_affects": "Students offered J-1 sponsorship by their university or a program without fully understanding J-1-specific obligations versus F-1",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Failing to report address changes within the required window",
+      "why_it_happens": "Students treat address reporting as administrative paperwork rather than a legal obligation; the consequence feels distant and the action feels low-priority during a move",
+      "consequence": "SEVIS records a compliance failure that surfaces during H-1B or OPT processing as an RFE or denial; even a single unreported move can delay H-1B approval by 3–4 months and require attorney intervention",
+      "warning_signs": [
+        "Student moved in the past year but cannot recall notifying DSO",
+        "DSO address on file does not match current residence",
+        "Student unaware of the 15-day (F-1) or 10-day (J-1) reporting deadline"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Working one day before EAD card arrives",
+      "why_it_happens": "Students rationalize that approved = authorized; the physical card feels like a formality when approval notice is already received",
+      "consequence": "Permanent unauthorized employment record in SEVIS; F-1 status termination; reinstatement typically unavailable for unauthorized employment; long-term H-1B and green card complications",
+      "warning_signs": [
+        "Employer sets start date before student's EAD card has arrived",
+        "Student says 'my EAD was approved, I'm just waiting for the card'",
+        "Student unsure whether approval notice vs. physical card constitutes work authorization"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "J-1 student letting health insurance lapse",
+      "why_it_happens": "Students who are young and healthy perceive health insurance as an unnecessary cost; insurance renewals happen on administrative cycles students don't track",
+      "consequence": "Willful health insurance failure terminates J-1 status permanently with no reinstatement path; student must depart the US immediately",
+      "warning_signs": [
+        "J-1 student shopping for cheaper non-qualifying coverage",
+        "Student unaware that health insurance is federally mandated for J-1 (not just recommended)",
+        "Insurance expired between academic terms without renewal"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming pre-graduation violations won't affect post-graduation immigration benefits",
+      "why_it_happens": "Students mentally compartmentalize their student years from their professional immigration pathway; graduation feels like a reset",
+      "consequence": "OPT denial, H-1B RFE or denial, green card complications triggered by violations from years earlier that were never resolved",
+      "warning_signs": [
+        "Student graduated but never addressed a known compliance gap from earlier in their program",
+        "Student cannot recall full enrollment and address history during their degree",
+        "Student has never reviewed their SEVIS record"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Concealing or underreporting status violations on immigration forms",
+      "why_it_happens": "Students fear that disclosure will harm their application and hope the record won't be found; they underestimate USCIS's access to SEVIS history",
+      "consequence": "Misrepresentation is a separate, more severe violation than the original status issue; can result in permanent inadmissibility, which is far worse than the original violation",
+      "warning_signs": [
+        "Student says 'I'll just leave that blank' when asked about immigration history",
+        "Student unsure whether a past event counts as a violation and decides not to mention it",
+        "Discrepancy between student's narrative and what DSO records show"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Delaying reinstatement action after discovering an F-1 status violation",
+      "why_it_happens": "Students hope the situation will resolve, fear the complexity of reinstatement, or are unaware of the hard 5-month deadline",
+      "consequence": "Every day of delay adds unlawful presence; past 5 months, USCIS reinstatement is unavailable; past 180 days, a 3-year re-entry bar activates; past 365 days, a 10-year bar activates",
+      "warning_signs": [
+        "Student discovered a potential violation but has not yet contacted DSO or attorney",
+        "Student is 'waiting to see what happens' with a compliance gap",
+        "More than 2 months have passed since the violation began without action"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you moved to a new address at any point during your program without notifying your DSO within 15 days (F-1) or 10 days (J-1)?",
+      "what_it_reveals": "Whether a SEVIS address reporting violation exists that could surface as an RFE or denial during OPT, H-1B, or green card processing",
+      "follow_up_if_yes": "When exactly did you move, and when did you notify your DSO? Calculate the gap and assess whether it exceeds the reporting window; if so, consult a DSO or attorney immediately",
+      "follow_up_if_no": "Verify by cross-referencing DSO records with actual move dates — students often underestimate or misremember the reporting timeline",
+      "country_scope": "us"
+    },
+    {
+      "question": "Did you perform any compensated work — formal or informal — before your EAD card was physically in your possession?",
+      "what_it_reveals": "Whether an unauthorized employment violation exists in the student's SEVIS record, which is one of the most severe and least recoverable F-1 violations",
+      "follow_up_if_yes": "Consult an immigration attorney immediately; determine whether reinstatement is still possible and assess the impact on pending or future immigration filings",
+      "follow_up_if_no": "Confirm the student understands that approval notice ≠ work authorization; the physical EAD card must be received before any work begins",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are you on J-1 status, and is your health insurance currently active and continuously maintained?",
+      "what_it_reveals": "Whether the student is at risk of the single most unrecoverable J-1 violation; health insurance is federally mandated for J-1, and willful lapses permanently terminate status",
+      "follow_up_if_yes": "Confirm the coverage meets J-1 federal requirements (minimum coverage limits, repatriation, medical evacuation); not all health insurance qualifies",
+      "follow_up_if_no": "Assess whether the lapse is willful; if so, the student must consult an immigration attorney immediately as reinstatement is not available for willful J-1 health insurance failures",
+      "country_scope": "us"
+    },
+    {
+      "question": "If you are on J-1, have you confirmed whether you are subject to the two-year home residency requirement?",
+      "what_it_reveals": "Whether the student's planned H-1B or immigrant visa pathway is legally viable without first obtaining a waiver or completing home country residency",
+      "follow_up_if_yes": "Begin exploring waiver options (interested government agency, no-objection statement, hardship) well before the H-1B filing deadline",
+      "follow_up_if_no": "Review DS-2019 funding source and J-1 category with DSO; government-funded or skills-list J-1 holders are typically subject to the requirement",
+      "country_scope": "us"
+    },
+    {
+      "question": "Have you ever been out of status — even briefly — at any point during your studies, and did you take formal steps to resolve it at the time?",
+      "what_it_reveals": "Whether unresolved historical violations are sitting in the SEVIS record that will surface during future immigration benefit applications",
+      "follow_up_if_yes": "Document the exact violation, duration, and resolution steps; if no formal resolution occurred, consult an attorney before filing any new immigration benefit",
+      "follow_up_if_no": "Walk through each potential violation category systematically (enrollment gaps, address moves, work authorization) rather than relying on the student's general recollection",
+      "country_scope": "us"
+    },
+    {
+      "question": "Have you maintained full-time enrollment every semester, including any semester you dropped below full-time without a formal DSO-approved reduced course load authorization?",
+      "what_it_reveals": "Whether an enrollment-based status violation exists; failure to maintain full-time enrollment is one of the primary F-1 and J-1 status termination triggers",
+      "follow_up_if_yes": "Determine whether the reduced enrollment was formally authorized; check DSO records for a reduced course load approval on file",
+      "follow_up_if_no": "Identify the semester(s) in question, calculate the unlawful presence that may have accumulated, and assess reinstatement eligibility if within the 5-month window",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If I graduate without incident, any past compliance issues are behind me and won't affect my career immigration process",
+      "actual_reality": "SEVIS records are permanent and time-stamped; USCIS routinely cross-references SEVIS history against H-1B, OPT, and green card applications — violations from early in a student's program surface years later with full documentation",
+      "implication": "Students must audit their SEVIS compliance history before filing any post-graduation immigration benefit, not after receiving an RFE",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Status violations only matter if someone catches them at the time they happen",
+      "actual_reality": "Unlawful presence accumulates from the date of violation, not the date of discovery; a student can cross the 180-day bar and trigger a multi-year re-entry ban without anyone notifying them — the first notice often comes at a port of entry or during a visa application abroad",
+      "implication": "Students must act on potential violations immediately upon discovery, not wait to see if they become a problem",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "An EAD approval notice means I am authorized to work",
+      "actual_reality": "Work authorization for F-1 OPT requires the physical EAD card; the approval notice does not constitute authorization — one day of work before the card arrives is a permanent SEVIS unauthorized employment record",
+      "implication": "Students must structure their employment start date around EAD card receipt, not approval notice date; employers should be educated on this distinction",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "J-1 and F-1 are essentially similar student visas with the same rules",
+      "actual_reality": "J-1 violations are categorically more severe: J-1 termination requires immediate departure with no grace period; certain J-1 violations (health insurance) have no reinstatement path; and J-1 holders may face a two-year home residency requirement that F-1 holders do not",
+      "implication": "Students choosing between F-1 and J-1 — or advising others — must treat them as fundamentally different compliance regimes, not equivalent alternatives",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Address reporting is an administrative formality with no real enforcement consequence",
+      "actual_reality": "Address change failures are among the most commonly triggered SEVIS violations precisely because students underestimate them; they consistently appear in H-1B RFEs and cause 3–4 month processing delays and attorney fees",
+      "implication": "DSOs should proactively remind students of the 15-day (F-1) and 10-day (J-1) rules at every housing transition point; students should treat it like a legal filing deadline",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "If I disclose a past violation on an immigration form, it will automatically disqualify my application",
+      "actual_reality": "Concealing a known violation and having it discovered through SEVIS cross-referencing constitutes misrepresentation — a separate and more severe violation that can result in permanent inadmissibility, far worse than the original violation",
+      "implication": "Students with known compliance gaps should disclose proactively with attorney-prepared explanatory documentation rather than attempt concealment",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of when unlawful presence begins",
+      "naive_pattern": "Student believes unlawful presence starts when USCIS sends a notice or when someone 'catches' the violation",
+      "informed_pattern": "Student knows unlawful presence begins accumulating on the date the violation occurs, regardless of whether anyone has identified or notified them — and proactively checks their SEVIS record after any compliance gap",
+      "why_it_matters": "Students who wait for notification can cross the 180-day and 365-day bars before taking action, triggering 3- and 10-year re-entry bans that cannot be easily reversed",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Treating F-1 and J-1 as equivalent",
+      "naive_pattern": "Student or advisor treats both visas as 'student visas' with essentially the same rules, consequences, and recovery options",
+      "informed_pattern": "Student distinguishes them as fundamentally different compliance regimes: J-1 has harsher immediate consequences, mandatory health insurance with no reinstatement for willful failure, no grace period upon termination, and a potential two-year home residency requirement",
+      "why_it_matters": "A student who applies F-1 logic to a J-1 situation — such as assuming they have time to fix a health insurance lapse — can permanently lose their status with no recovery path",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Approach to pre-graduation compliance audit",
+      "naive_pattern": "Student never reviews their SEVIS record and assumes that if nothing went wrong that they know about, their record is clean",
+      "informed_pattern": "Student reviews SEVIS history with DSO before filing OPT, H-1B, or any major immigration benefit; identifies and addresses any reportable gaps proactively with documentation",
+      "why_it_matters": "Unresolved historical violations discovered during H-1B processing cause RFEs, delays, and denials at the worst possible career moment — when the student is transitioning from OPT and has limited time to respond",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Response to discovering a status violation",
+      "naive_pattern": "Student waits to see if anything happens, assumes it might not matter, or delays acting because the reinstatement process seems complex",
+      "informed_pattern": "Student immediately contacts DSO and an immigration attorney, calculates the exact number of days since the violation began, and initiates reinstatement paperwork before the 5-month window closes",
+      "why_it_matters": "The 5-month reinstatement window is a hard cutoff; delay converts a recoverable situation into a permanent status termination requiring departure",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding of what constitutes work authorization",
+      "naive_pattern": "Student believes OPT approval notice or employer offer letter is sufficient to begin work; treats physical EAD card as a formality",
+      "informed_pattern": "Student knows that physical EAD card receipt is the legal start of work authorization; structures start date negotiations around card receipt, not approval date, and educates HR accordingly",
+      "why_it_matters": "Beginning work even one day early creates a permanent unauthorized employment record in SEVIS that cannot be expunged and can block future H-1B and green card filings",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Attitude toward administrative reporting requirements",
+      "naive_pattern": "Student treats address reporting, enrollment certification, and insurance maintenance as low-priority administrative tasks that can be done whenever convenient",
+      "informed_pattern": "Student treats each reporting requirement as a hard legal deadline with a specific calendar trigger: move date + 15 days (F-1), move date + 10 days (J-1), insurance renewal dates tracked proactively",
+      "why_it_matters": "These 'administrative' failures are the most common source of SEVIS violations and routinely appear in H-1B RFEs; the student who treats them as legal deadlines avoids the single most avoidable category of immigration problems",
+      "country_scope": "us"
+    }
+  ]
+}

@@ -499,3 +499,57 @@ def build_preloaded_skills_prompt(
         loaded_names.append(skill_name)
 
     return "\n\n".join(prompt_parts), loaded_names, missing
+
+
+# ---------------------------------------------------------------------------
+# Skill-scaffolding markers and user-instruction extractor (synced from upstream)
+# ---------------------------------------------------------------------------
+_SKILL_INVOCATION_PREFIX = "[IMPORTANT: The user has invoked the "
+_SINGLE_SKILL_MARKER = "The full skill content is loaded below.]"
+_SINGLE_SKILL_INSTRUCTION = (
+    "The user has provided the following instruction alongside the skill invocation: "
+)
+_RUNTIME_NOTE = "\n\n[Runtime note:"
+_BUNDLE_MARKER = " skill bundle,"
+_BUNDLE_USER_INSTRUCTION = "\nUser instruction: "
+_BUNDLE_FIRST_SKILL_BLOCK = "\n\n[Loaded as part of the "
+
+
+def extract_user_instruction_from_skill_message(content: Any) -> Optional[str]:
+    """Recover the user's instruction from a slash-skill-expanded turn.
+
+    Returns the original string unchanged for normal (non-skill) messages,
+    the extracted instruction for skill turns that carry one, or None for
+    bare skill invocations (no user instruction — callers should skip the turn).
+    """
+    if not isinstance(content, str):
+        return None
+    if not content.startswith(_SKILL_INVOCATION_PREFIX):
+        return content
+    if _BUNDLE_MARKER in content:
+        return _extract_bundle_user_instruction(content)
+    if _SINGLE_SKILL_MARKER in content:
+        return _extract_single_skill_user_instruction(content)
+    return None
+
+
+def _extract_single_skill_user_instruction(message: str) -> Optional[str]:
+    marker_idx = message.rfind(_SINGLE_SKILL_INSTRUCTION)
+    if marker_idx < 0:
+        return None
+    instruction = message[marker_idx + len(_SINGLE_SKILL_INSTRUCTION):]
+    runtime_idx = instruction.find(_RUNTIME_NOTE)
+    if runtime_idx >= 0:
+        instruction = instruction[:runtime_idx]
+    return instruction.strip() or None
+
+
+def _extract_bundle_user_instruction(message: str) -> Optional[str]:
+    marker_idx = message.find(_BUNDLE_USER_INSTRUCTION)
+    if marker_idx < 0:
+        return None
+    instruction = message[marker_idx + len(_BUNDLE_USER_INSTRUCTION):]
+    first_skill_idx = instruction.find(_BUNDLE_FIRST_SKILL_BLOCK)
+    if first_skill_idx >= 0:
+        instruction = instruction[:first_skill_idx]
+    return instruction.strip() or None

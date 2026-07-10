@@ -1,0 +1,302 @@
+{
+  "source_file": "eb2_green_card_pathway.txt",
+  "heuristics": [
+    {
+      "rule": "If you are India-born or China-born and pursuing EB-2, treat the priority date backlog — not your qualifications — as the primary planning variable.",
+      "condition": "When an Indian or Chinese national begins planning a US green card pathway",
+      "action": "Check the Visa Bulletin immediately and calculate your realistic wait time under per-country quotas before committing to a US long-term career strategy",
+      "because": "Per-country quotas cap each nation at 7% of annual EB visas regardless of demand — India and China face 50-100+ year backlogs under current law, making qualifications nearly irrelevant to timing",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you qualify for NIW, file it as a self-petition rather than waiting for employer PERM sponsorship — it saves approximately 1 year of process time.",
+      "condition": "When a STEM PhD, healthcare professional, or entrepreneur can demonstrate substantial merit and national importance to the US",
+      "action": "Pursue the NIW track to bypass PERM labor certification entirely",
+      "because": "PERM alone takes approximately 1 year (6 months recruitment + ~158 days DOL processing), and NIW removes both the employer dependency and that entire timeline segment",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Use I-140 premium processing when employer timeline pressure or personal status uncertainty exists — the $2,805 fee buys a decision in 15 business days vs. 8+ months.",
+      "condition": "When an H-1B holder's status is nearing expiration or an employer needs certainty before extending a job offer",
+      "action": "File Form I-907 alongside I-140 to elect premium processing",
+      "because": "Standard I-140 processing averages 8.1 months as of 2025; delays in I-140 approval delay everything downstream including AC21 protections and 3-year H-1B extensions",
+      "country_scope": "us"
+    },
+    {
+      "rule": "If you are an India-born EB-2 holder and EB-3 priority dates are advancing faster than EB-2, consult an attorney immediately about a strategic EB-2 to EB-3 downgrade.",
+      "condition": "When the monthly Visa Bulletin shows EB-3 India dates moving faster than EB-2 India dates",
+      "action": "Request an attorney assessment of filing a concurrent or downgrade I-140 under EB-3 to capture the earlier priority date movement",
+      "because": "The EB-2 to EB-3 downgrade is a legal strategy that can accelerate green card issuance by years if EB-3 retrogression is temporarily less severe than EB-2",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Once your I-140 is approved, ensure your employer files for H-1B extensions beyond the 6-year cap under AC21 Section 104(c) — do not assume HR knows to do this automatically.",
+      "condition": "When an H-1B holder reaches or approaches the standard 6-year cap with an approved I-140 but no current priority date",
+      "action": "Proactively alert your immigration attorney and HR to file for 3-year H-1B extensions under AC21",
+      "because": "Without this extension, status lapses at the 6-year mark — but AC21 explicitly permits indefinite 3-year extensions once I-140 is approved, and many employers miss this trigger",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth",
+      "why_it_matters": "Per-country quotas (7% cap) create radically different wait times — a qualified Indian EB-2 applicant may wait 50-100+ years while an equally or less qualified applicant from an undersubscribed country may have no wait at all",
+      "how_to_assess": "Check the USCIS Visa Bulletin Final Action Dates table for your country of birth (not citizenship) in the EB-2 row",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "NIW eligibility",
+      "why_it_matters": "NIW allows self-petition without an employer sponsor, removing PERM dependency and approximately 1 year of processing time — fundamentally changes the strategic pathway",
+      "how_to_assess": "Assess against three Dhanasar prongs: substantial merit and national importance of work, well-positioned to advance it, and US benefit from waiving labor certification — STEM PhDs with citations/publications are the strongest candidates",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer willingness to sponsor PERM",
+      "why_it_matters": "PERM requires employer commitment to a multi-step, ~1-year DOL process including recruitment, prevailing wage filings, and significant legal costs — many small or mid-size employers refuse",
+      "how_to_assess": "Ask explicitly during offer negotiation whether the company has sponsored PERM before, how many times, and whether they will commit to sponsorship in writing in your offer letter",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Current EB-2 vs. EB-3 priority date movement for your country",
+      "why_it_matters": "For India-born applicants, relative movement between EB-2 and EB-3 in the Visa Bulletin can determine whether a downgrade strategy is worth pursuing — this changes every month",
+      "how_to_assess": "Monitor the monthly Visa Bulletin Final Action Dates and Dates for Filing charts for both EB-2 and EB-3 for your country of birth; track trajectory over 3-6 months",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Evidence strength for NIW or Exceptional Ability category",
+      "why_it_matters": "NIW approval rate is 54% and declining (down 13 percentage points with increased scrutiny) — weak evidence packages have meaningful denial risk that delays the entire pathway",
+      "how_to_assess": "Audit against the 6 NIW evidence types: citations/publications, patents, professional association membership, critical role at distinguished organizations, high relative salary, media coverage — a strong case typically has 3+ types with substantial documentation",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Time horizon commitment to US residence",
+      "why_it_matters": "For Indian and Chinese nationals, pursuing a green card is a decade-scale commitment under current rules — this changes whether it makes sense to start the process at all vs. pursuing alternative countries",
+      "how_to_assess": "Honestly assess whether you are willing and able to remain in the US on H-1B or other non-immigrant status for 10+ years with no guarantee of permanent residence under current policy",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Premium processing budget availability",
+      "why_it_matters": "The difference between 15 business days and 8.1 months for I-140 approval can be career-defining — affects job change flexibility, H-1B extension timing, and overall pathway certainty",
+      "how_to_assess": "Determine whether employer covers the $2,805 premium processing fee or whether you will pay out of pocket; factor this into negotiation with employer",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Starting the EB-2 PERM process with an employer sponsor",
+      "unstated_consequence": "You become implicitly tied to that employer for years — changing jobs resets the PERM clock entirely unless you can port under AC21 after I-140 approval and 180+ days in adjustment of status",
+      "who_it_affects": "India-born and China-born professionals who start PERM early in their career before accumulating leverage to negotiate job changes",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Pursuing NIW as a self-petition to avoid employer dependency",
+      "unstated_consequence": "NIW approval rate is only 54% and declining — a denial means you wasted time, money, and may need to restart with employer-sponsored PERM, losing months or years of priority date advantage",
+      "who_it_affects": "STEM professionals who are borderline on evidence strength and self-file without attorney review to save costs",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Remaining on H-1B for years while waiting for an EB-2 priority date to become current",
+      "unstated_consequence": "You accumulate career and life decisions (home purchases, family planning, entrepreneurship) all contingent on a visa status that can be lost through layoffs, company closures, or policy changes — creating compounding optionality loss",
+      "who_it_affects": "Indian nationals in tech who are 5-10 years into the wait and have structured their entire life around an uncertain outcome",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Filing EB-2 instead of EB-3 for India-born applicants",
+      "unstated_consequence": "In periods where EB-3 India dates advance faster than EB-2 India dates, the 'higher' EB-2 category can paradoxically result in a longer wait than the 'lower' EB-3 category",
+      "who_it_affects": "India-born professionals who assume EB-2 is always preferable to EB-3 and don't monitor the Visa Bulletin monthly",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Waiting for standard I-140 processing to save the $2,805 premium processing fee",
+      "unstated_consequence": "An 8.1-month I-140 delay can cause H-1B cap-gap exposure, delay AC21 portability protections, and prevent the ability to change jobs during a critical career window",
+      "who_it_affects": "Candidates whose employers decline to pay premium processing fees and who don't understand the downstream cascading effects of the delay",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Choosing a US career path as an Indian or Chinese national without researching Canada as an alternative",
+      "unstated_consequence": "Canada's Express Entry system can grant permanent residence in months rather than decades for the same qualifications — the opportunity cost of the US path is rarely explicitly compared",
+      "who_it_affects": "Indian STEM professionals who default to the US path due to salary or brand perception without running a parallel Canada assessment",
+      "country_scope": "universal"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "India-born applicants file EB-2 without researching their actual priority date wait time, only discovering the 50-100 year backlog years into the process",
+      "why_it_happens": "Students focus on whether they qualify (education, experience) rather than whether the visa will actually be available to them within a career-relevant timeframe — qualifications feel controllable, bureaucratic backlogs feel abstract",
+      "consequence": "Years spent in H-1B dependency, constrained job mobility, and deferred life decisions based on a pathway that may never materialize under current law",
+      "warning_signs": [
+        "Student asks 'do I qualify for EB-2?' without also asking 'what is my priority date wait time?'",
+        "Student from India or China is planning to file EB-2 but has never looked at the Visa Bulletin"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming employer will manage the entire green card process and not tracking it personally",
+      "why_it_happens": "Employees trust HR and immigration counsel to handle compliance — but attorney incentives are aligned with the employer, not the employee, and key deadlines are often missed",
+      "consequence": "Missing the H-1B 6-year cap extension window under AC21, failing to preserve priority dates, or losing portability rights through inaction",
+      "warning_signs": [
+        "Employee cannot state their own priority date",
+        "Employee does not know whether their I-140 has been approved"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Filing a NIW petition with weak evidence to avoid employer dependency, resulting in denial",
+      "why_it_happens": "Students overestimate the strength of their profile based on degree prestige rather than evidence quantity and quality; approval rate declining due to increased USCIS scrutiny",
+      "consequence": "Wasted filing fees ($715+), 4+ months of delay, and the need to pivot back to employer-sponsored PERM — losing months of priority date accrual",
+      "warning_signs": [
+        "Applicant has fewer than 3 of the 6 NIW evidence types with substantial documentation",
+        "No attorney review of evidence package before filing",
+        "Applicant assumes PhD alone is sufficient for NIW approval"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "India-born EB-2 holders never checking whether EB-3 downgrade would accelerate their green card",
+      "why_it_happens": "The assumption that a higher preference category is always better is deeply intuitive but factually wrong when per-country retrogression affects EB-2 and EB-3 differently",
+      "consequence": "Waiting years longer than necessary when a legal downgrade strategy would have yielded permanent residence sooner",
+      "warning_signs": [
+        "India-born EB-2 holder has never compared their EB-2 and EB-3 India priority dates on the Visa Bulletin",
+        "Immigration attorney has not raised the EB-2 to EB-3 downgrade option in consultations"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Treating the EB-2 pathway as a near-term plan when country of birth makes it a multi-decade commitment",
+      "why_it_happens": "Cognitive optimism bias — applicants assume policy will change, that they are special cases, or that wait times will shorten — rather than planning based on current law",
+      "consequence": "Career and personal life decisions (job choices, financial planning, family timing, housing) made on false premises about timeline",
+      "warning_signs": [
+        "Indian national says 'I'll have my green card in 5-7 years'",
+        "No contingency plan for Canada, return home, or alternative immigration pathways"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth?",
+      "what_it_reveals": "Determines whether the EB-2 pathway is viable within a career-relevant timeframe or is effectively unusable under current per-country quota rules",
+      "follow_up_if_yes": "If India or China: ask 'Have you checked the current Visa Bulletin Final Action Date for EB-2 for your country, and are you prepared for a potentially multi-decade wait?'",
+      "follow_up_if_no": "If other country: EB-2 is likely current or near-current — focus shifts to PERM vs. NIW track selection and employer sponsorship feasibility",
+      "country_scope": "us"
+    },
+    {
+      "question": "Do you have a PhD or equivalent research profile with publications, citations, or patents?",
+      "what_it_reveals": "Determines NIW eligibility — if yes, self-petition may be viable, eliminating employer dependency and PERM timeline entirely",
+      "follow_up_if_yes": "Assess evidence strength against all 6 NIW evidence types — if 3+ are strongly documentable, NIW is worth pursuing with attorney review",
+      "follow_up_if_no": "Pivot to employer-sponsored PERM track — assess employer willingness and whether Exceptional Ability category (3 of 6 evidence types) is achievable",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is your employer willing to commit in writing to sponsoring your PERM labor certification?",
+      "what_it_reveals": "Determines whether the employer-sponsored EB-2 track is a real option or theoretical — many employers verbally indicate willingness but refuse when the process begins",
+      "follow_up_if_yes": "Proceed to assess PERM timeline, I-140 processing strategy, and priority date implications for your country",
+      "follow_up_if_no": "NIW self-petition becomes the primary pathway — assess eligibility rigorously; also evaluate Canada as an alternative if NIW is not viable",
+      "country_scope": "us"
+    },
+    {
+      "question": "Do you know your current EB-2 priority date and whether it is current in the Visa Bulletin?",
+      "what_it_reveals": "Reveals whether the student has basic situational awareness of their own green card status — ignorance here suggests they are not managing their own case",
+      "follow_up_if_yes": "For India/China: also ask whether they are tracking EB-3 dates comparatively for downgrade strategy assessment",
+      "follow_up_if_no": "Immediate action item: look up the current Visa Bulletin before making any career or immigration decisions",
+      "country_scope": "us"
+    },
+    {
+      "question": "Are you willing to remain in the US on non-immigrant status for 10+ years with no guaranteed permanent residence outcome?",
+      "what_it_reveals": "Tests whether the student has honestly internalized the realistic timeline for India/China nationals — if not, alternative pathways (Canada, return home) should be seriously evaluated",
+      "follow_up_if_yes": "Ensure they have AC21 portability plan, H-1B extension strategy beyond 6-year cap, and contingency plans for layoffs or company closures",
+      "follow_up_if_no": "Canada Express Entry, Provincial Nominee Programs, or return-home planning should be explored as higher-probability paths to permanent residence",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has an immigration attorney reviewed your NIW evidence package before filing?",
+      "what_it_reveals": "NIW approval rate is 54% and declining — attorney review is the most reliable predictor of whether the evidence package meets current USCIS scrutiny standards",
+      "follow_up_if_yes": "Confirm the attorney assessed against all three Dhanasar prongs, not just evidence quantity",
+      "follow_up_if_no": "Strong recommendation not to file without review — denial costs 4+ months and filing fees, and a rebuttal or appeal is far more expensive",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you are highly qualified, the EB-2 green card process is primarily about documentation and waiting a reasonable amount of time",
+      "actual_reality": "For India-born applicants, qualifications are essentially irrelevant to wait time — a brilliant researcher from India waits longer than a minimally qualified applicant from an undersubscribed country purely due to the 7% per-country cap",
+      "implication": "Indian and Chinese nationals should evaluate the US green card pathway based on per-country quota realities first, and qualifications second — the strategic question is not 'can I qualify?' but 'will the visa be available in my lifetime?'",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "NIW is an easy path for STEM PhD holders — having a doctorate from a good university is enough",
+      "actual_reality": "NIW approval rate has dropped to 54% with increased USCIS scrutiny — a PhD alone is insufficient; the Dhanasar test requires demonstrating national importance of the specific proposed endeavor, not just academic credentials",
+      "implication": "STEM PhDs pursuing NIW must build a case around the national importance of their specific research area with concrete evidence (citations, patents, peer review, critical organizational role) — not just submit a diploma and CV",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "EB-2 is always a better category than EB-3 because it has a higher preference",
+      "actual_reality": "For India-born applicants, EB-3 priority dates can advance faster than EB-2 in certain periods due to how retrogression affects each category differently — making a strategic downgrade from EB-2 to EB-3 legally advisable",
+      "implication": "India-born EB-2 holders must monitor both EB-2 and EB-3 Visa Bulletin dates monthly and consult an attorney when EB-3 dates move ahead of EB-2 dates for their country",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Once an employer starts your green card process, you're on a clear track and just need to wait",
+      "actual_reality": "PERM takes ~1 year, I-140 takes 8+ months without premium processing, and the priority date may not become current for decades — each stage has its own failure risks, and employer commitment can evaporate through layoffs, restructuring, or policy changes",
+      "implication": "Employees must actively manage their own case, know every date and status, and maintain contingency plans rather than passively trusting that the employer's process will deliver permanent residence",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The EB-2 process costs are primarily the employer's problem",
+      "actual_reality": "While employers pay PERM and I-140 costs, the employee bears the enormous indirect costs: career mobility constraints, geographic constraints, delayed entrepreneurship, psychological burden of status uncertainty, and the optionality cost of staying when better opportunities exist elsewhere",
+      "implication": "Students should factor the full cost of employment-based sponsorship — including constrained career mobility — when evaluating whether US green card pursuit makes sense vs. alternative countries where permanent residence is faster",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate the US green card pathway",
+      "naive_pattern": "Focuses on whether they qualify (degree, years of experience) and assumes that qualifying means the process will complete in a reasonable timeframe",
+      "informed_pattern": "Immediately checks Visa Bulletin for their country of birth, calculates realistic wait time under current per-country quotas, and only then decides whether to pursue the pathway at all",
+      "why_it_matters": "Indian and Chinese nationals who skip the priority date check may invest years in a pathway that offers no practical chance of permanent residence under current law",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "PERM vs. NIW strategy selection",
+      "naive_pattern": "Defaults to employer-sponsored PERM because it's the 'standard' path and doesn't research self-petition options",
+      "informed_pattern": "Proactively assesses NIW eligibility against all three Dhanasar prongs before accepting employer dependency, and pursues NIW if evidence is strong enough to survive 54% approval rate scrutiny",
+      "why_it_matters": "NIW eliminates a year of PERM process and removes employer dependency — students who never research it forfeit significant strategic optionality",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Managing the EB-2 vs. EB-3 category decision",
+      "naive_pattern": "Assumes EB-2 is always preferable and never revisits the category choice after filing",
+      "informed_pattern": "Monitors the Visa Bulletin monthly, maintains awareness of relative EB-2 vs. EB-3 India date movement, and consults an attorney proactively when EB-3 begins advancing faster",
+      "why_it_matters": "Failing to execute a legal EB-2 to EB-3 downgrade when conditions favor it can cost years of additional wait time that could have been avoided",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Relationship with the green card process",
+      "naive_pattern": "Delegates entirely to employer HR and immigration counsel, doesn't know their own priority date or I-140 status, and assumes everything is handled",
+      "informed_pattern": "Maintains their own calendar of all filing dates, priority dates, and deadlines; knows their I-140 approval status and H-1B extension eligibility; treats the attorney as a resource they direct rather than a custodian of their status",
+      "why_it_matters": "Immigration attorneys are retained by and primarily accountable to employers — missed deadlines that harm the employee may not be caught unless the employee is actively monitoring their own case",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Long-term country planning for Indian/Chinese nationals",
+      "naive_pattern": "Assumes they will get a green card eventually and makes all life decisions (buying a home, family planning, career choices) based on that assumption",
+      "informed_pattern": "Runs parallel assessment of Canada Express Entry or return-home options alongside US pursuit, maintains optionality, and makes life decisions that remain sound even if the US green card never materializes",
+      "why_it_matters": "50-100 year theoretical wait times under current law mean the US green card may never arrive — students who plan as if it will face compounding life-decision errors over a decade or more",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Premium processing decision",
+      "naive_pattern": "Accepts standard processing to save the $2,805 fee without understanding the 8-month downstream consequences",
+      "informed_pattern": "Evaluates the $2,805 premium processing fee against the career and status risks of an 8.1-month I-140 delay — including H-1B extension timing, AC21 portability, and job change flexibility — and advocates for employer coverage of the fee",
+      "why_it_matters": "An 8-month delay in I-140 approval can cascade into inability to change jobs, H-1B status gaps, and lost portability rights — the fee is small relative to those risks",
+      "country_scope": "us"
+    }
+  ]
+}

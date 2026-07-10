@@ -1,0 +1,288 @@
+{
+  "source_file": "canadian_experience_class.txt",
+  "heuristics": [
+    {
+      "rule": "Track your hours from day one of PGWP employment — do not assume full-time work automatically meets the 1,560-hour threshold without verification.",
+      "condition": "When you start working in Canada on a PGWP in a TEER 0/1/2/3 occupation",
+      "action": "Log weekly hours from the first day and calculate your 1,560-hour milestone date proactively so you know exactly when CEC eligibility is reached",
+      "because": "The 1-year threshold is hours-based (1,560), not calendar-based; part-time or variable schedules can delay eligibility by months without the student realizing it",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If your CRS score is below the current CEC cutoff, pivot immediately to PNP rather than waiting for a draw that may never reach your score.",
+      "condition": "When you are CEC-eligible but your CRS score is too low to receive an ITA in recent draw history",
+      "action": "Research and apply to a Provincial Nominee Program aligned with your occupation and province — a nomination adds 600 CRS points, making an ITA near-certain",
+      "because": "Waiting passively in the Express Entry pool burns PGWP time; PNP is the structural fix for low CRS, not luck or waiting",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Do not count co-op or work-integrated learning hours toward CEC work experience — verify your employment type before calculating eligibility.",
+      "condition": "When an international student or recent graduate is calculating how close they are to CEC eligibility",
+      "action": "Exclude any hours worked while enrolled as a full-time student; only post-graduation PGWP work or other authorized full-time work counts",
+      "because": "Co-op terms are explicitly excluded from CEC-eligible experience; miscounting this delays PR applications or leads to refusals",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Verify your NOC/TEER classification before accepting a job offer — not after you've worked a year.",
+      "condition": "When evaluating a job offer while on a PGWP and planning to use CEC for PR",
+      "action": "Look up the NOC code for the role and confirm it falls in TEER 0, 1, 2, or 3 before committing to the position",
+      "because": "A year of work in a TEER 4 or 5 role generates zero CEC-eligible experience, wasting critical PGWP time with no PR progress",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "As a CEC applicant, do not budget for or worry about settlement funds — but do confirm your language scores meet the TEER-specific CLB threshold before submitting your Express Entry profile.",
+      "condition": "When preparing a CEC Express Entry profile",
+      "action": "Confirm CLB 7 for TEER 0/1 roles or CLB 5 for TEER 2/3 roles across all four skills; skip settlement fund preparation (not required for CEC)",
+      "because": "Language scores below threshold = automatic ineligibility; settlement funds are a FSW requirement that does not apply to CEC, so conflating the two wastes time and causes unnecessary stress",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "TEER classification of your Canadian job",
+      "why_it_matters": "Determines whether your work experience counts toward CEC at all; also sets the language benchmark you must meet",
+      "how_to_assess": "Search the NOC database at canada.ca using your job title and duties; confirm TEER level matches 0, 1, 2, or 3",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Current CRS cutoff scores in Express Entry CEC draws",
+      "why_it_matters": "Determines whether you will receive an ITA passively or need to pursue PNP — the single biggest strategic fork in the road",
+      "how_to_assess": "Monitor IRCC draw results on the official site; compare your projected CRS score against the last 6–12 CEC-specific draw cutoffs",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "PGWP duration remaining at point of CEC eligibility",
+      "why_it_matters": "You must maintain valid status throughout the PR process; if PGWP expires before PR is approved, you face a status gap",
+      "how_to_assess": "Calculate PGWP expiry date; subtract expected PR processing time (~6 months post-ITA); confirm you have sufficient buffer",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language test scores (CLB level achieved)",
+      "why_it_matters": "Sets your CEC eligibility floor and directly adds CRS points — higher scores above the minimum significantly boost your CRS",
+      "how_to_assess": "Take IELTS General or CELPIP and convert to CLB; determine whether you meet the minimum for your TEER level and whether retaking could raise CRS materially",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Years of Canadian work experience accumulated",
+      "why_it_matters": "CRS points for Canadian experience jump at 1, 2, 3, 4, and 5-year thresholds — timing your application around these milestones changes your competitiveness",
+      "how_to_assess": "Calculate your current hours worked; project when you'll cross the next experience-year threshold; weigh waiting vs. applying now",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Province of residence and occupation demand by province",
+      "why_it_matters": "PNP streams vary dramatically by province and occupation; your province determines which PNP pathways are realistically available to you",
+      "how_to_assess": "Review active PNP streams for your province and occupation on official provincial immigration websites; note expression of interest score thresholds",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Intent to live outside Quebec",
+      "why_it_matters": "CEC does not apply to Quebec; students planning to stay in Quebec must use Quebec's separate immigration system (QSWP/PEQ)",
+      "how_to_assess": "Confirm current and intended province of work and residence before selecting the CEC pathway",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a TEER 4 or 5 job on PGWP because it is available and pays decently",
+      "unstated_consequence": "Every hour worked in that role generates zero CEC-eligible experience; the clock on PGWP runs down while PR eligibility does not advance",
+      "who_it_affects": "Recent graduates in fields with competitive job markets who take survival jobs while searching for professional roles",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on the basic Express Entry pool and waiting for an ITA without pursuing PNP",
+      "unstated_consequence": "PGWP may expire before your CRS score is reached in a draw, forcing you into maintained status or departure with no PR",
+      "who_it_affects": "Students with mid-range CRS scores (below recent draw cutoffs) in provinces with active PNP streams they are not pursuing",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Using part-time work to accumulate CEC hours while also studying or pursuing other goals",
+      "unstated_consequence": "The 1,560-hour threshold takes significantly longer to reach part-time, compressing the window between CEC eligibility and PGWP expiry",
+      "who_it_affects": "Students on shorter PGWPs (1–2 year programs) who may exhaust PGWP before reaching enough Canadian experience to be CRS-competitive",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Submitting CEC Express Entry profile immediately upon reaching 1,560 hours",
+      "unstated_consequence": "Waiting to cross the 2-year Canadian experience threshold (53 vs. 40 CRS points) may boost your score enough to receive an ITA without needing PNP — but waiting risks PGWP expiry",
+      "who_it_affects": "Students with CRS scores on the margin of recent draw cutoffs who are borderline competitive",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming a job offer improves CEC PR application strength after March 2025",
+      "unstated_consequence": "March 2025 changes removed job offer points from Express Entry CRS calculations; securing a job offer no longer provides the CRS boost it once did",
+      "who_it_affects": "Students who spent significant time seeking employer letters of support for immigration purposes when that effort yields no CRS benefit",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Counting co-op work terms as CEC-eligible experience",
+      "why_it_happens": "Students assume any authorized Canadian work experience counts; the distinction between full-time student status and post-graduation status is not intuitive",
+      "consequence": "Student believes they are CEC-eligible earlier than they are; submits profile prematurely or plans timeline incorrectly, potentially leading to application refusal",
+      "warning_signs": [
+        "Student says 'I've been working in Canada for 2 years' but includes co-op terms in that count",
+        "Student's calculated eligibility date is before or immediately at graduation"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Working in a TEER 4/5 job for 12+ months believing it counts toward CEC",
+      "why_it_happens": "Students are unaware of TEER classifications or assume any skilled work counts; employers do not flag immigration implications of job classification",
+      "consequence": "An entire year of PGWP validity is consumed with no CEC-eligible hours accumulated; the student must restart the 1,560-hour clock with less PGWP time remaining",
+      "warning_signs": [
+        "Student has not looked up their job's NOC code",
+        "Student is working in retail, food service, or manual trades and has not confirmed TEER level"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Waiting passively in Express Entry pool with a low CRS score without pursuing PNP",
+      "why_it_happens": "Students believe the system is purely meritocratic and their score will eventually be reached; PNP requires proactive research many students don't undertake",
+      "consequence": "PGWP expires; student must maintain status through bridging permits or leave Canada; PR opportunity is lost or significantly delayed",
+      "warning_signs": [
+        "Student's CRS score is 50+ points below the last 10 draw cutoffs",
+        "Student has been in the Express Entry pool for more than 6 months with no ITA"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Failing to meet CLB minimum in one of the four language skills, causing Express Entry ineligibility",
+      "why_it_happens": "Students focus on overall language scores without checking all four individual skill bands; one weak skill below threshold invalidates the entire CEC application",
+      "consequence": "Express Entry profile cannot be submitted; student loses time and may need to retest, burning PGWP validity",
+      "warning_signs": [
+        "Student knows their overall IELTS score but not their band-by-band CLB conversion",
+        "Student has a strong score in speaking/reading but suspects weakness in writing or listening"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Planning a 2–3 year post-graduation PR timeline on a PGWP that is shorter than that window",
+      "why_it_happens": "Students assume PGWP length equals program length without confirming; shorter diploma or certificate programs generate 1–2 year PGWPs, not 3-year ones",
+      "consequence": "Status expires mid-PR process; bridging open work permit may be available but adds complexity, stress, and uncertainty",
+      "warning_signs": [
+        "Student completed a 1-year post-graduate certificate and is assuming a 3-year PGWP",
+        "Student has not confirmed their PGWP expiry date relative to their PR timeline"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the NOC/TEER classification of the job you are currently working or plan to work in Canada?",
+      "what_it_reveals": "Whether the work experience will count toward CEC at all and which CLB minimum applies",
+      "follow_up_if_yes": "If TEER 0/1/2/3 confirmed: what is your current CLB score and does it meet the threshold for that TEER level?",
+      "follow_up_if_no": "If TEER 4/5 or unknown: the student must either reclassify the role correctly or understand that zero CEC hours are accumulating — immediate career strategy pivot may be needed",
+      "country_scope": "canada"
+    },
+    {
+      "question": "When does your PGWP expire, and how many CEC-eligible hours have you accumulated so far?",
+      "what_it_reveals": "Whether the student has enough PGWP runway to complete 1,560 hours, submit Express Entry, and receive PR before status expires",
+      "follow_up_if_yes": "If sufficient runway: calculate whether waiting for a higher CRS experience threshold (e.g., 2 years) is worth it before applying",
+      "follow_up_if_no": "If runway is tight: immediately evaluate PNP options and bridging open work permit eligibility to avoid status gap",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is your projected CRS score, and how does it compare to the last 12 months of CEC draw cutoffs?",
+      "what_it_reveals": "Whether the student is competitive for a direct ITA or structurally needs PNP to obtain PR",
+      "follow_up_if_yes": "If above recent cutoffs: prioritize submitting a strong Express Entry profile promptly",
+      "follow_up_if_no": "If below recent cutoffs: immediately research PNP streams in your province and occupation — do not wait for the pool to reach your score",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does any of your Canadian work experience overlap with periods when you were enrolled as a full-time student?",
+      "what_it_reveals": "Whether co-op or part-time student work is being incorrectly counted in the student's CEC eligibility calculation",
+      "follow_up_if_yes": "If yes: exclude those hours and recalculate actual CEC eligibility date — the student may be less eligible than they believe",
+      "follow_up_if_no": "If no: the hours count can proceed — confirm they were worked under PGWP or other non-student authorization",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Do you intend to remain outside Quebec for work and residence?",
+      "what_it_reveals": "Whether CEC is even the correct pathway; Quebec-based students need the QSWP or PEQ, not Express Entry CEC",
+      "follow_up_if_yes": "If outside Quebec: CEC pathway is appropriate — proceed with eligibility assessment",
+      "follow_up_if_no": "If in Quebec or planning to move there: redirect entirely to Quebec immigration streams; CEC will not apply",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Have you taken your language test and confirmed CLB scores for all four skills individually — not just your overall score?",
+      "what_it_reveals": "Whether the student actually meets the CLB minimum threshold for their TEER level in every single skill band",
+      "follow_up_if_yes": "If all four skills meet or exceed threshold: confirm which CLB level was reached and how it affects CRS points",
+      "follow_up_if_no": "If any skill is below threshold or untested: the student is not yet Express Entry eligible for CEC — retesting or remediation is the priority",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any work experience in Canada while on a study permit or PGWP counts toward permanent residency through CEC.",
+      "actual_reality": "Only post-graduation work (not done while enrolled full-time) in TEER 0, 1, 2, or 3 occupations counts; co-op terms and TEER 4/5 jobs are explicitly excluded regardless of how long or how many hours were worked.",
+      "implication": "Students must audit their work history carefully and not assume time in Canada equals CEC-eligible time; the eligibility calculation is more restrictive than most expect.",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Getting a job offer from a Canadian employer will significantly boost your Express Entry CRS score and improve your PR chances.",
+      "actual_reality": "Since March 2025, job offer points were removed from the Express Entry CRS calculation; a job offer no longer adds direct CRS points.",
+      "implication": "Students should not make career decisions or negotiate employment primarily for immigration CRS benefit from job offers; effort is better spent on language score improvement and PNP if CRS is low.",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "If your CRS score is too low today, you just need to wait longer in the Express Entry pool and eventually your turn will come.",
+      "actual_reality": "Draw cutoffs are not guaranteed to decline to any given score; students with low CRS scores can expire out of the pool or run out of PGWP validity before receiving an ITA.",
+      "implication": "Low CRS score students must treat PNP as a parallel immediate strategy, not a fallback after waiting fails — the cost of waiting is PGWP time, which is finite.",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "CEC requires significant financial proof of settlement funds, similar to other PR pathways.",
+      "actual_reality": "CEC has no settlement fund requirement — this is a unique and significant advantage over FSW, which does require proof of funds.",
+      "implication": "Students choosing between PR pathways should not let concern about settlement funds deter them from CEC; it is one of the most accessible PR pathways financially for graduates already employed in Canada.",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The typical international student-to-PR journey takes 5+ years and is highly uncertain.",
+      "actual_reality": "For graduates who follow the PGWP → TEER-qualified job → CEC → Express Entry pathway optimally, PR approval within 2–3 years of graduation is a realistic and common outcome.",
+      "implication": "Students should not self-select out of the PR process out of perceived complexity or length; the pathway is structured and well-defined for those who plan proactively.",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate a job offer on PGWP",
+      "naive_pattern": "Accepts first available professional job without checking NOC code or TEER level; assumes any office or technical job qualifies for CEC",
+      "informed_pattern": "Looks up NOC code and TEER level before accepting; confirms the role is TEER 0/1/2/3 and that duties match the NOC description, not just the job title",
+      "why_it_matters": "A year in the wrong TEER category is a year of PGWP burned with zero PR progress — an irreversible cost in a time-constrained system",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "How they respond to a low CRS score",
+      "naive_pattern": "Stays in the Express Entry pool and checks for draws periodically, believing patience will eventually yield an ITA",
+      "informed_pattern": "Immediately researches provincial PNP streams aligned with their occupation and province; treats PNP as the primary mechanism for closing the CRS gap, not an afterthought",
+      "why_it_matters": "PNP adds 600 CRS points, making ITA near-certain; waiting without PNP can mean PGWP expiry before PR is achieved",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "How they calculate CEC eligibility",
+      "naive_pattern": "Counts all Canadian work history including co-op and student employment; may believe they are CEC-eligible before they actually are",
+      "informed_pattern": "Counts only post-graduation, PGWP-authorized hours in TEER-qualified roles; cross-references against the 1,560-hour floor and tracks hours actively",
+      "why_it_matters": "Premature Express Entry submissions based on ineligible experience can result in misrepresentation findings or refusals with long-term immigration consequences",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "How they think about language test results",
+      "naive_pattern": "Focuses on overall IELTS band score; assumes a 7.0 overall means they meet CLB 7 in all categories",
+      "informed_pattern": "Converts each individual IELTS band score to CLB separately; confirms all four skills independently meet the TEER-specific CLB floor; retakes targeted skills if any fall short",
+      "why_it_matters": "One skill band below threshold = complete Express Entry ineligibility; students who don't check all four can be blindsided at profile submission",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "How they plan their overall post-graduation timeline",
+      "naive_pattern": "Assumes a 3-year PR runway because they have a 3-year PGWP; does not account for the time required to accumulate 1,560 hours, build CRS, and wait for ITA",
+      "informed_pattern": "Maps the full timeline: PGWP start → 1,560-hour milestone → Express Entry submission → ITA wait or PNP → processing → PR approval; confirms PGWP expiry covers the full window with buffer",
+      "why_it_matters": "Students who discover the timeline mismatch late scramble for bridging permits or face gaps in legal status — early planning avoids entirely avoidable crisis",
+      "country_scope": "canada"
+    }
+  ]
+}

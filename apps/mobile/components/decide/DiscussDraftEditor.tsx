@@ -112,7 +112,6 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
           <View style={reelDiscussStyles.pollQuestionTextCol}>
             <View style={reelDiscussStyles.pollQuestionTitleRow}>
               <TextInput
-                accessibilityRole="header"
                 accessibilityLabel="Poll question headline"
                 value={pollQuestion}
                 onChangeText={(text) =>

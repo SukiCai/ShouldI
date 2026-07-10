@@ -1,0 +1,314 @@
+{
+  "source_file": "pgwp_2024_2025_rules.txt",
+  "heuristics": [
+    {
+      "rule": "If you are applying to a Canadian college (non-degree) program, verify the program's CIP code against IRCC's eligible fields list BEFORE submitting your study permit application — not after admission.",
+      "condition": "When a prospective international student is choosing between college programs in Canada and intends to use PGWP as a bridge to PR",
+      "action": "Look up the exact CIP code of your target program on the IRCC eligible program list, confirm eligibility, then apply",
+      "because": "PGWP eligibility for non-degree programs is determined by CIP code, not program name — a plausible-sounding program title may map to an ineligible CIP code, leaving you without work authorization after graduation",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If your Canadian study permit was submitted before November 1, 2024, apply for PGWP under the old rules — do not let advisors or IRCC officers redirect you to the new field-of-study requirements.",
+      "condition": "When a student graduated from a non-degree program and is now applying for PGWP after the November 2024 rule change",
+      "action": "Document your study permit submission date and explicitly assert grandfathering status in your PGWP application",
+      "because": "Students who submitted study permits before the cutoff date are exempt from the new field-of-study and language requirements regardless of when they graduated or apply for PGWP",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you are in a transport or agriculture program in Canada and submitted your study permit after November 1, 2024, treat PGWP eligibility as lost — start planning alternative pathways now.",
+      "condition": "When a student is enrolled in a transport or agriculture program with a study permit dated after November 1, 2024",
+      "action": "Consult a Regulated Canadian Immigration Consultant (RCIC) immediately to evaluate closed work permit sponsorship, Provincial Nominee Programs, or transferring to an eligible program",
+      "because": "The entire transport category and nearly all agriculture programs were removed from PGWP eligibility in June 2025 — students in these fields will not qualify for the open work permit needed for CEC-pathway PR",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you want the maximum PGWP duration, ensure your Canadian program is at least 2 years long — anything shorter gives you a shorter work permit, compressing your window to accumulate CEC-eligible work experience.",
+      "condition": "When an international student is deciding between a 1-year graduate certificate and a 2-year college diploma or master's degree in Canada",
+      "action": "Choose the 2+ year program to lock in a 3-year PGWP",
+      "because": "A 3-year PGWP gives you significantly more time to accumulate the work experience required for Canadian Experience Class Express Entry, whereas a 1-year PGWP may expire before you reach eligibility thresholds",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If you are a university degree graduate (bachelor's, master's, PhD) in Canada, do not waste time verifying field-of-study eligibility — focus entirely on meeting the language requirement (CLB 7).",
+      "condition": "When a university-level graduate is preparing their PGWP application post-November 2024",
+      "action": "Prioritize scheduling IELTS, CELPIP, or TEF early to avoid delays; field of study is irrelevant for degree holders",
+      "because": "University degree holders are fully exempt from the field-of-study restriction — their only new requirement is the language benchmark, which is the actual bottleneck",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "If your Canadian study permit was submitted before June 25, 2025, and your program was removed in the June 2025 overhaul, apply for PGWP immediately and assert the pre-June-2025 grandfathering rule.",
+      "condition": "When a student's program was on the eligible list at the time of their study permit application but was subsequently removed in the June 2025 overhaul",
+      "action": "File the PGWP application with clear documentation of your study permit submission date and a record of the eligible fields list as it existed at that date",
+      "because": "IRCC's grandfathering policy locks in the rules effective at the time of the study permit application — students in removed programs are still eligible if their permit predates the overhaul",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Degree level (university degree vs. non-degree college/diploma)",
+      "why_it_matters": "University degree holders are exempt from the field-of-study requirement entirely; college/diploma graduates must meet it — this creates a binary eligibility difference, not a spectrum",
+      "how_to_assess": "Check whether the credential is a bachelor's, master's, or PhD awarded by a university — graduate certificates and graduate diplomas do NOT qualify as university degrees for PGWP purposes even if offered at a university",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Program's CIP code vs. program name",
+      "why_it_matters": "PGWP eligibility is determined by CIP code, not the descriptive name of a program — two programs with similar names can have different CIP codes and thus different eligibility statuses",
+      "how_to_assess": "Request the CIP code directly from the institution's registrar and cross-reference with IRCC's published eligible programs list; do not rely on the institution's marketing materials",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Study permit submission date relative to November 1, 2024 and June 25, 2025 cutoffs",
+      "why_it_matters": "Grandfathering rules mean students who submitted before each cutoff are assessed under the rules in effect at that time — the same program can be PGWP-eligible or ineligible depending solely on when the permit was submitted",
+      "how_to_assess": "Pull the IRCC application submission confirmation (not approval date, not start date — submission date) and map it against both cutoffs",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Program duration relative to the 2-year threshold",
+      "why_it_matters": "Programs of 2+ years yield the maximum 3-year PGWP; programs under 2 years yield a shorter permit, directly reducing the window for accumulating CEC-eligible work experience",
+      "how_to_assess": "Calculate total program length in months; if choosing between programs, assess whether extending by a semester crosses the 2-year threshold",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language test score readiness (CLB 7 for university, CLB 5 for college)",
+      "why_it_matters": "As of November 2024, language proof is mandatory for PGWP — a student who graduates but cannot meet the benchmark cannot receive PGWP regardless of program or institution eligibility",
+      "how_to_assess": "Take a diagnostic test early in the final year of study; if scores are borderline, schedule the official test with buffer time for a retest before graduation",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Field of study alignment with IRCC's eligible fields list (post-June 2025 version)",
+      "why_it_matters": "178 programs were removed in June 2025 — students in removed fields who do not have grandfathering protection have lost PGWP eligibility entirely",
+      "how_to_assess": "Check the current IRCC eligible fields list (not blog posts or institution websites) against your program's CIP code; re-verify if you consumed information published before June 25, 2025",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether a job offer adds CRS points (post-March 2025 rule)",
+      "why_it_matters": "Job offer no longer adds CRS points as of March 2025 — this changes the strategic weight of securing employer sponsorship during the PGWP period vs. focusing purely on CRS score improvement",
+      "how_to_assess": "Treat job offer primarily as a source of NOC-eligible work experience for CEC, not as a CRS booster; recalibrate Express Entry strategy accordingly",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Enrolling in a 1-year graduate certificate at a Canadian college to save time and money",
+      "unstated_consequence": "You receive only a 1-year PGWP, which may be insufficient to accumulate the 1 year of skilled work experience required for Canadian Experience Class Express Entry — creating a cliff where you must either find employer-specific work permit sponsorship or leave Canada",
+      "who_it_affects": "Cost-conscious international students who choose shorter programs to minimize tuition and get into the workforce faster",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on institution marketing materials or enrollment advisors to confirm PGWP eligibility",
+      "unstated_consequence": "Institutions are not responsible for immigration outcomes — they confirm academic admission, not visa eligibility. Students may enroll, graduate, and only discover ineligibility when applying for PGWP, by which time it is too late to switch programs",
+      "who_it_affects": "Students who trust the institution as a one-stop source and do not independently consult IRCC resources or a licensed immigration consultant",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Applying to a transport or aviation-adjacent program in Canada after November 2024",
+      "unstated_consequence": "The entire transport category was removed in June 2025 — students who enrolled based on pre-removal eligibility lists but whose study permits postdate November 2024 have no PGWP path, eliminating the standard CEC route to PR",
+      "who_it_affects": "Students in aviation maintenance, marine technology, and transportation management programs who were specifically targeting Canadian PR through the PGWP-to-CEC pipeline",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Submitting incorrect or assumed CIP codes in a PGWP application",
+      "unstated_consequence": "IRCC treats incorrect CIP code submission as misrepresentation — consequences include application refusal, financial penalties, and a 5-year ban on Canadian immigration applications",
+      "who_it_affects": "Students who self-file PGWP applications without professional review, especially those in programs with ambiguous or overlapping CIP classifications",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Choosing a Canadian college program because it is cheaper than a university degree",
+      "unstated_consequence": "Post-November 2024, college graduates face both a field-of-study requirement AND a language benchmark — two independent gatekeeping conditions — while university degree holders face only the language benchmark. The 'cheaper' path has materially higher immigration risk",
+      "who_it_affects": "Budget-conscious students who compare tuition costs without comparing post-graduation immigration risk profiles",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Securing a job offer during PGWP period and assuming it guarantees PR",
+      "unstated_consequence": "As of March 2025, job offers no longer add CRS points in Express Entry — a student who builds their entire PR strategy around employer sponsorship as a CRS booster will find their score unchanged, potentially leaving them below invitation thresholds indefinitely",
+      "who_it_affects": "PGWP holders who deprioritize language scores and educational credential assessments because they expect a job offer to compensate in Express Entry",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Verifying PGWP eligibility once at enrollment and never rechecking",
+      "why_it_happens": "Students treat eligibility as a static fact — they confirm it at application time and assume it remains true throughout their studies; they do not anticipate that IRCC can overhaul eligible fields lists mid-program",
+      "consequence": "Students in programs removed in the June 2025 overhaul discover ineligibility only when applying for PGWP after graduation, with no time to switch programs and no grandfathering protection if their study permit postdates November 2024",
+      "warning_signs": [
+        "Student cites eligibility information from a blog post or institutional brochure published before June 2025",
+        "Student is enrolled in a transport, agriculture, or environmental studies program with a post-November 2024 study permit"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Treating 'PGWP-eligible institution' as equivalent to 'PGWP-eligible program'",
+      "why_it_happens": "Before November 2024, attending an eligible institution was sufficient — the field of study did not matter. Students and even some advisors carry over this outdated mental model post-reform",
+      "consequence": "A student at a designated learning institution (DLI) in an ineligible field completes their program and cannot obtain a PGWP — they are left without legal work authorization and cannot build CEC work experience",
+      "warning_signs": [
+        "Student says 'my school is PGWP-eligible' when asked about their PGWP qualification",
+        "Student has not verified their specific program's CIP code against the current IRCC list"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Delaying language testing until after graduation",
+      "why_it_happens": "Language testing is a new requirement as of November 2024 — students who began their programs before this date may be unaware it exists; others deprioritize it because they feel confident in their English but have not formally tested",
+      "consequence": "Student graduates, attempts to apply for PGWP, and cannot submit because they lack a valid language test result — PGWP processing stalls, student status lapses, and work cannot begin legally",
+      "warning_signs": [
+        "Student in their final semester has not yet booked an IELTS, CELPIP, or TEF test",
+        "Student believes their English proficiency from years of study exempts them from the formal test requirement"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Self-filing PGWP with assumed or guessed CIP codes",
+      "why_it_happens": "Students who self-file immigration applications often copy CIP codes from peer accounts, forums, or institution websites without verifying against official IRCC classifications; they underestimate that CIP codes are a technical-legal element, not a formality",
+      "consequence": "IRCC flags incorrect CIP code as misrepresentation — application is refused and student receives a 5-year ban from Canadian immigration applications, ending any realistic PR pathway",
+      "warning_signs": [
+        "Student is self-filing PGWP and sourced the CIP code from a Reddit post or peer",
+        "Student's institution registrar has not provided official documentation of the program's CIP code"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Building an Express Entry strategy around job offer CRS points post-March 2025",
+      "why_it_happens": "The rule that job offers added 50-200 CRS points was in effect for years and became deeply embedded in standard PR planning advice — many advisors and online resources still circulate this strategy without noting the March 2025 change",
+      "consequence": "Student accepts a suboptimal job or delays improving language scores and education credentials because they expect the job offer to boost their CRS score — score never improves as expected, and they miss invitation rounds",
+      "warning_signs": [
+        "Student's Express Entry strategy explicitly relies on a job offer as a CRS points source",
+        "Student has deprioritized retaking IELTS for a higher score because they believe employer sponsorship will compensate"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the credential type you will receive — a university bachelor's, master's, or PhD, or a college diploma, certificate, or graduate certificate?",
+      "what_it_reveals": "Whether the student is subject to the field-of-study requirement at all — university degree holders are entirely exempt, while non-degree holders must meet it",
+      "follow_up_if_yes": "If university degree: confirm only that language requirement (CLB 7) is met — no further field eligibility check needed",
+      "follow_up_if_no": "If non-degree: proceed to verify the program's CIP code against the current IRCC eligible fields list before any other planning",
+      "country_scope": "canada"
+    },
+    {
+      "question": "On what date was your Canadian study permit application submitted to IRCC?",
+      "what_it_reveals": "Which version of PGWP rules applies to the student — pre-November 2024 (no field or language requirements), post-November 2024 but pre-June 2025, or post-June 2025 (full current rules with June 2025 overhaul)",
+      "follow_up_if_yes": "If before November 1, 2024: student is under old rules — only institution eligibility matters, no field or language requirement",
+      "follow_up_if_no": "If after November 1, 2024: determine if before or after June 25, 2025 to establish which version of the eligible fields list applies",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Do you know the CIP code of your specific program, and have you verified it against IRCC's current eligible program list (not a third-party site)?",
+      "what_it_reveals": "Whether the student's eligibility assessment is based on authoritative data or potentially outdated/inaccurate secondary sources",
+      "follow_up_if_yes": "If verified via IRCC directly: confirm the verification was done against the post-June 2025 list, not a prior version",
+      "follow_up_if_no": "If not verified: halt any PGWP planning and go directly to the IRCC website or consult an RCIC before proceeding",
+      "country_scope": "canada"
+    },
+    {
+      "question": "How long is your program — less than 8 months, 8 months to 2 years, or 2 years or more?",
+      "what_it_reveals": "The maximum PGWP duration the student can obtain, which directly determines how much time they have to accumulate CEC-qualifying work experience",
+      "follow_up_if_yes": "If 2+ years: student qualifies for 3-year PGWP — maximum runway for CEC; plan Express Entry timeline accordingly",
+      "follow_up_if_no": "If under 2 years: calculate whether PGWP duration is sufficient for 1 year of NOC-eligible work experience before expiry; if not, begin planning employer-specific work permit or program extension options",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Have you completed an approved language test (IELTS, CELPIP, or TEF) and do you have a valid result meeting the required CLB level?",
+      "what_it_reveals": "Whether the student can actually submit a PGWP application — language test is now a mandatory document, not optional",
+      "follow_up_if_yes": "If valid test result in hand: confirm the score meets CLB 7 (university) or CLB 5 (college) in all four abilities before filing",
+      "follow_up_if_no": "If no test booked: determine how many months until graduation and schedule immediately — test booking, sitting, and results can take 4-8 weeks minimum",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Are you enrolled in a transport, aviation, marine, agriculture, or environmental studies program?",
+      "what_it_reveals": "Whether the student is in a high-risk category where PGWP eligibility was removed or severely curtailed in June 2025",
+      "follow_up_if_yes": "If yes: immediately verify study permit submission date; if post-November 2024, consult an RCIC about alternative pathways including employer-specific work permits or program transfer",
+      "follow_up_if_no": "If no: proceed with standard field-of-study and CIP code verification process",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any Canadian college or university gives international graduates access to a PGWP",
+      "actual_reality": "Since November 1, 2024, non-degree program graduates must study in an IRCC-approved field of study — institution eligibility alone is no longer sufficient for college diploma and certificate graduates",
+      "implication": "Students must verify program-level eligibility, not just institution-level eligibility, before enrolling in any non-degree Canadian program with PR intentions",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "If my program was on the eligible list when I enrolled, I am safe",
+      "actual_reality": "IRCC overhauled the eligible fields list in June 2025, removing 178 programs — students whose study permits postdate November 2024 and who are in removed fields have lost PGWP eligibility with no recourse",
+      "implication": "Eligibility must be verified against the current list, not the list that existed at enrollment; continuous monitoring or professional consultation is necessary for non-degree students",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A Canadian job offer significantly boosts Express Entry CRS score and effectively guarantees a PR invitation",
+      "actual_reality": "As of March 2025, job offers no longer add CRS points in Express Entry — the longstanding 50-200 point boost has been eliminated",
+      "implication": "PGWP holders must focus on maximizing language scores, educational credential assessments, and accumulated Canadian work experience as their primary CRS levers — employer sponsorship alone is no longer a competitive advantage in the points system",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The program name on my acceptance letter tells me whether I qualify for PGWP",
+      "actual_reality": "PGWP eligibility is determined by the program's CIP code, a technical classification code that may not match the descriptive program name — and submitting the wrong CIP code is treated as misrepresentation with a 5-year ban consequence",
+      "implication": "Students must obtain the official CIP code from their institution and cross-reference it with the IRCC list — never rely on program name matching alone",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Language ability developed through years of studying in English in Canada satisfies the PGWP language requirement",
+      "actual_reality": "IRCC requires a formal language test result (IELTS Academic/General, CELPIP General, or TEF Canada/TCF Canada) — demonstrated English proficiency through academic study does not substitute for a scored test meeting CLB benchmarks",
+      "implication": "All non-degree and degree graduates must schedule and complete an approved language test before applying for PGWP; academic transcripts and letters from professors are not acceptable substitutes",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Graduate certificates and graduate diplomas at Canadian institutions are equivalent to a university master's degree for PGWP purposes",
+      "actual_reality": "Only university bachelor's, master's, and PhD degrees are exempt from the field-of-study requirement — graduate certificates and graduate diplomas, even those offered by universities, are classified as non-degree programs and must meet field-of-study eligibility",
+      "implication": "Students choosing between a university master's degree and a graduate certificate for cost savings should understand the graduate certificate pathway carries materially higher PGWP eligibility risk",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How PGWP eligibility is assessed",
+      "naive_pattern": "Checks whether the school is on the IRCC designated learning institution list and stops there — assumes institution eligibility equals program eligibility",
+      "informed_pattern": "Checks the specific program's CIP code against IRCC's current eligible fields list, confirms it was not removed in the June 2025 overhaul, and verifies that the credential type (degree vs. non-degree) determines whether field-of-study review is even required",
+      "why_it_matters": "Institution eligibility and program eligibility are now two independent conditions for non-degree students — checking only one creates a false sense of security that can result in graduating without work authorization",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "When to verify PGWP eligibility",
+      "naive_pattern": "Verifies eligibility once before applying, then considers the matter closed for the duration of the program",
+      "informed_pattern": "Verifies eligibility before applying, then re-verifies at least once mid-program against the current IRCC list, understanding that regulatory overhauls like June 2025 can retroactively eliminate eligibility for non-grandfathered students",
+      "why_it_matters": "IRCC has demonstrated willingness to remove large categories of programs from eligibility with relatively short notice — a static eligibility check is insufficient for a multi-year program",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Express Entry PR strategy during PGWP period",
+      "naive_pattern": "Focuses on getting a job offer, expecting it to add 50-200 CRS points and push the profile above invitation thresholds — deprioritizes retaking language tests or pursuing further credential recognition",
+      "informed_pattern": "Treats work experience as a CEC eligibility builder, not a CRS booster — prioritizes maximizing language scores (CLB 9+ where possible) and ensuring NOC code alignment, since job offers no longer add CRS points post-March 2025",
+      "why_it_matters": "Students who optimize for a now-removed CRS lever will spend their entire PGWP period with a score below invitation thresholds, exhausting their work authorization before receiving an ITA",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Program duration decision-making",
+      "naive_pattern": "Chooses the shortest program that achieves the credential, optimizing for cost and time-to-workforce — does not consider how program length maps to PGWP duration",
+      "informed_pattern": "Calculates whether the program length crosses the 2-year threshold for a 3-year PGWP, and evaluates whether extending by one semester to cross that threshold is worth the tuition cost given the additional work authorization runway it creates",
+      "why_it_matters": "A student with a 3-year PGWP has double the runway of a student with an 18-month PGWP — the extra work permit time can mean the difference between qualifying for CEC and having to leave Canada before accumulating 1 year of skilled experience",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Handling the CIP code in a PGWP application",
+      "naive_pattern": "Copies the CIP code from a peer's application, forum post, or the institution's public-facing website without independently verifying it against official IRCC documentation",
+      "informed_pattern": "Obtains the official CIP code in writing from the institution registrar, cross-references it against the IRCC eligible programs list, and if self-filing, has the application reviewed by a Regulated Canadian Immigration Consultant before submission",
+      "why_it_matters": "An incorrect CIP code is treated as misrepresentation by IRCC — a 5-year ban eliminates the entire Canadian immigration pathway, making this a catastrophic error that no PR timeline can recover from",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Language test timing",
+      "naive_pattern": "Assumes language testing can be handled after graduation, treating it as an administrative afterthought rather than a prerequisite — may not even be aware the requirement exists if they started their program before November 2024",
+      "informed_pattern": "Books the language test in the final semester of study, builds in time for a retest if the first result is below the required CLB level, and has valid test results in hand before graduation so the PGWP application can be submitted without delay",
+      "why_it_matters": "Without a valid language test result, the PGWP application cannot be submitted — any gap between graduation and PGWP approval may require the student to stop working or leave Canada, breaking the continuity of status needed for CEC",
+      "country_scope": "canada"
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "source_file": "immigration_canada_vs_us_immigration_for_international_student.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Match your country of birth to your immigration pathway — India/China nationals should weight Canada more heavily",
+      "condition": "When an international student from India or China is choosing between US and Canada as a long-term destination...",
+      "action": "Seriously consider Canada's Express Entry pathway rather than defaulting to the US H-1B/GC route",
+      "because": "India EB-2 GC applicants from 2012 are still waiting as of 2026; Canada Express Entry can deliver PR in 6-12 months regardless of nationality",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Choose Canada program length strategically to maximize PGWP duration",
+      "condition": "When selecting a Canadian graduate program as an international student...",
+      "action": "Choose a program of at least 2 years to qualify for a 3-year PGWP (the maximum), rather than a 1-year diploma that yields only a 1-year PGWP",
+      "because": "PGWP length equals program length, capped at 3 years; a 1-year program gives only 1 year of open work authorization, severely compressing the timeline to PR",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "If you've lost the H-1B lottery 2+ times, model a Canada pivot seriously",
+      "condition": "When an F-1/STEM OPT holder has lost H-1B multiple consecutive times...",
+      "action": "Evaluate a move to Canada via PGWP + Express Entry rather than continuing to lottery-loop",
+      "because": "Multiple community members corroborate switching after repeated H-1B losses and obtaining Canadian PR in under a year; the compounding probability of failure grows with each additional lottery cycle",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth / GC backlog queue position",
+      "why_it_matters": "Determines realistic wait time for US permanent residency; India and China nationals face 50+ year waits in some EB categories, making US GC practically unattainable within a career",
+      "how_to_assess": "Check the USCIS Visa Bulletin for your category and country of chargeability; compare current priority date against year of entry into queue",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Salary differential tolerance",
+      "why_it_matters": "Canadian tech salaries are 30-50% lower than comparable US roles; accepting this cut is the core financial trade-off for immigration certainty",
+      "how_to_assess": "Calculate total compensation delta over 5-10 years vs. probability-weighted value of US GC; factor in housing, healthcare, and tax differences",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Field of work / industry niche",
+      "why_it_matters": "Canada's smaller job market may not support niche specializations; the US offers broader industry diversity and stronger network effects in finance and tech",
+      "how_to_assess": "Search active job postings in your specific role and level in Toronto/Vancouver vs. NYC/SF/Seattle; assess recruiter activity",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "CRS score and Express Entry pool competitiveness",
+      "why_it_matters": "Canada PR via Express Entry is points-based but not guaranteed; CRS cutoffs fluctuate and some streams have long waits if score is low",
+      "how_to_assess": "Use the IRCC CRS calculator; check recent draw cutoffs; evaluate PNP streams (e.g. Alberta, Saskatchewan tech pathways) if federal score is borderline",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Job flexibility vs. employer-tethered status",
+      "why_it_matters": "H-1B ties workers to a specific employer; job changes require new petitions and create gap-of-status risk; Canadian PGWP is open work permit allowing free job switching",
+      "how_to_assess": "Assess how stable your current employer relationship is and how likely you are to want to change jobs in the next 2-3 years",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Annual H-1B lottery probability compounding",
+      "why_it_matters": "Each failed lottery year consumes OPT/STEM OPT time; after 3 years of STEM OPT the clock expires regardless of lottery outcomes",
+      "how_to_assess": "Model cumulative probability: ~25-30% per year means ~58% chance of winning within 3 attempts; factor in the hard 3-year STEM OPT ceiling",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing US GC via EB category as an Indian or Chinese national",
+      "unstated_consequence": "The wait time is measured in decades — not years. Someone entering the EB-2 India queue in 2012 remained waiting in 2026. Career planning, family decisions, and life milestones are all held hostage to a bureaucratic queue that moves in weeks per year.",
+      "who_it_affects": "Indian and Chinese nationals in STEM fields who entered the US for graduate school expecting a 5-10 year path to PR",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Obtaining US green card and later living or working abroad",
+      "unstated_consequence": "The US taxes worldwide income for green card holders regardless of where they live. This creates significant long-term tax liability for those who want to return home or work internationally after getting GC.",
+      "who_it_affects": "GC holders who plan to eventually return to home country or take international assignments",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing a 1-year Canadian graduate diploma to save time or money",
+      "unstated_consequence": "A 1-year program yields only a 1-year PGWP — leaving very little runway to accumulate Canadian work experience, meet Express Entry CRS thresholds, and apply for PR before status expires",
+      "who_it_affects": "Students who prioritize program cost or speed over immigration strategy",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Staying on H-1B rather than pivoting to Canada after repeated lottery failures",
+      "unstated_consequence": "Each additional year on STEM OPT waiting for lottery consumes irreplaceable time; if the 3-year STEM OPT cap is reached without H-1B approval, the person must leave the US with no status buffer remaining",
+      "who_it_affects": "STEM OPT holders who keep reapplying to H-1B without a contingency plan",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Accepting a Canadian job for PGWP/PR purposes",
+      "unstated_consequence": "Canadian work experience is weighted more heavily than international experience in Express Entry CRS scoring, meaning years spent working in the US before moving to Canada may not transfer as efficiently as expected for PR points",
+      "who_it_affects": "Professionals who worked in the US for years before pivoting to Canada and expect that experience to be fully credited",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Defaulting to the US path without modeling GC backlog by country of birth",
+      "why_it_happens": "The US is the default aspiration; salary is higher; the GC backlog is abstract and distant when you're a student — the lottery feels like a solvable near-term problem",
+      "consequence": "Indian/Chinese nationals spend 3-10 years on OPT/H-1B only to realize the GC wait is generational, then must pivot to Canada with fewer years of Canadian work experience and reduced CRS score potential",
+      "warning_signs": [
+        "Student plans their career around 'eventually getting the GC' without checking current priority dates",
+        "No contingency plan discussed if H-1B lottery is lost 2+ consecutive times"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating H-1B lottery as a near-certain outcome given enough attempts",
+      "why_it_happens": "Availability heuristic: students see peers who won and assume persistence leads to success; individual lottery odds feel more favorable than they are",
+      "consequence": "Exhausts STEM OPT years waiting for H-1B that never comes; forced departure from US with no status and no PR in any country",
+      "warning_signs": [
+        "Person frames lottery losses as 'bad luck' rather than recalibrating strategy",
+        "No alternative pathway being actively pursued after first or second loss"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Ignoring PNP streams when federal Express Entry CRS score is borderline",
+      "why_it_happens": "Provincial Nominee Programs are less visible and feel more complex; students focus on the headline Express Entry pool and don't research province-specific tech pathways",
+      "consequence": "Sits in Express Entry pool without invitation while Alberta or Saskatchewan PNP streams with lower thresholds go unused",
+      "warning_signs": [
+        "Person only discusses Express Entry CRS score without mentioning PNP",
+        "Located in or willing to relocate to a province with active tech PNP stream"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth, and have you checked the current USCIS Visa Bulletin priority date for your EB category?",
+      "what_it_reveals": "Whether US GC is a realistic multi-year goal or a multi-decade wait that makes Canada Express Entry categorically more rational",
+      "follow_up_if_yes": "How many years is the current wait for your category and birth country — and does that fit within your life planning horizon?",
+      "follow_up_if_no": "Check immediately; this single variable may change your entire country strategy",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many H-1B lottery cycles have you already lost?",
+      "what_it_reveals": "How much STEM OPT time has been consumed and what window remains before forced departure",
+      "follow_up_if_yes": "If 2+ losses: how many years of STEM OPT remain, and do you have an active Canada or other country contingency in motion?",
+      "follow_up_if_no": "First loss: still time to build a parallel strategy; don't wait for a third loss to start planning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is the length of your Canadian graduate program?",
+      "what_it_reveals": "Directly determines PGWP duration and therefore the runway available to gain Canadian work experience and apply for PR",
+      "follow_up_if_yes": "If 2+ years: you qualify for a 3-year PGWP — use that time aggressively to build CRS score",
+      "follow_up_if_no": "If 1 year: 1-year PGWP is a very tight window; evaluate whether a PNP pathway or bridging program extension is available",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you planning to ever live or work outside the US after obtaining a green card?",
+      "what_it_reveals": "Whether the US worldwide income tax obligation on GC holders is a material long-term financial risk for this person",
+      "follow_up_if_yes": "Factor in the tax implications of GC status vs. Canadian PR (Canada does not tax worldwide income in the same way) into your long-term financial model",
+      "follow_up_if_no": "Tax issue is less relevant; focus on the PR timeline and salary trade-offs",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is your current CRS score, and have you checked provincial nominee program (PNP) streams in your field?",
+      "what_it_reveals": "Whether a federal Express Entry pathway is competitive or whether a PNP route offers a faster, lower-threshold alternative",
+      "follow_up_if_yes": "If score is borderline: Alberta and Saskatchewan tech PNPs have historically had lower cutoffs — are you eligible and willing to commit to that province?",
+      "follow_up_if_no": "Research PNP streams before concluding that Canadian PR is out of reach based on federal CRS alone",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you keep applying to H-1B, you'll eventually get it — it's just a matter of time",
+      "actual_reality": "Each lottery is independent at roughly 25-30% odds; there is no cumulative advantage. Meanwhile, STEM OPT is capped at 3 years total regardless of lottery outcomes, creating a hard deadline",
+      "implication": "Students should treat each lottery loss as a trigger to activate contingency planning, not simply reapply and wait",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The green card process takes a few years after getting H-1B, so getting H-1B is basically the finish line",
+      "actual_reality": "For Indian and Chinese nationals, EB category backlogs mean GC wait times are 50+ years in some cases — H-1B is not a path to GC for these populations within a reasonable timeframe",
+      "implication": "Country of birth must be part of the visa strategy calculation from day one, not discovered after years on H-1B",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Canada PR takes years and is nearly as uncertain as the US GC process",
+      "actual_reality": "Express Entry can deliver PR invitations in 6-12 months for candidates with competitive CRS scores; PNP streams can offer faster routes for lower-scoring candidates in specific provinces",
+      "implication": "Canada is not a fallback — it is a structurally faster and more predictable pathway for many international students, especially those from backlogged countries",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Years of US work experience will transfer fully to Canadian Express Entry CRS scoring",
+      "actual_reality": "Canadian work experience is valued more heavily in CRS calculations than foreign work experience; US years may contribute but not equivalently to Canadian work history",
+      "implication": "Delaying a Canada pivot costs PR-relevant points; earlier entry into the Canadian workforce is strategically advantageous",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate the US vs. Canada trade-off",
+      "naive_pattern": "Compares salaries and picks the US because the numbers are higher; treats immigration uncertainty as a background risk rather than a primary variable",
+      "informed_pattern": "Filters first by country of birth and GC backlog reality; runs expected-value calculation on probability-weighted salary vs. immigration certainty; treats the lottery as a structural constraint, not a luck problem",
+      "why_it_matters": "Indian/Chinese nationals who choose US on salary alone may spend a decade earning more but end up with no PR in either country",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Response to first H-1B lottery loss",
+      "naive_pattern": "Assumes it was bad luck, reapplies next year, makes no contingency plan, continues burning OPT time",
+      "informed_pattern": "Treats first loss as a signal to immediately research and activate parallel pathways (Canada PGWP, other countries, employer-specific O-1 alternatives) while OPT buffer still exists",
+      "why_it_matters": "By the third lottery loss, STEM OPT may be nearly exhausted, leaving no time to execute a Canada pivot with adequate Canadian work experience for CRS scoring",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Understanding of Canadian immigration mechanics",
+      "naive_pattern": "Thinks of Canada as a simpler but less desirable version of the US GC process; unaware of PGWP open work permit structure or PNP streams",
+      "informed_pattern": "Knows that PGWP length is determined by program length (capped at 3 years), that PNP streams have different CRS thresholds by province, and that job flexibility under open work permit is a structural advantage over H-1B employer tethering",
+      "why_it_matters": "Students who don't understand PGWP mechanics choose shorter programs that give them inadequate immigration runway",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Losing the H-1B lottery twice just means you've been unlucky — try again next year",
+      "why_believed": "Each lottery feels like a fresh chance; sunk cost of years in the US makes leaving feel like failure; peer pressure from others still in the lottery pool normalizes continued attempts",
+      "actual_rule": "Each lottery is statistically independent; there is no streak correction. After 2-3 losses, STEM OPT years are substantially consumed and the window to pivot to Canada with sufficient Canadian work experience for CRS scoring is closing",
+      "real_consequence": "Person exhausts all OPT authorization, loses H-1B again, and is forced to leave the US with no PR anywhere — the worst outcome of all",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The green card process starts after H-1B and takes a few years",
+      "why_believed": "This is true for most nationalities — but students from India and China apply this rule to themselves without checking country-specific backlog data",
+      "actual_rule": "For Indian and Chinese nationals, EB-2 and EB-3 wait times are measured in decades in many cases; someone who entered the queue in 2012 was still waiting in 2026",
+      "real_consequence": "Person spends entire career on H-1B status renewals, unable to change employers freely, take promotions at other companies, or plan long-term — with PR remaining perpetually out of reach",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Canada PR is almost as slow and uncertain as the US green card",
+      "why_believed": "Students compare anecdotal stories of long Canadian waits without distinguishing between Express Entry (fast), PNP (varies), and family class (slow); the US GC delays feel universal so Canada is assumed similar",
+      "actual_rule": "Express Entry for candidates with competitive CRS scores can yield PR invitations in 6-12 months; this is categorically faster than the US EB process for most applicants and drastically faster for Indian/Chinese nationals",
+      "real_consequence": "Students discount Canada as a viable fast-track option and remain in the H-1B lottery loop unnecessarily",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "International student completed US master's in tech, applied to H-1B three consecutive times and lost each lottery, on STEM OPT",
+      "decision": "Pivoted to Canada, obtained PGWP, entered Express Entry pool",
+      "outcome": "Received Canadian PR invitation within 8 months; accepted a $40k salary reduction compared to US role",
+      "lesson": "After multiple H-1B lottery failures, Canada pivot can deliver PR faster than continued lottery attempts; the salary trade-off may be worth the certainty and the psychological relief of stable status",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "Indian national entered US EB-2 green card queue in 2012",
+      "decision": "Remained in the US on H-1B status waiting for GC priority date to become current",
+      "outcome": "Still waiting as of 2026 — 14+ years in queue with no resolution in sight",
+      "lesson": "The India EB backlog is not a theoretical risk — it is a lived reality. Indian nationals who entered the queue over a decade ago remain in it. This must be factored into career and life planning from the moment of considering the US path.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "International student from India/China asks whether to stay in the US for one more lottery attempt after losing twice",
+      "underlying_state": "Sunk cost fallacy combined with loss aversion — the years already invested in the US feel too significant to abandon; leaving feels like admitting failure rather than making a rational pivot",
+      "how_it_manifests": "Person frames the decision as 'should I try one more time' rather than 'given my remaining OPT time and GC backlog, what is the optimal path to permanent residency'",
+      "expert_move": "Redirect to expected value framing: 'How many years of STEM OPT do you have left? What is the probability-weighted outcome of winning vs. losing again? What does your GC queue position look like if you win?' Make the abstract concrete and time-bound.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student compares Canada's lower salaries to US offers and dismisses Canada without further analysis",
+      "underlying_state": "Anchoring bias on nominal salary figures; status anxiety driven by peer comparison (peers in the US earning more)",
+      "how_it_manifests": "Rejects Canada option outright based on salary differential; does not model the expected value of immigration certainty, job flexibility, or tax differences over a 10-year horizon",
+      "expert_move": "Reframe the question from 'which job pays more' to 'what is the 10-year expected value of each path, accounting for probability of H-1B approval, GC wait time by nationality, job switching freedom, and tax obligations'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "PGWP holder with borderline CRS score considers giving up on Canadian PR after seeing high cutoffs in recent Express Entry draws",
+      "underlying_state": "Availability heuristic — recent high draw cutoffs feel permanent; person underweights variability in draw cycles and availability of PNP alternatives",
+      "how_it_manifests": "Concludes Canadian PR is out of reach without researching PNP streams that have lower and more consistent thresholds",
+      "expert_move": "Surface the PNP option: 'Have you checked Alberta or Saskatchewan tech streams? Federal cutoffs fluctuate — your score may be exactly right for a provincial stream even if it's below the federal draw.'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I stay in the US or move to Canada? The US pays more.",
+      "reframe": "The real question is not which country pays more — it's which path gets you to permanent residency within your remaining status window, given your nationality.",
+      "why_it_works": "Shifts the decision variable from a simple salary comparison (where US wins) to a multi-factor expected-value calculation where Canada wins decisively for many Indian/Chinese nationals",
+      "example_language": "Someone who entered the EB-2 queue for India in 2012 is still waiting. This is a real life decision that's being made.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I lost H-1B again — should I try again next year?",
+      "reframe": "The lottery loss is not the question. The question is: how many years of OPT do I have left, and is that enough time to execute a Canada pivot with enough Canadian work experience to get a competitive CRS score?",
+      "why_it_works": "Converts an emotionally loaded binary choice (try again vs. give up) into a resource allocation problem with a concrete time constraint, which is more tractable and less paralyzing",
+      "example_language": "I switched to Canada after 3 H-1B losses. Took a $40k salary cut but got PR in 8 months. Sleep better at night.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Is Canada worth it with the salary cut?",
+      "reframe": "The salary cut question assumes you will get and keep H-1B and eventually get a GC. Model what happens if you don't — what is the value of the optionality you're giving up by staying in the US?",
+      "why_it_works": "Exposes the hidden assumption that the US path is the baseline; forces the person to assign a realistic probability to the US path succeeding rather than treating it as a certainty",
+      "example_language": "The job flexibility with open work permit in Canada is something people undervalue. You can quit a bad job without 60 days of panic.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_immigration_canada_vs_us_immigration_for_international_student",
+  "_source_regions": [
+    "us"
+  ]
+}

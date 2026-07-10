@@ -29,3 +29,39 @@ tags:
   - h1b
   - express-entry
   - pgwp
+
+# Source type weights — override defaults for this skill if needed.
+# Defaults: official=1.5, authoritative=1.2, expert=1.0, community=0.8
+source_weights:
+  official: 1.5
+  authoritative: 1.2
+  expert: 1.0
+  community: 0.8
+
+# Map legacy raw/ subdirectory names to source types (for backward compatibility).
+# Files under raw/books/ and raw/canada/ etc. had no type before — treat them as expert.
+source_type_map:
+  books: authoritative
+  canada: expert
+  us: expert
+  framework: authoritative
+
+# Default regions when a source has no explicit region signal.
+# All scraped community data and official docs will be tagged more precisely.
+default_regions: ["us", "canada"]
+
+# Map source path keywords → regions (checked against full file path).
+# More specific patterns take priority (checked in order, first match wins).
+source_regions_map:
+  nscc_pgwp: ["canada"]
+  cuny: ["us"]
+  canadian_experience_class: ["canada"]
+  express_entry_crs: ["canada"]
+  pgwp_2024: ["canada"]
+  pgwp_express: ["canada"]
+  pnp_tech: ["canada"]
+  eb2_green_card: ["us"]
+  opt_h1b: ["us"]
+  opt_stem: ["us"]
+  h1b_lottery: ["us"]
+  framework: ["us", "canada"]

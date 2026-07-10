@@ -1,0 +1,311 @@
+{
+  "source_file": "f1visa_common_misconceptions_about_the_60_day_grace_perio.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "The 60-day grace period does not authorize work — it is a departure/transition window only",
+      "condition": "When your F-1 program end date has passed and you are in the 60-day grace period",
+      "action": "Do not work; use the period only to find new status, transfer schools, or prepare to depart",
+      "because": "8 CFR 214.2(f)(5)(iv) explicitly limits the grace period to transitioning out of status, not continuing or initiating employment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Track aggregate unemployment days on post-completion OPT — the limit is 90 days total, not per job gap",
+      "condition": "When you are on post-completion OPT and between jobs",
+      "action": "Count all cumulative unemployment days across the entire OPT period; do not assume each gap resets the counter",
+      "because": "A top commenter (234 upvotes) reported their OPT became technically invalid after 95 days between jobs, believing they had buffer — corroborated by the original post's rule summary",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "On STEM OPT, the unemployment limit increases to 150 days aggregate, not 90",
+      "condition": "When you are on STEM OPT extension and lose your job",
+      "action": "Apply the 150-day aggregate unemployment limit, not the standard 90-day rule",
+      "because": "Explicitly stated in the correction post's OPT authorization section, distinguishing standard post-completion OPT from STEM OPT",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "I-20 program end date vs. OPT EAD expiration date",
+      "why_it_matters": "The 60-day grace period starts from the I-20 program end date, not from when the OPT EAD card expires — these two dates can differ, creating confusion about when the grace period actually begins",
+      "how_to_assess": "Compare the program end date on your I-20 with the end date on your EAD card; whichever triggers the grace period clock is the I-20 program end date",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Nature of work during OPT gap — authorized employment vs. freelance/consulting",
+      "why_it_matters": "Whether freelance or consulting work counts as 'employed' for unemployment day tracking is unresolved in community understanding, and getting it wrong could invalidate OPT status",
+      "how_to_assess": "Seek licensed immigration attorney clarification; do not rely on community consensus — this question (123 upvotes) was left unanswered in the thread",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Voluntary resignation vs. employer-initiated termination during OPT",
+      "why_it_matters": "Voluntary resignation ends authorized employment but does not automatically end OPT status itself — the distinction affects how unemployment days are counted and what options remain",
+      "how_to_assess": "Confirm with DSO or immigration attorney whether the departure was voluntary and what the current OPT authorization status is post-resignation",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking a longer-than-expected break between jobs while on post-completion OPT",
+      "unstated_consequence": "Exceeding 90 aggregate unemployment days technically invalidates OPT status even if the EAD card has not expired — the person may not discover this until they try to use the authorization",
+      "who_it_affects": "Students who assume the EAD expiration date is the only relevant deadline and do not track cumulative unemployment days",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on the 60-day grace period after H-1B rejection to 'keep looking' for a job",
+      "unstated_consequence": "You can look but cannot work — any new employment requires new work authorization first, meaning the job search during grace period cannot convert directly into employment without a status change",
+      "who_it_affects": "F-1 holders whose H-1B was rejected and who assume the grace period functions as a continued work authorization buffer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Assuming university international office guidance is complete and accurate on OPT rules",
+      "unstated_consequence": "Multiple commenters (including a 156-upvote comment) report that international offices glossed over the 90-day unemployment rule entirely, leaving students unaware of a critical compliance threshold",
+      "who_it_affects": "Students who rely solely on their DSO or international student office without independently verifying OPT employment rules",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Exceeding the 90-day aggregate unemployment limit on post-completion OPT without realizing the counter does not reset",
+      "why_it_happens": "Students intuitively treat each job gap as independent; the cumulative nature of the limit is counterintuitive and underemphasized by international offices",
+      "consequence": "OPT status becomes technically invalid; the student may be out of status without knowing it, risking future immigration consequences",
+      "warning_signs": [
+        "Taking more than 60 days between jobs during OPT and not tracking the running total",
+        "Assuming the OPT EAD expiration date is the only compliance deadline"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Attempting to work or start a new job during the 60-day grace period after program end",
+      "why_it_happens": "The grace period feels like a continuation of authorized stay, and students conflate the right to remain in the US with the right to work",
+      "consequence": "Unauthorized employment, which is a serious immigration violation with long-term bars to future status",
+      "warning_signs": [
+        "Asking 'can I start at a new employer during my 60-day grace period?'",
+        "Framing the grace period as a job-search-and-start window rather than a transition-only window"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the program end date on your I-20, and what is the expiration date on your OPT EAD card — are they the same?",
+      "what_it_reveals": "Whether the student is correctly identifying when the 60-day grace period clock starts; many students assume it's the EAD expiration date",
+      "follow_up_if_yes": "Confirm that the grace period begins on that shared date and no work is authorized after that point",
+      "follow_up_if_no": "Determine which date is earlier and explain that the grace period begins from the I-20 program end date, not the EAD card expiration",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many total days have you been unemployed across your entire OPT period — not just in this current gap?",
+      "what_it_reveals": "Whether the student is at risk of exceeding the 90-day aggregate unemployment limit without knowing it",
+      "follow_up_if_yes": "If approaching or past 90 days aggregate, advise immediate consultation with a licensed immigration attorney",
+      "follow_up_if_no": "Remind them that the counter is cumulative — all future gaps will add to this total",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you on standard post-completion OPT or on a STEM OPT extension?",
+      "what_it_reveals": "Which unemployment day limit applies — 90 days for standard OPT, 150 days for STEM OPT",
+      "follow_up_if_yes": "If STEM OPT, confirm they have up to 150 aggregate days but that the E-Verify employer requirement still applies",
+      "follow_up_if_no": "If standard OPT, apply the 90-day aggregate limit strictly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the work you're doing during a gap period freelance, consulting, or self-employment — and have you confirmed with an attorney whether that counts as 'employed' for OPT purposes?",
+      "what_it_reveals": "Whether the student is unknowingly accumulating unemployment days while believing freelance work keeps them compliant",
+      "follow_up_if_yes": "Flag this as an unresolved area requiring licensed immigration attorney guidance before assuming compliance",
+      "follow_up_if_no": "Confirm that only authorized employment as defined by OPT terms counts against unemployment day calculations",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The 60-day grace period gives you time to find and start a new job after H-1B rejection or job loss",
+      "actual_reality": "The 60-day grace period allows you to remain in the US to transition status, transfer schools, or prepare to depart — you cannot work during this period without new authorization",
+      "implication": "Students who receive H-1B rejections must have a status change fully in place before they can begin any new employment — the grace period does not serve as a buffer for continued job-searching-while-employed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Losing your job terminates your OPT authorization immediately",
+      "actual_reality": "Termination of employment does not end OPT status by itself — you can be between jobs for up to 90 aggregate days on post-completion OPT before the status becomes invalid",
+      "implication": "Students who think losing a job immediately ends their OPT may take unnecessary panic actions (departing the US, abandoning status) when they actually have legal buffer time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "University international offices provide complete and reliable guidance on OPT compliance rules",
+      "actual_reality": "Multiple community members report that international offices glossed over or omitted the 90-day unemployment rule entirely",
+      "implication": "Students should independently verify OPT compliance rules — particularly unemployment limits — with a licensed immigration attorney rather than relying solely on DSO guidance",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding what the 60-day grace period actually permits",
+      "naive_pattern": "Assumes the grace period is a general buffer that allows continued job searching and even starting new work, treating it as an extension of OPT",
+      "informed_pattern": "Knows the grace period is strictly for transitioning — remaining in the US to change status, transfer schools, or depart — and that any employment requires new authorization obtained before starting work",
+      "why_it_matters": "Acting on the naive pattern leads to unauthorized employment, a serious immigration violation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Tracking OPT unemployment days",
+      "naive_pattern": "Treats each job gap independently; assumes a new job 'resets' the counter; focuses only on the EAD expiration date as the compliance horizon",
+      "informed_pattern": "Tracks cumulative aggregate unemployment days from day one of OPT; knows the 90-day (or 150-day STEM) limit is total across the entire OPT period",
+      "why_it_matters": "Naive tracking leads to inadvertent status violations discovered only after the fact, as confirmed by the 234-upvote real case in this thread",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Where to get authoritative OPT compliance guidance",
+      "naive_pattern": "Relies on Reddit, peers, or the university international office for rules on OPT limits and grace period boundaries",
+      "informed_pattern": "Treats community input as directional only; consults a licensed immigration attorney for any situation involving potential status violation or edge cases like freelance employment during OPT",
+      "why_it_matters": "Community and institutional guidance is frequently incomplete or wrong on technical compliance questions; errors have multi-year immigration consequences",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The 60-day grace period starts when my OPT EAD card expires",
+      "why_believed": "The EAD expiration date is the most visible date on the physical card; students anchor to it as the end of their authorized period",
+      "actual_rule": "The 60-day grace period begins after the I-20 program end date, which may differ from the OPT EAD expiration date",
+      "real_consequence": "Students may miscalculate when their grace period starts and ends, potentially overstaying or misidentifying when they fall out of status",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "I have 60 days after H-1B rejection to find a new job and start working",
+      "why_believed": "The grace period sounds like a practical buffer and students assume 'authorized to stay' means 'authorized to work'",
+      "actual_rule": "During the 60-day grace period you cannot work; you can only remain in the US to change status, transfer schools, or prepare to depart — new employment requires new work authorization obtained before starting",
+      "real_consequence": "Working during the grace period constitutes unauthorized employment, which carries serious long-term immigration bars",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The 90-day unemployment limit resets each time I start a new job",
+      "why_believed": "Each new job feels like a fresh start; the cumulative framing is counterintuitive and not emphasized in standard DSO guidance",
+      "actual_rule": "The 90 days is an aggregate limit across the entire post-completion OPT period — all unemployment gaps count toward the same running total",
+      "real_consequence": "Students take a second or third gap believing they have 90 more days, inadvertently invalidating their OPT status as confirmed by a 234-upvote account in this thread",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Losing my job immediately ends my OPT authorization",
+      "why_believed": "OPT is associated with employment, so it feels logical that losing the job ends the authorization",
+      "actual_rule": "Termination of employment does not end OPT status by itself — the student can remain on OPT with up to 90 aggregate days of unemployment before the status becomes invalid",
+      "real_consequence": "Students may unnecessarily depart the US or abandon valid status when they actually had legal time remaining to find a new authorized employer",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student on post-completion OPT took 95 days between two jobs, believing they had adequate buffer without tracking the cumulative total",
+      "decision": "Allowed the gap to extend to 95 days without consulting an attorney or DSO",
+      "outcome": "OPT technically became invalid; the student had to learn this 'the hard way' (234-upvote comment, no further detail on resolution provided)",
+      "lesson": "The 90-day unemployment limit is aggregate across the entire OPT period — each gap does not get its own 90-day window; students must track the running cumulative total from OPT start",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'can I work during my 60-day grace period?' or 'I have 60 days after H-1B rejection, right?'",
+      "underlying_state": "Catastrophizing and status-loss anxiety driving a search for any legal pathway to continue working — the student wants the answer to be yes and frames questions to find that confirmation",
+      "how_it_manifests": "Reinterpreting the grace period as a work-authorization buffer; seeking community validation rather than legal clarity",
+      "expert_move": "Separate 'authorized to remain' from 'authorized to work' clearly and immediately; redirect to licensed immigration attorney before any employment decision is made",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student reports being between jobs for a long time but frames it as 'I still have time on my EAD'",
+      "underlying_state": "Anchoring bias — the visible EAD expiration date becomes the only compliance horizon the student monitors, blocking awareness of the parallel unemployment day counter",
+      "how_it_manifests": "Failure to track cumulative unemployment days; surprise and distress when told the 90-day limit may already be exceeded",
+      "expert_move": "Ask immediately: 'How many total days have you been unemployed across your entire OPT period?' — force the cumulative framing before assessing current risk",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student expresses trust in their university's international office guidance as authoritative and complete",
+      "underlying_state": "Authority bias — institutional sources feel more reliable than community forums, but DSO offices vary widely in their depth of knowledge and may omit critical compliance details",
+      "how_it_manifests": "Declining to seek additional legal advice; believing the unemployment rule or grace period mechanics were fully explained when they were not",
+      "expert_move": "Validate the importance of DSO guidance while explicitly noting its limits — point to the 156-upvote comment confirming that international offices commonly omit the unemployment rule, and recommend attorney consultation for any edge case",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'I have 60 days after my H-1B rejection / program end to figure things out and find work'",
+      "reframe": "The 60-day grace period is not a work window — it is an exit or transition window. 'Authorized to stay' and 'authorized to work' are two different things.",
+      "why_it_works": "It forces the student to disaggregate two concepts they had conflated, making clear that the grace period creates zero employment rights and that new authorization must be secured before any work begins",
+      "example_language": "You can stay, but you cannot work. Any job requires new authorization first.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'I've only been unemployed for X days in this gap, so I'm fine'",
+      "reframe": "The question is not how long this gap is — it's how many total days you've been unemployed across your entire OPT period",
+      "why_it_works": "Shifts the student from per-gap thinking to cumulative tracking, which is the actual legal standard — this reframe alone can surface a compliance problem the student didn't know existed",
+      "example_language": "The 90 days is your total budget for the whole OPT period, not 90 days per gap.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_cleaned_f1visa_common_misconceptions_about_the_60_day_grace_perio",
+  "_source_regions": [
+    "us"
+  ]
+}

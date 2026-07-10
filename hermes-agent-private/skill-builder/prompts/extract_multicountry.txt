@@ -6,16 +6,20 @@ This skill covers multiple countries: {{countries_list}}.
 
 Your task is to extract structured, actionable insights — NOT summaries, NOT generic advice.
 
-## CRITICAL: Country Scope Tagging
+## Source context
+This content comes primarily from: {{source_regions}}
+Use this as your starting point for regions tagging. Override if the source clearly discusses a different country, or use ["us","canada"] for comparisons spanning both.
+Note: Older extract prompts may still emit a legacy `country_scope` field ("us"|"canada"|"universal"); the merge step converts that field to `regions` automatically.
+## CRITICAL: Regions Tagging
 
-Every insight you extract MUST include a `country_scope` field:
-- `"universal"` — applies regardless of which country the student is in
-- `"us"` — specific to the United States (OPT, H-1B, EB series, USCIS, etc.)
-- `"canada"` — specific to Canada (PGWP, Express Entry, PNP, IRCC, etc.)
-- `"australia"` — specific to Australia (if present in source)
-- `"uk"` — specific to the UK (if present in source)
+Every insight you extract MUST include a `regions` field — a JSON array:
+- `[]` — universal (decision frameworks, mental models, general principles)
+- `["us"]` — US-specific (OPT, H-1B, EB series, USCIS, EAD, F-1, etc.)
+- `["canada"]` — Canada-specific (PGWP, Express Entry, PNP, IRCC, CRS, NOC, etc.)
+- `["us", "canada"]` — explicitly applies to both (cross-border comparisons, North America-wide patterns)
+- Other values (e.g. `["uk"]`, `["australia"]`) only if source explicitly covers them
 
-Rule of thumb: decision frameworks and mental models → `universal`. Visa names, quotas, processing times, specific rules → country code.
+Rule of thumb: decision frameworks and mental models → `[]`. Visa names, quotas, processing times, specific rules → specific country array.
 
 ---
 
@@ -30,7 +34,7 @@ Format:
   "condition": "When <situation>...",
   "action": "...<what to do>",
   "because": "<reason this matters>",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 2. DECISION_FACTORS
@@ -42,7 +46,7 @@ Format:
   "why_it_matters": "<why this changes the decision>",
   "how_to_assess": "<how to evaluate it in practice>",
   "weight": "high | medium | low",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 3. HIDDEN_TRADEOFFS
@@ -53,7 +57,7 @@ Format:
   "choice": "<the option>",
   "unstated_consequence": "<what silently comes with it>",
   "who_it_affects": "<which type of student this hits hardest>",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 4. FAILURE_PATTERNS
@@ -65,7 +69,7 @@ Format:
   "why_it_happens": "<cognitive or situational cause>",
   "consequence": "<what it costs the student>",
   "warning_signs": ["<sign 1>", "<sign 2>"],
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 5. DIAGNOSTIC_QUESTIONS
@@ -77,7 +81,7 @@ Format:
   "what_it_reveals": "<what the answer tells you>",
   "follow_up_if_yes": "<next question or inference>",
   "follow_up_if_no": "<next question or inference>",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 6. INDUSTRY_REALITIES
@@ -88,7 +92,7 @@ Format:
   "common_belief": "<what students assume>",
   "actual_reality": "<what experienced advisors know>",
   "implication": "<how this should change behavior>",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ## 7. JUNIOR_VS_SENIOR_SIGNALS
@@ -100,7 +104,7 @@ Format:
   "naive_pattern": "<how an uninformed student thinks/acts>",
   "informed_pattern": "<how a well-advised student thinks/acts>",
   "why_it_matters": "<the consequence of the difference>",
-  "country_scope": "universal | us | canada | ..."
+  "regions": ["us"]
 }
 
 ---

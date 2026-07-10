@@ -42,6 +42,7 @@ import {
   HARMENCE_EXPERT_INDIVIDUAL_FINAL_PROMPT,
   HARMENCE_EXPERT_ROUTER_PROMPT,
   HARMENCE_FINAL_SYSTEM_PROMPT,
+  HARMENCE_PSYCH_ANALYST_PROMPT,
   HARMENCE_SMART_TALK_DRIVER_PROMPT,
   HARMENCE_SMART_TALK_SYNTHESIS_PROMPT,
 } from './hermes-prompts.js';
@@ -102,6 +103,13 @@ function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simpl
   return '';
 }
 
+type PsychProfile = {
+  underlyingConcerns: string[];
+  emotionalState: string;
+  hiddenMotivation: string;
+  suggestedProbeAngle: string;
+};
+
 type Session = {
   id: string;
   bubbles: DecideInterviewBubble[];
@@ -115,6 +123,7 @@ type Session = {
   updatedAt: number;
   mode: 'single' | 'complex';
   smartTalkState: SmartTalkState;
+  psychProfile?: PsychProfile;
 };
 
 type InterviewAnswer = {
@@ -570,7 +579,7 @@ function answerLines(session: Session): string[] {
 function summarizeDraft(session: Session, previewCard?: DecideInterviewPreviewCard): DecideInterviewDraftHints {
   const answers = answerLines(session);
   const first = session.answers[1]?.label ?? session.answers[0]?.label ?? '(untitled tension)';
-  const title = previewCard?.question ?? first;
+  const title = initialQuestionFor(session) || previewCard?.hook || first;
   const body = answers.join('\n');
   return DecideInterviewDraftHintsSchema.parse({
     title,
@@ -1205,15 +1214,107 @@ function formatAvailableSkillsForPrompt(experts: HarmenceExpert[]): string {
     .join('\n');
 }
 
+function mergePsychProfile(existing: PsychProfile | undefined, fresh: PsychProfile): PsychProfile {
+  if (!existing) return fresh;
+  const allConcerns = [...existing.underlyingConcerns];
+  for (const concern of fresh.underlyingConcerns) {
+    if (!allConcerns.some((c) => c.toLowerCase() === concern.toLowerCase())) {
+      allConcerns.push(concern);
+    }
+  }
+  return {
+    underlyingConcerns: allConcerns.slice(-8),
+    emotionalState: fresh.emotionalState,
+    hiddenMotivation: fresh.hiddenMotivation,
+    suggestedProbeAngle: fresh.suggestedProbeAngle,
+  };
+}
+
+function buildPsychProfileSection(profile: PsychProfile): string {
+  return [
+    '',
+    '## Silent psychological profile (internal — do NOT reveal to user)',
+    `Underlying concerns: ${profile.underlyingConcerns.join(' | ')}`,
+    `Emotional state: ${profile.emotionalState}`,
+    `Hidden motivation: ${profile.hiddenMotivation}`,
+    `Suggested probe angle: ${profile.suggestedProbeAngle}`,
+    '',
+    'Use this profile to sharpen the framing and depth of your next question. You are not required to follow the suggested probe angle literally — prioritize the most valuable information gap. Let the psychological context inform the quality of your probe.',
+  ].join('\n');
+}
+
+async function runPsychAnalysis(session: Session): Promise<void> {
+  const realAnswerCount = session.answers.filter((a) => a.promptId !== 'initial_question').length;
+  console.log('[psych-analyst] fired — realAnswers:', realAnswerCount, '| round:', session.smartTalkState.rounds);
+  if (realAnswerCount < 1) {
+    console.log('[psych-analyst] skipped — not enough answers yet');
+    return;
+  }
+  try {
+    const result = await hermesChatCompletion({
+      messages: [
+        { role: 'system', content: HARMENCE_PSYCH_ANALYST_PROMPT },
+        {
+          role: 'user',
+          content: [
+            `Original question: ${initialQuestionFor(session)}`,
+            `Collected answers:\n${collectedSummary(session)}`,
+          ].join('\n\n'),
+        },
+      ],
+    });
+    if (!result.ok) {
+      console.log('[psych-analyst] hermesChatCompletion failed:', result.reason);
+      return;
+    }
+    console.log('[psych-analyst] raw response:', result.content.slice(0, 300));
+    const raw = extractJsonObject(result.content);
+    if (!raw || typeof raw !== 'object') {
+      console.log('[psych-analyst] extractJsonObject returned null — could not parse JSON');
+      return;
+    }
+    const candidate = raw as Partial<Record<string, unknown>>;
+    const fresh: PsychProfile = {
+      underlyingConcerns: Array.isArray(candidate['underlyingConcerns'])
+        ? (candidate['underlyingConcerns'] as string[]).filter((c) => typeof c === 'string')
+        : [],
+      emotionalState: typeof candidate['emotionalState'] === 'string' ? candidate['emotionalState'] : '',
+      hiddenMotivation: typeof candidate['hiddenMotivation'] === 'string' ? candidate['hiddenMotivation'] : '',
+      suggestedProbeAngle: typeof candidate['suggestedProbeAngle'] === 'string' ? candidate['suggestedProbeAngle'] : '',
+    };
+    if (!fresh.emotionalState && !fresh.hiddenMotivation) {
+      console.log('[psych-analyst] parsed JSON missing emotionalState and hiddenMotivation — skipping');
+      return;
+    }
+
+    console.log('[psych-analyst] Turn analysis (round', session.smartTalkState.rounds, '):');
+    console.log(JSON.stringify(fresh, null, 2));
+
+    const merged = mergePsychProfile(session.psychProfile, fresh);
+
+    console.log('[psych-analyst] Accumulated profile:');
+    console.log(JSON.stringify(merged, null, 2));
+
+    session.psychProfile = merged;
+  } catch (err) {
+    console.log('[psych-analyst] caught exception:', err instanceof Error ? err.message : String(err));
+  }
+}
+
 function buildSmartTalkDriverPrompt(
   availableSkills: HarmenceExpert[],
   challengeMode: ReturnType<typeof buildChallengeInstruction>,
+  psychProfile?: PsychProfile,
 ): string {
   const skillsList = formatAvailableSkillsForPrompt(availableSkills);
   const challengeInstruction = challengeMode ? (CHALLENGE_MODE_INSTRUCTIONS[challengeMode] ?? '') : '';
-  return HARMENCE_SMART_TALK_DRIVER_PROMPT
+  let prompt = HARMENCE_SMART_TALK_DRIVER_PROMPT
     .replace('{AVAILABLE_SKILLS}', skillsList)
     .replace('{CHALLENGE_MODE}', challengeInstruction);
+  if (psychProfile) {
+    prompt += buildPsychProfileSection(psychProfile);
+  }
+  return prompt;
 }
 
 async function askSmartTalkForNextChoice(
@@ -1248,7 +1349,7 @@ async function askSmartTalkForNextChoice(
   }
 
   const challengeMode = buildChallengeInstruction(session.smartTalkState);
-  const systemPrompt = buildSmartTalkDriverPrompt(activeExperts, challengeMode);
+  const systemPrompt = buildSmartTalkDriverPrompt(activeExperts, challengeMode, session.psychProfile);
   const answerCount = session.answers.filter((a) => a.promptId !== 'initial_question').length;
 
   const result = await hermesChatCompletion({
@@ -1353,7 +1454,8 @@ async function askSmartTalkForNextChoice(
   const ambiguity = computeAmbiguity(session.smartTalkState.scores);
   session.smartTalkState.ambiguity = ambiguity;
   const hardStop = ambiguity <= 0.20 || answerCount >= 10;
-  const readyForFinal = hardStop || raw?.readyForFinal === true;
+  // LLM self-declaring readyForFinal is only trusted when it meets the same bar as hardStop (ambiguity ≤ 0.20)
+  const readyForFinal = hardStop || (raw?.readyForFinal === true && ambiguity <= 0.20);
 
   // Record momentum entry for this turn
   if (raw?.scores) {
@@ -1631,6 +1733,17 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
   const activeExperts = expertsForSession(session);
   if (!hermesIntegrated) return fallback;
 
+  const psychSection = session.psychProfile
+    ? [
+        '## User psychological profile (silent expert — full session)',
+        `Underlying concerns: ${session.psychProfile.underlyingConcerns.join(' | ')}`,
+        `Emotional state at close: ${session.psychProfile.emotionalState}`,
+        `Core hidden motivation: ${session.psychProfile.hiddenMotivation}`,
+        '',
+        'Address root concerns in verdicts, frame nextSteps with awareness of emotional state, and ensure recommendations speak to the hidden motivation.',
+      ].join('\n')
+    : null;
+
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:expert-final`,
     messages: [
@@ -1642,7 +1755,8 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
           `Active experts:\n${JSON.stringify(activeExperts.map(publicExpert))}`,
           `Original question:\n${initialQuestionFor(session)}`,
           `Collected answers:\n${collectedSummary(session)}`,
-        ].join('\n\n'),
+          psychSection,
+        ].filter(Boolean).join('\n\n'),
       },
     ],
   });
@@ -1710,7 +1824,11 @@ async function askExpertIndividualVerdict(
     ],
   });
 
-  if (!result.ok) return fallbackVerdict;
+  if (!result.ok) {
+    console.log(`[expert-verdict:${expert.id}] hermesChatCompletion failed: ${result.reason}`);
+    return fallbackVerdict;
+  }
+  console.log(`[expert-verdict:${expert.id}] raw (first 400):`, result.content.slice(0, 400));
   const raw = extractJsonObject(result.content) as {
     expertId?: unknown;
     expertTitle?: unknown;
@@ -1720,7 +1838,10 @@ async function askExpertIndividualVerdict(
     risks?: unknown;
     nextQuestionsOrActions?: unknown;
   } | null;
-  if (!raw) return fallbackVerdict;
+  if (!raw) {
+    console.log(`[expert-verdict:${expert.id}] extractJsonObject returned null`);
+    return fallbackVerdict;
+  }
 
   const validConfidences = ['low', 'medium', 'high'] as const;
   return {
@@ -1736,6 +1857,19 @@ async function askExpertIndividualVerdict(
       ? raw.nextQuestionsOrActions.filter((a): a is string => typeof a === 'string')
       : [],
   };
+}
+
+function getMajorityVerdict(expertVerdicts: { verdictLine: string }[]): 'YES' | 'NO' | null {
+  const votes = expertVerdicts.map((v) =>
+    /^yes\b/i.test(v.verdictLine.trim()) ? 'YES' : /^no\b/i.test(v.verdictLine.trim()) ? 'NO' : null,
+  );
+  const yesCount = votes.filter((v) => v === 'YES').length;
+  const noCount = votes.filter((v) => v === 'NO').length;
+  const counted = votes.filter((v) => v !== null).length;
+  if (counted === 0) return null;
+  if (yesCount > noCount && yesCount > counted / 2) return 'YES';
+  if (noCount > yesCount && noCount > counted / 2) return 'NO';
+  return null;
 }
 
 function selectKeyMoments(log: MomentEntry[]): {
@@ -1804,7 +1938,14 @@ async function askSmartTalkComplexFinal(
   );
 
   // Step 2: smart_talk synthesizes all verdicts
+  const majorityVerdict = getMajorityVerdict(expertVerdicts);
   const keyMomentCandidates = selectKeyMoments(session.smartTalkState.momentumLog);
+
+  const yesCount = expertVerdicts.filter((v) => /^yes\b/i.test(v.verdictLine.trim())).length;
+  const noCount = expertVerdicts.filter((v) => /^no\b/i.test(v.verdictLine.trim())).length;
+  const consensusInstruction = majorityVerdict
+    ? `VERDICT CONSTRAINT: ${yesCount}/${expertVerdicts.length} experts say YES, ${noCount}/${expertVerdicts.length} say NO — majority is ${majorityVerdict}. Your verdictLine, recommendation, AND rationale MUST all support ${majorityVerdict}. Write rationale as a coherent argument for WHY ${majorityVerdict} is correct given the evidence. Place any minority risks or unresolved concerns in nextSteps as caveats only — do not use them to reverse the majority direction.`
+    : '';
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:smart-talk-synthesis`,
@@ -1816,6 +1957,7 @@ async function askSmartTalkComplexFinal(
           `Original question: ${initialQuestionFor(session)}`,
           `Collected answers:\n${collectedSummary(session)}`,
           `Expert verdicts:\n${JSON.stringify(expertVerdicts, null, 2)}`,
+          consensusInstruction,
           keyMomentCandidates.length > 0
             ? `Key decision moments (ranked by impact — write one-sentence impact for each):\n${JSON.stringify(keyMomentCandidates, null, 2)}`
             : '',
@@ -1826,10 +1968,17 @@ async function askSmartTalkComplexFinal(
 
   const withVerdicts = (fd: DecideInterviewFinalDecision) => ({ ...fd, expertVerdicts });
 
-  if (!result.ok) return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  if (!result.ok) {
+    console.log('[synthesis] hermesChatCompletion failed:', result.reason);
+    return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  }
+  console.log('[synthesis] raw (first 500):', result.content.slice(0, 500));
 
   const raw = extractJsonObject(result.content);
-  if (!raw || typeof raw !== 'object') return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  if (!raw || typeof raw !== 'object') {
+    console.log('[synthesis] extractJsonObject returned null');
+    return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
+  }
 
   const candidate = raw as { assistantText?: unknown; finalDecision?: unknown; previewCard?: unknown };
   const rawFinalDecision = candidate.finalDecision && typeof candidate.finalDecision === 'object'
@@ -1843,20 +1992,34 @@ async function askSmartTalkComplexFinal(
   const previewCardParsed = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
 
   if (!finalDecisionParsed.success || !previewCardParsed.success) {
+    console.log('[synthesis] schema validation failed — fd:', finalDecisionParsed.success, '| pc:', previewCardParsed.success);
+    if (!previewCardParsed.success) console.log('[synthesis] previewCard errors:', JSON.stringify(previewCardParsed.error?.issues?.slice(0, 3)));
     return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
   }
+  console.log('[synthesis] previewCard.question:', previewCardParsed.data.question);
 
 
   if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecisionParsed.data.verdictLine.trim())) {
     return { ...fallback, finalDecision: withVerdicts(fallback.finalDecision) };
   }
 
+  // Hard guard: if synthesis still contradicts expert majority, patch coherently
+  const synthesisToken = /^yes\b/i.test(finalDecisionParsed.data.verdictLine.trim()) ? 'YES' : 'NO';
+  const needsCorrection = majorityVerdict && requiresBinaryVerdict(session) && synthesisToken !== majorityVerdict;
+  const finalDecision = needsCorrection
+    ? {
+        ...finalDecisionParsed.data,
+        verdictLine: finalDecisionParsed.data.verdictLine.replace(/^(YES|NO)\b/i, majorityVerdict!),
+        rationale: `Expert consensus (${Math.max(yesCount, noCount)}/${expertVerdicts.length}): ${majorityVerdict}. ${finalDecisionParsed.data.rationale}`,
+      }
+    : finalDecisionParsed.data;
+
   return {
     assistantText:
       typeof candidate.assistantText === 'string' && candidate.assistantText.trim()
         ? candidate.assistantText.trim()
         : fallback.assistantText,
-    finalDecision: finalDecisionParsed.data,
+    finalDecision,
     previewCard: previewCardParsed.data,
   };
 }
@@ -2071,6 +2234,8 @@ export async function handleInterviewTurn(
       phase = choicePrompt.id;
       session.lastPrompt = choicePrompt;
       assistantMeta = expertBubbleMeta(next.speaker, next.supporting);
+      // Async psych analysis — non-blocking, result used by NEXT turn's driver prompt
+      void runPsychAnalysis(session);
     } else {
       const final = session.mode === 'complex'
         ? await askSmartTalkComplexFinal(session, hermesIntegrated)

@@ -20,6 +20,22 @@ The AI must ALWAYS identify the user's location before giving advice. Country-sp
 
 ---
 
+## Community insights (extracted from real forum posts)
+
+has_community: {{has_community}}
+
+{{community_insights_json}}
+
+When `has_community` is `true` above, the community_insights_json block contains data for four categories:
+- `community_misconceptions` — wrong beliefs widely held in forums
+- `real_case_outcomes` — specific situation → decision → outcome → lesson chains
+- `psychological_barriers` — fears and cognitive biases inferred from user framing
+- `reframing_moves` — how expert responders reframe questions to break psychological traps
+
+**REQUIREMENT**: If `has_community` is `true`, you MUST include BOTH `## Common Misconceptions` and `## User Psychology` sections in the output, populated from community_insights_json. These sections are NOT optional when data is present.
+
+---
+
 ## Output format
 
 Write a complete SKILL.md using this exact structure. Fill every section from the extracted insights — do not invent content.
@@ -131,6 +147,33 @@ These apply regardless of country.
 
 [Table using junior_vs_senior_signals from all scopes. Columns: Dimension | Uninformed pattern | Informed pattern]
 
+## Common Misconceptions
+
+[Required when has_community=true. List 4–8 misconceptions drawn from `community_misconceptions` in community_insights_json. Each entry should feel like something a real student would say, then be immediately corrected.]
+
+**"[The wrong belief stated as a student would say it]"**
+Reality: [what is actually true]. Consequence of acting on this: [concrete cost].
+
+[Prioritize: misconceptions with the highest real_consequence severity, and those that contradict official rules.]
+
+## User Psychology
+
+[Required when has_community=true. Helps the AI recognize when a user's framing reveals a psychological trap and respond in a way that breaks through it rather than reinforcing it.]
+
+### Emotional States and What They Signal
+
+[Table drawn from `psychological_barriers` in community_insights_json. 4–7 rows.]
+
+| When user says... | Underlying state | Expert move |
+|---|---|---|
+[Fill from psychological_barriers: trigger → underlying_state → expert_move.]
+
+### Reframing Moves
+
+[3–5 entries from `reframing_moves` in community_insights_json.]
+
+**"[original_framing]"** → [reframe]. Why it works: [why_it_works]
+
 ## How to Use This Skill
 
 [4–5 sentences: Always run Step 0 first. Never give country-specific advice before establishing location. Apply universal framework first, then overlay country-specific knowledge. If situation spans two countries, run both and compare. The goal is to surface decisions and tradeoffs the student hasn't yet thought about, not to validate what they've already decided.]
@@ -145,6 +188,6 @@ These apply regardless of country.
 - Every country-specific heuristic must name the specific visa/program it applies to
 - The Location Diagnosis step is non-negotiable — the skill fails if this is skipped
 - Do not add sections not in the template
-- Target length: 900–1300 words in skill body (excluding frontmatter)
+- Target length: 900–1500 words in skill body (excluding frontmatter); add ~200 words if Common Misconceptions and User Psychology sections are present
 
 Output the complete SKILL.md and nothing else.
