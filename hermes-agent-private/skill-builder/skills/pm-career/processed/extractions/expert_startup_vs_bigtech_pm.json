@@ -1,0 +1,302 @@
+{
+  "source_file": "startup_vs_bigtech_pm.txt",
+  "heuristics": [
+    {
+      "rule": "Subtract equity entirely and assess whether remaining compensation meets living expenses before accepting a startup offer.",
+      "condition": "When evaluating a startup offer with significant equity as part of the compensation pitch...",
+      "action": "...remove equity from the calculation entirely and evaluate whether base salary alone covers your financial needs",
+      "because": "~90% of startups fail, dilution can reduce a 1% stake to 0.3%, liquidation preferences reduce payouts by 60–80%, and options often cost 20–50% of annual salary to exercise — making equity unreliable as income"
+    },
+    {
+      "rule": "Evaluate a role by three questions — what will you own, what decisions will you make, and who will you influence — not by title.",
+      "condition": "When comparing offers with different titles or trying to assess the real scope of a role...",
+      "action": "...replace title comparison with a structured assessment of decision surface, autonomy, and organizational reach",
+      "because": "Startups inflate titles because they can't compete on comp, and Big Tech has so many leveling bands that 'Senior' means wildly different things across orgs — title is a noisy signal"
+    },
+    {
+      "rule": "Optimize for your next two jobs, not your entire career or just this year's salary.",
+      "condition": "When making a startup vs. Big Tech decision at any career stage...",
+      "action": "...evaluate how this role positions you for the role after the next one, not just immediate compensation or prestige",
+      "because": "Neither path is wrong if you commit fully, but the sequencing and downstream optionality matter more than any single job's immediate rewards"
+    },
+    {
+      "rule": "If you want both startup and Big Tech experience, do Big Tech first.",
+      "condition": "When early in your career and uncertain about sequencing startup vs. Big Tech...",
+      "action": "...start at Big Tech to preserve optionality in both directions",
+      "because": "Big Tech → startup is easy and always available; startup → Big Tech requires either startup success or strong prior credentials, meaning starting at a startup narrows Big Tech entry options"
+    },
+    {
+      "rule": "Early career (0–5 years): prioritize learning velocity over everything else, including compensation.",
+      "condition": "When evaluating offers in the first five years of a PM career...",
+      "action": "...weight learning speed and breadth of exposure above salary, title, or brand name",
+      "because": "Startup experience at a failed company with meaningful scope still teaches more than 2 years as a mid-level PM in a large Big Tech team — the compound returns on early learning outweigh short-term comp differences"
+    },
+    {
+      "rule": "Set a 1-week information-gathering deadline, then decide and commit.",
+      "condition": "When stuck in prolonged deliberation between startup and Big Tech offers...",
+      "action": "...time-box due diligence to one week, then make a full commitment",
+      "because": "Half-hearted commitment produces poor outcomes in either environment — the quality of execution after the decision matters more than marginal improvement in the decision itself"
+    },
+    {
+      "rule": "Match risk tolerance to life stage, not to abstract career ambition.",
+      "condition": "When assessing whether startup risk is appropriate for your situation...",
+      "action": "...inventory your financial obligations (mortgage, dependents) before treating startup equity as a viable wealth-building strategy",
+      "because": "Startup runway failure with a mortgage and family creates real financial exposure — rational risk calibration means taking more risk when you can absorb downside, not when you most want upside"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Life stage and financial obligations",
+      "why_it_matters": "Risk tolerance changes completely based on whether you have a mortgage, dependents, or other fixed obligations — the same startup offer is a rational bet at 25 and a dangerous one at 38 with kids",
+      "how_to_assess": "Inventory fixed monthly obligations (mortgage/rent, dependents, debt service) and calculate whether base salary alone at the startup covers them without equity",
+      "weight": "high"
+    },
+    {
+      "factor": "Startup financial health and runway",
+      "why_it_matters": "A startup's burn rate and runway determine whether your equity has any time to vest and whether you'll still have a job in 18 months",
+      "how_to_assess": "Ask directly for MRR, customer churn rates, current burn rate, runway until next funding round, path to profitability, and contingency plans if funding fails — treat inability to answer specifically as a red flag",
+      "weight": "high"
+    },
+    {
+      "factor": "Equity structure details (liquidation preferences, exercise window)",
+      "why_it_matters": "Two offers with identical equity percentages can have radically different actual payouts depending on liquidation preference stacking and exercise window length",
+      "how_to_assess": "Ask for the cap table summary, liquidation preference terms on all existing rounds, and exercise window length (90 days vs. 5-year extended windows are materially different)",
+      "weight": "high"
+    },
+    {
+      "factor": "Real decision surface and autonomy (scope)",
+      "why_it_matters": "Actual scope of ownership determines learning velocity, resume credibility, and career trajectory more than title or compensation",
+      "how_to_assess": "Ask: What will I own? What decisions will I make unilaterally vs. need approval for? Who will I influence organizationally? Compare answers across offers directly",
+      "weight": "high"
+    },
+    {
+      "factor": "Career stage and desired trajectory (5-year vision)",
+      "why_it_matters": "The right choice depends entirely on where you want to be in 5 years — specific skills needed, network required, and financial position targeted",
+      "how_to_assess": "Define the 5-year target with specificity (not 'senior leader' but specific skills, network type, and financial position), then evaluate which path creates more of those prerequisites",
+      "weight": "high"
+    },
+    {
+      "factor": "Manager quality and team shipping record",
+      "why_it_matters": "At Big Tech, manager quality and recent team output predict your actual learning and promotion trajectory more than org brand",
+      "how_to_assess": "Ask what the team shipped in the last 12 months (ask for 3 specific products), how the manager makes decisions, promotion time-to-promo at your level in this specific org, and why the role exists",
+      "weight": "high"
+    },
+    {
+      "factor": "Resume sequencing and downstream optionality",
+      "why_it_matters": "Startup success opens all doors; startup failure opens startup doors but not Big Tech; Big Tech opens most doors but can pigeonhole — sequencing affects which doors stay open",
+      "how_to_assess": "Map the likely resume outcomes (success, failure, middling) for each path and assess which downstream options matter most to you",
+      "weight": "medium"
+    },
+    {
+      "factor": "Learning velocity vs. depth tradeoff",
+      "why_it_matters": "Startup provides breadth and speed under uncertainty; Big Tech provides depth and formal training — the right choice depends on which gap you need to fill",
+      "how_to_assess": "Audit your current skill gaps: if you lack breadth and exposure to ambiguity, startup accelerates; if you lack structured frameworks and scale exposure, Big Tech accelerates",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a startup offer with compelling equity",
+      "unstated_consequence": "Options may cost 20–50% of your annual salary to exercise within 90 days of leaving — meaning you can't afford to leave even if the role stops being right for you, creating a golden handcuff made of paper",
+      "who_it_affects": "Mid-career PMs who join at a meaningful strike price and then find the company stagnating but can't afford to exercise and walk away"
+    },
+    {
+      "choice": "Joining a startup early in your career for the breadth experience",
+      "unstated_consequence": "If the startup fails, Big Tech entry becomes harder — you need either a Big Tech credential already or a successful startup exit to be competitive for Big Tech roles later",
+      "who_it_affects": "Early-career PMs who go startup-first without Big Tech credentials and then want to transition to Big Tech after a failed startup"
+    },
+    {
+      "choice": "Staying at Big Tech for the structured growth and predictable compensation",
+      "unstated_consequence": "Learning plateaus are real by mid-career (5–10 years), and individual contribution impact gets lost in the machine — you can have a strong career on paper while your actual skill development stagnates",
+      "who_it_affects": "Mid-career PMs who have strong reviews and good comp but haven't been forced to operate under real ambiguity or resource constraints"
+    },
+    {
+      "choice": "Taking a startup Director or VP title",
+      "unstated_consequence": "The title is compensation substitution, not scope recognition — Big Tech will re-level you to your actual scope when you try to make the transition, and the inflated title may actually raise red flags",
+      "who_it_affects": "PMs who optimize for title at startups and then discover Big Tech recruiter leveling ignores startup titles entirely"
+    },
+    {
+      "choice": "Delaying a Big Tech → startup move until late career (10+ years)",
+      "unstated_consequence": "The transition becomes harder, not easier — Big Tech credentialism matters more for senior hires, and startup ecosystems become less accessible the longer you stay in large-org operating models",
+      "who_it_affects": "Senior Big Tech PMs who assume they can 'always go to a startup later' without realizing the window narrows"
+    },
+    {
+      "choice": "Treating startup equity as compensation that offsets lower base salary",
+      "unstated_consequence": "Even if the company succeeds, dilution through multiple funding rounds can reduce a 1% stake to 0.3%, and liquidation preferences mean investors get paid first — reducing actual payout by 60–80% relative to headline valuation",
+      "who_it_affects": "PMs who accept below-living-expense base salaries on the assumption that equity will compensate, especially those with financial obligations"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting a startup offer where base salary doesn't cover living expenses, betting on equity to make up the difference",
+      "why_it_happens": "Founders pitch the equity upside compellingly and candidates anchor on the 0.5–2% number without modeling dilution, liquidation preferences, or failure probability",
+      "consequence": "Financial stress within 12–18 months as the equity thesis fails to materialize, often forcing a hasty exit under duress rather than on your own terms",
+      "warning_signs": [
+        "Base salary is more than 30% below market for your level and location",
+        "You find yourself calculating what 1% of the projected exit valuation would be worth before asking about current MRR"
+      ]
+    },
+    {
+      "pattern": "Optimizing for title at a startup instead of scope and decision authority",
+      "why_it_happens": "Title is visible and legible; decision authority is abstract and harder to evaluate during interviews — candidates default to the visible signal",
+      "consequence": "A Director title with no real decision surface produces a weak resume story and re-leveling surprises when transitioning to Big Tech",
+      "warning_signs": [
+        "You're excited about the title before you've understood what you'll actually own",
+        "The recruiter led with title early in the conversation without probing your scope expectations"
+      ]
+    },
+    {
+      "pattern": "Joining a startup without conducting financial due diligence on runway and burn rate",
+      "why_it_happens": "Candidates feel it's inappropriate or aggressive to ask financial questions, and founders who 'talk more about vision than customers' successfully redirect the conversation",
+      "consequence": "Joining a company with 6 months of runway and no clear path to next funding, resulting in layoff before meaningful equity vests",
+      "warning_signs": [
+        "Founder gives inspiring vision answers but pivots away from specific MRR or runway questions",
+        "You leave the final round without knowing the current burn rate or months of runway remaining"
+      ]
+    },
+    {
+      "pattern": "Making the startup vs. Big Tech decision without defining a 5-year vision first",
+      "why_it_happens": "The decision feels urgent (offer deadline) and both paths have real appeal — candidates decide reactively based on whichever pitch was more recent or emotionally compelling",
+      "consequence": "Half-hearted commitment to whichever path is chosen, producing poor outcomes because neither environment rewards ambivalence",
+      "warning_signs": [
+        "You're evaluating the offers against each other rather than against a defined personal target state",
+        "Your decision rationale changes depending on who you talked to most recently"
+      ]
+    },
+    {
+      "pattern": "Starting a career at a startup without Big Tech credentials and then finding Big Tech entry blocked after startup failure",
+      "why_it_happens": "Early-career PMs underestimate the asymmetry of the path — they assume startup experience is universally valued, not understanding that Big Tech values either startup success or prior Big Tech credentials",
+      "consequence": "Trapped in the startup ecosystem without the option to transition to Big Tech for stability or credentialism unless they go back to school or find a breakout success",
+      "warning_signs": [
+        "You're planning a startup-first career path without a contingency for what happens if the startup fails within 2 years",
+        "You assume that meaningful scope at a failed startup translates directly to Big Tech interview success"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "If you subtract equity entirely, does the base salary cover your monthly fixed obligations?",
+      "what_it_reveals": "Whether you are gambling with money you need versus money you can afford to lose — this is the foundational risk calibration question",
+      "follow_up_if_yes": "Then equity is upside — proceed to evaluate the equity structure (dilution, liquidation preferences, exercise window) as a bonus, not as compensation",
+      "follow_up_if_no": "This is a disqualifying condition unless you have significant savings or other income — the offer is asking you to take on financial risk you cannot absorb"
+    },
+    {
+      "question": "What are your fixed financial obligations right now — mortgage or rent, dependents, debt service?",
+      "what_it_reveals": "Your actual risk tolerance capacity, which changes the entire startup vs. Big Tech calculus regardless of stated preferences",
+      "follow_up_if_yes": "If obligations are significant, startup base salary risk becomes a real financial exposure, not just career risk — weight Big Tech's compensation predictability much higher",
+      "follow_up_if_no": "If obligations are minimal (early career, no dependents, renting), startup financial risk is manageable — learning velocity and scope become the primary decision variables"
+    },
+    {
+      "question": "What specific skills, network, and financial position do you want to have in 5 years?",
+      "what_it_reveals": "Whether the person has a concrete target state or is evaluating offers in a vacuum — without this, any comparison is noise",
+      "follow_up_if_yes": "Map each offer's likely outcome against the 5-year target — which path creates more of the prerequisites you've identified?",
+      "follow_up_if_no": "The decision cannot be made well until this is defined — spend time on the 5-year vision before evaluating either offer on its merits"
+    },
+    {
+      "question": "Can the startup founder tell you the current MRR, customer churn rate, burn rate, and months of runway without hedging?",
+      "what_it_reveals": "Whether the startup has the financial transparency and stability that makes the risk calculable, and whether the founder is operating with real customer traction or primarily vision",
+      "follow_up_if_yes": "Proceed to evaluate liquidation preferences, exercise window length, and dilution history from prior funding rounds",
+      "follow_up_if_no": "This is a red flag — a founder who talks more about vision than customers or can't give specific runway numbers is either uninformed or evasive, both of which are disqualifying"
+    },
+    {
+      "question": "At the Big Tech role, what has this specific team shipped in the last 12 months — can you name three products?",
+      "what_it_reveals": "Whether the team is actually shipping or is in a planning/reorganization holding pattern — a strong brand doesn't mean this particular team is executing",
+      "follow_up_if_yes": "Probe the manager's decision-making style and the promotion trajectory (time-to-promo at your level in this specific org)",
+      "follow_up_if_no": "High turnover or inability to name recent shipped work suggests either a reorganization in progress or a low-momentum team — probe why the role exists before proceeding"
+    },
+    {
+      "question": "Where are you in your career — 0–5 years, 5–10 years, or 10+ years of PM experience?",
+      "what_it_reveals": "Which phase of the learning vs. stability vs. credentialism tradeoff you're in — the right answer genuinely differs by career stage",
+      "follow_up_if_yes": "If early (0–5): learning velocity dominates the decision, and meaningful startup scope may outweigh a Big Tech role with narrow initial scope",
+      "follow_up_if_no": "If mid (5–10): assess whether Big Tech has produced a real learning plateau; if late (10+): Big Tech credentialism matters more for senior hires and startup transitions become harder"
+    },
+    {
+      "question": "What is the exercise window on the startup options — standard 90 days or an extended window?",
+      "what_it_reveals": "Whether you will be able to afford to leave the company if the role stops being right for you, and the actual cost of the optionality you're accepting",
+      "follow_up_if_yes": "If extended (5+ years): the exit trap is much less severe — you can leave without immediately paying 20–50% of annual salary to preserve options",
+      "follow_up_if_no": "If 90 days: model explicitly what it would cost you to exercise at current strike price and whether you could afford it — if not, you are accepting a golden handcuff"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Startup equity compensates for lower base salary — a 1% stake in a successful company makes up for years of below-market pay",
+      "actual_reality": "~90% of startups fail entirely; dilution through funding rounds can reduce 1% to 0.3%; liquidation preferences reduce actual payouts by 60–80%; and options often cost 20–50% of annual salary to exercise on departure — the expected value of startup equity is far lower than the headline number",
+      "implication": "Treat equity as a lottery ticket, not compensation — evaluate the offer on base salary alone and treat equity as potential upside you might never see"
+    },
+    {
+      "common_belief": "A Director or VP title at a startup signals seniority that transfers to Big Tech",
+      "actual_reality": "Startups hand out senior titles because they can't compete on comp — Big Tech will re-level you to your actual decision surface and scope when evaluating your background, ignoring startup title inflation",
+      "implication": "Evaluate startup roles by what you'll own and decide, not by the title offered — a Senior PM title with real scope beats a VP title with no decision authority for actual career development"
+    },
+    {
+      "common_belief": "Startup experience is universally valuable and opens doors to Big Tech if you want to transition",
+      "actual_reality": "Startup → Big Tech requires either startup success (proving yourself) or strong prior credentials (Big Tech experience or top-tier education) — startup failure with no prior Big Tech experience narrows Big Tech entry significantly",
+      "implication": "If you want both experiences, doing Big Tech first preserves optionality in both directions — starting at a startup narrows your Big Tech entry options unless the startup succeeds"
+    },
+    {
+      "common_belief": "Big Tech provides consistent, accelerating growth because of the resources, training, and talent density",
+      "actual_reality": "Learning plateaus at Big Tech are real by mid-career (5–10 years) — structured training and scale exposure don't substitute for operating under real ambiguity and resource constraints, which Big Tech insulates you from",
+      "implication": "Mid-career Big Tech PMs should actively audit whether they are still learning at rate, not assume that good reviews equal continued development"
+    },
+    {
+      "common_belief": "'Senior PM' means roughly the same thing across companies",
+      "actual_reality": "Big Tech has so many leveling bands that 'Senior' means wildly different things at different orgs — the title is a noisy signal for actual scope, compensation, and career stage",
+      "implication": "Use the three scope questions (what will you own, what decisions will you make, who will you influence) to translate across companies rather than comparing titles directly"
+    },
+    {
+      "common_belief": "Taking startup risk is admirable at any career stage — it shows ambition and tolerance for uncertainty",
+      "actual_reality": "Risk tolerance should evolve with life stage — taking startup risk with a mortgage and dependents is not bold, it's a mismatch between risk capacity and risk exposure; the source explicitly states 'matching risk to life stage is rational, not timid'",
+      "implication": "Recalibrate startup risk appetite based on actual financial obligations rather than treating high risk tolerance as a fixed personality virtue"
+    },
+    {
+      "common_belief": "Career advice about startup vs. Big Tech applies generically regardless of where you are in your career",
+      "actual_reality": "The right choice differs materially by career stage: early career should prioritize learning velocity; mid-career should assess plateau risk; late career faces harder startup transitions and Big Tech credentialism matters more for senior hires",
+      "implication": "Discount career advice that doesn't specify which career stage it applies to — stage-specific reasoning is the variable most generic PM career advice ignores"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How compensation is evaluated",
+      "junior_pattern": "Anchors on the headline equity number (e.g., '1% of the company') and calculates best-case exit scenarios to justify accepting below-market base salary",
+      "senior_pattern": "Subtracts equity entirely from the calculation first, evaluates whether base salary meets obligations, then treats equity as probabilistic upside — models dilution, liquidation preferences, and exercise costs explicitly",
+      "why_it_matters": "Junior framing leads to accepting financial risk you can't absorb; senior framing surfaces whether the offer is actually viable before upside speculation"
+    },
+    {
+      "dimension": "How role quality is assessed",
+      "junior_pattern": "Compares titles across offers and anchors on brand name prestige or team size as proxies for role quality",
+      "senior_pattern": "Ignores title and asks three specific questions: what will I own, what decisions will I make, who will I influence — uses answers to reconstruct actual scope independent of title or brand",
+      "why_it_matters": "Title and brand are noisy signals that actively mislead — scope questions reveal what the role will actually develop in you and what you can credibly claim on a resume in 2 years"
+    },
+    {
+      "dimension": "How risk is framed",
+      "junior_pattern": "Treats risk tolerance as a stable personality trait — 'I'm a risk-taker so startup is right for me' — without connecting it to current financial obligations",
+      "senior_pattern": "Treats risk tolerance as a dynamic variable that should match life stage and financial exposure — explicitly inventories obligations before assessing whether startup risk is rational",
+      "why_it_matters": "Mismatched risk capacity and risk exposure creates real financial harm, not just career risk — the framing determines whether you're making a bet you can actually afford to lose"
+    },
+    {
+      "dimension": "Decision-making process",
+      "junior_pattern": "Deliberates indefinitely between options, changing preference based on most recent conversation, and optimizes for the current offer rather than a defined target state",
+      "senior_pattern": "Defines a 5-year vision with specific skills, network, and financial targets first; evaluates each offer against that target; time-boxes information gathering and commits fully to whichever path aligns better",
+      "why_it_matters": "Without a defined target state, offer evaluation is noise — and half-hearted commitment produces poor outcomes in either environment regardless of which choice was 'correct'"
+    },
+    {
+      "dimension": "Due diligence on startup offers",
+      "junior_pattern": "Asks about culture, growth opportunities, and team dynamics — avoids financial questions as too aggressive or inappropriate",
+      "senior_pattern": "Asks directly for MRR, churn rates, burn rate, runway, liquidation preference terms, and exercise window length — treats inability to answer specifically as a disqualifying red flag",
+      "why_it_matters": "Financial due diligence determines whether the startup can actually deliver on the scope and learning promises — joining without it means accepting risk you haven't quantified"
+    },
+    {
+      "dimension": "How career sequencing is planned",
+      "junior_pattern": "Optimizes for the current offer in isolation — 'which job is better right now?' — without modeling how each choice affects downstream options",
+      "senior_pattern": "Optimizes for the next two jobs — models how each path affects resume credibility, optionality, and trajectory, including the asymmetry that Big Tech → startup is always available but startup → Big Tech requires credentials or success",
+      "why_it_matters": "Career paths have path dependencies — early sequencing decisions close or open options that matter significantly at mid and late career stages"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_startup_vs_bigtech_pm",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

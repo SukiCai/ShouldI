@@ -1,0 +1,512 @@
+{
+  "source_file": "phd_mental_health_research_and_real_stats.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Ask advisor-specific structure and feedback questions before accepting a PhD offer",
+      "condition": "When evaluating a PhD offer and choosing between labs or programs...",
+      "action": "Ask: lab meeting frequency, feedback style, mental health leave policy, and whether you can speak to current/former students",
+      "because": "Peer-reviewed data across 50 PhD students identifies unstructured research, inadequate mentorship, and negative feedback as top causes of PhD depression — these are assessable before you join",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Treat TA obligations as a mental health buffer, not just a funding mechanism",
+      "condition": "When a PhD student feels TA work is 'distracting' from research...",
+      "action": "Reframe TA work as a source of structure, concrete task completion, and positive reinforcement that research rarely provides",
+      "because": "The study found students identified twice as many positive factors as negative in teaching, and twice as many negative as positive in research — TA work structurally offsets research's mental health risks",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Treat advisor compassion as the single most important variable in PhD survival — not program ranking",
+      "condition": "When choosing between a high-ranked program with an emotionally distant advisor and a lower-ranked program with a supportive one...",
+      "action": "Prioritize advisor emotional support and mentorship quality heavily, especially if you have any prior history of anxiety or depression",
+      "because": "Across 4 UK student cases, individual supervisor compassion — not institutional support — was the main variable determining whether students survived a personal or funding crisis",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor feedback style (harsh vs. constructive)",
+      "why_it_matters": "Negative feedback from mentors was cited by 34% of students as a cause of depression; it exacerbates existing self-criticism and can compound into motivation loss and delayed graduation",
+      "how_to_assess": "Ask current PhD students in the lab: 'How does the advisor respond to failed experiments or rejected manuscripts?' Look for emotional vocabulary in their answers, not just logistical ones",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Lab/program structure (meeting frequency, milestone clarity)",
+      "why_it_matters": "Unstructured research was cited by 38% of depressed PhD students; depression impairs executive function, and unstructured environments create a catastrophic combination — no external deadlines means no recovery scaffold",
+      "how_to_assess": "Ask: 'How often do you meet with your advisor one-on-one?' and 'Are there formal milestone check-ins outside of the dissertation committee?'",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Institutional mental health leave policy",
+      "why_it_matters": "None of the 4 UK students interviewed received adequate institutional support during crises; the gap between policy and practice can mean losing funding or program standing during a mental health episode",
+      "how_to_assess": "Ask the graduate coordinator directly: 'If a student needs to take medical or mental health leave, what happens to their stipend, health insurance, and program standing?'",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Peer comparison culture within the lab or cohort",
+      "why_it_matters": "Self-comparison to peers was cited by 28% of students and described as 'exclusively detrimental' to depression — labs or cohorts with strong competitive ranking culture amplify this risk",
+      "how_to_assess": "Ask students: 'Is there a culture of sharing progress openly, or does it feel competitive?' Watch for hedging or deflection in responses",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Funding runway and buffer beyond guaranteed years",
+      "why_it_matters": "Funding shortfall overlapping with a personal crisis was a common pattern across UK student interviews — running out of funding during a difficult research phase creates compounding pressure",
+      "how_to_assess": "Ask: 'What happens if I need an additional year beyond the funded period?' and 'Are there departmental or institutional bridge funding options?'",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a prestigious lab with a high-output, high-pressure advisor",
+      "unstated_consequence": "Unreasonable expectations and harsh feedback — cited by 34% of depressed students — may produce publications but also produce sustained depressive episodes that extend graduation timelines and damage long-term career motivation",
+      "who_it_affects": "Students who were high achievers before the PhD and have internalized self-worth tied to academic performance — they are most vulnerable to self-criticism spirals when experiments fail",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Minimizing or refusing TA assignments to focus on research",
+      "unstated_consequence": "Removing the one consistent source of structure, concrete task completion, and positive reinforcement in the PhD — the structural asymmetry between teaching (2x positive) and research (2x negative) means TA work is an underappreciated mental health resource",
+      "who_it_affects": "Research-focused students who optimize for publication output and see TA work as an obstacle, particularly in years 2–4 when research is most uncertain",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Joining an isolated single-PI lab with no lab community or collaboration culture",
+      "unstated_consequence": "Isolation was cited by 18% of students as a depression cause, and collaboration was cited by 22% as a protective factor — a lab without peer interaction removes a key mental health buffer",
+      "who_it_affects": "International students who lack external social networks in a new country and rely disproportionately on the lab environment for social connection",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Accepting a fully-funded PhD in life sciences or physics without vetting the advisor relationship",
+      "unstated_consequence": "The structural conditions of research PhD programs (unstructured work, rare positive reinforcement, failure-heavy feedback loops) produce depression at 6–8x the general population rate — funding alone does not mitigate this risk",
+      "who_it_affects": "First-generation graduate students and international students who prioritize funding certainty above all else and have less family or community context for what PhD environments are like",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Attributing PhD depression to personal inadequacy rather than structural program conditions",
+      "why_it_happens": "Research failures (rejected manuscripts, failed experiments) are concrete, observable, and easily attributed to the self — depression amplifies this self-attribution bias; students conclude 'I'm not cut out for this' rather than 'this environment is structurally difficult'",
+      "consequence": "Students drop out during depressive episodes that might have been temporary and recoverable, or persist through unnecessary suffering without seeking structural accommodations",
+      "warning_signs": [
+        "Student language like 'I'm just not smart enough for this program'",
+        "Framing depression as a sign of wrong fit rather than asking about program structure",
+        "Comparing own failures to peers' visible successes without accounting for publication lag"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Choosing a PhD advisor based on research fit alone without assessing mentorship and feedback style",
+      "why_it_happens": "Applicants are trained to evaluate research alignment (papers, lab website, email correspondence about science) but receive no framework for evaluating emotional support capacity or feedback culture — the evaluation tools available are biased toward intellectual fit",
+      "consequence": "Students discover advisor incompatibility 1–2 years in, after the sunk cost of fellowship applications, lab rotations, and immigration status establishment — switching advisors at this stage carries high risk",
+      "warning_signs": [
+        "Applicant cannot name a current student they spoke with about the lab culture",
+        "Advisor's email responses focus only on research topics and never acknowledge the applicant as a person",
+        "Program has no formal rotation structure that allows advisor sampling before commitment"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Underestimating the compounding effect of funding expiration overlapping with personal crisis",
+      "why_it_happens": "Students plan for the median case — they assume funding will last, experiments will proceed, and no major personal disruptions will occur; the actual risk profile includes fat tails (illness, family emergency, advisor departure) that are individually unlikely but collectively probable over a 5–6 year period",
+      "consequence": "When a crisis hits in year 4–5 with no funding buffer, students face simultaneous financial pressure, research pressure, and mental health deterioration with no institutional safety net",
+      "warning_signs": [
+        "Student has not asked about bridge funding options before enrolling",
+        "Program guarantee ends at year 4 or 5 in a field where median completion is 6–7 years",
+        "Student has no personal financial reserves and stipend covers only basic living costs"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Peer comparison as a habitual response to research uncertainty",
+      "why_it_happens": "Without clear performance metrics in research (unlike coursework), students default to social comparison to calibrate their progress — this is adaptive in structured academic environments but becomes exclusively detrimental in PhD contexts where peers' progress is non-linear and largely invisible until publication",
+      "consequence": "Sustained depressive cycles triggered by perceived relative underperformance, even when the student's absolute progress is normal — cited as exclusively detrimental in the study with no redeeming informational value",
+      "warning_signs": [
+        "Student frequently mentions what peers have published or achieved in the same time period",
+        "Student interprets cohort successes as evidence of own failure rather than as independent events",
+        "Student does not have an external advisor or mentor outside the immediate cohort for calibration"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the lab's meeting structure — how often do you meet one-on-one with your advisor, and are there regular lab group meetings?",
+      "what_it_reveals": "Whether the advisor provides structural scaffolding that counteracts the unstructured nature of research — the single biggest depression risk factor identified in the study",
+      "follow_up_if_yes": "Ask: 'Do those meetings happen consistently or do they get canceled frequently?' — frequency on paper vs. in practice diverges significantly",
+      "follow_up_if_no": "Treat this as a high-risk signal; ask whether students have self-organized peer accountability structures to compensate",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "What happens to your funding and program standing if you need to take a medical or mental health leave?",
+      "what_it_reveals": "The institutional safety net available during crisis — the gap between stated policy and actual practice (stipend continuation, health insurance, re-enrollment) determines whether a mental health episode becomes a dropout event",
+      "follow_up_if_yes": "Ask for the policy in writing and confirm it applies to your specific funding source (NSF fellowship vs. RA vs. TA may have different rules)",
+      "follow_up_if_no": "Red flag — absence of clear policy means the decision will be made ad hoc, likely under pressure, when you are least able to advocate for yourself",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "Can you connect me with 2–3 current or recently graduated students from the lab to talk about the work culture?",
+      "what_it_reveals": "Advisor willingness to be transparent and the actual emotional climate of the lab, filtered through people who have no incentive to oversell it to applicants",
+      "follow_up_if_yes": "In those conversations, ask specifically: 'How does the advisor respond when experiments fail or papers get rejected?'",
+      "follow_up_if_no": "If an advisor declines or deflects this request, treat it as a strong negative signal about lab culture transparency",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "Do students in this program typically finish within the funded years, and what is the actual median time to completion?",
+      "what_it_reveals": "Whether funding runway is realistic given actual program demands — a 5-year funding guarantee in a program where median completion is 6.5 years means nearly all students face an unfunded gap period",
+      "follow_up_if_yes": "Ask: 'What funding options exist in the gap year — TA positions, departmental support, advisor grants?'",
+      "follow_up_if_no": "Flag the funding gap as a concrete financial and mental health risk, not just an abstract concern",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "Have you experienced depression or anxiety before, and have you thought about how a PhD's unstructured, failure-heavy environment might interact with that history?",
+      "what_it_reveals": "Whether the applicant has done accurate self-assessment of their risk profile — prior history of depression is a known vulnerability in a structural environment that produces 39–54% depression rates even in people without prior history",
+      "follow_up_if_yes": "Ask what coping structures they plan to build in — not whether they can 'handle it' but what their specific plan is for the hard periods",
+      "follow_up_if_no": "Even without prior history, share the base rate (39–54%) so the person enters with accurate expectations rather than assuming mental health challenges signal personal failure",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PhD depression rates are similar to the general population — it's a hard job but not unusually psychologically risky",
+      "actual_reality": "PhD students experience depression at 6–8x the rate of the general population (39–54% vs. 6.7%); this is not explained by selection effects alone — the structural conditions of research PhDs (unstructured work, rare positive reinforcement, isolation, failure loops) actively produce depression at scale",
+      "implication": "Applicants should approach PhD program evaluation as they would any high-risk environment — with explicit due diligence on protective factors, not just research fit and funding",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "If you struggle mentally during a PhD, it means the program or field isn't right for you",
+      "actual_reality": "80% of students who reported depression in the study were diagnosed; the rate is structural, not individual — struggling during a PhD is statistically the norm, not a signal of wrong fit",
+      "implication": "Students who experience depression should not default to dropout as the first response; structural accommodations (more advisor meetings, TA assignments for structure, peer collaboration) may address root causes before the situation becomes irreversible",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "A supportive advisor is a nice-to-have; what really matters is their research reputation and funding",
+      "actual_reality": "Emotionally supportive advisor was a protective factor against depression — but notably only 12% of students cited it, suggesting it is rare, not just undervalued; individual supervisor compassion was the main variable determining survival through personal or funding crises in UK student interviews",
+      "implication": "Advisor emotional support capacity should be treated as a primary selection criterion, not a secondary one — it is both rare and high-impact",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "TA work is a necessary burden that takes time away from research and slows graduation",
+      "actual_reality": "Teaching contexts produced twice as many positive factors as negative for PhD students, while research contexts produced twice as many negative as positive — TA obligations provide the structure, concrete tasks, and positive reinforcement that research structurally cannot",
+      "implication": "Students who can choose their TA load should consider moderate TA obligations as a mental health investment, particularly in years when research is most uncertain or stalled",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "Institutions have robust mental health infrastructure that will support PhD students in crisis",
+      "actual_reality": "Across 4 detailed UK student cases, none received adequate institutional support during crises — individual supervisor compassion was the actual safety net; institutional policies often do not translate into practice for funded PhD students",
+      "implication": "Students should not rely on institutional mental health infrastructure as a backstop — they should explicitly assess their individual advisor's track record with student crises before enrolling",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "What questions to ask prospective advisors",
+      "naive_pattern": "Asks about research projects, publication opportunities, and funding — treats the advisor evaluation as purely intellectual and logistical",
+      "informed_pattern": "Asks about lab meeting frequency, feedback style when experiments fail, and requests to speak with current students about work culture — treats advisor evaluation as an emotional and structural risk assessment",
+      "why_it_matters": "The intellectual fit is table stakes; the structural and emotional environment determines whether the student survives to publish at all",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to interpret mental health struggles during the PhD",
+      "naive_pattern": "Interprets depression or anxiety as a personal signal — either 'I'm not strong enough' or 'this field isn't for me' — and considers dropping out as the logical response",
+      "informed_pattern": "Recognizes that 39–54% base rates mean mental health struggles are structural, not personal — asks what specific environmental factors (lack of structure, isolation, feedback style) are the proximate cause and whether they are addressable",
+      "why_it_matters": "Misattributing structural depression to personal failure causes unnecessary dropout or unnecessary persistence without seeking structural fixes",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to think about TA obligations",
+      "naive_pattern": "Minimizes TA assignments to maximize research time, treating teaching as pure opportunity cost",
+      "informed_pattern": "Recognizes TA work as a structural mental health buffer — provides deadlines, social connection, concrete task completion, and positive reinforcement that research phases cannot provide",
+      "why_it_matters": "Students who eliminate TA work to optimize research output may be removing their primary psychological stabilizer during the hardest research years",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "Risk modeling for PhD programs",
+      "naive_pattern": "Plans for the median case — assumes funding will last, research will proceed, and no major personal disruptions will occur over 5–6 years",
+      "informed_pattern": "Plans for the tail cases — asks explicitly about what happens during illness, personal crisis, funding gaps, and advisor departure; treats a 5-year funded program in a 6.5-year median field as having a guaranteed funding gap",
+      "why_it_matters": "Tail events (illness, crisis, funding shortfall) are individually unlikely but collectively probable over a 5–6 year period; students without a plan are caught entirely unprepared",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "PhD depression is a sign of personal weakness or wrong fit — mentally strong people don't struggle this way",
+      "why_believed": "Academic culture selects for high achievers who have rarely failed before; when they struggle, the self-attribution bias is powerful — 'everyone else seems fine, so this must be a me problem'",
+      "actual_rule": "39–54% of PhD students report depression vs. 6.7% in the general population; this is a structural phenomenon caused by the PhD environment itself — unstructured work, rare reinforcement, isolation, and failure-heavy feedback loops — not a selection effect based on individual weakness",
+      "real_consequence": "Students who believe this misconception delay seeking help, attribute structural problems to personal inadequacy, and make dropout decisions during depressive episodes that might have been temporary and recoverable",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "If you picked the right advisor and research area, you won't have serious mental health problems during your PhD",
+      "why_believed": "The narrative of 'fit' is dominant in PhD application culture — if you optimize fit correctly, the path will be smooth; this creates a false sense of control over structural risk factors",
+      "actual_rule": "Even in well-matched advisor-student relationships, the structural conditions of research (unstructured time, failed experiments, manuscript rejections, isolation) produce depression at scale — fit reduces but does not eliminate this risk",
+      "real_consequence": "Students who believe this dismiss mental health warning signs as 'fit problems' rather than structural problems, and may make advisor or program switches that don't address the underlying structural causes",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "Institutions have robust support systems for PhD students in mental health crises — that's what student services are for",
+      "why_believed": "Universities advertise counseling centers, mental health days, and wellness resources prominently; applicants assume these translate into effective support for funded PhD students in crisis",
+      "actual_rule": "Across documented student cases, none received adequate institutional support during crises — individual supervisor compassion was the actual variable; institutional mental health resources are often understaffed, have long waitlists, and are not specifically calibrated to the PhD experience",
+      "real_consequence": "Students in crisis who wait for institutional support rather than relying on their advisor or building their own support network may find themselves without effective help precisely when they need it most",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Physics PhD student (UK) in late-stage PhD with no clear thesis completion timeline, running out of funding, and accumulating debt",
+      "decision": "Continued without seeking formal leave or institutional accommodation; relied on individual supervisor support while managing financial and mental health deterioration simultaneously",
+      "outcome": "Sustained anxiety and depression through the final period; the compounding of financial pressure, research uncertainty, and mental health deterioration created a crisis that individual supervisor compassion alone could not adequately address",
+      "lesson": "Funding expiration and research uncertainty are a predictable high-risk combination that students should plan for explicitly before enrolling — the question 'what happens if I need an extra year?' should be asked and answered concretely before accepting any offer",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "Life sciences PhD student experiencing repeated manuscript rejections and failed experiments in years 3–4",
+      "decision": "Internalized failures as evidence of personal inadequacy ('everything just fails and you have zero positive results') rather than as normal research variance; did not seek structural changes to the work environment",
+      "outcome": "Moderate to severe depression leading to motivation loss, productivity decline, and delayed graduation — a pattern reported by 64% of students in the study",
+      "lesson": "Failed experiments and manuscript rejections are the statistical norm in research PhD programs, not signals of personal inadequacy — students benefit from explicit framing of this reality before they encounter it, so they can attribute failures correctly when they occur",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student frames PhD struggles as 'I don't think I'm smart enough for this' or 'maybe this field isn't for me' after a period of failed experiments or negative feedback",
+      "underlying_state": "Self-attribution bias amplified by depression — the student is attributing a structural environmental outcome (high failure rate in research) to a personal deficiency, which is both cognitively distorted and culturally reinforced by academic achievement culture",
+      "how_it_manifests": "Withdrawal from lab community, reduced advisor communication, consideration of dropout, avoidance of peer interactions to escape comparison — a self-reinforcing isolation loop",
+      "expert_move": "Provide the base rate first: 'Did you know 39–54% of PhD students experience depression? This is not about you specifically — the environment is structured to produce this.' Then ask: 'What specific structural factors in your current situation are making this harder — is it the meeting frequency, the feedback style, the isolation?' Redirect from self-assessment to environmental diagnosis",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "Student experiencing PhD depression decides they must either push through without changes or drop out entirely — treating it as a binary",
+      "underlying_state": "Decision paralysis and all-or-nothing thinking, often amplified by depression's cognitive narrowing effect — the person cannot generate middle-path options (leave of absence, advisor switch, TA increase for structure) because depression impairs the executive function needed to generate alternatives",
+      "how_it_manifests": "Posts framed as 'should I quit or keep going?' with no middle options considered; urgency and finality in the framing despite the situation not requiring immediate irreversible action",
+      "expert_move": "Explicitly name the middle options: leave of absence (preserves program standing), TA increase (adds structure), advisor meeting frequency increase (adds scaffolding), peer accountability group (addresses isolation) — frame these as experiments, not permanent commitments. The goal is to delay irreversible decisions until the person is not in a depressive episode",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "Prospective PhD student asks 'how do I know if I'm mentally tough enough for a PhD?' before applying",
+      "underlying_state": "Framing mental health risk as a fixed personal trait ('toughness') rather than a structural environment interaction — this framing leads to either false confidence ('I've handled hard things before') or unnecessary self-doubt, neither of which is diagnostically useful",
+      "how_it_manifests": "Applicant focuses on self-assessment ('am I strong enough?') rather than environment assessment ('what protective factors does this specific program have?')",
+      "expert_move": "Reframe: 'The question isn't whether you're tough enough — 39–54% of PhD students get depressed, including the toughest people. The question is: does this specific program have the structural features that protect against it?' Then walk through the diagnostic questions: meeting frequency, feedback style, leave policy, lab community",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "Student compares their publication record or research progress to peers in the same cohort and concludes they are falling behind",
+      "underlying_state": "Social comparison anxiety in an environment where the comparison is structurally invalid — peer progress is non-linear, largely invisible until publication, and driven by factors (project type, advisor connections, luck of experimental outcomes) largely outside individual control",
+      "how_it_manifests": "Persistent anxiety calibrated to others' visible milestones rather than own trajectory; described in the study as 'exclusively detrimental' — it provides no accurate information about actual progress while reliably worsening depressive symptoms",
+      "expert_move": "Name the information asymmetry: 'You are comparing your internal experience (all your doubts, failures, and uncertainty) to their external presentation (only the successes they share). This comparison is structurally invalid.' Redirect to advisor-calibrated assessment of their own trajectory as the only valid benchmark",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'PhD depression means I'm not cut out for research — if I were right for this, it wouldn't be this hard'",
+      "reframe": "PhD depression is a structural phenomenon affecting 39–54% of students — it tells you about the environment, not about you",
+      "why_it_works": "Shifts attribution from internal (personal inadequacy, wrong fit) to external (structural environment) — this breaks the self-criticism spiral that the study identifies as a key mechanism by which depression impairs PhD outcomes",
+      "example_language": "'This isn't a you problem. Six times more PhD students get depressed than people in the general population. The environment produces this — the question is what features of your specific environment are making it worse, and which of those can you change.'",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "'Should I quit my PhD or keep pushing through?' (binary framing during a mental health crisis)",
+      "reframe": "You don't have to decide between quitting and pushing through right now — there are structural changes you can make first that address the actual causes",
+      "why_it_works": "Breaks the all-or-nothing cognitive pattern that depression produces; introduces the concept that the current environment (not the PhD itself) might be the variable to change — and that changing the environment is reversible, while dropping out is not",
+      "example_language": "'Before you make an irreversible decision, can we name what specific thing is making this unbearable right now? Is it the isolation, the lack of structure, the feedback style? Because some of those are changeable without leaving.'",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "'Am I mentally tough enough to handle a PhD?'",
+      "reframe": "The question isn't about your toughness — it's about whether this specific program has the structural features that protect people from what is a structural risk",
+      "why_it_works": "Moves the evaluation from an unanswerable self-assessment question to a concrete, actionable due diligence checklist — it gives the person something useful to do (evaluate programs) instead of something impossible to answer (evaluate their own toughness in advance)",
+      "example_language": "'Toughness isn't the variable — programs with weekly advisor meetings and strong lab communities have much lower dropout rates than programs without them. What does this program actually have?'",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "'TA work is slowing down my research and hurting my chances of graduating on time'",
+      "reframe": "TA work may be the structural feature keeping you functional during the hardest research years — removing it might optimize research hours while destabilizing your mental health",
+      "why_it_works": "Introduces a non-obvious cost to the optimization — students who only see the opportunity cost of TA time (hours not spent on research) are missing the structural benefit (the only consistently positive reinforcement cycle in the PhD environment)",
+      "example_language": "'Research gives you twice as many negative experiences as positive ones. Teaching gives you the opposite. Your TA work might not be slowing you down — it might be the thing keeping you going when research stalls.'",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "forums_phd_mental_health_research_and_real_stats",
+  "_source_regions": [
+    "us",
+    "canada",
+    "uk"
+  ]
+}

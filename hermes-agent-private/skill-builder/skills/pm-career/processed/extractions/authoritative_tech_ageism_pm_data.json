@@ -1,0 +1,295 @@
+{
+  "source_file": "tech_ageism_pm_data.txt",
+  "heuristics": [
+    {
+      "rule": "The 30–37 age range is the peak hirability window for senior IC and director PM roles in tech — treat it as a finite resource, not a baseline assumption.",
+      "condition": "When you are a PM in your early-to-mid 30s deciding whether to accelerate career moves or wait for organic progression...",
+      "action": "...prioritize building credentials, network density, and optionality (founding, VC relationships, advisory roles) during this window rather than deferring those moves to your 40s",
+      "because": "EEOC data shows 40+ workers are structurally underrepresented in tech hiring relative to their workforce share, and the friction compounds after 40 — building optionality before the bias window closes is more effective than fighting it after"
+    },
+    {
+      "rule": "If you are 40+ and job searching in tech, budget materially more time for the search — not because you are less qualified, but because the market friction is real and documented.",
+      "condition": "When a 40+ PM is planning a company switch and estimating how long the search will take...",
+      "action": "...add significant buffer to timeline estimates and begin building pipeline earlier than a 30-year-old peer would need to",
+      "because": "Qualitative data shows 40+ job seekers face longer gaps between rounds, higher ghosting rates, and more 'culture fit' rejections — the friction is structural, not performance-based"
+    },
+    {
+      "rule": "For 40+ PMs, target enterprise tech, regulated industries, and non-consumer sectors rather than competing head-on in consumer tech IC markets.",
+      "condition": "When a senior PM over 40 is deciding which companies or sectors to target in a job search...",
+      "action": "...prioritize fintech, healthtech, logistics, enterprise software (Microsoft, Salesforce, SAP, Oracle), European-linked companies, and government/civic tech roles",
+      "because": "Age bias in tech hiring is concentrated in consumer tech IC roles — enterprise and regulated industries structurally value domain depth and customer relationships that take years to build, making experience an asset rather than a liability"
+    },
+    {
+      "rule": "Legal protection (ADEA) is not a practical career defense — network and credentials built before 40 are more effective than legal remedy after age discrimination occurs.",
+      "condition": "When a PM is weighing whether to rely on legal protections as a backstop against age discrimination...",
+      "action": "...treat prevention through proactive credential-building and network investment as the primary strategy, not post-hoc legal action",
+      "because": "Proving age discrimination in a hiring decision is extremely difficult since companies don't document the reason, and EEOC processes are slow and typically result in settlements rather than systemic reform or job recovery"
+    },
+    {
+      "rule": "The 'overqualified' signal in hiring feedback is a proxy for 'we think you'll leave or cost too much' — not a compliment and not a negotiable objection.",
+      "condition": "When a 40+ PM receives 'overqualified' feedback after an interview process...",
+      "action": "...treat it as a strong signal to redirect search toward management track roles, advisory, or consulting rather than re-applying to IC-heavy organizations",
+      "because": "Overqualified is a documented pattern in how age discrimination surfaces in feedback — it bundles cost, tenure, and authority concerns into a single neutral-sounding phrase that is unlikely to resolve through negotiation"
+    },
+    {
+      "rule": "If your goal includes founding, VC, or pivot roles, pursue them before 40 — not because they become impossible after, but because institutional bias creates compounding friction the later you wait.",
+      "condition": "When a PM in their mid-30s is deciding whether to pursue a non-linear career move now versus waiting until they feel 'ready'...",
+      "action": "...weight the time cost of waiting against the market friction that accrues after 40, and bias toward earlier action if optionality is the goal",
+      "because": "The data shows consumer tech structurally over-hires 25–35-year-olds, and the PM→VC, PM→advisory, PM→consulting pivots face less age discrimination than direct PM hiring — but building the network and credentials for those pivots still benefits from earlier investment"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Age relative to the 35/40 threshold",
+      "why_it_matters": "The market friction for PM job searches increases measurably after 35 and more sharply after 40 — this changes the urgency, targeting strategy, and timeline planning for any company switch",
+      "how_to_assess": "Know your current age, calculate years until each threshold, and map planned career moves against those windows explicitly rather than assuming a flat hiring market",
+      "weight": "high"
+    },
+    {
+      "factor": "Consumer tech vs. enterprise/regulated industry target",
+      "why_it_matters": "Age bias is concentrated in consumer tech IC roles and largely absent from enterprise software, regulated industries, and management tracks — the same candidate faces dramatically different market reception depending on sector",
+      "how_to_assess": "Research the PM team composition at target companies (average tenure, age distribution if visible), and assess whether the company's customer base is 18–34 or 35–55",
+      "weight": "high"
+    },
+    {
+      "factor": "IC vs. management track trajectory",
+      "why_it_matters": "PM leaders at 45–55 are common at large companies; senior IC PMs at 50+ are rare in consumer tech — the track you are on determines how long your market viability window extends",
+      "how_to_assess": "Assess whether your recent roles have been adding management scope or deepening IC scope, and whether your target companies have visible examples of senior IC PMs over 45",
+      "weight": "high"
+    },
+    {
+      "factor": "Domain expertise specificity",
+      "why_it_matters": "Startup and enterprise roles that require specific domain depth (finance, healthcare, logistics) value experience that cannot be quickly replicated — this is the primary counter to age bias for 40+ PMs",
+      "how_to_assess": "Identify whether you have 7+ years of accumulated domain knowledge in a regulated or technically specialized area, and whether target companies have a customer relationship moat that requires that depth",
+      "weight": "high"
+    },
+    {
+      "factor": "Network density and quality before 40",
+      "why_it_matters": "Prevention of age discrimination effects is more effective than legal remedy — a strong network enables referral-based hiring that bypasses ATS filters, junior interviewer bias, and culture-fit proxies",
+      "how_to_assess": "Assess how many hiring decision-makers (not just peers) are in your active network, and whether you have relationships that would yield warm introductions at target companies",
+      "weight": "high"
+    },
+    {
+      "factor": "Graduation year filtering in ATS systems",
+      "why_it_matters": "Structural hiring infrastructure — not just human bias — filters out 40+ candidates before they reach interviews through graduation year or experience-year count proxies",
+      "how_to_assess": "Evaluate whether your applications are reaching human review or stalling at ATS stage, and whether referral-based applications yield materially better response rates than cold applications",
+      "weight": "medium"
+    },
+    {
+      "factor": "Age of hiring manager relative to candidate",
+      "why_it_matters": "Hiring managers who are 5–10 years younger than a 40+ candidate may experience visible discomfort with authority dynamics — this is a documented pattern in qualitative reports from older job seekers",
+      "how_to_assess": "Research the likely hiring manager's background before interviews; assess whether the interview loop will include people significantly junior to you and prepare to manage those dynamics explicitly",
+      "weight": "medium"
+    },
+    {
+      "factor": "Geographic and company cultural context",
+      "why_it_matters": "Silicon Valley and consumer tech hubs have the most pronounced age bias; European-linked companies, government/civic tech, and non-consumer sectors have demonstrably different norms",
+      "how_to_assess": "Research whether target companies have European headquarters, government contracts, or enterprise customer bases that correlate with more age-diverse PM teams",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in consumer tech IC PM roles past 40 for brand prestige or product scope",
+      "unstated_consequence": "Each year increases market friction for the next switch — the same credentials that make you competitive at 38 make you 'overqualified' or 'culture fit risk' at 44, and the network you'd need to bypass ATS filters decays without active maintenance",
+      "who_it_affects": "High-performing senior ICs who have optimized for depth at prestigious consumer tech companies and deferred building management breadth or enterprise network"
+    },
+    {
+      "choice": "Waiting until 40 to pursue founding, VC, or advisory pivots",
+      "unstated_consequence": "The institutional infrastructure for those pivots (VC networks, startup hiring, advisory deal flow) tilts toward younger candidates in consumer tech — the pivot becomes possible but requires fighting the same bias you would face in direct PM hiring",
+      "who_it_affects": "PMs who treat career optionality as a later-stage project rather than a parallel investment starting in their 30s"
+    },
+    {
+      "choice": "Pursuing a startup PM role at 40+ for equity upside or mission alignment",
+      "unstated_consequence": "Startups are documented as a harder market for 40+ PMs unless you have specific domain expertise the startup needs — the equity/mission appeal does not offset the structural preference for '5–7 years experience' candidates in their late 20s to early 30s",
+      "who_it_affects": "Mid-career PMs from large companies who assume startup appeal translates across age cohorts equally"
+    },
+    {
+      "choice": "Relying on ADEA legal protections as a career safety net",
+      "unstated_consequence": "Legal protection exists on paper but proving discriminatory intent in hiring is nearly impossible — settlements happen but don't recover lost opportunities, and the EEOC process takes years while the PM's career window continues to narrow",
+      "who_it_affects": "PMs who invest in legal awareness rather than preventive network and credential-building, and who discover the gap between legal theory and practical recourse during an active job search"
+    },
+    {
+      "choice": "Transitioning to management track at a large established company (Director, VP)",
+      "unstated_consequence": "This is the most age-durable PM career path, but it requires giving up IC depth — PMs who make this move late (45+) may find that management track credentialing at that age is viewed as a career repair move rather than a natural progression",
+      "who_it_affects": "Senior ICs who delay the IC-to-management transition and attempt it after the age bias window has already closed on their IC options"
+    },
+    {
+      "choice": "Optimizing for comp at consumer tech companies in the 30s",
+      "unstated_consequence": "High comp at FAANG or consumer tech in the 30s can create a compensation anchor that makes future transitions harder — companies in enterprise, regulated industries, or management tracks may offer lower comp, and the 'overqualified' label compounds when comp history is visible",
+      "who_it_affects": "High-comp senior PMs at consumer tech companies who have built lifestyle around those comp levels and discover the enterprise/management track transition requires a temporary or permanent compensation reset"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming the job search timeline at 40+ will mirror the experience at 32",
+      "why_it_happens": "PMs anchor on their last job search experience — if they moved quickly at 32, they project that same timeline forward without accounting for the structural friction that accumulates after 40",
+      "consequence": "Financial stress, desperation-driven decisions, and accepting downleveled offers or lowball comp because the search ran longer than planned",
+      "warning_signs": [
+        "Planning a job search with the same 2–3 month timeline that worked a decade ago",
+        "Not starting pipeline-building until actively searching rather than maintaining it continuously"
+      ]
+    },
+    {
+      "pattern": "Competing head-on in consumer tech IC markets at 40+ without domain differentiation",
+      "why_it_happens": "PMs don't consciously adjust their sector targeting as they age — they apply to the same types of companies they always have, not recognizing that the bias is sector-specific rather than universal",
+      "consequence": "High rejection rates, culture-fit ghosting, and eventual demoralization that is interpreted as personal failure rather than structural market friction",
+      "warning_signs": [
+        "Receiving high volumes of 'culture fit' rejections without substantive feedback",
+        "Being interviewed by hiring managers significantly younger and experiencing palpable discomfort in rounds"
+      ]
+    },
+    {
+      "pattern": "Deferring optionality-building (VC networks, advisory relationships, domain expertise) until after 40",
+      "why_it_happens": "Career optionality feels like a luxury problem when you are well-employed — PMs in strong positions defer network investment because there is no immediate pain signal prompting action",
+      "consequence": "When a transition becomes necessary or desirable after 40, the network and credentials needed for pivot roles haven't been built, and building them under time pressure with age bias active is significantly harder",
+      "warning_signs": [
+        "No active relationships with VC or advisory contacts by mid-30s",
+        "Career network composed almost entirely of peers rather than decision-makers and cross-functional leaders"
+      ]
+    },
+    {
+      "pattern": "Interpreting age discrimination as personal performance failure",
+      "why_it_happens": "Discrimination is invisible by design — companies use neutral language ('culture fit', 'overqualified', 'not the right stage') that is cognitively easier to internalize as personal feedback than as systemic bias",
+      "consequence": "PMs revise their positioning, comp expectations, or seniority level downward in response to structural market friction, when the correct response is sector targeting and search strategy adjustment",
+      "warning_signs": [
+        "Repeatedly receiving 'overqualified' feedback across different companies without adjusting sector or role targeting",
+        "Lowering title or comp expectations after a long search without first testing enterprise or management track markets"
+      ]
+    },
+    {
+      "pattern": "Relying on cold applications through ATS rather than network-based hiring after 35",
+      "why_it_happens": "Cold applications worked earlier in career when ATS filters were less likely to screen by graduation year or experience volume — PMs don't update their job search tactics to account for structural filtering mechanisms that disproportionately affect older candidates",
+      "consequence": "Applications never reach human review, creating a false signal that the market is universally unreceptive when the issue is channel-specific",
+      "warning_signs": [
+        "High application volume with near-zero response rate",
+        "Referral-based applications converting to interviews at dramatically higher rates but not being used as the primary channel"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current age, and how many years until you cross the 35 and 40 thresholds?",
+      "what_it_reveals": "Where you sit in the documented bias window and how much time you have to build optionality, network, and credentials before structural market friction increases",
+      "follow_up_if_yes": "If under 35: Are you treating this window as a finite resource and actively building the network and pivots you'll want access to at 40?",
+      "follow_up_if_no": "If already past 40: Have you adjusted your sector targeting, search timeline, and channel strategy to account for documented market friction, or are you using tactics calibrated to an earlier career stage?"
+    },
+    {
+      "question": "Are you targeting consumer tech IC roles, enterprise/regulated industry roles, or management track roles?",
+      "what_it_reveals": "Whether your search is landing in the highest-bias zone (consumer tech IC) or the lower-bias zones (enterprise, regulated industries, management track) — the same candidate faces dramatically different markets depending on this targeting",
+      "follow_up_if_yes": "If consumer tech IC: Do you have the specific domain expertise that would make you the obvious hire despite age, or are you competing on general PM skills?",
+      "follow_up_if_no": "If enterprise or management track: Are you positioning your experience as domain depth and organizational leadership, or defaulting to IC-style positioning that may not resonate with those hiring committees?"
+    },
+    {
+      "question": "Are your applications reaching human review, or are they stalling at ATS screening?",
+      "what_it_reveals": "Whether the friction you are experiencing is structural filtering (graduation year, experience year count) versus human bias — the solutions are different for each",
+      "follow_up_if_yes": "If applications are reaching humans but not converting: Is the friction concentrated in culture-fit feedback, which may indicate human-level age bias in interview loops?",
+      "follow_up_if_no": "If applications are not reaching humans: Are you using referral-based applications as your primary channel, or relying on cold applications that expose you to ATS filters disproportionately?"
+    },
+    {
+      "question": "Do you have domain expertise in a regulated or technically specialized industry that a target company could not easily replicate with a younger candidate?",
+      "what_it_reveals": "Whether you have the primary counter to age bias available to 40+ PMs — domain depth that creates a specific, hard-to-replace value proposition",
+      "follow_up_if_yes": "If yes: Are you targeting companies where that domain expertise is a hiring requirement, or applying broadly and competing on general PM skills?",
+      "follow_up_if_no": "If no: What is your timeline for building that domain depth, and is your current role giving you the domain exposure needed to create that differentiation before 40?"
+    },
+    {
+      "question": "What is the age distribution of the PM team at your target companies, and what is the age of the likely hiring manager?",
+      "what_it_reveals": "The actual cultural context you are walking into — a hiring manager 10 years younger than you, interviewing you for a peer-level role, is a documented friction point that requires active management",
+      "follow_up_if_yes": "If the team is age-diverse: Is that diversity concentrated in management roles or also present at the IC level you are targeting?",
+      "follow_up_if_no": "If the team is uniformly young: Is this a consumer tech company where age bias is structurally embedded, and have you considered whether targeting this company is worth the friction relative to enterprise or management track alternatives?"
+    },
+    {
+      "question": "Have you received 'overqualified' feedback, and if so, how are you interpreting it?",
+      "what_it_reveals": "Whether the PM is internalizing structural market friction as personal performance feedback — 'overqualified' is a documented proxy for age-related cost and tenure concerns, not a fixable positioning problem",
+      "follow_up_if_yes": "If interpreting as personal feedback: Are you reducing comp expectations or title targets in response, when the correct response may be sector targeting adjustment?",
+      "follow_up_if_no": "If interpreting correctly as structural signal: Have you redirected search toward management track, advisory, or consulting roles where this signal is less prevalent?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Age discrimination in tech is primarily a perception or sensitivity issue, not a structural employment reality.",
+      "actual_reality": "EEOC data shows workers 40+ declined from 56% to 52% of the tech workforce between 2014 and 2022 — counter to overall workforce aging trends — and tech has age discrimination complaint rates (19.8%) materially above the cross-industry average (14.8%).",
+      "implication": "PMs should plan their careers with documented structural bias as a real variable, not a worst-case scenario — the friction is not imagined and will not be resolved by better positioning alone"
+    },
+    {
+      "common_belief": "Being highly experienced makes you more attractive as a PM candidate at any age.",
+      "actual_reality": "Tech companies — especially startups — actively seek the '5–7 years experience' sweet spot: independently productive but not 'rigid.' Experience past a certain threshold is perceived as a liability (inflexibility, high cost, authority dynamics) in consumer tech IC roles.",
+      "implication": "Senior PMs need to target roles where domain depth is explicitly required rather than competing on general seniority in markets that structurally prefer a narrower experience band"
+    },
+    {
+      "common_belief": "The Age Discrimination in Employment Act (ADEA) provides meaningful practical protection for 40+ job seekers in tech.",
+      "actual_reality": "Proving age discrimination in a hiring decision is extremely difficult because companies do not document the reason for rejection. Large tech companies have paid ADEA settlements without systemic reform. The EEOC process is slow and typically results in settlements, not job recovery.",
+      "implication": "Legal protection should not factor into career planning as a meaningful backstop — preventive investment in network and credentials before 40 is the only practically effective strategy"
+    },
+    {
+      "common_belief": "Age bias in tech only affects workers over 50.",
+      "actual_reality": "Tech workers over 35 are already considered 'old' by startup norms; 35% of tech workers report being considered 'too old' for their job; and the documented employment squeeze exists for both 40+ workers and 22–25-year-olds — the 30–35 cohort faces the least friction.",
+      "implication": "PMs should begin adjusting career strategy and building age-resilient optionality starting in their early-to-mid 30s, not waiting for a discrimination experience to trigger awareness"
+    },
+    {
+      "common_belief": "Consumer tech PM roles at high-prestige companies are the best long-term career foundation regardless of age.",
+      "actual_reality": "Consumer tech concentrates age bias at the IC level — senior IC PMs at 50+ are rare in consumer tech, while PM leaders at 45–55 are common. Management track and enterprise software preserve career viability longer, but require different positioning and trade off IC depth.",
+      "implication": "A consumer tech IC career optimized for product prestige in the 30s may create a narrower set of options in the 40s than a parallel investment in management breadth or enterprise domain depth would have"
+    },
+    {
+      "common_belief": "Culture fit rejections are primarily about personality and team dynamics.",
+      "actual_reality": "Culture fit is a documented proxy discrimination mechanism — it allows hiring committees to reject candidates without stating the actual reason, and it correlates with age, race, and other protected characteristics. Companies do not define culture fit before using it as a rejection rationale.",
+      "implication": "PMs receiving culture fit rejections repeatedly should examine whether the companies they are targeting have age-diverse teams and explicit culture definitions, not assume the feedback is actionable as personal development"
+    },
+    {
+      "common_belief": "Enterprise and regulated industry PM roles are less desirable and represent career regression for consumer tech PMs.",
+      "actual_reality": "Enterprise software PM roles often explicitly value 'gray hair' — customer relationships and domain depth in regulated industries are hard to develop quickly and are the primary counter to age bias. PM leaders at 45–55 are common in enterprise; these roles are more age-durable than consumer tech IC roles.",
+      "implication": "Consumer tech PMs should reframe enterprise and regulated industry roles as strategic career pivots rather than fallback options — especially when planning for career viability past 45"
+    },
+    {
+      "common_belief": "Age bias only affects job seekers — it does not affect current employees in good standing.",
+      "actual_reality": "32% of tech workers worry about losing their current role due to age, and 35% already feel considered too old for their job. The EEOC data covers hiring, promotion, compensation, and termination — the bias is present across the employment lifecycle, not only in hiring.",
+      "implication": "PMs should not treat current employment as full protection against age-related career risk — maintaining external optionality and network is important even when currently well-employed"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Career timeline planning horizon",
+      "junior_pattern": "Plans the next role or next 1–2 years; assumes market conditions experienced so far will persist; does not model structural changes in hirability over time",
+      "senior_pattern": "Maps career moves against documented market windows (30–37 peak hirability), builds optionality before it is needed, and adjusts strategy based on where they are relative to structural bias thresholds",
+      "why_it_matters": "The decisions that protect against age bias (network-building, domain depth, management track entry) need to be made 5–10 years before the friction activates — reactive decisions after 40 are constrained by a market that has already shifted"
+    },
+    {
+      "dimension": "Interpreting rejection feedback",
+      "junior_pattern": "Internalizes 'culture fit' or 'overqualified' feedback as personal performance data and adjusts positioning, comp expectations, or title targets downward in response",
+      "senior_pattern": "Recognizes 'culture fit' and 'overqualified' as documented proxy discrimination signals, distinguishes structural market friction from actual skill gaps, and responds by adjusting sector targeting and search channel rather than personal positioning",
+      "why_it_matters": "Acting on proxy discrimination feedback as if it were genuine performance feedback leads to unnecessary downleveling and comp concessions that compound over time"
+    },
+    {
+      "dimension": "Job search channel strategy",
+      "junior_pattern": "Relies on cold applications through job boards and ATS, using the same approach that worked at earlier career stages",
+      "senior_pattern": "Understands that ATS systems filter by graduation year and experience proxies that disproportionately screen out older candidates; invests in referral-based hiring as the primary channel, using network relationships to bypass structural filters",
+      "why_it_matters": "Cold application strategies that worked at 28 become systematically ineffective at 42 due to structural ATS filtering — using the wrong channel produces false negative signals about market reception"
+    },
+    {
+      "dimension": "Sector and role targeting strategy",
+      "junior_pattern": "Targets the most prestigious or highest-comp companies regardless of sector, assuming that strong credentials will overcome any structural bias",
+      "senior_pattern": "Deliberately segments the market by where age bias is concentrated (consumer tech IC) versus where domain depth is valued (enterprise, regulated industries, management track), and targets accordingly based on their current age and trajectory",
+      "why_it_matters": "The same candidate faces dramatically different market reception in different sectors — undifferentiated targeting wastes the search window and accumulates demoralizing rejections that could be avoided with sector-aware strategy"
+    },
+    {
+      "dimension": "Relationship to legal protections",
+      "junior_pattern": "Treats ADEA protection as a meaningful safety net — assumes that if discrimination occurs, there is a practical remedy available",
+      "senior_pattern": "Understands that legal protection is nearly impossible to invoke in a hiring context, that settlements don't recover lost opportunities, and that the only effective strategy is preventive (network, credentials, sector positioning) not remedial",
+      "why_it_matters": "Relying on legal protection as a backstop leads to under-investment in the preventive strategies that actually work — and the gap between legal theory and practical recourse is only discovered during an active search when it is too late"
+    },
+    {
+      "dimension": "Framing of enterprise vs. consumer tech career paths",
+      "junior_pattern": "Views enterprise PM roles as lower-status fallback options compared to consumer tech; treats a move to enterprise as career regression",
+      "senior_pattern": "Recognizes enterprise and regulated industry roles as age-durable, domain-depth-rewarding career investments — understands that 'gray hair' is explicitly valued in some markets and that long-term career viability requires sector diversification beyond consumer tech",
+      "why_it_matters": "PMs who treat enterprise as a fallback delay strategic pivots until they are forced moves under age bias pressure, rather than making them as proactive investments while the consumer tech window is still open"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_tech_ageism_pm_data",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

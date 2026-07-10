@@ -1,0 +1,317 @@
+{
+  "source_file": "international_student_job_search.txt",
+  "heuristics": [
+    {
+      "rule": "Filter companies for sponsorship willingness before investing in applications or relationships",
+      "condition": "When you are an international student beginning your job search...",
+      "action": "...use USCIS H-1B disclosure data, LinkedIn/Handshake filters, and alumni networks to build a sponsor-confirmed target list before sending a single application",
+      "because": "Applying broadly to unvetted companies wastes effort and risks discovering sponsorship ineligibility after significant emotional and time investment"
+    },
+    {
+      "rule": "Never lead a networking conversation with your visa status or sponsorship need",
+      "condition": "When initiating contact with a recruiter, hiring manager, or professional connection...",
+      "action": "...lead with your value proposition and only address sponsorship when directly asked or when an offer is imminent",
+      "because": "Opening with a constraint frames you as a liability before you have established value; sponsorship becomes secondary once the employer wants you"
+    },
+    {
+      "rule": "Disclose visa status matter-of-factly and reframe it as mutual benefit, not a burden",
+      "condition": "When a recruiter asks about work authorization during early screening...",
+      "action": "...respond directly with your OPT end date and frame long-term commitment as the value exchange: 'visa holders don't job-hop casually'",
+      "because": "Apologetic or evasive framing signals that sponsorship is a problem; confident framing signals it is a manageable, worthwhile investment for the employer"
+    },
+    {
+      "rule": "Start networking 12–18 months before graduation, not at graduation",
+      "condition": "When you are an international student planning your job search timeline...",
+      "action": "...begin building relationships and targeting companies no later than the start of your penultimate year",
+      "because": "Non-negotiable immigration deadlines compress your available runway; a student who starts in their final semester is already behind"
+    },
+    {
+      "rule": "Weight networking effort toward hiring managers, not HR",
+      "condition": "When deciding who to prioritize in outreach...",
+      "action": "...direct the majority of relationship-building toward people who make hiring decisions, not those who enforce policy",
+      "because": "HR personnel apply rules; hiring managers can advocate internally for sponsorship and override default friction"
+    },
+    {
+      "rule": "For small employers, vet execution capacity for sponsorship, not just stated willingness",
+      "condition": "When a company under 200 people says they are open to sponsoring...",
+      "action": "...investigate whether they have successfully executed H-1B filings before, not just whether they express willingness",
+      "because": "Small companies may intend to sponsor but lack the legal infrastructure or process experience to complete it, creating high operational failure risk"
+    },
+    {
+      "rule": "Prioritize alumni internationals who graduated 2–3 years ago as your highest-quality intelligence source",
+      "condition": "When trying to identify which companies sponsor and which recruiters to contact...",
+      "action": "...seek out international graduates from your program who recently navigated the same process",
+      "because": "They have current, specific, experiential knowledge of which companies sponsor, which don't, and what tactics worked — information that no public database fully captures"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Company sponsorship track record",
+      "why_it_matters": "A company's historical H-1B filing and approval rate predicts whether they have the process, legal support, and institutional willingness to sponsor — intention alone is insufficient",
+      "how_to_assess": "Search H1Bdata.info and MyVisaJobs.com for the company's H-1B petition history and approval rates; cross-reference with alumni network intel",
+      "weight": "high"
+    },
+    {
+      "factor": "Company size and immigration infrastructure",
+      "why_it_matters": "Large companies have dedicated immigration teams and established processes; small companies may sponsor in principle but fail in execution, resulting in lost job offers or failed petitions",
+      "how_to_assess": "Ask directly whether they have in-house immigration counsel or use an external firm; look for evidence of repeat H-1B filings in public data",
+      "weight": "high"
+    },
+    {
+      "factor": "OPT and STEM OPT timeline alignment with job start",
+      "why_it_matters": "Non-negotiable immigration deadlines mean a student's available work window is fixed; misalignment with an employer's hiring cycle can make an otherwise good offer unworkable",
+      "how_to_assess": "Map OPT start date, OPT expiration, STEM extension eligibility, and H-1B registration window against each employer's typical hiring and onboarding timeline",
+      "weight": "high"
+    },
+    {
+      "factor": "Cap-exempt employer status",
+      "why_it_matters": "Universities, university-affiliated nonprofits, and government research orgs are exempt from the H-1B lottery, offering the highest immigration stability and no random exclusion risk",
+      "how_to_assess": "Check whether the organization qualifies as a cap-exempt entity; weigh against typically lower compensation and slower career growth",
+      "weight": "high"
+    },
+    {
+      "factor": "Referral access within target companies",
+      "why_it_matters": "Job board application conversion rates are under 5%; referrals dramatically increase interview probability and can surface sponsorship-willing hiring managers directly",
+      "how_to_assess": "Check LinkedIn for first- and second-degree connections at each target company, particularly alumni from your program",
+      "weight": "high"
+    },
+    {
+      "factor": "Behavioral interview preparation depth",
+      "why_it_matters": "US hiring weighs cultural fit and behavioral signals heavily, more so than in many home-country hiring contexts; underprepared candidates fail even with strong technical qualifications",
+      "how_to_assess": "Assess whether you have practiced STAR-format responses for common behavioral questions explicitly, not just conceptually understood the method",
+      "weight": "medium"
+    },
+    {
+      "factor": "GPA and institution recognition for entry-level roles",
+      "why_it_matters": "For first roles, GPA above 3.5 from a recognized institution still functions as a screening signal, particularly in engineering, research, and quantitative fields",
+      "how_to_assess": "Check whether target companies include GPA thresholds in job postings; factor in ATS keyword filtering on academic credentials",
+      "weight": "medium"
+    },
+    {
+      "factor": "Networking start timing relative to graduation",
+      "why_it_matters": "Starting late collapses the available window to build relationships before immigration deadlines create urgency, reducing leverage and optionality",
+      "how_to_assess": "Calculate how many months before graduation you began consistent outreach and relationship-building; benchmark against the 12–18 month optimal window",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Targeting cap-exempt employers (universities, nonprofits) for immigration stability",
+      "unstated_consequence": "Lower compensation and slower career trajectory become the long-term cost of immigration security; the stability premium is paid in reduced earning and advancement velocity",
+      "who_it_affects": "Students in high-demand technical fields where private sector salaries significantly exceed academic or nonprofit compensation"
+    },
+    {
+      "choice": "Applying broadly to maximize volume and optionality",
+      "unstated_consequence": "High application volume to unvetted companies produces emotional investment in processes that end in sponsorship rejection; discovering a company doesn't sponsor after three interview rounds is a preventable, costly failure",
+      "who_it_affects": "Students who prioritize feeling productive over strategic filtering, particularly those with limited time before immigration deadlines"
+    },
+    {
+      "choice": "Hiding visa status until late in the hiring process",
+      "unstated_consequence": "Deferring disclosure transfers the maximum emotional and time cost onto the candidate; the later sponsorship ineligibility surfaces, the more sunk cost both parties have accumulated",
+      "who_it_affects": "Students who are anxious about rejection and delay disclosure to avoid early disqualification, only to face later, more costly disqualification"
+    },
+    {
+      "choice": "Networking exclusively within your home-country community",
+      "unstated_consequence": "Referral networks become concentrated in a narrow slice of employers, limiting exposure to the broader range of sponsor-friendly companies and hiring managers",
+      "who_it_affects": "International students whose comfort zone and language affinity pulls them toward national or regional communities rather than cross-cultural professional networks"
+    },
+    {
+      "choice": "Waiting until you feel comfortable networking before starting",
+      "unstated_consequence": "Networking is a skill that degrades without practice; avoidance creates a compounding disadvantage — the discomfort grows and the timeline shrinks simultaneously",
+      "who_it_affects": "Students who are introverted or come from cultures where direct professional outreach to strangers is considered inappropriate"
+    },
+    {
+      "choice": "Targeting only large, well-known sponsor-friendly companies",
+      "unstated_consequence": "Competition is highest precisely where sponsorship is most reliable; the most accessible sponsorship paths may exist in mid-sized companies that are less contested but require more due diligence on execution capacity",
+      "who_it_affects": "Students who conflate brand recognition with hiring probability and concentrate applications on a narrow set of highly competitive employers"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating the job search as an application volume game",
+      "why_it_happens": "Submitting applications feels productive and measurable; it is a controllable action in an otherwise uncertain process, creating an illusion of progress",
+      "consequence": "Conversion rates under 5% on job board applications mean enormous effort yields few interviews; sponsorship-ineligible companies consume time that cannot be recovered given immigration deadlines",
+      "warning_signs": [
+        "Tracking number of applications submitted as the primary job search metric",
+        "Not knowing which specific companies on your list have sponsored H-1B before"
+      ]
+    },
+    {
+      "pattern": "Discovering a company doesn't sponsor after multiple interview rounds",
+      "why_it_happens": "Students avoid raising sponsorship early to prevent immediate disqualification, and companies often fail to screen for it proactively; both parties defer an uncomfortable conversation",
+      "consequence": "Weeks of preparation and emotional investment lost; immigration timeline eroded; potential bitterness toward the process",
+      "warning_signs": [
+        "No sponsorship vetting done before submitting an application",
+        "Sponsorship topic has not come up after two or more interview rounds"
+      ]
+    },
+    {
+      "pattern": "Starting the job search in the final semester",
+      "why_it_happens": "Students underestimate the time required to build relationships and overestimate the speed of employer hiring cycles; academic deadlines crowd out job search until graduation is imminent",
+      "consequence": "Compressed timeline eliminates the ability to build warm referrals; forces reliance on cold applications with low conversion; immigration deadlines create desperation signals that weaken negotiating position",
+      "warning_signs": [
+        "No professional outreach or networking activity before the final year begins",
+        "First career fair attendance happens in the graduation semester"
+      ]
+    },
+    {
+      "pattern": "Failing to leverage the graduated international student network",
+      "why_it_happens": "Students default to official resources (career centers, job boards) because they are visible and accessible; peer networks require proactive effort to build and feel like an imposition to ask",
+      "consequence": "Missing the highest-quality, most current, and most actionable intelligence about which companies sponsor and which recruitment tactics work",
+      "warning_signs": [
+        "No contact made with international alumni from your program who graduated in the last 3 years",
+        "Company targeting decisions made solely from public job boards without peer validation"
+      ]
+    },
+    {
+      "pattern": "Underselling or misframing international student differentiators",
+      "why_it_happens": "Students are socialized to lead with credentials and technical skills; visa-related attributes feel like liabilities rather than assets, so they are omitted rather than reframed",
+      "consequence": "Value proposition is undifferentiated from domestic candidates while carrying an additional perceived cost; fails to give employers a reason to absorb the sponsorship overhead",
+      "warning_signs": [
+        "Resume and cover letter make no reference to multilingual capability, cross-cultural perspective, or long-term employment commitment",
+        "Sponsorship is framed apologetically rather than as a mutual benefit"
+      ]
+    },
+    {
+      "pattern": "Improvising behavioral interviews rather than explicitly practicing STAR method",
+      "why_it_happens": "Students from educational systems that emphasize technical assessment underestimate the weight US employers place on behavioral and cultural fit signals; they prepare for what they know, not what US hiring actually measures",
+      "consequence": "Strong technical candidates fail at behavioral screens; cultural fit disqualifies people who would have succeeded on merit in home-country hiring contexts",
+      "warning_signs": [
+        "No explicit STAR-format practice sessions completed before interviews",
+        "Belief that strong technical performance will compensate for weak behavioral interview answers"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many months before your graduation date are you starting your job search?",
+      "what_it_reveals": "Whether the student has enough runway to build warm referrals and relationships before immigration deadlines compress their options",
+      "follow_up_if_yes": "If 12+ months out: Are you actively networking or just beginning to plan?",
+      "follow_up_if_no": "If under 6 months out: Have you already identified which companies in your target list have a confirmed H-1B sponsorship track record?"
+    },
+    {
+      "question": "Have you verified through USCIS public data or alumni intel which specific companies on your target list have actually filed and won H-1B petitions?",
+      "what_it_reveals": "Whether the student is operating on stated employer intentions or verified sponsorship behavior — these diverge significantly for small and mid-sized companies",
+      "follow_up_if_yes": "What is the approval rate and recency of those filings? Are they cap-subject or cap-exempt?",
+      "follow_up_if_no": "Your target list is unvetted; you are at risk of investing heavily in companies that cannot or will not execute sponsorship"
+    },
+    {
+      "question": "Have you been in contact with international students from your program who graduated in the last 2–3 years?",
+      "what_it_reveals": "Whether the student is accessing the highest-quality, most current intelligence source available — people who solved the same problem recently in the same context",
+      "follow_up_if_yes": "What specific companies and recruiters have they identified as sponsor-friendly? Have any offered to refer you?",
+      "follow_up_if_no": "This is your most actionable gap; reconnecting with recent international alumni should be your first networking priority"
+    },
+    {
+      "question": "At what stage of the hiring process are you currently disclosing your visa status?",
+      "what_it_reveals": "Whether the student is risking late-stage disqualification after significant sunk cost, or vetting efficiently early in the process",
+      "follow_up_if_yes": "If early: Are you framing it as a mutual benefit or as an apology?",
+      "follow_up_if_no": "If late or never proactively: You are accumulating sunk cost in processes that may end in preventable rejection"
+    },
+    {
+      "question": "What percentage of your job search effort is going to direct outreach and networking versus submitting online applications?",
+      "what_it_reveals": "Whether the student understands where job offers actually come from versus where activity is easiest to generate",
+      "follow_up_if_yes": "If networking-heavy: Are you reaching hiring managers or primarily HR contacts?",
+      "follow_up_if_no": "If application-heavy: With a sub-5% conversion rate on job boards, your current strategy cannot produce the outcomes you need within your immigration timeline"
+    },
+    {
+      "question": "Have you explicitly practiced STAR-format behavioral interview responses, or do you plan to improvise?",
+      "what_it_reveals": "Whether the student has calibrated their preparation to how US hiring actually evaluates candidates, or is over-indexed on technical preparation",
+      "follow_up_if_yes": "How many full practice runs have you completed? Have you received feedback from someone familiar with US hiring norms?",
+      "follow_up_if_no": "Behavioral screens are a common failure point for international students regardless of technical strength; this gap needs to be closed before interviews begin"
+    },
+    {
+      "question": "Are you aware of your exact OPT start date, OPT expiration, STEM OPT extension eligibility, and the annual H-1B registration window?",
+      "what_it_reveals": "Whether the student is managing their immigration calendar in parallel with their job search, or will be caught by non-negotiable deadlines",
+      "follow_up_if_yes": "Have you mapped these dates against each target employer's typical hiring and onboarding timeline?",
+      "follow_up_if_no": "You are missing the second calendar that governs your entire job search; a job offer that starts after your OPT expires without an extension in place has zero value"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Applying to many companies through job boards is the most effective way to get interviews",
+      "actual_reality": "Job board application conversion rates are under 5%; the majority of offers come through networking and referrals, not volume applications",
+      "implication": "Time should be allocated primarily to relationship-building and referral acquisition, with job board applications serving as a secondary channel for already-vetted, sponsor-confirmed companies"
+    },
+    {
+      "common_belief": "If a company says they are open to sponsoring, they will be able to execute it",
+      "actual_reality": "Small and mid-sized companies frequently intend to sponsor but lack the legal infrastructure, process experience, or budget to complete it; stated willingness and execution capacity are different variables",
+      "implication": "Always verify whether a company has a track record of completed H-1B filings, not just expressed openness; vet execution capacity explicitly for employers under 200 people"
+    },
+    {
+      "common_belief": "Visa sponsorship is a burden that makes international students less competitive candidates",
+      "actual_reality": "Visa dependency creates long-term employment commitment that reduces turnover — a genuine retention benefit that companies sponsoring internationally frequently cite",
+      "implication": "Reframe sponsorship proactively as a mutual benefit; the cost is real but the value exchange is also real and should be articulated, not apologized for"
+    },
+    {
+      "common_belief": "HR is the most important contact to cultivate in a target company",
+      "actual_reality": "HR enforces policy; hiring managers make decisions and can advocate internally for sponsorship approval; the decision-making power sits with managers, not HR",
+      "implication": "Networking effort should be directionally weighted toward hiring managers and team leads who have the authority to champion a candidate through a sponsorship decision"
+    },
+    {
+      "common_belief": "Strong technical qualifications are sufficient to succeed in US job interviews",
+      "actual_reality": "US hiring places significant weight on behavioral interviews and cultural fit signals, more so than many home-country hiring contexts; technical strength does not compensate for weak behavioral performance",
+      "implication": "STAR-method behavioral interview preparation must be treated as a primary preparation requirement, not an afterthought — it should be practiced explicitly, not improvised"
+    },
+    {
+      "common_belief": "Networking is most useful for learning about job openings",
+      "actual_reality": "For international students, the highest value from networking is company-specific intelligence about sponsorship track records, recruiter contacts, and what approaches worked — information that no public database fully provides",
+      "implication": "Networking with recent international graduates from your program should be treated as an intelligence-gathering exercise, not just a referral request"
+    },
+    {
+      "common_belief": "You should wait until you have a strong profile before starting to network",
+      "actual_reality": "Networking is a skill that degrades without practice, and avoidance makes subsequent attempts harder; the discomfort does not resolve itself through delay",
+      "implication": "Start networking before you feel ready; the skill develops through repetition and a clear value-exchange framing, not through preparation in isolation"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Job search strategy orientation",
+      "junior_pattern": "Measures progress by number of applications submitted; treats job search as a volume and probability game across all available openings",
+      "senior_pattern": "Filters aggressively before investing effort; measures progress by quality of relationships built and sponsor-confirmed companies engaged",
+      "why_it_matters": "Volume applied to unvetted companies produces rejection at a stage where it is most costly — after multiple interview rounds and significant time investment"
+    },
+    {
+      "dimension": "Visa status disclosure",
+      "junior_pattern": "Either hides sponsorship need as long as possible to avoid early rejection, or leads with it apologetically to 'get it out of the way'",
+      "senior_pattern": "Discloses matter-of-factly when asked, frames it as a mutual benefit, and vets companies for sponsorship capacity before applying to avoid late-stage discovery",
+      "why_it_matters": "Both junior extremes create unnecessary cost — early apology frames the candidate as a liability; late disclosure creates sunk cost for both parties"
+    },
+    {
+      "dimension": "Company targeting",
+      "junior_pattern": "Targets companies by brand recognition, job posting availability, or general reputation",
+      "senior_pattern": "Targets companies by verified sponsorship track record, cap-exempt status where relevant, and confirmed execution capacity for the visa process",
+      "why_it_matters": "Brand recognition and sponsorship willingness are uncorrelated for many mid-market employers; targeting on the wrong variable wastes irreplaceable time"
+    },
+    {
+      "dimension": "Use of the international student alumni network",
+      "junior_pattern": "Relies on official career center resources and public job boards; treats peer outreach as an imposition or secondary option",
+      "senior_pattern": "Actively seeks out international graduates from the same program who recently navigated the same process; treats them as the highest-quality intelligence source available",
+      "why_it_matters": "Recent international alumni hold current, specific, experiential knowledge that no official resource replicates; failing to access this source is a compounding intelligence deficit"
+    },
+    {
+      "dimension": "Interview preparation",
+      "junior_pattern": "Over-prepares on technical content and assumes behavioral interviews can be handled through improvisation or general self-awareness",
+      "senior_pattern": "Treats behavioral interview preparation as equally critical as technical preparation; practices STAR-format responses explicitly with feedback",
+      "why_it_matters": "US hiring decisions frequently hinge on behavioral screens; technical strength that is not matched by behavioral preparedness produces late-stage failures"
+    },
+    {
+      "dimension": "Timeline management",
+      "junior_pattern": "Begins job search near graduation when the process feels urgent; treats immigration deadlines as background information",
+      "senior_pattern": "Begins networking 12–18 months before graduation; manages an immigration calendar in parallel with the job search calendar and maps employer hiring cycles against immigration windows",
+      "why_it_matters": "Non-negotiable immigration deadlines compress the available window in ways domestic candidates don't face; starting late eliminates the referral-building time that drives conversion"
+    },
+    {
+      "dimension": "Value proposition framing",
+      "junior_pattern": "Leads with credentials and technical skills; treats visa status as a liability to be minimized or concealed",
+      "senior_pattern": "Articulates a differentiated value proposition that includes multilingual capability, cross-cultural perspective, and long-term employment commitment as positive attributes",
+      "why_it_matters": "Without a differentiated value proposition, international students compete on credentials alone against domestic candidates while also carrying the perceived cost of sponsorship — an asymmetric and losing position"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_international_student_job_search",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

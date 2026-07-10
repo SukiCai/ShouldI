@@ -1,0 +1,273 @@
+{
+  "source_file": "canada_job_search_mechanics.txt",
+  "heuristics": [
+    {
+      "rule": "If your Canadian master's program is 2+ years, you get a 3-year PGWP; if it's 1 year, you get a 1-year PGWP — the program length decision is effectively an immigration decision.",
+      "condition": "When an international student is selecting between a 1-year and 2-year Canadian master's program...",
+      "action": "...treat the extra year of study as purchasing 2 additional years of open work authorization, not just an academic upgrade",
+      "because": "A 3-year PGWP creates enough runway to accumulate 1 year of skilled work experience, apply for CEC, and receive PR before the permit expires — a 1-year PGWP does not"
+    },
+    {
+      "rule": "During PGWP, tell employers 'I have open work authorization — no sponsorship required' rather than disclosing visa status framing",
+      "condition": "When a PGWP holder is in job search mode and an employer asks about work authorization...",
+      "action": "...frame it as 'I have a 3-year open work permit valid until [date], no sponsorship required,' and proactively mention the PR pathway",
+      "because": "PGWP is legally equivalent to domestic work authorization for employers — framing it as a 'visa issue' creates false hesitation that doesn't exist"
+    },
+    {
+      "rule": "If a tech role qualifies for Global Talent Stream Category B, tell employers the sponsorship burden is 2 weeks, not months",
+      "condition": "When negotiating post-PGWP work authorization with a tech employer who is unfamiliar with GTS...",
+      "action": "...explicitly state that GTS processing takes 2 weeks and requires no LMIA for eligible occupations, and name the category",
+      "because": "Employer hesitation about post-PGWP sponsorship is often based on conflating it with normal LMIA (3-6 months); GTS removes the objection entirely for eligible roles"
+    },
+    {
+      "rule": "After 1 year of skilled Canadian work, frame your retention story to employers as 'I'll have PR in 2-3 years' — not 'I'm on a visa'",
+      "condition": "When an employer raises concerns about long-term retention of a PGWP worker...",
+      "action": "...explain the CEC → Express Entry → PR pathway with concrete timelines, positioning PR as near-certain rather than contingent",
+      "because": "Unlike H-1B lottery (binary annual event with ~20% odds), CEC/Express Entry is rolling and deterministic once work experience is accumulated — the uncertainty level is fundamentally different"
+    },
+    {
+      "rule": "If your long-term goal is Canadian PR, optimize job search by province PNP eligibility, not just salary",
+      "condition": "When a PGWP holder has job offers in multiple provinces or is targeting job search geographically...",
+      "action": "...evaluate each offer's PR pathway speed via provincial PNP streams (BC Tech Pilot, OINP, SINP) alongside compensation",
+      "because": "A PNP nomination can add 600 CRS points, essentially guaranteeing an ITA — a lower-paying job in a PNP-accessible province may yield PR years faster than a higher-paying offer in a competitive province"
+    },
+    {
+      "rule": "Never accept 'LMIA pending' as a hiring condition unless you have verified the employer has successfully completed an LMIA before",
+      "condition": "When an employer makes a job offer contingent on LMIA approval...",
+      "action": "...ask for evidence of prior successful LMIA completions and understand that LMIA is the employer's cost and responsibility — you should pay nothing",
+      "because": "LMIA processing takes months and can be denied; unverified employers may be unfamiliar with the process, leaving you in limbo or unemployed after turning down other offers"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "PGWP duration (1 vs. 3 years)",
+      "why_it_matters": "Determines whether PR can be obtained before open work authorization expires — a 1-year PGWP creates a dangerous gap window; a 3-year PGWP provides enough runway for CEC eligibility and PR processing",
+      "how_to_assess": "Calculate: program length → PGWP duration → subtract 1 year to CEC eligibility → add 6-12 months for PR processing → compare to PGWP expiry date",
+      "weight": "high"
+    },
+    {
+      "factor": "Role eligibility for Global Talent Stream Category B",
+      "why_it_matters": "Determines post-PGWP employer sponsorship burden — GTS Category B reduces it to 2 weeks vs. 3-6 months for standard LMIA, making employer willingness to sponsor dramatically higher",
+      "how_to_assess": "Check if your NOC code appears on the Global Talent Occupations List published by ESDC; confirm role matches the listed occupation description",
+      "weight": "high"
+    },
+    {
+      "factor": "Province of job offer relative to PNP stream eligibility",
+      "why_it_matters": "Provincial nomination can add 600 CRS points, essentially guaranteeing PR invitation — the province of employment determines which PNP streams are accessible",
+      "how_to_assess": "Check BC Tech Pilot, OINP Masters Graduate stream, AAIP, and SINP eligibility criteria against your NOC code, education, and job offer details; compare processing times across provinces",
+      "weight": "high"
+    },
+    {
+      "factor": "French language proficiency",
+      "why_it_matters": "French proficiency adds 25-50 CRS points — in competitive Express Entry draws where margins are small, this can be the difference between receiving an ITA or not",
+      "how_to_assess": "Evaluate current French ability honestly; calculate potential CRS score increase from TEF/TCF scores using the IRCC CRS calculator",
+      "weight": "medium"
+    },
+    {
+      "factor": "Employment classification (employee vs. independent contractor)",
+      "why_it_matters": "CEC requires 'employed' work experience — contractor/self-employment income does not qualify, meaning misclassification can silently invalidate PR eligibility accumulation",
+      "how_to_assess": "Review offer letter classification; confirm T4 employment (not T4A contractor) will be issued; verify the company has an employer CRA account number",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer's prior LMIA or GTS sponsorship track record",
+      "why_it_matters": "Employers with no prior sponsorship experience frequently underestimate complexity, timeline, and cost — offers contingent on novel LMIA processes carry high failure risk",
+      "how_to_assess": "Ask directly whether the company has sponsored foreign workers before; ask for the name of their immigration law firm; search job postings for prior LMIA-backed roles",
+      "weight": "medium"
+    },
+    {
+      "factor": "IELTS/CELPIP language score",
+      "why_it_matters": "Language scores are a directly controllable CRS input — higher scores translate directly to more CRS points and faster PR, unlike age or work experience which are fixed",
+      "how_to_assess": "Use IRCC CRS calculator to simulate score impact; compare current score to CLB 9-10 benchmarks and calculate point gain from improvement",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a higher-paying job offer in Ontario over a lower-paying offer in Saskatchewan",
+      "unstated_consequence": "Ontario's competitive OINP pool and higher CRS cut-off scores may delay PR by 2-4 years compared to a Saskatchewan PNP stream where selection is less competitive",
+      "who_it_affects": "PGWP holders with moderate CRS scores (below 470-480) who would not rank highly in federal Express Entry draws but might qualify for provincial streams"
+    },
+    {
+      "choice": "Taking a 1-year master's program to save tuition and time",
+      "unstated_consequence": "1-year PGWP means you must find a job, accumulate 1 year of CEC-eligible work experience, apply, and receive PR — all before the PGWP expires — leaving almost no margin for job search delays, unemployment gaps, or processing backlogs",
+      "who_it_affects": "International students who don't model out the post-graduation immigration timeline before selecting their program"
+    },
+    {
+      "choice": "Accepting contractor classification from an employer to get hired faster or at higher pay",
+      "unstated_consequence": "Self-employment income does not count toward the 1 year of skilled work required for Canadian Experience Class, silently delaying or invalidating your PR eligibility accumulation",
+      "who_it_affects": "Tech workers and consultants who are offered contractor arrangements, which are common in Canadian tech hiring"
+    },
+    {
+      "choice": "Relying solely on federal Express Entry without exploring PNP streams",
+      "unstated_consequence": "Federal Express Entry CRS cut-offs fluctuate and can be unpredictably high — exclusive reliance on it creates timeline uncertainty that provincial nomination would eliminate for eligible candidates",
+      "who_it_affects": "PGWP holders approaching PGWP expiry who assumed Express Entry was straightforward and did not build PNP eligibility into their job targeting strategy"
+    },
+    {
+      "choice": "Accepting an 'unpaid internship for Canadian experience'",
+      "unstated_consequence": "Unpaid internships are illegal under Employment Standards Act for most workers in Canada — the experience may not be defensible as legitimate employment, and the worker is being exploited based on perceived visa vulnerability",
+      "who_it_affects": "Recent graduates with short PGWP durations who feel pressure to build Canadian work history quickly and don't know their legal protections"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating Canadian job search like US job search by filtering employers for 'sponsorship willingness' during PGWP period",
+      "why_it_happens": "International students with US exposure or who read US-focused immigration advice apply the same sponsor-filter logic to Canada, not realizing PGWP is open work authorization requiring no employer action",
+      "consequence": "Self-selection out of large portions of the job market that would have hired them freely, unnecessarily lengthening job search and limiting options",
+      "warning_signs": [
+        "Spending time researching which Canadian companies 'sponsor visas' before applying",
+        "Avoiding small and mid-size employers because 'they won't sponsor'"
+      ]
+    },
+    {
+      "pattern": "Not modeling the PR timeline against PGWP expiry date before accepting a program or job",
+      "why_it_happens": "Students optimize for short-term factors (lower tuition, faster graduation, higher salary) without calculating whether the resulting PGWP duration provides enough runway for PR before expiry",
+      "consequence": "Ending up in LMIA dependency before achieving PR, with all the attendant risks of employer-tied immigration status",
+      "warning_signs": [
+        "Choosing a 1-year master's program without calculating post-graduation immigration runway",
+        "Accepting a job offer without asking whether it creates CEC-eligible work experience in time"
+      ]
+    },
+    {
+      "pattern": "Accepting contractor classification from employer without understanding CEC implications",
+      "why_it_happens": "Contractor arrangements are presented as standard or advantageous (higher hourly rate), and the worker doesn't know that CEC requires T4 employment rather than T4A contractor income",
+      "consequence": "Months or years of Canadian work experience that don't count toward CEC eligibility, discovered only when applying for PR",
+      "warning_signs": [
+        "Offer letter says 'independent contractor' or 'consulting agreement'",
+        "Employer says they will issue a T4A rather than a T4"
+      ]
+    },
+    {
+      "pattern": "Accepting 'LMIA pending' offers from employers without prior sponsorship experience",
+      "why_it_happens": "Candidates are relieved to have an offer and don't investigate whether the employer has operational knowledge of LMIA processing; employers sometimes make offers in good faith without understanding the complexity",
+      "consequence": "Months of waiting, possible LMIA denial, and having declined other offers in the interim — potential gap in status if PGWP expires during the wait",
+      "warning_signs": [
+        "Employer cannot name their immigration law firm",
+        "Employer is unclear about LMIA cost and processing timeline when asked directly"
+      ]
+    },
+    {
+      "pattern": "Not learning French despite clear, calculable CRS point gain",
+      "why_it_happens": "Candidates underestimate how competitive Express Entry draws can be and don't model the specific CRS point value of French proficiency improvement",
+      "consequence": "Missing PR invitations by small margins that French language points would have covered, extending the timeline by months or years",
+      "warning_signs": [
+        "Candidate knows French is 'helpful' but has not calculated their exact CRS score gap",
+        "Candidate dismisses French study as 'too hard' without evaluating the PR timeline cost of not pursuing it"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the exact expiry date of your PGWP, and have you calculated whether you can receive PR before that date?",
+      "what_it_reveals": "Whether the candidate has a workable immigration runway or is already in a high-risk timeline squeeze",
+      "follow_up_if_yes": "What is your CEC eligibility date, and what is your current CRS score estimate — have you modeled whether that score is competitive in current draws?",
+      "follow_up_if_no": "Calculate immediately: PGWP expiry minus 18 months (1 year CEC accumulation + 6 months PR processing) = your hard deadline for starting a CEC-eligible job"
+    },
+    {
+      "question": "Is your current or target job classified as T4 employment or T4A contractor?",
+      "what_it_reveals": "Whether the work experience being accumulated will count toward the 1-year CEC requirement for PR eligibility",
+      "follow_up_if_yes": "Confirm the employer has a CRA payroll account and that you are listed as an employee on their records",
+      "follow_up_if_no": "Understand that contractor income does not count toward CEC — evaluate whether renegotiating classification or switching employers is necessary"
+    },
+    {
+      "question": "Does your NOC code appear on the Global Talent Occupations List?",
+      "what_it_reveals": "Whether post-PGWP employer sponsorship can be framed as a 2-week GTS process rather than a months-long LMIA — changes the employer conversation entirely",
+      "follow_up_if_yes": "Prepare a one-paragraph explanation of GTS Category B to share with HR if post-PGWP sponsorship concerns arise",
+      "follow_up_if_no": "Identify whether a Category A GTS referral through a designated partner organization could apply, or plan around LMIA timeline risks"
+    },
+    {
+      "question": "Have you researched the PNP streams for the province where you are targeting jobs, and does your profile meet their eligibility criteria?",
+      "what_it_reveals": "Whether the candidate is optimizing for PR speed or defaulting to federal Express Entry without considering faster provincial pathways",
+      "follow_up_if_yes": "Quantify the CRS advantage of a PNP nomination (typically +600 points) and assess whether geographic targeting changes are worth making",
+      "follow_up_if_no": "Research BC Tech Pilot, OINP Masters Graduate stream, and SINP occupation lists before finalizing geographic job search strategy"
+    },
+    {
+      "question": "What is your current estimated CRS score, and what is the gap between your score and recent Express Entry cut-off scores for your eligible program?",
+      "what_it_reveals": "Whether the candidate is realistically competitive in federal Express Entry or needs a PNP pathway, language improvement, or job offer to close the gap",
+      "follow_up_if_yes": "Identify which CRS factors are improvable (language scores, French proficiency, job offer) and model the score impact of each",
+      "follow_up_if_no": "Use IRCC's official CRS calculator to establish a baseline score before making any decisions about job targeting, province selection, or timeline planning"
+    },
+    {
+      "question": "Do you have any French language ability, and have you calculated the CRS point impact of achieving a TEF/TCF score?",
+      "what_it_reveals": "Whether the candidate is leaving a directly controllable and potentially decisive CRS lever unused",
+      "follow_up_if_yes": "Calculate exact CRS score increase from current to B2/C1 French and compare the time investment to the PR timeline improvement it would yield",
+      "follow_up_if_no": "Assess French language baseline — even moderate French (CLB 7-9) can add 25-50 CRS points, which may be the margin between receiving an ITA or not"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "International students in Canada face the same employer sponsorship barriers as in the US",
+      "actual_reality": "PGWP holders have open work authorization — employers do not need to sponsor, file paperwork, or pay legal fees during the PGWP period. The barrier simply does not exist for the first 1-3 years.",
+      "implication": "PGWP holders should conduct job searches identically to domestic candidates — no sponsor-filter, no avoidance of small employers, no pre-screening for 'visa friendliness'"
+    },
+    {
+      "common_belief": "Getting PR in Canada is uncertain and lottery-like, similar to the H-1B in the US",
+      "actual_reality": "For someone with 1 year of skilled Canadian work experience, CEC/Express Entry is deterministic and rolling — it is not a lottery. CRS scores can be calculated, gaps can be addressed, and PNP streams can add 600 points to make selection near-certain.",
+      "implication": "Candidates should present their PR pathway to employers as a credible, near-certain outcome with a concrete timeline, not as an uncertain future contingency"
+    },
+    {
+      "common_belief": "An LMIA means an employer cannot or will not hire a foreign worker for that role",
+      "actual_reality": "LMIA is a process employers use to hire foreign workers — it is a mechanism that enables hiring, not a barrier. For tech roles, Global Talent Stream reduces this to a 2-week process.",
+      "implication": "Post-PGWP candidates in tech should proactively educate employers about GTS rather than assuming LMIA requirements will end the conversation"
+    },
+    {
+      "common_belief": "The best province for a job offer is Ontario or BC because of their large tech markets",
+      "actual_reality": "Ontario and BC have the most competitive PNP streams and highest CRS cut-offs. Provinces like Saskatchewan may offer faster PR pathways for the same NOC code through less competitive streams.",
+      "implication": "Candidates optimizing for PR speed should weight provincial PNP accessibility alongside salary and market size when evaluating geographic job search strategy"
+    },
+    {
+      "common_belief": "Unpaid internships are a legitimate way to build Canadian work experience when you can't find paid work",
+      "actual_reality": "Unpaid internships are illegal for most workers under provincial Employment Standards Acts. Employers offering them to international graduates are exploiting perceived visa vulnerability, not providing a legal or credible pathway.",
+      "implication": "International graduates should refuse unpaid internships and understand that accepting one neither builds legitimate CEC-eligible experience nor is legally required of them"
+    },
+    {
+      "common_belief": "Contractor arrangements pay more and offer flexibility — they are an equivalent or better option for building Canadian work experience",
+      "actual_reality": "CEC requires employed (T4) work experience. Independent contractor income (T4A) does not count toward the 1-year skilled work requirement. Contractor classification can silently void months of intended PR eligibility accumulation.",
+      "implication": "International workers should insist on T4 employment classification and treat contractor offers as a PR eligibility risk, not just a tax consideration"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of PGWP as work authorization",
+      "junior_pattern": "Treats PGWP as 'a visa that needs to be explained' to employers and pre-filters companies based on assumed sponsorship willingness",
+      "senior_pattern": "States 'I have open work authorization' confidently, makes no distinction from domestic candidates during PGWP period, and only discusses immigration when the post-PGWP timeline is a legitimate employer concern",
+      "why_it_matters": "Junior framing creates friction and hesitation that doesn't legally exist; senior framing removes it and focuses the conversation on the job"
+    },
+    {
+      "dimension": "PR timeline planning",
+      "junior_pattern": "Thinks about PR as something to figure out 'later' or assumes Express Entry will work out when the time comes",
+      "senior_pattern": "Models the full immigration timeline on day one: PGWP expiry → CEC eligibility date → CRS score estimate → PNP eligibility → ITA probability → chooses employer, province, and role classification accordingly",
+      "why_it_matters": "Failure to model the timeline early leads to discovering eligibility gaps only when it's too late to correct them without status gaps"
+    },
+    {
+      "dimension": "Evaluating job offers",
+      "junior_pattern": "Evaluates offers on compensation and role quality; treats immigration implications (contractor vs. employee, province, NOC code) as secondary or irrelevant",
+      "senior_pattern": "Evaluates offers on compensation, role quality, AND PR pathway implications — NOC code eligibility, employment vs. contractor classification, provincial PNP access, and employer's prior sponsorship track record",
+      "why_it_matters": "A higher-paying contractor offer in Ontario may yield PR 3 years later than a lower-paying employee offer in Saskatchewan — the financial calculus reverses when PR timeline is included"
+    },
+    {
+      "dimension": "Responding to post-PGWP sponsorship concern from employers",
+      "junior_pattern": "Becomes defensive or vague about immigration status when employer raises post-PGWP concerns; treats it as a dealbreaker signal",
+      "senior_pattern": "Proactively prepares a one-paragraph GTS explanation for tech roles, names the specific stream, quotes the 2-week processing time, and frames the conversation as 'here is why this is not a burden for your company'",
+      "why_it_matters": "Employer hesitation about immigration is usually based on conflating all work permit processes with the worst-case LMIA scenario — a knowledgeable candidate can dissolve the objection in one conversation"
+    },
+    {
+      "dimension": "Geographic job search strategy",
+      "junior_pattern": "Targets Toronto or Vancouver because that is 'where the tech jobs are' without assessing provincial PNP eligibility",
+      "senior_pattern": "Maps target NOC codes against all provincial PNP streams, compares estimated CRS scores to recent cut-off data, and builds geographic flexibility into job search based on PR pathway speed, not just market size",
+      "why_it_matters": "The fastest PR path may not run through the most prestigious tech hub — seniors understand this tradeoff; juniors discover it after their PGWP is close to expiry"
+    },
+    {
+      "dimension": "Due diligence on employer immigration capability",
+      "junior_pattern": "Accepts offer contingent on LMIA or sponsorship without verifying employer has prior experience completing the process",
+      "senior_pattern": "Asks directly about prior LMIA completions, requests the name of the employer's immigration law firm, and treats inability to answer these questions as a significant offer risk signal",
+      "why_it_matters": "An employer's good faith intention to sponsor is worthless if they lack the operational knowledge to execute — the candidate bears the status risk if the process fails"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canada_job_search_mechanics",
+  "_source_regions": [
+    "canada"
+  ]
+}

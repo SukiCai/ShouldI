@@ -1,0 +1,315 @@
+{
+  "source_file": "us_visa_OPT期间换工作完整攻略_我踩过的所有坑.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Secure offer letter and confirm start date before resigning",
+      "condition": "When changing jobs during OPT period...",
+      "action": "Do not resign until you have a signed offer letter with a confirmed start date, ensuring the gap between jobs stays well under 90 days cumulative",
+      "because": "The 90-day unemployment limit is cumulative across the entire OPT period, not per job change. A gap that feels manageable can push you over the limit when combined with earlier gaps.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Notify DSO and update SEVIS within 10 days of starting new job",
+      "condition": "When any job change occurs during OPT...",
+      "action": "Contact your DSO on the day you resign or start the new job to initiate SEVIS record update — do not wait",
+      "because": "SEVIS update is a regulatory requirement tied to F-1 status maintenance; the poster confirmed this is DSO-operated, not self-service, and delay risks status violation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For STEM OPT job changes, ensure E-Verify registration and I-983 are completed before first day of work",
+      "condition": "When switching employers on STEM OPT...",
+      "action": "Confirm new employer's E-Verify registration status and submit I-983 Training Plan before the start date, not after onboarding",
+      "because": "The poster explicitly states these must be completed before work begins, not retroactively — retroactive filing creates a compliance gap in STEM OPT authorization",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cumulative unemployment days used so far during OPT",
+      "why_it_matters": "The 90-day limit is cumulative across the entire OPT period, so prior gaps from earlier job searches or between graduation and first job all count toward the same clock",
+      "how_to_assess": "Review your SEVIS record and employment history timeline to count all days not formally employed in an OPT-qualifying role since OPT start date",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "New employer's E-Verify registration status (for STEM OPT)",
+      "why_it_matters": "STEM OPT work authorization requires the employer to be enrolled in E-Verify before employment begins; working without this voids STEM OPT authorization",
+      "how_to_assess": "Ask HR directly to confirm E-Verify participation and request the E-Verify Company ID number before accepting the offer",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether freelance or 1099 work counts toward OPT employment",
+      "why_it_matters": "Ambiguity about whether freelance work qualifies as OPT employment affects how many unemployment days are actually accumulating — a common gray area raised in comments",
+      "how_to_assess": "Consult DSO directly; self-employment and freelance eligibility under OPT is school/DSO-dependent and field-of-study dependent",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Resigning before securing a new job offer to 'take time to find the right fit'",
+      "unstated_consequence": "Each day unemployed counts toward the 90-day cumulative cap across the entire OPT period — a gap that seems acceptable in isolation can become a status violation when combined with earlier gaps",
+      "who_it_affects": "Students who had any gap between graduation and first job, or who took time off between prior roles, and assume their remaining unemployment budget resets",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Assuming OPT EAD card tied to original employer is invalid after job change",
+      "unstated_consequence": "Students may unnecessarily panic or apply for new EAD when the existing EAD remains valid — the card does not list a specific employer as a restriction",
+      "who_it_affects": "First-time job changers on OPT who conflate the EAD document with employer-specific authorization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Delaying I-983 submission until after STEM OPT onboarding paperwork",
+      "unstated_consequence": "Working even one day without a completed I-983 and confirmed E-Verify registration may constitute unauthorized employment under STEM OPT rules",
+      "who_it_affects": "Students whose new employers are unfamiliar with STEM OPT compliance requirements and treat I-983 as routine HR paperwork rather than a pre-employment requirement",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Resigning first, then job searching — resulting in unemployment gap exceeding 90 days",
+      "why_it_happens": "Students treat OPT like regular employment and apply standard job-search logic ('quit, then look seriously') without accounting for the cumulative unemployment cap",
+      "consequence": "The original poster gapped 95 days, exceeding the 90-day limit; comment [1] corroborates this pattern with an H-1B RFE triggered by a 4-month gap",
+      "warning_signs": [
+        "Student says 'I want to take a break before my next job'",
+        "Student does not know how many unemployment days they have already used",
+        "Student treats the 90-day limit as per-episode rather than cumulative"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming the 90-day unemployment limit resets or is per-job-change rather than cumulative",
+      "why_it_happens": "The word 'limit' implies a single threshold that either has or hasn't been crossed, not a running counter that accumulates across the entire OPT period",
+      "consequence": "Students believe they have more runway than they do; comment [1] describes an H-1B RFE being triggered by this exact misunderstanding",
+      "warning_signs": [
+        "Student asks 'how long can I take off between jobs?' without mentioning prior gaps",
+        "Student references '90 days per gap' rather than '90 days total'"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating STEM OPT compliance documents (I-983, E-Verify) as post-hire paperwork",
+      "why_it_happens": "Standard US onboarding (I-9, W-4, direct deposit) happens after the start date, so students and even HR teams assume all employment paperwork follows the same timeline",
+      "consequence": "Working before I-983 and E-Verify are in place may constitute unauthorized employment, potentially jeopardizing STEM OPT validity and future H-1B eligibility",
+      "warning_signs": [
+        "Employer says 'we'll handle that after you start'",
+        "Student asks if I-983 can be submitted after the start date (comment [3])"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many total days have you already been unemployed since your OPT start date — including the gap before your first job?",
+      "what_it_reveals": "Whether the student actually has runway left in their 90-day cumulative budget, or is already close to or over the limit",
+      "follow_up_if_yes": "If they've already used 60+ days: any job change gap must be kept under 30 days — offer-in-hand before resignation is mandatory",
+      "follow_up_if_no": "If they have a clean record with few gap days: they have more flexibility but should still not resign without an offer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you confirmed your new employer is enrolled in E-Verify before accepting the STEM OPT role?",
+      "what_it_reveals": "Whether the STEM OPT employment will be legally valid from day one",
+      "follow_up_if_yes": "Request their E-Verify Company ID and confirm I-983 will be signed before your start date",
+      "follow_up_if_no": "Do not begin work until E-Verify registration is confirmed — working without it may void STEM OPT authorization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your freelance or contract work qualify as OPT-authorized employment under your school's DSO guidelines?",
+      "what_it_reveals": "Whether days doing freelance work are counting as employed or unemployed toward the 90-day cap",
+      "follow_up_if_yes": "Ensure you have documentation (contracts, field-of-study relevance justification) in case of future RFE",
+      "follow_up_if_no": "Those days are accruing toward the 90-day unemployment limit — factor them into your gap calculation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The 90-day unemployment limit on OPT is per job gap, so each job change gives you a fresh 90-day window",
+      "actual_reality": "The 90-day limit is cumulative across the entire OPT period — all unemployment days from OPT start date to OPT end date are added together",
+      "implication": "Students must track their total unemployment days from OPT start, not just their current gap — even a prior 30-day gap before their first job reduces future flexibility",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "When you change jobs on OPT, you need a new EAD card because the card is tied to your employer",
+      "actual_reality": "The OPT EAD card is not employer-specific and does not need to be reissued when changing jobs — the card itself remains valid",
+      "implication": "Students can accept a new job without waiting for a new EAD, eliminating a false administrative bottleneck in the job change process",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "SEVIS updates during OPT job changes are something the student handles directly",
+      "actual_reality": "SEVIS updates are made by the DSO (Designated School Official), not the student — the student must notify the DSO who then performs the update",
+      "implication": "Students must proactively contact their DSO immediately upon job change; the update does not happen automatically and cannot be self-filed",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of the 90-day unemployment rule",
+      "naive_pattern": "Treats the 90-day rule as a per-gap limit and assumes each new job search gives a fresh 90-day window; does not track running total",
+      "informed_pattern": "Maintains a personal log of all unemployment days from OPT start date; calculates remaining days before deciding how long a job search can safely take",
+      "why_it_matters": "Exceeding 90 days cumulative can trigger H-1B RFEs, create status violations, and jeopardize future immigration filings — as seen in both the post and comment [1]",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Sequencing of job change steps",
+      "naive_pattern": "Resigns first to 'focus on the job search,' then begins applying",
+      "informed_pattern": "Obtains offer letter with confirmed start date before resigning, leaving only a minimal pre-planned buffer between jobs",
+      "why_it_matters": "The naive approach risks status violation; the informed approach keeps the gap predictable and within legal limits",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "STEM OPT compliance timing",
+      "naive_pattern": "Assumes I-983 and E-Verify are onboarding paperwork to be handled after the start date, like other HR forms",
+      "informed_pattern": "Treats I-983 and E-Verify confirmation as pre-conditions for employment — raises these with HR during offer negotiation, not after accepting",
+      "why_it_matters": "Working even briefly without compliant STEM OPT documentation may constitute unauthorized employment with serious status consequences",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The 90-day unemployment rule on OPT resets with each job change — it's 90 days per gap, not total",
+      "why_believed": "The rule is usually taught in the context of a single job search, and '90 days' sounds like a per-episode allowance rather than a lifetime budget on OPT",
+      "actual_rule": "The 90-day limit is cumulative across the entire OPT authorization period — all days not employed in a qualifying role since OPT start date count toward one shared total",
+      "real_consequence": "A student who had a 60-day gap before their first job believes they have 90 days available for a new job search, but actually only has 30 days left — exceeding this triggers status violations and can surface in H-1B RFEs as seen in comment [1]",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You need to apply for a new OPT EAD card when you change employers",
+      "why_believed": "The EAD card is associated with OPT and students assume it functions like an employer-sponsored visa document that must be reissued per employer",
+      "actual_rule": "OPT EAD cards are not employer-specific; the card remains valid for the duration of the OPT period regardless of employer changes",
+      "real_consequence": "Students may delay accepting new jobs, create unnecessary administrative burdens, or incorrectly believe they cannot work legally until a new card arrives — wasting unemployment days toward the 90-day cap",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "I-983 for STEM OPT can be submitted after the start date as part of normal onboarding",
+      "why_believed": "Most US employment paperwork (I-9, W-4) is completed on or after the first day of work, so students and HR alike assume I-983 follows the same timeline",
+      "actual_rule": "I-983 Training Plan and E-Verify enrollment must be in place before the student begins work under STEM OPT — not retroactively",
+      "real_consequence": "Working before I-983 and E-Verify are completed may constitute unauthorized employment, creating a compliance gap that could affect STEM OPT validity and future H-1B petitions",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student on OPT resigned before securing a new job, intending to job search while unemployed",
+      "decision": "Resigned first, then searched — resulting in a 95-day unemployment gap",
+      "outcome": "Exceeded the 90-day cumulative unemployment limit; DSO intervened to attempt remediation, but the student experienced significant anxiety and status risk",
+      "lesson": "Always secure an offer with a confirmed start date before resigning; the 90-day cap is cumulative and does not reset — even a few extra days of searching can push you over",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Student on OPT (implied from comment [1]) had a 4-month unemployment gap during their OPT period, believing it was permissible",
+      "decision": "Did not monitor cumulative unemployment days and allowed a 4-month gap",
+      "outcome": "H-1B petition received an RFE specifically questioning the 4-month unemployment period during OPT",
+      "lesson": "Unemployment violations during OPT do not disappear — they resurface during H-1B adjudication as RFEs, potentially jeopardizing the H-1B petition years later",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'I already resigned, how do I fix this?' or 'I've been unemployed for X days, am I okay?'",
+      "underlying_state": "Catastrophizing combined with decision paralysis — the student knows something may be wrong but is frozen by fear of confirming the violation",
+      "how_it_manifests": "Delays contacting DSO, searches online forums for reassurance rather than acting, hopes the gap won't be noticed",
+      "expert_move": "Reframe urgency: contacting DSO immediately gives the most options for remediation; delay only reduces options. The DSO has seen this before and can help — but only if contacted promptly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student on OPT considering quitting a difficult job 'to take a real break and reset before the next search'",
+      "underlying_state": "Burnout and present-bias — the psychological cost of current suffering outweighs the abstract future risk of status violation",
+      "how_it_manifests": "Student rationalizes that 90 days is 'plenty of time' to find a new job, ignoring cumulative days already used and job search variability",
+      "expert_move": "Make the abstract concrete: calculate exactly how many unemployment days remain in the budget. If the number is under 45, a casual 'break-then-search' strategy is statistically high-risk given typical job search timelines",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student asks whether freelance work 'counts' while clearly hoping the answer is yes to reduce their unemployment day count",
+      "underlying_state": "Motivated reasoning — student wants confirmation that their current situation is compliant, not an accurate assessment of risk",
+      "how_it_manifests": "Posts the question framed as a clarification request, but is actually seeking reassurance; may act on forum answers rather than consulting DSO",
+      "expert_move": "Redirect to authoritative source: 'This is exactly the question to bring to your DSO with documentation of the freelance work — forum answers on this are unreliable because it depends on your school's interpretation and your field of study'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I change jobs on OPT without problems?",
+      "reframe": "The question isn't about the job change itself — OPT is your authorization, not your employer's. The question is how many unemployment days you have left and whether your new employer meets STEM OPT requirements before day one.",
+      "why_it_works": "Shifts focus from process compliance (paperwork) to status arithmetic (cumulative days) and pre-employment verification — the two variables that actually determine risk",
+      "example_language": "OPT是你的工作许可，不是雇主的担保 ('OPT is your work authorization, not your employer's guarantee')",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I've been unemployed for a while on OPT — am I okay?",
+      "reframe": "The answer depends entirely on how many days you've been unemployed since your OPT start date in total — not just in this current gap. What's your running count?",
+      "why_it_works": "Forces the student to calculate a concrete number rather than seeking reassurance, converting anxiety into actionable arithmetic",
+      "example_language": "90天是累计计算的（不是单次）— 'the 90 days is cumulative, not per episode'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_us_visa_OPT期间换工作完整攻略_我踩过的所有坑",
+  "_source_regions": [
+    "us"
+  ]
+}

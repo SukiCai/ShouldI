@@ -1,0 +1,256 @@
+{
+  "source_file": "salary_history_laws.txt",
+  "heuristics": [
+    {
+      "rule": "Never disclose current salary before an offer is made — it can only anchor the negotiation downward",
+      "condition": "When any employer asks for your current or past compensation at any stage of the hiring process",
+      "action": "Redirect with: 'I prefer not to share my salary history, but I'm happy to discuss my compensation expectations for this role.'",
+      "because": "Disclosing a below-market salary gives the employer a ceiling to work from rather than their actual budget, structurally disadvantaging you in every subsequent negotiation step"
+    },
+    {
+      "rule": "If you're a remote worker, your protections follow your physical location, not the employer's headquarters",
+      "condition": "When interviewing remotely with a company headquartered in a non-ban state while you live in a ban state",
+      "action": "Invoke your state's salary history ban protections — they apply to you regardless of where the company is based",
+      "because": "Colorado, California, New York, and others explicitly extend their bans to cover employees located in those states even when the employer operates elsewhere"
+    },
+    {
+      "rule": "Use posted pay ranges as an opening anchor, not a ceiling",
+      "condition": "When a company is required to post salary ranges in job listings (California, Colorado, NY, etc.) and has done so",
+      "action": "Open with: 'I see the range is $X–$Y. Given my experience, I'm targeting the upper end of that range'",
+      "because": "A posted range tells you the actual budget; targeting the top of the range with justification is more powerful than guessing and more credible than demanding above range"
+    },
+    {
+      "rule": "If you already disclosed your salary, immediately reframe toward forward-looking expectations rather than defending the number",
+      "condition": "When you've already shared a below-market number — whether voluntarily or before knowing your rights",
+      "action": "In the next conversation, pivot: 'Now that we've discussed the role in more detail, I'm focused on [target range] for the offer' or cite market data to reframe",
+      "because": "Anchors can be disrupted by introducing new information or reframing the context; sitting passively on a low anchor compounds its damage across the entire offer"
+    },
+    {
+      "rule": "Document any salary history question asked in a ban state — date, interviewer, exact wording — before deciding how to respond",
+      "condition": "When an employer in a ban-state asks about your salary history despite the legal prohibition",
+      "action": "Document the violation immediately, then decide whether to escalate; the violation itself can become negotiation leverage",
+      "because": "Private rights to sue exist in California, Colorado, Illinois, Massachusetts, New York, and Washington, with remedies including back pay, wage differentials, and civil penalties up to $25,000"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether you are in a salary history ban state",
+      "why_it_matters": "Determines whether you are legally protected from being asked about past compensation and whether you have legal recourse if asked",
+      "how_to_assess": "Check the list of 22 states and 23+ municipalities; also check your remote work location, not just the employer's HQ location",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the employer is required to post a pay range",
+      "why_it_matters": "Posted ranges reveal actual budget and shift negotiating power to the candidate by eliminating information asymmetry",
+      "how_to_assess": "Check if employer meets employee threshold in states like California (15+), Hawaii (50+), Illinois (15+), Maryland (all), Minnesota (30+), New York (4+), Washington (15+)",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether you have already voluntarily disclosed your salary",
+      "why_it_matters": "Voluntary disclosure is explicitly exempt from ban protections; it cannot be legally contested after the fact, and creates a downward anchor",
+      "how_to_assess": "Review whether you brought up the number unprompted or whether they asked first; the legal protection only applies when they solicited the information",
+      "weight": "high"
+    },
+    {
+      "factor": "Which state law applies to your specific situation",
+      "why_it_matters": "Some states (Michigan, Wisconsin) actively prohibit local governments from passing salary history bans, meaning there is zero protection even at the city level",
+      "how_to_assess": "Identify your physical work location, then check both state-level bans and notable municipal exceptions; do not assume a ban applies without verifying",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether a private right to sue exists in your state",
+      "why_it_matters": "Determines whether a violation is enforceable beyond filing a complaint — and whether a violation gives you real leverage in negotiation",
+      "how_to_assess": "Private rights to sue confirmed in: California, Colorado, Illinois, Massachusetts, New York, Washington; other states may only allow labor department complaints",
+      "weight": "medium"
+    },
+    {
+      "factor": "Filing deadline for state labor complaints",
+      "why_it_matters": "Missing the window eliminates your legal remedy entirely; deadlines range from 6 months to 3 years depending on state",
+      "how_to_assess": "If you believe a violation occurred, check your state labor department's complaint deadline immediately — do not wait",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether the role is an internal promotion vs. new external hire",
+      "why_it_matters": "Some states' salary history bans only cover new hires, meaning internal promotion negotiations may not carry the same legal protections",
+      "how_to_assess": "Washington's ban explicitly covers internal promotions; check whether your state extends the ban beyond external hiring",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Disclosing your current salary when asked — even when legal — to appear cooperative or avoid awkwardness",
+      "unstated_consequence": "The number becomes a hard anchor that bounds the offer regardless of the role's actual budget; even a generous employer will rarely offer far above a disclosed current salary",
+      "who_it_affects": "Underpaid candidates, career changers moving to higher-paying industries, and anyone whose current comp is below market rate for the new role"
+    },
+    {
+      "choice": "Not knowing your state's salary history ban status before interviewing",
+      "unstated_consequence": "You may comply with an illegal question, forfeit your legal protections through voluntary disclosure, and lose negotiating leverage that the law was explicitly designed to give you",
+      "who_it_affects": "First-time job seekers and anyone relocating to a new state who hasn't updated their knowledge of local employment law"
+    },
+    {
+      "choice": "Escalating a salary history ban violation to the state labor department or pursuing legal action",
+      "unstated_consequence": "While legally valid, it almost certainly ends your candidacy with that employer and may create reputational risk in tight-knit industries or geographies",
+      "who_it_affects": "Candidates who are actively job searching in a narrow industry where the employer has significant market presence"
+    },
+    {
+      "choice": "Relying on a ban-state employer voluntarily following the law without knowing your rights",
+      "unstated_consequence": "Violations are common; without knowing what's prohibited, you cannot recognize when a violation occurs, let alone document or respond to it",
+      "who_it_affects": "Candidates who assume legal compliance without verification, particularly those earlier in their careers who treat recruiter questions as standard procedure"
+    },
+    {
+      "choice": "Reframing a voluntarily disclosed low salary upward mid-process",
+      "unstated_consequence": "While strategically sound, it can create friction with the recruiter and signal inconsistency — the reframe must be tied to new information (role scope, market data) to land credibly",
+      "who_it_affects": "Candidates who disclosed early without leverage or context and are now trying to recover lost ground"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Answering the salary history question reflexively before knowing whether it's legal to ask",
+      "why_it_happens": "Candidates treat recruiter questions as authoritative and feel social pressure to answer; disclosing feels cooperative while refusing feels adversarial",
+      "consequence": "Locks in a below-market anchor that the entire offer and negotiation is built around, often costing thousands to tens of thousands annually",
+      "warning_signs": [
+        "You answered 'What are you currently making?' without pausing to consider whether you had to",
+        "You felt that refusing would 'hurt your chances' even in a state where the question was illegal"
+      ]
+    },
+    {
+      "pattern": "Assuming the employer's headquarters location determines which state's employment law applies",
+      "why_it_happens": "Most people think of their employer's location as the relevant legal jurisdiction; remote work has decoupled this assumption but not the mental model",
+      "consequence": "Candidates in ban states like New York or California interviewing with Texas or Florida companies waive protections they actually have",
+      "warning_signs": [
+        "You work remotely but have never checked whether your state's laws apply to your out-of-state employer",
+        "You assumed no ban applied because the company is headquartered in a non-ban state"
+      ]
+    },
+    {
+      "pattern": "Voluntarily disclosing salary history to 'get ahead of it' or appear transparent",
+      "why_it_happens": "Candidates conflate general transparency as a value with strategic disclosure; they believe sharing builds rapport and reduces friction",
+      "consequence": "Voluntarily disclosed salary is explicitly exempt from ban-state protections, and the number anchors the offer regardless of intent",
+      "warning_signs": [
+        "You volunteered your current salary before being asked",
+        "You included compensation history on an application form even when it was optional"
+      ]
+    },
+    {
+      "pattern": "Failing to document a salary history ban violation in the moment",
+      "why_it_happens": "Candidates are focused on the interview itself and don't think about legal compliance in real time; documentation feels like an escalation they're not ready to commit to",
+      "consequence": "Without documentation, you cannot file a complaint, cannot establish the violation occurred, and lose the legal leverage the violation would have given you",
+      "warning_signs": [
+        "You remember being asked about salary history in a ban state but took no notes",
+        "You didn't record the interviewer's name, date, or exact phrasing of the question"
+      ]
+    },
+    {
+      "pattern": "Sitting passively on a low salary anchor after early disclosure instead of reframing",
+      "why_it_happens": "Candidates believe that revisiting a disclosed number looks inconsistent or desperate; they hope the employer will disregard it or be generous anyway",
+      "consequence": "The anchor compounds — every step of the offer process (base, bonus targets, equity refresh) is calibrated against the disclosed number rather than market rate",
+      "warning_signs": [
+        "You shared a low number early and haven't introduced market data or role-scope context since",
+        "You're waiting for the offer to 'see what they come back with' rather than proactively resetting expectations"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What state do you physically live and work in — and is it different from the employer's headquarters?",
+      "what_it_reveals": "Determines which state's salary history ban law applies and whether the candidate has legal protection they may not know about",
+      "follow_up_if_yes": "Your state's law likely applies to you regardless of employer HQ — check whether your state has an active ban before your next interview",
+      "follow_up_if_no": "Check whether your state has a ban; if not, check for applicable municipal ordinances in your city"
+    },
+    {
+      "question": "Have you already disclosed your current or past salary at any point in this process?",
+      "what_it_reveals": "Determines whether the anchor has already been set and what recovery strategy is available",
+      "follow_up_if_yes": "Was it voluntary or in response to a direct question? If you're in a ban state and they asked, you may have documentation leverage. Either way, reframe forward immediately.",
+      "follow_up_if_no": "You have full negotiating flexibility — do not disclose before an offer is made"
+    },
+    {
+      "question": "Did the company post a salary range in the job listing, or are they required to by law in your state?",
+      "what_it_reveals": "Reveals whether you already have the employer's budget information, which fundamentally changes your negotiation opening",
+      "follow_up_if_yes": "Use the posted range as your anchor; open by targeting the upper end with explicit justification",
+      "follow_up_if_no": "You'll need to research market data from other sources (levels.fyi, Glassdoor, Blind, Bureau of Labor Statistics) to establish your target range independently"
+    },
+    {
+      "question": "Was the salary history question asked in writing (application form, email) or verbally in an interview?",
+      "what_it_reveals": "Determines how easy it is to document the violation and the strength of evidence if you choose to escalate",
+      "follow_up_if_yes": "Screenshot or save the written request immediately — written evidence substantially strengthens any complaint or legal action",
+      "follow_up_if_no": "Document immediately after the interview: date, interviewer name, exact wording recalled, any witnesses present"
+    },
+    {
+      "question": "Is this an internal promotion or an external new hire situation?",
+      "what_it_reveals": "Some states' salary history bans only cover external hires, not internal compensation changes — this changes what protections apply",
+      "follow_up_if_yes": "Check whether your state extends the ban to internal promotions (Washington does explicitly; most others may not)",
+      "follow_up_if_no": "Standard salary history ban protections for new hires apply if you're in a ban state"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If a recruiter asks you about your current salary, you are obligated to answer",
+      "actual_reality": "In 22 states and 23+ municipalities, asking the question is illegal — the recruiter may not even know this, and candidates have the legal right to decline",
+      "implication": "Candidates should know their state's status before any interview begins, and have a rehearsed redirect ready that doesn't create friction"
+    },
+    {
+      "common_belief": "Laws about salary history only apply to employers headquartered in that state",
+      "actual_reality": "Protections follow the employee's physical location — Colorado explicitly covers out-of-state companies with Colorado-based employees; California applies to remote workers located in California",
+      "implication": "Remote workers in ban states are protected even when their employer is in Texas, Florida, or any other non-ban state"
+    },
+    {
+      "common_belief": "Pay transparency laws (posting salary ranges) primarily benefit employers by setting expectations",
+      "actual_reality": "They structurally shift negotiating power to candidates by revealing the employer's actual budget before any negotiation begins",
+      "implication": "In states with posting requirements, candidates should always anchor to the top of the posted range with justification rather than guessing or anchoring low"
+    },
+    {
+      "common_belief": "Voluntarily sharing your salary is protected the same way as being asked for it in a ban state",
+      "actual_reality": "Voluntary disclosure is explicitly carved out as an exception in virtually all salary history ban laws — once you share it unprompted, the legal protection no longer applies to that information",
+      "implication": "Never volunteer salary information before an offer, even in casual conversation or to 'set expectations' — the legal protection disappears the moment you bring it up first"
+    },
+    {
+      "common_belief": "If an employer violates a salary history ban, there's nothing practical you can do",
+      "actual_reality": "Six states (California, Colorado, Illinois, Massachusetts, New York, Washington) grant private rights to sue with remedies including back pay, wage differentials, attorney's fees, and civil penalties up to $25,000",
+      "implication": "Documenting a violation in these states creates real legal leverage — not just a complaint mechanism — that can be carefully referenced in negotiation"
+    },
+    {
+      "common_belief": "Michigan and Wisconsin just don't have salary history bans, like most states",
+      "actual_reality": "Michigan and Wisconsin have laws that actively prohibit local governments from passing salary history bans — even municipalities cannot protect workers there",
+      "implication": "Workers in these states have zero salary history protection at any level of government; full compensation history disclosure can be legally required"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to the salary history question",
+      "junior_pattern": "Answers reflexively, treating the recruiter's question as an obligation; may even volunteer current salary proactively to seem cooperative",
+      "senior_pattern": "Redirects smoothly without hesitation: 'I prefer not to share my history, but I'm happy to discuss my expectations for this role' — prepared in advance",
+      "why_it_matters": "Answering anchors every subsequent number in the process; redirecting preserves full negotiating range and signals market awareness"
+    },
+    {
+      "dimension": "Knowledge of legal protections before interviewing",
+      "junior_pattern": "Treats salary questions as standard practice; doesn't know which states have bans or that remote work location determines applicable law",
+      "senior_pattern": "Checks ban status before the first recruiter screen; knows their state's law, whether the employer must post ranges, and what the right to refuse looks like",
+      "why_it_matters": "Legal knowledge changes what you're willing to say and documents violations in real time — ignorance of the law means forfeiting protections you actually have"
+    },
+    {
+      "dimension": "Use of pay transparency data",
+      "junior_pattern": "Treats posted salary ranges as the offer itself or a ceiling; targets the midpoint to 'seem reasonable'",
+      "senior_pattern": "Treats the posted range as a budget signal; explicitly targets the upper end with role-specific justification, knowing the range reflects what the employer is willing to pay",
+      "why_it_matters": "Targeting the midpoint on a $150K–$200K range costs $25K+ annually compared to successfully anchoring at the top with supporting rationale"
+    },
+    {
+      "dimension": "Recovery from early salary disclosure",
+      "junior_pattern": "Sits passively on a disclosed low number, hoping the employer will be generous or assuming nothing can be done now",
+      "senior_pattern": "Proactively reframes in the next conversation using new information: role scope learned since, market data, or expanded responsibilities",
+      "why_it_matters": "A passive anchor compounds across every element of the offer; an active reframe with new information can partially or fully reset the negotiation"
+    },
+    {
+      "dimension": "Framing of refusing to disclose salary",
+      "junior_pattern": "Believes refusing to answer will 'hurt their chances' or signal they're hiding something; answers to avoid conflict",
+      "senior_pattern": "Understands that in many states, the refusal is legally protected and professionally standard; delivers the redirect without apologizing for it",
+      "why_it_matters": "The social discomfort of refusing is imagined; the financial cost of answering is real and compounding across years of employment"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_salary_history_laws",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

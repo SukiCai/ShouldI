@@ -1,0 +1,279 @@
+{
+  "source_file": "dual_career_return.txt",
+  "heuristics": [
+    {
+      "rule": "If your partner is the trailing partner in a return decision, model their career outcome independently before finalizing any plan.",
+      "condition": "When you are a dual-earner couple considering international relocation or return...",
+      "action": "...assess your partner's career trajectory, network viability, and credential transferability in the destination country as a separate analysis from your own",
+      "because": "Research shows at least one partner suffers career interruption, status decline, or career relinquishment after relocation — and the trailing partner absorbs disproportionate damage"
+    },
+    {
+      "rule": "If a 'take turns' compromise is agreed upon, require explicit written conditions and timeline before treating it as a real plan.",
+      "condition": "When dual-career partners agree that one will subordinate their career now in exchange for the other doing so later...",
+      "action": "...define upfront the specific timing, trigger conditions, and what 're-emigration' actually means operationally",
+      "because": "Phase 2 re-emigration routinely gets deferred indefinitely in practice, converting a mutual agreement into a unilateral sacrifice and generating lasting resentment"
+    },
+    {
+      "rule": "If partners are from different countries, evaluate third-country options (Singapore, Canada) before defaulting to either home country.",
+      "condition": "When one partner is Chinese and the other is Indian or from a third country, or when one partner is a US citizen and the other is not...",
+      "action": "...analyze Singapore or Canada as genuine alternatives, not consolation prizes",
+      "because": "Immigration asymmetry in either partner's home country (limited work authorization for foreign spouses) makes third countries structurally cleaner for both careers simultaneously"
+    },
+    {
+      "rule": "If a split-family arrangement is framed as 'temporary,' cap the planned duration at 6 months and build a hard decision point.",
+      "condition": "When one partner returns and the other stays in the US due to equity vesting, school schedules, or ongoing projects...",
+      "action": "...treat any split-family arrangement beyond 6 months as a relationship risk requiring active management, not just logistical scheduling",
+      "because": "Research shows relationship quality declines significantly in split-family arrangements sustained beyond 6 months, and 'temporary' arrangements rarely self-resolve on planned timelines"
+    },
+    {
+      "rule": "When a partner says they are 'supportive,' probe what they actually want independently before treating support as alignment.",
+      "condition": "When a user has modeled their own return economics in detail but describes their partner only as 'supportive'...",
+      "action": "...ask what the partner's career trajectory looks like in the destination country in their own terms, separately from support for the primary earner's decision",
+      "because": "Stated support and genuine preference alignment are different things — unresolved misalignment surfaces after relocation when it is much costlier to reverse"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Partner's career viability in destination country",
+      "why_it_matters": "Return economics must work for both partners independently — a strong return case for one earner is invalidated if the other faces career relinquishment",
+      "how_to_assess": "Map the partner's field against job market depth in the target city; assess credential transferability; estimate realistic job search duration and income gap",
+      "weight": "high"
+    },
+    {
+      "factor": "Partner's immigration status in the destination country",
+      "why_it_matters": "A foreign-born partner relocating to the primary earner's home country may face restricted work authorization that is not solved by spousal visa alone",
+      "how_to_assess": "Determine whether the destination country (China, India) grants work authorization to foreign spouses automatically or requires separate employer sponsorship; compare against third-country options",
+      "weight": "high"
+    },
+    {
+      "factor": "Dual-earner vs. single-earner household structure",
+      "why_it_matters": "Dual-earner couples are materially less geographically mobile than single-earner couples because relocation requires both partners to find acceptable outcomes simultaneously",
+      "how_to_assess": "Identify whether both partners are actively building careers or one is not currently working; if dual-earner, require independent career analysis for both before deciding",
+      "weight": "high"
+    },
+    {
+      "factor": "Who is driving the decision vs. who is trailing",
+      "why_it_matters": "The trailing partner absorbs disproportionate career and network disruption; if the decision is perceived as one person's sacrifice, resentment risk is high",
+      "how_to_assess": "Ask each partner separately what they want in their own terms; assess whether the non-driving partner has a real career path or is being asked to start from scratch",
+      "weight": "high"
+    },
+    {
+      "factor": "Financial cost and duration of transition income gap",
+      "why_it_matters": "The trailing partner typically faces 3–12 months of income loss during job search; split-family arrangements add $5,000–$10,000/month in dual household costs",
+      "how_to_assess": "Model combined household income during the transition period; identify who absorbs the shortfall and for how long the plan remains financially viable",
+      "weight": "high"
+    },
+    {
+      "factor": "Availability of viable destination cities for both career fields simultaneously",
+      "why_it_matters": "Return city options are constrained by what job markets exist for both fields — some combinations (tech + finance) are viable in major hubs; others (tech + academia) may not be",
+      "how_to_assess": "Map both careers' required city footprint against available destination cities; check whether any single city satisfies both",
+      "weight": "medium"
+    },
+    {
+      "factor": "Relationship quality risk from split-family arrangements",
+      "why_it_matters": "Split-family arrangements sustained beyond 6 months are associated with significant relationship quality decline per research",
+      "how_to_assess": "If a split-family phase is unavoidable, define its maximum duration explicitly and build a hard decision point at the 6-month mark",
+      "weight": "medium"
+    },
+    {
+      "factor": "Gender asymmetry in trailing partner burden",
+      "why_it_matters": "Women are significantly more likely to be the trailing partner in international relocation decisions and face larger career interruptions — this skews who bears the cost of the decision",
+      "how_to_assess": "Identify which partner is more likely to be trailing and whether that distribution is equitable and explicitly agreed upon",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Returning to home country as a dual-earner couple",
+      "unstated_consequence": "At least one partner is likely to suffer career interruption, occupational status decline, or career relinquishment — this is a documented research finding, not a worst-case scenario",
+      "who_it_affects": "The trailing partner, disproportionately women, and most severely those whose credentials and professional networks do not transfer to the destination market"
+    },
+    {
+      "choice": "Agreeing to a 'take turns' compromise to manage dual-career conflict",
+      "unstated_consequence": "Phase 2 re-emigration gets deferred indefinitely in practice, silently converting a mutual agreement into a permanent unilateral sacrifice",
+      "who_it_affects": "The partner who subordinated their career in Phase 1, who has no enforceable mechanism to trigger Phase 2"
+    },
+    {
+      "choice": "Using a split-family arrangement as a transitional bridge",
+      "unstated_consequence": "Beyond $5,000–$10,000/month in dual household costs, relationship quality declines significantly when arrangements persist beyond 6 months — and 'temporary' rarely resolves on schedule",
+      "who_it_affects": "Both partners, but especially the one remaining in the US who is neither fully settled nor fully committed to leaving"
+    },
+    {
+      "choice": "One partner returning while the other (US citizen or green card holder) follows",
+      "unstated_consequence": "The following partner gives up US career continuity and must navigate a foreign job market with no local network, while facing possible resentment if the decision was framed as the primary earner's need",
+      "who_it_affects": "The US citizen or green card holder partner who had no immigration pressure but is asked to relocate anyway"
+    },
+    {
+      "choice": "Relocating a mixed-nationality couple to one partner's home country (e.g., China)",
+      "unstated_consequence": "The foreign-born partner can get a family reunion visa but work authorization requires separate employer sponsorship from a local employer — residency and the right to work are not the same thing",
+      "who_it_affects": "The foreign-born partner who assumes a spousal visa resolves their employment situation"
+    },
+    {
+      "choice": "Defaulting to either partner's home country without evaluating third-country options",
+      "unstated_consequence": "Third countries like Singapore or Canada may offer cleaner immigration pathways for both partners simultaneously — by skipping this analysis, couples may be choosing a harder path by default",
+      "who_it_affects": "Mixed-nationality couples and couples where one partner is a foreign national in the destination country"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Modeling your own return economics in detail while treating your partner's situation as resolved because they said they're 'supportive'",
+      "why_it_happens": "The primary earner has strong personal motivation to return and unconsciously interprets the partner's emotional support as career and logistical alignment",
+      "consequence": "Post-relocation career failure for the trailing partner, financial strain from extended job search, and relationship damage from a decision that felt mutual but was actually unilateral",
+      "warning_signs": [
+        "User can describe their own return career path in detail but describes their partner's situation only in terms of support or willingness",
+        "No independent analysis of what the partner's first 6 months look like professionally"
+      ]
+    },
+    {
+      "pattern": "Announcing a 'take turns' plan without specifying binding conditions for Phase 2",
+      "why_it_happens": "Couples want to resolve the immediate conflict and reach apparent agreement; specifying hard conditions for Phase 2 feels unnecessarily adversarial when the relationship is intact",
+      "consequence": "The sacrificing partner has no mechanism to enforce Phase 2; re-emigration gets perpetually deferred by new circumstances (child, elderly parents, new job opportunity in the home country)",
+      "warning_signs": [
+        "Phase 2 conditions described in vague terms like 'when things settle down' or 'in a few years'",
+        "No specific trigger event, timeline, or financial threshold defined for the transition back"
+      ]
+    },
+    {
+      "pattern": "Underestimating the duration and cost of the trailing partner's job search transition",
+      "why_it_happens": "Primary earner projects their own job search experience onto the partner's situation; credential and network gaps in the destination market are invisible until encountered",
+      "consequence": "3–12 month income gap strains household finances; extended unemployment causes the trailing partner's career trajectory to deteriorate further while the primary earner advances",
+      "warning_signs": [
+        "Financial model for return assumes both incomes resume within 1–2 months of arrival",
+        "No assessment of how the partner's credentials and work history are valued in the destination job market"
+      ]
+    },
+    {
+      "pattern": "Treating a split-family arrangement as a logistics problem rather than a relationship risk",
+      "why_it_happens": "The immediate triggers for splitting (unvested equity, school year timing, project completion) are concrete and finite; relationship deterioration is gradual and not visible at decision time",
+      "consequence": "Arrangement extends beyond 6 months; relationship quality declines; the decision to reunite becomes harder because both partners have re-stabilized separately",
+      "warning_signs": [
+        "Split-family phase has no hard end date, only a soft target",
+        "One or both partners begin describing the arrangement as 'working fine' after the first few months"
+      ]
+    },
+    {
+      "pattern": "Defaulting to one partner's home country without evaluating whether a third country resolves the structural problem more cleanly",
+      "why_it_happens": "The framing of the decision as 'stay in US vs. return home' makes third-country options invisible; the partner whose home country is being returned to has more decision-making power by default",
+      "consequence": "The couple implements a harder immigration and career solution when a cleaner one existed; the foreign-born partner in the destination country faces work authorization barriers that were avoidable",
+      "warning_signs": [
+        "Singapore or Canada never appear in the analysis despite mixed-nationality status",
+        "The partner being asked to relocate to the other's home country has not independently researched their own employment rights there"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What does your partner actually want to do with their career, in their own terms — not whether they're supportive of your decision?",
+      "what_it_reveals": "Whether stated support reflects genuine preference alignment or conflict avoidance; unresolved misalignment surfaces post-relocation when reversal is costly",
+      "follow_up_if_yes": "If they have a clear preference: does that preference have a viable path in the destination you're considering, independently of your situation?",
+      "follow_up_if_no": "If they haven't articulated a clear preference: this is a red flag — the decision is being made without their career interests being modeled at all"
+    },
+    {
+      "question": "What is your partner's realistic career trajectory if you return — job market depth in their field, credential transferability, expected time to employment?",
+      "what_it_reveals": "Whether return economics actually work for the household or only for the primary earner; identifies whether the trailing partner faces career interruption or relinquishment",
+      "follow_up_if_yes": "If there is a viable path: what is the realistic income gap duration, and who finances the household during that period?",
+      "follow_up_if_no": "If there is no viable path: the return decision requires either the partner accepting career relinquishment or the couple evaluating third-country alternatives"
+    },
+    {
+      "question": "What is your partner's immigration and work authorization status in the destination country if they are not a national there?",
+      "what_it_reveals": "Whether the partner's right to reside and right to work are actually secured, or whether work authorization requires separate employer sponsorship that is not guaranteed",
+      "follow_up_if_yes": "If work authorization is secured or automatic: assess job market viability independently",
+      "follow_up_if_no": "If work authorization is not automatic: evaluate whether third-country options (Singapore, Canada) resolve the structural problem more cleanly"
+    },
+    {
+      "question": "Have you and your partner planned what the first 6 months look like separately for each of you — not just as a household unit?",
+      "what_it_reveals": "Whether the couple has stress-tested the transition at the individual level; vague household-level plans typically mean the trailing partner's situation hasn't been concretely mapped",
+      "follow_up_if_yes": "If yes: does the trailing partner's plan include a realistic job search timeline and financial bridge for the gap period?",
+      "follow_up_if_no": "If no: the decision is premature — the trailing partner's first 6 months are the highest-risk period and require explicit planning before committing"
+    },
+    {
+      "question": "What happens to the relationship if the trailing partner's career doesn't work out as hoped within 12 months?",
+      "what_it_reveals": "Whether the couple has stress-tested the downside scenario; couples who haven't discussed this are implicitly assuming success, which is the failure mode that generates the most resentment",
+      "follow_up_if_yes": "If they have a plan: is the plan actually actionable (return to US, pivot to third country) or is it vague reassurance?",
+      "follow_up_if_no": "If they haven't discussed it: this is the most important conversation to have before making a final decision"
+    },
+    {
+      "question": "If a split-family arrangement is being considered, what is the hard end date and what happens if that date passes without resolution?",
+      "what_it_reveals": "Whether the couple has built a real decision mechanism or is using the split as an indefinite deferral of the actual choice",
+      "follow_up_if_yes": "If there is a hard date: is there agreement on what both partners do if the trigger condition (equity vesting, school year end) doesn't cleanly resolve the split?",
+      "follow_up_if_no": "If there is no hard date: the split-family arrangement is likely to persist beyond 6 months with documented relationship quality consequences"
+    },
+    {
+      "question": "Have you evaluated Singapore or Canada as a third-country option, or has the decision been framed only as 'stay in US vs. return to home country'?",
+      "what_it_reveals": "Whether the couple has considered options that may resolve the dual-career and dual-immigration problem more cleanly than either partner's home country",
+      "follow_up_if_yes": "If yes: what specific barriers make third-country options less viable than the current framing suggests?",
+      "follow_up_if_no": "If no: third-country options should be evaluated before finalizing the binary choice, especially for mixed-nationality couples"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If my partner is supportive of the return decision, the dual-career problem is resolved.",
+      "actual_reality": "Stated support and genuine preference alignment are different things. Research documents that at least one partner typically suffers career interruption, status decline, or career relinquishment after international relocation — this happens regardless of initial stated support.",
+      "implication": "Support must be interrogated: what specifically does the partner want for their own career, and is there a viable path for it in the destination? Emotional support for the decision does not mean career viability in the destination."
+    },
+    {
+      "common_belief": "A 'take turns' agreement fairly distributes the career sacrifice between partners.",
+      "actual_reality": "Phase 2 re-emigration is routinely deferred indefinitely in practice. New circumstances (children, elderly parents, new opportunities in the home country) continuously provide reasons to delay, and there is no enforcement mechanism for the sacrificing partner.",
+      "implication": "A take-turns plan without explicit, binding conditions for Phase 2 is functionally a unilateral sacrifice dressed as a mutual agreement. If Phase 2 conditions cannot be specified concretely, the plan should not be treated as real."
+    },
+    {
+      "common_belief": "A spousal or family reunion visa in the destination country resolves the partner's ability to work there.",
+      "actual_reality": "In China and India, family reunion or spousal visas provide residency rights but work authorization is separate and typically requires employer sponsorship from a local employer. Residency and the right to work are legally distinct.",
+      "implication": "Couples with a foreign-born partner must separately verify work authorization pathways in the destination country before assuming the partner can continue their career there."
+    },
+    {
+      "common_belief": "A split-family arrangement will self-resolve once the triggering condition (equity vesting, school year end) is met.",
+      "actual_reality": "Split-family arrangements rarely self-resolve on the planned timeline. 'Temporary' arrangements extend, and research shows relationship quality declines significantly beyond 6 months of split-family living.",
+      "implication": "Split-family arrangements require a hard decision point at or before 6 months — not a soft target, but an explicit date with defined outcomes for both scenarios (reunite vs. make a permanent decision)."
+    },
+    {
+      "common_belief": "The stay-or-return decision is binary: stay in the US or return to the home country.",
+      "actual_reality": "For mixed-nationality couples or couples where one partner faces work authorization barriers in the other's home country, third countries (Singapore, Canada) often provide cleaner immigration and career pathways for both partners simultaneously.",
+      "implication": "Third-country options should be explicitly evaluated before finalizing a binary choice, particularly for dual-earner couples where at least one partner is not a national of the destination country."
+    },
+    {
+      "common_belief": "Dual-earner couples have more flexibility because they have two incomes to buffer the transition.",
+      "actual_reality": "Research finds that dual-earner couples are materially less geographically mobile than single-earner couples precisely because both careers must survive the transition simultaneously. Two careers create two constraints, not two buffers.",
+      "implication": "Dual-earner couples should expect harder logistics, longer planning horizons, and more constrained city options than single-earner couples — not easier ones."
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How the partner's situation is treated in the analysis",
+      "junior_pattern": "Models own career return economics in detail; treats the partner's situation as resolved because the partner is 'supportive' or 'willing to try'",
+      "senior_pattern": "Insists on an independent career analysis for the partner — job market depth, credential transferability, expected income gap duration — before treating the dual-career problem as solved",
+      "why_it_matters": "The trailing partner's career outcome is the most common failure mode in dual-career relocations; treating it as secondary means the most likely risk goes unmodeled"
+    },
+    {
+      "dimension": "How the 'take turns' compromise is evaluated",
+      "junior_pattern": "Accepts a take-turns agreement as a fair resolution once both partners verbally agree to it",
+      "senior_pattern": "Probes what Phase 2 actually means: specific trigger conditions, timeline, what re-emigration looks like operationally, and what happens if those conditions are never met",
+      "why_it_matters": "Vague take-turns agreements routinely collapse into unilateral sacrifice; the partner who subordinated first has no recourse without explicit conditions"
+    },
+    {
+      "dimension": "How split-family arrangements are framed",
+      "junior_pattern": "Treats a split-family arrangement as a logistics problem with a known end date driven by an external trigger (equity cliff, school year)",
+      "senior_pattern": "Treats a split-family arrangement as a relationship risk with a 6-month hard ceiling, independent of whether the triggering condition has resolved",
+      "why_it_matters": "Relationship quality deterioration in extended split-family arrangements is well-documented and does not wait for the equity to vest"
+    },
+    {
+      "dimension": "Whether third-country options are considered",
+      "junior_pattern": "Frames the decision as binary: stay in US or return to home country; considers third countries only if explicitly prompted",
+      "senior_pattern": "Proactively evaluates third-country options (Singapore, Canada) for mixed-nationality or dual-immigration-constraint couples before defaulting to either home country",
+      "why_it_matters": "The binary framing makes third-country options invisible even when they structurally solve the dual-career and dual-immigration problem more cleanly"
+    },
+    {
+      "dimension": "How 'supportive partner' language is interpreted",
+      "junior_pattern": "Interprets 'my partner is supportive' as evidence that the couple is aligned and the dual-career problem is not a binding constraint",
+      "senior_pattern": "Treats 'supportive' as a signal to probe further: what does the partner specifically want for their own career, and is there a viable path for it independently of supporting the primary earner?",
+      "why_it_matters": "Emotional support and career-interest alignment are different; the gap between them is where post-relocation resentment originates"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_dual_career_return",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

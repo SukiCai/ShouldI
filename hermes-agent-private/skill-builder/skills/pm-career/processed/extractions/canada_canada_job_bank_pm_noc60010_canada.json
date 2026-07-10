@@ -1,0 +1,192 @@
+{
+  "source_file": "canada_job_bank_pm_noc60010_canada.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Use NOC 60010 (Corporate sales managers) as the official Canadian classification for Product Manager roles",
+      "condition": "When classifying a Product Manager role for immigration, labour market, or wage benchmark purposes in Canada",
+      "action": "Reference NOC 60010 and its associated wage bands as the governing classification",
+      "because": "NOC 60010 is the official Government of Canada classification that encompasses Product Managers; using an alternate NOC code would misrepresent the occupational classification",
+      "regulatory_basis": "Government of Canada Job Bank NOC 60010 — Corporate sales managers; https://www.jobbank.gc.ca/marketreport/wages-occupation/26656/ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Alberta median hourly wage ($65.00/hr) exceeds Ontario median ($60.10/hr) for NOC 60010",
+      "condition": "When comparing provincial PM wage benchmarks for compensation negotiation or labour market impact assessment",
+      "action": "Treat Alberta as the highest-median province for PM wages, not Ontario or BC",
+      "because": "Labour Force Survey data (2023–2024) places Alberta median at $65.00/hr vs. Ontario at $60.10/hr and BC at $55.65/hr",
+      "regulatory_basis": "Government of Canada Job Bank — Provincial wage data, NOC 60010, reference period 2023–2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Toronto CMA high wage ceiling ($147.06/hr, ~$306,000 CAD/yr) is the highest reported regional ceiling for PM wages in Canada",
+      "condition": "When determining maximum achievable PM compensation within Canada without relocating to the US",
+      "action": "Treat $147.06/hr (~$306K CAD/yr) as the Canadian PM compensation ceiling, applicable only in the Toronto CMA",
+      "because": "Job Bank regional data identifies this as the top-of-market figure for senior/principal PMs at FAANG Canada offices and major financial institutions in Toronto",
+      "regulatory_basis": "Government of Canada Job Bank — Toronto CMA regional data, NOC 60010; https://www.jobbank.gc.ca/marketreport/wages-occupation/26656/geo9219",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Annual salary estimates in the Labour Force Survey are calculated using 2,080 hours/year (40 hrs/week × 52 weeks)",
+      "condition": "When converting Job Bank hourly wage data to annual salary figures",
+      "action": "Apply 2,080-hour multiplier to hourly figures; note that bonuses, overtime, and equity are not captured",
+      "because": "LFS wage data does not include equity (RSUs, options), overtime, or bonus compensation; actual total comp may materially differ",
+      "regulatory_basis": "Government of Canada Job Bank data notes, NOC 60010",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Province of employment",
+      "why_it_matters": "PM wages vary materially by province; Alberta median ($65.00/hr) exceeds BC median ($55.65/hr) by ~17%, and Ontario high ceiling ($132.57/hr) far exceeds BC high ($89.25/hr)",
+      "how_to_assess": "Compare the applicable provincial wage band from Job Bank NOC 60010 provincial table; reference period 2023–2024",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Non-wage benefits receipt",
+      "why_it_matters": "98.9% of product managers nationally receive at least one non-wage benefit (pension, insurance, leave entitlements); near-universal benefit coverage is a structural feature of Canadian PM employment",
+      "how_to_assess": "Verify whether employer provides at least one non-wage benefit; 98.9% national rate and 99.2% Ontario rate and 100% BC rate establish the norm",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Employer type and sector (FAANG Canada, fintech, banking, energy)",
+      "why_it_matters": "The high wage ceiling in Toronto ($147.06/hr) is driven specifically by FAANG Canada offices (Amazon, Google, Microsoft) and large Canadian fintech/banking tech employers (RBC, TD, Shopify); BC's lower ceiling reflects fewer Principal/Staff PM seats",
+      "how_to_assess": "Identify whether employer is a FAANG Canada office, major Canadian financial institution, or energy-sector employer to determine applicable wage band ceiling",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Equity compensation (RSUs, options)",
+      "why_it_matters": "Equity at FAANG Canada offices and tech unicorns (Shopify) can add CAD $20,000–$100,000+ to total comp above LFS wage figures, which do not capture equity",
+      "how_to_assess": "Assess whether employer offers RSU or option grants; LFS wage data will understate total comp by $20K–$100K+ at qualifying employers",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Regional classification within province (CMA vs. non-CMA)",
+      "why_it_matters": "Toronto CMA high wage ($147.06/hr) exceeds provincial Ontario high ($132.57/hr); Vancouver Lower Mainland median ($57.04/hr) exceeds BC provincial median ($55.65/hr)",
+      "how_to_assess": "Use region-specific Job Bank data (e.g., Toronto CMA, Lower Mainland–Southwest) rather than provincial averages when the role is in a major urban centre",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining in Canada rather than relocating to the US for a Senior PM role",
+      "unstated_consequence": "National median is ~$125K CAD, materially below equivalent US Senior PM roles (USD $180K–$250K base); the Canadian compensation ceiling of ~$306K CAD (~$147/hr in Toronto) is the hard upper limit without US relocation",
+      "who_it_affects": "Senior and Principal PMs at or near the top of the Canadian market who are evaluating US relocation decisions",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Accepting a PM role in British Columbia (Vancouver) over Ontario (Toronto)",
+      "unstated_consequence": "BC provincial high wage ceiling is $89.25/hr vs. $132.57/hr in Ontario — a 48% lower ceiling — despite Vancouver being a recognized major tech hub; fewer Principal/Staff PM seats and lower concentration of top-paying employers constrains long-term comp growth in BC",
+      "who_it_affects": "Senior PMs and Principal PMs choosing between Vancouver and Toronto job markets",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on LFS hourly wage data as a complete picture of PM total compensation",
+      "unstated_consequence": "LFS data excludes equity (RSUs, options), bonuses, and overtime; at FAANG Canada offices and Shopify, equity alone can add CAD $20,000–$100,000+ annually, meaning stated wage figures systematically understate total comp at top employers",
+      "who_it_affects": "PMs benchmarking offers at FAANG Canada, Shopify, or tech unicorns using Job Bank data alone",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Using NOC 60010 wage data as a precise PM-specific benchmark",
+      "unstated_consequence": "NOC 60010 (Corporate sales managers) is broader than the tech-specific PM role; the classification includes non-tech sales managers, which may dilute the wage data and cause it to understate or misrepresent wages for tech PMs specifically",
+      "who_it_affects": "Tech PMs using Job Bank data for offer negotiation or immigration wage compliance purposes",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Using national median ($125K CAD) as the benchmark for a Toronto-based senior PM offer evaluation",
+      "why_it_happens": "National LFS data pools all provinces and all employer types under NOC 60010; Toronto CMA data shows a median of $59.55/hr (~$124K) but a high of $147.06/hr (~$306K), meaning the national median is not representative of top-market Toronto offers",
+      "consequence": "Systematic undervaluation of compensation expectations for senior/principal PM roles at FAANG Canada or major financial institutions in Toronto",
+      "warning_signs": [
+        "Evaluating a Toronto FAANG PM offer against the $125K CAD national median",
+        "Not distinguishing between Toronto CMA regional data and national or provincial data"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Assuming BC (Vancouver) and Ontario (Toronto) have comparable PM compensation ceilings because both are major tech hubs",
+      "why_it_happens": "BC provincial high is $89.25/hr vs. Ontario provincial high of $132.57/hr; Toronto CMA high is $147.06/hr — a gap of over 60% at the ceiling",
+      "consequence": "Materially incorrect compensation benchmarking for senior PM roles in Vancouver relative to Toronto",
+      "warning_signs": [
+        "Treating Vancouver and Toronto as interchangeable PM markets for compensation purposes",
+        "Using BC provincial wage data to evaluate a Toronto offer or vice versa"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the PM role located in the Toronto CMA, another Ontario region, or a different province?",
+      "what_it_reveals": "Which wage band applies — Toronto CMA data (high: $147.06/hr), Ontario provincial data (high: $132.57/hr), or another province's data",
+      "follow_up_if_yes": "If Toronto CMA: use Job Bank Toronto CMA data (https://www.jobbank.gc.ca/marketreport/wages-occupation/26656/geo9219) as the applicable benchmark",
+      "follow_up_if_no": "If outside Toronto CMA: identify the correct provincial or regional wage table from Job Bank NOC 60010 data",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the employer a FAANG Canada office, major Canadian financial institution (RBC, TD), or tech unicorn (Shopify)?",
+      "what_it_reveals": "Whether the role is likely to include equity (RSUs, options) of CAD $20,000–$100,000+ that is not captured in LFS wage data",
+      "follow_up_if_yes": "Total compensation will materially exceed LFS wage figures; equity must be assessed separately",
+      "follow_up_if_no": "LFS wage data is more likely to represent total cash comp accurately, though bonuses may still not be captured",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the employer provide at least one non-wage benefit (pension, insurance, leave entitlements)?",
+      "what_it_reveals": "Whether the offer meets the near-universal Canadian market norm (98.9% nationally, 99.2% in Ontario, 100% in BC)",
+      "follow_up_if_yes": "Offer is consistent with market standard for non-wage benefits",
+      "follow_up_if_no": "Offer is below market norm; absence of any non-wage benefit is atypical for fewer than 1.1% of Canadian PM roles nationally",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the PM role being classified under NOC 60010 for immigration or labour market purposes?",
+      "what_it_reveals": "Whether the correct official classification is being applied; NOC 60010 is broader than tech-specific PM and includes corporate sales managers",
+      "follow_up_if_yes": "Confirm that the wage offered meets the applicable NOC 60010 wage band for the region; note the broader classification may affect LMIA or Express Entry assessments",
+      "follow_up_if_no": "Identify which NOC code is being used and verify it is appropriate for the specific role",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Vancouver (BC) and Toronto (Ontario) offer comparable PM compensation ceilings because both are major Canadian tech hubs",
+      "actual_reality": "Ontario provincial high is $132.57/hr and Toronto CMA high is $147.06/hr; BC provincial high is $89.25/hr — a ceiling gap of approximately 48–65% in favour of Toronto",
+      "implication": "Senior PMs and Principal PMs maximizing Canadian compensation should prioritize Toronto over Vancouver; BC's lower ceiling reflects fewer Principal/Staff PM seats and lower concentration of top-paying employers",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Alberta has a smaller tech sector than Ontario or BC, so PM wages there are lower",
+      "actual_reality": "Alberta provincial median is $65.00/hr (~$135,200 CAD/yr), the highest provincial median in Canada, exceeding Ontario ($60.10/hr) and BC ($55.65/hr)",
+      "implication": "Alberta median PM wages are the highest in Canada despite a smaller tech sector, driven by energy-sector PM roles and employer mix in Calgary/Edmonton",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Job Bank wage data captures total PM compensation",
+      "actual_reality": "LFS wage data excludes equity (RSUs, options), bonuses, and overtime; at FAANG Canada offices and Shopify, equity alone can add CAD $20,000–$100,000+ annually above reported figures",
+      "implication": "Job Bank wage data systematically understates total comp at top Canadian tech employers; equity must be assessed through separate sources",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "NOC 60010 is a precise classification for tech Product Managers",
+      "actual_reality": "NOC 60010 is formally titled 'Corporate sales managers' and is broader than the tech-specific PM usage; it is the official classification that encompasses Product Managers but includes non-tech roles",
+      "implication": "Wage data under NOC 60010 may be diluted by non-tech corporate sales manager salaries; users should account for this when benchmarking tech PM compensation specifically",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The Canadian PM compensation ceiling is comparable to mid-tier US tech PM salaries",
+      "actual_reality": "The Canadian PM ceiling is ~$306K CAD/yr (Toronto CMA high, $147.06/hr); equivalent US Senior PM roles pay USD $180K–$250K base, with total comp potentially higher; the source states the Canadian median is 'materially below' US equivalents",
+      "implication": "PMs prioritizing maximum compensation must account for the structural US-Canada compensation gap when making relocation decisions",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_canada_job_bank_pm_noc60010_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

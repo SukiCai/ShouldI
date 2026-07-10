@@ -1,0 +1,47 @@
+{
+  "skill_name": "Senior PM Career Decisions",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that captures real senior PM thinking patterns — particularly the scope-vs-title distinction and the skill-gap-vs-org-ceiling diagnostic. It goes well beyond generic career advice, though a few heuristics drift toward aphorism and some tradeoffs could be sharper. The framework is usable in real conversation, not just informational.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 4,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 4,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The core reframe — 'HR definition of Senior PM (tenure + rubric checkboxes) vs. market definition (owning an ambiguous problem to shipped outcome with minimal oversight)' — is the kind of non-obvious distinction that immediately changes how someone thinks about their situation. This is genuinely expert framing.",
+    "The skill-gap-vs-org-ceiling diagnostic is excellent: 'Real skill gaps produce evolving feedback as you develop. Static feedback usually means the block is structural.' This is a specific, testable, and actionable signal a novice would never articulate.",
+    "The hidden tradeoffs table has real substance — e.g., 'Accepting startup VP/Director title: Overleveling problem when returning to Big Tech; hiring managers discount scope' is exactly the kind of downside invisible at decision time.",
+    "'Get the level code, not just the title (L5, IC5, ICT4)' is the kind of concrete, insider tactical heuristic that separates informed from naive."
+  ],
+  "weaknesses": [
+    "Some heuristics slide into aphorism without specific conditions. 'Invest in communication disproportionately to time spent on it' with reasoning 'presentations are ~5% of the job but ~50% of how you're judged' is punchy but doesn't tell the AI what to actually recommend the user do.",
+    "The '8/10 job satisfaction' heuristic ('Act if below 7 for six months; act urgently if below 5 for three') is presented with false precision — where do these numbers come from? Feels invented rather than earned.",
+    "Diagnostic Step 1 has good questions but doesn't provide interpretation guidance beyond Step 2's four buckets. E.g., what does it mean if someone answers 'yes' to defining scope themselves but 'no' to strategic framework articulation? The framework has ambiguous overlap zones.",
+    "Some 'myths' feel like straw men. 'Myth: Mastering every skill on the ladder rubric gets you promoted' — most PMs at senior level already know this. The reality statement doesn't add much beyond the myth's framing.",
+    "The junior/senior table has some genuine differentiators but also some that feel like stylistic rewordings — 'Junior: escalates to manager. Senior: presents problem with proposed approach' is a standard piece of career advice, not senior-PM-specific insight."
+  ],
+  "improvement_suggestions": [
+    "Add a concrete worked example or two: 'User says X, diagnostic reveals Y, correct response is Z.' This would show the AI how to actually run the framework in dialogue rather than reciting it.",
+    "Replace or justify the 8/10 satisfaction heuristic — either cite where the calibration comes from or reframe it as directional ('sustained dissatisfaction over 6 months warrants action, not just reflection').",
+    "Add coverage for the pre-Senior→Senior PM transition specifically (the modal user of this skill), including what 'defining scope' looks like operationally — e.g., 'writing the PRD your manager didn't ask for,' 'pitching a new area to leadership unprompted.'",
+    "Sharpen the MBA section with specifics: which named doors actually require MBA for PMs? (Consulting-adjacent product roles? PE/VC associate? International relocation?) Currently it says 'name the door' without helping the AI know what doors are real.",
+    "Add a section on how to *test* whether it's a skill gap vs. org ceiling — e.g., 'take a scope-expansion offer at another team; if you succeed there, it was org; if you struggle, it was skill.'"
+  ],
+  "generic_advice_flags": [
+    "'Block calendar time for strategic work explicitly. Because: strategic work is non-urgent but high-importance; reactive work always crowds it out.' — This is textbook Covey/time management advice, not senior-PM-specific. Any career skill would say this.",
+    "'Try IC first if uncertain; don't try management first.' — Reasoning is plausible but stated as universal law; ignores that some people know early they want people leadership, and the IC→Mgmt→IC path also happens frequently. Overclaims.",
+    "'Presents problem with proposed approach' as the senior pattern — this is standard 'come with solutions not problems' advice found in any management book."
+  ],
+  "missing_coverage": [
+    "Compensation dynamics at the Senior PM level — how equity refresh, band placement, and TC differences interact with the stay-vs-leave decision. Currently the skill treats comp as almost irrelevant.",
+    "The role of the manager as a specific variable — a great manager can create scope where the org has none; a bad manager can create a ceiling within a growing org. Not addressed.",
+    "PM specialization tradeoffs (growth PM vs. platform PM vs. AI/ML PM vs. 0-to-1 PM) and how specialization affects career optionality — particularly relevant in 2024-25 market.",
+    "How to actually have the scope-expansion conversation with a manager — the skill says 'expand scope first, then ask for title' but doesn't give language or tactics for negotiating that scope.",
+    "Signals that a company is genuinely scope-expanding vs. performatively so during interview loops — how to diagnose an org ceiling before joining."
+  ]
+}

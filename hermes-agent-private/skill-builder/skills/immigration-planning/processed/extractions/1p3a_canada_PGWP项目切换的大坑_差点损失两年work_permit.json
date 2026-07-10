@@ -1,0 +1,194 @@
+{
+  "source_file": "canada_PGWP项目切换的大坑_差点损失两年work_permit.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Before switching programs, calculate the PGWP impact first, not the academic impact",
+      "condition": "When a student is considering switching from a longer program to a shorter one mid-degree...",
+      "action": "Consult your international student advisor to model the PGWP duration difference before making any academic decision",
+      "because": "PGWP duration equals the length of the completed program (capped at 3 years), so a program switch can directly reduce work permit duration and downstream PR eligibility",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Look for an in-program solution before switching programs",
+      "condition": "When the underlying dissatisfaction is with a research direction, supervisor, or specialization rather than the credential type itself...",
+      "action": "Negotiate a research direction change within the same program before considering a formal program switch",
+      "because": "The original poster preserved their 2-year master's + 3-year PGWP combination by finding an internal solution, avoiding the immigration cost of switching",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "PGWP year loss matters most when you are on a 2-year-or-longer program and would be switching to a sub-2-year program",
+      "condition": "When evaluating whether the PGWP impact of a program switch is severe...",
+      "action": "Check whether both the origin and destination programs are 2+ years; if so, the PGWP cap (3 years) may still apply and the impact is lower",
+      "because": "The original poster explicitly notes that the impact is smaller when both programs are 2 years or longer, or when alternative PR pathways exist",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "PGWP duration of the target program vs. current program",
+      "why_it_matters": "PGWP duration directly determines how many years of Canadian work experience you can accumulate, which feeds into Express Entry CRS score and PR timeline",
+      "how_to_assess": "Look up the length of the program you would complete (not start); PGWP = program length, capped at 3 years for programs 2+ years long",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether alternative PR pathways are available",
+      "why_it_matters": "If employer sponsorship or a Provincial Nominee Program is accessible, PGWP duration becomes less critical as the bottleneck",
+      "how_to_assess": "Assess your employer's willingness to sponsor, your occupation's PNP eligibility, and your CRS score without the extra work experience",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether the program switch is necessary vs. an in-program fix exists",
+      "why_it_matters": "An in-program solution (e.g., changing supervisors or research area) preserves PGWP duration while still addressing the academic dissatisfaction",
+      "how_to_assess": "Meet with your supervisor, graduate coordinator, and international student advisor to explore internal options before triggering a formal program change",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Switching from a 2-year master's to a 1-year Graduate Certificate at the same university",
+      "unstated_consequence": "PGWP drops from 3 years to 1 year — a net loss of 2 years of authorized Canadian work experience, which reduces CRS points and can delay PR by 2-3 years",
+      "who_it_affects": "Students who are optimizing for academic fit or faster graduation without modeling the downstream immigration consequences",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Treating academic-level equivalence as immigration equivalence",
+      "unstated_consequence": "A 1-year Graduate Certificate and a 2-year Master's may be similar in academic rigor but are treated very differently by IRCC for PGWP purposes",
+      "who_it_affects": "Students who assume credential level (graduate-level) is what matters rather than program duration",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Optimizing for academic satisfaction without modeling immigration consequences of a program switch",
+      "why_it_happens": "Students frame program changes as purely academic decisions; immigration impact is invisible until after the switch is made",
+      "consequence": "Up to 2 years of PGWP duration lost, fewer CRS points, and PR timeline delayed by potentially 2-3 years",
+      "warning_signs": [
+        "Thinking 'the courses are similar so the programs are equivalent'",
+        "Seeking academic advisor input only, not international student advisor input"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the duration of the program you would actually complete — not the one you started?",
+      "what_it_reveals": "PGWP is based on the completed program's length, so mid-degree switches reset the clock to the new program's duration",
+      "follow_up_if_yes": "Is the new program 2 years or longer? If yes, the PGWP cap still applies and impact may be manageable.",
+      "follow_up_if_no": "If the new program is under 2 years, calculate how many years of PGWP you would lose and whether your PR pathway can absorb that loss.",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Can the underlying problem (research direction, supervisor, workload) be resolved within your current program without a formal program switch?",
+      "what_it_reveals": "Many students frame an internal academic problem as requiring a program change, when an in-program solution would preserve PGWP duration",
+      "follow_up_if_yes": "Pursue the internal fix first; consult graduate coordinator and supervisor before triggering any formal program change.",
+      "follow_up_if_no": "If no internal fix exists, model the full PGWP and PR timeline impact of switching before deciding.",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Do you have a PR pathway that does not depend on maximizing PGWP-derived Canadian work experience?",
+      "what_it_reveals": "Whether PGWP duration is a critical variable or a lower-priority one given your specific PR strategy",
+      "follow_up_if_yes": "PGWP duration loss may be tolerable; evaluate the program switch on its own merits.",
+      "follow_up_if_no": "PGWP duration is likely a high-weight factor; losing 2 years could significantly delay PR.",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Graduate-level programs are equivalent for immigration purposes regardless of length — a 1-year Graduate Certificate is basically the same as a 2-year Master's",
+      "actual_reality": "IRCC calculates PGWP duration based strictly on program length, not academic level. A 1-year Graduate Certificate yields 1 year of PGWP; a 2-year Master's yields 3 years (due to the 2+ year cap). The difference is 2 full years of work authorization.",
+      "implication": "Students must evaluate program switches using immigration math (program duration → PGWP years → CRS points → PR timeline), not just academic equivalence",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a mid-degree program switch",
+      "naive_pattern": "Asks: 'Is this program academically equivalent? Will I still graduate at a graduate level?' Focuses on course content, credential name, and time to completion.",
+      "informed_pattern": "Asks: 'What PGWP duration does the completed program yield? How does that affect my CRS score and PR timeline? Is there an in-program fix that avoids the switch entirely?'",
+      "why_it_matters": "The naive framing can lead to a decision that costs 2 years of PGWP and delays PR by 2-3 years — consequences that are invisible until after the switch is made",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Since both programs are graduate-level, the PGWP should be roughly the same",
+      "why_believed": "Students anchor on academic level (graduate vs. undergraduate) as the relevant variable because that is how they think about credential value in the job market",
+      "actual_rule": "PGWP duration is determined by the length of the program you complete, not its academic level. A 1-year graduate program yields 1 year of PGWP regardless of its graduate-level status.",
+      "real_consequence": "A student who switches from a 2-year master's to a 1-year Graduate Certificate loses 2 years of PGWP, reducing Canadian work experience accumulation and CRS score, potentially delaying PR by 2-3 years",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student in a 2-year master's program at a Canadian university wanted to switch to a 1-year Graduate Certificate at the same school due to dissatisfaction with the research direction",
+      "decision": "Instead of switching programs, negotiated an internal research direction change within the existing master's program through conversations with supervisor, the department, and advisors",
+      "outcome": "Preserved the 2-year master's credential and 3-year PGWP eligibility; avoided losing 2 years of work authorization",
+      "lesson": "Before switching programs, always look for an in-program solution. The immigration cost of moving from a 2-year to a 1-year program (2 years of PGWP, significant CRS impact, 2-3 year PR delay) is often larger than the cost of working through an internal academic fix.",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student is unhappy in their current program and frames the question as 'should I switch programs to a shorter, more focused one?'",
+      "underlying_state": "Sunk cost avoidance combined with present-bias — the discomfort of the current program feels urgent and concrete, while the 2-3 year immigration delay is abstract and distant",
+      "how_it_manifests": "Student focuses entirely on academic fit and time-to-completion, never asks about PGWP or PR timeline implications of the switch",
+      "expert_move": "Reframe the decision as a two-dimensional optimization problem: academic fit AND immigration trajectory. Ask the student to calculate what 2 fewer years of PGWP actually costs them in CRS points and PR timeline before deciding.",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'I want to switch from my 2-year master's to a 1-year Graduate Certificate because the research direction isn't right for me — both are graduate-level so it should be fine'",
+      "reframe": "The question is not whether the programs are academically equivalent. The question is: what does each program's completion yield in PGWP years, and what does that mean for your PR timeline?",
+      "why_it_works": "Shifts the student from an academic evaluation frame to an immigration math frame, making the 2-year PGWP loss and its downstream effects concrete and calculable rather than invisible",
+      "example_language": "PGWP年限 = 你完成的项目的年限。学术上的最优解不一定是移民上的最优解。",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_canada_PGWP项目切换的大坑_差点损失两年work_permit",
+  "_source_regions": [
+    "canada"
+  ]
+}

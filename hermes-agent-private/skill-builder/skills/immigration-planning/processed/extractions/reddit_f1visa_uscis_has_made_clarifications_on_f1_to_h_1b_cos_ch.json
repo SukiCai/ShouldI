@@ -1,0 +1,231 @@
+{
+  "source_file": "f1visa_uscis_has_made_clarifications_on_f1_to_h_1b_cos_ch.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If your H-1B petition is filed as a Change of Status (COS) inside the US and is approved without consular processing, the $100,000 proclamation fee does NOT apply — even if you later travel abroad and reenter on the approved H-1B visa.",
+      "condition": "When an F-1 student on OPT files for H-1B COS while inside the US, the petition is approved, and the beneficiary later departs and returns on the valid H-1B visa...",
+      "action": "File as COS (not consular notification) and maintain valid status inside the US through adjudication to avoid the $100,000 fee trigger.",
+      "because": "USCIS clarification explicitly states the fee does not apply to petitions requesting COS/extension inside the US where the alien is granted the change, and subsequent travel on an approved H-1B visa does not retroactively trigger the fee.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If a COS petition is filed but the alien departs the US before adjudication, the $100,000 fee applies even if the petition was originally filed as COS.",
+      "condition": "When a beneficiary files for H-1B COS but then travels outside the US before the petition is adjudicated...",
+      "action": "Do not depart the US between filing a COS H-1B petition and its adjudication if you want to avoid triggering the $100,000 fee.",
+      "because": "USCIS explicitly states that if an alien departs prior to adjudication of a COS request, the Proclamation applies and the $100,000 payment must be paid.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether the H-1B petition requests consular notification vs. Change of Status",
+      "why_it_matters": "Consular notification or port-of-entry processing triggers the $100,000 fee for petitions filed on or after September 21, 2025; COS inside the US (if approved) does not.",
+      "how_to_assess": "Review the I-129 petition filing instructions and confirm with employer/attorney whether the petition is filed as COS or consular processing.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the beneficiary is physically inside or outside the US at time of petition filing",
+      "why_it_matters": "Beneficiaries outside the US without a valid H-1B visa are subject to the $100,000 fee on petitions filed after September 21, 2025.",
+      "how_to_assess": "Confirm physical presence and visa status at the exact time the petition is filed with USCIS.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the beneficiary departs the US before adjudication of a pending COS petition",
+      "why_it_matters": "Departure before adjudication converts the effective processing to consular-style and triggers the $100,000 fee requirement.",
+      "how_to_assess": "Track petition filing date, estimated adjudication timeline, and any planned travel before October 1 or before receipt of approval notice.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the beneficiary holds a previously issued and currently valid H-1B visa",
+      "why_it_matters": "Holders of previously valid H-1B visas are explicitly exempt from the Proclamation entirely.",
+      "how_to_assess": "Check passport for an unexpired H-1B visa stamp issued before September 21, 2025.",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Filing H-1B COS while on OPT inside the US",
+      "unstated_consequence": "If any travel is required before October 1 (e.g., family emergency, visa stamping trip), departing before adjudication retroactively triggers the $100,000 fee, turning a fee-exempt filing into a $100,000 liability.",
+      "who_it_affects": "F-1 OPT holders who have pending COS petitions and face urgent or unexpected international travel needs before adjudication.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing consular notification instead of COS on the H-1B petition",
+      "unstated_consequence": "For petitions filed after September 21, 2025, this explicitly triggers the $100,000 fee requirement even if the beneficiary is currently inside the US.",
+      "who_it_affects": "Beneficiaries or employers who prefer consular stamping for flexibility or who are advised to use consular notification without understanding the new fee implications.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming that any travel on F-1 status before the H-1B start date (Oct 1) is safe and does not affect the $100,000 fee applicability",
+      "why_it_happens": "Students conflate their current F-1 travel authorization with the status of their pending H-1B petition; the proclamation fee trigger is about the petition adjudication window, not the current visa type.",
+      "consequence": "Departing the US between filing and adjudication of a COS petition causes the petition to be treated as requiring consular processing, triggering the $100,000 fee.",
+      "warning_signs": [
+        "Asking 'I need to travel before Oct 1, does the $100K apply to me?'",
+        "Not distinguishing between travel under F-1 OPT vs. travel while a COS petition is pending"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Confusing visa stamping travel after H-1B approval with the fee trigger",
+      "why_it_happens": "The USCIS language is complex; students misread the clause about departing before adjudication as applying to any future international travel, including post-approval visa stamp trips.",
+      "consequence": "Unnecessary fear about traveling for visa stamping after COS approval, or conversely, incorrectly assuming post-approval travel is always fee-free without reading the full rule.",
+      "warning_signs": [
+        "Asking 'after getting H-1B, if I go out for stamping, will the fee apply?'",
+        "Relief expressed only after receiving clarification, suggesting the rule was not self-evident"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Was your H-1B petition filed before or after 12:01 a.m. ET on September 21, 2025?",
+      "what_it_reveals": "Petitions filed before this date are entirely exempt from the $100,000 proclamation fee regardless of any other factor.",
+      "follow_up_if_yes": "You are exempt — no $100,000 fee applies to your petition.",
+      "follow_up_if_no": "Proceed to assess petition type (COS vs. consular) and physical presence at filing.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your petition request a Change of Status (COS) inside the US, or consular notification / port-of-entry processing?",
+      "what_it_reveals": "COS petitions that are approved without the alien departing are exempt; consular/port-of-entry requests trigger the fee.",
+      "follow_up_if_yes": "COS path — verify you remain in the US and maintain valid status through adjudication.",
+      "follow_up_if_no": "Consular/POE path — $100,000 fee is required; confirm payment via pay.gov before filing.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have any planned or required international travel between the petition filing date and the expected adjudication date?",
+      "what_it_reveals": "Departure before adjudication of a COS petition triggers the $100,000 fee even if COS was the original filing type.",
+      "follow_up_if_yes": "Either delay travel until after adjudication, or prepare for the $100,000 fee requirement.",
+      "follow_up_if_no": "Maintain US presence through adjudication to preserve fee-exempt COS status.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you currently hold a valid (unexpired) H-1B visa stamp in your passport?",
+      "what_it_reveals": "Previously issued valid H-1B visas are explicitly excluded from the Proclamation entirely.",
+      "follow_up_if_yes": "You are exempt from the $100,000 fee — the Proclamation does not apply to your existing valid visa.",
+      "follow_up_if_no": "Continue assessing other eligibility factors for the fee.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The $100,000 H-1B fee applies to everyone filing for H-1B after September 21, 2025, including F-1 students on OPT doing a COS.",
+      "actual_reality": "The fee explicitly does NOT apply to COS petitions filed inside the US where the alien is granted the change or extension. F-1 students who file COS and remain in the US through adjudication are exempt.",
+      "implication": "F-1 OPT holders who file H-1B COS and do not depart before adjudication face no $100,000 fee, making COS the strongly preferred filing strategy for those already inside the US.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Once a COS H-1B is approved, any subsequent international travel (e.g., for visa stamping) will trigger the $100,000 fee.",
+      "actual_reality": "Post-approval travel to obtain a visa stamp does not trigger the fee. USCIS explicitly states that an alien whose COS petition is approved will not be considered subject to the payment if they subsequently depart and apply for a visa or reenter on the H-1B.",
+      "implication": "Beneficiaries of approved COS H-1B petitions can travel abroad for visa stamping without incurring the $100,000 fee, removing a major practical barrier to international travel after status change.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding which travel triggers the $100,000 fee",
+      "naive_pattern": "Assumes any international travel connected to the H-1B process (including post-approval stamping trips) triggers the fee; asks blanket questions like 'will the fee apply if I leave the US?'",
+      "informed_pattern": "Distinguishes between three distinct scenarios: (1) travel before petition filing, (2) departure before adjudication of pending COS, and (3) post-approval travel for stamping — and knows only scenario 2 triggers the fee for COS filers.",
+      "why_it_matters": "Conflating these scenarios leads either to unnecessary fee payment or to accidental fee triggering by departing during the adjudication window.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating petition filing strategy under the new Proclamation",
+      "naive_pattern": "Treats COS vs. consular notification as an interchangeable administrative preference with no major financial consequence.",
+      "informed_pattern": "Immediately recognizes that for post-September 21, 2025 petitions, COS (approved inside the US) is the only fee-exempt path, making it a $100,000 decision — not a mere administrative choice.",
+      "why_it_matters": "Selecting consular notification when COS is available exposes the employer to a $100,000 fee that was entirely avoidable.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The $100,000 fee applies to all H-1B petitions filed after September 21, 2025, regardless of how they are filed.",
+      "why_believed": "The Proclamation headline is framed as a broad fee on new H-1B petitions; the COS exemption is buried in conditional language that requires careful reading.",
+      "actual_rule": "The fee only applies to petitions involving beneficiaries outside the US without a valid H-1B visa, petitions requesting consular/POE processing, or COS petitions where the alien departs before adjudication. Approved in-country COS petitions are explicitly exempt.",
+      "real_consequence": "Employers or students who misread this may pay $100,000 unnecessarily, or may fail to preserve the COS filing strategy and accidentally trigger the fee through premature travel.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Leaving the US to get an H-1B visa stamp after COS approval will trigger the $100,000 fee.",
+      "why_believed": "The Proclamation language about 'departing the US' is conflated with the specific clause about departing before adjudication; students generalize the departure rule to any departure.",
+      "actual_rule": "USCIS explicitly clarifies that an alien whose COS petition is approved can subsequently depart to apply for a visa stamp and reenter on the H-1B without being subject to the $100,000 payment.",
+      "real_consequence": "Unnecessary fear of international travel after H-1B approval, potentially causing beneficiaries to avoid visits home or required consular appearances when they are actually permitted.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [],
+  "psychological_barriers": [
+    {
+      "trigger": "Questions like 'if I travel before Oct 1, does the $100K apply?' from students with pending or planned COS filings",
+      "underlying_state": "Catastrophizing and generalization anxiety — students fear that any border crossing will permanently and irreversibly trigger a $100,000 liability, causing decision paralysis around all international travel.",
+      "how_it_manifests": "Asking about travel scenarios that are actually exempt, seeking repeated reassurance, and expressing relief disproportionate to the complexity of the answer — suggesting baseline fear rather than informed uncertainty.",
+      "expert_move": "Break the question into three distinct scenarios (pre-filing travel, travel during pending adjudication, post-approval travel) and address each separately; make explicit that post-approval travel is explicitly protected by USCIS language.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Will the $100,000 fee apply to me if I travel outside the US in connection with my H-1B?",
+      "reframe": "The question is not whether you travel — it's when relative to adjudication and what type of processing your petition requested. The fee is about petition type and departure timing, not travel itself.",
+      "why_it_works": "Shifts the student from binary fear ('travel = fee') to a structured decision tree (petition type × timing × approval status), making the rule navigable rather than threatening.",
+      "example_language": "The Proclamation does not apply to a petition requesting COS inside the US where the alien is granted the change — and post-approval travel to get a stamp doesn't change that.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_f1visa_uscis_has_made_clarifications_on_f1_to_h_1b_cos_ch",
+  "_source_regions": [
+    "us"
+  ]
+}

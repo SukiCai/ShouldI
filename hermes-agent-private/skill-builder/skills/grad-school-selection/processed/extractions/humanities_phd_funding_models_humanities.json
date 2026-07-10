@@ -1,0 +1,313 @@
+{
+  "source_file": "phd_funding_models_humanities.txt",
+  "heuristics": [
+    {
+      "rule": "In humanities PhD programs, evaluate department funding guarantees before evaluating the advisor",
+      "condition": "When comparing humanities PhD offers...",
+      "action": "...ask 'What does the department guarantee for ALL PhD students, and for how many years?' before asking anything about the advisor's grants",
+      "because": "Humanities funding flows from departmental cohort packages, not from an individual advisor's grants — the STEM logic of 'does your advisor have an active grant?' is structurally irrelevant here"
+    },
+    {
+      "rule": "A 5-year funding package in humanities covers roughly half the degree — treat years 6–9 as an unplanned funding problem unless you have a concrete plan",
+      "condition": "When a humanities program offers a 5-year guaranteed funding package...",
+      "action": "...ask what percentage of students in recent cohorts finished within that window and what the department does for ABD students in years 6–8",
+      "because": "Median humanities time-to-degree is 8.4–9.5 years; a 5-year package is the norm, not a full coverage promise — most students face an unfunded gap that extends time-to-degree further"
+    },
+    {
+      "rule": "If a humanities advisor has not placed any students into tenure-track positions in the past 5 years, treat it as a red flag regardless of their personal prestige",
+      "condition": "When evaluating a potential humanities PhD advisor...",
+      "action": "...specifically ask how many students they have placed into tenure-track or visiting positions in the past 5 years",
+      "because": "Advisor letters and network relationships are a primary mechanism for academic job placement in humanities — an advisor who hasn't placed students recently may lack active field connections even if their own CV is strong"
+    },
+    {
+      "rule": "Negotiate teaching obligations by year, not just stipend amount, when evaluating humanities PhD offers",
+      "condition": "When comparing humanities program funding packages...",
+      "action": "...find out which years require teaching, how many sections per semester, and whether there is a dissertation writing fellowship year without teaching obligations",
+      "because": "Teaching in humanities requires 10–20 hours/week and directly extends time-to-degree; a higher stipend with heavier teaching obligations may cost more in total degree length than a lower stipend with a protected dissertation year"
+    },
+    {
+      "rule": "For humanities programs, ask for specific tenure-track placement numbers — not narrative language about career outcomes",
+      "condition": "When a humanities program describes placement outcomes using phrases like 'many students go on to academic careers'...",
+      "action": "...ask for the specific number of students placed into tenure-track or visiting positions from the past 3–5 cohorts",
+      "because": "Placement rates at even top-10 programs are 30–50%; vague language masks significant variation and program-specific decline in outcomes"
+    },
+    {
+      "rule": "If a humanities advisor takes more than 3 months to return dissertation chapter drafts, treat this as a structural advising problem, not a temporary one",
+      "condition": "When evaluating prospective advisors by speaking with their current students...",
+      "action": "...ask specifically how long it typically takes the advisor to return chapter drafts",
+      "because": "Slow manuscript feedback is one of the primary mechanisms through which humanities time-to-degree extends beyond the funding window — this adds unfunded years directly"
+    },
+    {
+      "rule": "In Canadian humanities programs, apply for SSHRC Doctoral Fellowships regardless of institutional funding — treat them as portable supplements that increase your total funded years",
+      "condition": "When enrolled in or applying to a Canadian humanities PhD program...",
+      "action": "...plan to apply for SSHRC Doctoral Fellowships ($20,000–$35,000 CAD/year) in addition to departmental funding",
+      "because": "SSHRC fellowships are portable across eligible Canadian universities and can materially extend the funded period beyond what the department guarantees"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Department funding guarantee (years and amount)",
+      "why_it_matters": "In humanities, this is the primary financial structure — it determines how many years you are insulated from funding gaps, which directly affects whether you finish the degree",
+      "how_to_assess": "Ask: 'What is the stipend amount and how many years is it guaranteed?' — get a written offer letter confirming this; also ask what percentage of recent cohorts finished within the window",
+      "weight": "high"
+    },
+    {
+      "factor": "Teaching obligation structure by year",
+      "why_it_matters": "Teaching 1–2 sections per semester at 10–20 hours/week competes directly with dissertation writing time and is a primary driver of time-to-degree extension",
+      "how_to_assess": "Ask which years require teaching, how many sections per semester, and whether there is any teaching-free dissertation writing year — compare across programs explicitly",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor job placement record",
+      "why_it_matters": "In humanities, the advisor's letters and network relationships with hiring committees are critical mechanisms for academic job placement — prestige alone does not substitute for active field connections",
+      "how_to_assess": "Ask the advisor directly: 'How many students have you placed into tenure-track or visiting positions in the past 5 years?' Cross-check with current students",
+      "weight": "high"
+    },
+    {
+      "factor": "Program prestige and institutional affiliation",
+      "why_it_matters": "Unlike STEM, humanities hiring committees filter by institutional affiliation at early screening stages — being from a top-10 program materially changes your probability of getting an academic job",
+      "how_to_assess": "Look at where tenure-track faculty at programs you aspire to work at received their PhDs; assess whether your target program appears in those hiring outcomes",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor manuscript return speed",
+      "why_it_matters": "Slow feedback directly extends time-to-degree, which translates into unfunded years — this is one of the most concrete operational predictors of how long you will actually take to finish",
+      "how_to_assess": "Ask current advisees: 'How long does it typically take to get feedback on a dissertation chapter?' — anything over 3 months is a red flag",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor advising load and administrative roles",
+      "why_it_matters": "An advisor in a senior administrative role (chair, dean) or advising too many students simultaneously cannot read manuscripts promptly, reducing effective advising quality",
+      "how_to_assess": "Ask how many students the advisor is currently advising and whether they hold significant administrative responsibilities; ask whether they are actively taking new students",
+      "weight": "medium"
+    },
+    {
+      "factor": "External fellowship infrastructure (Mellon, ACLS, Woodrow Wilson, FLAS)",
+      "why_it_matters": "External fellowships are the primary mechanism for funding the years beyond the departmental guarantee — programs with strong track records of student fellowship success have better funded completion rates",
+      "how_to_assess": "Ask: 'How many students currently hold external dissertation fellowships?' and 'Does the department have a completion fellowship for ABD students close to finishing?'",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor's subfield alignment with your project",
+      "why_it_matters": "In humanities, advisor prestige matters less if their work does not speak directly to yours — their conceptual guidance and letter credibility are weakened if they are tangential to your project",
+      "how_to_assess": "Read the advisor's recent publications; assess whether their methodological and topical concerns overlap meaningfully with your proposed project — not just the same period or region",
+      "weight": "medium"
+    },
+    {
+      "factor": "Alternative career path realism",
+      "why_it_matters": "With tenure-track placement rates of 30–50% even from top programs, a 9-year degree commitment requires modeling non-academic outcomes explicitly — this changes whether and where to apply",
+      "how_to_assess": "Research what alumni from the program who did not get tenure-track jobs are doing now; assess whether those outcomes are acceptable to you before committing",
+      "weight": "medium"
+    },
+    {
+      "factor": "Immigration pathway viability (for international students)",
+      "why_it_matters": "A 9-year degree with a geographically constrained academic job search creates compounding immigration uncertainty — OPT, H-1B timing, and work authorization all interact with an unpredictable job market",
+      "how_to_assess": "For Canadian programs: confirm PGWP eligibility for PhD graduates (3 years open work authorization); for US programs: map out realistic visa timelines against projected degree completion",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a fully funded 5-year humanities PhD offer",
+      "unstated_consequence": "The funding covers approximately half the actual median time-to-degree — years 6–9 must be funded through competitive external fellowships, adjuncting, or personal savings, none of which are guaranteed at application time",
+      "who_it_affects": "Students who model the degree as a 5-year commitment based on the funding package; international students whose visa status depends on enrollment continuity and funded status"
+    },
+    {
+      "choice": "Choosing a prestigious advisor with limited subfield alignment",
+      "unstated_consequence": "The advisor's letters carry institutional prestige but may lack the subfield credibility and hiring committee relationships that actually move applications forward at the job market stage — prestige and network relevance are not the same thing",
+      "who_it_affects": "Applicants who select advisors based on name recognition rather than active work in their specific subfield"
+    },
+    {
+      "choice": "Accepting a program with heavy teaching obligations in years 3–5",
+      "unstated_consequence": "Teaching 1–2 sections per semester at 10–20 hours/week systematically compresses dissertation writing time, adding 1–2+ unfunded years beyond the guaranteed window — the stipend may look competitive but the total cost in time is hidden",
+      "who_it_affects": "Students who compare programs by stipend amount alone without factoring in teaching load and its effect on completion time"
+    },
+    {
+      "choice": "Pursuing a humanities PhD at a non-top-10 program",
+      "unstated_consequence": "Humanities hiring committees filter by institutional affiliation at early screening stages — unlike STEM where strong publications can partially offset program rank, in humanities the program name shapes whether your application is reviewed at all",
+      "who_it_affects": "Students who assume that strong individual work will overcome institutional ranking, as is more plausible in STEM fields"
+    },
+    {
+      "choice": "Targeting an academic career in humanities without modeling non-academic outcomes",
+      "unstated_consequence": "A 9-year degree optimized for academic placement produces credentials (specialized dissertation, publication record in niche subfield) that are poorly legible to non-academic employers — the longer you stay, the narrower your non-academic options become",
+      "who_it_affects": "Students who begin the PhD with academic career as the primary goal but do not explicitly model the 50–70% probability of not achieving a tenure-track position"
+    },
+    {
+      "choice": "Selecting an advisor who is in a senior administrative role",
+      "unstated_consequence": "Administrative duties reduce manuscript reading time and field engagement — students with administratively overloaded advisors face slower feedback cycles, which directly extends time-to-degree into the unfunded years",
+      "who_it_affects": "Students who choose advisors based on reputation without verifying current advising availability"
+    },
+    {
+      "choice": "Pursuing a humanities PhD in the US as an international student",
+      "unstated_consequence": "The academic job market requires willingness to relocate anywhere nationally and internationally; immigration status ties you to institutional location; the combination of geographic constraint and OPT/H-1B timing creates compounding uncertainty across a 9-year timeline",
+      "who_it_affects": "International students with geographic constraints (family, partner visa, immigration pathway tied to specific regions)"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying STEM funding logic to a humanities PhD application — asking about advisor grants, treating advisor as the primary funding decision-maker",
+      "why_it_happens": "Most widely circulated PhD advice is written from a STEM perspective; international applicants from STEM-dominant undergraduate environments default to the advisor-first, grant-funded model they are familiar with",
+      "consequence": "Applicants ask the wrong questions during visits and negotiations, fail to probe department-level funding structures, and may choose programs based on advisor prestige without understanding that the advisor controls neither funding nor topic selection in humanities",
+      "warning_signs": [
+        "Asking 'does your advisor have an active grant?' when evaluating humanities programs",
+        "Prioritizing advisor name recognition over department funding guarantee and placement record"
+      ]
+    },
+    {
+      "pattern": "Treating a 5-year funding package as full degree coverage",
+      "why_it_happens": "The offer letter presents a specific guaranteed amount and duration; applicants anchor to this as the financial plan without researching actual median time-to-degree data for the field",
+      "consequence": "Students enter years 6–9 without a funding plan, are forced into adjunct teaching at low pay, and face compounding immigration and financial stress that extends time-to-degree further",
+      "warning_signs": [
+        "Not asking what percentage of recent cohorts finished within the funding window",
+        "Not asking what the department offers students in years 6–8"
+      ]
+    },
+    {
+      "pattern": "Selecting a humanities advisor based on personal prestige without verifying recent student placement record",
+      "why_it_happens": "Advisor prestige is visible and legible (publications, reputation, awards); student placement record requires asking direct questions that feel uncomfortable, especially at the application stage",
+      "consequence": "Students complete a degree under a prestigious advisor whose network has atrophied or whose letter relationships with hiring committees are not active in the relevant subfield — placement probability is lower than expected",
+      "warning_signs": [
+        "Advisor has not placed students into tenure-track positions in the past 5 years",
+        "Advisor is in a senior administrative role that limits field engagement"
+      ]
+    },
+    {
+      "pattern": "Accepting a humanities PhD offer without researching the actual academic job market in the specific subfield",
+      "why_it_happens": "Applicants anchor to optimistic aggregate statistics or program marketing language ('many students go on to successful careers') without requesting specific cohort-level placement data",
+      "consequence": "9-year commitment to a credential optimized for a job market that produces 200–400 openings nationally against 1,000+ annual PhDs — and finding out about the mismatch 6 years in",
+      "warning_signs": [
+        "Program describes placement outcomes in vague qualitative terms rather than specific numbers",
+        "Applicant has not looked up MLA or AHA job market reports before accepting an offer"
+      ]
+    },
+    {
+      "pattern": "Choosing a humanities advisor who is tangential to the applicant's actual project because of institutional or personal prestige",
+      "why_it_happens": "The advisor's name is prominent in the field broadly, even if not in the specific subfield — applicants conflate general field prominence with specific dissertation relevance",
+      "consequence": "Conceptual guidance is weaker; advisor letters for fellowships and jobs carry less subfield-specific credibility with reviewers who know the advisor's work is not directly relevant to the dissertation",
+      "warning_signs": [
+        "Advisor's recent publications do not engage the methodological or topical concerns of the proposed project",
+        "Advisor described the project as 'interesting' without engaging its specific scholarly stakes"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is this applicant coming from a STEM background or a STEM-dominant advising environment?",
+      "what_it_reveals": "Determines whether they are likely applying STEM-logic defaults (advisor-first, grant-funding model) to a humanities application context where those defaults produce wrong decisions",
+      "follow_up_if_yes": "Walk through the structural differences explicitly — especially that humanities advisors do not control funding and that department-level questions are the primary financial evaluation",
+      "follow_up_if_no": "Check whether they have received humanities-specific advice or are still relying on generic PhD application guides that embed STEM assumptions"
+    },
+    {
+      "question": "What is the applicant's career goal — tenure-track academic position specifically, or a broader set of outcomes?",
+      "what_it_reveals": "Determines how much program prestige and advisor placement record should dominate the decision versus other factors; also determines whether the 9-year time-to-degree and geographic job market constraint are acceptable",
+      "follow_up_if_yes": "Academic career as primary goal — then program rank, advisor placement record, and external fellowship infrastructure should dominate the evaluation; advise them to research MLA/AHA placement data by program",
+      "follow_up_if_no": "Non-academic career acceptable — then evaluate whether the specific subfield credential and publication profile produced by the program are legible to target non-academic employers, and whether 9 years is worth the investment for those outcomes"
+    },
+    {
+      "question": "What percentage of students in the program's most recent 3 cohorts finished within the guaranteed funding window?",
+      "what_it_reveals": "The most concrete indicator of how realistic the program's funding model is relative to actual completion behavior — programs where most students exceed the funding window are implicitly promising less than the offer letter suggests",
+      "follow_up_if_yes": "Most finish within the window — ask what distinguishes those students (fellowship support, advisor feedback speed, teaching load) to assess whether those conditions apply to you",
+      "follow_up_if_no": "Most exceed the window — ask what the department concretely offers students in years 6–8 and how many students currently hold external dissertation fellowships"
+    },
+    {
+      "question": "How many students is the prospective advisor currently advising, and are they in a significant administrative role?",
+      "what_it_reveals": "Predicts the advisor's practical availability for manuscript reading and mentorship — advising load and administrative duties are the primary operational constraints on feedback speed, which directly affects time-to-degree",
+      "follow_up_if_yes": "High advising load or administrative role — ask current students how long it takes to get chapter feedback; if over 3 months, treat as a structural problem",
+      "follow_up_if_no": "Low load and no major administrative role — verify by asking current students whether the advisor is actively engaged and returning drafts on a reasonable timeline"
+    },
+    {
+      "question": "What is the applicant's immigration situation, and does their visa pathway depend on continuous funded enrollment or geographic flexibility?",
+      "what_it_reveals": "Determines how heavily funding gap risk and geographic job market constraints compound — for international students, unfunded years and a national job search requiring relocation anywhere create immigration pathways that may be structurally incompatible",
+      "follow_up_if_yes": "Immigration pathway requires continuous funding or geographic constraints exist — weight programs with longer guaranteed funding windows and stronger external fellowship track records much more heavily; consider Canadian programs with PGWP pathway",
+      "follow_up_if_no": "Flexible immigration situation — standard evaluation criteria apply, though time-to-degree risk remains relevant regardless of immigration status"
+    },
+    {
+      "question": "Has the applicant read the specific advisor's recent publications, or are they selecting the advisor based on reputation alone?",
+      "what_it_reveals": "Distinguishes applicants who have verified actual subfield alignment from those selecting on prestige — in humanities, advisor relevance to the specific project is a distinct variable from advisor general prominence",
+      "follow_up_if_yes": "Has read recent work — ask whether the advisor's methodological and topical concerns genuinely overlap with the proposed project, not just the same period or region",
+      "follow_up_if_no": "Has not read recent work — advise them to read 2–3 recent articles or the most recent book before contact; an advisor whose recent work is methodologically or topically distant from the project is a weaker fit than their reputation suggests"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PhD funding advice works the same across disciplines — evaluate the advisor's grants and lab first",
+      "actual_reality": "In humanities, funding flows from departmental cohort packages, not advisor grants — the advisor has little or no discretion over your funding, making the STEM advisor-first logic structurally wrong",
+      "implication": "Humanities applicants should interrogate department-level funding guarantees, teaching obligation structures, and completion fellowship availability rather than asking about advisor grants"
+    },
+    {
+      "common_belief": "A 5-year funded humanities PhD offer means you can complete the degree in 5 years with funding",
+      "actual_reality": "Median humanities time-to-degree is 8.4–9.5 years; a 5-year funding package covers roughly 55% of the typical completion timeline — years 6–9 require competitive external fellowships, adjuncting, or personal savings",
+      "implication": "Applicants should explicitly ask what happens in years 6–8, what percentage of recent cohorts finished within the funding window, and what the department's dissertation completion fellowship looks like before accepting any offer"
+    },
+    {
+      "common_belief": "Strong individual research can overcome program rank in the academic job market",
+      "actual_reality": "Humanities hiring committees routinely filter applications by institutional affiliation at early screening stages — unlike STEM, where strong publications can partially offset program rank, humanities program prestige shapes whether applications are reviewed at all",
+      "implication": "Applicants targeting tenure-track academic careers in humanities should weight program rank more heavily than is common advice in domain-general PhD application guides"
+    },
+    {
+      "common_belief": "A prestigious advisor ensures strong job market outcomes",
+      "actual_reality": "Advisor job placement record (specific students placed into tenure-track positions) and subfield alignment are distinct from personal prestige — an advisor can be prominent while having placed no students recently or while working in a tangential subfield",
+      "implication": "Ask directly how many students the prospective advisor has placed into tenure-track positions in the past 5 years, and verify that their recent work actually engages your project's scholarly concerns"
+    },
+    {
+      "common_belief": "Tenure-track academic placement is a realistic outcome from a humanities PhD at a good program",
+      "actual_reality": "English PhD programs produce approximately 1,000 PhDs per year against 200–400 tenure-track openings — placement rates at even top programs are 30–50%; this is a structural supply/demand imbalance, not a temporary market condition",
+      "implication": "Every humanities PhD applicant should explicitly model non-academic career paths before committing to the degree, and assess whether those paths are acceptable outcomes given a 9-year time investment"
+    },
+    {
+      "common_belief": "Teaching assistantships are a minor component of the PhD experience",
+      "actual_reality": "Humanities PhD students typically teach 1–2 sections per semester in years 3–5, requiring 10–20 hours per week — this is a substantial work obligation that directly competes with dissertation writing and is the primary mechanism through which time-to-degree extends beyond the funding window",
+      "implication": "Teaching load is a first-order variable in program evaluation, not a footnote — negotiate which years require teaching and whether any year is protected as a dissertation-only fellowship year"
+    },
+    {
+      "common_belief": "Canadian humanities PhD programs have better immigration outcomes because of program quality",
+      "actual_reality": "Canadian programs offer a structurally different immigration advantage through the Post-Graduation Work Permit (PGWP), which provides 3 years of open work authorization after PhD completion — this pathway is more predictable than US OPT/H-1B for international students facing an uncertain job market timeline",
+      "implication": "International students should explicitly compare US vs. Canadian programs on immigration pathway predictability, not just funding and prestige — the PGWP pathway may materially reduce immigration risk over a 9-year degree timeline"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they evaluate funding",
+      "junior_pattern": "Compares stipend amounts across programs and accepts the highest offer or the longest guaranteed years at face value",
+      "senior_pattern": "Asks what percentage of recent cohorts finished within the guaranteed window, maps the teaching obligation structure year-by-year, and identifies the gap between funding coverage and median time-to-degree",
+      "why_it_matters": "A nominally generous offer with heavy teaching obligations and no dissertation completion fellowship may be worse than a lower stipend with protected dissertation years — the gap only becomes visible when you examine actual completion data"
+    },
+    {
+      "dimension": "How they evaluate the advisor",
+      "junior_pattern": "Selects the most prominent name in the field, or the advisor who has published most visibly, treating general prestige as a proxy for advising quality and job market support",
+      "senior_pattern": "Asks specifically how many students the advisor has placed into tenure-track positions in the past 5 years, verifies subfield alignment by reading recent publications, asks current students about manuscript return speed, and checks whether the advisor is in an administrative role that limits availability",
+      "why_it_matters": "Prestige and active placement support are distinct variables — an advisor whose network has atrophied or who is administratively overloaded can have a strong CV while being a poor practical choice"
+    },
+    {
+      "dimension": "How they assess job market risk",
+      "junior_pattern": "Accepts program marketing language about career outcomes ('many students go on to successful careers') and assumes that hard work and strong scholarship will produce tenure-track placement",
+      "senior_pattern": "Requests specific cohort-level placement data, cross-references with MLA/AHA job market reports, models the non-academic path explicitly, and enters the degree with a clear-eyed view of 30–50% tenure-track placement probability even from top programs",
+      "why_it_matters": "A 9-year commitment entered on optimistic assumptions about a structurally constrained job market produces credential lock-in and financial strain — the decision should be made with realistic outcome probabilities, not aspirational ones"
+    },
+    {
+      "dimension": "How they apply domain-general PhD advice",
+      "junior_pattern": "Applies standard PhD application advice (advisor-first, grant-funding model, 5-year completion timeline) to humanities programs without recognizing that this advice is STEM-derived and structurally mismatched",
+      "senior_pattern": "Recognizes that humanities PhD structure — department-controlled funding, self-proposed research topics, extended time-to-degree, teaching-heavy later years — requires a different evaluative framework and explicitly rejects STEM-logic defaults",
+      "why_it_matters": "Using the wrong framework produces systematically wrong questions, wrong comparisons, and wrong program choices — the error is not about information but about recognizing that the domain requires different heuristics"
+    },
+    {
+      "dimension": "How they handle teaching obligation negotiation",
+      "junior_pattern": "Treats the teaching assistantship as a background condition of the offer, not a negotiable or analytically important variable",
+      "senior_pattern": "Maps teaching obligations year-by-year across competing offers, asks whether any year is protected as a dissertation fellowship year without teaching, and models the time-to-degree implications of different teaching load structures",
+      "why_it_matters": "Teaching load is one of the primary drivers of whether a student finishes within or outside the funded window — treating it as a background condition rather than a first-order variable means accepting avoidable time-to-degree risk"
+    },
+    {
+      "dimension": "How they think about immigration risk for international students",
+      "junior_pattern": "Treats immigration planning as something to figure out later, assumes the academic job market will produce a solution (a tenure-track position with H-1B sponsorship), and does not compare US vs. Canadian programs on immigration pathway structure",
+      "senior_pattern": "Maps the interaction between 9-year time-to-degree, OPT/H-1B timing, geographic job market constraint, and immigration pathway predictability before accepting an offer; explicitly weights Canadian PGWP pathway as a risk-reduction option",
+      "why_it_matters": "For international students, immigration risk compounds across the full degree timeline — an 8–9 year degree with an uncertain and geographically constrained job market can produce visa cliff edges that are structurally predictable but rarely modeled at the application stage"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "humanities_phd_funding_models_humanities",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Reddit community data scraper for skill-builder.
 
-Scrapes immigration-relevant subreddits using PRAW (Reddit API) and writes
-clean_community.py-compatible files to raw/community/reddit/.
+Scrapes immigration-relevant subreddits using PRAW (Reddit API) or httpx
+(no credentials needed via old.reddit.com) and writes files to
+raw/community/reddit/.
 
-Credentials: set REDDIT_CLIENT_ID + REDDIT_CLIENT_SECRET + REDDIT_USER_AGENT
-environment variables, or pass --client-id / --client-secret flags.
-If no credentials are available, --demo generates realistic synthetic posts.
+Priority order:
+  1. PRAW — if REDDIT_CLIENT_ID + REDDIT_CLIENT_SECRET are set
+  2. httpx — scrapes old.reddit.com directly, no API credentials needed
+  3. --demo — generates realistic synthetic posts (for development only)
 
 Usage:
     python scripts/scrape_reddit.py --skill immigration-planning
@@ -20,6 +22,7 @@ import os
 import re
 import sys
 from datetime import datetime
+from html import unescape
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -33,6 +36,24 @@ SKILL_SUBREDDITS: dict[str, list[str]] = {
         # Canada-focused
         "ImmigrationCanada", "canadaimmigration", "cscareerquestionsCAD",
     ],
+    "grad-school-selection": [
+        "gradadmissions", "PhD", "GradSchool", "cscareerquestions", "AskAcademia",
+    ],
+    "job-search-strategy": [
+        "cscareerquestions", "jobs", "recruitinghell", "cscareerquestionsCAD", "f1visa",
+    ],
+    "pm-career": [
+        "ProductManagement", "ExperiencedDevs", "cscareerquestions",
+        "cscareerquestionsCAD",
+    ],
+    "salary-negotiation": [
+        "cscareerquestions", "ExperiencedDevs", "personalfinance",
+        "cscareerquestionsCAD", "PersonalFinanceCanada",
+    ],
+    "stay-or-return": [
+        "f1visa", "cscareerquestions", "ImmigrationIndia",
+        "ImmigrationCanada", "cscareerquestionsCAD",
+    ],
 }
 
 # Regions implied by each subreddit — used to tag output files for extract.py
@@ -44,6 +65,19 @@ SUBREDDIT_REGIONS: dict[str, list[str]] = {
     "ImmigrationCanada": ["canada"],
     "canadaimmigration": ["canada"],
     "cscareerquestionsCAD": ["canada"],
+    # grad-school-selection
+    "gradadmissions": ["us", "canada"],
+    "PhD": ["us", "canada"],
+    "GradSchool": ["us", "canada"],
+    "AskAcademia": ["us", "canada"],
+    # pm-career / salary-negotiation / stay-or-return
+    "ProductManagement": ["us", "canada"],
+    "ExperiencedDevs": ["us", "canada"],
+    "personalfinance": ["us", "canada"],
+    "ImmigrationIndia": ["us"],
+    # job-search-strategy
+    "jobs": ["us", "canada"],
+    "recruitinghell": ["us", "canada"],
 }
 
 # ── Minimum upvotes to include a post / comment ──────────────────────────────
@@ -148,6 +182,110 @@ def scrape_with_praw(subreddits: list[str], posts_per_sub: int,
             written.append(path)
             count += 1
             print(f"    [{count}] {post.title[:70]} ({post.score} upvotes)")
+
+    return written
+
+
+# ── httpx scraper (no credentials needed) ───────────────────────────────────
+
+def scrape_with_httpx(subreddits: list[str], posts_per_sub: int,
+                      out_dir: Path) -> list[Path]:
+    try:
+        import httpx
+    except ImportError:
+        sys.exit("httpx not installed. Run: pip install httpx")
+
+    HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    }
+
+    written: list[Path] = []
+    scraped_at = datetime.utcnow().strftime("%Y-%m-%d")
+
+    for sub_name in subreddits:
+        print(f"  Scraping r/{sub_name} via httpx (old.reddit.com)…")
+        listing_url = f"https://old.reddit.com/r/{sub_name}/top/?t=year"
+        try:
+            resp = httpx.get(listing_url, headers=HEADERS,
+                             follow_redirects=True, timeout=20)
+        except Exception as e:
+            print(f"    Warning: could not access r/{sub_name}: {e}")
+            continue
+
+        if resp.status_code != 200:
+            print(f"    Warning: r/{sub_name} returned {resp.status_code}")
+            continue
+
+        # Extract post thread URLs
+        thread_urls = re.findall(
+            rf'href="(/r/{sub_name}/comments/[^"]+)"',
+            resp.text,
+        )
+        thread_urls = list(dict.fromkeys(thread_urls))[: posts_per_sub * 2]
+
+        # Extract post titles (parallel list with thread_urls)
+        raw_titles = re.findall(
+            r'data-event-action="title"[^>]*>([^<]{5,})</a>', resp.text
+        )
+        titles = [unescape(t) for t in raw_titles]
+
+        count = 0
+        for i, thread_url in enumerate(thread_urls):
+            if count >= posts_per_sub:
+                break
+            title = titles[i] if i < len(titles) else "Unknown thread"
+            full_url = f"https://old.reddit.com{thread_url}"
+
+            try:
+                tr = httpx.get(full_url, headers=HEADERS,
+                                follow_redirects=True, timeout=20)
+            except Exception as e:
+                print(f"    Warning: could not fetch {thread_url}: {e}")
+                continue
+            if tr.status_code != 200:
+                continue
+
+            # Extract all usertext-body blocks (first = post, rest = comments)
+            blocks = re.findall(
+                r'class="usertext-body[^"]*"[^>]*>.*?<div class="md">(.*?)</div>',
+                tr.text, re.DOTALL,
+            )
+            if not blocks:
+                continue
+
+            body_text = re.sub(r"<[^>]+>", "", blocks[0]).strip()
+            body_text = unescape(body_text)
+
+            comments: list[tuple[str, int]] = []
+            for cb in blocks[1:MAX_COMMENTS_PER_POST + 1]:
+                text = unescape(re.sub(r"<[^>]+>", "", cb).strip())
+                if len(text) > 30:
+                    comments.append((text, 0))  # score not available in HTML
+
+            if not body_text and not comments:
+                continue
+
+            content = _format_post(
+                subreddit=sub_name,
+                title=title,
+                body=body_text or "[link post]",
+                score=0,
+                url=f"https://reddit.com{thread_url}",
+                comments=comments,
+                scraped_at=scraped_at,
+            )
+
+            fname = f"{sub_name}_{_slug(title)[:50]}.txt"
+            path = out_dir / fname
+            path.write_text(content, encoding="utf-8")
+            written.append(path)
+            count += 1
+            print(f"    [{count}] {title[:70]}")
 
     return written
 
@@ -741,6 +879,370 @@ The lesson I'm paying in anxiety: don't assume immigration commitments are safe 
             ("Have you documented any written communications about the sponsorship? Even Slack messages could support a promissory estoppel claim in some jurisdictions.", 112),
         ],
     },
+    # ═══════════════════════════════════════════════════════════
+    # grad-school-selection
+    # ═══════════════════════════════════════════════════════════
+    {
+        "subreddit": "gradadmissions",
+        "title": "Ranking vs advisor: I chose the wrong one and want to warn you",
+        "score": 1843,
+        "url": "https://reddit.com/r/gradadmissions/comments/gs_demo1",
+        "body": """I'm finishing year 4 of a PhD at a top-5 program in my field and I'm miserable. Not because of the work — because of my advisor. I chose the program over a rank-15 offer because the name was better. I didn't have a specific advisor in mind when I accepted.
+
+Year 1: rotations. My first-choice advisor took 1 other student instead of me (her lab was full). Second choice was fine but his grant got cut. I ended up with my third rotation advisor who I'd never really considered seriously.
+
+Year 2-4: classic Ghost advisor situation. We meet maybe 4 times a year. He doesn't read my drafts for months. I have no publication. My funding is TA (not RA) which means 15 hrs/week teaching on top of research. Several lab members have left without finishing.
+
+The rank-15 program I turned down: I just checked and my would-have-been advisor there placed 5 of her last 6 graduates in faculty/industry research positions. She publishes 3-4 papers/year with student co-authorship. She has a 5-year guaranteed fellowship.
+
+I chose a name. I should have chosen a person.
+
+What I wish someone had told me:
+1. The advisor IS the program. Department rank is background noise.
+2. "Very independent" in student reviews = Ghost advisor. It's never a compliment.
+3. 3+ advisors per program isn't overkill — it's insurance. Bandwidth changes between app and admission.
+4. Call former students who LEFT the lab. They tell you what current ones won't.
+5. Ask: "Where are your last 5 graduates?" If they can't answer easily, that's the answer.""",
+        "comments": [
+            ("This is one of the most important posts I've seen here. The advisor IS the program. Every ranking-obsessed person on this sub needs to read this.", 723),
+            ("The 'very independent' euphemism is so real. I've started mentally replacing it with 'abandoned' in my head when I read student reviews.", 567),
+            ("Counterpoint worth adding: even within the same lab, students have different experiences. Calling FORMER students — not just current ones — is the only way to get the unfiltered version.", 412),
+            ("I made the same mistake. Rank-8 over rank-22. My advisor turned out to be pre-tenure and got denied tenure in year 3 of my PhD. Had to scramble for a new advisor. Lost a year.", 389),
+            ("What's your plan now? Can you switch advisors within the department or are you considering leaving?", 234),
+            ("For anyone reading this: when you're interviewing at a program, ask 'can you name the last 3 people who left the lab before finishing?' If they get defensive, that's information.", 198),
+        ],
+    },
+    {
+        "subreddit": "PhD",
+        "title": "My advisor's grant ran out in year 3. Here's what no one tells you about RA funding",
+        "score": 1127,
+        "url": "https://reddit.com/r/PhD/comments/gs_demo2",
+        "body": """RA (Research Assistant) funding sounds like the gold standard — you get paid to do your own research. But there's a version of RA funding that's much riskier than it sounds: when your stipend comes entirely from your advisor's active grants, not from department funds.
+
+My situation: accepted a fully funded PhD with RA funding. Didn't ask WHERE the RA funding came from. Year 3, my advisor's NSF grant ended and the renewal got rejected. Suddenly my advisor told me she could only fund me for 2 more semesters while she resubmitted.
+
+Things I didn't know to ask before accepting:
+- Is funding guaranteed by the DEPARTMENT for X years regardless of my advisor's grant status?
+- What happens to students if the advisor loses funding?
+- Does the department have a bridge funding policy?
+
+Questions that WOULD have surfaced this:
+- "Is my stipend guaranteed for 4-5 years, or is it contingent on your current grants?"
+- "What happened to the students whose funding came from your previous NSF grant when it ended?"
+
+The difference between safe and unsafe RA funding:
+SAFE: Department guarantees 5 years, advisor's grant covers cost — you're protected.
+UNSAFE: All funding flows through advisor's active grant with no department backstop.
+
+I ended up okay — my advisor got a bridge grant and I finished — but I spent 8 months in real financial and academic anxiety that I didn't need to be in. Ask the question before you sign.""",
+        "comments": [
+            ("The question 'is my funding guaranteed by the DEPARTMENT or contingent on your grants' is one every admitted student should ask before accepting. Brilliant framing.", 489),
+            ("Adding to this: TA funding is actually more stable than grant-dependent RA funding in many departments. TA = department budget, not advisor's external grants. Different risk profile.", 356),
+            ("I asked my advisor this exact question during my visit and she seemed offended. But I'm glad I asked — her answer revealed the funding was grant-contingent. I chose a different offer.", 287),
+            ("Pre-tenure advisors face an even bigger version of this risk. If they don't get tenure and leave the university, you need a new advisor OR you follow them (if they go somewhere else). Most people don't think about this until it happens.", 234),
+            ("The offer letter language matters a lot here. 'Funding is available for X years subject to satisfactory progress and availability of funds' is very different from 'The department guarantees X years of funding.' Read it carefully.", 198),
+        ],
+    },
+    {
+        "subreddit": "GradSchool",
+        "title": "I spent $180K on an unfunded MS from a top school. Honest reflection 3 years later.",
+        "score": 934,
+        "url": "https://reddit.com/r/GradSchool/comments/gs_demo3",
+        "body": """Three years post-graduation, I want to give an honest accounting of my unfunded MS decision because I see so many people about to make the same one.
+
+Background: I was admitted to a top-10 CS MS program (unfunded, $65K/year) and a rank-30 CS PhD program (funded, $32K/year stipend). I chose the MS because of the "brand name" and because I didn't feel ready for a PhD.
+
+Total cost of MS: ~$180K (tuition + living in an expensive city). No federal loans for international students, so I used family savings.
+
+What I got: degree from a well-known school, some industry connections from on-campus recruiting, and a software engineering job I probably could have gotten with my undergrad degree.
+
+What I thought I'd get but didn't:
+- The "name" doesn't matter as much as people think after your first job
+- Recruiting happened through OCI (on-campus interviews) — same companies recruit at state schools
+- The MS networking lasted about 6 months before the alumni connection faded
+- My colleagues from the rank-30 PhD program are now 3 years ahead of me in seniority (they started working while I was in school)
+
+What actually matters in CS hiring: your portfolio, your interview skills, and early experience. The $180K bought me 18 months of credential signaling that decayed quickly.
+
+Would I do it again? No. I would do the funded PhD (if I wanted research) or just recruit straight from undergrad (if I wanted industry). The unfunded MS occupies an awkward middle ground that costs the most and delivers the least durable value.
+
+Not saying it's wrong for everyone. Just saying: model the ROI before you commit. Don't buy prestige on credit.""",
+        "comments": [
+            ("This is the post I wish existed when I was making this decision. The ROI math on unfunded MS is brutal when you actually do it, especially for international students with no federal loan access.", 567),
+            ("The point about PhD peers being 3 years ahead in seniority is underrated. If you go industry anyway, the funded PhD costs you nothing and gives you more options.", 423),
+            ("Counterpoint: some industries (finance, consulting) do care significantly about the MS brand even past the first job. But even then — have you actually verified this with people who work in those industries, or is it received wisdom?", 312),
+            ("The other thing no one mentions: unfunded MS students don't get the TA/RA experience that builds actual research and teaching skills. You're paying to take classes. The PhD students are building a professional track record.", 278),
+            ("As someone who did the funded PhD at a rank-35 school: my advisor placed me at a FAANG company. No one at FAANG cares that my program wasn't top-10. They cared about my publications and what I could do.", 234),
+        ],
+    },
+    {
+        "subreddit": "cscareerquestions",
+        "title": "Industry PhD vs academic PhD in CS/ML — the real differences nobody explains",
+        "score": 2341,
+        "url": "https://reddit.com/r/cscareerquestions/comments/gs_demo4",
+        "body": """I have a CS PhD and have worked at both a university lab and an industry research lab. Here's what I actually see as the differences that matter for choosing between academic and industry-track programs:
+
+ACADEMIC PhD (aiming for professor/academic researcher):
+- What you optimize for: top venue publications (NeurIPS, ICML, CVPR, etc.), citation count, original contribution
+- Advisor matters more: they write your reference letters for faculty jobs
+- Program prestige matters more: top-5 programs dominate academic hiring in CS
+- Timeline: 5-6 years, sometimes longer
+- Salary after: $120-180K starting faculty (with massive variance); postdoc = $55-75K for 1-3 years first
+- Key risk: academic job market in CS is competitive even from top programs; have a backup plan
+
+INDUSTRY PhD (aiming for research scientist / applied scientist at tech company):
+- What you optimize for: publications still matter, but also internship track record, applied relevance
+- Advisor matters differently: their industry connections and internship pipeline matter more than academic prestige
+- Program prestige matters less: FAANG and top AI labs recruit from a wider range of PhD programs than academic jobs do
+- Timeline: 4-5 years, more structured
+- Salary after: $200-350K TC at major tech companies
+- Key factor: has your advisor placed students at Google, Meta, Apple, OpenAI, etc.? Check LinkedIn.
+
+THE THING MOST APPLICANTS MISS:
+If you're aiming for industry research, the advisor's industry network and internship access matters more than their h-index. An advisor who sends 3 interns/year to Google Brain places students differently than an equally-cited advisor who has no industry connections.
+
+Ask during visits: "Where did your students intern? Which ones ended up at industry labs?" That's the signal.
+
+For pure software engineering (not research): a funded PhD usually isn't worth the 4-5 year opportunity cost vs. direct industry entry. The PhD premium is real for research roles; it barely exists for SWE roles.""",
+        "comments": [
+            ("The advisor industry network point is so undervalued. I've seen students at rank-20 programs get OpenAI offers because their advisor had direct collaborations there. Meanwhile rank-5 students with no industry-connected advisors are in postdoc limbo.", 987),
+            ("Adding a nuance: 'industry research' is itself a spectrum. Applied Scientist at Amazon and Research Scientist at DeepMind are very different roles with very different PhD requirements.", 678),
+            ("The SWE point needs emphasis. If you're going to end up as a software engineer, a 4-year funded PhD gives you $32K/year when you could be making $150K+. The math rarely works out in PhD's favor for pure SWE paths.", 534),
+            ("One more thing: industry PhD programs (like at Google, Meta, Microsoft) exist now too. Different from a university PhD — less publication pressure, more applied, co-supervised with industry researcher. Worth looking into if you want industry research.", 423),
+            ("The internship pipeline is the metric I use when evaluating programs now. If an advisor can't name where their last 5 students interned, that tells you something about their industry engagement.", 312),
+        ],
+    },
+    {
+        "subreddit": "AskAcademia",
+        "title": "Pre-tenure advisor risk: what I learned when my advisor didn't get tenure",
+        "score": 678,
+        "url": "https://reddit.com/r/AskAcademia/comments/gs_demo5",
+        "body": """My advisor was denied tenure in year 3 of my PhD. I want to share what happened and what I wish I'd known, because pre-tenure advisor risk is almost never discussed in PhD application advice.
+
+Context: she was excellent — highly productive, 3+ papers/year, good mentor, secured two grants. She was denied tenure partly for political reasons I won't go into. It happens more than people think.
+
+What happened to her students:
+- 2 students moved with her to her new university (she got a position elsewhere)
+- 1 student switched to another advisor in the same department and lost about 8 months
+- I was in year 3 and chose to stay at my home institution with a new advisor — lost about a year of progress
+
+What I wish I'd known:
+1. Ask about tenure trajectory before accepting. "Is your advisor pre-tenure?" should be a standard question. First 1-3 years on faculty = higher risk.
+2. Moving with an advisor is possible but complicated (different state, visa status, program requirements differ by institution)
+3. Switching advisors within department loses time — new advisor needs to get up to speed, relationships need to be rebuilt
+4. Even if she was "excellent," pre-tenure = real institutional risk
+
+Pre-tenure advisors aren't always bad. They can be high-touch, passionate, and growing faster than tenured faculty. But you should price in the risk explicitly.
+
+Questions to ask: "When is your tenure review? What's the typical trajectory in this department? Have you had students finish under your supervision yet?"
+
+The last question is the most important. A pre-tenure advisor who has already graduated students has proven they can do it. First cohort = more risk.""",
+        "comments": [
+            ("This happened to someone in my program too. The rule I now tell everyone: pre-tenure advisor is fine, but ask 'have you graduated students before?' If this is their first cohort, you're taking on institutional risk alongside all the normal PhD risk.", 312),
+            ("Worth adding: some universities have formal policies about what happens to students if an advisor leaves or is denied tenure. Ask the DGS (Director of Graduate Studies) what the department's policy is. Some places have real protections; some don't.", 267),
+            ("The flip side: I had a pre-tenure advisor who was extremely invested in my success because his tenure case partly depended on student outcomes. I got more mentorship than my friends with tenured advisors. High variance, not always bad.", 198),
+            ("For international students: switching advisors mid-PhD can have visa implications if it delays your defense date past your anticipated graduation, which affects OPT timing. Something most people don't think about until it's a problem.", 167),
+            ("My question when evaluating pre-tenure advisors now: 'What's your plan if tenure doesn't go through?' Not a rude question — a serious one. A good advisor will have a thoughtful answer.", 134),
+        ],
+    },
+    # ── job-search-strategy ───────────────────────────────────────────────
+    {
+        "subreddit": "cscareerquestions",
+        "title": "Cold email got me my job — actual template that worked (international student on OPT)",
+        "score": 1243,
+        "url": "https://reddit.com/r/cscareerquestions/comments/jss_demo1",
+        "body": """I'm an international student who graduated in May, spent 2 months applying through job boards with no results, then switched to cold outreach and got 3 interviews and 1 offer in 6 weeks. Here's what actually worked.
+
+THE EMAIL THAT GOT RESPONSES (template):
+
+Subject: Quick question about [Company]'s [specific team/product]
+
+Hi [Name],
+
+I've been following [Company]'s work on [specific thing] — your recent [blog post/talk/paper] on [topic] was one of the clearest things I've read on [subject].
+
+I'm a recent grad from [University] with a background in [area]. I built [one-line project] and I'm specifically interested in the kind of [specific problems] your team works on.
+
+Would you have 20 minutes for a call sometime in the next few weeks?
+
+[Name]
+
+WHAT DIDN'T WORK BEFORE:
+- Applying through job portals (maybe 1% callback rate)
+- Emailing HRs directly (HRs filter for sponsorship, often no response)
+- Long emails (anything over 150 words gets skimmed to death)
+- Asking for a job in the first email (instant close)
+
+WHAT ACTUALLY WORKED:
+- Finding the actual hiring manager on LinkedIn (not recruiter, not HR)
+- Referencing something specific they wrote or did
+- Keeping it under 100 words
+- Asking ONLY for a call, not for a job
+- Following up exactly twice more (day 4 and day 9)
+
+For international students specifically: I never mentioned visa/OPT in the first email. I mentioned it only when the call started turning into a real opportunity. By then they were interested in me as a person first.
+
+Response rate went from ~1% (job boards) to ~18% (this approach).""",
+        "comments": [
+            ("The 'don't mention visa in the first email' advice is counterintuitive but correct. By the time you've had a conversation, the person is invested in you. Opening with 'I need sponsorship' immediately triggers rejection before they even read your skills.", 456),
+            ("The 'ask for a call not a job' framing is the most important thing in this post. You're asking for a low-commitment 20 minutes. Every ask is for the next small step only.", 389),
+            ("What did you say when they asked about sponsorship on the call? That's where I always get stuck.", 267),
+            ("Follow-up timing is key. Day 4 and day 9 after first email — if nothing after three touches, move to a different person at the same company.", 198),
+            ("The manager vs. HR targeting tip is huge. Managers hire because they have a problem to solve. HR screens because they have quotas. Very different conversations.", 176),
+        ],
+    },
+    {
+        "subreddit": "recruitinghell",
+        "title": "Body shop offered to 'sponsor my H-1B' — everything about it was a scam",
+        "score": 2341,
+        "url": "https://reddit.com/r/recruitinghell/comments/jss_demo2",
+        "body": """Story time. This is a warning for international students.
+
+Month 3 of job searching post-graduation. STEM OPT but struggling to find companies willing to go through H-1B. A consulting firm reached out on LinkedIn with "we specialize in placing international talent and can sponsor your H-1B."
+
+RED FLAGS I IGNORED:
+1. They offered sponsorship within 24 hours of our first call — before knowing anything about me
+2. They couldn't describe what I'd actually be doing (just "consulting projects")
+3. They mentioned I might be "on bench" between placements — and pay during bench was "negotiated"
+4. When I asked which clients I'd work with, they said it was "confidential"
+5. They asked me to "update my resume" to include specific technologies I hadn't used
+
+That last one is the one that finally made me say no. They wanted me to lie on my resume.
+
+WHAT I FOUND OUT LATER:
+- This pattern is called a "body shop" and it's extremely common targeting F-1 students
+- They file an H-1B for you with a fake or stretched job description
+- You might be paid nothing while "on bench" waiting for a client
+- The H-1B petition itself may be technically fraudulent
+- If USCIS discovers it, YOU get the immigration consequences, not them
+
+THE ACTUAL RULES:
+- Employers MUST pay all H-1B fees. If they ask you to pay, it's illegal.
+- H-1B employers must pay you the "offered wage" even during non-productive periods (bench time). Zero pay on bench = H-1B violation.
+- You can report wage theft to the Dept of Labor. Workers are protected from retaliation for doing so.
+
+Ended up finding a legitimate offer 3 weeks later through a LinkedIn connection. The extra time was worth it.""",
+        "comments": [
+            ("The resume 'updating' ask is the clearest red flag of all. Any company asking you to add skills you don't have is asking you to commit fraud alongside them.", 678),
+            ("'Bench pay' is a real thing and legitimate staffing firms do pay during bench periods. The difference is: legitimate firms disclose it upfront and their bench pay is in the contract, not 'negotiated' later.", 534),
+            ("Employer must pay H-1B fees — this is so important. The specific law is INA §212(n). Anyone charging workers for H-1B fees is breaking federal law.", 423),
+            ("H-1Bdata.info — check any company that claims to sponsor. If they've never filed an H-1B petition or have very high denial rates, that's data.", 312),
+            ("I was in a body shop for 8 months before I found a real job. The wasted time and the status anxiety (was my H-1B actually compliant?) wasn't worth whatever I thought I was getting.", 267),
+        ],
+    },
+    {
+        "subreddit": "jobs",
+        "title": "Salary negotiation works even when you need visa sponsorship — I just did it",
+        "score": 876,
+        "url": "https://reddit.com/r/jobs/comments/jss_demo3",
+        "body": """I negotiated $18k above initial offer while needing H-1B sponsorship. Writing this because the prevailing advice in international student communities is 'don't negotiate, they might withdraw the offer.'
+
+That advice is wrong and it's costing international students a lot of money.
+
+MY SITUATION:
+- Recent MSCS grad
+- Got an offer at $145k base
+- Market rate for the role/location was $160-170k
+- I needed H-1B sponsorship
+
+WHAT I DID:
+Called the recruiter back the next day. Said:
+
+"I'm really excited about this role and I want to make this work. I've done some research on market rates for this position in [city] and I was hoping we could discuss a base closer to $165k. Is there flexibility?"
+
+Silence. Then: "Let me check with the hiring manager."
+
+Next day: $163k. Counter-asked for $167k. Got $163k plus a $10k signing bonus.
+
+TOTAL EXTRA COMPENSATION: ~$28k in year 1.
+
+THE THING EVERYONE GETS WRONG:
+The sponsorship decision is already made by the time they give you an offer. They've decided you're worth the cost and hassle of sponsorship. You didn't use up your leverage by needing a visa. The salary negotiation is a completely separate conversation.
+
+Companies almost never rescind offers over professional salary negotiations. I researched this. It basically doesn't happen at legitimate employers. The cost to them of rescinding (reputation, lost time, restarting the search) far exceeds the cost of paying you more.
+
+If a company would rescind an offer over a professional negotiation request, you don't want to work there anyway.""",
+        "comments": [
+            ("The framing of 'sponsorship decision is already made' is the key insight. People confuse two separate decisions: (1) will we hire and sponsor this person, and (2) what will we pay them. These are decided by different people at different times.", 412),
+            ("What did you say when they pushed back and said the offer was firm?", 234),
+            ("For people worried about offending: asking 'is there flexibility?' is not aggressive. It's a question. The worst answer is 'no, this is our best offer' — and you haven't lost anything.", 198),
+            ("Signing bonus is often easier to negotiate than base because it's a one-time cost and doesn't affect salary benchmarks. If base is capped, always ask about signing bonus.", 167),
+            ("I work in recruiting. We build negotiation room into offers because we expect candidates to negotiate. If you don't negotiate, that money just stays on the table.", 145),
+        ],
+    },
+    {
+        "subreddit": "cscareerquestionsCAD",
+        "title": "PGWP job search reality check — what nobody tells you before you graduate",
+        "score": 1089,
+        "url": "https://reddit.com/r/cscareerquestionsCAD/comments/jss_demo4",
+        "body": """2 years in Canada post-graduation. Went through PGWP job search, Express Entry pool, and now have PR. Here's what I wish I'd known.
+
+PGWP BASICS THAT PEOPLE GET WRONG:
+1. PGWP is an OPEN work permit — you can work for ANY employer. You don't need to say "I need sponsorship" because there's nothing to sponsor. Your PGWP is yours.
+2. Duration: Your PGWP is the length of your program, capped at 3 years. A 2-year master's = 3-year PGWP. A 1-year post-grad cert = 1-year PGWP. This matters hugely.
+3. You can tell employers: "I have a 3-year open work permit — no employer action required." That's it.
+
+WHAT I SAID ON APPLICATIONS:
+In the "work authorization" field: "Open Work Permit (PGWP) — authorized to work for any employer in Canada. No sponsorship required."
+
+Response rate: significantly higher than when I said "international student."
+
+JOB SEARCH STRATEGY IN CANADA VS US:
+The Canadian job search is much more similar to a domestic job search because PGWP removes the sponsorship filter. But there are still differences:
+- Canadian employers still have some bias toward "Canadian experience" (vague and annoying but real)
+- Co-op experience in Canada is heavily valued — if you had a co-op, mention it everywhere
+- The market in tech is smaller, especially outside Toronto/Vancouver
+- LinkedIn and direct referrals >> job boards (same as US, but even more pronounced in Canada's smaller market)
+
+PR TIMING STRATEGY:
+After 1 year of work in Canada, you're eligible for Canadian Experience Class (CEC). CRS score determines who gets invited. Strong English scores + French = major boost. Start IELTS prep early if you haven't already.
+
+The goal is: get job with PGWP → accumulate 1 year Canadian experience → maximize CRS score (language scores, maybe a PNP if your province has a stream) → get ITA → PR.
+
+My PR took 9 months from when I submitted the Express Entry profile to when I got the confirmation.""",
+        "comments": [
+            ("The 'no sponsorship required' framing for PGWP is gold. So many international grads in Canada undersell this because they're used to the US framing where visa is a burden. PGWP is genuinely not a burden to employers.", 378),
+            ("French language skills (TEF/TCF scores) can add 25-50+ points to your CRS score. If you have any French background or are willing to invest 6 months in learning, it's one of the highest-ROI things you can do for your Express Entry score.", 298),
+            ("One thing not mentioned: Provincial Nominee Programs (PNPs). BC Tech Pilot, Ontario Masters Graduate stream, etc. Some provinces can nominate you directly, bypassing the federal CRS competition. Worth researching based on your province.", 234),
+            ("For the 1-year Canadian experience CEC eligibility — the experience must be in NOC TEER 0, 1, 2, or 3 (skilled work). Make sure you're tracking this is in your NOC code properly.", 189),
+        ],
+    },
+    {
+        "subreddit": "f1visa",
+        "title": "Internship return offer is your best path to H-1B sponsorship — the math explains why",
+        "score": 934,
+        "url": "https://reddit.com/r/f1visa/comments/jss_demo5",
+        "body": """Every year international students ask "should I do an internship or go straight for full-time?" Here's the honest math.
+
+CONVERSION RATES (rough estimates from available data):
+- Internship → return offer at large tech companies: ~70-85%
+- Cold application to offer for new grad with no prior relationship: ~1-5%
+
+EXPECTED VALUE CALCULATION:
+If you get an internship at Google, you have a ~75% chance of getting a full-time offer.
+If you apply cold to Google as a new grad, you have maybe a 2-3% chance.
+
+The internship path is roughly 25-40x higher probability of landing the role.
+
+WHY THIS MATTERS EVEN MORE FOR INTERNATIONAL STUDENTS:
+1. Companies have already decided you're worth sponsoring BEFORE the return offer decision. You've worked there, they know you.
+2. The H-1B lottery isn't filed until you're already employed as a full-timer. The company is far more invested in helping you through the lottery after they've trained you.
+3. Return offer → H-1B timing aligns well: start on OPT after graduation, do your first H-1B lottery the following March, keep working through OPT if you lose (STEM gives you 3 years total).
+
+TARGETING INTERNSHIPS CORRECTLY:
+1. Check H-1B sponsorship history FIRST. H1Bdata.info or MyVisaJobs — look up companies you're targeting. Any company with <5 H-1B filings/year is high risk. You don't want to intern at a company that won't sponsor.
+2. The internship subreddit recruiting season at big tech is Fall (Sept-Nov) for following Summer. Not spring. If you're applying in February you've already missed most of it.
+3. Express intent to return. During the internship, find natural moments to say you're enjoying it and would want to come back. Managers who know you want a return offer advocate for it. Managers who aren't sure don't.
+
+THE CPT WARNING:
+One 12-month internship on full-time CPT = OPT gone. The limit is 12 cumulative months of full-time CPT — hit it and you lose OPT permanently for that degree level. Do multiple shorter internships, not one long one.""",
+        "comments": [
+            ("The CPT limit is the thing that catches people. '12 months' sounds like it's exactly 12, but it's anything meeting or exceeding 12. Someone who did 11 months, took a break, then did 2 more months is at 13 total and has lost OPT. Cumulative across all CPT use.", 423),
+            ("'Express intent to return' is underrated advice. I thought showing too much eagerness was unprofessional. A career counselor told me I was wrong. Managers literally advocate more for interns they know want to come back.", 312),
+            ("The fall recruiting timeline for tech internships blindsides a lot of international students who come from countries where hiring cycles work differently. August or September of junior year. Not February.", 267),
+            ("For non-tech industries (finance, consulting): this is even more true and the timelines are even earlier. Banking summer analyst recruiting can start in August of junior year for the following summer. Check the Wall Street Oasis wiki for updated timelines.", 198),
+        ],
+    },
 ]
 
 
@@ -806,10 +1308,8 @@ def main() -> None:
             args.user_agent, out_dir,
         )
     else:
-        sys.exit(
-            "No Reddit credentials found. Set REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET "
-            "environment variables, or use --demo for synthetic data."
-        )
+        print(f"[httpx] No PRAW credentials — scraping old.reddit.com directly")
+        written = scrape_with_httpx(subreddits, args.posts, out_dir)
 
     print(f"\nWrote {len(written)} file(s) to {out_dir.relative_to(skill_dir.parent.parent)}/")
     for p in written:

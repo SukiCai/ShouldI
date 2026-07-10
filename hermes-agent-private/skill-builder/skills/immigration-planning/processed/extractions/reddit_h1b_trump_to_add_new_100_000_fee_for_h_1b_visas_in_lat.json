@@ -1,0 +1,183 @@
+{
+  "source_file": "h1b_trump_to_add_new_100_000_fee_for_h_1b_visas_in_lat.txt",
+  "source_type": "community",
+  "heuristics": [],
+  "decision_factors": [
+    {
+      "factor": "Compensation level relative to visa fee",
+      "why_it_matters": "At $300k-$500k/yr salaries, a $100k H-1B fee becomes economically survivable for employer or employee; at lower salary bands it is prohibitive, changing whether sponsorship makes financial sense",
+      "how_to_assess": "Compare total compensation package to the fee; if fee exceeds ~20-25% of annual salary, employer absorption becomes unlikely",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Availability of alternative visa pathways (O-1, EB-1)",
+      "why_it_matters": "If a candidate qualifies for O-1 or EB-1, a $100k H-1B fee becomes irrelevant; visa strategy shifts entirely",
+      "how_to_assess": "Assess whether the candidate meets extraordinary ability criteria before defaulting to H-1B as the only path",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the role can be offshored",
+      "why_it_matters": "If a company can move the role offshore instead of paying the fee, domestic sponsorship demand collapses; workers in offshoreable roles face the highest displacement risk",
+      "how_to_assess": "Evaluate whether the role requires physical US presence or client-facing work that cannot be performed remotely from another country",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pivoting to O-1 visa as an H-1B alternative under a high-fee environment",
+      "unstated_consequence": "O-1 holders must re-stamp their visa every time they travel abroad, creating significant travel inconvenience and consular appointment risk that H-1B holders do not face at the same frequency",
+      "who_it_affects": "International professionals who travel frequently for work or family, or those based in countries with slow or unreliable US consular processing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Employer absorbing the $100k H-1B fee rather than passing it to the employee",
+      "unstated_consequence": "Employees may face informal salary suppression or delayed raises as companies recoup the fee over time, without it being explicitly framed as a deduction",
+      "who_it_affects": "Mid-level H-1B workers at companies that sponsor but have thin margins or tight headcount budgets",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Immediately searching for ways to game alternative visa categories when a primary path becomes expensive or restrictive",
+      "why_it_happens": "Short-term thinking — the instinct is to find the path of least resistance rather than assess long-term risk; the systemic cost of fraud (blanket policy crackdowns) is externalized",
+      "consequence": "Documented community discussion of gaming O-1 via fake awards/recommendations could accelerate regulatory scrutiny of O-1, harming legitimate O-1 applicants and potentially triggering broader visa restrictions",
+      "warning_signs": [
+        "First response to a policy change is 'what visa can I use instead' without assessing eligibility",
+        "Discussion of fake documentation or inflated credentials as a workaround"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the $100,000 fee in addition to existing H-1B fees or inclusive of them?",
+      "what_it_reveals": "Total employer cost burden — if additive, cost could exceed $100k+existing fees; if inclusive, impact is somewhat lower but still dramatically higher than current levels",
+      "follow_up_if_yes": "Reassess whether any mid-market employer can realistically sponsor H-1B at all; evaluate O-1 or EB-1 eligibility immediately",
+      "follow_up_if_no": "Calculate net increase over current fee schedule to determine true marginal cost to employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does the candidate qualify for O-1 extraordinary ability status?",
+      "what_it_reveals": "Whether H-1B is actually the only viable work visa path, or whether an alternative exists that bypasses the fee entirely",
+      "follow_up_if_yes": "Evaluate O-1 seriously, but account for visa restamping travel burden and potential future fee extensions to O-1",
+      "follow_up_if_no": "Assess whether the role can be restructured, the employee upskilled, or the position offshored as alternative responses to the fee burden",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "No company will pay $100k to hire an immigrant worker — the fee will effectively end H-1B sponsorship",
+      "actual_reality": "At the highest compensation tiers ($300k-$500k/yr), the fee remains economically rational for employers or can be negotiated into compensation structures; the fee primarily eliminates sponsorship for lower and mid-salary roles, not top-tier tech roles",
+      "implication": "H-1B sponsorship becomes increasingly stratified — viable only for high-compensation, high-demand roles, accelerating the existing trend toward elite-tier hiring and away from entry-level or mid-level sponsorship",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "O-1 is essentially equivalent to H-1B as a backup path and can absorb H-1B applicants if the fee makes H-1B unviable",
+      "actual_reality": "O-1 carries a meaningful operational burden H-1B does not: visa restamping required on every international trip, and the standards — while sometimes described as more flexible than EB-1 — still require demonstrable extraordinary ability that most H-1B candidates do not meet",
+      "implication": "O-1 is not a scalable substitute for H-1B at volume; treating it as a simple workaround leads to either ineligible applications or incentivizes credential fraud",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to a major H-1B policy shock",
+      "naive_pattern": "Immediately asks 'which other visa can I use instead?' without checking eligibility criteria or understanding the operational tradeoffs of alternatives",
+      "informed_pattern": "First evaluates whether the policy is final and what the exact fee structure is (additive vs. inclusive), then maps personal eligibility across alternatives, then weighs operational tradeoffs of each path",
+      "why_it_matters": "Jumping to workarounds before the policy is finalized or before eligibility is assessed wastes time and can lead to pursuing paths (like O-1) for which the person does not qualify",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you qualify for EB-1, you qualify for O-1, so they're interchangeable paths",
+      "why_believed": "Both require demonstrating extraordinary ability, so they feel like parallel tracks at the same threshold",
+      "actual_rule": "O-1 is generally considered easier to obtain than EB-1 — the standards differ in important ways; many people who cannot yet qualify for EB-1 can qualify for O-1, but EB-1 approval does not automatically mean O-1 is the right or only alternative",
+      "real_consequence": "Candidates who conflate the two may either overestimate their EB-1 eligibility based on O-1 approval, or unnecessarily discount O-1 as an option because they assume EB-1 is required first",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "A $100,000 fee will make all companies stop sponsoring H-1B visas entirely",
+      "why_believed": "The number feels prohibitively large in absolute terms, triggering an all-or-nothing framing",
+      "actual_rule": "Fee impact is relative to compensation level and role criticality; for high-salary roles at large tech employers, the fee is economically absorbable and sponsorship will continue",
+      "real_consequence": "Workers in lower and mid-salary roles may incorrectly assume their high-salary peers face the same sponsorship risk, leading to premature career or geographic decisions",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [],
+  "psychological_barriers": [
+    {
+      "trigger": "Learning that a primary immigration pathway (H-1B) may become dramatically more expensive or inaccessible",
+      "underlying_state": "Loss aversion and catastrophizing — the policy change is interpreted as total closure of the path rather than a change in conditions",
+      "how_it_manifests": "Immediate pivot to discussing workarounds, alternative visas, or fraud-adjacent solutions before the policy is even finalized or eligibility for alternatives is assessed",
+      "expert_move": "Anchor the person to what is actually confirmed vs. speculative, then walk through a structured eligibility assessment for alternatives before evaluating any workaround",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Seeing community members openly discuss using fake credentials or awards to qualify for O-1",
+      "underlying_state": "Normalization bias — when others in the community frame fraud as a logical response, it lowers the perceived moral and legal threshold for the individual",
+      "how_it_manifests": "Upvoted comments treating credential fraud as a pragmatic strategy rather than a criminal and immigration-barring act",
+      "expert_move": "Explicitly name the legal consequence (permanent immigration bar, potential criminal liability) and redirect to legitimate extraordinary ability documentation strategies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "This fee will destroy H-1B — no company will pay $100k for an immigrant worker",
+      "reframe": "The fee's impact is salary-relative; at $300k-$500k compensation, this is a one-time 20-33% salary equivalent — painful but not irrational for companies competing for scarce talent",
+      "why_it_works": "Shifts from absolute dollar panic to a cost-benefit ratio frame, which is how employers actually make sponsorship decisions",
+      "example_language": "Some H-1B are getting paid 300-500k/yr. They can probably pay 100k out of pocket or have their salary reduced temporarily",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "If they put fees on H-1B, we'll just use O-1 instead — it's easier anyway",
+      "reframe": "O-1 as a workaround at scale will trigger the same regulatory scrutiny; if the first instinct is 'how do I cheat a different visa,' we're not far from blanket country bans",
+      "why_it_works": "Expands the individual's time horizon from 'my immediate problem' to 'systemic consequence of collective behavior,' making the fraud risk feel real rather than theoretical",
+      "example_language": "If the first thought here is immediately how can I cheat a different visa.... we may not be far off from just blanket country bans",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_h1b_trump_to_add_new_100_000_fee_for_h_1b_visas_in_lat",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

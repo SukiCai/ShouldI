@@ -23,6 +23,23 @@ DEFAULT_MODEL = "claude-opus-4-7"  # use opus for higher-quality skill synthesis
 HERMES_HOME = Path.home() / ".hermes"
 REPO_ROOT = Path(__file__).parent.parent.parent  # hermes-base-agent/
 
+# Per-category cap: insights are RRF-ranked so top-N are most valuable.
+# Prevents prompt from exceeding the 1M-token context limit.
+MAX_INSIGHTS_PER_CATEGORY = 40
+
+
+def _cap_insights(data: dict, max_per_cat: int = MAX_INSIGHTS_PER_CATEGORY) -> dict:
+    """Recursively cap insight lists so the prompt stays within context limits."""
+    result = {}
+    for key, val in data.items():
+        if isinstance(val, list):
+            result[key] = val[:max_per_cat]
+        elif isinstance(val, dict):
+            result[key] = _cap_insights(val, max_per_cat)
+        else:
+            result[key] = val
+    return result
+
 
 def install_skill(slug: str, content: str) -> list[str]:
     """Install SKILL.md to all locations outside skill-builder. Returns written paths."""
@@ -62,6 +79,7 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
 
     # For multicountry skills, pass the country-indexed view to give the model structured input
     insights_payload = merged.get("_country_index", merged) if countries else merged
+    insights_payload = _cap_insights(insights_payload)
 
     # Extract community-specific categories separately so they are explicitly visible in the prompt.
     # These are buried in the large insights JSON and models tend to miss them without a dedicated section.
@@ -69,7 +87,7 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
         "community_misconceptions", "real_case_outcomes",
         "psychological_barriers", "reframing_moves",
     ]
-    community_data = {cat: merged.get(cat, []) for cat in community_categories}
+    community_data = {cat: merged.get(cat, [])[:MAX_INSIGHTS_PER_CATEGORY] for cat in community_categories}
     has_community = any(len(v) > 0 for v in community_data.values())
     community_json = json.dumps(community_data, indent=2, ensure_ascii=False) if has_community else ""
 

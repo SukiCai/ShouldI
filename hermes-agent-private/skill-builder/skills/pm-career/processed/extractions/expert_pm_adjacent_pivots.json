@@ -1,0 +1,294 @@
+{
+  "source_file": "pm_adjacent_pivots.txt",
+  "heuristics": [
+    {
+      "rule": "Complete foundational work before leaving a PM role to found a company",
+      "condition": "When considering a PM-to-founder pivot...",
+      "action": "...solve value proposition, cash burn estimate, and founding team identification before resigning",
+      "because": "Leaving without these solved means burning personal runway on problems that could have been de-risked while still earning a salary"
+    },
+    {
+      "rule": "Direct SPM-to-VC is rare; most successful PM-to-VC transitions go through VP/CPO or a founding stint first",
+      "condition": "When a senior PM is targeting VC as a next move...",
+      "action": "...plan for an intermediate step (VP Product, founding, EIR) rather than applying directly to partner roles",
+      "because": "The career examples that succeeded all included operating leadership or founding experience before VC entry"
+    },
+    {
+      "rule": "Build pivot optionality before you need it, not after burnout hits",
+      "condition": "When a senior PM is still employed and performing well...",
+      "action": "...invest in thought leadership, target-domain networking, and advisory roles now",
+      "because": "The best leverage for a pivot comes from a position of strength; burned-out job-seeking signals desperation and narrows options"
+    },
+    {
+      "rule": "Use a transitional role (EIR, CoS, advisory board) to bridge if a direct pivot is not yet credible",
+      "condition": "When a PM lacks the network or credentials for a direct entry into VC, founding, or C-suite...",
+      "action": "...pursue a 12–24 month bridge role that provides the missing exposure or signal",
+      "because": "Transitional roles compress the credibility gap without requiring a full leap into an unfamiliar domain"
+    },
+    {
+      "rule": "EIR roles require demonstrated 0-to-1 product creation, not just scaled-product experience",
+      "condition": "When a PM is evaluating EIR eligibility...",
+      "action": "...assess whether their track record includes building totally new products from scratch, not just scaling existing ones",
+      "because": "VC firms place EIRs to identify and build new companies; scaled-product experience does not validate this specific capability"
+    },
+    {
+      "rule": "Publish market teardowns and investment theses publicly to position for VC",
+      "condition": "When targeting a VC pivot...",
+      "action": "...write up investment analyses on real companies and distribute them before applying to any firm",
+      "because": "VCs assess analytical thinking and point-of-view credibility; published work demonstrates both in a way a resume cannot"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Career altitude at time of pivot",
+      "why_it_matters": "Most viable pivot paths (VC, EIR, CoS at meaningful companies) require GPM/Director+ level; pivoting earlier limits destination quality",
+      "how_to_assess": "Check whether your current title and scope match the minimum bar cited in job descriptions for target pivot roles",
+      "weight": "high"
+    },
+    {
+      "factor": "0-to-1 vs. scale-only track record",
+      "why_it_matters": "Roles like EIR and founding require demonstrated ability to build new products from scratch; a scaling-only background disqualifies candidates for these paths",
+      "how_to_assess": "Audit your portfolio: how many products did you create from nothing vs. inherit and grow?",
+      "weight": "high"
+    },
+    {
+      "factor": "Existing thought leadership and public presence",
+      "why_it_matters": "For VC and consulting pivots, public credibility as an opinion-maker accelerates entry; its absence creates a cold-start problem",
+      "how_to_assess": "Assess whether you have published writing, conference talks, or a newsletter that demonstrates domain expertise to strangers",
+      "weight": "high"
+    },
+    {
+      "factor": "Network depth in target domain",
+      "why_it_matters": "First consulting clients come from former colleagues; VC roles come through existing VC relationships; without domain network, timelines extend significantly",
+      "how_to_assess": "Count how many current VCs, founders, or operators in your target domain you have a genuine relationship with (not just LinkedIn connections)",
+      "weight": "high"
+    },
+    {
+      "factor": "Tolerance for delayed and uncertain feedback loops",
+      "why_it_matters": "VC outcomes take years vs. weeks for product metrics; founders operate without the validation loops PMs are trained on",
+      "how_to_assess": "Reflect on whether you have sustained motivation and judgment confidence in environments where outcome signals are slow or absent",
+      "weight": "high"
+    },
+    {
+      "factor": "Financial runway available",
+      "why_it_matters": "Consulting takes 12–18 months to replace income; founding involves unpaid or underpaid periods; CoS roles may involve pay cuts",
+      "how_to_assess": "Calculate how many months of living expenses you have saved and what minimum income you need during a transition period",
+      "weight": "high"
+    },
+    {
+      "factor": "Specific market thesis or domain expertise",
+      "why_it_matters": "PM-to-founder requires a specific, defensible thesis about a market gap; generalist product experience alone is insufficient to credibly found a company",
+      "how_to_assess": "Can you articulate a precise, non-obvious insight about a market that your product experience uniquely positions you to act on?",
+      "weight": "high"
+    },
+    {
+      "factor": "Age and re-entry friction",
+      "why_it_matters": "Failing at founding at 40+ while trying to return to a large-company PM role creates documented friction; the cost of a failed pivot compounds with age",
+      "how_to_assess": "Model the re-entry scenario explicitly: if the pivot fails in 3 years, what does your PM job search look like at that age?",
+      "weight": "medium"
+    },
+    {
+      "factor": "Desire for control vs. influence",
+      "why_it_matters": "VC is an influence-only relationship with portfolio companies; PMs accustomed to owning decisions must genuinely adapt to an advisory posture",
+      "how_to_assess": "Assess how comfortable you are with outcomes being determined by founders you advise rather than decisions you make directly",
+      "weight": "medium"
+    },
+    {
+      "factor": "Interest in learning from a specific leader vs. independent operation",
+      "why_it_matters": "CoS is the right path when the primary motivation is altitude exposure and mentorship from a specific executive; it is the wrong path if the goal is autonomous ownership",
+      "how_to_assess": "Identify whether you have a specific leader whose decision-making you want to learn from; if not, CoS may not be the right vehicle",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pivoting to founder/CEO",
+      "unstated_consequence": "You permanently give up compensation stability, employer brand credibility, defined scope, and team support — and recovering these requires a successful outcome, which happens roughly 10% of the time",
+      "who_it_affects": "PMs who underestimate how much employer brand and structured scope were doing for their sense of competence and market value"
+    },
+    {
+      "choice": "Pivoting to VC",
+      "unstated_consequence": "You move from owning decisions to advising on them; your ability to directly drive outcomes disappears, and feedback on whether your judgment was right takes years to arrive",
+      "who_it_affects": "PMs who derive satisfaction from execution and measurable short-term impact rather than pattern recognition over long time horizons"
+    },
+    {
+      "choice": "Taking a Chief of Staff role",
+      "unstated_consequence": "Most CoS roles are time-limited (12–24 months) and not a permanent career track; if you don't have a clear exit plan (VP Product, founding, COO), you may find yourself in a prestigious but transient role with unclear next steps",
+      "who_it_affects": "PMs who enter CoS hoping it will organically convert into a permanent senior role rather than treating it as a deliberate bridge"
+    },
+    {
+      "choice": "Waiting until burnout to explore pivots",
+      "unstated_consequence": "The conditions that make pivots viable — strong performance, active network, thought leadership — deteriorate during burnout; by the time you act, your leverage has declined",
+      "who_it_affects": "High performers who equate busyness with security and defer career optionality-building until a crisis forces the issue"
+    },
+    {
+      "choice": "Pivoting to PM consulting",
+      "unstated_consequence": "Income replacement takes 12–18 months with high variance; the first clients come from personal network, meaning PMs without a cultivated former-colleague network face a significantly longer cold-start period",
+      "who_it_affects": "PMs who changed companies frequently or worked in siloed environments and did not invest in relationship maintenance"
+    },
+    {
+      "choice": "Pursuing EIR as a path to founding",
+      "unstated_consequence": "EIR qualification implicitly requires 0-to-1 product creation experience; PMs who have only scaled existing products will be screened out even at senior levels",
+      "who_it_affects": "Senior PMs at large companies whose entire career has been spent on established products with existing user bases"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Leaving a PM role to found a company before solving value proposition, cash burn, and founding team",
+      "why_it_happens": "Founders romanticize the leap and underestimate how much faster these questions are answered with employed status, network access, and financial stability intact",
+      "consequence": "Personal runway burns on foundational questions that could have been de-risked for free; decisions made under financial pressure are lower quality",
+      "warning_signs": [
+        "You have a general idea or domain interest but no specific, validated market thesis",
+        "You haven't identified or had serious conversations with potential co-founders before resigning"
+      ]
+    },
+    {
+      "pattern": "Attempting a direct SPM-to-VC transition without operating leadership or public thought leadership",
+      "why_it_happens": "PMs assume their product skills are sufficient signal; they underestimate that VC firms are assessing judgment about teams, markets, and financial models — not just product instinct",
+      "consequence": "Applications are rejected or ignored; time is lost without understanding why; the PM circles back to PM roles without having built the missing credentials",
+      "warning_signs": [
+        "You have no published investment theses or market analyses",
+        "You have not networked with current VCs to understand the day-to-day role before applying"
+      ]
+    },
+    {
+      "pattern": "Taking a CoS role without a defined exit plan",
+      "why_it_happens": "The prestige and proximity to power of a CoS role obscures the fact that it is time-limited and not a destination; PMs assume tenure will convert into a permanent senior role",
+      "consequence": "After 12–24 months, the PM exits without a clear next step and must restart a job search from a role that hiring managers find difficult to categorize",
+      "warning_signs": [
+        "You accepted CoS because it sounded impressive rather than because it connects to a specific next role",
+        "You have not mapped out the three standard CoS exit paths (VP Product, founding, COO) and which one you are targeting"
+      ]
+    },
+    {
+      "pattern": "Deferring pivot preparation until burnout forces the issue",
+      "why_it_happens": "High-performing PMs conflate job security with career optionality; they assume strong reviews mean they can act whenever they choose, not recognizing that network and thought leadership decay during neglect",
+      "consequence": "When the pivot is finally needed, the PM lacks the network depth, public presence, and advisory relationships that would make the transition credible and fast",
+      "warning_signs": [
+        "You have not published, spoken, or advised externally in the past 12 months",
+        "You cannot name five relationships in your target pivot domain that you have actively maintained"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does your track record include building products from zero, or primarily scaling existing ones?",
+      "what_it_reveals": "Whether the person qualifies for EIR roles and has the founding-relevant credibility that VC firms and early-stage companies look for",
+      "follow_up_if_yes": "How recently did you do this, and can you articulate the specific decisions that created success from scratch?",
+      "follow_up_if_no": "Which of your target pivot paths still apply given this gap, and how will you get 0-to-1 experience before making the move?"
+    },
+    {
+      "question": "Have you published investment theses, market teardowns, or product analyses publicly?",
+      "what_it_reveals": "Whether the person has established external credibility as a thought leader, which is a prerequisite for VC and consulting pivots",
+      "follow_up_if_yes": "What audience have these reached, and have any VCs or founders engaged with them?",
+      "follow_up_if_no": "What is preventing you from starting now, while still employed, and how long until you would have a meaningful body of work?"
+    },
+    {
+      "question": "Can you name the specific market gap or thesis that makes you want to found a company?",
+      "what_it_reveals": "Whether the founding interest is driven by a genuine, defensible insight or by dissatisfaction with the current role — which predicts very different outcomes",
+      "follow_up_if_yes": "Have you validated this thesis with potential customers, and have you identified who would co-found with you?",
+      "follow_up_if_no": "The desire to found may be about escaping rather than building; explore whether a different pivot (CoS, EIR, new company PM role) addresses the root cause"
+    },
+    {
+      "question": "How comfortable are you with outcome feedback that takes years rather than weeks?",
+      "what_it_reveals": "Whether the person's motivation and decision-making systems are compatible with VC or founding, where short-term feedback loops are absent",
+      "follow_up_if_yes": "Can you describe a past experience where you sustained conviction and quality judgment over a long period without external validation?",
+      "follow_up_if_no": "VC and founding are likely to be psychologically misaligned; explore pivots with faster feedback (consulting, operator leadership)"
+    },
+    {
+      "question": "Is there a specific executive you want to learn from, or do you want a CoS role generically?",
+      "what_it_reveals": "Whether a CoS pursuit is strategically motivated (learn from a specific person, bridge to a defined next role) or status-motivated (proximity to power without a plan)",
+      "follow_up_if_yes": "Have you mapped what you would learn from this person that you cannot get elsewhere, and what the CoS-to-next-role transition looks like?",
+      "follow_up_if_no": "CoS without a specific learning or transition rationale is likely to result in 12–24 months of unclear career positioning"
+    },
+    {
+      "question": "How many genuine relationships do you currently have with people in your target pivot domain (VCs, founders, operators)?",
+      "what_it_reveals": "Whether the person has the network infrastructure for a viable pivot or is starting from zero, which dramatically affects timeline and probability",
+      "follow_up_if_yes": "Are these relationships warm enough that you could ask for an introduction, a referral, or honest feedback about your fit?",
+      "follow_up_if_no": "Network-building in the target domain should begin immediately and run in parallel with current role; cold pivots without network take 2–3x longer"
+    },
+    {
+      "question": "What is your financial runway if your pivot takes 18 months to generate income?",
+      "what_it_reveals": "Whether the person can make quality decisions during a transition or will be forced into suboptimal choices by financial pressure",
+      "follow_up_if_yes": "Have you modeled the minimum income you need vs. the likely income trajectory of your target pivot in its first two years?",
+      "follow_up_if_no": "The pivot plan needs to either include a bridge (advisory work, part-time consulting) or be delayed until runway is sufficient"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Senior PMs can move directly into VC at the partner level based on product expertise alone",
+      "actual_reality": "Most successful PM-to-VC transitions go through VP/CPO level first and often include a founding or operating leadership stint; direct SPM-to-partner transitions are rare and require exceptional network or published thought leadership",
+      "implication": "PMs targeting VC should plan a multi-step sequence rather than applying directly, and should invest years in building the intermediate credentials"
+    },
+    {
+      "common_belief": "Founding a startup is a natural next step for any experienced senior PM",
+      "actual_reality": "Only ~10% of venture-backed startups reach meaningful scale, and failing at founding at 40+ while trying to return to a large-company PM role creates documented friction",
+      "implication": "The founding decision requires explicit modeling of the failure scenario — specifically, what your re-entry to PM roles looks like if the company fails in 3–5 years"
+    },
+    {
+      "common_belief": "Chief of Staff is a prestigious senior role that can become a permanent career track",
+      "actual_reality": "Most CoS roles are time-limited (12–24 months) and function as rotational fellowships; the standard exit paths are VP of Product, founding, or COO",
+      "implication": "Accepting a CoS role without a mapped exit plan risks emerging from it with unclear positioning; treat it as a bridge, not a destination"
+    },
+    {
+      "common_belief": "Consulting is an immediate income option for experienced PMs who want to leave corporate",
+      "actual_reality": "Replacing full-time income through consulting takes 12–18 months with high variance, and first clients almost exclusively come from former colleagues and managers",
+      "implication": "PMs planning a consulting pivot need to start relationship cultivation and thought leadership while still employed, and must have financial runway to absorb the ramp period"
+    },
+    {
+      "common_belief": "Any senior PM can qualify for an EIR role at a VC firm",
+      "actual_reality": "EIR roles typically require GPM/VP Product+ level with demonstrated experience building totally new products in totally new industries from scratch; PMs who have only scaled existing products are not typically competitive",
+      "implication": "PMs targeting EIR should audit their 0-to-1 experience honestly and seek to build it before applying"
+    },
+    {
+      "common_belief": "The skills that make someone a good PM are sufficient to make someone a good VC",
+      "actual_reality": "VC requires evaluating team quality, financial models, competitive landscape, and macroeconomic context — not just product judgment; it also requires comfort with an influence-only relationship to portfolio companies rather than direct ownership",
+      "implication": "PMs considering VC should deliberately develop the non-product dimensions (financial modeling, team assessment, market sizing) and honestly assess whether they can thrive without decision-making authority"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Approach to pivot timing",
+      "junior_pattern": "Waits until dissatisfied or burned out, then reactively explores options under pressure",
+      "senior_pattern": "Builds pivot optionality continuously while employed and performing well, long before the option is needed",
+      "why_it_matters": "Pivots executed from strength produce better outcomes and faster timelines; pivots executed under duress compress options and signal desperation to the target domain"
+    },
+    {
+      "dimension": "Founding motivation",
+      "junior_pattern": "Wants to found because they're tired of corporate constraints or inspired by founder culture; cannot articulate a specific market thesis",
+      "senior_pattern": "Has a specific, defensible insight about a market gap derived from product experience, and has already begun de-risking the hypothesis while employed",
+      "why_it_matters": "Escape-motivated founding leads to premature exits and underprepared launches; thesis-driven founding produces better-prepared founders with higher survival odds"
+    },
+    {
+      "dimension": "VC positioning approach",
+      "junior_pattern": "Applies to VC roles based on PM experience and expects product skills to speak for themselves",
+      "senior_pattern": "Publishes market teardowns and investment theses, networks with current VCs to understand the role, and targets intermediate steps (EIR, VP Product) to build missing credentials before applying",
+      "why_it_matters": "VCs assess judgment about teams, markets, and financial models — not just product instinct; demonstrating this publicly is the only credible signal for outsiders"
+    },
+    {
+      "dimension": "CoS role evaluation",
+      "junior_pattern": "Attracted to CoS because of prestige and proximity to executive power; accepts without mapping exit paths",
+      "senior_pattern": "Evaluates CoS specifically in terms of what they will learn from a particular leader and which of the three standard exit paths (VP Product, founding, COO) they are targeting",
+      "why_it_matters": "Without a defined exit plan, CoS tenure produces unclear positioning; treating it as a deliberate bridge produces a clean transition to the intended next role"
+    },
+    {
+      "dimension": "Assessment of own pivot readiness",
+      "junior_pattern": "Assumes senior PM experience is broadly transferable and underestimates the specific credential gaps (0-to-1 experience, financial modeling, public thought leadership) that pivot roles require",
+      "senior_pattern": "Audits their own track record honestly against the specific requirements of target pivot roles and identifies the gaps they need to close before making the move",
+      "why_it_matters": "Overestimating transferability leads to wasted applications, unclear rejections, and years of delayed progress; honest gap assessment enables targeted preparation"
+    },
+    {
+      "dimension": "Network-building behavior",
+      "junior_pattern": "Begins networking in a target pivot domain only after deciding to make the pivot, starting from near-zero relationships",
+      "senior_pattern": "Maintains and builds relationships in potential pivot domains continuously, so that when a pivot decision is made, the network infrastructure already exists",
+      "why_it_matters": "Cold pivots without network take 2–3x longer and rely on luck; warm pivots through existing relationships compress timelines and increase quality of opportunities"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_pm_adjacent_pivots",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

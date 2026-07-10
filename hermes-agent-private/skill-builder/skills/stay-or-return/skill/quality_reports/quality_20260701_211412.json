@@ -1,0 +1,51 @@
+{
+  "skill_name": "Stay or Return Decision Advisor",
+  "overall_score": 4.1,
+  "summary": "A genuinely strong skill that reframes a decision most people make badly, with real teeth in the diagnostic questions and failure patterns. It suffers from some over-confident numerical claims (50-100 year backlogs, 50%/80% trapped statistics) that need sourcing or hedging, and it leans heavily on the China/India cases while under-serving other profiles. Overall, this would meaningfully improve an AI's counsel on this decision — it forces the right questions rather than validating the user's frame.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 5,
+    "hidden_tradeoffs": 4,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 4,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The Expert Framing section names the specific distortions explicitly: 'fear of failure disguised as career analysis, sunk cost from immigration investment, peer selection bias (returnees are absent from local social networks), and inertia.' This is the kind of pattern-naming that separates expert reasoning from generic pros/cons.",
+    "The failure pattern 'Indefinite deferral to green card' with the warning sign 'can't articulate what would change with permanent status' is a genuinely diagnostic red flag — a user reading this can immediately recognize themselves.",
+    "The reframe of return as 'elite positioning, not failure' (top-university degree + US experience + English + international network as returnee premium) is non-obvious and counter to the user's likely prior. This is real expert reframing.",
+    "The heuristic 'Treat immigration legal costs as compensation deduction' with the $20k–$100k lifetime figure is concrete and something novices genuinely omit.",
+    "Expanding the option set beyond the US/home binary to Canada/Singapore/UAE/UK is a substantive contribution — most advice on this topic is stuck in the binary."
+  ],
+  "weaknesses": [
+    "Several numerical claims are asserted without sourcing and read as suspiciously round: '50% of visa holders feel trapped, 80% report restricted career mobility' and 'current backlogs represent 50-100+ year waits' for Indian EB-2/EB-3. The backlog claim in particular is contested — projections vary wildly by assumption. These need hedging or the skill loses credibility with informed users.",
+    "The savings-rate example ('$200k in SF saving $30k/year may lose to ¥30k/month in a Tier 2 Chinese city') is illustrative but the skill never actually walks through the modeling framework. A senior practitioner would provide a template: what line items, what tax rates, what PPP adjustment method. Without this, the heuristic 'compare savings rate not gross salary' becomes an assertion rather than a tool.",
+    "Diagnostic questions are mostly good but miss key ones: nothing about spouse/partner situation (a huge driver), nothing about aging parents' health, nothing about the user's actual field (some fields have vastly different return economics — quant finance vs. academia vs. tech vs. medicine).",
+    "The 'staged return' concept is introduced as a category but never operationalized. What milestones actually matter? Senior title? $X saved? Which credentials travel and which don't? The skill lists this as an option but doesn't help the AI advise on it concretely.",
+    "The Junior vs. Senior table's 'Career ceiling' row asserts structural access barriers 'by background' without engaging the nuance — this varies enormously by industry (tech has more non-native VPs than, say, US politics or defense). Risks giving a blanket answer where a differentiated one is needed."
+  ],
+  "improvement_suggestions": [
+    "Add a concrete savings-rate modeling template (or example worked calculation) showing: gross salary → federal/state/FICA → rent → healthcare → immigration legal → remaining. Do the same for the home-country scenario. Without this, the core heuristic remains rhetorical.",
+    "Source or soften the specific statistics. Either cite USCIS/CATO/NFAP figures with dates, or rephrase as 'commonly cited estimates suggest' / 'depending on demand assumptions.' The current framing invites credibility loss.",
+    "Add diagnostic questions covering: (a) spouse/partner's career and preference, (b) parents' age and health, (c) specific industry/field, (d) whether the user has ever lived independently in their home country as an adult. These are decision-critical and currently absent.",
+    "Operationalize the staged-return path with concrete milestones by profile: e.g., 'For tech IC: Senior/Staff title + $200k liquid savings + 4 years experience. For finance: post-MBA + VP promotion. For academia: tenure-track or postdoc-to-industry pivot.' Right now it's a category label without content.",
+    "Add a section on reverse culture shock and re-adaptation costs — returnees frequently underestimate how much they've changed and how much home has changed. This is a hidden tradeoff currently absent.",
+    "Differentiate industry realities by sector. The 'senior leadership ceiling' claim is true in some industries and false in others; a sector-aware version would be much more useful."
+  ],
+  "generic_advice_flags": [
+    "'You do not tell people what to do.' — This is a good stance but stated as a bare assertion; combined with 'You force honest inputs,' it borders on generic coaching-speak. Would be stronger if paired with specific examples of the pushback language.",
+    "'Never give the generic answer — every response should reflect their specific compounding trajectory' — ironically generic. It tells the AI to be specific without showing what specificity looks like for this domain.",
+    "'Consult an immigration attorney about alternatives before accepting the binary' — technically correct but boilerplate. An expert skill would name which alternatives to ask about (EB-1A criteria, O-1 evidence categories, NIW petition strength) so the user can have a substantive conversation."
+  ],
+  "missing_coverage": [
+    "Spouse/partner and dual-career considerations — often the actual binding constraint, especially for women whose partners have less mobility.",
+    "Aging parents and eldercare obligations — a major driver of return decisions in Asian contexts, absent from the framework.",
+    "Sector-specific analysis — the return economics for a quant, an academic, a doctor, and a product manager are radically different. The skill treats 'career' as one thing.",
+    "Cultural re-adaptation and reverse culture shock — the psychological cost of returning after 5-10 years abroad is real and often decisive.",
+    "Children's education and citizenship considerations for those with or planning to have kids — often overrides everything else.",
+    "Tax complexity of returning — exit taxes, foreign account reporting, retirement account treatment (401k, IRA) upon return. Real dollars, invisible in gross comparisons.",
+    "The 'return then re-emigrate' option — many returnees leave again after 2-3 years. This possibility should be part of the frame."
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "source_file": "canada_departure_tax_rrsp_canada.txt",
+  "heuristics": [
+    {
+      "rule": "If your departure date is mid-year and your income is low in that partial year, withdraw from RRSP before leaving rather than after",
+      "condition": "When you are leaving Canada partway through a calendar year and your total Canadian income for that year will be below normal...",
+      "action": "...make RRSP withdrawals before your departure date to be taxed at a lower marginal rate instead of the flat 25% non-resident withholding rate",
+      "because": "Once you become a non-resident, every RRSP withdrawal is subject to flat 25% withholding (no treaty reduction for India or China); partial-year Canadian income may put you in a lower marginal bracket, making pre-departure withdrawal cheaper"
+    },
+    {
+      "rule": "Stop all TFSA contributions on the exact date you leave Canada — not the end of the year",
+      "condition": "When you are departing Canada and becoming a non-resident for tax purposes...",
+      "action": "...cease TFSA contributions immediately on departure date and do not contribute afterward",
+      "because": "Any TFSA contribution made while a non-resident triggers a 1% per month penalty on that amount; the penalty compounds monthly and is easy to accidentally incur if you have automatic contributions set up"
+    },
+    {
+      "rule": "If you own Canadian real estate and plan to sell, sell before departure rather than as a non-resident",
+      "condition": "When you anticipate selling Canadian property within a few years of leaving...",
+      "action": "...either sell before departing or budget explicitly for the buyer withholding 25% of the gross sale price (not profit) for months during clearance certificate processing",
+      "because": "The Section 116 withholding is on the full sale price — not the gain — creating a massive temporary cash flow gap; a $800K sale means $200K held by the buyer, which can take months to recover even if your actual tax bill is far lower"
+    },
+    {
+      "rule": "Do not over-contribute to RRSP in your final Canadian years if you plan to leave",
+      "condition": "When you know or suspect you will be leaving Canada within 1–3 years...",
+      "action": "...limit RRSP contributions to amounts you can realistically draw down at favorable rates before departure or accept will be subject to 25% flat non-resident withholding indefinitely",
+      "because": "RRSP withdrawals as a non-resident from India or China face 25% withholding with no treaty reduction, meaning excess RRSP balances become a tax-inefficient asset compared to non-registered accounts where you have more exit flexibility"
+    },
+    {
+      "rule": "Maintain your Social Insurance Number records even after leaving Canada",
+      "condition": "When you have contributed to CPP over your Canadian working years...",
+      "action": "...keep your SIN documented securely so you can eventually claim your CPP retirement pension from abroad",
+      "because": "CPP entitlements survive departure and can be paid to a foreign bank account, but the claim process requires your SIN; losing it creates bureaucratic barriers to recovering money you already contributed"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "RRSP balance and treaty withholding rate",
+      "why_it_matters": "The applicable non-resident withholding rate on RRSP withdrawals determines whether leaving RRSP funds in Canada is efficient; India and China get no treaty reduction, meaning 25% is the permanent rate on every future withdrawal",
+      "how_to_assess": "Check your home country's tax treaty with Canada specifically for pension/RRSP withholding rates; calculate your total RRSP balance and model the after-tax value under 25% withholding versus alternatives",
+      "weight": "high"
+    },
+    {
+      "factor": "Non-registered investment portfolio size and unrealized gains",
+      "why_it_matters": "Departure tax (deemed disposition) is triggered on non-registered investments at the moment you leave; larger portfolios with larger unrealized gains create larger immediate tax bills",
+      "how_to_assess": "Calculate current fair market value minus adjusted cost base for all non-registered holdings; estimate the capital gains tax at 50% inclusion rate at your expected marginal rate in the departure year",
+      "weight": "high"
+    },
+    {
+      "factor": "Departure date timing within the calendar year",
+      "why_it_matters": "Leaving mid-year reduces your Canadian income for that year, potentially lowering your marginal rate for both RRSP withdrawals and deemed disposition gains — creating a planning window",
+      "how_to_assess": "Project total Canadian income from January to departure date; model RRSP withdrawal scenarios at that lower income level versus the flat 25% non-resident rate post-departure",
+      "weight": "high"
+    },
+    {
+      "factor": "Canadian real estate ownership and intended sale timeline",
+      "why_it_matters": "Selling Canadian real estate as a non-resident triggers Section 116 withholding at 25% of gross sale price — creating a major cash flow problem even when actual tax owed is far less",
+      "how_to_assess": "Determine whether you plan to sell within a few years of departure; if yes, compare the net proceeds and process complexity of selling before versus after becoming a non-resident",
+      "weight": "high"
+    },
+    {
+      "factor": "Strength of Canadian residential ties being severed",
+      "why_it_matters": "If you fail to sever primary ties (home, spouse, dependents in Canada), CRA may continue to treat you as a Canadian tax resident even while you live abroad, resulting in ongoing worldwide taxation",
+      "how_to_assess": "Audit all primary and secondary residential ties using CRA's framework; document evidence of tie severance (lease termination, spouse relocation, cancellation of provincial health card, driver's license, etc.)",
+      "weight": "high"
+    },
+    {
+      "factor": "HBP or LLP repayment obligations",
+      "why_it_matters": "If you withdrew from RRSP under the Home Buyers' Plan or Lifelong Learning Plan, the repayment obligation continues post-departure; failure to repay adds the required repayment amount to your income each year",
+      "how_to_assess": "Check your CRA My Account for outstanding HBP/LLP repayment balances and annual repayment schedule; calculate the cost of not repaying versus repaying before departure",
+      "weight": "medium"
+    },
+    {
+      "factor": "CPP contribution history",
+      "why_it_matters": "CPP entitlements are preserved after leaving Canada and represent a future income stream from your Canadian working years; they should factor into retirement income planning",
+      "how_to_assess": "Review CPP Statement of Contributions through Service Canada; estimate projected CPP pension at age 65 based on years and amounts contributed",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Leaving RRSP funds in Canada and withdrawing gradually as a non-resident",
+      "unstated_consequence": "Every withdrawal is permanently subject to 25% flat withholding for residents of India or China, with no treaty reduction — meaning a $100,000 RRSP is effectively worth only $75,000 net, with no ability to optimize timing or bracket",
+      "who_it_affects": "Indian and Chinese nationals who accumulate large RRSPs expecting tax-deferred growth to compound efficiently for retirement"
+    },
+    {
+      "choice": "Maintaining any Canadian residential tie while working abroad (renting out your home, leaving spouse in Canada)",
+      "unstated_consequence": "CRA may classify you as a continuing Canadian tax resident, subjecting your global income — including your new home country salary — to Canadian income tax",
+      "who_it_affects": "Professionals who try to 'keep options open' by maintaining Canadian ties while testing opportunities abroad"
+    },
+    {
+      "choice": "Selling Canadian real estate as a non-resident rather than before departure",
+      "unstated_consequence": "The buyer is legally required to withhold 25% of the gross sale price — not the profit — creating a months-long cash flow gap while the Section 116 clearance certificate is processed; on a $800K sale, $200K is locked up with the buyer",
+      "who_it_affects": "Non-residents who are counting on sale proceeds to fund resettlement or investment in their home country and did not anticipate the withholding delay"
+    },
+    {
+      "choice": "Continuing to contribute to TFSA after departure date without canceling automatic contributions",
+      "unstated_consequence": "Each month of non-resident TFSA contribution triggers a 1% penalty on the contributed amount — an easily avoidable cost that compounds until discovered and corrected",
+      "who_it_affects": "Professionals who set up automatic TFSA contributions and forget to cancel them when departing"
+    },
+    {
+      "choice": "Ignoring the departure tax and assuming Canada stops taxing you the moment you leave",
+      "unstated_consequence": "A deemed disposition triggers on all non-registered investments on departure date, creating a capital gains tax bill in the departure year even though no actual sale occurred and no cash was received",
+      "who_it_affects": "Passive investors with large non-registered portfolios who built wealth in Canada but planned to simply 'walk away' without triggering a tax event"
+    },
+    {
+      "choice": "Not filing a departure return or notifying CRA of non-resident status",
+      "unstated_consequence": "Canadian employers or financial institutions may continue reporting income and withholding on the assumption you are still a resident, creating administrative and reconciliation problems that are difficult to unwind from abroad",
+      "who_it_affects": "Professionals who leave informally without a clean administrative departure from Canadian tax obligations"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating RRSP like a 401k and assuming it can be efficiently accessed after leaving Canada",
+      "why_it_happens": "The RRSP-401k analogy is commonly used; professionals assume similar favorable withdrawal treatment, not knowing that Canada's treaties with India and China provide zero withholding reduction unlike some US treaty provisions",
+      "consequence": "Permanent 25% tax drag on every RRSP withdrawal for life, with no optimization possible after becoming a non-resident — reducing the effective value of accumulated RRSP savings by 25%",
+      "warning_signs": [
+        "Maximizing RRSP contributions in final years before departure without modeling the non-resident withdrawal cost",
+        "Assuming RRSP will behave like a tax-advantaged account in retirement from abroad"
+      ]
+    },
+    {
+      "pattern": "Underestimating the cash flow impact of Section 116 withholding when selling Canadian real estate as a non-resident",
+      "why_it_happens": "Sellers focus on the capital gain calculation (profit) and estimate their tax correctly, but do not realize the withholding is applied to gross sale price — creating a much larger temporary cash lockup than the actual tax owed",
+      "consequence": "Months of illiquidity with hundreds of thousands of dollars held by the buyer, disrupting resettlement plans or forcing reliance on other funds during the clearance certificate delay",
+      "warning_signs": [
+        "Planning to use real estate sale proceeds immediately after closing to fund home purchase or investment in home country",
+        "Not budgeting for a 3–6 month delay between sale closing and receipt of withheld funds"
+      ]
+    },
+    {
+      "pattern": "Failing to sever Canadian residential ties cleanly, triggering continued Canadian tax residency while abroad",
+      "why_it_happens": "Professionals want optionality — they rent out their condo, leave a spouse behind temporarily, or keep provincial health coverage 'just in case' — without realizing each tie individually or collectively may cause CRA to classify them as continuing residents",
+      "consequence": "Continued obligation to report worldwide income to Canada and pay Canadian tax on foreign salary, creating double taxation risk and compliance burden",
+      "warning_signs": [
+        "Renting out Canadian home while working abroad rather than selling or terminating lease",
+        "Maintaining provincial health insurance card after departure date"
+      ]
+    },
+    {
+      "pattern": "Not planning RRSP withdrawals around departure date timing",
+      "why_it_happens": "Professionals focus on logistics of moving and career transition; tax timing optimization feels like a secondary concern and is often deferred until after the move when it is too late",
+      "consequence": "Missing the window to withdraw RRSP funds at a lower marginal rate during a partial departure year, instead facing the permanent 25% flat non-resident withholding rate on all future withdrawals",
+      "warning_signs": [
+        "Departure planned for mid-year with RRSP balance untouched and no withdrawal strategy in place",
+        "Engaging a tax advisor only after the departure date has passed"
+      ]
+    },
+    {
+      "pattern": "Forgetting HBP or LLP repayment obligations after leaving Canada",
+      "why_it_happens": "The repayment obligation is abstract — there is no invoice or collection agency; professionals simply stop thinking about it once they leave Canada and stop filing regular Canadian returns",
+      "consequence": "The outstanding HBP/LLP balance is added to taxable income each year the repayment is missed, creating unexpected Canadian tax liabilities that may only surface during a future tax audit or when applying for Canadian financial products",
+      "warning_signs": [
+        "Previously used RRSP Home Buyers' Plan or Lifelong Learning Plan and has not confirmed the repayment schedule",
+        "Assuming that leaving Canada ends all RRSP-related obligations"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your current RRSP balance, and do you know your home country's non-resident withholding rate under the Canada tax treaty?",
+      "what_it_reveals": "Determines the actual after-tax value of your RRSP as a non-resident and whether pre-departure withdrawal strategies should be pursued",
+      "follow_up_if_yes": "Model the partial-year marginal rate scenario: is your effective rate in the departure year lower than 25%? If so, quantify how much to withdraw before leaving.",
+      "follow_up_if_no": "Look up the Canada tax treaty with your home country specifically for the pension/RRSP article — do not assume any reduction exists; India and China receive no reduction from the default 25%"
+    },
+    {
+      "question": "Are you planning to sell your Canadian property before or after you leave, and do you know what Section 116 withholding means for your cash flow?",
+      "what_it_reveals": "Reveals whether the person has modeled the gross-price withholding versus the gain-based tax bill, and whether they have budgeted for months of illiquidity",
+      "follow_up_if_yes": "Ask for their timeline: when do they need the proceeds? If within 6 months of closing, the clearance certificate delay could be a serious problem.",
+      "follow_up_if_no": "Walk through the mechanics: 25% of gross sale price is withheld by the buyer, not 25% of gain — on an $800K property, that is $200K held up regardless of actual tax owed"
+    },
+    {
+      "question": "Have you severed — or do you plan to sever — all primary Canadian residential ties before your intended departure date?",
+      "what_it_reveals": "Identifies whether the person is at risk of being classified as a continuing Canadian tax resident despite physically living abroad",
+      "follow_up_if_yes": "Ask specifically about the home (sold or lease terminated?), spouse and dependents (relocating with you?), and provincial health card (cancelled?).",
+      "follow_up_if_no": "Explain the 'extended stay overseas' trap: CRA does not automatically reclassify you as a non-resident; maintaining a home or spouse in Canada is sufficient to sustain Canadian tax residency"
+    },
+    {
+      "question": "What is your planned departure date, and have you modeled your total Canadian income for that partial calendar year?",
+      "what_it_reveals": "Reveals whether there is a planning window to make RRSP withdrawals or realize non-registered gains at a lower marginal rate before departure",
+      "follow_up_if_yes": "Run the numbers: what is the effective marginal rate on incremental income in that partial year? Compare to the flat 25% RRSP withholding rate post-departure.",
+      "follow_up_if_no": "The departure date is one of the most important tax planning variables — even a few months of difference changes whether pre-departure RRSP withdrawal is advantageous"
+    },
+    {
+      "question": "Did you use the RRSP Home Buyers' Plan or Lifelong Learning Plan, and do you know your outstanding repayment balance?",
+      "what_it_reveals": "Identifies a silent ongoing obligation that continues post-departure and can generate unexpected Canadian taxable income if ignored",
+      "follow_up_if_yes": "Calculate the annual repayment amount and decide whether to repay the full balance before departure (using current marginal rate) or accept the annual income inclusion going forward.",
+      "follow_up_if_no": "Check CRA My Account for HBP/LLP balances before finalizing departure plans — this is frequently overlooked and creates avoidable tax exposure"
+    },
+    {
+      "question": "Do you have a non-registered investment portfolio in Canada, and have you calculated your adjusted cost base on those holdings?",
+      "what_it_reveals": "Determines the size of the deemed disposition tax hit on departure and whether pre-departure realization of gains (when Canadian marginal rates may be lower) is preferable to the deemed disposition",
+      "follow_up_if_yes": "Compare tax cost of realizing gains before departure at partial-year marginal rate versus deemed disposition at the same rate — they may be equivalent, but timing of actual cash payment differs.",
+      "follow_up_if_no": "Many investors do not track ACB carefully; without it, calculating the departure tax obligation is impossible and CRA may use a conservative (unfavorable) estimate"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Once you leave Canada and stop living there, Canada stops taxing you automatically",
+      "actual_reality": "Canada uses a residential ties test, not a physical presence count; if you maintain a home, spouse, or dependents in Canada, CRA may continue to classify you as a Canadian resident for tax purposes regardless of where you physically live",
+      "implication": "You must actively sever primary residential ties and document that severance — departure alone is insufficient; professionals who maintain optionality by keeping Canadian ties face continued worldwide tax obligations"
+    },
+    {
+      "common_belief": "RRSP is like a 401k and will be similarly efficient to access from abroad",
+      "actual_reality": "Canada's tax treaties with India and China provide no reduction in the 25% default withholding rate on RRSP withdrawals; unlike some US treaty provisions that reduce pension withholding, every dollar withdrawn from an RRSP as a non-resident in these countries is taxed at 25% flat",
+      "implication": "Professionals from India or China should model RRSP as a 75-cents-on-the-dollar asset in retirement — and weigh whether pre-departure withdrawals at a lower marginal rate are more efficient than leaving funds for future non-resident withdrawals"
+    },
+    {
+      "common_belief": "Selling your Canadian home as a non-resident is similar to selling it as a resident — you pay tax on the gain",
+      "actual_reality": "The buyer is legally required to withhold 25% of the gross sale price — not the gain — as a security deposit under Section 116; on a $700K–$900K property, this locks up $175K–$225K for months while a clearance certificate is processed",
+      "implication": "Cash flow planning must account for the withholding delay, not just the tax bill; professionals expecting to access sale proceeds quickly for resettlement or reinvestment will face a significant liquidity gap"
+    },
+    {
+      "common_belief": "TFSA is a simple, penalty-free account that you can manage from anywhere",
+      "actual_reality": "Any TFSA contribution made while you are a non-resident triggers a 1% per month penalty on the contributed amount; contribution room also stops accumulating while you are a non-resident",
+      "implication": "Automatic TFSA contributions must be canceled on the departure date — not at year end — and you should not assume TFSA room keeps growing while you are abroad"
+    },
+    {
+      "common_belief": "There is no Canadian exit tax equivalent to the US exit tax",
+      "actual_reality": "Canada has a deemed disposition rule that treats you as having sold all non-registered investments at fair market value on the day you leave; this triggers capital gains tax on unrealized appreciation even though you have not actually sold anything",
+      "implication": "Professionals with large non-registered portfolios must calculate and plan for this departure tax bill before leaving — it is real cash owed on paper gains, and it comes due on the final Canadian tax return"
+    },
+    {
+      "common_belief": "You need to formally notify CRA when you leave Canada",
+      "actual_reality": "There is no mandatory notification form — you simply include your departure date on your final tax return; however, without proactive communication, Canadian employers and financial institutions may continue treating you as a resident, causing withholding and reporting problems",
+      "implication": "Consider filing a letter to CRA clarifying non-resident status to prevent institutions from continuing to report Canadian income incorrectly and to establish a clean administrative departure date"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "RRSP exit strategy",
+      "junior_pattern": "Maximizes RRSP contributions in final Canadian years because 'tax deduction now is always good' without modeling what withdrawal looks like as a non-resident from a country with no treaty reduction",
+      "senior_pattern": "Models the full lifecycle: contribution deduction value now versus the flat 25% non-resident withholding on every withdrawal later; may deliberately under-contribute or do partial pre-departure withdrawals at lower marginal rates",
+      "why_it_matters": "The RRSP tax deferral benefit reverses if the exit withholding rate exceeds the original marginal rate benefit; optimizing contributions without modeling the exit creates a worse outcome than not contributing at all"
+    },
+    {
+      "dimension": "Real estate sale timing",
+      "junior_pattern": "Focuses on the capital gain calculation and estimated tax, concluding 'I know what I'll owe' — without realizing the withholding is on gross sale price and creates a multi-month cash flow disruption",
+      "senior_pattern": "Plans the real estate exit as part of the departure timeline, models the $200K+ cash flow gap from Section 116 withholding, and either sells before departure or arranges bridge financing to cover the withholding period",
+      "why_it_matters": "A technically correct tax estimate can coexist with a completely incorrect cash flow plan — the distinction between tax owed and cash withheld is the difference between a smooth transition and a liquidity crisis"
+    },
+    {
+      "dimension": "Residency tie severance",
+      "junior_pattern": "Assumes that physically moving to another country ends Canadian tax obligations; may keep a rented-out condo, maintain provincial health coverage, or leave a spouse in Canada temporarily while 'trying out' the home country",
+      "senior_pattern": "Treats tie severance as a deliberate legal act requiring documentation; proactively cancels provincial health coverage, terminates leases, relocates family together, and documents the departure date clearly to establish non-resident status",
+      "why_it_matters": "Maintaining even primary residential ties while abroad can result in CRA treating global income as taxable in Canada — creating double taxation and compliance exposure that is difficult to unwind retroactively"
+    },
+    {
+      "dimension": "Departure tax awareness",
+      "junior_pattern": "Believes departure tax does not apply to Canada because 'Canada is not like the US' and assumes no exit tax consequences on non-registered investments",
+      "senior_pattern": "Knows Canada's deemed disposition rule creates a capital gains event on departure for non-registered holdings; calculates the departure tax ahead of time and times the departure date to minimize the marginal rate applied to those gains",
+      "why_it_matters": "An unplanned departure tax bill on a large non-registered portfolio can be $10,000–$50,000+ — discovered only when filing the final return, with no remaining ability to optimize"
+    },
+    {
+      "dimension": "HBP and LLP repayment tracking",
+      "junior_pattern": "Does not think about HBP or LLP repayment after leaving Canada because 'I'm not filing Canadian taxes anymore so it doesn't matter'",
+      "senior_pattern": "Checks outstanding HBP/LLP balance before departure, calculates the annual income inclusion cost of not repaying, and makes a deliberate decision whether to repay the full balance pre-departure or accept the ongoing inclusion",
+      "why_it_matters": "Ignoring HBP/LLP repayment generates unexpected Canadian taxable income each year — creating ongoing filing obligations and tax bills that were entirely avoidable with pre-departure planning"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "canada_canada_departure_tax_rrsp_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

@@ -1,0 +1,48 @@
+
+============================================================
+  Quality Report: Stay or Return Decision Advisor
+  Overall: 4.5/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely strong skill with sharp, specific, non-obvious content that would meaningfully improve an AI's advice in this domain. Its willingness to name emotional distortions (fear-of-failure, rationalization) alongside hard numbers (525K queue, $15–50K international school fees, month 6–12 distress peak) is what separates it from generic career advice. Weaknesses are mostly at the margins — a few numbers that need sourcing/qualification, and some scenarios (non-tech sectors, single women, spousal visa dependents) that get less coverage.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       5/5  ████████████  Excellent
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             5/5  ████████████  Excellent
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The four-case classification (Trapped Waiter, Rationalizer, Fear-Framer, Genuine Optimizer) is genuinely operational — it forces the AI to distinguish emotional vs. analytical situations that would otherwise get identical generic responses. This is expert-level pattern recognition.
+    • Specific, load-bearing numbers throughout: '525K+ approved petitions vs. ~40K annual slots', '$15K–$50K per child per year for international schools', '$200K in SF may yield ~$62K liquid savings'. These transform vague framings into testable models.
+    • The 'Never return to search — return to start' heuristic with its concrete tactical unpacking (interview while employed, accept before notice, negotiate around vesting) is the kind of thing that actually changes outcomes. Similarly, the month 6–12 distress-peak insight is the sort of counterintuitive knowledge that prevents second-guessing a correct decision.
+    • The Hidden Tradeoffs table is uniformly strong — each row identifies something invisible at decision time (e.g., 'Keeping green card just in case' triggering perpetual US worldwide-income tax residency and FBAR obligations). No filler rows.
+
+  ✗ Weaknesses:
+    • Some numbers are cited with false precision without sourcing or ranges. '50–134 year backlog' is a specific projection dependent on assumptions (Cato Institute methodology) that varies widely; presenting it as fact risks calcifying the user's model around a number the AI can't defend if challenged. Similar issue with '$500K–$2M lifetime opportunity cost' for eldercare return.
+    • The diagnostic step is thin on partner/dual-career and eldercare questions relative to their importance. One question each ('what does your partner independently want', 'how old are your parents') doesn't unpack these enough given they're flagged as major decision drivers. Compare to the depth on immigration category.
+    • The skill is heavily calibrated toward tech/finance/highly-paid professionals in the US. A postdoc, a nurse, a returning founder, or someone on a spousal visa (H-4) faces a materially different decision set that isn't distinguished. The 'US MD or JD' industry-reality bullet is the only nod to sector variation.
+    • 'Genuine Optimizer' case is named but gets no specific treatment — it says they 'deserve the full trajectory model' without specifying what that model looks like beyond the general heuristics. This is the residual bucket after ruling out the other three, so it needs the most content, not the least.
+
+  → Improvement Suggestions:
+    • Add a short 'Genuine Optimizer' sub-framework: a scoring rubric across the four compounding dimensions (career ceiling, savings, immigration, relational) with weights the user sets explicitly, so the AI can walk them through a real trajectory model rather than just gesturing at one.
+    • Expand diagnostic step 4 (eldercare) and step 5 (partner) into their own mini-frameworks. For partner: independent career viability score, dependent-visa work restrictions (H-4 EAD volatility), Phase 2 written conditions template. For eldercare: sibling capacity, professional care cost/quality by home city, parents' own stated preference (which is often mis-assumed).
+    • Add sector-specific realities beyond MD/JD: academic postdocs (2-body problem, tenure clock), founders (equity mobility across jurisdictions, tax residency traps), quant/finance (bonus deferral clawbacks on early exit), healthcare (licensing pathways). Even 3–4 more bullets would materially broaden applicability.
+    • Add source qualifiers to the most-cited numbers ('per Cato Institute projections', 'per USCIS FY2023 data') so the AI can defend or update them under challenge, and flag which numbers are stable facts vs. projections.
+    • Add a failure pattern for the inverse case — 'Rationalizing Return' — where someone has emotionally decided to return and is seeking permission via nationalist/family/lifestyle framing while ignoring genuine career damage. Current framing skews toward diagnosing stayers.
+
+  ⚠ Generic Advice Flags:
+    • 'Deserves the full trajectory model, sector-specific analysis, and staged-return option construction.' — This describes the Genuine Optimizer response but doesn't specify what any of these three things actually are. It's the one place where the skill defers to generality.
+    • 'If dual-earner: what does your partner independently want, and is their career viable in the destination?' — The question is right but 'is their career viable' without follow-up sub-questions (industry portability, credential recognition, visa work authorization, network) leaves the AI to invent the analysis on its own.
+
+  ○ Missing Coverage:
+    • H-4 dependent spouses and the EAD authorization uncertainty — a major population making this decision under different constraints than the primary visa holder.
+    • Tax residency exit mechanics: expatriation tax for green card holders (8+ years), Form I-407, and the covered-expatriate threshold. This is flagged in Hidden Tradeoffs but not developed.
+    • Non-US host countries beyond passing mention: Canadian PR holders facing similar decisions vs. India/China, UK ILR holders, Australian PR. The skill's description advertises Canada coverage but the content is almost entirely US-centric.
+    • Sector-specific ceilings: what does 'career ceiling' actually look like in FAANG L5 vs. Byte/Tencent staff, or Goldman VP vs. domestic PE? Concrete comparison examples would ground the abstract 'compounding' language.
+    • Timing relative to life stage: single 25-year-old, married pre-kids, married with kids ages 0–5, 8–14, 15+ have very different reversibility profiles. The children-8–14 point is made once but the broader life-stage framework isn't developed.

@@ -1,0 +1,48 @@
+
+============================================================
+  Quality Report: Stay or Return Decision Advisor
+  Overall: 4.4/5.0  ████████████████░░░░
+============================================================
+
+  This is a genuinely strong skill that captures real expert reasoning in a domain saturated with generic advice. It has specific, quantitative anchors (134-year EB-2 wait, 730-day PR rule, months 6-12 reverse culture shock window) and identifies concrete failure patterns like indefinite deferral and gross-salary comparison. Some numbers deserve sourcing/caveats, and a few areas (partner modeling, alternative destinations) are named but not deeply developed.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       4/5  ██████████░░  Good
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             5/5  ████████████  Excellent
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The expert framing is genuinely counterintuitive and correctly names the dominant wrong framings: 'treating "stay" as the safe default (the return option deteriorates with time — entrepreneurial windows close, home-market networks atrophy, parents age, children form identities).' This inversion of the default framing is exactly what a seasoned advisor would push on.
+    • Failure patterns are concrete and diagnostically usable — e.g., 'Indefinite deferral... Warning sign: return condition has already shifted once, and person can't name specific measurable milestones' and 'Partner treated as "supportive" rather than modeled independently.' These are recognizable patterns with checkable warning signs, not abstractions.
+    • Hidden tradeoffs table contains genuinely non-obvious items like the $2K–5K/year green card retention compliance cost, China treating US-born children as Chinese nationals, and 401k illiquidity reducing relocation flexibility. These are the kinds of details that only surface after the decision, exactly what the section should capture.
+    • The classification step ('Indian on EB-2/EB-3' vs 'Chinese on H-1B' vs 'Canadian PR') correctly identifies that these are fundamentally different decisions, not variants of the same one — this is expert-level segmentation.
+
+  ✗ Weaknesses:
+    • Several quantitative claims are presented without confidence intervals or sources and some are debatable — e.g., '50–134 years' EB-2 India backlog is a projection contingent on assumptions that vary widely; '525,000+ pending petitions with ~3,000 visas/year' — the 3,000 figure appears low (the per-country cap yields ~2,800 EB-2 for India, but total including spillover has been higher). The skill should flag these as projections, not facts.
+    • Heuristic #2 ('Compare savings rate and PPP-adjusted net savings') gives an example ('$200K in SF may yield $62K liquid savings') but doesn't provide the actual line-item template. For a heuristic centered on 'build a line-by-line deduction model,' the skill should include the model or its structure.
+    • Partner career analysis is repeatedly flagged as critical ('most common documented failure mode') but the skill offers no framework for actually doing it — just the instruction to do it. What does independent modeling look like? What are the credential-transfer bottlenecks by field/country?
+    • 'Alternative paths (Canada, UK, Singapore, UAE)' is mentioned in the description and framing but never developed. What are the actual tradeoffs of Singapore vs UAE vs UK for an Indian software engineer? The skill promises third options but delivers only the label.
+
+  → Improvement Suggestions:
+    • Add a compact 'net savings worksheet' template showing the actual deductions to run: gross → federal tax → state tax → FICA → rent → healthcare premiums/deductibles → immigration legal fees → 401k (flag as illiquid) → then PPP-adjust against home-country senior comp. This operationalizes heuristic #2.
+    • Develop a 'Partner Independent Analysis' subsection with 4-6 specific questions: credential recognition in target country, industry depth in destination city, language of professional work, typical months-to-first-offer for their field, whether their role requires local network, and what their fallback looks like if primary path fails at month 6.
+    • Add a brief 'Third Options' comparison table for Canada / UK / Singapore / UAE / Australia covering: immigration timeline, tax regime, path to permanence, typical comp haircut vs US, and 'best fit for whom.' Even 5 rows would deliver on the promise.
+    • Caveat the EB-2/EB-3 backlog numbers with 'projections based on current policy and per-country caps; assumes no legislative change' — the skill's credibility rests on these numbers being defensible.
+    • Add a heuristic on decision timing: when it's better to decide now vs. defer with an explicit review date (e.g., 'defer only with a calendar-locked re-review and a written trigger condition').
+
+  ⚠ Generic Advice Flags:
+    • 'Reverse culture shock at months 6–12 is neurological, not evidence the decision was wrong.' — The specificity of the timeline is good, but 'neurological' is a hand-wave. Either cite the mechanism (adjustment/U-curve research, cortisol/stress adaptation) or reframe as behavioral pattern.
+    • 'Return with a differentiated story, not just a credential.' — This is directionally right but generic. What does a differentiated story look like? P&L ownership? Specific tech stack? Team scale led? Without examples this reads like consultant-speak.
+
+  ○ Missing Coverage:
+    • Tax exit planning: US expatriation tax (covered expatriate rules, exit tax on unrealized gains for green card holders 8+ years) is a major financial event that isn't mentioned despite the skill discussing green card abandonment.
+    • Currency and remittance risk: someone with $500K USD savings returning to India/China faces FX timing risk, RBI/SAFE remittance limits, and repatriation of retirement accounts (401k early withdrawal penalties for non-residents).
+    • Children's education pathway: if kids are 8-14 (flagged as high-risk window), what does the actual schooling transition look like — international schools, curriculum gaps, language of instruction, university admissions implications?
+    • Housing: buying a home in the US is often the decision that actually locks people in; the skill doesn't address the interplay between property ownership and mobility.
+    • The 'return to start not to search' heuristic assumes a certain job market. Doesn't address the case where the person has no current network in the home country and can't credibly interview from abroad without a trip.

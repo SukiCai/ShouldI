@@ -1,0 +1,357 @@
+{
+  "source_file": "zhihu_美国四大工作一年_h1b_连续两年没抽中_接下来该咋走.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Delay OPT start date to maximize H-1B lottery attempts",
+      "condition": "When a student graduates in winter and has not yet submitted their OPT application, or can delay their start date",
+      "action": "Submit OPT application as late as permissible so that the EAD effective date falls after April 1 of the following year, giving you one additional H-1B lottery cycle",
+      "because": "The best answer describes a first-person case where OPT was applied for in August but not approved until late October, resulting in an OPT start date that extended past the next H-1B filing window — buying an extra lottery attempt",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If O-1 criteria are plausible, pursue O-1 and EB-1B simultaneously",
+      "condition": "When a student has a graduate degree, published papers, and meets at least several O-1 evidentiary criteria",
+      "action": "File O-1 for immediate work authorization and EB-1B for permanent residence at the same time",
+      "because": "The best answer explicitly recommends filing both together as a 'once and for all' solution, noting O-1 has no cap, no lottery, unlimited extensions, and 15-day premium processing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Prefer J-1 third-party sponsorship over fraudulent CPT as a bridge visa",
+      "condition": "When an employer cannot sponsor H-1B and a legitimate bridge status is needed for up to 18 months",
+      "action": "Use a third-party J-1 sponsor organization (listed on the State Department website) to obtain J-1 status and be delegated to the employer",
+      "because": "The best answer explicitly states J-1 via third-party sponsor is faster and cheaper than CPT, while fraudulent CPT schemes have already been raided by USCIS with consequences for enrolled students",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether the goal is to stay in the US vs. to continue working legally",
+      "why_it_matters": "The set of viable options is completely different — non-work statuses (F-1, B-1/B-2, dependent visas) are sufficient for staying but useless for earning income",
+      "how_to_assess": "Ask explicitly: does the person need to maintain employment, or just maintain lawful presence? The best answer flags this as the first branching question",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the employer is a multinational with overseas offices",
+      "why_it_matters": "L-1 intracompany transferee visa requires one year of foreign employment with the same company — only viable if the employer operates internationally",
+      "how_to_assess": "Check whether the company has a qualifying affiliated entity in the home country and is willing to place the employee there for 12 months",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "STEM vs. non-STEM degree classification",
+      "why_it_matters": "STEM OPT extension grants 24 additional months (total 36 months) of work authorization, allowing two or three additional H-1B lottery attempts",
+      "how_to_assess": "Check whether the CIP code of the degree appears on DHS's STEM designated degree program list; confirm with the DSO",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Academic publication record and professional achievement level",
+      "why_it_matters": "O-1A/EB-1B eligibility depends on demonstrable extraordinary ability — having published papers and citations is a threshold factor",
+      "how_to_assess": "Review against O-1 evidentiary criteria (awards, judging, critical role, high salary, press, original contributions, memberships); consult immigration attorney for honest assessment",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "OPT application timing relative to H-1B cap season",
+      "why_it_matters": "If OPT EAD effective date falls before April 1, the student may only get one lottery shot before status expires; delaying can add a full additional year",
+      "how_to_assess": "Calculate backward from desired OPT start date; factor in 2-3 month USCIS processing time; confirm DSO can accommodate delayed submission",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Degree level already used for OPT/CPT",
+      "why_it_matters": "If pursuing a new degree to generate CPT eligibility, the new program must be at a different academic level than the one already exhausted",
+      "how_to_assess": "If prior OPT was used at the master's level, new enrollment must be at a different tier (e.g., doctoral) to generate independent CPT eligibility",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Using J-1 visa as a bridge to remain employed after H-1B lottery failures",
+      "unstated_consequence": "J-1 holders may be subject to the two-year home residency requirement (212(e)), which must be waived before transitioning to H-1B or applying for a green card — adding significant complexity and delay",
+      "who_it_affects": "Anyone using J-1 as a short-term bridge who later wants to pursue permanent residence or H-1B sponsorship",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing L-1 via sending employee abroad for one year",
+      "unstated_consequence": "The employee must actually leave the US, work abroad for a full year, and depend on the employer's willingness to repatriate them — the outcome is not guaranteed and the year abroad interrupts US career trajectory",
+      "who_it_affects": "Employees at Big 4 or multinationals who are told the L-1 path is available but don't fully model the uncertainty of the return promise",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Enrolling in a new academic program to generate CPT eligibility",
+      "unstated_consequence": "The new program must be at a genuinely different degree level, and the student must actually attend and complete coursework — it is not a rubber-stamp process; USCIS has targeted fraudulent CPT mills",
+      "who_it_affects": "Students who enroll in name-only CPT programs assuming they are safe because they paid tuition",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "H-4 EAD as a stopgap while spouse holds H-1B",
+      "unstated_consequence": "H-4 EAD work authorization was under active threat of rescission at the time of writing; relying on it creates career dependency on the spouse's visa status and a fragile employment authorization that can be revoked by policy change",
+      "who_it_affects": "Dual-income couples where one partner's income depends on H-4 EAD",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Enrolling in fraudulent or shell CPT programs to extend work authorization after H-1B lottery failures",
+      "why_it_happens": "CPT appears to be a low-effort workaround; the cost feels low and the immediate benefit (continued employment) is tangible; enforcement risk feels abstract",
+      "consequence": "USCIS has conducted targeted enforcement operations ('fishing' operations in New York and California), shutting down known CPT mills and leaving enrolled students with tainted immigration records, potential unlawful presence findings, and visa denial risks",
+      "warning_signs": [
+        "The CPT program is at the same academic level as the degree already used for OPT",
+        "The program requires minimal or no actual coursework",
+        "The institution is known as a 'CPT school' rather than an accredited university",
+        "The employer and student both know the enrollment is a formality"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Assuming H-1B is the only viable long-term work visa and treating lottery failure as a terminal event",
+      "why_it_happens": "H-1B dominates the discourse for international students in the US; O-1, EB-1, J-1, and L-1 alternatives are less visible and feel inaccessible",
+      "consequence": "Students who could have pursued O-1 or EB-1B based on their academic record instead either leave the US unnecessarily or take on risky CPT arrangements",
+      "warning_signs": [
+        "The person frames their question as 'what do I do now that H-1B failed' with no mention of alternatives",
+        "The person has a graduate degree with publications but has not consulted about O-1 eligibility"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you need to continue working, or just need to maintain lawful status in the US?",
+      "what_it_reveals": "Determines whether work-authorized statuses (O-1, J-1, CPT, L-1) are required, or whether non-work statuses (F-1, B-2, dependent visa) are sufficient",
+      "follow_up_if_yes": "Is your employer a multinational? Do you have academic publications? Is your degree STEM-classified?",
+      "follow_up_if_no": "Do you have a spouse with F-1 or H-1B status, or another basis for a dependent visa?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your employer a multinational company with a qualifying affiliated entity in your home country?",
+      "what_it_reveals": "Determines L-1 intracompany transferee eligibility as a cap-exempt H-1B alternative",
+      "follow_up_if_yes": "Is the employer willing to send you abroad for one year with a credible commitment to bring you back on L-1?",
+      "follow_up_if_no": "L-1 is not available; focus on J-1, O-1, or cap-exempt H-1B employer options",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have graduate-level publications, awards, or other evidence of professional distinction?",
+      "what_it_reveals": "Determines whether O-1A or EB-1B is a realistic option — which would bypass H-1B cap entirely",
+      "follow_up_if_yes": "Consult an immigration attorney specifically about O-1 evidentiary criteria; consider filing O-1 and EB-1B concurrently",
+      "follow_up_if_no": "O-1/EB-1B paths are likely unavailable; focus on J-1, STEM OPT extension, cap-exempt employer, or L-1",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "When exactly does your OPT/STEM OPT expire relative to the next H-1B cap filing window (April 1)?",
+      "what_it_reveals": "Determines how many additional lottery attempts remain and whether timing manipulation of the OPT application is still possible",
+      "follow_up_if_yes": "If OPT has not yet been applied for or if it can still be delayed, model the latest permissible submission date to push EAD validity past April 1",
+      "follow_up_if_no": "If OPT is already approved and running, the timing window is closed; move to other bridge options",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you willing to work for a cap-exempt employer such as a university, non-profit research institution, or government entity?",
+      "what_it_reveals": "Cap-exempt H-1B positions do not require lottery participation; this is a permanent solution if the person is open to that employment type",
+      "follow_up_if_yes": "Note that returning to a for-profit employer later will require re-entering the H-1B cap lottery",
+      "follow_up_if_no": "Cap-exempt H-1B is not a viable path; continue evaluating other options",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Once H-1B is not selected in the lottery, there are no good options left and returning home is likely inevitable",
+      "actual_reality": "Multiple cap-exempt or non-lottery pathways exist: O-1 (no cap, renewable indefinitely), J-1 via third-party sponsor (18 months, fast), cap-exempt H-1B at non-profits/universities, L-1 for multinational employees, and STEM OPT extension for additional lottery attempts",
+      "implication": "Students should map their full option tree before concluding the situation is terminal; most lottery failures have at least one viable bridge strategy",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Cap-exempt H-1B is a complete and permanent solution equivalent to a regular H-1B",
+      "actual_reality": "Cap-exempt H-1B is tied to the cap-exempt employer; if the holder later wants to work for a for-profit company, they must re-enter the H-1B cap lottery and go through the random selection process again",
+      "implication": "Cap-exempt H-1B is best treated as a bridge or a permanent choice for those committed to non-profit/academic careers, not as a general escape hatch",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "EB-5 investment immigration is a straightforward and accessible path for international students who fail the H-1B lottery",
+      "actual_reality": "EB-5 requires $500,000–$1,000,000+ in at-risk investment capital and job creation requirements; the 'cost' figure cited ($80,000) refers only to fees, not the full at-risk principal; Chinese nationals face multi-year backlogs; it is not a realistic option for most recent graduates",
+      "implication": "EB-5 marketing in community forums often targets aspirational readers with misleading framing; international students without significant personal or family capital should disregard EB-5 as a lottery-failure response",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing the H-1B lottery failure",
+      "naive_pattern": "Treats lottery failure as a binary outcome — either get H-1B or leave the US; asks 'what do I do now' without having researched alternatives",
+      "informed_pattern": "Immediately maps the decision tree: STEM OPT extension timeline, OPT timing manipulation, J-1 bridge, O-1 eligibility, cap-exempt employers, L-1 feasibility — treats lottery failure as a routing event, not a terminal event",
+      "why_it_matters": "Students who treat lottery failure as terminal often make premature decisions (returning home, abandoning jobs) when viable paths were available with proper planning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "CPT as a solution",
+      "naive_pattern": "Views CPT enrollment (even at a known CPT mill) as a safe and common workaround because 'everyone does it'",
+      "informed_pattern": "Distinguishes clearly between legitimate CPT (new degree at different academic level, real coursework) and fraudulent CPT (shell enrollment); knows USCIS has actively enforced against CPT mills and that past or current enrollment creates long-term immigration risk",
+      "why_it_matters": "Acting on the naive view can result in visa denial, removal proceedings, or a permanently tainted immigration record",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "O-1 visa awareness",
+      "naive_pattern": "Dismisses O-1 as only for celebrities or Nobel laureates; does not consider it after H-1B lottery failure",
+      "informed_pattern": "Understands that O-1A applies to business, science, education, and athletics with a nuanced multi-criteria evidentiary standard; knows that graduate students with publications, conference presentations, or industry recognition may qualify; considers O-1 + EB-1B concurrent filing as a clean solution",
+      "why_it_matters": "Students who qualify for O-1 but don't pursue it spend years in lottery uncertainty or take on riskier bridge strategies unnecessarily",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "EB-5 investment immigration costs only about $80,000 and is a viable option for international students who fail H-1B",
+      "why_believed": "Immigration consultants and agencies market EB-5 aggressively, quoting only the fee component while burying the $500,000–$1,000,000 at-risk principal requirement; the 'refund' framing makes it sound like a deposit, not a permanent capital commitment",
+      "actual_rule": "EB-5 requires a substantial capital investment ($800,000–$1,050,000 as of recent policy) that is genuinely at risk; Chinese nationals also face multi-year visa backlogs; the $80,000 figure refers only to administrative fees, not the investment principal",
+      "real_consequence": "Students who pursue EB-5 based on this framing either discover they cannot afford it after wasting time and initial fees, or are misled into unsuitable investment products by unscrupulous agents",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "H-4 EAD is a stable, long-term work authorization option for spouses of H-1B holders",
+      "why_believed": "H-4 EAD has existed as a policy since 2015 and many people use it successfully; the regulatory threat feels theoretical until it materializes",
+      "actual_rule": "H-4 EAD has been subject to multiple rescission attempts and remains vulnerable to executive action; it is not a statutory right but a regulatory benefit that can be revoked without congressional action",
+      "real_consequence": "People who build long-term career plans around H-4 EAD can find their work authorization suddenly invalidated by policy change, leaving them with no alternative status and potential gaps in employment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Enrolling in any new program generates valid CPT eligibility regardless of academic level",
+      "why_believed": "The rule about degree level is not prominently discussed in most community forums; students assume any new I-20 resets CPT eligibility",
+      "actual_rule": "A new enrollment that is at the same academic level as the degree used to exhaust prior OPT does not generate independent CPT eligibility; the new program must be at a genuinely different academic level",
+      "real_consequence": "Students who enroll in a second master's program specifically to generate CPT may find their CPT authorization challenged, and the CPT-based employment history may be treated as unauthorized work",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Graduate student applies for OPT in August, but due to USCIS processing delays of approximately 2-3 months, EAD is not approved until late October",
+      "decision": "Student accepts the delayed approval date as the OPT start date rather than pushing for an earlier effective date",
+      "outcome": "OPT validity period extends into the following year past April 1, allowing the student to participate in one additional H-1B cap lottery cycle they would otherwise have missed",
+      "lesson": "OPT start date timing is a lever that can be intentionally managed — deliberately delaying the OPT application submission (within the allowable window) can add a full additional H-1B lottery attempt",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Researcher/graduate with publications whose OPT expired at an inconvenient time after H-1B lottery failure",
+      "decision": "Applied for O-1 visa instead of pursuing CPT or other bridge options",
+      "outcome": "Obtained O-1 status, which provides unlimited renewals, no cap, and 15-day premium processing availability",
+      "lesson": "For candidates with credible academic or professional achievement records, O-1 is a superior bridge and long-term solution compared to CPT or J-1 — the barrier is not the standard but awareness and willingness to pursue it",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Person has failed H-1B lottery twice and asks 'what should I do now' with no mention of alternatives, framing it as a crisis",
+      "underlying_state": "Catastrophizing and tunnel vision — the H-1B lottery has become so dominant in the student's mental model that failure feels equivalent to forced departure; the person cannot see the option space",
+      "how_it_manifests": "Question is framed as 'how do I survive this' rather than 'what are my options'; the person enumerates only H-1B and returning home as outcomes",
+      "expert_move": "Immediately reframe: 'The H-1B lottery is one path among many. Let's first establish what you actually need — continued employment or just lawful presence — and then map the real option tree from there.'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person considers fraudulent CPT because 'everyone does it' and enforcement seems rare",
+      "underlying_state": "Normalcy bias and social proof — widespread community adoption of a risky behavior makes it feel safe; the person anchors on anecdotal success stories and discounts the probability and severity of enforcement",
+      "how_it_manifests": "Person asks which CPT schools are 'safe' rather than whether CPT is appropriate; frames the question around execution rather than legality",
+      "expert_move": "Shift from probability framing to consequence framing: 'The question isn't how likely enforcement is — it's what happens to your entire immigration future if you're one of the people caught. USCIS has already run targeted operations. Is that a risk worth taking when J-1 or O-1 are available?'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person with strong academic credentials dismisses O-1 as 'not for people like me' without investigating",
+      "underlying_state": "Impostor syndrome combined with incomplete information — O-1 is mentally categorized as belonging to a different class of person (famous, exceptional), making self-assessment feel presumptuous",
+      "how_it_manifests": "Person does not mention O-1 in their question; if suggested, they immediately respond with 'I don't think I qualify' before reviewing the actual criteria",
+      "expert_move": "Provide the concrete evidentiary criteria list and ask the person to check off which apply; reframe eligibility as a checklist exercise rather than a self-worth judgment",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I failed H-1B twice — how do I stay in the US / what do I do now?",
+      "reframe": "First, are you trying to stay in the US, or are you trying to keep working? These have completely different solution sets.",
+      "why_it_works": "Breaks the implicit assumption that the only valid goal is continued employment; many people conflate status and authorization, which causes them to overlook or over-complicate their actual situation",
+      "example_language": "如果只在美国呆着方法很多…如果要继续工作有几种解决方法",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "My OPT is running out and I can't get H-1B — is it over?",
+      "reframe": "Have you mapped all the non-H-1B work authorization paths available to your specific profile? H-1B is the most discussed but not the only option — O-1, J-1, cap-exempt H-1B, and L-1 each serve different profiles.",
+      "why_it_works": "Shifts from a binary (H-1B or leave) to a decision tree; forces the person to evaluate their own profile against multiple criteria rather than accepting a single bottleneck as determinative",
+      "example_language": "如果是研究生毕业，有一些论文发表出来，可以考虑申请O-1签证…能办这个的同学建议你们连EB-1B一起申了，一劳永逸",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_美国四大工作一年_h1b_连续两年没抽中_接下来该咋走",
+  "_source_regions": [
+    "us"
+  ]
+}

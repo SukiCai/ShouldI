@@ -1,0 +1,523 @@
+{
+  "source_file": "zhihu_如果你已经有了美国工作签_你会选择留美还是回国.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "High income does not guarantee life satisfaction — cultural belonging and social texture matter as much as compensation",
+      "condition": "When a person earns top-5% US income but lacks genuine social integration with local culture",
+      "action": "Evaluate social and cultural fit explicitly before treating income as the dominant decision variable",
+      "because": "Sample 1 (top-5% earner, $700K+) describes persistent unhappiness, mild depression, and a sense of meaninglessness despite financial success, while Sample 3 earns less than half as much but describes himself as extremely happy due to rich social and recreational life",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "For non-STEM or non-CS professionals, the H-1B lottery risk makes the stay-in-US path structurally precarious",
+      "condition": "When a person is in a non-STEM field with only one OPT year and no clear employer sponsorship pathway",
+      "action": "Plan for departure or alternative immigration routes (Canada, Europe) from day one rather than assuming H-1B will work out",
+      "because": "Sample 2 (journalism) and Sample 5 (international education) both illustrate that non-CS fields face severe income and visa ceiling constraints; Sample 8 was forced out by a 2-month job search window during OPT after layoff",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Canada's open work permit (PGWP) offers meaningfully more flexibility than US OPT/H-1B for career exploration and immigration",
+      "condition": "When a student is choosing between US and Canada for graduate study and is uncertain about staying in their degree field",
+      "action": "Weight Canada's immigration pathway more heavily if career flexibility or non-STEM field is a factor",
+      "because": "Sample 10 explicitly notes that Canada's post-graduation work permit allows working for any employer, enabling a music education graduate to pivot into journalism and then business development — a path impossible under US OPT's field-of-study requirement",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Niche professional + ethnic community focus can produce a stable, fulfilling career outside the FAANG track",
+      "condition": "When a person has strong cultural and language ties to the Chinese immigrant community and skills in a service profession (law, education, media)",
+      "action": "Consider building a practice or career serving the Chinese diaspora rather than competing for mainstream corporate positions",
+      "because": "Sample 6 (Chinese immigrant lawyer in Flushing) built a stable income and rich social life by serving exclusively Chinese-speaking clients, with a social circle and lifestyle essentially equivalent to living in China",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cultural and social integration depth",
+      "why_it_matters": "People who cannot form genuine friendships with locals or feel culturally alien experience persistent unhappiness regardless of income level",
+      "how_to_assess": "Ask honestly: do I laugh at the same jokes? Do I enjoy unstructured social time with Americans/Canadians, or do I find it hollow? Do I have close non-Chinese friends?",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Field of study and H-1B viability",
+      "why_it_matters": "STEM/CS fields get 3-year OPT and higher H-1B cap-exempt opportunities; non-STEM fields get 1 year OPT and face structural elimination after one lottery failure",
+      "how_to_assess": "Check whether your degree qualifies for STEM OPT extension; research whether your industry has cap-exempt employers (universities, nonprofits)",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Family resources and home country alternative",
+      "why_it_matters": "Students whose families have significant assets, business connections, or real estate in China face a structurally different return calculus than those who would be starting from scratch",
+      "how_to_assess": "Assess concretely: does your family have 2+ properties, business networks, or a clear role for you to step into? If yes, the opportunity cost of staying abroad is much higher",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Spouse/partner immigration status alignment",
+      "why_it_matters": "Couples with misaligned immigration statuses or political/cultural worldviews face compounding stress that often ends in divorce or forced departure",
+      "how_to_assess": "Assess whether partner supports the immigration plan, has independent visa status (not H-4 dependent), and shares values about where to build a life",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Industry layoff exposure",
+      "why_it_matters": "Tech layoffs combined with the 60-day H-1B grace period create a structurally dangerous situation where a single job loss can force departure",
+      "how_to_assess": "Evaluate how cyclical your role and industry are; people in stable-sector roles (Sample 7: water utility engineer) face dramatically lower forced-departure risk than big-tech employees",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Psychological need for achievement visibility",
+      "why_it_matters": "Some people need to feel their effort is visibly exceptional relative to peers; in the US this need may go unmet because success comes 'too easily' compared to peers back home",
+      "how_to_assess": "Examine whether you derive satisfaction from the absolute level of achievement or from the competitive recognition of that achievement within a peer group",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Age at decision point and 35-year-old China tech industry cliff",
+      "why_it_matters": "Returning to China's tech sector after 30 means facing the '35-year-old layoff curse' with a compressed runway; returning at 28 vs 34 is structurally different",
+      "how_to_assess": "Calculate how many years of runway you have before the 35-year threshold in Chinese tech; assess whether your role would be shielded (management, rare specialty) or exposed",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in the US on H-4 EAD as a dependent spouse",
+      "unstated_consequence": "Career continuity is entirely hostage to the primary H-1B holder's employment status; income is irregular and identity-threatening over multi-year periods",
+      "who_it_affects": "Spouses of H-1B holders who gave up their own career trajectories to follow their partner, particularly those with ambitions of their own",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Returning to China after years in the US",
+      "unstated_consequence": "Reverse culture shock ('反向文化冲击') is severe and underestimated; social norms, workplace dynamics, and daily life patterns feel foreign after extended absence",
+      "who_it_affects": "People who left China before age 22-25 or who spent formative professional years in the US",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Returning to China for 996 big-tech role",
+      "unstated_consequence": "Gender discrimination in Chinese tech workplaces creates ongoing psychological burden for women that is difficult to quantify in advance but compounds over time",
+      "who_it_affects": "Women returning to Chinese tech after experiencing more egalitarian US workplaces",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Choosing a stable non-tech US career for immigration predictability",
+      "unstated_consequence": "The income ceiling is lower than tech, but the immigration pathway (green card via PERM/EB-2 for specialty occupations) can be more predictable and layoff-resilient",
+      "who_it_affects": "People in fields like environmental engineering, healthcare, or government who are overlooked in comparisons dominated by CS/FAANG narratives",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying in the US in a high-paying but culturally isolated FAANG role",
+      "unstated_consequence": "Social life defaults to a homogeneous bubble of similar-background tech workers whose conversations revolve around stock comp and total package, creating a low-stimulation social environment",
+      "who_it_affects": "High-achieving CS graduates who prioritized career optimization over social/cultural integration",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Building an H-1B-dependent career without contingency planning",
+      "unstated_consequence": "A layoff triggers a 60-day clock that can force exit from the country within weeks, collapsing years of career and life investment",
+      "who_it_affects": "Anyone in a single H-1B sponsorship without a backup visa option, emergency savings, or a spouse with independent status",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating H-1B as a near-certainty and making life plans that depend on it",
+      "why_it_happens": "Availability bias — people in CS hear success stories constantly and underweight the real lottery probability, especially in non-STEM fields where only one attempt is possible",
+      "consequence": "Sample 4: three failed H-1B draws forced relocation to Canada; Sample 8: OPT layoff during 60-day window forced return to China; both lost years of career positioning",
+      "warning_signs": [
+        "Making housing, relationship, or financial commitments that require staying in the US before H-1B is confirmed",
+        "Not having a Canada/Europe/return-to-home-country contingency plan during OPT"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Attempting to '转码' (pivot to coding via bootcamp) without genuine interest in software engineering",
+      "why_it_happens": "Social comparison with CS peers creates pressure to replicate their income trajectory; income becomes the goal rather than fit",
+      "consequence": "Sample 5 spent thousands on a bootcamp but discovered zero interest in coding, compounding his sense of failure and identity crisis",
+      "warning_signs": [
+        "Deciding to learn coding primarily because peers earn more, not because of intrinsic interest",
+        "Choosing a bootcamp as a last resort during a visa crisis rather than a planned career move"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Staying in a miserable situation because of sunk cost in the immigration process",
+      "why_it_happens": "Years of OPT applications, H-1B filings, and green card waiting create a psychological investment that makes leaving feel like 'wasting' everything",
+      "consequence": "Multiple samples describe multi-year unhappiness in situations they couldn't exit because doing so felt like surrendering the investment",
+      "warning_signs": [
+        "Framing the decision as 'I can't leave after everything I've put in'",
+        "Staying in a country or job you actively dislike primarily to protect immigration status"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Partners having fundamentally incompatible visions for which country to live in, discovered only after marriage",
+      "why_it_happens": "The topic is emotionally charged and couples avoid direct confrontation during dating; political/cultural worldview differences are minimized until they become structurally forced",
+      "consequence": "Sample 7: husband pressured wife to return to China for years, relationship eventually broke down and ended in divorce after she got her green card",
+      "warning_signs": [
+        "Partner consistently framing the home country as superior without genuine discussion",
+        "Relying on H-4 EAD as the immigration plan for one partner — creates structural dependency and resentment"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Returning to China after extended US stay and expecting smooth reintegration",
+      "why_it_happens": "People project their memories of home onto the current reality; they underestimate how much both they and the country have changed",
+      "consequence": "Sample 8 and Sample 12 both experienced significant unhappiness after return — Sample 8 is now attempting to re-emigrate to Canada; Sample 12 described the return as 'rebirth' but this was unique to his particular alienation in the US",
+      "warning_signs": [
+        "Making return decision primarily to escape US problems rather than genuinely wanting China's environment",
+        "Returning during or immediately after a period of personal crisis (layoff, breakup, depression)"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you find unstructured social time with American colleagues and locals genuinely enjoyable, or do you mainly tolerate it?",
+      "what_it_reveals": "Depth of cultural integration, which strongly predicts long-term life satisfaction independent of income",
+      "follow_up_if_yes": "Is this integration with a broad range of Americans or primarily with other immigrants/Chinese?",
+      "follow_up_if_no": "Is this a language issue, a values mismatch, or simply that you haven't found your social niche yet — and which is it?",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your immigration status depend entirely on a single employer's continued sponsorship?",
+      "what_it_reveals": "Structural vulnerability — a single layoff can trigger exit from the country within 60 days",
+      "follow_up_if_yes": "Do you have emergency savings to cover 3-6 months, a spouse with independent status, or a cap-exempt employer option as backup?",
+      "follow_up_if_no": "What is your current pathway to independence from employer sponsorship (green card timeline, spouse citizenship, etc.)?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "If you returned to China today, what specific opportunity would you be returning to — not in general terms, but a named role, family business, or concrete plan?",
+      "what_it_reveals": "Whether 'return' is a genuine positive option or an escape fantasy from current unhappiness",
+      "follow_up_if_yes": "Is that opportunity time-sensitive — will it still exist in 3-5 years if you stay?",
+      "follow_up_if_no": "You may be experiencing the 'grass is greener' effect; the absence of a concrete plan suggests the return impulse is driven by current dissatisfaction rather than a genuine opportunity",
+      "regions": []
+    },
+    {
+      "question": "Does your partner share your vision of which country you will build your life in, and has this been explicitly discussed rather than assumed?",
+      "what_it_reveals": "Whether the relationship is structurally stable for a long immigration journey or contains a time-bomb disagreement",
+      "follow_up_if_yes": "Has this been tested under stress — e.g., a layoff scare, a visa rejection, a parent's illness back home?",
+      "follow_up_if_no": "This is the single most common cause of relationship breakdown in the immigrant community — it needs to be resolved before not after marriage",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Is your satisfaction with life in the US conditional on your income level, or does it hold even when you imagine earning 30% less?",
+      "what_it_reveals": "Whether your attachment to staying is primarily financial or reflects genuine life preferences",
+      "follow_up_if_yes": "Your decision framework is financially fragile — any income disruption (layoff, industry downturn) will destabilize the entire decision",
+      "follow_up_if_no": "You have a more robust foundation for a stay decision — identify what the non-financial factors are and whether they are durable",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The US stay-or-return decision is primarily a financial optimization problem — compare salaries and cost of living",
+      "actual_reality": "Financial outcomes in the top cases (FAANG CS) produce unhappiness as often as satisfaction; the dominant predictor of reported life satisfaction in the sample set is social integration and life texture, not income level",
+      "implication": "People optimizing purely on income are solving the wrong equation; social fit, cultural belonging, and having an engaging life outside work need explicit evaluation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Getting H-1B is the main barrier; once you have it, the path to staying is stable",
+      "actual_reality": "H-1B grants work authorization but not job security; tech layoffs have demonstrated that H-1B holders face forced departure within 60 days of termination, making the stay path fragile throughout the entire period until green card approval",
+      "implication": "H-1B approval should be treated as the beginning of a precarious multi-year period, not as a resolved immigration problem",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Non-CS fields cannot lead to stable immigration or good outcomes in the US",
+      "actual_reality": "Niche stable professions (environmental engineering, specialty law, media/communications) can produce green card pathways and satisfying careers — often with better work-life balance and lower layoff risk than tech",
+      "implication": "People in non-CS fields should research their specific profession's immigration pathway rather than defaulting to 'I can't stay' or attempting forced pivots to coding",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Returning to China after US experience guarantees a high-paying role and smooth reintegration",
+      "actual_reality": "Multiple returnees experienced reverse culture shock, found domestic workplace culture difficult after US experience, and in some cases (Sample 8) found themselves re-attempting emigration shortly after return",
+      "implication": "Return should be planned as carefully as departure — including social reintegration, workplace culture adjustment, and the 35-year-old career cliff in Chinese tech",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Canada is a fallback option — less desirable than the US but acceptable if H-1B fails",
+      "actual_reality": "Canada's immigration system (open work permits, PGWP, Express Entry) is structurally more immigrant-friendly than the US H-1B system for career flexibility and permanent residency timelines; it should be evaluated as a primary option, not a consolation prize",
+      "implication": "Students choosing between US and Canadian programs should explicitly model the immigration pathway difference, not just ranking and prestige",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate the stay-vs-return decision",
+      "naive_pattern": "Compare annual salary in USD vs RMB after exchange rate; whoever earns more in absolute terms wins",
+      "informed_pattern": "Model total compensation including equity, purchasing power parity, career ceiling by age, immigration tax (time, risk, stress), and non-financial quality of life factors including social belonging",
+      "why_it_matters": "Sample 1 earns $1M+ annually and is unhappy; Sample 3 earns $300K and describes himself as extremely happy — income comparison alone gives the wrong answer",
+      "regions": []
+    },
+    {
+      "dimension": "H-1B as a career plan",
+      "naive_pattern": "Get a job, apply for H-1B, if you win you stay, problem solved",
+      "informed_pattern": "Model H-1B as one stage of a multi-stage probabilistic process with layoff risk at each stage; build contingency plans for Canada/L-1/O-1/return at each stage before needing them",
+      "why_it_matters": "Sample 8 was forced out of the US during OPT because he had no contingency; Sample 4 ended up in Canada after three H-1B failures without a proactive plan",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "What 'success in the US' looks like",
+      "naive_pattern": "FAANG job, high total comp, house in the suburbs — the standard immigrant success template",
+      "informed_pattern": "Success paths are highly varied: immigrant lawyer serving diaspora community (Sample 6), stable-sector specialist with green card (Sample 7), media professional turned business development director in Canada (Sample 10), trader/entrepreneur (Sample 15)",
+      "why_it_matters": "Fixating on the FAANG template causes people to either force a career that doesn't fit them or declare failure when that specific path doesn't work out",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Role of cultural integration in the decision",
+      "naive_pattern": "Cultural integration is a soft, secondary factor — you adapt over time regardless",
+      "informed_pattern": "Cultural integration is a primary variable that some people achieve readily (Sample 2, Sample 3) and others never achieve despite years and high income (Sample 1, Sample 6 by choice); the capacity for integration should be honestly assessed early",
+      "why_it_matters": "Spending 10+ years building a life in a country where you will never feel culturally at home is a significant quality-of-life cost that compounds",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you've been in the US long enough and your English is good, you'll eventually feel at home",
+      "why_believed": "Language fluency feels like the main barrier to integration; once removed, belonging should follow naturally",
+      "actual_rule": "Language proficiency and cultural belonging are separable; Sample 1 explicitly had near-native English with no accent but still couldn't connect authentically with Americans socially — he could 'get' jokes but not genuinely find them funny",
+      "real_consequence": "People wait years expecting integration to happen passively, miss the window when it might have been possible through active effort, and end up in a long-term state of functional but hollow social existence",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "misconception": "STEM OPT extension means three attempts at H-1B, so STEM graduates basically always get it eventually",
+      "why_believed": "Three years of OPT = three lottery rounds = high cumulative probability feels reassuring",
+      "actual_rule": "Each lottery is independent; three rounds at roughly 30-35% per round gives roughly 65-70% cumulative success, meaning roughly 1 in 3 STEM graduates still fails all three attempts; Sample 4 is a direct example of this failure mode",
+      "real_consequence": "People build 3-5 year life plans (relationships, mortgages, career tracks) assuming they will eventually win H-1B, then face forced departure with no contingency",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Returning to China after the US means you've 'failed' at the immigration dream",
+      "why_believed": "The dominant immigrant narrative frames staying in the US as success and returning as retreat; this framing is reinforced by peer comparison within the immigrant community",
+      "actual_rule": "Multiple people in the sample set who returned to China describe satisfaction, meaningful work, and a sense of belonging they lacked in the US; the 'failure' framing is a social construct of the immigrant community, not an objective assessment",
+      "real_consequence": "People delay return decisions for years to avoid the social stigma, staying in situations that make them unhappy, while the window for building a career and social life in China narrows",
+      "regions": []
+    },
+    {
+      "misconception": "Getting into the US on any visa and finding any job is the hard part — immigration stability follows naturally after that",
+      "why_believed": "The visa application and job search are the most visible, stressful, and discussed challenges; once resolved, people mentally close the immigration risk file",
+      "actual_rule": "Immigration instability is structural and persistent throughout the entire period from OPT through H-1B through green card waiting (which can be 10-20+ years for Chinese nationals); each employment change, layoff, or policy shift reopens the risk",
+      "real_consequence": "People are blindsided by layoffs, policy changes (H-4 EAD revocation threats), or priority date retrogression that collapses what they believed was a stable situation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "CS FAANG employee, top-5% US income, $700K+ salary, bought house, married, child — by all objective metrics a success story",
+      "decision": "Stayed in the US, continued optimizing career",
+      "outcome": "Persistent unhappiness, mild depression, social isolation in a homogeneous high-income bubble where all conversations defaulted to stock comp and total package",
+      "lesson": "Financial optimization without social and cultural integration produces diminishing returns on happiness; the FAANG template satisfies material needs but not belonging needs for many Chinese immigrants",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "CS graduate, three H-1B lottery failures, forced to Canada, company promised L-1 return but company downsized",
+      "decision": "Accepted Canada placement, waited for L-1 that never materialized, eventually returned to China",
+      "outcome": "Never returned to the US; took 100万 RMB/year role in Chinese big tech, 996, faces 35-year-old cliff, workplace gender discrimination",
+      "lesson": "H-1B failure without a proactive Canada-as-primary-option mindset leaves people in limbo between countries; the 'temporary Canada' plan often becomes permanent by default",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "Non-CS background (economics/data), employed as data analyst on OPT, laid off during pandemic, 60-day clock started",
+      "decision": "Attempted to extend status via school enrollment and CPT; eventually returned to China in 2023 when pandemic controls ended",
+      "outcome": "Described return as 'rebirth' due to deep alienation from American culture; however now considering re-emigrating to Canada primarily to resolve relationship/marriage prospects",
+      "lesson": "Return decision driven primarily by cultural alienation and political disillusionment rather than positive pull factors produces unstable outcomes — the underlying dissatisfaction travels with the person",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Environmental engineer in stable public utility role, non-FAANG income, patient immigration path",
+      "decision": "Stayed in role, used stability to complete green card process, bought house, married",
+      "outcome": "Green card obtained with minimal disruption; husband on H-4 EAD experienced income volatility, eventually wanted to return to China, marriage ended in divorce",
+      "lesson": "Stable non-tech roles can produce smoother immigration outcomes than high-paying tech roles; however partner status misalignment (H-4 EAD dependency) creates relationship stress that outlasts the immigration challenge",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Music education graduate in Canada, unable to find field-relevant work, pivoted via PGWP flexibility into journalism then media",
+      "decision": "Leveraged open work permit to take non-field role, built communications skills through media career, later pivoted again to business development",
+      "outcome": "13+ years in Canada, homeowner, citizenship obtained, progressive career growth to BD Director; considering return to China to be near aging parents but has not decided",
+      "lesson": "Canada's open work permit enables career pivots impossible under US OPT; immigrants who treat the work permit as a tool for exploration rather than a constraint can build unexpected but successful careers",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "situation": "Professional with strong language/communication skills in a non-STEM field, OPT expired, company sent her back to China under informal promise of L-1 return",
+      "decision": "Stayed with company in China role, met partner through client relationship, abandoned L-1 return plan",
+      "outcome": "Moved to Sweden for partner instead of returning to US; unplanned but positive life outcome",
+      "lesson": "Non-traditional career paths and human relationships can redirect immigration plans in ways that pure optimization cannot predict; flexibility about destination country can produce better outcomes than rigidity",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Person compares their US life outcome to peers who returned to China and appear to be thriving (entrepreneurship, family business, government career, social status)",
+      "underlying_state": "Social comparison anxiety combined with identity threat — 'I left to make something of myself; if they're doing better, what was the point?'",
+      "how_it_manifests": "Sample 5 describes '心态崩了' (mental collapse) after seeing classmates who returned appearing successful while he worked a $45K coordinator job; led to expensive bootcamp enrollment without genuine interest in coding",
+      "expert_move": "Reframe the comparison baseline: peers who returned had family resources, connections, or luck that enabled their success — their wins are not available to you via return; your real comparison is what you would realistically return to, not their highlight reel",
+      "regions": []
+    },
+    {
+      "trigger": "Person has been in the US for many years and feels 'it would be a waste' to leave now",
+      "underlying_state": "Sunk cost fallacy — years of immigration investment (visa filings, career building, life disruption) feel like they should justify continued stay regardless of current happiness",
+      "how_it_manifests": "Staying in unsatisfying jobs, relationships, or geographic situations to 'protect' the immigration investment; framing departure as defeat rather than a rational reallocation",
+      "expert_move": "Separate the past investment (unrecoverable) from the forward decision: the only relevant question is 'given where I am now, which path produces better outcomes from here?' The sunk cost is not a reason to stay",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Person who returned to China and is unhappy there begins researching re-emigration to Canada or elsewhere",
+      "underlying_state": "Grass-is-greener displacement — the original dissatisfaction (cultural alienation in the US) was real, but return to China revealed a second alienation (reverse culture shock, workplace mismatch) that wasn't anticipated",
+      "how_it_manifests": "Sample 8 returned to China describing it as escape from American dysfunction, but within a couple of years is planning to re-emigrate; the pattern of dissatisfaction follows the person rather than being location-specific",
+      "expert_move": "Before making a major location change, distinguish between 'I am unhappy because of this specific place' and 'I am unhappy because of internal factors that will travel with me'; the test is: can you name specific, concrete things you will gain by moving that are not available here?",
+      "regions": []
+    },
+    {
+      "trigger": "Person with high financial success but persistent low-level unhappiness in the US frames their problem as needing to 'find meaning' or 'add excitement'",
+      "underlying_state": "Identity and belonging deprivation masked by financial achievement — the person has optimized for the metrics their peer group values (total comp, net worth) while neglecting the dimensions that actually produce wellbeing for them",
+      "how_it_manifests": "Sample 1 describes feeling the life achievements that should take 20 years of effort in China came 'too easily' in the US, producing ennui rather than satisfaction; life conversations defaulting to stock comp feel suffocating",
+      "expert_move": "The question is not 'how do I add meaning to my current life' but 'what environment and social context actually produce genuine engagement for me?' — this may require actively building a different social life, or it may indicate fundamental location mismatch",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Person framing the decision as 'stay in the US = success, return = failure'",
+      "underlying_state": "Externalized success definition driven by immigrant peer group norms — value assigned by social validation of the migration achievement rather than personal wellbeing",
+      "how_it_manifests": "Multiple samples describe staying in situations that made them unhappy to avoid the social stigma of 'going back'; Sample 12 delayed return for years even while experiencing diagnosed depression",
+      "expert_move": "Ask who exactly would judge you as a failure if you returned, and whether their judgment is worth the years of unhappiness you are exchanging for it; the 'failure' frame is a community construct, not an objective reality",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I stay in the US or return to China? (framed as a binary financial/career optimization problem)",
+      "reframe": "The post author reframes this as: there is no universal answer — show a diverse sample of real cases and let the reader identify which type of person they actually are",
+      "why_it_works": "Forces the reader to do self-identification work rather than seeking an external verdict; breaks the false binary by showing that the same objective situation (high US income, CS background) produces opposite subjective outcomes depending on personality and values",
+      "example_language": "'列举一下样本，算是我这些年留美观察到的众生百态' — here are specimens, not conclusions",
+      "regions": []
+    },
+    {
+      "original_framing": "Is it worth staying in the US given the H-1B lottery and immigration difficulty?",
+      "reframe": "A commenter reframes this as a historical and structural analysis: the difficulty is not a fixed feature of the system but a product of specific historical conditions (2008 financial crisis expanding master's programs, post-2013 H-1B cap exhaustion, Indian IT industry H-1B concentration) — and Canada exists as a structurally different alternative that should be evaluated on its own terms",
+      "why_it_works": "Contextualizing the difficulty within a historical arc prevents fatalism; understanding why the system works this way opens alternative paths rather than presenting a wall",
+      "example_language": "'对比美国的邻居加拿大，他们对于学生签证毕业之后工作的宽松程度…是美国留学生难以企及的'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "National economic development makes returning to China increasingly attractive — '东升西落'",
+      "reframe": "A commenter reframes this as: economic growth is real but unevenly distributed — 'this growth hasn't fallen evenly on every person'; the relevant question is not whether China is growing but whether you specifically are positioned to capture any of that growth",
+      "why_it_works": "Deflates the macro narrative by forcing personalization; prevents people from making location decisions based on aggregate GDP trends rather than their own specific opportunity set",
+      "example_language": "'国内经济发展确实好，但是这个好并不是均匀地落在每个人身上的'",
+      "regions": []
+    },
+    {
+      "original_framing": "I need to find a way to get into coding/tech to stay in the US and make the immigration math work",
+      "reframe": "The author implicitly reframes through the case samples: the CS/FAANG track is one path among many; people in journalism, law, environmental engineering, education, and media have also built stable, satisfying lives in the US — the immigration constraint is real but it does not collapse to 'become a coder or leave'",
+      "why_it_works": "Expands the solution space beyond the dominant community narrative; people who are unsuited for coding stop pursuing it as a forced solution and look for paths that fit their actual skills",
+      "example_language": "Sample 6 (lawyer), Sample 7 (environmental engineer), Sample 10 (media/BD) presented as equally valid successful outcomes alongside the CS cases",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_如果你已经有了美国工作签_你会选择留美还是回国",
+  "_source_regions": [
+    "us"
+  ]
+}

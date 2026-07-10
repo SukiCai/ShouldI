@@ -1,0 +1,253 @@
+{
+  "source_file": "ic_vs_manager_fork_pm.txt",
+  "heuristics": [
+    {
+      "rule": "If mentoring energizes you but structured people development drains you, you are an IC, not a manager",
+      "condition": "When a Senior PM is deciding between IC and management tracks...",
+      "action": "...distinguish between informal mentoring (IC-compatible) and systematic career development of direct reports (management-required) and assess which feels energizing vs. draining",
+      "because": "The management track allocates 30% of weekly time to 1:1 coaching and 25% to hiring — if those activities feel like a tax rather than a reward, the role will be miserable regardless of comp or title"
+    },
+    {
+      "rule": "Try IC first if uncertain; do not try management first if uncertain",
+      "condition": "When a Senior PM is undecided between tracks in their 30s or earlier...",
+      "action": "...default to IC track and keep the management option open rather than defaulting to management",
+      "because": "Transitioning IC → Management is easier than Management → IC; after 10+ years on the IC track, moving to management is difficult, but the reverse transition — from years of management back to IC — often requires accepting a lower-scope IC role"
+    },
+    {
+      "rule": "Use the diagnostic question: 'Do you want to be evaluated on your own product judgment, or on the quality of product judgment you develop in others?'",
+      "condition": "When a Senior PM cannot resolve the IC vs. management decision through self-assessment alone...",
+      "action": "...answer this single question honestly, as it cuts through surface preferences to the core motivational difference between the two paths",
+      "because": "The two tracks have fundamentally different success criteria — IC success is personal expertise, management success is team output — and this question forces clarity on which success metric actually motivates the person"
+    },
+    {
+      "rule": "At Director level, choose track on fit not comp; at VP+ level, factor in comp ceiling if it matters",
+      "condition": "When a PM is using compensation as a primary decision driver...",
+      "action": "...recognize that IC and management comp are comparable through Director level (~$315K vs. ~$370K), but management track has a meaningfully higher ceiling at VP+ ($405K+ vs. $380–$450K IC, with CPO reaching $480K–$750K+)",
+      "because": "Optimizing for comp at the Director fork is premature — the real comp divergence only appears at VP and above, and most people never reach that level"
+    },
+    {
+      "rule": "If a PM's primary identity is domain expertise, route them toward IC; if it is team building, route them toward management",
+      "condition": "When assessing track fit for a Senior PM...",
+      "action": "...ask what they would want to be known for in 10 years — being the expert on the hardest problems, or having developed a generation of strong PMs",
+      "because": "Principal ICs spend 40% of time on deep product strategy and build domain expertise as their primary value; Directors spend only 15% on product strategy and derive value from team output, not personal expertise"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Energy source: problem-solving vs. people development",
+      "why_it_matters": "The majority of weekly time on each track is spent on the activity that defines it — IC on deep strategy, management on 1:1s and hiring. If the core activity drains you, no amount of comp or title compensates.",
+      "how_to_assess": "Reflect on past weeks: did unblocking a teammate's career problem or conducting a hiring debrief feel rewarding or like overhead? Did solving a hard product problem independently feel more satisfying than coordinating others to solve it?",
+      "weight": "high"
+    },
+    {
+      "factor": "Company size and type preference",
+      "why_it_matters": "IC track (Staff/Principal) roles exist almost exclusively at large tech companies and represent only 10–15% of the PM job market. Management roles are available at every company size and represent 30–40% of PM roles.",
+      "how_to_assess": "Assess whether you want or need flexibility to work at startups, mid-size companies, or outside major tech hubs. If yes, IC track significantly constrains your options.",
+      "weight": "high"
+    },
+    {
+      "factor": "Lifetime earnings ceiling ambition",
+      "why_it_matters": "At VP+ and CPO level, management track has a higher compensation ceiling ($480K–$750K+) compared to IC Distinguished levels ($500K+). The divergence only matters if reaching executive level is a realistic and desired goal.",
+      "how_to_assess": "Honestly assess whether VP or CPO is a realistic target given your trajectory, and whether maximizing total compensation at that level is a primary life goal — not just an aspirational preference.",
+      "weight": "medium"
+    },
+    {
+      "factor": "Comfort with formal vs. informal authority",
+      "why_it_matters": "IC PMs must influence without formal authority across their entire career. Management PMs exercise formal authority but also bear direct accountability for other people's performance and career outcomes.",
+      "how_to_assess": "Recall situations where you had to drive outcomes without direct control. Did that feel like a natural challenge or a frustrating structural problem? Frustration signals management fit; comfort signals IC fit.",
+      "weight": "high"
+    },
+    {
+      "factor": "Reversibility tolerance",
+      "why_it_matters": "The IC → Management transition is achievable in your 30s–40s. The Management → IC transition after years of management experience is significantly harder and often means accepting lower scope.",
+      "how_to_assess": "Assess how risk-averse you are about foreclosing future options. If optionality matters greatly, IC first preserves more paths. If you are confident in management fit now, the cost of delay is also real.",
+      "weight": "high"
+    },
+    {
+      "factor": "Stress profile preference",
+      "why_it_matters": "Both tracks carry significant stress, but of different types. IC stress is political influence and being right with no formal authority. Management stress is direct people accountability — performance management, firing, career conversations.",
+      "how_to_assess": "Consider which stress type you have more coping capacity for. Neither is objectively harder, but individuals vary significantly in which type they can sustain over a decade.",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Taking the management track at Senior PM level",
+      "unstated_consequence": "You permanently shift from spending the majority of your time on product strategy (~40% IC) to spending the majority on people operations — 1:1s, hiring, and process — with only 15% on product strategy. The product craft compounds less.",
+      "who_it_affects": "PMs who took management because it felt like the natural promotion, not because they actively wanted to develop others"
+    },
+    {
+      "choice": "Staying on the IC track long-term",
+      "unstated_consequence": "You limit yourself to ~10–15% of the PM job market, concentrated at large tech companies. Geographic flexibility, startup options, and downmarket moves become structurally harder as your career advances.",
+      "who_it_affects": "PMs who prioritize lifestyle flexibility, geographic mobility, or working at mission-driven smaller organizations"
+    },
+    {
+      "choice": "Defaulting to management because it seems like the senior path",
+      "unstated_consequence": "Staff and Principal IC roles carry equivalent compensation and organizational influence through VP-equivalent levels, so the assumed status gain from management is largely illusory until VP+ — but the role change is immediate and real.",
+      "who_it_affects": "PMs motivated primarily by perceived seniority signals rather than intrinsic fit with either track's daily work"
+    },
+    {
+      "choice": "Waiting to decide until well into the IC track",
+      "unstated_consequence": "After 10+ years as Staff or Principal PM, hiring managers actively question your absence of people leadership experience, making the transition to management structurally harder regardless of your capability.",
+      "who_it_affects": "PMs who delay the decision thinking they can always switch later, especially those who discover they want management in their late 40s"
+    },
+    {
+      "choice": "Choosing management track for the higher comp ceiling",
+      "unstated_consequence": "The comp ceiling advantage only materializes at VP and above. Most PMs never reach VP. The daily work reality — 30% 1:1s, 25% hiring — starts on day one of the Director role regardless of whether you ever reach VP comp.",
+      "who_it_affects": "PMs optimizing for a future comp scenario that is statistically unlikely while accepting an immediate work reality they may not enjoy"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Taking a management role because it felt like the natural next promotion after Senior PM",
+      "why_it_happens": "Cultural default in most organizations treats management as the senior path. Senior PMs receive management offers as recognition of success, conflating promotion with track change. The decision is framed as 'yes or no to a promotion' rather than 'which different job do I want'.",
+      "consequence": "Great PMs become miserable managers. Product craft atrophies as daily work shifts to people operations. Reverting to IC becomes difficult and often means accepting lower scope.",
+      "warning_signs": [
+        "PM accepted management role primarily because it was offered, not because they sought it out",
+        "PM describes their management work as 'getting in the way of real product work'"
+      ]
+    },
+    {
+      "pattern": "Assuming IC → Management transition is always available as a later option",
+      "why_it_happens": "Earlier career reversibility (switching jobs, switching companies) creates a mental model that major track decisions are also reversible. PMs underestimate how hiring managers weight management experience specifically.",
+      "consequence": "After 10+ years on IC track, the management path becomes structurally blocked. Hiring managers question people leadership experience regardless of seniority or capability on the IC side.",
+      "warning_signs": [
+        "PM uses phrases like 'I can always move to management later if I want'",
+        "PM has not actively explored what management hiring criteria look like at their target companies"
+      ]
+    },
+    {
+      "pattern": "Choosing IC track without accounting for job market concentration",
+      "why_it_happens": "PMs currently at large tech companies experience the IC track as normal and widely available. They do not viscerally feel the 10–15% market share constraint until they want to change companies or locations.",
+      "consequence": "Career optionality narrows significantly. Moves to startups, mission-driven orgs, or different geographies require either abandoning IC track level or accepting that the role may not exist.",
+      "warning_signs": [
+        "PM on IC track has not mapped which companies in their target geography or sector have Staff/Principal PM roles",
+        "PM expresses desire for startup experience or geographic flexibility without acknowledging the structural constraint"
+      ]
+    },
+    {
+      "pattern": "Conflating informal mentoring enjoyment with readiness for management",
+      "why_it_happens": "Informal mentoring is visible and rewarding. Structured people management — including performance management, firing decisions, and sustained career development of underperformers — is not experienced until you are in the role.",
+      "consequence": "PMs discover they enjoyed the voluntary, high-signal mentoring moments but find the mandatory, comprehensive people accountability of management draining and misaligned with their actual preferences.",
+      "warning_signs": [
+        "PM cites enjoying mentoring junior PMs as the primary reason they want to manage",
+        "PM has not spent time shadowing or talking to current managers about the full distribution of their weekly work, especially the difficult people decisions"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you want to be evaluated on your own product judgment, or on the quality of product judgment you develop in others?",
+      "what_it_reveals": "The core motivational orientation that separates the two tracks — personal expertise identity vs. multiplier identity",
+      "follow_up_if_yes": "If own judgment: Ask whether they are comfortable with the political influence work of IC — driving outcomes without formal authority across their entire career",
+      "follow_up_if_no": "If others' judgment: Ask whether they have experienced the full range of people management work, including sustained underperformer development and difficult termination decisions, not just high-signal mentoring moments"
+    },
+    {
+      "question": "In the past three months, what energized you more: solving a hard product problem independently, or unblocking or developing a teammate?",
+      "what_it_reveals": "Revealed preference over stated preference — what actually produces energy in daily work rather than what sounds appealing in the abstract",
+      "follow_up_if_yes": "If problem-solving: Confirm IC orientation and probe whether they have a domain they want to go deep on for the next decade",
+      "follow_up_if_no": "If developing teammates: Distinguish whether this is informal mentoring energy or genuine sustained people development appetite — ask about the last time they had to manage someone through a performance issue"
+    },
+    {
+      "question": "Do you need or want the flexibility to work at companies outside large tech (startups, mid-size, different geographies)?",
+      "what_it_reveals": "Whether the structural job market constraint of the IC track (10–15% of roles, concentrated at large tech) is a material life constraint or not",
+      "follow_up_if_yes": "If yes to flexibility: Strongly reconsider IC track or explicitly map which Staff/Principal roles exist in target companies and geographies before committing",
+      "follow_up_if_no": "If content at large tech: IC track market constraint is less binding; shift analysis to intrinsic fit questions"
+    },
+    {
+      "question": "Is reaching VP or CPO level a realistic goal you are actively pursuing, or an aspirational possibility?",
+      "what_it_reveals": "Whether the higher compensation ceiling of the management track at VP+ is a real decision factor or a theoretical one that should not drive the choice",
+      "follow_up_if_yes": "If realistic and active: Management track comp advantage at VP+ becomes a legitimate factor; assess whether you have the people leadership appetite to sustain the path",
+      "follow_up_if_no": "If aspirational only: Remove comp ceiling as a decision factor; the comp difference at Director level is modest (~$55K), and the role content difference is immediate and large"
+    },
+    {
+      "question": "How do you experience stress — is political influence without formal authority more draining, or is direct accountability for other people's performance more draining?",
+      "what_it_reveals": "Which track's stress profile the person has more sustained coping capacity for, since both tracks carry significant but structurally different stress types",
+      "follow_up_if_yes": "If political influence is more draining: Management track stress profile may be a better fit, but probe whether formal people accountability (firing, sustained underperformer management) is genuinely comfortable",
+      "follow_up_if_no": "If people accountability is more draining: IC track stress profile is likely a better long-term fit; ensure they understand that influencing without authority is a permanent IC career condition, not a phase"
+    },
+    {
+      "question": "Are you making this decision because a specific opportunity was offered, or because you have proactively sought this path?",
+      "what_it_reveals": "Whether the decision is reactive (high failure risk) or deliberate (lower failure risk), since the most common failure pattern is accepting management as a promotion offer rather than choosing it as a different job",
+      "follow_up_if_yes": "If reactive — offer was made: Slow down the decision; reframe explicitly as 'which different job do I want' rather than 'do I accept this promotion'",
+      "follow_up_if_no": "If proactively sought: Validate that the proactive choice was based on the actual daily work content of management, not on perceived seniority signals or comp ceiling assumptions"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Management is the only path to senior leadership and equivalent organizational influence",
+      "actual_reality": "Staff and Principal IC PMs have equivalent organizational influence and comparable compensation to management track through VP-equivalent levels. The comp divergence only appears at VP+ where management has a higher ceiling.",
+      "implication": "PMs should not default to management for seniority or influence reasons — those goals are achievable on the IC track through at least the Director-equivalent level"
+    },
+    {
+      "common_belief": "You can always switch from IC to management later if you decide you want it",
+      "actual_reality": "After 10+ years on the IC track as Staff or Principal PM, hiring managers specifically question the absence of people leadership experience. The transition becomes structurally harder over time, not easier.",
+      "implication": "PMs who are genuinely uncertain should treat the decision as time-sensitive, not infinitely deferrable. Defaulting to IC is still lower risk than defaulting to management, but it is not risk-free."
+    },
+    {
+      "common_belief": "Management is the natural next step after Senior PM — the promotion sequence",
+      "actual_reality": "Management and IC are different jobs with different success criteria, different daily work distributions, and different career trajectories. One is not a progression of the other.",
+      "implication": "The decision should be framed as 'which different job do I want' not 'am I ready for the next level.' Accepting it as a promotion without this reframe is the most common path to becoming a miserable manager."
+    },
+    {
+      "common_belief": "IC work is less stressful than management",
+      "actual_reality": "Both tracks carry significant stress, but of different structural types. IC stress is sustained political influence and driving outcomes without formal authority. Management stress is direct accountability for other people's performance, including terminations.",
+      "implication": "PMs should not choose IC as a stress reduction strategy. They should assess which stress type they have more capacity to sustain over a decade, not which sounds less bad in the abstract."
+    },
+    {
+      "common_belief": "If you enjoy mentoring, you will enjoy managing",
+      "actual_reality": "Informal mentoring is voluntary, high-signal, and concentrated in rewarding moments. People management is mandatory, comprehensive, and includes sustained work with underperformers, difficult feedback conversations, and termination decisions.",
+      "implication": "PMs should seek out exposure to the full distribution of management work — especially the difficult people decisions — before using mentoring enjoyment as evidence of management fit"
+    },
+    {
+      "common_belief": "IC track gives you the same job market flexibility as management track",
+      "actual_reality": "Staff and Principal IC PM roles represent only 10–15% of the PM job market and are concentrated almost exclusively at large tech companies. Management PM roles represent 30–40% of the market and exist at every company size.",
+      "implication": "PMs on the IC track are making an implicit bet on staying at large tech companies. This should be an explicit, deliberate choice, not an unconsidered consequence of track selection."
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing of the IC vs. management decision",
+      "junior_pattern": "Treats management as the next step in a promotion sequence — asks 'am I ready for management?' as if it is the senior version of PM work",
+      "senior_pattern": "Treats IC and management as two different jobs with different success criteria — asks 'which job do I actually want?' and evaluates based on daily work content and intrinsic fit",
+      "why_it_matters": "The framing determines the quality of the decision. Promotion framing leads to reactive acceptance; job-choice framing leads to deliberate selection. The most common path to miserable management starts with promotion framing."
+    },
+    {
+      "dimension": "Use of compensation as a decision factor",
+      "junior_pattern": "Anchors on the higher comp ceiling of management track at VP/CPO level as a primary reason to choose management, without assessing whether VP is a realistic target or when the divergence actually occurs",
+      "senior_pattern": "Recognizes that comp is comparable through Director level, the divergence only matters at VP+, and most people do not reach VP — so comp ceiling is only a relevant factor for a small subset of realistic trajectories",
+      "why_it_matters": "Using an unlikely future comp scenario to drive an immediate work-reality decision is a common reasoning error that results in people optimizing for a state they never reach while accepting daily work they do not enjoy"
+    },
+    {
+      "dimension": "Assessment of mentoring enjoyment as management signal",
+      "junior_pattern": "Cites enjoying mentoring junior PMs as strong evidence of management fit, without distinguishing between informal and structured people development",
+      "senior_pattern": "Distinguishes between informal mentoring (high-signal, voluntary, IC-compatible) and comprehensive people management (mandatory, includes underperformer development, performance management, and terminations) before drawing any inference",
+      "why_it_matters": "Mentoring enjoyment is a weak and commonly misread signal for management fit. Seniors know to probe the full distribution of management work before treating it as evidence."
+    },
+    {
+      "dimension": "Awareness of job market structure",
+      "junior_pattern": "Assumes IC track at Staff/Principal level is broadly available and does not consider the structural concentration at large tech companies as a constraint",
+      "senior_pattern": "Explicitly maps where Staff/Principal IC roles actually exist in their target market before committing to IC track, and treats job market concentration as a real constraint on life flexibility",
+      "why_it_matters": "Choosing IC track without understanding the 10–15% market concentration creates life constraints — geographic, company type, sector — that surface later when they are harder to reverse"
+    },
+    {
+      "dimension": "Reasoning about decision reversibility",
+      "junior_pattern": "Assumes both transitions (IC → Management and Management → IC) are roughly equally available throughout their career, treating the fork as low-stakes and indefinitely deferrable",
+      "senior_pattern": "Understands the asymmetry: IC → Management is viable in your 30s–40s; Management → IC after 10+ years of management often means accepting lower scope; and 10+ years on IC track makes the management transition structurally harder",
+      "why_it_matters": "Misjudging reversibility leads to under-weighting the decision's stakes and deferring it past the point where both options remain genuinely open"
+    },
+    {
+      "dimension": "Self-assessment method",
+      "junior_pattern": "Assesses fit based on abstract preferences and aspirational self-image — 'I think I'd like developing people' — without reference to actual recent behavioral evidence",
+      "senior_pattern": "Uses recent behavioral evidence — what actually energized or drained them in the past three months — and seeks exposure to the actual daily work distribution of the target track before deciding",
+      "why_it_matters": "Stated preferences diverge from revealed preferences under realistic conditions. Seniors know that the only reliable signal is how you actually responded to the work when you did it, not how you imagine you would respond."
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_ic_vs_manager_fork_pm",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

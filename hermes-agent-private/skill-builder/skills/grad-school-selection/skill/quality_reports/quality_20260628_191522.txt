@@ -1,0 +1,51 @@
+
+============================================================
+  Quality Report: Graduate School Selection Advisor
+  Overall: 4.5/5.0  ████████████████░░░░
+============================================================
+
+  This is an unusually strong, specific skill that captures genuine expert reasoning about graduate school decisions. It is data-rich, names specific failure modes, and surfaces structural realities (immigration backlogs, CIP codes, funded vs. real time-to-degree) that novices and even most advisors miss. Its main weaknesses are some unverifiable specific statistics presented with false precision and modest gaps around humanities, life sciences, and post-acceptance lab dynamics.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       5/5  ████████████  Excellent
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        5/5  ████████████  Excellent
+
+  ✓ Strengths:
+    • The opening framing is genuinely counterintuitive and operationalized: 'A top-10 program with a poor advisor produces worse outcomes than a top-30 program with an excellent one — because the advisor controls funding, research direction, graduation timeline, letters, and network access.' This is exactly the inversion a senior advisor would push.
+    • Immigration framing is rare and high-leverage: 'For Indian/Chinese nationals, treat Canadian PhD as the default comparator to US' with the specific EB backlog reasoning — this is the kind of structural insight most generic grad-school advice completely omits.
+    • Hidden tradeoffs table is genuinely non-obvious — e.g., 'NSF GRFP as substitutive rather than additive funding' and 'Co-advising arrangement → diffuse accountability'. These are second-order consequences experienced advisors know but novices don't.
+    • Heuristics include precise, verifiable actions: 'Verify the CIP code before enrolling, not the program name' and 'Apply for PGWP within 180 days... treat as hard deadline'. These are operational, not vibes.
+
+  ✗ Weaknesses:
+    • Several statistics are stated with suspicious precision and no sourcing: '39% score in moderate-to-severe depression range — 6x the general population', 'Median time-to-degree is 7.3 years', '25% of PhD students would change advisors retrospectively', '~15% annual H-1B selection rate' (this varies dramatically by year and category). An AI quoting these as facts could mislead users.
+    • Humanities coverage is thin and inconsistent. The skill notes humanities funding flows differently and time-to-degree is 8.4-9.5 years, but doesn't give humanities-specific heuristics for advisor evaluation, dissertation committee composition, or the academic-market collapse-specific calculus that dominates humanities decisions.
+    • The diagnostic framework focuses heavily on pre-decision evaluation but underweights the 'I'm already in a bad situation' scenario — e.g., advisor conflict in year 2, failed qualifying exam, lab funding collapse. Step 1 question 5 mentions reapplication after rejection but in-program crisis isn't really diagnosed.
+    • Some heuristics blur US and Canadian contexts without flagging which applies (e.g., PGWP is Canada-specific; CIP/STEM OPT is US-specific). A naive user could conflate them.
+    • No engagement with lab culture / cohort dynamics as a variable — toxic lab peer culture, hyper-competitive vs. collaborative norms, single-PI vs. joint-PI labs differ enormously and are mentioned only obliquely.
+
+  → Improvement Suggestions:
+    • Add source citations or hedging to all numeric claims, or rewrite as ranges ('roughly 25-50% of PhD students do not complete') to prevent the AI from asserting precise figures it cannot defend. At minimum, flag which figures are field/year specific.
+    • Add a dedicated section or sub-framework for 'Already enrolled and struggling' — diagnostic questions for advisor switch, lab change, mastering-out, and leave of absence. This is a high-volume real-world scenario the skill barely addresses.
+    • Add humanities-specific heuristics: e.g., 'For humanities PhD, evaluate department placement into tenure-track positions over the last 10 years, not the last 5'; 'Treat advisor's last 3 advisees' job outcomes as the primary signal, given 3-6% TT placement base rate.'
+    • Add a heuristic on lab visit due diligence specifics: exact questions to ask year 4-5 students privately (e.g., 'How many hours/week does your advisor read your drafts?' 'When did you last have a 1-on-1?' 'Has anyone left this lab in the last 3 years, and why?').
+    • Tag each US-specific and Canada-specific heuristic explicitly (e.g., '[US]', '[CA]') so the AI doesn't misapply PGWP or STEM OPT logic across borders.
+    • Add coverage of European programs (ETH, Max Planck, Cambridge/Oxford DPhil) which have very different funding/timeline structures (often 3-4 year guaranteed PhDs) and are increasingly competitive alternatives for international students.
+
+  ⚠ Generic Advice Flags:
+    • 'Negotiate before acceptance, never after' — directionally correct but lacks specifics on what is actually negotiable in PhD vs. MS contexts, what departments typically concede, and scripts for how to frame the ask without burning the offer.
+    • 'Discount mental health resource claims unless verified' — the heuristic is reasonable but the action ('Ask current students') is the same generic 'talk to students' refrain. It could be sharpened with specific red flags (e.g., 'a counseling center with >6 week wait times is functionally unavailable').
+
+  ○ Missing Coverage:
+    • In-program crisis management: advisor switching mechanics, mastering-out from PhD, leave of absence implications for international visa status.
+    • Two-body problem: dual-career couples and how it constrains geographic choice — a major real-world decision factor especially for older applicants.
+    • Life sciences-specific dynamics: rotation systems, T32 training grants, PI funding cliffs from R01 non-renewal, and the wet-lab vs. dry-lab cost structure.
+    • European programs as a third alternative to US/Canada — particularly relevant given shorter timelines and different funding models.
+    • Post-PhD career transition signals during the program: when to start industry internships, the optics of internships with one's specific advisor, and how publication strategy differs for industry vs. academic targets.
+    • Specific guidance on letters of recommendation strategy — who to ask, how to ask, and the asymmetric value of a strong letter from a less-famous person vs. a tepid letter from a famous one.

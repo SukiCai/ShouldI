@@ -1,0 +1,327 @@
+{
+  "source_file": "internship_return_offer_pipeline.txt",
+  "heuristics": [
+    {
+      "rule": "If you are 12–18 months from graduation, your primary job search goal is securing an internship at your target employer, not a full-time job",
+      "condition": "When an international student is planning their job search timeline",
+      "action": "Redirect all job search energy toward internship applications at H-1B-sponsoring companies rather than full-time new grad applications",
+      "because": "Return offer conversion rates (70–90%) are dramatically higher than cold full-time application conversion rates (1–5%), and the internship pipeline creates an implicit sponsorship commitment before H-1B lottery is even relevant"
+    },
+    {
+      "rule": "Never exceed 11 months of full-time CPT without consulting your DSO",
+      "condition": "When an international student is considering a long-term or sequential CPT-based internship",
+      "action": "Track cumulative full-time CPT usage across all positions and stop before hitting 12 months total",
+      "because": "12 cumulative months of full-time CPT permanently eliminates OPT eligibility — this is irreversible and closes the primary US work authorization pathway for that degree level"
+    },
+    {
+      "rule": "Any company you target for internship must have filed 10+ H-1B applications per year in recent years",
+      "condition": "When evaluating whether to invest time applying to a company as an international student",
+      "action": "Check H1Bdata.info or MyVisaJobs.com before applying; exclude companies with fewer than 5 annual H-1B filings",
+      "because": "A company that doesn't sponsor full-time employees won't sponsor you after the internship — filtering upfront prevents wasted internship investment"
+    },
+    {
+      "rule": "Explicitly express intent to return during the internship — don't let the manager guess",
+      "condition": "When wrapping up an internship where a return offer is desired",
+      "action": "Find natural moments to verbally signal interest in returning full-time to your manager",
+      "because": "Managers who know you want to return advocate for return offers; managers uncertain about your interest may not prioritize pushing for one"
+    },
+    {
+      "rule": "If a return offer hasn't arrived 4–6 weeks before internship end, ask directly about the timeline",
+      "condition": "When approaching the final weeks of an internship with no return offer communication",
+      "action": "Proactively ask your manager: 'I'm coming up on the end of the internship — is there a timeline for return offer decisions?'",
+      "because": "Return offers typically arrive in that 4–6 week window; waiting passively risks missing the window or being deprioritized"
+    },
+    {
+      "rule": "Target multiple shorter internships over one long internship if OPT is part of your plan",
+      "condition": "When choosing between a 12-month co-op and multiple summer internships",
+      "action": "Prefer summer internships (3 months each) over year-long or dual 6-month co-ops",
+      "because": "Two 6-month co-ops = 12 months of full-time CPT, which eliminates OPT; multiple 3-month summers stay well under the limit"
+    },
+    {
+      "rule": "For finance internship recruiting, begin networking no later than August of your junior year",
+      "condition": "When an international student is targeting investment banking or consulting summer analyst roles",
+      "action": "Begin outreach and applications in mid-August of junior year; treat September–November as peak recruiting season",
+      "because": "The main banking and consulting recruiting window closes by November with offers by February — starting in January means missing the primary pipeline entirely"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Company H-1B filing history",
+      "why_it_matters": "A company's past H-1B filings predict whether they will sponsor you after the internship; without this, the entire internship-to-return-offer strategy fails at the visa stage",
+      "how_to_assess": "Search H1Bdata.info and MyVisaJobs.com by company name; look at volume of annual filings over recent years; flag companies under 5/year as high risk",
+      "weight": "high"
+    },
+    {
+      "factor": "Cumulative full-time CPT usage",
+      "why_it_matters": "Crossing 12 cumulative months permanently eliminates OPT — the single most damaging and irreversible authorization error an international student can make",
+      "how_to_assess": "Track all CPT authorization periods across all employers and internships; consult DSO before accepting any position that would push total near or over 11 months",
+      "weight": "high"
+    },
+    {
+      "factor": "OPT + STEM OPT timeline relative to H-1B lottery dates",
+      "why_it_matters": "The gap between graduation, OPT start, H-1B lottery (March), and H-1B effective date (October 1) determines how long an employer must bridge you — employers who can't or won't bridge that gap effectively cannot hire you",
+      "how_to_assess": "Map your expected graduation date to the OPT start window, then trace forward to the first possible H-1B lottery and effective date; verify the target company has retained employees through lottery cycles",
+      "weight": "high"
+    },
+    {
+      "factor": "Internship-to-return-offer conversion rate at the target company",
+      "why_it_matters": "A 70–90% return offer rate at large tech companies vs. a lower rate at smaller firms changes the expected value of accepting a particular internship",
+      "how_to_assess": "Research company-specific intern conversion rates via Glassdoor, LinkedIn alumni, or direct conversations with former interns; treat rates below 60% as materially riskier",
+      "weight": "high"
+    },
+    {
+      "factor": "Recruiting calendar alignment by industry",
+      "why_it_matters": "Finance and consulting recruiting closes months before tech; missing the window for one industry cannot be compensated for by applying later in the same cycle",
+      "how_to_assess": "Map application deadlines by industry for the current recruiting year; confirm whether your graduation year aligns with the intern class being recruited",
+      "weight": "high"
+    },
+    {
+      "factor": "Manager relationship quality during internship",
+      "why_it_matters": "The manager's advocacy is a key variable in whether a return offer is extended — work quality alone is insufficient if the manager is neutral on your intent",
+      "how_to_assess": "Assess frequency and quality of 1:1 interactions, whether manager has converted previous interns, and whether you have explicitly communicated return interest",
+      "weight": "medium"
+    },
+    {
+      "factor": "Competing return offer availability",
+      "why_it_matters": "A competing return offer is the primary negotiating lever available to international students, where comp is otherwise standardized",
+      "how_to_assess": "Evaluate whether you have or can realistically obtain a second return offer at a comparable company before accepting the first",
+      "weight": "medium"
+    },
+    {
+      "factor": "Part-time vs. full-time CPT status",
+      "why_it_matters": "Part-time CPT (≤20 hrs/week) does not count toward the 12-month OPT-elimination threshold, enabling more internship flexibility",
+      "how_to_assess": "Review CPT authorization letter for hours designation; confirm with DSO whether a given role qualifies as part-time for CPT purposes",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a 12-month full-time CPT internship for more experience or higher pay",
+      "unstated_consequence": "Permanently eliminates OPT eligibility, removing the 1–3 year post-graduation work authorization buffer that makes the H-1B lottery survivable",
+      "who_it_affects": "Students who plan to rely on STEM OPT extension as a bridge through multiple H-1B lottery attempts"
+    },
+    {
+      "choice": "Pursuing two 6-month co-ops instead of summer internships",
+      "unstated_consequence": "Cumulative 12 months of full-time CPT wipes out OPT — a structural consequence that co-op program advisors often don't proactively flag",
+      "who_it_affects": "International students in programs with structured co-op cycles who assume more internship experience is always better"
+    },
+    {
+      "choice": "Skipping the internship pipeline and applying to full-time roles directly",
+      "unstated_consequence": "Cold application conversion rates of 1–5% mean most candidates exhaust their OPT window without landing a sponsored role, leaving no fallback",
+      "who_it_affects": "Students who delay the internship search due to academic load or belief that strong credentials alone will convert in full-time recruiting"
+    },
+    {
+      "choice": "Not explicitly communicating return intent to your internship manager",
+      "unstated_consequence": "Manager may assume you are not interested in returning and deprioritize advocating for your return offer, even if your work was strong",
+      "who_it_affects": "Introverted students or those from cultures where explicitly stating self-interest feels presumptuous"
+    },
+    {
+      "choice": "Targeting companies with few H-1B filings because they offer more interesting work or better culture",
+      "unstated_consequence": "Even a successful internship and strong return offer cannot lead to long-term employment if the company won't navigate H-1B sponsorship",
+      "who_it_affects": "Students who optimize for learning and culture fit without verifying the downstream visa pathway"
+    },
+    {
+      "choice": "Waiting for a return offer to arrive without proactively asking",
+      "unstated_consequence": "The offer window closes, competing interns get prioritized, and the student loses the negotiating position and potentially the offer entirely",
+      "who_it_affects": "Students who interpret not asking as being polite or professional rather than a missed signal of genuine interest"
+    },
+    {
+      "choice": "Starting finance networking in January for summer banking internships",
+      "unstated_consequence": "The main recruiting window (August–November) has already closed — off-cycle opportunities are less structured and significantly less likely to result in return offer pipelines at large sponsors",
+      "who_it_affects": "International students unfamiliar with the unusually early finance recruiting calendar who benchmark their timeline against tech recruiting norms"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Exceeding the 12-month full-time CPT limit and permanently losing OPT eligibility",
+      "why_it_happens": "Students are often told incorrectly that it's exactly the 12th month that triggers the problem, not that it's cumulative across all CPT use — DSOs and peers pass on imprecise information",
+      "consequence": "Irreversible loss of 1–3 years of post-graduation work authorization, collapsing the entire H-1B bridging strategy and effectively ending the US work pathway for that degree level",
+      "warning_signs": [
+        "Student has already used 6+ months of full-time CPT and is considering another extended internship",
+        "Student has not tracked cumulative CPT usage across multiple employers or semesters"
+      ]
+    },
+    {
+      "pattern": "Applying to internships at companies with minimal H-1B sponsorship history",
+      "why_it_happens": "Students optimize for brand, prestige, or learning opportunity without filtering for visa sponsorship viability — the internship and return offer process works, but the visa pathway doesn't exist at the company",
+      "consequence": "Student converts the internship successfully but cannot be retained long-term, wasting the primary pipeline opportunity and losing OPT time",
+      "warning_signs": [
+        "Company has fewer than 5 H-1B filings per year on public databases",
+        "Recruiter is vague or uncertain when asked about sponsorship policy for international hires"
+      ]
+    },
+    {
+      "pattern": "Missing the finance/consulting recruiting window by starting outreach too late",
+      "why_it_happens": "International students calibrate their recruiting timeline to tech norms or peer advice without knowing that banking and consulting close 3–4 months earlier",
+      "consequence": "Student misses the primary pipeline into large financial sponsors and must compete in less structured off-cycle recruiting with lower odds",
+      "warning_signs": [
+        "Student begins networking for a summer banking internship in January or February of the target year",
+        "Student is unaware that investment banking superdays occur in September–November for the following summer"
+      ]
+    },
+    {
+      "pattern": "Failing to explicitly express return interest to the internship manager",
+      "why_it_happens": "Students assume strong work performance signals intent, or feel uncomfortable explicitly advocating for themselves, particularly across cultural norms where self-promotion is discouraged",
+      "consequence": "Manager doesn't advocate for the return offer; offer is not extended despite strong performance; student loses the highest-probability full-time pipeline",
+      "warning_signs": [
+        "Student has not verbally mentioned interest in returning during any 1:1 or end-of-internship conversation",
+        "Manager has not asked the student about post-graduation plans with 4 weeks or fewer remaining"
+      ]
+    },
+    {
+      "pattern": "Choosing a 12-month co-op or single long internship over multiple summer internships",
+      "why_it_happens": "Students believe more continuous experience signals stronger qualifications, or co-op programs are default options in their program without students evaluating the CPT cost",
+      "consequence": "OPT eligibility eliminated; student loses the 1–3 year post-graduation authorization bridge needed to survive H-1B lottery",
+      "warning_signs": [
+        "Student is enrolled in a co-op program without having calculated cumulative CPT hours",
+        "Student is offered a 12-month internship extension and views it as a straightforward positive"
+      ]
+    },
+    {
+      "pattern": "Pursuing full-time recruiting as the primary strategy instead of the internship pipeline",
+      "why_it_happens": "Students don't have visibility into the 1–5% cold application conversion rate for international new grads, or believe their credentials will overcome the structural disadvantage",
+      "consequence": "Student exhausts OPT time applying to roles that don't convert, without having built the relationship-based pipeline that dramatically increases conversion odds",
+      "warning_signs": [
+        "Student in final year has not done a relevant internship at a sponsoring company",
+        "Student is optimizing cover letters and resume submissions rather than targeting internship recruitment cycles"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many months of full-time CPT have you used to date, across all internships?",
+      "what_it_reveals": "Whether the student is at risk of or has already crossed the OPT-elimination threshold — the single most irreversible strategic error available to them",
+      "follow_up_if_yes": "If approaching 11 months, ask: have you consulted your DSO and ruled out any additional full-time CPT use?",
+      "follow_up_if_no": "If well under the limit, ask: do you understand that part-time CPT does not count, and are you tracking cumulative usage across all roles?"
+    },
+    {
+      "question": "Have you verified the H-1B filing history of every company you are targeting for internships?",
+      "what_it_reveals": "Whether the student is filtering their target list by visa viability or purely by brand/interest — a critical upstream filter that changes the entire value of the internship strategy",
+      "follow_up_if_yes": "If yes, ask: what is the minimum annual H-1B filing volume you are accepting, and have you excluded companies below that threshold?",
+      "follow_up_if_no": "If no, redirect immediately to H1Bdata.info and MyVisaJobs.com before any further application activity"
+    },
+    {
+      "question": "What is your expected graduation date, and have you mapped the OPT start, H-1B lottery, and H-1B effective date sequence?",
+      "what_it_reveals": "Whether the student understands the full authorization timeline they are asking a future employer to bridge — and whether their target companies have a demonstrated history of carrying employees through that period",
+      "follow_up_if_yes": "If yes, ask: have you confirmed with target companies that they have retained international employees through the OPT-to-H1B gap, including lottery losses?",
+      "follow_up_if_no": "If no, build the timeline together and use it to filter company targets by their demonstrated sponsorship continuity"
+    },
+    {
+      "question": "Are you targeting finance, consulting, or tech — and do you know the recruiting calendar for your target industry?",
+      "what_it_reveals": "Whether the student is at risk of missing an industry's primary recruiting window due to calibrating to a different industry's timeline",
+      "follow_up_if_yes": "If targeting finance: ask whether they have begun outreach before August of their junior year and understand superday timing",
+      "follow_up_if_no": "If uncertain: map out the specific application and offer deadlines for their target industry before they invest time in any other preparation"
+    },
+    {
+      "question": "During your current or most recent internship, have you explicitly told your manager you want to return full-time?",
+      "what_it_reveals": "Whether the student is relying on performance alone to signal return interest, or has made their intent explicit — the latter being a key input to manager advocacy",
+      "follow_up_if_yes": "If yes, ask: how did the manager respond, and have they proactively mentioned return offer timing or their own support?",
+      "follow_up_if_no": "If no and the internship is still ongoing, recommend an immediate natural-context conversation with the manager before the 4–6 week return offer window closes"
+    },
+    {
+      "question": "Do you have a competing return offer, or is this your only return offer option?",
+      "what_it_reveals": "Whether the student has any negotiating leverage — the presence of a competing offer is the primary lever available when base compensation is standardized",
+      "follow_up_if_yes": "If yes, ask: have you disclosed the competing offer to your preferred company and used it to open a compensation or benefit conversation?",
+      "follow_up_if_no": "If no, ask: is there a realistic path to a second return offer this cycle, and if not, what non-compensation terms (start date, location, team, signing bonus) are worth negotiating?"
+    },
+    {
+      "question": "Are you in a co-op program, or considering a long-term internship extension?",
+      "what_it_reveals": "Whether the student is at structural risk of consuming their full-time CPT allowance through program design rather than deliberate choice",
+      "follow_up_if_yes": "If yes, calculate cumulative CPT immediately and determine whether the program structure would breach 12 months — escalate to DSO if close",
+      "follow_up_if_no": "If no, confirm they understand the difference between part-time and full-time CPT designation and are tracking both categories separately"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The full-time new grad recruiting cycle is the primary path to a sponsored job for international students",
+      "actual_reality": "Cold full-time applications convert at 1–5% for international new grads at large sponsors; the internship-to-return-offer pipeline converts at 70–90% at the same companies — the expected value difference is an order of magnitude",
+      "implication": "International students should treat internship acquisition as their actual job search goal 12–18 months before graduation, not a stepping stone to 'real' recruiting"
+    },
+    {
+      "common_belief": "If you do strong work during an internship, the return offer will come to you",
+      "actual_reality": "Manager advocacy is a required input to return offer decisions, and managers who are uncertain about a student's interest may not advocate — strong performance is necessary but not sufficient",
+      "implication": "Students must explicitly communicate return interest during the internship, not just perform well and wait"
+    },
+    {
+      "common_belief": "The 12-month CPT limit means you can use up to 12 full months of full-time CPT before triggering OPT loss",
+      "actual_reality": "Using 12 cumulative months of full-time CPT eliminates OPT — the rule is at the boundary, not after it, and many students and advisors communicate this imprecisely",
+      "implication": "Students should track usage and stop before hitting 12 months — the practical safe threshold is 11 months — and should get DSO confirmation before any CPT use that approaches the limit"
+    },
+    {
+      "common_belief": "More internship experience is always better, so longer or more continuous internships improve your candidacy",
+      "actual_reality": "A 12-month internship or two sequential 6-month co-ops eliminates OPT eligibility, which is a far larger strategic cost than any benefit from additional experience",
+      "implication": "Students should prefer multiple shorter internships over single long ones, even if the long opportunity seems more prestigious or pays more"
+    },
+    {
+      "common_belief": "Finance internship recruiting happens roughly on the same timeline as tech — spring and early summer for the following summer",
+      "actual_reality": "Investment banking and consulting recruiting peaks August–November for the following summer, with many offers issued by November or February — starting in January is too late for the primary pipeline",
+      "implication": "International students targeting finance must begin outreach in mid-August of their junior year, which often conflicts with returning from summer break or starting fall coursework"
+    },
+    {
+      "common_belief": "Return offer compensation is negotiable the same way a regular new grad offer is",
+      "actual_reality": "Return offers at large companies are based on standardized intern class compensation structures — adjusting one offer creates equity issues with the rest of the class, so base comp is typically fixed",
+      "implication": "Negotiation energy should be directed at start date, location, team placement, and signing bonus — not base salary — unless a competing return offer exists"
+    },
+    {
+      "common_belief": "Asking a company 'will you sponsor?' during cold recruiting is a reliable way to assess sponsorship willingness",
+      "actual_reality": "Sponsorship commitment is implicit when a company extends a return offer to a known international student intern — this is categorically more reliable than any verbal assurance given during cold full-time recruiting",
+      "implication": "The sponsorship signal from a return offer is qualitatively different from a recruiter's verbal assurance — students should weight the former far more heavily when making decisions"
+    },
+    {
+      "common_belief": "H-1B sponsorship difficulty is roughly equal for all hire types at a company",
+      "actual_reality": "Companies have a much higher incentive to navigate H-1B lottery for someone they have already trained, integrated, and made productive through an internship than for someone they met in a 45-minute interview",
+      "implication": "The internship pipeline doesn't just improve offer odds — it changes the company's internal motivation to fight for the sponsorship, which matters during lottery failures and appeals"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Job search goal framing",
+      "junior_pattern": "Treats the goal as finding a full-time job and applies to full-time new grad postings as the primary strategy",
+      "senior_pattern": "Recognizes that for international students, the real goal 12–18 months out is securing an internship at a target employer — full-time recruiting is a low-EV backup",
+      "why_it_matters": "Misframing the goal leads to allocating effort to a 1–5% conversion path instead of a 70–90% conversion path — a fundamental misallocation of limited time before graduation"
+    },
+    {
+      "dimension": "Company targeting criteria",
+      "junior_pattern": "Targets companies based on brand, prestige, compensation, or culture fit — applies broadly and hopes for the best",
+      "senior_pattern": "Filters first by H-1B filing history (minimum threshold of 10+ filings/year), then by OPT bridging track record, then by return offer conversion rate — only then evaluates role quality",
+      "why_it_matters": "Applying to companies that cannot sponsor converts strong performance into a dead end — the upstream filter determines whether the strategy can work at all"
+    },
+    {
+      "dimension": "CPT usage tracking",
+      "junior_pattern": "Accepts internship offers without tracking cumulative full-time CPT usage; relies on program advisors or peers for rules that are often imprecisely communicated",
+      "senior_pattern": "Actively tracks cumulative full-time CPT usage across all positions; treats 11 months as the personal ceiling; consults DSO before any decision that approaches the limit",
+      "why_it_matters": "The error is irreversible — one miscalculation eliminates the entire OPT pathway, which is the primary bridge through multiple H-1B lottery attempts"
+    },
+    {
+      "dimension": "Internship-to-return-offer conversion behavior",
+      "junior_pattern": "Assumes strong work quality will result in a return offer; waits for the company to initiate return offer conversations",
+      "senior_pattern": "Treats manager relationship and explicit expression of return intent as active variables to manage; proactively asks about return offer timeline if it hasn't arrived 4–6 weeks before end date",
+      "why_it_matters": "Passive behavior in the return offer window costs students the highest-probability full-time pathway available to them, often when strong performance would have converted with minimal additional action"
+    },
+    {
+      "dimension": "Industry recruiting calendar awareness",
+      "junior_pattern": "Calibrates finance and consulting recruiting timelines to tech norms or begins networking in January, not realizing the window has closed",
+      "senior_pattern": "Knows that banking and consulting recruiting peaks August–November with offers by February; plans outreach before summer of the target year ends",
+      "why_it_matters": "Missing the finance recruiting window by 2–3 months is equivalent to missing the entire primary pipeline — there is no equivalent catch-up mechanism in that industry"
+    },
+    {
+      "dimension": "Return offer negotiation strategy",
+      "junior_pattern": "Attempts to negotiate base salary on a return offer the same way they would a cold offer, or doesn't negotiate at all because they feel grateful for the offer",
+      "senior_pattern": "Understands that base is standardized across the intern class; focuses negotiation on start date flexibility, office location, team placement, signing bonus, and uses competing return offer as primary leverage",
+      "why_it_matters": "Negotiating the wrong dimension wastes credibility and goodwill; negotiating the right dimensions can yield meaningful improvements without triggering equity concerns"
+    },
+    {
+      "dimension": "Sponsorship commitment assessment",
+      "junior_pattern": "Asks recruiters 'will you sponsor?' during cold recruiting and treats verbal affirmation as a reliable signal",
+      "senior_pattern": "Recognizes that a return offer extended to a known international student intern constitutes a qualitatively stronger sponsorship commitment than any verbal assurance — and uses this to evaluate pipeline quality",
+      "why_it_matters": "Verbal sponsorship commitments in cold recruiting are unenforceable and often walk back under budget pressure; the internship-based commitment is backed by sunk investment and retention incentive"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_internship_return_offer_pipeline",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

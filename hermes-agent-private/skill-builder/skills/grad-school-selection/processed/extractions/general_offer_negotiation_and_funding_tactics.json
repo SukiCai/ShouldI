@@ -1,0 +1,279 @@
+{
+  "source_file": "offer_negotiation_and_funding_tactics.txt",
+  "heuristics": [
+    {
+      "rule": "Negotiate before acceptance, never after",
+      "condition": "When you have received a PhD offer and are deciding whether to accept...",
+      "action": "...use the window between receiving and accepting the offer to negotiate stipend, summer funding, travel budget, and start date",
+      "because": "Once you accept, negotiation leverage disappears entirely — departments have no incentive to improve terms for a candidate who has already committed"
+    },
+    {
+      "rule": "Lead with enthusiasm before raising competing offers",
+      "condition": "When you want to use a competing offer as leverage...",
+      "action": "...express genuine interest first in an initial response, then raise the competing offer explicitly with a specific number in a follow-up call or email",
+      "because": "Opening with a competing offer reads as transactional and can damage the relationship before it starts; expressing interest first frames the negotiation as trying to make the right choice, not extracting maximum value"
+    },
+    {
+      "rule": "Always convert stipend to 12-month annualized value before comparing offers",
+      "condition": "When comparing stipend amounts across programs...",
+      "action": "...ask whether the stated stipend covers 9 or 12 months and calculate the true annualized equivalent",
+      "because": "A $34K/9-month stipend is effectively $28K/year; a lower headline number with 12-month guarantee can be worth more than a higher number that leaves summers unfunded"
+    },
+    {
+      "rule": "Use specific competing numbers, not vague alternatives",
+      "condition": "When negotiating using a competing offer...",
+      "action": "...state the specific dollar amount and specific benefits (e.g., '12-month summer support'), not just that you 'have other options'",
+      "because": "Vague references to other options give programs nothing to respond to; a specific number creates a concrete target for them to match or exceed"
+    },
+    {
+      "rule": "Direct coursework waiver questions to the DGS, not the prospective advisor",
+      "condition": "When you want to negotiate credit for prior graduate coursework...",
+      "action": "...ask the Director of Graduate Studies during the visit, not your prospective advisor",
+      "because": "Advisors typically don't control program requirements; the DGS has actual authority over waivers and transfer credit decisions"
+    },
+    {
+      "rule": "Ask about summer funding explicitly — it is rarely disclosed proactively",
+      "condition": "When evaluating a PhD offer where summer funding is not mentioned...",
+      "action": "...directly ask whether the stipend is 9 or 12 months and how students typically fund their summers",
+      "because": "Programs rarely volunteer that 'stipend' means 9 months; students who don't ask often discover the gap only when summer arrives, creating financial crises mid-degree"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Stipend funding source (RA from advisor grant vs. TA from department)",
+      "why_it_matters": "RA funding from advisor grants is flexible and negotiable; TA stipends fixed by union contracts are not — the source determines whether any negotiation is even possible",
+      "how_to_assess": "Ask directly: 'Is my funding an RA position from your grant, or a TA position from the department?' and 'Is the stipend set by union contract?'",
+      "weight": "high"
+    },
+    {
+      "factor": "9-month vs. 12-month stipend coverage",
+      "why_it_matters": "A 9-month stipend leaves 3 months of income uncertain each year, which compounds significantly over a 5-year PhD and forces students to scramble for summer RA/TA/fellowship funding annually",
+      "how_to_assess": "Ask explicitly: 'Is the stipend guaranteed for 12 months, or does it cover 9 months?' and 'How do students in your group typically fund their summers?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Conference travel support amount and source",
+      "why_it_matters": "Support ranges from $500 to $5,000/year across programs; students who must self-fund conference travel face compounding inequity in networking and visibility over 5 years",
+      "how_to_assess": "Ask: 'What's the typical conference travel support for students in your group — is there a department fund or does it come from your research budget?'",
+      "weight": "medium"
+    },
+    {
+      "factor": "Existence of a real competing offer with a specific number",
+      "why_it_matters": "A concrete competing offer with a specific dollar amount is the single most effective negotiation lever; without it, requests for more money have little traction",
+      "how_to_assess": "Evaluate honestly whether you have an actual competing offer at a higher amount that you are genuinely considering accepting",
+      "weight": "high"
+    },
+    {
+      "factor": "Field-specific funding structure",
+      "why_it_matters": "STEM programs funded by advisor grants have more stipend flexibility; humanities programs with flat cohort stipends have almost none; professional programs routinely negotiate merit scholarships",
+      "how_to_assess": "Identify the field's dominant funding model before entering any negotiation and calibrate expectations accordingly",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor responsiveness and student funding history",
+      "why_it_matters": "An advisor who has let students experience funding gaps signals either poor grant management or low investment in student welfare — both predict difficult PhD experiences",
+      "how_to_assess": "During the visit, ask current students directly: 'Have you ever had a funding gap or scare during your PhD?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether teaching requirements are negotiable in humanities",
+      "why_it_matters": "In humanities, stipend flexibility is low but which years require teaching — and how much — is often negotiable and directly affects research productivity and time-to-degree",
+      "how_to_assess": "Ask the DGS: 'Which years require teaching assignments, and is there any flexibility in structuring that?'",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting the first offer number without negotiating",
+      "unstated_consequence": "You may leave $2,000–$5,000/year on the table annually, which over a 5-year PhD compounds to $10,000–$25,000 in foregone income — without any negative consequence for having asked",
+      "who_it_affects": "International students and first-generation graduate students who assume offer letters are non-negotiable and who have no family precedent for professional negotiation"
+    },
+    {
+      "choice": "Choosing the program with the higher headline stipend without checking coverage period",
+      "unstated_consequence": "A higher 9-month stipend can be worth less annually than a lower 12-month stipend, and leaves you with recurring summer funding uncertainty that creates financial stress and distracts from research",
+      "who_it_affects": "Students comparing offers across programs without explicitly asking about coverage period — a detail rarely disclosed proactively in offer letters"
+    },
+    {
+      "choice": "Using a vague or fabricated competing offer in negotiation",
+      "unstated_consequence": "Faculty in the same field communicate with each other; a fabricated offer can be verified or exposed, damaging your credibility with the advisor before the relationship begins",
+      "who_it_affects": "Applicants in small subfields where faculty networks are tight and who feel pressure to manufacture leverage when they don't have real competing offers"
+    },
+    {
+      "choice": "Skipping substantive questions during the visit weekend",
+      "unstated_consequence": "The visit is your only real due diligence window before committing to 5+ years; treating it as a social event rather than an evaluation means you enter the program without critical information about advisor responsiveness, funding stability, and graduation timelines",
+      "who_it_affects": "Applicants who are already excited about an offer and unconsciously avoid asking questions that might complicate their decision"
+    },
+    {
+      "choice": "Negotiating stipend without asking about conference travel and summer funding",
+      "unstated_consequence": "Winning a small stipend increase but remaining unaware of a $500 conference travel cap or unfunded summers means the total compensation package may still be worse than a competing offer with a lower base stipend",
+      "who_it_affects": "Students who frame negotiation narrowly as stipend-only and miss the full compensation picture"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating the offer letter as final and not negotiating at all",
+      "why_it_happens": "Most applicants have no prior experience with professional negotiation and assume academic offers, like undergraduate admissions, are take-it-or-leave-it",
+      "consequence": "Leaves significant money and better terms on the table with no upside — departments expect strong candidates to negotiate and are not offended by professional requests",
+      "warning_signs": [
+        "Accepting within 24–48 hours of receiving the offer without asking any follow-up questions",
+        "Never contacting the department between receiving and accepting the offer"
+      ]
+    },
+    {
+      "pattern": "Asking for more money without a concrete rationale or competing offer",
+      "why_it_happens": "Applicants know they should negotiate but don't have a real competing offer, so they ask vaguely — 'is there any flexibility?' — without grounding the request in a specific number",
+      "consequence": "The request is easy to decline politely; without a specific anchor, departments have no reason to move",
+      "warning_signs": [
+        "Phrasing requests as 'I was hoping for a bit more' without citing a specific competing number",
+        "Asking about flexibility in the same email as the initial enthusiastic response, before building any rapport"
+      ]
+    },
+    {
+      "pattern": "Misreading the visit weekend as purely social rather than evaluative",
+      "why_it_happens": "Programs frame visit weekends as celebratory and welcoming; applicants who are already excited unconsciously avoid questions that might uncover problems",
+      "consequence": "Students enter their PhD without knowing that most students are off-track on graduation timelines, or that the advisor is non-responsive, or that summer funding is not available — all discoverable during the visit",
+      "warning_signs": [
+        "Leaving the visit without having asked any current PhD student a critical or probing question",
+        "Describing the visit weekend as 'great' based primarily on social events rather than substantive conversations with advanced students"
+      ]
+    },
+    {
+      "pattern": "Comparing offers on headline stipend number alone",
+      "why_it_happens": "Stipend is the most visible number in an offer letter; 9-month vs. 12-month coverage, conference travel budgets, and summer RA availability are buried in program details or not disclosed at all",
+      "consequence": "Students accept what appears to be the higher-value offer and later discover it is effectively worth less annually when annualized and when missing benefits are accounted for",
+      "warning_signs": [
+        "Making an offer comparison without explicitly asking each program whether the stipend is 9 or 12 months",
+        "Evaluating offers without asking about conference travel support or summer funding availability"
+      ]
+    },
+    {
+      "pattern": "Negotiating stipend but not teaching load in humanities programs",
+      "why_it_happens": "Applicants focus on the number they can see (stipend) and don't realize that which years require teaching directly affects research time and time-to-degree — the more consequential variable in humanities",
+      "consequence": "Students end up in heavy teaching assignments during years when they should be writing, extending time-to-degree and reducing fellowship competitiveness",
+      "warning_signs": [
+        "Accepting a humanities offer without asking which years require teaching assignments",
+        "Treating stipend as the only negotiable dimension in a humanities program"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your stipend funded by an RA position from your prospective advisor's grant, or by a TA position from the department?",
+      "what_it_reveals": "RA funding gives the advisor discretion to supplement the stipend from grant funds; TA funding fixed by union contract is not negotiable regardless of competing offers",
+      "follow_up_if_yes": "If RA-funded: ask what the ceiling on stipend supplementation is from the grant, and whether summer RA funding is available",
+      "follow_up_if_no": "If TA-funded: shift negotiation focus to non-stipend items — conference travel, start date, coursework waivers, which years require teaching"
+    },
+    {
+      "question": "Does the stated stipend cover 9 months or 12 months?",
+      "what_it_reveals": "Determines the true annualized value of the offer and whether you face recurring summer funding uncertainty for the duration of the PhD",
+      "follow_up_if_yes": "If 12 months: confirm in writing that this is guaranteed, not contingent on annual grant renewal",
+      "follow_up_if_no": "If 9 months: ask how current students fund summers, whether summer RA support is typically available from the advisor's grant, and what happens if no summer funding is secured"
+    },
+    {
+      "question": "Do you have a real competing offer with a specific dollar amount that you are genuinely considering?",
+      "what_it_reveals": "Determines whether you have actual leverage for stipend negotiation; without a real competing number, stipend requests are easy to decline",
+      "follow_up_if_yes": "If yes: use the specific number in negotiation, mention it in a follow-up after expressing initial enthusiasm, and ask each program explicitly what they can do",
+      "follow_up_if_no": "If no: shift negotiation strategy toward non-stipend items (travel, start date, waivers) and focus on gathering information rather than extracting concessions"
+    },
+    {
+      "question": "Have any current PhD students in this program or lab experienced a funding gap during their degree?",
+      "what_it_reveals": "Funding gaps signal either poor advisor grant management, unstable external funding, or a program that does not backstop students when funding lapses — all serious structural risks",
+      "follow_up_if_yes": "If yes: ask how the gap was resolved, who was responsible, and whether the program has a formal policy for bridging funding gaps",
+      "follow_up_if_no": "If no: ask whether there is a formal department policy guaranteeing funding for students in good standing, and what 'good standing' means in practice"
+    },
+    {
+      "question": "Are most students in this program on track for their expected graduation timeline?",
+      "what_it_reveals": "Systematic delays indicate structural problems — inadequate advising, unclear milestones, insufficient funding security — not just individual student variation",
+      "follow_up_if_yes": "If most are on track: ask what the program does specifically to support timely progress",
+      "follow_up_if_no": "If most are not on track: treat this as a serious red flag and probe whether the delay is advisor-driven, funding-driven, or program-structure-driven"
+    },
+    {
+      "question": "What is the conference travel support — is there a department fund, and how much is typically available per year?",
+      "what_it_reveals": "Reveals whether the program actively invests in student professional development or expects students to self-fund visibility, which compounds inequity across a 5-year degree",
+      "follow_up_if_yes": "If substantial department fund exists: confirm whether it requires competitive application or is available to all students",
+      "follow_up_if_no": "If students self-fund: factor this as a real compensation gap when comparing total offer value across programs"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PhD offer letters are fixed — you either accept or decline",
+      "actual_reality": "Stipend, summer funding, conference travel budget, start date, and coursework waivers are all frequently negotiated by strong candidates, and departments expect it",
+      "implication": "Every applicant should treat the offer as a starting point and request a follow-up conversation before accepting, not as a binary take-it-or-leave-it decision"
+    },
+    {
+      "common_belief": "The program with the highest stated stipend has the best financial offer",
+      "actual_reality": "A 9-month stipend can be worth thousands less annually than a lower 12-month stipend when annualized, before accounting for conference travel support and summer funding availability",
+      "implication": "Always convert all offers to true annualized value including summer coverage before making financial comparisons"
+    },
+    {
+      "common_belief": "Mentioning a competing offer is aggressive or off-putting in academic culture",
+      "actual_reality": "Disclosing a specific competing offer is the single most effective negotiation lever and is considered professional by admissions committees and advisors, especially in STEM",
+      "implication": "Applicants should state competing offers explicitly with specific numbers rather than hinting at alternatives or staying silent out of perceived politeness"
+    },
+    {
+      "common_belief": "Visit weekends are primarily social events to help you get a feel for the program culture",
+      "actual_reality": "The visit is your only real due diligence window before a 5+ year commitment; it is an evaluation opportunity that most applicants underuse by avoiding critical questions",
+      "implication": "Applicants should prepare specific diagnostic questions for advanced PhD students — about advisor responsiveness, funding gaps, graduation timelines — and treat the visit as structured investigation, not celebration"
+    },
+    {
+      "common_belief": "Union-negotiated TA stipends can be supplemented or improved through negotiation",
+      "actual_reality": "Stipends fixed by collective bargaining agreements are legally binding and cannot be changed by individual department or advisor discretion, regardless of competing offers",
+      "implication": "When funding is TA-based in a unionized program, redirect negotiation entirely to non-stipend dimensions rather than wasting leverage on an immovable number"
+    },
+    {
+      "common_belief": "Conference travel support is a minor perk that doesn't significantly affect the PhD experience",
+      "actual_reality": "Conference travel support ranging from $500 to $5,000/year creates compounding inequity over 5 years in networking, visibility, and professional opportunity — students who self-fund are systematically disadvantaged",
+      "implication": "Conference travel support should be explicitly asked about and factored into total offer comparisons as a meaningful compensation variable"
+    },
+    {
+      "common_belief": "Fabricating or exaggerating a competing offer is a low-risk way to create negotiation leverage",
+      "actual_reality": "Faculty in the same subfield communicate with each other; a fabricated competing offer can be verified or exposed, and doing so damages your credibility with the advisor before the working relationship begins",
+      "implication": "Only use real, genuine competing offers in negotiation — the risk of fabrication outweighs any potential gain"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing of the offer letter",
+      "junior_pattern": "Treats the offer as a fixed document representing what the program is willing to give — accepts or declines without attempting to negotiate any terms",
+      "senior_pattern": "Treats the offer as an opening position and immediately identifies which elements are potentially negotiable given the funding source and field norms",
+      "why_it_matters": "The difference between accepting and negotiating a PhD offer can be $10,000–$25,000 over the degree with zero downside risk for asking professionally"
+    },
+    {
+      "dimension": "How competing offers are used",
+      "junior_pattern": "Either doesn't mention competing offers out of politeness, or mentions them vaguely ('I have other options I'm considering')",
+      "senior_pattern": "States the competing offer explicitly with a specific number and specific benefits, framing it as trying to make the right decision rather than extracting maximum value",
+      "why_it_matters": "Vague references give programs nothing to respond to; specific numbers create actionable anchors that programs can match or exceed"
+    },
+    {
+      "dimension": "Approach to the visit weekend",
+      "junior_pattern": "Attends social events, asks surface-level questions about research, leaves with a general positive impression but no critical information",
+      "senior_pattern": "Prepares specific diagnostic questions for advanced students about advisor responsiveness, funding gaps, graduation timelines, and what they wish they had known — treats the visit as structured due diligence",
+      "why_it_matters": "The visit is the last chance to uncover structural problems before committing to 5+ years; students who treat it as social forfeit their only real investigation opportunity"
+    },
+    {
+      "dimension": "Offer comparison methodology",
+      "junior_pattern": "Compares headline stipend numbers across programs and selects the highest",
+      "senior_pattern": "Converts all offers to true annualized value (accounting for 9 vs. 12-month coverage), adds conference travel support, assesses summer funding availability, and evaluates total compensation package",
+      "why_it_matters": "The program with the highest headline stipend is frequently not the highest total-value offer once all components are properly calculated"
+    },
+    {
+      "dimension": "Sequencing of negotiation communication",
+      "junior_pattern": "Either negotiates in the first response email (appearing transactional) or never negotiates at all",
+      "senior_pattern": "Expresses genuine enthusiasm first, then in a follow-up raises the specific competing offer and asks about flexibility on defined items with a clear decision timeline",
+      "why_it_matters": "Sequencing matters — leading with enthusiasm builds relational capital that makes the subsequent ask land as professional rather than mercenary"
+    },
+    {
+      "dimension": "Which dimensions of the offer they negotiate",
+      "junior_pattern": "Focuses exclusively on stipend as the only negotiable variable",
+      "senior_pattern": "Evaluates the full set of negotiable dimensions — stipend, summer funding, conference travel, start date, coursework waivers, teaching load — and prioritizes based on what is actually movable given the funding structure",
+      "why_it_matters": "In programs where stipend is fixed (e.g., union TA), focusing only on stipend wastes all leverage; shifting to other dimensions may yield more real value"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_offer_negotiation_and_funding_tactics",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

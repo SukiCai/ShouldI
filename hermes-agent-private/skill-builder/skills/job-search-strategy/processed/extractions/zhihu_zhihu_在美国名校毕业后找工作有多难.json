@@ -1,0 +1,519 @@
+{
+  "source_file": "zhihu_在美国名校毕业后找工作有多难.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "200+ applications is the baseline for international CS job seekers in the US",
+      "condition": "When an international student is applying for CS jobs in the US on OPT",
+      "action": "Target a minimum of 200 company applications, with 100+ referrals attempted; treat anything under that as insufficient effort, not bad luck",
+      "because": "The author states they applied to 200+ companies and got 4-5 offers; H-1B sponsorship restricts the pool significantly, so volume is required to compensate for the smaller eligible employer set",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Start LeetCode preparation before school starts, not after",
+      "condition": "When an international CS student is planning their job search timeline",
+      "action": "Begin LeetCode from May (before August enrollment), aiming to have 500+ problems solved at least twice before fall recruiting season opens in September",
+      "because": "Fall recruiting (September) begins immediately after enrollment; students who wait until school starts lose the preparation window entirely",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Prioritize fall recruiting over spring recruiting",
+      "condition": "When an international CS student is deciding when to focus their job search",
+      "action": "Treat the September–December recruiting window as primary; spring recruiting has significantly fewer open positions",
+      "because": "The author explicitly states spring recruiting has 'far fewer slots' and advises securing offers in the fall season",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Deprioritize GPA once job search begins",
+      "condition": "When a CS student is in their final year and must allocate time between coursework and job preparation",
+      "action": "Choose easy courses, minimize academic effort, and redirect time to LeetCode and projects; GPA is not asked about post-graduation",
+      "because": "The author states 'nobody asks your GPA after graduation, they ask where you work' — signaling employers weight technical skills over academic performance",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Tailor your resume to the specific role being applied to",
+      "condition": "When submitting applications — especially for roles that differ from some of your past experience",
+      "action": "Remove irrelevant experience and only include items directly relevant to the target role's requirements",
+      "because": "ATS (applicant tracking systems) at large companies auto-filter resumes; even highly qualified candidates get screened out for including unrelated experience",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "STEM OPT extension makes CS the dominant viable path for international students who want to stay in the US",
+      "condition": "When advising an international student on which field to pursue if US work authorization is a priority",
+      "action": "Strongly favor CS or other STEM fields that qualify for the 3-year OPT extension over non-STEM fields with only 1-year OPT",
+      "because": "3 years of OPT gives 3 lottery cycles for H-1B versus 1 cycle for non-STEM — dramatically increasing the probability of obtaining work authorization",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "OPT duration (STEM vs. non-STEM)",
+      "why_it_matters": "Determines how many H-1B lottery attempts a student gets; 1 year = 1 attempt, 3 years = up to 3 attempts, fundamentally changing the probability of staying in the US long-term",
+      "how_to_assess": "Check whether your degree program qualifies for STEM OPT extension via the DHS STEM designated degree program list",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer H-1B sponsorship willingness",
+      "why_it_matters": "Sponsoring H-1B costs the employer money and creates administrative overhead; many employers exclude international candidates outright, shrinking the viable applicant pool",
+      "how_to_assess": "Check historical H-1B sponsorship records (available via USCIS public data / tools like myvisajobs.com); prioritize tech companies with established sponsorship pipelines",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Industry-level demand for international workers",
+      "why_it_matters": "Industries where domestic labor is abundant (finance, architecture, many science fields) have little incentive to sponsor international workers; tech is an exception because of demonstrated domestic talent scarcity",
+      "how_to_assess": "Research the ratio of international workers in the target industry and whether top employers have active H-1B sponsorship histories",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "LeetCode problem volume and quality before recruiting season",
+      "why_it_matters": "Technical interview performance is directly correlated with preparation depth; candidates with under 200 problems solved are described as statistically likely to fail at top companies",
+      "how_to_assess": "Count problems solved, assess whether you can independently solve medium/hard problems, and review past interview questions (面经) to test yourself",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Internship experience relevance",
+      "why_it_matters": "Full-time roles at major companies are predominantly filled via return offers from internships; candidates without relevant internship experience face a much harder path to full-time roles",
+      "how_to_assess": "Assess whether you have at least one CS-relevant internship before applying for new grad full-time roles; if not, prioritize internship applications first",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "English verbal communication ability in interviews",
+      "why_it_matters": "Interviewers assess social/communication skills alongside technical ability; poor interview English can cause a technically qualified candidate to be perceived as low on 'culture fit' or 'professionalism'",
+      "how_to_assess": "Self-evaluate through mock interviews in English; identify if nervousness or limited vocabulary is causing performance gaps versus actual competence",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Program duration (1-year vs. 2-year master's)",
+      "why_it_matters": "1-year master's programs leave very little time between enrollment and the peak fall recruiting season, often resulting in students missing the prime internship cycle entirely",
+      "how_to_assess": "Map your program's graduation date against recruiting cycles; 1-year students may need to start preparation before arriving on campus",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a non-STEM or non-CS graduate program in the US",
+      "unstated_consequence": "1-year OPT window provides only one H-1B lottery attempt; failure means mandatory departure with no fallback option, effectively making long-term US residency a near-lottery outcome",
+      "who_it_affects": "Students who chose programs based on academic interest or rankings without understanding the OPT/H-1B pipeline implications",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Investing heavily in academic performance (GPA) over job preparation during the master's program",
+      "unstated_consequence": "Employers in CS do not ask for GPA post-graduation; the time cost of chasing high grades directly competes with LeetCode preparation and networking — the actual gatekeepers for employment",
+      "who_it_affects": "Students who transferred their domestic academic mindset (GPA = success) to a US job market where technical interview performance matters far more",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Listing all experience on a resume without role-specific tailoring",
+      "unstated_consequence": "ATS systems auto-reject candidates with irrelevant experience; a highly qualified candidate with a bloated resume may receive zero interviews despite strong credentials",
+      "who_it_affects": "Students from multidisciplinary backgrounds or those who pivoted fields (e.g., non-CS undergrad to CS master's) who try to show breadth",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on survival stories of international students in non-CS fields as evidence that your field is viable",
+      "unstated_consequence": "Survivorship bias: the vast majority who couldn't find work simply returned to their home country and are invisible in online discourse — the visible commenters are the exceptions, not the rule",
+      "who_it_affects": "Students in non-CS, non-engineering fields who see scattered success stories and assume they are representative",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Focusing job search on return to home country as a fallback without preparing simultaneously",
+      "unstated_consequence": "Domestic recruiting cycles (especially China's fall/spring recruiting) have fixed windows; missing them while pursuing US opportunities leaves the student with no fallback offer either",
+      "who_it_affects": "Students who treat domestic employment as a guaranteed safety net that can be activated at any time",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying to top-tier companies (Google, Meta, etc.) after only 1-2 months of LeetCode preparation",
+      "why_it_happens": "Optimism bias + underestimation of competition level; students compare their preparation to domestic peers, not to the actual pool of competing applicants at those companies",
+      "consequence": "Mass rejection across top companies, followed by online posts attributing failure to the market being 'too hard' rather than insufficient preparation",
+      "warning_signs": [
+        "Fewer than 200-300 LeetCode problems solved before first applications",
+        "Preparation window under 3 months",
+        "Targeting FAANG exclusively before securing any offer"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Submitting a generic resume without tailoring it to the specific job description",
+      "why_it_happens": "Students treat the resume as a comprehensive CV (academic mindset) rather than a targeted marketing document matched to ATS keyword requirements",
+      "consequence": "Zero interview callbacks despite genuine qualifications; the candidate attributes failure to market conditions rather than resume filtering",
+      "warning_signs": [
+        "Resume includes research or coursework from a different field than the role being applied to",
+        "Same resume submitted to all companies without modification",
+        "Resume exceeds one page for a new graduate with a mix of unrelated experience"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Applying to fewer than 50 companies and concluding the job market is impossible",
+      "why_it_happens": "International students compare their application volumes to domestic peers, not accounting for the much smaller pool of H-1B-sponsoring employers they are actually eligible for",
+      "consequence": "Premature exit from the job search process, missed opportunities, and false generalization that the market is closed to international candidates",
+      "warning_signs": [
+        "Giving up after 20-30 rejections",
+        "Only applying to well-known companies rather than the full universe of sponsoring employers",
+        "Not tracking application volume systematically"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Spending OPT year without accumulating H-1B lottery attempts or building a Canada/alternative fallback",
+      "why_it_happens": "Students assume one lottery win is inevitable and don't plan for the possibility of multiple failed attempts",
+      "consequence": "After the OPT window expires without H-1B approval, the student has no legal status to remain and no pre-arranged alternative — forced to return home",
+      "warning_signs": [
+        "No awareness of employer-sponsored Canada transfer options (e.g., Microsoft Vancouver)",
+        "No plan for what happens if H-1B lottery fails in year 1 or year 2",
+        "Non-STEM students who only have one lottery attempt"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Using academic proxy metrics (GPA, course difficulty) as the primary measure of job-readiness",
+      "why_it_happens": "Students import the academic success model from domestic educational systems where grades were the primary outcome variable",
+      "consequence": "High GPA but poor LeetCode performance and thin project portfolio; fails technical screens while believing they are well-prepared",
+      "warning_signs": [
+        "Student talks about GPA when asked about job preparation",
+        "Choosing hard courses over practical CS electives to look impressive",
+        "No side projects beyond required coursework"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many LeetCode problems have you solved, and how many times have you reviewed them?",
+      "what_it_reveals": "Actual technical interview readiness, independent of self-assessment; below 300 problems (once through) indicates high probability of failure at top companies",
+      "follow_up_if_yes": "If 500+ problems solved twice: move to mock interviews and system design preparation",
+      "follow_up_if_no": "If under 200 problems: delay applications to target companies until preparation threshold is met; apply to mid-tier companies first for interview practice",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many companies have you applied to, and do you have a tracking system?",
+      "what_it_reveals": "Whether the student's search volume is appropriate for the international candidate pool; under 100 applications in a full recruiting season indicates effort, not market conditions, as the bottleneck",
+      "follow_up_if_yes": "If 200+: analyze the funnel — where are candidates dropping out (application → screen → interview → offer)?",
+      "follow_up_if_no": "If under 50: volume is almost certainly the problem, not market conditions or qualifications",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your target role/industry have a demonstrated history of sponsoring H-1B visas?",
+      "what_it_reveals": "Whether the student's target companies will even consider their application; applying to finance, law, architecture, or other domestic-labor-abundant fields dramatically shrinks the viable employer pool",
+      "follow_up_if_yes": "If yes: proceed with standard strategy; verify specific companies' sponsorship history",
+      "follow_up_if_no": "If no: reassess target industry or identify the rare sponsoring employers within that field before investing further effort",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is your degree program STEM-designated, and do you qualify for the 3-year OPT extension?",
+      "what_it_reveals": "How many H-1B lottery attempts the student will get; this is the single biggest structural determinant of long-term US stay viability",
+      "follow_up_if_yes": "If STEM: 3 lottery attempts — viable path if employer sponsorship is secured",
+      "follow_up_if_no": "If non-STEM: only 1 lottery attempt — need to either secure employer sponsorship before graduation or plan a realistic exit strategy",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you done any CS-relevant internships, or is your experience exclusively academic?",
+      "what_it_reveals": "Whether the student has the industry experience signals that ATS and recruiters screen for; academic-only candidates face significantly higher rejection rates at the resume stage",
+      "follow_up_if_yes": "If internship experience: assess relevance and ensure it is prominently featured with quantified impact",
+      "follow_up_if_no": "If no internship: prioritize internship applications immediately; a return offer from internship is the primary path to new grad full-time roles at top companies",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "STEM fields are all roughly equally good for staying in the US after graduation",
+      "actual_reality": "STEM designation only matters for OPT extension; the more critical variable is whether US companies actually hire in your field. Life sciences, chemistry, physics, and ecology have poor hiring demand despite being STEM — the 3-year OPT window doesn't help if no employer is willing to sponsor",
+      "implication": "Students should evaluate both OPT eligibility AND employer sponsorship demand in their target field before choosing a program",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Finance and business degrees from US universities are strong credentials for US employment",
+      "actual_reality": "US finance and banking industries are saturated with domestic talent; employers have little incentive to pay for H-1B sponsorship when qualified citizens are available. Non-CS business fields are among the hardest for international students to find US employment in",
+      "implication": "International students targeting finance should either pivot to quantitative/technology roles within finance (where CS skills matter) or plan to leverage the US degree for return to home market employment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Working hard academically and getting a good GPA will translate into better job prospects",
+      "actual_reality": "For CS roles in the US, GPA is rarely asked about or screened after the initial application. Technical interview performance (LeetCode), project portfolio, and internship experience are the actual gatekeeping criteria",
+      "implication": "Time allocation should shift dramatically toward LeetCode preparation, project building, and networking — not GPA optimization",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "If you can't find work in the US, returning to your home country is a straightforward fallback",
+      "actual_reality": "Domestic recruiting cycles in China (and likely other countries) operate on fixed schedules. Missing the fall/spring recruiting windows while pursuing US opportunities can leave students with neither a US job nor a domestic offer",
+      "implication": "Students should track home-country recruiting timelines in parallel with US search, and not treat domestic employment as an always-available fallback",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "People who couldn't find jobs in the US are vocal about it online, so the failure rate is visible",
+      "actual_reality": "Survivors are dramatically over-represented online. People who failed to find US employment and returned home largely disappear from these forums. The visible discourse is dominated by CS students who found work — creating a systematic survivorship bias about how achievable US employment is across all fields",
+      "implication": "Don't use online success stories as calibration for your own field's difficulty; actively seek out data on the full cohort, not just the visible successes",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Application volume strategy",
+      "naive_pattern": "Apply to 20-50 well-known companies, wait for responses, conclude the market is closed if rejected",
+      "informed_pattern": "Treat 200+ applications as the baseline minimum; use referrals for 100+ of those; view sub-100 applications as a data point about effort, not market conditions",
+      "why_it_matters": "International candidates have a structurally smaller eligible employer pool due to sponsorship requirements; volume is the primary compensating mechanism",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Preparation timeline",
+      "naive_pattern": "Start preparing after arriving on campus; assume 1-2 months of LeetCode is sufficient for top-company applications",
+      "informed_pattern": "Begin LeetCode 3-6 months before recruiting season opens (May for August enrollment); target 500+ problems reviewed twice before first top-company applications",
+      "why_it_matters": "Fall recruiting begins in September; students who start in August have almost no preparation window, and showing up underprepared to top-company interviews is a waste of interview opportunities that may not recur",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How to evaluate job search difficulty",
+      "naive_pattern": "'The market is hard' — based on personal rejection experience and online posts from peers",
+      "informed_pattern": "Separate market conditions from individual preparation gaps; most online complaints about CS job search difficulty come from under-prepared candidates, not from people who completed full preparation cycles",
+      "why_it_matters": "Misdiagnosing the problem (market vs. preparation) leads to wrong solutions (waiting for market to improve vs. investing more in preparation)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Resume strategy",
+      "naive_pattern": "Use one comprehensive resume showing all experience, skills, and projects across all applications",
+      "informed_pattern": "Tailor resume to each role's specific job description; remove irrelevant experience; assume ATS keyword filtering before human review",
+      "why_it_matters": "A comprehensive resume that includes irrelevant experience will be auto-filtered by ATS before any human sees it, regardless of how strong the underlying candidate is",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Visa/status planning",
+      "naive_pattern": "Focus on getting the job first; assume H-1B will work out or that there's a solution when the time comes",
+      "informed_pattern": "Map out the full OPT + H-1B lottery timeline before accepting offers; identify employers with Canada transfer options or CPT-based fallbacks; build a multi-scenario plan from day one",
+      "why_it_matters": "Students who don't plan for H-1B lottery failure get blindsided at the end of their OPT window with no legal status and no fallback",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you go to a top US university, finding a job in the US is relatively straightforward",
+      "why_believed": "Domestic applicants with elite degrees do have strong employment outcomes; international students conflate the prestige advantage with the visa sponsorship hurdle, which affects all international candidates equally regardless of school ranking",
+      "actual_rule": "School prestige helps with resume screening and interview access, but does not exempt international students from H-1B sponsorship requirements, lottery odds, or the structural disadvantage of competing against domestic candidates for a smaller pool of sponsoring employers",
+      "real_consequence": "Students from top schools who don't understand the H-1B pipeline may be blindsided when offers fall through or are unavailable due to sponsorship constraints, despite their strong academic credentials",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "All STEM degrees give you equal advantage in staying in the US",
+      "why_believed": "The STEM OPT extension (3 years) is often discussed as the key advantage, and all STEM fields qualify for it — so people assume the playing field is level across STEM",
+      "actual_rule": "STEM OPT extension only helps if employers in your field actually sponsor H-1B. Biology, chemistry, physics, and many other STEM fields have poor sponsorship rates because domestic talent is sufficient. CS/engineering are the exceptions, not the norm",
+      "real_consequence": "Students choose STEM programs outside CS/engineering expecting a 3-year path to H-1B, then discover that no employers in their field will sponsor them — leaving them with 3 years of OPT but no job offers with sponsorship",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "CS job search in the US is primarily hard because of the market, not individual preparation",
+      "why_believed": "Online forums are disproportionately populated by people who are struggling — creating a perception that failure is the norm. Survivorship bias also hides the people who succeeded through preparation",
+      "actual_rule": "The majority of CS job search failures among international students are attributable to under-preparation (insufficient LeetCode volume, weak resumes, inadequate networking) rather than market conditions. CS remains the most favorable field for international students in the US by a significant margin",
+      "real_consequence": "Students who believe market conditions are the primary cause don't invest in the preparation that would actually change their outcomes; they wait for conditions to improve rather than improving their own competitiveness",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "You don't need to worry about domestic (home country) job applications until after you've exhausted US options",
+      "why_believed": "Students prioritize the US opportunity and treat domestic employment as a guaranteed fallback with flexible timing",
+      "actual_rule": "Domestic recruiting cycles in China and other countries operate on fixed schedules with defined application windows (fall and spring recruiting). Missing these windows while pursuing US opportunities can result in being locked out of both markets simultaneously",
+      "real_consequence": "Students who fail to find US employment in their final semester discover that domestic recruiting windows have already closed, leaving them with no offer from either market",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "International CS student applying for US jobs with under 200 LeetCode problems solved, targeting top companies (Google, Meta level) after 1-2 months of preparation",
+      "decision": "Proceeded to apply and interview without meeting the preparation threshold",
+      "outcome": "Near-universal rejection; student attributed failure to market difficulty rather than preparation gaps and posted online about how hard the job market is",
+      "lesson": "Preparation volume (500+ problems, multiple passes) is not aspirational — it is a threshold requirement for top-company interviews. Applying below threshold wastes interview opportunities and produces misleading data about market conditions",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Highly qualified MIT graduate with strong internship experience applying for CS roles but submitting a resume with all experience (including unrelated fields) without tailoring",
+      "decision": "Submitted the same comprehensive resume to all companies",
+      "outcome": "Received no interview callbacks despite strong qualifications; the issue was identified only when peers reviewed the resume and found irrelevant experience causing ATS filtering",
+      "lesson": "ATS filtering happens before human review; a bloated resume with unrelated content will be auto-rejected regardless of underlying candidate quality. Tailor to each role",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "International CS student who failed H-1B lottery but worked at a major tech company (implicitly Microsoft) during OPT",
+      "decision": "Leveraged employer's existing Canada transfer program to relocate to Canadian office",
+      "outcome": "Continued employment without interruption; maintained career trajectory through employer-sponsored Canada pathway",
+      "lesson": "Large tech companies (Microsoft, Amazon, Google) have established pathways to transfer employees to Canada when H-1B lottery fails; this option should be researched and negotiated before OPT expires, not after",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Students describe the job market as 'too hard' or 'impossible' after a small number of rejections (20-50 applications)",
+      "underlying_state": "Attribution error combined with ego protection: it feels less threatening to blame market conditions than to acknowledge insufficient preparation",
+      "how_it_manifests": "Posting on forums about market difficulty, seeking validation that conditions are impossible, stopping the job search prematurely",
+      "expert_move": "Ask the student to report their actual preparation metrics (LeetCode count, application volume, referral attempts) before accepting their market diagnosis; reframe the question from 'is the market hard?' to 'have I met the preparation threshold for my target companies?'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "International students in non-CS fields express confusion about why they can't find US employment despite strong academic credentials",
+      "underlying_state": "Credential transferability illusion: students assume the academic prestige and hard work that earned their degree will translate directly into employment value in a market that operates by different rules",
+      "how_it_manifests": "Focusing on GPA and academic reputation while neglecting the structural reality that their field does not have H-1B sponsorship demand",
+      "expert_move": "Separate the academic value of the degree from the employment market reality; introduce the concept of employer sponsorship demand as a variable entirely independent of academic quality",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Students delay applying to domestic (home country) jobs while pursuing US opportunities, treating domestic employment as an always-available fallback",
+      "underlying_state": "Sunk cost fallacy + optimism bias: having invested heavily in US education, students resist closing the door on US employment and overestimate their ability to activate domestic options on demand",
+      "how_it_manifests": "Missing domestic recruiting windows; arriving at end of OPT with no offer from either market; experiencing shock that domestic fallback is not available",
+      "expert_move": "Reframe dual-track job searching as risk management, not hedging or giving up on US aspirations; treat domestic application deadlines as hard constraints to be tracked in parallel, not sequential fallbacks",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Students express paralysis about whether to 'waste time' on LeetCode preparation versus school coursework",
+      "underlying_state": "Identity conflict: students who self-identify as 'good students' resist deprioritizing academic performance, even when the evidence suggests coursework has near-zero job market return",
+      "how_it_manifests": "Over-investing in coursework, selecting hard courses to maintain identity as high-achiever, then entering recruiting season under-prepared for technical interviews",
+      "expert_move": "Validate the academic identity while reframing what 'preparation' means in this context: 'You're not slacking — you're optimizing for the actual exam, which is the technical interview, not your GPA'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "CS job search in the US is very hard / the market is terrible",
+      "reframe": "The question is not whether the market is hard — it's whether you have met the preparation threshold. Most people complaining about difficulty online have solved under 200 problems and applied to under 50 companies. CS is still the best-positioned field for international students by a wide margin.",
+      "why_it_works": "Shifts focus from an external, uncontrollable variable (market conditions) to internal, controllable variables (preparation depth, application volume); breaks the helplessness framing",
+      "example_language": "'CS找工作再难，也是全美第一的最好找工作的专业，没有之一。说找工作难的，90%都是这样的人在这说，自己没怎么努力。'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I've applied to 20-30 companies and haven't gotten any interviews — is the market really this bad?",
+      "reframe": "20-30 applications is not a sufficient sample size to diagnose market conditions for an international candidate. The baseline for meaningful signal is 200+ applications; anything below that is a measurement of effort, not market receptivity.",
+      "why_it_works": "Replaces a market diagnosis (which produces helplessness) with an effort diagnosis (which produces a clear action: apply more); contextualizes the international student's situation against domestic baselines",
+      "example_language": "'北美投简历，少于200家都是没努力。我们在北美是外国人，你20家努力了？'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Should I focus on getting good grades or finding a job?",
+      "reframe": "GPA is not the gatekeeping variable for employment. The gatekeepers are LeetCode performance, project quality, and internship experience. Once you understand what the actual 'exam' is, the resource allocation question answers itself.",
+      "why_it_works": "Removes the false trade-off framing by identifying which metric actually matters; students can deprioritize coursework without feeling like they're failing — they're just redirecting effort toward the correct evaluation criteria",
+      "example_language": "'毕业了没人问你GPA多少，都会问你去哪工作了，所以分清孰轻孰重。'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Other international students in non-CS fields have found jobs in the US, so it must be possible for me too",
+      "reframe": "The people you see online are survivors — the majority who didn't find work returned home and are invisible in these forums. You're seeing the 10% success cases and inferring a 50% success rate. CS students complain online because they stayed; other fields are quiet because those students left.",
+      "why_it_works": "Directly names and corrects survivorship bias; reframes the 'evidence' the student is using as systematically misleading; encourages more realistic prior about field-specific difficulty",
+      "example_language": "'幸存者偏差，其他专业都直接回国了，说话的声音都没有。'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_在美国名校毕业后找工作有多难",
+  "_source_regions": [
+    "us"
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "source_file": "co_advising_failure_modes.txt",
+  "heuristics": [
+    {
+      "rule": "Ask prospective co-advisors to each describe what a completed dissertation looks like before committing",
+      "condition": "When evaluating a co-advising arrangement before accepting an offer...",
+      "action": "...ask each advisor independently 'What does a completed dissertation in this area look like to you?' and compare their answers",
+      "because": "Divergent answers reveal a future conflict that the student — not the advisors — will be forced to resolve mid-PhD"
+    },
+    {
+      "rule": "If the proposed co-advisors have never co-advised before, treat yourself as a first experiment and price that risk accordingly",
+      "condition": "When a co-advising pair has no prior joint advising history...",
+      "action": "...ask explicitly 'Have you co-advised a PhD student before?' and if no, weight this heavily against the arrangement or negotiate formal safeguards",
+      "because": "Untested co-advising pairs have not resolved their disagreements about research direction, milestone standards, or accountability — the student absorbs the cost of their learning curve"
+    },
+    {
+      "rule": "Establish a formal primary advisor of record before starting, not after problems emerge",
+      "condition": "When entering any co-advising arrangement...",
+      "action": "...confirm in writing who handles stipend, visa documentation, milestone sign-offs, and day-to-day guidance",
+      "because": "Diffuse accountability means each advisor assumes the other is handling critical issues — formal primary designation prevents both from under-attending to your progress"
+    },
+    {
+      "rule": "If you feel like you are managing the relationship between your two advisors, name it explicitly and force a joint meeting",
+      "condition": "When one advisor asks what the other said, or asks you to withhold information from the other...",
+      "action": "...say 'I'm finding it difficult to reconcile your feedback — can the three of us meet together?' rather than continuing to absorb the tension",
+      "because": "Triangulation is an inappropriate burden on the student; naming it forces the advisors to own their dynamic directly"
+    },
+    {
+      "rule": "Use a secondary co-advisor defensively when your primary is pre-tenure or has limited bandwidth — but recruit them before a crisis, not during one",
+      "condition": "When your primary advisor is pre-tenure, travels extensively, or has bandwidth constraints...",
+      "action": "...identify and formally recruit a senior tenured co-advisor before starting, specifying meeting frequency and letter-writing role upfront",
+      "because": "A co-advisor recruited during a crisis has no institutional history with your work and limited leverage to intervene effectively"
+    },
+    {
+      "rule": "Require both co-advisors to sign off on your dissertation proposal together, in the same document",
+      "condition": "When milestone standards are ambiguous in a co-advised arrangement...",
+      "action": "...get joint written sign-off on the dissertation proposal before advancing, not verbal agreement from each separately",
+      "because": "Separate verbal agreements allow each advisor to apply their own standards at defense time, creating the conditions for a contentious or failed defense"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Prior co-advising relationship between the two faculty",
+      "why_it_matters": "Advisors who have co-advised before have already resolved disagreements about research direction, roles, and expectations — advisors who haven't have not, and the student pays the resolution cost",
+      "how_to_assess": "Ask directly: 'Have you two co-advised a PhD student before? What happened to that student?' Probe the outcome, not just the existence of the relationship",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding structure — departmental guarantee vs. split grant funding",
+      "why_it_matters": "Split grant funding doubles the single-point-of-failure risk; if either grant lapses, the student loses part or all of their stipend with no clear responsible party",
+      "how_to_assess": "Ask: 'Is my funding departmentally guaranteed, or does it come from both of your grants?' and 'What happens to my funding if one grant doesn't renew?' Ask about precedent with prior students",
+      "weight": "high"
+    },
+    {
+      "factor": "Clarity of role division between co-advisors",
+      "why_it_matters": "Without explicit role assignment, both advisors default to assuming the other is handling administrative, milestone, and day-to-day responsibilities, causing gaps",
+      "how_to_assess": "Ask each advisor to describe the division of responsibility in practice; compare their answers for consistency. Check whether formal paperwork exists",
+      "weight": "high"
+    },
+    {
+      "factor": "Alignment on dissertation scope and timeline",
+      "why_it_matters": "If co-advisors want different versions of your dissertation or different completion timelines, you will spend years reconciling their feedback rather than doing research",
+      "how_to_assess": "Ask each advisor independently what a completed dissertation looks like and when they expect you to finish; surface divergence before committing",
+      "weight": "high"
+    },
+    {
+      "factor": "Complementarity vs. competition of expertise",
+      "why_it_matters": "Complementary expertise adds without creating conflict; overlapping or competing expertise creates disagreements about research direction dressed as methodological feedback",
+      "how_to_assess": "Map each advisor's domain and methods expertise; check whether their contributions would address different gaps in your work rather than the same ones",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether both advisors are actively funded",
+      "why_it_matters": "If both have active grants, co-advising provides a funding safety net; if neither is reliably funded, co-advising multiplies rather than mitigates financial risk",
+      "how_to_assess": "Ask about current and upcoming grant cycles for both advisors; check public grant databases if available",
+      "weight": "high"
+    },
+    {
+      "factor": "Milestone requirements across departments",
+      "why_it_matters": "Co-advisors from different departments may operate under different qualifying exam, proposal, and defense standards — ambiguity at these moments can stall or derail progress",
+      "how_to_assess": "Before starting, clarify in writing what the milestone requirements are and have both advisors agree on a single standard",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether the co-advising arrangement is formal or informal",
+      "why_it_matters": "Informal arrangements carry no institutional accountability structures — no paperwork, no formal role assignment, no program-level oversight",
+      "how_to_assess": "Ask whether there is formal paperwork designating both as co-advisors of record; treat 'informal' as a red flag requiring further investigation",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Entering a co-advised PhD arrangement for interdisciplinary breadth",
+      "unstated_consequence": "You absorb the coordination cost of two research agendas — time spent reconciling contradictory feedback is time not spent doing research, silently extending your time-to-degree",
+      "who_it_affects": "Students who are junior enough to not recognize conflicting advisor feedback as a structural problem rather than a personal deficiency"
+    },
+    {
+      "choice": "Accepting split grant funding from two co-advisors",
+      "unstated_consequence": "You double your exposure to grant-cycle risk with no single party who feels fully responsible for solving a funding gap",
+      "who_it_affects": "International students who depend on stipend continuity for visa status and cannot easily bridge gaps with outside employment"
+    },
+    {
+      "choice": "Managing two advisor relationships separately rather than jointly",
+      "unstated_consequence": "Neither advisor develops a complete picture of your progress, leading to annual reviews where gaps are discovered late — and where neither advisor feels ownership of the problem",
+      "who_it_affects": "Students who are conflict-averse and default to managing each relationship individually to avoid awkwardness"
+    },
+    {
+      "choice": "Accepting an informal co-advising arrangement with no formal paperwork",
+      "unstated_consequence": "At milestone moments — qualifying exams, proposal approval, defense — the absence of formal structure allows each advisor to apply their own standards, creating the conditions for conflict or blockage precisely when it is most costly",
+      "who_it_affects": "Students who entered the arrangement optimistically and did not anticipate needing institutional protection"
+    },
+    {
+      "choice": "Allowing yourself to become the communication channel between two advisors with unspoken tensions",
+      "unstated_consequence": "You gradually accumulate relational debt to both advisors — each believes you are managing information in ways that may or may not serve them — creating fragility in both relationships simultaneously",
+      "who_it_affects": "Students who are socially skilled and instinctively mediate — their competence at managing conflict makes the triangulation pattern invisible until it has gone on too long"
+    },
+    {
+      "choice": "Choosing co-advising to hedge against single-advisor risk",
+      "unstated_consequence": "If the co-advisors have unresolved professional tensions, the hedge inverts — instead of reducing risk, you've created a situation where a conflict between your advisors directly disrupts your dissertation",
+      "who_it_affects": "Students who evaluated co-advisor complementarity on paper but did not investigate the interpersonal dynamic between the two faculty"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Entering a co-advised arrangement where advisors have conflicting research agendas",
+      "why_it_happens": "Students evaluate each advisor independently based on their reputation and research fit, without testing whether the two advisors' visions for the dissertation are compatible",
+      "consequence": "Student spends months or years reconciling contradictory feedback — one advisor approves a chapter, the other requires revision — silently extending time-to-degree with no clear path to resolution",
+      "warning_signs": [
+        "Advisors give substantively different answers when asked what a completed dissertation looks like",
+        "Advisors recommend different venues (journals vs. conferences) for the same work"
+      ]
+    },
+    {
+      "pattern": "Diffuse accountability causing neither advisor to take ownership of the student's progress",
+      "why_it_happens": "Each advisor rationally assumes the other is handling the issue — a structural consequence of shared responsibility with no formal primary designation",
+      "consequence": "Slower response times, cancelled meetings, and annual reviews where critical gaps in progress are discovered late — with no single advisor positioned to intervene",
+      "warning_signs": [
+        "Meetings get cancelled with the explanation that the other advisor was handling it",
+        "Emails go unanswered for extended periods because each advisor assumes the other responded"
+      ]
+    },
+    {
+      "pattern": "Student becomes a triangulation channel between advisors with interpersonal tensions",
+      "why_it_happens": "Faculty with unresolved professional disagreements find it easier to communicate through a shared student than to address the conflict directly; students comply because refusing feels risky",
+      "consequence": "Student accumulates an inappropriate relational burden, makes decisions based on incomplete information about advisor dynamics, and damages one or both relationships without understanding why",
+      "warning_signs": [
+        "One advisor asks what the other said about your work in a probing rather than coordinating way",
+        "You are asked to withhold information or framings from one advisor by the other"
+      ]
+    },
+    {
+      "pattern": "Accepting split grant funding without understanding the failure mode",
+      "why_it_happens": "Students focus on whether funding is currently available, not on what happens when one source lapses — and neither advisor proactively discloses the risk",
+      "consequence": "Partial or total funding loss mid-PhD with no single advisor who feels responsible for solving it, at a point when switching programs is not feasible",
+      "warning_signs": [
+        "Neither advisor can clearly answer what happens to funding if their grant doesn't renew",
+        "Funding is described as coming 'from both of us' without specifying departmental guarantees"
+      ]
+    },
+    {
+      "pattern": "Milestone ambiguity leading to contentious or blocked dissertation defense",
+      "why_it_happens": "Students and advisors assume milestone standards are shared when they have never been explicitly negotiated; each advisor applies their own department's norms without realizing they diverge",
+      "consequence": "One advisor clears the student to defend while the other does not, creating a conflict at the highest-stakes moment in the PhD",
+      "warning_signs": [
+        "Co-advisors are from different departments with distinct program requirements",
+        "No written agreement on dissertation proposal standards exists at the start of the program"
+      ]
+    },
+    {
+      "pattern": "Recruiting a co-advisor during a crisis rather than at the start",
+      "why_it_happens": "Students treat co-advising as a reactive solution to an emerging problem rather than a proactive structural choice, approaching a secondary advisor only when the primary relationship is deteriorating",
+      "consequence": "The crisis-recruited co-advisor has no institutional history with the student's work, limited leverage to intervene, and enters the relationship in a reactive rather than formative role",
+      "warning_signs": [
+        "The secondary advisor is first approached after a significant conflict with the primary advisor",
+        "The secondary advisor has not read any of the student's prior work before being asked to co-advise"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have your two prospective co-advisors co-advised a PhD student before, and what happened to that student?",
+      "what_it_reveals": "Whether the pair has resolved their working relationship in practice, not just in theory — and whether there is a track record of student outcomes to evaluate",
+      "follow_up_if_yes": "Ask to speak with that student if possible; ask whether the student finished on time and whether the arrangement was additive or burdensome",
+      "follow_up_if_no": "Treat yourself as the first experiment; probe harder on role division, conflict resolution, and funding structure to compensate for the absence of prior evidence"
+    },
+    {
+      "question": "What does a completed dissertation in this area look like to each of you?",
+      "what_it_reveals": "Whether the two advisors have compatible visions for the scope, methods, and contribution of your work — or whether you will be mediating between two incompatible research agendas",
+      "follow_up_if_yes": "If answers align, ask about timeline alignment and publication venue preferences to stress-test further",
+      "follow_up_if_no": "If answers diverge significantly, ask directly how they resolve disagreements about research direction — the quality of that answer determines whether the divergence is manageable"
+    },
+    {
+      "question": "Is my funding departmentally guaranteed, or does it depend on both of your grants?",
+      "what_it_reveals": "Whether the student faces doubled grant-cycle risk with no clear accountable party for funding continuity",
+      "follow_up_if_yes": "If departmentally guaranteed, confirm the duration and conditions; ask whether RA obligations attached to each grant could still create competing demands on your time",
+      "follow_up_if_no": "If grant-dependent, ask what happened to funding for previous co-advised students when grants lapsed and who took responsibility for finding a solution"
+    },
+    {
+      "question": "How do the two of you resolve disagreements about research direction when they arise?",
+      "what_it_reveals": "Whether the advisors have an established conflict-resolution mechanism or are passing the resolution burden to the student by default",
+      "follow_up_if_yes": "If they describe a process, ask for a concrete example of when it was used and what the outcome was",
+      "follow_up_if_no": "If they cannot describe a process or seem surprised by the question, treat this as evidence that conflict resolution has not been thought through"
+    },
+    {
+      "question": "Who is the primary advisor of record for departmental and administrative purposes?",
+      "what_it_reveals": "Whether formal accountability has been assigned or whether the arrangement is structurally set up for diffuse accountability",
+      "follow_up_if_yes": "If a primary is named, confirm that person handles visa documentation, milestone sign-offs, and stipend administration specifically",
+      "follow_up_if_no": "If neither can name a clear primary, the arrangement lacks the structural accountability needed to protect the student's progress"
+    },
+    {
+      "question": "When the two of you give me conflicting feedback, how should I handle that?",
+      "what_it_reveals": "Whether the advisors have thought through their disagreement-resolution protocol from the student's perspective — and whether they are willing to own joint responsibility for their conflicts",
+      "follow_up_if_yes": "If they describe a clear protocol, ask whether it has been used with prior students and what the outcome was",
+      "follow_up_if_no": "If they deflect, minimize the likelihood of conflict, or place the resolution burden on the student, this is a significant warning signal"
+    },
+    {
+      "question": "Is the co-advising arrangement formal with paperwork, or informal?",
+      "what_it_reveals": "Whether institutional accountability structures exist to protect the student at milestone moments",
+      "follow_up_if_yes": "If formal, ask to see or confirm the paperwork before committing; ask what protections it provides at qualifying exam, proposal, and defense",
+      "follow_up_if_no": "If informal, assess whether the absence of formal structure creates ambiguity at high-stakes milestones and whether either advisor will feel institutionally accountable for outcomes"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Co-advising reduces risk by giving the student two mentors instead of one",
+      "actual_reality": "Co-advising can multiply risk if the advisors have unresolved tensions, conflicting agendas, or split funding — the student absorbs the coordination cost and carries double exposure to single-advisor failure modes",
+      "implication": "Evaluate co-advising as a structure to be stress-tested, not a safety feature to be assumed — the benefit only materializes under specific conditions that must be verified before committing"
+    },
+    {
+      "common_belief": "Having two advisors means twice as much mentorship and guidance",
+      "actual_reality": "Diffuse accountability means each advisor assumes the other is handling critical issues — response times slow, meetings get cancelled, and annual reviews surface gaps that neither advisor owned",
+      "implication": "Establish a formal primary advisor of record and require joint meetings on a regular cadence; do not manage two separate relationships and expect the sum to equal comprehensive mentorship"
+    },
+    {
+      "common_belief": "Faculty who agree to co-advise have already worked out how to do it",
+      "actual_reality": "Co-advising is often proposed by one faculty member without prior discussion with the other, or agreed to without resolving disagreements about research direction, milestone standards, or role division",
+      "implication": "Ask directly whether the two proposed co-advisors have discussed the specific arrangement for your project together — the answer is often no"
+    },
+    {
+      "common_belief": "Advisor conflicts are rare and can be managed if they arise",
+      "actual_reality": "If two advisors have unspoken professional tensions, the student becomes the default communication channel — not because anyone decides this, but because it is structurally easier for each advisor than addressing the conflict directly",
+      "implication": "Investigate the interpersonal dynamic between prospective co-advisors before committing, not just their individual reputations and research fit"
+    },
+    {
+      "common_belief": "Dissertation milestone standards are consistent across a program",
+      "actual_reality": "Co-advisors from different departments may apply their own department's norms to qualifying exams, proposals, and defenses — creating ambiguity that surfaces at the highest-stakes moments",
+      "implication": "Negotiate and document milestone standards in writing with both advisors before advancing, not at the point when ambiguity becomes a problem"
+    },
+    {
+      "common_belief": "A secondary co-advisor can be added later if needed",
+      "actual_reality": "A co-advisor recruited during a crisis has no institutional history with the student's work, limited capacity to intervene in an existing advisor dynamic, and enters in a reactive rather than formative role",
+      "implication": "Identify and recruit a defensive secondary co-advisor before starting the program, not after the primary relationship deteriorates"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating a co-advising arrangement",
+      "junior_pattern": "Evaluates each advisor independently — assessing their reputation, research fit, and mentorship style in isolation — and assumes the co-advising arrangement will be additive by default",
+      "senior_pattern": "Evaluates the pair as a unit — probing whether they have prior co-advising history, whether their dissertation visions are compatible, and whether formal accountability structures exist before committing",
+      "why_it_matters": "The failure modes in co-advising are structural and relational, not individual — evaluating advisors in isolation misses the dynamic that will actually govern the student's experience"
+    },
+    {
+      "dimension": "Responding to conflicting advisor feedback",
+      "junior_pattern": "Treats conflicting feedback as a personal problem to solve — tries to synthesize or satisfy both advisors simultaneously, spending time reconciling advice rather than flagging the structural issue",
+      "senior_pattern": "Recognizes conflicting feedback as a sign of misaligned advisor agendas and forces a joint meeting to surface and resolve the disagreement at the advisor level, not the student level",
+      "why_it_matters": "Students who absorb the reconciliation burden silently extend their time-to-degree; students who name the structural problem create the conditions for advisors to resolve it"
+    },
+    {
+      "dimension": "Assessing funding risk in a co-advised arrangement",
+      "junior_pattern": "Asks whether funding is currently available and takes a positive answer as sufficient; does not probe what happens when grant cycles turn over",
+      "senior_pattern": "Asks explicitly whether funding is departmentally guaranteed or grant-dependent, what has happened to prior co-advised students when grants lapsed, and who is accountable for solving a funding gap",
+      "why_it_matters": "The risk in split grant funding is not present-tense — it materializes mid-PhD at a point when switching programs is not feasible"
+    },
+    {
+      "dimension": "Recognizing triangulation dynamics",
+      "junior_pattern": "Interprets being asked to relay information between advisors as a sign of trust or centrality; complies without recognizing the structural inappropriateness",
+      "senior_pattern": "Recognizes triangulation as an indicator of unresolved advisor tension that has been delegated to the student; names it explicitly and forces direct advisor-to-advisor communication",
+      "why_it_matters": "Students who absorb triangulation accumulate relational debt to both advisors without understanding why their relationships are becoming fragile"
+    },
+    {
+      "dimension": "Timing of defensive co-advisor recruitment",
+      "junior_pattern": "Approaches a potential co-advisor reactively when the primary advisor relationship is already deteriorating",
+      "senior_pattern": "Proactively identifies and formally recruits a defensive secondary co-advisor before starting, specifying the role and meeting cadence upfront",
+      "why_it_matters": "A crisis-recruited co-advisor has no institutional history with the student's work and limited capacity to intervene — the hedge only works if established before it is needed"
+    },
+    {
+      "dimension": "Setting up milestone accountability",
+      "junior_pattern": "Assumes milestone standards are shared across the program and that each advisor will apply the same criteria at qualifying exams, proposals, and defense",
+      "senior_pattern": "Negotiates and documents milestone standards in writing with both co-advisors before advancing, recognizing that different departments apply different norms that must be explicitly reconciled",
+      "why_it_matters": "Milestone ambiguity surfaces at the highest-stakes moments in the PhD — discovering the divergence at the defense is too late to correct without significant cost"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_co_advising_failure_modes",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

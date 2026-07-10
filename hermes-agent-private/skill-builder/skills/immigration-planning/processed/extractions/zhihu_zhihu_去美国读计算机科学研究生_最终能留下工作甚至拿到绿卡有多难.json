@@ -1,0 +1,418 @@
+{
+  "source_file": "zhihu_去美国读计算机科学研究生_最终能留下工作甚至拿到绿卡有多难.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Winter graduates get one extra H-1B lottery attempt compared to spring graduates",
+      "condition": "When timing your graduation as an international student pursuing H-1B",
+      "action": "If possible, arrange to graduate in December/winter rather than spring, to gain an extra advanced-degree lottery draw",
+      "because": "The post explains that winter graduates can participate in 3 advanced-degree draws while spring graduates only get 2 advanced-degree draws plus 1 regular draw, improving cumulative odds to roughly 80%",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Begin OPT EAD application no later than 120 days before graduation",
+      "condition": "When approaching graduation date on F-1 status",
+      "action": "Submit OPT EAD application within the 120-day window before graduation",
+      "because": "The post explicitly states the application window opens 120 days before graduation and processing time must be factored in to avoid gaps",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Start H-1B petition materials preparation at least 2 months before April 1 filing window",
+      "condition": "When planning to file H-1B in the upcoming cap season",
+      "action": "Begin collecting and preparing petition materials in January–February to be ready for the April 1 window",
+      "because": "The post notes that despite the official April 1 filing date, practical preparation requires starting approximately 2 months earlier",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "After I-140 approval, job changes require a new PERM but the original priority date can be preserved",
+      "condition": "When changing employers while in the EB-2 green card queue",
+      "action": "Transfer H-1B and restart PERM at the new employer, then link the new I-140 to the original priority date",
+      "because": "The post explicitly explains that a new PERM is required when changing jobs but the earlier PD can be ported, so the queue position is not lost",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Once H-1B reaches the 6-year cap, it can be extended indefinitely if an approved I-140 is on file",
+      "condition": "When approaching the H-1B 6-year maximum while waiting in the EB-2 backlog",
+      "action": "Ensure I-140 is approved before H-1B hits 6 years to qualify for annual extensions beyond the cap",
+      "because": "The post states this as a key benefit of being in the EB queue: 'H1B满6年后可以无限续期'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth (mainland China vs. other)",
+      "why_it_matters": "EB-2 applicants born in mainland China face a per-country cap of 7% of total EB visas, creating backlogs of many years, while applicants from most other countries face no meaningful wait",
+      "how_to_assess": "Check the USCIS Visa Bulletin for the current EB-2 China priority date and compare it to when you expect to file PERM",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Degree level: MS vs. PhD",
+      "why_it_matters": "PhD holders can pursue EB-1B (outstanding researcher) or EB-1A routes which historically had no China backlog; MS holders are effectively limited to EB-2 or EB-3, which have severe China backlogs",
+      "how_to_assess": "Assess your research publication record and whether you have realistic prospects for EB-1 qualification before committing to a green card strategy",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B lottery outcome timing relative to OPT expiration",
+      "why_it_matters": "If OPT expires before H-1B is approved, the person loses work authorization and must find alternative status or leave; managing this gap is critical",
+      "how_to_assess": "Calculate OPT end date including STEM extension, map it against potential H-1B effective dates (October 1 each year), and identify how many lottery cycles fit within the OPT window",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer willingness to sponsor and initiate PERM quickly",
+      "why_it_matters": "The earlier the PERM is filed, the earlier the priority date, which determines queue position in the China EB-2 backlog — delays of even one year can matter significantly",
+      "how_to_assess": "Ask prospective employers explicitly about their green card sponsorship timeline policy and whether they initiate after 1 year of employment",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Marital status and spouse's immigration status",
+      "why_it_matters": "Marrying a US citizen provides the fastest path to a green card (2 years vs. 10+ years for EB-2 China); marrying a green card holder still requires several years of wait but bypasses the EB queue entirely",
+      "how_to_assess": "The post explicitly ranks marriage-based green card paths by sponsor status: I-485 pending holder > citizen > non-Chinese/non-Indian student > green card holder > H-1B with I-140",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Current EB-2 China priority date vs. expected PERM filing date",
+      "why_it_matters": "The backlog was already at 6+ years as of 2016 and worsening; someone filing PERM today may face 10–15+ years of waiting",
+      "how_to_assess": "Monitor the monthly Visa Bulletin; calculate expected PERM filing date and compare to current cutoff date to estimate wait time",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in H-1B status while waiting for EB-2 green card approval",
+      "unstated_consequence": "H-1B status is immediately voided if you lose your job, regardless of where you are in the green card queue — years of queue position can be rendered instantly useless by a layoff",
+      "who_it_affects": "Anyone deep in the EB-2 China backlog (5+ years in) who gets laid off and cannot quickly find a new sponsoring employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Changing employers while in the EB-2 green card queue",
+      "unstated_consequence": "Requires restarting the entire PERM process (9–12 months) at the new employer, meaning a period of no active green card petition and potential status vulnerability",
+      "who_it_affects": "People who receive better job offers mid-queue and do not realize the priority date portability benefit requires a new I-140 to be filed and approved first",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing MS (employment-oriented) instead of PhD for faster entry into the workforce",
+      "unstated_consequence": "MS holders are effectively locked out of EB-1A/EB-1B routes, which have historically had much shorter or no China backlogs — committing to EB-2 means accepting a potentially 10+ year wait",
+      "who_it_affects": "Mainland China-born MS graduates in CS who prioritize speed to employment but do not account for the downstream green card bottleneck",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on STEM OPT extension for multiple H-1B lottery attempts",
+      "unstated_consequence": "The 29-month OPT window creates a false sense of security — if H-1B is not secured within that window, the person must switch to a non-work status, leave, or pursue marriage/asylum routes",
+      "who_it_affects": "Students who assume that multiple lottery chances make H-1B nearly certain, without planning for the scenario where all attempts fail",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Marrying a green card holder for immigration purposes",
+      "unstated_consequence": "Spouse in F-2 status cannot work and cannot use F-1 CPT/OPT because F-2 demonstrates immigrant intent; they must independently obtain H/L/O visa status to work during the multi-year F2A wait",
+      "who_it_affects": "International students who marry green card holders expecting to maintain work authorization during the green card process",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Underestimating the EB-2 China backlog length when making the decision to pursue a US green card via MS+employment",
+      "why_it_happens": "The backlog is invisible at the time of the MS application decision; students focus on the achievable near-term goal (get a job, get H-1B) without modeling the 10-year downstream timeline",
+      "consequence": "A person completes MS, gets sponsored for H-1B, files PERM, and then realizes they face a 10+ year wait for a green card — often during prime career and family formation years",
+      "warning_signs": [
+        "Assuming the process ends at H-1B approval",
+        "Not checking the current EB-2 China priority date before committing to the MS+employment path"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Letting OPT expire without securing H-1B or an alternative status",
+      "why_it_happens": "Students assume H-1B odds are high enough that planning for failure is unnecessary; each failed lottery reduces available OPT time until options run out",
+      "consequence": "Loss of work authorization, forced departure or switch to non-work status (F-1, B-2), career interruption",
+      "warning_signs": [
+        "Not calculating exact OPT expiration date against lottery timelines",
+        "No contingency plan for 2 consecutive lottery failures"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Changing jobs without understanding the PERM restart requirement",
+      "why_it_happens": "Employees believe priority date portability means the green card process simply 'transfers' to the new employer, not realizing PERM must be restarted from scratch",
+      "consequence": "Gap in active green card petition, potential loss of I-140 if not approved before switching, delayed green card timeline",
+      "warning_signs": [
+        "Accepting a new job offer without consulting an immigration attorney first",
+        "Assuming the new employer's HR will handle the transfer automatically"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth?",
+      "what_it_reveals": "Determines whether EB per-country caps create a multi-decade backlog (mainland China, India) or whether EB-2 is realistically achievable within a few years",
+      "follow_up_if_yes": "If mainland China: ask what year you expect to file PERM and compare to the current EB-2 China cutoff date to estimate your wait",
+      "follow_up_if_no": "If not China/India: EB-2 backlog is minimal; focus on H-1B lottery strategy and PERM timing instead",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Are you pursuing a PhD or an MS?",
+      "what_it_reveals": "PhD opens EB-1A/EB-1B routes which bypass or significantly reduce the China per-country backlog; MS effectively limits you to EB-2 or EB-3",
+      "follow_up_if_yes": "If PhD: assess your publication record and likelihood of qualifying for EB-1B (outstanding researcher) as a faster path",
+      "follow_up_if_no": "If MS: plan for EB-2 with a realistic 10-year timeline and evaluate whether the US green card is the right long-term goal",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "When does your OPT (including STEM extension) expire, and how many H-1B lottery cycles does that allow?",
+      "what_it_reveals": "Determines the maximum number of H-1B attempts available before losing work authorization, and whether there is a contingency plan if all attempts fail",
+      "follow_up_if_yes": "If 2+ lottery cycles remain: calculate cumulative probability of at least one success and plan contingency for all-failure scenario",
+      "follow_up_if_no": "If only 1 cycle remains: the risk of OPT expiration without H-1B is significant; identify fallback options now (cap-exempt employers, Canada, marriage, return home)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Has your employer indicated when they will initiate the PERM process after you join?",
+      "what_it_reveals": "The PERM filing date becomes your priority date — every month of delay in starting the process is a month added to the end of a 10+ year wait for China-born applicants",
+      "follow_up_if_yes": "If employer initiates within 1 year: proceed and verify the PERM is filed as early as possible",
+      "follow_up_if_no": "If employer has no clear policy or delays beyond 2 years: the priority date disadvantage compounds the already-long backlog",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Getting a CS MS degree from the US and landing a job means you're on a clear path to a green card",
+      "actual_reality": "For mainland China-born applicants, the EB-2 backlog means the realistic timeline from MS graduation to green card is approximately 10 years, and the situation was actively worsening as of 2016 — EB-1 for India/China began backing up, eliminating spillover quota relief for EB-2 China",
+      "implication": "Students should treat the green card as a 10-year project requiring sustained employment stability, not an expected outcome of getting a good job",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "H-1B advanced degree lottery gives MS graduates a high chance of approval",
+      "actual_reality": "As of 2015, with 233,000 applicants, the advanced degree lottery success rate was approximately 60% per attempt — and the post notes this rate was declining as applicant numbers grew year over year",
+      "implication": "Do not treat H-1B as a near-certain outcome; plan for the possibility of 2 failed lotteries and have a concrete backup plan before OPT expires",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "STEM OPT extension gives you 29 months, so you have plenty of time to secure H-1B",
+      "actual_reality": "29 months allows 2–3 lottery attempts but each failure leaves less runway; if H-1B is not secured within OPT, the only remaining legal options are marriage-based green card, asylum, cap-exempt employers, or departure",
+      "implication": "Treat the 29-month clock as a hard deadline and plan backwards from it, not as a comfortable buffer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Changing jobs while waiting for a green card is straightforward since you can port your priority date",
+      "actual_reality": "Priority date portability requires the original I-140 to have been approved; changing jobs means restarting the entire PERM process (9–12 months) at the new employer, during which there is no active green card petition protecting you",
+      "implication": "Job changes during the green card process require immigration attorney consultation and careful timing to avoid resetting the clock unnecessarily",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "School prestige matters a lot for getting a job and visa sponsorship as a CS MS student",
+      "actual_reality": "The post explicitly states '学校好坏就不重要了' (school quality doesn't matter much) for employment-track MS students in CS — what matters is getting the degree, the internship, and the full-time offer from a sponsoring employer",
+      "implication": "Spending significantly more money on a higher-ranked program for employment purposes may not improve immigration outcomes",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they think about the green card timeline",
+      "naive_pattern": "Thinks of the process as: get MS → get job → get H-1B → get green card, with each step taking 1–2 years",
+      "informed_pattern": "Maps out the full 10-year sequence explicitly: MS (2yr) + H-1B lottery (1–2yr) + work (0.5–1yr) + PERM (0.5–1yr) + I-140 + EB-2 China queue (4–5yr+) and recognizes the queue is worsening",
+      "why_it_matters": "Underestimating the timeline leads to life decisions (marriage, housing, family) made on false assumptions about when permanent status will arrive",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they evaluate employer sponsorship",
+      "naive_pattern": "Asks only 'will this employer sponsor H-1B?' and considers the answer yes/no",
+      "informed_pattern": "Asks how quickly the employer initiates PERM after hire, whether they have a track record of filing I-140, and whether they will support priority date portability if you change roles internally",
+      "why_it_matters": "A 1-year delay in PERM initiation compounds over the backlog period; early priority date is one of the few variables the employee can influence",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they think about the H-1B lottery",
+      "naive_pattern": "Calculates single-attempt odds and assumes they will get lucky; does not plan for failure",
+      "informed_pattern": "Calculates cumulative multi-attempt odds, maps each attempt against the OPT expiration date, and has a concrete contingency plan (cap-exempt employer, Canada, return home) before the first lottery",
+      "why_it_matters": "Failure to plan for lottery failure can result in sudden loss of work authorization with no fallback",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they think about PhD vs. MS for immigration purposes",
+      "naive_pattern": "Sees PhD as harder and longer with no practical benefit over MS for getting a job",
+      "informed_pattern": "Recognizes that PhD + strong publication record opens EB-1A/EB-1B routes that largely bypass the China per-country backlog, potentially saving 5–8 years of queue time",
+      "why_it_matters": "For mainland China-born applicants, the PhD route may actually be faster to permanent residency despite taking longer to complete",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Once you get H-1B and your employer files for a green card, your immigration status is secure even if you lose your job",
+      "why_believed": "People conflate 'being in the green card process' with having protected status; the I-140 approval feels like a milestone that should protect you",
+      "actual_rule": "H-1B status is tied to the sponsoring employer — losing your job immediately invalidates H-1B status regardless of where you are in the green card queue; you have a short grace period but must find new sponsorship quickly",
+      "real_consequence": "A layoff mid-queue can mean losing years of wait time if new employment and H-1B transfer cannot be arranged quickly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The EB-2 green card process takes about 3–5 years total for Chinese applicants",
+      "why_believed": "People hear about the PERM + I-140 + I-485 process taking 1–2 years and do not account for the per-country backlog on top of that",
+      "actual_rule": "As of 2016, the EB-2 China priority date was at January 2010, meaning applicants were waiting 6+ years just in the queue — and the backlog was growing; total process from MS graduation realistically 10 years",
+      "real_consequence": "People commit to the US path expecting to have a green card by their early 30s and instead find themselves still waiting in their late 30s or 40s",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "OPT can be extended beyond 29 months if Congress passes a proposal to extend it",
+      "why_believed": "Proposals to extend OPT have circulated in policy discussions, creating rumor that extensions are coming",
+      "actual_rule": "As of the post's writing, no proposal to extend OPT beyond 29 months (12 + 17 STEM) had been passed; the 29-month cap should be treated as firm for planning purposes",
+      "real_consequence": "Students who delay H-1B planning while waiting for a rumored OPT extension may find themselves out of work authorization with no safety net",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "School ranking is important for getting a job and H-1B sponsorship as a CS MS student",
+      "why_believed": "School prestige signals quality in academic and some professional contexts; students naturally assume top schools lead to better employment outcomes",
+      "actual_rule": "The post states explicitly that for employment-track MS in CS, school quality does not significantly affect job and sponsorship outcomes — technical skills and internship experience matter more",
+      "real_consequence": "Students overpay for prestigious programs expecting immigration advantages that do not materialize",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Mainland China-born student pursues CS MS at a US university with the goal of working and eventually obtaining a green card",
+      "decision": "Follows the standard path: MS degree (2yr) → OPT → H-1B lottery → EB-2 PERM → I-140 → queue",
+      "outcome": "Total realistic timeline to green card is approximately 10 years from MS start; as of 2016, EB-2 China backlog was already 6+ years and worsening due to increased PERM filings and loss of spillover quota from EB-1",
+      "lesson": "The standard MS-to-green-card path for mainland China-born CS graduates is a decade-long process, not a 3–5 year one; anyone entering the path should plan their life (finances, family, career) accordingly",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "CS PhD student with strong publication record seeking a faster green card path",
+      "decision": "Pursues postdoc or faculty position (cap-exempt H-1B), applies for EB-1B (outstanding researcher) sponsored by institution",
+      "outcome": "Fastest possible timeline is 5+ years from PhD start; requires being among the top performers in an already highly selective PhD cohort",
+      "lesson": "EB-1B is a viable bypass of the China EB-2 backlog but is only accessible to the top fraction of PhD graduates — it requires N publications in top conferences and institutional support, not just completing a PhD",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'how hard is it to stay and get a green card?' after deciding to pursue a US CS MS",
+      "underlying_state": "Confirmation-seeking after a major financial and life commitment has already been made; the decision to apply/enroll is sunk cost, making it psychologically difficult to receive a realistic negative assessment",
+      "how_it_manifests": "Asking the question as if there is a simple encouraging answer; framing it as 'how hard' rather than 'should I plan for this'",
+      "expert_move": "Provide the full quantitative timeline (10 years, worsening backlog, multiple decision points that can derail) before the commitment is made, not after; reframe from 'is it achievable' to 'what is my plan for each failure point'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student focuses intensely on H-1B lottery odds and probability calculations",
+      "underlying_state": "Illusion of control — by calculating odds precisely, the student feels they are managing risk, but the calculation obscures the more important question of what happens if all attempts fail",
+      "how_it_manifests": "Detailed probability math for lottery outcomes with no corresponding plan for the scenario where H-1B is never obtained",
+      "expert_move": "Redirect from probability calculation to contingency planning: 'Assuming you don't get H-1B within your OPT window, what is your Plan B? Have you evaluated cap-exempt employers, Canada, or return home?'",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student discovers the EB-2 China backlog length mid-process (after H-1B is already secured)",
+      "underlying_state": "Escalation of commitment / sunk cost fallacy — having already invested years and resources, the student continues on the same path even when the expected value of the green card has dropped significantly",
+      "how_it_manifests": "Continuing to wait in the EB-2 queue for 10+ years rather than reassessing whether alternative paths (Canada, return home, marriage-based) offer better expected outcomes",
+      "expert_move": "Frame the current queue position as a new decision point, not a commitment: 'Given where you are today, what would you choose if you were starting fresh? The years already invested do not change what is optimal going forward.'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How hard is it to stay and get a green card after a CS MS in the US?",
+      "reframe": "The question is not whether it is possible, but whether you are prepared for a 10-year multi-stage process with multiple failure points, each of which requires a different contingency plan",
+      "why_it_works": "Shifts the student from a binary achievability question to a project management mindset, making the risks concrete and plannable rather than abstract and frightening",
+      "example_language": "总共耗时2年硕士＋1～2年抽签＋0.5~1年工作＋0.5~1年PERM＋4～5年排期，约10年 (Total time: 2yr MS + 1–2yr lottery + 0.5–1yr work + 0.5–1yr PERM + 4–5yr queue = approximately 10 years)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I need to get H-1B to stay in the US after graduation",
+      "reframe": "H-1B is only one of several paths, and for mainland China-born applicants it leads into a decade-long EB-2 queue; marriage-based routes, EB-1 (for PhDs), and Canada are alternatives that may produce permanent status faster",
+      "why_it_works": "Breaks the tunnel vision on a single path and surfaces alternative routes the student may not have considered, particularly the marriage-based ranking the post provides",
+      "example_language": "如果题主能通过结婚获得绿卡，就不必为EB2遥遥无期的排期而纠结了 (If you can obtain a green card through marriage, you don't need to worry about the endless EB-2 wait)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_去美国读计算机科学研究生_最终能留下工作甚至拿到绿卡有多难",
+  "_source_regions": [
+    "us"
+  ]
+}

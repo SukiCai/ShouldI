@@ -1,0 +1,231 @@
+{
+  "source_file": "zhihu_要不要回国.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Before deciding to return, build a complete plan covering what you will do, what difficulties you will face, what costs are involved, and what risks you will bear",
+      "condition": "When considering returning to home country without a concrete roadmap",
+      "action": "Delay the return decision until you can answer all four planning questions concretely",
+      "because": "Commenter explicitly states that returning without this plan is 'blind' — the decision becomes arbitrary without grounded answers to these questions",
+      "regions": []
+    },
+    {
+      "rule": "Seek industries that allow dual-country operation if you must balance family obligations abroad with career in host country",
+      "condition": "When you have family or business responsibilities in home country but career in host country",
+      "action": "Target cross-border industries such as tourism or education where presence in both markets is structurally viable",
+      "because": "Commenter suggests this as a way to avoid a binary either/or choice — covering both sides without full relocation",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Personal skill level and employability in the home country job market",
+      "why_it_matters": "Returning without competitive skills leads to unemployment or underemployment — multiple commenters note high youth unemployment rates and sea-returnees earning low salaries",
+      "how_to_assess": "Honestly evaluate what job you could get back home, at what salary, and how long the job search would realistically take",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Family obligation and aging parents",
+      "why_it_matters": "Chinese cultural expectation of filial duty creates real emotional and practical pressure that pure career calculus ignores",
+      "how_to_assess": "Assess whether a parent is facing illness, business difficulty, or social isolation that genuinely requires your physical presence",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Quality of life and liveability in host country vs. home country",
+      "why_it_matters": "Air quality, food safety, social welfare, healthcare safety net, and political stability are cited as meaningful quality-of-life differentials that compound over decades",
+      "how_to_assess": "Go beyond income comparison — evaluate environmental safety, healthcare access in emergencies, and long-term social stability",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Entrepreneurial ambition scale",
+      "why_it_matters": "Host countries with smaller markets (e.g. Australia) structurally limit the ceiling for high-growth entrepreneurship; home country offers larger market and more startup activity",
+      "how_to_assess": "Ask whether your goal is wealth maximization through business building at scale, or stable professional career — the answer points to different optimal locations",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Social safety net depth in host country",
+      "why_it_matters": "When major life disruptions occur (serious illness, job loss), the host country's welfare system may cover catastrophic costs that would be financially devastating in home country",
+      "how_to_assess": "Research whether serious illness or disability is covered publicly, and whether that coverage has a meaningful income floor",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in host country for stability",
+      "unstated_consequence": "You watch home country social life, professional dynamism, and family milestones from a distance — the emotional cost of being a passive observer accumulates over time",
+      "who_it_affects": "People who are socially oriented, have strong family bonds, or measure life satisfaction through community belonging rather than income",
+      "regions": []
+    },
+    {
+      "choice": "Returning home to pursue entrepreneurship or dynamic career",
+      "unstated_consequence": "Success in home country business requires not just skill but background, connections, and capital — the playing field is not open; sea-returnees frequently end up earning low salaries despite overseas credentials",
+      "who_it_affects": "Returnees who overestimate the signal value of their overseas experience and underestimate the role of local networks and capital",
+      "regions": []
+    },
+    {
+      "choice": "Treating PR status as a fallback rather than an asset",
+      "unstated_consequence": "People who did not earn PR through their own sustained effort tend to undervalue it and make casual decisions to abandon it — only recognizing its value when the option is gone",
+      "who_it_affects": "Dependents or those who received PR through family sponsorship rather than independent points-based streams",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Returning home without a concrete job plan, assuming overseas experience will open doors",
+      "why_it_happens": "Availability heuristic — the person can recall stories of successful returnees and assumes the path is clear; does not account for structural barriers like local networks and high competition",
+      "consequence": "Extended unemployment, lower-than-expected salary offers, and difficulty re-entering host country if return fails",
+      "warning_signs": [
+        "Cannot name specific companies or roles they would target upon return",
+        "Has not researched typical salary ranges or job search timelines in home city"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Making the stay-vs-return decision based on peer social comparison rather than personal circumstances",
+      "why_it_happens": "Social comparison bias amplified by social media — seeing home country peers' apparent success (social events, business activity) against one's own quiet life abroad triggers FOMO-driven decisions",
+      "consequence": "Returning for emotional reasons into a market the person is not prepared for, or staying abroad in a state of chronic dissatisfaction",
+      "warning_signs": [
+        "Frequently mentions friends back home doing well or looking successful on social media",
+        "Decision framing is about 'missing out' rather than specific opportunities"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you know specifically what job you could get back home, at what salary level, and how long the search would take?",
+      "what_it_reveals": "Whether the return plan is grounded in reality or based on vague optimism",
+      "follow_up_if_yes": "Have you mapped the path from that job to your actual career goal — does it lead where you want to go?",
+      "follow_up_if_no": "The return decision should be paused until this is answerable — returning blind is explicitly flagged as a mistake in the source",
+      "regions": []
+    },
+    {
+      "question": "Is your reason for wanting to stay abroad primarily about seeking stability rather than genuine opportunity?",
+      "what_it_reveals": "Whether the person is optimizing for risk avoidance versus positive goal pursuit — stability-seeking is a valid choice but should be named honestly",
+      "follow_up_if_yes": "Is the stability you're seeking in the host country genuinely superior, or is it familiarity bias?",
+      "follow_up_if_no": "What specific opportunity in the host country is unavailable at home — can you name it concretely?",
+      "regions": []
+    },
+    {
+      "question": "Does your family situation require your physical presence — illness, business crisis, social isolation of a parent?",
+      "what_it_reveals": "Whether family obligation is a genuine forcing function or a background emotional pull that is being inflated",
+      "follow_up_if_yes": "Is the need time-bounded (recoverable situation) or permanent (ongoing caregiving)?",
+      "follow_up_if_no": "The family factor may be an emotional rationalizer rather than a decision driver — weight it accordingly",
+      "regions": []
+    },
+    {
+      "question": "Are you aiming for large-scale entrepreneurship or a stable professional career?",
+      "what_it_reveals": "The appropriate geography for your goals — large-market home country for high-growth entrepreneurship, stable host country for professional track",
+      "follow_up_if_yes": "Do you have the local network, capital, and background to compete in home country business environment — or only the ambition?",
+      "follow_up_if_no": "If professional career is the goal, compare compensation, ceiling, and quality of life on both tracks concretely",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Returning home with overseas credentials gives you a meaningful competitive advantage in the job market",
+      "actual_reality": "Many sea-returnees earn only a few thousand RMB per month — the market is saturated with returnees and overseas credentials alone do not translate to premium compensation without local networks and relevant experience",
+      "implication": "Returnees should assess their value proposition in home country market specifically, not assume overseas experience is automatically valued",
+      "regions": []
+    },
+    {
+      "common_belief": "Home country offers entrepreneurial opportunity to anyone with drive and a good idea",
+      "actual_reality": "Success in home country business at scale requires background, connections, and capital — not just effort; the commenter explicitly notes that few achieve even mid-tier success despite a large entrepreneurial culture",
+      "implication": "Returnees motivated by entrepreneurship should audit their actual resource base — network, capital, industry relationships — before treating the home market as an open opportunity",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How the stay-vs-return decision is framed",
+      "naive_pattern": "Frames it as a binary emotional choice — home vs. abroad, family vs. career, belonging vs. opportunity — and seeks external validation for whichever option feels right emotionally",
+      "informed_pattern": "Treats it as a multi-variable planning problem: what is my concrete plan in each scenario, what are the specific risks, what is the realistic job/salary outcome, what does my family actually need?",
+      "why_it_matters": "Emotional framing leads to post-decision regret because the practical constraints were never examined; planning framing surfaces dealbreakers before commitment",
+      "regions": []
+    },
+    {
+      "dimension": "Valuation of PR or permanent residency status",
+      "naive_pattern": "Treats PR as a bureaucratic checkbox — 'just a piece of paper' — and makes casual decisions to abandon or defer it",
+      "informed_pattern": "Understands PR as a hard-won option that required sustained effort and is difficult to replicate — treats abandonment as a high-cost irreversible decision requiring strong justification",
+      "why_it_matters": "Undervaluing PR leads to giving it up for short-term emotional or financial reasons, then regretting the loss when circumstances change",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you have an entrepreneurial spirit, going back to China is obviously the right move because the market is huge",
+      "why_believed": "China's market size and visible startup culture create a compelling surface narrative — and success stories of Chinese entrepreneurs are salient and widely shared",
+      "actual_rule": "Market size is necessary but not sufficient — success requires local background, guanxi (connections), capital, and often political navigation that overseas returnees lack; the commenter explicitly notes very few people achieve even modest business success despite the large market",
+      "real_consequence": "Returnees enter with entrepreneurial intent, discover their actual competitive position is weak without local infrastructure, burn savings, and find re-entry to host country difficult",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Chinese elite (wealthy individuals) holding investment or business visas in Australia, with full ability to remain in China for business",
+      "decision": "Chose to relocate spouse and children to Australia despite maintaining business presence in China",
+      "outcome": "Pattern repeated across many such families — the decision was made deliberately for livability, welfare safety net, environmental quality, and geopolitical stability rather than income maximization",
+      "lesson": "When high-information, high-resource actors consistently choose host country for family despite being able to afford home country alternatives, it signals that quality-of-life and systemic safety factors are genuinely valued beyond income — this is a revealed preference signal worth weighing",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Poster watches home country social media showing friends' active social lives, business events, and apparent success while their own life abroad feels quiet and isolated",
+      "underlying_state": "FOMO (fear of missing out) amplified by social comparison — the comparison is between visible highlights of home country life and the full texture of host country life",
+      "how_it_manifests": "Poster describes feeling 'stuffy' or left out while 'watching flowers bloom' — frames the return decision as reclaiming a richer life",
+      "expert_move": "Point out that the comparison is structurally asymmetric — social media shows curated highs of home country versus the mundane reality of daily life there; ask the poster to compare the full distributions, not the highlights",
+      "regions": []
+    },
+    {
+      "trigger": "Poster frames the decision as 'I don't know what to do' without having done any planning work",
+      "underlying_state": "Decision paralysis — the optionality feels overwhelming so the person externalizes the decision to community validators rather than building a personal framework",
+      "how_it_manifests": "Asks the community for a verdict rather than asking for a decision framework; expects others to resolve what only personal planning can resolve",
+      "expert_move": "Redirect from 'what should I do' to 'what do you need to know to decide' — force the planning questions (job prospects, timeline, costs, risks) that transform the abstract choice into a concrete one",
+      "regions": []
+    },
+    {
+      "trigger": "Person who received PR through family or marriage treats it as low-effort and therefore low-value",
+      "underlying_state": "Effort justification bias in reverse — because they didn't struggle to get it, they discount its value; they don't account for the counterfactual difficulty of acquiring it independently",
+      "how_it_manifests": "Says things like 'PR is just that, no big deal' or makes casual plans to let it lapse for short-term reasons",
+      "expert_move": "Reframe the valuation around replacement cost and optionality value — ask 'if you lost this tomorrow and had to earn it back through the standard stream, what would that take?' — not around how hard it was to get",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I go back to China or stay abroad? I'm torn and don't know what to do",
+      "reframe": "The question isn't where — it's whether you have a plan. If you don't know what job you'd get, what it would pay, and what risks you'd face, you're not ready to decide; you're ready to plan",
+      "why_it_works": "Converts an unanswerable values question into a solvable information problem — the paralysis breaks when the person realizes the obstacle is missing data, not unresolvable values",
+      "example_language": "你如果自己都不懂国内发展情况如何，没有完整的计划知道自己要做什么，会面临什么困难，需要多少成本以及承担多少风险的话，你选择回国反而很盲目",
+      "regions": []
+    },
+    {
+      "original_framing": "Staying abroad is about seeking stability — is that the right reason to stay?",
+      "reframe": "Stability-seeking is a legitimate and honest reason to stay — but name it as such rather than dressing it up as opportunity-maximization; meanwhile, returning is not inherently more courageous or ambitious, it just has different risk parameters",
+      "why_it_works": "Removes the moral hierarchy implied in the framing (staying = cowardly, returning = brave) and replaces it with a risk-preference framework where both are valid depending on personal circumstances",
+      "example_language": "现在留在国外的大多就是为了求稳罢了",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_要不要回国",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

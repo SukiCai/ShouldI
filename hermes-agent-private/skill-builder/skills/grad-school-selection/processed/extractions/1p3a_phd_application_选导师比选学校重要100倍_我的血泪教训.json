@@ -1,0 +1,310 @@
+{
+  "source_file": "phd_application_选导师比选学校重要100倍_我的血泪教训.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Check a prospective advisor's grant status before accepting an offer",
+      "condition": "When evaluating a PhD offer and assessing advisor stability...",
+      "action": "Look up the advisor's active grants on NIH Reporter or NSF Award Search, and check the project end dates relative to your expected enrollment period",
+      "because": "A grant expiring within 1-2 years of enrollment puts RA funding at direct risk; the original poster's advisor had only one year left on his main grant at the time of the offer, and funding became uncertain by the second year",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Contact former (graduated) lab members, not just current students, when vetting an advisor",
+      "condition": "When doing due diligence on a potential PhD advisor...",
+      "action": "Find students who graduated from the lab in the past 5 years via LinkedIn and reach out directly to ask about mentorship quality and lab culture",
+      "because": "Current students have incentives to speak positively; departed students are more likely to share honest assessments — one commenter's contact explicitly warned that the advisor was not suitable as a sole advisor (corroborated by original poster and comment [2])",
+      "regions": []
+    },
+    {
+      "rule": "Use program ranking only as a tiebreaker, not as a primary selection criterion",
+      "condition": "When comparing PhD offers across programs of different prestige...",
+      "action": "Prioritize advisor fit, funding stability, and mentorship quality first; invoke ranking only when other factors are approximately equal",
+      "because": "Advisor quality and program ranking are weakly correlated — the same department can house both highly productive mentors and ghost advisors; the original poster chose a top-5 program over a better-fit advisor and regretted it (corroborated by comment [4])",
+      "regions": []
+    },
+    {
+      "rule": "Identify 3+ target advisors you would genuinely work with before applying, then filter by responsiveness and bandwidth",
+      "condition": "When building a PhD application list...",
+      "action": "Cold-email each target advisor early and assess who responds, engages substantively, and signals availability to take new students",
+      "because": "Responsiveness during the pre-application stage is a signal of mentorship style and current bandwidth; advisors who do not respond to prospective students are unlikely to become attentive mentors",
+      "regions": []
+    },
+    {
+      "rule": "Assess authorship position of students in an advisor's recent publications",
+      "condition": "When evaluating how much a potential advisor invests in student career development...",
+      "action": "Review the advisor's recent papers and check whether students appear as first or second authors; treat consistent advisor-first authorship with students absent from top positions as a warning signal",
+      "because": "A mentor who consistently takes first authorship over students may be limiting their publication record and career prospects (comment [3], 112 likes)",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor grant funding stability",
+      "why_it_matters": "RA funding for PhD students typically comes directly from the advisor's grants; if a grant expires, the student may lose their stipend or be forced to switch projects or advisors mid-program",
+      "how_to_assess": "Search NIH Reporter (for biomedical/health fields) or NSF Award Search (for engineering/sciences) using the advisor's name; identify active grants and their end dates relative to the student's expected graduation",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Funding guarantee structure (departmental vs. advisor's grant)",
+      "why_it_matters": "Department-guaranteed multi-year funding is stable regardless of individual advisor grant outcomes; advisor-grant-dependent funding creates vulnerability if the grant lapses or is not renewed",
+      "how_to_assess": "Ask directly: 'Is the stipend guaranteed by the department for multiple years, or does it depend on your current grant funding?' — comment [6] provides exact language and confirms this is not considered an awkward question",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Advisor meeting frequency and communication responsiveness",
+      "why_it_matters": "Infrequent meetings and slow email responses during the PhD translate directly to slower research progress, delayed feedback, and reduced mentorship — the original poster's advisor met with them once per semester and took 2 weeks to reply to emails",
+      "how_to_assess": "Ask current lab members how often the advisor meets one-on-one; ask the advisor directly about their preferred communication cadence; observe response time to your own pre-enrollment emails as a proxy",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Recent placement record of advisor's graduated students",
+      "why_it_matters": "Where an advisor's past students end up is the most direct signal of the advisor's ability to develop and place talent; it reflects both mentorship quality and professional network",
+      "how_to_assess": "Ask the advisor directly: 'Where have your last 5 graduated students gone?' Also verify independently via LinkedIn",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Research direction match with target advisor",
+      "why_it_matters": "Working on a research problem that aligns with your interests for 5+ years directly affects productivity, motivation, and likelihood of completion; a top-ranked school with a mismatched advisor is worse than a lower-ranked school with a strong match",
+      "how_to_assess": "Evaluate whether the advisor's current active projects and recent publications overlap substantially with your stated research interests; assess this independently of program ranking",
+      "weight": "high",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a higher-ranked program over a better-fit advisor",
+      "unstated_consequence": "The prestige benefit is largely intangible at the time of enrollment; the funding risk and mentorship deficit become concrete within the first 1-2 years, potentially leaving the student without RA funding mid-program and with slower publication progress than peers at lower-ranked schools",
+      "who_it_affects": "Students who optimize for brand name or program ranking without independently evaluating their specific advisor's funding pipeline and mentorship style",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying on current lab members for advisor vetting",
+      "unstated_consequence": "Current students have social and professional incentives to present the advisor positively; the most actionable negative information — about mentorship failures, funding problems, or interpersonal dynamics — is only accessible from students who have already left",
+      "who_it_affects": "Applicants who do thorough outreach but only to current lab members, believing they have done sufficient due diligence",
+      "regions": []
+    },
+    {
+      "choice": "Joining a lab without checking authorship norms",
+      "unstated_consequence": "Even in a productive lab, a student can graduate with few or no first-author publications if the advisor habitually takes top authorship positions; this directly damages the student's competitiveness in academic and research job markets",
+      "who_it_affects": "Students aiming for academic careers or research scientist positions where first-author publication count is a primary screening criterion",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Using program ranking as a proxy for advisor quality",
+      "why_it_happens": "Program rankings are visible, quantifiable, and socially legible — they function as a mental shortcut when the actual quality of an individual advisor is harder to research and assess; there is also social pressure from family and peers who recognize brand names",
+      "consequence": "The student ends up with a prestigious affiliation but a weak mentoring relationship, slow research progress, and in this case a funding gap — while peers at lower-ranked schools with better advisors outperform them on publications",
+      "warning_signs": [
+        "Offer comparison framing focuses on school name rather than specific advisor details",
+        "Student cannot name what specifically makes their target advisor a good fit beyond 'they're at a top school'"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Failing to verify grant expiration dates before accepting a PhD offer",
+      "why_it_happens": "Funding is a sensitive topic and applicants fear appearing mercenary; there is also low awareness that grant databases like NIH Reporter and NSF Award Search are publicly accessible and searchable",
+      "consequence": "RA funding becomes uncertain or disappears mid-program, forcing the student to scramble for TA positions, switch advisors, or in worst cases leave the program",
+      "warning_signs": [
+        "Advisor's most recent publications are from 3+ years ago (possible grant gap)",
+        "Advisor is vague or evasive when asked about multi-year funding guarantees"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Vetting advisors only through current lab members",
+      "why_it_happens": "Current students are the most accessible point of contact and are often explicitly offered as references by the advisor; it feels thorough without requiring the extra step of finding and cold-messaging alumni",
+      "consequence": "Critical negative information about mentorship dysfunction, advisor unavailability, or lab culture problems is filtered out; student makes an uninformed decision",
+      "warning_signs": [
+        "All reference contacts for the advisor were provided by the advisor themselves",
+        "Student has not independently identified and contacted any former lab members"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the PhD stipend guaranteed by the department for multiple years, or is it contingent on the advisor's current grant?",
+      "what_it_reveals": "Whether the student's financial support is structurally stable or tied to a single grant that could lapse",
+      "follow_up_if_yes": "If department-guaranteed: confirm the number of guaranteed years and any conditions (e.g., satisfactory academic progress, TAship requirements)",
+      "follow_up_if_no": "If grant-dependent: check the advisor's grant end dates on NIH Reporter or NSF Award Search and assess whether renewal is likely based on recent publication activity",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Where have the advisor's last 5 graduated PhD students gone after completing their degrees?",
+      "what_it_reveals": "The advisor's actual track record in developing and placing students — the most concrete measure of mentorship effectiveness",
+      "follow_up_if_yes": "If placements are strong (industry research, good faculty positions, etc.): ask what the typical time-to-degree was to assess efficiency",
+      "follow_up_if_no": "If placements are unclear or the advisor deflects: treat as a red flag and seek information independently via LinkedIn",
+      "regions": []
+    },
+    {
+      "question": "When you look at the advisor's recent publications, are students appearing as first or second authors?",
+      "what_it_reveals": "Whether the advisor actively supports student publication and career development, or tends to concentrate authorship credit",
+      "follow_up_if_yes": "If students are consistently in top authorship positions: positive signal — also check whether multiple students are publishing or only one favored student",
+      "follow_up_if_no": "If the advisor dominates first authorship with students absent from top positions: assess whether this is field-norm or advisor-specific by comparing to other labs in the same subfield",
+      "regions": []
+    },
+    {
+      "question": "Have you contacted anyone who has already left this advisor's lab (not just current members)?",
+      "what_it_reveals": "Whether the applicant has accessed candid, unconflicted information about the advisor's mentorship style and lab dynamics",
+      "follow_up_if_yes": "If yes: what specific concerns or endorsements did former members share that current members did not raise?",
+      "follow_up_if_no": "If no: find graduated students from the past 5 years via LinkedIn and send brief cold messages before making a final decision",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A higher program ranking means better advisors and better outcomes",
+      "actual_reality": "Advisor quality varies enormously within a single department; a top-5 program can have ghost advisors who are essentially absent, while a top-25 program can have highly engaged mentors producing publication-ready students. The correlation between department rank and individual advisor quality is weak.",
+      "implication": "Applicants should evaluate each specific advisor independently rather than using program ranking as a reliable signal of mentorship quality; ranking should be a tiebreaker, not a primary criterion",
+      "regions": []
+    },
+    {
+      "common_belief": "Asking about funding during the offer stage is awkward or inappropriate",
+      "actual_reality": "Well-informed commenters (comment [6], 56 likes) confirm that directly asking about funding structure is normal and expected; good advisors answer straightforwardly. Evasiveness in response to this question is itself diagnostic.",
+      "implication": "Applicants should ask the funding structure question explicitly before accepting any offer, using clear language about whether support is departmental or grant-contingent",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Current PhD students in a lab will give you an honest picture of the advisor",
+      "actual_reality": "Current students have social, professional, and sometimes financial incentives to speak positively about their advisor; the most candid assessments come from students who have already graduated and left the lab, as confirmed by both the original poster and comment [2]",
+      "implication": "Due diligence on an advisor should include independent outreach to former lab members via LinkedIn, not just conversations arranged or facilitated by the advisor",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a PhD offer",
+      "naive_pattern": "Ranks the offer primarily by program prestige or US News ranking; treats school name as the dominant variable; may list 'advisor seems nice' as a secondary factor",
+      "informed_pattern": "Evaluates the specific advisor's grant status, meeting cadence, publication record with students, placement history, and funding guarantee structure; treats program ranking as a tiebreaker only after these factors are assessed",
+      "why_it_matters": "The naive approach produced the outcome described in the original post: prestigious affiliation, poor mentorship, funding risk, and slower research progress than peers at lower-ranked programs",
+      "regions": []
+    },
+    {
+      "dimension": "How to vet a prospective advisor",
+      "naive_pattern": "Talks to 1-2 current lab members provided by the advisor; reads the advisor's faculty webpage and recent papers; accepts that everything seems fine",
+      "informed_pattern": "Independently identifies graduated students from the past 5 years via LinkedIn; cold-messages them asking about mentorship style and any concerns; cross-references grant status on NIH Reporter or NSF Award Search",
+      "why_it_matters": "Current students filter out negative information; only former students provide the candid assessments needed to identify ghost advisors, funding instability, or authorship problems before enrollment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How to think about advisor grant funding",
+      "naive_pattern": "Assumes that any funded PhD position at a reputable university is financially secure; does not think to check grant end dates or ask whether funding is departmental vs. grant-dependent",
+      "informed_pattern": "Proactively checks grant databases before accepting an offer; asks the advisor directly about multi-year funding guarantees; treats a grant expiring within 2 years of enrollment as a significant risk factor",
+      "why_it_matters": "Funding instability mid-PhD can force project changes, advisor switches, or program withdrawal — the original poster faced an uncertain RA funding situation by the second year due to this oversight",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "A top-5 ranked program means your advisor will be good and your funding will be secure",
+      "why_believed": "Program rankings are highly visible and feel like a reliable quality signal; it is cognitively easier to trust an aggregate ranking than to investigate one individual faculty member's grant portfolio and mentorship history",
+      "actual_rule": "Program ranking reflects aggregate faculty output and resources, not individual advisor quality or funding stability; ghost advisors and funding gaps exist at elite programs just as at lower-ranked ones",
+      "real_consequence": "Students who choose based on ranking without vetting the specific advisor can find themselves with infrequent meetings, slow feedback, and unstable RA funding — as documented in the original post with a top-5 program",
+      "regions": []
+    },
+    {
+      "misconception": "You can fully vet an advisor by talking to their current students",
+      "why_believed": "Current students are the most accessible source of insider information and are often explicitly offered by the advisor as references; reaching them feels like thorough due diligence",
+      "actual_rule": "Current students have incentives to speak positively; departed students — reachable independently via LinkedIn — are the reliable source of candid assessments about mentorship dysfunction, funding problems, or lab culture issues",
+      "real_consequence": "Applicants who only contact current students miss critical warning signals, such as the one reported in comment [2] where a former student directly disclosed the advisor was unsuitable as a sole mentor",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "PhD applicant received two offers: top-5 program with an advisor whose research direction was a weak match, and a top-25 program with a strong research match advisor",
+      "decision": "Chose the top-5 program based primarily on higher ranking and brand prestige",
+      "outcome": "Two years in: advisor meets once per semester, takes 2 weeks to reply to emails, has a grant expiring with uncertain RA funding for the next semester. The rejected advisor at the top-25 program had students publishing top-conference papers during the same period.",
+      "lesson": "When advisor fit and research match clearly differentiate two offers, choosing the lower-ranked program with the better-fit advisor is likely to produce better research outcomes and more stable funding than choosing prestige at the cost of mentorship quality",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "PhD applicant at top-25 program chose a strong-match advisor over higher-ranked offers",
+      "decision": "Rejected a higher-ranked offer and accepted the top-25 program based on advisor fit",
+      "outcome": "Weekly group meetings, biweekly one-on-ones, active paper submission pipeline for all lab members — commenter reports no regret (comment [4], 98 likes)",
+      "lesson": "Advisor mentorship structure (regular meetings, individual attention, active publication support) is a better predictor of research productivity and satisfaction than program ranking; this corroborates the original post's central argument",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "PhD applicant used LinkedIn to contact a former student of a target advisor before making a decision",
+      "decision": "Cold-messaged an advisor's former student independently, outside of any contact suggested by the advisor",
+      "outcome": "Former student disclosed directly that the advisor 'is not suitable as a sole advisor — best to have a co-advisor'; this information was not available from current students",
+      "lesson": "Former lab members provide qualitatively different — and more actionable — information than current members; a single targeted LinkedIn outreach can surface a decision-changing warning that would otherwise be invisible",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Choosing between a higher-ranked school and a better-fit advisor, with family or peer expectations favoring the ranked school",
+      "underlying_state": "Status anxiety and fear of social judgment — the prestige of a top-5 affiliation is publicly legible and defensible to family and peers; the quality of a specific advisor relationship is invisible to outsiders and harder to defend as a choice",
+      "how_it_manifests": "Applicant frames the decision as 'top-5 vs. top-25' rather than 'ghost advisor vs. engaged mentor'; ranking becomes the dominant variable because it is the socially acceptable justification",
+      "expert_move": "Reframe the decision unit: 'You are not choosing between two schools — you are choosing between two advisors. The school name on your diploma matters less than whether you finish, how long it takes, and what you publish.'",
+      "regions": []
+    },
+    {
+      "trigger": "Asking about funding structure or grant end dates — feeling like it is inappropriate or aggressive to ask",
+      "underlying_state": "Fear of appearing mercenary or distrustful, combined with power imbalance anxiety (the advisor holds the offer; the applicant does not want to jeopardize it)",
+      "how_it_manifests": "Applicant avoids asking the funding question directly, assumes everything is fine, and only discovers funding instability after enrollment",
+      "expert_move": "Normalize the question explicitly: 'This is a standard due diligence question. A good advisor expects it and answers directly. If an advisor is evasive about funding structure, that evasiveness is itself the most important piece of information you will receive.'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I choose the top-5 school or the top-25 school?",
+      "reframe": "You are not choosing between schools — you are choosing between advisors. The school is the backdrop; the advisor is the job.",
+      "why_it_works": "It dissolves the ranking comparison entirely and forces the applicant to evaluate what they actually interact with every day for 5 years — the advisor's mentorship style, availability, grant stability, and student placement record — rather than an abstract aggregate ranking",
+      "example_language": "排名只作为同等条件下的tiebreaker，不是主要指标 ('Ranking is only a tiebreaker under otherwise equal conditions — it is not the primary criterion')",
+      "regions": []
+    },
+    {
+      "original_framing": "How do I know if an advisor is good before I join?",
+      "reframe": "Don't ask the people who are still there — find the people who have already left.",
+      "why_it_works": "It shifts the information-gathering strategy from the most accessible source (current students, who have incentives to speak positively) to the most informative source (former students, who have nothing to lose by being honest), producing qualitatively different and more actionable information",
+      "example_language": "现在的学生会保留好话，离开的学生才说实话 ('Current students hold back the truth; students who have left will tell you the truth')",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "1p3a_phd_application_选导师比选学校重要100倍_我的血泪教训",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

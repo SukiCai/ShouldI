@@ -1,0 +1,251 @@
+{
+  "source_file": "uscis_h1b_employment_stats.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "AC21 portability requires same or similar occupational classification and 180-day wait",
+      "condition": "When an H-1B worker with an approved I-140 wants to change employers",
+      "action": "Worker may change employers after 180 days if the new role is in the same or similar occupational classification and the I-140 was filed before the priority date became current",
+      "because": "AC21 (American Competitiveness in the 21st Century Act) allows portability only under these two conditions simultaneously; failing either condition invalidates portability",
+      "regulatory_basis": "American Competitiveness in the 21st Century Act (AC21)",
+      "country_scope": "us"
+    },
+    {
+      "rule": "60-day grace period applies upon layoff; does not reset approved I-140 priority date",
+      "condition": "When an H-1B worker is laid off",
+      "action": "Worker has 60 days to find a new employer or change immigration status; the approved I-140 priority date is preserved",
+      "because": "The priority date is attached to the approved I-140 petition, not the employment relationship; layoff triggers grace period but does not invalidate prior I-140 approval",
+      "regulatory_basis": "AC21 / USCIS H-1B grace period policy",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Under the wage-weighted lottery effective February 27, 2026, Level IV workers receive 4 lottery entries versus Level I workers' 1 entry",
+      "condition": "When an H-1B cap-subject petition is registered under the wage-weighted lottery system",
+      "action": "Employers and workers should assess the prevailing wage level of the offered position, as Level IV designation yields 4x the selection probability of Level I",
+      "because": "Federal Register document 2025-23853 (published December 23, 2025) established wage-weighted lottery entries tied to DOL wage levels I through IV",
+      "regulatory_basis": "Federal Register document 2025-23853, published December 23, 2025; effective FY2027 cap",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Cap-exempt organizations are not subject to the 85,000 annual H-1B cap",
+      "condition": "When a petition is filed by a qualifying university, nonprofit, or related cap-exempt institution",
+      "action": "File as cap-exempt; 39,700 approvals were issued under this category in FY2023 outside the regular and master's cap slots",
+      "because": "Cap-exempt categories have separate adjudication tracks and are not constrained by the annual cap lottery",
+      "regulatory_basis": "USCIS H-1B cap-exempt policy; FY2023 Characteristics Report",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of birth — India vs. China vs. all others",
+      "why_it_matters": "Despite identical per-country EB visa quotas (approximately 7% of annual EB visas), Indian nationals represent 72.3% of H-1B approvals, creating a mathematically catastrophic green card backlog estimated at approximately 175 years at current rates. Chinese nationals face a 5–10 year EB-2 wait — qualitatively different calculus.",
+      "how_to_assess": "Identify country of birth. If India: EB-2 backlog is approximately 175 years (525,000+ pending petitions / ~3,000 visas/year). If China: EB-2 backlog is 5–10 years, EB-3 is 3–8 years. All other countries: minimal backlog.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "DOL prevailing wage level of current or prospective H-1B position",
+      "why_it_matters": "Under the wage-weighted lottery effective February 27, 2026, wage level directly determines number of lottery entries (Level I = 1 entry, Level IV = 4 entries), making wage level a determinative factor in lottery selection probability",
+      "how_to_assess": "Determine DOL wage level assigned to the position (Level I through IV). FY2023 distribution: Level I 10%, Level II 36%, Level III 35%, Level IV 19%. Level IV workers will have disproportionate lottery advantage post-February 2026.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer type — IT services firm vs. direct tech employer",
+      "why_it_matters": "IT services firms (Cognizant ~9,200, TCS ~7,600, Infosys ~6,100, Wipro ~4,400) dominate total approval counts but at significantly lower wages than tech companies (Amazon ~6,800, Google ~5,300, Microsoft ~4,500). Wage level affects both lottery odds post-2026 and green card queue positioning.",
+      "how_to_assess": "Compare offered wage against FY2023 benchmarks: median all H-1B $108,000; median computer occupations $124,000; median Computer and Information Systems Managers $155,700. Assess whether employer is IT services or direct tech.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Approved I-140 status and priority date",
+      "why_it_matters": "An approved I-140 with a priority date in queue enables AC21 portability for job changes after 180 days and survives layoff. Without an approved I-140, job changes require new H-1B filings and the worker forfeits queue position.",
+      "how_to_assess": "Confirm whether I-140 has been approved and whether priority date is registered in the EB queue. Assess date relative to current DOS Visa Bulletin cutoffs for country of birth.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Occupation SOC code — Computer-related vs. other",
+      "why_it_matters": "Computer-related occupations account for 65.1% of all H-1B approvals, making them the dominant approved category. Product managers may file under SOC 11-3021 (Computer and Information Systems Managers) or SOC 11-2021 (Marketing Managers), with the former having a median H-1B wage of $155,700 in FY2023.",
+      "how_to_assess": "Identify applicable SOC code. Computer occupations (SOC 15-xxxx) and Computer and Information Systems Managers (SOC 11-3021) carry higher median wages and stronger specialty occupation precedent.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Annual H-1B lottery selection probability",
+      "why_it_matters": "Average approval rate relative to registrations is approximately 22–28%, meaning most cap-subject registrants are not selected in any given year. This directly affects ability to obtain or maintain H-1B status.",
+      "how_to_assess": "Assess whether position qualifies as cap-exempt (universities, nonprofits). If cap-subject, current selection probability is approximately 22–28% per registration cycle under existing rules; post-February 2026 this shifts to wage-weighted entries.",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining on H-1B as an Indian national without an alternative path",
+      "unstated_consequence": "With approximately 193,000 Indian H-1B workers approved or renewed annually and only approximately 2,800–3,200 EB visas available per year for India, the de facto trajectory is indefinite H-1B renewal — not a path to permanent residence within a working career timeframe",
+      "who_it_affects": "Indian nationals in computer-related occupations who constitute 72.3% of all H-1B approvals",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Changing jobs while on H-1B with an approved I-140 under AC21",
+      "unstated_consequence": "AC21 portability is conditional on the new role being in the same or similar occupational classification. A role change that crosses occupational classifications — even within tech — may invalidate portability and forfeit the priority date queue position accumulated over years or decades",
+      "who_it_affects": "Indian nationals with approved I-140s deep in the EB-2 backlog who receive offers in adjacent but differently classified roles",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Working for an IT services firm (Cognizant, TCS, Infosys, Wipro) on H-1B",
+      "unstated_consequence": "IT services firms dominate H-1B approval counts but pay significantly lower wages than direct tech employers. Under the wage-weighted lottery effective February 27, 2026, lower-wage Level I–II positions receive 1–2 lottery entries versus 4 entries for Level IV, structurally disadvantaging IT services workers in future cap-subject registrations",
+      "who_it_affects": "H-1B workers employed by IT services firms who are cap-subject and will need lottery selection post-February 2026",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on the 60-day grace period after layoff",
+      "unstated_consequence": "The 60-day grace period does not extend the priority date — it preserves the approved I-140 priority date only if the I-140 was already approved. Workers without an approved I-140 who are laid off lose their queue position entirely and must restart the green card process with a new employer",
+      "who_it_affects": "H-1B workers who are laid off before their employer files or receives approval on an I-140 petition",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Staying in the US as a Chinese national on H-1B",
+      "unstated_consequence": "Chinese nationals face a qualitatively different backlog than Indian nationals — EB-2 China: 5–10 years, EB-3 China: 3–8 years — but this is explicitly identified in the source as a 'manageable' wait, making the stay-or-return calculus significantly more favorable for Chinese than Indian nationals despite identical per-country quotas",
+      "who_it_affects": "Chinese nationals on H-1B who may assume their situation mirrors Indian nationals when the backlog differential is substantial",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Changing employers under AC21 portability into a role outside the same or similar occupational classification",
+      "why_it_happens": "AC21 portability requires the new position to be in the same or similar occupational classification as the role for which the I-140 was filed; a classification mismatch invalidates the portability claim",
+      "consequence": "Loss of AC21 portability; priority date queue position may be forfeit; worker may need to restart green card process with new employer",
+      "warning_signs": [
+        "New role has a different SOC code than the I-140 petition's certified position",
+        "Role change involves moving from technical individual contributor to management or vice versa without confirming SOC classification alignment"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Failing to secure new employment or change status within 60 days of layoff",
+      "why_it_happens": "The 60-day grace period is the outer limit for maintaining lawful H-1B status after involuntary termination; failure to act within this window results in loss of status",
+      "consequence": "Loss of H-1B status; potential unlawful presence accrual; requirement to depart the US or face removal proceedings",
+      "warning_signs": [
+        "Layoff notification received without immediate initiation of new employer H-1B transfer or change-of-status application",
+        "60-day window expiring without a filed H-1B transfer petition or approved alternative status change"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Indian national assuming H-1B renewals will eventually lead to a green card within a normal career timeline",
+      "why_it_happens": "The per-country cap limits India to approximately 2,800–3,200 EB visas per year while 525,000+ petitions are pending, producing a backlog of approximately 175 years at current rates",
+      "consequence": "Indefinite H-1B dependency with no realistic path to permanent residence within a working career; loss of status upon retirement, employer termination, or inability to maintain H-1B eligibility",
+      "warning_signs": [
+        "Worker has been in H-1B status for 5+ years with an I-140 approved but priority date not advancing meaningfully",
+        "Worker's priority date is earlier than the current EB-2 India cutoff by more than 10 years"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is the worker's country of birth?",
+      "what_it_reveals": "Determines which per-country EB backlog applies and therefore the realistic timeline to permanent residence",
+      "follow_up_if_yes": "If India: assess whether the approximately 175-year EB-2 backlog makes permanent residence within a working career mathematically feasible. If China: assess 5–10 year EB-2 or 3–8 year EB-3 timeline as potentially manageable.",
+      "follow_up_if_no": "If neither India nor China: per-country backlog is minimal; stay-or-return calculus is not structurally distorted by the green card queue",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the worker have an approved I-140 with a priority date registered in the EB queue?",
+      "what_it_reveals": "Determines whether AC21 portability is available for job changes and whether a layoff would preserve or forfeit the worker's queue position",
+      "follow_up_if_yes": "Assess priority date relative to current DOS Visa Bulletin cutoff for country of birth; assess whether any contemplated job change satisfies same or similar occupational classification requirement",
+      "follow_up_if_no": "Worker has no portability protection; any employer change requires new H-1B filing and restarts the green card process; layoff results in loss of all accumulated queue position",
+      "country_scope": "us"
+    },
+    {
+      "question": "What DOL wage level (I through IV) is assigned to the worker's H-1B position?",
+      "what_it_reveals": "Determines the number of lottery entries the worker will receive under the wage-weighted lottery system effective February 27, 2026 (Level I = 1 entry, Level IV = 4 entries)",
+      "follow_up_if_yes": "If Level III or IV: worker has above-average lottery selection probability post-February 2026; assess whether current employer and role can be maintained or negotiated to preserve wage level",
+      "follow_up_if_no": "If Level I or II: worker has below-average or average lottery odds post-February 2026; FY2023 data shows 46% of H-1B workers are Level I–II, meaning majority face reduced competitive position under new system",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the worker's employer cap-exempt (university, nonprofit, or related institution)?",
+      "what_it_reveals": "Determines whether the worker is subject to the annual 85,000 cap and the lottery process entirely",
+      "follow_up_if_yes": "Worker is not subject to lottery; 39,700 cap-exempt approvals were issued in FY2023; wage-weighted lottery rules do not apply; employment continuity risk from lottery is eliminated",
+      "follow_up_if_no": "Worker is cap-subject; lottery selection probability is approximately 22–28% per registration cycle under current rules; post-February 2026, probability shifts based on wage level",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the worker employed by an IT services firm (Cognizant, TCS, Infosys, Wipro, Accenture) or a direct tech employer (Amazon, Google, Microsoft, Meta, Apple)?",
+      "what_it_reveals": "Signals likely wage level and therefore lottery competitiveness post-February 2026, as IT services firms file at significantly lower wages than direct tech employers",
+      "follow_up_if_yes": "If IT services: worker is likely Level I–II; assess wage relative to FY2023 median of $108,000 for all H-1B and $124,000 for computer occupations; consider implications for post-February 2026 lottery odds",
+      "follow_up_if_no": "If direct tech employer: worker is more likely Level III–IV; median for Computer and Information Systems Managers was $155,700 in FY2023",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Indian and Chinese nationals on H-1B face similar green card timelines because they are subject to the same per-country quota",
+      "actual_reality": "Indian nationals represent 72.3% of all H-1B approvals (approximately 193,000 workers) against approximately 2,800–3,200 annual EB visa slots, producing an estimated 175-year backlog. Chinese nationals represent 11.7% (approximately 31,200 workers) and face a 5–10 year EB-2 wait. The USCIS report explicitly characterizes these as qualitatively different stay-or-return calculations.",
+      "implication": "Chinese nationals should not model their immigration planning on Indian national timelines; Indian nationals must plan for indefinite H-1B dependency as the realistic de facto trajectory",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Larger approval counts for IT services firms (Cognizant, TCS, Infosys) indicate stronger H-1B sponsorship or better outcomes for workers",
+      "actual_reality": "IT services firms dominate total approval counts (Cognizant ~9,200, TCS ~7,600) because they file for large numbers of workers across many clients, but at significantly lower wages than direct tech employers. The wage-weighted lottery effective February 27, 2026 will structurally disadvantage lower-wage filers.",
+      "implication": "High approval volume at an IT services firm does not translate to better individual lottery odds post-February 2026; wage level, not employer filing volume, will be the determinative variable",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B annual cap is 65,000",
+      "actual_reality": "The cap is 85,000 total slots: 65,000 regular cap plus 20,000 reserved for beneficiaries with US master's degrees or higher. Additionally, cap-exempt organizations (universities, nonprofits) are entirely outside this cap — 39,700 approvals were issued cap-exempt in FY2023.",
+      "implication": "Workers with US master's degrees have access to an additional 20,000 slots, improving lottery odds; workers at cap-exempt institutions are not subject to the lottery at all",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "A layoff while on H-1B resets or destroys all green card progress",
+      "actual_reality": "Under AC21, an approved I-140 priority date is preserved through a layoff. The 60-day grace period allows the worker to find a new employer without losing the priority date, provided the I-140 was already approved before the layoff.",
+      "implication": "Workers with approved I-140s must act within 60 days of layoff to preserve their priority date; workers without an approved I-140 at time of layoff have no such protection",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Product managers can file H-1B petitions under a single standard occupation code",
+      "actual_reality": "Product managers typically file under SOC 11-3021 (Computer and Information Systems Managers) or SOC 11-2021 (Marketing Managers). The wage implications differ significantly: Computer and Information Systems Managers had a median H-1B wage of $155,700 in FY2023, which maps to a higher DOL wage level and more lottery entries under the post-February 2026 system.",
+      "implication": "The SOC code selected for a product manager H-1B filing has direct wage-level and lottery-entry consequences under the wage-weighted system; SOC 11-3021 positions are more favorable post-February 2026",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of green card backlog by nationality",
+      "naive_pattern": "Assumes all H-1B workers face similar green card timelines; treats the backlog as a uniform inconvenience affecting everyone equally",
+      "informed_pattern": "Immediately distinguishes India (approximately 175-year EB-2 backlog at 525,000+ petitions / ~3,000 visas/year) from China (5–10 year EB-2 wait) and treats these as categorically different stay-or-return scenarios requiring different planning frameworks",
+      "why_it_matters": "An Indian national planning around a 10-year green card timeline will face structural failure; a Chinese national using the same plan may succeed — the backlog differential is not marginal, it is categorical",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Assessment of employer for H-1B sponsorship quality",
+      "naive_pattern": "Favors IT services firms with highest total approval counts (Cognizant ~9,200, TCS ~7,600) as signals of reliable or superior H-1B sponsorship",
+      "informed_pattern": "Distinguishes between filing volume and wage level; recognizes that IT services firms file high volumes at lower wages (likely Level I–II) while direct tech employers file fewer petitions at higher wages (likely Level III–IV); under the wage-weighted lottery effective February 27, 2026, wage level — not filing volume — determines lottery competitiveness",
+      "why_it_matters": "Post-February 2026, a Level IV worker at a direct tech employer has 4x the lottery entries of a Level I IT services worker; choosing employer based on historical approval volume rather than wage level is a structural error",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Job change strategy with approved I-140",
+      "naive_pattern": "Assumes any job change is permissible after receiving an offer, or alternatively, refuses all job changes to protect green card position",
+      "informed_pattern": "Applies AC21 two-part test: (1) has 180 days elapsed since I-140 approval with priority date in queue, and (2) is the new role in the same or similar occupational classification? Treats both conditions as mandatory and verifies SOC code alignment before accepting an offer",
+      "why_it_matters": "A job change that fails the occupational classification test invalidates AC21 portability and forfeits potentially decades of priority date queue position — a consequence that cannot be reversed",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Response to layoff while on H-1B",
+      "naive_pattern": "Treats layoff as an immediate status emergency without distinguishing between workers with and without approved I-140s, or without knowing the 60-day boundary precisely",
+      "informed_pattern": "Immediately assesses whether an I-140 is approved: if yes, the 60-day grace period preserves the priority date and allows structured job search with portability intact; if no, the situation is more urgent as no queue position exists to protect and full restart is required",
+      "why_it_matters": "The 60-day grace period and I-140 preservation rule determine whether a layoff is a recoverable setback or a complete reset of the green card process — the difference between months of inconvenience and years of delay",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_uscis_h1b_employment_stats",
+  "_source_regions": [
+    "us"
+  ]
+}

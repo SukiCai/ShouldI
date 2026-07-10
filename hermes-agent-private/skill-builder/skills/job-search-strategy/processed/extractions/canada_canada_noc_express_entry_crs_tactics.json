@@ -1,0 +1,335 @@
+{
+  "source_file": "canada_noc_express_entry_crs_tactics.txt",
+  "heuristics": [
+    {
+      "rule": "With a 3-year PGWP, you have 18-24 months to land a TEER 0/1/2/3 role and accumulate 12 months before needing to file for CEC",
+      "condition": "When you are a PGWP holder beginning your post-graduation job search in Canada",
+      "action": "Prioritize getting into any qualifying TEER 0/1/2/3 role quickly over finding the ideal role, treating Phase 1 as timeline management not career optimization",
+      "because": "Every month spent unemployed or in TEER 4/5 work compresses or eliminates the CEC window, forcing reliance on renewal, alternative streams, or leaving Canada"
+    },
+    {
+      "rule": "Look up the NOC code of any target role before accepting it, not after",
+      "condition": "When evaluating a job offer or targeting a role as a PGWP holder",
+      "action": "Confirm the NOC TEER classification independently — do not rely on the employer's job title or description to infer CEC eligibility",
+      "because": "Misclassified roles where employer calls it technical but NOC codes it as administrative have caused CEC eligibility rejections; a 'Junior IT Analyst' might be TEER 2 not TEER 1 — both eligible, but the distinction must be known before acceptance"
+    },
+    {
+      "rule": "Pursue Provincial Nomination before any other CRS optimization lever post-March 2025",
+      "condition": "When trying to maximize CRS score after LMIA job offer points were removed",
+      "action": "Target PNP streams first — a single nomination adds 600 CRS points and functionally guarantees an ITA regardless of base CRS score",
+      "because": "No other single action comes close to the 600-point PNP bonus; all other levers (French, additional work experience, education) add at most 25-100 points each"
+    },
+    {
+      "rule": "Invest in French proficiency before over-investing in English score improvement",
+      "condition": "When a PGWP holder already has CLB 9+ English and is looking to add CRS points through language",
+      "action": "Study for TEF Canada or TCF Canada French exam instead of retaking IELTS/CELPIP to push English from CLB 9 to CLB 10",
+      "because": "Increasing English from CLB 9 to CLB 10 adds only a few CRS points, while French CLB 7+ adds 25-50 points and unlocks dedicated Francophone draws at cut-offs of ~365-400 versus general draws at ~500"
+    },
+    {
+      "rule": "Enter the Express Entry pool after 1 year of skilled work, but calculate whether waiting for 2 years is feasible given PGWP expiry",
+      "condition": "When a PGWP holder has completed 1 year of TEER 0/1/2/3 work and is deciding when to apply",
+      "action": "Compare the 13 additional CRS points gained from a second year of Canadian work experience against the remaining PGWP timeline to determine if waiting is viable",
+      "because": "A second year of Canadian skilled work experience adds ~13 CRS points, which can meaningfully affect ITA timing, but only if PGWP expiry does not create a gap in status"
+    },
+    {
+      "rule": "If deciding between Ontario and BC for job search, Ontario OINP Masters Graduate stream is more accessible if you hold an Ontario master's degree",
+      "condition": "When a master's graduate is choosing which province to target for both employment and PR pathway",
+      "action": "Prioritize Ontario if you have an Ontario master's degree because the OINP Masters Graduate stream requires no job offer and can be applied for immediately after graduation",
+      "because": "BC PNP Tech requires a job offer in a target NOC code before nomination, adding dependency on employer action; OINP Masters Graduate removes that dependency entirely"
+    },
+    {
+      "rule": "Do not accept below-market offers due to perceived visa insecurity when on PGWP",
+      "condition": "When negotiating salary as a PGWP holder in Canada",
+      "action": "Negotiate based on market rates using Glassdoor Canada, LinkedIn Salary, or Levels.fyi benchmarks without discounting for immigration status",
+      "because": "PGWP is not employer-specific — unlike H-1B in the US, there is no LCA wage floor but also no employer lock-in, meaning visa insecurity is not a legitimate reason to accept below-market compensation"
+    },
+    {
+      "rule": "For tech graduates willing to learn French, Montreal offers a faster PR path than Toronto or Vancouver at lower cost of living",
+      "condition": "When a tech graduate is choosing a Canadian city and is open to French language investment",
+      "action": "Target Montreal, develop French to CLB 7+, and use either the Quebec PRTQ pathway or dedicated IRCC Francophone draws at ~365-400 CRS cut-off",
+      "because": "Montreal combines major tech employers (Ubisoft, CAE, Lightspeed, Coveo), lower cost of living than Toronto/Vancouver, and access to lower-cut-off dedicated draws that bypass the general pool competition"
+    },
+    {
+      "rule": "Time LinkedIn cold outreach to Canadian hiring cycles",
+      "condition": "When conducting cold outreach to Canadian professionals for job search purposes",
+      "action": "Concentrate outreach activity in September-October and January-February, and target hiring managers or senior individual contributors rather than HR recruiters",
+      "because": "Canadian hiring cycles concentrate in these windows, and decision-makers — not HR — are the correct first point of contact for referral-based entry, consistent with effective outreach strategy"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "PGWP remaining duration",
+      "why_it_matters": "Determines how much time exists to complete Phase 1 (get TEER-eligible role) and Phase 2 (accumulate 12 months, apply CEC) before status expires",
+      "how_to_assess": "Calculate months remaining on PGWP; subtract 12 months needed for CEC work experience; the remainder is the maximum Phase 1 job search window",
+      "weight": "high"
+    },
+    {
+      "factor": "NOC TEER classification of target roles",
+      "why_it_matters": "Only TEER 0/1/2/3 work experience qualifies for CEC; TEER 4/5 does not count regardless of how skilled or technical the role feels",
+      "how_to_assess": "Look up the specific NOC code on the IRCC NOC finder before accepting any offer; do not rely on employer job title to infer classification",
+      "weight": "high"
+    },
+    {
+      "factor": "Province of study and residence",
+      "why_it_matters": "Determines PNP stream eligibility — OINP Masters Graduate requires Ontario degree, SINP Graduate requires Saskatchewan institution, BC PNP requires BC job offer",
+      "how_to_assess": "Match your degree-granting institution's province to available PNP streams; check whether streams require job offer or are nomination-only",
+      "weight": "high"
+    },
+    {
+      "factor": "French language proficiency or willingness to develop it",
+      "why_it_matters": "French CLB 7+ unlocks dedicated Francophone draws at cut-offs ~100+ points lower than general draws and adds 25-50 direct CRS points",
+      "how_to_assess": "Assess current French level; estimate time to CLB 7 on TEF Canada; calculate CRS point gain versus time investment against PGWP timeline",
+      "weight": "high"
+    },
+    {
+      "factor": "Education level (master's vs. bachelor's)",
+      "why_it_matters": "Master's degree unlocks OINP Masters Graduate stream (no job offer required) — one of the most accessible PNP pathways available",
+      "how_to_assess": "Confirm degree type and Canadian institution; check OINP eligibility requirements for Masters Graduate stream; apply as soon as eligible",
+      "weight": "high"
+    },
+    {
+      "factor": "Field of study and corresponding NOC codes",
+      "why_it_matters": "Determines which TEER levels are accessible and how broad or narrow the qualifying role universe is for CEC accumulation",
+      "how_to_assess": "Map your field to TEER 0/1/2/3 NOC codes using the quick reference; identify whether adjacent lower-TEER roles (e.g., TEER 2) are acceptable fallbacks",
+      "weight": "high"
+    },
+    {
+      "factor": "Base CRS score before optimization",
+      "why_it_matters": "Determines how far from the current ITA cut-off you are and which optimization levers are worth pursuing",
+      "how_to_assess": "Use IRCC CRS calculator with current credentials; compare output to recent cut-off history; identify point gap and which levers close it fastest",
+      "weight": "medium"
+    },
+    {
+      "factor": "Target province's job market conditions",
+      "why_it_matters": "Phase 1 success depends on actually getting hired; a strong market reduces Phase 1 duration and preserves more PGWP runway",
+      "how_to_assess": "Compare job posting volume in your NOC code across provinces; assess competition level and whether PNP stream in that province requires a job offer",
+      "weight": "medium"
+    },
+    {
+      "factor": "Cost of living in target city",
+      "why_it_matters": "Financial sustainability during job search affects how long a candidate can hold out for TEER-eligible roles versus accepting TEER 4/5 work for income",
+      "how_to_assess": "Compare salary benchmarks against housing and living costs across Toronto, Vancouver, Montreal, Calgary; Montreal offers best salary-to-cost ratio for tech",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Spending 6-12 months searching exclusively for an ideal role rather than any qualifying TEER 0/1/2/3 role",
+      "unstated_consequence": "CEC window is compressed or eliminated entirely; candidate must rely on PGWP renewal, alternative streams, or departure from Canada rather than the intended CEC pathway",
+      "who_it_affects": "PGWP holders who job search like domestic graduates without accounting for the immigration timeline running concurrently"
+    },
+    {
+      "choice": "Accepting a role with a job title that sounds technical without verifying the NOC code",
+      "unstated_consequence": "If the NOC code is administrative rather than technical, work experience accumulated in that role does not count toward CEC eligibility — months of work are wasted for PR purposes",
+      "who_it_affects": "PGWP holders in roles with ambiguous titles such as 'analyst,' 'coordinator,' or 'associate' where classification is non-obvious"
+    },
+    {
+      "choice": "Targeting BC over Ontario for job search because of higher tech salaries",
+      "unstated_consequence": "BC PNP Tech requires a job offer before nomination, adding employer dependency to the PR pathway; if job offer doesn't materialize, the PNP advantage is inaccessible — whereas OINP Masters Graduate requires no job offer",
+      "who_it_affects": "Master's graduates from Ontario institutions who relocate to BC for salary reasons without calculating the PNP access difference"
+    },
+    {
+      "choice": "Entering Express Entry pool after exactly 1 year of skilled work to avoid PGWP expiry risk",
+      "unstated_consequence": "Forfeits approximately 13 additional CRS points from a second year of Canadian work experience, which could lengthen wait time for ITA by months",
+      "who_it_affects": "PGWP holders whose base CRS score is borderline relative to current cut-offs, where 13 points is the difference between rounds"
+    },
+    {
+      "choice": "Ignoring French language study because primary language is English",
+      "unstated_consequence": "Leaves 25-100 CRS points and access to dedicated Francophone draws (cut-off ~365-400 vs ~500) entirely on the table — potentially adding 12-18 months to ITA wait",
+      "who_it_affects": "PGWP holders with base CRS scores in the 400-490 range who are waiting for general draw cut-offs to drop"
+    },
+    {
+      "choice": "Targeting Quebec (Montreal) for faster PR via French proficiency",
+      "unstated_consequence": "Quebec operates a completely separate immigration system (CSQ required before federal PR); if French is not strong enough, the Quebec pathway closes and the candidate is not automatically eligible for federal Express Entry from Quebec work experience alone",
+      "who_it_affects": "Candidates who move to Montreal assuming French effort will automatically translate to faster PR without understanding the bifurcated federal/Quebec system"
+    },
+    {
+      "choice": "Relying on ACCES Employment or Magnet for job search as an international graduate",
+      "unstated_consequence": "These platforms are valuable but primarily surface traditional employers and nonprofit-adjacent roles; candidates in competitive tech or finance may find the opportunities below market rate or misaligned with NOC TEER 1 targets",
+      "who_it_affects": "High-skilled candidates in competitive fields who over-allocate time to newcomer-specific platforms at the expense of direct LinkedIn and referral-based outreach"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Job searching as a PGWP holder using a domestic graduate mindset — targeting ideal roles only and treating the search as open-ended",
+      "why_it_happens": "PGWP holders often do not internalize that immigration timelines run concurrently with job search timelines; the urgency of Phase 1 is not obvious until the window has already closed",
+      "consequence": "6-12 months pass in unemployment or TEER 4/5 work; CEC window compresses; candidate must pursue inferior fallback immigration options or leave Canada",
+      "warning_signs": [
+        "Candidate has been searching 6+ months and has not yet entered a TEER 0/1/2/3 role",
+        "Candidate is prioritizing company prestige or role title over NOC classification when evaluating offers"
+      ]
+    },
+    {
+      "pattern": "Accepting a role without verifying NOC TEER classification, then discovering the role is TEER 4/5 or administratively coded after accumulating months of experience",
+      "why_it_happens": "Candidates assume employer job titles map directly to TEER classifications; NOC system is not widely understood and verification requires proactive lookup",
+      "consequence": "Months of work experience do not count toward CEC eligibility; candidate must restart the 12-month clock with a new qualifying role, further compressing the PGWP window",
+      "warning_signs": [
+        "Candidate has not independently looked up the NOC code for their current or target role",
+        "Employer's job description uses broad titles like 'analyst,' 'coordinator,' or 'associate' without referencing specific technical duties"
+      ]
+    },
+    {
+      "pattern": "Over-investing in English language test preparation to squeeze marginal CRS points from CLB 9 to CLB 10",
+      "why_it_happens": "English is the candidate's strongest language and the one they feel most confident improving; the asymmetric return of French investment is not intuitive",
+      "consequence": "Time and money spent on IELTS/CELPIP retakes yields only a few CRS points; the same investment in French could yield 25-50 points and dedicated draw eligibility",
+      "warning_signs": [
+        "Candidate is already at CLB 9 English and is preparing to retake IELTS before attempting any French assessment",
+        "Candidate is unaware that DELF/DALF does not count for Express Entry"
+      ]
+    },
+    {
+      "pattern": "Assuming a job offer will add points to CRS score and factoring phantom LMIA points into PR timeline planning",
+      "why_it_happens": "Pre-2025 Express Entry advice widely circulated the 50-200 point LMIA job offer bonus; post-March 2025 removal is not yet reflected in much informal advice",
+      "consequence": "Candidate's actual CRS score is significantly lower than planned; ITA timeline extends beyond what was anticipated; PGWP expiry risk increases",
+      "warning_signs": [
+        "Candidate is referencing pre-2025 CRS calculation guides without checking for IRCC updates",
+        "Candidate's PR plan depends on receiving a job offer to 'boost' their CRS score"
+      ]
+    },
+    {
+      "pattern": "Moving to Montreal for tech without adequate French proficiency and without understanding the Quebec-federal immigration bifurcation",
+      "why_it_happens": "Montreal is correctly identified as a high-value market, but candidates conflate 'working in Quebec' with 'qualifying for Quebec immigration streams' and underestimate French requirements",
+      "consequence": "Candidate accumulates Quebec work experience that does not translate to a CSQ; must either develop French from scratch mid-career or pivot to federal Express Entry with a Quebec-based job — which still works but loses the dedicated draw advantage",
+      "warning_signs": [
+        "Candidate is relocating to Montreal with no French proficiency and no plan for French development",
+        "Candidate does not know the difference between CSQ and federal PR"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many months remain on your PGWP, and are you currently in a TEER 0/1/2/3 role?",
+      "what_it_reveals": "Whether the candidate's CEC window is still viable or already compromised; determines urgency level of Phase 1 intervention",
+      "follow_up_if_yes": "How many months have you been in that role? Are you on track to hit 12 months before your PGWP expires with enough runway to file?",
+      "follow_up_if_no": "How long have you been searching? Have you considered broadening to any TEER 0/1/2/3 role rather than your target role specifically?"
+    },
+    {
+      "question": "Have you independently looked up the NOC code for your current or target role on the IRCC NOC finder?",
+      "what_it_reveals": "Whether the candidate has confirmed CEC eligibility of their work experience or is operating on assumption based on job title",
+      "follow_up_if_yes": "What is the NOC code and TEER level? Does your employer's description of your duties match the NOC lead statement?",
+      "follow_up_if_no": "Do this immediately — especially if your title includes words like 'analyst,' 'coordinator,' or 'associate' which can be coded administratively"
+    },
+    {
+      "question": "Did you complete your degree at a Canadian institution, and if so, which province — and at what level (master's vs. bachelor's)?",
+      "what_it_reveals": "Determines PNP stream eligibility — specifically whether the candidate qualifies for OINP Masters Graduate (no job offer required) or other province-specific graduate streams",
+      "follow_up_if_yes": "If Ontario master's: have you applied to OINP Masters Graduate stream? If not, why not — this is one of the most accessible PNP paths available.",
+      "follow_up_if_no": "Which province are you currently working in? Check if that province's PNP has a graduate stream for your institution type"
+    },
+    {
+      "question": "What is your current French language proficiency level, and have you taken TEF Canada or TCF Canada?",
+      "what_it_reveals": "Reveals whether the candidate has assessed or optimized their largest accessible non-PNP CRS lever post-LMIA removal",
+      "follow_up_if_yes": "What CLB level did you achieve? If CLB 7+ in all four skills, are you aware of dedicated Francophone draws and their lower cut-offs?",
+      "follow_up_if_no": "Have you taken any French courses? Estimate time to CLB 7 and calculate whether 25-50 CRS points is worth the investment given your current base score and cut-off gap"
+    },
+    {
+      "question": "What is your current estimated CRS score, and how does it compare to the most recent general draw cut-off?",
+      "what_it_reveals": "Determines how large the gap is and which combination of levers can close it within the candidate's PGWP timeline",
+      "follow_up_if_yes": "If within 50 points: which single lever gets you there fastest — French proficiency, waiting for a second year of work experience, or a PNP stream?",
+      "follow_up_if_no": "Use the IRCC CRS calculator with your actual credentials before making any optimization decisions"
+    },
+    {
+      "question": "Are you currently in Quebec, or are you considering Montreal for your job search?",
+      "what_it_reveals": "Determines whether the candidate needs to understand the Quebec-federal bifurcated immigration system and the CSQ requirement",
+      "follow_up_if_yes": "What is your French level? Do you understand the difference between CSQ, PRTQ, and federal Express Entry? Are you eligible for PRTQ if already employed in Quebec?",
+      "follow_up_if_no": "No immediate action — but if considering Montreal, assess French proficiency investment before relocating"
+    },
+    {
+      "question": "Are you planning your CRS score around receiving LMIA job offer points?",
+      "what_it_reveals": "Identifies whether the candidate is operating on outdated pre-March 2025 information and has an inaccurately high CRS projection",
+      "follow_up_if_yes": "Recalculate your CRS score immediately using the post-March 2025 framework — LMIA points no longer exist; your actual score may be 50-200 points lower than anticipated",
+      "follow_up_if_no": "Confirm you are using the current IRCC CRS calculator and recent cut-off data to set timeline expectations"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "PGWP holders should job search for their ideal role the same way domestic graduates do, using career ambition as the primary filter",
+      "actual_reality": "PGWP holders are operating a dual-track process where immigration timeline constraints run concurrently with job search; spending 6-12 months for the ideal role can permanently close the CEC pathway",
+      "implication": "Phase 1 job search should prioritize any qualifying TEER 0/1/2/3 role; ideal role pursuit is a Phase 2 or post-PR activity"
+    },
+    {
+      "common_belief": "A job offer from a Canadian employer will significantly boost your CRS score through LMIA points",
+      "actual_reality": "IRCC removed LMIA-based job offer points from Express Entry in March 2025; a job offer no longer adds 50-200 CRS points to your score",
+      "implication": "CRS optimization strategy must shift entirely to PNP nomination, French proficiency, and additional Canadian work experience — job offer pursuit as a CRS tactic is now obsolete"
+    },
+    {
+      "common_belief": "The best way to add CRS points through language is to improve English test scores",
+      "actual_reality": "Most PGWP holders already score CLB 9+ in English; the marginal gain from CLB 9 to CLB 10 is minimal, while French CLB 7+ adds 25-50 points and unlocks dedicated draws at cut-offs ~100 points lower than general pool",
+      "implication": "For candidates already at CLB 9 English, French language investment has dramatically higher ROI than English retesting"
+    },
+    {
+      "common_belief": "A 'technical' or 'professional' job title guarantees CEC-eligible skilled worker classification",
+      "actual_reality": "NOC classification is determined by the duties performed and how IRCC codes that occupational category — not by what the employer calls the role; administrative coding of a technical role has caused CEC rejections",
+      "implication": "Every PGWP holder must independently verify the NOC code and TEER level of any role they accept before starting to accumulate work experience for CEC"
+    },
+    {
+      "common_belief": "Working in Montreal automatically qualifies you for Quebec immigration streams and accelerates PR",
+      "actual_reality": "Quebec has a completely separate immigration system; CSQ must be obtained through Quebec streams before federal PR can be granted; French is functionally mandatory; working in Quebec on a PGWP does not automatically qualify you for any Quebec stream",
+      "implication": "Montreal is only a PR-accelerated path for candidates with genuine French proficiency who actively pursue CSQ through PRTQ or QSWP — not passively through employment alone"
+    },
+    {
+      "common_belief": "Canadian salary negotiation is constrained by visa status because employers hold leverage over immigration-dependent workers",
+      "actual_reality": "PGWP is open work permit and not employer-specific; there is no LCA wage floor (unlike H-1B in the US) but also no employer lock-in; visa insecurity is not a legitimate basis for accepting below-market compensation",
+      "implication": "PGWP holders should negotiate using standard market benchmarks without discounting for immigration status — they have more negotiating flexibility than H-1B holders in the US"
+    },
+    {
+      "common_belief": "PNP nomination is an advanced or difficult step reserved for candidates who have been in Canada for years",
+      "actual_reality": "OINP Masters Graduate stream can be applied for immediately upon graduation from an Ontario master's program with no job offer required; processing is 6-12 months and adds 600 CRS points upon nomination",
+      "implication": "Master's graduates from Ontario institutions should apply to OINP Masters Graduate stream as soon as they graduate — delaying this application delays the most impactful CRS lever available to them"
+    },
+    {
+      "common_belief": "Government job boards and newcomer-specific platforms like Magnet are less legitimate or less effective than LinkedIn for professional roles",
+      "actual_reality": "Job Bank Canada explicitly flags roles open to PGWP holders; Magnet is purpose-built to connect newcomers with employers who are immigration-status-aware; many large Canadian employers (RBC, TD, Deloitte, KPMG) run formal diversity hiring programs specifically for international graduates",
+      "implication": "Immigration-aware job boards and employer programs reduce friction in Phase 1 job search and should be used in parallel with LinkedIn outreach rather than dismissed"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Job search prioritization",
+      "junior_pattern": "Targets only ideal roles matching career ambitions without accounting for NOC TEER classification or immigration timeline; treats job search as purely a career decision",
+      "senior_pattern": "Treats Phase 1 as timeline management — any TEER 0/1/2/3 qualifying role is acceptable to start the CEC clock; reserves career optimization for Phase 2 or post-PR",
+      "why_it_matters": "Candidates who optimize for ideal roles in Phase 1 risk losing the CEC window entirely, forcing reliance on inferior fallback immigration pathways"
+    },
+    {
+      "dimension": "NOC code verification",
+      "junior_pattern": "Assumes employer job title reflects CEC eligibility; does not independently verify NOC code before accepting an offer",
+      "senior_pattern": "Looks up NOC code on IRCC finder before accepting any offer; confirms duties align with NOC lead statement; treats this as a standard pre-acceptance checklist item",
+      "why_it_matters": "Unverified NOC classification has caused CEC eligibility rejections after months of accumulated work experience — a costly and avoidable error"
+    },
+    {
+      "dimension": "CRS score planning",
+      "junior_pattern": "Plans CRS score based on a job offer adding points (LMIA); uses pre-2025 guides or informal advice without checking IRCC updates",
+      "senior_pattern": "Plans CRS score using the current post-March 2025 framework; prioritizes PNP nomination, French proficiency, and work experience years as the only viable levers",
+      "why_it_matters": "Operating on outdated LMIA assumptions produces a CRS projection that is 50-200 points too high, leading to a PR timeline that is entirely wrong"
+    },
+    {
+      "dimension": "Language optimization strategy",
+      "junior_pattern": "Prepares to retake IELTS or CELPIP to push English score from CLB 9 to CLB 10 as the primary CRS optimization move",
+      "senior_pattern": "Recognizes marginal English gain is minimal at CLB 9+ and redirects effort to French proficiency (TEF Canada/TCF Canada) for 25-50 CRS points and dedicated Francophone draw access",
+      "why_it_matters": "The ROI difference between English retesting and French development at CLB 9 English is dramatic; misallocating study time to English can add 12-18 months to ITA wait"
+    },
+    {
+      "dimension": "Provincial strategy",
+      "junior_pattern": "Chooses province based on salary levels or personal preference without mapping PNP stream requirements to their specific profile",
+      "senior_pattern": "Maps PNP stream eligibility to personal profile first (degree level, institution province, job offer status) and lets PR pathway accessibility be a primary input to provincial targeting",
+      "why_it_matters": "A master's graduate from Ontario who moves to BC for higher salaries may forfeit OINP Masters Graduate access (no job offer required) in exchange for BC PNP Tech (job offer required) — a materially worse PR position"
+    },
+    {
+      "dimension": "Salary negotiation posture",
+      "junior_pattern": "Accepts below-market offers because of perceived employer leverage stemming from visa dependency; conflates PGWP constraints with H-1B-style employer lock-in",
+      "senior_pattern": "Negotiates using market benchmarks (Glassdoor Canada, LinkedIn Salary, Levels.fyi); understands PGWP is open and not employer-specific; does not discount compensation for immigration status",
+      "why_it_matters": "Accepting below-market offers due to misunderstood visa constraints costs candidates real money and sets a lower salary baseline for future negotiation"
+    },
+    {
+      "dimension": "Montreal/Quebec pathway assessment",
+      "junior_pattern": "Identifies Montreal as a good market and assumes working there will accelerate PR through vague association with French/Quebec immigration advantages",
+      "senior_pattern": "Evaluates Quebec pathway only if French proficiency is at CLB 7+ or can realistically be reached; understands CSQ vs. federal PR distinction; considers PRTQ eligibility specifically",
+      "why_it_matters": "Relocating to Montreal without French proficiency or understanding of the Quebec-federal bifurcation produces accumulated Quebec work experience that does not automatically unlock any PR acceleration"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canada_noc_express_entry_crs_tactics",
+  "_source_regions": [
+    "canada"
+  ]
+}

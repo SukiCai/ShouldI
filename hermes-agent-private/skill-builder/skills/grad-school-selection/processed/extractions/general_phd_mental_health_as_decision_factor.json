@@ -1,0 +1,296 @@
+{
+  "source_file": "phd_mental_health_as_decision_factor.txt",
+  "heuristics": [
+    {
+      "rule": "If multiple current students give evasive, defensive, or universally positive answers about their advisor, treat it as a negative signal — not a positive one",
+      "condition": "When conducting informational interviews with current PhD students during program visits or decision-making",
+      "action": "Weight generic praise and non-answers the same as negative signals; seek out specific, nuanced responses as the baseline for 'things are fine'",
+      "because": "People who are well-mentored give specific, detailed responses; uniformly positive or vague answers across multiple students indicate either fear of retaliation or coached responses"
+    },
+    {
+      "rule": "Ask about first-author publication counts by year 3–4 to detect advisor exploitation patterns",
+      "condition": "When evaluating an advisor who runs a large lab or whose own publication output is very high",
+      "action": "Ask current and former students how many first-author papers students typically have by years 3–4; compare across labs in the same field",
+      "because": "Exploiter advisors extract student labor for their own output while deprioritizing student authorship, leaving students with weak CVs relative to time invested — this pattern is directly detectable through publication data"
+    },
+    {
+      "rule": "If 3 or more of the last 8 students left a lab without finishing, do not treat this advisor as low-risk regardless of prestige",
+      "condition": "When researching a potential advisor's track record with previous students",
+      "action": "Count departures relative to total students mentored; a base rate of 37%+ departures is a structural signal about the advisor, not coincidence",
+      "because": "Individual incidents can be explained away; a pattern of departures reflects consistent conditions in the advising relationship that you are unlikely to be exempt from"
+    },
+    {
+      "rule": "When choosing between a known toxic advisor with high prestige and a good advisor with moderate prestige, default to the good advisor unless the prestige advantage is concretely quantifiable",
+      "condition": "When the research fit hierarchy leads you toward an advisor with a documented difficult reputation",
+      "action": "Verify whether 'their students get the jobs I want' is actually true — not just 'everyone says they're brilliant' — before weighting prestige advantage",
+      "because": "The worst-case outcome with a toxic advisor (leaving the field, lasting psychological harm) is substantially worse than the worst case with a good-enough advisor; the expected value calculation favors lower risk once worst-case is weighted appropriately"
+    },
+    {
+      "rule": "Ask 'What specifically needs to change for you to approve submission?' to diagnose a Perfectionist Blocker advisor",
+      "condition": "When a student's work is in extended revision with no clear completion criteria from the advisor",
+      "action": "Force the advisor to articulate concrete, satisfiable conditions for approval — or escalate to the Director of Graduate Studies",
+      "because": "Perfectionist Blockers operate by keeping criteria vague and perpetually raising the bar; making the conditions explicit either produces actionable feedback or exposes that the advisor has no clear threshold"
+    },
+    {
+      "rule": "Treat program attrition above 30% as requiring explicit explanation before accepting admission",
+      "condition": "When evaluating a PhD program's overall health and risk profile",
+      "action": "Ask the DGS directly about the attrition rate and its causes; compare to field averages; seek out former students who left",
+      "because": "High attrition reflects structural program conditions — advisor quality, funding precarity, culture — that will affect you regardless of your individual circumstances"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor relationship quality and track record",
+      "why_it_matters": "The advisor relationship is the single strongest predictor of PhD student mental health outcomes — stronger than funding, program rank, or research area; a toxic advisor compounds every other stressor in the program",
+      "how_to_assess": "Interview current and former students in private settings; ask about responsiveness, emotional climate, publication authorship patterns, and student departure rates; look for specific vs. evasive answers",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor toxicity type",
+      "why_it_matters": "Different advisor dysfunction patterns have different recovery potential; a Ghost advisor is more recoverable with co-advisor support than an Emotionally Volatile advisor, and an Exploiter damages career outcomes differently than a Perfectionist Blocker",
+      "how_to_assess": "Map advisor behavior against specific patterns (Ghost, Perfectionist Blocker, Exploiter, Emotionally Volatile, Brilliant Jerk); ask former students directly about lab culture and what working with the advisor day-to-day is like",
+      "weight": "high"
+    },
+    {
+      "factor": "Support structure buffering capacity",
+      "why_it_matters": "A co-advisor, engaged DGS, formal mentoring committee, and collaborative lab culture can meaningfully buffer a difficult primary advisor; isolation amplifies advisor toxicity",
+      "how_to_assess": "Ask whether co-advisors are available and used; assess whether DGS knows students by name and research area; evaluate whether formal mentoring committee meetings occur; ask about lab culture directly",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding contingency level",
+      "why_it_matters": "Funding contingent on advisor grants, competitive fellowship renewal, or TA position availability creates financial anxiety that compounds research anxiety; students with stable multi-year funding have one fewer major stressor",
+      "how_to_assess": "Ask explicitly: Is funding guaranteed for the full program duration? What is the funding source — advisor grants, institutional fellowships, TA lines? What happens to funding if the advisor loses a grant?",
+      "weight": "high"
+    },
+    {
+      "factor": "Program attrition rate and time-to-degree variance",
+      "why_it_matters": "High attrition (above 30%) and wide time-to-degree variance signal advisor-dependent outcomes and structural program problems that affect all students",
+      "how_to_assess": "Ask the DGS for attrition data; look at time-to-degree distribution (not just average); speak with students in later years of the program about their progress trajectory",
+      "weight": "high"
+    },
+    {
+      "factor": "Prestige advantage concreteness",
+      "why_it_matters": "Prestige is frequently cited as justification for accepting a difficult advisor, but the advantage is often based on reputation rather than actual placement outcomes — a mismatch that leads applicants to overweight prestige",
+      "how_to_assess": "Check where the advisor's graduates from the last 5–7 years actually landed; verify whether those outcomes match your specific career goals; distinguish 'brilliant reputation' from 'students get the outcomes I want'",
+      "weight": "medium"
+    },
+    {
+      "factor": "DGS engagement level",
+      "why_it_matters": "An engaged Director of Graduate Studies who knows students by name and research area provides a meaningful escalation pathway and accountability check on advisor behavior; a purely administrative DGS leaves students without recourse",
+      "how_to_assess": "During visits, observe whether the DGS references specific students by name; ask students whether they feel comfortable going to the DGS with problems; ask what happens when advisor-student relationships break down",
+      "weight": "medium"
+    },
+    {
+      "factor": "Availability of graduate-specific mental health resources",
+      "why_it_matters": "General university counseling pools (shared with undergraduates) have long wait times and limited graduate student expertise; dedicated PhD counseling resources indicate institutional recognition of the structural problem",
+      "how_to_assess": "Ask specifically whether there are graduate-student-only counseling slots, not just whether the university has a CAPS; ask current students whether they have used these resources and found them accessible",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a high-prestige advisor with a known difficult reputation",
+      "unstated_consequence": "The survival narratives from former students are selection-biased — only the people who survived are available to tell you it was worth it; the people who were most damaged by the experience left the field and are not in the room",
+      "who_it_affects": "Students who rely heavily on testimonials and alumni networks to assess advisor risk; students from groups that the advisor has historically been more abusive toward"
+    },
+    {
+      "choice": "Joining a large, highly productive lab",
+      "unstated_consequence": "Large labs increase Ghost and Exploiter risk — advisors are over-committed, and productive lab output may be driven by extracting student labor rather than developing individual students; first-author publication opportunities are diluted",
+      "who_it_affects": "Students who join large labs expecting individualized mentorship comparable to smaller programs"
+    },
+    {
+      "choice": "Accepting funding that is contingent on advisor grants",
+      "unstated_consequence": "Research direction becomes constrained by whatever the advisor's grant covers, and a grant loss or advisor departure can create sudden funding crisis mid-program; the financial dependency compounds the evaluation dependency",
+      "who_it_affects": "International students who have no alternative income pathway and for whom funding loss creates both financial and visa status risk"
+    },
+    {
+      "choice": "Entering a program with high attrition without investigating the cause",
+      "unstated_consequence": "High attrition creates a cohort that progressively depletes of peers, eliminating the social and professional support networks that buffer mental health distress",
+      "who_it_affects": "Students who rely on peer cohort for comparison, support, and collaboration — particularly those isolated from family networks"
+    },
+    {
+      "choice": "Treating the PhD endpoint as undefined and managing it informally",
+      "unstated_consequence": "The chronic absence of clear progress milestones means distress can be misattributed to personal failure rather than structural training conditions, delaying recognition of advisor dysfunction or program problems",
+      "who_it_affects": "High-achieving students who have historically succeeded through individual effort and are predisposed to internalize struggle as personal inadequacy"
+    },
+    {
+      "choice": "Prioritizing research fit and ranking over advisor mental health track record during program selection",
+      "unstated_consequence": "You are optimizing on observable, easily compared variables while systematically underweighting the single strongest predictor of your outcomes — advisor relationship quality — because it is harder to assess pre-enrollment",
+      "who_it_affects": "All applicants, but particularly those making decisions primarily from rankings, published research output, and lab websites rather than direct student interviews"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Evaluating programs on prestige, funding, and research fit while giving minimal attention to advisor mental health track record",
+      "why_it_happens": "Prestige, funding amounts, and research fit are easily compared and publicly visible; advisor mental health track records require active investigation through private conversations, are rarely documented, and require asking uncomfortable questions",
+      "consequence": "Applicants optimize on observable variables while systematically underweighting the single strongest predictor of their PhD experience and completion outcomes",
+      "warning_signs": [
+        "Decision rationale focuses primarily on lab publications, program rankings, and stipend comparisons",
+        "No direct private conversations with current students were conducted before accepting"
+      ]
+    },
+    {
+      "pattern": "Interpreting survival narratives from successful PhD graduates as representative of the advisor experience",
+      "why_it_happens": "Successful graduates are the only people available to give testimonials; those who left — often the most damaged — are not part of the professional network that applicants access during recruitment",
+      "consequence": "Applicants receive a heavily biased sample of advisor experience that overrepresents positive survivorship outcomes and leads to systematic underestimation of toxic advisor risk",
+      "warning_signs": [
+        "All advisor references come from people who completed their PhDs and are now employed in the field",
+        "No attempt was made to contact students who left the program or left the advisor's lab"
+      ]
+    },
+    {
+      "pattern": "Attributing slow progress and self-doubt to personal inadequacy rather than to structural advisor or program dysfunction",
+      "why_it_happens": "The chronic uncertainty of PhD training has no external benchmark; high-achieving students entering PhDs are accustomed to clear performance signals and have historically succeeded through individual effort, making internal attribution the default",
+      "consequence": "Students delay recognizing toxic advising patterns, do not escalate to DGS or seek support, and experience compounding psychological harm that could have been interrupted earlier",
+      "warning_signs": [
+        "Student describes extensive self-doubt and lost confidence but attributes it entirely to their own capabilities",
+        "Student cannot identify any specific actionable feedback from advisor that would change their situation"
+      ]
+    },
+    {
+      "pattern": "Using group visit conversations with current students as the primary source of social proof about advisor and program culture",
+      "why_it_happens": "Group settings during recruitment visits feel like natural information-gathering opportunities; applicants don't realize that current students cannot speak honestly about advisors or program problems in group settings with faculty present or with peers who might report back",
+      "consequence": "Applicants receive only the public-facing, sanitized version of program culture and miss the signals that would be available in private one-on-one conversations",
+      "warning_signs": [
+        "All student conversations during the visit occurred in group settings or in the presence of faculty",
+        "Applicant reports that 'everyone seemed happy and excited' with no more specific information"
+      ]
+    },
+    {
+      "pattern": "Treating 'competitive culture' as a neutral or positive program descriptor without probing what it means in practice",
+      "why_it_happens": "High-achieving applicants often conflate competitive culture with high standards and excellence; the negative valence of competition in a constrained career environment is not salient until you are inside it",
+      "consequence": "Students enter environments with peer comparison dynamics, resource competition, and limited collaboration that compound the baseline mental health risks of PhD training",
+      "warning_signs": [
+        "Program or students describe culture as 'competitive' without a positive counterbalance",
+        "No mention of collaborative structures, peer support mechanisms, or shared resources"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How do you feel about your progress day-to-day — not your research results, but your sense of whether you know what you're doing and where you're headed?",
+      "what_it_reveals": "Distinguishes students with functional advising (who can articulate a sense of direction even amid uncertainty) from students experiencing Ghost or Perfectionist Blocker advising (who have chronic directionlessness or stuck-ness)",
+      "follow_up_if_yes": "What does your advisor do that helps you maintain that sense of direction?",
+      "follow_up_if_no": "How long have you felt that way, and what have you tried to address it?"
+    },
+    {
+      "question": "What do you do when you're having a hard week research-wise — is there a person you go to, and who is that?",
+      "what_it_reveals": "Reveals whether the support structure exists and whether the advisor is accessible as a support resource; students with toxic advisors typically name peers, family, or external resources — not their advisor",
+      "follow_up_if_yes": "How responsive is that person, and do you feel like you can bring real problems to them?",
+      "follow_up_if_no": "What has made it hard to find support within the program?"
+    },
+    {
+      "question": "Can you tell me about a student who left the program or left this lab in the last few years — what happened to them?",
+      "what_it_reveals": "Directly accesses departure information and tests whether the culture treats attrition as discussable or as a taboo topic; evasion or dismissal of this question is itself a signal",
+      "follow_up_if_yes": "Was their experience typical, or was it unusual compared to most students here?",
+      "follow_up_if_no": "Is that something people don't really talk about here?"
+    },
+    {
+      "question": "How many first-author papers have students in this lab typically published by the time they're in year 3 or 4?",
+      "what_it_reveals": "Assesses exploitation pattern risk; very low first-author counts relative to program duration and lab output volume indicate students are contributing to advisor publications without receiving authorship credit",
+      "follow_up_if_yes": "What does the process look like from project idea to publication — how involved is the advisor at each stage?",
+      "follow_up_if_no": "What are students working on that isn't getting published yet?"
+    },
+    {
+      "question": "Have you ever used the counseling or mental health resources at the university — were they useful and accessible for grad students specifically?",
+      "what_it_reveals": "Normalizes mental health discussion, reveals whether students have needed support (base rate indicator), and tests whether the university's resources are actually grad-student-accessible or theoretically available but practically inaccessible",
+      "follow_up_if_yes": "Were there dedicated slots for grad students or did you compete with undergrads for appointments?",
+      "follow_up_if_no": "Do you know if other students have used them? Is it something people talk about here?"
+    },
+    {
+      "question": "What would you do if you had a serious conflict with your advisor — is there a clear path you'd take?",
+      "what_it_reveals": "Tests whether the escalation pathway (DGS, ombudsperson, mentoring committee) is real and known to students or theoretical and unknown; students in functional departments can describe the path clearly",
+      "follow_up_if_yes": "Have you seen that path actually work for someone?",
+      "follow_up_if_no": "Does that feel like something you'd be comfortable doing, or does it seem risky to use those resources?"
+    },
+    {
+      "question": "Is the advisor's prestige advantage reflected in actual placement data — where have their students from the last 5–7 years actually ended up?",
+      "what_it_reveals": "Distinguishes real prestige advantage (students consistently get desired outcomes) from reputation prestige (advisor is considered brilliant but student placement is not systematically better than good-enough alternatives)",
+      "follow_up_if_yes": "Are those the specific types of positions and organizations I'm targeting?",
+      "follow_up_if_no": "What explains the gap between the advisor's reputation and the placement outcomes?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Mental health struggles during a PhD are caused by individual weakness, impostor syndrome, or poor personal coping — they are the exception, not the rule",
+      "actual_reality": "Mental health distress is a structural feature of PhD training, not an individual failure: 36% of PhD students seek help for anxiety or depression related to their PhD, and PhD students are 2.43x more likely to experience depression and anxiety than similarly-educated comparison groups",
+      "implication": "Applicants should treat mental health risk as a program selection variable to be actively assessed — not as a personal contingency to manage after enrollment"
+    },
+    {
+      "common_belief": "The advisor relationship is one of several factors affecting PhD quality, roughly comparable in importance to program ranking, research fit, and funding",
+      "actual_reality": "The advisor relationship is the single strongest predictor of PhD student mental health outcomes — stronger than funding, program rank, or research area; 43% of students with negative or unsupportive advisors met criteria for moderate-severe anxiety",
+      "implication": "Advisor assessment deserves disproportionate weight in program selection decisions relative to the attention most applicants give it"
+    },
+    {
+      "common_belief": "Surviving a tough advisor is a rite of passage that builds resilience and is widely validated by successful people in the field",
+      "actual_reality": "Survival narratives are selection-biased: only the people who survived are available to describe the experience; the people most damaged by toxic advisors left the field and are absent from the professional networks that applicants consult",
+      "implication": "Positive testimonials about difficult advisors should be discounted for survivorship bias; applicants should specifically seek out information about students who left the lab or program"
+    },
+    {
+      "common_belief": "A PhD program with high output, prestigious publications, and strong placement statistics is a well-functioning program with good advising",
+      "actual_reality": "High lab output and strong placement statistics can coexist with Exploiter advising patterns; aggregate program prestige metrics do not differentiate between advisors who develop students and advisors who extract student labor while producing strong lab-level outcomes",
+      "implication": "Program-level metrics must be disaggregated to the advisor level to be useful for predicting individual student experience"
+    },
+    {
+      "common_belief": "University counseling services are available and accessible to PhD students who need support",
+      "actual_reality": "Most universities have general CAPS services that share capacity with the undergraduate population, creating long wait times and limited graduate-student-specific expertise; dedicated PhD counseling slots are an indicator of institutional seriousness about the problem, not a universal baseline",
+      "implication": "Applicants should explicitly verify whether graduate-specific counseling slots exist — not just whether a university has a counseling center"
+    },
+    {
+      "common_belief": "If students were experiencing serious problems with an advisor, they would use formal escalation pathways like the DGS or ombudsperson",
+      "actual_reality": "Emotionally volatile and abusive advisors create hypervigilance and avoidance of bringing problems forward; students often do not escalate because they fear retaliation, do not know the pathways exist, or have internalized the dysfunction as their own failure",
+      "implication": "The absence of reported problems or formal complaints about an advisor should not be interpreted as evidence that no problems exist"
+    },
+    {
+      "common_belief": "Wide variation in time-to-degree across a program reflects different research topics requiring different amounts of time",
+      "actual_reality": "Wide time-to-degree distribution (some finishing in 4 years, others taking 8–10) primarily signals advisor-dependent outcomes rather than research complexity; students under Ghost or Perfectionist Blocker advisors accumulate years without making completion progress",
+      "implication": "Time-to-degree variance is a diagnostic indicator of advisor quality distribution within a program, not just a research complexity artifact"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How program quality is assessed",
+      "junior_pattern": "Focuses on program rankings, lab publication output, advisor reputation, and funding amount — all externally visible and easily compared metrics",
+      "senior_pattern": "Weights advisor-specific track record with students (departure rates, authorship patterns, student mental health outcomes) above aggregate program prestige; investigates what is not visible on the program website",
+      "why_it_matters": "Optimizing on visible metrics while ignoring the strongest predictor of outcomes (advisor relationship) leads to systematically poor program selection decisions"
+    },
+    {
+      "dimension": "How advisor reputation is evaluated",
+      "junior_pattern": "Relies on published work, citation counts, field reputation, and testimonials from successful graduates; treats consensus 'brilliant' reputation as sufficient positive signal",
+      "senior_pattern": "Distinguishes 'brilliant researcher' from 'effective mentor'; actively seeks information about students who left the lab; asks for concrete placement outcomes rather than general reputation claims; checks for patterns across student types",
+      "why_it_matters": "Brilliant researcher and effective mentor are independent dimensions; conflating them leads applicants to accept toxic advising situations that their field reputation does not justify"
+    },
+    {
+      "dimension": "How student testimonials are interpreted",
+      "junior_pattern": "Takes positive student feedback at face value; interprets enthusiasm and generic praise as evidence of program quality; conducts information gathering in group visit settings",
+      "senior_pattern": "Seeks private one-on-one conversations; reads evasiveness and universal positivity as negative signals; asks specific behavioral questions rather than opinion questions; accounts for selection bias in who is available to give testimonials",
+      "why_it_matters": "Public-facing testimonials systematically omit the information most relevant to assessing advisor toxicity; failing to access private signals leads to decisions based on curated information"
+    },
+    {
+      "dimension": "How to think about worst-case scenarios",
+      "junior_pattern": "Focuses on expected-case outcomes — 'if things go well, I'll get X'; discounts worst-case scenarios as unlikely or manageable through personal effort",
+      "senior_pattern": "Explicitly models worst-case outcomes and weights them by probability; recognizes that the worst case with a toxic advisor (leaving field, lasting psychological harm) is categorically worse than worst case with a good advisor; uses asymmetry of outcomes as a decision input",
+      "why_it_matters": "Expected value calculations that ignore worst-case scenarios systematically overvalue high-upside/high-risk options; the PhD context has unusually severe downside risk that needs explicit weighting"
+    },
+    {
+      "dimension": "How mental health risk is treated in the decision",
+      "junior_pattern": "Treats mental health as a personal management challenge to address after enrollment if needed; does not include it as a program selection variable; assumes personal resilience will compensate for structural risk",
+      "senior_pattern": "Treats mental health risk as a structural feature of PhD training that must be priced into program selection; actively investigates advisor and program mental health track record before accepting; treats attrition rates and support structures as primary decision inputs",
+      "why_it_matters": "Entering a high-risk advising environment without assessment, on the assumption that personal resilience will compensate, is the most common path to the worst-case outcome"
+    },
+    {
+      "dimension": "How to interpret the 'competitive culture' descriptor",
+      "junior_pattern": "Associates competitive culture with high standards and high-achieving peers; treats it as a positive signal about program quality and the caliber of colleagues",
+      "senior_pattern": "Probes what competitive culture means in practice — resource competition, peer comparison dynamics, limited collaboration, absence of mutual support — and weights it as a mental health risk factor in an already high-distress environment",
+      "why_it_matters": "Competitive culture in a constrained academic job market context amplifies comparison dynamics and compounds baseline PhD mental health risk; treating it as a positive without interrogating the mechanism leads to environment underestimation"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_phd_mental_health_as_decision_factor",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "source_file": "zhihu_H_1B没中签_还想留在美国怎么办.txt",
+  "source_type": "community",
+  "heuristics": [],
+  "decision_factors": [
+    {
+      "factor": "H-1B lottery odds for Chinese nationals",
+      "why_it_matters": "The effective lottery rate for Chinese nationals is cited as approximately 10%, significantly lower than the general pool, making the standard OPT→H-1B pathway unreliable as a primary strategy",
+      "how_to_assess": "Track annual USCIS registration numbers; in 2023 over 500,000 registrations were submitted, up 300% from 2014, and up 57% from 2022 alone",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "China job market conditions as a fallback option",
+      "why_it_matters": "Deteriorating conditions for returning overseas graduates in China (海归) reduces the attractiveness of returning home, which in turn increases pressure to stay in the US at any cost — this desperation worsens negotiating leverage with employers",
+      "how_to_assess": "Monitor海归 salary expectations and job market reports; the post notes returnees are increasingly fleeing tier-1 cities for lower-paying roles in tier-2/3 cities",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying on OPT while dependent on employer sponsorship for H-1B",
+      "unstated_consequence": "Workers in visa-dependent status feel unable to negotiate salary increases or push back against unfair treatment, effectively accepting below-market compensation and poor working conditions to maintain the sponsorship relationship",
+      "who_it_affects": "Students who have already invested multiple years in the US (e.g., 5–7 years) and feel too committed to return home, creating a sunk-cost trap that worsens their workplace leverage",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing the standard OPT→H-1B→EB-2/3 pathway",
+      "unstated_consequence": "The pathway creates a multi-stage dependency chain where failure at any stage (H-1B lottery, employer continuity, EB backlog) can collapse years of investment; EB-2/3 for Chinese nationals carries backlogs of many years, meaning H-1B approval is not the end of uncertainty",
+      "who_it_affects": "Chinese nationals specifically, who face both lower H-1B lottery odds and the longest EB priority date backlogs",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Turning to fraudulent multi-submission schemes ('黄牛') to improve H-1B lottery odds",
+      "why_it_happens": "Desperation combined with the perception that the lottery is the only viable path; third-party brokers actively market multi-registration schemes to visa-anxious students",
+      "consequence": "USCIS has explicitly banned multiple registrations for the same applicant; if a fraudulent submission is detected, both the employer and the applicant face legal consequences, and any prior record permanently damages US career prospects",
+      "warning_signs": [
+        "Considering paying a third-party agency to file multiple H-1B registrations",
+        "Employer asking the worker to sign documents from multiple shell companies for the same application"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many years of OPT (including STEM extension) do you have remaining?",
+      "what_it_reveals": "Determines how many additional H-1B lottery attempts are available before status expires, and whether there is enough runway to pursue alternative pathways (EB-1A, EB-5, change of status)",
+      "follow_up_if_yes": "If 2+ years remain: Is your field STEM-eligible? Can you use the full 3-year OPT window to attempt the lottery multiple times?",
+      "follow_up_if_no": "If OPT is nearly exhausted: What is your realistic fallback — return home, pursue further education (another F-1 period), or an alternative visa category?",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "EB-1A (extraordinary ability) is only for world-class scientists and Nobel laureates — ordinary working professionals cannot qualify",
+      "actual_reality": "USCIS publishes 10 qualifying criteria for EB-1A; meeting any 3 of the 10 is sufficient to be considered. The post claims this is accessible to professionals with meaningful work experience from well-known institutions, not just top-tier academics. However, this claim comes from a post that is explicitly promotional for an immigration consultancy, so the accessibility framing should be treated skeptically without independent corroboration.",
+      "implication": "Professionals who dismiss EB-1A without reviewing the criteria may be ignoring a faster path; but those who pursue it based on inflated marketing claims from paid consultancies risk wasting money and time",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "If you win the H-1B lottery, your immigration problem is essentially solved",
+      "actual_reality": "H-1B approval only grants temporary work status (typically 6 years); for Chinese nationals, the EB-2 and EB-3 green card backlogs are measured in decades, meaning H-1B holders face a very long period of continued visa dependency even after winning the lottery",
+      "implication": "Students who treat H-1B as the finish line are unprepared for the EB backlog problem and may make career and life decisions based on a false sense of security",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the full immigration pathway",
+      "naive_pattern": "Treats the H-1B lottery as the primary obstacle; believes that winning the lottery means the path to permanent residence is clear",
+      "informed_pattern": "Understands that H-1B is only one step in a multi-stage process; plans simultaneously for EB petition timing, priority date backlogs, and alternative pathways (EB-1A, O-1, national interest waiver) rather than sequentially",
+      "why_it_matters": "Students who only focus on H-1B are blindsided by the EB backlog, sometimes after investing 5–10 years in the US, at which point returning home has become even harder",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating employer relationships under visa dependency",
+      "naive_pattern": "Tolerates salary stagnation and unfair treatment silently because they believe any pushback risks losing sponsorship",
+      "informed_pattern": "Understands which parts of the immigration process genuinely require employer cooperation (I-140 filing, etc.) vs. which are independent, and negotiates accordingly; considers employers with strong sponsorship track records during job search rather than accepting the first offer",
+      "why_it_matters": "Unnecessary deference to employers leads to years of below-market compensation and career stagnation; understanding the actual leverage dynamics allows for better negotiation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "EB-5 investor visa is a straightforward, friendly option for students already in the US — you just file I-526 and I-485 simultaneously and can stay legally while waiting",
+      "why_believed": "The answer describing this option frames it as simple and 'very friendly for international students,' with no mention of the capital requirement (currently $800,000–$1,050,000 USD), the project risk, or the significant processing delays that have historically affected EB-5",
+      "actual_rule": "EB-5 requires a minimum capital investment of $800,000 in a targeted employment area or $1,050,000 elsewhere, placed at risk in a qualifying project; processing times have historically been multi-year; concurrent I-526/I-485 filing is only available when a visa number is immediately available, which is not always the case",
+      "real_consequence": "Students who pursue EB-5 based on the oversimplified description without understanding the capital requirement and project risk may commit to an inappropriate and financially ruinous pathway",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The overall probability of staying in the US after graduation through the work visa pathway is about 1.76%",
+      "why_believed": "The post cites this as a USCIS-derived statistic, which gives it an air of authority; the number is dramatic and memorable",
+      "actual_rule": "This figure is not a recognized USCIS-published statistic and appears to be a calculated or misattributed number; actual stay rates vary significantly by field of study, degree level, and nationality. STEM OPT alone extends the window to 3 years, and H-1B approval rates for cap-exempt employers or those with multiple attempts are higher than a single-lottery probability implies",
+      "real_consequence": "Students who internalize this figure may prematurely give up on the US work pathway or make panicked decisions (such as paying fraudulent agents or pursuing unnecessary investor visas) based on an artificially pessimistic probability",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Chinese international student, 7 years in the US, graduated 2 years prior, working on OPT; H-1B lottery failed multiple times; reluctant to return to China due to deteriorating job market for returnees",
+      "decision": "Described as being in a state of paralysis — neither aggressively pursuing alternative visa pathways nor returning home; endured workplace mistreatment to maintain employer sponsorship relationship for future lottery attempts",
+      "outcome": "Continued dependence on annual lottery with low odds (~10% for Chinese nationals); accepted below-market salary because of perceived inability to negotiate; no described resolution — the case is used illustratively without a positive outcome",
+      "lesson": "Years of investment in the US can create a sunk-cost trap where returning home feels impossible but the path forward is also blocked; this psychological state leads to passivity and exploitation by employers. The earlier alternative pathways are evaluated, the more options remain open.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student has failed H-1B lottery multiple times and is asking 'what can I do now?' while also describing the China job market as too poor to return to",
+      "underlying_state": "Sunk cost fallacy combined with binary thinking: the student frames the situation as 'stay in the US via H-1B OR return to a failing job market in China,' ignoring a range of alternative visa pathways, third-country options, or reframing career goals",
+      "how_it_manifests": "Tolerating workplace abuse and salary suppression silently; seeking out high-risk workarounds (黄牛, potentially fraudulent multi-registrations) rather than systematically evaluating legitimate alternatives; emotional paralysis described as '进退两难' (trapped between advancing and retreating)",
+      "expert_move": "Reframe the decision space: the choice is not 'H-1B or go home.' Map out the actual timeline and options: remaining OPT duration, EB-1A/NIW eligibility assessment, O-1 eligibility, Canadian pathways, return home with a structured timeline. Quantify the real cost of each option rather than treating 'staying somehow' as the only acceptable outcome.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Post presents EB-1A as accessible and affordable ('only $45,000 USD starting') as a solution to H-1B failure",
+      "underlying_state": "Desperation-driven susceptibility to solutions that promise to bypass a difficult system; when people feel locked out of the 'standard' pathway, they become disproportionately attracted to options framed as hidden shortcuts",
+      "how_it_manifests": "Students may pay large sums to immigration consultancies promising EB-1A success without verifying their actual eligibility or the consultancy's credentials; the $45,000 figure is presented as low cost relative to the perceived value of a green card",
+      "expert_move": "Before paying any consultancy, independently verify EB-1A criteria against USCIS.gov and get an assessment from a licensed immigration attorney (not a consultant or agent); EB-1A denial rates are significant and the $45,000 investment has no guaranteed return",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "H-1B没中签，还想留在美国怎么办？ (H-1B lottery failed — what can I do to stay in the US?)",
+      "reframe": "The question assumes H-1B is the only legitimate pathway. The actual question should be: 'Given my specific profile, timeline, and goals, which of the multiple available pathways — H-1B retry, EB-1A, O-1, NIW, EB-5, Canadian immigration, or returning home — has the best risk-adjusted outcome for me?'",
+      "why_it_works": "The original framing treats H-1B failure as a near-terminal event and narrows the solution space to workarounds of the same lottery system. The reframe opens up a structured decision tree and shifts from reactive panic to proactive pathway evaluation.",
+      "example_language": "Note: this reframe is extracted analytically from the gap between the question and what a comprehensive answer would require — no single high-voted reply in the source data provides this reframe explicitly. The source answers instead double down on the original framing by offering EB-1A and EB-5 as alternative products rather than as part of a structured decision.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_H_1B没中签_还想留在美国怎么办",
+  "_source_regions": [
+    "us"
+  ]
+}

@@ -1,6 +1,7 @@
 ---
 name: salary-negotiation
-description: Expert salary and offer negotiation strategy for tech and professional roles — covering total compensation structure, competing offer leverage, psychological tactics, equity valuation, exploding offers, and international student-specific constraints. Based on the canonical advice of Patrick McKenzie and Haseeb Qureshi, synthesized with current market practice.
+description: Use when user has received an offer, is about to negotiate compensation, or is evaluating whether their current pay is right — e.g., "how do I negotiate this offer?", "they gave me an exploding offer", "my base is low but equity looks generous", "I have a competing offer — how do I use it?", "I'm an international student and afraid to negotiate". Covers: total compensation structure (base/equity/signing/benefits), competing offer leverage, psychological anchoring tactics, equity valuation (RSU vs. options, vesting cliff, exercise windows), exploding offer handling, level placement strategy, and how the H-1B wage-weighted lottery makes salary negotiation structurally aligned with immigration strategy for international students. Does NOT cover: job search tactics (use intl-job-search) or immigration status mechanics (use intl-student-advisor).
+
 version: 1.0.0
 metadata:
   hermes:
@@ -12,97 +13,101 @@ metadata:
 
 ## Expert Framing
 
-You treat a job offer as the opening position of a multi-dimensional negotiation between two parties who both have substantial investments at risk — not as a gift the candidate should accept gratefully. By the time an offer is extended, the company has spent tens of thousands of dollars evaluating this candidate and has decided they need to solve a problem; this asymmetric investment is a permanent feature of the leverage landscape that beginners systematically ignore.
+You treat a job offer as an opening position in a structured multi-round exchange, not a verdict. The person on the other side expects negotiation and has budgeted buffer for it — only ~6% of offers get withdrawn after a counter, and almost always for tone, not for asking. Your job is to identify where the actual leverage is (BATNA, competing offer, wage-level threshold, sunk employer cost) and price it precisely.
 
-You optimize for total compensation over a multi-year horizon, not headline base salary — because equity, signing bonuses, vesting schedules, exercise windows, and level placement compound in ways the salary number alone obscures. You refuse to treat negotiation as a single dimension: when one lever (base) stops moving, you pivot immediately to the next (signing bonus, equity refresh, vacation, remote work). You also refuse to confuse information transparency with strategic candor — current salary and reservation price are not neutral data points but anchors that, once revealed, permanently collapse negotiating range.
+You optimize for total 4-year compensation and structural position — not for the headline base number. That means: annualized equity at a stage-appropriate discount, signing bonus with clawback structure read line-by-line, wage-level classification for H-1B lottery entries, provincial tax for Canadian roles, and refresh policy for year-3-and-4 cliff avoidance. You refuse to compare offers by base salary alone, because two offers with the same base can differ by $100K+ annually once modeled correctly.
 
-You hold a counterintuitive position on international students: their visa status is not primarily a liability but a retention asset, and the post-2025 wage-weighted H-1B lottery has made salary negotiation and immigration strategy structurally aligned rather than opposed. You know that fear, not market reality, causes most candidates to leave 10–30% of compensation on the table.
+You know the domain's counterintuitive facts: posted salary ranges are floors not ceilings; voluntarily disclosed salary loses its legal protection even in ban states; a Level III → IV wage jump can improve H-1B lottery odds by 33% relative; PGWP holders in Canada have full mobility leverage (open work permit) even though they feel like "visa candidates"; and accepting a retention counter-offer means 80% of people leave within 12 months anyway.
 
 ## When to Activate This Skill
 
-- User has received, or expects to receive, a job offer and is asking how to respond, counter, or evaluate it
-- User is comparing multiple offers and needs to assess true total compensation
-- User is an international student/H-1B holder asking about visa-constrained negotiation
-- User mentions exploding deadlines, equity grants, signing bonuses, or recruiter pressure tactics
+- User says they received/are receiving an offer and asks how to respond, whether it's fair, or how to counter
+- User mentions "exploding offer," "competing offer," "equity," "RSU," "signing bonus," "clawback," or a specific number they were quoted
+- User is an international student/H-1B/PGWP holder worried about negotiating due to visa status
+- User is evaluating multiple offers or deciding whether their current pay is right
 
 ## Diagnostic Framework
 
+When a user presents a situation, work through these steps before offering any perspective:
+
 ### Step 1: Identify the Real Constraint
 
-Before offering any view, establish:
-
-1. **Has the company decided to hire you yet?** ("Yes-If" vs. "No-But" status determines whether you have leverage at all. Negotiating during evaluation forces premature compromise.)
-2. **Have you named a number or disclosed current salary?** (Reveals whether information asymmetry is intact or already compromised.)
-3. **Do you have real competing offers with overlapping timelines?** (A competing offer that expired two weeks ago provides no leverage.)
-4. **For international students: what is your OPT end date, BATNA, and the company's actual H-1B sponsorship history?** (Sponsorship willingness ≠ execution capacity.)
-5. **Have you modeled full annual total comp (base + annualized equity + target bonus) excluding signing bonus?** (If not, the ranking between offers may be wrong.)
+1. **What country/state/province is the role in?** Reveals which laws apply — salary history ban, pay transparency posting, provincial tax, PGWP vs. H-1B dynamics. BC ≠ Ontario ≠ Alberta; California ≠ Texas.
+2. **What is the user's immigration status, and is their work permit open or employer-tied?** PGWP = full leverage. H-1B = wage-level matters. F-1 OPT = self-held, no employer action needed. This gates everything else.
+3. **Do they have a real, written competing offer with a number and deadline?** Transforms leverage from opinion into market evidence. A vague "other conversations" is not a competing offer.
+4. **What is their walk-away number (BATNA)?** Without one, they cannot negotiate — they can only ask.
+5. **Has salary history already been disclosed?** If yes, the anchor is set and recovery requires active reframing, not passive hope.
 
 ### Step 2: Classify the Situation
 
-- **Single offer, no alternatives**: Leverage must come from market data, quantified impact, and the company's sunk interview investment — not from competing pressure.
-- **Multiple active offers**: Use them explicitly but only if real; sequence timelines so they overlap.
-- **International student / visa-constrained**: Apply the visa-specific playbook — delay disclosure until "Yes-If," reframe visa as retention asset, verify sponsorship execution, use wage-weighted lottery as joint-benefit framing.
-- **Startup equity-heavy offer**: Apply stage-appropriate equity discount (Seed/A = $0 for planning), interrogate exercise window and liquidation preferences.
+- **New external offer (leverage-rich)**: full negotiation arc available, counter 10–20% above initial.
+- **Internal promotion or retention (leverage-poor)**: without an external offer, the company knows your reservation price; slow, weak outcomes are the default.
+- **H-1B cap-subject candidate**: wage level determines lottery entries (1–4) under the Feb 27, 2026 wage-weighted rule; each dollar near a threshold is worth more than face value.
+- **Canadian PGWP holder**: negotiate as a citizen; do not concede leverage based on immigration.
+- **Startup equity offer**: apply stage-appropriate discount (public 80–90%, Series C–D 60–90%, Seed/A 0%); do not accept recruiter valuations at face value.
 
 ### Step 3: Check for Failure Patterns
 
-- **CHECK: Accepting first offer out of gratitude or fear** — warning sign: "I should just be grateful." Worst-case outcome of countering is the original offer unchanged.
-- **CHECK: Naming a number first** — anchors the negotiation at your number, not theirs.
-- **CHECK: Disclosing current salary or visa status prematurely** — collapses asymmetry and becomes a filter before qualifications are weighed.
-- **CHECK: Comparing offers by base salary alone** — misses $50K–$100K+ annual differences in equity and bonus.
-- **CHECK: Negotiating from personal need (loans, rent) rather than market data** — reveals floor and signals desperation.
-- **CHECK: Letting an exploding deadline lapse silently** — virtually all extend when explicitly challenged.
+Before advising, verify this isn't:
+- **Naming a number first**: Are they about to state expectations pre-offer? Redirect to their budget range.
+- **Accepting on the spot**: Verbal offer + emotional acceptance = leverage gone. Insert a review window.
+- **Disclosing salary history voluntarily**: Even in ban states, voluntary disclosure is exempt from protections.
+- **Comparing offers by base alone**: Force full 4-year total comp modeling including annualized equity.
+- **Signing without reading clawback structure**: Cliff vs. prorated, "any reason" language, layoff exclusion.
+- **International student conflating sponsorship with acceptance**: H-1B costs the employer $3–8K, not 20% of salary.
+- **Accepting internal promotion before negotiating comp**: Leverage disappears the moment you accept.
 
 ## Expert Heuristics
 
-1. **Never name a number first.** When asked salary expectations, deflect with "I'm focused on fit — if we're right for each other, we can be flexible." Because: whoever names first sets the ceiling for their own outcome.
-2. **Always counter at least once.** When any offer arrives, counter or request one adjustment before accepting. Because: the worst-case outcome is the original offer — pure positive expected value.
-3. **Pivot to signing bonus or equity when base hits a ceiling.** When recruiter cites pay bands, say "If you could increase the signing bonus to X, I could accept this salary." Because: companies have asymmetric flexibility — one-time costs don't affect pay-band precedent.
-4. **Attach a specific reason to every request.** When countering on any dimension, justify with market data or quantified impact. Because: reasons make requests feel legitimate and easier for recruiters to approve internally.
-5. **Explicitly call out exploding deadlines.** When given 24–72 hours, state "This timeline doesn't work for me — I need time to make an informed decision." Because: virtually every exploding offer extends when challenged; silent expiration is the failure mode.
-6. **Maintain visible enthusiasm throughout.** When numbers disappoint, reiterate excitement before restating the ask. Because: companies deprioritize candidates whose enthusiasm visibly drops, at exactly the moment you need leverage.
-7. **Value early-stage startup equity at $0 for planning.** When evaluating Seed/Series A offers, model finances on cash only. Because: 80–90% of startups fail; planning around equity claims produces real financial miscalculation.
-8. **Anchor counter-offers to levels.fyi data for the specific level.** Because: market data depersonalizes the ask and is harder to dismiss than personal need.
-9. **For international students: delay visa disclosure until "Yes-If."** Because: sponsorship cost becomes an elimination filter before qualifications are weighed if disclosed early.
-10. **Verify sponsorship execution, not just willingness.** Ask about immigration counsel, prior H-1B filings, current H-1B employees, and get written confirmation. Because: a willing-but-incapable sponsor looks identical to a capable one in early conversation.
+1. **Never name a number first.** When asked for expectations pre-offer: "I'd love to hear what range you've budgeted for the role." Because whoever names first sets their own ceiling.
+2. **Counter 10–20% above the initial offer when at market; 20–25% when >15% below market, anchored to specific market data.** Because companies typically move 40–60% toward your ask in round one, and data-anchored counters are structurally harder to dismiss.
+3. **When base is locked, pivot immediately to signing bonus, then equity, then non-cash levers — in that sequence, never all at once.** Because different levers have different budget owners, and simultaneous asks signal extraction-maximizing behavior.
+4. **Never accept a verbal offer on the call. Ask clarifying questions (level, vesting, bonus target, cliff), then request days to consider.** Because acceptance eliminates all remaining leverage.
+5. **For H-1B candidates near a wage-level boundary, prioritize crossing that threshold over any other comp lever.** Because each dollar buys both purchasing power AND lottery entries — a dual return unavailable to citizens.
+6. **Never disclose current salary before an offer.** In ban states you're legally protected; even where legal, disclosing anchors the entire negotiation downward. If you've already disclosed, reframe forward with new information (role scope, market data).
+7. **Read clawback language line-by-line before signing.** Check cliff vs. prorated, gross vs. net, and whether "for any reason" includes layoffs. Because once signed, you have no leverage — and layoff-triggered clawbacks create debt during unemployment.
+8. **Apply stage-appropriate equity discounts.** Public: 80–90% of stated value. Series C–D: 60–90%. Seed/Series A: treat as $0 in your baseline calculation. Because recruiters present projected valuations that rarely materialize.
+9. **Use Canadian benchmarks (Robert Half Canada, Glassdoor CA) for Canadian offers — never US data.** Because US benchmarks are 25–40% higher in USD, causing either loss of the offer or ceiling under-anchoring.
+10. **A retention counter-offer solves compensation, not scope or manager. If money isn't the root cause, accepting it just delays a resignation by ~12 months.** Because the underlying reasons remain unresolved.
 
 ## Hidden Tradeoffs
 
-| Choice | Unstated consequence |
-|--------|----------------------|
-| Accept first offer to avoid friction | Under-compensation of 10–30% compounding across decades; signals lack of professional self-awareness |
-| Disclose current salary when asked | Company anchors offer to your past underpayment, not your market value |
-| Negotiate only on base salary | Misses signing bonus, equity, vacation, remote work — dimensions where companies have far more flexibility |
-| Accept high signing bonus | Inflates perceived comp; year-2 reality may be substantially weaker than alternatives |
-| Take startup offer with 90-day exercise window | Creates golden handcuff: leaving means paying tens of thousands to exercise or forfeiting vested options |
-| Negotiate via email instead of phone | Recruiter becomes passive relay rather than internal advocate fighting for you |
-| For visa holders: disclose status early to be "transparent" | Sponsorship cost becomes filter before qualifications are evaluated |
+| Choice | Unstated Consequence |
+|--------|---------------------|
+| Countering with signing bonus instead of base | Signing bonus doesn't compound into raises, refreshes, or bonus targets — all anchored to base |
+| Accepting a Level I/II H-1B filing | ~Half the lottery odds of Level IV; concession is probabilistic, not just compensation |
+| Taking retention counter-offer | Company now knows you're a flight risk; may deprioritize you for promotion while quietly backfilling |
+| Accepting an inflated startup title | Future large-company benchmarking may down-level you |
+| Comparing Calgary gross to Toronto gross | Alberta has no provincial tax = 8–12% more take-home on same gross |
+| Posted range treated as ceiling | Employers sometimes post below actual budget; range is a floor with data-backed justification |
+| Signing bonus as "extra" comp | Inflates perceived total comp; year-2 comp without it may be substantially weaker |
+| Large pre-IPO RSU grant | Vesting triggers ordinary income tax; post-IPO drop means you paid tax on value you no longer have |
 
 ## Junior vs. Senior Thinking
 
 | Dimension | Junior pattern | Senior pattern |
 |-----------|---------------|----------------|
-| Response to first offer | Accepts on the spot or asks for time without countering | Always counters at least once across at least one dimension |
-| Information disclosure | Answers all recruiter questions directly, including current salary | Deflects current salary and specific number questions; manages asymmetry deliberately |
-| Negotiation scope | Negotiates only on base; stops when told salary is fixed | Maps all dimensions; pivots to signing bonus, equity, vacation when base caps |
-| Offer comparison | Compares by base salary headline number | Builds full annual total comp model with stage-appropriate equity discount |
-| Equity evaluation | Accepts recruiter's quoted value as real money | Asks 409A, fully diluted %, liquidation preferences, exercise window |
-| Salary research | Uses Glassdoor / PayScale | Uses levels.fyi, H-1B filings, Blind — always level-specific |
-| Justification | "I have student loans / high rent" | Market data + quantified personal impact |
-| Pressure tactics | Treats exploding deadlines and "HR won't approve" as final | Names tactics explicitly; asks "what can you approve on your own?" |
-| Visa status (intl students) | Treats as liability to hide or apologize for | Reframes as retention asset; uses wage-weighted lottery as joint-benefit framing |
-| Competing offers | Sees parallel processes as disloyal | Deliberately sequences interviews (large corps first, startups second) to engineer overlap |
+| First response to offer | Accepts on the spot or counters immediately from emotion | Expresses enthusiasm, asks for review window, models total comp before responding |
+| Comparison methodology | Base salary only | 4-year total comp: base + annualized equity (discounted) + bonus + signing + provincial tax |
+| Framing of counter | "I was hoping for more" (personal need) | "Market median for this level at this company is X per levels.fyi — I need Y to align" (data) |
+| Response to "the band is set" | Treats negotiation as closed | Pivots to signing bonus, RSU refresh, non-cash levers with different budget owners |
+| Salary history question | Answers reflexively to seem cooperative | Redirects: "I prefer to focus on expectations for this role" — knows if it's illegal in their state |
+| H-1B negotiation | Uses only market data like a citizen | Layers DOL wage-level threshold argument on top; ties salary to lottery entry count |
+| PGWP holder framing | "I don't want to push — I might need them for PR" | Negotiates with full mobility leverage; plans CEC timeline separately |
+| Equity valuation | Accepts recruiter's projected value | Applies stage-appropriate discount; asks 409A, liquidation preferences, refresh policy |
+| Clawback clause | Skims — "it means if I quit early" | Reads exact trigger language, cliff vs. prorated, layoff exclusion, gross vs. net |
+| Multi-round arc | Stops after first company counter | Understands 40–60% move on round one; paces asks across 2–3 rounds |
 
 ## Industry Realities
 
-- **Myth**: Asking for more risks rescission. **Reality**: Reasonable counter-offers virtually never cause rescission — companies have invested too much in interviewing you. **Implication**: The downside of negotiating is the original offer; the upside is real money. Always counter.
-- **Myth**: A $5K increase isn't worth the awkwardness. **Reality**: $5K compounded over 10 years is ~$100K gross and sets the anchor for every future raise and your next employer's offer. **Implication**: Small numbers compound; treat early-career negotiations as disproportionately important.
-- **Myth**: Exploding deadlines are real constraints. **Reality**: They are pressure tactics; nearly all extend when explicitly challenged. **Implication**: Never let one lapse silently — request an extension directly.
-- **Myth**: Glassdoor/PayScale are accurate for tech comp. **Reality**: They systematically mishandle equity and underreport total comp. **Implication**: Use levels.fyi and H-1B filings; benchmark by specific level.
-- **Myth**: H-1B sponsorship costs justify below-market salary. **Reality**: Sponsorship totals $3K–$8K/year — under 5% of a $150K employee's cost. **Implication**: Counter the framing with actual numbers.
-- **Myth**: H-1B holders are locked in and can't credibly threaten to leave. **Reality**: H-1B portability allows switching employers within 60 days. **Implication**: Knowing your rights converts perceived lock-in into real leverage.
-- **Myth**: A small salary ask is too trivial for the company to care about. **Reality**: Employers think in loaded-cost headcount budgets; a $5K increase is "mouse droppings" to them but meaningful to you. **Implication**: Don't shrink your ask out of false empathy for their budget.
+- **Myth**: Negotiating risks the offer being withdrawn. **Reality**: ~6% withdrawal rate, almost exclusively for aggressive tone — not for asking. Not negotiating costs an average of $27K/year. **Implication**: The fear is statistically unjustified.
+- **Myth**: The H-1B lottery is purely random. **Reality**: As of Feb 27, 2026 (Federal Register 2025-23853), it is wage-weighted — Level IV gets 4 entries, Level I gets 1. **Implication**: Wage level is now a core lever of H-1B career strategy.
+- **Myth**: Posted salary ranges are the ceiling. **Reality**: Employers sometimes post below true budget; ranges are floors with justification. **Implication**: Anchor at the top with data, not the midpoint.
+- **Myth**: Voluntarily sharing salary is protected same as being asked in a ban state. **Reality**: Voluntary disclosure is explicitly exempt from ban protections. **Implication**: Never volunteer, even to "seem transparent."
+- **Myth**: PGWP holders need employer sponsorship in Canada. **Reality**: PGWP is an open work permit — no employer action needed. **Implication**: PGWP holders negotiate with full mobility leverage.
+- **Myth**: H-1B candidates have weak leverage due to visa dependency. **Reality**: Existing Level III/IV H-1B holders create quantifiable lottery re-entry risk for employers replacing them. **Implication**: Retention leverage is asymmetric and rarely used.
+- **Myth**: A higher salary automatically means a higher H-1B wage level. **Reality**: Wage level is determined by SOC code and job duties, not pay rate. **Implication**: Verify duties classification with immigration counsel before framing salary asks as lottery-entry arguments.
 
 ## How to Use This Skill
 
-When you receive a question in this domain, first run the diagnostic framework to identify whether the user is in Yes-If or No-But status, whether they have intact information asymmetry, and whether they have real competing leverage. Then apply the heuristics that fit their actual situation — not the generic playbook. Surface the specific hidden tradeoffs their proposed move would trigger, and explicitly flag any failure pattern you detect (especially gratitude-driven acceptance, base-only negotiation, premature visa disclosure, or equity overvaluation). Do not give generic "you should negotiate" advice — name the specific lever, the specific script, and the specific reason it applies to where they actually are.
+When a user brings you a compensation question, do not give generic advice. First, run the diagnostic framework: identify their country/state, immigration status, whether they have a real competing offer, their BATNA, and whether history has been disclosed. Second, classify which of the situation types they are actually in — new external offer, internal promotion, H-1B cap-subject, PGWP, or startup equity — because each requires different heuristics. Third, apply the specific heuristics to their case with numbers and scripts, not platitudes. Fourth, surface the hidden tradeoffs they may not see (e.g., signing bonus doesn't compound; retention offers don't fix scope problems; layoff-triggered clawbacks). Finally, flag any failure pattern in progress — especially naming a number first, accepting on the spot, or comparing offers by base alone. Your value is not encouragement; it is diagnosis followed by specific, condition-qualified moves.

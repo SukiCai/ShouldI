@@ -1,0 +1,448 @@
+{
+  "source_file": "nserc_sshrc_cihr_tri_council_funding.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "CGRS-D applicants must not exceed 36 months of full-time doctoral study by December 31 of the application year",
+      "condition": "When a doctoral student is applying for CGRS-D funding",
+      "action": "Submit application before completing 36 months of full-time doctoral enrollment counted to December 31 of the application year",
+      "because": "Exceeding 36 months of doctoral study disqualifies the applicant from CGRS-D eligibility",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Vanier eligibility window closes at 20 months of full-time doctoral study as of May 1 of the application year",
+      "condition": "When a doctoral student is being considered for Vanier Canada Graduate Scholarship nomination",
+      "action": "Ensure candidate has completed no more than 20 months of full-time doctoral study as of May 1 of the application year",
+      "because": "Exceeding 20 months disqualifies the candidate from Vanier eligibility, which has a narrower window than CGRS-D",
+      "regulatory_basis": "Vanier Canada Graduate Scholarships program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "A person may submit a maximum of three lifetime applications for CGRS-D",
+      "condition": "When a doctoral student is planning to apply for CGRS-D",
+      "action": "Track total number of CGRS-D applications submitted across all attempts; do not exceed three",
+      "because": "The three-application lifetime cap is a hard eligibility limit; exceeding it bars further applications",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "CGRS-D applicants who have previously received a doctoral-level scholarship from CIHR, NSERC, or SSHRC are ineligible",
+      "condition": "When a student previously received a doctoral-level award from any of the three Tri-Council agencies",
+      "action": "Do not apply for CGRS-D; eligibility is forfeited",
+      "because": "Prior receipt of any Tri-Council doctoral scholarship is an explicit disqualifying condition for CGRS-D",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Vanier nominees cannot have previously received a doctoral-level scholarship from CIHR, NSERC, or SSHRC",
+      "condition": "When a department is selecting candidates for Vanier nomination",
+      "action": "Confirm candidate has not previously received a doctoral-level Tri-Council scholarship before nominating",
+      "because": "Prior receipt of a Tri-Council doctoral award is an explicit disqualifying condition for Vanier",
+      "regulatory_basis": "Vanier Canada Graduate Scholarships program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "International students may receive up to 15% of available CGRS-D awards",
+      "condition": "When an international student applies for CGRS-D at a Canadian institution",
+      "action": "Verify with the administering agency whether international students are included in the allocation for the relevant discipline",
+      "because": "International students compete within a capped 15% allocation, significantly reducing available awards compared to domestic students",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — eligibility criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "CGRS-D applicants must apply to the single agency matching their primary research discipline",
+      "condition": "When a student is in an interdisciplinary field and determining which Tri-Council agency to apply to",
+      "action": "Submit to one agency only, selected based on primary discipline; NSERC for natural sciences/engineering, SSHRC for social sciences/humanities/arts, CIHR for health research",
+      "because": "Each applicant submits to only one agency; submitting to multiple agencies is not permitted",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — agency assignment rules",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Direct agency CGRS-D submissions are due October 17 at 8:00 PM ET",
+      "condition": "When a student is submitting a CGRS-D application directly to the agency rather than through their institution",
+      "action": "Submit through ResearchNet by October 17 at 8:00 PM ET",
+      "because": "The direct agency deadline is a fixed hard deadline; late submissions are not accepted",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — application deadlines",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Vanier students cannot apply directly; nominations must be submitted by the institution",
+      "condition": "When a student wishes to be considered for a Vanier Canada Graduate Scholarship",
+      "action": "Request consideration from the department/institution, which must nominate the candidate on the student's behalf",
+      "because": "Direct student applications are not accepted; the institution controls nomination eligibility and submission",
+      "regulatory_basis": "Vanier Canada Graduate Scholarships program documentation — process",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "CGRS-D selection criteria are weighted equally: 50% Research Potential, 50% Experience & Achievements",
+      "condition": "When a student is preparing a CGRS-D application",
+      "action": "Allocate equal preparation effort to the research proposal (quality, methodology, significance, originality, ethical conduct, communication) and to documenting achievements (academic record, scholarships, teaching/mentoring, project management, community engagement)",
+      "because": "Both criteria carry equal formal weight in adjudication; neglecting either half disadvantages the application",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — selection criteria",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Up to 10 additional CGRS-D awards are reserved for self-identified Black student researchers",
+      "condition": "When a self-identified Black student researcher is applying for CGRS-D",
+      "action": "Self-identify as a Black student researcher in the application to be considered for the reserved allocation",
+      "because": "A dedicated pool of up to 10 additional awards exists specifically for this group, separate from the general competition",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — special provisions",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Indigenous CGRS-D applicants may receive consideration beyond institutional quotas",
+      "condition": "When an Indigenous applicant is applying for CGRS-D through an institution with a quota",
+      "action": "Note Indigenous status in the application; the application may be considered outside standard institutional quota limits",
+      "because": "Official policy explicitly provides for consideration beyond institutional quotas for Indigenous applicants",
+      "regulatory_basis": "NSERC/SSHRC/CIHR CGRS-D program documentation — special provisions",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "The 2024 budget stipend increases apply only to Tri-Council grant recipients, not to students funded through supervisor research grants",
+      "condition": "When assessing whether a PhD student will benefit from the 2024 federal budget increase to graduate stipends",
+      "action": "Confirm whether the student holds a Tri-Council award; students funded solely through supervisor grants are excluded from the increase",
+      "because": "The CAD $825 million allocation over five years explicitly excludes graduate students funded through supervisor research grants",
+      "regulatory_basis": "Canada 2024 Federal Budget — graduate funding provisions; Chemistry World 2024 reporting",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Months of full-time doctoral study completed at time of application",
+      "why_it_matters": "Determines eligibility for CGRS-D (cap: 36 months by December 31) and Vanier (cap: 20 months as of May 1); exceeding the threshold results in disqualification",
+      "how_to_assess": "Count full-time doctoral enrollment months from program start date to the relevant deadline date specified for each award",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Prior receipt of Tri-Council doctoral scholarship",
+      "why_it_matters": "Disqualifies applicant from both CGRS-D and Vanier; a hard ineligibility condition with no exceptions stated",
+      "how_to_assess": "Confirm whether candidate has ever received a doctoral-level award from CIHR, NSERC, or SSHRC",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Canadian citizenship, permanent residency, or protected person status",
+      "why_it_matters": "Domestic applicants compete in the main pool; international students are limited to 15% of available CGRS-D awards, significantly reducing odds",
+      "how_to_assess": "Verify immigration status at time of application; international students must also confirm enrollment at a Canadian institution",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Research discipline alignment with administering Tri-Council agency",
+      "why_it_matters": "Determines which agency administers the application; submitting to the wrong agency or to multiple agencies is not permitted",
+      "how_to_assess": "Match primary research discipline to agency: NSERC (natural sciences, engineering, math, CS), SSHRC (social sciences, humanities, arts), CIHR (health sciences, biomedical research); for interdisciplinary work, select by primary discipline",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Institutional nomination quota availability (Vanier)",
+      "why_it_matters": "Vanier nominations are institution-controlled and limited in number; a student cannot self-nominate regardless of qualification",
+      "how_to_assess": "Inquire directly with department about whether it nominates Vanier candidates and the number of nominations available to the institution",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Research Potential — proposal quality, methodology, significance, originality, critical thinking, ethical conduct, communication",
+      "why_it_matters": "Constitutes 50% of CGRS-D selection score; directly affects award outcome",
+      "how_to_assess": "Evaluated by adjudication committee against stated sub-criteria: proposal quality, methodology, significance, originality, critical thinking, ethical conduct, communication",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Experience and Achievements — academic record, scholarships, teaching/mentoring, project management, community engagement",
+      "why_it_matters": "Constitutes 50% of CGRS-D selection score; directly affects award outcome",
+      "how_to_assess": "Evaluated by adjudication committee against stated sub-criteria: academic record, prior scholarships received, teaching/mentoring, project management, community engagement",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Lifetime application count for CGRS-D",
+      "why_it_matters": "Students are limited to three lifetime applications; exceeding this forfeits eligibility permanently",
+      "how_to_assess": "Count all previous CGRS-D (and formerly CGS-D/PGS-D/SSHRC Doctoral Fellowship) applications submitted across all institutions",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Leadership ability (Vanier-specific)",
+      "why_it_matters": "One of three equally weighted Vanier selection criteria; absence of demonstrated leadership disqualifies candidates in committee review",
+      "how_to_assess": "Assessed equally alongside academic excellence and research potential; must be demonstrated not inferred",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether student holds a Tri-Council award (for 2024 budget stipend increase)",
+      "why_it_matters": "Only Tri-Council award holders benefit from the 2024 federal budget stipend increases; supervisor-grant-funded students are excluded",
+      "how_to_assess": "Confirm whether student holds CGRS-D, Vanier, CGS-M, or other Tri-Council award at time of stipend disbursement",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Starting a PhD program and delaying CGRS-D application until second or third year",
+      "unstated_consequence": "The 36-month eligibility window is counted to December 31 of the application year; delaying the first application consumes the eligibility window and may leave fewer remaining lifetime applications before the window closes",
+      "who_it_affects": "PhD students who are unaware of the interaction between the 36-month cap and the three-application lifetime limit",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on supervisor research grant funding rather than pursuing Tri-Council awards",
+      "unstated_consequence": "The 2024 federal budget stipend increases (PhD: CAD $40,000/year; postdoc: CAD $70,000/year) explicitly exclude students funded through supervisor research grants; only Tri-Council award holders receive the increase",
+      "who_it_affects": "The majority of graduate students, who are funded through supervisor grants rather than direct Tri-Council awards, per the source text",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Applying for CGRS-D as an international student",
+      "unstated_consequence": "International students compete within a capped 15% allocation of available awards, meaning their effective odds are significantly lower than domestic applicants even with identical qualifications",
+      "who_it_affects": "International doctoral students at Canadian institutions who assume they compete in the same pool as domestic students",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming CGRS-D and CGS-D/PGS-D/SSHRC Doctoral Fellowship are separate programs with separate lifetime limits",
+      "unstated_consequence": "The formerly separate programs (CGS-D, PGS-D, SSHRC Doctoral Fellowship) have been merged into CGRS-D; prior applications under the old names likely count toward the three-application lifetime limit",
+      "who_it_affects": "Returning or continuing doctoral students who applied under predecessor program names and do not realize those applications may count against their lifetime limit",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Pursuing Vanier without confirming institutional nomination capacity",
+      "unstated_consequence": "Students cannot apply directly to Vanier; if the institution does not nominate the student, the award is inaccessible regardless of the student's qualifications",
+      "who_it_affects": "Highly competitive international and domestic students who meet all academic criteria but attend institutions with limited or no nomination slots",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Applying for CGRS-D through an institution with a quota rather than directly to the agency",
+      "unstated_consequence": "Institutional quotas may limit the number of applications the institution forwards to the agency; direct agency submission may be an alternative route but has its own fixed deadline (October 17, 8:00 PM ET)",
+      "who_it_affects": "Students at institutions with tight internal quotas who assume their application will automatically be forwarded",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying for CGRS-D after exceeding 36 months of full-time doctoral study by December 31 of the application year",
+      "why_it_happens": "The 36-month doctoral study cap is a hard eligibility cutoff enforced at the application review stage",
+      "consequence": "Application is deemed ineligible and rejected",
+      "warning_signs": [
+        "Student is in third year of doctoral studies and has not yet applied",
+        "Student loses track of enrollment months due to leaves of absence or part-time transitions"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying for CGRS-D or Vanier after having previously received a doctoral-level Tri-Council scholarship",
+      "why_it_happens": "Prior receipt of any doctoral-level scholarship from CIHR, NSERC, or SSHRC is an explicit disqualifying condition for both awards",
+      "consequence": "Application is deemed ineligible and rejected",
+      "warning_signs": [
+        "Student previously held CGS-D, PGS-D, or SSHRC Doctoral Fellowship under the predecessor programs",
+        "Student received a CIHR doctoral award and then switches disciplines to apply to NSERC"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Submitting a fourth CGRS-D application after having already made three lifetime applications",
+      "why_it_happens": "The three-application lifetime cap is a hard eligibility rule; no exceptions are stated in the program documentation",
+      "consequence": "Application is ineligible",
+      "warning_signs": [
+        "Student has applied in multiple years without success and attempts a fourth application",
+        "Student does not track applications made under predecessor program names"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "International student applies for CGRS-D expecting to compete in the full award pool",
+      "why_it_happens": "International students are capped at 15% of available awards; competition is within a restricted allocation",
+      "consequence": "Significantly reduced probability of award; application may be ineligible if the 15% allocation for the discipline is exhausted",
+      "warning_signs": [
+        "International student assumes equal competition with domestic applicants",
+        "Student does not verify whether their discipline's agency includes international students in the 15% allocation"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Student attempts to self-apply for Vanier instead of seeking institutional nomination",
+      "why_it_happens": "Vanier does not accept direct student applications; the institution must nominate the candidate",
+      "consequence": "Application cannot be submitted; student is excluded from consideration for that cycle",
+      "warning_signs": [
+        "Student attempts to access Vanier application portal independently",
+        "Student does not consult department about nomination process before the institutional nomination deadline"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Interdisciplinary student submits CGRS-D applications to multiple Tri-Council agencies in the same cycle",
+      "why_it_happens": "Program rules require submission to a single agency based on primary discipline; multiple submissions are not permitted",
+      "consequence": "Applications deemed ineligible or disqualified",
+      "warning_signs": [
+        "Student with health-engineering interdisciplinary research attempts to apply to both NSERC and CIHR",
+        "Student is uncertain about primary discipline and hedges by applying to more than one agency"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the applicant completed more than 36 months of full-time doctoral study by December 31 of the application year?",
+      "what_it_reveals": "Tests the doctoral study duration eligibility cap for CGRS-D",
+      "follow_up_if_yes": "Applicant is ineligible for CGRS-D; no further assessment needed",
+      "follow_up_if_no": "Applicant passes this eligibility threshold; proceed to other criteria",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Has the applicant previously received a doctoral-level scholarship from CIHR, NSERC, or SSHRC?",
+      "what_it_reveals": "Tests the prior award disqualification condition applicable to both CGRS-D and Vanier",
+      "follow_up_if_yes": "Applicant is ineligible for both CGRS-D and Vanier",
+      "follow_up_if_no": "Applicant passes this eligibility threshold; proceed to other criteria",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Has the applicant previously submitted three or more CGRS-D (or predecessor CGS-D/PGS-D/SSHRC Doctoral Fellowship) applications?",
+      "what_it_reveals": "Tests the three-application lifetime limit for CGRS-D",
+      "follow_up_if_yes": "Applicant has exhausted lifetime eligibility for CGRS-D",
+      "follow_up_if_no": "Applicant has remaining lifetime applications; proceed to evaluate application content",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant a Canadian citizen, permanent resident, or protected person, or an international student?",
+      "what_it_reveals": "Determines whether the applicant competes in the main pool or within the 15% international student allocation",
+      "follow_up_if_yes": "Domestic applicant competes in main pool",
+      "follow_up_if_no": "International applicant is limited to 15% allocation; verify whether the relevant agency includes international students in that allocation",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is the applicant's primary research discipline — natural sciences/engineering, social sciences/humanities/arts, or health sciences?",
+      "what_it_reveals": "Determines which Tri-Council agency (NSERC, SSHRC, or CIHR) administers the application",
+      "follow_up_if_yes": "Match to appropriate agency and confirm single-agency submission",
+      "follow_up_if_no": "For interdisciplinary applicants, require selection of primary discipline before submission",
+      "country_scope": "canada"
+    },
+    {
+      "question": "For Vanier: Has the applicant completed more than 20 months of full-time doctoral study as of May 1 of the application year?",
+      "what_it_reveals": "Tests the doctoral study duration eligibility cap specific to Vanier, which is narrower than CGRS-D",
+      "follow_up_if_yes": "Applicant is ineligible for Vanier; may still be eligible for CGRS-D if within 36-month window",
+      "follow_up_if_no": "Applicant passes Vanier eligibility threshold; confirm institution is willing and able to nominate",
+      "country_scope": "canada"
+    },
+    {
+      "question": "For Vanier: Does the applicant's institution have available nomination slots, and has the department confirmed willingness to nominate the candidate?",
+      "what_it_reveals": "Tests whether the institutional nomination gate is accessible to the student",
+      "follow_up_if_yes": "Candidate may proceed with nomination process through institution",
+      "follow_up_if_no": "Candidate cannot access Vanier regardless of academic qualifications; no alternative self-application route exists",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the applicant hold a Tri-Council award (CGRS-D, Vanier, CGS-M, or equivalent)?",
+      "what_it_reveals": "Determines whether the applicant benefits from the 2024 federal budget stipend increases",
+      "follow_up_if_yes": "Applicant is eligible for new stipend levels (PhD: CAD $40,000/year; postdoc: CAD $70,000/year)",
+      "follow_up_if_no": "Applicant funded through supervisor grants is excluded from the 2024 budget increase",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the applicant self-identify as a Black student researcher?",
+      "what_it_reveals": "Determines eligibility for the reserved pool of up to 10 additional CGRS-D awards for Black student researchers",
+      "follow_up_if_yes": "Applicant should self-identify in the application to be considered for the dedicated award pool",
+      "follow_up_if_no": "Applicant competes in the general pool; no access to the reserved 10 awards",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant Indigenous?",
+      "what_it_reveals": "Determines whether the applicant may receive consideration beyond standard institutional quotas under CGRS-D special provisions",
+      "follow_up_if_yes": "Applicant may be considered outside institutional quota limits; confirm this provision applies to the relevant agency stream",
+      "follow_up_if_no": "Applicant subject to standard institutional quota rules",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The 2024 federal budget increase to graduate student stipends benefits all Canadian PhD students",
+      "actual_reality": "The CAD $825 million increase exclusively benefits Tri-Council award holders; the majority of graduate students funded through supervisor research grants are explicitly excluded",
+      "implication": "Students and advisors should not assume PhD offers will automatically reflect the new stipend targets unless the student holds or will hold a Tri-Council award",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "CGS-D, PGS-D, and SSHRC Doctoral Fellowship are separate programs with separate application histories",
+      "actual_reality": "All three have been merged into the unified CGRS-D program; they are no longer distinct programs",
+      "implication": "Students who previously applied under the old program names should treat those applications as part of their CGRS-D history, particularly regarding the three-application lifetime limit",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Any qualified student can apply directly to Vanier",
+      "actual_reality": "Students cannot apply directly to Vanier; the institution must nominate the candidate, and the number of nominations per institution is limited",
+      "implication": "Qualifying for Vanier requires both meeting eligibility criteria and securing an institutional nomination, which is a separate gatekeeping step entirely outside the student's direct control",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "International students compete equally with domestic students for CGRS-D awards",
+      "actual_reality": "International students are allocated up to 15% of available CGRS-D awards, a formally capped and separate allocation from the main pool",
+      "implication": "International students face structurally lower odds of receiving CGRS-D regardless of application quality; funding strategy for international PhD students in Canada must account for this limitation",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "CGRS-D and Vanier have the same eligibility window for doctoral study duration",
+      "actual_reality": "CGRS-D allows up to 36 months of doctoral study by December 31; Vanier requires no more than 20 months as of May 1 — a significantly narrower window measured to an earlier date",
+      "implication": "Students competitive enough for Vanier must be nominated earlier in their doctoral program; missing the 20-month window eliminates Vanier eligibility even if the student remains eligible for CGRS-D",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A student can apply to multiple Tri-Council agencies if their research is interdisciplinary",
+      "actual_reality": "Applicants must submit to a single agency based on their primary research discipline; multiple submissions are not permitted",
+      "implication": "Interdisciplinary students must make a deliberate, binding determination of primary discipline before submitting and cannot hedge across agencies",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Tri-Council doctoral awards represent the standard funding level for Canadian PhD students",
+      "actual_reality": "Per Professor Bruce Arndtsen (McGill), many departments had to top up these fellowships from research grants simply to reach their normal stipend level, suggesting Tri-Council award values have historically been below institutional norms in some fields",
+      "implication": "Prospective students should not treat the CGRS-D CAD $40,000/year value as automatically sufficient or above-market for their discipline and institution",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the eligibility window for CGRS-D vs. Vanier",
+      "naive_pattern": "Assumes both awards have the same application window; plans to apply 'in the first few years' without tracking exact months",
+      "informed_pattern": "Tracks months of full-time doctoral enrollment precisely; knows CGRS-D closes at 36 months to December 31 and Vanier closes at 20 months to May 1, and plans application cycles accordingly from day one of enrollment",
+      "why_it_matters": "Missing the Vanier window by even one month forfeits the most prestigious Canadian doctoral scholarship permanently; missing CGRS-D window forfeits up to CAD $120,000",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Approach to the 2024 budget stipend increase",
+      "naive_pattern": "Assumes PhD offers will automatically reflect the new CAD $40,000/year target after the 2024 budget announcement",
+      "informed_pattern": "Knows the increase applies only to Tri-Council award holders; explicitly asks departments what percentage of students receive Tri-Council funding and what non-award students are paid",
+      "why_it_matters": "Most PhD students are funded through supervisor grants and will not see the increase; salary negotiation and program comparison must be based on actual offer terms, not budget announcements",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Vanier nomination strategy",
+      "naive_pattern": "Researches Vanier eligibility criteria and assumes the path is to build a strong application and submit it",
+      "informed_pattern": "Knows students cannot self-apply; proactively asks the department whether it nominates Vanier candidates and whether the student would be considered, before or at admission — understanding that institutional gate-keeping is the binding constraint",
+      "why_it_matters": "A student who does not secure a nomination cannot access Vanier regardless of qualifications; the nomination process must be initiated by the student asking the institution, not by submitting an application",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Agency selection for interdisciplinary research",
+      "naive_pattern": "Applies to both NSERC and CIHR (or SSHRC and CIHR) for an interdisciplinary project, believing multiple submissions increase chances",
+      "informed_pattern": "Knows only a single agency submission is permitted; deliberately identifies and commits to primary discipline for agency selection before the application cycle opens",
+      "why_it_matters": "Multiple submissions are not permitted; submitting to the wrong or multiple agencies risks disqualification and wastes a lifetime application",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Impact of prior Tri-Council awards on future eligibility",
+      "naive_pattern": "Views receiving a CGS-M or other Master's-level Tri-Council award as purely positive without considering downstream doctoral eligibility effects",
+      "informed_pattern": "Knows that prior receipt of a doctoral-level (not Master's-level) Tri-Council scholarship disqualifies future CGRS-D and Vanier applications; tracks award history carefully to confirm no doctoral-level award has been received",
+      "why_it_matters": "Receiving a doctoral-level Tri-Council award forfeits all future CGRS-D and Vanier eligibility permanently; students must understand which award tier triggers disqualification",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "International student CGRS-D competition structure",
+      "naive_pattern": "International student views CGRS-D as a standard open competition and benchmarks odds against overall acceptance rates",
+      "informed_pattern": "Knows international students compete within a formally capped 15% allocation; adjusts award probability estimates accordingly and verifies whether the relevant agency includes international students in that allocation for the specific discipline",
+      "why_it_matters": "Overestimating CGRS-D odds leads to insufficient backup funding planning; international students need alternative funding strategies that account for the structural 15% cap",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_nserc_sshrc_cihr_tri_council_funding",
+  "_source_regions": [
+    "canada"
+  ]
+}

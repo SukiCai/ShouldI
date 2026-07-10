@@ -1,0 +1,112 @@
+{
+  "source_file": "zhihu_海外PhD申请中_如何选择导师.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Email a professor directly before applying to confirm they are accepting new students",
+      "condition": "When identifying potential PhD advisors through school websites...",
+      "action": "Send a cold email (套磁) to gauge interest and confirm available slots before investing application effort",
+      "because": "Not every professor accepts new students each cycle, and spots are typically limited — confirmed by the commenter as common practice",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor availability and student quota",
+      "why_it_matters": "A professor may be a perfect research fit but have no open slots, making the application futile regardless of qualifications",
+      "how_to_assess": "Direct email outreach before or during application season to ask explicitly about availability",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [],
+  "failure_patterns": [
+    {
+      "pattern": "Applying to advisors without confirming they are accepting students",
+      "why_it_happens": "Applicants assume any listed faculty member on a department website is automatically recruiting — the website rarely flags closed labs",
+      "consequence": "Wasted application fees and time; no response or automatic rejection due to advisor having no capacity",
+      "warning_signs": [
+        "Applicant lists professors solely based on research topic match without any prior contact",
+        "Applicant sends mass applications without personalization or prior outreach"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you confirmed that your target advisor is actively recruiting new PhD students this cycle?",
+      "what_it_reveals": "Whether the application is viable regardless of research fit or qualifications",
+      "follow_up_if_yes": "Proceed with tailored application materials; reference the communication in your SOP",
+      "follow_up_if_no": "Send a 套磁 email first before committing application resources to that program",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any professor listed on a department website is available to take new PhD students",
+      "actual_reality": "Professors have limited student quotas and may not be recruiting in a given year; availability must be confirmed directly",
+      "implication": "Applicants should treat advisor availability verification as a prerequisite step, not an afterthought",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Advisor selection process",
+      "naive_pattern": "Searches school rankings or professor profiles, finds research fit, applies directly without contact",
+      "informed_pattern": "Uses research fit as a first filter, then proactively emails shortlisted professors to confirm availability and gauge mutual interest before finalizing application list",
+      "why_it_matters": "Skipping pre-contact wastes application resources on labs that are not recruiting and misses the signal-value of a warm reply that increases admission probability",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Using an AI-powered bulk matching service that generates 50+ advisor leads will significantly improve your admission outcomes",
+      "why_believed": "The framing borrows legitimacy from 'big data' and 'AI' language and promises efficiency gains over manual search, which appeals to time-pressured applicants",
+      "actual_rule": "PhD admission is fundamentally relationship-driven; a small number of well-researched, personalized outreach emails to genuinely relevant advisors outperforms mass-matched cold contacts in both reply rate and admission success",
+      "real_consequence": "Applicants pay for a service that generates low-quality, potentially outdated leads; mass 套磁 emails signal lack of genuine interest to professors and reduce reply rates",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [],
+  "psychological_barriers": [
+    {
+      "trigger": "Applicant feels overwhelmed by the scale of the advisor search and turns to bulk AI matching services",
+      "underlying_state": "Decision paralysis and fear of missing a better option — the search space feels unmanageable so any system that promises to handle it feels reassuring",
+      "how_it_manifests": "Outsourcing the selection process entirely to a third-party tool or agency rather than doing targeted research, mistaking volume of leads for quality of fit",
+      "expert_move": "Reframe the task: PhD advisor selection is not a search problem to be solved by coverage — it is a fit problem solved by depth. Narrow to 5–10 genuinely relevant professors and invest in understanding their recent work before any outreach.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_海外PhD申请中_如何选择导师",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

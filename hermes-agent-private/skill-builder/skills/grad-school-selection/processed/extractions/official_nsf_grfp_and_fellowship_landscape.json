@@ -1,0 +1,319 @@
+{
+  "source_file": "nsf_grfp_and_fellowship_landscape.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Apply for NSF GRFP in senior year of undergraduate study",
+      "condition": "When a US citizen, national, or permanent resident is in their final year of undergraduate study and intends to pursue a STEM PhD",
+      "action": "Submit NSF GRFP application before PhD enrollment to avoid the 12-month enrollment restriction",
+      "because": "NSF GRFP eligibility requires that the applicant has not been enrolled in a PhD program for more than 12 months at time of application; applying as a senior undergrad avoids this restriction entirely",
+      "regulatory_basis": "NSF GRFP official documentation — eligibility criteria",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Verify program CIP code with DSO before accepting admission offer",
+      "condition": "When an international student on F-1 is evaluating graduate programs and post-graduation work authorization",
+      "action": "Confirm the specific CIP code of the degree program with the Designated School Official (DSO) prior to accepting, not after",
+      "because": "STEM OPT extension (24 additional months) is available only for degrees on the STEM Designated Degree Program List as determined by CIP code, not program name; the difference is 12 months vs. 36 months of OPT",
+      "regulatory_basis": "ICE/SEVP STEM Designated Degree Program List; standard OPT 12 months, STEM OPT extension 24 months",
+      "country_scope": "us"
+    },
+    {
+      "rule": "International PhD students must negotiate harder on institutional fellowship packages",
+      "condition": "When an international student is negotiating a PhD funding offer",
+      "action": "Explicitly ask each program what fellowship support is available to international students, and treat comparable domestic/international packages as effectively underfunding the international student",
+      "because": "International students cannot access the federal fellowship pool (NSF GRFP, NIH NRSA, NDSEG, SMART, Ford Foundation) that domestic students can, creating a structural funding asymmetry",
+      "regulatory_basis": "NSF GRFP, NIH NRSA, NDSEG, SMART Scholarship, Ford Foundation Predoctoral Fellowship — citizenship/residency eligibility requirements",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Ask explicitly whether GRFP stipend is additive or substitutive before using fellowship as negotiating leverage",
+      "condition": "When a GRFP winner is negotiating with a PhD program",
+      "action": "Ask the department directly whether the GRFP $37,000 stipend and $16,000 cost-of-education allowance are additive to the standard package or substitute for department funding",
+      "because": "Not all departments count GRFP stipend toward their standard package; failure to ask may result in no net financial gain despite winning the fellowship",
+      "regulatory_basis": "NSF GRFP official documentation — strategic implications",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Check for block grants and training grants at target programs",
+      "condition": "When a domestic STEM PhD applicant is evaluating funding at target programs",
+      "action": "Ask whether the program has NSF, NIH, or DoD training grants that provide guaranteed fellowship support to incoming students",
+      "because": "Block grants provide guaranteed institutional fellowship support independent of advisor grant availability, reducing funding risk",
+      "regulatory_basis": "NSF GRFP and federal fellowship program official documentation — fellowship strategy section",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Citizenship/immigration status",
+      "why_it_matters": "Determines eligibility for all major US federal fellowship programs; international students on F-1/J-1 are excluded from NSF GRFP, NIH NRSA, NDSEG, SMART Scholarship, Hertz Foundation, and Ford Foundation Predoctoral Fellowship",
+      "how_to_assess": "US citizen, national, or permanent resident = eligible for federal fellowships; F-1/J-1 visa holders = excluded from all listed federal programs",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Enrollment duration at time of NSF GRFP application",
+      "why_it_matters": "Applicants enrolled in a PhD program for more than 12 months at time of application are ineligible for NSF GRFP",
+      "how_to_assess": "Count months of PhD enrollment at time of application submission; must be 12 months or fewer, or not yet enrolled (final-year undergrad)",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Degree program CIP code",
+      "why_it_matters": "Determines whether an international student qualifies for 24-month STEM OPT extension; program name is not determinative — only the CIP code matters",
+      "how_to_assess": "Verify specific CIP code with DSO against the ICE/SEVP STEM Designated Degree Program List; e.g., Computer Science CIP 11.07xx qualifies, Information Systems CIP 52.12xx does not",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Availability of institutional fellowships not tied to citizenship",
+      "why_it_matters": "For international students who cannot access federal fellowships, institutional fellowships are the primary non-RA/TA funding source",
+      "how_to_assess": "Ask each program explicitly what fellowship support is available to international students and whether any departmental fellowships are citizenship-neutral",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether GRFP stipend is additive or substitutive",
+      "why_it_matters": "A GRFP award may not increase net funding if the department substitutes department funding with the fellowship amount",
+      "how_to_assess": "Ask the program directly; there is no uniform policy — varies by department",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Field of study for NDSEG eligibility",
+      "why_it_matters": "NDSEG is restricted to specific enumerated STEM fields; applicants in non-listed fields are ineligible regardless of citizenship",
+      "how_to_assess": "Check whether the applicant's field is in the NDSEG list: aeronautical/astronautical engineering, biosciences, chemical engineering, chemistry, cognitive neuroscience, computer science, electrical engineering, geosciences, materials science, mathematics, mechanical engineering, naval architecture/ocean engineering, oceanography, physics",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Prior receipt of a federal graduate fellowship",
+      "why_it_matters": "Prior receipt of a federal graduate fellowship disqualifies an applicant from NSF GRFP",
+      "how_to_assess": "Has the applicant previously received any federal graduate fellowship? If yes, GRFP is not available",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "RA vs. TA funding source",
+      "why_it_matters": "RA funding is tied to advisor's grant availability (variable risk); TA funding is institutionally guaranteed; understanding the risk profile differs for planning and visa status stability",
+      "how_to_assess": "Ask the program directly whether funding is through RA (grant-dependent) or TA (institutionally guaranteed); evaluate advisor's grant status",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a PhD offer with a package comparable to domestic students' offers",
+      "unstated_consequence": "International students receiving packages equivalent to domestic students are structurally underfunded because domestic peers can supplement with NSF GRFP ($37,000/year), NIH NRSA, NDSEG, or other federal fellowships that international students cannot access",
+      "who_it_affects": "International PhD students in STEM fields at programs that do not differentiate institutional offers by citizenship eligibility",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Winning NSF GRFP and enrolling in a PhD program",
+      "unstated_consequence": "The financial benefit of GRFP may be zero if the department treats the fellowship as substitutive rather than additive to the standard package; the $37,000 GRFP stipend may simply replace department funding rather than supplement it",
+      "who_it_affects": "GRFP winners who do not explicitly ask about department policy before enrollment",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Selecting a graduate program based on program name or reputation without verifying CIP code",
+      "unstated_consequence": "A degree program with a STEM-sounding name (e.g., Information Systems) may not qualify for STEM OPT extension if its CIP code falls outside the STEM Designated Degree Program List, limiting post-graduation work authorization to 12 months instead of 36 months",
+      "who_it_affects": "International students on F-1 visas in interdisciplinary or business-adjacent technology programs",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Applying to NSF GRFP in first year of PhD rather than as a senior undergrad",
+      "unstated_consequence": "Using the first-year application as the first attempt consumes one of only two eligible application windows; a rejection in year one leaves only year two (second and final eligible window), with no recovery opportunity",
+      "who_it_affects": "US citizen/PR STEM students who delay their first GRFP application until after enrollment",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Accepting SMART Scholarship",
+      "unstated_consequence": "SMART Scholarship requires a post-graduation DoD employment commitment and summer internship obligations; recipients are not free to pursue academic or private-sector employment until the service commitment is fulfilled",
+      "who_it_affects": "STEM PhD students who accept SMART Scholarship without accounting for post-graduation career constraints",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "International student applies for NSF GRFP",
+      "why_it_happens": "NSF GRFP explicitly requires US citizenship, national status, or permanent residency; F-1/J-1 visa holders do not meet the citizenship eligibility requirement",
+      "consequence": "Application ineligible; disqualification from NSF GRFP funding",
+      "warning_signs": [
+        "Student is on F-1 or J-1 visa",
+        "Student assumes GRFP is open to all enrolled PhD students"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "PhD applicant applies to NSF GRFP after being enrolled for more than 12 months",
+      "why_it_happens": "GRFP eligibility explicitly bars applicants who have been enrolled in a PhD program for more than 12 months at time of application",
+      "consequence": "Application ineligible; permanent loss of GRFP eligibility if second-year window is also missed",
+      "warning_signs": [
+        "Student has been in PhD program for over one year without applying",
+        "Student was unaware of the 12-month enrollment restriction"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "International student discovers post-enrollment that their degree program CIP code does not qualify for STEM OPT extension",
+      "why_it_happens": "STEM OPT eligibility is determined by ICE/SEVP CIP code designation, not program name; students who do not verify CIP code with DSO before enrollment may be in non-qualifying programs",
+      "consequence": "Loss of 24-month STEM OPT extension; post-graduation work authorization limited to 12 months standard OPT",
+      "warning_signs": [
+        "Student enrolled in an interdisciplinary or business-adjacent technology program",
+        "Student relied on program name rather than CIP code to assess STEM OPT eligibility",
+        "Student did not consult DSO before accepting offer"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Applicant who has previously received a federal graduate fellowship applies for NSF GRFP",
+      "why_it_happens": "GRFP eligibility explicitly bars applicants who have previously received a federal graduate fellowship",
+      "consequence": "Application ineligible; disqualification from NSF GRFP",
+      "warning_signs": [
+        "Student previously held an NDSEG, SMART, or other federal graduate fellowship",
+        "Student did not check prior award history against GRFP exclusion criteria"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the applicant a US citizen, national, or permanent resident?",
+      "what_it_reveals": "Eligibility for NSF GRFP, NIH NRSA, NDSEG, SMART Scholarship, Ford Foundation, and Hertz Foundation fellowships",
+      "follow_up_if_yes": "Proceed to evaluate enrollment duration and field eligibility for specific federal fellowship programs",
+      "follow_up_if_no": "Applicant is excluded from all major US federal fellowship programs; focus on institutional fellowships, home country funding, and field-specific non-citizenship-restricted awards",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the applicant been enrolled in a PhD program for more than 12 months at the time of NSF GRFP application?",
+      "what_it_reveals": "NSF GRFP enrollment-duration eligibility",
+      "follow_up_if_yes": "Applicant is ineligible for NSF GRFP; assess whether second-year window was already used",
+      "follow_up_if_no": "Applicant may be eligible; confirm no prior federal fellowship receipt",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the applicant previously received a federal graduate fellowship?",
+      "what_it_reveals": "NSF GRFP prior-award disqualification criterion",
+      "follow_up_if_yes": "Applicant is ineligible for NSF GRFP",
+      "follow_up_if_no": "Prior-award criterion does not bar application; proceed to other eligibility checks",
+      "country_scope": "us"
+    },
+    {
+      "question": "What is the CIP code of the degree program the international student is considering, and is it on the ICE/SEVP STEM Designated Degree Program List?",
+      "what_it_reveals": "Eligibility for 24-month STEM OPT extension, which determines total post-graduation work authorization (12 months vs. 36 months)",
+      "follow_up_if_yes": "Student is eligible for STEM OPT extension; standard OPT 12 months + STEM OPT 24 months = 36 months total",
+      "follow_up_if_no": "Student limited to 12 months standard OPT; immigration planning must account for shorter work authorization window",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the department treat GRFP stipend as additive or substitutive relative to the standard funding package?",
+      "what_it_reveals": "Net financial benefit of GRFP to the student; determines whether GRFP award translates into higher actual compensation",
+      "follow_up_if_yes": "GRFP is additive; student receives full GRFP stipend on top of standard package",
+      "follow_up_if_no": "GRFP is substitutive; student receives no net financial gain from GRFP award beyond potentially freeing up negotiating leverage on non-stipend dimensions",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the applicant's field on the NDSEG eligible fields list?",
+      "what_it_reveals": "NDSEG fellowship eligibility; only specific enumerated STEM fields qualify",
+      "follow_up_if_yes": "Applicant may be eligible for NDSEG if also a US citizen or national (not permanent resident)",
+      "follow_up_if_no": "Applicant is ineligible for NDSEG regardless of citizenship",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does the target PhD program have institutional fellowships not tied to citizenship status?",
+      "what_it_reveals": "Whether international students have access to non-RA/TA funding that domestic students access through federal fellowships",
+      "follow_up_if_yes": "International student may be able to partially close the fellowship funding gap relative to domestic peers",
+      "follow_up_if_no": "International student is dependent entirely on RA/TA funding with no fellowship supplement; negotiate accordingly",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the applicant an immigrant or child of immigrants who is a permanent resident or US citizen?",
+      "what_it_reveals": "Eligibility for Paul & Daisy Soros Fellowship for New Americans, which is one of the few prestigious fellowships accessible to eligible immigrants",
+      "follow_up_if_yes": "Applicant may qualify for Paul & Daisy Soros Fellowship; verify specific eligibility criteria",
+      "follow_up_if_no": "Soros Fellowship is not available; focus on other eligible fellowship categories",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A GRFP award automatically means more money in the PhD student's pocket",
+      "actual_reality": "Not all departments count GRFP stipend toward their standard package; some treat it as substitutive, meaning the $37,000 GRFP stipend replaces department funding rather than supplementing it, resulting in zero net financial gain",
+      "implication": "GRFP winners must explicitly ask programs about additive vs. substitutive policy before relying on the fellowship to increase net compensation",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "A STEM-named degree program automatically qualifies for STEM OPT extension",
+      "actual_reality": "STEM OPT eligibility is determined solely by the program's CIP code against the ICE/SEVP STEM Designated Degree Program List; program name is irrelevant — e.g., Information Systems (CIP 52.12xx) is a business program and does not qualify despite sounding like a STEM field",
+      "implication": "International students must verify the specific CIP code with their DSO before accepting an offer, not after; post-enrollment discovery of ineligibility cannot be remedied",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "International PhD students face the same fellowship landscape as domestic students and should negotiate similarly",
+      "actual_reality": "International students on F-1/J-1 are excluded from NSF GRFP, NIH NRSA, NDSEG, SMART Scholarship, Ford Foundation, and Hertz Foundation fellowships; domestic students can supplement institutional packages with these federal awards, creating a structural funding asymmetry",
+      "implication": "A department offering identical packages to domestic and international students is effectively underfunding international students; international students should negotiate harder on institutional funding",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "NDSEG is open to all US permanent residents as well as citizens",
+      "actual_reality": "NDSEG is restricted to US citizens or nationals only; permanent residents are NOT eligible — unlike NSF GRFP and NIH NRSA which include permanent residents",
+      "implication": "Permanent residents should not include NDSEG in their fellowship strategy and must rely on NSF GRFP, NIH NRSA, and other PR-eligible programs",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Applying for NSF GRFP is best done once enrolled in a PhD program",
+      "actual_reality": "Applying in the final year of undergraduate study is explicitly allowed and is strategically advantageous in some fields; it also avoids consuming the first of only two eligible application windows post-enrollment",
+      "implication": "Domestic STEM students should apply for GRFP as senior undergraduates to preserve a second attempt in year one of PhD if needed",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The SMART Scholarship is a straightforward fellowship with no post-award obligations",
+      "actual_reality": "SMART Scholarship requires a DoD employment commitment after graduation and summer internship participation; recipients cannot freely pursue academic or private-sector careers until the service obligation is fulfilled",
+      "implication": "Applicants must assess post-graduation career plans before accepting SMART Scholarship; the service commitment is a binding condition",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding who can access federal fellowships",
+      "naive_pattern": "Assumes all PhD students at a program compete equally for the same fellowships; does not distinguish citizenship eligibility",
+      "informed_pattern": "Knows that NSF GRFP, NIH NRSA, NDSEG, SMART, Ford Foundation, and Hertz are all restricted to US citizens/nationals/PRs (with NDSEG excluding PRs); treats international and domestic fellowship landscapes as structurally distinct",
+      "why_it_matters": "International students who assume equal fellowship access will under-negotiate institutional funding and may be materially worse off than domestic peers with equivalent institutional offers",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Evaluating STEM OPT eligibility",
+      "naive_pattern": "Assumes any program with 'STEM' or 'technology' in the name qualifies for the 24-month STEM OPT extension; verifies after enrollment",
+      "informed_pattern": "Knows that STEM OPT eligibility is determined by CIP code on the ICE/SEVP STEM Designated Degree Program List, not program name; verifies CIP code with DSO before accepting offer",
+      "why_it_matters": "Post-enrollment discovery that a program does not qualify for STEM OPT limits work authorization to 12 months and cannot be remedied; the difference is 12 months vs. 36 months of legal work authorization",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Using GRFP as negotiating leverage",
+      "naive_pattern": "Assumes GRFP win automatically translates to higher net compensation and uses it as leverage without asking about department policy",
+      "informed_pattern": "Knows that GRFP stipend may be substitutive rather than additive at some departments; explicitly asks whether GRFP is additive or substitutive before using it as financial leverage, and pivots to negotiating on conference travel, summer funding, or advisor match if substitutive",
+      "why_it_matters": "A GRFP winner who does not ask may receive zero net financial benefit from the fellowship if the department offsets its funding accordingly",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Timing of NSF GRFP application",
+      "naive_pattern": "Waits until enrolled in PhD program to apply for GRFP, treating enrollment as a prerequisite",
+      "informed_pattern": "Knows GRFP can be applied for in the final year of undergraduate study; applies as a senior undergrad to use the first of two eligible windows before the 12-month enrollment clock begins",
+      "why_it_matters": "Applying as a senior undergrad preserves a full second attempt in year one of PhD; failing to do so means a year-one rejection leaves only one remaining eligible window with no further recovery",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Advising international students on fellowship options",
+      "naive_pattern": "Points international students to the same federal fellowship list as domestic students; does not flag citizenship restrictions",
+      "informed_pattern": "Immediately identifies that federal fellowships are citizenship-restricted and redirects international students toward institutional fellowships, home country funding programs, Paul & Daisy Soros (for eligible immigrants/PRs), and field-specific non-citizenship-restricted awards",
+      "why_it_matters": "International students who apply for federal fellowships they are ineligible for waste application effort and may miss deadlines for programs they do qualify for",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "official_nsf_grfp_and_fellowship_landscape",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

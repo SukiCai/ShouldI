@@ -1,0 +1,420 @@
+{
+  "source_file": "ontario_and_provincial_fellowships.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "OGS requires a minimum A− (80%) average over the preceding two full-time years of study",
+      "condition": "When a graduate student at an Ontario university applies for the Ontario Graduate Scholarship",
+      "action": "Applicant must demonstrate a minimum A− (80%) average over the preceding two full-time years of study and be enrolled full-time",
+      "because": "Failure to meet the academic threshold makes the applicant ineligible regardless of other qualifications",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities OGS program page; University of Toronto SGS OGS page",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "OGS is capped at 2 awards at master's level and 4 awards at doctoral level",
+      "condition": "When a student has already received OGS funding at the master's or doctoral level",
+      "action": "Master's students must not exceed 2 OGS awards (before end of 2nd year); doctoral students must not exceed 4 OGS awards (before end of 5th year)",
+      "because": "Exceeding these limits renders the student ineligible for additional OGS funding",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities OGS program page",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "OGS cannot be combined with other Ontario government student assistance in the same period",
+      "condition": "When a student holds or is applying for other Ontario government student assistance concurrently with OGS",
+      "action": "Student must not hold OGS simultaneously with other Ontario government student assistance in the same period",
+      "because": "Simultaneous receipt of OGS and other Ontario government student assistance is prohibited",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities OGS program page",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Students cannot hold OGS and QEII-GSST simultaneously",
+      "condition": "When a STEM student at an Ontario university is eligible for both OGS and QEII-GSST",
+      "action": "Student must choose one award; holding both simultaneously is not permitted",
+      "because": "Concurrent receipt of OGS and QEII-GSST is explicitly prohibited",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities / institutional pages for QEII-GSST",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "International students on study permits are eligible for OGS through a separate institutional allocation",
+      "condition": "When an international student on a study permit at an Ontario university applies for OGS",
+      "action": "Student may apply; institutions receive a set allocation specifically for international students, typically 15–30% of total OGS allocations",
+      "because": "OGS eligibility explicitly extends to international students on study permits, but through a distinct allocation pool that varies by institution",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities OGS program page",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "OGS application must be submitted through the institution's graduate studies office within the institution's internal deadline",
+      "condition": "When a student intends to apply for OGS for the following academic year",
+      "action": "Apply through the institution's graduate studies office during the typical October–November application period; follow the institution's internal deadline",
+      "because": "Each institution sets its own internal deadline and selection process within provincial requirements; missing the institutional deadline forfeits eligibility for that cycle",
+      "regulatory_basis": "Ontario Ministry of Colleges and Universities OGS program page; institutional SGS pages",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "BC PNP International Post-Graduate Category allows PhD and master's graduates from BC institutions to apply for provincial nomination without a job offer",
+      "condition": "When an international graduate (PhD or master's) has graduated from a BC institution and seeks permanent residence",
+      "action": "Applicant may apply for BC PNP provincial nomination toward permanent residence with no job offer required",
+      "because": "The BC PNP International Post-Graduate Category explicitly waives the job offer requirement for qualifying graduates",
+      "regulatory_basis": "BC PNP International Post-Graduate Category (official BC provincial nominee program)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "CGRS-D holders may still be eligible for OGS top-up depending on institutional policy",
+      "condition": "When a student holds a CGRS-D and is enrolled at an Ontario university",
+      "action": "Check with the institution whether OGS top-up is available; eligibility varies by institution",
+      "because": "Stacking rules between OGS and CGRS-D are institution-dependent, not uniformly prohibited at the provincial level",
+      "regulatory_basis": "University of Toronto SGS OGS page; Queen's, York, Western institutional pages",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Vanier holders typically receive an institution top-up instead of OGS",
+      "condition": "When a student holds a Vanier Canada Graduate Scholarship and is enrolled at an Ontario university",
+      "action": "Expect an institutional top-up rather than OGS; confirm with the institution",
+      "because": "Vanier holders are typically directed to institutional top-up mechanisms rather than OGS allocation",
+      "regulatory_basis": "University of Toronto SGS OGS page; institutional pages",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Academic average (minimum A− / 80%)",
+      "why_it_matters": "Determines basic eligibility for OGS; students below this threshold are ineligible regardless of other qualifications",
+      "how_to_assess": "Calculate GPA over the preceding two full-time years of study; must meet or exceed A− (80%)",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Full-time enrollment status",
+      "why_it_matters": "OGS requires full-time enrollment; part-time students are ineligible",
+      "how_to_assess": "Confirm enrollment classification with the institution's graduate studies office",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Citizenship and immigration status",
+      "why_it_matters": "OGS is open to Canadian citizens, permanent residents, and international students on study permits; however, international students compete within a separate, smaller allocation (typically 15–30% of total)",
+      "how_to_assess": "Confirm status category; international students should verify whether their institution has an international OGS allocation",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Institutional OGS allocation size for international students",
+      "why_it_matters": "The number of OGS awards available to international students varies by institution (typically 15–30% of total allocations); a smaller allocation means higher competition for international applicants",
+      "how_to_assess": "Ask the institution's graduate studies office for the specific international student OGS allocation",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Research record (publications, conference presentations, awards)",
+      "why_it_matters": "Explicitly identified as a competitiveness factor for OGS selection beyond the minimum GPA threshold",
+      "how_to_assess": "Assess number and quality of publications, presentations, and prior awards relative to peers in the same program",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Research statement quality",
+      "why_it_matters": "Explicitly identified as a competitiveness factor for OGS selection",
+      "how_to_assess": "Evaluate whether the research statement is compelling and clearly articulated within the institutional application",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Stage of study relative to OGS award limits",
+      "why_it_matters": "Master's students become ineligible after 2 OGS awards or end of 2nd year; doctoral students after 4 OGS awards or end of 5th year",
+      "how_to_assess": "Count prior OGS awards received and current year of study against the applicable limits",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Field of study (STEM vs. non-STEM) for QEII-GSST eligibility",
+      "why_it_matters": "QEII-GSST is specifically for STEM fields; non-STEM students are ineligible for this award",
+      "how_to_assess": "Confirm field of study qualifies as STEM under QEII-GSST program definition at the target institution",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Province of enrollment (Ontario vs. BC vs. Quebec vs. Alberta)",
+      "why_it_matters": "Provincial award availability, amounts, and eligibility rules differ significantly by province; Ontario has the most developed ecosystem (OGS, QEII-GSST); Quebec has FRQSC/FRQNT; BC and Alberta have separate programs",
+      "how_to_assess": "Identify the province of the target institution and research available provincial awards specific to that province",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Supervisor top-up policy",
+      "why_it_matters": "Supervisor top-up is identified as a variable component of total PhD compensation; total annual funding ranges shift substantially based on whether a supervisor contributes top-up",
+      "how_to_assess": "Ask directly during admission: 'Does the supervisor top up federal or provincial awards?'",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Institutional base funding package",
+      "why_it_matters": "Base stipend for funded PhD admits ranges from $18,000–$30,000/year across Ontario institutions; this is the floor before any awards are applied",
+      "how_to_assess": "Ask directly: 'What is the base funding package for incoming PhD students in this program?'",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "French language ability for Quebec provincial awards",
+      "why_it_matters": "FRQSC and FRQNT are primarily for Quebec residents or students at Quebec institutions; French language ability is described as an asset for these awards",
+      "how_to_assess": "Assess French proficiency; confirm whether the target program is English-stream (where French is not always required)",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing OGS over QEII-GSST (or vice versa) as a STEM student",
+      "unstated_consequence": "STEM students at Ontario universities who qualify for both OGS and QEII-GSST must choose one; holding both simultaneously is prohibited. Students may not realize QEII-GSST availability varies by institution, meaning the choice may not exist at all schools.",
+      "who_it_affects": "STEM graduate students at Ontario universities eligible for both awards",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Enrolling at a university with a small international OGS allocation",
+      "unstated_consequence": "International students on study permits compete within a separate, smaller OGS pool (typically 15–30% of total allocations). Even a strong applicant faces structurally higher competition odds compared to domestic students. This allocation size is institution-specific and not standardized.",
+      "who_it_affects": "International students on study permits at Ontario universities",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Receiving a CGRS-D at an Ontario institution",
+      "unstated_consequence": "Whether OGS can be stacked as a top-up on top of CGRS-D is institution-dependent, not universally permitted. Students who assume they can combine both may find their institution does not allow it.",
+      "who_it_affects": "CGRS-D holders enrolled at Ontario universities",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Enrolling in graduate school in Atlantic provinces (Nova Scotia and other Atlantic provinces)",
+      "unstated_consequence": "Provincial award funding in Atlantic provinces is significantly smaller than in Ontario, BC, or Quebec. Federal (Tri-Council) awards become relatively more important for total funding, increasing dependence on competitive federal processes.",
+      "who_it_affects": "PhD and master's students choosing Atlantic province institutions over Ontario/BC/Quebec",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Completing a master's degree at an Ontario university before transitioning to a PhD",
+      "unstated_consequence": "OGS awards received at the master's level count toward the master's cap (2 awards) but are separate from the doctoral cap (4 awards). However, the master's awards do not extend the doctoral eligibility window; doctoral OGS eligibility ends before the end of the 5th year of doctoral study regardless of master's OGS history.",
+      "who_it_affects": "Students who receive OGS during a master's program and continue to a PhD at an Ontario university",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Receiving a Vanier scholarship at an Ontario university",
+      "unstated_consequence": "Vanier holders typically receive an institutional top-up instead of OGS, meaning they do not receive OGS as a separate stackable award. The net benefit depends on whether the institutional top-up is equivalent to or greater than OGS ($15,000/year).",
+      "who_it_affects": "Vanier award holders enrolled at Ontario universities",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying for OGS while holding other Ontario government student assistance in the same period",
+      "why_it_happens": "OGS explicitly prohibits combination with other Ontario government student assistance in the same period; applicants may not be aware of which awards fall under this restriction",
+      "consequence": "Ineligibility for OGS in that period; potential requirement to repay if the restriction is discovered after award",
+      "warning_signs": [
+        "Student holds another Ontario government-funded award in the same academic period",
+        "Student does not check with the institution's graduate studies office before applying"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying for OGS after exceeding the award limit (2 at master's level, 4 at doctoral level)",
+      "why_it_happens": "Students may lose track of how many OGS awards they have received, or assume the limit resets when transitioning from master's to doctoral study",
+      "consequence": "Ineligibility for OGS; application will not be considered once the applicable cap is reached",
+      "warning_signs": [
+        "Student has received 2 OGS awards during master's study and applies again as a master's student",
+        "Student has received 4 OGS awards during doctoral study and applies again"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying for OGS beyond the eligible year of study (master's: after end of 2nd year; doctoral: after end of 5th year)",
+      "why_it_happens": "OGS eligibility is time-limited by year of study; students who take longer to complete their degrees may apply outside the eligible window without realizing the cutoff",
+      "consequence": "Ineligibility for OGS; the application will be rejected regardless of academic standing",
+      "warning_signs": [
+        "Master's student in 3rd year or beyond applying for OGS",
+        "Doctoral student in 6th year or beyond applying for OGS"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "STEM student attempting to hold both OGS and QEII-GSST simultaneously",
+      "why_it_happens": "Students may apply for both awards without realizing that concurrent receipt is explicitly prohibited",
+      "consequence": "Student must choose one; simultaneous holding of both is not permitted",
+      "warning_signs": [
+        "STEM student at an Ontario university has applied for or received both OGS and QEII-GSST in the same period",
+        "Student does not confirm mutual exclusivity with the institution before applying"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Part-time enrollment while applying for OGS",
+      "why_it_happens": "OGS requires full-time enrollment; students who transition to part-time status (e.g., for employment or personal reasons) may apply or hold OGS without recognizing the enrollment requirement",
+      "consequence": "Ineligibility for OGS; award cannot be held during periods of part-time enrollment",
+      "warning_signs": [
+        "Student changes enrollment status to part-time during the OGS award period",
+        "Student applies for OGS while registered part-time"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the applicant have a minimum A− (80%) average over the preceding two full-time years of study?",
+      "what_it_reveals": "Basic academic eligibility threshold for OGS",
+      "follow_up_if_yes": "Proceed to assess citizenship/immigration status and enrollment status",
+      "follow_up_if_no": "Applicant is ineligible for OGS regardless of other qualifications",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant enrolled full-time at an Ontario university?",
+      "what_it_reveals": "Enrollment status eligibility requirement for OGS",
+      "follow_up_if_yes": "Confirm citizenship/immigration status eligibility",
+      "follow_up_if_no": "Applicant is ineligible for OGS; part-time enrollment disqualifies",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant a Canadian citizen, permanent resident, or international student on a valid study permit?",
+      "what_it_reveals": "Citizenship/immigration eligibility for OGS",
+      "follow_up_if_yes": "If international student on study permit, confirm whether the institution has an international OGS allocation and its size (typically 15–30%)",
+      "follow_up_if_no": "Applicant is ineligible for OGS",
+      "country_scope": "canada"
+    },
+    {
+      "question": "How many OGS awards has the applicant previously received at their current level of study (master's or doctoral)?",
+      "what_it_reveals": "Whether the applicant has reached the OGS award cap (2 at master's level, 4 at doctoral level)",
+      "follow_up_if_yes": "If at or above the cap, applicant is ineligible for further OGS awards at that level",
+      "follow_up_if_no": "If below the cap, applicant may proceed with application",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant currently in or beyond the 3rd year of master's study, or the 6th year of doctoral study?",
+      "what_it_reveals": "Whether the applicant has exceeded the year-of-study eligibility cutoff for OGS",
+      "follow_up_if_yes": "Applicant is ineligible for OGS based on year-of-study restriction",
+      "follow_up_if_no": "Applicant remains within the eligible study period",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the applicant currently hold any other Ontario government student assistance?",
+      "what_it_reveals": "Whether the combination restriction would disqualify the applicant from holding OGS in the same period",
+      "follow_up_if_yes": "Applicant cannot hold OGS simultaneously; must choose between OGS and the other Ontario government assistance",
+      "follow_up_if_no": "No combination restriction applies; applicant may proceed",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant a STEM student at an Ontario university considering both OGS and QEII-GSST?",
+      "what_it_reveals": "Whether the mutual exclusivity rule between OGS and QEII-GSST applies",
+      "follow_up_if_yes": "Applicant must choose one award; confirm which is available at their specific institution",
+      "follow_up_if_no": "QEII-GSST mutual exclusivity rule does not apply; OGS rules apply independently",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the institution have a specific international student allocation for OGS, and what is its size?",
+      "what_it_reveals": "The effective competition pool for international applicants, which may be substantially smaller than the domestic pool",
+      "follow_up_if_yes": "Assess the applicant's competitiveness within the international allocation (typically 15–30% of total); confirm by contacting the institution's graduate studies office",
+      "follow_up_if_no": "If no international allocation exists, international students on study permits may be ineligible at that institution",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant a CGRS-D holder at an Ontario university seeking OGS as a top-up?",
+      "what_it_reveals": "Whether OGS stacking is available on top of CGRS-D, which is institution-dependent",
+      "follow_up_if_yes": "Confirm with the institution's graduate studies office whether OGS top-up is permitted for CGRS-D holders at that institution",
+      "follow_up_if_no": "Standard OGS eligibility rules apply without CGRS-D stacking considerations",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What province is the target institution located in?",
+      "what_it_reveals": "Which provincial award programs are available; award landscape differs significantly by province",
+      "follow_up_if_yes": "If Ontario: OGS and QEII-GSST apply. If BC: BC Graduate Scholarship and BC PNP International Post-Graduate Category. If Quebec: FRQSC/FRQNT. If Alberta: Alberta Graduate Excellence Scholarship and Alberta Innovates. If Atlantic: limited provincial funding; federal awards are relatively more important.",
+      "follow_up_if_no": "Not applicable — province is always determinable",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "International students cannot receive Canadian provincial scholarships like OGS",
+      "actual_reality": "International students on study permits are explicitly eligible for OGS. Institutions receive a specific allocation for international students, typically 15–30% of total OGS allocations. Eligibility and availability vary by institution.",
+      "implication": "International students should confirm their institution's international OGS allocation and apply if eligible, rather than assuming provincial awards are inaccessible",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Winning a major federal award (CGRS-D or Vanier) means a student automatically receives all applicable provincial awards on top",
+      "actual_reality": "CGRS-D holders' OGS eligibility depends on institutional policy. Vanier holders typically receive an institutional top-up instead of OGS — not in addition to it. Stacking rules are institution-specific and not uniformly permissive.",
+      "implication": "Students with federal awards must confirm stacking rules with their specific institution rather than assuming additive benefits",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "All Ontario graduate students have equal access to the same OGS applicant pool",
+      "actual_reality": "OGS competition is segmented: international students on study permits compete within a separate, typically smaller allocation (15–30% of total). The effective competition pool and odds differ between domestic and international applicants.",
+      "implication": "International students should factor in the smaller allocation when assessing their realistic odds of receiving OGS and prioritize federal awards accordingly",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "STEM students at Ontario universities can hold both OGS and QEII-GSST to maximize funding",
+      "actual_reality": "OGS and QEII-GSST cannot be held simultaneously. STEM students must choose one. Additionally, QEII-GSST availability varies by institution.",
+      "implication": "STEM students should confirm which award is available at their institution and evaluate which offers better terms before applying",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Provincial graduate awards are uniform across Canadian provinces",
+      "actual_reality": "The provincial award ecosystem varies significantly by province. Ontario has OGS and QEII-GSST. Quebec has FRQSC and FRQNT (up to CAD $25,000–$35,000/year). Alberta has Alberta Innovates (up to CAD $22,500/year). Atlantic provinces have a smaller award ecosystem where federal awards become relatively more important.",
+      "implication": "Choice of province for graduate study directly affects the available provincial funding sources; students should research province-specific programs, not assume uniformity",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "PhD funding at top Canadian universities is fixed and non-negotiable",
+      "actual_reality": "Total PhD compensation is composed of multiple stackable components: institutional base package ($18,000–$30,000/year), OGS (+$15,000/year if won), CGRS-D (to $40,000–$45,000/year with top-up), Vanier (to $50,000–$55,000/year with top-up), and supervisor top-up (variable). The range for the same student at the same institution can span from $22,000 to $55,000/year depending on awards and supervisor.",
+      "implication": "Students should ask specific questions about base packages, award percentages, and supervisor top-up policies during admission to understand realistic total compensation",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The OGS application is handled federally or centrally",
+      "actual_reality": "OGS applications are submitted through the institution's graduate studies office. Each institution sets its own internal deadline and selection criteria within provincial requirements. Results are released February–April. There is no single centralized OGS application portal.",
+      "implication": "Students must track their specific institution's internal OGS deadline (typically October–November), not a provincial deadline, to avoid missing the application window",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding OGS eligibility for international students",
+      "naive_pattern": "Assumes OGS is only for Canadian citizens and permanent residents; does not apply as an international student",
+      "informed_pattern": "Knows international students on study permits are explicitly eligible and that institutions receive a separate allocation (typically 15–30% of total); contacts the graduate studies office to confirm the specific institution's international allocation size before deciding whether to apply",
+      "why_it_matters": "Missing the OGS application due to a false assumption about eligibility forfeits up to $15,000/year in available funding",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Evaluating total PhD funding at a Canadian university",
+      "naive_pattern": "Accepts the stated base stipend as the total compensation figure; does not ask about award percentages, stacking rules, or supervisor top-ups",
+      "informed_pattern": "Asks specifically: base package amount, percentage of students receiving OGS or CGRS-D, whether the supervisor or department tops up awards, and the typical total compensation for a 3rd-year PhD student — then models the realistic range from $22,000 to $55,000/year based on award outcomes",
+      "why_it_matters": "Two programs with identical base stipends can result in significantly different total compensation depending on award culture and supervisor top-up practices; this affects both financial security and signal of program quality",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Navigating OGS and CGRS-D stacking rules",
+      "naive_pattern": "Assumes that winning CGRS-D automatically adds on top of OGS at any Ontario institution, or that Vanier + OGS are always stackable",
+      "informed_pattern": "Knows that CGRS-D/OGS stacking is institution-dependent and Vanier holders typically receive institutional top-up instead of OGS; confirms the specific stacking policy with the graduate studies office before accepting an offer",
+      "why_it_matters": "Incorrect assumptions about stacking can lead to overestimating expected income or inadvertently violating award combination rules",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Selecting a province for graduate study based on funding availability",
+      "naive_pattern": "Focuses only on program ranking or supervisor without considering provincial award ecosystem differences; assumes provincial funding is roughly equivalent across Canada",
+      "informed_pattern": "Compares provincial award landscapes explicitly: Ontario (OGS up to $15,000/year), Quebec (FRQSC/FRQNT up to $25,000–$35,000/year), Alberta (Alberta Innovates up to $22,500/year), Atlantic (minimal provincial funding, higher federal dependence); factors this into the total expected funding comparison across offers",
+      "why_it_matters": "Choosing a province with a weaker provincial award ecosystem can mean $10,000–$20,000/year less in available funding relative to Ontario or Quebec for equivalent academic profiles",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Timing and process for OGS application",
+      "naive_pattern": "Looks for a national or provincial OGS deadline; waits for the institution to notify them; assumes the process is centrally managed",
+      "informed_pattern": "Knows OGS is applied for through the institution's graduate studies office with an internal institutional deadline typically in October–November; proactively contacts the office to confirm the exact deadline and required materials rather than waiting for notification",
+      "why_it_matters": "Missing the institution's internal OGS deadline — which is earlier than the provincial results timeline — forfeits the award for that entire year",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Post-graduation immigration planning for BC graduates",
+      "naive_pattern": "Assumes all post-graduation immigration pathways require a job offer; treats provincial nominee programs as only relevant for workers",
+      "informed_pattern": "Knows the BC PNP International Post-Graduate Category allows PhD and master's graduates from BC institutions to apply for provincial nomination toward permanent residence with no job offer required; factors this pathway into the decision of whether to study in BC",
+      "why_it_matters": "Overlooking the no-job-offer pathway to permanent residence via BC PNP can lead students to undervalue BC institutions relative to Ontario or Quebec when assessing long-term immigration outcomes",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_ontario_and_provincial_fellowships",
+  "_source_regions": [
+    "canada"
+  ]
+}

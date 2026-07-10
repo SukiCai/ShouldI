@@ -1,0 +1,322 @@
+{
+  "source_file": "zhihu_美国留学_留学生如何拿到非盈利机构的H1B_有哪些方法.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If you cannot find employment within 90 days of OPT approval, your OPT status automatically expires — not just pauses",
+      "condition": "When an international student has received OPT approval but has not yet secured a job offer",
+      "action": "Treat the 90-day unemployment clock as a hard deadline and pursue any qualifying employment, including part-time or contract roles, to avoid automatic OPT termination",
+      "because": "The source explicitly states OPT becomes invalid if no job is found within 90 days of approval, creating a hard expiration that cannot be reversed",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Cap-Exempt H-1B employers (nonprofits, universities, government research orgs) allow year-round filing with no lottery — prioritize them if lottery odds are unacceptable",
+      "condition": "When a student or worker has failed the H-1B lottery or finds the ~15% odds unacceptable",
+      "action": "Actively target Cap-Exempt employers including higher education institutions, affiliated nonprofits, and nonprofit/government research organizations",
+      "because": "The source identifies Cap-Exempt H-1B as having no quota, no lottery, and optional 15-day premium processing — a structurally different pathway from Cap-Subject H-1B",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Begin OPT application no earlier than 90 days before degree completion and no later than immediately after graduation",
+      "condition": "When an F-1 student is approaching graduation and planning to work in the US",
+      "action": "File the OPT application within the 90-day pre-completion window and ensure at least two full-time semesters and 9 months of US study are completed",
+      "because": "The source states the application window opens 90 days before degree completion and closes with graduation, with strict eligibility conditions on prior study duration",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Cap-Exempt vs. Cap-Subject employer type",
+      "why_it_matters": "Cap-Exempt employers bypass the H-1B lottery entirely, eliminating the single largest source of uncertainty for international students seeking work authorization continuity",
+      "how_to_assess": "Check whether the employer is a higher education institution, a nonprofit affiliated with one, or a nonprofit/government research organization — these three categories qualify",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "STEM vs. non-STEM degree classification",
+      "why_it_matters": "STEM OPT extension increases authorized work period from 12 months to 29 months (with potential push to 36 months noted in source), giving significantly more runway for H-1B lottery attempts",
+      "how_to_assess": "Verify whether your degree program appears on the DHS STEM Designated Degree Program List before graduation",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B lottery timing relative to OPT expiration",
+      "why_it_matters": "H-1B is accepted starting April 1 each year and becomes effective October 1 — students whose OPT expires before October must bridge the gap or leave",
+      "how_to_assess": "Calculate OPT start date plus authorized duration and compare against the next October 1 H-1B activation date to identify whether a gap exists",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Employer willingness to sponsor",
+      "why_it_matters": "H-1B requires employer sponsorship — the employer bears filing costs, legal complexity, and compliance obligations, making sponsorship willingness a gating factor independent of candidate qualification",
+      "how_to_assess": "Ask directly during offer negotiation whether the employer has sponsored H-1B before and whether they will sponsor for this role",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Relying solely on Cap-Subject H-1B lottery as the post-OPT stay strategy",
+      "unstated_consequence": "With Chinese student lottery odds below 15% and dropping, the most statistically likely outcome is having to leave the US — yet most planning assumes success rather than failure",
+      "who_it_affects": "Chinese national F-1 students at non-Cap-Exempt employers who have not developed backup plans",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing L-1 visa as a lottery alternative by working abroad first",
+      "unstated_consequence": "Requires 1-2 years of overseas employment in the same multinational company before L-1 eligibility, making it impractical for students early in their careers who haven't built sufficient tenure",
+      "who_it_affects": "New graduates with less than 1 year of employer tenure who see L-1 as a quick alternative to H-1B",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "EB-5 investment immigration as an H-1B alternative",
+      "unstated_consequence": "Requires $800,000 minimum investment with a 5-year capital lock-up period — framed in the source as accessible, but the capital requirement makes it irrelevant for the vast majority of international students without family wealth",
+      "who_it_affects": "Students or families without substantial liquid capital who encounter EB-5 messaging and misread it as a broadly available pathway",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Using OPT without promptly notifying the international student office after employment begins",
+      "unstated_consequence": "Failure to notify DSO of employer, job title, and address after starting work can result in deportation — a compliance step many students miss because it happens after the job starts, not before",
+      "who_it_affects": "First-time OPT holders unfamiliar with post-employment reporting obligations",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Graduating without a job offer and not realizing the 60-day grace period is for departure, not continued job searching under OPT",
+      "why_it_happens": "Students conflate the post-graduation grace period with OPT authorized unemployment time — they are separate concepts with different legal implications",
+      "consequence": "Student remains in the US past the 60-day grace period without valid status, creating unlawful presence",
+      "warning_signs": [
+        "Student has graduated but OPT has not yet been approved and no job offer exists",
+        "Student believes they have 90 days of job-search time starting from graduation rather than from OPT approval"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating H-1B as the only post-OPT pathway and not researching Cap-Exempt or alternative visa options until after a lottery loss",
+      "why_it_happens": "H-1B is culturally dominant in international student communities as the default path, and alternatives require proactive research that most students don't do until crisis hits",
+      "consequence": "Students lose 12+ months of runway and face urgent departure pressure after a lottery loss that could have been anticipated and planned around",
+      "warning_signs": [
+        "Student only begins researching alternatives after receiving lottery rejection notice",
+        "Student's entire US stay plan has no contingency for lottery failure"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Misunderstanding OPT unemployment limits — believing the 90-day clock starts from graduation rather than from OPT card receipt",
+      "why_it_happens": "The timeline has multiple overlapping dates (graduation, OPT application, OPT approval, OPT start date) creating genuine confusion about when clocks start",
+      "consequence": "Students unknowingly exhaust unemployment days and work on an invalid OPT authorization, creating immigration violations",
+      "warning_signs": [
+        "Student is not tracking unemployment days precisely after OPT approval",
+        "Student conflates OPT application date with OPT approval date when counting days"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your target employer a university, university-affiliated nonprofit, or nonprofit/government research organization?",
+      "what_it_reveals": "Whether Cap-Exempt H-1B is available, which eliminates lottery risk entirely and allows year-round filing",
+      "follow_up_if_yes": "Confirm the specific Cap-Exempt category and whether the employer has previously filed Cap-Exempt H-1Bs — some nominally qualifying orgs are unfamiliar with the process",
+      "follow_up_if_no": "Assess STEM OPT extension eligibility to maximize lottery attempt windows, and evaluate O-1A eligibility as a non-lottery alternative",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your degree program appear on the DHS STEM Designated Degree Program List?",
+      "what_it_reveals": "Whether you qualify for 24-month STEM OPT extension, giving you up to 3 H-1B lottery cycles instead of 1",
+      "follow_up_if_yes": "Confirm your employer has E-Verify enrollment, which is required for STEM OPT extension approval",
+      "follow_up_if_no": "You have one 12-month OPT period and at most one lottery attempt — Cap-Exempt targeting and O-1A become more urgent",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you begun tracking your OPT unemployment days from the date your OPT was approved, not from your graduation date?",
+      "what_it_reveals": "Whether the student understands the correct start point of the 90-day unemployment clock, which determines actual legal deadline for employment",
+      "follow_up_if_yes": "Confirm they are also tracking cumulative unemployment days rather than consecutive days",
+      "follow_up_if_no": "Immediate correction needed — the student may be mismanaging a hard legal deadline",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "H-1B is the standard, expected path for international students to stay in the US after graduation",
+      "actual_reality": "Only approximately 10% of Chinese international students successfully remain in the US for work long-term, with H-1B lottery odds below 15% for Chinese nationals — the modal outcome is departure, not successful sponsorship",
+      "implication": "Students should treat H-1B as one option in a portfolio rather than a default expectation, and build parallel tracks including Cap-Exempt targeting, O-1A positioning, and departure contingency planning",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Cap-Exempt H-1B is a niche or unusual pathway used by a small minority",
+      "actual_reality": "Cap-Exempt H-1B has no quota, no lottery, allows year-round filing, and offers 15-day premium processing — it is structurally superior to Cap-Subject H-1B for anyone who can access it, but requires working for qualifying employers",
+      "implication": "Students who prioritize nonprofit research orgs, universities, and affiliated nonprofits in their job search gain a structurally different immigration outcome, not just a different employer type",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "O-1A 'extraordinary ability' visas are only for artists and entertainers",
+      "actual_reality": "Post-Biden policy changes expanded O-1A to include non-artistic fields under the 'extraordinary ability' category — international students with research publications, awards, or notable professional achievements in STEM or business fields are increasingly eligible",
+      "implication": "Students with academic or professional distinction should assess O-1A eligibility as a non-lottery H-1B alternative, particularly if they have publication records, competitive awards, or demonstrable industry recognition",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they think about visa strategy",
+      "naive_pattern": "Plans linearly: graduate → OPT → apply H-1B → if selected, stay; treats each step as sequential and the lottery as a binary pass/fail with no parallel planning",
+      "informed_pattern": "Maps the full decision tree before graduation: identifies employer type (Cap-Exempt vs. not), STEM eligibility, number of lottery attempts available, O-1A qualification trajectory, and departure contingency simultaneously",
+      "why_it_matters": "Linear planners are caught off-guard by lottery failure with no backup; parallel planners have already positioned themselves in Cap-Exempt roles or built O-1A evidence before the lottery result arrives",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they evaluate a job offer",
+      "naive_pattern": "Evaluates salary, role, and company brand — treats visa sponsorship as a yes/no checkbox confirmed by an HR email",
+      "informed_pattern": "Distinguishes Cap-Subject vs. Cap-Exempt employer, verifies E-Verify enrollment for STEM OPT, asks whether employer has filed H-1B before and with what approval rate, and checks for attorney quality",
+      "why_it_matters": "A nominally sponsoring employer at a Cap-Subject company with no prior H-1B experience is materially riskier than a Cap-Exempt nonprofit — naive evaluation treats these as equivalent",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "How they respond to a lottery loss",
+      "naive_pattern": "Treats lottery loss as the end of the US work pathway and begins departure planning immediately",
+      "informed_pattern": "Immediately evaluates: Can I transfer to a Cap-Exempt role? Am I O-1A eligible? Can I work abroad for an L-1 track? Does my employer have an international office? Treats lottery loss as a branch point, not a terminal event",
+      "why_it_matters": "Post-lottery pivot windows are short — students who haven't pre-researched alternatives lose weeks or months to basic research that could have been done before the result",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "OPT gives you 60 days after graduation to find a job before you must leave",
+      "why_believed": "There is a real 60-day grace period after graduation, and OPT has a real 90-day unemployment limit — conflating the two creates a false sense of extended job-search time",
+      "actual_rule": "The 60-day grace period is for departure or status change if OPT is not pursued — it is not authorized employment or job-search time. The 90-day unemployment clock begins after OPT is approved and the authorized employment start date passes, not after graduation",
+      "real_consequence": "Students who treat the 60-day grace period as job-search time may accumulate unlawful presence without realizing it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "H-1B is valid for 3 years, renewable twice for a total of 6 years",
+      "why_believed": "The source itself states this, and it is partially correct — the standard structure is 3+3 years, but the framing of 'two renewals' is misleading",
+      "actual_rule": "H-1B is typically granted in 3-year increments with one 3-year extension for a total of 6 years — not two separate extensions of 2 and 1 year as stated in the source's best answer, which contains an internal inconsistency (2+1 ≠ matching the 6-year total correctly described)",
+      "real_consequence": "Misunderstanding the extension structure leads to miscalculation of how much time remains to achieve green card sponsorship before H-1B exhaustion",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "STEM OPT can be extended to 36 months — this is already happening or imminent",
+      "why_believed": "The source mentions a '36-month extension campaign' as if it is actively progressing toward implementation, giving readers the impression it may be available soon",
+      "actual_rule": "As of the source's context, STEM OPT extension remains 24 months (29 months total with initial 12-month OPT). The 36-month proposal has been discussed in advocacy contexts but has not been enacted — treating it as forthcoming is speculative",
+      "real_consequence": "Students who plan their H-1B lottery attempts assuming 36 months of OPT runway may miscalculate the number of available attempts and be caught short",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "EB-5 is a realistic alternative pathway for international students who can't win the H-1B lottery",
+      "why_believed": "The second answer presents EB-5 in the same list as O-1A and L-1 as practical alternatives, without adequately flagging the $800,000 minimum investment requirement",
+      "actual_rule": "EB-5 requires a minimum $800,000 investment in a USCIS-designated project with a 5-year capital lock-up — it is accessible only to high-net-worth individuals or families, not to typical international students",
+      "real_consequence": "Students who encounter EB-5 framed as an H-1B alternative may waste time researching an option that is financially inaccessible to them, delaying pursuit of actually viable alternatives",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "FY2024 H-1B lottery received 483,927 registrations — the highest ever — driving lottery approval odds for Chinese nationals below 15%",
+      "decision": "Students and employers proceeded with Cap-Subject H-1B applications as the primary post-OPT strategy",
+      "outcome": "Majority of Chinese national applicants did not receive H-1B selection, creating widespread status disruption for students whose OPT was expiring",
+      "lesson": "At sub-15% lottery odds for Chinese nationals, Cap-Subject H-1B cannot be treated as a reliable primary strategy — it is statistically a losing bet without backup pathways",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Students asking 'how do I get H-1B' without first asking 'what is my probability of getting H-1B and what happens if I don't'",
+      "underlying_state": "Optimism bias and status quo anchoring — H-1B is the culturally expected path, so students anchor to it and avoid confronting the statistically likely failure scenario",
+      "how_it_manifests": "Exclusive focus on how to optimize H-1B applications (better employers, better lawyers) rather than building parallel tracks — treating lottery failure as an edge case rather than the base case",
+      "expert_move": "Reframe the question: 'Given that the modal outcome for a Chinese national is lottery failure, what is your plan for that outcome?' Forces concrete contingency planning rather than optimization of a low-probability event",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Students who have already committed to a Cap-Subject employer asking about alternatives only after receiving lottery rejection",
+      "underlying_state": "Sunk cost fallacy combined with temporal discounting — the relationship with the employer feels too invested to reconsider, and Cap-Exempt alternatives seemed less attractive before the rejection",
+      "how_it_manifests": "Seeking ways to retroactively fix a structurally weak visa position rather than having made Cap-Exempt targeting a selection criterion during job search",
+      "expert_move": "Acknowledge the sunk cost directly: 'The employer relationship is valuable, but the question now is what options exist — can this employer transfer you to a Cap-Exempt affiliate, or does a different employer offer the stability you need?'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'How do I get a nonprofit H-1B?' — treating Cap-Exempt H-1B as a special trick or hack to game the system",
+      "reframe": "Cap-Exempt H-1B is not a loophole — it reflects a structural difference in employer type. The real question is whether your career goals are compatible with working at universities, nonprofit research organizations, or affiliated nonprofits, because that's the actual requirement",
+      "why_it_works": "Shifts the student from looking for a shortcut to evaluating genuine employer fit, which is a more stable and actionable frame — it connects visa strategy to job search targeting rather than treating them as separate problems",
+      "example_language": "The question isn't how to get Cap-Exempt H-1B — the question is whether you're willing to target employers that qualify for it",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'Only 10% of Chinese students successfully stay in the US' framed as a discouraging statistic",
+      "reframe": "That 10% figure tells you what happens when students use the default strategy — it doesn't tell you the success rate for students who proactively targeted Cap-Exempt employers, built O-1A evidence, or had STEM OPT runway for multiple lottery attempts",
+      "why_it_works": "Converts a paralyzing aggregate statistic into a conditional probability question — the 10% is the baseline for reactive students, not for students who differentiate their strategy",
+      "example_language": "The 10% is what happens on autopilot. The question is what the rate is for people who chose their employer specifically for Cap-Exempt status",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_美国留学_留学生如何拿到非盈利机构的H1B_有哪些方法",
+  "_source_regions": [
+    "us"
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "source_file": "f1visa_h_1b_cap_exempt_employer_strategy_real_talk_from_s.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "After two consecutive H-1B lottery losses with expiring STEM OPT, consult an immigration attorney about cap-exempt employer options before assuming you must leave",
+      "condition": "When an F-1 holder has lost the H-1B lottery twice and STEM OPT expiration is approaching...",
+      "action": "Engage an immigration attorney to evaluate whether a cap-exempt dual-employment arrangement is structurally viable for your specific situation",
+      "because": "The post author explicitly used this strategy after two losses, and a corroborating commenter (134 upvotes) confirmed doing the same for two years through a university collaboration — establishing this as a real, repeatable path rather than a one-off",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Do not attempt the cap-exempt dual-employment structure without an immigration attorney — it is not a DIY situation",
+      "condition": "When considering a cap-exempt H-1B filing through a dual-employment arrangement...",
+      "action": "Retain an experienced immigration attorney to structure the arrangement before proceeding",
+      "because": "The post explicitly states the arrangement must be structured correctly and that USCIS audits with non-genuine employment carry serious consequences; complexity is confirmed by both the original post and supporting comments",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Verify cap-exempt status at the department level for university hospital systems, not just the institution level",
+      "condition": "When evaluating whether a university hospital qualifies as a cap-exempt employer...",
+      "action": "Assess whether the specific department's primary purpose is research, not just whether the parent institution is university-affiliated",
+      "because": "A high-voted comment (187 upvotes) explicitly states the 'primary purpose' test is sometimes applied at the department level for hospital systems, meaning institution-level affiliation is insufficient on its own",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Genuineness of cap-exempt employment relationship",
+      "why_it_matters": "USCIS can audit the arrangement; if the cap-exempt employment is found to be nominal rather than real, the consequences are serious — including potential status violations",
+      "how_to_assess": "Determine whether the individual will actually perform work for the cap-exempt entity, not just nominally hold a title; the part-time allocation (~20%) must correspond to real duties",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Primary purpose classification of the employing entity",
+      "why_it_matters": "Not all university-affiliated or nonprofit organizations are automatically cap-exempt; the entity's primary purpose (research vs. medical care vs. grantmaking) determines eligibility",
+      "how_to_assess": "Check whether the employer is a university, nonprofit research org with primary research purpose, or government research org — and for hospital systems, evaluate at the department level",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Primary employer's willingness to share the employee nominally",
+      "why_it_matters": "Even when the strategy is legally viable, the primary for-profit employer may object to any nominal dual-employment arrangement, blocking the path entirely",
+      "how_to_assess": "Have a direct conversation with the primary employer's HR and legal team early; do not assume consent",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Remaining STEM OPT runway",
+      "why_it_matters": "The urgency and viability of pursuing cap-exempt options depends heavily on how much OPT time remains to structure and file the arrangement",
+      "how_to_assess": "Calculate months remaining on STEM OPT extension against realistic attorney engagement and USCIS processing timelines",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing cap-exempt dual-employment H-1B strategy",
+      "unstated_consequence": "The arrangement requires genuine dual employment — the individual must actually perform work for the cap-exempt entity, not just hold a title. This creates real ongoing obligations (time, deliverables) on top of a full-time job.",
+      "who_it_affects": "Professionals in non-research roles who assume the university affiliation is purely administrative and do not account for the actual time commitment to the research employer",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Relying on university hospital affiliation for cap-exempt status",
+      "unstated_consequence": "Hospital systems that primarily provide medical care may not qualify even if university-affiliated; the department-level 'primary purpose' test can disqualify specific teams even within a qualifying institution",
+      "who_it_affects": "Healthcare and clinical professionals who assume university hospital employment automatically confers cap-exempt status",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating cap-exempt employer status as binary (affiliated = exempt) rather than testing primary purpose at the entity or department level",
+      "why_it_happens": "University affiliation creates a strong association with cap-exempt status; people anchor on the brand name rather than the legal test",
+      "consequence": "Filing a cap-exempt H-1B petition that USCIS denies or audits because the employer does not actually meet the primary purpose requirement",
+      "warning_signs": [
+        "Assuming a hospital qualifies solely because it has a university name in its title",
+        "Not verifying whether a for-profit spinout or foundation counts as exempt before initiating the process"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Attempting to structure a cap-exempt dual-employment arrangement without an immigration attorney",
+      "why_it_happens": "The strategy appears straightforward on the surface (work part-time for university, file through them); complexity of USCIS requirements and audit risk is underestimated",
+      "consequence": "Improperly structured arrangement fails USCIS scrutiny; in audit scenarios, serious immigration consequences including potential status violations",
+      "warning_signs": [
+        "Searching for 'how to file cap-exempt H-1B myself' or similar DIY framing",
+        "Treating the arrangement as primarily a paperwork exercise rather than a genuine employment relationship"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the cap-exempt entity's primary purpose research, or is it primarily medical care, grantmaking, or commercial activity?",
+      "what_it_reveals": "Whether the entity actually qualifies as cap-exempt under USCIS standards — affiliation alone is insufficient",
+      "follow_up_if_yes": "Verify at the department level if it is a hospital system; confirm the research purpose is documented in the organization's mission and activities",
+      "follow_up_if_no": "The entity likely does not qualify; explore whether a different affiliated department or a separate research organization exists",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Will you actually perform work for the cap-exempt employer, or is the arrangement purely nominal?",
+      "what_it_reveals": "Whether the arrangement can survive a USCIS audit; genuineness of the dual employment is the core legal requirement",
+      "follow_up_if_yes": "Document the duties, deliverables, and time allocation clearly in the employment agreement before filing",
+      "follow_up_if_no": "The arrangement is high-risk and should not proceed; a nominal arrangement without real work is the primary audit failure point",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How much STEM OPT runway remains, and is it sufficient to complete attorney engagement and USCIS filing before expiration?",
+      "what_it_reveals": "Whether the cap-exempt path is even time-viable given current status, or whether a different interim strategy (e.g., O-1, return home, Canada) must be considered in parallel",
+      "follow_up_if_yes": "Proceed with attorney consultation immediately to preserve timeline",
+      "follow_up_if_no": "Assess whether premium processing and expedited attorney engagement can close the gap, or whether bridge strategies are needed",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Any employer affiliated with a university is automatically cap-exempt for H-1B purposes",
+      "actual_reality": "Cap-exempt status requires the entity's primary purpose to be research (or education for universities themselves); for-profit university spinouts, hospitals primarily providing medical care, and grantmaking foundations that don't conduct research themselves do not automatically qualify — even with a university name or affiliation",
+      "implication": "Candidates and employers should verify the specific entity's qualification before initiating the filing strategy; relying on brand affiliation without legal verification wastes time and creates false security",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Prevailing wage requirements are different or waived for cap-exempt H-1B petitions",
+      "actual_reality": "Based on community questioning (145 upvotes on this question with no authoritative rebuttal in the thread), this is an unresolved community uncertainty — the same prevailing wage requirements apply to cap-exempt petitions, but the community frequently assumes otherwise",
+      "implication": "Candidates should explicitly confirm prevailing wage obligations with their immigration attorney when evaluating a cap-exempt arrangement; do not assume lower salary requirements",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to repeated H-1B lottery failure",
+      "naive_pattern": "Treats lottery loss as a binary dead end — either win the lottery or leave the country; does not research alternative legal pathways",
+      "informed_pattern": "Knows cap-exempt employer structures, O-1 visa pathways, and Canada/other country alternatives exist; begins exploring these before OPT expiration creates a crisis",
+      "why_it_matters": "Starting the exploration after STEM OPT is nearly expired dramatically narrows options and increases pressure-driven errors",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating cap-exempt employer eligibility",
+      "naive_pattern": "Checks whether the employer has 'university' or 'research' in its name and assumes that confirms cap-exempt status",
+      "informed_pattern": "Investigates the entity's primary purpose, organizational structure, and whether the specific department conducting the work meets the USCIS primary purpose test; consults an attorney before assuming eligibility",
+      "why_it_matters": "Filing a cap-exempt petition for a non-qualifying employer wastes filing fees, attorney time, and most critically, OPT runway that cannot be recovered",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "University hospitals are cap-exempt employers, so working at one means your H-1B bypasses the lottery",
+      "why_believed": "University hospitals carry academic branding and are formally affiliated with research universities, making the cap-exempt association feel intuitive",
+      "actual_rule": "Hospitals that primarily provide medical care do not qualify as cap-exempt even if university-affiliated; the primary purpose test is applied at the entity or department level, and clinical care departments typically fail it",
+      "real_consequence": "Candidates who plan their immigration strategy around a hospital employer assuming cap-exempt status may discover ineligibility late, leaving insufficient time to pursue alternatives before OPT expires",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Any nonprofit with a research-sounding name qualifies as a cap-exempt research organization",
+      "why_believed": "The word 'research' in an organization's name or mission statement feels sufficient; the legal distinction between conducting research and funding/grantmaking research is not intuitive",
+      "actual_rule": "Nonprofit research organizations must have research as their primary purpose and must actually conduct research — foundations that primarily make grants to others for research do not qualify",
+      "real_consequence": "Filing through an ineligible nonprofit exposes the petition to denial and potential USCIS scrutiny of the arrangement's legitimacy",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "F-1 holder lost H-1B lottery twice; STEM OPT running out; needed a path to maintain work authorization without a third lottery attempt",
+      "decision": "Structured a dual-employment arrangement working ~20% for a university research entity (cap-exempt) and full-time for their primary employer; H-1B filed by the cap-exempt university entity bypassing the lottery",
+      "outcome": "Maintained valid work authorization for two years under the cap-exempt H-1B; eventually won the regular H-1B lottery on the third attempt and transitioned to a standard cap-subject H-1B",
+      "lesson": "Cap-exempt dual-employment is a viable multi-year bridge strategy for repeated lottery losers, not just a one-time workaround — but it requires genuine dual employment and professional legal structuring, and the end goal of a cap-subject H-1B may still require eventual lottery participation",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Losing the H-1B lottery two years in a row with STEM OPT expiring — framing the situation as 'I have no options left'",
+      "underlying_state": "Learned helplessness combined with tunnel vision on the lottery as the only legitimate path; the repeated failure creates a cognitive pattern where alternative pathways feel illegitimate or too risky to pursue",
+      "how_it_manifests": "Candidates stop researching alternatives, begin preparing to leave the country, or take suboptimal actions (accepting any job offer regardless of fit) purely to extend status rather than evaluating the full option set",
+      "expert_move": "Reframe the lottery loss as a signal to explore the parallel system (cap-exempt, O-1, Canada pathways) that exists precisely for this scenario; the lottery is one path, not the only path — and experienced professionals know this early enough to act",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I keep losing the H-1B lottery — I'm running out of options",
+      "reframe": "The lottery is one path to H-1B status, not the only path; cap-exempt employers operate outside the lottery system entirely, and the question is whether your situation can be structured to access that system",
+      "why_it_works": "Shifts the mental model from scarcity (one gate, limited tries) to a parallel system (a different gate with different entry criteria); breaks the learned helplessness pattern that follows repeated lottery failures",
+      "example_language": "When you don't get selected in the H-1B lottery 2 years in a row, you start getting creative — here's what I learned about cap-exempt employers",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_f1visa_h_1b_cap_exempt_employer_strategy_real_talk_from_s",
+  "_source_regions": [
+    "us"
+  ]
+}

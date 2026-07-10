@@ -1,0 +1,265 @@
+{
+  "source_file": "mba_for_pm_detailed.txt",
+  "heuristics": [
+    {
+      "rule": "If you're already at FAANG or top-tier tech, an MBA returns you to where you started at massive cost",
+      "condition": "When a Senior PM at a top-tier tech company considers an MBA to advance their career...",
+      "action": "...do not pursue an MBA unless targeting a non-CPO-track role (e.g., strategy, GM, COO) where MBA is structurally expected",
+      "because": "MBA recruiting pipelines are designed to get candidates into companies like the one you already work at — the credential adds nothing to your existing access"
+    },
+    {
+      "rule": "Name specific doors before committing — if you can't list them, the opportunity cost is too high",
+      "condition": "When evaluating whether an MBA is worth the investment...",
+      "action": "...identify by name the companies, roles, or recruiting funnels that are currently closed to you and would open with an MBA",
+      "because": "Vague rationales like 'I want to learn strategy' don't justify $400K–$500K in total opportunity cost; concrete, named access gaps do"
+    },
+    {
+      "rule": "For PM specifically, specialized dual-degree programs outperform raw prestige rankings",
+      "condition": "When choosing between MBA programs with the goal of entering product management...",
+      "action": "...prioritize programs with design/tech integration (e.g., Kellogg MMM) over higher-ranked generalist programs",
+      "because": "Kellogg MMM places 35% of graduates into PM vs. 8% for standard Kellogg MBA — program design matters more than brand rank for this specific outcome"
+    },
+    {
+      "rule": "For a finance professional at $150K trying to enter PM, the MBA ROI math can work; for a Senior PM earning $250K+ at FAANG, it almost certainly doesn't",
+      "condition": "When running ROI analysis on an MBA...",
+      "action": "...calculate whether the MBA increases total comp by more than $500K over your remaining career given your current trajectory",
+      "because": "The break-even threshold is whether the credential opens a comp bracket your current path doesn't reach — this is true for career switchers but rarely true for established PMs"
+    },
+    {
+      "rule": "Post-2022, treat MBA→PM as a harder path than historical data suggests",
+      "condition": "When using pre-2022 placement rates to forecast MBA ROI for PM roles...",
+      "action": "...discount those figures and research 2023–2024 actual placement rates, accounting for tech layoffs and reduced MBA intake at major tech companies",
+      "because": "Amazon paused MBA hiring, Google cut headcount, Meta/Microsoft reduced MBA intake post-2022; nearly 25% of HBS Class of 2024 was still job-searching 3 months post-graduation"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Current employer tier",
+      "why_it_matters": "If you're already at a company MBA candidates aspire to reach, the MBA's recruiting funnel value is zero or negative",
+      "how_to_assess": "Ask: is my current employer one that recruits from M7 MBA programs? If yes, the MBA gets you back to where you are.",
+      "weight": "high"
+    },
+    {
+      "factor": "Career switching distance from PM",
+      "why_it_matters": "The further your background is from PM (e.g., investment banking vs. engineering), the more the MBA credential and recruiting funnel does real work",
+      "how_to_assess": "Map your background against direct PM transition difficulty: engineers and designers can transition without MBA; finance professionals face more gatekeeping",
+      "weight": "high"
+    },
+    {
+      "factor": "International candidate status",
+      "why_it_matters": "For non-US candidates without US work authorization or recruiting networks, MBA provides H-1B sponsorship pathway and campus recruiting access — a structurally different value proposition",
+      "how_to_assess": "Assess current visa status, existing US recruiting network access, and whether target employers sponsor H-1B for experienced hires",
+      "weight": "high"
+    },
+    {
+      "factor": "Full opportunity cost (not just tuition)",
+      "why_it_matters": "The real cost includes 2 years of lost salary and missed promotion cycles — PMs promoted to Staff/Director during your MBA years keep compounding ahead",
+      "how_to_assess": "Calculate: tuition + living ($247K average for M7) + 2 years of foregone salary + value of missed promotion cycle at your current trajectory",
+      "weight": "high"
+    },
+    {
+      "factor": "Target role type post-MBA",
+      "why_it_matters": "CPO-track technical PM roles do not commonly require or benefit from MBA; GM, COO, and strategy-adjacent leadership roles do",
+      "how_to_assess": "Identify the 5 job postings for your 5-year target role and check what credentials/backgrounds those people hold",
+      "weight": "high"
+    },
+    {
+      "factor": "Undergraduate credential strength",
+      "why_it_matters": "Non-target undergrad + non-FAANG early career creates a credential stack that closes specific recruiting doors; M7 MBA can reset this",
+      "how_to_assess": "Test directly: apply to target roles and measure response rates — if doors are closed, identify whether MBA is the specific key or if other factors are blocking",
+      "weight": "medium"
+    },
+    {
+      "factor": "Product type (technical vs. consumer/generalist)",
+      "why_it_matters": "Technical product roles (B2B, developer tools, infrastructure) value domain depth over MBA credentials; MBA may signal the wrong direction",
+      "how_to_assess": "Assess the product type of your target roles and whether hiring managers in that space value or discount MBA credentials",
+      "weight": "medium"
+    },
+    {
+      "factor": "Pre-MBA salary level",
+      "why_it_matters": "Higher pre-MBA salary means higher opportunity cost — a $150K finance professional has different break-even math than a $250K Senior PM",
+      "how_to_assess": "Run the specific break-even calculation: does MBA-enabled comp trajectory exceed current trajectory by more than total opportunity cost over remaining career?",
+      "weight": "medium"
+    },
+    {
+      "factor": "Market timing (macro hiring environment)",
+      "why_it_matters": "MBA→PM placement rates dropped sharply post-2022; the same credential investment in a down hiring market produces worse outcomes",
+      "how_to_assess": "Research current-year placement data from target schools, not historical averages; check whether target companies are actively running MBA PM recruiting programs",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Leaving a top-tier tech PM role to pursue an M7 MBA",
+      "unstated_consequence": "You exit the product promotion ladder for 2 years while peers compound promotions, comp, and scope — the gap may be permanent rather than recoverable",
+      "who_it_affects": "Senior PMs at FAANG or top-tier tech who are already on a strong trajectory and have the most to lose from a 2-year pause"
+    },
+    {
+      "choice": "Using MBA placement data to forecast career outcomes",
+      "unstated_consequence": "Pre-2022 placement rates are structurally misleading — the market that produced those numbers no longer exists, and using them overstates the MBA's expected value in 2024–2026",
+      "who_it_affects": "Candidates making 2024–2025 MBA enrollment decisions based on 2019–2021 success stories or school-published historical data"
+    },
+    {
+      "choice": "Choosing a higher-ranked generalist MBA over a specialized dual-degree program for PM",
+      "unstated_consequence": "Prestige ranking does not predict PM placement rate — a less-famous program (Kellogg MMM) may place 4x more graduates into PM than a higher-ranked standard MBA",
+      "who_it_affects": "Candidates who optimize for brand name over program structure and end up in a generalist recruiting pool competing for fewer PM slots"
+    },
+    {
+      "choice": "Pursuing MBA for vague 'skill development' goals (strategy, leadership)",
+      "unstated_consequence": "These skills are acquirable through targeted courses, books, and on-the-job experience without the $500K opportunity cost — the MBA packages them with a credential and network, but if the credential and network aren't the actual need, you're overpaying",
+      "who_it_affects": "PMs with strong existing credentials who frame the MBA as a learning investment rather than a door-opening credential"
+    },
+    {
+      "choice": "Technical PM pursuing MBA to accelerate career",
+      "unstated_consequence": "In B2B, developer tools, and infrastructure product roles, an MBA may signal a pivot away from the domain depth those hiring managers value, actively working against you",
+      "who_it_affects": "Technical PMs who work in specialized product domains where domain expertise is the primary hiring signal"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Pursuing MBA without identifying specific doors it opens",
+      "why_it_happens": "Vague career anxiety or plateau feeling gets rationalized as a need for more credentials and education rather than diagnosed as a specific, solvable access or skill problem",
+      "consequence": "Spends $400K–$500K in opportunity cost to acquire credentials and skills that were either already accessible or not actually the bottleneck to the desired career outcome",
+      "warning_signs": [
+        "Cannot name specific companies or roles that require MBA for consideration",
+        "Primary rationale is 'learn strategy' or 'expand network' rather than a specific closed door"
+      ]
+    },
+    {
+      "pattern": "Using historical MBA placement data to forecast current ROI",
+      "why_it_happens": "Schools publish cumulative or peak-year placement data; candidates anchor to impressive historical numbers without adjusting for post-2022 market correction",
+      "consequence": "Enrolls expecting 2019-era outcomes, graduates into a market where Big Tech MBA hiring is sharply reduced, and faces job search difficulty that wasn't modeled in the ROI calculation",
+      "warning_signs": [
+        "Citing placement rates without checking if they're pre- or post-2022",
+        "Not researching whether target companies currently have active MBA PM recruiting programs"
+      ]
+    },
+    {
+      "pattern": "Choosing MBA program by prestige ranking rather than PM-specific placement outcomes",
+      "why_it_happens": "Overall MBA rankings are highly visible and culturally legible; program-specific PM placement data requires more research and is less socially reinforced",
+      "consequence": "Ends up in a generalist MBA program with 7–10% PM placement when a specialized program at a less-famous school would have placed them at 35%+",
+      "warning_signs": [
+        "Evaluating MBA programs primarily by US News or Poets & Quants overall ranking",
+        "Not comparing PM-specific placement rates across programs"
+      ]
+    },
+    {
+      "pattern": "FAANG Senior PM pursuing MBA to 'reset' or 'accelerate'",
+      "why_it_happens": "MBA is culturally legible as a prestige signal and career accelerant; it's less obvious that it primarily functions as an access credential rather than a performance multiplier",
+      "consequence": "Returns to a role comparable to or below their pre-MBA position at significant cost, having exited the promotion ladder for 2 years",
+      "warning_signs": [
+        "Already at a company that MBA candidates aspire to reach",
+        "Current comp is at or above post-MBA median salary data for target schools"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Can you name the specific companies or roles that are currently closed to you that would open with an MBA?",
+      "what_it_reveals": "Whether the MBA is solving a concrete access problem or a vague career anxiety",
+      "follow_up_if_yes": "Are those companies currently actively recruiting MBAs into PM roles, or is that pipeline based on pre-2022 data?",
+      "follow_up_if_no": "What specifically do you believe is blocking your career progression, and is it actually a credential problem or a skill/network/positioning problem?"
+    },
+    {
+      "question": "What is your current employer and compensation level?",
+      "what_it_reveals": "Whether you're already inside the recruiting ecosystem MBA candidates are trying to enter, and what your true opportunity cost is",
+      "follow_up_if_yes": "If at FAANG or top-tier tech: the MBA likely returns you to where you are — what specific outcome justifies the $400K–$500K opportunity cost?",
+      "follow_up_if_no": "If at a non-top-tier employer: does your compensation and trajectory make the break-even calculation work, and is MBA the specific key or are other factors blocking the doors you want?"
+    },
+    {
+      "question": "What type of product role are you targeting — technical/B2B or consumer/generalist?",
+      "what_it_reveals": "Whether MBA credentials are valued or discounted by hiring managers in your target domain",
+      "follow_up_if_yes": "If technical/B2B: MBA may signal career pivot away from domain depth — have you verified that MBA holders are competitive in your target roles?",
+      "follow_up_if_no": "If consumer/generalist: MBA is more relevant — research whether your specific target companies still run active MBA PM recruiting programs post-2022"
+    },
+    {
+      "question": "Are you a non-US candidate lacking US work authorization or a US recruiting network?",
+      "what_it_reveals": "Whether the MBA's value proposition is primarily about H-1B sponsorship and campus recruiting access — a structurally different and stronger case than for US citizens",
+      "follow_up_if_yes": "This is one of the strongest legitimate use cases — validate that your target companies sponsor H-1B through MBA hiring and research visa pathway specifics",
+      "follow_up_if_no": "If US citizen with existing credentials: the visa/network access argument doesn't apply — return to whether a specific credential gap or access gap justifies the cost"
+    },
+    {
+      "question": "What is your target role 5–7 years out — CPO track, GM/COO track, or strategy/consulting-adjacent leadership?",
+      "what_it_reveals": "Whether MBA is structurally expected in your target destination or largely irrelevant to it",
+      "follow_up_if_yes": "If GM/COO/strategy track: MBA provides a business generalist toolkit that is more commonly expected — validate by checking backgrounds of people currently in those roles",
+      "follow_up_if_no": "If CPO track at tech company: MBA is often not needed — research CPO backgrounds at your target companies and assess whether MBA is a common pathway"
+    },
+    {
+      "question": "Have you calculated the full opportunity cost including lost salary and missed promotion cycles, not just tuition?",
+      "what_it_reveals": "Whether the candidate is reasoning about true cost or only the visible tuition figure",
+      "follow_up_if_yes": "Does the expected comp uplift from MBA exceed that full figure over your remaining career horizon?",
+      "follow_up_if_no": "Run the actual math: 2-year M7 cost (~$247K) + 2 years of foregone salary at your current level + value of missed promotion cycle — does any realistic post-MBA outcome exceed this?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "An MBA accelerates PM career progression and is a reliable path into product management",
+      "actual_reality": "MBA is NOT necessary to become or advance as a PM; the cases where it is legitimately worth it are specific and narrow — and the market for MBA→PM has contracted sharply post-2022",
+      "implication": "Candidates should treat MBA as a door-opening credential for specific closed doors, not a general career accelerant, and validate that the specific doors are currently open"
+    },
+    {
+      "common_belief": "Higher-ranked MBA programs produce better PM placement outcomes",
+      "actual_reality": "Program structure and PM-specific tracks matter more than overall ranking — Kellogg MMM (dual degree) places 35% into PM vs. 8% for standard Kellogg MBA, outperforming higher-ranked generalist programs",
+      "implication": "Evaluate MBA programs by PM-specific placement rates and program design, not by US News rankings or overall brand prestige"
+    },
+    {
+      "common_belief": "Historical MBA placement data into Big Tech PM roles reflects current opportunity",
+      "actual_reality": "Post-2022 tech layoffs caused Amazon to pause MBA hiring, Google to cut headcount, and Meta/Microsoft to reduce MBA intake; nearly 25% of HBS Class of 2024 was still job-searching 3 months post-graduation — more than double historical norm",
+      "implication": "Use only current-year placement data when modeling MBA ROI; pre-2022 figures are structurally misleading for 2024–2026 decisions"
+    },
+    {
+      "common_belief": "MBA skills (strategy, financial modeling, leadership) are only accessible through an MBA",
+      "actual_reality": "These skills are acquirable through targeted courses, books, and on-the-job experience without the $500K opportunity cost; the MBA packages them with a credential and network",
+      "implication": "If the credential and network aren't specifically what you need, the skills themselves don't justify MBA cost — separate the skill development question from the credential question"
+    },
+    {
+      "common_belief": "An MBA resets and upgrades any resume",
+      "actual_reality": "MBA credential reset only works meaningfully from M7 or equivalent programs — non-M7 MBA does not reliably open the doors that candidates assume it does",
+      "implication": "If pursuing MBA for credential reset purposes, only M7 or equivalent is likely to achieve the intended outcome; lower-ranked programs may carry the same cost without the access benefit"
+    },
+    {
+      "common_belief": "Getting an MBA while at a top tech company is a smart hedge",
+      "actual_reality": "FAANG/top-tier tech is already where MBA candidates aspire to reach — an MBA gets you back to where you started at the cost of 2 years out of the product ladder and $400K–$500K",
+      "implication": "Senior PMs at top-tier companies should require an extremely specific and verifiable rationale before pursuing MBA; the default answer is that it is not worth it"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating MBA ROI",
+      "junior_pattern": "Calculates ROI based on tuition cost versus post-MBA salary increase, anchoring on school rankings and headline placement percentages",
+      "senior_pattern": "Calculates full opportunity cost including 2 years of foregone salary, missed promotion cycles, and compounding gap versus peers who stayed on the ladder — then asks whether any realistic post-MBA trajectory exceeds that figure",
+      "why_it_matters": "Underestimating true opportunity cost leads to decisions that look financially rational on incomplete data but destroy long-term comp trajectory"
+    },
+    {
+      "dimension": "Identifying what the MBA is for",
+      "junior_pattern": "Pursues MBA for vague goals: 'expand my network,' 'learn strategy,' 'accelerate my career' — cannot name specific doors it opens",
+      "senior_pattern": "Names specific companies, roles, or recruiting funnels currently closed and verifies the MBA is the specific key — if no concrete answer exists, concludes the opportunity cost is too high",
+      "why_it_matters": "Vague rationales lead to $400K–$500K decisions with diffuse expected value that rarely justifies the cost"
+    },
+    {
+      "dimension": "Using placement data",
+      "junior_pattern": "Cites school-published or historical placement percentages at face value without checking publication date, cohort size, or current market conditions",
+      "senior_pattern": "Researches current-year data, adjusts for post-2022 market contraction, checks whether specific target companies actively run MBA PM recruiting now — not historically",
+      "why_it_matters": "Anchoring to outdated placement data produces systematically overoptimistic ROI forecasts in a market that has structurally changed"
+    },
+    {
+      "dimension": "Selecting an MBA program",
+      "junior_pattern": "Ranks programs by overall MBA prestige (US News, Poets & Quants) and targets the highest-ranked school they can get into",
+      "senior_pattern": "Ranks programs by PM-specific placement rates and program design features (dual degrees, tech integration, PM-specific tracks), recognizing that overall ranking does not predict PM-specific outcome",
+      "why_it_matters": "Optimizing for prestige over PM-specific fit produces worse PM placement outcomes despite equivalent or greater cost"
+    },
+    {
+      "dimension": "Self-diagnosing career blockage",
+      "junior_pattern": "Experiences career plateau and concludes more credentials are the solution without diagnosing whether the actual bottleneck is credentials, skills, network, or positioning",
+      "senior_pattern": "Runs a skills gap analysis before deciding, explicitly identifying what the MBA unlocks that cannot be obtained through targeted courses, deliberate networking, or job transitions",
+      "why_it_matters": "Credential solutions applied to non-credential problems waste time and money while leaving the actual problem unsolved"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_mba_for_pm_detailed",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

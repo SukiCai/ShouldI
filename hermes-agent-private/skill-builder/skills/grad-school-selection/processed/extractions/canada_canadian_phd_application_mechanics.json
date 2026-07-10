@@ -1,0 +1,289 @@
+{
+  "source_file": "canadian_phd_application_mechanics.txt",
+  "heuristics": [
+    {
+      "rule": "Check a Canadian professor's lab website and grant status before emailing them",
+      "condition": "When identifying target supervisors for a Canadian PhD application...",
+      "action": "...look for 'prospective students' notes on lab websites and verify active grants via NSERC Award Search or CIHR database before investing time in an outreach email",
+      "because": "Many professors post that they are not taking students that cycle, and unfunded professors cannot commit to supporting a PhD student regardless of interest — contacting them wastes both parties' time"
+    },
+    {
+      "rule": "Ask about internal funding deadlines on first contact with a Canadian department, not at application time",
+      "condition": "When initiating contact with a Canadian PhD program...",
+      "action": "...explicitly ask 'What are the internal scholarship deadlines for incoming PhD students?' before focusing on the program application deadline",
+      "because": "Internal awards like OGS close in October–November, months before program application deadlines of December–January — missing them forfeits a funding source that cannot be recovered that cycle"
+    },
+    {
+      "rule": "Treat the Canadian professor outreach call like a job interview, not a casual informational chat",
+      "condition": "When a Canadian professor responds positively to your email and schedules a video call...",
+      "action": "...prepare your research background, formulate specific questions about the lab, demonstrate knowledge of their recent work, and explicitly ask about RA funding availability and whether you can speak with current students",
+      "because": "In Canadian PhD admissions the supervisor's decision is often the de facto admission decision — the formal application ratifies what the professor has already committed to"
+    },
+    {
+      "rule": "Contact 4–6 Canadian supervisors before submitting any formal application",
+      "condition": "When applying to Canadian PhD programs as an international student unfamiliar with the system...",
+      "action": "...identify and reach out to 4–8 target supervisors in August–September of the prior year before touching any formal application portal",
+      "because": "Canadian programs are supervisor-first; applying without a named willing supervisor often results in outright rejection or indefinite limbo regardless of application quality"
+    },
+    {
+      "rule": "Get funding commitment in writing before accepting a Canadian PhD offer",
+      "condition": "When receiving a Canadian PhD offer letter...",
+      "action": "...verify whether the letter contains a specific, documented funding commitment and do not accept until it does",
+      "because": "Canadian PhD funding is not program-guaranteed like many US funded PhDs — students have arrived without confirmed packages, and verbal commitments are not enforceable"
+    },
+    {
+      "rule": "Do not spend time or money on GRE preparation for Canada-only PhD applications",
+      "condition": "When applying exclusively or primarily to Canadian PhD programs...",
+      "action": "...skip GRE preparation entirely and reallocate that effort to supervisor outreach, publication review, and research statement development",
+      "because": "Most Canadian PhD programs do not require the GRE, making GRE prep a direct misallocation of finite preparation time and money"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Supervisor's active grant funding status",
+      "why_it_matters": "Canadian PhD funding flows primarily from the supervisor's research grant — if the grant is inactive, depleted, or expiring, there may be no RA funding available regardless of admission interest",
+      "how_to_assess": "Search NSERC Award Search or CIHR funding database for the professor's name; check grant title, amount, and end date; cross-reference with lab website activity and recent publications",
+      "weight": "high"
+    },
+    {
+      "factor": "Supervisor's willingness to take students this cycle",
+      "why_it_matters": "In the Canadian system the supervisor's decision is functionally the admission decision — a professor not taking students means no viable application path at that institution regardless of program ranking",
+      "how_to_assess": "Check lab website for explicit 'prospective students' section; note any statements about current capacity; confirm directly in outreach email",
+      "weight": "high"
+    },
+    {
+      "factor": "Institution location relative to immigration pathways",
+      "why_it_matters": "Location affects post-graduation PR strategy — some Provincial Nominee Programs favor graduates from outside Toronto/Vancouver, and smaller institutions in those regions may provide faster PR pathways for certain streams",
+      "how_to_assess": "Research PNP streams available in the province of the target school; compare CRS points value of doctoral degree across scenarios; assess Ontario PhD Graduate Stream eligibility if applicable",
+      "weight": "high"
+    },
+    {
+      "factor": "Internal funding deadline calendar",
+      "why_it_matters": "Internal awards like OGS close before program application deadlines — missing them permanently forfeits funding that cannot be reapplied for mid-year",
+      "how_to_assess": "Contact department graduate coordinator directly in early fall; ask explicitly for all scholarship deadlines for incoming students, not just the application deadline",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding structure composition (RA vs. TA vs. fellowship vs. external award)",
+      "why_it_matters": "The source and stability of funding differs significantly — RA funding is tied to supervisor grant health, TA funding is tied to teaching availability, fellowships and external awards are portable and not grant-dependent",
+      "how_to_assess": "Ask supervisor directly: 'Do you have RA funding available for incoming students?' and 'What is the typical funding structure for your PhD students?'; ask to speak with a current student about their funding experience",
+      "weight": "high"
+    },
+    {
+      "factor": "Study permit processing timeline",
+      "why_it_matters": "For international students, a study permit takes 3–4 months to process and is tied to the specific institution and program — late application or program switching creates legal work authorization gaps",
+      "how_to_assess": "Count backward from program start date; ensure permit application submitted 3–4 months prior; confirm current processing times with IRCC",
+      "weight": "high"
+    },
+    {
+      "factor": "U15 membership and institutional research infrastructure",
+      "why_it_matters": "The 15 major research universities vary significantly in funding culture, international student support, and immigration infrastructure — smaller institutions outside this group may offer different tradeoffs",
+      "how_to_assess": "Check whether target institution is a U15 member; research immigration support services, international student population size, and industry/government research partnerships",
+      "weight": "medium"
+    },
+    {
+      "factor": "Expected time to completion by field",
+      "why_it_matters": "STEM PhDs in Canada complete in 5–6 years from a master's; humanities/social sciences run 6–8 years — this affects cumulative funding exposure, immigration timeline, and career entry age",
+      "how_to_assess": "Ask department for median time-to-completion data by program; cross-reference with funding guarantee period (typically 4–5 years) to identify funding cliff risk",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a Canadian PhD at a smaller institution outside major cities for PNP immigration advantages",
+      "unstated_consequence": "You gain a potential immigration pathway advantage through certain provincial streams but lose access to the dense industry networks, alumni communities, and research infrastructure concentrated in Toronto, Vancouver, and Montreal",
+      "who_it_affects": "International students optimizing for permanent residence speed over research output or industry career placement"
+    },
+    {
+      "choice": "Accepting a Canadian PhD offer with RA funding as the primary source",
+      "unstated_consequence": "Your financial security is directly coupled to your supervisor's grant renewal cycle — a grant that expires or is not renewed mid-PhD can collapse your funding with limited department backstop, unlike US program-guaranteed funding",
+      "who_it_affects": "International students who cannot rely on personal savings or family support as a buffer and have no fallback if supervisor funding changes"
+    },
+    {
+      "choice": "Applying to Canadian PhD programs without engaging with the supervisor-first culture",
+      "unstated_consequence": "Even a strong application may result in outright rejection or permanent limbo, not a waitlist — the system doesn't hold strong unmatched applicants the way US committee-review systems sometimes do",
+      "who_it_affects": "International students with strong academic records who assume application quality alone determines outcomes"
+    },
+    {
+      "choice": "Focusing preparation time on the formal program application deadline",
+      "unstated_consequence": "Internal funding competitions (OGS, institutional scholarships) close months earlier — by the time you submit your application, you have already permanently missed the most accessible non-competitive funding sources",
+      "who_it_affects": "Any applicant, but disproportionately international students who lack domestic advisors familiar with Canadian-specific funding calendars"
+    },
+    {
+      "choice": "Completing a Canadian PhD (3-year PGWP eligibility)",
+      "unstated_consequence": "The PGWP is tied to the specific institution and program — if you switch programs or institutions mid-degree, the permit must be reapplied for, and the clock and eligibility calculation may reset or be affected",
+      "who_it_affects": "International students who need to change supervisors, transfer institutions, or take leaves of absence during the PhD"
+    },
+    {
+      "choice": "Selecting Canada over the US for PhD training",
+      "unstated_consequence": "You enter a system with lighter coursework structure and earlier research engagement, but with more explicit financial dependency on a single supervisor rather than program-level funding guarantees — if the advisor relationship deteriorates, the financial and immigration consequences are more acute",
+      "who_it_affects": "International students with no prior experience of supervisor-dependent funding models"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Applying to Canadian PhD programs without pre-contacting supervisors",
+      "why_it_happens": "International students default to the US model they know — submit applications to programs, let committees decide — unaware that Canadian systems are supervisor-first by design, not convention",
+      "consequence": "Outright rejection or indefinite admission limbo regardless of academic strength; wasted application fees and cycle time",
+      "warning_signs": [
+        "Applicant cannot name a specific professor they want to work with at each target school",
+        "Applicant is filling out Canadian applications in November/December without any prior professor contact"
+      ]
+    },
+    {
+      "pattern": "Missing internal scholarship deadlines by focusing only on the program application deadline",
+      "why_it_happens": "Internal funding competitions are not prominently advertised in program materials; students assume one deadline governs all, and no one explicitly tells them the funding calendar runs months earlier",
+      "consequence": "Loss of OGS and institutional award eligibility for the entire incoming year, significantly reducing total funding and increasing financial precarity",
+      "warning_signs": [
+        "Student has not contacted the graduate coordinator about funding timelines",
+        "Student learns about OGS only after submitting their formal application"
+      ]
+    },
+    {
+      "pattern": "Accepting a Canadian PhD offer without written funding confirmation",
+      "why_it_happens": "Excitement about admission, social pressure to decide quickly, and assumption that admission implies funding (as it does in many US programs) cause students to accept before verifying the funding package",
+      "consequence": "Students arrive in Canada without a confirmed stipend, creating immediate financial crisis compounded by immigration status dependency on the program",
+      "warning_signs": [
+        "Offer letter does not specify stipend amount or source",
+        "Supervisor has given verbal assurances about funding but nothing in writing"
+      ]
+    },
+    {
+      "pattern": "Sending generic professor outreach emails without specific paper references or research alignment",
+      "why_it_happens": "Students send mass emails to maximize application volume, treating professor contact as a checkbox rather than the actual admission mechanism",
+      "consequence": "Professors ignore or decline generic inquiries; students interpret silence as rejection from the school rather than a fixable outreach failure, and reduce their applicant pool unnecessarily",
+      "warning_signs": [
+        "Email references professor's 'research interests' without naming a specific paper",
+        "Same template email sent to professors in substantially different research areas"
+      ]
+    },
+    {
+      "pattern": "Investing significant time and money in GRE preparation for Canadian-only applications",
+      "why_it_happens": "Students preparing for graduate school in general follow US-centric advice that treats GRE as universal; Canadian program requirements are not prominently highlighted in mainstream grad school prep resources",
+      "consequence": "Direct loss of preparation time and exam fees that could have been spent on supervisor outreach, research statement development, or publication review",
+      "warning_signs": [
+        "Student is enrolled in GRE prep course while targeting primarily Canadian programs",
+        "Student has not verified whether any target Canadian program actually requires GRE"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you already contacted specific professors at your target Canadian schools, and have any responded positively?",
+      "what_it_reveals": "Whether the student understands the supervisor-first nature of Canadian PhD admissions and how far along they are in the actual (informal) admissions process",
+      "follow_up_if_yes": "Have you asked about RA funding availability and requested to speak with a current student in the lab?",
+      "follow_up_if_no": "What is your target start date? If it is less than 6 months away, you may have already missed the window for the current cycle."
+    },
+    {
+      "question": "Do you have a written funding commitment from your supervisor or institution, or only a verbal assurance?",
+      "what_it_reveals": "Whether the student is exposed to the risk of arriving in Canada without confirmed financial support",
+      "follow_up_if_yes": "Does the written commitment specify the funding source (RA, TA, fellowship), the annual amount, and the guaranteed duration?",
+      "follow_up_if_no": "Do not accept the offer until you have this in writing — Canadian PhD funding is not program-guaranteed the way many US funded PhDs are."
+    },
+    {
+      "question": "Have you checked the internal funding deadlines (OGS, institutional awards) at your target institutions, not just the program application deadline?",
+      "what_it_reveals": "Whether the student is at risk of missing the earlier funding competitions that close months before the formal application deadline",
+      "follow_up_if_yes": "Have you already submitted or prepared materials for those competitions, or only noted the dates?",
+      "follow_up_if_no": "Contact the graduate coordinator immediately and ask for all scholarship deadlines for incoming students — if it is past October and you haven't applied, you may have already missed OGS for this cycle."
+    },
+    {
+      "question": "Have you verified whether your target supervisor has active grant funding?",
+      "what_it_reveals": "Whether the student understands that Canadian PhD RA funding flows from the supervisor's grant and has assessed the financial viability of the proposed supervisory relationship",
+      "follow_up_if_yes": "When does the grant expire, and has the professor indicated whether a renewal application is pending?",
+      "follow_up_if_no": "Search NSERC or CIHR databases for the professor's name before your next contact — this is not intrusive, it is due diligence."
+    },
+    {
+      "question": "Are you planning to stay in Canada after your PhD, and have you mapped your PhD program choice to specific immigration pathways?",
+      "what_it_reveals": "Whether the student is treating institution location as a neutral variable when it has significant implications for PNP eligibility and CRS points strategy",
+      "follow_up_if_yes": "Have you compared the PNP streams available in the province of each target school, and do you know whether any target institutions fall under streams that favor non-major-metro graduates?",
+      "follow_up_if_no": "If long-term Canada residency is a goal, the geographic location of your institution is a high-weight decision factor that should be evaluated before finalizing your school list."
+    },
+    {
+      "question": "What is your target field — STEM or humanities/social sciences?",
+      "what_it_reveals": "Expected time-to-completion, which determines cumulative funding exposure, immigration timeline, and the risk of outlasting your guaranteed funding period",
+      "follow_up_if_yes": "If STEM: median completion is 5–6 years from master's. If humanities/social sciences: median is 6–8 years. Does your funding guarantee cover the full expected duration, or does it create a funding cliff?",
+      "follow_up_if_no": "N/A — this is a binary field classification question."
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canadian PhD applications work like US applications — submit to the program, a committee reviews, and an advisor is assigned later",
+      "actual_reality": "Canadian PhD admissions are supervisor-first: you identify and secure a willing supervisor before applying formally, and the formal application is frequently a paper process ratifying a decision already made. Many programs won't consider applications without a named supervisor.",
+      "implication": "Applicants must begin supervisor outreach 6–12 months before the formal application deadline, not after submission"
+    },
+    {
+      "common_belief": "Admission to a Canadian PhD program means you are funded",
+      "actual_reality": "Canadian PhD funding is assembled from multiple sources — supervisor RA grants, TAships, university fellowships, and competitive external awards — and the offer letter may not include a specific funding commitment. Students have arrived without confirmed packages.",
+      "implication": "Never accept a Canadian PhD offer without a written, specific funding commitment detailing source, amount, and duration"
+    },
+    {
+      "common_belief": "The application deadline is the key date to track for a Canadian PhD",
+      "actual_reality": "Internal funding competitions (OGS, institutional scholarships) close in October–November, months before program application deadlines of December–January. Missing the funding deadline is not recoverable within that cycle.",
+      "implication": "The funding calendar must be obtained from the department graduate coordinator before October, making it the first administrative action after identifying target schools"
+    },
+    {
+      "common_belief": "GRE scores are a standard part of PhD applications internationally",
+      "actual_reality": "Most Canadian PhD programs do not require the GRE. It is not a standard requirement in the Canadian system.",
+      "implication": "Applicants targeting Canadian programs should verify requirements before investing in GRE preparation, and should reallocate that time to supervisor outreach and research materials"
+    },
+    {
+      "common_belief": "Asking a prospective supervisor about their funding status is presumptuous or rude",
+      "actual_reality": "In the Canadian PhD context, where funding flows directly from the supervisor's grant, asking about RA funding availability is considered responsible due diligence, not impolite. The financial dimension of the supervisor relationship is more explicit in Canada than in the US.",
+      "implication": "Directly ask prospective supervisors 'Do you have RA funding available for incoming students?' during the initial call — this is expected and appropriate"
+    },
+    {
+      "common_belief": "All major Canadian research universities offer equivalent immigration advantages for international PhD students",
+      "actual_reality": "Institution location materially affects post-graduation immigration strategy — some Provincial Nominee Programs favor graduates from outside Toronto and Vancouver, meaning a smaller institution in a different province may offer a faster or more accessible PR pathway for certain immigration goals.",
+      "implication": "Institution location should be evaluated as an immigration strategy variable, not just a prestige or research quality variable, for international students planning to stay in Canada"
+    },
+    {
+      "common_belief": "Canadian and US PhDs take roughly the same time to complete",
+      "actual_reality": "Canadian PhDs (entered after a master's) typically complete in 4–5 years; US PhDs (entered from bachelor's) take 5–6 years with 2+ years of coursework first. The Canadian system involves lighter required coursework and earlier research engagement from day one.",
+      "implication": "Applicants choosing between Canadian and US programs should account for the total time-to-degree differential, which affects career entry timing, funding duration requirements, and immigration timeline calculations"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of what the actual admission mechanism is",
+      "junior_pattern": "Focuses on optimizing the formal application — essays, transcripts, test scores — and submits to programs expecting a committee to make decisions",
+      "senior_pattern": "Understands that in Canada the supervisor relationship is the admission decision; invests primary effort in identifying, researching, and building relationships with 4–8 target professors before touching any application form",
+      "why_it_matters": "A junior applicant can submit a technically strong application and receive no offers because no supervisor was engaged; a senior applicant with equivalent credentials secures admission by securing supervisor interest first"
+    },
+    {
+      "dimension": "How they read funding offers",
+      "junior_pattern": "Reads 'you have been admitted' as implying funding is included, similar to how some US funded PhD offers work; may verbally confirm with supervisor and consider it settled",
+      "senior_pattern": "Reads the offer letter specifically for written funding details — source, amount, duration — and does not accept until a documented commitment exists, knowing Canadian funding is assembled from multiple unstable sources",
+      "why_it_matters": "Junior thinking leads to arriving in Canada without confirmed financial support; senior thinking prevents a financial crisis compounded by immigration status dependency"
+    },
+    {
+      "dimension": "Timeline awareness",
+      "junior_pattern": "Tracks the program application deadline as the primary date and begins preparing materials 2–3 months before it",
+      "senior_pattern": "Works backward from program start date, identifying that supervisor contact should happen in August–September, internal funding deadlines fall in October–November, and federal award deadlines in October — treating the formal application as the last step, not the first",
+      "why_it_matters": "Juniors routinely miss internal funding competitions that close before they have even started their applications"
+    },
+    {
+      "dimension": "How they approach professor outreach emails",
+      "junior_pattern": "Sends a high volume of similar emails expressing general interest in the professor's research area to maximize chances; treats contact as a checkbox in the application process",
+      "senior_pattern": "Sends targeted, specific emails to 4–8 carefully selected professors referencing named papers, articulating a concrete research direction, and attaching substantive materials; treats each email as the beginning of a professional relationship that may last 5+ years",
+      "why_it_matters": "Generic mass emails are ignored; specific, substantive emails generate the responses that constitute actual admission progress in the Canadian system"
+    },
+    {
+      "dimension": "How they assess supervisor viability",
+      "junior_pattern": "Evaluates supervisors by publication record, h-index, and program ranking; assumes any active professor at a good school can support a PhD student",
+      "senior_pattern": "Evaluates supervisors by active grant status (NSERC/CIHR search), current lab composition, lab website statements about taking students, and direct conversation about funding availability — treats grant health as a prerequisite filter before research fit assessment",
+      "why_it_matters": "A supervisor with strong publications but an expiring or unfunded grant cannot reliably support a PhD student financially, regardless of research alignment"
+    },
+    {
+      "dimension": "Integration of immigration strategy into school selection",
+      "junior_pattern": "Selects Canadian schools based on research fit and program ranking; treats immigration as a post-graduation problem to solve later",
+      "senior_pattern": "Evaluates institution location, provincial PNP stream availability, PGWP duration (3 years post-PhD), and CRS points value of doctoral degree as active variables in the school selection decision alongside research fit",
+      "why_it_matters": "School choice made without immigration analysis may optimize for research quality while closing off faster or more accessible PR pathways that a different institution would have enabled"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canadian_phd_application_mechanics",
+  "_source_regions": [
+    "canada"
+  ]
+}

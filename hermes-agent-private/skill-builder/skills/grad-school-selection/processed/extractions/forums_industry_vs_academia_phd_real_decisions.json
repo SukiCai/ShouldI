@@ -1,0 +1,486 @@
+{
+  "source_file": "industry_vs_academia_phd_real_decisions.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Position yourself as a problem-solver and team player, not a paper-publisher, when transitioning to industry",
+      "condition": "When a PhD holder is applying to industry roles after an academic career",
+      "action": "Reframe CV and narratives around impact, transferable skills, and team contributions rather than publication count or research depth",
+      "because": "Paul Agapow, who made the transition from Imperial College Group Leader to AstraZeneca/GSK, explicitly advises this — industry hiring evaluates different signals than academic hiring committees",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Avoid extended postdoc roles if industry is the actual goal",
+      "condition": "When a PhD graduate is uncertain about academia vs. industry and considers a postdoc as a holding pattern",
+      "action": "Do not default to a second or third postdoc — transition to industry directly or after a single postdoc if domain knowledge requires it",
+      "because": "Paul Agapow explicitly cautions that extended postdoc roles signal continued academic commitment to industry hiring managers, who read them as failed academic careers rather than deliberate training",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "If you are targeting academic careers, assess country-specific odds before committing to the path",
+      "condition": "When an international PhD student is planning a long-term academic career trajectory",
+      "action": "Research the specific national job market for your field before treating 'academia' as a single undifferentiated option",
+      "because": "The source explicitly documents that UK and Australia markets are severely contracted (austerity, Brexit, pandemic cuts), while US and Canada markets are less brutal — the same PhD and the same ambition yield very different outcomes depending on target country",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Geographic flexibility",
+      "why_it_matters": "Academic positions are sparse and location-specific; willingness to relocate dramatically expands viable options, while geographic constraints make academic careers near-impossible in most fields",
+      "how_to_assess": "Ask directly: am I willing to move anywhere in the country — or internationally — for a position, with no veto on location? If the honest answer is no, academic career viability drops sharply",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Timeline tolerance for financial and career uncertainty",
+      "why_it_matters": "Academic career paths require 5-7 years post-PhD of postdoc uncertainty before knowing if the career is viable; industry offers earlier stability",
+      "how_to_assess": "Assess personal financial obligations, family situation, and psychological tolerance for multi-year ambiguity with no guaranteed outcome",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Intrinsic motivation source — specialization vs. breadth",
+      "why_it_matters": "Academia rewards deep, narrow specialization in a single research question over decades; industry rewards problem diversity and fast feedback — misalignment causes burnout in either direction",
+      "how_to_assess": "Ask: is the research question itself the end, or is it a tool for solving problems? If the question is the end, academia fits better; if it is a tool, industry fits better",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Target country's academic job market conditions",
+      "why_it_matters": "The same PhD credentials and ambition yield vastly different academic career odds in US vs. UK vs. Australia vs. Canada — the market structure is not uniform",
+      "how_to_assess": "Look up tenure-track or permanent position opening rates in your field by country; check whether Brexit, austerity, or pandemic cuts have affected the specific national market",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Teaching and mentoring as intrinsic motivators",
+      "why_it_matters": "Academic roles bundle research with teaching and graduate mentoring — if teaching is not intrinsically motivating, it becomes a significant recurring cost, not a benefit",
+      "how_to_assess": "Honestly assess whether teaching and mentoring would feel rewarding or draining after the novelty fades; industry equivalents (onboarding, team leadership) are lighter versions of the same work",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in academia for the research freedom",
+      "unstated_consequence": "Supervisors and senior academics are overwhelmed with paperwork, meetings, and administrative burden — the research freedom that attracted the person is largely consumed by administrative overhead at the faculty level",
+      "who_it_affects": "PhD students and early postdocs who idealize academic life by observing researchers at the bench, not observing the full workload of a group leader or professor",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Leaving academia for industry to escape bureaucracy and rigidity",
+      "unstated_consequence": "Industry can also be bureaucratic and rigid — the grass-is-greener bias works in both directions; Darren moved from pharma to planning a PhD specifically because industry disappointed him with unexpected rigidity",
+      "who_it_affects": "Academics who romanticize industry as uniformly dynamic and fast-moving, and industry workers who romanticize academia as uniformly free and creative",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Completing a postdoc before transitioning to industry",
+      "unstated_consequence": "A second or extended postdoc signals to industry hiring managers that the candidate was pursuing an academic career and failed, rather than that they were deliberately building skills — it can actively hurt industry candidacy",
+      "who_it_affects": "PhD graduates who use postdocs as a delay mechanism while uncertain about career direction, especially in life sciences",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Pursuing a PhD in the UK on a stipend",
+      "unstated_consequence": "At £20,780/year (2025) and real hours counted, the effective hourly rate can fall below minimum wage — financial sacrifice is more severe than the nominal stipend implies",
+      "who_it_affects": "International students and domestic students who compare PhD stipends to salaries without accounting for actual hours worked",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "choice": "Targeting a permanent academic position in life sciences",
+      "unstated_consequence": "Only 3% of PhD students secure permanent academic positions post-graduation; less than 1% reach professorship — the stated career goal of most entering PhD students is structurally unreachable for 97% of them",
+      "who_it_affects": "Any PhD student who enters assuming academic employment is the default outcome if they work hard enough",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Defaulting to a postdoc as a holding pattern while uncertain about industry vs. academia",
+      "why_it_happens": "Postdocs feel like the 'safe' next step after a PhD — they extend the known environment, avoid a hard career decision, and feel like continued skill-building",
+      "consequence": "Each additional postdoc year makes industry transition harder by signaling ongoing academic commitment; the candidate is perceived as a failed academic rather than a deliberate career-changer",
+      "warning_signs": [
+        "Accepting a postdoc without a clear thesis for why it advances a specific goal",
+        "Describing the postdoc as 'buying time' or 'keeping options open'",
+        "Being on a second or third postdoc with no concrete academic job applications"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Entering a PhD with the assumption that academic employment is the default outcome for strong performers",
+      "why_it_happens": "PhD programs are run by academics who succeeded in academia — survivorship bias shapes the advice and culture students absorb; the 97% who don't get permanent positions are not visible in the room",
+      "consequence": "Graduates spend years optimizing for academic metrics (publications, grants) without building industry-transferable skills or networks, then face a cold-start industry job search",
+      "warning_signs": [
+        "Measuring success exclusively by publication count and grant applications",
+        "No industry internship or collaboration experience by year 4-5 of PhD",
+        "Framing industry as a 'backup plan' rather than a primary path"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Delaying departure from academia by two or more years after recognizing it is not the right fit",
+      "why_it_happens": "Sunk cost fallacy — years of training, identity investment, and social proof in the academic world make departure feel like failure rather than a rational reallocation",
+      "consequence": "Dr. Matthew Carlson explicitly states he regrets not leaving sooner by approximately two years — delayed transition means delayed salary, career growth, and life stability",
+      "warning_signs": [
+        "Saying 'I'll leave after just one more paper / grant / position'",
+        "Framing industry departure as giving up rather than choosing",
+        "Aware of dissatisfaction but continuing anyway because of sunk time"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "If you were guaranteed tenure tomorrow, would you take it — or would you prefer your current or target industry role?",
+      "what_it_reveals": "Tests whether the person actually wants academic work or is pursuing academia for prestige, identity, or sunk-cost reasons — Dr. Matthew Carlson's poll found over 80% of PhDs in industry would say no even with tenure guaranteed",
+      "follow_up_if_yes": "Then academic path may be genuinely right — assess structural odds (3% permanent position rate) and whether you can survive the uncertainty timeline",
+      "follow_up_if_no": "Then the academic pursuit may be driven by identity or sunk cost rather than genuine preference — ask what is actually keeping you on the academic track",
+      "regions": []
+    },
+    {
+      "question": "Are you willing to move anywhere — nationally or internationally — for a position, with no veto on location?",
+      "what_it_reveals": "Geographic flexibility is a structural prerequisite for academic career viability in most fields; without it, the candidate pool shrinks to near zero in many specializations",
+      "follow_up_if_yes": "Geographic constraint is not the limiting factor — assess research fit, funding odds, and timeline tolerance",
+      "follow_up_if_no": "Academic career viability in most fields is severely compromised — assess whether the specific target geography has enough openings, or whether industry is a better structural fit",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "Which country's academic job market are you actually targeting, and have you looked at current opening rates in your field there?",
+      "what_it_reveals": "The same PhD and ambition yield very different structural odds in US vs. UK vs. Australia vs. Canada — many people plan 'an academic career' without accounting for national market collapse in specific regions",
+      "follow_up_if_yes": "They have done the research — probe whether they have a realistic plan given those odds",
+      "follow_up_if_no": "They are planning based on a generic notion of 'academia' — direct them to country-specific data before committing further to the path",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "Is the research question itself the end goal, or is it a tool for solving a broader problem?",
+      "what_it_reveals": "Distinguishes whether the person is genuinely motivated by deep specialization (academic fit) vs. problem-solving and impact (industry fit) — misalignment causes burnout in either environment",
+      "follow_up_if_yes": "Question is the end — academia may be genuine fit; assess whether they can survive the structural odds and uncertainty",
+      "follow_up_if_no": "Question is a tool — industry is likely a better structural and motivational fit; explore what kind of industry problems would be energizing",
+      "regions": []
+    },
+    {
+      "question": "How many years into uncertainty are you willing to go before you need to know whether your academic career is viable?",
+      "what_it_reveals": "Academic career timelines require 5-7 years post-PhD of postdoc uncertainty before a tenure-track position may materialize — if the answer is less than that, the path is structurally incompatible with the person's actual timeline tolerance",
+      "follow_up_if_yes": "Tolerance is high — academic path is not ruled out by timeline; assess other factors",
+      "follow_up_if_no": "Tolerance is low — industry provides earlier stability and clearer feedback cycles; mismatch between aspiration and tolerance should be surfaced explicitly",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A PhD naturally leads to an academic career if you are good enough and work hard enough",
+      "actual_reality": "Only 3% of PhD students secure permanent academic positions post-graduation; less than 1% reach professorship — the outcome is structurally constrained, not primarily a function of individual merit",
+      "implication": "PhD students should plan for industry as the primary path and academia as the narrow exception, not the reverse — career preparation, networking, and skill-building should reflect this base rate",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "Industry means less autonomy, creativity, and freedom than academia",
+      "actual_reality": "Dr. Ashley Ruba found entrepreneurship and UX research gave her the same autonomy, freedom, flexibility, and creativity she loved about academia — without the precarity; Paul Agapow found less stress and better work-life balance in industry",
+      "implication": "The autonomy tradeoff is real in some industry contexts but not universal — the relevant question is which specific industry role, not 'industry' as a monolith",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "A postdoc is neutral or positive signal for industry hiring — it shows continued skill development",
+      "actual_reality": "Extended postdoc roles signal continued academic commitment to industry hiring managers; they read multiple postdocs as a failed academic career, not deliberate training for industry transition",
+      "implication": "Candidates who want industry should transition directly after PhD or after a single short postdoc — not use postdocs as a career delay mechanism",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "Academic salaries are a reasonable tradeoff for the freedom and job satisfaction of research",
+      "actual_reality": "Academic researchers in life sciences earn approximately 30% less than industrial counterparts; UK PhD stipends at £20,780/year can fall below minimum wage when actual hours are counted",
+      "implication": "The financial sacrifice is larger than most prospective PhD students model — compounded over a 5-10 year academic training period, the opportunity cost is substantial",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "The academic job market is roughly uniform across countries — a strong candidate can target positions globally",
+      "actual_reality": "The market varies dramatically: UK was severely cut by austerity and Brexit; Australia lost positions in pandemic; US has more entry-level tenure positions than UK/Europe; Canada's public university system is less brutal than UK",
+      "implication": "International PhD students should evaluate country-specific odds rather than treating 'academia' as one global market — the same credentials have very different expected outcomes depending on target country",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How PhD students perceive the academic career path",
+      "naive_pattern": "Assumes that strong performance, good publications, and a postdoc naturally lead to an academic position — views industry as a backup for those who couldn't make it",
+      "informed_pattern": "Treats academic positions as structurally rare (3% base rate) and plans accordingly — builds industry-transferable skills and networks in parallel, treats industry as a primary path",
+      "why_it_matters": "Students who plan only for academia spend years optimizing for metrics that don't transfer — by the time they recognize the structural reality, they face a cold-start industry job search with no relevant network or positioning",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to read a postdoc on a CV",
+      "naive_pattern": "Views each postdoc as additive — more training, more publications, more credibility; treats multiple postdocs as a stronger signal",
+      "informed_pattern": "Understands that industry reads extended postdocs as continued academic commitment and implicitly as failed academic career pursuit — a second or third postdoc is a negative signal for industry hiring, not neutral",
+      "why_it_matters": "Candidates who do multiple postdocs while hoping to transition to industry actively damage their industry candidacy with each additional year",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to frame skills when applying to industry from academia",
+      "naive_pattern": "Lists publications, grants, and research depth as primary credentials — assumes research excellence translates directly",
+      "informed_pattern": "Translates academic work into problem-solving narratives, team contributions, and demonstrable impact — explicitly positions as a problem-solver, not a paper-producer",
+      "why_it_matters": "Industry hiring managers do not evaluate academic CVs the same way academic committees do — candidates who don't translate their experience are screened out before their actual skills are assessed",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "Evaluating job satisfaction in academia vs. industry",
+      "naive_pattern": "Evaluates academic life by observing PhD supervisors and postdocs at the bench — sees the research activity, not the administrative overhead of faculty roles",
+      "informed_pattern": "Understands that faculty roles are heavily loaded with paperwork, meetings, grant-writing, and administrative burden — the research freedom of a PhD student is not representative of what a professor's job actually looks like",
+      "why_it_matters": "Students who model faculty jobs based on their own PhD experience are optimizing for a version of the job that doesn't exist at scale — disillusionment after getting the position is a documented pattern",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you don't get a tenure-track job, it means you weren't good enough",
+      "why_believed": "PhD culture is deeply meritocratic in framing — the survivors in the room (advisors, faculty) all succeeded, creating a strong survivorship bias that attributes their success to merit rather than structural luck",
+      "actual_rule": "97% of PhD graduates do not get permanent academic positions — the constraint is structural, not primarily meritocratic; the supply of PhDs vastly exceeds the number of available positions regardless of quality",
+      "real_consequence": "Graduates who internalize failure attribution spend years in unnecessary shame and delay their industry transition, compounding the financial and career cost",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "Academia offers more freedom and less bureaucracy than industry",
+      "why_believed": "PhD students observe their own relatively unstructured research experience and generalize it to faculty careers; industry is stereotyped as corporate and rigid",
+      "actual_rule": "Faculty roles are heavily administrative; Darren moved from pharma back toward academia partly because of industry bureaucracy — both environments can be rigid; the distribution varies by specific role and institution, not by sector",
+      "real_consequence": "Candidates choose or avoid career paths based on a false contrast — they may enter academia expecting freedom and find administrative burden, or avoid industry expecting rigidity and miss more autonomous roles",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "Doing another postdoc keeps your options open between academia and industry",
+      "why_believed": "Postdocs feel like continued training and skill-building — neutral or positive in all directions; the cost of the choice is invisible because it is a delay rather than a commitment",
+      "actual_rule": "Extended postdocs are read by industry as continued academic commitment — each additional postdoc year narrows industry options, not preserves them; the option value is negative, not neutral",
+      "real_consequence": "Candidates who use postdocs as a holding pattern while deciding find themselves progressively less attractive to industry, eventually facing a transition that is harder than it would have been immediately post-PhD",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "PhD in social sciences, aspired to be therapist and professor, took an academic position post-PhD",
+      "decision": "Left academic position for data analyst role in healthcare industry",
+      "outcome": "Dr. Matthew Carlson reports no regret about leaving — only regret about not leaving two years sooner; conducted a poll in which over 80% of PhDs in industry said they would not return to academia even if tenure were guaranteed",
+      "lesson": "The barrier to leaving academia is largely psychological and identity-based, not rational — most people who make the transition report they wished they had done it sooner; the 80% no-return rate suggests industry satisfaction is high and the loss is smaller than feared",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Developmental psychology PhD holding an NIH Postdoctoral Fellowship, 2022",
+      "decision": "Left NIH postdoc for UX Research and entrepreneurship",
+      "outcome": "Dr. Ashley Ruba found the same autonomy, freedom, flexibility, and creativity she valued in academia — without the precarity — in UX and entrepreneurship",
+      "lesson": "The specific qualities people value in academia (autonomy, intellectual freedom, creativity) are not exclusive to academia — certain industry roles replicate them without the structural precarity; the question is not academia vs. industry but which specific role provides the valued qualities",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Group Leader at Imperial College London with academic career established",
+      "decision": "Transitioned to industry roles at AstraZeneca and GSK",
+      "outcome": "Paul Agapow reports less stress, better work-life balance, and higher compensation; advises positioning as problem-solver rather than paper-producer for industry transition",
+      "lesson": "Even established academic careers can be successfully transitioned to industry at senior levels — the transition is not only for early-career researchers; the framing and skill translation are critical to how the move lands",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "Mid-career academic considering a path change, 2023",
+      "decision": "Dena Huisman accepted first full-time non-academic job in January 2023, transitioning to UX Research",
+      "outcome": "Successfully transitioned mid-career; documented publicly on Medium as a replicable path",
+      "lesson": "Academic-to-industry transition is viable at mid-career, not only at PhD graduation — the window does not permanently close, though earlier transitions face less accumulated identity investment",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "PhD students or postdocs who frame leaving academia as 'giving up' or 'not being good enough'",
+      "underlying_state": "Identity fusion with the academic role — the career path has become the self-concept, so departure feels like personal failure rather than a rational reallocation of effort",
+      "how_it_manifests": "Continuing to pursue academic positions despite clear evidence of dissatisfaction or poor structural odds; framing industry as a last resort; delaying departure by 'one more' paper, grant, or position",
+      "expert_move": "Reframe the base rate — 97% of PhD graduates do not get permanent positions; staying in the system is the minority outcome, not leaving; industry transition is the statistically normal path, not the failure path",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "PhD graduates who recognize they should leave academia but delay departure for years",
+      "underlying_state": "Sunk cost fallacy — years of training, publications, and academic identity make departure feel like writing off the investment rather than a forward-looking rational choice",
+      "how_it_manifests": "Dr. Matthew Carlson explicitly regrets staying two years longer than he should have — the delay is not random but follows a predictable pattern of 'just one more' milestone before leaving",
+      "expert_move": "Reframe sunk costs explicitly: the years already spent are gone regardless of the next decision — the only decision is whether future years are better spent in academia or industry, evaluated prospectively",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "PhD students romanticizing either academia or industry based on idealized images rather than observed reality",
+      "underlying_state": "Grass-is-greener bias operating in both directions — academics idealize industry freedom, industry workers idealize academic research freedom; both images are partial",
+      "how_it_manifests": "Darren left pharma for academia planning; Steven doubted academia after observing overwhelmed supervisors — both cases show the idealized image colliding with observed reality",
+      "expert_move": "Force contact with the reality of the target environment before committing — informational interviews with people 5-10 years into the target path, not 1-2 years; ask specifically about the parts that are not advertised",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "International PhD students planning 'an academic career' without specifying which country's market they are targeting",
+      "underlying_state": "Ambiguity tolerance — keeping the geographic and market question unresolved feels like preserving optionality, but it actually delays confronting the structural reality of specific national markets",
+      "how_it_manifests": "Students invest in academic credentials without researching whether their target country (especially UK or Australia) has viable openings in their field — the reckoning comes at the job application stage",
+      "expert_move": "Force the geographic question early: which specific country's academic market are you targeting, and what are the current opening rates in your field there — make the structural reality concrete before the training investment is complete",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I stay in academia or go to industry? I don't know which is right for me.",
+      "reframe": "The question is not academia vs. industry — it is which specific role gives you the qualities you actually value: autonomy, problem diversity, stability, impact. Both sectors contain the full range.",
+      "why_it_works": "Dissolves a false binary that was generating decision paralysis — once the valued qualities are named, the search space across both sectors becomes tractable rather than existential",
+      "example_language": "Dr. Ashley Ruba found the ultimate autonomy, freedom, flexibility, and creativity she loved about academia — in UX Research. The qualities moved, not the sector.",
+      "regions": []
+    },
+    {
+      "original_framing": "I've spent six years in this PhD and postdoc — I can't just leave now, that would mean it was all for nothing.",
+      "reframe": "The six years are gone regardless of your next decision. The only question is whether the next five years are better spent here or somewhere else — evaluated from today forward, not from the start.",
+      "why_it_works": "Breaks the sunk cost framing by separating the past investment (fixed, irreversible) from the future decision (open, consequential) — forces prospective rather than retrospective evaluation",
+      "example_language": "Dr. Matthew Carlson: 'I don't regret leaving academia. I regret not leaving sooner.' The regret is about delay, not departure.",
+      "regions": []
+    },
+    {
+      "original_framing": "I didn't get a tenure-track position — I must not have been good enough.",
+      "reframe": "97% of PhD graduates don't get permanent academic positions. The constraint is structural, not meritocratic. Not getting a tenure-track job is the statistically normal outcome, not evidence of individual failure.",
+      "why_it_works": "Replaces a self-attributional failure narrative with a structural base-rate reality — removes the shame that is delaying rational career reallocation",
+      "example_language": "Only 3% of PhD students secure permanent academic positions post-graduation. You are in the 97%. That is not failure — that is the system.",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "forums_industry_vs_academia_phd_real_decisions",
+  "_source_regions": [
+    "us",
+    "canada",
+    "uk"
+  ]
+}

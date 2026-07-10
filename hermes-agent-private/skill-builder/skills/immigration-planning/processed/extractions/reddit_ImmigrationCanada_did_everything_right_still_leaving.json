@@ -1,0 +1,266 @@
+{
+  "source_file": "ImmigrationCanada_did_everything_right_still_leaving.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "If your work permit is expiring and Express Entry draws haven't reached your CRS score, explore the French-language draw pathway before leaving Canada permanently",
+      "condition": "When your PGWP or work permit is nearing expiration and your CRS score hasn't been selected in recent draws...",
+      "action": "Investigate French-language Express Entry draws as an alternative pathway, either from within Canada or from your home country",
+      "because": "The French-language draw has lower CRS thresholds and the commenter explicitly notes it remains open to applicants from outside Canada, giving a viable re-entry path even after departing",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Take TCF/TEF exams at a reputable, well-resourced center — ideally in a country with Alliance Française standards — rather than assuming all centers score equivalently",
+      "condition": "When preparing to take a French language proficiency test for Express Entry...",
+      "action": "Research test center reputation and geographic scoring consistency before booking; multiple commenters report drastically different score outcomes across centers",
+      "because": "Multiple commenters corroborate that speaking round scores vary significantly by test location, even though official policy states scoring is done remotely in France",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Work permit expiry date relative to draw frequency and CRS cutoff trends",
+      "why_it_matters": "If the permit expires before a draw reaches your score, you lose legal status to remain in Canada regardless of how well-prepared you are",
+      "how_to_assess": "Track the last 6–12 months of draw cutoffs for your category; compare your CRS score to the trend line; calculate whether draws are likely to reach your score before your permit end date",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Employer willingness to support remote work from home country",
+      "why_it_matters": "Changes the departure from a career-ending event to a temporary geographic relocation, preserving income, references, and potentially the ability to be re-sponsored later",
+      "how_to_assess": "Negotiate with employer well before permit expiry; assess whether the role is location-independent and whether the employer has precedent for international remote work",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "French language proficiency level and ability to reach CLB/NCLC 7",
+      "why_it_matters": "French-language draws offer a distinct Express Entry pathway with historically lower CRS cutoffs; achieving NCLC 7 in all four skills unlocks this stream",
+      "how_to_assess": "Take a diagnostic TEF/TCF practice test; assess realistic timeline to reach NCLC 7 in speaking, which commenters identify as the hardest component",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Test center quality and geographic location for TCF/TEF",
+      "why_it_matters": "Commenters report significant score variation by test center location, particularly in the speaking component, which can determine eligibility for French draws",
+      "how_to_assess": "Research Alliance Française centers with strong reputations; cross-reference community reports for specific centers in Canada, US, and home country",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Doing everything 'by the book' in Express Entry — high IELTS, adding French, maximizing CRS",
+      "unstated_consequence": "CRS score maximization alone does not guarantee selection if draw cutoffs are elevated by policy changes or high applicant volume; a high score can still be insufficient if the system shifts around you",
+      "who_it_affects": "Skilled workers who invested years building a profile in good faith and timed their graduation, job, and language scores to align — only to find cutoffs remain out of reach",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying on French-language draws as a lower-competition pathway",
+      "unstated_consequence": "The French draw pathway is increasingly flagged for fraud abuse, and community signals suggest IRCC may pause or restrict it — meaning it could close before a candidate completes preparation",
+      "who_it_affects": "Candidates who pivot to French as a backup strategy late in their work permit timeline",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Departing Canada before permit expiry to avoid overstaying",
+      "unstated_consequence": "Leaving Canada resets your CEC (Canadian Experience Class) eligibility and may affect your CRS score, limiting which draw categories you can enter",
+      "who_it_affects": "Candidates who planned to use Canadian work experience as their primary CRS boost",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating CRS score maximization as a sufficient strategy without tracking draw cutoff trends and permit expiry alignment",
+      "why_it_happens": "The Express Entry system rewards score optimization, so candidates focus on inputs (IELTS, French, job offer, education) without modeling the output probability given current draw trends and their remaining permit window",
+      "consequence": "Candidate reaches a strong CRS score (e.g. 476) but permit expires before a draw at that cutoff occurs, forcing departure despite years of legitimate investment",
+      "warning_signs": [
+        "Candidate knows their CRS score but cannot state the last 6-month draw range for their category",
+        "Candidate is adding French or other score boosters without a timeline model for when draws might reach their score"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Assuming TCF/TEF test integrity is uniform across all centers and countries",
+      "why_it_happens": "Official policy states remote scoring by French institutions, so candidates assume location is irrelevant — they don't investigate community-reported score variance by center",
+      "consequence": "Candidate books at a local or convenient center, scores lower than expected in speaking, fails to reach NCLC 7, and misses French-language draw eligibility",
+      "warning_signs": [
+        "Candidate books the nearest or cheapest test center without researching center reputation",
+        "Candidate attributes a low speaking score solely to their own proficiency without questioning center variance"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "When does your work permit expire, and what has the CRS draw cutoff been for your category over the last 6 months?",
+      "what_it_reveals": "Whether there is a realistic probability of selection before status expires, or whether the candidate is counting on an outcome the data does not support",
+      "follow_up_if_yes": "If draws are trending toward your score: what is your contingency if the draw doesn't happen in time — do you have a bridge option like a visitor record or employer LMIA?",
+      "follow_up_if_no": "If draws are not trending toward your score: have you modeled the French-language draw pathway, and what would it take to reach NCLC 7 before your permit expires?",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Have you negotiated with your employer about continuing to work remotely from your home country if you must leave Canada?",
+      "what_it_reveals": "Whether departure means total career disruption or a geographic relocation that preserves income and future sponsorship potential",
+      "follow_up_if_yes": "If yes: does the remote arrangement preserve your ability to be re-sponsored or to maintain Canadian work experience credit for a future application?",
+      "follow_up_if_no": "If no: initiating this conversation early — not at the last moment — significantly changes the set of options available",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you targeting the French-language Express Entry draw, and if so, where are you planning to take your TCF or TEF exam?",
+      "what_it_reveals": "Whether the candidate is aware of community-reported score variance by test center and has chosen a reputable location",
+      "follow_up_if_yes": "Have you researched the specific center's track record in the community (Reddit, 一亩三分地) and compared scores reported by test-takers at that center?",
+      "follow_up_if_no": "If not yet planning: what is your current French level and realistic timeline — because the French draw pathway may itself be at risk of policy change",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "TCF and TEF speaking scores are immune to local examiner bias because they are scored remotely in France",
+      "actual_reality": "While the official scoring mechanism is remote, multiple commenters report significantly different speaking scores at different test centers — suggesting either scorer variance, different remote scorer pools by region, or other center-level factors that affect outcomes in practice",
+      "implication": "Candidates should not assume test center location is irrelevant; researching community-reported outcomes at specific centers before booking is a practical risk-mitigation step",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Fraud in French-language immigration pathways is primarily a problem in other countries, not inside Canada",
+      "actual_reality": "Commenters specifically identify test centers in Ontario and British Columbia as locations where CLB 7 scores are allegedly obtainable through fraud — meaning the integrity problem exists within Canada itself",
+      "implication": "IRCC is likely aware of this and may restrict or pause French-language draws; candidates planning to use this pathway should treat it as time-sensitive and potentially closing",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "A high CRS score combined with legitimate credentials (IELTS, French, Canadian work experience) guarantees eventual selection in Express Entry",
+      "actual_reality": "Draw cutoffs are determined by applicant pool composition and IRCC policy choices, not by individual merit — a score of 476 with full credentials may still never be selected if draws shift to targeted categories or if the pool remains competitive",
+      "implication": "Candidates must plan for the possibility of non-selection as a real scenario, not just a remote risk, and build contingency pathways (employer remote work, French draws, PNPs) in parallel",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Response to permit expiry with unselected CRS score",
+      "naive_pattern": "Waits until the last possible moment hoping for a draw, frames the situation as 'doing everything right' and experiencing unfairness, departs without a structured re-entry plan",
+      "informed_pattern": "Begins modeling re-entry pathways 6–12 months before expiry; negotiates employer remote work arrangement proactively; investigates French draws, PNPs, or LMIA-based extensions as parallel tracks",
+      "why_it_matters": "The naive pattern results in a closed door; the informed pattern results in a departure that preserves multiple future pathways",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Attitude toward the French-language pathway",
+      "naive_pattern": "Views French as a score-boosting hack or backup plan to be pursued quickly when the primary path stalls",
+      "informed_pattern": "Recognizes that genuine French proficiency takes sustained effort; understands the pathway has integrity risks that may cause IRCC to restrict it; builds French skills early as a real language investment, not a last-minute workaround",
+      "why_it_matters": "Candidates who treat it as a quick hack are most vulnerable if the pathway closes or if they cannot reach NCLC 7 in time",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "TCF/TEF speaking scores vary by country because the local examiner scores you differently — so you should take the exam in a 'friendly' country like the US or Canada",
+      "why_believed": "Community members observe real score differences across countries and attribute it to examiner leniency or bias, which feels intuitively plausible given experiences with IELTS",
+      "actual_rule": "TCF/TEF speaking responses are recorded and scored remotely by France Education International, not by the local examiner; the local examiner follows a fixed script and does not determine the final score",
+      "real_consequence": "Candidates may travel internationally to take exams at additional cost based on a causal story that may be wrong; or worse, they dismiss legitimate low scores as center bias rather than addressing actual language gaps",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "If you max out your CRS score legitimately, you will eventually get selected — it's just a matter of waiting",
+      "why_believed": "The Express Entry system is designed as a merit ranking, which implies higher scores should always win eventually; candidates invest years building their score on this assumption",
+      "actual_rule": "Selection depends on draw category, IRCC policy priorities, and applicant pool dynamics — not just raw score; targeted draws can bypass high-scoring general pool candidates indefinitely",
+      "real_consequence": "Candidates wait past their permit expiry without building contingency plans, then are forced to leave without a structured re-entry pathway",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "International student arrived in Canada in 2021, graduated 2022, obtained tech job, maximized CRS to 476 with IELTS and French, work permit expiring February 9",
+      "decision": "Left Canada February 1 rather than overstaying; negotiated with employer to continue working remotely from home country; posted a farewell to the community",
+      "outcome": "Retained employment and career continuity; departed with status intact; left open the possibility of re-applying through French draws from home country; did not achieve PR despite full compliance",
+      "lesson": "High CRS scores and full compliance do not guarantee selection within a permit window; proactive employer negotiation for remote work is the highest-leverage contingency a departing candidate can secure — it preserves income and future sponsorship options",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Candidate frames their situation as 'did everything right, still leaving' — emphasizing rule-following and fairness while acknowledging they are departing without PR",
+      "underlying_state": "Moral accounting bias — the belief that compliance with rules creates an implicit debt that the system owes them; combined with injustice sensitivity when observing fraud succeed while legitimate candidates fail",
+      "how_it_manifests": "Candidate publicly validates their own process ('I don't regret that') and attributes failure to systemic unfairness rather than also examining strategic gaps (e.g., no PNP pursuit, no LMIA exploration, late French pivot)",
+      "expert_move": "Acknowledge the genuine systemic unfairness, then redirect: 'Playing fair is worth it for your own integrity — and separately, let's look at what contingency pathways you may not have fully explored yet, because the goal is to find the door that opens, not to be right about the one that didn't'",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Community debate about whether test center location affects TCF/TEF scores devolves into anecdote wars with no resolution",
+      "underlying_state": "Confirmation bias combined with high-stakes anxiety — candidates who scored poorly at a local center need an external explanation; candidates who scored well need to believe their score is legitimate",
+      "how_it_manifests": "Both sides assert their anecdote as evidence; the candidate seeking to game the system by traveling to a 'better' center wastes money and time without addressing actual language proficiency",
+      "expert_move": "Reframe from 'which center is easier' to 'what is my actual NCLC level and what is the fastest legitimate path to NCLC 7 in speaking' — this redirects energy from gaming to preparation",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Candidate watches others achieve PR through what they perceive as fraud or shortcuts, while their own legitimate effort goes unrewarded",
+      "underlying_state": "Relative deprivation and perceived unfairness — comparison to others who 'cut corners' amplifies feelings of injustice and can cause candidates to either rationalize shortcuts themselves or disengage entirely",
+      "how_it_manifests": "Expressed as frustration ('watching shortcuts and fraud work while people playing fair struggle'); may cause candidates to either abandon the process prematurely or pursue questionable shortcuts they had previously rejected",
+      "expert_move": "Validate the frustration, then separate the emotional from the strategic: 'Whether fraud is happening is a systemic policy problem — your decision about your own pathway should be based on what actually works for your specific situation, not on what you observe others doing'",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "I'm leaving Canada — this chapter is over",
+      "reframe": "You're not leaving your career or your pathway — you're leaving the geography; the French draw is still open from your home country",
+      "why_it_works": "Decouples physical location from immigration eligibility, which the poster had conflated; transforms a narrative of ending into one of continuation with a specific actionable next step",
+      "example_language": "You know you can still do a comeback through French Draw from Home Country",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_ImmigrationCanada_did_everything_right_still_leaving",
+  "_source_regions": [
+    "canada"
+  ]
+}

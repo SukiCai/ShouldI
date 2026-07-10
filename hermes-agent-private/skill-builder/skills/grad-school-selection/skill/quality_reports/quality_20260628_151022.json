@@ -1,0 +1,47 @@
+{
+  "skill_name": "Graduate School Selection Advisor",
+  "overall_score": 4.5,
+  "summary": "This is a genuinely strong skill that captures how an experienced grad school mentor thinks — particularly the advisor-first reframe, the locally-competitive admissions insight, and the integration of immigration mechanics with academic decisions. It avoids most generic-advice traps with specific, verifiable heuristics (NSF Award Search, CIP codes, last-5 placements), though a few sections could go deeper on field-specific nuance and quantitative thresholds.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 5,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The advisor-first reframe is consistently operationalized, not just stated. The line 'you reframe it as which of these two people will I spend my twenties working under' plus the concrete due diligence steps (NSF Award Search, contacting departed students, last-5 placements) turns a slogan into a workflow.",
+    "Specific, verifiable, non-obvious heuristics. 'Verify active grant status before accepting' with the actual database names (NSF Award Search / NIH Reporter), 'Always annualize stipends to 12 months ($34K/9-month = $28K/year),' and 'Verify the CIP code with the DSO' are the kind of practitioner-level details a novice would never think to ask.",
+    "Hidden tradeoffs table is exceptional — items like 'Winning NSF GRFP may be substitutive, not additive' and 'Pre-tenure advisor = you are a beta-test mentee' are genuinely non-obvious downsides that only surface after the fact.",
+    "Integration of immigration with academic decisions (OPT, CIP code, federal fellowship exclusion for international students, EB-1A/O-1 pathways) is a rare and valuable cross-domain synthesis that most advisors miss."
+  ],
+  "weaknesses": [
+    "Diagnostic questions are good but several miss field-specific nuance. For example, the framework treats 'humanities PhD' as one case in Step 2, but doesn't ask about cohort size, comprehensive exam structure, or whether the program offers summer language/archive funding — all of which dominate humanities outcomes more than advisor choice does.",
+    "The failure patterns section identifies the right categories but lacks the granular warning signs that make 'that's me' recognition possible. 'Cannot articulate a research question' is good, but 'PhD-for-prestige/immigration' could include more specific tells (e.g., 'applies only to T10 programs regardless of fit,' 'asked ChatGPT to write the SOP research statement').",
+    "Some claimed base rates are presented without sourcing or caveats — '40–50% PhD dropout,' '8.4–9.5 year median humanities time-to-degree,' 'credential signals decay within ~18 months.' The last one in particular is presented as fact but is contested and field-dependent.",
+    "The skill underweights the lab-vs-advisor distinction in modern ML/CS, where senior PhDs and postdocs often do most de facto mentoring. 'You are applying to an advisor' is partially wrong in large labs — sometimes you're applying to a lab culture."
+  ],
+  "improvement_suggestions": [
+    "Add a field-stratified diagnostic branch: the current framework is implicitly CS/ML-centric. Add explicit prompts for life sciences (rotations, qualifying exam timing, joint mentorship), humanities (cohort funding, language exams, dissertation prospectus timing), and engineering (industry-funded vs. federally-funded labs have very different IP and publication norms).",
+    "Add a 'red flag scripts' subsection with concrete language: what does it sound like when an advisor is evasive about funding? Sample question: 'Is my funding guaranteed by the department for 5 years regardless of your grant status?' and what a good vs. bad answer sounds like.",
+    "Add explicit handling of the reapply-vs-accept-a-suboptimal-offer decision — this is one of the most common real questions and isn't covered. Include the opportunity cost of a gap year vs. accepting a weak fit.",
+    "Add a section on the lab-tier ecosystem in CS/ML specifically: that being a student of a famous advisor with no time is often worse than being the star student of a strong-but-less-famous one; and that postdoc/senior-student mentorship in large labs matters as much as the PI.",
+    "Cite or hedge the base rates. Either link sources (Council of Graduate Schools attrition data, MLA placement reports) or qualify with 'roughly' and field-specific ranges."
+  ],
+  "generic_advice_flags": [
+    "'Do not give generic advice — every response should reflect where the user actually is.' This is meta-instruction rather than skill content; it's the kind of line every skill includes and doesn't add diagnostic power.",
+    "'A perfect candidate with no faculty match gets rejected; a moderately competitive candidate with strong faculty alignment gets admitted.' True but stated absolutely — in reality this is field-dependent (very true in CS/bio, less true in humanities where committee-based admissions dominate). The skill should flag this asymmetry."
+  ],
+  "missing_coverage": [
+    "Reapplication strategy and gap year ROI — extremely common decision point for borderline applicants",
+    "Master's-to-PhD transition pathways (when an MS is a strategic stepping stone vs. a dead-end credential)",
+    "How to evaluate joint/co-advising arrangements, which are increasingly common and have specific failure modes (conflicting agendas, split funding)",
+    "Country-specific considerations beyond the US — UK/EU/Canada PhDs have very different structures (shorter, less coursework, different funding) and different immigration consequences (UK Graduate Route, Canadian PGWP+Express Entry)",
+    "Mental health and advisor toxicity as a decision factor — high base rates of depression in PhD programs are well-documented and not mentioned",
+    "How to handle the situation where the best research fit is with a known difficult/abusive advisor (the 'brilliant jerk' problem) — concrete in many subfields",
+    "The role of qualifying/preliminary exams and their pass rates as a hidden filter, especially in programs that use them to manage attrition"
+  ]
+}

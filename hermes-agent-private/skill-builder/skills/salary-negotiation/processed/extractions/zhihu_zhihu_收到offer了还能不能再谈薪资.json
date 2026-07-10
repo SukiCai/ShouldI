@@ -1,0 +1,366 @@
+{
+  "source_file": "zhihu_收到offer了还能不能再谈薪资.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Negotiate before signing, not after onboarding",
+      "condition": "When you have received a written offer but have not yet signed or started",
+      "action": "Raise all compensation concerns — salary, equity, level, benefits — before you sign, because this is the only window where your negotiating position is equal to the employer's",
+      "because": "Multiple commenters agree: once you join, you lose leverage entirely — you are on the boat, the boatman sets the price. The offer stage is legally a non-binding offer (要约) and no contract has formed yet.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Use competing offers or a walkable current job as leverage before negotiating",
+      "condition": "When you want to negotiate upward on a received offer",
+      "action": "Establish real alternatives first — other offers, a viable current job — then name your number directly without embarrassment",
+      "because": "Commenter with 100% and 50% salary jump experience attributes both outcomes to consistently declining below-expectation offers until the right one came; leverage is what makes the ask credible",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Acknowledge the offer warmly, then open the negotiation with specific market data",
+      "condition": "When negotiating compensation after receiving a written offer",
+      "action": "Call or email HR: thank them, reaffirm interest, then cite market benchmarks and concrete benefit comparisons to justify the ask",
+      "because": "Commenter describes this exact script from US business school career office training and personal experience in both China and the US",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "Total compensation includes non-salary items that can be monetized — negotiate on all of them",
+      "condition": "When the base salary is hard to move",
+      "action": "Calculate the value of paid leave, bonus structure, equity, welfare benefits, and paid holidays and use them as comparison points or negotiation targets",
+      "because": "Commenter explicitly lists 14–15 month salary, extra PTO, full social insurance, holiday gifts, annual trips as items that can be 折成金钱 (converted to monetary value) in negotiation",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether you are a fresh graduate (应届生) or an experienced professional",
+      "why_it_matters": "Fresh graduates have significantly less bargaining power due to no track record and no competing offers; negotiation strategy differs substantially",
+      "how_to_assess": "Count years of work experience; if zero, treat as low-leverage scenario and focus on any unique strengths rather than market comps",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether you have real, walkable alternatives",
+      "why_it_matters": "Without alternatives, a negotiation ask has no credible threat; the employer knows you will likely accept anyway",
+      "how_to_assess": "Do you have another offer in hand, or a current job you are genuinely fine staying at? If not, your leverage is low",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "How critical the role is to fill (岗位稀缺性)",
+      "why_it_matters": "If the position has been open a long time and good candidates are scarce, the hiring manager has incentive to go back to leadership to re-approve a higher package",
+      "how_to_assess": "Research how long the job posting has been up; ask during interview how urgently they need to fill it; note whether the recruiter is following up urgently",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Whether the negotiation requires the hiring manager to re-open internal approval flow",
+      "why_it_matters": "In many companies, offer approval involves the manager's own leadership; re-opening it costs the manager political capital and signals poor interview execution, making them resistant",
+      "how_to_assess": "Ask HR directly whether the compensation is flexible or fixed by band; large companies typically have rigid bands, smaller companies have more discretion",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting an unsatisfactory offer without negotiating, planning to 'prove yourself' and ask for more after joining",
+      "unstated_consequence": "Salary adjustments in large companies are tied to fixed review windows; you cannot negotiate outside those windows, and by the time the window opens you are already bound by the contract you signed",
+      "who_it_affects": "New hires at large tech companies or corporations with formal HR cycles (most US and Canadian big tech)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Joining at a salary you are unhappy with and trying to leave shortly after",
+      "unstated_consequence": "Short tenure is interpreted as either performance failure or poor decision-making by future employers; you also bear switching costs — relocation, gap in bonus/vesting, re-onboarding time",
+      "who_it_affects": "Candidates who rationalized the low offer as temporary and did not negotiate at the offer stage",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Not negotiating because you 'don't want to cause trouble' for the hiring manager",
+      "unstated_consequence": "You absorb all the cost of the manager's internal process, while the manager and company retain the full benefit of your labor at below-market rate",
+      "who_it_affects": "Risk-averse candidates, international students, and fresh graduates who fear rejection",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting the offer and planning to renegotiate after a successful probation period",
+      "why_it_happens": "Candidates feel grateful or anxious about losing the offer; they rationalize that proving themselves first will make the ask easier and safer",
+      "consequence": "The labor contract locks in the salary; HR has no budget or process mechanism to adjust outside review cycles; the informal promise from the recruiter is unenforceable",
+      "warning_signs": [
+        "Candidate says 'I'll just show them what I can do first'",
+        "Recruiter makes a vague verbal promise about 'adjusting after probation' instead of putting it in the offer letter"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Raising compensation concerns only after onboarding, once fully committed",
+      "why_it_happens": "The candidate felt the offer stage was too early or too risky to push back; they hoped their dissatisfaction would fade",
+      "consequence": "No leverage remains — switching costs (housing, visa, social insurance timelines) make leaving expensive; the company has little incentive to re-negotiate a signed contract",
+      "warning_signs": [
+        "Candidate says 'I'll bring it up once I've proven myself'",
+        "Candidate mutters dissatisfaction but signs without saying anything"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Negotiating with no market data and no competing offer — just a vague sense that 'I deserve more'",
+      "why_it_happens": "Candidate knows negotiation is allowed but has not done the preparation to make a credible case",
+      "consequence": "HR has nothing to take back to leadership; the ask sounds arbitrary and is easily dismissed; candidate may still accept the same offer, having gained nothing",
+      "warning_signs": [
+        "Candidate says 'I just feel the number is low' without citing comparables",
+        "No other offer or current salary benchmark to reference"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you have a competing offer or a current job you are genuinely fine staying at?",
+      "what_it_reveals": "Whether the candidate has real leverage to negotiate or is negotiating from desperation",
+      "follow_up_if_yes": "Use the competing offer or current comp as your anchor — name the specific number and ask them to match or exceed it",
+      "follow_up_if_no": "Focus on market data (Glassdoor, Levels.fyi, LinkedIn Salary) and unique qualifications as your justification; the ask is weaker but still worth making",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you a fresh graduate (应届生) or do you have work experience?",
+      "what_it_reveals": "Whether market-rate comps and job-offer leverage arguments apply, or whether the candidate is in a fundamentally lower-leverage position",
+      "follow_up_if_yes": "Experienced hire: negotiate assertively using market benchmarks and competing offers",
+      "follow_up_if_no": "Fresh graduate: still negotiate, but anchor on any differentiating strengths (special skills, research, internship outcomes) rather than pure market comps",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "Has the offer been signed/accepted, or are you still in the pre-signature window?",
+      "what_it_reveals": "Whether negotiation is still at the optimal moment or whether it requires re-opening a closed contract",
+      "follow_up_if_yes": "Pre-signature: this is legally the best moment — no binding contract exists yet; negotiate now",
+      "follow_up_if_no": "Post-signature: leverage is severely diminished; wait for the formal salary review window and prepare a strong business case",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You should not negotiate after receiving an offer because it will make you look difficult and the company will rescind the offer",
+      "actual_reality": "HR's KPI is to hire the right person within budget — losing a good candidate over a small salary gap is worse for them than adjusting the number. Informed commenters from both China and US contexts agree: negotiating at the offer stage is expected, especially for experienced hires",
+      "implication": "Candidates should negotiate without guilt; the fear of rescission is almost always unfounded for reasonable asks backed by market data",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "You can negotiate a salary adjustment after probation by making an informal agreement with the recruiter or manager",
+      "actual_reality": "Large companies have rigid salary adjustment windows (typically annual or semi-annual reviews) and the labor contract already specifies the salary; informal pre-hire verbal promises are legally unenforceable and HR departments cannot act on them outside the formal cycle",
+      "implication": "Never trade away the offer-stage negotiation for a vague post-probation promise; get any adjustment commitment in writing in the offer letter or do not accept it as a real commitment",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Asking for more money after receiving an offer means the manager has to embarrass themselves by going back to their boss",
+      "actual_reality": "True in some rigid hierarchies, but this is the candidate's problem being described from the manager's perspective — it is not the candidate's responsibility to protect the manager's face at the cost of their own compensation",
+      "implication": "The manager's internal approval burden is real, but it is their job to handle; a well-prepared, market-anchored ask is a legitimate business request, not a personal attack on the manager",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Timing of negotiation",
+      "naive_pattern": "First-timer waits until after joining to raise salary concerns, believing they need to 'earn the right' to ask first",
+      "informed_pattern": "Experienced professional negotiates before signing because they know that is the only moment of equal power; once inside the boat, the power balance flips permanently",
+      "why_it_matters": "Post-onboarding negotiation is nearly impossible in structured companies; the window closes the moment you sign",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Response to a below-expectation offer",
+      "naive_pattern": "Accepts silently to avoid seeming difficult, suppresses dissatisfaction, and hopes it fades",
+      "informed_pattern": "Treats the dissatisfaction as a signal that must be surfaced and resolved before signing, because unresolved dissatisfaction will create ongoing distraction, ongoing job searches, and eventual turnover",
+      "why_it_matters": "Suppressed dissatisfaction does not fade — it festers and leads to low engagement or premature departure, which costs both sides more than the salary gap would have",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "How they frame negotiation",
+      "naive_pattern": "Sees asking for more money as confrontational, risky, and likely to offend the hiring manager or HR",
+      "informed_pattern": "Sees it as a normal bilateral process — the offer is a non-binding proposal (要约), you have not accepted yet, expressing counter-terms is legally and professionally standard",
+      "why_it_matters": "The framing determines whether they act at all; treating it as confrontation leads to paralysis and acceptance of under-market pay",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Once you receive an offer, negotiating will almost certainly cause the company to rescind it or view you as a troublemaker",
+      "why_believed": "The top answer on this post describes the manager's internal re-approval burden and the risk of being labeled a '刺头' (troublemaker), making the risk feel very concrete and personal",
+      "actual_rule": "Negotiation at the offer stage is standard practice and expected by HR; the cost of losing a good candidate over a modest salary gap is higher than the cost of adjusting the number. Multiple informed commenters with real hiring experience explicitly contradict the 'rescission risk' framing",
+      "real_consequence": "Candidates who believe this misconception silently accept below-market offers, leading to ongoing dissatisfaction, distraction, and eventual turnover — outcomes worse for both parties than the negotiation would have been",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "misconception": "If you negotiate and the salary can't be raised now, you can agree with the recruiter to get a raise after a successful probation period",
+      "why_believed": "It feels like a reasonable compromise — prove yourself first, then get rewarded. Recruiters sometimes make this vague promise to close the hire",
+      "actual_rule": "Labor contracts lock in salary on signing; large companies have formal salary review cycles and cannot make ad-hoc adjustments outside them; informal verbal promises from recruiters are unenforceable and HR management will not honor them because it creates untracked budget variance",
+      "real_consequence": "The candidate signs at a salary they are unhappy with, the informal promise is never honored, and they have no recourse — the optimal negotiation window has passed",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Experienced professional in Shanghai receiving job offers below salary expectations during two separate job changes",
+      "decision": "Consistently declined all offers where HR or headhunters said the compensation could not meet the stated expectation, without exception",
+      "outcome": "First job change resulted in a 100% salary increase; second resulted in a 50% increase",
+      "lesson": "Credible walkaway behavior — actually declining non-matching offers rather than capitulating — is what produces large compensation gains; the willingness to walk is the leverage, not the negotiation script",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "Candidate received an offer where salary had not been explicitly negotiated during interviews — only a rough range was discussed — in both a Chinese company and a US company",
+      "decision": "Proactively called/emailed HR after receiving the written offer: thanked them, reaffirmed interest, then explicitly raised compensation concerns with market data and benefit comparisons",
+      "outcome": "The negotiation was treated as normal by HR in both cases; the process described as standard by the US business school career office as well",
+      "lesson": "The written offer is the correct and expected trigger point for compensation negotiation; doing it by phone or email with a warm, professional framing and market-based justification is standard practice in both markets",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Candidate asks 'will negotiating hurt my chances or make them think badly of me?' after already receiving an offer",
+      "underlying_state": "Fear of rejection and loss aversion — the offer feels like a fragile gift that could be taken away; asking for more feels like threatening the relationship",
+      "how_it_manifests": "Candidate accepts the first number without speaking, or asks tentatively and backs down immediately at any resistance",
+      "expert_move": "Reframe: the offer is a non-binding proposal (要约), not a favor or a contract. You have made no commitment yet. Expressing counter-terms is the legally and professionally expected next step, not an act of ingratitude. HR's job is to close you within budget — they are on your side of this.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Candidate says 'I'll just show them what I can do first, then ask for more after probation'",
+      "underlying_state": "Sunk cost pre-commitment combined with hope bias — believing future performance will create a negotiation opportunity that doesn't structurally exist",
+      "how_it_manifests": "Candidate signs a below-market offer, joins the company, discovers salary review windows are rigid and informal promises evaporate, and is stuck for 12+ months",
+      "expert_move": "Ask directly: 'Can you show me where in the employment contract the post-probation adjustment is documented?' If it is not in writing in the offer letter, it does not exist. The negotiation window is now, not later.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Fresh graduate (应届生) who feels they have no leverage and treats any salary as 'take it or leave it'",
+      "underlying_state": "Status anxiety and imposter syndrome — believing their inexperience disqualifies them from having preferences or making asks",
+      "how_it_manifests": "Accepts first offer without any negotiation, sometimes even expressing gratitude for a below-market number",
+      "expert_move": "Even fresh graduates have negotiable dimensions: start date flexibility, signing bonus, professional development budget, equity cliff timing. The ask does not have to be base salary. Negotiating one dimension builds the muscle and sometimes opens the door to others.",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Can I still negotiate after receiving an offer, or is it too late / too risky?",
+      "reframe": "This is not the last chance to ask — it is the ONLY chance. Once you sign and join, you are on the boat and the boatman sets the terms. The offer stage is the single moment when you and the employer have roughly equal power.",
+      "why_it_works": "Shifts the question from 'is it acceptable to ask?' to 'if not now, when?' — which reveals that waiting is not a safer option but actually the highest-risk move",
+      "example_language": "见过艄公行船到江心敲乘船的竹杠，可没见过乘船的到了江心问艄公讨自己船票钱的 (You've seen the boatman raise prices at midstream — you've never seen a passenger demand a refund at midstream)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I don't want to seem greedy or cause problems for the hiring manager by asking for more",
+      "reframe": "Meeting recruiter targets within budget is the HR's KPI — not yours. Your job is to represent your own interests. The candidate who silently accepts a bad deal and then underperforms or leaves in 6 months is far more costly to the company than the candidate who negotiated up front.",
+      "why_it_works": "Depersonalizes the negotiation — it reframes it as two professionals doing their respective jobs, removing the guilt and the feeling of imposing on someone",
+      "example_language": "你的利益，自己不捍卫，别人犯得着多发你钱吗？(Your interests — if you don't defend them yourself, why would anyone else pay you more?)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "I'm not happy with the salary but I'll accept and prove myself, then ask for a raise after probation",
+      "reframe": "The satisfaction you expect to feel after 'proving yourself' will not arrive — it will be replaced by the same dissatisfaction, now with additional switching costs making it harder to leave. Unresolved dissatisfaction does not fade; it festers.",
+      "why_it_works": "Forces the candidate to think about the trajectory of accepting, not just the immediate relief of avoiding a difficult conversation",
+      "example_language": "一旦有某些点触动到你，心里会更加难受 (Once something triggers you, the feeling only gets worse — it doesn't fade)",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_收到offer了还能不能再谈薪资",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

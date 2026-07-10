@@ -1,0 +1,279 @@
+{
+  "source_file": "canada_pgwp_lmia_negotiation_canada.txt",
+  "heuristics": [
+    {
+      "rule": "Negotiate as a Canadian citizen in terms of mobility leverage when on PGWP",
+      "condition": "When you hold a Post-Graduation Work Permit (open work permit)...",
+      "action": "...do not concede negotiation leverage based on immigration status; treat yourself as fully mobile",
+      "because": "PGWP is an open work permit — you can work for any employer without employer sponsorship, giving you the same walk-away power as a citizen"
+    },
+    {
+      "rule": "Never volunteer future LMIA dependency concerns during negotiation",
+      "condition": "When you are a PGWP holder negotiating a first offer or raise...",
+      "action": "...do not mention concerns about future PR pathways or LMIA needs",
+      "because": "Disclosing future immigration dependency signals to the employer that they have leverage over you, weakening your negotiating position even when that leverage may not actually exist yet"
+    },
+    {
+      "rule": "Time CEC Express Entry application to achieve PR before PGWP expiry to eliminate LMIA dependency entirely",
+      "condition": "When you have a 3-year PGWP and a NOC TEER 0/1 job offer...",
+      "action": "...accumulate 12 months of qualifying work, apply for CEC Express Entry, and target PR grant before PGWP expires",
+      "because": "Successfully executing this timeline means you never need an employer-specific LMIA, preserving full negotiation leverage throughout your early Canadian career"
+    },
+    {
+      "rule": "Use LMIA investment as leverage in raise conversations with current employer, not in new job negotiations",
+      "condition": "When your current employer has already spent $3,000–$6,000+ on LMIA processing for you...",
+      "action": "...invoke that investment as a data point supporting higher compensation in retention or raise discussions",
+      "because": "The employer's sunk cost in your work authorization is a credible argument for compensation alignment in an existing relationship, but has weak force in attracting a new employer who hasn't yet made that investment"
+    },
+    {
+      "rule": "Identify GTS-approved employers as competing offer sources to neutralize LMIA timing leverage",
+      "condition": "When your current employer is using LMIA processing time (2–5 months) as implicit leverage to prevent you from leaving...",
+      "action": "...find a Global Talent Stream-approved competitor who can process LMIA in ~2 weeks, making a competing offer practically viable",
+      "because": "The employer's leverage in this scenario relies entirely on the time-delay moat; GTS approval at a competitor eliminates that moat"
+    },
+    {
+      "rule": "Delay LMIA disclosure with startups until after receiving an offer",
+      "condition": "When you need LMIA sponsorship and are applying to startup employers...",
+      "action": "...do not raise the LMIA requirement until you have a formal offer in hand",
+      "because": "Startups are less likely to invest in LMIA processes and will screen you out early if they know upfront; waiting until you have an offer gives you maximum leverage and demonstrated value before the conversation"
+    },
+    {
+      "rule": "Use specific salary range anchoring with market data sources in Canadian context",
+      "condition": "When making a salary counter-offer in Canada without a competing offer...",
+      "action": "...cite Glassdoor Canada, Levels.fyi, and Government of Canada Job Bank together to establish a credible market range, then name a specific target number",
+      "because": "Multi-source market data framing signals preparation and makes the number feel externally validated rather than arbitrary"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Work permit portability",
+      "why_it_matters": "Determines whether you can realistically walk away from an offer or employer, which is the foundation of all negotiation leverage",
+      "how_to_assess": "Check whether your current or prospective permit is open (PGWP, PR) vs. employer-specific (LMIA-backed, intra-company transfer); open = full leverage, employer-specific = reduced leverage",
+      "weight": "high"
+    },
+    {
+      "factor": "Time remaining on PGWP relative to CEC eligibility",
+      "why_it_matters": "If you can achieve PR before PGWP expiry, you never enter LMIA dependency; if you cannot, your negotiation leverage decreases as expiry approaches",
+      "how_to_assess": "Calculate PGWP expiry date, subtract 12 months of required CEC work experience, subtract ~6 months of Express Entry processing — determine if PR can land before expiry",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether target or current employer is GTS-approved",
+      "why_it_matters": "GTS reduces LMIA processing from 2–5 months to ~2 weeks, making competing offers from GTS employers practically usable as leverage rather than theoretical",
+      "how_to_assess": "Check the GTS employer designation list or ask HR directly whether the company has previously used Global Talent Stream",
+      "weight": "high"
+    },
+    {
+      "factor": "Employer size and LMIA capability",
+      "why_it_matters": "Large employers are more likely to have existing LMIA processes and legal resources, making them viable competing offer sources for candidates who need sponsorship",
+      "how_to_assess": "Target Amazon, Google, Microsoft Canada and established scale-ups for competing offers if you need LMIA; avoid relying on startups as LMIA-capable competing offer sources",
+      "weight": "medium"
+    },
+    {
+      "factor": "Province of employment",
+      "why_it_matters": "Pay transparency and salary history laws differ by province; BC has the Pay Transparency Act prohibiting salary history questions, Ontario does not have equivalent statutory protection",
+      "how_to_assess": "Identify which province the role is in; in BC you can cite legal protection if salary history is asked; in Ontario, redirect tactfully without invoking law",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether employer has already invested in your work authorization",
+      "why_it_matters": "Prior LMIA investment by a current employer creates a sunk cost argument you can use in raise or retention discussions",
+      "how_to_assess": "Determine whether your current employer paid LMIA fees and legal costs for you; if so, quantify the investment ($3,000–$6,000+) before the conversation",
+      "weight": "medium"
+    },
+    {
+      "factor": "Existence and quality of competing offer",
+      "why_it_matters": "A real competing offer from an identifiable company is the single strongest negotiation lever regardless of immigration status",
+      "how_to_assess": "Assess whether the competing offer is from a named company at a specific dollar amount — vague competing interest has far less force than a specific written offer",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying with LMIA-sponsoring employer past PGWP expiry without achieving PR",
+      "unstated_consequence": "You become employer-tied at the exact moment your career leverage should be increasing; your job market effectively shrinks to only LMIA-capable employers, and your ability to walk away from a bad compensation situation disappears",
+      "who_it_affects": "PGWP holders who delay CEC Express Entry applications or who fail to accumulate NOC TEER 0/1 experience quickly enough"
+    },
+    {
+      "choice": "Disclosing LMIA need early in the application process to startups",
+      "unstated_consequence": "Screening occurs before you can demonstrate value; you lose the chance to convert genuine interest into an offer that creates negotiation context",
+      "who_it_affects": "Candidates who need LMIA and are applying to early-stage or growth-stage companies without established immigration infrastructure"
+    },
+    {
+      "choice": "Negotiating weakly on first Canadian job offer as PGWP holder due to assumed future LMIA dependency",
+      "unstated_consequence": "If you execute the clean PGWP → CEC → PR timeline, you had full mobility the entire time and left money on the table unnecessarily; the assumed leverage the employer had was never real",
+      "who_it_affects": "International students who understand immigration at a surface level but don't map their specific timeline against PR eligibility thresholds"
+    },
+    {
+      "choice": "Using employer LMIA investment argument in a new job negotiation (rather than a retention context)",
+      "unstated_consequence": "The argument lacks credibility because the new employer has no sunk cost — it can come across as trying to import a relationship asset that doesn't exist yet, weakening rather than strengthening the ask",
+      "who_it_affects": "Candidates who successfully used the LMIA investment argument internally and attempt to replicate it in external offer negotiations"
+    },
+    {
+      "choice": "Accepting a bridging open work permit without verifying whether it remains tied to original employer",
+      "unstated_consequence": "A bridging open work permit tied to the original employer provides the appearance of mobility without the reality; leaving the employer may void work authorization even though the permit says 'open'",
+      "who_it_affects": "Candidates in late-stage PR application processes who believe they have full mobility because their permit says 'open'"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "PGWP holders negotiating as if they are employer-tied when they are not",
+      "why_it_happens": "Conflation of the Canadian immigration system with the US H-1B model; students assume any work authorization creates employer leverage because that's the dominant narrative in international student communities",
+      "consequence": "Accepting below-market offers or failing to counter at all during the period of maximum mobility leverage — typically the first 1–2 years of Canadian employment",
+      "warning_signs": [
+        "Candidate says 'I don't want to push too hard because I might need them for my PR'",
+        "Candidate has not researched their PGWP expiry date versus CEC eligibility timeline"
+      ]
+    },
+    {
+      "pattern": "Delaying CEC Express Entry application until late in PGWP validity period",
+      "why_it_happens": "Focus on job performance and unfamiliarity with immigration timelines; candidates assume there is more buffer than exists once processing times are factored in",
+      "consequence": "PR not granted before PGWP expiry, triggering actual employer dependency and LMIA need — turning an assumed weakness into a real one",
+      "warning_signs": [
+        "Candidate is 18+ months into PGWP with NOC TEER 0/1 experience but has not started Express Entry profile",
+        "Candidate is unaware of current Express Entry processing times or CEC draw frequency"
+      ]
+    },
+    {
+      "pattern": "Treating all competing offers as equally usable leverage regardless of LMIA logistics",
+      "why_it_happens": "Candidates focus on the dollar value of a competing offer without assessing whether the competing employer can actually complete the work authorization transfer in a practical timeframe",
+      "consequence": "Competing offer leverage collapses when the current employer correctly points out that the competing offer requires a 3–5 month LMIA process — the bluff is called",
+      "warning_signs": [
+        "Competing offer is from a company with no prior LMIA history and no GTS designation",
+        "Candidate has not verified LMIA processing pathway before using the offer in negotiation"
+      ]
+    },
+    {
+      "pattern": "Answering 'Do you need sponsorship?' as 'Yes' when on PGWP",
+      "why_it_happens": "Candidates conflate long-term PR sponsorship needs with current work authorization requirements; they interpret the question as asking about their eventual immigration trajectory rather than their current legal work status",
+      "consequence": "Screened out of roles where they were fully eligible to work immediately, losing interview opportunities unnecessarily",
+      "warning_signs": [
+        "Candidate does not have a prepared, accurate one-sentence description of their current work permit status",
+        "Candidate has checked 'Yes' to sponsorship questions on job applications while holding an active PGWP"
+      ]
+    },
+    {
+      "pattern": "Raising LMIA requirement with startups before receiving an offer",
+      "why_it_happens": "Desire to avoid wasted effort or perceived transparency obligation; candidates disclose immigration needs in cover letters or early screening calls",
+      "consequence": "Screened out before demonstrating value; foregoes any chance of converting genuine technical interest into an offer that could then be negotiated",
+      "warning_signs": [
+        "Candidate mentions visa status in cover letter or application form to companies without established immigration programs",
+        "Candidate asks about sponsorship policy in the first recruiter screen before receiving any signal of interest"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What specific type of work permit do you currently hold — is it open or employer-specific?",
+      "what_it_reveals": "Determines the actual level of negotiation leverage available; this is the single most important variable before any other advice is relevant",
+      "follow_up_if_yes": "If open (PGWP): What is your PGWP expiry date, and have you calculated whether you can achieve PR before that date?",
+      "follow_up_if_no": "If employer-specific: Who is the employer named on the permit, and have you identified any GTS-approved alternative employers you could approach for competing offers?"
+    },
+    {
+      "question": "Have you accumulated 12 months of NOC TEER 0/1 Canadian work experience?",
+      "what_it_reveals": "Determines whether you are currently eligible to apply for CEC Express Entry, which is the mechanism for eliminating LMIA dependency",
+      "follow_up_if_yes": "Have you created an Express Entry profile and received an ITA? If not, this is the most urgent action to restore or preserve negotiation leverage.",
+      "follow_up_if_no": "How many months remain until you reach 12 months, and does that timeline fit within your PGWP validity with sufficient buffer for PR processing?"
+    },
+    {
+      "question": "Does the employer you are negotiating with (or any competing employer you are considering) appear on the Global Talent Stream designation list?",
+      "what_it_reveals": "Determines whether competing offers are practically usable as leverage (GTS = ~2 weeks) or theoretically usable but practically slow (standard LMIA = 2–5 months)",
+      "follow_up_if_yes": "GTS-approved competing employers give you real walk-away power even without open work authorization; use competing offer leverage normally.",
+      "follow_up_if_no": "The competing offer may not be credible as a lever if the LMIA timeline makes it impractical; assess whether to disclose it or seek a GTS-approved alternative first"
+    },
+    {
+      "question": "Has your current employer already paid for LMIA processing and legal fees on your behalf?",
+      "what_it_reveals": "Determines whether the employer investment argument is available in a raise or retention conversation",
+      "follow_up_if_yes": "Quantify the investment ($3,000–$6,000+) and determine whether it has been raised in prior compensation conversations; if not, it is a credible new data point for a raise ask.",
+      "follow_up_if_no": "The investment argument is unavailable; focus compensation conversation on market data and delivered contributions instead"
+    },
+    {
+      "question": "In which province is the role located — specifically, is it BC or Ontario?",
+      "what_it_reveals": "Determines which legal framework applies to salary history questions and pay transparency obligations",
+      "follow_up_if_yes": "If BC: You are protected by the Pay Transparency Act and can explicitly decline to answer salary history questions by citing the law.",
+      "follow_up_if_no": "If Ontario or other provinces: Redirect salary history questions tactfully without citing statutory protection, as the legal basis is weaker"
+    },
+    {
+      "question": "Do you have a specific competing offer from a named company at a specific dollar figure, or only general market interest?",
+      "what_it_reveals": "Distinguishes between leverage that will survive employer scrutiny and leverage that will collapse under a basic follow-up question",
+      "follow_up_if_yes": "Verify the competing employer's LMIA or GTS status before deploying the offer as leverage to ensure it is practically actionable, not just nominally attractive.",
+      "follow_up_if_no": "Without a specific competing offer, shift to market data anchoring strategy using Glassdoor Canada, Levels.fyi, and Government of Canada Job Bank rather than competing offer framing"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "International students in Canada always need employer sponsorship and therefore have reduced negotiation power",
+      "actual_reality": "PGWP holders have an open work permit giving them identical mobility to Canadian citizens during the permit's validity — there is no employer-tied immigration dependency unless the candidate allows themselves to approach expiry without PR",
+      "implication": "PGWP holders should negotiate with full leverage from day one, treating immigration status as irrelevant to the negotiation rather than as a concession they must make"
+    },
+    {
+      "common_belief": "Canadian employers face the same LMIA burden as US employers face with H-1B, creating equivalent premium justification",
+      "actual_reality": "Unlike H-1B, LMIA in Canada does not create ongoing employer lock-in for most international students who will transition through CEC Express Entry; the retention leverage argument is much weaker in Canada",
+      "implication": "Candidates should not expect LMIA costs to generate automatic salary premiums in new job negotiations; the argument has force only in existing employer retention conversations"
+    },
+    {
+      "common_belief": "Any LMIA-backed competing offer provides usable negotiation leverage",
+      "actual_reality": "A competing offer requiring 2–5 months of standard LMIA processing is practically unusable as immediate leverage; employers know this and will not feel threatened by an offer you cannot realistically take for months",
+      "implication": "Candidates needing LMIA sponsorship should specifically target GTS-approved employers for competing offers, since only these create practically credible walk-away alternatives"
+    },
+    {
+      "common_belief": "Checking 'Yes' to the sponsorship question on Canadian job applications is required honesty for PGWP holders",
+      "actual_reality": "PGWP is an open work permit; the accurate and legally correct answer is that no LMIA or employer sponsorship is required for current work authorization",
+      "implication": "PGWP holders should answer sponsorship questions as 'No' or clarify 'I hold an open work permit and do not require employer-specific sponsorship,' avoiding unnecessary screening-out from roles they are legally eligible to take immediately"
+    },
+    {
+      "common_belief": "Bridging open work permits provide the same mobility as a PGWP",
+      "actual_reality": "Some bridging open work permits are tied to the original sponsoring employer; leaving that employer may invalidate work authorization even if the permit category sounds open",
+      "implication": "Candidates in PR application processes should verify the specific conditions of their bridging permit before assuming they have the same walk-away leverage as PGWP holders"
+    },
+    {
+      "common_belief": "'Sponsorship' means the same thing to all Canadian employers asking the question",
+      "actual_reality": "The question is ambiguous in Canada — it may mean LMIA specifically, or any work permit assistance at all; the interpretation varies by employer and HR sophistication",
+      "implication": "Candidates should proactively clarify their current status ('I hold an open work permit') rather than answering a binary yes/no, which avoids both dishonesty and unnecessary self-disqualification"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of own immigration leverage",
+      "junior_pattern": "Assumes immigration status automatically disadvantages them in negotiation; conflates Canadian PGWP with US H-1B employer-tied dynamics without examining the actual portability of their specific permit",
+      "senior_pattern": "Maps their specific permit type against actual employer dependency; recognizes that PGWP = full mobility and plans the CEC timeline proactively to ensure that mobility is preserved through the PR transition",
+      "why_it_matters": "A junior who negotiates as if constrained when they are not leaves real money on the table during the highest-mobility window of their Canadian career"
+    },
+    {
+      "dimension": "Competing offer construction for LMIA-dependent candidates",
+      "junior_pattern": "Sources any competing offer at a higher dollar figure and presents it as leverage, without verifying whether the competing employer can actually complete work authorization transfer in a practical timeframe",
+      "senior_pattern": "Specifically targets GTS-approved employers for competing offers, ensuring the competing offer is practically executable (2-week LMIA) rather than theoretically attractive but logistically impractical",
+      "why_it_matters": "A competing offer that collapses under basic scrutiny about LMIA timelines destroys credibility and weakens the negotiation more than having no competing offer at all"
+    },
+    {
+      "dimension": "Timing of LMIA disclosure with startups",
+      "junior_pattern": "Discloses LMIA need early out of a sense of fairness or to avoid wasted effort, effectively self-screening before the employer has assessed their value",
+      "senior_pattern": "Withholds LMIA disclosure until an offer is received, allowing demonstrated value and genuine employer interest to create the conditions for a productive LMIA conversation",
+      "why_it_matters": "An employer who has already decided they want to hire you will solve immigration logistics; an employer who hasn't yet will treat LMIA as a reason to choose a simpler candidate"
+    },
+    {
+      "dimension": "Response to the sponsorship question",
+      "junior_pattern": "Answers 'Yes' to sponsorship questions while on PGWP because they're thinking about future PR needs rather than current legal work authorization status",
+      "senior_pattern": "Answers with a precise description of current permit status: 'I hold an open work permit and do not require employer-specific sponsorship' — accurate, non-self-disqualifying, and invites no follow-up concern",
+      "why_it_matters": "Incorrect 'Yes' answers to sponsorship questions cause candidates to be screened out of roles they were legally eligible for, eliminating interview opportunities that would have generated competing offer leverage"
+    },
+    {
+      "dimension": "Strategic use of LMIA investment argument",
+      "junior_pattern": "Uses the employer's LMIA investment as an argument when negotiating with a new employer (who has made no such investment), expecting it to generate sympathy or premium",
+      "senior_pattern": "Reserves the LMIA investment argument exclusively for retention or raise conversations with the current employer who actually made the investment, where the sunk cost argument is credible",
+      "why_it_matters": "Misapplied, the argument reads as irrelevant or entitled to a new employer; correctly applied, it adds a legitimate data point to a raise conversation that the employer cannot easily dismiss"
+    },
+    {
+      "dimension": "Immigration timeline planning as career strategy",
+      "junior_pattern": "Treats immigration milestones (PGWP, PR application) as administrative tasks to handle reactively when they become urgent",
+      "senior_pattern": "Proactively calculates the full PGWP → CEC → PR timeline at the start of employment, ensuring negotiation leverage is preserved by design rather than luck",
+      "why_it_matters": "Candidates who fail to plan this timeline may find themselves in LMIA dependency precisely when they are most experienced and most capable of extracting maximum compensation — they trade away leverage at the worst possible time"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_canada_pgwp_lmia_negotiation_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

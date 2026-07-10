@@ -1,0 +1,409 @@
+{
+  "source_file": "ircc_express_entry_canada.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "CEC is the primary Express Entry pathway for PGWP holders already working in Canada",
+      "condition": "When an international student or worker is already in Canada with Canadian work experience",
+      "action": "Target the Canadian Experience Class (CEC) stream under Express Entry, not FSWP or FSTP",
+      "because": "CEC specifically rewards Canadian work experience, which PGWP holders accumulate; FSWP is designed for skilled workers outside Canada",
+      "regulatory_basis": "IRCC Express Entry — Canadian Experience Class program definition",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PNP nomination adds +600 CRS points, effectively guaranteeing an ITA at the next draw",
+      "condition": "When a candidate's raw CRS score is below the general draw cutoff (typically 500+)",
+      "action": "Pursue a Provincial Nominee Program (PNP) nomination to add 600 points to CRS score",
+      "because": "PNP nomination adds 600 points, which exceeds all recent general draw cutoffs and makes selection virtually certain",
+      "regulatory_basis": "IRCC CRS additional points — Provincial Nominee Program nomination",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "BC PNP Tech stream can nominate eligible tech workers within 2 business days",
+      "condition": "When a tech worker holds an in-demand tech NOC code and has a job offer in BC",
+      "action": "Apply to BC PNP Tech stream as a priority pathway to the +600 CRS nomination",
+      "because": "BC PNP Tech stream specifically targets software, data, and IT management NOC codes and has a stated processing time of approximately 2 business days for nomination of in-demand codes",
+      "regulatory_basis": "BC PNP Tech stream — welcomebc.ca",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Candidate has exactly 60 days to submit full application after receiving an ITA",
+      "condition": "When IRCC issues an Invitation to Apply (ITA)",
+      "action": "Submit the complete permanent residence application within 60 days of ITA issuance",
+      "because": "The 60-day window is a hard deadline; failure to submit within this period results in the ITA expiring",
+      "regulatory_basis": "IRCC Express Entry — ITA submission deadline",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Canadian PR holders must accumulate 730 days of physical presence in Canada per 5-year period to maintain PR status",
+      "condition": "When a Canadian PR holder resides outside Canada (e.g., returns to home country)",
+      "action": "Track and ensure at least 730 days of physical presence in Canada within every rolling 5-year period",
+      "because": "Failure to meet the 730-day residency obligation (2/5 rule) risks loss of PR status",
+      "regulatory_basis": "IRCC — PR residency obligation (2/5 rule)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Canadian citizenship eligibility requires 3 years of physical presence out of 5 years after obtaining PR",
+      "condition": "When a PR holder is planning for long-term immigration security or circular mobility",
+      "action": "Accumulate 3 years of physical presence in Canada within a 5-year window to become eligible for citizenship application",
+      "because": "Citizenship removes the residency obligation and provides permanent right to return regardless of time spent abroad",
+      "regulatory_basis": "IRCC — Canadian citizenship physical presence requirement",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "French language proficiency above CLB 7 in all areas adds +50 CRS points",
+      "condition": "When a candidate has French language skills above CLB 7 in all four language areas",
+      "action": "Submit qualifying French language test results (TEF/TCF) to claim additional 50 CRS points",
+      "because": "French language skills are an explicit additional-points category in CRS scoring and also unlock lower-cutoff French language proficiency draws",
+      "regulatory_basis": "IRCC CRS — additional points for French language skills",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "A job offer from a Canadian employer at NOC TEER 0 or 1 (senior management) adds +200 CRS points; other valid job offers add +50 points",
+      "condition": "When a candidate has a qualifying job offer from a Canadian employer",
+      "action": "Ensure the job offer is classified at NOC TEER 0/1 to claim the maximum +200 additional CRS points; otherwise claim +50",
+      "because": "The CRS point value of a job offer is directly tied to the NOC TEER classification of the offered position",
+      "regulatory_basis": "IRCC CRS — additional points for valid job offer",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "CRS Score — raw competitive position",
+      "why_it_matters": "Determines whether a candidate will receive an ITA in general or category-based draws; candidates below cutoff thresholds are not selected",
+      "how_to_assess": "Without PNP: need typically 500+ for general draws; 470–510 for STEM category draws (2025 benchmarks). With PNP: +600 makes virtually any score competitive",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Age",
+      "why_it_matters": "Age is a core human capital factor in CRS scoring; declining points after peak age window significantly reduces competitiveness",
+      "how_to_assess": "CRS awards peak score for candidates aged 20–29; points decline significantly after age 45. Time-sensitive — delay in applying costs CRS points",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Canadian work experience duration",
+      "why_it_matters": "Each year of Canadian work experience (up to 5 years) adds significant CRS points under core human capital and skill transferability factors",
+      "how_to_assess": "Assess current years of Canadian work experience; each additional year adds points up to the 5-year maximum",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "NOC code classification",
+      "why_it_matters": "Determines eligibility for category-based STEM draws, PNP Tech streams, and the point value of a job offer (TEER 0/1 vs. other)",
+      "how_to_assess": "Verify whether occupation falls under targeted NOC codes (e.g., NOC 20012, NOC 21231, NOC 21232) for STEM draws and BC PNP Tech stream eligibility",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Language scores (CLB level)",
+      "why_it_matters": "English/French language scores affect core human capital points and skill transferability points; CLB 9+ across all 4 bands maximizes points",
+      "how_to_assess": "Use IELTS/CELPIP for English; TEF/TCF for French. Assess whether current scores reach CLB 9+ threshold for maximum points in all four language bands",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Provincial Nominee Program eligibility",
+      "why_it_matters": "PNP nomination adds +600 CRS points, which is the single largest available point boost and effectively guarantees ITA selection",
+      "how_to_assess": "Assess eligibility for province-specific streams (e.g., BC PNP Tech for tech workers with BC job offer; OINP Human Capital Priorities for Ontario candidates)",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Education level",
+      "why_it_matters": "Education is a core CRS human capital factor; PhD scores highest, bachelor's is baseline, no degree incurs significant penalty",
+      "how_to_assess": "Assess highest completed credential; PhD maximizes education points, bachelor's degree is baseline reference",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Spouse/partner factors",
+      "why_it_matters": "If applicable, spouse/partner attributes (language, education, Canadian work experience) can add up to 40 additional CRS points",
+      "how_to_assess": "Evaluate whether spouse/partner has qualifying language scores, education credentials, or Canadian work experience to contribute additional points",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Sibling in Canada (citizen or PR)",
+      "why_it_matters": "Having a sibling who is a Canadian citizen or PR adds +15 CRS points",
+      "how_to_assess": "Confirm whether a sibling holds Canadian citizenship or PR status",
+      "weight": "low",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Study in Canada",
+      "why_it_matters": "Completing post-secondary education in Canada adds +30 CRS points (doctorate) or +15 points (secondary and above)",
+      "how_to_assess": "Confirm whether the candidate completed eligible study in Canada at the appropriate level",
+      "weight": "low",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Inadmissibility history",
+      "why_it_matters": "Criminal records or previous visa violations can significantly extend processing times beyond the 6-month service standard and may affect final decision",
+      "how_to_assess": "Review applicant's history for criminal record, immigration violations, or other inadmissibility triggers before submitting application",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Nationality — comparative immigration backlog context",
+      "why_it_matters": "For Indian nationals, Canadian PR (~1–2 years) vs. US EB-2 (~134 years) represents a fundamentally different immigration security situation; for Chinese nationals, US EB-2 backlog is 5–10 years vs. Canadian PR ~1–2 years",
+      "how_to_assess": "Assess current immigration status country, nationality-specific backlogs, and timeline to permanent status in each jurisdiction",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting Canadian PR and staying in Canada long-term",
+      "unstated_consequence": "CAD salaries for equivalent tech roles are typically 25–40% lower in USD terms than US equivalents; marginal tax rates of 40–49% on $150K+ income in BC and Ontario further reduce net take-home",
+      "who_it_affects": "Tech workers and PMs comparing Canadian offers to US offers; those making stay-or-return financial calculations based on gross salary alone",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Returning to home country after obtaining Canadian PR",
+      "unstated_consequence": "PR holder must maintain 730 days of physical presence in Canada per 5-year period or risk losing PR status; absence beyond this threshold triggers loss of PR without Canadian citizenship",
+      "who_it_affects": "PR holders who return to China or India for extended periods (e.g., 2–5 years) without yet having achieved citizenship",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Delaying Express Entry application to accumulate more Canadian work experience or improve CRS score",
+      "unstated_consequence": "Age is a core CRS human capital factor with peak scoring at ages 20–29 and significant decline after 45; delay directly reduces CRS points from the age factor",
+      "who_it_affects": "Candidates in their late 30s or early 40s who defer application expecting to improve other CRS factors",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying solely on general Express Entry draws without pursuing PNP",
+      "unstated_consequence": "General draw CRS cutoffs (481–524 in 2024) may be unachievable for many candidates without PNP; category-based draws (introduced 2023) offer lower cutoffs but require specific NOC code eligibility",
+      "who_it_affects": "Candidates with mid-range CRS scores (450–490) who are not aware of PNP or category-based draw pathways",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Obtaining Canadian PR instead of pursuing US green card",
+      "unstated_consequence": "Canadian PR requires ongoing residency obligation (730 days per 5 years) to maintain status until citizenship; US LPR (green card) also requires US residency maintenance — but the circular mobility optionality of Canadian PR is greater once citizenship is obtained",
+      "who_it_affects": "Candidates who assume PR status is unconditional and permanent from day one, without factoring in the residency obligation period before citizenship eligibility",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Targeting BC PNP Tech stream for +600 CRS points",
+      "unstated_consequence": "BC PNP Tech stream requires a job offer in BC specifically; employer does not need to be BC-based but the worker's position must be in BC — candidates with job offers outside BC cannot use this stream",
+      "who_it_affects": "Tech workers with job offers in Ontario or other provinces who assume BC PNP Tech is broadly available to all Canadian tech workers",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Failing to submit complete PR application within 60 days of ITA issuance",
+      "why_it_happens": "IRCC's ITA has a hard 60-day submission window; candidates who do not prepare documentation in advance may miss the deadline",
+      "consequence": "ITA expires; candidate returns to the pool and must wait for a new ITA in a future draw",
+      "warning_signs": [
+        "Candidate has not pre-assembled supporting documents (language test results, ECA, employment records) before entering the pool",
+        "Candidate assumes ITA deadline is flexible or extendable"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "PR holder loses status by failing to meet 730-day residency obligation",
+      "why_it_happens": "Canadian PR requires 730 days of physical presence in Canada per 5-year period; extended return to home country without achieving citizenship risks falling below this threshold",
+      "consequence": "Loss of Canadian PR status",
+      "warning_signs": [
+        "PR holder returns to home country for more than 3 years within a 5-year period without obtaining citizenship",
+        "PR holder does not track days of physical presence in Canada"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Inadmissibility issues causing extended processing beyond service standard",
+      "why_it_happens": "Criminal records or previous visa violations trigger additional review outside the standard 6-month processing pipeline",
+      "consequence": "Application processing extends significantly beyond the 6-month IRCC service standard; potential inadmissibility finding",
+      "warning_signs": [
+        "Applicant has a prior criminal record in any country",
+        "Applicant has prior immigration violations or misrepresentation history"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "CRS score below competitive threshold with no PNP or category-based draw pathway identified",
+      "why_it_happens": "General draw CRS cutoffs (481–524 in 2024) exclude candidates with mid-range scores who have not identified alternative pathways",
+      "consequence": "Candidate remains in the Express Entry pool indefinitely without receiving an ITA",
+      "warning_signs": [
+        "Candidate's CRS score is below 480 without PNP nomination",
+        "Candidate's NOC code is not eligible for any category-based draw",
+        "Candidate has not assessed PNP stream eligibility"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the candidate have Canadian work experience, and if so, how many years?",
+      "what_it_reveals": "Determines eligibility for the Canadian Experience Class (CEC) stream and the number of CRS points earned from Canadian work experience (up to 5 years)",
+      "follow_up_if_yes": "Confirm the NOC code of the Canadian work experience to assess CEC eligibility and category-based draw eligibility",
+      "follow_up_if_no": "Candidate may need to rely on FSWP or FSTP; CEC pathway is unavailable",
+      "country_scope": "canada"
+    },
+    {
+      "question": "What is the candidate's current CRS score, and does it meet the threshold for general draws (500+) or STEM category draws (470–510)?",
+      "what_it_reveals": "Determines whether the candidate is currently competitive for an ITA without a PNP nomination",
+      "follow_up_if_yes": "Candidate may be competitive in the next general or category-based draw; monitor draw frequency and cutoffs",
+      "follow_up_if_no": "Candidate should assess PNP eligibility to add +600 points or identify category-based draws with lower cutoffs",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the candidate eligible for a Provincial Nominee Program (PNP) stream, particularly the BC PNP Tech stream?",
+      "what_it_reveals": "PNP nomination adds +600 CRS points, which is the most decisive single factor in achieving Express Entry selection",
+      "follow_up_if_yes": "Pursue PNP nomination immediately; BC PNP Tech can nominate within 2 business days for in-demand tech NOC codes",
+      "follow_up_if_no": "Assess other provincial streams (OINP, AAIP, MPNP) or focus on improving raw CRS score",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the candidate's NOC code fall under STEM occupation categories targeted by IRCC category-based draws (e.g., NOC 20012, 21231, 21232)?",
+      "what_it_reveals": "Determines eligibility for STEM category-based draws, which have lower CRS cutoffs (481–510) than general draws",
+      "follow_up_if_yes": "Candidate should ensure profile is flagged for STEM category draws; lower cutoff may allow ITA without PNP",
+      "follow_up_if_no": "Candidate must rely on general draws or other category draws (healthcare, trades, transport, French language)",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the candidate have strong French language skills above CLB 7 in all four language areas?",
+      "what_it_reveals": "Determines eligibility for +50 additional CRS points and access to French language proficiency draws with significantly lower CRS cutoffs (400–450 range)",
+      "follow_up_if_yes": "Submit TEF/TCF scores; claim +50 CRS points and assess eligibility for French language draw pathway",
+      "follow_up_if_no": "French language draw pathway and +50 points are unavailable; focus on other CRS improvement strategies",
+      "country_scope": "canada"
+    },
+    {
+      "question": "How old is the candidate, and are they approaching or past age 45?",
+      "what_it_reveals": "Age is a core CRS human capital factor; significant point decline after 45 reduces competitiveness and creates time pressure to apply",
+      "follow_up_if_yes": "Urgency to apply increases; delay compounds CRS score loss from age factor",
+      "follow_up_if_no": "Candidate retains full age-based CRS points; less urgency from age factor alone",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the candidate have a sibling who is a Canadian citizen or PR holder?",
+      "what_it_reveals": "Sibling status adds +15 additional CRS points",
+      "follow_up_if_yes": "Claim +15 additional CRS points in Express Entry profile",
+      "follow_up_if_no": "No additional points available from this factor",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the candidate have any criminal record or history of visa violations or immigration misrepresentation?",
+      "what_it_reveals": "Inadmissibility issues can extend processing times significantly beyond the 6-month service standard and may result in a denial",
+      "follow_up_if_yes": "Seek legal assessment of admissibility before submitting Express Entry profile; prepare for extended processing",
+      "follow_up_if_no": "Standard processing timelines apply; no additional inadmissibility risk",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the candidate an Indian national currently on US H-1B status?",
+      "what_it_reveals": "Reveals comparative immigration security context: Indian nationals face a ~134-year EB-2 backlog in the US vs. ~1–2 year Canadian PR timeline — a fundamentally different stay-or-return calculus",
+      "follow_up_if_yes": "Canadian Express Entry PR (~1–2 years) represents resolved immigration status vs. indefinite H-1B dependency; this changes the financial and personal planning calculus significantly",
+      "follow_up_if_no": "Assess nationality-specific US backlog (e.g., EB-2 China: 5–10 years) to determine comparative urgency of Canadian PR pathway",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Express Entry is a visa or immigration status",
+      "actual_reality": "Express Entry is a selection management system, not a visa. It is a mechanism through which candidates are invited to apply for permanent residence. Receiving an ITA is not the same as receiving PR.",
+      "implication": "Candidates must understand that being in the Express Entry pool does not confer any immigration status; only a final positive PR decision grants permanent residence",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "All nationalities face the same effective wait time for Canadian PR",
+      "actual_reality": "CRS scoring requirements are the same for all nationalities, but the comparative value of Canadian PR differs significantly by nationality. For Indian nationals, the US EB-2 backlog is ~134 years vs. Canadian PR in ~1–2 years. For Chinese nationals, the US EB-2 backlog is 5–10 years vs. ~1–2 years for Canadian PR.",
+      "implication": "Nationality-specific US backlog context should be a primary input in the stay-or-return decision; the immigration security differential is not uniform across nationalities",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Canadian PR is permanent and unconditional once granted",
+      "actual_reality": "Canadian PR requires ongoing compliance with the 730-day physical presence residency obligation per 5-year period. PR status can be lost if this obligation is not met. Only Canadian citizenship is unconditional.",
+      "implication": "PR holders planning extended returns to their home country must actively track and manage physical presence days or pursue citizenship (after 3 years) before extended absence",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "You need to stay in Canada continuously after getting PR to maintain status",
+      "actual_reality": "PR holders can live outside Canada for up to 3 out of 5 years (i.e., the 730-day minimum is met if the holder spends at least 2 out of every 5 years in Canada). Canadian citizenship, obtained after 3 years of presence, removes this constraint entirely.",
+      "implication": "Canadian PR provides meaningful circular mobility — holders can return to home country for multi-year periods while maintaining PR, provided the 2/5 minimum is met",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "IRCC processes all PR applications within 6 months",
+      "actual_reality": "IRCC's service standard targets 6 months for 80% of complete applications. In 2024, IRCC reported approximately 82% of applications processed within 6 months. Applications with inadmissibility issues or requiring additional documentation take significantly longer.",
+      "implication": "The 6-month timeline is a standard, not a guarantee; candidates with any inadmissibility history should plan for a longer timeline",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "BC PNP Tech stream is available to any tech worker in Canada",
+      "actual_reality": "BC PNP Tech stream requires the worker to have a job offer in BC. The employer does not need to be BC-based, but the worker's role must be in BC. Workers with job offers outside BC are not eligible for this stream.",
+      "implication": "Tech workers in Ontario, Alberta, or other provinces must use their province's own PNP streams (e.g., OINP, AAIP) rather than BC PNP Tech, even if their NOC code would qualify",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A higher salary in Canada means equivalent or better financial outcomes vs. the US",
+      "actual_reality": "CAD salaries for tech roles are typically 25–40% lower in USD terms than equivalent US roles. Marginal tax rates in BC (40–47%) and Ontario (43–49%) on $150K+ income further reduce net take-home. At CAD $150K in Toronto, after-tax take-home is approximately CAD $98,000–$105,000.",
+      "implication": "Financial comparison between Canadian and US offers must be done on after-tax, USD-equivalent net income, not gross CAD figures; Canada's advantage is immigration security and universal healthcare, not higher net compensation",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Category-based draws were always part of Express Entry",
+      "actual_reality": "Category-based draws were introduced in 2023. They target specific occupational and language categories (STEM, healthcare, trades, transport, French language) and often have lower CRS cutoffs than general draws.",
+      "implication": "Candidates who have not updated their understanding of Express Entry since before 2023 may be unaware of category-based draw pathways that could make them eligible despite lower raw CRS scores",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of Express Entry as a system vs. a visa",
+      "naive_pattern": "Treats Express Entry as equivalent to a visa or immigration status; believes entering the pool means immigration is in progress",
+      "informed_pattern": "Understands Express Entry is a selection management system; distinguishes between pool entry, ITA receipt, application submission, and final PR decision as four distinct stages",
+      "why_it_matters": "Conflating pool entry with PR approval leads to premature life decisions (e.g., quitting job, signing leases) before status is actually resolved",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "CRS score optimization strategy",
+      "naive_pattern": "Focuses only on improving core human capital factors (language, education, work experience) and waits for a general draw",
+      "informed_pattern": "Simultaneously assesses PNP eligibility for +600 points, category-based draw eligibility (STEM, French language), and job offer classification (TEER 0/1 for +200 vs. +50) as parallel pathways",
+      "why_it_matters": "Relying solely on general draws with a sub-500 CRS score may mean indefinite pool residence; PNP or category-based draws are often the actual selection pathway",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Evaluating Canadian PR value relative to nationality",
+      "naive_pattern": "Evaluates Canadian PR in isolation as 'good immigration status' without comparing it to the specific US green card backlog applicable to their nationality",
+      "informed_pattern": "Calculates the precise comparative timeline: Indian national on H-1B faces ~134-year EB-2 wait vs. ~1–2 year Canadian PR — treats this as a fundamentally different security calculus; applies same comparative analysis for Chinese nationals (5–10 year US backlog)",
+      "why_it_matters": "Nationality-specific backlog context is the most determinative factor in the stay-or-return immigration security analysis; generic 'PR is good' framing misses the differential entirely",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Understanding PR residency obligation and circular mobility",
+      "naive_pattern": "Assumes Canadian PR is permanent and unconditional; does not track physical presence days; or conversely, assumes PR requires continuous residence in Canada",
+      "informed_pattern": "Knows the 730-day per 5-year residency obligation precisely; understands circular mobility is possible (up to 3 years abroad) but citizenship (after 3 years presence) is the threshold for unconditional return rights",
+      "why_it_matters": "Failure to track residency days risks loss of PR status; misunderstanding the rule in either direction leads to either unnecessary stays or inadvertent status loss",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Financial comparison between Canadian and US compensation",
+      "naive_pattern": "Compares gross CAD salary to gross USD salary, or assumes similar purchasing power; concludes Canadian offers are competitive",
+      "informed_pattern": "Converts to USD, applies 40–49% marginal tax rate on Canadian income above $150K, notes absence of health insurance costs as a partial offset, and concludes Canadian net compensation is materially lower than US equivalent — then factors in immigration security premium",
+      "why_it_matters": "Overestimating Canadian net compensation leads to incorrect financial modeling for stay-or-return decisions; the correct frame is: Canada offers immigration security at a measurable net income discount",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "ITA deadline management",
+      "naive_pattern": "Enters Express Entry pool and begins document collection only after receiving ITA, assuming 60 days is sufficient time",
+      "informed_pattern": "Pre-assembles all required documentation (ECA, language test results, employment records, police certificates) before or immediately after pool entry, so the 60-day ITA window is used for submission rather than collection",
+      "why_it_matters": "Missing the 60-day ITA deadline causes the ITA to expire; candidate returns to pool and must wait for a new draw, potentially at a lower CRS score due to aging",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "BC PNP Tech stream eligibility assumption",
+      "naive_pattern": "Assumes BC PNP Tech is available to any tech worker in Canada with a qualifying NOC code",
+      "informed_pattern": "Knows BC PNP Tech requires a job offer specifically in BC; workers with offers outside BC must use province-specific streams (OINP, AAIP, etc.) and cannot substitute BC PNP Tech",
+      "why_it_matters": "Applying to an ineligible stream wastes time and delays PNP nomination; the +600 CRS pathway is province-specific and job-location-dependent",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_ircc_express_entry_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

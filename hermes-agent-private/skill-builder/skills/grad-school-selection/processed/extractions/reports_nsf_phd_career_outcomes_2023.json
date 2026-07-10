@@ -1,0 +1,262 @@
+{
+  "source_file": "nsf_phd_career_outcomes_2023.txt",
+  "heuristics": [
+    {
+      "rule": "Ask target programs for the exact percentage of graduates who obtained tenure-track faculty positions in the last 5 years before assuming academic placement is viable",
+      "condition": "When a prospective PhD student says their goal is to become a professor...",
+      "action": "...demand the program's actual 5-year tenure-track placement rate; if it exceeds 30%, the program is above average — meaning most programs will be below 30%",
+      "because": "Nationally only 34% of S&E PhDs go to academia at all, and tenure-track is a subset of that; programs rarely volunteer this data, and advisors may have outdated mental models from their own hiring era"
+    },
+    {
+      "rule": "Add 3-5 years to any biology PhD career timeline to account for mandatory postdoc before competitive faculty candidacy",
+      "condition": "When evaluating time-to-career-stability for biological or biomedical sciences PhDs...",
+      "action": "...treat the effective career start as 10-12 years post-bachelor's, not 5-6 years, and factor in postdoc-level salaries (~$52,000-$65,000/year) during that period",
+      "because": "57.8% of bio/biomedical PhDs go directly to postdocs; the postdoc is not optional but a mandatory intermediate step, making the real cost of this path significantly higher than the PhD duration alone suggests"
+    },
+    {
+      "rule": "Use 'definite commitment at graduation' rate — not eventual employment rate — as the honest metric for program-field career outcomes",
+      "condition": "When comparing career outcomes across fields or programs...",
+      "action": "...ask what percentage of graduates had committed plans on graduation day, not whether they eventually found employment",
+      "because": "Fields like humanities (65.8%) and biomedical (68.2%) show that over 1 in 3 graduates have no definite plans at graduation, which is the most accurate signal of genuine career risk at the moment it matters most"
+    },
+    {
+      "rule": "Disregard an advisor's anecdotal academic job market experience if they entered academia before 2010",
+      "condition": "When an advisor or faculty mentor describes academic hiring norms, timelines, or odds...",
+      "action": "...cross-reference with current NSF SED or equivalent data, not the advisor's personal experience",
+      "because": "Academic placements have dropped 20 percentage points across S&E over 20 years (54% in 2003 to 34% in 2023); advisors who entered in 2005 are working from a mental model that no longer reflects current market conditions"
+    },
+    {
+      "rule": "Choose CS/Engineering PhD over life sciences PhD when career optionality is a priority",
+      "condition": "When a student is choosing between fields and values having multiple viable career exit points...",
+      "action": "...weight CS/Engineering more heavily because industry transition requires no retraining or identity shift, whereas biology-to-industry often requires reframing and humanities-to-nonacademic is a cultural identity shift",
+      "because": "Industry/business now employs 47% of new PhDs, but the friction of transition varies dramatically by field; CS PhDs move to industry without postdoc while biology PhDs face retraining barriers and humanities PhDs face institutional culture that actively discourages non-academic paths"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Field-specific postdoc requirement",
+      "why_it_matters": "Whether your field mandates a postdoc before permanent employment fundamentally changes the financial and timeline cost of the PhD; it is not a personal choice but a structural requirement in some fields",
+      "how_to_assess": "Check NSF SED postdoc rates for your specific field; rates above 50% (bio: 57.8%, geosciences: 64.2%) signal that postdoc is effectively mandatory, not optional",
+      "weight": "high"
+    },
+    {
+      "factor": "Definite commitment rate at graduation by field",
+      "why_it_matters": "This is the most honest available metric of career risk at the point of graduation; a low rate means a meaningful fraction of graduates face genuine uncertainty, not just delayed outcomes",
+      "how_to_assess": "Reference NSF SED data by field; humanities/arts (65.8%) and biological sciences (68.2%) are lowest, meaning roughly 1 in 3 graduates have no plan on graduation day",
+      "weight": "high"
+    },
+    {
+      "factor": "20-year trend direction in academic placements for your target field",
+      "why_it_matters": "A field where academic placements have fallen 43 percentage points (math/stats) in 20 years has a structurally different risk profile than a field with stable industry demand; the trend tells you whether conditions are getting better or worse",
+      "how_to_assess": "Compare the field's 2003 vs. 2023 academic placement rates from NSF SED; math/stats dropped from 70% to 27%, physical sciences from ~55% to ~35%, all S&E from 54% to 34%",
+      "weight": "high"
+    },
+    {
+      "factor": "Career optionality by field (friction of industry transition)",
+      "why_it_matters": "Not all PhDs transition to industry with equal ease; the cultural, skills-retraining, and identity cost of leaving academia varies enormously by field and affects the real value of the degree",
+      "how_to_assess": "CS/Engineering: near-zero friction to industry. Biology: moderate retraining required. Humanities: high cultural/identity friction, programs rarely support non-academic paths",
+      "weight": "high"
+    },
+    {
+      "factor": "Program's actual tenure-track placement rate over the last 5 years",
+      "why_it_matters": "National averages mask wide program-level variation; a program above 30% tenure-track placement is performing above the national norm and signals a genuinely strong academic pipeline",
+      "how_to_assess": "Ask the program directly for the count of graduates in the last 5 years who obtained tenure-track positions; divide by total graduates to get the rate; be skeptical of vague or non-specific answers",
+      "weight": "high"
+    },
+    {
+      "factor": "Time-to-independent-career (not time-to-degree)",
+      "why_it_matters": "The PhD completion date is not the career start date in many fields; the real metric is when you reach financial and professional independence, which is dramatically longer in some fields",
+      "how_to_assess": "For biology: add 3-5 years postdoc to PhD duration = 10-12 years from bachelor's. For CS: PhD duration is approximately equal to time-to-career. For humanities: add 3-10 years of adjunct/visiting roles",
+      "weight": "high"
+    },
+    {
+      "factor": "Primary employment destination in your field (academia vs. industry split)",
+      "why_it_matters": "If you plan for academia but 47% of PhDs nationally go to industry — and that share is growing — your planning assumptions may be misaligned with structural market reality",
+      "how_to_assess": "Check NSF SED sector breakdown for your specific field; note that industry now exceeds academia as the primary destination (47% vs. 34%) for S&E PhDs nationally",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Pursuing a biology or biomedical sciences PhD with the goal of a faculty position",
+      "unstated_consequence": "You are committing to approximately 10-12 years from bachelor's to independent career, with 3-5 years at postdoc-level salary ($52,000-$65,000/year) in between, and still facing a highly competitive tenure-track market at the end of it",
+      "who_it_affects": "International students who need visa stability and income certainty; first-generation students without financial cushions to weather a decade of training-level compensation; anyone with dependents or significant financial obligations"
+    },
+    {
+      "choice": "Assuming your advisor's academic career path is a realistic template for your own",
+      "unstated_consequence": "You may be planning against a mental model that is 20 years out of date; advisors who entered academia in 2005 experienced a market where 54% of S&E PhDs went to academia — a market that no longer exists",
+      "who_it_affects": "Students in any field where academic placements have declined sharply, especially math/stats (70% → 27%) and all S&E fields broadly; students who rely on advisor mentorship rather than independent data gathering"
+    },
+    {
+      "choice": "Pursuing a humanities PhD",
+      "unstated_consequence": "Over 1 in 3 graduates have no definite plans at graduation (65.8% definite commitment rate); the path to a permanent position commonly involves 3-10 years as adjunct or visiting faculty, and the program culture actively discourages non-academic alternatives rather than supporting them",
+      "who_it_affects": "Anyone who needs career certainty within a defined timeframe; international students on time-limited visas; students who will accrue opportunity cost relative to entering the workforce directly"
+    },
+    {
+      "choice": "Choosing industry over academia as a PhD career path in biology",
+      "unstated_consequence": "The transition often requires active retraining or reframing of skills, not a seamless pivot — the PhD curriculum and lab culture are optimized for academic outputs, not industry roles",
+      "who_it_affects": "Biology PhDs who reach the end of a postdoc and decide against faculty positions; students who planned for academia but face a failed job search and must pivot mid-career"
+    },
+    {
+      "choice": "Selecting a PhD program based on advisor reputation without assessing placement outcomes",
+      "unstated_consequence": "A prestigious advisor in a field with structurally declining academic placements does not override the base rate; most labs produce 10+ PhDs per tenure-track slot in biology, regardless of advisor fame",
+      "who_it_affects": "Students in competitive life sciences programs where advisor prestige is the primary selection signal; students who conflate advisor success with their own likely outcome"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Planning an academic career using the advisor's hiring-era mental model rather than current market data",
+      "why_it_happens": "Advisors are the most accessible source of career guidance and have strong incentives to believe their path is replicable; students defer to authority rather than seeking independent data",
+      "consequence": "Students build 5-10 year PhD plans optimized for an academic job market that has contracted by 20+ percentage points since their advisor graduated, resulting in misaligned preparation and genuine career shock at graduation",
+      "warning_signs": [
+        "Advisor entered academia before 2010 and describes the academic job market as 'difficult but manageable'",
+        "Program materials emphasize faculty placement without citing actual placement rates or recent years' data"
+      ]
+    },
+    {
+      "pattern": "Underestimating total time-to-career in biology by treating PhD completion as the career start date",
+      "why_it_happens": "Program marketing, personal planning, and social framing all treat the PhD as the endpoint; the mandatory postdoc is structurally embedded but rarely foregrounded in recruitment conversations",
+      "consequence": "Students accept biology PhDs without financially or psychologically accounting for 3-5 additional years at ~$52,000-$65,000/year before reaching competitive candidacy for permanent positions",
+      "warning_signs": [
+        "Student describes their career plan as 'finish PhD then get a faculty job' without mentioning postdoc",
+        "Financial planning only covers PhD stipend years, not post-PhD training period"
+      ]
+    },
+    {
+      "pattern": "Treating 'eventually got a job' as equivalent to 'had strong outcomes at graduation'",
+      "why_it_happens": "Programs report outcomes in ways that obscure timing; 'all our graduates are employed' is technically true but may describe outcomes 2-5 years after graduation, not at the moment of graduation",
+      "consequence": "Students enter high-uncertainty fields (humanities: 65.8% definite commitment, biomedical: 68.2%) without understanding that more than 1 in 3 of their peers will face genuine plan-lessness on graduation day",
+      "warning_signs": [
+        "Program outcome reports describe employment rates without specifying the timeframe after graduation",
+        "Student cannot find data on what percentage of graduates had committed plans at the time of degree conferral"
+      ]
+    },
+    {
+      "pattern": "Selecting a biology or humanities PhD without modeling the non-academic career transition cost",
+      "why_it_happens": "Students self-select into fields based on intellectual interest and assume career pivots are straightforward; program culture reinforces the idea that the academic path is the primary or most natural one",
+      "consequence": "Biology PhDs who pivot to industry face active retraining; humanities PhDs face a cultural and identity shift that their programs rarely support, adding friction and delay to already uncertain timelines",
+      "warning_signs": [
+        "Student's entire career contingency plan is 'if academia doesn't work out, I'll go to industry' without any specifics",
+        "Program has no structured career development resources for non-academic paths"
+      ]
+    },
+    {
+      "pattern": "Using national average academic placement rates as reassurance without checking field-specific or program-specific rates",
+      "why_it_happens": "Aggregate statistics feel more stable and less alarming; students anchor on 'PhDs do well' without disaggregating by field, where math/stats went from 70% to 27% academic placement in 20 years",
+      "consequence": "Students in fields with catastrophic academic placement declines make decisions based on cross-field averages that mask the severity of their specific field's restructuring",
+      "warning_signs": [
+        "Student cites broad 'PhDs have low unemployment rates' statistics when asked about academic job prospects",
+        "Student in math, statistics, or physical sciences is unaware of the magnitude of academic placement decline in their specific field"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your primary career goal — academic faculty position, industry role, or are you genuinely uncertain?",
+      "what_it_reveals": "Whether the student's field and program selection is calibrated to a realistic outcome or to a minority outcome that requires explicit above-average program performance to achieve",
+      "follow_up_if_yes": "If academic: ask which field, then cross-reference that field's current academic placement rate and 20-year trend from NSF SED data",
+      "follow_up_if_no": "If industry or uncertain: assess whether the chosen field has low-friction industry transition (CS/Engineering) or high-friction transition (biology, humanities) and whether the student has modeled that cost"
+    },
+    {
+      "question": "Do you know what percentage of graduates from your target program obtained tenure-track faculty positions in the last 5 years?",
+      "what_it_reveals": "Whether the student has done program-level due diligence versus relying on reputation, rankings, or advisor anecdote — and whether the program is above or below the 30% national benchmark threshold",
+      "follow_up_if_yes": "If they know: verify whether the number is above 30% (above-average) and whether it is tenure-track specifically or includes all academic positions including postdocs and adjunct roles",
+      "follow_up_if_no": "If they don't know: this is a critical data gap; they are making a major life decision without the most directly relevant outcome metric for their stated goal"
+    },
+    {
+      "question": "Have you accounted for postdoc years in your financial and career timeline planning, and do you know the postdoc rate in your specific field?",
+      "what_it_reveals": "Whether the student understands that in biology (57.8%), geosciences (64.2%), and physical sciences (46.5%) the postdoc is structurally mandatory, not optional, and adds 3-5 years to time-to-career",
+      "follow_up_if_yes": "If yes: ask whether their financial planning, visa situation, and personal timeline can sustain 10-12 years from bachelor's to independent career at postdoc-level salary",
+      "follow_up_if_no": "If no: this is a fundamental planning error; recalculate time-to-career and financial requirements before committing to the program"
+    },
+    {
+      "question": "When did your primary advisor or role model enter academia, and have you cross-referenced their career advice against current NSF or equivalent placement data?",
+      "what_it_reveals": "Whether the student is relying on potentially outdated guidance from an advisor whose academic hiring experience predates the major structural shift in the market (pre-2010 especially)",
+      "follow_up_if_yes": "If they have cross-referenced: assess whether they understand the 20-year trend and have adjusted their planning accordingly",
+      "follow_up_if_no": "If they haven't: the student may be making decisions based on a mental model that is 15-20 years out of date, when academic placements were 20 percentage points higher than today"
+    },
+    {
+      "question": "What is your contingency plan if you do not obtain an academic position, and has your target program structured support for non-academic career paths?",
+      "what_it_reveals": "Whether the student has a realistic fallback that accounts for field-specific transition friction, or whether the contingency is vague and unmodeled — and whether the program actively supports or culturally discourages non-academic paths",
+      "follow_up_if_yes": "If they have a specific plan: evaluate whether it accounts for retraining costs in biology, identity/cultural shift in humanities, or whether it is seamless as in CS/Engineering",
+      "follow_up_if_no": "If no plan: in fields where academic placement is now below 30-34%, the contingency is not a backup scenario but a near-majority outcome that requires as much planning as the primary path"
+    },
+    {
+      "question": "What is the definite commitment rate for graduates in your target field at graduation — not eventual employment, but committed plans on the day of degree conferral?",
+      "what_it_reveals": "The actual baseline probability of having a clear next step at graduation, which is the most honest signal of career risk in the field",
+      "follow_up_if_yes": "If they know: check whether they understand that humanities (65.8%) and biomedical (68.2%) mean more than 1 in 3 graduates face genuine uncertainty at graduation, and have planned for that scenario",
+      "follow_up_if_no": "If they don't know: introduce this as the most direct available metric of graduation-day career risk, more honest than vague 'employment rate' figures that programs typically advertise"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Most PhD graduates go into academic careers — that's the primary outcome the PhD prepares you for",
+      "actual_reality": "In 2023, industry/business (47%) surpassed academia (34%) as the primary destination for new S&E PhD graduates; this is now the structural norm, not an exception or a fallback",
+      "implication": "Students and programs that frame industry as the backup path are operating in an inverted reality; the majority outcome is now industry, and academic placement is the minority, above-average outcome"
+    },
+    {
+      "common_belief": "The academic job market is tough but PhD graduates who work hard enough will find faculty positions eventually",
+      "actual_reality": "Academic placements have declined 20 percentage points across all S&E fields over 20 years (54% in 2003 to 34% in 2023), with some fields like math/statistics dropping 43 percentage points; this is a structural, multi-decade contraction, not a temporary cycle",
+      "implication": "The academic job market is not going to recover to historical norms; students must plan for a structurally smaller academic job market, not treat current conditions as a temporary trough"
+    },
+    {
+      "common_belief": "A postdoc in biology is an optional step you take if you want to do more research before industry",
+      "actual_reality": "57.8% of biology/biomedical PhDs go directly to postdocs — it is a mandatory structural step before competitive candidacy for permanent faculty positions, not an optional research extension",
+      "implication": "Biology PhD career timelines must include 3-5 mandatory postdoc years; the real time-to-independent-career is 10-12 years from bachelor's, not the 5-6 years implied by PhD completion alone"
+    },
+    {
+      "common_belief": "Program prestige and advisor reputation are the best proxies for your career outcomes as a PhD graduate",
+      "actual_reality": "Field-level structural forces — postdoc mandates, academic placement rates, definite commitment rates at graduation — create baseline outcome probabilities that prestige modifies but does not override; most biology labs produce 10+ PhDs per tenure-track slot regardless of advisor fame",
+      "implication": "Students must evaluate field-level career structure and program-specific placement rates, not just prestige rankings; a prestigious program in a field with 27% academic placement (math/stats 2023) still produces mostly non-academic graduates"
+    },
+    {
+      "common_belief": "If my target program says their graduates are all employed, the career outcomes are strong",
+      "actual_reality": "'Eventually employed' and 'had definite plans at graduation' are dramatically different metrics; humanities (65.8%) and biomedical (68.2%) definite commitment rates mean more than 1 in 3 graduates have no committed plans on graduation day, even if most eventually find something",
+      "implication": "Request definite commitment rates at graduation — not eventual employment statistics — when evaluating program outcomes; the gap between the two metrics reveals the real level of uncertainty graduates face at the moment it matters most"
+    },
+    {
+      "common_belief": "If academia doesn't work out, a PhD in any field can transition to industry without significant friction",
+      "actual_reality": "CS/Engineering PhD to industry is near-seamless; biology PhD to industry often requires retraining or skills reframing; humanities PhD to non-academic careers involves a cultural and identity shift that programs actively discourage rather than support",
+      "implication": "Field selection is a decision about career optionality, not just intellectual interest; the friction cost of non-academic transition must be modeled as part of the PhD decision, not assumed away"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they assess academic career viability",
+      "junior_pattern": "Assumes academic career is the default expected outcome of a PhD, treats industry as the fallback, and relies on advisor anecdote or program reputation as evidence of career viability",
+      "senior_pattern": "Looks up field-specific NSF SED academic placement rates and 20-year trends; notes that academia is now the minority outcome (34%) and that the trend has been consistently downward for two decades; treats academic placement as an above-average outcome to be planned and earned, not assumed",
+      "why_it_matters": "Students who assume academic careers are the default will be blindsided by a market where 66% of S&E PhDs go elsewhere; senior thinkers plan for the structural majority outcome while explicitly strategizing for the minority academic outcome"
+    },
+    {
+      "dimension": "How they account for postdoc years in career planning",
+      "junior_pattern": "Treats PhD completion as the career start date; financial and timeline planning ends at degree conferral; postdoc is seen as a choice or bonus research period",
+      "senior_pattern": "Builds total time-to-independent-career into planning from day one; for biology, models 10-12 years from bachelor's including 3-5 mandatory postdoc years at $52,000-$65,000/year; treats the postdoc as a structural cost, not a choice",
+      "why_it_matters": "Students who don't model postdoc years will face compounding financial and personal disruption that was entirely predictable from public data; the cost is avoidable with accurate upfront planning"
+    },
+    {
+      "dimension": "Which career outcome metric they use to evaluate programs",
+      "junior_pattern": "Accepts 'our graduates all get jobs' or general employment rates as evidence of strong outcomes; does not distinguish between eventual employment, employment at graduation, tenure-track versus adjunct, or postdoc versus permanent position",
+      "senior_pattern": "Demands definite commitment rates at graduation by field and program; distinguishes tenure-track from all academic positions; asks for 5-year placement data specific to tenure-track roles; recognizes that 65-68% definite commitment rates signal genuine graduation-day uncertainty",
+      "why_it_matters": "The difference between 'eventually employed' and 'had committed plans at graduation' can represent years of uncertainty and financial instability; using the right metric changes program selection decisions materially"
+    },
+    {
+      "dimension": "How they use advisor guidance on the academic job market",
+      "junior_pattern": "Treats advisor career experience as the primary or most reliable source of job market information; does not cross-reference with external data or consider when the advisor entered academia",
+      "senior_pattern": "Notes when advisor entered academia; if pre-2010, applies a strong discount to their job market descriptions; cross-references all advisor guidance against current NSF SED data; understands that a 2005 academic hire experienced a market where 54% of S&E PhDs went to academia versus 34% today",
+      "why_it_matters": "An advisor's job market experience from 2005 is structurally inapplicable to 2025 planning; students who don't make this correction will build plans on a 20-percentage-point overestimate of academic placement probability"
+    },
+    {
+      "dimension": "How they think about field selection relative to career optionality",
+      "junior_pattern": "Selects field based primarily on intellectual interest and assumes career pivots between field and industry are straightforward if needed; does not model transition friction",
+      "senior_pattern": "Explicitly models the friction cost of non-academic transition by field before committing; weights CS/Engineering's near-zero friction versus biology's retraining requirement versus humanities' cultural identity shift; treats career optionality as a first-order decision variable alongside intellectual interest",
+      "why_it_matters": "Students who discover post-PhD that their field has high non-academic transition friction face years of additional retraining or identity negotiation that was entirely predictable at the selection stage"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "reports_nsf_phd_career_outcomes_2023",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

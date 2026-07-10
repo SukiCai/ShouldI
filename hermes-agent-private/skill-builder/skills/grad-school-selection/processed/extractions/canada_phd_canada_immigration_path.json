@@ -1,0 +1,289 @@
+{
+  "source_file": "phd_canada_immigration_path.txt",
+  "heuristics": [
+    {
+      "rule": "If you are Indian or Chinese national, the Canadian PhD path dominates the US PhD path on immigration grounds alone",
+      "condition": "When an Indian or Chinese national is choosing between a US PhD and a Canadian PhD of comparable research quality...",
+      "action": "...strongly weight Canadian PhD unless the US program is top-10 in the field with no Canadian equivalent",
+      "because": "US EB-2/EB-3 green card backlogs for Indian and Chinese nationals exceed 50 years, making the US path practically a dead end for permanent residency, while Canadian CEC-based PR takes 18-30 months from PhD graduation"
+    },
+    {
+      "rule": "Apply for PGWP within 180 days of graduation confirmation — treat this as a hard, non-negotiable deadline",
+      "condition": "When you receive official confirmation of PhD program completion...",
+      "action": "...immediately initiate the PGWP application through the IRCC portal, do not wait for convocation or final transcript",
+      "because": "Missing the 180-day window permanently eliminates PGWP eligibility — there is no extension and no appeal pathway"
+    },
+    {
+      "rule": "Check Ontario PhD Graduate Stream or BC International Post-Graduate PNP eligibility the day you graduate",
+      "condition": "When graduating from an Ontario or BC university with a PhD...",
+      "action": "...immediately evaluate PNP eligibility before pursuing Express Entry CEC route",
+      "because": "A PNP nomination adds 600 CRS points, effectively guaranteeing an ITA, and some streams require no work experience — acting immediately preserves the 2-year post-graduation eligibility window"
+    },
+    {
+      "rule": "Take the French language test (TEF/TCF) if you have any French background, regardless of fluency level",
+      "condition": "When building your Express Entry CRS profile as a PhD graduate...",
+      "action": "...invest time in French language preparation and testing even at moderate proficiency levels",
+      "because": "French proficiency adds 15-50 CRS points depending on level — a high-ROI intervention that can push a borderline CRS score above draw cutoffs"
+    },
+    {
+      "rule": "Track your NOC code from day one of PGWP employment, not retroactively",
+      "condition": "When starting work on a PGWP after PhD graduation...",
+      "action": "...verify your job description matches a TEER 0, 1, 2, or 3 NOC code before accepting the role, and keep documentation",
+      "because": "Only TEER 0-3 work experience counts toward the 1,560-hour CEC requirement; hours in TEER 4/5 roles (administrative, retail) are wasted toward PR eligibility"
+    },
+    {
+      "rule": "Use your PGWP status as a negotiating asset with Canadian employers by explicitly framing it as zero administrative burden",
+      "condition": "When job searching in Canada on a PGWP...",
+      "action": "...proactively tell employers: 'I have a 3-year open work permit — you don't need to sponsor or file anything for me. I can start immediately.'",
+      "because": "Many Canadian employers avoid international candidates assuming sponsorship complexity; clarifying PGWP removes this objection and levels the playing field with domestic candidates"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Country of origin and its effect on US vs. Canada PR timeline",
+      "why_it_matters": "The US employment-based green card system is country-of-birth based, creating 50+ year backlogs for Indian and Chinese nationals, while Canada's Express Entry CRS system is country-neutral — this single factor can make the Canadian path 20-40x faster to PR",
+      "how_to_assess": "Check the USCIS Visa Bulletin for your country's EB-2/EB-3 priority date cutoffs; compare to Canadian CEC processing time of 6-12 months post-eligibility",
+      "weight": "high"
+    },
+    {
+      "factor": "Research program quality differential between Canadian and US options",
+      "why_it_matters": "If the US program is top-10 in the field with no Canadian equivalent, the research and career capital difference may outweigh the immigration disadvantage — but this is a narrow exception",
+      "how_to_assess": "Identify whether a genuinely comparable Canadian program exists in your subfield; assess advisor quality and lab output, not just university ranking",
+      "weight": "high"
+    },
+    {
+      "factor": "CRS score competitiveness given personal profile",
+      "why_it_matters": "A PhD adds 150 CRS points (vs 135 for master's), and with 1 year Canadian work experience the total can reach 480-520+ — but if your language scores or other factors produce a borderline CRS, you may need a PNP fallback",
+      "how_to_assess": "Use the IRCC CRS calculator with your projected profile; compare to historical draw cutoffs for CEC-only rounds (recently 425-475)",
+      "weight": "high"
+    },
+    {
+      "factor": "Province of study and PNP stream availability",
+      "why_it_matters": "Graduating from Ontario or BC unlocks specific PhD graduate PNP streams with no job offer requirement, adding 600 CRS points and near-guaranteeing PR — graduating from provinces without such streams forces reliance on Express Entry CEC alone",
+      "how_to_assess": "Check OINP Ontario PhD Graduate Stream and BCPNP International Post-Graduate Category eligibility criteria for your specific institution before choosing a program",
+      "weight": "high"
+    },
+    {
+      "factor": "Target industry and its geographic concentration",
+      "why_it_matters": "Certain industries (specific finance sectors, VC, entertainment) are heavily concentrated in the US with limited Canadian equivalents — choosing Canada locks you out of those ecosystems regardless of immigration efficiency",
+      "how_to_assess": "Map your target roles and companies; determine what fraction are US-only vs. available in Toronto or Vancouver",
+      "weight": "medium"
+    },
+    {
+      "factor": "French language proficiency or learnability",
+      "why_it_matters": "French adds 15-50 CRS points — a high-ROI investment that can be the difference between receiving an ITA or waiting for draws to lower; also opens Quebec-specific pathways",
+      "how_to_assess": "Assess existing French background; estimate realistic CLB level achievable with 3-6 months of study; calculate CRS impact using IRCC calculator",
+      "weight": "medium"
+    },
+    {
+      "factor": "Salary differential between US and Canadian PhD positions",
+      "why_it_matters": "US PhD stipends are generally higher in USD terms than Canadian CAD equivalents — the immigration certainty of Canada comes at a cost of lower income during the PhD and potentially post-PhD",
+      "how_to_assess": "Compare specific program stipend offers in purchasing power parity terms; factor in cost of living differences between specific cities",
+      "weight": "medium"
+    },
+    {
+      "factor": "Quebec vs. non-Quebec province placement",
+      "why_it_matters": "Quebec operates a separate immigration system; Express Entry CEC does not apply, French is near-mandatory, and a separate CSQ process is required — this dramatically changes the PR pathway compared to other provinces",
+      "how_to_assess": "Determine if program is in Quebec; if so, research CSQ Program Experience stream and assess French language requirements honestly",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a US PhD over a Canadian PhD for research prestige",
+      "unstated_consequence": "For Indian and Chinese nationals, this choice implicitly accepts a 50+ year wait for US permanent residency, or requires returning to home country, or perpetual temporary status cycling through H-1B renewals with annual lottery risk",
+      "who_it_affects": "Indian and Chinese nationals most severely; secondarily anyone from countries with long EB queues who underestimates the green card backlog reality"
+    },
+    {
+      "choice": "Delaying PGWP application to finalize job offers or wait for convocation",
+      "unstated_consequence": "Missing the 180-day post-graduation window permanently eliminates PGWP eligibility — there is no exception, no appeal, and no alternative open work permit available to PhD graduates in this situation",
+      "who_it_affects": "Students who conflate graduation ceremony date with official program completion date, or who wait for a specific job offer before initiating the PGWP application"
+    },
+    {
+      "choice": "Accepting any available job on PGWP to accumulate income quickly",
+      "unstated_consequence": "Hours worked in TEER 4 or 5 occupations (retail, administrative support, food service) do not count toward the 1,560-hour CEC requirement, meaning months of work experience are invisible to Express Entry",
+      "who_it_affects": "PhD graduates who struggle to find skilled employment immediately post-graduation and take interim work without tracking NOC codes"
+    },
+    {
+      "choice": "Studying in a high-prestige Canadian university in Quebec",
+      "unstated_consequence": "Quebec's separate immigration system means Express Entry CEC doesn't apply; you must navigate the CSQ process, and French language proficiency becomes near-mandatory — the immigration path is longer and more uncertain than in other provinces",
+      "who_it_affects": "International students who choose McGill or Université de Montréal primarily for research rankings without understanding Quebec's distinct immigration regime"
+    },
+    {
+      "choice": "Relying solely on Express Entry CEC without considering PNP",
+      "unstated_consequence": "If CRS score is borderline (below current draw cutoffs), you may wait indefinitely for an ITA while a PNP nomination would have added 600 points and guaranteed selection — but PNP streams have capacity limits and windows that close",
+      "who_it_affects": "PhD graduates with moderate language scores, no job offer, or spouse/partner who reduces individual CRS points, who assume CEC alone will be sufficient"
+    },
+    {
+      "choice": "Skipping French language testing during PhD due to low fluency",
+      "unstated_consequence": "Even moderate French proficiency (CLB 5-7) adds meaningful CRS points; by the time you're building your Express Entry profile post-graduation, the time investment to prepare and test is more compressed and stressful",
+      "who_it_affects": "PhD students with some French background who dismiss the test as not worth taking because they're 'not fluent'"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Missing the 180-day PGWP application deadline after graduation",
+      "why_it_happens": "Students conflate convocation date with official program completion date, or wait for a job offer to materialize before applying, not realizing the clock starts at written confirmation of completion not the ceremony",
+      "consequence": "Permanent loss of PGWP eligibility — the single most valuable immigration instrument available to Canadian PhD graduates, worth 3 years of open work authorization",
+      "warning_signs": [
+        "Student has not yet received written confirmation of completion and hasn't checked what document triggers the 180-day clock",
+        "Student is waiting for a specific job offer to 'finalize plans' before initiating immigration paperwork"
+      ]
+    },
+    {
+      "pattern": "Accumulating work experience in TEER 4/5 occupations that don't count for CEC",
+      "why_it_happens": "PhD graduates face a gap between graduation and skilled employment; they take available work without verifying NOC TEER category, assuming any Canadian work experience counts",
+      "consequence": "Months or years of work experience are invisible to Express Entry CEC, delaying the 1-year eligibility milestone and pushing back PR timeline",
+      "warning_signs": [
+        "Student accepts a retail, food service, or general administrative role without checking the NOC code",
+        "Student has never heard of the TEER classification system and cannot identify their own NOC code"
+      ]
+    },
+    {
+      "pattern": "Indian or Chinese nationals choosing US PhD without fully modeling the green card backlog",
+      "why_it_happens": "The US PhD's research prestige, higher stipends, and brand recognition are tangible and immediate; the 50+ year EB green card backlog is abstract and feels like a future problem",
+      "consequence": "Spending 5-6 years in a PhD, then OPT, then H-1B lottery cycles, then discovering the EB-2 priority date for their country won't move in their lifetime — forcing either return migration or permanent temporary status",
+      "warning_signs": [
+        "Student says 'I'll figure out immigration after I graduate' when asked about the US green card timeline",
+        "Student is aware of H-1B but has not looked up the USCIS Visa Bulletin priority date for their country of birth"
+      ]
+    },
+    {
+      "pattern": "Choosing a Canadian program in Quebec without understanding the separate immigration system",
+      "why_it_happens": "Students select universities based on research rankings or advisor reputation without investigating province-specific immigration implications; Quebec hosts world-class programs that rank highly globally",
+      "consequence": "Express Entry CEC pathway is unavailable; must navigate CSQ process with French language requirements that weren't anticipated, significantly complicating or extending the PR timeline",
+      "warning_signs": [
+        "Student selected a Quebec university primarily based on QS or Times ranking without consulting an immigration advisor",
+        "Student cannot describe the difference between federal Express Entry and Quebec's provincial immigration system"
+      ]
+    },
+    {
+      "pattern": "Skipping PNP evaluation and relying exclusively on Express Entry CEC",
+      "why_it_happens": "PNPs are less publicized than Express Entry; students assume CEC is the standard path and don't investigate province-specific streams until after their CRS score comes back borderline",
+      "consequence": "Miss time-sensitive PNP application windows (e.g., Ontario PhD Graduate Stream 2-year post-graduation eligibility) while waiting to see if CEC draws reach their score",
+      "warning_signs": [
+        "Graduate from Ontario or BC who has never heard of OINP Ontario PhD Graduate Stream or BCPNP International Post-Graduate Category",
+        "Student whose CRS score is 450-480 who is passively waiting for Express Entry draws rather than actively filing a PNP"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your country of birth?",
+      "what_it_reveals": "Determines whether the US employment-based green card path is viable or catastrophically backlogged — the single most important variable in Canada vs. US PhD immigration decision",
+      "follow_up_if_yes": "If India or China: immediately model the EB-2/EB-3 priority date backlog; Canadian PhD path has a dramatically stronger immigration ROI",
+      "follow_up_if_no": "If from a country with short EB queues (e.g., most of Europe, Latin America outside Mexico): US path may be viable; evaluate on research quality and career goals rather than immigration alone"
+    },
+    {
+      "question": "Do you have any French language background, and have you taken the TEF or TCF?",
+      "what_it_reveals": "Reveals an untapped CRS points opportunity — even moderate French can add 15-50 points, which may be the difference between receiving an ITA or not",
+      "follow_up_if_yes": "If yes: calculate exact CRS impact at their current French CLB level and at CLB 7+; assess whether preparation investment is worthwhile",
+      "follow_up_if_no": "If no French background: deprioritize unless willing to invest 6+ months in study; focus on other CRS boosters like job offer or PNP"
+    },
+    {
+      "question": "Which Canadian province will you study in — and have you checked that province's specific PNP streams for PhD graduates?",
+      "what_it_reveals": "Determines whether a 600-point PNP nomination pathway exists with no job offer requirement, and whether the student is studying in Quebec (requiring a completely different immigration strategy)",
+      "follow_up_if_yes": "If Ontario or BC: immediately evaluate OINP Ontario PhD Graduate Stream and BCPNP International Post-Graduate Category eligibility requirements",
+      "follow_up_if_no": "If Quebec or province without PhD-specific PNP: must rely on Express Entry CEC or occupation-specific streams; assess CRS score competitiveness realistically"
+    },
+    {
+      "question": "What is your target NOC code post-graduation, and does your planned employment on PGWP fall under TEER 0, 1, 2, or 3?",
+      "what_it_reveals": "Determines whether the work experience being accumulated will count toward the 1,560-hour CEC requirement or be wasted for PR purposes",
+      "follow_up_if_yes": "If TEER 0-3: confirm job description documentation matches NOC; track hours carefully from day one",
+      "follow_up_if_no": "If uncertain or TEER 4/5 risk: consult an immigration professional before accepting the role; explore whether a different position is feasible"
+    },
+    {
+      "question": "Have you calculated your projected CRS score using the IRCC calculator with your actual language test scores, and how does it compare to recent draw cutoffs?",
+      "what_it_reveals": "Determines whether Express Entry CEC alone is a reliable pathway or whether PNP is necessary, and identifies whether language score improvement is a high-ROI intervention",
+      "follow_up_if_yes": "If CRS is comfortably above recent cutoffs (480+): Express Entry CEC likely sufficient; focus on accumulating eligible work hours",
+      "follow_up_if_no": "If CRS is borderline (430-470): prioritize PNP application immediately; evaluate French language testing; consider whether job offer is achievable"
+    },
+    {
+      "question": "Do you know the exact date on which your official program completion confirmation was issued, and have you already applied for or received your PGWP?",
+      "what_it_reveals": "Identifies whether the student is at risk of missing the critical 180-day PGWP application deadline or has already secured this foundational work authorization",
+      "follow_up_if_yes": "If PGWP already received: confirm expiry date and begin planning Express Entry timeline from current work experience accumulation",
+      "follow_up_if_no": "If not yet applied: immediately determine when the 180-day clock started; if within window, file immediately regardless of job search status"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A US PhD from a top-ranked program is always the superior choice for international students who want to build a career in North America",
+      "actual_reality": "For Indian and Chinese nationals, a US PhD often leads to permanent temporary status — cycling through OPT, H-1B lotteries, and EB green card queues that stretch 50+ years — while a Canadian PhD of equivalent research quality leads to PR in 18-30 months",
+      "implication": "Research program prestige should be evaluated in the context of actual immigration outcomes for your specific country of birth, not in the abstract"
+    },
+    {
+      "common_belief": "The PGWP duration depends on how long your PhD program took",
+      "actual_reality": "As of February 15, 2024, all master's and PhD graduates from eligible DLIs receive a 3-year PGWP regardless of program length — a 2-year PhD and a 5-year PhD both get exactly 3 years",
+      "implication": "Students should not time their graduation or program completion to maximize PGWP duration under the old rules — the new flat 3-year policy removes that calculation"
+    },
+    {
+      "common_belief": "Canadian PR through Express Entry requires a job offer",
+      "actual_reality": "CEC requires only 1 year of skilled Canadian work experience — no job offer is required to receive an ITA or to apply for PR; a job offer adds 25-50 CRS points but is not mandatory",
+      "implication": "PhD graduates should not wait to secure a formal job offer before creating an Express Entry profile; eligible profiles can receive ITAs without one"
+    },
+    {
+      "common_belief": "A PhD and a master's degree are treated the same way in Canada's immigration points system",
+      "actual_reality": "A PhD earns 150 CRS points vs. 135 for a master's — a 15-point differential that is meaningful in competitive Express Entry draws where cutoffs shift by single digits",
+      "implication": "The PhD credential itself provides a concrete, quantified immigration advantage in Canada beyond its research and career value"
+    },
+    {
+      "common_belief": "Any work experience in Canada while on PGWP counts toward Express Entry eligibility",
+      "actual_reality": "Only work in NOC TEER 0, 1, 2, or 3 occupations counts toward the CEC 1,560-hour requirement; TEER 4 and 5 roles (which include many service and administrative jobs) are entirely excluded",
+      "implication": "PhD graduates must verify their occupation's NOC TEER category before accepting employment, especially if considering interim work while searching for a role in their field"
+    },
+    {
+      "common_belief": "Express Entry is the only federal pathway to PR for PhD graduates in Canada",
+      "actual_reality": "11 of 13 provinces operate PNP streams, some specifically designed for PhD graduates with no job offer requirement; a PNP nomination adds 600 CRS points and effectively guarantees selection in any Express Entry draw",
+      "implication": "PhD graduates should evaluate PNP eligibility in parallel with Express Entry — particularly Ontario and BC streams available directly at graduation — rather than treating CEC as the default single pathway"
+    },
+    {
+      "common_belief": "Quebec universities offering world-class research programs provide the same immigration pathway as universities in Ontario or BC",
+      "actual_reality": "Quebec operates a completely separate provincial immigration system; federal Express Entry CEC does not apply; French language proficiency is near-mandatory and a distinct CSQ process is required",
+      "implication": "Students considering Quebec programs must research the CSQ pathway and French language requirements before enrollment, not after graduation"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Framing the Canada vs. US PhD decision",
+      "junior_pattern": "Compares programs primarily on research ranking, advisor prestige, stipend amount, and university brand — treats immigration as a secondary concern to figure out later",
+      "senior_pattern": "Builds a decision matrix that includes country-of-birth-specific immigration timelines as a primary variable; understands that for Indian/Chinese nationals the immigration differential alone can determine whether North American residency is achievable",
+      "why_it_matters": "Juniors optimize for inputs (prestige, stipend) while seniors optimize for outcomes (where you can actually live and work long-term); the immigration calculation is irreversible once the PhD begins"
+    },
+    {
+      "dimension": "Handling the PGWP application",
+      "junior_pattern": "Waits until after convocation, after receiving job offer, or until 'settling in' post-graduation before thinking about PGWP — views it as an administrative formality",
+      "senior_pattern": "Treats the 180-day PGWP deadline as the single most time-sensitive immigration action of the entire PhD journey; files immediately upon receiving official completion confirmation regardless of employment status",
+      "why_it_matters": "Missing the PGWP deadline is permanent and irreversible; no amount of academic achievement or career success can recover it"
+    },
+    {
+      "dimension": "Building the Express Entry CRS profile",
+      "junior_pattern": "Assumes CEC will work automatically based on PhD credential and Canadian work experience; doesn't calculate CRS score until after graduation and doesn't investigate PNP streams",
+      "senior_pattern": "Calculates projected CRS score during the PhD using the IRCC calculator; models the impact of French language scores, job offer scenarios, and spouse/partner effects; identifies PNP eligibility windows well before graduation to avoid missing them",
+      "why_it_matters": "PNP streams like Ontario PhD Graduate Stream have 2-year post-graduation eligibility windows that close while students are passively waiting for CEC draws"
+    },
+    {
+      "dimension": "Selecting employment on PGWP",
+      "junior_pattern": "Accepts the first available job to start earning and gaining Canadian experience; assumes all Canadian work counts toward PR",
+      "senior_pattern": "Verifies the NOC TEER category of any role before accepting; declines or restructures roles that fall in TEER 4/5 even if financially convenient; documents job duties to match targeted NOC code from day one",
+      "why_it_matters": "Months of work in non-qualifying occupations create a false sense of PR progress while the actual 1,560-hour clock doesn't move"
+    },
+    {
+      "dimension": "Using PGWP status in the job market",
+      "junior_pattern": "Assumes Canadian employers understand immigration status nuances; answers 'I'm on a work permit' without further explanation and accepts that some employers will self-select out",
+      "senior_pattern": "Proactively reframes PGWP as a hiring advantage: 'no sponsorship required, no filing, can start immediately' — directly neutralizes the most common employer objection to international candidates",
+      "why_it_matters": "The PGWP is objectively employer-friendly but many employers don't know that; seniors convert a perceived liability into a differentiator"
+    },
+    {
+      "dimension": "Evaluating Quebec vs. non-Quebec programs",
+      "junior_pattern": "Chooses McGill or Université de Montréal based on global rankings and advisor fit without investigating Quebec's separate immigration system",
+      "senior_pattern": "Treats province of study as an immigration variable equal in weight to research fit; if selecting Quebec, proactively researches CSQ pathway and assesses French language requirements before committing",
+      "why_it_matters": "Discovering Quebec's immigration regime after enrollment means 4-5 years invested before realizing the pathway is fundamentally different and more demanding than anticipated"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "canada_phd_canada_immigration_path",
+  "_source_regions": [
+    "canada"
+  ]
+}

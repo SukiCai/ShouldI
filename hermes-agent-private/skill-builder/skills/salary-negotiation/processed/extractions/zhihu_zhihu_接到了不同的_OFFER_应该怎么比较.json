@@ -1,0 +1,379 @@
+{
+  "source_file": "zhihu_接到了不同的_OFFER_应该怎么比较.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Choose sunrise industries over sunset industries, regardless of specific company",
+      "condition": "When comparing offers across industries with different growth trajectories...",
+      "action": "Prioritize the offer in the growing industry, even if the specific company or salary is slightly inferior",
+      "because": "Industry trajectory determines your optionality — in a declining industry you lose the ability to switch employers on your own terms; in a growing industry you can always find the next job",
+      "regions": []
+    },
+    {
+      "rule": "Prioritize industry brand and company prestige over short-term salary when the salary gap is within an acceptable range",
+      "condition": "When two offers differ in company prestige but salary is within acceptable tolerance...",
+      "action": "Choose the higher-prestige company for the resume credential it provides",
+      "because": "Recruiters assess candidates by educational background AND company pedigree; a top-company background unlocks higher salary floors at the next job",
+      "regions": []
+    },
+    {
+      "rule": "Never factor in promised annual raises or unvested options when comparing offers",
+      "condition": "When an offer includes unvested equity or promises of future salary adjustments...",
+      "action": "Exclude those figures entirely from your comparison calculation; only count guaranteed, immediately vested cash",
+      "because": "Unvested options and future raise promises are 'big cakes' (画饼) — they are not guaranteed and should not affect a present-value comparison",
+      "regions": []
+    },
+    {
+      "rule": "Apply weighted scoring rather than raw scoring when comparing offers",
+      "condition": "When comparing multiple offers across several dimensions (salary, commute, team, growth, etc.)...",
+      "action": "Assign a personal importance weight to each factor, multiply each factor's score by its weight, then sum — do not just add raw scores",
+      "because": "Two offers with nearly identical raw totals can have drastically different weighted outcomes; raw totals obscure what actually matters to you",
+      "regions": []
+    },
+    {
+      "rule": "Clarify your core need before evaluating any offer dimension",
+      "condition": "Before starting any offer comparison...",
+      "action": "Explicitly articulate whether your primary goal is money, career capital, family stability, or passion — and build all evaluation criteria around that one goal",
+      "because": "Without anchoring on a core need, people unconsciously apply inconsistent weights and make decisions they later regret",
+      "regions": []
+    },
+    {
+      "rule": "Watch for stagnation signals at large companies before treating prestige as a universal positive",
+      "condition": "When a large-company offer seems prestigious but you notice employees staying at the same level for 3-4 years...",
+      "action": "Treat that as a red flag and reconsider whether the prestige benefit outweighs low internal mobility",
+      "because": "Some large companies offer brand value but trap employees in low-growth roles with minimal salary progression, negating the prestige advantage",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Industry growth trajectory",
+      "why_it_matters": "Determines whether you have future job optionality; a declining industry removes your ability to switch employers on favorable terms",
+      "how_to_assess": "Research industry hiring trends, VC funding flows, headcount growth at top companies in the sector over the past 3 years",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Company prestige and market position",
+      "why_it_matters": "Your employer brand becomes a credential that directly sets your salary floor at your next job; small company vs. large company background produces dramatically different next-offer starting points",
+      "how_to_assess": "Check if the company appears on target-company lists used by top recruiters; assess whether peers with this company on their resume get interviews at your target next employer",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Role type and its market value",
+      "why_it_matters": "Even within the same company, the role determines your market price at next job — a lower-paid algorithm engineer role today yields higher future offers than a higher-paid QA role today",
+      "how_to_assess": "Research external market rates for the specific role title; assess whether the role is core business or peripheral",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Direct manager relationship and reporting structure",
+      "why_it_matters": "Your direct manager determines your day-to-day happiness, performance review outcomes, and internal promotion chances more than any other single factor",
+      "how_to_assess": "Ask during interviews: who you report to, their reporting chain, whether you have multi-line reporting (multiple bosses exponentially increases complexity)",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Internal mobility and promotion velocity",
+      "why_it_matters": "A role with fast level progression at a smaller company may outperform a prestigious role where people stagnate for 3-4 years at the same level",
+      "how_to_assess": "Ask current employees how long it typically takes to get promoted; check LinkedIn tenure patterns for people in that role",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Team culture and interpersonal fit",
+      "why_it_matters": "Poor team culture causes psychological damage over time; a misaligned team is invisible during negotiation but becomes the dominant factor in daily experience",
+      "how_to_assess": "Assess during interviews whether the team has shared goals, clear ownership, and mutual trust; watch for blame-shifting or vague accountability",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Guaranteed cash compensation (base + signing, excluding unvested equity)",
+      "why_it_matters": "Current cash sets the baseline for future salary negotiations; a lower base today compounds into lower baselines at future jobs",
+      "how_to_assess": "Calculate only the fully vested, guaranteed cash component; exclude unvested options and promised future raises",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Commute time",
+      "why_it_matters": "Long commutes cause cumulative physical and psychological fatigue that reduces life satisfaction and work performance; surveys show 93%+ of urban workers in China report commute as a significant stressor",
+      "how_to_assess": "Calculate actual daily round-trip time including transit waits; factor this against total discretionary hours per day",
+      "weight": "medium",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing the higher-salary offer without considering role type",
+      "unstated_consequence": "A higher-paying QA/testing role locks you into a lower-value job category, making future salary jumps harder even if current pay is better than an algorithm or data engineering role",
+      "who_it_affects": "Early-career candidates who optimize for immediate income over role-based career capital",
+      "regions": []
+    },
+    {
+      "choice": "Joining a prestigious large company for the brand value",
+      "unstated_consequence": "Some large companies have very low internal mobility — employees sit at the same level for 3-4 years with minimal raises, negating the brand benefit and losing years of compounding salary growth",
+      "who_it_affects": "Mid-career professionals who assume prestige always translates to growth",
+      "regions": []
+    },
+    {
+      "choice": "Accepting an offer with attractive unvested equity or promised future raises",
+      "unstated_consequence": "These are non-guaranteed and should not be counted as real compensation; people who factor them in overestimate their actual total comp and make suboptimal comparisons",
+      "who_it_affects": "Anyone comparing offers that differ significantly in equity or raise promises",
+      "regions": []
+    },
+    {
+      "choice": "Ignoring commute time to capture a higher salary",
+      "unstated_consequence": "2-3 hour daily commutes produce compounding fatigue and life-quality loss that no salary premium fully compensates for; the psychological toll accumulates invisibly",
+      "who_it_affects": "People who rationally weigh salary but underweight daily time costs",
+      "regions": []
+    },
+    {
+      "choice": "Prioritizing a well-aligned team culture over immediate compensation",
+      "unstated_consequence": "The benefit is invisible when things are good but becomes the dominant factor when things go wrong — the 'spiritual damage cost' (精神损失费) of a misaligned team is systematically underestimated at decision time",
+      "who_it_affects": "Candidates who treat culture as a soft/optional factor in an otherwise transactional comparison",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Comparing offers by raw score totals without applying personal importance weights",
+      "why_it_happens": "Weighted scoring requires self-knowledge about values; raw totals feel more objective and require less introspection",
+      "consequence": "Choosing the wrong offer — the case example shows raw scores favoring Offer A (390 vs 370) while weighted scores strongly favor Offer B (104 vs 69)",
+      "warning_signs": [
+        "Saying 'Offer A scored higher overall so I'll pick it'",
+        "Treating all factors as equally important without explicitly assigning weights"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Counting unvested equity and promised raises as real compensation in offer comparisons",
+      "why_it_happens": "Recruiters present total comp including equity and raise projections, making it feel like guaranteed income; anchoring bias inflates its perceived value",
+      "consequence": "Overestimating one offer's value and making a suboptimal choice based on compensation that may never materialize",
+      "warning_signs": [
+        "Including '4-year vesting schedule' totals in your offer comparison spreadsheet",
+        "Factoring in 'up to X% annual raise' language in the offer letter"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Making offer decisions without first clarifying your core priority",
+      "why_it_happens": "People feel pressure to decide quickly and skip the introspective step; or they assume their priority is obvious (money) without testing whether it's actually consistent with their constraints",
+      "consequence": "Applying inconsistent weights across factors, feeling regret after choosing, or choosing based on others' frameworks rather than your own situation",
+      "warning_signs": [
+        "Asking 'which offer is better?' without specifying your own situation or goals",
+        "Borrowing someone else's scoring framework verbatim without adjusting weights"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Underweighting or ignoring the direct manager when evaluating offers",
+      "why_it_happens": "Manager quality is hard to assess before joining; candidates focus on observable/quantifiable factors like salary and company brand",
+      "consequence": "Ending up with a technically good offer at a good company but miserable daily experience due to an incompatible or poor manager",
+      "warning_signs": [
+        "Not asking about reporting structure during interviews",
+        "Not researching the direct manager's background or management style"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your actual core goal from this job — long-term earnings, career capital, family stability, or passion/achievement?",
+      "what_it_reveals": "Which framework and factor weights are appropriate for this person's comparison — someone optimizing for money uses a different framework than someone optimizing for family stability",
+      "follow_up_if_yes": "N/A — clarify the specific goal and rebuild the comparison framework around it",
+      "follow_up_if_no": "If the person cannot articulate a core goal, they should resolve career direction before comparing offers",
+      "regions": []
+    },
+    {
+      "question": "Does either offer include unvested equity or promised future raises, and are you counting those in your comparison?",
+      "what_it_reveals": "Whether the person is inflating one offer's value with non-guaranteed compensation",
+      "follow_up_if_yes": "Recalculate using only guaranteed, immediately vested cash components",
+      "follow_up_if_no": "Comparison is on solid footing; proceed to weighted scoring",
+      "regions": []
+    },
+    {
+      "question": "What role type does each offer involve, and what is that role's external market value trajectory?",
+      "what_it_reveals": "Whether a lower-salary offer in a higher-value role (e.g., ML engineer) will outperform a higher-salary offer in a lower-value role (e.g., QA) at the next job change",
+      "follow_up_if_yes": "If the lower-pay role has higher market value, consider accepting short-term pay cut for long-term career capital",
+      "follow_up_if_no": "If roles are equivalent, focus on company prestige and team factors",
+      "regions": []
+    },
+    {
+      "question": "Have you observed the promotion velocity of people currently in this role at this company?",
+      "what_it_reveals": "Whether the company's prestige advantage is real or offset by internal stagnation",
+      "follow_up_if_yes": "If people are staying at the same level for 3-4 years, the prestige benefit may not outweigh the growth opportunity at a smaller but faster-moving company",
+      "follow_up_if_no": "Research LinkedIn profiles of current and former employees in that role to assess typical tenure before promotion",
+      "regions": []
+    },
+    {
+      "question": "Who is your direct manager, what is their reporting line, and will you have multi-line reporting?",
+      "what_it_reveals": "Whether daily work experience will be manageable; multi-line reporting (7-8 bosses) exponentially increases complexity and reduces autonomy",
+      "follow_up_if_yes": "If multi-line reporting exists, assess whether you've successfully navigated that before and whether it matches your working style",
+      "follow_up_if_no": "Single reporting line is simpler; assess the specific manager's style and alignment with your work preferences",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Pick the offer with the highest total compensation number",
+      "actual_reality": "Total comp numbers are misleading without applying personal importance weights; and a higher-paying offer in a lower-value role can produce lower lifetime earnings than a lower-paying offer in a high-value role",
+      "implication": "You need a weighted scoring model calibrated to your own priorities, not just a raw comp comparison",
+      "regions": []
+    },
+    {
+      "common_belief": "Big company always beats small company because of brand and stability",
+      "actual_reality": "Large companies can have very low internal mobility — employees stagnating at the same level for 3-4 years with low salary growth; a smaller company with fast promotion cycles may produce better career and financial outcomes",
+      "implication": "You must research actual promotion velocity at the specific large company, not just assume prestige = growth",
+      "regions": []
+    },
+    {
+      "common_belief": "Salary is the most important factor when comparing offers",
+      "actual_reality": "Multiple experienced commenters independently argue that industry trajectory, company prestige, and role type all outrank current salary because they determine your salary ceiling at every future job",
+      "implication": "Optimizing for current salary at the expense of career capital is a short-term strategy that compounds negatively over time",
+      "regions": []
+    },
+    {
+      "common_belief": "Team culture and manager quality are soft factors that matter less than hard metrics like pay and brand",
+      "actual_reality": "The direct manager is described as the single most determinative factor for day-to-day happiness and ultimate success; team culture is described as 'air and water' — invisible when good, severely damaging when bad",
+      "implication": "Candidates should invest significant interview effort into assessing manager compatibility and team dynamics, treating it as a hard factor",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to compare compensation across offers",
+      "naive_pattern": "Add up all compensation components including unvested equity and promised raises; pick the highest number",
+      "informed_pattern": "Count only guaranteed, immediately vested cash; exclude options and raise promises; then apply weighted scoring based on personal priorities",
+      "why_it_matters": "Counting non-guaranteed comp inflates one offer's apparent value; unweighted totals produce systematically wrong decisions",
+      "regions": []
+    },
+    {
+      "dimension": "How to think about salary",
+      "naive_pattern": "Maximize current salary",
+      "informed_pattern": "Optimize for the long-term salary trajectory — current salary is just a base that gets multiplied by future job changes; role type, company prestige, and career capital matter more than current figures",
+      "why_it_matters": "A small salary difference at job 1 compounds into a large lifetime earnings difference because it resets the negotiation baseline at every subsequent job",
+      "regions": []
+    },
+    {
+      "dimension": "Evaluating large company offers",
+      "naive_pattern": "Treat any large company offer as automatically better due to brand, stability, and prestige",
+      "informed_pattern": "Verify actual internal promotion velocity and salary growth rate; a prestigious company with low internal mobility may be worse than a smaller company with fast career progression",
+      "why_it_matters": "Prestige without growth traps people in the same role/level for years while peers at scrappier companies advance faster",
+      "regions": []
+    },
+    {
+      "dimension": "Importance of manager in offer evaluation",
+      "naive_pattern": "Focus on company-level factors (brand, pay, benefits) and treat manager as unknowable until you start",
+      "informed_pattern": "Proactively investigate the direct manager during interviews — their reporting line, management style, alignment with your working style — treating manager quality as a top-tier decision factor",
+      "why_it_matters": "The manager determines performance reviews, promotion decisions, and daily quality of life more than any company-level attribute",
+      "regions": []
+    },
+    {
+      "dimension": "Framework for offer comparison",
+      "naive_pattern": "Compare offers by intuition or by the two or three most obvious dimensions (pay, commute, company name)",
+      "informed_pattern": "Use a structured weighted scoring model: enumerate all relevant dimensions, score each offer on each dimension, assign personal importance weights, multiply and sum — then compare",
+      "why_it_matters": "Intuitive comparison systematically over-weights salient factors (pay, brand) and under-weights invisible ones (manager, role type, culture), producing regrettable choices",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Options (期权) are real compensation and should be counted when comparing offers",
+      "why_believed": "Recruiters present options as part of total comp; large projected values feel concrete even if unvested and contingent on liquidity events",
+      "actual_rule": "Options are 'big cakes' (大饼) in most cases — they should be excluded from your offer comparison calculation entirely; only count guaranteed, vested cash",
+      "real_consequence": "Candidates accept lower base salary in exchange for options that never vest or never become liquid, ending up with less actual compensation",
+      "regions": []
+    },
+    {
+      "misconception": "Promised annual raise percentages should be factored into your offer comparison",
+      "why_believed": "Companies present 'annual review with up to X% raise' as a benefit; it feels like a quantifiable future value",
+      "actual_rule": "Annual raise promises are non-guaranteed and vary by performance, company financials, and manager discretion; they should not be counted in your offer comparison",
+      "real_consequence": "Overvaluing one offer based on raise promises, then receiving minimal or no raises, while the competing offer's actual guaranteed compensation would have been superior",
+      "regions": []
+    },
+    {
+      "misconception": "The offer with the highest raw score across all factors is the right choice",
+      "why_believed": "Summing scores feels rigorous and objective; people equate 'higher number' with 'better choice'",
+      "actual_rule": "Raw scores without personal importance weights are meaningless; the correct method multiplies each factor's score by its importance weight before summing",
+      "real_consequence": "Choosing the wrong offer — the worked example in the source shows raw scores favoring Offer A while weighted scores strongly favor Offer B",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Candidate comparing Offer A (higher pay, longer commute, less growth potential) vs Offer B (lower pay, shorter commute, faster promotion opportunity) using raw score totals",
+      "decision": "Initially appeared to choose Offer A based on raw total (390 vs 370)",
+      "outcome": "After applying weighted scoring with personal importance weights, Offer B scored 104 vs Offer A's 69 — a large reversal showing Offer B was the correct choice",
+      "lesson": "Weighted scoring can completely reverse a raw-score decision; never compare offers without applying personal importance weights calibrated to your own priorities",
+      "regions": []
+    },
+    {
+      "situation": "Professional who left a job because internal approval processes were too bureaucratic, requiring multiple rounds of sign-off for even small initiatives",
+      "decision": "Resigned from the role despite presumably acceptable pay and team",
+      "outcome": "Left due to loss of autonomy and sense of achievement caused by process friction",
+      "lesson": "Decision-making autonomy (权利) is a factor that is hard to assess before joining but becomes a primary driver of resignation; candidates should explicitly investigate approval processes and decision-making latitude during interviews",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Posting 'I have 3 offers, which is better?' without providing personal context, priorities, or situation",
+      "underlying_state": "Decision paralysis combined with externalized locus of control — the person wants someone else to make the decision for them to avoid ownership of the outcome",
+      "how_it_manifests": "Asking strangers to compare offers by name alone, as if there is an objectively correct answer independent of the person's goals",
+      "expert_move": "Redirect: 'I can't answer that without knowing your core goal — what are you actually trying to get from this job in the next 3-5 years?' Force the person to own the priority-setting step before any comparison begins",
+      "regions": []
+    },
+    {
+      "trigger": "Framing the offer choice as a binary between a higher-salary and a lower-salary option with no other dimensions mentioned",
+      "underlying_state": "Salary anchoring bias — salary is the most visible and easily comparable dimension, so it crowds out all other factors in the mental model",
+      "how_it_manifests": "The person reduces a multi-dimensional decision to a single number comparison, treating salary as a proxy for total offer quality",
+      "expert_move": "Expand the frame: 'Salary is only one of six dimensions. What role type is each offer? What company prestige? What team? Your salary in 5 years depends far more on those than on the current number.'",
+      "regions": []
+    },
+    {
+      "trigger": "Expressing fear of 'choosing wrong and regretting for life' when comparing job offers",
+      "underlying_state": "Loss aversion and catastrophizing — treating a reversible career decision as permanent and existentially high-stakes",
+      "how_it_manifests": "Paralysis, over-analysis, seeking external validation, delaying a decision beyond the offer deadline",
+      "expert_move": "Normalize reversibility: 'Every job is a stepping stone. The question isn't which offer is perfect — it's which offer gives you better options for your next move. You can course-correct.'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Which offer pays more / which company is bigger?",
+      "reframe": "Which offer gives you better long-term earnings trajectory, not just the highest number today?",
+      "why_it_works": "Shifts the comparison from a static snapshot (current salary) to a dynamic model (career capital, role market value, company as resume credential), which is the actual variable that matters over a career",
+      "example_language": "你的核心诉求是长期，稳定，可增长的钱，而非短期支票 ('Your core need is long-term, stable, growing income — not a short-term check')",
+      "regions": []
+    },
+    {
+      "original_framing": "I can't decide between these two offers — can you help me choose?",
+      "reframe": "Before comparing offers, you need to clarify your core need — without that, no framework will give you the right answer",
+      "why_it_works": "Forces the person to take ownership of their own value hierarchy before applying any evaluation tool; prevents borrowing someone else's framework that doesn't match their situation",
+      "example_language": "同一个Offer，对不同的人来说，是完全不同的意义 ('The same offer means completely different things to different people')",
+      "regions": []
+    },
+    {
+      "original_framing": "Should I go to the big company or the small company?",
+      "reframe": "Which option increases your career capital (experience value, role market price, resume credential) faster?",
+      "why_it_works": "Breaks the false binary of 'big = safe/good, small = risky/bad' and replaces it with a growth-rate comparison that accounts for stagnation risk at large companies",
+      "example_language": "逆向思维，你希望你的简历上出现什么经验？你觉得哪个offer带来的经验更有含金量？ ('Reverse-engineer: what experience do you want on your resume? Which offer's experience is worth more?')",
+      "regions": []
+    },
+    {
+      "original_framing": "The higher-scoring offer in total points is obviously better",
+      "reframe": "Raw scores without weights are meaningless — the same offer scored by two different people with different priorities should produce different outcomes",
+      "why_it_works": "Breaks the false objectivity of raw totals and introduces the necessary step of personal values calibration, which is where the real decision actually lives",
+      "example_language": "打分需要按照你自己的想法来，不需要参考别人的分数 ('The scoring must reflect your own judgment — you don't need to reference anyone else's scores')",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_接到了不同的_OFFER_应该怎么比较",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

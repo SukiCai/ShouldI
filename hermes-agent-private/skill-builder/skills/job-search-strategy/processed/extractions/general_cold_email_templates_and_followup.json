@@ -1,0 +1,300 @@
+{
+  "source_file": "cold_email_templates_and_followup.txt",
+  "heuristics": [
+    {
+      "rule": "Never ask for a job or referral in the first cold message",
+      "condition": "When sending an initial cold email or LinkedIn message to someone you have no prior relationship with...",
+      "action": "...ask only for a 20-minute conversation on a specific topic, never mention openings or referrals",
+      "because": "Asking for a job in the first message destroys the relationship before it starts — the social capital required for a referral hasn't been built yet"
+    },
+    {
+      "rule": "Keep cold emails to 50–120 words maximum",
+      "condition": "When drafting any unsolicited outreach message...",
+      "action": "...cut everything that isn't specific common ground, one proof of relevance, or the ask — if it exceeds 150 words, the receiver stops reading",
+      "because": "Message length above 150 words is a reliable failure signal; brevity signals respect for the recipient's time and forces you to be specific"
+    },
+    {
+      "rule": "Send the referral ask 2–4 weeks after the informational call, not during it",
+      "condition": "When you've had a genuine first informational interview and a relevant role has opened...",
+      "action": "...wait until the second touch to ask for a referral, framing it as 'I wanted to ask if you'd be open to' rather than 'can you'",
+      "because": "The social obligation that makes a referral feel natural takes time to form; asking too early before that obligation exists feels transactional and gets declined"
+    },
+    {
+      "rule": "After 3 follow-ups with no response, move to a different contact at the same company",
+      "condition": "When a contact at a target company hasn't responded after three follow-up messages...",
+      "action": "...treat the non-response as contact-specific, not company-level, and identify a different person at the same company to reach out to",
+      "because": "Non-response reflects that individual's availability, interest, or inbox habits — it says nothing about the company's openness to you"
+    },
+    {
+      "rule": "Target managers who joined their company within the last 12–24 months",
+      "condition": "When identifying who to cold outreach to at a target company...",
+      "action": "...prioritize managers who are newer in their role over long-tenured senior leaders or executives",
+      "because": "Newer managers are actively building teams, haven't yet acquired gatekeepers, and still remember being a job seeker — they respond at higher rates"
+    },
+    {
+      "rule": "The third follow-up should give the recipient an explicit easy out",
+      "condition": "When sending the final follow-up in a 3-touch sequence...",
+      "action": "...explicitly say you'll stop following up and wish them well on their work — don't guilt-trip or push",
+      "because": "Paradoxically, removing pressure and giving a graceful exit sometimes triggers a response from people who felt cornered by persistent asks"
+    },
+    {
+      "rule": "Most cold outreach conversions happen at the second or third touch, not the first",
+      "condition": "When tempted to give up after no response to the initial message...",
+      "action": "...send at least two follow-ups before moving on, spaced 3–7 days apart",
+      "because": "Conversion data shows the majority of positive responses come from follow-up messages, not the first outreach"
+    },
+    {
+      "rule": "The thank-you note after an informational call should reference specific things said in the conversation",
+      "condition": "When sending a post-call thank-you message the same day as an informational interview...",
+      "action": "...name 1–2 specific points from the conversation and add one thing you thought of or looked up afterward",
+      "because": "Generic thank-you notes signal low engagement; specificity signals that the person was genuinely interesting to you and builds the relationship capital needed for a future referral ask"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Who you are targeting (executive vs. manager)",
+      "why_it_matters": "Executives rarely respond to cold outreach; managers — especially newer ones — have higher response rates and more direct hiring influence",
+      "how_to_assess": "Check LinkedIn title, seniority level, and years in current role; filter for people 1–2 levels above the role you want, not C-suite",
+      "weight": "high"
+    },
+    {
+      "factor": "Specificity of the connection hook",
+      "why_it_matters": "A generic opener signals mass outreach and triggers deletion; a specific reference to something the person did recently signals genuine interest",
+      "how_to_assess": "Ask: could this opening line have been sent to 100 other people? If yes, it's too generic — find something specific: a post, talk, article, or mutual contact",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether a mutual contact exists",
+      "why_it_matters": "A name-drop from a shared connection fundamentally changes response probability and the social dynamic of the conversation",
+      "how_to_assess": "Check LinkedIn second-degree connections; ask existing contacts who they know at target companies before sending cold messages",
+      "weight": "high"
+    },
+    {
+      "factor": "Visa/sponsorship status transparency",
+      "why_it_matters": "For international students, proactively framing OPT status and researching sponsorship track records avoids wasting outreach on companies that won't sponsor",
+      "how_to_assess": "Reference OPT authorization directly in the outreach message while simultaneously positioning the company as one known for sponsoring international talent — signals self-awareness and does pre-qualification",
+      "weight": "high"
+    },
+    {
+      "factor": "Recency of the target's LinkedIn activity",
+      "why_it_matters": "Recently active people are more likely to see and respond to messages; inactive profiles are low-yield targets",
+      "how_to_assess": "Use LinkedIn's 'sort by Activity' filter in People search to surface recently active contacts first",
+      "weight": "medium"
+    },
+    {
+      "factor": "The specific ask at the end of the message",
+      "why_it_matters": "Asking for a job destroys the interaction; asking for 20 minutes on a specific topic has a much higher conversion rate",
+      "how_to_assess": "Check whether the ask requires any commitment beyond a short conversation — if it does, the ask is too heavy for a cold first message",
+      "weight": "high"
+    },
+    {
+      "factor": "Follow-up timing and spacing",
+      "why_it_matters": "Too soon feels aggressive; too late loses momentum — the spacing of follow-ups affects both response rate and how the sender is perceived",
+      "how_to_assess": "Use 3–4 days for first follow-up, 4–5 days for second, 5–7 days for third — total sequence spans roughly 2 weeks",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Asking for a referral during the first informational call",
+      "unstated_consequence": "You collapse the relationship before it forms — the person has no social reason to advocate for someone they just met, and the ask makes the whole interaction feel like it was instrumentally motivated",
+      "who_it_affects": "Job seekers who are under time pressure (e.g., approaching OPT deadline) and feel they can't afford the 2–4 week wait"
+    },
+    {
+      "choice": "Sending a longer, more detailed cold email to seem more qualified",
+      "unstated_consequence": "Longer messages are read less, not more — exceeding 150 words actively reduces response rates regardless of content quality",
+      "who_it_affects": "High-achievers who default to thoroughness and equate detail with credibility"
+    },
+    {
+      "choice": "Only reaching out to one contact per target company",
+      "unstated_consequence": "A single non-response gets misread as company-level rejection, causing the candidate to abandon a viable target entirely",
+      "who_it_affects": "Candidates who treat each company as a single relationship rather than a network of independent contacts"
+    },
+    {
+      "choice": "Using 'can you refer me' language instead of 'would you be open to'",
+      "unstated_consequence": "Direct asks remove the referrer's graceful exit — if they feel they can't say no easily, they may avoid responding entirely rather than decline awkwardly",
+      "who_it_affects": "Candidates who haven't thought about the referrer's perspective and default to direct asks out of efficiency"
+    },
+    {
+      "choice": "Targeting only senior executives and VPs in cold outreach",
+      "unstated_consequence": "You get silence — executives are buffered by gatekeepers, receive high outreach volume, and have little direct hiring involvement; meanwhile mid-level managers who do respond go uncontacted",
+      "who_it_affects": "Candidates who believe seniority of contact correlates with hiring influence"
+    },
+    {
+      "choice": "Not following up after a referral is given",
+      "unstated_consequence": "The referrer who invested social capital in you is left without closure — this damages the relationship and makes them less likely to help again or recommend you to others",
+      "who_it_affects": "Candidates who treat the referral as the end of the transaction rather than a relationship event"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Sending outreach that could have gone to 100 other people",
+      "why_it_happens": "Candidates prioritize volume over personalization — it feels more productive to send 50 generic messages than 10 specific ones",
+      "consequence": "Near-zero response rates because recipients immediately recognize mass outreach and delete it without reading",
+      "warning_signs": [
+        "The opener mentions the company name but nothing the specific person did or said",
+        "The message could be copy-pasted with a name swap and sent to anyone in the industry"
+      ]
+    },
+    {
+      "pattern": "Asking for a job or referral in the first message",
+      "why_it_happens": "Candidates are under time pressure or misunderstand the purpose of cold outreach — they treat it as a job application channel rather than a relationship-building channel",
+      "consequence": "The relationship is destroyed before it starts; recipients feel used rather than engaged",
+      "warning_signs": [
+        "The message mentions 'open roles' or 'passing along my resume' in the first outreach",
+        "The ask is for anything more than a conversation"
+      ]
+    },
+    {
+      "pattern": "Giving up after no response to the first message",
+      "why_it_happens": "Candidates interpret silence as rejection, not as inbox noise — they don't know that most conversions happen at follow-up 2 or 3",
+      "consequence": "Abandoning viable contacts who would have responded to a follow-up, significantly reducing conversion rates",
+      "warning_signs": [
+        "Outreach strategy involves sending one message per contact then moving on",
+        "Candidate describes their response rate as 'low' but isn't following up"
+      ]
+    },
+    {
+      "pattern": "Writing cold emails over 150 words",
+      "why_it_happens": "Candidates conflate thoroughness with persuasiveness — they add context, qualifications, and background thinking it makes them more compelling",
+      "consequence": "Recipients stop reading partway through; the key ask is never reached",
+      "warning_signs": [
+        "Draft includes a paragraph about the candidate's background before any connection to the recipient",
+        "Message has more than three paragraphs"
+      ]
+    },
+    {
+      "pattern": "Sending outreach to executives instead of managers",
+      "why_it_happens": "Candidates target the most visible or senior people they can find, assuming seniority equals hiring power",
+      "consequence": "Silence — senior executives don't respond to cold outreach at meaningful rates; direct hiring managers do",
+      "warning_signs": [
+        "Outreach list is dominated by VPs, Directors, and C-suite titles",
+        "No filtering for people who joined the company in the last 12–24 months"
+      ]
+    },
+    {
+      "pattern": "Sending a generic thank-you after an informational call",
+      "why_it_happens": "Candidates treat the thank-you as a formality rather than a relationship-building moment",
+      "consequence": "The connection fades; no foundation is built for the follow-up referral ask",
+      "warning_signs": [
+        "Thank-you note says 'great speaking with you' but references nothing specific from the call",
+        "Note sent days later rather than same day"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does your cold email opener reference something specific the recipient did, wrote, or said — or does it start with something about you or the company generally?",
+      "what_it_reveals": "Whether the message is genuinely personalized or a mass template — this is the single biggest predictor of response rate",
+      "follow_up_if_yes": "Is the specific reference recent enough to feel current, and does it connect naturally to your ask?",
+      "follow_up_if_no": "Find one specific thing this person did — a post, talk, article, or career move — before sending anything"
+    },
+    {
+      "question": "What are you asking for in the final line of your cold message?",
+      "what_it_reveals": "Whether the ask is appropriately low-commitment or prematurely heavy — a job/referral ask in a first message is a reliable failure pattern",
+      "follow_up_if_yes": "If the ask is for a conversation: is it time-bounded (20 minutes) and tied to a specific topic?",
+      "follow_up_if_no": "If the ask is for a referral or job consideration: rewrite to ask only for a 20-minute call on a specific question"
+    },
+    {
+      "question": "How many follow-ups did you send after the initial message, and how were they spaced?",
+      "what_it_reveals": "Whether the candidate has a real follow-up strategy or is abandoning contacts after one attempt — most conversions happen at touches 2 and 3",
+      "follow_up_if_yes": "If they sent follow-ups: were they adding new value (a question, an observation) or just bumping the thread?",
+      "follow_up_if_no": "If they sent no follow-ups: the response rate problem may be entirely attributable to lack of follow-through, not message quality"
+    },
+    {
+      "question": "Are you targeting individual contributors, managers, or executives in your outreach?",
+      "what_it_reveals": "Whether the candidate is targeting people who actually respond and hire versus visible but unreachable senior figures",
+      "follow_up_if_yes": "If targeting managers: are any of them newer in their role (joined in the last 12–24 months)?",
+      "follow_up_if_no": "If targeting executives: redirect toward managers 1–2 levels above the target role"
+    },
+    {
+      "question": "When did you send the referral ask relative to the first informational conversation?",
+      "what_it_reveals": "Whether the candidate is giving the relationship time to form before making a high-commitment ask, or collapsing it prematurely",
+      "follow_up_if_yes": "If 2–4 weeks later: did a relevant role open, and did you reference the earlier conversation specifically?",
+      "follow_up_if_no": "If during or immediately after the first call: the ask likely failed because no social obligation had been established yet"
+    },
+    {
+      "question": "Are you explicitly mentioning your OPT/visa status in outreach to companies you're researching for sponsorship?",
+      "what_it_reveals": "Whether the candidate is pre-qualifying their targets efficiently or risking wasted effort on companies that won't sponsor",
+      "follow_up_if_yes": "Are you framing the visa status as a reason you specifically researched this company's sponsorship track record, or just disclosing it neutrally?",
+      "follow_up_if_no": "Consider whether early disclosure in informational outreach could actually filter for more receptive contacts and save time"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Cold outreach is a numbers game — the more you send, the more responses you get",
+      "actual_reality": "Specificity, not volume, drives response rates — a generic message sent to 100 people converts worse than a specific message sent to 10, because recipients immediately detect mass outreach",
+      "implication": "Invest the time saved from sending fewer messages into personalizing each one with a specific hook tied to something the recipient actually did"
+    },
+    {
+      "common_belief": "If someone doesn't respond to your first message, they're not interested and you should move on",
+      "actual_reality": "Most cold outreach conversions happen at the second or third follow-up, not the first message — non-response to the first message is usually inbox noise, not rejection",
+      "implication": "Build a 3-touch sequence into every outreach effort; treat the first message as a starting point, not a complete attempt"
+    },
+    {
+      "common_belief": "Senior executives and VPs are the best people to contact because they have the most authority",
+      "actual_reality": "Executives rarely respond to cold outreach — they're buffered by gatekeepers, receive high volumes of similar messages, and often aren't directly involved in hiring. Mid-level managers, especially newer ones, respond at significantly higher rates",
+      "implication": "Target managers 1–2 levels above the role you want, filter for those who've joined in the last 12–24 months, and deprioritize executives entirely for cold outreach"
+    },
+    {
+      "common_belief": "A more detailed, thorough cold email demonstrates competence and increases your chances",
+      "actual_reality": "Emails over 150 words are routinely abandoned before the ask — length signals disrespect for the recipient's time and buries the one thing they need to decide whether to respond",
+      "implication": "Cut every sentence that isn't doing one of three jobs: establishing specific common ground, proving relevance in one line, or making the ask"
+    },
+    {
+      "common_belief": "Asking directly for what you want (a referral, an introduction) is more efficient and respected",
+      "actual_reality": "Asking for a referral before a relationship exists — or using 'can you' language that removes a graceful exit — reliably fails; people need both a social reason to help and an easy way to decline",
+      "implication": "Sequence the ask: first call builds connection, second touch (2–4 weeks later) makes the referral ask with 'would you be open to' framing that lets them say no without awkwardness"
+    },
+    {
+      "common_belief": "After getting a referral, your job is done and you focus entirely on the application",
+      "actual_reality": "Referrers have invested social capital in you — failing to update them on outcomes damages the relationship and makes them less likely to help again or extend their network to you",
+      "implication": "Treat the referral as the beginning of an ongoing obligation: thank them at submission, update them on outcomes positive and negative"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "What the first message asks for",
+      "junior_pattern": "Asks for a job, a referral, or for the resume to be passed along — confuses cold outreach with a job application",
+      "senior_pattern": "Asks only for a 20-minute conversation on a specific topic — treats cold outreach as relationship initiation, not transaction execution",
+      "why_it_matters": "Premature asks destroy the relationship before it starts; the correct ask in a first message is the only ask that converts"
+    },
+    {
+      "dimension": "Message personalization",
+      "junior_pattern": "Uses a template with the company name swapped in — the opener is about the sender's interest in the company, not about the recipient specifically",
+      "senior_pattern": "References something specific the recipient did — a talk, post, article, or career move — that requires actual research and creates genuine common ground",
+      "why_it_matters": "Recipients immediately recognize template outreach and delete it; specific references signal genuine interest and dramatically increase response rates"
+    },
+    {
+      "dimension": "Follow-up behavior",
+      "junior_pattern": "Treats non-response to the first message as rejection and moves on; never sends follow-ups",
+      "senior_pattern": "Executes a deliberate 3-touch sequence, adds new value in each follow-up, gives an easy out in the final message, and moves to a different contact at the same company after 3 attempts",
+      "why_it_matters": "Most conversions happen at touch 2 or 3 — abandoning after touch 1 means missing the majority of potential responses"
+    },
+    {
+      "dimension": "Who they target",
+      "junior_pattern": "Targets the most senior or visible people they can find — VPs, Directors, C-suite — assuming authority equals responsiveness",
+      "senior_pattern": "Targets managers 1–2 levels above the desired role, filters for those new in their role in the last 12–24 months, and uses activity signals to prioritize who to contact first",
+      "why_it_matters": "Executives don't respond to cold outreach at meaningful rates; newer mid-level managers do — targeting the wrong tier produces silence regardless of message quality"
+    },
+    {
+      "dimension": "The informational-to-referral pipeline",
+      "junior_pattern": "Treats informational interviews as a formality before the real ask — may ask for a referral during the call or immediately after",
+      "senior_pattern": "Uses the first call purely to build genuine connection, sends a specific same-day thank-you, waits 2–4 weeks, then makes the referral ask only when a relevant role opens",
+      "why_it_matters": "The social obligation that makes a referral feel natural takes time — compressing the sequence produces an ask that lands before any relationship reason to say yes has been created"
+    },
+    {
+      "dimension": "Message length calibration",
+      "junior_pattern": "Writes longer messages to appear more qualified — includes background, context, and qualifications believing thoroughness is persuasive",
+      "senior_pattern": "Cuts to 50–120 words covering only the three required elements — treats brevity as a form of respect and a signal of clarity",
+      "why_it_matters": "Messages over 150 words are abandoned before the ask — additional content beyond the three core elements actively reduces response rates"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_cold_email_templates_and_followup",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

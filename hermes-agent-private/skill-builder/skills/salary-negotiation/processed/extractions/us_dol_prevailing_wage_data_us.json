@@ -1,0 +1,254 @@
+{
+  "source_file": "dol_prevailing_wage_data_us.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Employers must pay H-1B workers at least the prevailing wage for the relevant occupation and location",
+      "condition": "When an employer files an H-1B petition for a foreign worker",
+      "action": "Employer must pay at or above the DOL prevailing wage determined by SOC code, MSA, and wage level",
+      "because": "INA Section 212(n) requires prevailing wage compliance as a condition of H-1B approval",
+      "regulatory_basis": "Immigration and Nationality Act (INA) Section 212(n); Title 20 CFR Part 655",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Prevailing wage level (I–IV) is determined by job complexity and supervision, not by salary amount",
+      "condition": "When an employer assigns a wage level to an H-1B or PERM filing",
+      "action": "The wage level must reflect the actual job duties — Level IV requires high complexity, advanced expertise, and minimal supervision; Level I requires only basic understanding and close supervision",
+      "because": "DOL defines each level by occupational complexity and supervision criteria, not by the compensation the employer wishes to pay",
+      "regulatory_basis": "DOL Prevailing Wage Program; 20 CFR Part 655",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Under the wage-weighted lottery rule effective February 27, 2026, Level IV filings receive 4 lottery entries vs. 1 entry for Level I",
+      "condition": "When an H-1B cap-subject petition is filed on or after February 27, 2026",
+      "action": "Employer must file at the appropriate wage level; each wage level grants a different number of lottery entries (Level I = 1, Level II = 2, Level III = 3, Level IV = 4)",
+      "because": "Federal Register 2025-23853 finalizes a wage-weighted lottery system to prioritize higher-wage H-1B beneficiaries",
+      "regulatory_basis": "Federal Register 2025-23853",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Employers may substitute an independent authority wage survey in place of OEWS-based prevailing wage if they believe OEWS data is unrepresentative",
+      "condition": "When the employer files an LCA and believes OEWS data does not accurately reflect the local wage for the occupation",
+      "action": "Employer may submit an independent wage survey as the prevailing wage basis",
+      "because": "DOL Prevailing Wage Program permits 'independent authority' wage as an alternative to the OEWS-derived wage",
+      "regulatory_basis": "DOL Foreign Labor Certification Prevailing Wage Program; 20 CFR Part 655",
+      "country_scope": "us"
+    },
+    {
+      "rule": "For PERM labor certification, the offered wage must meet the prevailing wage at both the time of PERM filing and at the time the worker receives the visa",
+      "condition": "When an employer files a PERM application for permanent residence sponsorship",
+      "action": "The offered wage must satisfy the prevailing wage determination at two points in time: PERM filing and visa issuance",
+      "because": "PERM prevailing wage requirements extend through the point of visa receipt, not just the filing date",
+      "regulatory_basis": "DOL Prevailing Wage Program; PERM regulations under 20 CFR Part 656",
+      "country_scope": "us"
+    },
+    {
+      "rule": "The FLC Data Center (flcdatacenter.com) is the authoritative source for current prevailing wage thresholds; values must be verified before filing",
+      "condition": "When preparing any H-1B or PERM wage determination",
+      "action": "Look up current OEWS-based wage using: FLC Data Center → select year → select state → select MSA → select SOC code",
+      "because": "DOL prevailing wage thresholds are updated annually when BLS updates OEWS data; prior-year values may be incorrect",
+      "regulatory_basis": "DOL Foreign Labor Certification Online Wage Library; OEWS survey (BLS)",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "SOC code (Standard Occupational Classification)",
+      "why_it_matters": "The SOC code determines which occupational wage table applies; different SOC codes yield substantially different prevailing wage thresholds even in the same location",
+      "how_to_assess": "Employer selects the SOC code that matches the actual job duties — e.g., 15-1252 for Software Developers, 11-3021 for Computer and Information Systems Managers",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Geographic area (Metropolitan Statistical Area)",
+      "why_it_matters": "Prevailing wages are set by MSA; the same SOC code and wage level produce significantly different dollar thresholds across cities (e.g., Level I Software Developer: $121,430 in San Francisco vs. $86,340 in Austin)",
+      "how_to_assess": "Identify the MSA in which the worker will be employed; use FLC Data Center to look up wages by MSA",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Wage level (I through IV)",
+      "why_it_matters": "Wage level determines the minimum salary the employer must pay AND, effective February 27, 2026, determines the number of H-1B lottery entries (1–4) for the petition",
+      "how_to_assess": "Assess against DOL criteria: Level I = basic understanding, close supervision; Level II = good understanding, general supervision; Level III = complex situations, independent judgment; Level IV = high complexity, minimal supervision, instructs others",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Employer's prior OFLC filing history",
+      "why_it_matters": "DOL OFLC performance data discloses exact wages paid for prior H-1B filings by employer, occupation, and location — establishing a verifiable employer-specific wage benchmark",
+      "how_to_assess": "Search DOL OFLC Performance Data at https://www.dol.gov/agencies/eta/foreign-labor/performance for the specific employer, SOC code, and MSA",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Annual BLS OEWS data update cycle",
+      "why_it_matters": "Prevailing wage thresholds change annually; using outdated values may result in LCA filings that underpay relative to the current prevailing wage requirement",
+      "how_to_assess": "Always verify against the current year's FLC Data Center before filing; do not rely on prior-year tables",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a Level I or Level II wage level on an H-1B filing",
+      "unstated_consequence": "Under the wage-weighted lottery effective February 27, 2026, Level I filings receive only 1 lottery entry vs. 4 entries for Level IV — substantially lower selection probability without any change in eligibility requirements",
+      "who_it_affects": "H-1B cap-subject candidates whose employers file at low wage levels, particularly entry-level candidates who may qualify for Level III or IV based on actual duties",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Filing a PERM application for Indian nationals in EB-2 category",
+      "unstated_consequence": "The employer must ensure the offered wage meets the prevailing wage at the time the worker actually receives the visa — for Indian EB-2 nationals, current estimates place the visa wait at 134+ years, making wage compliance at time of visa receipt practically unachievable",
+      "who_it_affects": "Indian nationals in EB-2 PERM pipeline; employers sponsoring Indian nationals for EB-2 green cards",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Negotiating salary to Level IV threshold for H-1B filing",
+      "unstated_consequence": "The salary increase of approximately $30,000 (e.g., $181,210 to $211,100 for SF Software Developer) also changes the lottery entry count from 3 to 4 — meaning the negotiation outcome affects not just compensation but also the probability of H-1B selection",
+      "who_it_affects": "H-1B candidates whose employers would otherwise file at Level III; applies only to H-1B visa holders, not US citizens or permanent residents",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on OEWS-derived prevailing wage without checking employer's actual LCA history",
+      "unstated_consequence": "The OFLC performance data reveals what the employer has actually paid for comparable roles in prior filings — this may be substantially higher than the OEWS minimum floor, and the candidate negotiating only to the floor leaves verifiable employer-specific data unused",
+      "who_it_affects": "H-1B candidates who benchmark only against DOL minimums rather than employer-disclosed actual wages",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Employer pays below the prevailing wage for the certified SOC code, wage level, and MSA",
+      "why_it_happens": "INA Section 212(n) and 20 CFR Part 655 require the employer to pay at least the prevailing wage as a condition of the H-1B; underpayment violates the Labor Condition Agreement (LCA)",
+      "consequence": "LCA violation; potential debarment of employer from future H-1B filings; back wage liability to the worker",
+      "warning_signs": [
+        "Employer offers compensation below the published FLC Data Center threshold for the applicable SOC, MSA, and level",
+        "Employer uses a lower wage level classification than the job duties would support to reduce minimum wage obligation"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Wage level assigned does not match actual job duties",
+      "why_it_happens": "DOL defines wage levels by job complexity and supervision criteria; misclassifying a complex independent role as Level I to reduce wage obligation constitutes an LCA misrepresentation",
+      "consequence": "LCA violation; DOL audit liability; potential H-1B denial or revocation",
+      "warning_signs": [
+        "Employer assigns Level I to a role requiring independent judgment and complex decision-making",
+        "Job description on LCA does not match actual duties performed by the worker"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Using outdated prevailing wage data from a prior year when filing LCA",
+      "why_it_happens": "BLS updates OEWS data annually; the FLC Data Center reflects the current year's thresholds; prior-year values may be below the currently applicable prevailing wage",
+      "consequence": "LCA filed with an insufficient wage commitment; potential wage violation if the worker is paid below the current prevailing wage",
+      "warning_signs": [
+        "Wage figures used in LCA match prior-year FLC Data Center values rather than the current year",
+        "Employer relies on internally cached wage tables rather than verifying at flcdatacenter.com"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What SOC code does the employer intend to use on the LCA for this position?",
+      "what_it_reveals": "Determines which OEWS wage table and thresholds apply; different SOC codes for the same job title can produce wage differences of $30,000–$90,000+ at the same level and MSA",
+      "follow_up_if_yes": "Verify the SOC code accurately reflects the primary job duties; look up the prevailing wage for that SOC at the applicable MSA and level via FLC Data Center",
+      "follow_up_if_no": "SOC code is required for LCA filing; employer must select one before proceeding",
+      "country_scope": "us"
+    },
+    {
+      "question": "Which wage level (I–IV) is the employer assigning to this H-1B position?",
+      "what_it_reveals": "Determines the minimum prevailing wage floor AND, effective February 27, 2026, the number of H-1B lottery entries (1–4) the petition will receive",
+      "follow_up_if_yes": "Compare the assigned level against DOL complexity criteria; assess whether actual job duties support a higher level classification",
+      "follow_up_if_no": "Wage level must be assigned before LCA filing; it must reflect actual job duties, not the employer's preferred salary range",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the employer previously filed H-1B LCAs for comparable roles in the same occupation and MSA?",
+      "what_it_reveals": "Prior OFLC performance data filings reveal the employer's actual disclosed wage history, which may exceed the OEWS minimum floor and establishes a data-backed negotiation benchmark",
+      "follow_up_if_yes": "Search OFLC Performance Data at DOL website for the employer's prior filings; use disclosed wages as a negotiation data point",
+      "follow_up_if_no": "Rely on OEWS prevailing wage from FLC Data Center as the minimum floor benchmark",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the worker a national of India or China in the EB-2 PERM backlog?",
+      "what_it_reveals": "Tests whether PERM-based green card sponsorship is a practical path, given the multi-decade visa backlog for Indian and Chinese EB-2 nationals and the dual-date wage compliance requirement",
+      "follow_up_if_yes": "Note that the visa wait for Indian EB-2 nationals is estimated at 134+ years; wage compliance must hold at the time of actual visa receipt, making PERM a theoretical rather than actionable path",
+      "follow_up_if_no": "PERM may be a viable green card path; confirm prevailing wage compliance requirements apply at both filing and visa issuance dates",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the H-1B petition cap-subject and filed on or after February 27, 2026?",
+      "what_it_reveals": "Determines whether the wage-weighted lottery rule (Federal Register 2025-23853) applies, which ties the number of lottery entries directly to the wage level assigned",
+      "follow_up_if_yes": "The wage level assigned has direct lottery probability consequences; Level IV receives 4 entries vs. 1 for Level I — salary negotiation that changes the wage level also changes selection probability",
+      "follow_up_if_no": "Prior lottery rules apply; wage level affects only the minimum compensation floor, not lottery entry count",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The wage level on an H-1B filing reflects how much the employer wants to pay",
+      "actual_reality": "The DOL explicitly states that the wage level reflects job complexity and supervision — not total compensation. A Level IV classification requires the job to involve high complexity, advanced expertise, minimal supervision, and often instruction of others. The salary alone does not determine the level.",
+      "implication": "Candidates cannot simply request a Level IV filing to increase lottery odds; the job duties must genuinely qualify under DOL's complexity criteria, and misclassification constitutes an LCA violation",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The prevailing wage floor is fixed and stable year to year",
+      "actual_reality": "DOL prevailing wage thresholds are updated annually when BLS updates OEWS data. The FLC Data Center is the authoritative real-time source; prior-year values may be incorrect.",
+      "implication": "Candidates and employers must verify current thresholds at flcdatacenter.com before any LCA filing; relying on cached or year-old figures risks underpaying below the current prevailing wage",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Prevailing wage data is only useful to determine the minimum an employer must pay",
+      "actual_reality": "The DOL OFLC Performance Data publicly discloses exact wages an employer has paid for specific H-1B filings by occupation, location, and wage level. This is employer-disclosed, not estimated data.",
+      "implication": "Before salary negotiation, a candidate can look up what the same employer paid for comparable H-1B roles in the same city, creating an employer-specific data-backed negotiation anchor",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The H-1B lottery is purely random and unaffected by salary",
+      "actual_reality": "Effective February 27, 2026, under Federal Register 2025-23853, the lottery is wage-weighted: Level I = 1 entry, Level II = 2 entries, Level III = 3 entries, Level IV = 4 entries. NFAP analysis indicates Level IV selection probability increases by 107% vs. the old random lottery.",
+      "implication": "For cap-subject H-1B filings on or after February 27, 2026, negotiating a salary that crosses the Level III to Level IV threshold has dual impact: higher compensation AND a 33% relative increase in lottery entries",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "PERM green card sponsorship is a reliable long-term path for all foreign nationals",
+      "actual_reality": "For PERM, the offered wage must meet the prevailing wage at the time of PERM filing AND at the time the worker receives the visa. For Indian nationals in EB-2, current estimates place the wait at 134+ years, making PERM a theoretical rather than practical path.",
+      "implication": "Indian nationals in EB-2 PERM pipelines should not rely on PERM as an actionable green card path under current backlog conditions",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Salary negotiation benchmark for H-1B candidates",
+      "naive_pattern": "Uses the DOL prevailing wage minimum as the target salary, treating the floor as the market rate",
+      "informed_pattern": "Uses the DOL prevailing wage as a floor, then cross-references the employer's OFLC performance data filings to identify what the same employer has actually paid for comparable H-1B roles in the same city — using employer-disclosed figures as the negotiation anchor",
+      "why_it_matters": "The employer's actual LCA-disclosed wages may be $20,000–$50,000+ above the OEWS minimum; negotiating only to the floor leaves verifiable public data unused",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding the impact of wage level on H-1B outcomes",
+      "naive_pattern": "Treats wage level as purely an administrative employer decision with no personal stake in the outcome",
+      "informed_pattern": "Recognizes that for cap-subject filings after February 27, 2026, the wage level directly determines lottery entry count (1–4); understands that pushing job duties to qualify for Level IV — where genuinely supported — has compounding value: higher salary, more lottery entries, and improved selection probability",
+      "why_it_matters": "The difference between Level III and Level IV in San Francisco is ~$30,000/year plus a 33% relative increase in lottery entries; this is unique to H-1B candidates and does not apply to US citizens or green card holders",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Verifying prevailing wage data before a negotiation",
+      "naive_pattern": "Relies on salary data from Levels.fyi, Glassdoor, or secondhand advice without consulting official DOL sources",
+      "informed_pattern": "Looks up the exact current-year prevailing wage at flcdatacenter.com using the specific SOC code and MSA before any negotiation; knows the data is updated annually and prior-year figures may be stale",
+      "why_it_matters": "Official DOL wage data is the legally binding floor; market data sites reflect reported compensation but do not determine legal minimums that constrain the employer's filing",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Understanding wage level classification criteria",
+      "naive_pattern": "Assumes wage level is assigned based on how much the employer wants to pay or the candidate's years of experience alone",
+      "informed_pattern": "Knows DOL defines each level by job complexity and supervision criteria — Level IV requires high complexity, advanced expertise, minimal supervision, and often instruction of others; understands that salary alone does not determine the level and that misclassification constitutes an LCA violation",
+      "why_it_matters": "Candidates who push for Level IV without ensuring the job duties genuinely qualify expose their employer to LCA violation risk; candidates who accept a low level classification without examining their actual duties may be leaving both salary and lottery entries on the table",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_dol_prevailing_wage_data_us",
+  "_source_regions": [
+    "us"
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "source_file": "ircc_pgwp_policy_updates_2024_2025.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Master's degree graduates (any program length) receive a 3-year PGWP effective February 15, 2024",
+      "condition": "When an international student completes a master's degree at an eligible Canadian DLI on or after February 15, 2024",
+      "action": "Apply for a 3-year PGWP regardless of whether the master's program was 1 year or 2 years in length",
+      "because": "IRCC changed the PGWP duration rule for master's degrees effective February 15, 2024 — previously a 1-year master's yielded only a 1-year PGWP",
+      "regulatory_basis": "IRCC PGWP program page; IRCC press release February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PhD graduates receive a 3-year PGWP regardless of program length effective February 15, 2024",
+      "condition": "When an international student completes a doctoral (PhD) degree at an eligible Canadian DLI on or after February 15, 2024",
+      "action": "Apply for a 3-year PGWP",
+      "because": "IRCC updated the PGWP duration rule for doctoral degrees effective February 15, 2024",
+      "regulatory_basis": "IRCC PGWP program page; IRCC press release February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Programs of 8 months to under 2 years yield a PGWP equal to the length of the program",
+      "condition": "When an international student completes a program of 8 months to under 2 years (other than a master's or PhD)",
+      "action": "Expect a PGWP matching the program's duration, not a fixed 3-year term",
+      "because": "IRCC duration rules post-February 15, 2024 only grant automatic 3-year PGWPs to master's, PhD, and programs of 2 years or longer",
+      "regulatory_basis": "IRCC PGWP program page; IRCC press release February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Programs of 2 years or longer yield a 3-year PGWP",
+      "condition": "When an international student completes a program of 2 years or longer (other than master's or PhD)",
+      "action": "Apply for a 3-year PGWP",
+      "because": "The 3-year PGWP for programs 2 years or longer was unchanged by the February 15, 2024 updates",
+      "regulatory_basis": "IRCC PGWP program page; IRCC press release February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Bachelor's degree graduates must have studied in an eligible field of study to receive a PGWP effective November 1, 2024",
+      "condition": "When an international student graduates from a bachelor's degree program starting on or after November 1, 2024",
+      "action": "Verify that the field of study is on the IRCC-approved eligible fields list before applying for PGWP",
+      "because": "IRCC implemented field of study requirements for bachelor's level graduates effective November 1, 2024; 178 fields were removed from eligibility",
+      "regulatory_basis": "IRCC field of study requirements for PGWP; IRCC notice November 1, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Master's and PhD graduates are exempt from the field of study requirement",
+      "condition": "When an international student holds a master's or PhD degree from an eligible Canadian DLI",
+      "action": "Apply for the 3-year PGWP without regard to field of study",
+      "because": "IRCC explicitly exempts master's and PhD graduates from the field of study requirement introduced November 1, 2024",
+      "regulatory_basis": "IRCC field of study requirements for PGWP",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PGWP applicants who apply before their study permit expires may work under maintained status while the application is pending",
+      "condition": "When a PGWP application is pending and the graduate applied before their study permit expired",
+      "action": "The graduate may work under the maintained status provision during the approximately 8-month processing period",
+      "because": "IRCC's maintained status provision preserves work authorization during a pending PGWP application provided the application was filed before study permit expiry",
+      "regulatory_basis": "IRCC PGWP program page",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "LMIA-backed job offer points have been removed from the Express Entry CRS effective Spring 2025",
+      "condition": "When an Express Entry candidate holds an LMIA-backed job offer after Spring 2025",
+      "action": "Do not count on receiving 50 or 200 additional CRS points for that job offer",
+      "because": "Minister Marc Miller announced December 18, 2024 that arranged employment points via LMIA route were removed from the CRS to address fraud and increase fairness",
+      "regulatory_basis": "Minister Marc Miller announcement December 18, 2024; IRCC Express Entry updates",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Work in NOC TEER 4 or 5 does not count toward CEC eligibility even if full-time and legally authorized",
+      "condition": "When a PGWP holder is employed in a NOC TEER 4 or TEER 5 occupation (e.g., retail sales clerk, food service worker)",
+      "action": "Recognize that this employment does not accumulate CEC-eligible Canadian work experience regardless of hours or duration",
+      "because": "CEC eligibility requires work in NOC TEER 0, 1, 2, or 3; TEER 4 and TEER 5 are explicitly excluded from CEC qualifying experience",
+      "regulatory_basis": "IRCC CEC requirements; NOC TEER system",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Students in bachelor's programs affected by the November 1, 2024 field of study removal may have transitional protection if they started before that date",
+      "condition": "When a bachelor's degree student began a program in a field removed from PGWP eligibility before November 1, 2024",
+      "action": "Assess eligibility for transitional protection before assuming PGWP ineligibility",
+      "because": "IRCC indicated that students in affected programs who started before November 1, 2024 may have transitional protection",
+      "regulatory_basis": "IRCC field of study requirements for PGWP",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Degree level (master's/PhD vs. bachelor's vs. other)",
+      "why_it_matters": "Determines both PGWP duration and whether field of study eligibility rules apply",
+      "how_to_assess": "Master's and PhD graduates receive automatic 3-year PGWP and are exempt from field of study requirements. Bachelor's graduates must meet field of study criteria. Other program graduates receive PGWP equal to program length (if 8 months to under 2 years) or 3 years (if 2 years or longer).",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Field of study (bachelor's level graduates only)",
+      "why_it_matters": "Determines whether a bachelor's graduate is eligible for a PGWP at all under post-November 1, 2024 rules",
+      "how_to_assess": "Check whether the program appears on the IRCC-approved eligible fields list. 178 fields including many general business, liberal arts, and some social science programs were removed effective November 1, 2024.",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Program start date relative to November 1, 2024",
+      "why_it_matters": "Determines whether transitional protection applies for bachelor's students in fields removed from PGWP eligibility",
+      "how_to_assess": "Students who started before November 1, 2024 in an affected program may have transitional protection; students who started on or after that date in a removed field are not eligible",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "NOC TEER level of Canadian employment",
+      "why_it_matters": "Determines whether work experience counts toward CEC eligibility in Express Entry",
+      "how_to_assess": "TEER 0, 1, 2, or 3 = CEC-eligible. TEER 4 or 5 = not CEC-eligible, even if full-time and legally authorized under PGWP.",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Timing of PGWP application relative to study permit expiry",
+      "why_it_matters": "Determines whether the graduate can work legally during the approximately 8-month PGWP processing period",
+      "how_to_assess": "Application must be submitted before the study permit expires to access maintained status work authorization during processing",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "French language proficiency (TEF Canada or TCF Canada)",
+      "why_it_matters": "French language bonus remains in effect in CRS and is now one of the most impactful CRS optimizations available following removal of LMIA job offer points",
+      "how_to_assess": "TEF Canada or TCF Canada scores can add 25-50+ CRS points",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Provincial Nominee Program (PNP) eligibility",
+      "why_it_matters": "A provincial nomination adds 600 CRS points, guaranteeing an Invitation to Apply (ITA), and is more important now that LMIA job offer points are removed",
+      "how_to_assess": "Assess alignment with specific PNP stream requirements for the candidate's occupation, work location, and province",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Core CRS factors: language (CLB/IELTS), education, age, Canadian work experience",
+      "why_it_matters": "Following the removal of LMIA job offer points, these core factors are the primary determinants of CRS score",
+      "how_to_assess": "Candidates compete purely on these factors without the ability to supplement via arranged employment LMIA route",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Delaying PGWP application after graduation",
+      "unstated_consequence": "The approximately 8-month PGWP processing time runs regardless of when the application is submitted; graduates who wait months before applying effectively lose that period from their authorized PGWP term before it is even issued",
+      "who_it_affects": "All PGWP-eligible graduates, particularly those in shorter programs who receive a PGWP equal to program length rather than a fixed 3 years",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Accepting TEER 4 or TEER 5 employment under a PGWP",
+      "unstated_consequence": "Time spent in TEER 4 or 5 work (e.g., retail, food service) is legal and generates income but does not accumulate CEC-eligible Canadian work experience, meaning the PGWP clock runs without building the 1 year of skilled experience required for Canadian Experience Class",
+      "who_it_affects": "PGWP holders who work in retail trade, food services, or accommodation — the top sectors where PGWP holders are employed according to IRCC data",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on an LMIA-backed job offer to boost CRS score post-Spring 2025",
+      "unstated_consequence": "IRCC removed all arranged employment CRS points via the LMIA route effective Spring 2025; a valid LMIA-backed offer no longer yields 50 or 200 additional CRS points",
+      "who_it_affects": "Express Entry candidates who planned to use an LMIA job offer as a CRS shortcut, particularly those with lower core CRS scores",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Completing a 1-year master's program in Canada",
+      "unstated_consequence": "Under pre-February 15, 2024 rules, a 1-year master's yielded only a 1-year PGWP. Under the updated rules, it yields a 3-year PGWP — graduates who completed their program before the February 15, 2024 effective date may not benefit from this change",
+      "who_it_affects": "International students who completed 1-year master's programs before February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Enrolling in a bachelor's program in a general business, liberal arts, or certain social science field",
+      "unstated_consequence": "178 fields including many general business, liberal arts, and some social science programs were removed from PGWP eligibility effective November 1, 2024; bachelor's graduates in these fields are no longer eligible for a PGWP",
+      "who_it_affects": "Bachelor's degree students who started programs in removed fields on or after November 1, 2024",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Bachelor's graduate applies for PGWP after completing a program in a field removed from eligibility on or after November 1, 2024",
+      "why_it_happens": "IRCC removed 178 fields from PGWP eligibility effective November 1, 2024; bachelor's graduates in these fields no longer qualify for a PGWP",
+      "consequence": "PGWP application denial",
+      "warning_signs": [
+        "Program is in general business, liberal arts, or certain social science fields",
+        "Program started on or after November 1, 2024"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Graduate submits PGWP application after study permit has already expired",
+      "why_it_happens": "Maintained status work authorization during PGWP processing is only available if the application was filed before study permit expiry",
+      "consequence": "Loss of authorization to work legally during the approximately 8-month PGWP processing period; potential loss of immigration status",
+      "warning_signs": [
+        "Graduate delays PGWP application by weeks or months after convocation",
+        "Study permit expiry date is approaching or has passed at time of application"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "PGWP holder works only in TEER 4 or TEER 5 occupations for the full duration of their PGWP",
+      "why_it_happens": "TEER 4 and TEER 5 work is legally permitted under a PGWP but is explicitly excluded from CEC-eligible work experience",
+      "consequence": "PGWP holder fails to accumulate the 1 year of skilled (TEER 0-3) Canadian work experience required for Canadian Experience Class eligibility; PGWP expires without achieving permanent residency pathway through CEC",
+      "warning_signs": [
+        "Employment in retail trade, food services, or accommodation throughout PGWP period",
+        "No effort to secure TEER 0, 1, 2, or 3 employment"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Express Entry candidate pays for or relies on LMIA-backed job offer to boost CRS score after Spring 2025",
+      "why_it_happens": "Some immigration consultants sold fraudulent or inflated LMIA letters; IRCC removed LMIA arranged employment points from the CRS effective Spring 2025 to address this fraud vector",
+      "consequence": "No CRS points awarded for LMIA-backed job offer; financial loss if fees were paid for LMIA; potential fraud exposure if LMIA was purchased",
+      "warning_signs": [
+        "Candidate was advised by consultant to obtain LMIA-backed offer for CRS boost after December 18, 2024 announcement",
+        "Candidate is counting on 50 or 200 CRS point uplift from job offer"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Did the applicant complete a master's or PhD degree at an eligible Canadian DLI on or after February 15, 2024?",
+      "what_it_reveals": "Eligibility for automatic 3-year PGWP and exemption from field of study requirements",
+      "follow_up_if_yes": "Applicant is eligible for a 3-year PGWP with no field of study restriction; proceed to assess PGWP application timing",
+      "follow_up_if_no": "Determine degree type and program length to assess applicable PGWP duration rule; if bachelor's level, assess field of study eligibility",
+      "country_scope": "canada"
+    },
+    {
+      "question": "If the applicant is a bachelor's graduate, did they start their program before or after November 1, 2024?",
+      "what_it_reveals": "Whether transitional protection may apply for students in fields removed from PGWP eligibility",
+      "follow_up_if_yes": "If started before November 1, 2024 in an affected field, assess transitional protection eligibility",
+      "follow_up_if_no": "If started on or after November 1, 2024, verify that the field of study is on the current IRCC-approved eligible fields list",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the applicant's bachelor's field of study on the IRCC-approved eligible fields list post-November 1, 2024?",
+      "what_it_reveals": "PGWP eligibility for bachelor's degree graduates under the updated field of study requirements",
+      "follow_up_if_yes": "Applicant is eligible for a PGWP; assess program length to determine duration",
+      "follow_up_if_no": "Applicant is not eligible for a PGWP unless transitional protection applies (started before November 1, 2024)",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did the applicant submit their PGWP application before their study permit expired?",
+      "what_it_reveals": "Whether the applicant can legally work in Canada under maintained status during the approximately 8-month PGWP processing period",
+      "follow_up_if_yes": "Applicant may work under maintained status while PGWP is pending",
+      "follow_up_if_no": "Applicant may lack authorization to work during processing and may have a status issue; urgent remediation required",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the PGWP holder's current employment classified as NOC TEER 0, 1, 2, or 3?",
+      "what_it_reveals": "Whether the work experience is accumulating toward the 1 year of skilled Canadian work experience required for CEC eligibility",
+      "follow_up_if_yes": "Employment is CEC-eligible; track hours and duration toward the 1-year CEC threshold",
+      "follow_up_if_no": "Employment in TEER 4 or 5 does not count toward CEC; candidate must secure TEER 0-3 employment to build Express Entry profile",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the Express Entry candidate relying on an LMIA-backed job offer for additional CRS points after Spring 2025?",
+      "what_it_reveals": "Whether the candidate's CRS strategy accounts for the removal of LMIA arranged employment points",
+      "follow_up_if_yes": "Candidate must revise CRS strategy; LMIA job offer no longer yields CRS points; focus on core factors, French language, or PNP pathway",
+      "follow_up_if_no": "Candidate is building CRS score through available mechanisms; assess French language score and PNP eligibility as highest-impact remaining options",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the Express Entry candidate have TEF Canada or TCF Canada scores documenting French language proficiency?",
+      "what_it_reveals": "Eligibility for French language CRS bonus, which can add 25-50+ points and is now one of the most impactful CRS optimizations available",
+      "follow_up_if_yes": "Calculate French language CRS bonus and incorporate into overall CRS assessment",
+      "follow_up_if_no": "Candidate should assess feasibility of obtaining French proficiency to access this CRS advantage given removal of LMIA points",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A 1-year master's program in Canada yields only a 1-year PGWP",
+      "actual_reality": "Effective February 15, 2024, any master's degree — regardless of program length — yields a 3-year PGWP. A 1-year master's now produces the same 3-year PGWP as a 2-year program.",
+      "implication": "International students who completed or are completing 1-year master's programs on or after February 15, 2024 have significantly more time to accumulate the 1 year of skilled Canadian work experience needed for CEC",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Any degree from a Canadian DLI qualifies a bachelor's graduate for a PGWP",
+      "actual_reality": "Effective November 1, 2024, bachelor's degree graduates must have studied in an IRCC-approved eligible field. 178 fields including many general business, liberal arts, and certain social science programs were removed from eligibility.",
+      "implication": "Bachelor's graduates in removed fields who started after November 1, 2024 are not eligible for a PGWP; program selection now directly determines post-graduation work authorization",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Working legally in Canada on a PGWP accumulates Canadian work experience toward CEC regardless of job type",
+      "actual_reality": "Only work in NOC TEER 0, 1, 2, or 3 counts toward CEC eligibility. Work in TEER 4 or 5 (e.g., retail sales, food service) is legal under a PGWP but does not accumulate CEC-eligible experience.",
+      "implication": "PGWP holders must secure skilled employment (TEER 0-3) — not just any legal employment — to build a qualifying Express Entry/CEC profile before their PGWP expires",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Securing an LMIA-backed job offer is a reliable strategy to boost CRS scores in Express Entry",
+      "actual_reality": "Effective Spring 2025, IRCC removed all LMIA-based arranged employment points from the CRS. The previous 50-point and 200-point bonuses are no longer available.",
+      "implication": "Candidates who planned to use an LMIA job offer as a CRS shortcut must rebuild their Express Entry strategy around core CRS factors, French language proficiency, and PNP pathways",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The PGWP is issued quickly after graduation, so there is no urgency in applying immediately",
+      "actual_reality": "IRCC reports PGWP processing times of approximately 8 months as of mid-2025. Graduates who delay applying lose usable PGWP time before the permit is even issued.",
+      "implication": "Graduates should apply for their PGWP the same week as graduation to avoid burning authorized work time during the processing period",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Most PGWP holders work in jobs aligned with their field of study",
+      "actual_reality": "IRCC data shows a significant portion of PGWP holders work in sectors not aligned with their field of study, with top employment sectors being Retail Trade, Food Services and Accommodation, and Healthcare.",
+      "implication": "Having a PGWP does not guarantee field-relevant employment; graduates must proactively pursue TEER 0-3 roles aligned with their field to build CEC-eligible experience",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding PGWP duration for master's graduates",
+      "naive_pattern": "Assumes a 1-year master's program yields a 1-year PGWP and advises students to do a 2-year program for a 3-year PGWP",
+      "informed_pattern": "Knows that effective February 15, 2024, any master's degree yields a 3-year PGWP regardless of program length; does not recommend extending program duration solely for PGWP purposes",
+      "why_it_matters": "Incorrect advice may lead students to enroll in longer, more expensive programs unnecessarily when the same PGWP outcome is achievable with a 1-year master's post-February 15, 2024",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Field of study requirement awareness for bachelor's graduates",
+      "naive_pattern": "Advises any bachelor's graduate from a Canadian DLI that they qualify for a PGWP",
+      "informed_pattern": "Checks whether the specific field of study is on the IRCC-approved eligible list and confirms the program start date relative to November 1, 2024 before advising on PGWP eligibility",
+      "why_it_matters": "Advising a student in a removed field that they qualify for a PGWP leads to incorrect post-graduation planning and potential status issues",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "CEC-eligible work experience vs. any legal work under PGWP",
+      "naive_pattern": "Tells PGWP holders that any full-time legal employment in Canada counts toward Express Entry/CEC requirements",
+      "informed_pattern": "Distinguishes explicitly between TEER 0-3 (CEC-eligible) and TEER 4-5 (not CEC-eligible) employment; advises PGWP holders to prioritize TEER 0-3 roles to build qualifying experience within their PGWP window",
+      "why_it_matters": "A PGWP holder who spends their entire work authorization in TEER 4-5 employment accumulates zero CEC-eligible experience and may exhaust their PGWP without a viable permanent residency pathway through CEC",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Express Entry CRS strategy post-Spring 2025",
+      "naive_pattern": "Advises Express Entry candidates to obtain an LMIA-backed job offer to boost their CRS score by 50-200 points",
+      "informed_pattern": "Knows LMIA arranged employment points were removed from the CRS effective Spring 2025; redirects candidates to optimize core CRS factors, French language proficiency (TEF Canada/TCF Canada for 25-50+ points), and PNP streams as the remaining high-impact strategies",
+      "why_it_matters": "Advising candidates to pursue LMIA job offers for CRS points post-Spring 2025 results in wasted effort and potential exposure to consultant fraud; correct advice requires knowledge of the December 18, 2024 policy change",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "PGWP application timing",
+      "naive_pattern": "Tells graduates they can apply for their PGWP at any point after graduation and the 8-month wait is just administrative",
+      "informed_pattern": "Advises graduates to apply for their PGWP the same week as graduation because the 8-month processing period runs from application date, not from permit issuance; also confirms application must be submitted before study permit expiry to access maintained status work authorization",
+      "why_it_matters": "Late application burns usable PGWP time and, if submitted after study permit expiry, eliminates maintained status work authorization during the processing period",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_ircc_pgwp_policy_updates_2024_2025",
+  "_source_regions": [
+    "canada"
+  ]
+}

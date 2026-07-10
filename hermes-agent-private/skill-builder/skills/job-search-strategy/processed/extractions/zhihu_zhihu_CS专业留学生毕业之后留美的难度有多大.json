@@ -1,0 +1,542 @@
+{
+  "source_file": "zhihu_CS专业留学生毕业之后留美的难度有多大.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Start LeetCode prep before arriving in the US — ideally 3 months before fall semester",
+      "condition": "When you are an international CS student planning to enter a US master's program in August...",
+      "action": "Begin grinding LeetCode from May, aiming to have a solid foundation before the September career fair season opens",
+      "because": "The best answer states that September career fairs begin immediately after August enrollment, leaving almost no time to prepare after arrival; the commenter notes that most students who fail had done fewer than 200 problems before interviewing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Apply to a minimum of 200 companies before concluding the job market is difficult",
+      "condition": "When an international CS student has not yet found a job offer...",
+      "action": "Continue applying until reaching at least 200 applications, not 20–30",
+      "because": "The best answer's author reports applying to 200+ companies with 100+ referrals and getting only 4–5 offers, citing the structural disadvantage of H-1B sponsorship scarcity as the reason volume is essential",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Prioritize fall recruiting (September–December) over spring recruiting",
+      "condition": "When a first-year CS master's student is deciding when to focus recruiting energy...",
+      "action": "Treat September–December as the primary recruiting window and lock in a summer internship; treat January–March spring recruiting as a backup with significantly fewer spots",
+      "because": "The best answer explicitly states that spring recruiting has far fewer openings ('坑少了太多') and advises treating fall as the main — and strategically critical — window",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Deliberately select easy coursework to free time for job preparation",
+      "condition": "When a CS master's student must balance coursework and recruiting...",
+      "action": "Choose easier electives, minimize GPA optimization effort, and redirect that time to LeetCode and applications",
+      "because": "The best answer argues that no employer asks about GPA after hiring, but every employer asks where you work — signaling that course performance has near-zero return compared to interview preparation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Maintain active communication with recruiters even after a head-count rejection",
+      "condition": "When a recruiter expresses interest but cannot extend an offer due to headcount constraints...",
+      "action": "Stay in contact and follow up in subsequent recruiting cycles",
+      "because": "Answer [1] describes how the UCLA student stayed in contact with LinkedIn HR after a headcount rejection and was later offered a fall internship directly without re-interviewing",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "If still struggling after two semesters, consider paying for a coding bootcamp or prep service rather than continuing to fail alone",
+      "condition": "When a student has completed two semesters of a CS master's and still cannot pass technical interviews...",
+      "action": "Invest in structured paid prep rather than continuing the same self-study approach",
+      "because": "The best answer frames this as having 'no retreat path' — failing the fall new-grad cycle means returning to China, so the cost of not improving exceeds the cost of a prep program",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "LeetCode problem count and depth before first interview",
+      "why_it_matters": "Both top answers independently identify insufficient LeetCode practice as the primary cause of interview failure — not visa status, school rank, or discrimination",
+      "how_to_assess": "Count total problems solved with at least two full passes; the best answer suggests 500+ problems solved twice as a meaningful threshold for competitive companies",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Resume relevance to the role being targeted",
+      "why_it_matters": "The best answer describes candidates submitting chemistry or EE content to CS roles, or listing irrelevant coursework — resulting in zero interview callbacks regardless of actual ability",
+      "how_to_assess": "Check whether every line item on the resume maps directly to the job description of the target role; anything unrelated should be removed",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Internship experience before full-time recruiting",
+      "why_it_matters": "Answer [2] argues that work experience dominates school prestige in US hiring — a candidate from a lower-ranked school with 3 years of experience outcompetes a fresh UIUC grad",
+      "how_to_assess": "Evaluate whether the student has at least one US-based software engineering internship on their resume before applying for full-time roles",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Timing of application relative to recruiting cycle",
+      "why_it_matters": "Answer [1] describes missing the entire fall recruiting cycle during the first semester due to late awareness — the student had no interviews while peers already had offers",
+      "how_to_assess": "Identify whether the student understands the September career fair season and has begun applying by then; late starters face a structurally depleted opportunity set",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "H-1B sponsorship availability at target companies",
+      "why_it_matters": "The best answer notes that most US companies will not sponsor H-1B, making volume of applications necessary to find the subset that will",
+      "how_to_assess": "Research each company's historical H-1B sponsorship record before investing application effort; prioritize companies with confirmed sponsorship history",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Graduation timing relative to OPT start eligibility",
+      "why_it_matters": "Answer [1] describes deliberately delaying graduation by two semesters to gain additional internship cycles under CPT, effectively creating more job-search runway",
+      "how_to_assess": "Calculate how many recruiting cycles remain before graduation and whether a strategic delay would add a meaningful internship or recruiting window",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Year of graduation relative to market saturation",
+      "why_it_matters": "Answer [2] draws a sharp distinction between pre-2017 (trivially easy to find work) and post-2017 (requires genuine effort and some luck), and notes 2020 COVID impact as an additional compounding factor",
+      "how_to_assess": "Assess current market conditions — PhD candidates were finding 100% intern placement while MS candidates were at roughly 50% in the post-2020 market described",
+      "weight": "medium",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Joining a high-prestige large company (e.g., LinkedIn, FAANG)",
+      "unstated_consequence": "Internal team culture can be highly unpleasant even at brand-name firms — Answer [1] describes a LinkedIn team that functioned like a Chinese domestic company with high implicit pressure, causing the intern to want to quit by week 5",
+      "who_it_affects": "Students who optimize purely for resume brand without researching team culture or who assume big-name companies have uniformly positive work environments",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Delaying graduation to get additional internship cycles",
+      "unstated_consequence": "Additional semesters require tuition payment unless a TA/RA full-funding arrangement is secured; the financial cost can be significant",
+      "who_it_affects": "Self-funded students who delay graduation without securing a funded position — they pay tuition for extra semesters while also forgoing income",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Targeting only top-tier companies (Google, Facebook, etc.) from the start",
+      "unstated_consequence": "Students who fail to land FAANG may never have invested in the volume-based strategy that would have secured a smaller company offer, leaving them with no offer at all rather than a stepping-stone role",
+      "who_it_affects": "Students with moderate preparation who have an all-or-nothing FAANG mindset and skip the broader application funnel",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Enrolling in an ICC (Indian consulting company) placement service",
+      "unstated_consequence": "ICC typically requires surrendering the first month's salary plus training fees; the financial cost is substantial even when the outcome (job placement) is successful",
+      "who_it_affects": "Students with weak backgrounds who use ICC as a last resort — they get placed but with a significant financial penalty and potential legal/immigration compliance risk not discussed in the posts",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Focusing intensely on GPA and academic performance during the master's program",
+      "unstated_consequence": "High GPA does not translate to interview success or hiring outcomes — no employer asked about GPA after hiring, according to the best answer — while the time cost of GPA optimization comes directly at the expense of LeetCode and application volume",
+      "who_it_affects": "Students from academic backgrounds who default to the metrics that worked in school, especially those from Chinese undergraduate systems where GPA was decisive",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Interviewing at top companies (FAANG) after only 1–2 months of LeetCode preparation",
+      "why_it_happens": "Students underestimate the preparation required because they see peers getting offers and assume the gap is small; optimism bias and social proof from occasional success stories distort the baseline",
+      "consequence": "Systematic rejection from target companies, followed by narrative attribution to visa discrimination or market difficulty rather than under-preparation",
+      "warning_signs": [
+        "Student has solved fewer than 200 LeetCode problems before applying to Google/Facebook/Amazon",
+        "Student describes the job market as 'very difficult' after fewer than 50 applications"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Submitting irrelevant resumes — EE, chemistry, or non-CS content to CS software engineering roles",
+      "why_it_happens": "Students transitioning from other majors populate their resumes with the only experience they have, not recognizing that a hiring manager filters for role-relevant keywords before reading further",
+      "consequence": "Zero interview callbacks despite applying broadly; the student interprets this as market rejection rather than a resume targeting problem",
+      "warning_signs": [
+        "Resume contains coursework or project descriptions from a different major",
+        "Student reports applying to CS roles but getting no responses at all"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Arriving at a US university in August with no prior job search preparation and expecting to find a role within the academic year",
+      "why_it_happens": "Students are focused on admissions and relocation; the job search feels like a post-arrival concern, not a pre-arrival priority",
+      "consequence": "Missing the September–December fall recruiting window entirely in the first year, forcing reliance on the spring cycle which has significantly fewer opportunities",
+      "warning_signs": [
+        "Student has not started LeetCode before arriving in the US",
+        "Student has no draft resume when September career fairs begin"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Concluding the job market is inaccessible after applying to 20–30 companies",
+      "why_it_happens": "Students apply a domestic job-search mental model where 20–30 applications is a reasonable sample; they do not account for the structural H-1B sponsorship filter that reduces response rates for international candidates",
+      "consequence": "Premature abandonment of the job search, self-reinforcing belief that staying in the US is impossible, and potentially unnecessary return to home country",
+      "warning_signs": [
+        "Student reports giving up after fewer than 50 applications",
+        "Student attributes failure to discrimination or luck without examining application volume"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Optimizing for coursework and GPA at the expense of recruiting activities",
+      "why_it_happens": "Students default to academic success metrics that rewarded them throughout their education; the incentive system in school does not reflect the incentive system in hiring",
+      "consequence": "Strong academic record but no job offer; GPA above 3.0 has near-zero marginal value in CS hiring while the time cost was enormous",
+      "warning_signs": [
+        "Student spends more than 20 hours per week on coursework optimization during recruiting season",
+        "Student selects hard or prestigious courses when easier alternatives would free recruiting time"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "How many LeetCode problems have you solved, and have you solved any of them twice?",
+      "what_it_reveals": "Whether the student's preparation level is anywhere near competitive — the best answer suggests 500+ problems solved twice as a threshold; below 200 is identified as a near-certain failure condition for top companies",
+      "follow_up_if_yes": "What is your breakdown across Easy/Medium/Hard, and are you solving unseen problems in under 30 minutes?",
+      "follow_up_if_no": "Stop applying to competitive companies immediately and return to preparation; your rejection rate will be near 100% and you are burning your recruiting window",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "How many companies have you applied to so far?",
+      "what_it_reveals": "Whether the student has invested sufficient volume to draw meaningful conclusions about their job search outcome; fewer than 100 applications is not a valid sample for an international student",
+      "follow_up_if_yes": "Of those, how many explicitly sponsor H-1B, and how many were applied to via referral versus cold application?",
+      "follow_up_if_no": "The student is likely drawing premature conclusions; the prescription is volume increase, not strategy change",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Does your resume contain only content directly relevant to the software engineering roles you are targeting?",
+      "what_it_reveals": "Whether the resume is filtering the student out before a human ever reads it; irrelevant content (EE projects, non-CS coursework) triggers instant rejection from CS roles",
+      "follow_up_if_yes": "Are your projects and internships described in terms of technical impact and stack, or in terms of academic learning?",
+      "follow_up_if_no": "Resume revision is the first priority — no amount of application volume will work if the resume contains role-irrelevant content",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "When did you start your job search preparation relative to your program start date?",
+      "what_it_reveals": "Whether the student has already missed critical recruiting windows; students who start preparing after arriving in August have missed the ideal pre-arrival prep window and are competing against students who began months earlier",
+      "follow_up_if_yes": "Have you already applied to companies at the September career fair, and do you have any interviews scheduled?",
+      "follow_up_if_no": "The student needs to immediately assess which recruiting windows remain and create a compressed timeline to maximize remaining opportunities",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Do you have any US-based internship experience on your resume before applying for full-time roles?",
+      "what_it_reveals": "Whether the student is competing from a structurally weak position; Answer [2] argues that US work experience dominates school prestige in hiring decisions",
+      "follow_up_if_yes": "Is the internship from a recognized US company, and can you speak technically and in depth about the work you did?",
+      "follow_up_if_no": "Consider whether delaying full-time applications to secure a first internship would strengthen the position, or whether the OPT timeline makes that infeasible",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "CS job difficulty for international students is primarily caused by visa discrimination or market conditions beyond the student's control",
+      "actual_reality": "The best answer argues — and Answer [2] partially corroborates — that the dominant cause of failure is insufficient preparation: under 200 LeetCode problems, weak resumes, and too few applications. The author states they have never personally seen a fully-prepared candidate (strong resume + 500+ problems + 200+ applications) fail to find a job",
+      "implication": "Students who attribute failure to external factors without first auditing their preparation level are likely misdiagnosing their situation and therefore applying the wrong fix",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "A high GPA from a good program is a meaningful signal that will help in the CS job search",
+      "actual_reality": "Neither top answer mentions GPA as a meaningful factor in CS hiring outcomes. Answer [2] explicitly states that above 3.0 GPA has no marginal value; Answer [1] states that no employer asked about GPA after hiring. What matters is internship experience and technical interview performance",
+      "implication": "Students should stop optimizing for GPA beyond a 3.0 floor and redirect that time to LeetCode practice and application volume",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Going to a target school (UCLA, top CS program) gives you a significant structural advantage in recruiting",
+      "actual_reality": "Answer [1] from a UCLA CS graduate describes being scooped by a career fair conversation that succeeded not because of school brand but because of a spontaneous interpersonal interaction; the author also describes peers from lower-ranked schools succeeding. Answer [2] explicitly states a 3-year-experienced graduate from Oklahoma University would beat a fresh UIUC grad",
+      "implication": "School brand matters far less than students assume once you are in the job search; work experience and interview readiness are the dominant variables",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "PhD students and MS students have roughly similar odds of landing CS internships at major companies",
+      "actual_reality": "Answer [2] reports that in the post-2020 market, PhD candidates had near 100% intern placement rates at large tech companies while MS candidates were at roughly 50%",
+      "implication": "MS students should not benchmark their job search experience against PhD peers or assume similar timelines and success rates apply",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "The difficulty of finding a CS job in the US has been roughly constant over the past decade",
+      "actual_reality": "Both answers describe a sharp structural shift around 2017: before 2017, any CS graduate who could pass a basic online assessment could find a job; after 2017, market saturation from domestic and international supply increases meant genuine preparation was required. COVID in 2020 added another discontinuity",
+      "implication": "Advice from graduates of pre-2017 cohorts about how easy it was to find a CS job does not apply to current students; the market is structurally different",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating job search difficulty",
+      "naive_pattern": "After 20–30 rejections, concludes that the market is inaccessible and complains on forums about visa barriers",
+      "informed_pattern": "Treats 200+ applications as the minimum viable sample before drawing any conclusions; attributes low interview conversion to resume quality or application targeting before blaming market conditions",
+      "why_it_matters": "Students who misdiagnose the cause stop doing the right things and start doing the wrong things (seeking workarounds) rather than increasing volume and improving preparation",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "LeetCode preparation threshold",
+      "naive_pattern": "Believes 50–100 problems is sufficient to interview at competitive companies; applies after 1–2 months of preparation",
+      "informed_pattern": "Targets 500+ problems solved at least twice before interviewing at top companies; uses unseen problem performance as a self-assessment signal rather than problem count alone",
+      "why_it_matters": "Students who under-prepare systematically fail technical screens and burn their recruiting windows before reaching adequate readiness",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Resume strategy for career changers",
+      "naive_pattern": "Lists all academic and work experience regardless of relevance, assuming more content signals more value",
+      "informed_pattern": "Strips the resume to only role-relevant content, even if that means a sparse resume early in the transition; understands that irrelevant content actively hurts rather than helps",
+      "why_it_matters": "Irrelevant content causes immediate rejection at the screening stage, preventing interviews that preparation would otherwise qualify the candidate for",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Time allocation during the master's program",
+      "naive_pattern": "Treats the program as primarily academic and plans to job search after getting settled; selects interesting or prestigious courses",
+      "informed_pattern": "Treats the program as primarily a job-search platform and selects courses explicitly to minimize time cost; frames GPA optimization as a negative-expected-value activity above the 3.0 threshold",
+      "why_it_matters": "Students who invest heavily in coursework during recruiting season miss the September–December window and find themselves in a structurally weaker spring market",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Interpreting company prestige",
+      "naive_pattern": "Assumes big-name companies (FAANG) are superior environments and that smaller companies are consolation prizes",
+      "informed_pattern": "Understands that large companies offer brand value but limited growth and potentially toxic internal cultures; small companies offer faster skill development and easier future transitions to larger companies",
+      "why_it_matters": "Students who fixate on FAANG and reject smaller companies as fallbacks may end up with no offer at all, while those who accept stepping-stone roles build the experience base that makes subsequent FAANG applications much stronger",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Finding a CS job in the US is very hard for international students regardless of preparation level",
+      "why_believed": "High-volume complaint posts from unprepared students dominate forum discourse; survivors who prepared adequately post less frequently; visa complexity creates a plausible structural explanation for failure",
+      "actual_rule": "The best answer states — and provides a personal track record to support — that a candidate with strong resume, 500+ LeetCode, and 200+ applications has a near-100% success rate; the difficulty narrative is driven primarily by the 90%+ who were insufficiently prepared",
+      "real_consequence": "Students read the difficulty narrative and lower their effort expectations, creating a self-fulfilling prophecy; they under-prepare and under-apply, then confirm the narrative with their own failure",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Spring recruiting (January–March) is a viable primary strategy if you miss fall",
+      "why_believed": "Spring recruiting does exist and does produce some placements; students who arrive late or take time to prepare assume they can recover in spring",
+      "actual_rule": "The best answer explicitly describes spring recruiting as having significantly fewer openings ('坑少了太多') and advises treating it only as a backup; fall is the primary window with the overwhelming majority of CS headcount",
+      "real_consequence": "Students who intentionally defer to spring or fail to prepare for fall find themselves competing for a fraction of available positions with the same or larger candidate pool",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "GPA matters significantly in CS job applications",
+      "why_believed": "Academic success was the primary sorting mechanism throughout Chinese education; students naturally extend this model to the job market",
+      "actual_rule": "Above 3.0, GPA has negligible impact on CS hiring outcomes according to both answers; what matters is internship experience, LeetCode performance, and resume relevance",
+      "real_consequence": "Students spend hundreds of hours optimizing GPA at the direct expense of LeetCode preparation and job applications — exactly the wrong tradeoff during a constrained recruiting window",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Attending a top CS program (UCLA, UIUC, etc.) substantially improves your odds in CS job searches",
+      "why_believed": "School prestige was a strong signal in admissions and in domestic Chinese hiring; the investment thesis of paying for a top program implicitly assumes prestige transfers to job outcomes",
+      "actual_rule": "Answer [2] explicitly argues that work experience dominates school prestige — a candidate from a lower-ranked school with relevant experience beats a fresh top-school graduate; Answer [1] confirms that UCLA brand did not prevent the author from struggling through two full recruiting cycles",
+      "real_consequence": "Students over-invest in admissions prestige and under-invest in the preparation activities that actually drive hiring outcomes",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "ICC (Indian consulting companies) are scams or borderline illegal operations that should be avoided",
+      "why_believed": "The fee structure (first month's salary surrender plus training fees) sounds exploitative; community posts often warn about ICC without distinguishing legitimate from fraudulent operators",
+      "actual_rule": "Answer [2] describes a specific case where a friend signed with an ICC, paid the fees, and successfully obtained a full-time Oracle role — concluding 'completely worth it'; the author notes ICC themselves have become selective and now screen applicants",
+      "real_consequence": "Students who categorically reject ICC as an option may foreclose a viable path when their independent job search has failed; the legitimate tradeoff is financial cost versus access to a placement network",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "UCLA CS master's student from EE background, arrived with near-zero CS/LeetCode preparation, missed fall recruiting cycle entirely in first semester",
+      "decision": "Pursued a China-based internship (JD.com) in summer after Year 1 when no US internship was found; used subsequent semesters strategically to pursue two more US internships via CPT while deliberately delaying graduation",
+      "outcome": "Secured full-time offer at Credit Karma after LinkedIn fall internship; total program took three years instead of standard two; all classmates who wanted to stay in the US eventually found roles",
+      "lesson": "Recovery from a slow start is possible through strategic program extension and iterative internship accumulation, but the financial and time cost is significant; the earliest possible preparation still dominates",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "CS master's student reached out to a company recruiter at a career fair in an informal, non-pitch manner (commenting on the recruiter's reversed name badge)",
+      "decision": "Gave resume casually and walked away; later discovered this was the only company from that career fair to follow up",
+      "outcome": "Received interview, passed, and secured a summer internship at Symantec — later learned the recruiter deliberately screened for candidates who would speak up rather than passively network",
+      "lesson": "Authentic interpersonal interaction at career fairs can outperform polished pitching; some recruiters actively screen for personality traits (assertiveness, willingness to speak up) rather than technical credentials at the initial screening stage",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Student received interest from LinkedIn during fall recruiting but was rejected due to headcount constraints",
+      "decision": "Maintained ongoing contact with the LinkedIn HR recruiter over several months",
+      "outcome": "Was offered a fall internship position directly, bypassing the interview process entirely, because the earlier interview performance was on record",
+      "lesson": "Headcount rejections are not permanent rejections; maintaining recruiter relationships after a near-miss can convert a timing failure into a deferred offer with no additional interviewing required",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Student secured a LinkedIn internship (FAANG-equivalent prestige) only to find the team culture highly unpleasant — implicit pressure, all-Chinese team dynamic, weekend-boundary violations",
+      "decision": "Completed the internship while simultaneously interviewing at other companies; declined the return offer and joined a lower-prestige company with better culture fit",
+      "outcome": "Successfully transitioned to Credit Karma; describes the decision as correct in retrospect and the LinkedIn experience as a useful correction of prestige bias",
+      "lesson": "Prestige of employer does not predict quality of work experience; team culture varies enormously within large companies and can only be evaluated through direct experience; optimizing for brand at the expense of environment fit is a predictable source of regret",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks 'how hard is it to stay in the US with a CS degree?' in a way that seeks validation rather than information",
+      "underlying_state": "Catastrophizing and loss aversion — the student is framing the question to prepare emotionally for failure rather than to identify what actions would change the outcome",
+      "how_it_manifests": "Passive information-seeking on forums rather than active preparation; reading difficulty narratives as confirmation that external factors (visa, discrimination, market) are the binding constraint",
+      "expert_move": "Redirect from the difficulty question to a preparation audit: 'How many problems have you solved? How many companies have you applied to? What does your resume look like?' — converting an emotional question into a diagnostic one",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student reports that they applied to 20–30 companies with no success and is now considering giving up or returning to China",
+      "underlying_state": "Availability bias — the student has a salient, painful recent experience (rejections) that is cognitively dominating their estimate of the overall probability",
+      "how_it_manifests": "Premature conclusion from an unrepresentative sample; framing of the situation as 'I tried and it didn't work' rather than 'I tried an insufficient amount'",
+      "expert_move": "Provide the base rate: the best answer describes applying to 600+ companies as the high-effort benchmark; reframe 20–30 as not yet a job search, but the beginning of one",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student expresses shame about considering a paid prep service (bootcamp or ICC) after failing to find a job independently",
+      "underlying_state": "Identity threat — the student perceives needing external help as evidence of personal inadequacy rather than as a rational resource allocation decision",
+      "how_it_manifests": "Delayed decision to seek help until too late in the OPT window; continuing to attempt independent preparation that has already demonstrated insufficient results",
+      "expert_move": "Normalize paid prep explicitly: 'There's nothing shameful about it' (直接原文: '没啥可耻的'); frame it as a return-on-investment calculation — the cost of a prep program is recoverable in weeks of US tech salary, while the cost of returning to China without a job is not",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student describes working at a prestigious company (FAANG) as a goal they pursued for years, then discovers the reality is disappointing",
+      "underlying_state": "Idealization and surrogate goal substitution — the student conflated 'working at Google/LinkedIn' (an observable, socially validated milestone) with 'having a good work life' (the actual goal)",
+      "how_it_manifests": "Shock and demoralization upon experiencing the gap between company brand and actual team environment; difficulty making the rational decision to leave because of sunk cost in the goal pursuit",
+      "expert_move": "Reframe prestige as a means, not an end: the informed pattern is to use large-company experience as a resume credential while actively evaluating whether the specific team is a good fit, and to leave without guilt when it is not",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student from a non-CS background (EE, chemistry) asks whether it is too late to transition into CS",
+      "underlying_state": "Temporal anxiety and comparison paralysis — the student is measuring their current state against CS-native peers and interpreting the gap as permanent rather than as a preparation problem",
+      "how_it_manifests": "Asking permission-seeking questions ('can I still make it?') rather than action-oriented ones ('what do I need to do?')",
+      "expert_move": "Provide a concrete, unconditional answer (Answer [1] FAQ section: 'You can, as long as you want it and are willing to do the work') paired with a specific first action — start LeetCode, revise the resume to remove irrelevant content, find one CS project to add",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'How hard is it for CS international students to stay in the US after graduation?' — framed as a fixed external difficulty question",
+      "reframe": "The best answer reframes it as: 'The difficulty level is almost entirely determined by your preparation level — the people saying it's hard are overwhelmingly the people who didn't prepare'",
+      "why_it_works": "Converts a passive assessment of external conditions into an actionable internal audit; shifts locus of control from market/visa to preparation behavior",
+      "example_language": "如果一个人CS背景+简历+刷题+投公司，每个都做了，说实话我没见过留不下来的 (If someone has done all four — CS background, resume, LeetCode, applications — honestly I've never seen anyone who couldn't stay)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'I applied to companies and got rejected — the job market is too difficult for international students'",
+      "reframe": "The best answer reframes it as: 'You haven't applied enough to have a valid data point — 20 applications is not a job search for an international student, it's a warm-up'",
+      "why_it_works": "Removes the false sense of having genuinely tried by replacing it with a concrete, quantified benchmark (200+ applications); prevents premature attribution of failure to external causes",
+      "example_language": "北美投简历，少于200家都是没努力 (In North America, applying to fewer than 200 companies means you haven't tried)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'Should I focus on my coursework and GPA, or on finding a job?'",
+      "reframe": "The best answer reframes it as a false tradeoff with a clear answer: 'Nobody will ever ask your GPA; everyone will ask where you work — this is not a difficult optimization'",
+      "why_it_works": "Collapses what feels like a genuine dilemma into a decision with a dominant option; removes the cognitive burden of balance-seeking by making the asymmetry of payoffs explicit",
+      "example_language": "毕业了没人问你GPA多少，都会问你去哪工作了，所以分清孰轻孰重 (After graduation no one asks your GPA, everyone asks where you work — understand what matters more)",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "'Big companies are the goal; small companies are a fallback I'd rather avoid'",
+      "reframe": "Answer [2] reframes small companies as a different game with different advantages — better skill development, more responsibility, and a proven on-ramp to large companies with experience",
+      "why_it_works": "Reframes the hierarchy from a prestige ranking into a strategic choice with genuine tradeoffs; removes the stigma of small companies and converts them from consolation prizes into legitimate starting positions",
+      "example_language": "在美国，有工作经验就是爸爸 (In America, having work experience makes you the boss — experience trumps school prestige)",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_CS专业留学生毕业之后留美的难度有多大",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

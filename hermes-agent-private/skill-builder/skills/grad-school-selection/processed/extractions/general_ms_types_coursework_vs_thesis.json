@@ -1,0 +1,236 @@
+{
+  "source_file": "ms_types_coursework_vs_thesis.txt",
+  "heuristics": [
+    {
+      "rule": "A coursework-only MS does not strengthen a PhD application unless paired with independent research output",
+      "condition": "When a student completes or plans a coursework MS and intends to apply to PhD programs afterward",
+      "action": "Proactively secure a formal RA position or produce at least one co-authored paper or first-author abstract during the MS",
+      "because": "PhD programs evaluate research potential through demonstrated research evidence; coursework alone gives them nothing to assess that dimension"
+    },
+    {
+      "rule": "If your goal is PhD preparation, choose thesis MS over coursework MS by default",
+      "condition": "When a student is deciding between MS tracks and has a stated goal of entering a PhD program",
+      "action": "Select the thesis track MS even at the cost of longer duration or narrower breadth",
+      "because": "Thesis MS directly produces the advisor relationship, research output, and oral defense experience that PhD applications require"
+    },
+    {
+      "rule": "Ask programs explicitly whether a project-track MS counts as research experience for PhD applications",
+      "condition": "When considering a 'master's by project' or 'project option' middle-ground track",
+      "action": "Contact target PhD programs and ask: 'Will a master's project (not a thesis) satisfy your research experience requirement?'",
+      "because": "Project tracks vary widely in how PhD programs treat them — assuming equivalence to a thesis MS is a common and costly error"
+    },
+    {
+      "rule": "If you've already started a coursework MS and want a PhD, approach faculty for RA positions immediately — one paper changes the application significantly",
+      "condition": "When a student mid-coursework MS realizes they want to apply to PhD programs",
+      "action": "Approach faculty in your department for RA or research collaboration opportunities as early as possible",
+      "because": "Even one RA position resulting in a first-author abstract or co-authored paper materially shifts the PhD application from weak to credible"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Post-graduation goal: industry vs. PhD vs. R&D",
+      "why_it_matters": "The two MS tracks train fundamentally different skills and produce different credential signals — one is optimized for immediate industry integration, the other for research continuation",
+      "how_to_assess": "Ask yourself: Is my next step a software engineer or PM role (coursework MS), a PhD application (thesis MS), or an industry research scientist / innovation lab role (thesis MS)?",
+      "weight": "high"
+    },
+    {
+      "factor": "Research output during the MS",
+      "why_it_matters": "PhD programs need evidence of research potential; a degree label alone does not supply it — the presence or absence of research output determines whether the MS strengthens a PhD application",
+      "how_to_assess": "Will this program structure produce a thesis, publication, or formal RA position? If not, what independent pathway exists to generate research output?",
+      "weight": "high"
+    },
+    {
+      "factor": "Funding availability",
+      "why_it_matters": "Coursework MS programs are almost always self-funded at full tuition ($30,000–$80,000 for international students); thesis MS programs occasionally offer partial TA/RA funding — this changes the financial calculus significantly",
+      "how_to_assess": "Ask the program directly: Is TA or RA funding available for thesis MS students? What percentage of thesis MS students receive it?",
+      "weight": "high"
+    },
+    {
+      "factor": "Advisor relationship requirement",
+      "why_it_matters": "Thesis MS requires securing and maintaining an advisor — this introduces risk (advisor fit, availability, research direction) that coursework MS does not",
+      "how_to_assess": "Before committing to a thesis MS program, identify 2–3 faculty whose research aligns with yours and assess their availability to take new MS students",
+      "weight": "medium"
+    },
+    {
+      "factor": "Breadth vs. depth preference",
+      "why_it_matters": "Coursework MS provides breadth across many subfields; thesis MS narrows you to one research area — this affects both job market optionality and intellectual fit",
+      "how_to_assess": "Do you know what subfield you want to work in? If yes, depth (thesis) is viable. If you are still exploring, breadth (coursework) reduces premature specialization risk.",
+      "weight": "medium"
+    },
+    {
+      "factor": "Program duration and time-to-market",
+      "why_it_matters": "Coursework MS is 1 year FT vs. 1.5–2 years for thesis MS — for international students with visa timelines or opportunity costs, this difference is material",
+      "how_to_assess": "Calculate the total cost difference (tuition + living expenses + lost income) of the additional 0.5–1 year and weigh against the PhD or R&D career benefit",
+      "weight": "medium"
+    },
+    {
+      "factor": "GRE requirement",
+      "why_it_matters": "Thesis MS programs more commonly require GRE scores; coursework MS programs less often — this affects application feasibility for students with weak standardized test profiles",
+      "how_to_assess": "Check each program's admissions requirements page explicitly; do not assume one track's requirements apply to the other",
+      "weight": "low"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing a coursework-only MS to save time and enter industry faster",
+      "unstated_consequence": "If career goals shift toward PhD or R&D roles during or after the MS, the student has no research evidence and must start building it from scratch — often requiring a second degree or significant delay",
+      "who_it_affects": "Students who are uncertain about long-term goals but choose the faster path assuming they can pivot later"
+    },
+    {
+      "choice": "Choosing a thesis MS for PhD preparation",
+      "unstated_consequence": "You become narrowly specialized in one subfield after 1.5–2 years — if you then enter industry rather than a PhD program, you may be perceived as overspecialized for generalist software engineering roles",
+      "who_it_affects": "Students who pursue thesis MS for PhD preparation but ultimately do not gain PhD admission or change their mind"
+    },
+    {
+      "choice": "Pursuing a 'project option' MS as a middle ground",
+      "unstated_consequence": "The project track is treated inconsistently by PhD programs — it may not be recognized as research experience, leaving students with neither the breadth of a coursework MS nor the research credentials of a thesis MS",
+      "who_it_affects": "Students who choose the project track assuming it will satisfy PhD program research requirements without verifying this assumption"
+    },
+    {
+      "choice": "Self-funding a coursework MS at full international tuition ($30,000–$80,000)",
+      "unstated_consequence": "The financial cost is paid upfront with no funding offset, creating debt or savings depletion — even if the salary outcome is strong, the net return timeline is longer than it appears",
+      "who_it_affects": "International students without financial support who underestimate total program cost including living expenses"
+    },
+    {
+      "choice": "Relying on the MS degree label itself to strengthen a PhD application",
+      "unstated_consequence": "'MS degree' signals graduate coursework completion — not research ability. PhD admission committees weight research output, not degree names; the label without research evidence adds little marginal value",
+      "who_it_affects": "Students who invest 1–2 years and significant money in an MS primarily as a PhD application enhancer, without generating research output"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating 'MS degree' as a monolithic credential that uniformly strengthens PhD applications",
+      "why_it_happens": "The degree name is the same across tracks, leading applicants to assume the credential carries the same weight regardless of program structure",
+      "consequence": "Students complete a coursework MS, apply to PhD programs, and are rejected or waitlisted because they have no research evidence — wasting 1–2 years and $30,000–$80,000",
+      "warning_signs": [
+        "Student says 'I'll do an MS first, then apply to PhD' without specifying which MS track",
+        "Student cannot name a thesis advisor or RA position when asked about research experience during the MS"
+      ]
+    },
+    {
+      "pattern": "Choosing a coursework MS without securing any research experience, then being surprised the PhD application fails",
+      "why_it_happens": "Students conflate credential attainment (degree completion) with capability signaling (demonstrated research output) — they assume the degree does the signaling work",
+      "consequence": "PhD application lacks the strongest evidence of research potential; admission is denied or deferred indefinitely",
+      "warning_signs": [
+        "Student's MS program has no thesis requirement and they have not independently sought RA positions",
+        "Student plans to list only coursework and GPA on PhD application with no publications or research descriptions"
+      ]
+    },
+    {
+      "pattern": "Assuming a 'master's project' track is equivalent to a thesis MS for PhD applications",
+      "why_it_happens": "The word 'research' is used loosely — students hear 'substantial original project' and assume it satisfies the same criteria as academic thesis research",
+      "consequence": "Student applies to PhD programs citing a project-track MS as research experience, only to learn the target programs do not treat it as equivalent — application is weakened",
+      "warning_signs": [
+        "Student has not asked the PhD program explicitly whether project-track work counts",
+        "Student describes their project as 'research' without having written or defended a formal thesis"
+      ]
+    },
+    {
+      "pattern": "Enrolling in a coursework MS mid-stream without pivoting to seek RA opportunities when PhD goals emerge",
+      "why_it_happens": "Students assume it is too late to add research activity once enrolled in a coursework track, or they underestimate how much even one RA position changes the application",
+      "consequence": "Student graduates from coursework MS with no research output and misses a window to materially improve PhD application competitiveness",
+      "warning_signs": [
+        "Student is in second semester of coursework MS and has not approached any faculty about research",
+        "Student says 'it's not that kind of program' when asked about research opportunities"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What is your intended next step after completing this MS — industry role, PhD program, or R&D/research scientist position?",
+      "what_it_reveals": "This is the primary fork that determines which MS track is appropriate; the two tracks are optimized for different destinations",
+      "follow_up_if_yes": "If industry: Is breadth across subfields more valuable than depth in one? If so, coursework MS is likely the right fit.",
+      "follow_up_if_no": "If PhD or R&D: Does your current or planned MS program include a thesis, RA position, or publishable research output? If not, why not?"
+    },
+    {
+      "question": "Does your current or planned MS program require a thesis, or is it coursework-only?",
+      "what_it_reveals": "Determines whether the degree will produce research evidence for PhD applications or only coursework credentials",
+      "follow_up_if_yes": "If thesis required: Have you identified a potential thesis advisor and confirmed their availability to take MS students?",
+      "follow_up_if_no": "If coursework-only: Do you have a plan to generate research output independently (RA position, independent study, faculty collaboration) alongside the coursework?"
+    },
+    {
+      "question": "If your MS program has a 'project option,' have you confirmed with target PhD programs whether that project counts as research experience?",
+      "what_it_reveals": "Identifies whether the student is operating on an assumption vs. verified information about how their credentials will be evaluated",
+      "follow_up_if_yes": "If confirmed: Which PhD programs explicitly accepted it and which did not?",
+      "follow_up_if_no": "If not confirmed: This verification should happen before committing to the project track if PhD admission is the goal."
+    },
+    {
+      "question": "Do you have existing undergraduate research experience, publications, or prior RA positions?",
+      "what_it_reveals": "Determines whether a coursework MS can be viable as a PhD stepping stone — if strong undergraduate research exists, PhD programs may not require additional MS-level research",
+      "follow_up_if_yes": "If yes: Is the undergraduate research recent, documented, and referable? Does it align with the PhD program's research areas?",
+      "follow_up_if_no": "If no: The MS must generate research output for the PhD application to be competitive; a coursework MS without independent research activity is insufficient."
+    },
+    {
+      "question": "Are you able to self-fund full international tuition ($30,000–$80,000) for a coursework MS, or does funding availability change your decision?",
+      "what_it_reveals": "Funding constraint may force the decision toward thesis MS (which occasionally offers TA/RA support) regardless of other preferences",
+      "follow_up_if_yes": "If self-funding is feasible: Does the salary premium from the MS justify the total investment given your specific career trajectory?",
+      "follow_up_if_no": "If funding is a constraint: Have you investigated which thesis MS programs in your target institution offer TA or RA funding for master's students?"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "An MS degree, regardless of track, strengthens a PhD application",
+      "actual_reality": "PhD programs evaluate research potential through research evidence — publications, RA experience, thesis work. A coursework-only MS produces none of these. The degree label is not the signal; the research output is.",
+      "implication": "Students must actively generate research output during any MS program intended as PhD preparation, regardless of whether the program requires it"
+    },
+    {
+      "common_belief": "A 'master's by project' is equivalent to a thesis MS for PhD applications",
+      "actual_reality": "PhD programs treat project-track and thesis-track MS degrees inconsistently — some accept project work as research evidence, many do not. There is no standard.",
+      "implication": "Students must verify with each target PhD program individually before relying on project-track work as PhD application evidence"
+    },
+    {
+      "common_belief": "Coursework MS and thesis MS are two names for the same thing",
+      "actual_reality": "They are structurally different programs that train different skills, produce different credentials, carry different costs, and lead to different career outcomes. The shared label 'Master's degree' obscures these differences.",
+      "implication": "Applicants must investigate the specific track structure of any MS program — not just its name — before applying"
+    },
+    {
+      "common_belief": "MS funding (TA/RA) is common, similar to PhD funding",
+      "actual_reality": "Coursework MS programs almost never offer funding; thesis MS programs offer it only occasionally. MS funding is the exception, not the rule, unlike PhD programs where full funding is the norm in many fields.",
+      "implication": "International students budgeting for an MS should plan for full self-funding unless they have explicitly confirmed funding availability for their specific program and track"
+    },
+    {
+      "common_belief": "A higher salary outcome from an MS degree means the financial investment is straightforwardly worth it",
+      "actual_reality": "The net return depends on total cost (tuition + living + opportunity cost) relative to the salary premium over what you would earn without the degree. For international students paying $30,000–$80,000 in tuition alone, the break-even timeline is longer than headline salary figures suggest.",
+      "implication": "Students should calculate break-even timelines — not just compare salary figures — when evaluating whether the MS investment is financially justified"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Selecting between MS tracks",
+      "junior_pattern": "Chooses based on program name, reputation ranking, or which is faster — treats both tracks as equivalent credentials with different timelines",
+      "senior_pattern": "Selects the track based on what output it produces (coursework breadth vs. research evidence) and maps that output to the specific next-step requirement (industry role vs. PhD application)",
+      "why_it_matters": "Choosing the wrong track wastes 1–2 years and $30,000–$80,000 and may leave the student no better positioned for their actual goal"
+    },
+    {
+      "dimension": "Evaluating an MS as PhD preparation",
+      "junior_pattern": "Assumes any MS degree strengthens a PhD application; plans to 'do an MS first then apply to PhD' without specifying research output",
+      "senior_pattern": "Asks specifically: Will this MS produce a thesis, publication, or RA position? If not, what independent pathway exists to generate research evidence?",
+      "why_it_matters": "Without research output, the MS does not materially improve PhD application competitiveness regardless of GPA or course grades"
+    },
+    {
+      "dimension": "Responding to ambiguous program tracks (project option)",
+      "junior_pattern": "Assumes the 'project option' counts as research experience because it involves original work and a supervisor",
+      "senior_pattern": "Contacts target PhD programs explicitly to ask whether a project-track MS satisfies their research experience requirement before committing to that track",
+      "why_it_matters": "Incorrect assumption about credential equivalence can result in an application that fails to demonstrate what PhD programs actually need to see"
+    },
+    {
+      "dimension": "Recovering from a coursework MS when PhD goals emerge mid-program",
+      "junior_pattern": "Accepts that 'it's not that kind of program' and does not seek research opportunities; plans to rely on the degree alone",
+      "senior_pattern": "Immediately approaches faculty for RA positions or research collaborations; understands that even one paper or first-author abstract materially changes the PhD application",
+      "why_it_matters": "The window to add research experience during an MS is finite; inaction during the program forecloses options that proactive outreach could have opened"
+    },
+    {
+      "dimension": "Evaluating financial return on MS investment",
+      "junior_pattern": "Compares MS graduate median salary ($126,830) to current income and concludes the degree is worth it",
+      "senior_pattern": "Calculates total investment (tuition + living + opportunity cost), estimates the salary premium attributable specifically to the MS, and computes the break-even timeline before deciding",
+      "why_it_matters": "Headline salary figures obscure the actual financial calculus; for international students paying full tuition, the net return may take 5+ years to materialize"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_ms_types_coursework_vs_thesis",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

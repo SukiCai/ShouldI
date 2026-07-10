@@ -1,0 +1,258 @@
+{
+  "source_file": "sector_return_by_field.txt",
+  "heuristics": [
+    {
+      "rule": "Use sector-specific return viability, not generic 'career' comparisons",
+      "condition": "When evaluating whether to return to home country...",
+      "action": "...first classify your sector into one of: Tech/AI, Finance (PE/VC vs. state), Academia, Medicine, Law/Government — because each has a different ceiling, income compression, and hiring market",
+      "because": "A framework that treats 'career' as one undifferentiated thing will give wrong answers for most people; the returnee premium, licensing friction, and competitive dynamics vary dramatically by field"
+    },
+    {
+      "rule": "Compare net savings in PPP-adjusted terms, not gross income in nominal USD",
+      "condition": "When an income compression figure feels prohibitive...",
+      "action": "...calculate actual annual savings in each scenario rather than comparing gross salaries, adjusting for cost of living",
+      "because": "A $400K US physician saving $80K/year may do worse in wealth accumulation than a Chinese physician earning ¥600K saving ¥300K/year in PPP-adjusted terms — the compression is real but must be measured against what you actually keep"
+    },
+    {
+      "rule": "Treat license incompatibility as a hard blocker, not a soft friction",
+      "condition": "When a professional in medicine or law is considering return...",
+      "action": "...research exact re-licensing requirements before treating return as a viable near-term option",
+      "because": "US MD and US JD credentials do not transfer directly to Chinese or Indian clinical/legal practice; the re-qualification pathway is long, difficult, and conducted in a different language/legal system — it is a structural barrier, not merely administrative overhead"
+    },
+    {
+      "rule": "In China, distinguish private-market roles from state-institution roles before assuming returnee premium applies",
+      "condition": "When evaluating finance or government opportunities in China...",
+      "action": "...assess whether the specific role sits inside state-owned enterprises, state banks, or government — and if so, discount the returnee premium significantly",
+      "because": "Senior leadership in state-owned banks and government civil service tends to go to Party-connected domestic candidates; the returnee premium is real in PE/VC/tech but largely absent in state institutions"
+    },
+    {
+      "rule": "For academia returnees to China, evaluate the field-specific academic freedom constraint before accepting recruitment packages",
+      "condition": "When a US-trained academic in social sciences, humanities, or politically sensitive STEM is considering Chinese talent programs...",
+      "action": "...weight academic freedom constraints heavily, not just the financial package",
+      "because": "China's recruitment packages are financially genuine, but research freedom in social sciences, humanities, and dual-use STEM fields is materially constrained — the package value is diminished if it limits research agenda"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Sector-specific returnee premium",
+      "why_it_matters": "US experience commands a strong premium in some sectors (Tech, PE/VC, Academia in China) and near-zero premium in others (state banking, government civil service) — this directly determines compensation and career trajectory upon return",
+      "how_to_assess": "Research whether companies in your specific sector actively recruit US-experienced candidates; check if talent programs or headhunters in your field specifically target US returnees; look at leadership profiles at target employers",
+      "weight": "high"
+    },
+    {
+      "factor": "License portability",
+      "why_it_matters": "For medicine and law, credentials earned in the US do not automatically qualify practice in China or India — re-licensing may require passing exams in a different language on a different legal/medical system, which is a hard structural barrier",
+      "how_to_assess": "Identify the exact re-qualification pathway for your profession in your target country; estimate time and cost; determine whether the path is realistically completable given your current language proficiency and time since training",
+      "weight": "high"
+    },
+    {
+      "factor": "Income compression magnitude by sector",
+      "why_it_matters": "The compression ranges from moderate (Tech: 30–50%) to severe (Medicine: 70–85%); this determines whether the return is financially viable and changes the entire savings/wealth-building calculus",
+      "how_to_assess": "Benchmark current US total comp against realistic total comp at equivalent-level roles in target country; convert to PPP-adjusted terms; calculate net savings rate in each scenario rather than comparing gross figures",
+      "weight": "high"
+    },
+    {
+      "factor": "Political and regulatory risk in target sector",
+      "why_it_matters": "China's regulatory environment has become more restrictive since 2021 — finance and tech sectors have faced crackdowns; this creates career and income volatility that is not captured in a point-in-time salary comparison",
+      "how_to_assess": "Track sector-specific regulatory history in target country over the past 3–5 years; assess whether your target sector has been subject to government restrictions; evaluate downside scenarios if regulatory crackdown hits your employer",
+      "weight": "high"
+    },
+    {
+      "factor": "Career ceiling at VP/CXO level by sector and country",
+      "why_it_matters": "Some sectors (Tech in China, PE/VC) allow returnees to reach senior leadership; others (state banks, government) structurally exclude returnees from top roles — this determines long-term career trajectory, not just entry-level compensation",
+      "how_to_assess": "Research the leadership profiles of senior executives (VP and above) at target employer types; determine what fraction are returnees vs. domestic-track; look for patterns in who gets promoted to C-suite",
+      "weight": "high"
+    },
+    {
+      "factor": "Research infrastructure quality in academia",
+      "why_it_matters": "For academic returnees, the quality of lab infrastructure, funding availability, and institutional reputation determines whether they can maintain international research competitiveness — a weak institution can stall a research career regardless of the recruitment package",
+      "how_to_assess": "Evaluate Nature/Science publication rates at target institution; assess startup fund adequacy for your specific research area; check whether returnees at that institution have maintained international collaboration and publication rates post-return",
+      "weight": "medium"
+    },
+    {
+      "factor": "Private vs. state sector distinction within country",
+      "why_it_matters": "Within the same country, private-sector and state-sector roles have fundamentally different dynamics for returnees — the returnee premium, promotion ceiling, and regulatory exposure differ dramatically",
+      "how_to_assess": "Classify each specific opportunity as private-market, state-owned enterprise, or government; apply the appropriate ceiling and premium assessment for each category rather than treating the country as uniform",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Returning to clinical medicine in China",
+      "unstated_consequence": "The US MD credential does not permit clinical practice without passing Chinese licensing exams conducted in Mandarin on Chinese medical systems — the return is not to clinical medicine but to a multi-year re-qualification process or to research/teaching/admin roles with significantly lower income",
+      "who_it_affects": "US-trained physicians who assume their credential travels and plan to continue practicing clinically"
+    },
+    {
+      "choice": "Accepting a Chinese state-owned bank or government-adjacent finance role as a returnee",
+      "unstated_consequence": "Senior leadership positions in these institutions tend to go to Party-connected domestic candidates; the returnee premium that exists in PE/VC does not apply here, and career ceiling is reached earlier and more definitively",
+      "who_it_affects": "Finance professionals who treat all China finance opportunities as equivalent without distinguishing state vs. private sector"
+    },
+    {
+      "choice": "Taking a Chinese academic talent program recruitment package",
+      "unstated_consequence": "In social sciences, humanities, and politically sensitive STEM fields, the research agenda is materially constrained by academic freedom limitations — the financial package is genuine, but what you can actually research may be narrowed significantly post-arrival",
+      "who_it_affects": "Social scientists, humanists, and dual-use STEM researchers who evaluate the offer primarily on financial terms"
+    },
+    {
+      "choice": "Staying in the US as a physician to preserve high income",
+      "unstated_consequence": "A $400K US physician saving $80K/year may accumulate less real wealth than a Chinese physician earning ¥600K saving ¥300K/year in PPP-adjusted terms — the gross income advantage does not translate proportionally into savings advantage",
+      "who_it_affects": "High-earning US professionals in high-cost-of-living areas who compare gross salaries without accounting for savings rate and cost of living differentials"
+    },
+    {
+      "choice": "Returning to India for services-sector tech roles (TCS, Infosys)",
+      "unstated_consequence": "These roles are structurally less attractive for returning FAANG engineers — the credential and skill level is mismatched, and the career trajectory and compensation are not commensurate with US experience; the Indian tech return premium exists primarily at unicorns and FAANG India offices, not at services firms",
+      "who_it_affects": "India-origin tech professionals who treat all Indian tech employers as equivalent without distinguishing FAANG India/unicorns from IT services"
+    },
+    {
+      "choice": "Pursuing a law or government policy role upon return",
+      "unstated_consequence": "A US JD does not qualify practice of Chinese or Indian law; government civil service tracks are domestic-entry; the best available path — compliance or GC at MNC — is a significant scope reduction from senior legal practice, and think tank roles are competitive with limited slots",
+      "who_it_affects": "US-trained lawyers and policy professionals who assume their credentials and experience translate into comparable roles in their home country"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating income compression as a fixed number rather than a net savings comparison",
+      "why_it_happens": "People anchor on gross salary figures in USD, which makes home country income look drastically worse; the cognitive default is to compare the largest visible number without adjusting for taxes, cost of living, and actual savings rate",
+      "consequence": "Professionals reject financially rational return decisions because they are comparing the wrong metric — they overestimate the US income advantage and underestimate the home country wealth-building potential",
+      "warning_signs": [
+        "Saying 'I'd be taking a 60% pay cut' without having calculated net savings in both scenarios",
+        "Comparing gross salary in USD without PPP adjustment or cost-of-living normalization"
+      ]
+    },
+    {
+      "pattern": "Assuming sector-level optimism applies to a specific sub-sector or employer type",
+      "why_it_happens": "Positive signals about 'China tech' or 'India finance' get generalized to all employers in those geographies; people read about ByteDance salaries and apply them to state-owned tech companies, or read about Sequoia India and assume it applies to domestic banking",
+      "consequence": "Professionals accept roles expecting returnee premium and growth trajectories that do not exist in their specific employer category, leading to early career ceiling and compensation disappointment",
+      "warning_signs": [
+        "Evaluating a state-owned enterprise role using PE/VC compensation benchmarks",
+        "Not explicitly classifying a target employer as private-market vs. state-sector before accepting an offer"
+      ]
+    },
+    {
+      "pattern": "Underestimating license re-qualification as a short-term administrative step",
+      "why_it_happens": "Professionals in medicine and law assume that strong credentials and experience will expedite or partially substitute for formal re-licensing; the difficulty of passing licensing exams in a different language and legal/medical system is underestimated",
+      "consequence": "Professionals return expecting to practice their profession and find themselves blocked from clinical or legal practice for years, forced into research, teaching, or administrative roles that are lower-income and off their intended career path",
+      "warning_signs": [
+        "Saying 'I'll figure out the licensing once I'm back' without a concrete plan",
+        "Not having researched the specific exam requirements, language of examination, or pass rates for returnees in their field"
+      ]
+    },
+    {
+      "pattern": "Ignoring regulatory and political risk in sector selection",
+      "why_it_happens": "Return decisions are made based on current conditions and current salary benchmarks; the 2020–2021 regulatory crackdowns in China (Ant Financial, private tutoring, gaming) were not predicted by people who had made return decisions in 2018–2019 based on then-attractive conditions",
+      "consequence": "Professionals build careers in sectors that face sudden regulatory restriction, leading to layoffs, income loss, or forced sector pivots that would have been avoidable with greater attention to policy risk signals",
+      "warning_signs": [
+        "Evaluating a China finance or edtech opportunity without researching the sector's regulatory history since 2020",
+        "Treating current salary benchmarks as stable without assessing sector-specific political exposure"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is your profession subject to country-specific licensing requirements?",
+      "what_it_reveals": "Whether the return is to the same professional role or to a fundamentally different one — medicine and law face hard barriers; tech and finance do not",
+      "follow_up_if_yes": "What is the exact re-qualification pathway, how long does it take, is the exam conducted in your home language, and what is the pass rate for returnees?",
+      "follow_up_if_no": "Does your US credential and experience carry a genuine premium in your target sector, or is it neutral to slightly positive?"
+    },
+    {
+      "question": "Is your target employer private-market or state-owned / government-affiliated?",
+      "what_it_reveals": "Whether the returnee premium and career ceiling assumptions that apply to private-sector roles also apply to your specific opportunity — they often do not in state institutions",
+      "follow_up_if_yes": "Has the state institution historically promoted returnees to senior leadership, or does that tier tend to go to domestic-track candidates?",
+      "follow_up_if_no": "Is the private employer in a sector that has faced or is at risk of regulatory restriction in your target country?"
+    },
+    {
+      "question": "What is your actual net savings rate in the US versus what it would be in your home country at the target role?",
+      "what_it_reveals": "Whether the income compression is as severe as the gross salary comparison suggests, or whether cost of living and tax differences close the gap significantly",
+      "follow_up_if_yes": "If net savings are comparable or higher at home, what non-financial factors are driving the preference to stay in the US?",
+      "follow_up_if_no": "Is the net savings gap large enough to be a definitive factor, or is it within the range that personal and family considerations could reasonably override?"
+    },
+    {
+      "question": "Which specific sector are you in — Tech/AI, Finance (PE/VC vs. state), Academia, Medicine, Law/Government, or Entrepreneurship?",
+      "what_it_reveals": "The baseline return viability, income compression range, and career ceiling risk — these differ so significantly across sectors that the sector answer largely determines the initial prior on return viability",
+      "follow_up_if_yes": "Within that sector, are you targeting the sub-segment with strong returnee demand (e.g., AI research, PE/VC) or the weaker sub-segment (e.g., state banking, IT services)?",
+      "follow_up_if_no": "Not applicable — sector classification is a required input, not a yes/no question"
+    },
+    {
+      "question": "For China-return candidates in academia: what is your research field?",
+      "what_it_reveals": "Whether academic freedom constraints materially limit your research agenda — STEM in non-sensitive areas faces fewer constraints than social sciences, humanities, or politically sensitive STEM",
+      "follow_up_if_yes": "If you are in a constrained field, have you assessed whether you can maintain your current research agenda at the target institution, or would it require meaningful redirection?",
+      "follow_up_if_no": "If you are in a field without significant academic freedom constraints, the Chinese talent program packages represent strong financial and career value relative to US alternatives"
+    },
+    {
+      "question": "Are you benchmarking against the right peer set at target Indian or Chinese employers?",
+      "what_it_reveals": "Whether the salary and career trajectory data being used reflects comparable roles — FAANG India/unicorn compensation is not representative of IT services, and PE/VC China compensation is not representative of state banks",
+      "follow_up_if_yes": "Have you verified compensation and career ceiling data specifically for returnees at that employer tier, not just the sector broadly?",
+      "follow_up_if_no": "The decision may be based on unrepresentative benchmarks that will produce surprises post-joining"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A US MD or JD credential travels internationally and allows you to continue practicing in your home country",
+      "actual_reality": "Medical and legal licenses are country-specific; a US MD must pass Chinese medical licensing exams in Mandarin to practice clinically in China; a US JD must pass a separate bar qualification to practice Indian or Chinese law — the credential does not transfer",
+      "implication": "Medical and legal professionals must treat return as a career transition, not a credential transfer — and plan for a multi-year re-qualification process or a pivot to research, teaching, compliance, or entrepreneurship roles"
+    },
+    {
+      "common_belief": "China's talent recruitment programs (Thousand Talents, Yangtze River Scholar) are primarily bureaucratic or symbolic",
+      "actual_reality": "The packages are financially substantive — research startup funds of ¥500K–¥5M, salary supplements, housing subsidies, and lab setup funding are real and actively deployed; Chinese scientific output is now internationally competitive in STEM fields",
+      "implication": "Academic returnees to China should evaluate these programs seriously as financial and career propositions, not dismiss them — the main constraint is field-specific academic freedom, not program credibility"
+    },
+    {
+      "common_belief": "Income compression means the return is financially inferior",
+      "actual_reality": "Gross income compression (30–85% depending on sector) does not translate proportionally into savings or wealth compression; a physician earning 70% less in China may save 3–4x more annually in PPP-adjusted terms because cost of living differentials are large",
+      "implication": "Evaluate return economics on net savings rate and PPP-adjusted wealth accumulation, not gross salary comparison — the decision calculus changes significantly when the right metric is used"
+    },
+    {
+      "common_belief": "'China tech' or 'India finance' return opportunity is broadly positive, so a specific role in that sector should be attractive",
+      "actual_reality": "Within each country and sector, there is a dramatic split between private-market roles (where returnee premium is real) and state-owned or government-affiliated roles (where career ceiling is real and returnee premium is weak) — the sector-level signal does not apply uniformly",
+      "implication": "Evaluate each specific employer and role type rather than using country-sector aggregate signals; the state/private distinction is the most important sub-classification within any sector"
+    },
+    {
+      "common_belief": "Returning to India for tech means going to TCS, Infosys, or Wipro",
+      "actual_reality": "IT services firms are explicitly identified as less attractive for returning FAANG engineers; the relevant return market is FAANG India offices, Indian unicorns (Flipkart, Swiggy, Zepto), and AI/ML research roles — which have materially different compensation and career trajectories",
+      "implication": "India-origin tech professionals should specifically target the unicorn and MNC India office tier, not the IT services tier — the returnee premium does not exist at IT services for someone with senior US tech experience"
+    },
+    {
+      "common_belief": "China's regulatory crackdowns on tech and finance were one-time events and the sector has stabilized",
+      "actual_reality": "The source identifies finance sector regulatory scrutiny as an ongoing and increased risk since 2021; the Ant Financial IPO cancellation, private tutoring restrictions, and gaming limits represent a pattern of government intervention in private-sector activity",
+      "implication": "China finance and consumer tech return decisions should include explicit scenario planning for regulatory risk, not just point-in-time compensation benchmarking"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How they compare income across geographies",
+      "junior_pattern": "Compares gross salary in USD — sees '60% compression' and treats the decision as financially irrational",
+      "senior_pattern": "Calculates net savings rate in each scenario, adjusts for PPP and cost of living, and evaluates wealth accumulation trajectory rather than gross income",
+      "why_it_matters": "The gross comparison leads to rejecting financially sound decisions; the net savings comparison reveals that compression is often much less severe than it appears and occasionally reverses"
+    },
+    {
+      "dimension": "How they evaluate a sector-level return signal",
+      "junior_pattern": "Reads that 'China tech' or 'India finance' is strong for returnees and applies that signal to their specific opportunity without further decomposition",
+      "senior_pattern": "Immediately sub-classifies the specific employer as private-market vs. state-sector, identifies which sub-segment of the sector they are targeting, and applies the appropriate ceiling and premium assessment for that sub-segment",
+      "why_it_matters": "Aggregate sector signals mask dramatic within-sector variation; applying a PE/VC premium assumption to a state bank role leads to misaligned expectations and early career ceiling surprises"
+    },
+    {
+      "dimension": "How they treat credential portability",
+      "junior_pattern": "Assumes a strong US credential (MD, JD) will be recognized and valued in the home country, treating re-qualification as a minor administrative step",
+      "senior_pattern": "Identifies upfront whether the profession requires country-specific licensing, researches the exact re-qualification pathway, and classifies the return as a continuation vs. a career transition accordingly",
+      "why_it_matters": "Treating a hard licensing barrier as administrative overhead leads to returns that strand professionals outside their intended practice area for years"
+    },
+    {
+      "dimension": "How they assess long-term career ceiling",
+      "junior_pattern": "Evaluates entry-level and mid-level compensation and assumes the upward trajectory is comparable to the US",
+      "senior_pattern": "Researches the leadership profiles at VP and C-suite level at target employer types to determine whether returnees reach senior roles or hit a structural ceiling driven by domestic-track preferences or political considerations",
+      "why_it_matters": "Entry and mid-level opportunities may be strong even where the long-term ceiling is real; a 10-year career decision based only on entry conditions will produce different outcomes than one that models the ceiling"
+    },
+    {
+      "dimension": "How they factor regulatory and political risk",
+      "junior_pattern": "Makes a return decision based on current conditions and current salary benchmarks without modeling downside scenarios",
+      "senior_pattern": "Reviews the sector's regulatory history over 3–5 years in the target country, identifies whether the sector has been subject to government intervention, and builds downside scenarios into the decision",
+      "why_it_matters": "Point-in-time conditions can reverse rapidly in regulated sectors; the 2018–2019 China finance returnee who did not model regulatory risk faced the 2021 crackdowns without preparation"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_sector_return_by_field",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -1,0 +1,551 @@
+{
+  "source_file": "advisor_red_flags_real_forum_thread.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Never choose a PhD program based on a single professor — require at least three faculty members you want to work with",
+      "condition": "When evaluating PhD programs and deciding whether to accept an offer",
+      "action": "Identify at least three faculty members whose research genuinely excites you before committing to a program",
+      "because": "If the one professor you came for leaves, gets tenure denied, loses funding, or turns out to be a poor mentor, you have no fallback — your entire PhD trajectory collapses around a single point of failure",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Choose a great advisor with mediocre everything else over a great program with a documented red-flag advisor",
+      "condition": "When deciding between School A (strong advisor, weaker resources) and School B (strong resources, advisor with documented issues)",
+      "action": "Prioritize advisor quality; decline the program with documented advisor problems regardless of prestige or resources",
+      "because": "The advisor-student relationship directly determines whether you graduate; lab culture and facilities are secondary — you cannot change a PI's fundamental approach, but you can navigate resource gaps",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Check whether a professor's publication record consists primarily of co-authorships with their own current or former students",
+      "condition": "When evaluating a potential PhD advisor's publication history during the application or interview stage",
+      "action": "Look up the advisor's recent papers and check co-author affiliations; if nearly all are current or former advisees, ask why they don't publish with peers in the field",
+      "because": "Insularity in publishing signals poor peer collaboration skills, which limits the professional network the advisor can offer you and may indicate other dysfunctional relational patterns",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Treat current student enthusiasm during campus visits as a signal, not just a formality",
+      "condition": "When attending PhD visit weekends or interviews and speaking with current graduate students",
+      "action": "Listen for hesitation, pauses, and qualified praise ('yeah...it's a really great program') and probe for patterns across multiple students",
+      "because": "Students who genuinely enjoy their program express it naturally; muted or performative enthusiasm after a pause reveals what they cannot say directly",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "rule": "Avoid programs that require PhD students to TA 2–3 courses per semester alongside research",
+      "condition": "When evaluating the TA load expectations of a PhD program during interviews or offer review",
+      "action": "Ask directly how many courses TAs are expected to teach per semester and whether this is standard for the full program duration",
+      "because": "Excessive TA loads signal that the program is using PhD students as cheap labor rather than investing in their research development, structurally delaying graduation",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor publication network (insular vs. broadly collaborative)",
+      "why_it_matters": "An advisor who only publishes with their own students cannot connect you to the broader academic community, limiting your professional network and future collaborations at the moment you need them most — job market",
+      "how_to_assess": "Search the advisor on Google Scholar; manually check the last 10–15 co-authors and identify what percentage are current or former students vs. peers at other institutions",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Documented advisor behavior patterns (broken promises, student departures, disorganization)",
+      "why_it_matters": "These patterns directly predict PhD completion risk; a disorganized advisor who makes and breaks commitments is a structural blocker to graduation, not a manageable inconvenience",
+      "how_to_assess": "Ask former students directly about advisor reliability; check attrition rate from the lab; ask the advisor about former students and what they are doing now",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "Program TA load and structural use of PhD students",
+      "why_it_matters": "Programs that systematically overload PhD students with teaching are trading student research progress for departmental instructional coverage — this extends time-to-degree and delays publications",
+      "how_to_assess": "Ask current students how many courses they TA per semester, whether this changes after the first year, and whether RA funding options exist as an alternative",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Lab peer culture — genuine vs. trauma-bonded cohesion",
+      "why_it_matters": "A close-knit student group can reflect healthy mentorship or can be a coping mechanism for surviving a dysfunctional advisor; confusing the two leads to misreading lab culture as a positive signal",
+      "how_to_assess": "Ask students what they would change about their lab or program; ask whether they have considered switching advisors; observe whether conversations about the PI are enthusiastic or carefully qualified",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "factor": "First-semester expectations for research output",
+      "why_it_matters": "Advisors who demand publishable work or formed research ideas within the first weeks of a PhD (especially for students without a prior master's) are signaling unrealistic expectations that will persist and escalate",
+      "how_to_assess": "Ask the advisor directly what they expect from a student in the first semester; ask current first- and second-year students what their advisor expected of them early on",
+      "weight": "medium",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Joining a lab with strong peer cohesion as a positive signal",
+      "unstated_consequence": "Tight student bonds may reflect a support network built to survive a dysfunctional advisor, not a sign of healthy lab culture — the cohesion is a coping mechanism, not an indicator of mentorship quality",
+      "who_it_affects": "Applicants who weigh 'community feel' heavily during visit weekends and interpret student closeness as evidence the lab is a good place to work",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Choosing a program because of one exceptional professor",
+      "unstated_consequence": "If that professor leaves, loses funding, retires, or proves to be a poor mentor, the student has no viable alternative advisor and may face program exit or an unplanned restart",
+      "who_it_affects": "PhD applicants who identify one perfect advisor match and treat that match as sufficient justification to accept an offer, regardless of broader program fit",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Accepting a program with high TA load in exchange for funding",
+      "unstated_consequence": "The TA commitment consumes the time nominally available for research, extending time-to-degree and delaying publications — the cost is paid in years, not dollars",
+      "who_it_affects": "Students who calculate funding in terms of stipend amount without accounting for the research-hours cost of fulfilling the TA requirement",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "choice": "Joining a lab with an advisor who has a large publication record",
+      "unstated_consequence": "If that publication record is built primarily on co-authoring with advisees rather than peers, the prestige of the record does not translate into a professional network for the student — the advisor's citations don't open doors they haven't opened themselves",
+      "who_it_affects": "Students who use publication count or h-index as a primary proxy for advisor quality without examining the co-author composition",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "choice": "Staying with a problematic advisor because the department resources, location, or peer group are strong",
+      "unstated_consequence": "Great facilities and a supportive cohort cannot compensate for an advisor who does not graduate students; the advisor determines whether you finish — everything else is secondary",
+      "who_it_affects": "Students who rationalize remaining with a documented red-flag advisor because the surrounding environment is appealing",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Accepting a PhD offer at a high-prestige program despite documented advisor red flags, rationalizing that the department's resources or rankings will compensate",
+      "why_it_happens": "Prestige bias and sunk-cost thinking during admissions — applicants overweight the brand value of the institution and underweight the operational reality that the advisor, not the university, determines daily PhD life and graduation",
+      "consequence": "Students end up in labs with disorganized, unreliable advisors, experience broken promises, watch peers leave the lab, and face delayed or incomplete dissertations — the prestige of the institution provides no protection once enrolled",
+      "warning_signs": [
+        "Multiple former students have left the lab",
+        "Advisor is described as disorganized or poor communicator by current students",
+        "Advisor makes specific promises during recruitment that feel unusually accommodating"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "Misreading tight peer cohesion in a lab as evidence of a healthy culture",
+      "why_it_happens": "Halo effect and social proof — a warm, close-knit student group feels like a positive signal, and applicants do not probe whether that closeness is a support structure built around surviving dysfunction",
+      "consequence": "Student joins a lab expecting community support only to discover the camaraderie is a coping mechanism; the advisor problems remain and the student must also navigate them",
+      "warning_signs": [
+        "Students speak warmly about each other but carefully or vaguely about the PI",
+        "Students mention 'having each other's backs' in contexts that don't quite fit a healthy lab",
+        "Questions about the advisor are redirected to talk about the cohort"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "pattern": "International students accepting first-semester overload (heavy coursework + multiple TA positions) without understanding program norms and then being labeled 'underperforming'",
+      "why_it_happens": "Power asymmetry and cultural adjustment — international students are less likely to push back on demands, less familiar with what is structurally normal, and more afraid of jeopardizing their visa status or funding",
+      "consequence": "Students internalize the 'underperforming' label as personal failure rather than recognizing it as an unreasonable structural expectation; this damages confidence and delays seeking help",
+      "warning_signs": [
+        "Advisor compares the student unfavorably to others in the first semester",
+        "Advisor uses language like 'might be dismissed' within the first few months",
+        "Student is carrying 9+ credit hours plus two TA positions simultaneously"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Advisor submitting student work to journals without student consent or adding their name to student publications without contribution",
+      "why_it_happens": "Power asymmetry — students lack the institutional knowledge or leverage to challenge a supervisor who controls their funding, degree progress, and recommendations",
+      "consequence": "Student loses credit for their own work; the advisor's publication record grows at the student's expense; the behavior is protected by the advisor's academic standing",
+      "warning_signs": [
+        "Advisor selects students who are unlikely to challenge them",
+        "Advisor restricts students to prescribed topics that align with the advisor's agenda",
+        "Advisor's entire publication list consists of co-authorships with advisees"
+      ],
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "What are former students from this lab doing now, and can I contact them directly?",
+      "what_it_reveals": "Whether the advisor successfully graduates and places students, and whether alumni are willing to speak candidly — an advisor who stonewalls this question or whose former students are unreachable is a red flag",
+      "follow_up_if_yes": "Ask former students directly whether the advisor kept commitments, how they handled conflict, and whether they would repeat the experience",
+      "follow_up_if_no": "Ask why contacting former students is difficult and look for lab attrition data through other channels",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "How many co-authors on this advisor's recent publications are their own current or former students vs. independent peers?",
+      "what_it_reveals": "Whether the advisor collaborates broadly in the field or operates as a closed loop — insularity in publishing predicts a limited professional network for you after graduation",
+      "follow_up_if_yes": "Assess whether the peer collaborators are in subfields relevant to your interests and could serve as references or collaborators for you",
+      "follow_up_if_no": "Ask the advisor directly about collaborations outside the lab and why their publication record is so internally focused",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "How many students have left this lab before completing their PhD in the last five years?",
+      "what_it_reveals": "Structural dysfunction — high attrition from a single lab, when not explained by funding changes, is the clearest leading indicator of advisor problems",
+      "follow_up_if_yes": "Ask the advisor or program coordinator to explain the departures; evasive or blame-shifting answers are themselves a red flag",
+      "follow_up_if_no": "Treat as a positive signal but continue checking other dimensions — low attrition in a small lab can also reflect students being afraid to leave",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "What does the advisor expect from a student in the first semester — specifically in terms of research output?",
+      "what_it_reveals": "Whether the advisor has realistic expectations calibrated to a student's actual stage of development, or whether they will apply pressure for publishable results before the student has the foundation to produce them",
+      "follow_up_if_yes": "Ask current first-year students whether the stated expectations match the lived experience",
+      "follow_up_if_no": "A vague or dismissive answer ('just get settled in') should prompt follow-up with current students about whether expectations become clear later and how",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "question": "If the one professor I came here to work with left tomorrow, would I still want to be in this program?",
+      "what_it_reveals": "Whether the program has enough depth — in faculty, resources, and fit — to sustain a PhD independently of a single advisor relationship",
+      "follow_up_if_yes": "Identify the other faculty members and assess whether those relationships are genuine or hypothetical",
+      "follow_up_if_no": "This is a strong signal to reconsider the offer or to conduct a broader faculty search before committing",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A tight-knit, supportive student community is a reliable indicator of a healthy lab and good advisor",
+      "actual_reality": "Strong peer bonds in a lab can be a trauma-bonding coping mechanism built specifically because the advisor is dysfunctional — the support is real, but it exists to survive the problem, not because the problem doesn't exist",
+      "implication": "Applicants should probe why the community is close, not just whether it is close — the same outcome (tight bonds) can have diametrically opposite causes",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "A professor with a large publication record is a strong advisor because they are clearly productive and know how to publish",
+      "actual_reality": "If that publication record is built almost entirely on co-authoring with current and former advisees, it signals insularity rather than academic standing — the advisor may be extracting productivity from students rather than generating it collaboratively",
+      "implication": "Always examine the composition of co-authors, not just the count of publications; an h-index built on student labor does not translate into a peer network for you",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "Prestige and resources of a top-ranked program are enough to overcome a problematic advisor",
+      "actual_reality": "The advisor, not the institution, determines whether a PhD student graduates on time, gets publications, and receives strong recommendations — facilities and rankings are irrelevant if the advisor is the blocker",
+      "implication": "Documented red flags about an advisor should be treated as disqualifying regardless of institutional prestige; there is no prestige discount on advisor dysfunction",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "common_belief": "First-semester PhD students who cannot produce research ideas quickly are underperforming",
+      "actual_reality": "First publications typically emerge in years 2–3; expecting formed research ideas within weeks of enrollment (especially without a prior master's) reflects unrealistic advisor expectations, not student failure",
+      "implication": "Students receiving early 'underperforming' labels should benchmark against program norms by speaking with other students and program coordinators before internalizing the label",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a potential PhD advisor",
+      "naive_pattern": "Check the advisor's h-index, publication count, grant funding, and department ranking — treat these as proxies for advisor quality",
+      "informed_pattern": "Examine co-author composition on recent publications, ask former students about reliability and promise-keeping, check lab attrition, and look for alignment between what the advisor says during recruitment and what current students report",
+      "why_it_matters": "Metrics are gameable through exploitative advising practices; the operational quality of the advisor-student relationship is only visible through qualitative investigation",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to interpret visit weekend dynamics",
+      "naive_pattern": "Treat visit weekend as a chance to be evaluated; focus on impressing faculty and fitting in with students; interpret a warm reception as a good sign",
+      "informed_pattern": "Treat visit weekend as a two-way evaluation; actively probe current students for qualified enthusiasm, pauses before praise, and what they would change; recognize that candidates who ask hard questions are demonstrating exactly the judgment good programs want",
+      "why_it_matters": "Applicants who fail to evaluate the program during visit weekend miss the only low-cost opportunity to gather candid information before a five-year commitment",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to think about advisor-student fit vs. program prestige",
+      "naive_pattern": "Rank programs by prestige and accept the highest-ranked offer; assume the brand will open doors regardless of advisor quality",
+      "informed_pattern": "Treat advisor quality as the primary variable and program prestige as a secondary tiebreaker; a lower-ranked program with a reliable, well-networked advisor produces better career outcomes than a top program with a dysfunctional one",
+      "why_it_matters": "The career leverage that prestige provides depends on completing the degree and receiving strong recommendations — both of which require a functional advisor relationship",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "dimension": "How to respond to early pressure from a new advisor",
+      "naive_pattern": "Internalize the advisor's framing ('you might be underperforming') as accurate feedback and increase effort without questioning whether the expectation is reasonable",
+      "informed_pattern": "Benchmark the expectation against program norms by talking to peers and other faculty; recognize when pressure reflects the advisor's dysfunction rather than the student's performance; seek clarification on expectations in writing",
+      "why_it_matters": "Internalizing unreasonable expectations as personal failure damages confidence and delays the student from seeking structural remedies (advisor change, program ombudsperson, etc.)",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If a program is top-ranked and has great facilities, the advisor's personal issues won't be a dealbreaker — the environment compensates",
+      "why_believed": "Prestige is visible and measurable; advisor dysfunction is invisible until you are inside the lab; applicants overweight what they can see and underweight what they cannot",
+      "actual_rule": "The advisor is the single most important variable in PhD success — they control your funding, publications, recommendations, and ultimately your graduation; no amount of departmental prestige neutralizes a documented dysfunctional advisor",
+      "real_consequence": "Students accept offers at prestigious programs with red-flag advisors, experience broken promises and student departures, and face delayed or failed dissertations while the institution's brand offers no protection",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "A professor who publishes a lot with their students is a great mentor — they clearly invest in student development",
+      "why_believed": "High co-authorship with students superficially resembles mentorship investment; it is easy to confuse volume of shared publications with quality of the mentoring relationship",
+      "actual_rule": "If the publication record is exclusively with current and former students and not with independent peers, it may indicate the advisor is extracting student labor rather than collaborating broadly — and it signals insularity that limits the student's network",
+      "real_consequence": "Students join labs expecting mentorship and a professional network, only to discover the advisor's collaborations are internally closed and offer no external connections upon graduation",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "misconception": "First-semester PhD students who can't generate strong research ideas immediately are falling behind",
+      "why_believed": "Advisors who apply this pressure frame it as a standard, and students — especially international students new to the system — have no calibration benchmark to contradict it",
+      "actual_rule": "First publications in PhD programs typically emerge in years 2–3; expecting formed, actionable research ideas within the first weeks of enrollment is structurally unreasonable, not a legitimate performance standard",
+      "real_consequence": "Students internalize false underperformance labels, lose confidence, and delay seeking structural help — sometimes leaving programs unnecessarily or suffering prolonged distress",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Master's student whose advisor neglected paperwork, submitted student work to journals without consent, added their name to student publications, and selected compliant students unlikely to challenge them",
+      "decision": "Student remained in the program under this advisor; the advisor's extensive publication record (built on student co-authorships) protected their academic position despite the behavior",
+      "outcome": "The advisor faced no institutional consequences; the student's work was published without their full consent or credit; the advisor's insularity was structurally rewarded",
+      "lesson": "A large publication record built on student co-authorships can protect an exploitative advisor from accountability — the metric that looks like success is the same mechanism enabling the exploitation",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "First-semester CS PhD student (no prior master's) assigned 9 credit hours of coursework plus two TA positions; newly-promoted advisor demanded research ideas within weeks and threatened dismissal for 'underperforming'",
+      "decision": "Student sought community advice rather than immediately accepting the framing",
+      "outcome": "Community consensus confirmed the expectations were structurally unreasonable; the student was advised to benchmark against program norms and seek clarification rather than internalizing the label",
+      "lesson": "First-semester underperformance labels applied before normal research ramp-up periods (years 2–3) reflect advisor dysfunction, not student failure — especially for international students carrying teaching loads simultaneously with coursework",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "situation": "STEM PhD applicant choosing between School A (strong advisor, weaker resources, small isolated lab) and School B (documented red-flag advisor — disorganization, broken promises, multiple student departures — but excellent facilities, department, and peer group)",
+      "decision": "Community strongly advised choosing School A",
+      "outcome": "Thread reached strong consensus: advisor quality is the determinative variable; School B's resources cannot compensate for an advisor with documented failures of reliability and student retention",
+      "lesson": "When an advisor has documented red flags (broken promises, student departures, disorganization), those signals predict your PhD experience more accurately than any other program variable — do not trade a functional advisor for prestige or resources",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "situation": "Applicant asked a recent program graduate about their experience during a campus visit",
+      "decision": "The graduate paused visibly before saying 'yeah...it's a really great program' with little enthusiasm; the applicant noticed and withdrew their application",
+      "outcome": "Not explicitly stated, but the applicant treated the signal as sufficient to decline",
+      "lesson": "The quality of enthusiasm from current and recent students during campus visits is a leading indicator — genuine excitement is expressed naturally; performed, qualified, or hesitant praise after a pause reveals what the speaker cannot say directly",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Applicant receives an offer from a prestigious program with a known red-flag advisor and asks whether the program's resources and ranking can compensate",
+      "underlying_state": "Prestige anxiety and loss aversion — the applicant fears turning down a top-ranked offer more than they fear the documented advisor problems; the brand feels like a known quantity while the advisor problems feel like a manageable risk",
+      "how_it_manifests": "Applicant lists the program's positive attributes at length and frames advisor red flags as 'concerns' or 'things to watch' rather than disqualifying evidence; seeks permission from the community to accept",
+      "expert_move": "Reframe the question from 'can the program compensate for the advisor?' to 'does this advisor have a track record of graduating students and keeping commitments?' — force the applicant to answer the operational question rather than the prestige question",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "International student is told by their advisor in the first semester that they may be 'underperforming' and faces comparison to other students",
+      "underlying_state": "Power asymmetry fear and imposter syndrome — international students are acutely aware of their visa dependency on program standing and are less likely to have the cultural calibration to know whether the expectation is reasonable",
+      "how_it_manifests": "Student internalizes the label as personal failure, increases workload unsustainably, avoids seeking help from peers or program administrators, and does not challenge whether the standard is structurally normal",
+      "expert_move": "Immediately provide a benchmark — first publications emerge in years 2–3; first-semester expectations are coursework adjustment, not research output — and direct the student to gather data from peers before accepting the advisor's framing",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Applicant visits a PhD program, finds the student cohort warm and tightly bonded, and uses this as a primary positive signal",
+      "underlying_state": "Social proof bias — humans use group cohesion as a heuristic for safety and quality; a close community feels like evidence that the environment is good",
+      "how_it_manifests": "Applicant reports the 'great community' as a key reason to accept without probing whether the closeness is a support structure built around surviving dysfunction",
+      "expert_move": "Ask the applicant to distinguish between: 'students enjoy each other because the environment is healthy' vs. 'students rely on each other because the advisor is dysfunctional' — then suggest specific probe questions to distinguish the two",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "trigger": "Applicant is paralyzed choosing between a well-matched lower-ranked program and a higher-ranked program with one exceptional faculty match but no backup options",
+      "underlying_state": "Single-point optimization fallacy combined with FOMO — the exceptional advisor match feels irreplaceable, and the applicant fears they will regret not taking the 'best' option",
+      "how_it_manifests": "Applicant focuses entirely on the one exceptional professor and discounts the structural risk of having no fallback; asks the community to validate the single-professor choice",
+      "expert_move": "Ask the applicant to answer: 'if this professor left the program tomorrow, would you still want to be here?' — this forces them to evaluate the program on its own merits and surfaces the single-point-of-failure risk",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I choose School B (great resources, great department, great peers) even though the advisor has some concerning issues?",
+      "reframe": "The advisor determines whether you graduate — everything else is secondary. The question is not 'is the program good?' but 'does this advisor have a track record of graduating students and keeping commitments?'",
+      "why_it_works": "It shifts the decision criterion from additive (sum of positives) to threshold (one variable as a gate) — applicants who think additively will always find enough positives to rationalize a bad advisor; the reframe forces a pass/fail test on the critical variable",
+      "example_language": "Great advisor and meh everything else beats out multiple red flags with the advisor. An effective advisor is essential for graduation.",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "I'm in my first semester and my advisor says I might be underperforming — am I failing?",
+      "reframe": "The question is not whether you are meeting your advisor's expectations — the question is whether your advisor's expectations are reasonable for a first-semester student. Benchmark against program norms before accepting the framing.",
+      "why_it_works": "It moves agency from the student (am I good enough?) to the structure (is the expectation calibrated correctly?) — this is not a performance question, it is a norms question, and answering it requires data from peers, not harder work",
+      "example_language": "First publications typically emerge in years 2–3. The pressure to produce papers during the first semester was universally deemed unreasonable.",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "The students at this program are so close and supportive — isn't that a great sign?",
+      "reframe": "Close student bonds can mean two completely different things: a healthy culture where everyone thrives, or a survival network built because the advisor is dysfunctional. The outcome looks the same from the outside. You need to find out which one it is.",
+      "why_it_works": "It introduces the possibility that the same observable signal has opposite causes — this breaks the heuristic that 'community = good' and motivates the applicant to probe rather than conclude",
+      "example_language": "Caution: close relationships among students might stem from needing support to survive a dysfunctional lab — that peer support is a coping mechanism, not a sign of healthy culture.",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    },
+    {
+      "original_framing": "Is this program worth attending? I asked a recent graduate and they said it was great.",
+      "reframe": "Don't evaluate the content of what current students say — evaluate how they say it. Genuine enthusiasm is spontaneous. A pause before 'yeah...it's a really great program' is the signal, not the words.",
+      "why_it_works": "It shifts attention from semantic content (the words said) to paralinguistic signals (hesitation, tone, delivery) — experienced evaluators know that what people cannot say directly is often more informative than what they do say",
+      "example_language": "Genuine excitement (or lack thereof) from current students is telling. A pattern of muted enthusiasm across multiple students is a significant red flag.",
+      "regions": [
+        "us",
+        "canada",
+        "uk"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "gradcafe_advisor_red_flags_real_forum_thread",
+  "_source_regions": [
+    "us",
+    "canada",
+    "uk"
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "source_file": "salary_negotiation_visa_constraints.txt",
+  "heuristics": [
+    {
+      "rule": "Separate the visa sponsorship decision from the salary negotiation",
+      "condition": "When an employer has already extended an offer that includes H-1B sponsorship...",
+      "action": "...treat visa confirmation as an operational detail to verify early, then negotiate compensation as a separate conversation with full professional leverage",
+      "because": "The employer has already committed to the cost and risk of sponsorship by making the offer; that decision is made and does not deplete your negotiating capital on salary"
+    },
+    {
+      "rule": "Confirm visa sponsorship before negotiating salary, not after",
+      "condition": "When receiving an offer as an international student who needs H-1B sponsorship...",
+      "action": "...first confirm sponsorship is in place as a matter-of-fact operational check, then pivot immediately to salary negotiation",
+      "because": "Negotiating salary before confirming sponsorship risks investing negotiating energy in an offer that can't materialize; doing it after confirmation means you're negotiating from a position of mutual commitment"
+    },
+    {
+      "rule": "If base salary is firm, redirect to signing bonus",
+      "condition": "When an employer says the base salary is fixed or constrained by pay bands...",
+      "action": "...ask explicitly about signing bonus flexibility before accepting the ceiling as final",
+      "because": "Signing bonuses often sit outside standardized pay band systems and have separate budget authority, making them more movable than base when base is constrained"
+    },
+    {
+      "rule": "Use a competing offer as your strongest negotiating tool regardless of visa status",
+      "condition": "When you have a legitimate competing offer and feel reluctant to mention it because of visa constraints...",
+      "action": "...present the competing offer directly as a market signal, without disclosing which company if you prefer",
+      "because": "A competing offer communicates market value objectively and never reads as demanding — it reads as in-demand, which strengthens your position with any employer regardless of sponsorship dynamics"
+    },
+    {
+      "rule": "Negotiate remote/hybrid arrangements before joining, not after",
+      "condition": "When location flexibility matters for your situation (immigration, family, PGWP province) and you are in the offer stage...",
+      "action": "...raise remote or hybrid work arrangements as part of offer negotiation",
+      "because": "This is significantly harder to change post-joining when you are already integrated into team norms and expectations"
+    },
+    {
+      "rule": "After making a salary ask, stay silent",
+      "condition": "When you have stated your salary ask in a negotiation conversation...",
+      "action": "...stop talking and let the employer respond without filling the silence with back-pedaling or justification",
+      "because": "Filling the silence yourself signals anxiety and weakens the ask before the employer has even responded; silence holds the ask in place"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether employer has already committed to H-1B sponsorship",
+      "why_it_matters": "If sponsorship is already embedded in the offer, the fear-based reason to avoid negotiating is eliminated — the decision is made and salary is now a separate variable",
+      "how_to_assess": "Confirm explicitly during offer stage: 'I'll need H-1B sponsorship starting [date] — is that process confirmed on your end?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether employer uses standardized pay bands",
+      "why_it_matters": "At large companies with rigid pay bands, base salary negotiation has a structural ceiling; knowing this redirects effort to signing bonus, equity, and job level rather than base",
+      "how_to_assess": "Ask directly if the offer is within a fixed pay band; research company size and HR structure; tech companies with 1000+ employees typically have bands",
+      "weight": "high"
+    },
+    {
+      "factor": "Presence of a competing offer",
+      "why_it_matters": "A competing offer is the single most powerful negotiating lever available regardless of visa status, because it provides objective external market validation",
+      "how_to_assess": "Evaluate whether you have a legitimate offer at a different salary level that you can credibly cite; you do not need to disclose the company name",
+      "weight": "high"
+    },
+    {
+      "factor": "Visa type and work authorization status",
+      "why_it_matters": "PGWP holders in Canada negotiate identically to domestic workers with no sponsorship dynamic; H-1B candidates face an asymmetric fear dynamic that must be consciously reframed",
+      "how_to_assess": "Identify your current and future work authorization status before entering negotiation to calibrate your actual constraints versus perceived constraints",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the role includes equity compensation",
+      "why_it_matters": "Equity is negotiated separately from base salary and often has more room for movement, providing an additional dimension of negotiation beyond base",
+      "how_to_assess": "Ask whether the offer includes RSUs or options; if yes, negotiate shares/units, vesting cliff, and schedule as a distinct negotiation track",
+      "weight": "medium"
+    },
+    {
+      "factor": "Employer size",
+      "why_it_matters": "Small companies have more flexibility on benefits, PTO, professional development budgets, and remote arrangements than large companies with standardized HR policies",
+      "how_to_assess": "Assess headcount; companies under ~200 employees typically have more discretionary flexibility on non-salary components",
+      "weight": "medium"
+    },
+    {
+      "factor": "H-1B prevailing wage floor",
+      "why_it_matters": "For sponsored roles, USCIS requires the employer to pay above a regulatory minimum, meaning the first offer is already constrained from below — negotiating upward from that floor is normal and expected",
+      "how_to_assess": "Research prevailing wage for the role/location using DOL wage data; understand that any sponsored offer already exceeds this floor",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting the first offer without negotiating to avoid risk of offer withdrawal",
+      "unstated_consequence": "Surrenders $5,000–$15,000 in first-year salary that was built into the offer as negotiation room, compounding to $100,000+ over a career when accounting for raises and future offers anchored to this salary",
+      "who_it_affects": "International students who treat their visa dependency as a reason to be grateful rather than as a separate variable from compensation"
+    },
+    {
+      "choice": "Framing visa sponsorship as the primary ask ('will you sponsor me?') rather than an operational confirmation",
+      "unstated_consequence": "Positions the candidate as asking for a favor, which structurally weakens their negotiating position on all subsequent compensation discussions",
+      "who_it_affects": "International students who conflate sponsorship confirmation with the start of their negotiation rather than treating it as a precondition check"
+    },
+    {
+      "choice": "Choosing not to use a competing offer during negotiation out of fear of appearing demanding",
+      "unstated_consequence": "Forfeits the strongest market signal available, leaving the employer's initial offer as the only reference point and removing the objective basis for a higher ask",
+      "who_it_affects": "International students who misread the employer's perception of competing offers as negative when it is actually a standard and expected part of negotiation"
+    },
+    {
+      "choice": "Deferring negotiation of remote/hybrid arrangements until after joining",
+      "unstated_consequence": "The arrangement becomes much harder to change post-joining because it requires renegotiating against established team norms rather than setting expectations before they are formed",
+      "who_it_affects": "Candidates with location-specific needs tied to immigration status, family, or PGWP provincial requirements"
+    },
+    {
+      "choice": "Accepting base salary without asking about equity separately",
+      "unstated_consequence": "Misses a negotiation dimension that is tracked separately from pay bands and often has more flexibility, particularly at tech companies",
+      "who_it_affects": "Candidates who treat compensation as a single number rather than a multi-component package with independently movable parts"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Not negotiating at all because of fear that the employer will withdraw the offer",
+      "why_it_happens": "International students conflate two separate decisions — the employer's decision to sponsor and the employer's decision on salary — and treat the first as fragile when it has already been made",
+      "consequence": "Consistently accepts $5,000–$15,000 below available market rate on first offer, with compounding lifetime financial cost exceeding $100,000",
+      "warning_signs": [
+        "Internally framing negotiation as 'pushing luck' or 'being ungrateful'",
+        "Accepting offers the same day without any counter or request for time to consider"
+      ]
+    },
+    {
+      "pattern": "Negotiating visa sponsorship before confirming it, then losing leverage on salary",
+      "why_it_happens": "Candidates treat the sponsorship question as the main negotiation, expending relational capital on it and feeling they cannot ask for more afterward",
+      "consequence": "Weakens the salary negotiation position by framing the entire interaction as one where the employer is doing the candidate a favor",
+      "warning_signs": [
+        "Leading the offer conversation with 'will you be able to sponsor me?' before any compensation discussion",
+        "Expressing disproportionate relief when sponsorship is confirmed rather than treating it as expected"
+      ]
+    },
+    {
+      "pattern": "Not using a competing offer during negotiation",
+      "why_it_happens": "Misreading the social dynamics of negotiation — assuming that mentioning a competing offer will seem aggressive or demanding, when in fact it is standard professional practice",
+      "consequence": "Leaves the most powerful negotiating tool unused, resulting in lower final compensation",
+      "warning_signs": [
+        "Holding a competing offer but actively choosing not to mention it",
+        "Framing a competing offer as a threat rather than a market data point"
+      ]
+    },
+    {
+      "pattern": "Back-pedaling or filling silence after stating a salary ask",
+      "why_it_happens": "Anxiety during negotiation causes candidates to interpret silence as rejection and attempt to pre-emptively soften or retract the ask before receiving a response",
+      "consequence": "Undermines the ask before the employer has even responded, often reducing the final outcome",
+      "warning_signs": [
+        "Adding qualifications like 'but I understand if that's not possible' in the same breath as the ask",
+        "Talking continuously after stating a number without pausing for a response"
+      ]
+    },
+    {
+      "pattern": "Treating benefits and base salary as the only negotiable components",
+      "why_it_happens": "Candidates are not aware that signing bonus, equity, job level, start date, and professional development budgets are separately negotiable and often have more flexibility",
+      "consequence": "Accepts a ceiling on total compensation when alternative dimensions had movement available",
+      "warning_signs": [
+        "Stopping negotiation after being told base salary is fixed",
+        "Never asking about signing bonus or equity as separate line items"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you confirmed that the employer is willing to sponsor your H-1B, or are you still uncertain?",
+      "what_it_reveals": "Whether the candidate's fear of negotiating is based on actual uncertainty about sponsorship or a false assumption that sponsorship is still contingent on their behavior",
+      "follow_up_if_yes": "Sponsorship is confirmed — treat it as a closed variable and negotiate compensation as you would as a domestic candidate",
+      "follow_up_if_no": "Confirm sponsorship first as an operational check before entering any salary negotiation; do not mix the two conversations"
+    },
+    {
+      "question": "Do you have a competing offer at a different compensation level?",
+      "what_it_reveals": "Whether the candidate has access to the most powerful negotiating tool available and whether they are choosing not to use it",
+      "follow_up_if_yes": "Establish whether they are planning to use it in negotiation; if not, identify and address the reason they're hesitating",
+      "follow_up_if_no": "Shift strategy to market research, role scope framing, and exploring signing bonus and equity as alternative levers"
+    },
+    {
+      "question": "Is the employer a large company with standardized pay bands, or a smaller company with flexible compensation?",
+      "what_it_reveals": "Whether base salary negotiation has a structural ceiling and which components (signing bonus, equity, job level, benefits) are worth pursuing instead",
+      "follow_up_if_yes": "Focus negotiation energy on signing bonus, equity, and job level rather than base salary",
+      "follow_up_if_no": "Base salary has more flexibility; pursue a direct 5–15% counter before moving to other components"
+    },
+    {
+      "question": "Are you negotiating in the US under H-1B sponsorship, or in Canada with a PGWP?",
+      "what_it_reveals": "Whether the candidate has open work authorization (PGWP) and can negotiate identically to a domestic worker, or faces the H-1B sponsorship dynamic that requires deliberate reframing",
+      "follow_up_if_yes": "PGWP: no sponsorship dynamic to manage; negotiate directly and compare offers accounting for CAD/USD exchange and healthcare value",
+      "follow_up_if_no": "H-1B: explicitly decouple the sponsorship confirmation from the salary negotiation to avoid weakening leverage"
+    },
+    {
+      "question": "What is your internal framing when you think about asking for more money — professional negotiation or asking for a favor?",
+      "what_it_reveals": "Whether the candidate has internalized the fear-based frame ('I should be grateful') or the market-value frame ('I am a qualified professional negotiating compensation')",
+      "follow_up_if_yes": "Fear/favor frame: address the reframe explicitly before entering negotiation — the sponsorship decision and salary decision are separate",
+      "follow_up_if_no": "Market-value frame: proceed to tactical advice on how to structure the ask, timing, and silence"
+    },
+    {
+      "question": "Has the employer indicated that the offer is firm or non-negotiable?",
+      "what_it_reveals": "Whether the candidate needs to redirect to alternative negotiation dimensions (signing bonus, equity, level) rather than directly countering base salary",
+      "follow_up_if_yes": "Ask about signing bonus, equity separately, and whether job level is negotiable; treat 'firm base' as a constraint on one variable, not all variables",
+      "follow_up_if_no": "The offer has not been declared firm; proceed with a direct salary counter using market rate research as justification"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Negotiating salary risks causing the employer to withdraw the offer, especially for international students who need sponsorship",
+      "actual_reality": "Employers almost never withdraw offers because a candidate negotiated professionally; doing so would destroy reputation and create legal risk. The first offer typically has 5–20% negotiation room built in intentionally",
+      "implication": "International students who don't negotiate because of this fear are forfeiting available compensation for a risk that essentially does not exist at legitimate employers"
+    },
+    {
+      "common_belief": "Once an employer agrees to sponsor H-1B, the candidate has used up their goodwill and cannot push further on salary",
+      "actual_reality": "The sponsorship decision and the salary decision are entirely separate. Sponsorship represents the employer's decision that the candidate is worth hiring; salary represents a separate negotiation about compensation level",
+      "implication": "Candidates should confirm sponsorship as an operational detail, then immediately proceed to negotiate compensation without treating sponsorship as a debt owed"
+    },
+    {
+      "common_belief": "Mentioning a competing offer during negotiation seems demanding or threatening, especially for visa-dependent candidates",
+      "actual_reality": "A legitimate competing offer is the clearest signal of market value and reads as 'in-demand' rather than 'demanding'; it is the most standard and effective negotiating tool available",
+      "implication": "Candidates with competing offers should almost always use them; withholding this information disadvantages them with no corresponding benefit"
+    },
+    {
+      "common_belief": "Base salary is the primary or only negotiable component of a compensation package",
+      "actual_reality": "Signing bonuses, equity (RSUs/options), job level, start date, remote/hybrid arrangements, and professional development budgets are all independently negotiable and often have more flexibility than base salary, particularly at large companies with pay bands",
+      "implication": "When base salary hits a ceiling, candidates should immediately pivot to these other dimensions rather than accepting that negotiation is over"
+    },
+    {
+      "common_belief": "For H-1B sponsored roles, the employer can offer whatever salary they choose",
+      "actual_reality": "USCIS requires employers to pay the prevailing wage for the role and location; the first offer is already constrained from below by a regulatory floor, making upward negotiation from that floor completely normal and expected",
+      "implication": "International students should understand they are negotiating above a floor that already exists, not negotiating from a position of charity"
+    },
+    {
+      "common_belief": "PGWP holders in Canada are in a weaker negotiating position because they are international students",
+      "actual_reality": "PGWP is open work authorization; PGWP holders negotiate identically to domestic Canadian workers with no sponsorship dynamic",
+      "implication": "PGWP holders should apply standard Canadian negotiation norms (10–15% above initial offer) and also account for CAD/USD differential and healthcare value when comparing to US offers"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How visa status is framed in the negotiation",
+      "junior_pattern": "Treats visa sponsorship as a favor from the employer that creates an obligation to be accommodating, grateful, and non-demanding on salary",
+      "senior_pattern": "Treats visa sponsorship as an operational requirement that has already been decided, then negotiates compensation as a separate professional conversation",
+      "why_it_matters": "The frame determines the entire dynamic of the negotiation; the gratitude frame structurally weakens every subsequent ask while the professional frame preserves full leverage"
+    },
+    {
+      "dimension": "Response to 'the offer is firm'",
+      "junior_pattern": "Accepts the statement as closing the negotiation and either accepts or declines the offer as presented",
+      "senior_pattern": "Treats 'base is firm' as closing one dimension and immediately pivots to signing bonus, equity, job level, or start date as alternative variables",
+      "why_it_matters": "Compensation is multi-dimensional; treating one ceiling as the end of negotiation forfeits available movement in other components"
+    },
+    {
+      "dimension": "Use of competing offers",
+      "junior_pattern": "Withholds competing offers out of fear of seeming demanding, aggressive, or ungrateful — especially when visa-dependent",
+      "senior_pattern": "Presents competing offers as objective market data with a collaborative framing: 'this company is my first choice, is there flexibility to get closer to X?'",
+      "why_it_matters": "The competing offer is the single most effective negotiating tool; not using it is the equivalent of not using the strongest card in your hand"
+    },
+    {
+      "dimension": "Behavior after stating a salary ask",
+      "junior_pattern": "Fills the silence after stating an ask with qualifications, apologies, or pre-emptive softening before the employer has responded",
+      "senior_pattern": "States the ask clearly and then waits silently for the employer's response, allowing the ask to stand on its own",
+      "why_it_matters": "Filling silence signals anxiety and weakens the ask; silence holds the number in place and puts the conversational burden on the employer"
+    },
+    {
+      "dimension": "Timing of visa disclosure relative to salary negotiation",
+      "junior_pattern": "Leads with visa status questions before establishing value, framing the conversation as 'will you help me?' before 'here's what I'm worth'",
+      "senior_pattern": "Establishes enthusiasm and begins salary negotiation framework first, then confirms visa sponsorship as a logistical step within the offer acceptance process",
+      "why_it_matters": "Order of operations in negotiation signals what is primary; leading with visa need defines you as a candidate with constraints rather than a professional with value"
+    },
+    {
+      "dimension": "Understanding of what is and isn't actually negotiable",
+      "junior_pattern": "Believes visa sponsorship terms, H-1B cap status, and large-company benefits are negotiable; or conversely believes signing bonus, equity, and job level are fixed",
+      "senior_pattern": "Accurately maps which variables have real flexibility (signing bonus, equity, level, start date, remote work) versus which are structurally fixed (H-1B cap status, immigration attorney, standardized benefits at large companies)",
+      "why_it_matters": "Spending negotiating energy on non-movable variables while ignoring movable ones wastes leverage and leaves money on the table"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_salary_negotiation_visa_constraints",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

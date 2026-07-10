@@ -1,0 +1,257 @@
+{
+  "source_file": "signing_bonus_clawbacks.txt",
+  "heuristics": [
+    {
+      "rule": "Negotiate clawback terms before signing, not when you're trying to leave",
+      "condition": "When you receive a job offer with a signing bonus attached",
+      "action": "Treat clawback terms as negotiable contract points — structure, period, gross/net, and termination triggers — and address them all before you sign",
+      "because": "Once you sign, you have no leverage. All four terms have legitimate counteroffers that reputable companies will consider"
+    },
+    {
+      "rule": "Push for prorated clawback over cliff clawback",
+      "condition": "When a signing bonus agreement defaults to a cliff structure (full repayment if you leave before the period ends)",
+      "action": "Request prorated repayment language — 'a prorated structure is fair to both parties'",
+      "because": "Cliff structures create a binary risk where leaving even one month early costs you the full amount; prorated structures limit downside proportionally"
+    },
+    {
+      "rule": "Insist on net repayment language, not gross",
+      "condition": "When a clawback clause specifies repayment of the signing bonus without specifying gross vs. net",
+      "action": "Negotiate explicit language that repayment is calculated on the net amount received after taxes",
+      "because": "Gross repayment means you must repay money you already paid in taxes and no longer have — you can end up owing more than you ever kept"
+    },
+    {
+      "rule": "Any clawback clause that doesn't exclude layoffs is a liability trap",
+      "condition": "When reviewing termination trigger language in a signing bonus clause",
+      "action": "Require explicit language excluding 'termination without cause' and 'reduction in force' from clawback triggers before signing",
+      "because": "Sloppy or aggressive contract language can require repayment even after a layoff — leaving you owing tens of thousands when you didn't choose to leave"
+    },
+    {
+      "rule": "Treat the signing bonus as locked capital for the full clawback period",
+      "condition": "When you accept a signing bonus with a cliff clawback structure you couldn't negotiate away",
+      "action": "Do not spend the full signing bonus until the clawback period clears — keep it liquid",
+      "because": "If you're laid off before the cliff, you must repay the gross amount immediately; not having the cash creates a serious financial crisis"
+    },
+    {
+      "rule": "A company refusing to add layoff exclusion language is a red flag about culture",
+      "condition": "When negotiating clawback terms and the company won't exclude termination without cause",
+      "action": "Treat this refusal as a signal about how the company uses clawbacks and weigh it as a data point about the offer",
+      "because": "Reputable companies have no legitimate reason to retain clawback rights over employees they chose to lay off — refusal suggests adversarial intent"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Clawback structure (cliff vs. prorated)",
+      "why_it_matters": "Cliff structures mean 100% repayment liability until the final day of the clawback period; prorated structures reduce liability proportionally over time — the same bonus carries dramatically different risk depending on structure",
+      "how_to_assess": "Read the contract language explicitly. Look for 'full repayment' or 'prorated based on months remaining.' If it doesn't say prorated, it is almost certainly a cliff.",
+      "weight": "high"
+    },
+    {
+      "factor": "Termination trigger language",
+      "why_it_matters": "Whether the clawback applies only to voluntary resignation and termination for cause — or also to layoffs — determines whether you bear risk for things outside your control",
+      "how_to_assess": "Search the contract for phrases like 'for any reason or no reason,' 'voluntary resignation,' 'termination for cause.' Absence of layoff exclusion is not protection — it must be explicitly stated.",
+      "weight": "high"
+    },
+    {
+      "factor": "Gross vs. net repayment obligation",
+      "why_it_matters": "Gross repayment means you repay the pre-tax amount, not what you actually received. On a $30K bonus with a 33% effective tax rate, you owe $10K more than you kept.",
+      "how_to_assess": "Look for explicit 'gross amount' or 'net of applicable taxes' language. If it says gross, negotiate. If it's silent, treat it as gross until confirmed otherwise in writing.",
+      "weight": "high"
+    },
+    {
+      "factor": "Clawback period length",
+      "why_it_matters": "12 months is industry standard; 18–24 months extends your liability window significantly and limits career mobility for longer",
+      "how_to_assess": "Identify the stated period in the contract. Compare against the 12-month standard. Periods over 12 months are worth actively pushing back on.",
+      "weight": "medium"
+    },
+    {
+      "factor": "Size of the signing bonus relative to financial reserves",
+      "why_it_matters": "A large signing bonus with a cliff clawback creates meaningful financial risk if departure happens before the cliff; this risk scales with how much of the bonus you spend",
+      "how_to_assess": "Ask: if I had to repay the gross amount tomorrow, could I? If no, the bonus is not yet safe to spend.",
+      "weight": "medium"
+    },
+    {
+      "factor": "Whether signing bonus is replacing unvested equity from a prior employer",
+      "why_it_matters": "When a signing bonus is equity replacement, losing it via clawback means you lost both your prior equity AND the replacement — a double loss on a single departure",
+      "how_to_assess": "Identify in the offer letter whether the signing bonus is explicitly described as equity compensation replacement. If yes, negotiating clawback protections becomes higher priority.",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a signing bonus with a cliff clawback and spending it",
+      "unstated_consequence": "You create a financial liability that persists for the entire clawback period. If laid off before the cliff, you owe the gross amount — which may exceed what you actually have available to repay",
+      "who_it_affects": "Early-career employees who receive large signing bonuses relative to their savings, and employees at companies with high layoff risk"
+    },
+    {
+      "choice": "Signing a clawback clause without reading the termination trigger language",
+      "unstated_consequence": "A clause with 'for any reason or no reason' language means a layoff — an event entirely outside your control — triggers full repayment. You can be both unemployed and indebted simultaneously.",
+      "who_it_affects": "Anyone joining a company in a volatile industry, recently-funded startup, or large tech company with a history of reductions in force"
+    },
+    {
+      "choice": "Not negotiating gross vs. net repayment terms",
+      "unstated_consequence": "If you trigger the clawback, you repay more than you ever received. On a $30K bonus, you net $20K but owe $30K — creating a $10K deficit from a bonus you no longer have.",
+      "who_it_affects": "Any employee who triggers a clawback, but hits hardest on those in high tax brackets or with large bonuses"
+    },
+    {
+      "choice": "Accepting a 24-month clawback period without negotiating down",
+      "unstated_consequence": "Your career mobility is suppressed for two years. Leaving for a better opportunity within 24 months — a normal career move — carries full or partial financial penalty.",
+      "who_it_affects": "High performers who may receive outside offers, and employees whose role changes significantly (restructuring, manager changes) but who want to leave before 24 months"
+    },
+    {
+      "choice": "Treating the signing bonus as equivalent to salary when comparing offers",
+      "unstated_consequence": "The signing bonus carries clawback risk that salary does not. Comparing a $20K salary increase to a $20K signing bonus ignores that the bonus is contingent and reversible.",
+      "who_it_affects": "Candidates evaluating competing offers where one uses a large signing bonus to close a compensation gap"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Signing the clawback clause without reading the termination trigger language",
+      "why_it_happens": "Candidates are focused on the bonus amount, not the conditions. Clawback language is buried in employment agreements and rarely flagged by recruiters. People assume 'clawback = if you quit early' without verifying.",
+      "consequence": "Being laid off and simultaneously receiving a demand letter to repay tens of thousands of dollars — financially devastating and legally binding",
+      "warning_signs": [
+        "Contract uses 'for any reason or no reason' language",
+        "No explicit mention of layoff or reduction in force exclusion anywhere in the agreement"
+      ]
+    },
+    {
+      "pattern": "Spending the signing bonus before the clawback period clears",
+      "why_it_happens": "The bonus feels like income once it hits your account. People don't viscerally treat it as contingent. No one reminds you of the liability.",
+      "consequence": "When a clawback is triggered — especially via layoff — you must repay money you no longer have, creating debt and financial stress during unemployment",
+      "warning_signs": [
+        "No mental or physical separation of the signing bonus from regular funds",
+        "Large purchases or debt paydown from signing bonus within the first 6 months"
+      ]
+    },
+    {
+      "pattern": "Assuming the clawback only applies if you voluntarily quit",
+      "why_it_happens": "That is true for well-written contracts. Many people assume the standard applies without checking if the actual language matches the assumption.",
+      "consequence": "Shock and financial liability after a layoff — the exact scenario where someone can least afford to repay a large lump sum",
+      "warning_signs": [
+        "Never read the specific termination trigger language",
+        "Relied on recruiter verbal description of clawback terms instead of the contract"
+      ]
+    },
+    {
+      "pattern": "Not negotiating clawback terms because it feels awkward or risky to push back",
+      "why_it_happens": "Candidates fear that pushing back on clawback language signals distrust or intent to leave early. They don't know these terms are negotiable.",
+      "consequence": "Signing unfavorable terms that could cost thousands of dollars — leaving money and protection on the table that experienced candidates routinely secure",
+      "warning_signs": [
+        "Accepted offer letter without any redline or question about clawback terms",
+        "Assumed the terms were standard and non-negotiable without asking"
+      ]
+    },
+    {
+      "pattern": "Focusing only on the gross amount of the signing bonus, not the net liability",
+      "why_it_happens": "Offer letters advertise the gross number. Taxes are invisible until you file. Most people don't calculate the repayment gap until they're actually asked to repay.",
+      "consequence": "Believing you owe $20K (what you kept) when you legally owe $30K (gross), creating an unexpected $10K shortfall",
+      "warning_signs": [
+        "No discussion of gross vs. net in the signed agreement",
+        "Didn't ask or receive written confirmation that repayment is net-based"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the clawback clause specify that it applies 'for any reason or no reason,' or does it limit triggers to voluntary resignation and termination for cause?",
+      "what_it_reveals": "Whether the employee bears clawback risk even for layoffs — a distinction that determines if the clause is standard-protective or adversarially written",
+      "follow_up_if_yes": "The clause is high-risk. Is there still time to negotiate exclusion language before signing? If not, treat the bonus as fully contingent for the entire period.",
+      "follow_up_if_no": "Confirm that 'termination without cause' and 'reduction in force' are explicitly named as exclusions — absence of the 'any reason' phrase alone is not sufficient protection"
+    },
+    {
+      "question": "Is the clawback structured as a cliff or as prorated repayment?",
+      "what_it_reveals": "How much financial risk you carry at any point during the clawback period. Cliff structures mean maximum liability for the entire period; prorated structures reduce exposure over time.",
+      "follow_up_if_yes": "If prorated: confirm the formula — how is remaining obligation calculated? Monthly? By exact day?",
+      "follow_up_if_no": "If cliff: negotiate prorated before signing. If not possible, do not spend the signing bonus until the cliff clears."
+    },
+    {
+      "question": "Does the repayment obligation specify gross amount or net-of-taxes amount?",
+      "what_it_reveals": "Whether you could realistically repay the clawback from what you actually received, or whether you'd face a shortfall",
+      "follow_up_if_yes": "If gross: calculate the actual repayment gap (bonus x effective tax rate) and decide if this is acceptable risk. Try to negotiate net language.",
+      "follow_up_if_no": "If net or silent: get explicit written confirmation that repayment is net-based — verbal assurance is insufficient"
+    },
+    {
+      "question": "How long is the clawback period, and is it 12 months or longer?",
+      "what_it_reveals": "Whether the company is using industry-standard terms or aggressive retention mechanics that suppress mobility",
+      "follow_up_if_yes": "If 12 months: standard, likely acceptable. Focus energy on structure and termination trigger language.",
+      "follow_up_if_no": "If 18–24 months: push back on period length first, then structure. Frame as 'industry standard is 12 months' and request alignment."
+    },
+    {
+      "question": "Is this signing bonus replacing unvested equity from your prior employer?",
+      "what_it_reveals": "Whether the stakes of a clawback are doubled — losing both the original unvested equity AND the replacement bonus in the same departure event",
+      "follow_up_if_yes": "Clawback protections become highest priority. The entire equity-replacement rationale collapses if a layoff claws back the replacement amount.",
+      "follow_up_if_no": "Standard clawback risk applies — focus on the four negotiation points without the elevated urgency of equity replacement risk"
+    },
+    {
+      "question": "Have you received any verbal representations about the clawback terms from the recruiter that differ from the written contract?",
+      "what_it_reveals": "Whether the candidate is relying on informal assurances rather than contract language — a dangerous gap",
+      "follow_up_if_yes": "Get every verbal assurance put in writing as a contract amendment before signing. Verbal representations are not enforceable in most jurisdictions.",
+      "follow_up_if_no": "Good — but still read the actual clause language rather than inferring terms from the bonus structure or company reputation"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Clawback clauses only apply if you voluntarily quit — if you're laid off, you don't owe anything back",
+      "actual_reality": "Many contracts — especially those written sloppily or aggressively — include 'for any reason or no reason' language that makes clawbacks applicable even after a layoff. The default assumption is wrong and legally dangerous.",
+      "implication": "Never assume layoffs are excluded. Read the exact termination trigger language and negotiate explicit exclusions before signing."
+    },
+    {
+      "common_belief": "If you trigger a clawback, you repay what you received",
+      "actual_reality": "Most clawback clauses require repayment of the gross amount — the pre-tax figure. You may have only kept 67% of the bonus after taxes but owe 100% back, meaning you repay money you no longer have.",
+      "implication": "Always confirm gross vs. net repayment terms in writing, and negotiate net-only repayment before signing."
+    },
+    {
+      "common_belief": "Clawback terms are non-negotiable boilerplate — you can't push back on them",
+      "actual_reality": "All four major clawback terms — structure, period length, gross/net, and termination triggers — are negotiable. Reputable companies will engage on these. A refusal to negotiate any of them is itself informative.",
+      "implication": "Always attempt to negotiate clawback terms as a standard part of offer negotiation, not an exceptional ask."
+    },
+    {
+      "common_belief": "Clawback enforcement is aggressive — companies always pursue full repayment through courts",
+      "actual_reality": "Most clawback enforcement happens through the offboarding process via withheld final paychecks or formal demand letters. Court action is rare unless amounts are very large. Companies and employees often negotiate the actual amount informally even after a clawback is triggered.",
+      "implication": "If a clawback is triggered and you have a legitimate grievance, negotiating the amount after the fact is a real option — don't assume the stated amount is the final outcome."
+    },
+    {
+      "common_belief": "A signing bonus is equivalent to extra salary — just paid upfront",
+      "actual_reality": "A signing bonus carries clawback contingency that salary does not. It is better understood as a conditional advance that becomes yours only after the clawback period clears.",
+      "implication": "Do not spend signing bonus funds as if they are unconditional income until the clawback period has passed."
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Reading the clawback clause",
+      "junior_pattern": "Skims or skips the clawback clause. Assumes it means 'repay if you quit early' and doesn't read the specific trigger language or repayment formula.",
+      "senior_pattern": "Reads the exact termination trigger language, identifies whether it's cliff or prorated, notes gross vs. net, and flags any 'for any reason' language before signing anything.",
+      "why_it_matters": "The difference between a standard protective clause and a financial trap is in the specific words — not the general concept. Missing this costs real money."
+    },
+    {
+      "dimension": "Treating clawback terms as negotiable",
+      "junior_pattern": "Assumes clawback language is standard boilerplate and non-negotiable. Doesn't push back even on aggressive 24-month cliff structures.",
+      "senior_pattern": "Treats all four clawback terms as negotiating points. Makes specific asks with framing: 'Can we bring the period to 12 months? Can we add layoff exclusion language?'",
+      "why_it_matters": "Experienced candidates routinely secure better clawback terms. The protection gap between negotiated and default terms is substantial."
+    },
+    {
+      "dimension": "Managing signing bonus funds",
+      "junior_pattern": "Treats the signing bonus as income and spends it — paying off debt, buying equipment, or absorbing into living expenses within the first few months.",
+      "senior_pattern": "Treats the signing bonus as contingent capital and keeps it liquid or segregated until the clawback period clears, recognizing it as a liability until that date.",
+      "why_it_matters": "Spending contingent funds before the clawback period clears creates serious financial exposure that is entirely avoidable with a simple behavioral discipline."
+    },
+    {
+      "dimension": "Evaluating signing bonus vs. salary tradeoffs",
+      "junior_pattern": "Compares offers by adding signing bonus to total comp at face value, treating a $20K signing bonus as equivalent to a $20K salary increase.",
+      "senior_pattern": "Discounts signing bonus value for clawback risk, period length, and the one-time vs. recurring nature of the payment. Prefers salary over signing bonus when the gap is close.",
+      "why_it_matters": "A recurring salary increase compounds. A clawback-contingent signing bonus is a one-time, revocable payment — they are not equivalent and shouldn't be weighted equally."
+    },
+    {
+      "dimension": "Response to clawback enforcement",
+      "junior_pattern": "Accepts the stated demand amount as fixed and either panics or complies immediately without exploring options.",
+      "senior_pattern": "Recognizes that clawback enforcement is usually a negotiation, not a legal judgment. Evaluates the trigger language, checks for offsetting claims (unpaid wages, PTO), and opens a dialogue rather than immediately complying.",
+      "why_it_matters": "Many clawback demands are negotiable after the fact. Accepting them at face value costs money that an informed response could recover or reduce."
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "expert_signing_bonus_clawbacks",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

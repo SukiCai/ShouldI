@@ -1,0 +1,389 @@
+{
+  "source_file": "zhihu_受限股票单位_RSU_与股票期权_Stock_Option_的区别有哪些.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "RSU from established public companies: hold until vested, then decide when to sell — no action required before vesting",
+      "condition": "When you receive RSU from a public company (Google, Facebook, Apple, etc.)",
+      "action": "Wait for vesting events, then sell during open trading windows; no upfront capital required",
+      "because": "RSU converts directly to stock at vesting with no purchase required — the only decision is when to sell, not whether to buy",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "rule": "For NSO stock options at a startup that IPOs, exercise incrementally each year to stay in a lower income tax bracket rather than exercising all at once",
+      "condition": "When a startup with NSO options goes public and you hold a large number of vested options",
+      "action": "Exercise a portion each tax year rather than all at once to control taxable income and potentially apply a lower marginal rate",
+      "because": "The post explicitly notes that exercising fewer options in one year can drop you into a lower tax bracket — approximately 4% savings in marginal rate",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "rule": "Treat ISO early exercise with extreme caution unless you are an early-stage employee with a very low strike price",
+      "condition": "When offered ISO options at a startup with early exercise rights",
+      "action": "Consult a tax professional before early exercising; do not act on ISO options without understanding AMT exposure",
+      "because": "The 2000 dot-com bubble produced mass bankruptcies among employees who early-exercised ISO options and were hit with AMT tax on paper gains that later evaporated",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Equity instrument type: RSU vs. NSO vs. ISO",
+      "why_it_matters": "Each type has a fundamentally different tax treatment and risk profile — RSU taxes as ordinary income at vest, NSO taxes as ordinary income at exercise, ISO can trigger AMT",
+      "how_to_assess": "Check the offer letter or equity agreement for the explicit label (RSU, NSO, ISO); do not assume — ask HR or legal",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Company stage: public vs. pre-IPO startup",
+      "why_it_matters": "RSU from a pre-IPO company is illiquid and untaxable until a liquidity event; options at a startup may never be worth anything if IPO/acquisition doesn't occur",
+      "how_to_assess": "Determine whether the company is publicly traded, has a clear IPO timeline, or is in a high-valuation unicorn category",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Vesting schedule structure",
+      "why_it_matters": "Non-standard vesting schedules (e.g., Amazon 5:15:40:40, Snapchat 10:20:30:40) heavily back-load value, meaning early departure yields far less than a standard 1-year cliff + monthly schedule",
+      "how_to_assess": "Read the vesting schedule in the offer letter explicitly; calculate the value you'd receive if you left at 1 year, 2 years, 3 years",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "factor": "Exercise window length after departure",
+      "why_it_matters": "Standard 90-day exercise window forces you to either pay to exercise options immediately upon leaving or forfeit them; longer windows (7-10 years) remove this pressure",
+      "how_to_assess": "Check the option agreement for the post-termination exercise window; compare against industry norm of 90 days",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "State of residence for tax purposes",
+      "why_it_matters": "California state income tax adds a significant additional tax burden (~13.3% top rate) on top of federal tax when RSU vests or options are exercised",
+      "how_to_assess": "Determine whether you are working in a state with income tax (California being the most impactful) vs. a no-income-tax state (Texas, Washington)",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Strike price relative to current fair market value",
+      "why_it_matters": "Options with a strike price close to the current valuation have low intrinsic value and require significant appreciation to be worthwhile; early employees get much lower strike prices",
+      "how_to_assess": "Ask for the current 409A valuation and compare it to your strike price; calculate the upside needed to profit after taxes",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a large RSU grant from a pre-IPO startup",
+      "unstated_consequence": "At IPO, the entire accumulated unvested RSU value is taxed as ordinary income in a single year, potentially pushing the employee into the highest tax bracket — effectively losing ~50% of the grant value to taxes",
+      "who_it_affects": "Employees who joined a startup years before IPO and have accumulated a large RSU balance",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Early exercising ISO options at a startup",
+      "unstated_consequence": "If the company's stock later drops (as in the 2000 dot-com crash), the employee still owes AMT (Alternative Minimum Tax) calculated on the paper gain at exercise time, even though the stock is now worthless — leading to tax bills exceeding the actual value of shares held",
+      "who_it_affects": "Employees at high-growth startups who early-exercise ISO options anticipating IPO gains",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Leaving a startup before options vest",
+      "unstated_consequence": "Standard 90-day exercise window after departure forces an immediate cash decision: pay the full strike price plus anticipated tax, or forfeit all vested options",
+      "who_it_affects": "Employees at startups with standard short exercise windows, especially those who have vested options with significant spread but limited personal liquidity",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Prioritizing base salary over equity when evaluating offers",
+      "unstated_consequence": "In Silicon Valley/Bay Area tech, the compounding upside of equity — especially at pre-IPO companies — can dwarf total base salary over a multi-year period; optimizing for base salary alone can mean leaving very large sums on the table",
+      "who_it_affects": "New graduates and international candidates who focus on the certainty of base pay and discount equity as speculative",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Focusing exclusively on base salary when comparing offers, ignoring equity structure differences",
+      "why_it_happens": "Base salary is concrete, immediate, and easy to compare; equity requires understanding vesting, strike prices, tax treatment, and liquidity — all of which feel uncertain and complex",
+      "consequence": "Candidates make regrettable decisions — choosing a slightly higher salary over meaningfully more valuable equity at a better-positioned company",
+      "warning_signs": [
+        "Candidate says 'I just want a stable salary, the stock stuff is too complicated'",
+        "Candidate compares offers by base salary alone without modeling equity value scenarios"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Early exercising ISO options without understanding AMT exposure",
+      "why_it_happens": "Employees are told early exercise is a tax optimization strategy (start the capital gains clock early); they act without modeling the AMT liability under different stock price scenarios",
+      "consequence": "If the stock price drops post-exercise, the employee holds worthless or low-value stock but still owes AMT calculated on the original paper gain — the mechanism behind thousands of 2000-era bankruptcies",
+      "warning_signs": [
+        "Employee exercises ISO options at a paper gain but does not immediately sell shares",
+        "Employee does not consult a tax professional before exercising"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating equity grants as certain income when a company has not yet IPO'd or been acquired",
+      "why_it_happens": "The nominal dollar value in the offer letter feels real; candidates anchor to it and factor it into lifestyle decisions",
+      "consequence": "If the company fails to IPO or be acquired, RSU and options are worth zero — employees who made financial decisions based on expected equity value suffer significant losses",
+      "warning_signs": [
+        "Candidate says 'I'm getting $500K in RSU' about a pre-IPO company as if it is cash",
+        "Candidate declines a public company offer in favor of a startup primarily because of the stated RSU value"
+      ],
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the equity grant RSU or Stock Options — and if options, is it ISO or NSO?",
+      "what_it_reveals": "The tax treatment and risk profile are entirely different; the question surfaces whether the candidate understands what they are actually receiving",
+      "follow_up_if_yes": "If RSU: is the company public? If not, when is the expected liquidity event?",
+      "follow_up_if_no": "If options: what is the strike price, current 409A valuation, and post-termination exercise window?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "What is the vesting schedule, and does it follow the standard 1-year cliff + monthly, or is it back-loaded like Amazon or Snapchat?",
+      "what_it_reveals": "Back-loaded schedules dramatically reduce value if you leave before year 3-4; a back-loaded schedule is effectively a retention trap that punishes early departure",
+      "follow_up_if_yes": "If back-loaded: model the value you receive at each year mark and compare against a standard schedule",
+      "follow_up_if_no": "If standard: verify the total grant value and whether there is a refresh grant policy after the initial 4-year cliff",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "If this is a pre-IPO startup, what is the realistic liquidity scenario and timeline?",
+      "what_it_reveals": "Without a credible path to IPO or acquisition, the equity has no liquidity and effectively zero near-term value regardless of the stated valuation",
+      "follow_up_if_yes": "If there is a realistic IPO path: estimate post-IPO lockup period and tax bill on accumulated RSU/options",
+      "follow_up_if_no": "If no clear liquidity path: treat the equity as speculative and evaluate the offer based primarily on cash compensation",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "question": "How long is the exercise window after leaving the company?",
+      "what_it_reveals": "A standard 90-day window creates enormous pressure and may force forfeiture of vested options if you cannot afford the strike price plus anticipated tax; longer windows are a meaningful benefit",
+      "follow_up_if_yes": "If 90 days: calculate whether you could afford to exercise all vested options if you left today",
+      "follow_up_if_no": "If extended (2+ years or 10 years): this is a significant pro-employee benefit that reduces the lock-in effect of options",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Equity compensation from tech companies is essentially free money on top of your salary",
+      "actual_reality": "RSU vesting is a taxable event at ordinary income rates; in California, combined federal + state tax can consume ~40-50% of the vested value immediately, and ISO options carry potential AMT liability that can exceed the actual cash value of the shares",
+      "implication": "Candidates should model after-tax equity value — not gross grant value — when comparing offers; the stated RSU value in an offer letter is not what you will actually receive",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Stock options are always better than RSU because they have more upside",
+      "actual_reality": "Options require capital outlay to exercise, carry more complex tax exposure (especially ISO/AMT), expire after departure (often 90 days), and are worth zero if the stock doesn't rise above the strike price; RSU have lower ceiling but guaranteed value as long as the stock has any value",
+      "implication": "For employees who are not early-stage founders or very early employees, RSU is often the lower-risk, more predictable form of equity compensation; options are higher variance in both directions",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Pre-IPO RSU and post-IPO RSU work the same way",
+      "actual_reality": "Pre-IPO RSU typically has a double-trigger vesting condition (time + liquidity event); if the company never IPOs or is acquired, vested RSU cannot be converted to cash regardless of how long you've waited",
+      "implication": "Pre-IPO RSU should be evaluated as contingent compensation with significant binary risk, not as the equivalent of deferred cash",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "You can always choose to not exercise options if the stock price drops, so options carry no downside risk",
+      "actual_reality": "With ISO options that have already been early-exercised (or in any scenario where AMT has been triggered), the tax liability is not contingent on the stock's future value — you can owe taxes on gains that no longer exist",
+      "implication": "The 'worst case is zero' framing only applies cleanly to unexercised NSO options; ISO early-exercise scenarios can produce negative net outcomes",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How equity is valued when comparing offers",
+      "naive_pattern": "Looks at the headline grant number (e.g., '$400K in RSU over 4 years') and treats it as equivalent to $100K/year in salary",
+      "informed_pattern": "Models after-tax value at each vesting tranche, accounts for vesting schedule structure, discounts pre-IPO grants for liquidity risk, and compares net annual equity income",
+      "why_it_matters": "Two offers with identical stated equity values can have dramatically different realized take-home value depending on tax treatment, vesting schedule, and liquidity",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Response to the 90-day post-departure exercise window",
+      "naive_pattern": "Doesn't notice or ignores the exercise window clause; assumes they can 'deal with it later' if they ever leave",
+      "informed_pattern": "Calculates total cash needed to exercise all vested options plus anticipated tax bill, and evaluates whether that is financially feasible — treats extended exercise windows as a meaningful compensation differentiator",
+      "why_it_matters": "Candidates who cannot fund option exercise upon departure forfeit significant vested compensation; this is an avoidable but frequently unmodeled risk",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Understanding of ISO vs. NSO distinction",
+      "naive_pattern": "Treats all 'stock options' as interchangeable; assumes options are always a simple buy-low-sell-high mechanism",
+      "informed_pattern": "Knows ISO triggers AMT at exercise (not just at sale), understands that early exercise creates tax liability decoupled from liquidity, and consults a tax professional before any ISO exercise decision",
+      "why_it_matters": "ISO AMT exposure is the mechanism that caused mass bankruptcies in the 2000 dot-com crash; it is a real, recurring risk that naive employees repeatedly walk into",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If my stock options are underwater (stock price below strike price), I simply don't exercise and I lose nothing",
+      "why_believed": "For unexercised NSO options this is technically true — but it feels universally applicable to all option types",
+      "actual_rule": "For ISO options that have already been early-exercised, AMT may have already been calculated on the spread at exercise time; if the stock subsequently drops, you still owe the AMT tax on a gain that no longer exists in the stock's current value",
+      "real_consequence": "Employees who early-exercise ISO options and then see the stock collapse face tax bills that can exceed the current value of their shares, and in extreme cases lead to bankruptcy",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "RSU is safer than options because you don't have to pay anything to receive it",
+      "why_believed": "RSU requires no upfront capital and vests automatically — it feels unconditionally positive",
+      "actual_rule": "RSU vesting is a taxable event at ordinary income rates; for pre-IPO RSU, a large accumulated balance at IPO can create a massive single-year tax liability, and if the company's stock drops after IPO lockup expires, the employee has already paid taxes on a higher value than they can now recover",
+      "real_consequence": "Employees who receive large pre-IPO RSU grants, pay ~50% tax at IPO vesting, and then hold shares that subsequently decline end up with less net value than the headline grant suggested — sometimes significantly less",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The RSU or option value stated in your offer letter is your actual compensation",
+      "why_believed": "The offer letter presents a specific dollar figure or share count, which anchors perception of total compensation",
+      "actual_rule": "The stated value is pre-tax gross; actual take-home depends on tax bracket, state of residence, vesting schedule timing, stock price at vesting (for RSU), and whether the company achieves a liquidity event (for pre-IPO grants)",
+      "real_consequence": "Candidates accept offers based on inflated perceived compensation, then experience sticker shock at the actual after-tax, post-liquidity-risk value they realize",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Employee joins a startup, receives NSO options with $5 strike price on 10,000 shares; company IPOs 4 years later at $25/share with all options vested",
+      "decision": "Employee exercises all 10,000 options at once in the IPO year, realizing $200,000 in gains",
+      "outcome": "Tax on $200,000 at ordinary income rates plus California state tax consumes approximately $100,000; plus $50,000 upfront exercise cost = $150,000 total outlay to net $50,000 from a $200,000 paper gain",
+      "lesson": "Exercising all options in a single year maximizes tax exposure; staggered annual exercise can reduce marginal rate and total tax burden — but requires planning before the IPO year",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "situation": "Employee joins a startup early and receives ISO options; exercises early to start the capital gains clock before IPO",
+      "decision": "Early exercises ISO options at a low strike price, anticipating IPO and long-term capital gains treatment",
+      "outcome": "If the company's stock subsequently collapses (as happened widely in 2000), the employee still owes AMT calculated on the spread at exercise time — tax bills can exceed the current value of the shares, leading to bankruptcy in the most severe cases",
+      "lesson": "ISO early exercise is a high-stakes tax strategy that requires professional advice and a credible exit scenario; it is not a universally beneficial optimization and carries catastrophic downside",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "New graduate receives an offer with equity and immediately asks 'how do I compare this to the other offer's salary?'",
+      "underlying_state": "Certainty bias — the candidate anchors to the concrete, guaranteed component (salary) and discounts the variable component (equity) because it feels speculative and hard to evaluate",
+      "how_it_manifests": "Candidate either ignores equity entirely in the comparison or treats the stated grant value as face-value equivalent to cash",
+      "expert_move": "Reframe equity as a range of outcomes, not a single number: 'Model three scenarios — company fails (equity = $0), company performs like peers (equity = stated value after tax), company outperforms (equity = 3-5x stated value). Now which offer looks better across scenarios?'",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Candidate at a pre-IPO startup asks 'should I take the lower base salary because the RSU is worth so much?'",
+      "underlying_state": "Narrative bias — the candidate is seduced by the compelling startup story and assigns high probability to the optimistic liquidity scenario, underweighting the base rate of startup failures",
+      "how_it_manifests": "Candidate accepts below-market base salary in exchange for equity that may never liquidate, treating the RSU value as near-certain future cash",
+      "expert_move": "Ask the candidate: 'If I told you today that this company will never IPO or be acquired, would you still take the offer at this base salary?' If no, the equity discount is larger than they're willing to accept",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Employee holds unexercised vested options after IPO and repeatedly defers the decision to exercise",
+      "underlying_state": "Regret aversion combined with status quo bias — exercising locks in a tax bill and feels like a commitment; not exercising feels like preserving optionality, even as the window to act shrinks",
+      "how_it_manifests": "Employee delays exercising year after year, misses optimal tax planning windows, and either forfeits options at expiration or exercises all at once in a high-tax year",
+      "expert_move": "Reframe: 'Every year you don't partially exercise, you are making an active bet that the stock will rise enough to justify a higher tax bracket hit later. Is that bet intentional or just inertia?'",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "New graduates focus on base salary differences and treat equity as a bonus or afterthought",
+      "reframe": "In Silicon Valley, the prevailing view is that equity is the primary wealth-building mechanism and base salary is just 'enough to live on' — the real question is the quality and structure of the equity",
+      "why_it_works": "Shifts the candidate's optimization target from the certain-but-capped variable (salary) to the uncertain-but-uncapped variable (equity), prompting them to actually analyze the equity terms",
+      "example_language": "硅谷、湾区的主流观点早就认为收入中股票期权为王，基本工资用来养养家就好",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Employees assume equity is free upside with no downside — 'worst case I get nothing'",
+      "reframe": "The real worst case is not zero — it is a tax liability that exceeds the current value of your shares, as happened to thousands of engineers in 2000",
+      "why_it_works": "Replaces the comfortable 'free lottery ticket' mental model with an accurate risk model that includes negative outcomes, motivating due diligence on tax mechanics before acting",
+      "example_language": "知道为啥2000年互联网大泡沫后无数程序员破产么？税！",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "Pre-IPO startup equity feels real because the offer letter states a specific dollar value",
+      "reframe": "Equity at a pre-IPO company is contingent on two independent events happening: the company achieving a liquidity event, AND you still being an employee (or having exercised options in time). Until both occur, the value is zero.",
+      "why_it_works": "Breaks the single-number anchor and replaces it with a two-condition probability model, forcing the candidate to separately assess both the company's exit probability and their own tenure probability",
+      "example_language": "无论是RSU/Option, 只要公司没有办法上市或者被收购，或者你在此之前已经离开，这些RSU/Option则分文不值",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_受限股票单位_RSU_与股票期权_Stock_Option_的区别有哪些",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

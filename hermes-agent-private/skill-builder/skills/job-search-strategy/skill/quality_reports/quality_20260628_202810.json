@@ -1,0 +1,47 @@
+{
+  "skill_name": "International Student Job Search Strategist",
+  "overall_score": 4.4,
+  "summary": "This is a genuinely strong, expert-level skill with specific, verifiable, and non-obvious content throughout. It successfully captures the dual-clock framing that distinguishes expert thinking in this domain and includes precise data points (38.8% RFE rate for third-party placement, TEER classification rules, post-Spring 2025 LMIA changes) that meaningfully differentiate it from generic career advice. Main weaknesses are uneven depth in cold outreach mechanics and limited coverage of post-offer/employer-side dynamics.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 5,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 5,
+    "junior_vs_senior_table": 4,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The 'two clocks' framing in Expert Framing is genuinely counterintuitive and operationally useful — 'a 1-year master's vs. 2-year master's is an immigration decision; a TEER 4/5 job vs. TEER 0-3 job in Canada is a PR decision' immediately reorients how an AI would advise.",
+    "Heuristics are unusually specific and falsifiable: '50-125 words' for cold emails, 'managers under 2 years in role', 'never accept H-1B from an employer who charges you fees, can't describe your SOC/wage/worksite' — these are concrete enough to act on and include the 'why' (INA §212(n), 38.8% RFE rate).",
+    "Industry Realities pairs are calibrated to actual misconceptions, not straw men. 'H-1B is the finish line' vs. the 50+ year EB backlog for India/China nationals, and the LMIA Spring 2025 removal, are exactly the kinds of current, surprising facts that change advice.",
+    "Hidden Tradeoffs table contains genuinely invisible-at-decision-time downsides: '12-month full-time CPT internship permanently eliminates OPT eligibility' and 'TEER 4/5 job... CEC clock doesn't run' are the kind of one-way doors juniors walk through unaware."
+  ],
+  "weaknesses": [
+    "Diagnostic questions are strong but mostly factual-status questions. They don't probe the user's mental model or emotional state — e.g., no question like 'What story are you telling employers about why you're worth sponsoring?' or 'Have you been told 'we don't sponsor' — and how did you respond?' which would reveal failure patterns more directly.",
+    "Cold outreach gets repeated mention but the skill never shows what a good 50-125 word cold email actually looks like, nor what 'specific common ground' or 'one proof of worth' concretely means. An AI applying this skill will know the rules but might still produce generic outreach.",
+    "Junior vs. Senior table has one weak row: 'Interview prep: Studies STAR mentally / Practices STAR out loud with another person' is generic interview advice unrelated to international-student specificity and doesn't earn its slot.",
+    "Limited coverage of how to handle the actual interview conversation when visa comes up — the skill says 'don't disclose late' and 'frame as open work permit' but doesn't give the senior-level scripts or sequencing (when in the process to volunteer it, how to handle the recruiter screen question, etc.).",
+    "Canada coverage is strong on PGWP/CEC/CRS but light on provincial differences (Quebec's separate system, Atlantic provinces' AIP, BC PNP tech stream) which materially change strategy."
+  ],
+  "improvement_suggestions": [
+    "Add a short 'Cold Outreach Template Anatomy' section with an annotated example showing the 50-125 word structure, what counts as 'specific common ground' (shared alma mater, recent post, shared past employer — not 'I admire your company'), and 2-3 example openers vs. anti-patterns.",
+    "Add diagnostic questions that probe mental model and prior moves, not just status: 'What's happened in your last 5 outreach attempts?', 'When an employer says 'we don't sponsor,' what do you say next?', 'Walk me through how you chose your last 10 target companies.'",
+    "Add a 'Visa Disclosure Sequencing' subsection: when to volunteer status (recruiter screen yes/no by country), exact phrasing for OPT vs. STEM OPT vs. PGWP, how to handle the 'will you now or in the future require sponsorship' checkbox question.",
+    "Replace the STAR-practice row in the junior/senior table with something domain-specific, e.g., 'Response when asked about long-term plans: vague reassurance vs. specific runway math ('I'm on STEM OPT through 2027, eligible for 3 lottery cycles, and exploring O-1/EB-2 NIW as parallel paths').",
+    "Add brief coverage of provincial/regional Canadian pathways (PNP tech streams, AIP, Quebec PEQ) and US alternatives to H-1B (O-1, EB-2 NIW, cap-exempt employers as bridges) — these are senior-level moves currently underrepresented."
+  ],
+  "generic_advice_flags": [
+    "'Practices STAR out loud with another person' — this is universal interview advice that any career coach would give; it doesn't reflect international-student-specific senior thinking and weakens the table.",
+    "'Interview prep must run in parallel' (under 'A referral guarantees a job') — true but generic; doesn't add domain-specific insight about how international students should prep differently (e.g., preparing to address visa concerns proactively, citizenship-neutral framing of past work)."
+  ],
+  "missing_coverage": [
+    "O-1 visa, EB-2 NIW, and cap-exempt-to-cap-subject bridging strategies — increasingly common senior moves for international students with research/publication backgrounds.",
+    "How to evaluate startup offers specifically (sponsorship willingness vs. capacity, first-time H-1B filer risk, equity vs. cash under visa constraints).",
+    "Behavior when holding competing offers across countries (US H-1B lottery offer vs. Canada PGWP offer) — the structural comparison is hinted at but no decision framework is given.",
+    "Quebec's separate immigration system (CSQ/PEQ) and provincial nomination streams beyond a passing PNP mention.",
+    "Handling spousal/dependent status (H-4 EAD changes, PGWP spousal open work permit rules post-2024) which affects offer evaluation for partnered candidates.",
+    "What to do after a layoff while on H-1B (60-day grace period mechanics) or PGWP (no employer-tied risk, but CRS implications)."
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "source_file": "zhihu_加拿大毕业生签证PGWP能毕业后先回国再出国办理吗.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Apply for PGWP within 180 days of receiving final marks, regardless of where you are located",
+      "condition": "When a student has graduated from an eligible Canadian DLI and is deciding when and where to apply for PGWP",
+      "action": "Submit the PGWP application within 180 days of the school issuing final marks — can be done from inside Canada or from abroad",
+      "because": "IRCC explicitly allows overseas PGWP applications and the 180-day window is the binding constraint, not physical location",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Ensure passport validity covers the full intended PGWP duration before applying",
+      "condition": "When applying for PGWP and your passport expires before the maximum eligible PGWP length",
+      "action": "Renew passport before submitting PGWP application so it covers the full 3-year (or applicable) period",
+      "because": "IRCC will only issue a PGWP valid until the passport expiry date, shortening the work authorization period if passport expires early",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Change status to visitor if study permit expires before PGWP application is submitted and you remain in Canada",
+      "condition": "When a graduate's study permit will expire before they are ready to submit the PGWP application and they intend to stay in Canada",
+      "action": "Apply to change status to visitor; this can be done up to 90 days after study permit expiry to restore status",
+      "because": "Overstaying a study permit without changing status creates an implied status or restoration gap that can complicate the PGWP application",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Passport expiry date relative to PGWP eligibility length",
+      "why_it_matters": "IRCC caps PGWP validity at passport expiry, so a soon-expiring passport directly reduces the work authorization window even if the applicant qualifies for 3 years",
+      "how_to_assess": "Compare passport expiry date against the maximum PGWP duration you qualify for (up to 3 years for programs 2 years or longer); if passport expires sooner, renew first",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Program length and whether the DLI is PGWP-eligible",
+      "why_it_matters": "Only graduates of designated learning institutions with eligible programs qualify; program length determines whether a 3-year PGWP is available",
+      "how_to_assess": "Verify DLI designation and confirm program was 2 years or more full-time to qualify for the maximum 3-year PGWP",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Time elapsed since final marks were issued",
+      "why_it_matters": "The 180-day application window is a hard deadline; missing it forfeits PGWP eligibility entirely",
+      "how_to_assess": "Track the exact date the school issued final marks or transcript and count forward 180 days; plan any travel or delay accordingly",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Returning home after graduation before applying for PGWP",
+      "unstated_consequence": "The 180-day clock keeps running while abroad; extended travel or delays at home can erode the window, and any re-entry to Canada will require a valid visa or eTA, adding a potential barrier if documents are not prepared in advance",
+      "who_it_affects": "Graduates who underestimate processing times or visa requirements for re-entry to Canada after going home",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Applying for a PGWP without first renewing an expiring passport",
+      "unstated_consequence": "The PGWP will be issued only until passport expiry, permanently losing months or years of work authorization that cannot be recovered by later renewing the passport",
+      "who_it_affects": "Any PGWP applicant whose passport expires within 3 years of graduation",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Missing the 180-day PGWP application deadline due to extended post-graduation travel or delays at home",
+      "why_it_happens": "Graduates feel the 180-day window is ample and underestimate how quickly it passes when combining travel, rest, document preparation, and processing delays",
+      "consequence": "Permanent loss of PGWP eligibility for that graduation, forcing the graduate to seek other work permit pathways or lose the immigration advantage entirely",
+      "warning_signs": [
+        "Planning to 'relax at home for a few months' before thinking about PGWP",
+        "No concrete date set for when the PGWP application will be submitted"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "When exactly did your school issue your final marks or transcript?",
+      "what_it_reveals": "This is the start date of the 180-day PGWP application window — without knowing this date precisely, the applicant cannot assess their remaining time",
+      "follow_up_if_yes": "Calculate the exact deadline and work backward to set a submission date with buffer for document preparation",
+      "follow_up_if_no": "Contact the registrar immediately to confirm the official mark-issue date before making any travel plans",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your passport remain valid for the full duration of the PGWP you are eligible for?",
+      "what_it_reveals": "Whether the applicant will receive a truncated PGWP due to passport expiry, reducing their work and immigration runway",
+      "follow_up_if_yes": "Proceed with PGWP application without passport renewal",
+      "follow_up_if_no": "Renew passport before submitting PGWP application to avoid losing work authorization time",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Will your study permit expire before you plan to submit your PGWP application, and do you intend to stay in Canada during that gap?",
+      "what_it_reveals": "Whether the applicant needs to change status to visitor to maintain lawful status in Canada during the gap period",
+      "follow_up_if_yes": "Apply to change status to visitor before study permit expires or within 90 days after expiry to restore status",
+      "follow_up_if_no": "No immediate status action required, but monitor permit expiry date closely",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You must be physically inside Canada to apply for PGWP after graduation",
+      "actual_reality": "PGWP can be applied for online from outside Canada (i.e., from abroad), as long as eligibility criteria are met and the 180-day window has not expired",
+      "implication": "Graduates can return home after graduation and still apply for PGWP remotely, giving them flexibility — but this does not pause the 180-day deadline",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "PGWP is automatically available to any Canadian university or college graduate",
+      "actual_reality": "PGWP eligibility depends on the specific DLI being designated and the program meeting eligibility criteria; not all institutions or programs qualify",
+      "implication": "Students should verify their DLI's PGWP eligibility before or during enrollment, not after graduation when it is too late to switch",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of PGWP application location flexibility",
+      "naive_pattern": "Assumes they must stay in Canada continuously after graduation to apply for PGWP, or that leaving Canada forfeits eligibility",
+      "informed_pattern": "Knows the application can be submitted from anywhere within the 180-day window and plans travel accordingly without anxiety about location",
+      "why_it_matters": "Naive belief can cause unnecessary stress or rushed decisions about staying in Canada; informed understanding enables deliberate post-graduation planning",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Awareness of the 180-day deadline urgency",
+      "naive_pattern": "Views six months as a long, relaxed window and delays thinking about PGWP until well into the period",
+      "informed_pattern": "Treats the 180-day window as finite and sets a concrete submission target early, accounting for document gathering, passport renewal if needed, and processing time",
+      "why_it_matters": "Missing the deadline is an unrecoverable error; experienced graduates treat it with the same seriousness as a visa expiry",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "As long as you apply within 180 days, you can take as much time as you want after graduation without any status concerns in Canada",
+      "why_believed": "The 180-day rule sounds generous and the focus is on the application deadline, not on maintaining lawful status during the intervening period",
+      "actual_rule": "If your study permit expires before you submit the PGWP application and you are still in Canada, you must change status to visitor to remain lawfully present; you have up to 90 days after study permit expiry to restore status",
+      "real_consequence": "A graduate who remains in Canada after their study permit expires without changing status may accumulate unauthorized days, complicating the PGWP application or future immigration applications",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [],
+  "psychological_barriers": [
+    {
+      "trigger": "Asking whether it is possible to go home first and come back later to do PGWP — framed as a binary permission question",
+      "underlying_state": "Anxiety that leaving Canada after graduation will permanently close off the PGWP pathway; fear of making an irreversible mistake by traveling",
+      "how_it_manifests": "The poster frames the question as 'can I do this at all?' rather than 'what do I need to ensure if I do this?' — seeking permission rather than planning",
+      "expert_move": "Reframe from 'is it allowed?' to 'what are the exact conditions and deadlines I must satisfy?' — which converts fear into a concrete checklist and removes the paralysis",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'Can I go home after graduation and still get PGWP?' — framed as a yes/no permission question about location",
+      "reframe": "The binding constraint is the 180-day deadline from final marks, not your physical location — Canada allows overseas applications and still wants you back; the question is whether you manage the timeline and documents correctly",
+      "why_it_works": "Shifts the poster's mental model from 'location determines eligibility' to 'timeline and document readiness determine eligibility,' replacing geographic anxiety with an actionable checklist",
+      "example_language": "毕业后有长达半年的时间可以do whatever excites you wherever you want, and Canada still wants you back — 玩心不要超过半年就可以",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_加拿大毕业生签证PGWP能毕业后先回国再出国办理吗",
+  "_source_regions": [
+    "canada"
+  ]
+}

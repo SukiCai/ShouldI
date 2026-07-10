@@ -1,0 +1,316 @@
+{
+  "source_file": "national_academies_mentorship_and_completion_rates.txt",
+  "heuristics": [
+    {
+      "rule": "Ask to speak with a PhD student in year 4 or 5 in that specific lab, not a general program ambassador",
+      "condition": "When evaluating a PhD advisor or program before accepting an offer...",
+      "action": "...specifically request contact with year 4-5 students in that advisor's lab, not first-year students or program-selected contacts",
+      "because": "Year 4-5 students are in the most vulnerable period — funding is ending, dissertation may be stalling — and their experience is the most predictive of what you will actually face"
+    },
+    {
+      "rule": "Treat any program with a 10-year completion rate below 60% as a red flag requiring explanation",
+      "condition": "When comparing PhD program offers and completion rate data is available...",
+      "action": "...request the program's 10-year completion rate and apply a 60% floor as a minimum threshold before proceeding",
+      "because": "CGS data shows 25-43% of PhD students never finish; a below-60% rate indicates structural problems in funding, mentorship, or program design, not just individual student failure"
+    },
+    {
+      "rule": "Assume a 2-3 year funding gap between what is promised and when you will actually finish",
+      "condition": "When evaluating a PhD funding package that guarantees 4-5 years of support...",
+      "action": "...plan financially for 6-7 years minimum and ask explicitly what happens to students after funded years end",
+      "because": "National median time to degree is 7.3 years; most funding guarantees only 4-5 years; the gap is where attrition and financial crises concentrate"
+    },
+    {
+      "rule": "A strong publication record in a faculty member does not predict good advising",
+      "condition": "When evaluating a potential PhD advisor based on their CV or lab prestige...",
+      "action": "...treat publication record as orthogonal to mentorship quality and separately investigate mentorship behaviors through student conversations",
+      "because": "National Academies finding: mentorship is a learned skill, not a personality trait; negative mentorship patterns (credit-taking, absence, exploitation) are invisible in a publication list"
+    },
+    {
+      "rule": "Build a mentorship committee of at least 3 people before the end of your first year",
+      "condition": "When starting a PhD program with a single assigned advisor...",
+      "action": "...proactively cultivate co-advisors, engaged thesis committee members, and peer mentors in senior years rather than waiting for the program to structure this",
+      "because": "Single-advisor models create a single point of failure; National Academies data shows multiple mentoring relationships improve completion and career outcomes"
+    },
+    {
+      "rule": "Ask for the advisor-specific time-to-degree, not the program average",
+      "condition": "When evaluating time-to-completion expectations for a PhD program...",
+      "action": "...ask 'what is the average time to degree for students who have graduated from this specific lab in the last 5 years' rather than accepting department-level statistics",
+      "because": "Advisor-specific time-to-degree varies enormously within the same program; department averages obscure individual advisor patterns that directly predict your experience"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Advisor mentorship quality (behavioral, not reputational)",
+      "why_it_matters": "Advisor relationship problems are the most commonly cited reason for leaving a PhD program; mentorship quality predicts both completion and long-term career outcomes",
+      "how_to_assess": "Talk to current year 4-5 students and recent graduates specifically; ask whether the advisor provides both career support (technical guidance, networking) AND psychosocial support (encouragement, validation); ask about meeting frequency and whether the advisor was available during difficult periods",
+      "weight": "high"
+    },
+    {
+      "factor": "Stipend continuity and post-funding-package plan",
+      "why_it_matters": "Funding interruptions are a primary predictor of attrition; the gap between guaranteed funding (4-5 years) and actual completion time (7+ years) creates a structural crisis point",
+      "how_to_assess": "Ask explicitly: 'What happens to students after their funded period ends?' and 'Are there cases of students whose funding was interrupted and how were they handled?'",
+      "weight": "high"
+    },
+    {
+      "factor": "Program 10-year completion rate",
+      "why_it_matters": "Completion rates vary 20-30 percentage points across institutions in the same field; low completion rates signal structural program problems, not just student self-selection",
+      "how_to_assess": "Request the 10-year completion rate directly from the graduate coordinator; cross-reference with CGS data if available; below 60% should prompt specific follow-up questions",
+      "weight": "high"
+    },
+    {
+      "factor": "Existence of formal recourse mechanisms for advisor relationship problems",
+      "why_it_matters": "Programs without ombudspersons or student advocates concentrate all power in the advisor; when mentorship fails, students with no formal recourse face a choice between suffering and quitting",
+      "how_to_assess": "Ask: 'Does the program have an ombudsperson or student advocate for advisor relationship issues?' and verify it is genuinely independent from faculty",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether the program structures multiple mentoring relationships or relies on single-advisor model",
+      "why_it_matters": "Single-advisor models create single points of failure; students in programs with structured thesis committees and peer mentorship have better completion and career outcomes",
+      "how_to_assess": "Ask whether thesis committee members are actively engaged or ceremonial; ask whether there are formal peer mentorship programs; ask how co-advising is handled",
+      "weight": "medium"
+    },
+    {
+      "factor": "Advisor's current grant status and research activity",
+      "why_it_matters": "An advisor whose grants have expired or whose research has stagnated cannot provide adequate career support, funding continuity, or networking opportunities",
+      "how_to_assess": "Check NSF/NIH award databases for current active grants; ask students whether the advisor has new projects starting; look at publication recency",
+      "weight": "high"
+    },
+    {
+      "factor": "Identity support environment (for underrepresented students)",
+      "why_it_matters": "Underrepresented students leave STEMM at higher rates due to lack of mentorship and identity conflicts with academic culture; this is a structural gap, not individual weakness",
+      "how_to_assess": "Ask whether the advisor has successfully mentored students from similar backgrounds; ask whether the program has formal support structures for underrepresented groups; look at demographic data for completers vs. non-completers",
+      "weight": "high"
+    },
+    {
+      "factor": "Peer community quality and cohort social environment",
+      "why_it_matters": "Isolation from peer community is a predictor of attrition; cohort social environment provides informal support during the high-attrition years 5-7",
+      "how_to_assess": "Ask current students whether they have regular informal contact with peers; look for evidence of peer mentoring programs or cohort events",
+      "weight": "medium"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Joining a high-prestige lab at a top-ranked program",
+      "unstated_consequence": "Negative mentorship patterns (credit-taking, exploitation, absence) are completely invisible in rankings and publication records; prestige provides no protection against advisor dysfunction and may make it harder to leave due to sunk cost and social signaling pressure",
+      "who_it_affects": "International students who sacrificed significantly to attend a prestigious program and cannot easily walk away from reputational investment"
+    },
+    {
+      "choice": "Accepting a 4-5 year funded PhD offer without investigating what happens after",
+      "unstated_consequence": "Most students will not finish within the funded period; the funding cliff at year 4-5 coincides with the highest-attrition phase of the program, creating simultaneous financial and academic crisis",
+      "who_it_affects": "International students on visas who cannot easily take outside employment and have limited options if stipend ends before degree completion"
+    },
+    {
+      "choice": "Relying entirely on a single advisor for all mentorship",
+      "unstated_consequence": "If that relationship deteriorates — which happens commonly — there is no backup network; students without alternative mentors often face binary choices between enduring dysfunction or leaving the program entirely",
+      "who_it_affects": "Students at programs that formally or informally discourage co-advising or treat thesis committees as bureaucratic formalities"
+    },
+    {
+      "choice": "Not confronting advisor problems directly to avoid conflict",
+      "unstated_consequence": "Direct confrontation with an advisor creates retaliation risk; but silence allows problems to compound; the correct path (ombudsperson, student advocate) is unknown to most students until they are already in crisis",
+      "who_it_affects": "Students from cultures where direct challenge of authority figures is socially prohibited, and international students who fear visa status complications from program conflict"
+    },
+    {
+      "choice": "Choosing a humanities or social science PhD over STEM",
+      "unstated_consequence": "Median time to degree is 8.4-9.5 years in humanities/social sciences versus 5-6 years in STEM; this dramatically increases financial exposure, funding gap risk, and the probability of being in the high-attrition post-year-7 phase",
+      "who_it_affects": "International students whose visa and immigration timelines are directly tied to enrollment status and program completion"
+    },
+    {
+      "choice": "Selecting a program based on department ranking rather than advisor-specific mentorship track record",
+      "unstated_consequence": "Completion rates vary significantly within institutions by advisor; a lower-ranked program with a strong mentoring advisor may produce better outcomes than a top-ranked program with an absent or exploitative one",
+      "who_it_affects": "First-generation graduate students who lack informal networks to investigate advisor reputations and rely on visible prestige signals"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Evaluating advisors by publication record and grant history without investigating mentorship behavior",
+      "why_it_happens": "Publication records and grants are publicly visible and socially legible; mentorship behavior requires active investigation through conversations that applicants don't know to initiate",
+      "consequence": "Student enters a lab with a star researcher who is absent, exploitative, or interpersonally volatile; advisor relationship problems become the most common cited reason for leaving without a degree",
+      "warning_signs": [
+        "Unable to get contact information for current lab students during visit",
+        "Advisor only discusses research outputs and publications when asked about student development"
+      ]
+    },
+    {
+      "pattern": "Treating the guaranteed funding period as the expected completion timeline",
+      "why_it_happens": "Offer letters state funding guarantees in concrete years; actual completion statistics are not in offer letters; students anchor on the explicit number rather than the statistical distribution",
+      "consequence": "Student hits year 5 with no funding and an incomplete dissertation; forced to take outside work, go into debt, or abandon the degree at the most advanced stage",
+      "warning_signs": [
+        "Program provides no information about what happens to students after the funded period",
+        "All examples of 'typical' completion time given by faculty are shorter than the national field average"
+      ]
+    },
+    {
+      "pattern": "Relying on a single advisor relationship as the sole source of mentorship",
+      "why_it_happens": "Programs are structured around single advisors; seeking additional mentors can feel like disloyalty or distrust; students don't know they have agency to build broader networks",
+      "consequence": "When the advisor relationship deteriorates — through advisor departure, conflict, or dysfunction — student has no alternative support structure and faces disproportionate attrition risk",
+      "warning_signs": [
+        "Program culture discourages meeting with faculty outside your advisor's lab",
+        "Thesis committee meets only at formally required intervals and is not treated as a mentorship resource"
+      ]
+    },
+    {
+      "pattern": "Underrepresented students attributing structural mentorship gaps to personal inadequacy",
+      "why_it_happens": "The gap between underrepresented students and peers in completion rates is structural, driven by lack of identity-affirming mentorship and cultural conflicts; but when the environment doesn't name this, students internalize failure as personal",
+      "consequence": "Students reduce effort, disengage from the field, or leave without completing — mistakenly concluding they are not capable rather than that the mentorship structure failed them",
+      "warning_signs": [
+        "Student cannot identify any mentor who has acknowledged their multiple identities (national origin, gender, first-gen status) as relevant to their experience",
+        "Student is performing well objectively but feels increasing self-doubt about belonging"
+      ]
+    },
+    {
+      "pattern": "Attempting to resolve advisor dysfunction through direct confrontation",
+      "why_it_happens": "Direct communication is the culturally default conflict resolution approach; students don't know that advisor-student power asymmetry makes direct confrontation risky rather than productive",
+      "consequence": "Retaliation risk: advisor becomes less supportive of dissertation progress, withholds funding extensions, or creates hostile lab environment — accelerating the crisis rather than resolving it",
+      "warning_signs": [
+        "Program has no clearly communicated ombudsperson or neutral third-party process",
+        "Student is considering confronting advisor without having first identified any neutral institutional resource"
+      ]
+    },
+    {
+      "pattern": "Assuming attrition is about individual fit or academic ability rather than structural program factors",
+      "why_it_happens": "High attrition (25-43% of starters never finishing) is not publicized by programs; survivors attribute completion to their own qualities, reinforcing the narrative that non-completers simply weren't capable",
+      "consequence": "Applicants don't ask about program completion rates, don't investigate funding continuity, and don't treat attrition risk as a factor in choosing between programs",
+      "warning_signs": [
+        "Applicant has not asked about program completion rates during the application process",
+        "Applicant is evaluating programs purely on prestige without requesting or receiving attrition data"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Have you spoken with a student currently in year 4 or 5 of the specific lab you are considering joining?",
+      "what_it_reveals": "Whether the applicant has accessed the most predictive information source about advisor behavior during the highest-risk phase of the PhD",
+      "follow_up_if_yes": "What did that student say about advisor availability, credit attribution, and what happens when students are struggling?",
+      "follow_up_if_no": "The evaluation of the advisor is based on publicly visible signals (publications, rankings) that are orthogonal to mentorship quality; the most important data is missing"
+    },
+    {
+      "question": "What is the 10-year completion rate for the specific program you are considering?",
+      "what_it_reveals": "Whether the applicant has investigated structural program quality beyond reputation; and whether the program is transparent about attrition",
+      "follow_up_if_yes": "Is the rate above 60%? If below, has the program given a specific explanation and shown evidence of improvement?",
+      "follow_up_if_no": "Applicant is making a major commitment without knowing whether most students who start actually finish; this is a critical information gap"
+    },
+    {
+      "question": "What does your funding package guarantee, and what has the program told you happens to students after the guaranteed period ends?",
+      "what_it_reveals": "Whether the applicant understands the funding cliff and has a concrete plan for the 2-3 year gap between guaranteed funding end and statistical completion",
+      "follow_up_if_yes": "Is there documented evidence of teaching assistantships, grants, or fellowships that bridge the gap? Or is the answer vague?",
+      "follow_up_if_no": "Applicant is operating on an implicit assumption that they will finish within the funded period, which contradicts national median data"
+    },
+    {
+      "question": "Does the program have a formal ombudsperson or student advocate who is independent of faculty?",
+      "what_it_reveals": "Whether there is institutional infrastructure to handle advisor relationship problems without requiring direct confrontation; programs without this concentrate all power in the advisor",
+      "follow_up_if_yes": "Have you been told how to access this person and under what circumstances they can intervene?",
+      "follow_up_if_no": "If the advisor relationship deteriorates, the only options are direct confrontation (retaliation risk) or leaving; this significantly increases vulnerability"
+    },
+    {
+      "question": "Are you planning to rely solely on your primary advisor for mentorship, or do you have a plan for building additional mentoring relationships?",
+      "what_it_reveals": "Whether the student understands single-advisor dependency risk and has or will build a multi-mentor support structure",
+      "follow_up_if_yes": "Have specific co-advisors, engaged committee members, or peer mentors been identified? Are they already in relationship with the student?",
+      "follow_up_if_no": "The student is entering a single-point-of-failure structure; if the primary advisor relationship fails, there is no backup network and attrition risk is substantially higher"
+    },
+    {
+      "question": "For underrepresented students: Has any faculty member in the program explicitly acknowledged your background — national origin, gender, first-generation status — as relevant to your graduate experience?",
+      "what_it_reveals": "Whether the program and advisor have the awareness and practice of identity-affirming mentorship that the National Academies identifies as predictive of retention for underrepresented students",
+      "follow_up_if_yes": "Was this acknowledgment superficial (diversity statement) or substantive (specific conversation about how your background might affect your experience and how they will support you)?",
+      "follow_up_if_no": "The student may be entering an environment where structural mentorship gaps for underrepresented students exist and are unnamed; risk of later internalizing those gaps as personal failure is high"
+    },
+    {
+      "question": "What field are you entering, and have you looked at the median time-to-degree for that field specifically?",
+      "what_it_reveals": "Whether the student's timeline expectations are calibrated to field-specific data; humanities/social science (8.4-9.5 years) vs. STEM (5-6 years) have dramatically different financial and visa exposure profiles",
+      "follow_up_if_yes": "Has the student built a financial and visa plan that accounts for the median, not the best-case, completion timeline?",
+      "follow_up_if_no": "The student is likely underestimating time-to-degree based on program marketing or best-case examples, creating a future financial and immigration planning gap"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you get into a top-ranked PhD program, you will almost certainly finish with a degree",
+      "actual_reality": "Even under the most favorable conditions, no more than 75% of PhD students ever complete; at many programs the 10-year completion rate is 57-63%; attrition is structural and field-wide, not a marker of individual failure",
+      "implication": "Applicants should investigate completion rates as a standard part of program evaluation and treat programs that cannot or will not disclose this data with skepticism"
+    },
+    {
+      "common_belief": "A famous researcher with many publications will be a good PhD advisor",
+      "actual_reality": "Mentorship is a learned skill, not a personality trait and not correlated with research output; negative mentorship behaviors (absence, credit-taking, exploitation, volatility) are completely invisible in a publication record and only detectable by talking to current and former students",
+      "implication": "Evaluate advisors through direct investigation of their mentorship behavior, not through their research reputation; these are independent variables"
+    },
+    {
+      "common_belief": "The funding period stated in a PhD offer letter is roughly how long the degree will take",
+      "actual_reality": "Most PhD funding packages guarantee 4-5 years; median time to degree nationally is 7.3 years overall and 8.4-9.5 years in humanities/social sciences; the funding cliff at year 4-5 coincides with peak attrition",
+      "implication": "Students should treat year 4-5 funding as the beginning of a vulnerable phase, not the end of the program, and ask explicitly about institutional support structures beyond the guaranteed period"
+    },
+    {
+      "common_belief": "If a PhD student doesn't finish, it's because they weren't capable enough or didn't fit the field",
+      "actual_reality": "CGS data shows that completion is most strongly predicted by financial support continuity, mentoring quality, social environment, and program structure — not individual ability; attrition is a structural outcome, not a personal one",
+      "implication": "Prospective students should evaluate structural factors (completion rates, funding continuity, mentorship infrastructure) rather than assuming their ability will overcome structural deficiencies"
+    },
+    {
+      "common_belief": "If you have a problem with your advisor, you should address it directly with them",
+      "actual_reality": "Direct confrontation with an advisor in a power-asymmetric relationship creates retaliation risk; the National Academies recommends neutral third-party resources (ombudspersons, student advocates) as the appropriate first contact",
+      "implication": "Students should identify and verify the existence of neutral institutional recourse mechanisms before they need them, not during a crisis; the absence of such mechanisms should be a program selection factor"
+    },
+    {
+      "common_belief": "Underrepresented students who leave PhD programs do so because graduate school wasn't right for them",
+      "actual_reality": "Underrepresented students leave STEMM at higher rates than peers partly due to lack of effective mentorship and identity conflicts with academic culture; this is a structural gap, not an individual capability or fit issue",
+      "implication": "Underrepresented students should specifically assess whether a program and advisor have demonstrated track records of supporting students with similar backgrounds, and treat the absence of this as a structural risk factor"
+    },
+    {
+      "common_belief": "Your primary advisor is sufficient mentorship for a PhD",
+      "actual_reality": "National Academies research shows that single-mentor models create a single point of failure; PhD students with multiple mentoring relationships — co-advisors, engaged committee members, peer mentors, external professionals — have better outcomes",
+      "implication": "Students should proactively build multiple mentoring relationships rather than waiting for programs to structure this; and should evaluate programs partly on whether they facilitate or discourage multi-mentor structures"
+    },
+    {
+      "common_belief": "Most institutions formally evaluate and hold accountable advisors for mentorship quality",
+      "actual_reality": "Most institutions do not formally evaluate advisor mentorship quality; widespread adoption of effective mentorship requires systemic shifts that have not occurred in most programs",
+      "implication": "Students cannot rely on institutional quality control to protect them from poor advisors; self-directed investigation before joining a lab is the primary protection mechanism available"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to evaluate a potential PhD advisor",
+      "junior_pattern": "Looks at publication count, h-index, lab prestige, and university ranking; assumes a successful researcher will be a good mentor",
+      "senior_pattern": "Treats research output and mentorship quality as independent variables; investigates mentorship behavior specifically by talking to current year 4-5 students; asks about meeting frequency, attribution practices, and what happened when students struggled",
+      "why_it_matters": "Advisor relationship problems are the most commonly cited reason for leaving a PhD without a degree; choosing based on research prestige alone leaves the highest-risk variable unexamined"
+    },
+    {
+      "dimension": "Understanding PhD completion timelines",
+      "junior_pattern": "Anchors on the funding guarantee period (4-5 years) as the expected completion time; treats this as a normal program length",
+      "senior_pattern": "Knows that median time to degree is 7.3 years nationally (longer in humanities); plans financially and logistically for a 2-3 year gap between funding end and actual completion; asks specifically about what happens after the funded period",
+      "why_it_matters": "The funding cliff at year 4-5 is the peak attrition period; students who did not plan for it face simultaneous financial crisis and dissertation pressure with no institutional safety net"
+    },
+    {
+      "dimension": "Interpreting PhD attrition",
+      "junior_pattern": "Assumes that students who don't finish weren't capable or didn't fit the field; treats own admission as evidence they will complete",
+      "senior_pattern": "Knows that 25-43% of PhD starters never finish; understands completion is predicted by structural factors (funding continuity, mentorship quality, peer environment) not just ability; asks about completion rates as standard due diligence",
+      "why_it_matters": "Students who believe attrition is about individual capability don't investigate structural factors before joining a program, leaving themselves exposed to predictable and avoidable risks"
+    },
+    {
+      "dimension": "Building mentorship relationships",
+      "junior_pattern": "Relies entirely on the primary advisor as the source of all mentorship; views seeking other mentors as potentially disloyal or unnecessary",
+      "senior_pattern": "Proactively builds multiple mentoring relationships — co-advisors, engaged thesis committee members, peer mentors, external professionals — before the primary relationship is tested; treats this as standard risk management",
+      "why_it_matters": "Single-advisor dependency creates a single point of failure; when the relationship deteriorates (common), students with no alternative network face binary choices between enduring dysfunction and leaving"
+    },
+    {
+      "dimension": "Handling advisor relationship problems",
+      "junior_pattern": "Either avoids addressing the problem (letting it compound) or confronts the advisor directly (creating retaliation risk)",
+      "senior_pattern": "Knows that neutral third-party resources (ombudspersons, student advocates) are the appropriate first contact; identifies these resources proactively before they are needed; evaluates programs partly on whether such resources exist",
+      "why_it_matters": "Direct confrontation of an advisor creates retaliation risk in a power-asymmetric relationship; students who don't know the correct pathway default to either silence or confrontation, both of which produce worse outcomes"
+    },
+    {
+      "dimension": "Evaluating a program for underrepresented student risk",
+      "junior_pattern": "Assesses fit based on research alignment and whether the environment 'feels welcoming'; takes diversity statements at face value",
+      "senior_pattern": "Specifically asks whether the advisor has successfully mentored students with similar backgrounds; looks for structural support programs not just statements; understands that higher late-completion rates for underrepresented students reflect structural gaps, not individual pace",
+      "why_it_matters": "Structural mentorship gaps for underrepresented students produce predictable attrition and longer time-to-degree; students who don't investigate this specifically are more likely to internalize structural failure as personal inadequacy"
+    },
+    {
+      "dimension": "What questions to ask during program visits",
+      "junior_pattern": "Asks about research projects, lab equipment, course requirements, and where recent graduates got jobs",
+      "senior_pattern": "Asks for the 10-year completion rate; asks what happens to students after the funded period ends; asks to speak with year 4-5 students specifically; asks whether there is an ombudsperson independent of faculty; asks for advisor-specific time-to-degree data",
+      "why_it_matters": "The questions junior applicants ask reveal publicly visible information that program marketing already provides; the questions senior applicants ask reveal the structural factors that predict whether they will actually complete the degree"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "reports_national_academies_mentorship_and_completion_rates",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

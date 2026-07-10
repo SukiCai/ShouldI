@@ -1,0 +1,320 @@
+{
+  "source_file": "ImmigrationCanada_express_entry_crs_score_strategy_what_actually_mov.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "French bilingual route is the single biggest CRS lever for candidates already above CLB 10 in English",
+      "condition": "When a candidate is stuck below 470 CRS and has already maximized English language scores",
+      "action": "Pursue TEF Canada at B1 level via 3-6 months of structured study before attempting other optimizations",
+      "because": "Post author gained +50 points from French alone; top comment (445 upvotes) corroborates that TEF Canada is more lenient than DELF and B1 is achievable in that timeframe for English speakers",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Improving English IELTS beyond CLB 10 has diminishing returns and should be deprioritized",
+      "condition": "When a candidate is already at CLB 10 and is considering retaking IELTS to gain points",
+      "action": "Redirect that effort to French or spouse language score instead",
+      "because": "Post author explicitly reported only ~6 marginal points gained from CLB 10 to CLB 11, making it a low-ROI activity relative to other levers",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "Spouse language score is an underutilized CRS lever that candidates often fail to account for",
+      "condition": "When a candidate has a spouse or common-law partner who has not yet taken an approved language test",
+      "action": "Have the spouse take IELTS or TEF and target at least CLB 7",
+      "because": "Post author gained +20 points from spouse CLB 7; top comment rank=3 (267 upvotes) independently corroborates this as a 'sleeper' gain candidates miss",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "A valid Canadian job offer at TEER 0/1 is a high-priority CRS lever for candidates below the draw threshold",
+      "condition": "When a candidate is within ~50 points of the current draw cutoff and lacks a job offer",
+      "action": "Actively pursue a job change or promotion to secure a qualifying TEER 0/1 offer to capture the 50-point bump",
+      "because": "Post author secured +50 points via job offer and received ITA; the post documents this as the second largest single lever after French",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "rule": "PNP streams should be evaluated in parallel with federal Express Entry when federal CRS is not clearing",
+      "condition": "When a candidate's CRS is persistently below federal draw cutoffs and they have provincial ties or a provincial job offer",
+      "action": "Research current PNP stream requirements (NOC categories, provincial ties) as a lower-threshold alternative pathway",
+      "because": "Top comment rank=7 (145 upvotes) explicitly states PNPs often have lower CRS requirements and is corroborated by the post's mention of Ontario tech stream",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "French language proficiency (TEF Canada B1)",
+      "why_it_matters": "Unlocks Bilingual Advantage points — the highest single-variable CRS gain available to most candidates, worth up to ~50 points",
+      "how_to_assess": "Estimate current French level; determine if B1 is achievable within 3-6 months given time and study resources available",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Spouse or partner language test score",
+      "why_it_matters": "Adds directly to the principal applicant's CRS score; CLB 7 can add ~20 points at no cost to the primary applicant's profile",
+      "how_to_assess": "Check whether spouse has taken an approved test; estimate their achievable CLB level based on language background",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Canadian job offer at qualifying TEER level",
+      "why_it_matters": "A TEER 0/1 offer adds 50 points; absence of a job offer is a significant ceiling for candidates from high-competition countries",
+      "how_to_assess": "Verify current employer's NOC TEER classification; assess feasibility of a job change to a qualifying role",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Years of Canadian work experience",
+      "why_it_matters": "Each additional year of Canadian experience adds incremental CRS points, with the second year adding more than the first",
+      "how_to_assess": "Track anniversary dates; plan ITA timing to capture the next year milestone if close to a threshold",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Country of origin / draw competition pool",
+      "why_it_matters": "Candidates from high-volume countries (India, China) face a more competitive pool, making marginal CRS optimization critical",
+      "how_to_assess": "Review IRCC draw history for country-of-origin patterns; calibrate target CRS accordingly",
+      "weight": "high",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "factor": "Candidate age",
+      "why_it_matters": "CRS age points peak in mid-to-late 20s and decline; a 29-year-old described as 'good, not great' suggests the window is time-sensitive",
+      "how_to_assess": "Check CRS age table; determine how many points will be lost at the next age birthday to create urgency around timing",
+      "weight": "medium",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Retaking IELTS to improve English score past CLB 10",
+      "unstated_consequence": "Marginal CRS gain is only ~6 points while consuming significant time and money that could be redirected to French study or spouse test prep",
+      "who_it_affects": "Candidates who are already strong English speakers and assume continued English improvement is their primary optimization lever",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Waiting for a federal all-programs draw instead of pursuing PNP",
+      "unstated_consequence": "Federal draw cutoffs for high-competition profiles may remain above reach indefinitely, while PNP streams with lower thresholds go unexplored",
+      "who_it_affects": "Candidates from India or China with CRS in the 440-470 range who are anchored on the federal pathway",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "choice": "Relying solely on Canadian Master's education points without pursuing French or spouse score",
+      "unstated_consequence": "Education points from a Canadian Master's (~23 points) are fixed and cannot be grown; other levers that are actively ignored leave significant points on the table",
+      "who_it_affects": "Recent Canadian graduate students who assume their degree provides a sufficient CRS advantage",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Candidates optimize the wrong variables — retaking English tests past CLB 10 instead of pursuing French or spouse language scores",
+      "why_it_happens": "Availability bias: candidates are already familiar with IELTS and overestimate the value of improving a known metric rather than learning a new skill (French)",
+      "consequence": "Weeks and hundreds of dollars spent for ~6 marginal CRS points when 20-50 points were available through other routes",
+      "warning_signs": [
+        "Asking 'should I retake IELTS to get CLB 11?' when already at CLB 10",
+        "No mention of French or spouse language test in CRS optimization plans"
+      ],
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "pattern": "Failing to account for spouse language score in CRS projections",
+      "why_it_happens": "Candidates typically research their own profile factors and treat the spouse score as an afterthought or administrative detail rather than a high-value optimization lever",
+      "consequence": "Missing ~20 points that could have been captured with a single IELTS sitting by the spouse",
+      "warning_signs": [
+        "CRS calculator filled out with spouse section left blank or estimated low",
+        "No plan for spouse to take an approved language test"
+      ],
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has your spouse or common-law partner taken an IRCC-approved language test?",
+      "what_it_reveals": "Whether the candidate has left ~20 points of CRS on the table through an easily correctable omission",
+      "follow_up_if_yes": "What CLB level did they achieve, and is there room to improve before the next application?",
+      "follow_up_if_no": "Is the spouse willing and able to take IELTS or TEF? This should be the next immediate action.",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "What is your current French language level, and have you taken TEF Canada?",
+      "what_it_reveals": "Whether the candidate has explored the highest single-variable CRS lever available to most applicants",
+      "follow_up_if_yes": "What score did you achieve — did you reach B1 or above to unlock Bilingual Advantage points?",
+      "follow_up_if_no": "Is 3-6 months of French study feasible? If yes, this should be prioritized above most other optimizations.",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Does your current job offer (if any) qualify at TEER 0 or TEER 1 NOC level?",
+      "what_it_reveals": "Whether the candidate's job offer is generating the full 50-point CRS benefit or no benefit at all",
+      "follow_up_if_yes": "Is the offer letter IRCC-compliant and does it meet the wage/hours requirements for the job offer points?",
+      "follow_up_if_no": "Is a role change to a TEER 0/1 position feasible within the current employer or externally?",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "question": "Are you approaching a work experience anniversary that would add Canadian experience points?",
+      "what_it_reveals": "Whether timing the ITA application to capture the next year of Canadian experience milestone is a viable strategy",
+      "follow_up_if_yes": "How many points would the additional year add, and does waiting for it make sense given current draw cutoffs?",
+      "follow_up_if_no": "Focus optimization effort on other levers rather than waiting for experience points.",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "A Canadian job offer adds 200 CRS points",
+      "actual_reality": "A job offer adds 200 points only for NOC TEER 0 senior manager or NOC 00 roles; most professional job offers (TEER 0/1 excluding NOC 00) add only 50 points",
+      "implication": "Candidates who believe any job offer adds 200 points will overestimate their CRS and be surprised; the 50-point reality is still significant but requires recalibration of strategy",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "TEF Canada is harder or equivalent to DELF and requires near-fluency to pass at B1",
+      "actual_reality": "TEF Canada is widely considered more lenient than DELF; B1 is achievable in 3-6 months of consistent study for English speakers with no prior French background",
+      "implication": "Candidates who dismiss French as too difficult are leaving up to 50 CRS points unclaimed due to an incorrect difficulty assessment",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "Improving English IELTS score is the primary language optimization lever for Express Entry",
+      "actual_reality": "Past CLB 10, English IELTS improvements yield only ~6 marginal CRS points; French language and spouse language scores offer far greater point gains",
+      "implication": "Time and money spent on IELTS retakes beyond CLB 10 has very low ROI compared to French study or coaching a spouse through IELTS",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "CRS optimization strategy",
+      "naive_pattern": "Focuses on improving the metrics already familiar — retakes IELTS, waits for more Canadian work experience years, assumes education is the main differentiator",
+      "informed_pattern": "Systematically maps all CRS levers (French, spouse, job offer, PNP) and prioritizes by points-per-effort ratio; treats French and spouse score as high-priority quick wins",
+      "why_it_matters": "The naive approach can stall a candidate below the draw threshold for a year or more; the informed approach can add 50-70 points within 6 months",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "dimension": "Pathway awareness",
+      "naive_pattern": "Focuses exclusively on federal Express Entry all-programs draws and monitors CRS cutoffs passively",
+      "informed_pattern": "Evaluates federal and provincial pathways in parallel; identifies PNP streams with lower CRS thresholds that match their province, NOC, and employer profile",
+      "why_it_matters": "Federal all-programs draws may remain out of reach for high-competition profiles; PNP can provide an ITA at a significantly lower effective CRS",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "Any Canadian job offer adds 200 points to your CRS score",
+      "why_believed": "The 200-point figure is widely cited online and in immigration forums; candidates hear the high number and generalize it without reading the NOC classification conditions",
+      "actual_rule": "200 points applies only to NOC 00 (senior manager/executive) job offers; TEER 0/1 offers outside NOC 00 add 50 points; most professional tech or skilled worker offers fall in the 50-point category",
+      "real_consequence": "Candidates overestimate their CRS by 150 points and make submission timing decisions based on incorrect projections, leading to confusion when their actual score doesn't match expectations",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "misconception": "Once you're at CLB 10 in English, improving your language score further is worth the effort",
+      "why_believed": "Language is the most visible CRS factor and candidates assume a higher score always means meaningfully more points",
+      "actual_rule": "CLB 10 to CLB 11 yields approximately 6 marginal CRS points — a very small return for the effort of an IELTS retake",
+      "real_consequence": "Candidates spend weeks preparing for and retaking IELTS to gain 6 points when 20-50 points were available through French or spouse language score optimization",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Indian national, Master's from Canadian university, software engineer in Ontario on PGWP, CRS ~460, age 29, CLB 10 English, 1 year Canadian experience, no job offer, no PNP",
+      "decision": "Pursued four parallel optimizations over 14 months: TEF Canada French at B1 (+50), spouse IELTS CLB 7 (+20), new job offer at TEER 0/1 (+50), second year of Canadian experience (incremental)",
+      "outcome": "CRS moved from ~460 to 491; received ITA in a tech-specific draw at cutoff of 489; PR application in progress",
+      "lesson": "For high-competition-country candidates stuck below 470, French bilingual route and a qualifying job offer are the two highest-ROI levers; spouse language score is a frequently overlooked third lever; English IELTS improvement past CLB 10 is low ROI",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Candidate stuck below 470 CRS asks repeatedly about retaking IELTS or waiting for more work experience, without mentioning French or spouse score",
+      "underlying_state": "Effort justification bias and familiarity bias — gravitating toward optimizations that feel known and controllable (improving an existing test score) while avoiding the uncertainty of learning a new language",
+      "how_it_manifests": "Posts focused narrowly on 'how do I get from CLB 10 to CLB 11' or 'how many points does year 3 of experience add' without exploring higher-leverage unfamiliar routes",
+      "expert_move": "Reframe the question from 'how do I improve what I have' to 'what levers haven't I pulled yet?' — then map French and spouse score as the highest unclaimed point sources before any IELTS retake discussion",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "trigger": "Candidate from India or China with CRS in the 460-480 range who has been in the pool for 6-12 months without receiving an ITA",
+      "underlying_state": "Threshold anchoring and passive waiting — believing the federal draw cutoff will eventually drop to their score rather than actively improving their score to meet the cutoff",
+      "how_it_manifests": "Comments monitoring draw cutoffs weekly, asking 'when will scores drop to 460?' rather than asking 'how do I reach 490?'",
+      "expert_move": "Shift the framing from 'will the threshold come to me?' to 'what is the fastest path to the threshold?' — then present French and job offer as the two levers that can close a 25-30 point gap within 6 months",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "How do I improve my CRS score? (implied: by improving what I already have — English score, waiting for experience years)",
+      "reframe": "Which levers haven't you pulled yet? — specifically French bilingual points and spouse language score, which are systematically underutilized",
+      "why_it_works": "Shifts the candidate from an incremental improvement mindset on known variables to a gap analysis mindset that reveals high-value unclaimed point sources",
+      "example_language": "The French bilingual route is genuinely underutilized — TEF Canada B1 is achievable in 3-6 months and the spouse language score is a sleeper that many candidates never account for",
+      "regions": [
+        "canada"
+      ]
+    },
+    {
+      "original_framing": "Should I wait for federal draw cutoffs to drop, or is there something I can do?",
+      "reframe": "PNP streams often have lower CRS requirements than federal draws — the question is not whether the federal threshold will fall, but whether a provincial pathway matches your profile now",
+      "why_it_works": "Breaks the passive waiting posture by introducing an actionable parallel pathway with a different (lower) threshold, converting an unanswerable prediction question into an actionable assessment question",
+      "example_language": "Provincial draws often have lower CRS requirements but require provincial ties or job offers — worth looking at if federal score isn't cutting it",
+      "regions": [
+        "canada"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_ImmigrationCanada_express_entry_crs_score_strategy_what_actually_mov",
+  "_source_regions": [
+    "canada"
+  ]
+}

@@ -1,0 +1,482 @@
+{
+  "source_file": "phd_funding_ran_out_real_stories.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Ask explicit questions about unfunded extensions before accepting a PhD offer",
+      "condition": "When evaluating a PhD offer with a defined funded period...",
+      "action": "Ask: Has your department granted unfunded extensions? How often? What are late submission fee structures? Are TA positions available to bridge gaps?",
+      "because": "All four real student cases in the source involved unfunded extension periods that were not discussed in admissions materials, creating financial and psychological crises",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "rule": "When multiple red flags co-occur, require explicit written clarification before accepting",
+      "condition": "When a PhD position shows 3+ concurrent warning signs (non-responsive PI, departed previous student, unusual IT/admin expectations, high-pressure culture)...",
+      "action": "Initiate a direct conversation addressing each concern explicitly and document responses in email",
+      "because": "The PhysicsForums thread shows individual red flags may be explainable, but a pattern of multiple flags together warrants explicit expectation-setting and paper trail for self-protection",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "rule": "Investigate career outcomes of previous students, not just whether they stayed or left",
+      "condition": "When trying to evaluate a PI or lab's quality...",
+      "action": "Ask whether previous students successfully transitioned into desired career paths rather than focusing on attrition alone",
+      "because": "Commenter Office_Shredder explicitly identifies this as more informative than departure status alone — a student who left may have gone on to a better opportunity",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "rule": "If savings run out during an unfunded extension, prioritize part-time or full-time work over accumulating university debt where thesis submission fees are involved",
+      "condition": "When a PhD student has exhausted funding and faces late submission fees...",
+      "action": "Use savings to finish if possible; otherwise find part-time or full-time work before allowing debt to university to accumulate",
+      "because": "Anonymous Story 3 student explicitly advises this after surviving 15 months of full-time employment to fund completion, and Story 4 confirms savings of only two months was insufficient",
+      "regions": [
+        "uk"
+      ]
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Availability and terms of unfunded extensions",
+      "why_it_matters": "Determines whether a student who needs more time than the funded period can continue without catastrophic financial or academic consequences",
+      "how_to_assess": "Ask the department directly: how often are extensions granted, are any funded, and what are the late submission fee structures",
+      "weight": "high",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "factor": "Supervisor responsiveness and advocacy behavior",
+      "why_it_matters": "Multiple students note that supervisor compassion — not institutional support — was what kept them going; supervisors who actively advocate can reduce fees and obtain extensions",
+      "how_to_assess": "Test response time during application (did PI respond to a one-week consideration request?); ask current students whether the PI has gone to bat for them with administration",
+      "weight": "high",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "factor": "Lab culture around failure and null results",
+      "why_it_matters": "Students whose research produces null results face added psychological burden if the lab or department treats null results as failures rather than normal science",
+      "how_to_assess": "Ask current lab members how the PI responds when experiments don't produce publishable results; ask whether students have successfully defended theses with inconclusive findings",
+      "weight": "high",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "factor": "Presence of TA or demonstrating opportunities to bridge funding gaps",
+      "why_it_matters": "When funding expires, TA/demonstrating positions are the primary legitimate income source that keeps students in the program; their availability is highly variable by department",
+      "how_to_assess": "Ask directly whether the department offers TA or demonstrating positions to students beyond their funded period, and whether these are competitive or guaranteed",
+      "weight": "high",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "factor": "Comorbid personal circumstances (health, family, disability)",
+      "why_it_matters": "Undiagnosed conditions or family emergencies during a PhD can consume savings, reduce output, and extend timelines — systems rarely accommodate this adequately",
+      "how_to_assess": "Honestly assess personal risk profile before starting; ask the department what accommodation processes exist for illness or family emergency",
+      "weight": "medium",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Accepting a PhD position with a defined funded period (e.g., 3-4 years)",
+      "unstated_consequence": "The funded period is a floor, not a ceiling — unfunded extensions are common and not disclosed upfront, meaning students may face months or years of self-funded work without institutional support",
+      "who_it_affects": "International students and those without family financial safety nets are hit hardest; also students with health conditions that slow output",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "choice": "Staying enrolled beyond funded period to finish the PhD",
+      "unstated_consequence": "Late submission fees can accumulate as debt to the university, and part of the 'extension' may be entirely unfunded — creating a financial hole that outlasts the degree",
+      "who_it_affects": "Students who deplete savings during the funded period and have no family support or employment fallback",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "choice": "Choosing a large, multi-project lab for PhD",
+      "unstated_consequence": "Students may be asked to provide informal IT, administrative, or consultancy support to other lab members — adding obligations not specified in the original offer",
+      "who_it_affects": "Students who took the position primarily for research focus and are surprised by non-research demands on their time",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "choice": "Pursuing a physics or STEM PhD with academic career intentions",
+      "unstated_consequence": "Extended timelines, low pay, high mobility requirements, and excessive workload cause many students to exit academia entirely — not because they failed, but because the conditions were unsustainable",
+      "who_it_affects": "Students who entered with strong academic ambitions but did not anticipate the systemic attrition forces acting on them",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Entering a PhD without understanding the post-funding-period financial structure",
+      "why_it_happens": "Admissions materials focus on the funded offer; unfunded extensions, late fees, and post-deadline debt are not marketed and rarely discussed proactively",
+      "consequence": "Students end up in debt to the university, taking full-time jobs while trying to finish, or abandoning the degree after years of investment",
+      "warning_signs": [
+        "Offer letter only specifies funded years with no mention of extension policy",
+        "Department cannot answer questions about late submission fees during admissions"
+      ],
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "pattern": "Treating a single red flag as isolated rather than looking for a pattern",
+      "why_it_happens": "Applicants are motivated to see the positive in an offer they want; each individual red flag has a plausible benign explanation",
+      "consequence": "Accepting a position with a difficult PI or toxic lab environment that becomes apparent only after enrollment, at which point exit costs are high",
+      "warning_signs": [
+        "Previous student left early and refuses to discuss the experience",
+        "PI does not respond to a reasonable one-week consideration request"
+      ],
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "pattern": "Inadequate supervisor guidance leading to insufficient research output at thesis stage",
+      "why_it_happens": "Students assume supervisors will proactively manage their research trajectory; many supervisors are overworked and provide guidance only reactively",
+      "consequence": "Student reaches unfunded period still writing and researching simultaneously, with no buffer and no publications — thesis becomes an emergency rather than a synthesis",
+      "warning_signs": [
+        "Supervisor does not set regular structured check-ins",
+        "Student has no clear sense of what 'enough research' looks like for a thesis"
+      ],
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "pattern": "Depleting savings on private healthcare or disability support that should be institutionally provided",
+      "why_it_happens": "Universities offer inadequate or slow-moving support for diagnosed or undiagnosed conditions; students self-fund private help to maintain productivity",
+      "consequence": "Financial cushion intended for the unfunded extension period is gone, forcing employment, relocation to parents, or debt",
+      "warning_signs": [
+        "Student has existing or suspected disability and university support process is unclear",
+        "Private diagnosis or therapy costs emerge during the first two years"
+      ],
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has your department granted unfunded extensions in the past, and what were the terms?",
+      "what_it_reveals": "Whether the department has an established, precedented pathway for students who need more time — or whether each case is ad hoc and unpredictable",
+      "follow_up_if_yes": "What triggered those extensions, and were any funded? What are the late submission fee structures?",
+      "follow_up_if_no": "What happens to a student who cannot submit within the funded period? Is there a formal leave of absence or interruption process?",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "question": "Where did the previous two or three students in this lab end up after finishing?",
+      "what_it_reveals": "Whether the lab and supervisor actually produce the career outcomes you want, regardless of whether students stayed or left during the program",
+      "follow_up_if_yes": "Did they reach those outcomes within the funded period or after extended timelines?",
+      "follow_up_if_no": "Why is there no information available — did students leave without completing, or is the lab too new?",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "question": "What support does the university offer students who are diagnosed with a disability or chronic health condition mid-PhD?",
+      "what_it_reveals": "Whether there is an institutional accommodation pathway that doesn't require students to self-fund private support",
+      "follow_up_if_yes": "How long does the process take, and has it ever resulted in a funded extension rather than just an unfunded one?",
+      "follow_up_if_no": "This is a major risk factor for students with any existing or suspected condition — factor private support costs into financial planning",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "question": "Are TA or demonstrating positions available to students who are beyond their funded period?",
+      "what_it_reveals": "Whether there is a legitimate, accessible income source during the unfunded extension period or whether students are entirely on their own",
+      "follow_up_if_yes": "Are these competitive or effectively guaranteed? How many hours per week, and what do they pay relative to living costs?",
+      "follow_up_if_no": "Students must plan for full self-funding during any extension — savings, employment, or family support must be explicitly budgeted",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "question": "How does the PI respond when a student produces null or inconclusive results?",
+      "what_it_reveals": "Whether the lab treats null results as normal science or as failures, which directly affects student mental health and willingness to report honestly",
+      "follow_up_if_yes": "Can the PI give an example of a student who had a difficult result and how it was handled?",
+      "follow_up_if_no": "Absence of a clear answer is itself a signal — ask current students directly and privately",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "The funded period of a PhD covers you until completion",
+      "actual_reality": "The funded period is a minimum guarantee, not a completion guarantee. Unfunded extensions of months to years are common across UK and US programs, are not disclosed in admissions materials, and leave students financially exposed with no institutional support",
+      "implication": "Applicants should treat the funded period as the floor and budget explicitly for 6-18 months of self-funded completion time",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Institutional support infrastructure exists for PhD students who face illness, disability, or family emergencies",
+      "actual_reality": "All four student cases identified the absence of any reliable institutional support infrastructure. What kept students going was individual supervisor compassion — not systemic support. When supervisors are overworked or disengaged, students are effectively unsupported",
+      "implication": "Students should not assume institutional safety nets exist; they should investigate specific departmental track record and build their own financial and social contingency plans",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "common_belief": "A previous student leaving a lab early is a strong negative signal about the PI",
+      "actual_reality": "Departure alone is ambiguous — the student may have left for unrelated reasons, personal discretion, or career pivots. More informative is whether previous students achieved their career goals, and whether the PI actively supported their transitions",
+      "implication": "Reframe the evaluation question from 'did students stay?' to 'did students get where they wanted to go?'",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Reimbursement issues or administrative confusion in a lab are signs of bad faith from the PI",
+      "actual_reality": "Administrative errors (e.g., VAT confusion on travel reimbursements) are common and often have bureaucratic rather than bad-faith explanations. The PhysicsForums case confirmed the remaining balance was being sent once the error was identified",
+      "implication": "Distinguish administrative red flags from cultural or character red flags — the former are worth a direct conversation, the latter require pattern evidence before drawing conclusions",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Evaluating a PhD offer's financial risk",
+      "naive_pattern": "Reads the funded stipend amount and funded years, assumes that covers the PhD, and accepts without asking about post-funding structures",
+      "informed_pattern": "Asks explicitly about unfunded extension policies, late submission fees, and TA availability before accepting; treats the funded period as a floor not a ceiling",
+      "why_it_matters": "The difference is the difference between finishing with savings intact versus accumulating university debt or working full-time while trying to write a thesis",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating lab red flags",
+      "naive_pattern": "Treats each red flag in isolation and accepts the most charitable explanation for each; concludes the position is fine overall",
+      "informed_pattern": "Looks for the pattern across all flags together; initiates a direct conversation about expectations; documents the exchange in writing before signing",
+      "why_it_matters": "Individual flags are deniable; a pattern is diagnostic — and documentation protects the student if issues arise after enrollment",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "dimension": "Assessing supervisor quality",
+      "naive_pattern": "Looks at the supervisor's publication record, grant funding, and prestige",
+      "informed_pattern": "Tracks where the supervisor's previous students ended up and how long they took to finish; asks current students whether the supervisor advocates for them institutionally",
+      "why_it_matters": "A high-publishing supervisor who doesn't advocate for their students can leave a struggling student stranded — while a less prominent supervisor who actively supports extensions and career transitions can be the difference between finishing and dropping out",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "dimension": "Planning for health or life disruptions during a PhD",
+      "naive_pattern": "Assumes the institutional support system will handle it if something goes wrong",
+      "informed_pattern": "Investigates specific departmental accommodation processes before enrolling; builds a personal financial and social contingency plan independent of institutional promises",
+      "why_it_matters": "All four real student cases show institutions failed to provide adequate support during disruptions; the students who survived were those with personal contingencies (savings, family, employment options)",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "PhD programs disclose all material funding conditions — including what happens after funding ends — in the offer letter or admissions materials",
+      "why_believed": "Offer letters are formal documents; applicants assume they contain all financially material terms as a matter of good faith",
+      "actual_rule": "Unfunded extension terms, late submission fee structures, and post-deadline debt policies are routinely omitted from admissions materials across UK and US programs; students discover them only when they need them",
+      "real_consequence": "Students enter without financial planning for post-funding periods and are blindsided by debt, fees, or complete loss of institutional support at the most vulnerable stage of the PhD",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "misconception": "Taking longer than the funded period to complete a PhD is unusual or a sign of personal failure",
+      "why_believed": "Funded periods are marketed as the expected timeline; students who finish early are celebrated; those who go over are rarely discussed publicly",
+      "actual_rule": "Unfunded extensions are common — normalized enough that departments have informal processes for them, even if undisclosed. COVID, health issues, project pivots, and supervisor capacity issues routinely extend timelines beyond the funded period",
+      "real_consequence": "Students who overrun feel shame and hide the difficulty rather than proactively negotiating extensions or seeking support, which worsens their outcomes",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "misconception": "A PhD supervisor's job is to proactively manage your research trajectory and flag when you're falling behind",
+      "why_believed": "The advisor relationship is often described as mentorship; students assume the more experienced party will take the lead on progress management",
+      "actual_rule": "Many supervisors are overworked and provide guidance only reactively. Students in Story 4 explicitly identify inadequate supervisor guidance as the root cause of insufficient research output — the student did not know what 'enough' looked like until it was too late",
+      "real_consequence": "Students reach the unfunded period still mid-research with no publications, writing and researching simultaneously under financial pressure",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "UK physics PhD student, started 2019, hit COVID within months of starting, later diagnosed with ADHD and dyslexia, depleted savings on private support, minimal research output by year two",
+      "decision": "Switched projects, started ADHD medication, continued the PhD",
+      "outcome": "Still enrolled at time of interview, in debt, uncertain about completion timeline, planning to exit academia for lower-stakes employment",
+      "lesson": "Undiagnosed conditions and COVID disruption compounded to exhaust both financial and institutional buffers; private support costs consumed the financial cushion meant for completion — students with any suspected conditions should investigate institutional accommodation before spending savings on private help",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "Fourth-year particle physics PhD, University of Liverpool, analysis code switch delayed completion, COVID prevented international collaboration, chronic pain and family tragedy added burden, only three of six pandemic extension months were funded",
+      "decision": "Continued PhD while teaching and demonstrating 20 hours weekly, living on restricted savings",
+      "outcome": "Still enrolled, planning career pivot to science policy or science writing rather than academia",
+      "lesson": "Teaching and demonstrating positions can provide income during unfunded periods but are time-intensive; 20 hours weekly of TA work significantly slows thesis progress, further extending the unfunded period — this creates a compounding cycle",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "Fifth-year UK particle physics PhD student, past submission deadline, mother diagnosed with terminal illness during PhD, funding expired",
+      "decision": "Took a full-time programming job for 15 months; supervisor advocated to reduce late submission fees; accepted six-week funded extension plus eight-week unfunded extension",
+      "outcome": "Building debt to university, planning to pay lump sum after submission; still completing",
+      "lesson": "Supervisor advocacy can materially reduce financial penalties — a supervisor who will go to bat for you with administration is a critical and undervalued factor in PhD program selection",
+      "regions": [
+        "uk"
+      ]
+    },
+    {
+      "situation": "Recently graduated PhD student, inadequate supervisor guidance, no networking or conference opportunities, insufficient research output, savings covered only two months",
+      "decision": "Relocated to parents' home, wrote thesis while simultaneously generating research, completed degree",
+      "outcome": "Described thesis writing as 'one of the worst experiences of my life'; rejected academia entirely in favor of technology sector",
+      "lesson": "Inadequate supervisor guidance creates a downstream crisis at thesis stage that is very difficult to recover from financially or psychologically; program selection criteria should include explicit assessment of supervisor guidance style, not just research fit",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "situation": "PhD applicant (Jarfi) evaluating a position with six concurrent red flags including departed previous student, IT support expectations, unreimbursed travel costs, non-responsive PI",
+      "decision": "Investigated each flag individually; confirmed reimbursement was an administrative error; documented IT/consulting expectations in email before accepting",
+      "outcome": "Accepted the position with documented protection on the key concern; the most serious financial flag (reimbursement) was resolved as bureaucratic error",
+      "lesson": "Not all red flags carry equal weight; distinguishing administrative errors from cultural or character issues requires direct investigation rather than assumption — and documentation of resolved concerns provides protection if problems recur post-enrollment",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "PhD student asks 'when will I finish?' and 'how do I know when I have enough research?'",
+      "underlying_state": "Ambiguity intolerance combined with institutional opacity — the student has no external reference point for 'done' and is catastrophizing the uncertainty",
+      "how_it_manifests": "Student frames the question as personal inadequacy ('I'm behind') rather than as a systemic failure of the program to define completion criteria",
+      "expert_move": "Redirect the student to ask their supervisor and department for explicit thesis completion criteria; normalize that the institution's failure to define this is a system problem, not a student problem — then build a concrete milestone map",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student in debt and behind schedule describes thesis writing as 'one of the worst experiences of my life' and exits academia entirely",
+      "underlying_state": "Sunk cost exhaustion — years of investment, financial loss, and psychological suffering have been associated with the PhD identity itself, making the completion feel like punishment rather than progress",
+      "how_it_manifests": "Student completes the degree but immediately exits the field, unable to separate the value of the credential from the trauma of obtaining it",
+      "expert_move": "Intervene earlier by normalizing career pivots as valid outcomes rather than failures — students who know that technology, policy, or industry are legitimate exits feel less trapped and make clearer decisions about whether to continue",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "trigger": "Applicant evaluating a PhD position minimizes or explains away each red flag individually",
+      "underlying_state": "Motivated reasoning — the applicant wants the position and unconsciously assigns charitable explanations to each flag to justify acceptance",
+      "how_it_manifests": "Applicant lists the flags themselves (demonstrating awareness) but asks the community for reassurance rather than a systematic evaluation framework",
+      "expert_move": "Shift the frame from 'is each flag explainable?' to 'what is the pattern saying, and have I documented my concerns in writing?' — this converts motivated reassurance-seeking into protective action",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "trigger": "Student in the unfunded extension period feels shame about overrunning the expected timeline",
+      "underlying_state": "Internalized norm violation — funded period is perceived as the 'normal' timeline; overrunning it feels like personal failure even when the causes are systemic",
+      "how_it_manifests": "Students hide the difficulty, delay seeking extensions, and avoid asking for supervisor advocacy — which worsens outcomes by reducing access to institutional levers that could help",
+      "expert_move": "Normalize that unfunded extensions are common (not exceptional) and that proactive negotiation — not silence — is the strategy that gets fees reduced and funded weeks added",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I be worried about this red flag in my PhD offer?",
+      "reframe": "Don't ask whether each flag is explainable — ask what the pattern says, and whether you've protected yourself in writing",
+      "why_it_works": "Shifts the applicant from reassurance-seeking (a closed loop) to protective action (documentation, direct conversation), which produces value regardless of the conclusion",
+      "example_language": "Office_Shredder: 'Investigate whether previous students successfully transitioned to desired career paths — this is more informative than whether they left'",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "original_framing": "The previous student left — does that mean the PI is bad?",
+      "reframe": "Departure is ambiguous. The real question is: where did they end up, and did the PI help them get there?",
+      "why_it_works": "Reorients evaluation from attrition (a noisy signal) to career outcome (a more direct measure of what the applicant actually cares about)",
+      "example_language": "'This is more informative than whether they left'",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I'm in debt, time is running out, I don't have enough research — when will I finish?",
+      "reframe": "The system failed to tell you what 'enough' looks like. That's an institutional failure, not a personal one. The first step is to demand a definition.",
+      "why_it_works": "Externalizes a problem the student has been internalizing, reducing shame-driven paralysis and replacing it with an actionable demand on the institution",
+      "example_language": "Karel Green's critique: 'lack of clarity about acceptable research quality and insufficient support during illness or personal crises'",
+      "regions": [
+        "uk",
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "forums_phd_funding_ran_out_real_stories",
+  "_source_regions": [
+    "uk",
+    "us"
+  ]
+}

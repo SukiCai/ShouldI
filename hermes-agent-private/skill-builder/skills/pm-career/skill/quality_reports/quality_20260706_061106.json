@@ -1,0 +1,49 @@
+{
+  "skill_name": "Senior PM Career Decisions",
+  "overall_score": 4.3,
+  "summary": "This is a genuinely strong skill with a clear expert point of view — the 'scope not title' framing is consistently applied and the diagnostic framework meaningfully differentiates situations that novices conflate. Some heuristics still edge toward generic career advice and a few claims (percentages, level equivalencies) are asserted with more confidence than warranted, but overall this would make an AI noticeably sharper on PM career questions.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 5,
+    "hidden_tradeoffs": 4,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The core framing — 'You treat PM careers as a scope problem, not a title problem... you refuse to answer at the level of the question' — is genuinely expert and counterintuitive. It reframes the question type before answering, which is how senior practitioners actually think.",
+    "The Step 2 classification (skill gap / org ceiling / stage transition failure / wrong-track fit) is excellent — these really do look identical from inside and require opposite responses. The stage transition failure category ('trying to earn Stage 2 by doing Stage 1 better') is a genuinely non-obvious diagnosis.",
+    "The Junior vs. Senior table has real differentiators, not just 'more experienced.' 'Makes the we shouldn't build any of these argument when the problem is wrong' and 'Builds conviction from user/market signals first, then brings stakeholders along' are behaviors that actually separate the levels.",
+    "Heuristic #3 (get the level code, cross-reference levels.fyi, Amazon L6 = Google Senior PM) is concrete, actionable, and something novices genuinely don't know to do."
+  ],
+  "weaknesses": [
+    "Some heuristics are closer to standard career advice than expert-level: #7 'Block strategic time on your calendar explicitly' and #8 'Invest in communication disproportionately' are true but appear in every PM blog. They need sharper conditions or specific mechanics to earn their place.",
+    "Specific percentages are asserted without sourcing or nuance — 'management track spends 30%+ on 1:1 coaching and 25% on hiring', 'Product strategy time drops from ~40% to ~15%', 'Presentations are ~5% of the work but ~50% of how you're judged.' These may be directionally right but stated as facts they invite pushback and reduce credibility.",
+    "The level equivalency claim 'Amazon L6 = Google/Meta Senior PM, not L5' is a common oversimplification — Amazon L6 is often mapped to Senior at Google (L5) OR Staff depending on scope, and this varies by year and org. A true expert would flag the messiness.",
+    "The 8/10 satisfaction rule (#10) feels invented — 'Below 7 for six months = act. Below 5 for three months = act urgently' has false precision without a source or mechanism. Why 7 not 6? Why six months not four?",
+    "Diagnostic questions are strong but lean toward yes/no framing. Question 5 ('did anything in the last 6 months surprise you?') is excellent; question 1 ('Has your scope expanded?') could be sharpened by asking for specific examples of new decision authority."
+  ],
+  "improvement_suggestions": [
+    "Add a section on 'compensation vs. scope tradeoffs' — the skill mentions comp anchoring is bad but doesn't give concrete guidance on how much comp to trade for scope, or how to evaluate an offer where scope is bigger but title/comp is flat or down. This is one of the most common real senior PM decisions.",
+    "Replace or annotate the specific percentages ('30%+ on coaching', '~5% presentations / ~50% judgment') with either a source, a range, or explicit language like 'roughly' with reasoning. Or better, replace with qualitative claims that don't need false precision.",
+    "Add coverage for PM-to-adjacent transitions the skill mentions but doesn't develop: founder, VC, EIR, GM. The heuristic list mentions founder odds but there's no framework for evaluating fit or timing for these moves — and these questions come up constantly at the senior PM stage.",
+    "Add a diagnostic for 'am I actually in an org ceiling or is my manager underselling me?' — the skill treats manager advocacy as binary (advocate or don't) but the more common reality is a manager who is trying but has limited political capital. A test for distinguishing these would be valuable.",
+    "The MBA section is strong on the 'closed doors' test but doesn't address the emerging counterpoint: MBA as a career break/reset for burned-out PMs, or as a geographic pivot mechanism (e.g., international PMs entering US market). Add nuance for these non-canonical use cases."
+  ],
+  "generic_advice_flags": [
+    "'Block strategic time on your calendar explicitly' — this is standard productivity advice that appears in every PM career blog; doesn't reflect senior-specific insight without more mechanics (what counts as strategic time, how to protect it against reactive fires, how to make it legible in reviews).",
+    "'Test career hypotheses through small experiments before full moves' — true but abstract. Without examples of what a 'small experiment' looks like for a Senior PM specifically (e.g., 'take a 4-week rotation into an adjacent domain', 'run one weekend user research project'), this is a platitude.",
+    "'Every career situation has a specific constraint, and until that constraint is named, any recommendation is noise' — good framing, but stated as a maxim rather than shown through the framework. The framework actually delivers on this; the sentence itself is generic.",
+    "'Invest in communication disproportionately to how much of the job it is' — sound advice, but universal to knowledge work, not senior-PM specific."
+  ],
+  "missing_coverage": [
+    "Compensation negotiation tradeoffs at the offer stage — how to trade base/equity/scope/level when the levels don't map cleanly across companies. The skill explicitly punts to a separate salary skill, but scope-vs-comp is a senior PM decision, not a negotiation tactic.",
+    "How to evaluate a manager/skip during interviews — for senior PMs, the manager is often the single largest determinant of scope and promotion outcomes, and there's no framework for interviewing them.",
+    "Domain-specific career considerations — B2B vs. B2C, platform vs. product, growth vs. core. Career trajectories differ significantly by domain and the skill treats PM as monolithic.",
+    "The 'first-time senior PM at a new company' problem — many senior PMs get the title at company A, then join company B and effectively re-prove seniority. Guidance for navigating this gap is absent.",
+    "Layoff/PIP recovery — post-2022 reality means many senior PMs face involuntary transitions, and the framework assumes voluntary decision-making throughout.",
+    "Working with (or being) an AI-augmented PM — a real 2024/2025 concern about which PM skills are commoditizing and which are becoming more valuable."
+  ]
+}

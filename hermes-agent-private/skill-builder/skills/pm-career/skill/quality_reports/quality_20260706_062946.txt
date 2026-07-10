@@ -1,0 +1,49 @@
+
+============================================================
+  Quality Report: Senior PM Career Decisions
+  Overall: 4.3/5.0  ████████████████░░░░
+============================================================
+
+  A genuinely strong skill that goes well beyond generic career advice — it establishes a real diagnostic framework (skill gap vs. org ceiling vs. stage mismatch vs. learning-rate stall) that would meaningfully change how an AI responds. Some heuristics are sharp and non-obvious (MBA cost/benefit, IC-first reversibility, scope-over-title), though a few sections drift toward compiled wisdom that a well-read PM blog reader could produce. The scope-trajectory framing and the stage-vs-title orthogonality are the standout contributions.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       4/5  ██████████░░  Good
+  Diagnostic Questions         5/5  ████████████  Excellent
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             4/5  ██████████░░  Good
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       4/5  ██████████░░  Good
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The Expert Framing does exactly what it should: it reframes the user's question before answering. 'Most PMs asking "should I stay or leave?" are actually asking one of three different questions — is this a skill gap, an org ceiling, or a stage mismatch — and each demands the opposite response.' This is the kind of counterintuitive reframe that separates expert from generic advice.
+    • The diagnostic questions are genuinely diagnostic, not conversational filler. 'Have you received the same promotional feedback across more than one review cycle without it changing?' with the interpretation 'Static feedback across cycles = structural ceiling. Evolving feedback = genuine developmental gap.' — this is a real, usable signal that a novice would not think to test.
+    • Specific, calibrated numbers where most skills stay vague: 'Product craft time drops from ~40% to ~15%'; 'management allocates ~30% of time to 1:1 coaching and ~25% to hiring'; '8/10 job satisfaction as your navigation metric. Act if below 7 for six months; act urgently if below 5 for three.' These are falsifiable and actionable.
+    • The MBA section is sharp and non-consensus: 'If you're already at FAANG or top-tier tech, an MBA returns you to where you started at massive cost' and 'Name specific closed doors before pursuing MBA — if you can't list them, opportunity cost is too high.' This is more honest than most career content.
+
+  ✗ Weaknesses:
+    • Some heuristics restate what was already said in the framing rather than adding new levers. Heuristic #2 ('If performance is strong but promotions go to political capital, it's an org ceiling — leave') is essentially the diagnostic classification restated as a rule. The heuristics section overlaps ~40% with Step 2 of the diagnostic.
+    • The Junior vs. Senior table, while good, has some rows that veer toward 'more experienced-sounding' rather than substantively different behavior. 'Building conviction: Seeks permission from stakeholders first / Builds conviction from user/market signals, then brings stakeholders along' — true but well-worn PM Twitter fodder. Rows like 'Level across companies' and 'Feedback interpretation' are the truly differentiating ones and should be expanded.
+    • The skill claims scope is 'what the market prices' but never gives the AI concrete language for how to translate scope into portable evidence (e.g., how a user should describe their scope to an external recruiter, how comp bands map to scope tiers). The framework identifies scope as central but stops short of operationalizing it.
+    • No treatment of the reference-class/comp data problem. Statements like 'Senior PM at Amazon is L6; at Google, L5' are correct but the skill doesn't tell the AI where or how to help the user actually calibrate — no mention of levels.fyi, of asking for level codes in interviews, of the specific bands and pay ranges. This weakens the 'get the level code' heuristic.
+
+  → Improvement Suggestions:
+    • Add a section on 'Reading the org from the outside' — how to diagnose org ceiling / headcount / political-promotion patterns during interviews before joining. The skill treats org ceiling as something to escape but not something to avoid re-entering. Concrete questions to ask hiring managers and cross-functional interviewers would make this actionable.
+    • Consolidate the overlap between Step 2 (Classify) and the Heuristics. Either turn heuristics into rules that apply *after* classification (i.e., 'given a skill gap, do X; given an org ceiling, do Y') or remove the duplicated logic. Right now the AI has two parallel frameworks saying similar things.
+    • Add a 'scope portability' subsection with concrete artifacts: what a scope statement looks like on a resume, how to describe a strategic framework you authored in an interview loop, and how to translate internal impact into external signal. This closes the loop on the skill's core claim that scope > title.
+    • Add a short section on timing/market conditions — the skill implicitly assumes a functioning PM market. Post-2022 hiring contractions, over-leveled candidates from 2021, and the current AI-PM shift meaningfully change the 'leave vs. stay' math. Even one paragraph acknowledging that the diagnostic must be run against current market state would strengthen it.
+    • The founding/VC pivots are mentioned in the trigger list and tradeoffs table but not developed. Either commit to covering them with the same depth as promotion/MBA, or narrow the scope statement to exclude them.
+
+  ⚠ Generic Advice Flags:
+    • 'Block calendar time explicitly for strategic work — it will always lose to reactive work if unprotected.' — This is standard productivity advice found in every management book; not PM-specific and doesn't earn its slot among the 10 heuristics.
+    • 'Treat promotion as a multi-workstream project, not a passive outcome.' — True but this is a well-known PM/tech-career trope (see any Lenny's Newsletter piece). It's not wrong, just not expert-level insight.
+    • 'Junior: Executes what's on it / Senior: Argues the roadmap is wrong; solves the right problem' — the classic 'senior people push back on the roadmap' framing. Directionally right but this exact line appears in dozens of PM career posts.
+
+  ○ Missing Coverage:
+    • How to have the actual conversation with a manager to diagnose org ceiling vs. skill gap — what specific questions to ask, what non-answers to treat as red flags, how to interpret 'you're doing great, keep going' when there's no headcount.
+    • The compensation dimension of the stay/leave decision — unvested equity, cliff timing, refresh grants, how to price a 'stay' offer against an external offer beyond just base+bonus. This is central to real senior PM decisions and absent.
+    • Signals that distinguish a promising Stage 2 opportunity from a title-only bump when evaluating external offers (e.g., who owns the strategy doc for the area, whether the role has a defined P&L or metric, whether the manager is themselves scope-setting).
+    • The 'senior PM at a smaller company vs. mid-level at a top-tier company' tradeoff, which is one of the most common concrete decisions at this career stage and isn't directly addressed by the scope-over-brand heuristic.
+    • How AI-era shifts (AI-PM roles, shrinking PM headcount at some companies, the rise of technical/AI PM as a specialty) affect the diagnostic — the skill reads as slightly pre-2023.

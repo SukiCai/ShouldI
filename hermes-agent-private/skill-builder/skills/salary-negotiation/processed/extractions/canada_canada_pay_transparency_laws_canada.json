@@ -1,0 +1,295 @@
+{
+  "source_file": "canada_pay_transparency_laws_canada.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "All publicly advertised job postings in BC must include the expected salary or wage range",
+      "condition": "When an employer in British Columbia publicly advertises a job posting for any position where pay can be defined as a range",
+      "action": "Employer must include the expected salary or wage range in the posting",
+      "because": "Required under Pay Transparency Act, SBC 2023, Chapter 18; non-compliance can result in Director of Employment Standards investigation and orders to pay compensation",
+      "regulatory_basis": "Pay Transparency Act, SBC 2023, Chapter 18 — effective November 1, 2023 (phased by employer size)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "BC employers cannot ask about an applicant's pay history at any point in the hiring process and cannot use pay history to set starting wages",
+      "condition": "When a BC employer is conducting any stage of the hiring process for any applicant",
+      "action": "Employer must not ask about prior salary or use pay history to set starting wages; must not retaliate against employees who discuss pay with coworkers",
+      "because": "Salary history ban is explicitly built into the Pay Transparency Act, SBC 2023, Chapter 18; violations are subject to enforcement by the Director of Employment Standards",
+      "regulatory_basis": "Pay Transparency Act, SBC 2023, Chapter 18",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "BC employer size phase-in: 1,000+ employees required from November 1, 2023; 300–999 from January 1, 2024; 50–299 from January 1, 2025; all employers (no minimum) from January 1, 2026",
+      "condition": "When determining whether a BC employer must include salary ranges in job postings",
+      "action": "Apply the phase-in date corresponding to the employer's headcount to determine compliance obligation start date",
+      "because": "Pay Transparency Act, SBC 2023, Chapter 18 sets staggered implementation thresholds by employer size",
+      "regulatory_basis": "Pay Transparency Act, SBC 2023, Chapter 18",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Ontario employers with 25 or more employees must include the compensation range (or fixed salary) in job postings for Ontario-based roles, effective January 1, 2026",
+      "condition": "When an Ontario employer with 25+ employees posts a public-facing or internal job posting visible to current employees, on or after January 1, 2026",
+      "action": "Include the expected compensation range or fixed salary in the job posting",
+      "because": "Required under Working for Workers Four Act, 2024, S.O. 2024, c. 15, Schedule 2; failure to comply can result in compliance orders and penalties from an Employment Standards Officer",
+      "regulatory_basis": "Working for Workers Four Act, 2024, S.O. 2024, c. 15, Schedule 2",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Ontario does not include a salary history ban; asking about previous pay remains legally permissible in Ontario",
+      "condition": "When an Ontario employer asks a candidate about their salary history during the hiring process",
+      "action": "No legal prohibition applies; the Working for Workers Four Act, 2024 does not ban salary history questions",
+      "because": "The Ontario legislation does not include a salary history ban as explicitly as BC; the question is legally permissible under Ontario law",
+      "regulatory_basis": "Working for Workers Four Act, 2024, S.O. 2024, c. 15, Schedule 2",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "PEI pay transparency legislation requires job postings to include wage or salary range for employers with 10 or more employees",
+      "condition": "When a PEI employer with 10+ employees advertises a job posting",
+      "action": "Include the wage or salary range in the posting",
+      "because": "PEI Pay Transparency Act requirement",
+      "regulatory_basis": "PEI Pay Transparency Act",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "BC employers above certain sizes must post annual pay transparency reports showing gender and other pay gap data",
+      "condition": "When a BC employer meets the relevant size threshold: 1,000+ employees (required from November 2023); 300–999 (from November 2024); 50–299 (from November 2025)",
+      "action": "Post annual pay transparency report with gender and other pay gap data, filed with the government",
+      "because": "Pay Transparency Act, SBC 2023, Chapter 18 imposes employer-side annual reporting obligations beyond job posting requirements",
+      "regulatory_basis": "Pay Transparency Act, SBC 2023, Chapter 18",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Canada's pay transparency legislation is at the provincial level only; there is no single national pay transparency law requiring salary disclosure in job postings",
+      "condition": "When advising a candidate on whether pay transparency rules apply to a Canadian employer",
+      "action": "Determine which province the role is based in and apply the relevant provincial legislation; do not assume a national standard exists",
+      "because": "As of 2025–2026, only BC, Ontario, and PEI have enacted substantive pay transparency requirements; Alberta and Quebec have not enacted comparable job posting transparency laws",
+      "regulatory_basis": "Pay Transparency Act SBC 2023 c.18; Working for Workers Four Act 2024 S.O. 2024 c.15 Schedule 2; PEI Pay Transparency Act",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Province of the job posting",
+      "why_it_matters": "Pay transparency obligations vary by province; only BC, Ontario (25+ employees), and PEI have enacted job posting salary range requirements as of 2025–2026",
+      "how_to_assess": "Identify whether the role is posted for BC, Ontario, PEI, or another province; apply the corresponding provincial statute if one exists",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Employer size (number of employees)",
+      "why_it_matters": "Both BC's phase-in schedule and Ontario's 25-employee threshold mean smaller employers may not yet be obligated to post salary ranges, or may not be covered at all",
+      "how_to_assess": "BC: determine headcount to identify applicable phase-in date (1,000+, 300–999, 50–299, or all employers from Jan 1, 2026); Ontario: determine whether employer has 25+ employees; PEI: determine whether employer has 10+ employees",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether the posting is public-facing or internal",
+      "why_it_matters": "Ontario's requirement applies to both public-facing and internal job postings visible to current employees, broadening the scope beyond external candidates",
+      "how_to_assess": "Determine whether the posting is visible externally or only to current employees; both types are covered under Ontario's Working for Workers Four Act, 2024",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Presence or absence of a salary history ban in the relevant province",
+      "why_it_matters": "Whether an employer can legally ask about salary history affects a candidate's negotiation strategy; in BC the question is prohibited, in Ontario it remains legal",
+      "how_to_assess": "BC: salary history ban is explicit in Pay Transparency Act SBC 2023 c.18; Ontario: no salary history ban in Working for Workers Four Act 2024; assess province before advising on deflection tactics",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Availability of employer pay transparency reports (BC)",
+      "why_it_matters": "BC employers above size thresholds must file annual pay transparency reports showing gender and other pay gap data; publicly accessible reports may allow candidates to infer internal pay equity",
+      "how_to_assess": "Check whether the BC employer meets the relevant size threshold and whether their annual pay transparency report has been filed and is publicly accessible",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Relying on the posted salary range as the ceiling for negotiation",
+      "unstated_consequence": "Employers sometimes post ranges lower than their true budget; the posted range is a floor, not a ceiling — negotiating above it is possible with market data justification",
+      "who_it_affects": "Candidates in BC and Ontario who assume the posted range represents the maximum offer",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Using BC-specific salary history deflection scripts when interviewing for an Ontario role",
+      "unstated_consequence": "Ontario does not have a salary history ban; an employer asking about prior pay in Ontario is acting legally, and framing your refusal as a legal right would be inaccurate",
+      "who_it_affects": "Candidates who move between provinces or receive advice calibrated to BC law and apply it uniformly across Canada",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming pay transparency rules apply to all Canadian employers",
+      "unstated_consequence": "Alberta and Quebec have not enacted job posting salary range disclosure requirements as of mid-2026; candidates in those provinces cannot rely on posted ranges as a negotiation anchor because the employer has no obligation to post them",
+      "who_it_affects": "Candidates applying to roles in Alberta or Quebec who expect the same transparency protections as BC or Ontario",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Using Government of Canada Job Bank wage data as a proxy for total compensation",
+      "unstated_consequence": "Job Bank Canada captures base salary using Statistics Canada Survey of Employment, Payrolls and Hours data and may undercount total compensation including bonuses and equity",
+      "who_it_affects": "Candidates in tech or professional roles where total compensation (equity, bonuses) significantly exceeds base salary",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming Ontario's pay transparency law covers all Ontario employers from January 1, 2026",
+      "unstated_consequence": "Ontario's Working for Workers Four Act, 2024 applies only to employers with 25 or more employees; employers below that threshold are not required to post salary ranges",
+      "who_it_affects": "Candidates applying to small Ontario employers or startups with fewer than 25 employees",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "BC employer asks about applicant's pay history during the hiring process",
+      "why_it_happens": "The Pay Transparency Act, SBC 2023, Chapter 18 explicitly prohibits asking about pay history at any point in the hiring process and prohibits using pay history to set starting wages",
+      "consequence": "Director of Employment Standards can investigate complaints; employer can face orders to pay compensation to the affected applicant",
+      "warning_signs": [
+        "Recruiter or hiring manager asks 'What are you currently making?' during a BC hiring process",
+        "Employer references prior salary to justify a lower initial offer in BC"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "BC employer retaliates against an employee for discussing their pay with coworkers",
+      "why_it_happens": "Pay Transparency Act, SBC 2023, Chapter 18 explicitly prohibits retaliation against employees who discuss their pay with coworkers",
+      "consequence": "Director of Employment Standards can investigate; employer can face enforcement action and orders to pay compensation",
+      "warning_signs": [
+        "Disciplinary action taken against an employee shortly after they discussed salary with a colleague",
+        "Policy prohibiting employees from discussing compensation with peers"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Ontario employer with 25+ employees fails to include compensation range in job postings on or after January 1, 2026",
+      "why_it_happens": "Working for Workers Four Act, 2024, S.O. 2024, c. 15, Schedule 2 requires compensation range disclosure for all Ontario postings (public and internal) for covered employers",
+      "consequence": "Employment Standards Officer can issue compliance orders and penalties",
+      "warning_signs": [
+        "Ontario job posting by a 25+ employee employer dated after January 1, 2026 that omits salary information",
+        "Internal job posting visible to employees that lacks compensation range after the effective date"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the job posting located in British Columbia, Ontario, PEI, or another Canadian province?",
+      "what_it_reveals": "Which provincial pay transparency statute, if any, applies to the posting",
+      "follow_up_if_yes": "If BC, Ontario (25+ employees), or PEI (10+ employees): confirm whether the employer meets the size threshold and whether the effective date has passed; expect or require a posted salary range",
+      "follow_up_if_no": "If Alberta, Quebec, or another province without enacted legislation: no pay transparency posting obligation applies; candidate cannot rely on a posted range",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the BC employer have 1,000 or more employees, 300–999, 50–299, or fewer than 50 employees?",
+      "what_it_reveals": "Which phase-in date applies for BC pay transparency posting obligations under Pay Transparency Act, SBC 2023, Chapter 18",
+      "follow_up_if_yes": "Identify the corresponding required start date: 1,000+ from Nov 1, 2023; 300–999 from Jan 1, 2024; 50–299 from Jan 1, 2025; all employers from Jan 1, 2026",
+      "follow_up_if_no": "If fewer than 50 employees and before January 1, 2026: not yet required to post salary ranges; after January 1, 2026 the 'all employers' rule applies",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the Ontario employer have 25 or more employees?",
+      "what_it_reveals": "Whether the Ontario employer is covered by the Working for Workers Four Act, 2024, S.O. 2024, c. 15, Schedule 2 salary range disclosure requirement",
+      "follow_up_if_yes": "Employer must include compensation range or fixed salary in job postings effective January 1, 2026",
+      "follow_up_if_no": "Employer is not covered by Ontario's pay transparency posting requirement; candidate cannot legally require a posted range",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the role being hired in British Columbia — meaning, is the salary history ban legally in effect for this hiring process?",
+      "what_it_reveals": "Whether the employer is legally prohibited from asking about pay history and using it to set wages",
+      "follow_up_if_yes": "Candidate is legally protected from salary history questions; employer cannot ask at any point in the hiring process under Pay Transparency Act, SBC 2023, Chapter 18",
+      "follow_up_if_no": "If Ontario or other province without a salary history ban: employer may legally ask about prior pay; candidate must decide how to respond without legal protection",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the BC employer above the annual pay transparency report threshold (1,000+, 300–999, or 50–299 employees) and has the relevant reporting date passed?",
+      "what_it_reveals": "Whether the employer has filed a publicly accessible annual pay transparency report that a candidate could review to infer internal pay equity",
+      "follow_up_if_yes": "Candidate may be able to locate the employer's annual pay transparency report to inform negotiation strategy regarding internal pay equity",
+      "follow_up_if_no": "Annual reporting obligation has not yet applied to this employer; report may not be available",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canada has a national pay transparency law similar to the US federal standard",
+      "actual_reality": "There is no single national pay transparency law in Canada requiring salary disclosure in job postings. As of 2025–2026, only BC, Ontario (25+ employees), and PEI have enacted substantive pay transparency requirements; Alberta and Quebec have not",
+      "implication": "Candidates and advisors must identify the specific province of the role before assuming any pay transparency obligation exists",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "All Canadian employers must post salary ranges in job ads",
+      "actual_reality": "BC requires it for all employers only from January 1, 2026 (previously phased by size); Ontario requires it only for employers with 25+ employees from January 1, 2026; PEI for 10+ employees; Alberta and Quebec have no equivalent enacted requirement",
+      "implication": "Candidates applying before January 1, 2026 to mid-sized BC employers, or to small Ontario employers, may not see a posted range even in covered provinces",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "BC and Ontario have the same pay transparency rules, including a salary history ban",
+      "actual_reality": "BC has both a salary range posting requirement AND an explicit salary history ban. Ontario has only a salary range posting requirement; asking about previous pay remains legally permissible in Ontario under the Working for Workers Four Act, 2024",
+      "implication": "Candidates in Ontario cannot legally refuse a salary history question on the grounds that it is prohibited — that protection exists only in BC",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The salary range posted in a Canadian job ad represents the maximum the employer will pay",
+      "actual_reality": "The source explicitly states that employers sometimes post ranges lower than their true budget; negotiating above the posted range is described as reasonable when justified with market data",
+      "implication": "Candidates should treat the posted range as a floor for negotiation, not a ceiling, and use external market data sources (Robert Half Canada, Glassdoor CA, Levels.fyi Canada, Job Bank Canada) to support offers above the range",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Government of Canada Job Bank wage data reflects total compensation for tech roles",
+      "actual_reality": "Job Bank Canada uses Statistics Canada Survey of Employment, Payrolls and Hours (SEPH) data and captures base salary; the source explicitly states it may undercount total compensation including bonuses and equity",
+      "implication": "Candidates benchmarking against Job Bank data alone may undervalue their total compensation target in roles where equity and bonuses are significant components",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Quebec's pay equity legislation functions as a pay transparency law for job postings",
+      "actual_reality": "Quebec's Act Respecting Pay Equity is focused on gender pay equity between job groups for existing workers — it is not a job posting transparency requirement comparable to BC or Ontario's legislation",
+      "implication": "Candidates applying to Quebec-based roles cannot use Quebec's pay equity law to require or expect a salary range in a job posting",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "The federal Pay Equity Act (2021) requires all Canadian employers to disclose salary ranges in job postings",
+      "actual_reality": "The federal Pay Equity Act (2021) applies only to federally regulated employers (Crown corporations, banks, telecommunications, interprovincial transportation) and is focused on gender pay equity between job groups — not individual job posting salary disclosure",
+      "implication": "Candidates at federally regulated employers cannot invoke the federal Pay Equity Act to require a posted salary range",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of geographic scope of Canadian pay transparency law",
+      "naive_pattern": "Assumes Canada has a national pay transparency law and that all Canadian job postings must include salary ranges",
+      "informed_pattern": "Knows pay transparency is provincial; immediately identifies the province of the role and applies the correct statute (BC: SBC 2023 c.18; Ontario: S.O. 2024 c.15 Schedule 2; PEI; none for Alberta or Quebec as of mid-2026)",
+      "why_it_matters": "Advising a candidate to demand a posted range from an Alberta or Quebec employer, or an Ontario employer with fewer than 25 employees, is legally incorrect and tactically counterproductive",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Salary history question handling across BC vs. Ontario",
+      "naive_pattern": "Tells all Canadian candidates they don't have to answer salary history questions because 'Canada bans it'",
+      "informed_pattern": "Distinguishes BC (explicit statutory ban on asking about pay history at any stage of hiring) from Ontario (no salary history ban; asking is legally permissible); applies BC deflection scripts only where legally supported",
+      "why_it_matters": "Incorrectly invoking a non-existent Ontario salary history ban could damage the candidate's credibility with a legally compliant employer",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Using the posted salary range in negotiation",
+      "naive_pattern": "Accepts the posted salary range as the employer's maximum budget and anchors at or just below the top of the range",
+      "informed_pattern": "Treats the posted range as a floor, not a ceiling; uses external market data (Job Bank Canada, Robert Half Canada, Glassdoor CA, Levels.fyi Canada) to justify offers above the posted range when experience and skills warrant it",
+      "why_it_matters": "Leaving money on the table by treating the posted range as a hard ceiling is a direct financial consequence of misunderstanding the negotiation use of transparency data",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Interpreting Job Bank Canada wage data for total compensation benchmarking",
+      "naive_pattern": "Uses Job Bank Canada median salary figures as the definitive benchmark for total compensation, including for roles with significant equity or bonus components",
+      "informed_pattern": "Uses Job Bank Canada data as a base salary reference only, and supplements it with sources that capture bonuses and equity (Levels.fyi Canada, Glassdoor CA, Robert Half Canada); recognizes that Statistics Canada SEPH data may undercount total compensation",
+      "why_it_matters": "In senior tech or management roles, bonuses and equity can materially exceed base salary; benchmarking only base salary leads to systematic undervaluation of total compensation",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Applying BC employer size phase-in rules correctly",
+      "naive_pattern": "Assumes BC's pay transparency posting requirement applies to all BC employers from November 1, 2023",
+      "informed_pattern": "Applies the correct phase-in date by employer size: 1,000+ from Nov 1, 2023; 300–999 from Jan 1, 2024; 50–299 from Jan 1, 2025; all employers from Jan 1, 2026; does not expect a posted range from a 60-employee BC employer before January 1, 2025",
+      "why_it_matters": "Expecting a posted range before the employer's phase-in date creates a false premise for negotiation and may signal unfamiliarity with the actual law",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_canada_pay_transparency_laws_canada",
+  "_source_regions": [
+    "canada"
+  ]
+}

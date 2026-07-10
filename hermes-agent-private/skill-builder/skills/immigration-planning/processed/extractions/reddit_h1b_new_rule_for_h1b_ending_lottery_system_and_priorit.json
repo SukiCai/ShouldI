@@ -1,0 +1,251 @@
+{
+  "source_file": "h1b_new_rule_for_h1b_ending_lottery_system_and_priorit.txt",
+  "source_type": "community",
+  "heuristics": [],
+  "decision_factors": [
+    {
+      "factor": "H-1B wage level classification of target job",
+      "why_it_matters": "Under the proposed rule, the 85K cap would be filled first by Level 4, then Level 3 workers — leaving Level 1 and Level 2 (entry-level) roles with little to no H-1B availability",
+      "how_to_assess": "Check prevailing wage level (1–4) on DOL wage data for the specific role and location; most new grad roles in tech are Level 1 or 2",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Work experience prior to US master's enrollment",
+      "why_it_matters": "If H-1B priority shifts to experienced workers (3+ years), students who came straight from undergrad with no industry experience are structurally disadvantaged regardless of US degree",
+      "how_to_assess": "Assess whether the applicant can credibly target Level 3+ roles at graduation, which typically requires prior full-time work experience",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Whether the proposed rule has passed vs. is still a proposal",
+      "why_it_matters": "Acting on a proposal as if it were law leads to premature decisions (e.g., canceling enrollment); community comments note only ~30% passage probability at time of posting",
+      "how_to_assess": "Track official USCIS Federal Register notices and final rule publication dates; distinguish NPRM from final rule",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Education loan exposure relative to H-1B probability",
+      "why_it_matters": "Students with large loans face catastrophic downside if H-1B pathways close; the risk-reward calculation changes entirely when debt is involved",
+      "how_to_assess": "Calculate total loan burden against realistic post-grad salary scenarios in home country vs. US; factor in probability of H-1B success under new rules",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Enrolling in a US master's program (fall 2025) under current immigration uncertainty",
+      "unstated_consequence": "The H-1B pathway that justified the investment may be structurally closed by graduation — the degree cost remains even if the visa pathway disappears",
+      "who_it_affects": "Students who have already secured visas but not yet committed funds or booked travel; especially those financing with loans",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "choice": "Targeting alternative countries (Canada, Australia, EU) as backup to US",
+      "unstated_consequence": "Those countries also have competitive immigration systems; Canada in particular is perceived as easy but has tightened significantly, and r/Canada posts reflect backlash against international students flooding entry-level jobs",
+      "who_it_affects": "Students who assume Canada is an easy fallback without researching current PGWP and Express Entry conditions",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating a proposed rule as already enacted and making irreversible decisions based on it",
+      "why_it_happens": "Anxiety and information overload cause students to catastrophize; Reddit posts state proposals with confident finality, and readers don't distinguish proposal from enacted law",
+      "consequence": "Students cancel enrollment, forfeit deposits, or abandon plans based on rules that may never pass — one commenter explicitly notes ~30% passage probability",
+      "warning_signs": [
+        "Post title says 'new rule' but links to a news article about a proposal",
+        "Community discussion treats the outcome as certain with no hedging language"
+      ],
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "pattern": "Enrolling in expensive US programs without stress-testing the immigration pathway",
+      "why_it_happens": "Students anchor on the positive scenario (OPT → H-1B) and don't model the failure scenario; social proof from prior cohorts creates false confidence",
+      "consequence": "Significant financial exposure (50 lakhs / ~$60K+ cited in thread) with no viable work authorization pathway at graduation",
+      "warning_signs": [
+        "Student has not researched prevailing wage level of target roles",
+        "Student assumes H-1B rules from prior years still apply"
+      ],
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the job you're targeting at graduation classify as DOL wage Level 3 or higher?",
+      "what_it_reveals": "Whether you would be competitive for H-1B under a wage-level prioritization regime",
+      "follow_up_if_yes": "Do you have 3+ years of relevant work experience to credibly support that wage level claim?",
+      "follow_up_if_no": "What is your fallback plan if Level 1/2 jobs are excluded from H-1B cap allocation?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Is the rule being discussed a final USCIS rule or still a proposal/NPRM?",
+      "what_it_reveals": "Whether the policy change is legally in effect or speculative — determines whether to act now or monitor",
+      "follow_up_if_yes": "What is the effective date and does it affect your graduation/OPT timeline?",
+      "follow_up_if_no": "What is the realistic probability of passage and your timeline for decision-making?",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Have you taken on educational loans to fund this US degree?",
+      "what_it_reveals": "Degree of financial exposure and how much the H-1B outcome matters to the investment thesis",
+      "follow_up_if_yes": "Can you service the loan on a home-country salary if US work authorization fails?",
+      "follow_up_if_no": "What is the opportunity cost vs. domestic career alternatives?",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "International students can use OPT as a reliable bridge to H-1B regardless of job level",
+      "actual_reality": "Under the proposed prioritization rule, even OPT holders cannot convert to H-1B if their role is Level 1 or 2 and the cap is filled by Level 3/4 applicants first — OPT does not guarantee H-1B access",
+      "implication": "Students should evaluate whether their target role and experience level would qualify under a wage-tier prioritization system before committing to US enrollment",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "Canada is an easy immigration alternative for US-bound international students who can't get H-1B",
+      "actual_reality": "Canada's immigration system has tightened significantly; r/Canada shows backlash against international students in entry-level roles, and PGWP/Express Entry pathways are competitive and changing",
+      "implication": "Students should not assume Canada is an automatic fallback; research current CRS scores, PGWP eligibility, and provincial nominee program requirements independently",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    },
+    {
+      "common_belief": "90% of international students get Level 1 or 2 jobs, so this rule only affects a minority",
+      "actual_reality": "If 90% of students get Level 1/2 jobs and those levels are excluded from cap allocation, the rule affects the vast majority — not a minority — making it a structural barrier rather than an edge case",
+      "implication": "Students should treat the wage-level classification of their target role as a primary filter, not an afterthought",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to respond to proposed immigration rule changes",
+      "naive_pattern": "Treats a proposal or news article as a definitive rule change; asks whether to cancel enrollment immediately based on Reddit posts",
+      "informed_pattern": "Distinguishes NPRM from final rule; assesses passage probability; monitors official sources while continuing to plan with scenario branching",
+      "why_it_matters": "Acting on a proposal that doesn't pass means unnecessary disruption; failing to act on one that does pass means being caught unprepared",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "dimension": "Evaluating whether to enroll in a US master's program",
+      "naive_pattern": "Focuses on getting the visa in hand as the green light; books flights and makes financial commitments without modeling immigration pathway risk",
+      "informed_pattern": "Uses wage level classification, work experience depth, loan exposure, and home-country fallback salary as a multi-factor decision framework before committing",
+      "why_it_matters": "A visa to study does not guarantee work authorization; the investment thesis depends on the post-graduation pathway, not the admission",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "The new H-1B wage-level prioritization rule is already in effect and will definitely end entry-level H-1B sponsorship",
+      "why_believed": "The post title and comment language use definitive framing ('new rule', 'will definitely end'); Forbes article adds apparent authority; anxiety makes users treat worst-case as certain",
+      "actual_rule": "As of the thread date (July 2025), this is a proposed rule change — one commenter explicitly notes only ~30% chance of passage; it has not been finalized",
+      "real_consequence": "Students make irreversible decisions (canceling enrollment, forfeiting fees) based on a policy that may never be enacted",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "The new USCIS director is ending OPT entirely",
+      "why_believed": "Stated confidently in a comment without citation; fits the fear narrative of total pathway closure; users tend to accept alarming statements without verification",
+      "actual_rule": "OPT is established by regulation; eliminating it would require a formal rulemaking process — no corroborating evidence or citation is provided in the thread",
+      "real_consequence": "Students treat OPT as unavailable when planning, eliminating a pathway that may still exist",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "misconception": "Indians will definitely still come to US for tech jobs regardless of rule changes",
+      "why_believed": "Historical pattern — Indian nationals have dominated H-1B filings for decades — makes the pattern feel immutable",
+      "actual_rule": "Structural changes to wage-level prioritization would affect Indian nationals equally; historical behavior does not predict behavior under materially different rules",
+      "real_consequence": "Students from India underestimate how much the policy change applies to them and fail to develop alternative plans",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Student has US visa in hand for fall 2025 SJSU CE program, has not yet booked flights or taken loans, total cost ~50 lakhs",
+      "decision": "Asking community whether to proceed given proposed H-1B rule changes",
+      "outcome": "Community advises extreme caution — 'think hard', 'very risky', one commenter says 'better to cancel' — but no consensus outcome recorded; decision still pending",
+      "lesson": "The window between visa issuance and financial commitment is the last low-cost decision point; students should use it to stress-test the immigration pathway rather than treating the visa as a go-signal",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Student asks whether to cancel enrollment after reading about a proposed rule change on Reddit",
+      "underlying_state": "Catastrophizing — treating a low-to-medium probability negative scenario as certain; compounded by sunk-cost anxiety about the visa already obtained",
+      "how_it_manifests": "Framing the question as binary (go vs. cancel) rather than probabilistic; seeking permission to act on worst-case scenario",
+      "expert_move": "Reframe as a decision under uncertainty: assign probabilities to rule passage, model outcomes under each scenario, identify the reversibility of each commitment stage before treating the worst case as default",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "trigger": "Multiple commenters stating with confidence that H-1B is 'ending' for international students",
+      "underlying_state": "Social proof amplification of fear — confident tone in community posts substitutes for actual policy verification; anxiety spreads through thread even without evidence",
+      "how_it_manifests": "Subsequent comments accept the premise without questioning sources; students reading the thread absorb the certainty without the uncertainty caveats buried in replies",
+      "expert_move": "Teach students to distinguish proposal from final rule as a first-order filter before acting on any immigration news — check Federal Register, not Reddit or news headlines",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "This new rule will definitely end H-1B for international students — should I even come?",
+      "reframe": "This is still a proposal with ~30% passage probability — evaluate your decision against the range of outcomes, not just the worst case",
+      "why_it_works": "Shifts the student from binary panic to probabilistic planning; restores agency by making uncertainty explicit rather than defaulting to worst-case certainty",
+      "example_language": "There's only 30% chance this will pass. It's still a proposal.",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "original_framing": "I have a visa in my hands — should I book the flight?",
+      "reframe": "The visa is not the decision point — the financial commitment and loan exposure are; think hard about the immigration pathway, not just the admission",
+      "why_it_works": "Decouples visa issuance (which feels like a green light) from the actual risk decision (financial exposure vs. H-1B probability); identifies the real decision threshold",
+      "example_language": "Think hard about this because level 4 and level 3 will fill the 85K cap.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_h1b_new_rule_for_h1b_ending_lottery_system_and_priorit",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}
