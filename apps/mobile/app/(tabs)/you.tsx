@@ -31,7 +31,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import Screen from '@/components/ui/Screen';
 import { resolveYouChromatics } from '@/constants/appChromatics';
 import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
-import { useViewerPointsBalance } from '@/lib/useViewerPointsBalance';
+import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 
 /**
  * Light pastel accents — must match {@link profileLight} in `constants/theme.ts`.
@@ -403,8 +403,31 @@ export default function YouScreen() {
     { value: DEMO_STATS.likesReceived, label: 'likes received' },
   ] as const;
 
-  const { balance: pointsBalance } = useViewerPointsBalance();
+  const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost } = useViewerEntitlements();
   const pointsFromOthers = DEMO_STATS.pointsFromOthers;
+
+  const handleUpgradePremium = React.useCallback(() => {
+    if (Platform.OS !== 'web') {
+      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
+    }
+    if (isPremium) {
+      Alert.alert('Premium active', 'Unlimited Expert Council sessions are included in your plan.');
+      return;
+    }
+    Alert.alert(
+      'Upgrade to Premium',
+      `Unlock unlimited Expert Council sessions (no ${councilSessionCost}-point charge), plus early access to new decision tools. This preview activates Premium locally until billing ships.`,
+      [
+        { text: 'Not now', style: 'cancel' },
+        {
+          text: 'Activate Premium',
+          onPress: () => {
+            void activatePremium();
+          },
+        },
+      ],
+    );
+  }, [activatePremium, councilSessionCost, isPremium]);
 
   const tabData = TABS.find((t) => t.key === activeTab)?.getData() ?? [];
 
@@ -480,17 +503,27 @@ export default function YouScreen() {
             <View style={styles.nameBlock}>
               <View style={styles.nameRow}>
                 <Text style={[styles.displayName, { color: chrom.display }]}>Jordan Avery</Text>
-                <LinearGradient
-                  colors={
-                    isDark
-                      ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
-                      : [`${PROFILE_TAB_LIGHT.sky}d0`, `${PROFILE_TAB_LIGHT.mint}b8`]
-                  }
-                  start={{ x: 0, y: 0.5 }}
-                  end={{ x: 1, y: 0.5 }}
-                  style={styles.proBubble}>
-                  <Text style={styles.proText}>pro</Text>
-                </LinearGradient>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={isPremium ? 'Premium member' : 'Upgrade to Premium'}
+                  onPress={handleUpgradePremium}
+                  hitSlop={8}>
+                  <LinearGradient
+                    colors={
+                      isPremium
+                        ? isDark
+                          ? [`${palette.neonMint}ee`, `${palette.neonSky}cc`]
+                          : [`${PROFILE_TAB_LIGHT.mint}e8`, `${PROFILE_TAB_LIGHT.sky}c8`]
+                        : isDark
+                          ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
+                          : [`${PROFILE_TAB_LIGHT.sky}d0`, `${PROFILE_TAB_LIGHT.mint}b8`]
+                    }
+                    start={{ x: 0, y: 0.5 }}
+                    end={{ x: 1, y: 0.5 }}
+                    style={styles.proBubble}>
+                    <Text style={styles.proText}>{isPremium ? 'premium' : 'pro'}</Text>
+                  </LinearGradient>
+                </Pressable>
               </View>
               <Text style={[styles.handle, { color: chrom.textMuted }]}>@jordan</Text>
               <Text style={[styles.tagline, { color: chrom.textMuted }]}>
@@ -571,10 +604,38 @@ export default function YouScreen() {
               </Pressable>
             </View>
 
-            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>demo split · API soon</Text>
+            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>
+              {isPremium
+                ? 'Premium · unlimited Expert Council'
+                : `Council costs ${councilSessionCost} pts/session · demo split · API soon`}
+            </Text>
           </View>
         </View>
       </View>
+
+      {!isPremium ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Upgrade to Premium for unlimited Expert Council"
+          onPress={handleUpgradePremium}
+          style={[
+            styles.premiumUpsell,
+            {
+              marginHorizontal: screenContentGutter,
+              borderColor: surface.hairline,
+              backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : palette.sheet,
+            },
+          ]}>
+          <FontAwesome name="star" size={14} color={isDark ? palette.neonMint : PROFILE_TAB_LIGHT.mint} />
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.premiumUpsellTitle, { color: surface.textPrimary }]}>Expert Council · Premium</Text>
+            <Text style={[styles.premiumUpsellSub, { color: surface.textMuted }]}>
+              Unlimited multi-expert sessions — or pay {councilSessionCost} points each time.
+            </Text>
+          </View>
+          <FontAwesome name="chevron-right" size={12} color={surface.textMuted} />
+        </Pressable>
+      ) : null}
 
       <View style={styles.profileTabsWrap}>
         <ProfileTabStrip activeTab={activeTab} onSelect={selectTab} isDark={isDark} surface={surface} />
@@ -719,6 +780,28 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
     color: palette.heroInk,
     textTransform: 'uppercase',
+  },
+  premiumUpsell: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    marginTop: spacing.sm,
+    marginBottom: spacing.sm,
+  },
+  premiumUpsellTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    lineHeight: 18,
+  },
+  premiumUpsellSub: {
+    marginTop: 2,
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '500',
   },
   handle: {
     fontSize: 15,

@@ -63,5 +63,18 @@ export function useViewerPointsBalance() {
     });
   }, []);
 
-  return { balance, hydrated, awardPoints };
+  const spendPoints = React.useCallback((amount: number): boolean => {
+    if (!(typeof amount === 'number' && Number.isFinite(amount) && amount > 0)) return false;
+    let success = false;
+    setBalanceState((prev) => {
+      if (prev < amount) return prev;
+      success = true;
+      const next = prev - amount;
+      void AsyncStorage.setItem(STORAGE_KEY, String(next)).catch(() => undefined);
+      return next;
+    });
+    return success;
+  }, []);
+
+  return { balance, hydrated, awardPoints, spendPoints };
 }

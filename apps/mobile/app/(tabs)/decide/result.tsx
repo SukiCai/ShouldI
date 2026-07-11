@@ -66,6 +66,19 @@ export default function DecideResultScreen() {
       </GlassCard>
       <SectionHeader title="Recommendation" right={`${sections.length} blocks`} />
       <ScrollView contentContainerStyle={{ paddingBottom: spacing.lg }}>
+        {draft.reflection?.summary ? (
+          <GlassCard style={styles.section}>
+            <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>What we heard</Text>
+            <Text style={[typography.body, { ...styles.body, color: surface.textPrimary }]} selectable>
+              {draft.reflection.summary}
+            </Text>
+            {draft.reflection.concerns?.map((concern) => (
+              <Text key={concern} style={[typography.compact, { color: surface.textMuted, lineHeight: 20 }]}>
+                · {concern}
+              </Text>
+            ))}
+          </GlassCard>
+        ) : null}
         {draft.expertVerdicts.length > 0 ? (
           <GlassCard style={styles.section}>
             <Text style={[typography.compact, { ...styles.labelCaps, color: surface.textMuted }]}>Expert council</Text>
@@ -79,6 +92,10 @@ export default function DecideResultScreen() {
                 </Text>
                 <Text style={[typography.compact, { color: surface.textMuted, lineHeight: 20 }]}>
                   {verdict.reasoning}
+                </Text>
+                <Text style={[typography.caption, { color: surface.textMuted, marginTop: 4 }]}>
+                  Confidence: {verdict.confidence}
+                  {verdict.risks.length > 0 ? ` · ${verdict.risks.join(' · ')}` : ''}
                 </Text>
               </View>
             ))}

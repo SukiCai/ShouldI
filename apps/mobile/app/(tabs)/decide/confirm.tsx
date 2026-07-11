@@ -76,6 +76,67 @@ export default function DecideConfirmScreen() {
           ]}>
           <DiscussDraftEditor draft={draft} onChange={updateDraft} onBack={() => router.back()} />
 
+          {draft.reflection?.summary ? (
+            <View
+              style={[
+                styles.insightCard,
+                {
+                  borderColor: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.10)',
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.85)',
+                  marginTop: spacing.md,
+                  marginHorizontal: screenContentGutter,
+                },
+              ]}>
+              <View style={styles.insightHeadRow}>
+                <Ionicons name="chatbubble-ellipses-outline" size={15} color={isDark ? '#a3e635' : '#16a34a'} />
+                <Text style={[styles.insightHeadText, { color: isDark ? '#a3e635' : '#16a34a' }]}>
+                  What we heard
+                </Text>
+              </View>
+              <Text style={[styles.insightSubText, { color: surface.textPrimary }]}>{draft.reflection.summary}</Text>
+              {draft.reflection.concerns?.map((concern) => (
+                <Text key={concern} style={[styles.insightSubText, { color: surface.textMuted }]}>
+                  · {concern}
+                </Text>
+              ))}
+            </View>
+          ) : null}
+
+          {draft.expertVerdicts.length > 0 ? (
+            <View style={{ marginTop: spacing.sm, gap: 8 }}>
+              <View style={[styles.insightHeadRow, { marginHorizontal: screenContentGutter }]}>
+                <Ionicons name="people-outline" size={15} color={isDark ? '#c4b5fd' : '#7c3aed'} />
+                <Text style={[styles.insightHeadText, { color: isDark ? '#c4b5fd' : '#7c3aed' }]}>
+                  Expert council
+                </Text>
+              </View>
+              {draft.expertVerdicts.map((verdict) => (
+                <View
+                  key={verdict.expertId}
+                  style={[
+                    styles.momentCard,
+                    {
+                      marginHorizontal: screenContentGutter,
+                      borderColor: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.09)',
+                      backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.92)',
+                    },
+                  ]}>
+                  <Text style={[styles.momentCardTitle, { color: surface.textPrimary }]}>{verdict.expertTitle}</Text>
+                  <Text style={[styles.expertVerdictLine, { color: isDark ? '#a3e635' : '#16a34a' }]}>
+                    {verdict.verdictLine}
+                  </Text>
+                  <Text style={[styles.momentCardSub, { color: surface.textMuted }]} numberOfLines={3}>
+                    {verdict.reasoning}
+                  </Text>
+                  <Text style={[styles.expertMeta, { color: surface.textMuted }]}>
+                    Confidence: {verdict.confidence}
+                    {verdict.risks.length > 0 ? ` · Risks: ${verdict.risks.join(', ')}` : ''}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          ) : null}
+
           {draft.aiConfidenceScore != null ? (
             <View
               style={[
@@ -340,5 +401,16 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 16,
     fontStyle: 'italic',
+  },
+  expertVerdictLine: {
+    fontSize: 14,
+    fontWeight: '800',
+    lineHeight: 19,
+  },
+  expertMeta: {
+    fontSize: 11,
+    fontWeight: '600',
+    lineHeight: 15,
+    marginTop: 4,
   },
 });

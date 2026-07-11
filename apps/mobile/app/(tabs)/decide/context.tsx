@@ -49,6 +49,7 @@ export type DecideDraft = {
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
   keyMoments: KeyMoment[];
+  reflection?: DecideInterviewFinalDecision['reflection'];
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
@@ -108,6 +109,7 @@ const blankDraft = (): DecideDraft => ({
   rewardPoints: 10,
   expertVerdicts: [],
   keyMoments: [],
+  reflection: undefined,
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {

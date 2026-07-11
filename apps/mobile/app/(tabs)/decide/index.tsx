@@ -35,6 +35,10 @@ import {
 } from '@/constants/theme';
 import { apiGetJson, apiPostJson } from '@/lib/api';
 import { HARMENCE_OFFLINE_BUBBLE, PAST_SESSIONS_HINT, userFacingApiError } from '@/lib/userFacingErrors';
+import {
+  useViewerEntitlements,
+  type CouncilUnlockMethod,
+} from '@/lib/useViewerEntitlements';
 import type { DecisionCategory } from '@shouldi/contracts';
 import {
   DecideInterviewSessionDetailSchema,
@@ -61,15 +65,56 @@ function bubbleKey(b: DecideInterviewBubble) {
   return b.id;
 }
 
-const STARTER_PROMPTS = [
-  'Should I accept a co-op offer at a big-tech company?',
-  'Should I take this full-time job offer?',
-  'Should I break up with my partner?',
-  'Should I make a major purchase?',
+const STARTER_CHIPS = [
+  { short: 'Co-op offer', prompt: 'Should I accept a co-op offer at a big-tech company?' },
+  { short: 'Job offer', prompt: 'Should I take this full-time job offer?' },
+  { short: 'Break up', prompt: 'Should I break up with my partner?' },
+  { short: 'Big purchase', prompt: 'Should I make a major purchase?' },
 ] as const;
+
+const HARMENCE_INTRO_SHORT =
+  "What's the decision you're wrestling with? I'll ask follow-ups until we reach a clear verdict.";
 
 function formatBubbleText(text: string): string {
   return text.replace(/\*\*(.+?)\*\*/g, '$1');
+}
+
+function displayAssistantText(item: DecideInterviewBubble, allMessages: DecideInterviewBubble[]): string {
+  const text = formatBubbleText(item.text);
+  if (item.role !== 'assistant') return text;
+  const firstAssistantIdx = allMessages.findIndex((m) => m.role === 'assistant');
+  const itemIdx = allMessages.indexOf(item);
+  if (
+    itemIdx === firstAssistantIdx &&
+    itemIdx >= 0 &&
+    (text.includes("I'm Harmence") || text.length > 120)
+  ) {
+    return HARMENCE_INTRO_SHORT;
+  }
+  return text;
+}
+
+function isMetaChoiceCopy(text: string): boolean {
+  return /wants to check the highest-leverage unknown|before the council recommends/i.test(
+    formatBubbleText(text),
+  );
+}
+
+function choicePromptHeadline(prompt: DecideInterviewChoicePrompt): string {
+  const question = formatBubbleText(prompt.question).trim();
+  if (!isMetaChoiceCopy(question)) return question;
+  if (prompt.title.trim()) {
+    return `What best describes the ${prompt.title.toLowerCase()}?`;
+  }
+  return 'Which of these fits your situation?';
+}
+
+function expertCouncilSummary(verdicts: Array<{ verdictLine: string }>): string | null {
+  if (verdicts.length === 0) return null;
+  const yes = verdicts.filter((v) => /^yes\b/i.test(v.verdictLine.trim())).length;
+  const no = verdicts.filter((v) => /^no\b/i.test(v.verdictLine.trim())).length;
+  if (yes === 0 && no === 0) return `${verdicts.length} expert views`;
+  return `${verdicts.length} experts · ${yes} yes, ${no} no`;
 }
 
 function progressRatio(progress: NonNullable<DecideInterviewChoicePrompt['progress']>): number {
@@ -169,6 +214,17 @@ function mergeDeduped(messages: DecideInterviewBubble[], additions: DecideInterv
 export default function DecideCategoryScreen() {
   const params = useLocalSearchParams<{ category?: DecisionCategory }>();
   const { draft, updateDraft } = useDecideWizard();
+  const {
+    balance: pointsBalance,
+    hydrated: entitlementsHydrated,
+    isPremium,
+    canAccessCouncil,
+    canUseCouncilWithPoints,
+    councilSessionCost,
+    unlockCouncilWithPoints,
+    refundCouncilPoints,
+    resolveCouncilUnlock,
+  } = useViewerEntitlements();
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
@@ -214,14 +270,76 @@ export default function DecideCategoryScreen() {
   const [mode, setMode] = React.useState<'single' | 'complex'>('single');
   const [sessionStarted, setSessionStarted] = React.useState(false);
   const [bootKey, setBootKey] = React.useState(0);
+  const [expertsOpen, setExpertsOpen] = React.useState(false);
+  const [almostReady, setAlmostReady] = React.useState(false);
+  const [councilPaywallOpen, setCouncilPaywallOpen] = React.useState(false);
   const modeRef = React.useRef(mode);
   modeRef.current = mode;
+  const councilUnlockRef = React.useRef<CouncilUnlockMethod | null>(null);
+  const councilPointsChargedRef = React.useRef(false);
+
+  const buildBootstrapTurnBody = React.useCallback(() => {
+    const currentMode = modeRef.current;
+    return DecideInterviewTurnRequestSchema.parse({
+      mode: currentMode,
+      ...(currentMode === 'complex' && councilUnlockRef.current
+        ? { councilUnlock: councilUnlockRef.current }
+        : {}),
+    });
+  }, []);
+
+  const refundCouncilIfCharged = React.useCallback(() => {
+    if (councilPointsChargedRef.current) {
+      refundCouncilPoints();
+      councilPointsChargedRef.current = false;
+    }
+    councilUnlockRef.current = null;
+  }, [refundCouncilPoints]);
+
+  const activateCouncilMode = React.useCallback(
+    (unlock: CouncilUnlockMethod) => {
+      if (sessionStarted) return;
+      if (unlock === 'points') {
+        if (!unlockCouncilWithPoints()) {
+          setCouncilPaywallOpen(true);
+          return;
+        }
+        councilPointsChargedRef.current = true;
+      }
+      councilUnlockRef.current = unlock;
+      setMode('complex');
+      setSessionId(null);
+      setMessages([]);
+      setFinalDecision(null);
+      setFinalReady(false);
+      setChoicePrompt(null);
+      setSessionStarted(false);
+      setCouncilPaywallOpen(false);
+      setBootKey((k) => k + 1);
+    },
+    [sessionStarted, unlockCouncilWithPoints],
+  );
+
+  const trySelectCouncil = React.useCallback(() => {
+    if (mode === 'complex' || sessionStarted) return;
+    const unlock = resolveCouncilUnlock();
+    if (unlock === 'premium') {
+      activateCouncilMode('premium');
+      return;
+    }
+    setCouncilPaywallOpen(true);
+  }, [activateCouncilMode, mode, resolveCouncilUnlock, sessionStarted]);
 
   const handleModeChange = React.useCallback(
     (newMode: 'single' | 'complex') => {
       if (newMode === mode) return;
       if (sessionStarted) return;
-      setMode(newMode);
+      if (newMode === 'complex') {
+        trySelectCouncil();
+        return;
+      }
+      refundCouncilIfCharged();
+      setMode('single');
       setSessionId(null);
       setMessages([]);
       setFinalDecision(null);
@@ -230,7 +348,7 @@ export default function DecideCategoryScreen() {
       setSessionStarted(false);
       setBootKey((k) => k + 1);
     },
-    [mode, sessionStarted],
+    [mode, refundCouncilIfCharged, sessionStarted, trySelectCouncil],
   );
 
   const listRef = React.useRef<FlatList>(null);
@@ -315,6 +433,8 @@ export default function DecideCategoryScreen() {
     (payload: unknown) => {
       const parsed = DecideInterviewTurnResponseSchema.parse(payload);
       setSessionId(parsed.sessionId);
+      if (parsed.mode) setMode(parsed.mode);
+      setAlmostReady(parsed.almostReady ?? false);
       setHermesIntegrated(parsed.hermesIntegrated);
       setActiveExperts(parsed.activeExperts ?? []);
       setNewlyActivatedExperts(parsed.newlyActivatedExperts ?? []);
@@ -364,6 +484,7 @@ export default function DecideCategoryScreen() {
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: fd?.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd?.keyMoments ?? d.keyMoments,
+          reflection: fd?.reflection ?? d.reflection,
           aiConfidenceScore: (() => {
             if (fd?.confidenceScore != null) {
               return fd.confidenceScore;
@@ -388,10 +509,17 @@ export default function DecideCategoryScreen() {
       setBooting(true);
       setError(null);
       try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
-        if (!cancelled) applyTurnPayload(payload);
+        const payload = await apiPostJson('/v1/harmence/interview/turn', buildBootstrapTurnBody());
+        if (!cancelled) {
+          applyTurnPayload(payload);
+          councilPointsChargedRef.current = false;
+        }
       } catch (e) {
         if (!cancelled) {
+          refundCouncilIfCharged();
+          if (modeRef.current === 'complex') {
+            setMode('single');
+          }
           setError(userFacingApiError(e, 'Harmence isn’t available right now. Please try again.'));
           setMessages([
             {
@@ -410,7 +538,7 @@ export default function DecideCategoryScreen() {
     return () => {
       cancelled = true;
     };
-  }, [applyTurnPayload, bootKey]);
+  }, [applyTurnPayload, bootKey, buildBootstrapTurnBody, refundCouncilIfCharged]);
 
   const openPastSessions = () => {
     setSessionsOpen(true);
@@ -425,6 +553,8 @@ export default function DecideCategoryScreen() {
       const raw = await apiGetJson<unknown>(`/v1/harmence/interview/sessions/${encodeURIComponent(sid)}`);
       const detail = DecideInterviewSessionDetailSchema.parse(raw);
       setSessionId(detail.id);
+      if (detail.mode) setMode(detail.mode);
+      setAlmostReady(false);
       setHermesIntegrated(detail.hermesIntegrated);
       setActiveExperts(detail.activeExperts ?? []);
       setNewlyActivatedExperts([]);
@@ -435,13 +565,29 @@ export default function DecideCategoryScreen() {
       setFinalReady(detail.isComplete);
       setFinalDecision(detail.finalDecision ?? null);
       setVerdictExpanded(false);
+      if (detail.isComplete && detail.finalDecision) {
+        const fd = detail.finalDecision;
+        const d = draftRef.current;
+        updateDraft({
+          expertVerdicts: fd.expertVerdicts ?? d.expertVerdicts,
+          keyMoments: fd.keyMoments ?? d.keyMoments,
+          reflection: fd.reflection ?? d.reflection,
+          communityAiVerdictLine: fd.verdictLine?.trim() || d.communityAiVerdictLine,
+          communityAiBecause:
+            [fd.recommendation, fd.rationale].filter(Boolean).join('\n\n') || d.communityAiBecause,
+          aiConfidenceScore:
+            fd.confidenceScore ??
+            ({ low: 35, medium: 60, high: 82 } as Record<string, number>)[fd.confidence] ??
+            d.aiConfidenceScore,
+        });
+      }
       queueMicrotask(() => listRef.current?.scrollToEnd({ animated: false }));
     } catch (e) {
       setError(userFacingApiError(e, 'Could not reopen that chat. Please try again.'));
     } finally {
       setBooting(false);
     }
-  }, []);
+  }, [updateDraft]);
 
   const startFreshSession = React.useCallback(() => {
     setSessionId(null);
@@ -456,18 +602,10 @@ export default function DecideCategoryScreen() {
     setFinalDecision(null);
     setVerdictExpanded(false);
     setError(null);
-    setBooting(true);
-    void (async () => {
-      try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
-        applyTurnPayload(payload);
-      } catch (e) {
-        setError(userFacingApiError(e, 'Harmence isn’t available right now. Please try again.'));
-      } finally {
-        setBooting(false);
-      }
-    })();
-  }, [applyTurnPayload]);
+    refundCouncilIfCharged();
+    setMode('single');
+    setBootKey((k) => k + 1);
+  }, [refundCouncilIfCharged]);
 
   const submitUserText = React.useCallback(
     async (text: string) => {
@@ -539,7 +677,6 @@ export default function DecideCategoryScreen() {
 
   const hasUserMessages = messages.some((m) => m.role === 'user');
   const modeLocked = sessionStarted || hasUserMessages;
-  const canReview = finalReady && !!(draft.category && draft.title.trim().length > 0);
   const verdictText = finalDecision?.verdictLine ?? '';
   const verdictWord = React.useMemo(() => {
     const normalized = verdictText.trim().toLowerCase();
@@ -558,10 +695,17 @@ export default function DecideCategoryScreen() {
   const primaryExpert = choicePrompt?.speakerExpertId
     ? expertMap.get(choicePrompt.speakerExpertId)
     : activeExperts[0];
+  const isCouncil = mode === 'complex';
+  const headerTitle = isCouncil ? 'Harmence Council' : 'Harmence';
+  const modeLabel = isCouncil ? 'Expert council' : 'One expert';
   const subtitle =
-    activeExperts.length > 1
+    isCouncil && activeExperts.length > 1
       ? `${activeExperts.length} experts helping`
-      : primaryExpert?.title ?? choicePrompt?.specialistLabel ?? (draft.category ? readable[draft.category] : 'Intake assistant');
+      : isCouncil && activeExperts.length === 1
+        ? 'Expert council · building your team'
+        : !isCouncil && primaryExpert
+          ? primaryExpert.title
+          : choicePrompt?.specialistLabel ?? (draft.category ? `${readable[draft.category]} · ${modeLabel}` : modeLabel);
   const progressText = choicePrompt?.progress
     ? choicePrompt.progress.ambiguity !== undefined
       ? `Clarity ${Math.round((1 - choicePrompt.progress.ambiguity) * 100)}%`
@@ -575,15 +719,6 @@ export default function DecideCategoryScreen() {
   const useRichOptions = !!choicePrompt?.options.some((o) => o.description?.trim());
   const verdictAccent =
     verdictWord === 'YES' ? chrom.mint : verdictWord === 'NO' ? palette.playful : chrom.sky;
-  const softHint = choicePrompt
-    ? choicePrompt.specialistLabel
-      ? 'Pick the answer that best matches your situation.'
-      : 'Tap an option below to continue.'
-    : finalReady
-      ? 'Your recommendation is ready.'
-      : messages.length <= 1
-        ? 'Describe your decision in your own words — or try a starter below.'
-        : 'A few more answers and Harmence can give you a clear verdict.';
   const choiceCardTranslate = choiceCardAnim.interpolate({ inputRange: [0, 1], outputRange: [14, 0] });
   const expertForBubble = React.useCallback(
     (item: DecideInterviewBubble): DecideInterviewExpert | null => {
@@ -609,8 +744,18 @@ export default function DecideCategoryScreen() {
     }
     return -1;
   }, [choicePrompt, finalReady, isTypingCustomChoice, messages]);
+  const showStarterLaunchPad = showStarterPrompts;
   const showComposer = !finalReady && (!choicePrompt || isTypingCustomChoice);
-  const showAnswerPane = !finalReady && (canReview || !choicePrompt || isTypingCustomChoice);
+  const showAnswerPane =
+    !finalReady && (showComposer || showStarterLaunchPad || isTypingCustomChoice);
+  const councilSummary = finalDecision ? expertCouncilSummary(finalDecision.expertVerdicts) : null;
+  const canExpandVerdict = !!(
+    finalDecision &&
+    (finalDecision.rationale?.trim() ||
+      finalDecision.nextSteps.length > 0 ||
+      finalDecision.expertVerdicts.length > 0 ||
+      finalDecision.reflection?.summary)
+  );
 
   const renderInlineChoiceOptions = () => {
     if (!choicePrompt || finalReady || isTypingCustomChoice || sending) return null;
@@ -626,17 +771,26 @@ export default function DecideCategoryScreen() {
             onPress={() => {
               void handleChoiceSelect(option);
             }}
-            style={[
+            style={({ pressed }) => [
               styles.choiceCard,
               {
-                borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45`,
-                backgroundColor: colors.pageBg,
+                borderColor: isDark ? `${chrom.mint}40` : `${chrom.sky}50`,
+                backgroundColor: pressed
+                  ? isDark
+                    ? `${chrom.mint}20`
+                    : `${chrom.sky}18`
+                  : isDark
+                    ? `${chrom.mint}10`
+                    : `${chrom.sky}0C`,
               },
             ]}>
-            <Text style={[styles.choiceCardLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
-            {option.description ? (
-              <Text style={[styles.choiceCardDesc, { color: colors.muted }]}>{option.description}</Text>
-            ) : null}
+            <View style={styles.choiceCardBody}>
+              <Text style={[styles.choiceCardLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
+              {option.description ? (
+                <Text style={[styles.choiceCardDesc, { color: colors.muted }]}>{option.description}</Text>
+              ) : null}
+            </View>
+            <Ionicons name="chevron-forward" size={16} color={isDark ? chrom.mint : chrom.sky} />
           </Pressable>
         ))}
         {choicePrompt.allowCustomAnswer ? (
@@ -645,11 +799,18 @@ export default function DecideCategoryScreen() {
             accessibilityLabel="Type another answer"
             disabled={sending}
             onPress={() => setIsTypingCustomChoice(true)}
-            style={[
+            style={({ pressed }) => [
               styles.choiceCard,
-              { borderColor: colors.composerBorder, backgroundColor: colors.pageBg },
+              styles.choiceCardOther,
+              {
+                borderColor: colors.composerBorder,
+                backgroundColor: pressed ? colors.composerBg : colors.pageBg,
+              },
             ]}>
-            <Text style={[styles.choiceCardLabel, { color: colors.muted }]}>Other — type my own answer</Text>
+            <View style={styles.choiceCardBody}>
+              <Text style={[styles.choiceCardLabel, { color: colors.muted }]}>Other — type my own answer</Text>
+            </View>
+            <Ionicons name="create-outline" size={16} color={colors.muted} />
           </Pressable>
         ) : null}
       </View>
@@ -693,16 +854,48 @@ export default function DecideCategoryScreen() {
           styles.inlineChoiceBlock,
           { opacity: choiceCardAnim, transform: [{ translateY: choiceCardTranslate }] },
         ]}>
-        {choicePrompt.whyItMatters ? (
-          <View style={[styles.whyCard, { backgroundColor: colors.pageBg, borderColor: colors.composerBorder }]}>
-            <Text style={[styles.whyLabel, { color: chrom.mint }]}>Why this matters</Text>
-            <Text style={[styles.whyText, { color: colors.muted }]}>{choicePrompt.whyItMatters}</Text>
-          </View>
-        ) : null}
-        {choicePrompt.helperText ? (
-          <Text style={[styles.clarifyHelper, { color: colors.muted }]}>{choicePrompt.helperText}</Text>
-        ) : null}
-        {optionBody}
+        <View
+          style={[
+            styles.choicePanel,
+            {
+              borderColor: isDark ? `${chrom.mint}30` : `${chrom.sky}35`,
+              backgroundColor: isDark ? `${chrom.mint}08` : `${chrom.sky}06`,
+            },
+          ]}>
+          {choicePrompt.supportingExpertIds && choicePrompt.supportingExpertIds.length > 0 ? (
+            <View style={styles.supportingExpertsRow}>
+              <Text style={[styles.supportingExpertsLabel, { color: colors.muted }]}>Also consulting</Text>
+              {choicePrompt.supportingExpertIds.slice(0, 4).map((id) => (
+                <ExpertGlyph key={id} expert={expertMap.get(id)} fallbackColor={chrom.sky} size={20} />
+              ))}
+            </View>
+          ) : null}
+          {almostReady ? (
+            <Text style={[styles.almostReadyHint, { color: chrom.mint }]}>
+              Almost ready — one or two more answers and Harmence can recommend.
+            </Text>
+          ) : null}
+          {choicePrompt.whyItMatters ? (
+            <View
+              style={[
+                styles.whyCard,
+                {
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : palette.white,
+                  borderColor: colors.composerBorder,
+                },
+              ]}>
+              <Text style={[styles.whyLabel, { color: chrom.mint }]}>Why this matters</Text>
+              <Text style={[styles.whyText, { color: colors.primaryTxt }]}>{choicePrompt.whyItMatters}</Text>
+            </View>
+          ) : null}
+          {choicePrompt.helperText ? (
+            <View style={styles.choiceHelperRow}>
+              <Ionicons name="information-circle-outline" size={15} color={colors.muted} />
+              <Text style={[styles.choiceHelperText, { color: colors.muted }]}>{choicePrompt.helperText}</Text>
+            </View>
+          ) : null}
+          {optionBody}
+        </View>
       </Animated.View>
     );
   };
@@ -736,7 +929,7 @@ export default function DecideCategoryScreen() {
         <View style={styles.headerTitleBlock}>
           <View style={styles.titleRow}>
             <Text style={[styles.agentTitle, { color: chrom.display }]}>
-              {activeExperts.length > 0 ? 'Harmence Council' : 'Harmence'}
+              {headerTitle}
             </Text>
             <View
               style={[
@@ -748,21 +941,104 @@ export default function DecideCategoryScreen() {
           <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
             {subtitle}
           </Text>
-          {activeExperts.length > 0 ? (
-            <View style={styles.headerExperts}>
-              {activeExperts.slice(0, 4).map((expert) => (
-                <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={22} />
-              ))}
+          {!modeLocked && !booting && !finalReady ? (
+            <View
+              style={[
+                styles.headerModeSegment,
+                { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)' },
+              ]}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Single expert mode"
+                accessibilityState={{ selected: mode === 'single' }}
+                onPress={() => handleModeChange('single')}
+                style={[
+                  styles.headerModeBtn,
+                  mode === 'single' && {
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
+                    borderColor: chrom.mint,
+                  },
+                ]}>
+                <Text
+                  style={[
+                    styles.headerModeBtnText,
+                    { color: mode === 'single' ? chrom.mint : chrom.textMuted },
+                  ]}>
+                  Single
+                </Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={
+                  isPremium
+                    ? 'Expert council mode (Premium)'
+                    : canAccessCouncil
+                      ? `Expert council mode, ${councilSessionCost} points per session`
+                      : 'Expert council mode (Premium or points required)'
+                }
+                accessibilityState={{ selected: mode === 'complex' }}
+                onPress={trySelectCouncil}
+                style={[
+                  styles.headerModeBtn,
+                  mode === 'complex' && {
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
+                    borderColor: chrom.mint,
+                  },
+                  !isPremium && mode !== 'complex' && !canAccessCouncil && styles.headerModeBtnLocked,
+                ]}>
+                <View style={styles.headerModeBtnInner}>
+                  {!isPremium && mode !== 'complex' ? (
+                    <Ionicons
+                      name={canAccessCouncil ? 'diamond-outline' : 'lock-closed'}
+                      size={11}
+                      color={chrom.textMuted}
+                    />
+                  ) : isPremium ? (
+                    <Ionicons name="star" size={11} color={mode === 'complex' ? chrom.mint : chrom.textMuted} />
+                  ) : null}
+                  <Text
+                    style={[
+                      styles.headerModeBtnText,
+                      { color: mode === 'complex' ? chrom.mint : chrom.textMuted },
+                    ]}>
+                    Council
+                  </Text>
+                  {!isPremium && mode !== 'complex' ? (
+                    <Text style={[styles.headerModeCost, { color: chrom.textMuted }]}>{councilSessionCost}</Text>
+                  ) : null}
+                </View>
+              </Pressable>
             </View>
           ) : null}
+          {activeExperts.length > 0 ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`View ${activeExperts.length} active experts`}
+              onPress={() => setExpertsOpen(true)}
+              style={styles.headerExperts}>
+              {activeExperts.slice(0, 3).map((expert) => (
+                <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={22} />
+              ))}
+              {activeExperts.length > 3 ? (
+                <View style={[styles.expertOverflow, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
+                  <Text style={[styles.expertOverflowText, { color: colors.muted }]}>+{activeExperts.length - 3}</Text>
+                </View>
+              ) : null}
+            </Pressable>
+          ) : null}
           {choicePrompt?.progress ? (
-            <View style={[styles.headerProgressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
-              <View
-                style={[
-                  styles.headerProgressFill,
-                  { width: `${progressPercent}%`, backgroundColor: chrom.mint },
-                ]}
-              />
+            <View style={styles.headerProgressRow}>
+              <View style={[styles.headerProgressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
+                <View
+                  style={[
+                    styles.headerProgressFill,
+                    { width: `${progressPercent}%`, backgroundColor: chrom.mint },
+                  ]}
+                />
+              </View>
+              {progressText ? (
+                <Text style={[styles.headerProgressLabel, { color: chrom.textMuted }]}>{progressText}</Text>
+              ) : null}
             </View>
           ) : null}
         </View>
@@ -818,11 +1094,16 @@ export default function DecideCategoryScreen() {
               />
             </LinearGradient>
           </Animated.View>
-          <Text style={[styles.verdictKicker, { color: verdictAccent }]}>Harmence decision</Text>
+          <Text style={[styles.verdictKicker, { color: verdictAccent }]}>
+            {isCouncil ? 'Council decision' : 'Harmence decision'}
+          </Text>
           <Text style={[styles.verdictWord, { color: verdictAccent }]}>{verdictWord}</Text>
           <Text style={[styles.verdictSentence, { color: colors.primaryTxt }]}>
             {finalDecision.verdictLine}
           </Text>
+          {councilSummary ? (
+            <Text style={[styles.verdictCouncilSummary, { color: colors.muted }]}>{councilSummary}</Text>
+          ) : null}
           <Text
             style={[styles.verdictReason, { color: colors.muted }]}
             numberOfLines={verdictExpanded ? undefined : 3}>
@@ -848,12 +1129,31 @@ export default function DecideCategoryScreen() {
                         <Text style={[styles.expertVerdictLine, { color: expert?.color ?? verdictAccent }]}>
                           {verdict.verdictLine}
                         </Text>
+                        <Text style={[styles.expertVerdictConfidence, { color: colors.muted }]}>
+                          Confidence: {verdict.confidence}
+                        </Text>
                       </View>
                     </View>
                     <Text style={[styles.expertVerdictReason, { color: colors.muted }]}>{verdict.reasoning}</Text>
+                    {verdict.risks.length > 0 ? (
+                      <Text style={[styles.expertVerdictMeta, { color: colors.muted }]}>
+                        Risks: {verdict.risks.join(' · ')}
+                      </Text>
+                    ) : null}
                   </View>
                 );
               })}
+            </View>
+          ) : null}
+          {verdictExpanded && finalDecision.reflection?.summary ? (
+            <View style={[styles.reflectionCard, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
+              <Text style={[styles.reflectionTitle, { color: chrom.mint }]}>What we heard</Text>
+              <Text style={[styles.reflectionBody, { color: colors.primaryTxt }]}>{finalDecision.reflection.summary}</Text>
+              {finalDecision.reflection.concerns?.map((concern) => (
+                <Text key={concern} style={[styles.reflectionConcern, { color: colors.muted }]}>
+                  · {concern}
+                </Text>
+              ))}
             </View>
           ) : null}
           {verdictExpanded && finalDecision.nextSteps.length > 0 ? (
@@ -867,14 +1167,18 @@ export default function DecideCategoryScreen() {
               ))}
             </View>
           ) : null}
-          {(finalDecision.rationale?.trim() || finalDecision.nextSteps.length > 0) ? (
+          {canExpandVerdict ? (
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={verdictExpanded ? 'Show less detail' : 'See full reasoning'}
               onPress={() => setVerdictExpanded((v) => !v)}
               style={styles.verdictExpandBtn}>
               <Text style={[styles.verdictExpandText, { color: verdictAccent }]}>
-                {verdictExpanded ? 'Show less' : 'See full reasoning'}
+                {verdictExpanded
+                  ? 'Show less'
+                  : finalDecision.expertVerdicts.length > 0
+                    ? 'See how each expert voted'
+                    : 'See full reasoning'}
               </Text>
               <Ionicons
                 name={verdictExpanded ? 'chevron-up' : 'chevron-down'}
@@ -927,9 +1231,17 @@ export default function DecideCategoryScreen() {
                       <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={24} />
                     ))}
                   </View>
-                  <Text style={[styles.newExpertText, { color: colors.primaryTxt }]}>
-                    {newlyActivatedExperts.map((expert) => expert.title).join(', ')} joined the council.
-                  </Text>
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text style={[styles.newExpertText, { color: colors.primaryTxt }]}>
+                      {newlyActivatedExperts.map((expert) => expert.title).join(', ')}{' '}
+                      {isCouncil ? 'joined the council' : 'joined to help'}.
+                    </Text>
+                    {newlyActivatedExperts[0]?.subtitle ? (
+                      <Text style={[styles.newExpertSub, { color: colors.muted }]} numberOfLines={2}>
+                        {newlyActivatedExperts[0].subtitle}
+                      </Text>
+                    ) : null}
+                  </View>
                 </View>
               ) : null}
               {choicePrompt && !finalReady && !isTypingCustomChoice && activeChoiceMessageIndex === -1 ? (
@@ -948,64 +1260,12 @@ export default function DecideCategoryScreen() {
                         },
                       ]}>
                       <Text style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
-                        {choicePrompt.question}
+                        {choicePromptHeadline(choicePrompt)}
                       </Text>
                     </View>
                     {renderInlineChoiceOptions()}
                   </View>
                 </View>
-              ) : null}
-              {showStarterPrompts ? (
-              <View style={[styles.starterWrap, styles.msgPadH]}>
-                <View style={[styles.modeSelectorRow, modeLocked && { opacity: 0.38 }]}>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Single mode — one expert"
-                    disabled={modeLocked}
-                    onPress={() => handleModeChange('single')}
-                    style={[
-                      styles.modeBtn,
-                      { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
-                    ]}>
-                    <Text style={[styles.modeBtnLabel, { color: mode === 'single' ? chrom.mint : colors.primaryTxt }]}>Single</Text>
-                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>One expert</Text>
-                  </Pressable>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Complex mode — expert council"
-                    disabled={modeLocked}
-                    onPress={() => handleModeChange('complex')}
-                    style={[
-                      styles.modeBtn,
-                      { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
-                    ]}>
-                    <Text style={[styles.modeBtnLabel, { color: mode === 'complex' ? chrom.mint : colors.primaryTxt }]}>Complex</Text>
-                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>Expert council</Text>
-                  </Pressable>
-                </View>
-                <Text style={[styles.starterEyebrow, { color: colors.muted }]}>Try asking</Text>
-                <View style={styles.starterList}>
-                  {STARTER_PROMPTS.map((prompt) => (
-                    <Pressable
-                      key={prompt}
-                      accessibilityRole="button"
-                      accessibilityLabel={`Ask: ${prompt}`}
-                      onPress={() => {
-                        void submitUserText(prompt);
-                      }}
-                      style={[
-                        styles.starterChip,
-                        {
-                          borderColor: colors.composerBorder,
-                          backgroundColor: colors.composerBg,
-                        },
-                      ]}>
-                      <Ionicons name="chatbubble-ellipses-outline" size={15} color={chrom.mint} />
-                      <Text style={[styles.starterChipText, { color: colors.primaryTxt }]}>{prompt}</Text>
-                    </Pressable>
-                  ))}
-                </View>
-              </View>
               ) : null}
             </>
           }
@@ -1039,7 +1299,9 @@ export default function DecideCategoryScreen() {
                       </Text>
                     ) : null}
                     <Text selectable style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
-                      {formatBubbleText(item.text)}
+                      {index === activeChoiceMessageIndex && choicePrompt
+                        ? choicePromptHeadline(choicePrompt)
+                        : displayAssistantText(item, messages)}
                     </Text>
                   </View>
                   {index === activeChoiceMessageIndex ? renderInlineChoiceOptions() : null}
@@ -1090,38 +1352,42 @@ export default function DecideCategoryScreen() {
               borderTopColor: colors.headerHairline,
             },
           ]}>
-        {canReview ? (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Review briefing and community validation card"
-            onPress={() => router.push('/(tabs)/decide/confirm')}
-            style={[styles.continuePill, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
-            <Text style={[styles.continuePillText, { color: colors.primaryTxt }]}>Review & Explore card</Text>
-            <Ionicons name="arrow-forward-circle-outline" size={18} color={chrom.mint} />
-          </Pressable>
-        ) : !choicePrompt ? (
-          <View style={[styles.softHintWrap, styles.msgPadH]}>
-            <View style={[styles.modeToggleRow, modeLocked && { opacity: 0.38 }]}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Single expert mode"
-                disabled={modeLocked}
-                onPress={() => handleModeChange('single')}
-                style={[styles.modeToggleBtn, { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
-                <Text style={[styles.modeToggleLabel, { color: mode === 'single' ? chrom.mint : colors.muted }]}>Single</Text>
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Expert council mode"
-                disabled={modeLocked}
-                onPress={() => handleModeChange('complex')}
-                style={[styles.modeToggleBtn, { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
-                <Text style={[styles.modeToggleLabel, { color: mode === 'complex' ? chrom.mint : colors.muted }]}>Council</Text>
-              </Pressable>
-            </View>
-            <Text style={[styles.softHint, { color: colors.muted, flex: 1 }]} numberOfLines={2}>
-              {softHint}
-            </Text>
+        {showStarterLaunchPad ? (
+          <View style={[styles.launchPad, styles.msgPadH]}>
+            {isCouncil ? (
+              <Text style={[styles.councilHint, { color: colors.muted }]}>
+                {isPremium
+                  ? 'Premium · multiple specialists weigh in — each view at the end.'
+                  : `Multiple specialists weigh in — ${councilSessionCost} points per session.`}
+              </Text>
+            ) : null}
+            <Text style={[styles.launchPadLabel, { color: colors.muted }]}>Try asking</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={styles.launchPadScroll}>
+              {STARTER_CHIPS.map((chip) => (
+                <Pressable
+                  key={chip.prompt}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Ask: ${chip.prompt}`}
+                  onPress={() => {
+                    void submitUserText(chip.prompt);
+                  }}
+                  style={[
+                    styles.launchChip,
+                    {
+                      borderColor: isDark ? `${chrom.mint}55` : `${chrom.sky}55`,
+                      backgroundColor: isDark ? `${chrom.mint}16` : `${chrom.sky}14`,
+                    },
+                  ]}>
+                  <Text style={[styles.launchChipText, { color: isDark ? chrom.mint : chrom.sky }]}>
+                    {chip.short}
+                  </Text>
+                </Pressable>
+              ))}
+            </ScrollView>
           </View>
         ) : null}
 
@@ -1258,6 +1524,122 @@ export default function DecideCategoryScreen() {
         </View>
       </Modal>
 
+      <Modal transparent animationType="slide" visible={expertsOpen} onRequestClose={() => setExpertsOpen(false)}>
+        <View style={styles.sheetBackdrop}>
+          <Pressable style={styles.sheetBackdropTouch} accessibilityLabel="Dismiss" onPress={() => setExpertsOpen(false)} />
+          <View
+            style={[
+              styles.sheetCard,
+              { backgroundColor: colors.modalBg, paddingBottom: bottomPad + 12, borderTopColor: colors.composerBorder },
+            ]}>
+            <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
+            <View style={styles.sheetHeadRow}>
+              <Text style={[styles.sheetTitle, { color: colors.primaryTxt }]}>
+                {isCouncil ? 'Council experts' : 'Active expert'}
+              </Text>
+              <Pressable hitSlop={12} onPress={() => setExpertsOpen(false)} accessibilityRole="button">
+                <Text style={[styles.sheetClose, { color: colors.muted }]}>Done</Text>
+              </Pressable>
+            </View>
+            <Text style={[styles.sheetHint, { color: colors.muted }]}>
+              {isCouncil
+                ? 'Specialists consulted during this decision.'
+                : 'The specialist helping with your decision.'}
+            </Text>
+            <ScrollView contentContainerStyle={styles.sheetList} keyboardShouldPersistTaps="handled">
+              {activeExperts.map((expert) => (
+                <View
+                  key={expert.id}
+                  style={[styles.sheetRow, { borderBottomColor: colors.composerBorder }]}>
+                  <ExpertGlyph expert={expert} fallbackColor={chrom.mint} size={40} />
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text style={[styles.sheetRowTitle, { color: colors.primaryTxt }]}>{expert.title}</Text>
+                    {expert.subtitle ? (
+                      <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={2}>
+                        {expert.subtitle}
+                      </Text>
+                    ) : expert.skillName ? (
+                      <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={1}>
+                        {expert.skillName}
+                      </Text>
+                    ) : null}
+                  </View>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal transparent animationType="fade" visible={councilPaywallOpen} onRequestClose={() => setCouncilPaywallOpen(false)}>
+        <View style={styles.sheetBackdrop}>
+          <Pressable
+            style={styles.sheetBackdropTouch}
+            accessibilityLabel="Dismiss"
+            onPress={() => setCouncilPaywallOpen(false)}
+          />
+          <View
+            style={[
+              styles.paywallCard,
+              {
+                backgroundColor: colors.modalBg,
+                borderColor: colors.composerBorder,
+                marginBottom: bottomPad + 24,
+              },
+            ]}>
+            <View style={[styles.paywallIconWrap, { backgroundColor: `${chrom.mint}18` }]}>
+              <Ionicons name="people" size={28} color={chrom.mint} />
+            </View>
+            <Text style={[styles.paywallTitle, { color: colors.primaryTxt }]}>Expert Council is Premium</Text>
+            <Text style={[styles.paywallBody, { color: colors.muted }]}>
+              Multiple specialists debate your decision and you see each verdict. Subscribe for unlimited Council
+              sessions, or spend {councilSessionCost} points per session.
+            </Text>
+            {entitlementsHydrated ? (
+              <Text style={[styles.paywallBalance, { color: colors.muted }]}>
+                Your balance: {pointsBalance.toLocaleString()} pts
+              </Text>
+            ) : null}
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Get Premium subscription"
+              onPress={() => {
+                setCouncilPaywallOpen(false);
+                router.push('/(tabs)/you');
+              }}
+              style={[styles.paywallPrimary, { backgroundColor: chrom.mint }]}>
+              <Ionicons name="star" size={16} color={chrom.ctaOnGradient} />
+              <Text style={[styles.paywallPrimaryText, { color: chrom.ctaOnGradient }]}>Get Premium</Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Use ${councilSessionCost} points for this council session`}
+              disabled={!canUseCouncilWithPoints}
+              onPress={() => activateCouncilMode('points')}
+              style={[
+                styles.paywallSecondary,
+                {
+                  borderColor: colors.composerBorder,
+                  backgroundColor: colors.composerBg,
+                  opacity: canUseCouncilWithPoints ? 1 : 0.45,
+                },
+              ]}>
+              <Ionicons name="diamond-outline" size={16} color={chrom.sky} />
+              <Text style={[styles.paywallSecondaryText, { color: colors.primaryTxt }]}>
+                Use {councilSessionCost} points
+              </Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Not now"
+              onPress={() => setCouncilPaywallOpen(false)}
+              style={styles.paywallDismiss}>
+              <Text style={[styles.paywallDismissText, { color: colors.muted }]}>Not now</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
     </KeyboardAvoidingView>
   );
 }
@@ -1308,6 +1690,38 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 16,
   },
+  headerModeSegment: {
+    flexDirection: 'row',
+    marginTop: 8,
+    padding: 3,
+    borderRadius: 10,
+    gap: 2,
+  },
+  headerModeBtn: {
+    paddingHorizontal: 14,
+    paddingVertical: 5,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'transparent',
+  },
+  headerModeBtnLocked: {
+    opacity: 0.88,
+  },
+  headerModeBtnInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  headerModeCost: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.2,
+  },
+  headerModeBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.1,
+  },
   headerExperts: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -1315,8 +1729,27 @@ const styles = StyleSheet.create({
     gap: 4,
     marginTop: 6,
   },
-  headerProgressTrack: {
+  expertOverflow: {
+    minWidth: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  expertOverflowText: {
+    fontSize: 10,
+    fontWeight: '800',
+  },
+  headerProgressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
     marginTop: 8,
+  },
+  headerProgressTrack: {
     width: 120,
     height: 4,
     borderRadius: 999,
@@ -1325,6 +1758,11 @@ const styles = StyleSheet.create({
   headerProgressFill: {
     height: '100%',
     borderRadius: 999,
+  },
+  headerProgressLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    minWidth: 72,
   },
   liveDot: {
     width: 8,
@@ -1398,6 +1836,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: -0.6,
   },
+  verdictCouncilSummary: {
+    marginTop: 10,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
   verdictReason: {
     marginTop: 14,
     maxWidth: 360,
@@ -1443,6 +1888,44 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   expertVerdictReason: {
+    fontSize: 13,
+    lineHeight: 19,
+    fontWeight: '500',
+  },
+  expertVerdictConfidence: {
+    marginTop: 2,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+    textTransform: 'uppercase',
+  },
+  expertVerdictMeta: {
+    fontSize: 12,
+    lineHeight: 17,
+    fontWeight: '500',
+  },
+  reflectionCard: {
+    width: '100%',
+    maxWidth: 380,
+    marginTop: 14,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 6,
+  },
+  reflectionTitle: {
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
+  reflectionBody: {
+    fontSize: 14,
+    lineHeight: 21,
+    fontWeight: '600',
+  },
+  reflectionConcern: {
     fontSize: 13,
     lineHeight: 19,
     fontWeight: '500',
@@ -1535,6 +2018,37 @@ const styles = StyleSheet.create({
     gap: 8,
     flexShrink: 0,
   },
+  launchPad: {
+    gap: 6,
+    marginBottom: 2,
+  },
+  councilHint: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '500',
+    marginBottom: 2,
+  },
+  launchPadLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
+  launchPadScroll: {
+    gap: 8,
+    paddingRight: screenContentGutter,
+  },
+  launchChip: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+  },
+  launchChipText: {
+    fontSize: 14,
+    fontWeight: '600',
+    lineHeight: 18,
+  },
   listContent: {
     paddingVertical: spacing.sm,
     paddingBottom: spacing.md,
@@ -1583,8 +2097,25 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
   },
   inlineChoiceBlock: {
-    marginTop: 10,
-    gap: 8,
+    marginTop: 8,
+  },
+  choicePanel: {
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 12,
+    gap: 10,
+  },
+  choiceHelperRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 6,
+    paddingHorizontal: 2,
+  },
+  choiceHelperText: {
+    flex: 1,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '500',
   },
   customAnswerBar: {
     flexDirection: 'row',
@@ -1787,10 +2318,15 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   newExpertText: {
-    flex: 1,
     fontSize: 13,
     lineHeight: 18,
     fontWeight: '700',
+  },
+  newExpertSub: {
+    marginTop: 2,
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '500',
   },
   composerShell: {
     flexDirection: 'row',
@@ -1966,6 +2502,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
   },
+  almostReadyHint: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '700',
+  },
   clarifySendingRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -1995,8 +2536,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.7,
   },
   whyText: {
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: 14,
+    lineHeight: 20,
     fontWeight: '600',
   },
   clarifyHelper: {
@@ -2011,14 +2552,25 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   clarifyChoicesColumn: {
-    gap: 8,
+    gap: 6,
   },
   choiceCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 12,
-    paddingVertical: 11,
-    gap: 3,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 10,
+    minHeight: 52,
+  },
+  choiceCardOther: {
+    minHeight: 48,
+  },
+  choiceCardBody: {
+    flex: 1,
+    minWidth: 0,
+    gap: 2,
   },
   choiceCardLabel: {
     fontSize: 14,
@@ -2073,5 +2625,75 @@ const styles = StyleSheet.create({
   customChoiceCancelText: {
     fontSize: 12,
     fontWeight: '700',
+  },
+  paywallCard: {
+    marginHorizontal: screenContentGutter,
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 20,
+    paddingVertical: 22,
+    gap: 12,
+    alignItems: 'center',
+  },
+  paywallIconWrap: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 4,
+  },
+  paywallTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    letterSpacing: -0.4,
+    textAlign: 'center',
+  },
+  paywallBody: {
+    fontSize: 14,
+    lineHeight: 21,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  paywallBalance: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  paywallPrimary: {
+    width: '100%',
+    minHeight: 48,
+    borderRadius: 999,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    marginTop: 4,
+  },
+  paywallPrimaryText: {
+    fontSize: 15,
+    fontWeight: '800',
+  },
+  paywallSecondary: {
+    width: '100%',
+    minHeight: 46,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  paywallSecondaryText: {
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  paywallDismiss: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  paywallDismissText: {
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

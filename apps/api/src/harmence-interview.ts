@@ -17,9 +17,18 @@ import {
   type DecideInterviewExpert,
   type DecideInterviewFinalDecision,
   type DecideInterviewPreviewCard,
+  type DecideInterviewReflection,
   type DecideInterviewTurnResponse,
 } from '@shouldi/contracts';
 import { randomUUID } from 'crypto';
+
+export class CouncilLockedError extends Error {
+  readonly code = 'COUNCIL_LOCKED' as const;
+  constructor(message = 'Expert Council requires Premium or points.') {
+    super(message);
+    this.name = 'CouncilLockedError';
+  }
+}
 
 import {
   expertById,
@@ -101,6 +110,52 @@ function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simpl
   if (rounds >= 6 && !challengeModesUsed.includes('simplifier')) return 'simplifier';
   if (rounds >= 4 && !challengeModesUsed.includes('contrarian')) return 'contrarian';
   return '';
+}
+
+const META_ASSISTANT_RE =
+  /wants to check the highest-leverage unknown|before the council recommends/i;
+
+function normalizeAssistantText(
+  text: string,
+  speaker: HarmenceExpert,
+  choicePrompt?: DecideInterviewChoicePrompt,
+): string {
+  const trimmed = text.trim();
+  if (!META_ASSISTANT_RE.test(trimmed)) return trimmed;
+  if (choicePrompt) {
+    const question = choicePrompt.question.trim();
+    if (question && !META_ASSISTANT_RE.test(question)) {
+      return `${speaker.title}: ${question}`;
+    }
+    if (choicePrompt.title.trim()) {
+      return `${speaker.title}: What best describes the ${choicePrompt.title.toLowerCase()}?`;
+    }
+  }
+  return `${speaker.title} has a follow-up for you.`;
+}
+
+function buildUserReflection(psychProfile?: PsychProfile): DecideInterviewReflection | undefined {
+  if (!psychProfile) return undefined;
+  const parts: string[] = [];
+  if (psychProfile.emotionalState.trim()) parts.push(psychProfile.emotionalState.trim());
+  if (psychProfile.hiddenMotivation.trim()) {
+    const motive = psychProfile.hiddenMotivation.trim().replace(/\.$/, '');
+    parts.push(`You may also be weighing whether ${motive}.`);
+  }
+  const concerns = psychProfile.underlyingConcerns.filter(Boolean).slice(-3);
+  if (parts.length === 0 && concerns.length === 0) return undefined;
+  return {
+    summary: parts.join(' ') || 'Several factors seem to be pulling on this decision.',
+    concerns: concerns.length > 0 ? concerns : undefined,
+  };
+}
+
+function attachReflection(
+  decision: DecideInterviewFinalDecision,
+  psychProfile?: PsychProfile,
+): DecideInterviewFinalDecision {
+  const reflection = buildUserReflection(psychProfile);
+  return reflection ? { ...decision, reflection } : decision;
 }
 
 type PsychProfile = {
@@ -1199,7 +1254,11 @@ function fallbackExpertChoice(
           : generalQuestion;
   const actualSpeaker = expertById(choicePrompt.speakerExpertId ?? speaker.id) ?? speaker;
   return {
-    assistantText: `${actualSpeaker.title} wants to check the highest-leverage unknown before the council recommends.`,
+    assistantText: normalizeAssistantText(
+      `${actualSpeaker.title}: ${choicePrompt.question}`,
+      actualSpeaker,
+      choicePrompt,
+    ),
     choicePrompt,
     readyForFinal: false,
     speaker: actualSpeaker,
@@ -1435,16 +1494,16 @@ async function askSmartTalkForNextChoice(
       }
       calledExperts.push(expert);
     }
-    if (calledExperts.length > 0) {
+    if (calledExperts.length > 0 && session.mode === 'complex') {
       session.activeExpertIds = mergeExpertIds(session.activeExpertIds, calledExperts);
     }
   }
 
-  // Refresh activeExperts/newlyActivatedExperts after domain-skill activations so the
-  // turn response and momentum log expertsJoined reflect experts added this turn.
+  // Refresh activeExperts/newlyActivatedExperts after domain-skill activations (council only).
   const prevActiveIds = new Set(activeExperts.map((e) => e.id));
   const refreshedExperts = expertsForSession(session);
-  const domainActivated = refreshedExperts.filter((e) => !prevActiveIds.has(e.id));
+  const domainActivated =
+    session.mode === 'complex' ? refreshedExperts.filter((e) => !prevActiveIds.has(e.id)) : [];
   if (domainActivated.length > 0) {
     activeExperts = refreshedExperts;
     newlyActivatedExperts = [...newlyActivatedExperts, ...domainActivated];
@@ -1528,7 +1587,7 @@ async function askSmartTalkForNextChoice(
   });
 
   return {
-    assistantText: resolvedAssistantText,
+    assistantText: normalizeAssistantText(resolvedAssistantText, speaker, choicePrompt),
     choicePrompt,
     readyForFinal: false,
     activeExperts,
@@ -1956,6 +2015,9 @@ async function askSmartTalkComplexFinal(
         content: [
           `Original question: ${initialQuestionFor(session)}`,
           `Collected answers:\n${collectedSummary(session)}`,
+          session.psychProfile
+            ? `User reflection context (soft — do not quote clinically):\n${JSON.stringify(buildUserReflection(session.psychProfile))}`
+            : '',
           `Expert verdicts:\n${JSON.stringify(expertVerdicts, null, 2)}`,
           consensusInstruction,
           keyMomentCandidates.length > 0
@@ -2071,6 +2133,8 @@ export async function summarizeSessionDetail(id: string): Promise<{
     phase,
     isComplete: session.isComplete,
     hermesIntegrated,
+    mode: session.mode,
+    ambiguity: session.smartTalkState.ambiguity,
     activeExperts: publicExperts(session.activeExpertIds),
     choicePrompt: session.lastPrompt,
     finalDecision: session.finalDecision,
@@ -2113,6 +2177,7 @@ export async function handleInterviewTurn(
   userTextRaw: string,
   selectedOptionId?: string,
   requestedMode?: 'single' | 'complex',
+  councilUnlock?: 'premium' | 'points',
 ): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
   let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
@@ -2123,6 +2188,10 @@ export async function handleInterviewTurn(
     if (sessionId) {
       throw new Error('UNKNOWN_SESSION');
     }
+    const mode = requestedMode ?? 'single';
+    if (mode === 'complex' && !councilUnlock) {
+      throw new CouncilLockedError();
+    }
     session = {
       id: randomUUID(),
       bubbles: [],
@@ -2130,7 +2199,7 @@ export async function handleInterviewTurn(
       activeExpertIds: [],
       isComplete: false,
       updatedAt: Date.now(),
-      mode: requestedMode ?? 'single',
+      mode,
       smartTalkState: defaultSmartTalkState(),
     };
     STORE.set(session.id, session);
@@ -2229,7 +2298,7 @@ export async function handleInterviewTurn(
     activeExperts = next.activeExperts.map(publicExpert);
     newlyActivatedExperts = next.newlyActivatedExperts.map(publicExpert);
     if (!next.readyForFinal && next.choicePrompt) {
-      assistantText = next.assistantText;
+      assistantText = normalizeAssistantText(next.assistantText, next.speaker, next.choicePrompt);
       choicePrompt = next.choicePrompt;
       phase = choicePrompt.id;
       session.lastPrompt = choicePrompt;
@@ -2253,7 +2322,7 @@ export async function handleInterviewTurn(
       ]
         .filter(Boolean)
         .join('\n');
-      finalDecision = final.finalDecision;
+      finalDecision = attachReflection(final.finalDecision, session.psychProfile);
       previewCard = final.previewCard;
       suggestedDraftHints = summarizeDraft(session, previewCard);
       session.lastPrompt = undefined;
@@ -2291,7 +2360,7 @@ export async function handleInterviewTurn(
       ]
         .filter(Boolean)
         .join('\n');
-      finalDecision = final.finalDecision;
+      finalDecision = attachReflection(final.finalDecision, session.psychProfile);
       previewCard = final.previewCard;
       suggestedDraftHints = summarizeDraft(session, previewCard);
       session.lastPrompt = undefined;
@@ -2324,5 +2393,6 @@ export async function handleInterviewTurn(
     choicePrompt,
     finalDecision,
     previewCard,
+    almostReady: choicePrompt && session.smartTalkState.ambiguity <= 0.35 ? true : undefined,
   });
 }

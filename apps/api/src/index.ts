@@ -10,6 +10,7 @@ import {
 } from '@shouldi/contracts';
 import { seededExploreCards } from './explore-seed.js';
 import {
+  CouncilLockedError,
   handleInterviewTurn,
   summarizeSessionDetail,
   summarizeSessionsForMobile,
@@ -34,6 +35,11 @@ app.get('/v1/me', (c) => {
   return c.json({
     anonymous: !auth,
     userId: auth ? 'signed-in-placeholder' : null,
+    entitlements: {
+      isPremium: false,
+      pointsBalance: 2450,
+      councilSessionCost: 120,
+    },
   });
 });
 
@@ -98,9 +104,19 @@ app.post('/v1/harmence/interview/turn', async (c) => {
       parsed.data.userText ?? '',
       parsed.data.selectedOptionId,
       parsed.data.mode,
+      parsed.data.councilUnlock,
     );
     return c.json(DecideInterviewTurnResponseSchema.parse(res));
-  } catch {
+  } catch (err) {
+    if (err instanceof CouncilLockedError) {
+      return c.json(
+        {
+          error: err.code,
+          message: err.message,
+        },
+        402,
+      );
+    }
     return c.json({ error: 'UNKNOWN_SESSION' }, 404);
   }
 });

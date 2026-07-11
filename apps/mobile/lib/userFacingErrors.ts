@@ -44,6 +44,10 @@ export function userFacingApiError(
     return 'Harmence isn’t available right now. Please try again.';
   }
 
+  if (/COUNCIL_LOCKED/i.test(raw)) {
+    return 'Expert Council requires Premium or enough points. Subscribe or earn points on Explore.';
+  }
+
   return raw;
 }
 
