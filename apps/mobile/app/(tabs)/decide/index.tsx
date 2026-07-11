@@ -165,45 +165,6 @@ function CouncilVoteTally({
   );
 }
 
-function CouncilChamberStrip({
-  expertCount,
-  isPremium,
-  isDark,
-  premiumLabel,
-}: {
-  expertCount: number;
-  isPremium: boolean;
-  isDark: boolean;
-  premiumLabel?: string;
-}) {
-  return (
-    <View style={[councilStyles.chamberStrip, styles.msgPadH]}>
-      <LinearGradient
-        colors={isDark ? ['#2e1065aa', '#4c1d95aa', '#0f172aaa'] : ['#ede9fe', '#ddd6fe', '#e0f2fe']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={councilStyles.chamberStripGrad}>
-        <View style={councilStyles.chamberStripInner}>
-          <View style={[councilStyles.chamberIcon, { backgroundColor: isDark ? 'rgba(167,139,250,0.22)' : 'rgba(139,92,246,0.14)' }]}>
-            <Ionicons name="people-circle" size={22} color={COUNCIL_VIOLET} />
-          </View>
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={[councilStyles.chamberEyebrow, { color: isDark ? COUNCIL_GOLD : '#b45309' }]}>
-              {premiumLabel ?? 'EXPERT COUNCIL'}
-            </Text>
-            <Text style={[councilStyles.chamberTitle, { color: isDark ? '#f5f3ff' : '#312e81' }]}>
-              {expertCount > 0
-                ? `${expertCount} specialist${expertCount === 1 ? '' : 's'} in session`
-                : 'Assembling your council…'}
-            </Text>
-          </View>
-          <Ionicons name="sparkles" size={16} color={isDark ? COUNCIL_GOLD : COUNCIL_VIOLET} />
-        </View>
-      </LinearGradient>
-    </View>
-  );
-}
-
 const councilStyles = StyleSheet.create({
   tallyRow: {
     flexDirection: 'row',
@@ -261,6 +222,37 @@ const councilStyles = StyleSheet.create({
     lineHeight: 17,
   },
 });
+
+const SHEET_SLIDE_OFFSET = 420;
+/** Extra sheet height below the safe area so the slide-up never exposes the dim backdrop. */
+const SHEET_BOTTOM_BLEED = 56;
+
+function useSheetEntrance(open: boolean) {
+  const translateY = React.useRef(new Animated.Value(SHEET_SLIDE_OFFSET)).current;
+  const backdropOpacity = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    if (!open) return;
+    translateY.setValue(SHEET_SLIDE_OFFSET);
+    backdropOpacity.setValue(0);
+    Animated.parallel([
+      Animated.timing(backdropOpacity, {
+        toValue: 1,
+        duration: 220,
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: true,
+      }),
+      Animated.spring(translateY, {
+        toValue: 0,
+        friction: 8,
+        tension: 72,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [backdropOpacity, open, translateY]);
+
+  return { translateY, backdropOpacity };
+}
 
 function progressRatio(progress: NonNullable<DecideInterviewChoicePrompt['progress']>): number {
   if (progress.ambiguity !== undefined) {
@@ -418,6 +410,8 @@ export default function DecideCategoryScreen() {
   const [expertsOpen, setExpertsOpen] = React.useState(false);
   const [almostReady, setAlmostReady] = React.useState(false);
   const [councilPaywallOpen, setCouncilPaywallOpen] = React.useState(false);
+  const expertsSheetMotion = useSheetEntrance(expertsOpen);
+  const sessionsSheetMotion = useSheetEntrance(sessionsOpen);
   const modeRef = React.useRef(mode);
   modeRef.current = mode;
   const councilUnlockRef = React.useRef<CouncilUnlockMethod | null>(null);
@@ -912,6 +906,26 @@ export default function DecideCategoryScreen() {
     }
     return -1;
   }, [choicePrompt, finalReady, isTypingCustomChoice, messages]);
+  const showCompactHeader = modeLocked || sessionStarted || hasUserMessages;
+  const headerStatusLine = React.useMemo(() => {
+    if (!showCompactHeader) return null;
+    if (isCouncil) {
+      const expertPart =
+        activeExperts.length > 0
+          ? `${activeExperts.length} expert${activeExperts.length === 1 ? '' : 's'}`
+          : 'Assembling council';
+      return progressText ? `${expertPart} · ${progressText}` : expertPart;
+    }
+    if (primaryExpert?.title) return primaryExpert.title;
+    return progressText ?? subtitle;
+  }, [
+    activeExperts.length,
+    isCouncil,
+    primaryExpert?.title,
+    progressText,
+    showCompactHeader,
+    subtitle,
+  ]);
   const showStarterLaunchPad = showStarterPrompts;
   const showComposer = !finalReady && (!choicePrompt || isTypingCustomChoice);
   const showAnswerPane =
@@ -1128,170 +1142,180 @@ export default function DecideCategoryScreen() {
             pointerEvents="none"
           />
         ) : null}
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Past sessions"
-          onPress={openPastSessions}
-          style={styles.headerIconBtn}
-          hitSlop={{ top: 8, bottom: 8, left: 4, right: 10 }}>
-          <Ionicons name="time-outline" size={24} color={chrom.gearIcon} />
-        </Pressable>
-        <View style={styles.headerTitleBlock}>
-          <View style={styles.titleRow}>
-            {isCouncil ? (
-              <View style={[styles.councilTitleBadge, { backgroundColor: isDark ? 'rgba(139,92,246,0.22)' : 'rgba(139,92,246,0.12)' }]}>
-                <Ionicons name="people" size={12} color={COUNCIL_VIOLET} />
-              </View>
-            ) : null}
-            <Text style={[styles.agentTitle, { color: chrom.display }]}>
-              {headerTitle}
-            </Text>
-            {isCouncil && isPremium ? (
-              <View style={[styles.councilPremiumPip, { borderColor: `${COUNCIL_GOLD}88`, backgroundColor: `${COUNCIL_GOLD}22` }]}>
-                <Ionicons name="star" size={9} color={COUNCIL_GOLD} />
-              </View>
-            ) : null}
+        <View style={styles.headerTopRow}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Past sessions"
+            onPress={openPastSessions}
+            style={styles.headerIconBtn}
+            hitSlop={{ top: 8, bottom: 8, left: 4, right: 10 }}>
+            <Ionicons name="time-outline" size={24} color={chrom.gearIcon} />
+          </Pressable>
+          <View style={styles.headerTitleBlock}>
+            <View style={styles.titleRow}>
+              <Text style={[styles.agentTitle, { color: chrom.display }]} numberOfLines={1}>
+                {headerTitle}
+              </Text>
+              {isCouncil && isPremium ? (
+                <View style={[styles.councilPremiumPip, { borderColor: `${COUNCIL_GOLD}88`, backgroundColor: `${COUNCIL_GOLD}22` }]}>
+                  <Ionicons name="star" size={9} color={COUNCIL_GOLD} />
+                </View>
+              ) : null}
+              <View
+                style={[
+                  styles.liveDot,
+                  { backgroundColor: hermesIntegrated ? (isCouncil ? COUNCIL_VIOLET : chrom.mint) : chrom.textMuted },
+                ]}
+              />
+            </View>
+
+            {showCompactHeader && headerStatusLine ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={`Session status: ${headerStatusLine}`}
+                onPress={() => {
+                  if (activeExperts.length > 0) setExpertsOpen(true);
+                }}
+                style={[
+                  styles.headerStatusPill,
+                  {
+                    backgroundColor: isCouncil
+                      ? isDark
+                        ? 'rgba(139,92,246,0.16)'
+                        : 'rgba(139,92,246,0.1)'
+                      : isDark
+                        ? 'rgba(255,255,255,0.08)'
+                        : 'rgba(15,23,42,0.05)',
+                    borderColor: isCouncil ? `${COUNCIL_VIOLET}33` : colors.composerBorder,
+                  },
+                ]}>
+                {activeExperts.length > 0 ? (
+                  <View style={styles.headerStatusAvatars}>
+                    {activeExperts.slice(0, 3).map((expert, idx) => (
+                      <View
+                        key={expert.id}
+                        style={[idx > 0 ? styles.headerStatusAvatarOverlap : null, styles.headerStatusAvatarRing]}>
+                        <ExpertGlyph expert={expert} fallbackColor={isCouncil ? COUNCIL_VIOLET : chrom.mint} size={18} />
+                      </View>
+                    ))}
+                  </View>
+                ) : isCouncil ? (
+                  <Ionicons name="people-outline" size={14} color={COUNCIL_VIOLET} />
+                ) : null}
+                <Text style={[styles.headerStatusText, { color: chrom.textMuted }]} numberOfLines={1}>
+                  {headerStatusLine}
+                </Text>
+                {activeExperts.length > 0 ? (
+                  <Ionicons name="chevron-down" size={12} color={chrom.textMuted} />
+                ) : null}
+              </Pressable>
+            ) : (
+              <>
+                <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
+                  {subtitle}
+                </Text>
+                {!modeLocked && !booting && !finalReady ? (
+                  <View
+                    style={[
+                      styles.headerModeSegment,
+                      { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)' },
+                    ]}>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Single expert mode"
+                      accessibilityState={{ selected: mode === 'single' }}
+                      onPress={() => handleModeChange('single')}
+                      style={[
+                        styles.headerModeBtn,
+                        mode === 'single' && {
+                          backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
+                          borderColor: chrom.mint,
+                        },
+                      ]}>
+                      <Text
+                        style={[
+                          styles.headerModeBtnText,
+                          { color: mode === 'single' ? chrom.mint : chrom.textMuted },
+                        ]}>
+                        Single
+                      </Text>
+                    </Pressable>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={
+                        isPremium
+                          ? 'Expert council mode (Premium)'
+                          : canAccessCouncil
+                            ? `Expert council mode, ${councilSessionCost} points per session`
+                            : 'Expert council mode (Premium or points required)'
+                      }
+                      accessibilityState={{ selected: mode === 'complex' }}
+                      onPress={trySelectCouncil}
+                      style={[
+                        styles.headerModeBtn,
+                        mode === 'complex' && styles.headerModeBtnCouncilActive,
+                        !isPremium && mode !== 'complex' && !canAccessCouncil && styles.headerModeBtnLocked,
+                      ]}>
+                      {mode === 'complex' ? (
+                        <LinearGradient
+                          colors={isDark ? ['#4c1d95', '#6d28d9', '#7c3aed'] : ['#c4b5fd', '#a78bfa', '#8b5cf6']}
+                          start={{ x: 0, y: 0 }}
+                          end={{ x: 1, y: 1 }}
+                          style={[StyleSheet.absoluteFillObject, { borderRadius: 8 }]}
+                        />
+                      ) : null}
+                      <View style={styles.headerModeBtnInner}>
+                        {!isPremium && mode !== 'complex' ? (
+                          <Ionicons
+                            name={canAccessCouncil ? 'diamond-outline' : 'lock-closed'}
+                            size={11}
+                            color={chrom.textMuted}
+                          />
+                        ) : isPremium ? (
+                          <Ionicons name="star" size={11} color={mode === 'complex' ? '#fff' : chrom.textMuted} />
+                        ) : null}
+                        <Text
+                          style={[
+                            styles.headerModeBtnText,
+                            { color: mode === 'complex' ? '#fff' : chrom.textMuted },
+                          ]}>
+                          Council
+                        </Text>
+                        {!isPremium && mode !== 'complex' ? (
+                          <View style={[styles.headerModeCostPill, { backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.08)' }]}>
+                            <Text style={[styles.headerModeCost, { color: chrom.textMuted }]}>{councilSessionCost}</Text>
+                          </View>
+                        ) : null}
+                      </View>
+                    </Pressable>
+                  </View>
+                ) : null}
+              </>
+            )}
+          </View>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="New chat"
+            onPress={startFreshSession}
+            disabled={booting || sending}
+            style={[styles.headerIconBtn, (booting || sending) && { opacity: 0.35 }]}
+            hitSlop={{ top: 8, bottom: 8, left: 10, right: 4 }}>
+            <Ionicons name="create-outline" size={24} color={chrom.gearIcon} />
+          </Pressable>
+        </View>
+        {showCompactHeader && choicePrompt?.progress ? (
+          <View style={[styles.headerProgressEdge, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
             <View
               style={[
-                styles.liveDot,
-                { backgroundColor: hermesIntegrated ? (isCouncil ? COUNCIL_VIOLET : chrom.mint) : chrom.textMuted },
+                styles.headerProgressEdgeFill,
+                {
+                  width: `${progressPercent}%`,
+                  backgroundColor: isCouncil ? COUNCIL_VIOLET : chrom.mint,
+                },
               ]}
             />
           </View>
-          <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
-            {subtitle}
-          </Text>
-          {!modeLocked && !booting && !finalReady ? (
-            <View
-              style={[
-                styles.headerModeSegment,
-                { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)' },
-              ]}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Single expert mode"
-                accessibilityState={{ selected: mode === 'single' }}
-                onPress={() => handleModeChange('single')}
-                style={[
-                  styles.headerModeBtn,
-                  mode === 'single' && {
-                    backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
-                    borderColor: chrom.mint,
-                  },
-                ]}>
-                <Text
-                  style={[
-                    styles.headerModeBtnText,
-                    { color: mode === 'single' ? chrom.mint : chrom.textMuted },
-                  ]}>
-                  Single
-                </Text>
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={
-                  isPremium
-                    ? 'Expert council mode (Premium)'
-                    : canAccessCouncil
-                      ? `Expert council mode, ${councilSessionCost} points per session`
-                      : 'Expert council mode (Premium or points required)'
-                }
-                accessibilityState={{ selected: mode === 'complex' }}
-                onPress={trySelectCouncil}
-                style={[
-                  styles.headerModeBtn,
-                  mode === 'complex' && styles.headerModeBtnCouncilActive,
-                  !isPremium && mode !== 'complex' && !canAccessCouncil && styles.headerModeBtnLocked,
-                ]}>
-                {mode === 'complex' ? (
-                  <LinearGradient
-                    colors={isDark ? ['#4c1d95', '#6d28d9', '#7c3aed'] : ['#c4b5fd', '#a78bfa', '#8b5cf6']}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={[StyleSheet.absoluteFillObject, { borderRadius: 8 }]}
-                  />
-                ) : null}
-                <View style={styles.headerModeBtnInner}>
-                  {!isPremium && mode !== 'complex' ? (
-                    <Ionicons
-                      name={canAccessCouncil ? 'diamond-outline' : 'lock-closed'}
-                      size={11}
-                      color={chrom.textMuted}
-                    />
-                  ) : isPremium ? (
-                    <Ionicons name="star" size={11} color={mode === 'complex' ? '#fff' : chrom.textMuted} />
-                  ) : null}
-                  <Text
-                    style={[
-                      styles.headerModeBtnText,
-                      { color: mode === 'complex' ? '#fff' : chrom.textMuted },
-                    ]}>
-                    Council
-                  </Text>
-                  {!isPremium && mode !== 'complex' ? (
-                    <View style={[styles.headerModeCostPill, { backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.08)' }]}>
-                      <Text style={[styles.headerModeCost, { color: chrom.textMuted }]}>{councilSessionCost}</Text>
-                    </View>
-                  ) : null}
-                </View>
-              </Pressable>
-            </View>
-          ) : null}
-          {activeExperts.length > 0 ? (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel={`View ${activeExperts.length} active experts`}
-              onPress={() => setExpertsOpen(true)}
-              style={[styles.headerExperts, isCouncil && styles.headerExpertsCouncil]}>
-              {activeExperts.slice(0, 3).map((expert, idx) => (
-                <View
-                  key={expert.id}
-                  style={[
-                    isCouncil && idx > 0 ? styles.headerExpertOverlap : null,
-                    isCouncil && {
-                      borderWidth: 2,
-                      borderColor: isDark ? '#1e1040' : '#f5f3ff',
-                      borderRadius: 99,
-                    },
-                  ]}>
-                  <ExpertGlyph expert={expert} fallbackColor={isCouncil ? COUNCIL_VIOLET : chrom.mint} size={22} />
-                </View>
-              ))}
-              {activeExperts.length > 3 ? (
-                <View style={[styles.expertOverflow, { borderColor: isCouncil ? `${COUNCIL_VIOLET}55` : colors.composerBorder, backgroundColor: isCouncil ? `${COUNCIL_VIOLET}18` : colors.composerBg }]}>
-                  <Text style={[styles.expertOverflowText, { color: isCouncil ? COUNCIL_VIOLET : colors.muted }]}>+{activeExperts.length - 3}</Text>
-                </View>
-              ) : null}
-            </Pressable>
-          ) : null}
-          {choicePrompt?.progress ? (
-            <View style={styles.headerProgressRow}>
-              <View style={[styles.headerProgressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
-                <View
-                  style={[
-                    styles.headerProgressFill,
-                    {
-                      width: `${progressPercent}%`,
-                      backgroundColor: isCouncil ? COUNCIL_VIOLET : chrom.mint,
-                    },
-                  ]}
-                />
-              </View>
-              {progressText ? (
-                <Text style={[styles.headerProgressLabel, { color: chrom.textMuted }]}>{progressText}</Text>
-              ) : null}
-            </View>
-          ) : null}
-        </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="New chat"
-          onPress={startFreshSession}
-          disabled={booting || sending}
-          style={[styles.headerIconBtn, (booting || sending) && { opacity: 0.35 }]}
-          hitSlop={{ top: 8, bottom: 8, left: 10, right: 4 }}>
-          <Ionicons name="create-outline" size={24} color={chrom.gearIcon} />
-        </Pressable>
+        ) : null}
       </View>
 
       {booting ? (
@@ -1503,16 +1527,7 @@ export default function DecideCategoryScreen() {
           contentContainerStyle={[styles.listContent, { flexGrow: 1, paddingBottom: spacing.sm }]}
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: true })}
-          ListHeaderComponent={
-            isCouncil && hasUserMessages ? (
-              <CouncilChamberStrip
-                expertCount={activeExperts.length}
-                isPremium={isPremium}
-                isDark={isDark}
-                premiumLabel={isPremium ? 'PREMIUM COUNCIL' : 'EXPERT COUNCIL'}
-              />
-            ) : null
-          }
+          ListHeaderComponent={null}
           ListFooterComponent={
             <>
               {sending ? (
@@ -1800,13 +1815,23 @@ export default function DecideCategoryScreen() {
         </View>
       )}
 
-      <Modal transparent animationType="slide" visible={sessionsOpen} onRequestClose={() => setSessionsOpen(false)}>
-        <View style={[styles.sheetBackdrop]}>
-          <Pressable style={styles.sheetBackdropTouch} accessibilityLabel="Dismiss" onPress={() => setSessionsOpen(false)} />
-          <View
+      <Modal transparent animationType="none" visible={sessionsOpen} onRequestClose={() => setSessionsOpen(false)}>
+        <View style={styles.sheetBackdrop}>
+          <Animated.View
+            pointerEvents={sessionsOpen ? 'auto' : 'none'}
+            style={[styles.sheetBackdropDim, { opacity: sessionsSheetMotion.backdropOpacity }]}>
+            <Pressable style={styles.sheetBackdropPress} accessibilityLabel="Dismiss" onPress={() => setSessionsOpen(false)} />
+          </Animated.View>
+          <Animated.View
             style={[
               styles.sheetCard,
-              { backgroundColor: colors.modalBg, paddingBottom: bottomPad + 12, borderTopColor: colors.composerBorder },
+              {
+                backgroundColor: colors.modalBg,
+                paddingBottom: bottomPad + 16 + SHEET_BOTTOM_BLEED,
+                marginBottom: -SHEET_BOTTOM_BLEED,
+                borderTopColor: colors.composerBorder,
+                transform: [{ translateY: sessionsSheetMotion.translateY }],
+              },
             ]}>
             <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
             <View style={styles.sheetHeadRow}>
@@ -1854,74 +1879,125 @@ export default function DecideCategoryScreen() {
                 )}
               />
             )}
-          </View>
+          </Animated.View>
         </View>
       </Modal>
 
-      <Modal transparent animationType="slide" visible={expertsOpen} onRequestClose={() => setExpertsOpen(false)}>
+      <Modal transparent animationType="none" visible={expertsOpen} onRequestClose={() => setExpertsOpen(false)}>
         <View style={styles.sheetBackdrop}>
-          <Pressable style={styles.sheetBackdropTouch} accessibilityLabel="Dismiss" onPress={() => setExpertsOpen(false)} />
-          <View
+          <Animated.View
+            pointerEvents={expertsOpen ? 'auto' : 'none'}
+            style={[styles.sheetBackdropDim, { opacity: expertsSheetMotion.backdropOpacity }]}>
+            <Pressable style={styles.sheetBackdropPress} accessibilityLabel="Dismiss" onPress={() => setExpertsOpen(false)} />
+          </Animated.View>
+          <Animated.View
             style={[
               styles.sheetCard,
-              { backgroundColor: colors.modalBg, paddingBottom: bottomPad + 12, borderTopColor: colors.composerBorder },
+              {
+                backgroundColor: colors.modalBg,
+                paddingBottom: bottomPad + 16 + SHEET_BOTTOM_BLEED,
+                marginBottom: -SHEET_BOTTOM_BLEED,
+                borderTopColor: colors.composerBorder,
+                transform: [{ translateY: expertsSheetMotion.translateY }],
+              },
             ]}>
+            <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
             {isCouncil ? (
-              <LinearGradient
-                colors={isDark ? ['#2e1065', '#4c1d95', '#1e1040'] : ['#ede9fe', '#ddd6fe', '#f5f3ff']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.councilSheetHero}>
-                <Ionicons name="people-circle" size={28} color={isDark ? '#f5f3ff' : COUNCIL_VIOLET} />
-                <Text style={[styles.councilSheetHeroTitle, { color: isDark ? '#f5f3ff' : '#312e81' }]}>
-                  Council chamber
-                </Text>
-                <Text style={[styles.councilSheetHeroSub, { color: isDark ? '#c4b5fd' : '#6d28d9' }]}>
-                  {activeExperts.length} specialist{activeExperts.length === 1 ? '' : 's'} on this decision
-                </Text>
-              </LinearGradient>
-            ) : (
-              <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
-            )}
-            <View style={styles.sheetHeadRow}>
-              <Text style={[styles.sheetTitle, { color: colors.primaryTxt }]}>
-                {isCouncil ? 'Your council' : 'Active expert'}
-              </Text>
-              <Pressable hitSlop={12} onPress={() => setExpertsOpen(false)} accessibilityRole="button">
-                <Text style={[styles.sheetClose, { color: colors.muted }]}>Done</Text>
-              </Pressable>
-            </View>
-            <Text style={[styles.sheetHint, { color: colors.muted }]}>
-              {isCouncil
-                ? 'Specialists consulted during this decision.'
-                : 'The specialist helping with your decision.'}
-            </Text>
-            <ScrollView contentContainerStyle={styles.sheetList} keyboardShouldPersistTaps="handled">
-              {activeExperts.map((expert) => (
-                <View
-                  key={expert.id}
-                  style={[
-                    styles.sheetRow,
-                    isCouncil && styles.councilExpertRow,
-                    { borderBottomColor: colors.composerBorder },
-                  ]}>
-                  <ExpertGlyph expert={expert} fallbackColor={COUNCIL_VIOLET} size={40} />
-                  <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={[styles.sheetRowTitle, { color: colors.primaryTxt }]}>{expert.title}</Text>
-                    {expert.subtitle ? (
-                      <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={2}>
-                        {expert.subtitle}
+              <>
+                <View style={[styles.councilSheetHeader, { borderBottomColor: colors.composerBorder }]}>
+                  <View style={styles.councilSheetHeaderMain}>
+                    <View style={[styles.councilSheetIconWrap, { backgroundColor: `${COUNCIL_VIOLET}18` }]}>
+                      <Ionicons name="people-circle" size={24} color={COUNCIL_VIOLET} />
+                    </View>
+                    <View style={{ flex: 1, minWidth: 0 }}>
+                      <Text style={[styles.councilSheetTitle, { color: colors.primaryTxt }]}>Council chamber</Text>
+                      <Text style={[styles.councilSheetSub, { color: colors.muted }]}>
+                        {activeExperts.length} specialist{activeExperts.length === 1 ? '' : 's'} consulted on this decision
                       </Text>
-                    ) : expert.skillName ? (
-                      <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={1}>
-                        {expert.skillName}
-                      </Text>
-                    ) : null}
+                    </View>
                   </View>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Close council roster"
+                    hitSlop={10}
+                    onPress={() => setExpertsOpen(false)}
+                    style={[
+                      styles.councilSheetClose,
+                      {
+                        borderColor: colors.composerBorder,
+                        backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)',
+                      },
+                    ]}>
+                    <Ionicons name="close" size={18} color={colors.muted} />
+                  </Pressable>
                 </View>
-              ))}
-            </ScrollView>
-          </View>
+                <ScrollView
+                  contentContainerStyle={styles.councilExpertList}
+                  keyboardShouldPersistTaps="handled"
+                  showsVerticalScrollIndicator={false}>
+                  {activeExperts.map((expert) => (
+                    <View
+                      key={expert.id}
+                      style={[
+                        styles.councilExpertCard,
+                        {
+                          borderColor: `${expert.color ?? COUNCIL_VIOLET}33`,
+                          backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : palette.white,
+                        },
+                      ]}>
+                      <View style={[styles.councilExpertAccent, { backgroundColor: expert.color ?? COUNCIL_VIOLET }]} />
+                      <ExpertGlyph expert={expert} fallbackColor={COUNCIL_VIOLET} size={42} />
+                      <View style={styles.councilExpertBody}>
+                        <Text style={[styles.councilExpertTitle, { color: colors.primaryTxt }]}>{expert.title}</Text>
+                        {expert.subtitle ? (
+                          <Text style={[styles.councilExpertSub, { color: colors.muted }]} numberOfLines={3}>
+                            {expert.subtitle}
+                          </Text>
+                        ) : expert.skillName ? (
+                          <Text style={[styles.councilExpertSub, { color: colors.muted }]} numberOfLines={2}>
+                            {expert.skillName}
+                          </Text>
+                        ) : null}
+                      </View>
+                    </View>
+                  ))}
+                </ScrollView>
+              </>
+            ) : (
+              <>
+                <View style={styles.sheetHeadRow}>
+                  <Text style={[styles.sheetTitle, { color: colors.primaryTxt }]}>Active expert</Text>
+                  <Pressable hitSlop={12} onPress={() => setExpertsOpen(false)} accessibilityRole="button">
+                    <Text style={[styles.sheetClose, { color: colors.muted }]}>Done</Text>
+                  </Pressable>
+                </View>
+                <Text style={[styles.sheetHint, { color: colors.muted }]}>
+                  The specialist helping with your decision.
+                </Text>
+                <ScrollView contentContainerStyle={styles.sheetList} keyboardShouldPersistTaps="handled">
+                  {activeExperts.map((expert) => (
+                    <View
+                      key={expert.id}
+                      style={[styles.sheetRow, { borderBottomColor: colors.composerBorder }]}>
+                      <ExpertGlyph expert={expert} fallbackColor={chrom.mint} size={40} />
+                      <View style={{ flex: 1, minWidth: 0 }}>
+                        <Text style={[styles.sheetRowTitle, { color: colors.primaryTxt }]}>{expert.title}</Text>
+                        {expert.subtitle ? (
+                          <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={2}>
+                            {expert.subtitle}
+                          </Text>
+                        ) : expert.skillName ? (
+                          <Text style={[styles.sheetRowTs, { color: colors.muted }]} numberOfLines={1}>
+                            {expert.skillName}
+                          </Text>
+                        ) : null}
+                      </View>
+                    </View>
+                  ))}
+                </ScrollView>
+              </>
+            )}
+          </Animated.View>
         </View>
       </Modal>
 
@@ -2029,33 +2105,76 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
+    flexDirection: 'column',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    gap: 0,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  headerTopRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     paddingBottom: 10,
-    minHeight: 48,
-    borderBottomWidth: StyleSheet.hairlineWidth,
     gap: 6,
-    overflow: 'hidden',
-    position: 'relative',
+    minHeight: 48,
   },
   headerIconBtn: {
     width: 44,
     height: 44,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 1,
   },
   headerTitleBlock: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 0,
+    gap: 6,
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    gap: 6,
+    maxWidth: '100%',
+  },
+  headerStatusPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    maxWidth: '100%',
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  headerStatusAvatars: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerStatusAvatarRing: {
+    borderRadius: 99,
+  },
+  headerStatusAvatarOverlap: {
+    marginLeft: -6,
+  },
+  headerStatusText: {
+    flexShrink: 1,
+    fontSize: 12,
+    fontWeight: '600',
+    lineHeight: 16,
+  },
+  headerProgressEdge: {
+    height: 3,
+    width: '100%',
+    overflow: 'hidden',
+  },
+  headerProgressEdgeFill: {
+    height: '100%',
+    borderRadius: 999,
   },
   councilTitleBadge: {
     width: 22,
@@ -2870,6 +2989,15 @@ const styles = StyleSheet.create({
   sheetBackdrop: {
     flex: 1,
     justifyContent: 'flex-end',
+    backgroundColor: 'transparent',
+    overflow: 'visible',
+  },
+  sheetBackdropDim: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.48)',
+  },
+  sheetBackdropPress: {
+    flex: 1,
   },
   sheetBackdropTouch: {
     ...StyleSheet.absoluteFillObject,
@@ -2891,24 +3019,87 @@ const styles = StyleSheet.create({
     marginBottom: 14,
     marginTop: 4,
   },
-  councilSheetHero: {
+  councilSheetHeader: {
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 18,
-    paddingBottom: 16,
-    paddingHorizontal: 20,
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingHorizontal: screenContentGutter,
+    paddingBottom: 14,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  councilSheetHeaderMain: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    minWidth: 0,
+  },
+  councilSheetIconWrap: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  councilSheetTitle: {
+    fontSize: 17,
+    fontWeight: '800',
+    letterSpacing: -0.3,
+    lineHeight: 21,
+  },
+  councilSheetSub: {
+    marginTop: 2,
+    fontSize: 13,
+    lineHeight: 17,
+    fontWeight: '500',
+  },
+  councilSheetClose: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  councilExpertList: {
+    paddingHorizontal: screenContentGutter,
+    paddingTop: 14,
+    paddingBottom: spacing.sm,
+    gap: 10,
+  },
+  councilExpertCard: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingRight: 14,
+    paddingVertical: 14,
+    overflow: 'hidden',
+  },
+  councilExpertAccent: {
+    width: 4,
+    alignSelf: 'stretch',
+    borderTopLeftRadius: 16,
+    borderBottomLeftRadius: 16,
+  },
+  councilExpertBody: {
+    flex: 1,
+    minWidth: 0,
     gap: 4,
   },
-  councilSheetHeroTitle: {
-    fontSize: 18,
-    fontWeight: '900',
-    letterSpacing: -0.4,
+  councilExpertTitle: {
+    fontSize: 15,
+    fontWeight: '800',
+    lineHeight: 20,
   },
-  councilSheetHeroSub: {
+  councilExpertSub: {
     fontSize: 13,
-    fontWeight: '600',
-  },
-  councilExpertRow: {
-    backgroundColor: 'rgba(139,92,246,0.04)',
+    lineHeight: 18,
+    fontWeight: '500',
   },
   sheetHeadRow: {
     flexDirection: 'row',
