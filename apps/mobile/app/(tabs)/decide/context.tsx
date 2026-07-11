@@ -5,6 +5,7 @@ import * as React from 'react';
 import { Alert } from 'react-native';
 
 import { apiPostJson } from '@/lib/api';
+import { userFacingApiError } from '@/lib/userFacingErrors';
 import {
   ChatRequestSchema,
   ChatResponseSchema,
@@ -166,8 +167,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
         communityAiBecause: hydrate.communityAiBecause.trim() || hydrate.communityAiBecause,
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Something went sideways.';
-      setError(message);
+      setError(userFacingApiError(err, 'Could not generate your briefing. Please try again.'));
     } finally {
       setBusy(false);
     }

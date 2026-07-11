@@ -17,7 +17,6 @@ import {
   Text,
   TextInput,
   View,
-  useWindowDimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -34,7 +33,8 @@ import {
   themeSurface,
   typography,
 } from '@/constants/theme';
-import { apiGetJson, apiPostJson, GATEWAY_ORIGIN } from '@/lib/api';
+import { apiGetJson, apiPostJson } from '@/lib/api';
+import { HARMENCE_OFFLINE_BUBBLE, PAST_SESSIONS_HINT, userFacingApiError } from '@/lib/userFacingErrors';
 import type { DecisionCategory } from '@shouldi/contracts';
 import {
   DecideInterviewSessionDetailSchema,
@@ -172,7 +172,6 @@ export default function DecideCategoryScreen() {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
-  const { height: windowHeight } = useWindowDimensions();
   const isDark = scheme === 'dark';
   const chrom = React.useMemo(() => resolveAppChromatics(isDark, surface), [isDark, surface]);
 
@@ -393,14 +392,12 @@ export default function DecideCategoryScreen() {
         if (!cancelled) applyTurnPayload(payload);
       } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : 'Harmence unreachable');
+          setError(userFacingApiError(e, 'Harmence isn’t available right now. Please try again.'));
           setMessages([
             {
               id: 'assistant-offline',
               role: 'assistant',
-              text:
-                `Could not reach Harmence (${GATEWAY_ORIGIN}).\n\n` +
-                `Start gateway: npm run api`,
+              text: HARMENCE_OFFLINE_BUBBLE,
               at: Date.now(),
               supportingExpertIds: [],
             },
@@ -440,7 +437,7 @@ export default function DecideCategoryScreen() {
       setVerdictExpanded(false);
       queueMicrotask(() => listRef.current?.scrollToEnd({ animated: false }));
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not reopen session.');
+      setError(userFacingApiError(e, 'Could not reopen that chat. Please try again.'));
     } finally {
       setBooting(false);
     }
@@ -465,7 +462,7 @@ export default function DecideCategoryScreen() {
         const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
         applyTurnPayload(payload);
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Harmence unreachable');
+        setError(userFacingApiError(e, 'Harmence isn’t available right now. Please try again.'));
       } finally {
         setBooting(false);
       }
@@ -490,7 +487,7 @@ export default function DecideCategoryScreen() {
         setInput('');
         applyTurnPayload(payload);
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Send failed');
+        setError(userFacingApiError(e, 'Could not send your message. Please try again.'));
       } finally {
         setSending(false);
       }
@@ -499,6 +496,10 @@ export default function DecideCategoryScreen() {
   );
 
   const handleSend = async () => {
+    if (isTypingCustomChoice) {
+      await handleCustomChoiceSubmit();
+      return;
+    }
     await submitUserText(input);
   };
 
@@ -521,7 +522,7 @@ export default function DecideCategoryScreen() {
       );
       applyTurnPayload(payload);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Selection failed');
+      setError(userFacingApiError(e, 'Could not record your choice. Please try again.'));
     } finally {
       setSending(false);
     }
@@ -601,6 +602,110 @@ export default function DecideCategoryScreen() {
   );
 
   const bottomPad = Math.max(insets.bottom, 10);
+  const activeChoiceMessageIndex = React.useMemo(() => {
+    if (!choicePrompt || finalReady || isTypingCustomChoice) return -1;
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      if (messages[i]?.role === 'assistant') return i;
+    }
+    return -1;
+  }, [choicePrompt, finalReady, isTypingCustomChoice, messages]);
+  const showComposer = !finalReady && (!choicePrompt || isTypingCustomChoice);
+  const showAnswerPane = !finalReady && (canReview || !choicePrompt || isTypingCustomChoice);
+
+  const renderInlineChoiceOptions = () => {
+    if (!choicePrompt || finalReady || isTypingCustomChoice || sending) return null;
+
+    const optionBody = useRichOptions ? (
+      <View style={styles.clarifyChoicesColumn}>
+        {choicePrompt.options.map((option) => (
+          <Pressable
+            key={option.id}
+            accessibilityRole="button"
+            accessibilityLabel={`Select ${option.label}`}
+            disabled={sending}
+            onPress={() => {
+              void handleChoiceSelect(option);
+            }}
+            style={[
+              styles.choiceCard,
+              {
+                borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45`,
+                backgroundColor: colors.pageBg,
+              },
+            ]}>
+            <Text style={[styles.choiceCardLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
+            {option.description ? (
+              <Text style={[styles.choiceCardDesc, { color: colors.muted }]}>{option.description}</Text>
+            ) : null}
+          </Pressable>
+        ))}
+        {choicePrompt.allowCustomAnswer ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Type another answer"
+            disabled={sending}
+            onPress={() => setIsTypingCustomChoice(true)}
+            style={[
+              styles.choiceCard,
+              { borderColor: colors.composerBorder, backgroundColor: colors.pageBg },
+            ]}>
+            <Text style={[styles.choiceCardLabel, { color: colors.muted }]}>Other — type my own answer</Text>
+          </Pressable>
+        ) : null}
+      </View>
+    ) : (
+      <View style={styles.clarifyChoices}>
+        {choicePrompt.options.map((option) => (
+          <Pressable
+            key={option.id}
+            accessibilityRole="button"
+            accessibilityLabel={`Select ${option.label}`}
+            disabled={sending}
+            onPress={() => {
+              void handleChoiceSelect(option);
+            }}
+            style={[
+              styles.clarifyChip,
+              {
+                borderColor: isDark ? `${chrom.mint}55` : `${chrom.sky}55`,
+                backgroundColor: isDark ? `${chrom.mint}16` : `${chrom.sky}14`,
+              },
+            ]}>
+            <Text style={[styles.clarifyChipText, { color: isDark ? chrom.mint : chrom.sky }]}>{option.label}</Text>
+          </Pressable>
+        ))}
+        {choicePrompt.allowCustomAnswer ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Type another answer"
+            disabled={sending}
+            onPress={() => setIsTypingCustomChoice(true)}
+            style={[styles.clarifyChip, { borderColor: colors.composerBorder, backgroundColor: colors.pageBg }]}>
+            <Text style={[styles.clarifyChipText, { color: colors.muted }]}>Other…</Text>
+          </Pressable>
+        ) : null}
+      </View>
+    );
+
+    return (
+      <Animated.View
+        style={[
+          styles.inlineChoiceBlock,
+          { opacity: choiceCardAnim, transform: [{ translateY: choiceCardTranslate }] },
+        ]}>
+        {choicePrompt.whyItMatters ? (
+          <View style={[styles.whyCard, { backgroundColor: colors.pageBg, borderColor: colors.composerBorder }]}>
+            <Text style={[styles.whyLabel, { color: chrom.mint }]}>Why this matters</Text>
+            <Text style={[styles.whyText, { color: colors.muted }]}>{choicePrompt.whyItMatters}</Text>
+          </View>
+        ) : null}
+        {choicePrompt.helperText ? (
+          <Text style={[styles.clarifyHelper, { color: colors.muted }]}>{choicePrompt.helperText}</Text>
+        ) : null}
+        {optionBody}
+      </Animated.View>
+    );
+  };
 
   return (
     <KeyboardAvoidingView
@@ -798,18 +903,59 @@ export default function DecideCategoryScreen() {
           </ScrollView>
         </View>
       ) : (
+        <View style={styles.interactionShell}>
         <FlatList
           ref={listRef}
           data={messages}
           keyExtractor={bubbleKey}
           style={styles.list}
-          contentContainerStyle={[styles.listContent, { flexGrow: 1 }]}
+          contentContainerStyle={[styles.listContent, { flexGrow: 1, paddingBottom: spacing.sm }]}
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: true })}
           ListFooterComponent={
-            sending ? (
-              <ThinkingRow accent={chrom.mint} muted={colors.muted} />
-            ) : showStarterPrompts ? (
+            <>
+              {sending ? <ThinkingRow accent={chrom.mint} muted={colors.muted} /> : null}
+              {newlyActivatedExperts.length > 0 ? (
+                <View
+                  style={[
+                    styles.newExpertBanner,
+                    styles.msgPadH,
+                    { borderColor: colors.composerBorder, backgroundColor: colors.composerBg },
+                  ]}>
+                  <View style={styles.newExpertIcons}>
+                    {newlyActivatedExperts.map((expert) => (
+                      <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={24} />
+                    ))}
+                  </View>
+                  <Text style={[styles.newExpertText, { color: colors.primaryTxt }]}>
+                    {newlyActivatedExperts.map((expert) => expert.title).join(', ')} joined the council.
+                  </Text>
+                </View>
+              ) : null}
+              {choicePrompt && !finalReady && !isTypingCustomChoice && activeChoiceMessageIndex === -1 ? (
+                <View style={[styles.rowAssistant, styles.msgPadH]}>
+                  <View style={styles.assistantLeading}>
+                    <ExpertGlyph expert={primaryExpert} fallbackColor={chrom.mint} />
+                  </View>
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <View
+                      style={[
+                        styles.assistantBubble,
+                        styles.assistantBubbleActive,
+                        {
+                          backgroundColor: colors.assistantBubbleBg,
+                          borderColor: chrom.mint,
+                        },
+                      ]}>
+                      <Text style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
+                        {choicePrompt.question}
+                      </Text>
+                    </View>
+                    {renderInlineChoiceOptions()}
+                  </View>
+                </View>
+              ) : null}
+              {showStarterPrompts ? (
               <View style={[styles.starterWrap, styles.msgPadH]}>
                 <View style={[styles.modeSelectorRow, modeLocked && { opacity: 0.38 }]}>
                   <Pressable
@@ -860,9 +1006,10 @@ export default function DecideCategoryScreen() {
                   ))}
                 </View>
               </View>
-            ) : null
+              ) : null}
+            </>
           }
-          renderItem={({ item }) =>
+          renderItem={({ item, index }) =>
             item.role === 'assistant' ? (
               <View style={[styles.rowAssistant, styles.msgPadH]}>
                 <View style={styles.assistantLeading}>
@@ -875,22 +1022,27 @@ export default function DecideCategoryScreen() {
                     </View>
                   ) : null}
                 </View>
-                <View
-                  style={[
-                    styles.assistantBubble,
-                    {
-                      backgroundColor: colors.assistantBubbleBg,
-                      borderColor: colors.assistantBubbleBorder,
-                    },
-                  ]}>
-                  {expertForBubble(item) ? (
-                    <Text style={[styles.bubbleExpertTitle, { color: expertForBubble(item)?.color ?? chrom.mint }]}>
-                      {expertForBubble(item)?.title}
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <View
+                    style={[
+                      styles.assistantBubble,
+                      index === activeChoiceMessageIndex && styles.assistantBubbleActive,
+                      {
+                        backgroundColor: colors.assistantBubbleBg,
+                        borderColor:
+                          index === activeChoiceMessageIndex ? chrom.mint : colors.assistantBubbleBorder,
+                      },
+                    ]}>
+                    {expertForBubble(item) ? (
+                      <Text style={[styles.bubbleExpertTitle, { color: expertForBubble(item)?.color ?? chrom.mint }]}>
+                        {expertForBubble(item)?.title}
+                      </Text>
+                    ) : null}
+                    <Text selectable style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
+                      {formatBubbleText(item.text)}
                     </Text>
-                  ) : null}
-                  <Text selectable style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
-                    {formatBubbleText(item.text)}
-                  </Text>
+                  </View>
+                  {index === activeChoiceMessageIndex ? renderInlineChoiceOptions() : null}
                 </View>
               </View>
             ) : (
@@ -911,7 +1063,6 @@ export default function DecideCategoryScreen() {
             )
           }
         />
-      )}
 
       {error ? (
         <View
@@ -929,10 +1080,10 @@ export default function DecideCategoryScreen() {
         </View>
       ) : null}
 
-      {finalReady && finalDecision ? null : (
+      {!finalReady && showAnswerPane ? (
       <View
           style={[
-            styles.footer,
+            styles.answerPane,
             {
               paddingBottom: bottomPad,
               backgroundColor: colors.pageBg,
@@ -948,7 +1099,7 @@ export default function DecideCategoryScreen() {
             <Text style={[styles.continuePillText, { color: colors.primaryTxt }]}>Review & Explore card</Text>
             <Ionicons name="arrow-forward-circle-outline" size={18} color={chrom.mint} />
           </Pressable>
-        ) : (
+        ) : !choicePrompt ? (
           <View style={[styles.softHintWrap, styles.msgPadH]}>
             <View style={[styles.modeToggleRow, modeLocked && { opacity: 0.38 }]}>
               <Pressable
@@ -972,228 +1123,24 @@ export default function DecideCategoryScreen() {
               {softHint}
             </Text>
           </View>
-        )}
+        ) : null}
 
-        {newlyActivatedExperts.length > 0 ? (
-          <View
-            style={[
-              styles.newExpertBanner,
-              styles.msgPadH,
-              { borderColor: colors.composerBorder, backgroundColor: colors.composerBg },
-            ]}>
-            <View style={styles.newExpertIcons}>
-              {newlyActivatedExperts.map((expert) => (
-                <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={24} />
-              ))}
-            </View>
-            <Text style={[styles.newExpertText, { color: colors.primaryTxt }]}>
-              {newlyActivatedExperts.map((expert) => expert.title).join(', ')} joined the council.
-            </Text>
+        {isTypingCustomChoice ? (
+          <View style={[styles.customAnswerBar, styles.msgPadH]}>
+            <Text style={[styles.customAnswerLabel, { color: colors.muted }]}>Your answer</Text>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Cancel custom answer"
+              onPress={() => {
+                setIsTypingCustomChoice(false);
+                setCustomChoice('');
+              }}>
+              <Text style={[styles.customAnswerCancel, { color: chrom.mint }]}>Cancel</Text>
+            </Pressable>
           </View>
         ) : null}
 
-        {choicePrompt && !finalReady ? (
-          <Animated.View
-            style={[
-              styles.clarifyCard,
-              {
-                marginHorizontal: screenContentGutter,
-                backgroundColor: colors.composerBg,
-                borderColor: colors.composerBorder,
-                opacity: choiceCardAnim,
-                transform: [{ translateY: choiceCardTranslate }],
-                maxHeight: windowHeight * 0.58,
-              },
-            ]}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              contentContainerStyle={styles.clarifyCardInner}>
-            {sending ? (
-              <View style={styles.clarifySendingRow}>
-                <ActivityIndicator size="small" color={chrom.mint} />
-                <Text style={[styles.clarifySendingText, { color: colors.muted }]}>Updating your profile…</Text>
-              </View>
-            ) : null}
-            {choicePrompt.specialistLabel ? (
-              <View style={styles.specialistRow}>
-                <View style={[styles.specialistPill, { backgroundColor: isDark ? `${chrom.mint}1f` : `${chrom.sky}16`, borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45` }]}>
-                  {primaryExpert ? <ExpertGlyph expert={primaryExpert} fallbackColor={chrom.mint} size={18} /> : (
-                    <Ionicons name="briefcase-outline" size={14} color={isDark ? chrom.mint : chrom.sky} />
-                  )}
-                  <Text style={[styles.specialistPillText, { color: isDark ? chrom.mint : chrom.sky }]}>
-                    {primaryExpert?.title ?? choicePrompt.specialistLabel}
-                  </Text>
-                </View>
-                {progressText ? (
-                  <Text style={[styles.progressText, { color: colors.muted }]}>{progressText}</Text>
-                ) : null}
-              </View>
-            ) : (
-              <Text style={[styles.clarifyEyebrow, { color: chrom.mint }]}>Choose an option</Text>
-            )}
-            {choicePrompt.progress ? (
-              <View style={[styles.progressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
-                <View
-                  style={[styles.progressFill, { width: `${progressPercent}%`, backgroundColor: chrom.mint }]}
-                />
-              </View>
-            ) : null}
-            {choicePrompt.supportingExpertIds.length > 0 ? (
-              <View style={styles.supportingExpertsRow}>
-                <Text style={[styles.supportingExpertsLabel, { color: colors.muted }]}>Also watching</Text>
-                {choicePrompt.supportingExpertIds.slice(0, 3).map((id) => (
-                  <ExpertGlyph key={id} expert={expertMap.get(id)} fallbackColor={chrom.sky} size={22} />
-                ))}
-              </View>
-            ) : null}
-            <Text style={[styles.clarifyQuestion, { color: colors.primaryTxt }]}>{choicePrompt.question}</Text>
-            {choicePrompt.whyItMatters ? (
-              <View style={[styles.whyCard, { backgroundColor: colors.pageBg, borderColor: colors.composerBorder }]}>
-                <Text style={[styles.whyLabel, { color: chrom.mint }]}>Why this matters</Text>
-                <Text style={[styles.whyText, { color: colors.muted }]}>{choicePrompt.whyItMatters}</Text>
-              </View>
-            ) : null}
-            {choicePrompt.helperText ? (
-              <Text style={[styles.clarifyHelper, { color: colors.muted }]}>{choicePrompt.helperText}</Text>
-            ) : null}
-
-            {isTypingCustomChoice ? (
-              <View style={styles.customChoiceRow}>
-                <TextInput
-                  value={customChoice}
-                  onChangeText={setCustomChoice}
-                  autoFocus
-                  placeholder="Type your answer…"
-                  placeholderTextColor={colors.muted}
-                  editable={!sending}
-                  style={[
-                    styles.customChoiceInput,
-                    {
-                      color: colors.primaryTxt,
-                      borderColor: colors.composerBorder,
-                      backgroundColor: colors.pageBg,
-                    },
-                  ]}
-                  onSubmitEditing={() => {
-                    void handleCustomChoiceSubmit();
-                  }}
-                />
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Send custom answer"
-                  disabled={!customChoice.trim() || sending}
-                  onPress={() => {
-                    void handleCustomChoiceSubmit();
-                  }}
-                  style={[styles.customChoiceSend, { backgroundColor: chrom.mint }, (!customChoice.trim() || sending) && { opacity: 0.45 }]}>
-                  {sending ? (
-                    <ActivityIndicator color={chrom.ctaOnGradient} size="small" />
-                  ) : (
-                    <Text style={[styles.customChoiceSendText, { color: chrom.ctaOnGradient }]}>Send</Text>
-                  )}
-                </Pressable>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Cancel custom answer"
-                  onPress={() => {
-                    setIsTypingCustomChoice(false);
-                    setCustomChoice('');
-                  }}
-                  style={styles.customChoiceCancel}>
-                  <Text style={[styles.customChoiceCancelText, { color: colors.muted }]}>Cancel</Text>
-                </Pressable>
-              </View>
-            ) : useRichOptions ? (
-              <View style={styles.clarifyChoicesColumn}>
-                {choicePrompt.options.map((option) => (
-                  <Pressable
-                    key={option.id}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Select ${option.label}`}
-                    disabled={sending}
-                    onPress={() => {
-                      void handleChoiceSelect(option);
-                    }}
-                    style={[
-                      styles.choiceCard,
-                      {
-                        borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45`,
-                        backgroundColor: colors.pageBg,
-                        opacity: sending ? 0.55 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.choiceCardLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
-                    {option.description ? (
-                      <Text style={[styles.choiceCardDesc, { color: colors.muted }]}>{option.description}</Text>
-                    ) : null}
-                  </Pressable>
-                ))}
-                {choicePrompt.allowCustomAnswer ? (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Type another answer"
-                    disabled={sending}
-                    onPress={() => setIsTypingCustomChoice(true)}
-                    style={[
-                      styles.choiceCard,
-                      {
-                        borderColor: colors.composerBorder,
-                        backgroundColor: colors.pageBg,
-                        opacity: sending ? 0.55 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.choiceCardLabel, { color: colors.muted }]}>Other — type my own answer</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            ) : (
-              <View style={styles.clarifyChoices}>
-                {choicePrompt.options.map((option) => (
-                  <Pressable
-                    key={option.id}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Select ${option.label}`}
-                    disabled={sending}
-                    onPress={() => {
-                      void handleChoiceSelect(option);
-                    }}
-                    style={[
-                      styles.clarifyChip,
-                      {
-                        borderColor: isDark ? `${chrom.mint}55` : `${chrom.sky}55`,
-                        backgroundColor: isDark ? `${chrom.mint}16` : `${chrom.sky}14`,
-                        opacity: sending ? 0.5 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.clarifyChipText, { color: isDark ? chrom.mint : chrom.sky }]}>
-                      {option.label}
-                    </Text>
-                  </Pressable>
-                ))}
-                {choicePrompt.allowCustomAnswer ? (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Type another answer"
-                    disabled={sending}
-                    onPress={() => setIsTypingCustomChoice(true)}
-                    style={[
-                      styles.clarifyChip,
-                      {
-                        borderColor: colors.composerBorder,
-                        backgroundColor: colors.pageBg,
-                      },
-                    ]}>
-                    <Text style={[styles.clarifyChipText, { color: colors.muted }]}>Other…</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            )}
-            </ScrollView>
-          </Animated.View>
-        ) : null}
-
-        {!finalReady ? (
+        {showComposer ? (
           <View
             style={[
               styles.composerShell,
@@ -1204,11 +1151,11 @@ export default function DecideCategoryScreen() {
               },
             ]}>
             <TextInput
-              value={input}
-              onChangeText={setInput}
+              value={isTypingCustomChoice ? customChoice : input}
+              onChangeText={isTypingCustomChoice ? setCustomChoice : setInput}
               placeholder={
-                choicePrompt
-                  ? 'Or type a custom answer above…'
+                isTypingCustomChoice
+                  ? 'Type your answer…'
                   : booting
                     ? 'Connecting…'
                     : messages.length <= 1
@@ -1216,22 +1163,29 @@ export default function DecideCategoryScreen() {
                       : 'Add more context…'
               }
               placeholderTextColor={colors.muted}
-              editable={!choicePrompt && !booting && !sending && !!sessionId}
+              editable={!booting && !sending && !!sessionId}
+              autoFocus={isTypingCustomChoice}
               style={[styles.composerInput, { color: colors.primaryTxt }]}
               multiline
               maxFontSizeMultiplier={Platform.OS === 'ios' ? 1.35 : undefined}
             />
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Send message"
+              accessibilityLabel={isTypingCustomChoice ? 'Send custom answer' : 'Send message'}
               onPress={() => {
                 void handleSend();
               }}
-              disabled={!input.trim() || booting || !sessionId || sending}
+              disabled={
+                isTypingCustomChoice
+                  ? !customChoice.trim() || sending
+                  : !input.trim() || booting || !sessionId || sending
+              }
               style={[
                 styles.sendCircle,
                 { backgroundColor: colors.sendFab },
-                (!input.trim() || booting || !sessionId || sending) && styles.sendCircleDisabled,
+                (isTypingCustomChoice
+                  ? !customChoice.trim() || sending
+                  : !input.trim() || booting || !sessionId || sending) && styles.sendCircleDisabled,
               ]}>
               {sending ? (
                 <ActivityIndicator color={chrom.ctaOnGradient} size="small" />
@@ -1241,6 +1195,8 @@ export default function DecideCategoryScreen() {
             </Pressable>
           </View>
         ) : null}
+        </View>
+      ) : null}
         </View>
       )}
 
@@ -1259,9 +1215,7 @@ export default function DecideCategoryScreen() {
                 <Text style={[styles.sheetClose, { color: colors.muted }]}>Done</Text>
               </Pressable>
             </View>
-            <Text style={[styles.sheetHint, { color: colors.muted }]}>
-              Sessions live in gateway memory until you restart the API.
-            </Text>
+            <Text style={[styles.sheetHint, { color: colors.muted }]}>{PAST_SESSIONS_HINT}</Text>
             {listLoading ? (
               <ActivityIndicator color={chrom.mint} style={{ marginVertical: spacing.lg }} />
             ) : (
@@ -1569,6 +1523,17 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
+    minHeight: 0,
+  },
+  interactionShell: {
+    flex: 1,
+    minHeight: 0,
+  },
+  answerPane: {
+    paddingTop: 8,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: 8,
+    flexShrink: 0,
   },
   listContent: {
     paddingVertical: spacing.sm,
@@ -1613,6 +1578,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 13,
     borderWidth: StyleSheet.hairlineWidth,
+  },
+  assistantBubbleActive: {
+    borderWidth: 1.5,
+  },
+  inlineChoiceBlock: {
+    marginTop: 10,
+    gap: 8,
+  },
+  customAnswerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: -4,
+  },
+  customAnswerLabel: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+    textTransform: 'uppercase',
+  },
+  customAnswerCancel: {
+    fontSize: 14,
+    fontWeight: '600',
   },
   rowUser: {
     alignItems: 'flex-end',

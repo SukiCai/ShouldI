@@ -19,12 +19,10 @@ import { useDecideWizard } from './context';
 const continuitySuggestions = ['See similar outcomes', 'Sharper follow-up', 'Compare A vs B'];
 
 const statusHeadline: Record<'stub' | 'embedded' | 'ready' | 'error', string> = {
-  stub:
-    'Hermes is not on disk yet—run submodule init so hermes-agent-private/ sits at this repo root.',
-  embedded:
-    'Full Hermes repo is embedded in this monorepo; the gateway streams a guarded preview until inference runs.',
-  ready: 'Hermes inference is connected through the gateway.',
-  error: 'We could not complete this briefing request.',
+  stub: 'Full AI briefing isn’t available yet — you’re seeing a preview.',
+  embedded: 'Harmence is preparing your briefing. This may take a moment.',
+  ready: 'Your personalized briefing is ready.',
+  error: 'We couldn’t complete this briefing. Please try again.',
 };
 
 export default function DecideResultScreen() {
