@@ -1,5 +1,6 @@
-# Slim Hermes gateway image for ShouldI compose (build from repo root).
-# Full upstream image: hermes-agent-private/Dockerfile (nousresearch/hermes-agent).
+# syntax=docker/dockerfile:1.4
+# Slim Hermes gateway image for ShouldI compose.
+# Build context: ./hermes-agent-private (see compose.yaml).
 FROM python:3.12-slim-bookworm
 
 RUN apt-get update \
@@ -9,12 +10,26 @@ RUN apt-get update \
 
 WORKDIR /opt/hermes
 
-COPY hermes-agent-private/ .
+# Install metadata first so dependency layers cache when only app code changes.
+COPY pyproject.toml README.md ./
 
-RUN pip install --no-cache-dir --upgrade pip \
-  && pip install --no-cache-dir -e .
+COPY *.py ./
+COPY agent agent/
+COPY tools tools/
+COPY hermes_cli hermes_cli/
+COPY gateway gateway/
+COPY cron cron/
+COPY plugins plugins/
+COPY providers providers/
+COPY skills skills/
+COPY tui_gateway tui_gateway/
+COPY docker docker/
 
-COPY docker/hermes/entrypoint.sh /shouldi-entrypoint.sh
+RUN --mount=type=cache,target=/root/.cache/pip \
+  pip install --upgrade pip \
+  && pip install -e .
+
+COPY --from=entrypoint entrypoint.sh /shouldi-entrypoint.sh
 RUN chmod +x /shouldi-entrypoint.sh \
   && mkdir -p /opt/data \
   && chown -R hermes:hermes /opt/data

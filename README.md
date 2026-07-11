@@ -48,6 +48,8 @@ cp .env.example .env
 docker compose up --build
 ```
 
+Rebuild tips: use `docker compose up -d` (no `--build`) for everyday restarts; run `docker compose build <service>` to rebuild only what changed. Avoid `docker system prune -a` unless you need disk — it wipes the layer cache.
+
 | Service | URL | Override |
 |---------|-----|----------|
 | **Hermes** (agent HTTP) | http://localhost:8642 | `SHOULDI_HERMES_HOST_PORT` |
@@ -64,7 +66,7 @@ If you already ran `hermes setup` on the host, bind-mount that data dir via `SHO
 
 For native Expo Go / simulators on the host, use `npm run mobile` and point `EXPO_PUBLIC_API_URL` at the published API port.
 
-If **8787** or **8080** is already in use locally:
+If **8787** or **18080** is already in use locally:
 
 ```bash
 SHOULDI_API_HOST_PORT=8877 SHOULDI_WEB_HOST_PORT=18080 docker compose up --build
