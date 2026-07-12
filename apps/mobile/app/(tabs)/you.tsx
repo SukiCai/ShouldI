@@ -403,7 +403,8 @@ export default function YouScreen() {
     { value: DEMO_STATS.likesReceived, label: 'likes received' },
   ] as const;
 
-  const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost } = useViewerEntitlements();
+  const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost, grantDevPoints, resetPointsBalance } =
+    useViewerEntitlements();
   const pointsFromOthers = DEMO_STATS.pointsFromOthers;
 
   const handleUpgradePremium = React.useCallback(() => {
@@ -435,12 +436,17 @@ export default function YouScreen() {
     if (Platform.OS !== 'web') {
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
     }
+    if (__DEV__) {
+      grantDevPoints();
+      Alert.alert('Dev wallet', `Added 1,000 test points. Balance is now enough for more Council runs.`);
+      return;
+    }
     Alert.alert(
       'Add points',
       'Boosts when your threads get validated, friend invites, and partner promos will show up here. This preview build does not alter your balance.',
       [{ text: 'OK', style: 'default' }],
     );
-  }, []);
+  }, [grantDevPoints]);
   const emptyCopy =
     activeTab === 'yours'
       ? 'Nothing dropped yet — start a decision from the Decide tab.'
@@ -662,9 +668,21 @@ export default function YouScreen() {
         </View>
       </View>
       {__DEV__ ? (
-        <Link href="/modal">
-          <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>diagnostics</Text>
-        </Link>
+        <View style={styles.devWalletRow}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Reset dev points balance"
+            onPress={() => {
+              resetPointsBalance();
+              Alert.alert('Dev wallet', 'Points reset to 2,450.');
+            }}>
+            <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>reset pts</Text>
+          </Pressable>
+          <Text style={{ color: chrom.textMuted, opacity: 0.5 }}>·</Text>
+          <Link href="/modal">
+            <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>diagnostics</Text>
+          </Link>
+        </View>
       ) : null}
     </>
   );
@@ -1168,5 +1186,12 @@ const styles = StyleSheet.create({
     marginBottom: 72,
     textDecorationLine: 'underline',
     textTransform: 'lowercase',
+  },
+  devWalletRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    marginBottom: 72,
   },
 });

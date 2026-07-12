@@ -11,7 +11,8 @@ const PREMIUM_STORAGE_KEY = 'shouldi:viewer-premium-active:v1';
 export type CouncilUnlockMethod = 'premium' | 'points';
 
 export function useViewerEntitlements() {
-  const { balance, hydrated: pointsHydrated, awardPoints, spendPoints } = useViewerPointsBalance();
+  const { balance, hydrated: pointsHydrated, awardPoints, spendPoints, grantDevPoints, resetPointsBalance } =
+    useViewerPointsBalance();
   const [isPremium, setIsPremium] = React.useState(false);
   const [premiumHydrated, setPremiumHydrated] = React.useState(false);
 
@@ -75,5 +76,7 @@ export function useViewerEntitlements() {
     resolveCouncilUnlock,
     activatePremium,
     awardPoints,
+    grantDevPoints,
+    resetPointsBalance,
   };
 }

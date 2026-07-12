@@ -115,23 +115,62 @@ function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simpl
 const META_ASSISTANT_RE =
   /wants to check the highest-leverage unknown|before the council recommends/i;
 
+function resolveQuestionHeadline(question: string, title?: string): string {
+  const trimmed = question.trim();
+  if (trimmed && !META_ASSISTANT_RE.test(trimmed)) return trimmed;
+  if (title?.trim()) {
+    return `What best describes the ${title.trim().toLowerCase()}?`;
+  }
+  return 'Which of these fits your situation?';
+}
+
 function normalizeAssistantText(
   text: string,
-  speaker: HarmenceExpert,
+  _speaker: HarmenceExpert,
   choicePrompt?: DecideInterviewChoicePrompt,
 ): string {
   const trimmed = text.trim();
-  if (!META_ASSISTANT_RE.test(trimmed)) return trimmed;
   if (choicePrompt) {
-    const question = choicePrompt.question.trim();
-    if (question && !META_ASSISTANT_RE.test(question)) {
-      return `${speaker.title}: ${question}`;
-    }
-    if (choicePrompt.title.trim()) {
-      return `${speaker.title}: What best describes the ${choicePrompt.title.toLowerCase()}?`;
-    }
+    return resolveQuestionHeadline(choicePrompt.question, choicePrompt.title);
   }
-  return `${speaker.title} has a follow-up for you.`;
+  if (!META_ASSISTANT_RE.test(trimmed)) {
+    return trimmed;
+  }
+  return 'Which of these fits your situation?';
+}
+
+function sanitizeBubblesForClient(session: Session): DecideInterviewBubble[] {
+  const clarifyAnswers = session.answers.filter((a) => a.promptId !== 'initial_question');
+  let clarifyIdx = 0;
+
+  return session.bubbles.map((rawBubble, index) => {
+    if (rawBubble.role !== 'assistant' || index === 0) return rawBubble;
+
+    const storedQuestion = rawBubble.question?.trim();
+    if (storedQuestion) {
+      const headline = resolveQuestionHeadline(storedQuestion, rawBubble.expertTitle);
+      return { ...rawBubble, text: headline, question: storedQuestion };
+    }
+
+    let text = rawBubble.text.trim();
+    const expertTitle = rawBubble.expertTitle;
+    if (expertTitle && text.startsWith(`${expertTitle}:`)) {
+      text = text.slice(expertTitle.length + 1).trim();
+    }
+
+    if (text && !META_ASSISTANT_RE.test(text)) {
+      return { ...rawBubble, text };
+    }
+
+    const recovered = clarifyAnswers[clarifyIdx]?.question?.trim();
+    clarifyIdx += 1;
+    if (recovered) {
+      const headline = resolveQuestionHeadline(recovered, rawBubble.expertTitle);
+      return { ...rawBubble, text: headline, question: recovered };
+    }
+
+    return { ...rawBubble, text: 'Which of these fits your situation?' };
+  });
 }
 
 function buildUserReflection(psychProfile?: PsychProfile): DecideInterviewReflection | undefined {
@@ -616,7 +655,12 @@ function contextualizeCoopStep(step: ChoicePromptTemplate, ctx: OfferContext): D
 function bubble(
   role: DecideInterviewBubble['role'],
   text: string,
-  meta: Partial<Pick<DecideInterviewBubble, 'expertId' | 'expertTitle' | 'expertIcon' | 'expertColor' | 'supportingExpertIds'>> = {},
+  meta: Partial<
+    Pick<
+      DecideInterviewBubble,
+      'expertId' | 'expertTitle' | 'expertIcon' | 'expertColor' | 'supportingExpertIds' | 'question'
+    >
+  > = {},
 ): DecideInterviewBubble {
   return DecideInterviewBubbleSchema.parse({
     id: `${role}-${randomUUID()}`,
@@ -2129,7 +2173,7 @@ export async function summarizeSessionDetail(id: string): Promise<{
   return {
     id: session.id,
     updatedAt: session.updatedAt,
-    bubbles: [...session.bubbles],
+    bubbles: sanitizeBubblesForClient(session),
     phase,
     isComplete: session.isComplete,
     hermesIntegrated,
@@ -2339,8 +2383,12 @@ export async function handleInterviewTurn(
         : hermesIntegrated
           ? await askHermesForNextChoice(session, nextDefaultPrompt)
           : { assistantText: `Got it. Next, let's sharpen the frame.`, choicePrompt: nextDefaultPrompt };
-      assistantText = next.assistantText;
       choicePrompt = next.choicePrompt;
+      assistantText = normalizeAssistantText(
+        next.assistantText,
+        expertById(choicePrompt.speakerExpertId ?? '') ?? expertById('general-decision')!,
+        choicePrompt,
+      );
       phase = choicePrompt.id;
       session.lastPrompt = choicePrompt;
       const activePlaybook = playbookForSession(session);
@@ -2370,7 +2418,12 @@ export async function handleInterviewTurn(
     }
   }
 
-  session.bubbles.push(bubble('assistant', assistantText, assistantMeta));
+  session.bubbles.push(
+    bubble('assistant', assistantText, {
+      ...assistantMeta,
+      ...(choicePrompt ? { question: choicePrompt.question } : {}),
+    }),
+  );
 
   if (process.env.DEBUG && process.env.NODE_ENV !== 'production') {
     console.debug('[harmence-turn] choicePromptId:', choicePrompt?.id);
@@ -2379,9 +2432,11 @@ export async function handleInterviewTurn(
     console.debug('[harmence-turn] ambiguity:', session.smartTalkState.ambiguity.toFixed(3), '| scores:', JSON.stringify(session.smartTalkState.scores));
   }
 
+  const clientBubbles = sanitizeBubblesForClient(session);
+
   return DecideInterviewTurnResponseSchema.parse({
     sessionId: session.id,
-    bubbles: session.bubbles.slice(-2),
+    bubbles: clientBubbles.slice(-2),
     phase,
     isComplete: !choicePrompt,
     hermesIntegrated,

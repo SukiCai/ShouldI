@@ -9,6 +9,8 @@ const STORAGE_KEY = 'shouldi:viewer-total-points-balance:v1';
 const LEGACY_EXPLORE_STORAGE_KEY = 'shouldi:explore-viewer-points-balance:v1';
 
 export const DEFAULT_VIEWER_TOTAL_POINTS_BALANCE = 2450;
+/** Dev-only top-up size — enough for ~8 council sessions at 120 pts each. */
+export const DEV_POINTS_GRANT = 1000;
 
 function parseNonNegativeInt(raw: string | null): number | null {
   if (raw == null || raw === '') return null;
@@ -76,5 +78,16 @@ export function useViewerPointsBalance() {
     return success;
   }, []);
 
-  return { balance, hydrated, awardPoints, spendPoints };
+  const grantDevPoints = React.useCallback((amount: number = DEV_POINTS_GRANT) => {
+    if (!__DEV__) return;
+    awardPoints(amount);
+  }, [awardPoints]);
+
+  const resetPointsBalance = React.useCallback(() => {
+    if (!__DEV__) return;
+    setBalanceState(DEFAULT_VIEWER_TOTAL_POINTS_BALANCE);
+    void AsyncStorage.setItem(STORAGE_KEY, String(DEFAULT_VIEWER_TOTAL_POINTS_BALANCE)).catch(() => undefined);
+  }, []);
+
+  return { balance, hydrated, awardPoints, spendPoints, grantDevPoints, resetPointsBalance };
 }

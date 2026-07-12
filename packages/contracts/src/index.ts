@@ -107,6 +107,8 @@ export const DecideInterviewBubbleSchema = z.object({
   role: DecideInterviewRoleSchema,
   text: z.string(),
   at: z.number().int(),
+  /** User-facing question shown in the thread (distinct from transition/meta assistantText). */
+  question: z.string().optional(),
   expertId: z.string().optional(),
   expertTitle: z.string().optional(),
   expertIcon: z.string().optional(),

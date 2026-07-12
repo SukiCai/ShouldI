@@ -3,7 +3,6 @@ import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import * as React from 'react';
 import {
-  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -15,6 +14,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import PrimaryButton from '@/components/ui/PrimaryButton';
+import JumpUpSheet from '@/components/ui/JumpUpSheet';
 import {
   InlineDistributionTrack,
   PollQuestionAccentBar,
@@ -524,13 +524,17 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
         )}
       </ReelCardSurface>
 
-      <Modal
+      <JumpUpSheet
         visible={threadModalRoot != null}
-        animationType="slide"
-        presentationStyle="pageSheet"
-        onRequestClose={() => setThreadModalRoot(null)}>
+        onClose={() => setThreadModalRoot(null)}
+        backgroundColor="rgba(253,251,247,0.98)"
+        borderTopColor={profileNeutralStroke(0.12)}
+        bottomInset={insets.bottom}
+        maxHeight="94%"
+        grabColor={profileNeutralStroke(0.22)}
+        dismissAccessibilityLabel="Close thread">
         {threadModalRoot ? (
-          <View style={[styles.threadModalRoot, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+          <>
             <View style={styles.threadModalHeader}>
               <Pressable
                 accessibilityRole="button"
@@ -567,9 +571,9 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 replyEnabled={!!effectivePick}
               />
             </ScrollView>
-          </View>
+          </>
         ) : null}
-      </Modal>
+      </JumpUpSheet>
     </View>
   );
 }
@@ -1535,10 +1539,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: profileTypography.emphasis,
     minWidth: 0,
-  },
-  threadModalRoot: {
-    flex: 1,
-    backgroundColor: 'rgba(253,251,247,0.98)',
   },
   threadModalHeader: {
     flexDirection: 'row',
