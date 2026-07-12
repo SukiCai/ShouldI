@@ -844,7 +844,7 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingVertical: 16,
     paddingHorizontal: 18,
-    borderRadius: 26,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: `${palette.neonPink}28`,
     borderLeftWidth: 4,

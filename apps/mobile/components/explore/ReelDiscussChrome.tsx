@@ -25,6 +25,7 @@ import {
   profileLight,
   profileNeutralStroke,
   profileTypography,
+  radius,
   typography,
 } from '@/constants/theme';
 
@@ -529,7 +530,7 @@ export function InlineDistributionTrack({
 export const reelDiscussStyles = StyleSheet.create({
   reelCardOuter: {
     flexDirection: 'column',
-    borderRadius: 36,
+    borderRadius: radius.hero,
     borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
     borderColor: 'rgba(199,174,255,0.35)',
     /** Milky frost — reads cleanly on chaotic Explore mesh without feeling cold */

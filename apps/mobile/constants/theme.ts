@@ -1,3 +1,5 @@
+import { Platform, type ViewStyle } from 'react-native';
+
 export const palette = {
   /** Ink family — dusty blue-grey (trust, editorial). */
   slate950: '#2c343c',
@@ -124,9 +126,44 @@ export const screenContentGutter = 20;
 
 export const radius = {
   pill: 999,
-  lg: 20,
+  sm: 12,
   md: 16,
+  lg: 20,
+  /** Cinematic hero surfaces (Explore reel only). */
+  hero: 24,
+  sheet: 16,
 };
+
+/** Expert Council feature accent — keep distinct from global mint/sky. */
+export const council = {
+  violet: '#8b5cf6',
+  gold: '#f59e0b',
+  gradientDark: ['#0c0618', '#1a0f3d', '#0a1628'] as const,
+  gradientLight: ['#f5f0ff', '#ede9fe', '#dbeafe'] as const,
+};
+
+export const elevation = {
+  rest: Platform.select<ViewStyle>({
+    ios: {
+      shadowColor: '#0f172a',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 12,
+    },
+    android: { elevation: 3 },
+    default: {},
+  }),
+  raised: Platform.select<ViewStyle>({
+    ios: {
+      shadowColor: '#0f172a',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.14,
+      shadowRadius: 20,
+    },
+    android: { elevation: 6 },
+    default: {},
+  }),
+} as const;
 
 /**
  * Profile-tab (You) light neutrals + pastel accents — warm grays, not cool slate.

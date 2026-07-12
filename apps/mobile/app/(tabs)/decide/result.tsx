@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import { Button } from '@/components/ui';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import Screen from '@/components/ui/Screen';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -33,11 +33,9 @@ export default function DecideResultScreen() {
 
   if (!lastResponse) {
     return (
-      <Screen padded>
+      <Screen variant="plain" padded>
         <Text style={[typography.body, { color: surface.textPrimary }]}>No briefing yet.</Text>
-        <PrimaryButton onPress={() => router.replace('/(tabs)/decide')}>
-          <Text style={{ color: palette.white }}>Start over</Text>
-        </PrimaryButton>
+        <Button label="Start over" onPress={() => router.replace('/(tabs)/decide')} />
       </Screen>
     );
   }
@@ -45,7 +43,7 @@ export default function DecideResultScreen() {
   const { sections, disclaimer, hermesStatus, threadId } = lastResponse;
 
   return (
-    <Screen padded>
+    <Screen variant="plain" padded>
       <GradientHero
         eyebrow="Published"
         title="Decision briefing ready"
@@ -141,36 +139,34 @@ export default function DecideResultScreen() {
         </ScrollView>
       </View>
 
-      <PrimaryButton
+      <Button
+        label="Continue to Explore"
         accessibilityLabel="Open vertically paged community outcomes feed"
         onPress={() =>
           router.replace({
             pathname: '/(tabs)/explore',
           })
-        }>
-        <Text style={{ color: palette.white, fontWeight: '600', fontSize: 16 }}>
-          Continue to Explore
-        </Text>
-      </PrimaryButton>
+        }
+      />
 
-      <PrimaryButton
+      <Button
+        label="Adjust Explore validation card"
         variant="ghost"
         style={{ marginTop: spacing.sm }}
         onPress={() => router.push('/(tabs)/decide/confirm')}
-        accessibilityLabel="Fine tune Explore validation card">
-        <Text style={{ color: profileLight.sky, fontWeight: '700' }}>Adjust Explore validation card</Text>
-      </PrimaryButton>
+        accessibilityLabel="Fine tune Explore validation card"
+      />
 
-      <PrimaryButton
+      <Button
+        label="New decision briefing"
         variant="ghost"
         style={{ marginTop: spacing.sm }}
         onPress={() => {
           reset();
           router.replace('/(tabs)/decide');
         }}
-        accessibilityLabel="Return to decision wizard home">
-        <Text style={{ color: profileLight.pink, fontWeight: '700' }}>New decision briefing</Text>
-      </PrimaryButton>
+        accessibilityLabel="Return to decision wizard home"
+      />
     </Screen>
   );
 }

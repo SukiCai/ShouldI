@@ -28,20 +28,19 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import Screen from '@/components/ui/Screen';
+import { Button, Card, Screen } from '@/components/ui';
 import { resolveYouChromatics } from '@/constants/appChromatics';
-import { palette, screenContentGutter, spacing, themeSurface, typography } from '@/constants/theme';
+import {
+  PROFILE_HERO_GRADIENT_DARK,
+  PROFILE_HERO_GRADIENT_LIGHT,
+  palette,
+  profileLight,
+  screenContentGutter,
+  spacing,
+  themeSurface,
+  typography,
+} from '@/constants/theme';
 import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
-
-/**
- * Light pastel accents — must match {@link profileLight} in `constants/theme.ts`.
- * Kept as file-local literals so Hermes doesn't hit flaky tab-bundle init ordering on `.sky`/`.pink` reads.
- */
-const PROFILE_TAB_LIGHT = {
-  sky: '#49cdeb',
-  pink: '#ec7ab8',
-  mint: '#2dd4bf',
-} as const;
 
 const AVATAR = require('@/constants/users/user-char-01.png');
 
@@ -124,8 +123,8 @@ const ACCENT = {
 /** Grid rail tints in light mode — same triad feel as `ACCENT`, readable on white. */
 const CARD_ACCENT_LIGHT: Record<DecisionPreview['accent'], string> = {
   mint: '#14b8a6',
-  sky: PROFILE_TAB_LIGHT.sky,
-  pink: PROFILE_TAB_LIGHT.pink,
+  sky: profileLight.sky,
+  pink: profileLight.pink,
 };
 
 type TabKey = 'yours' | 'orbit' | 'saved';
@@ -300,16 +299,13 @@ function ProfileDecisionCard({
       accessibilityRole="button"
       accessibilityLabel={item.question}
       onPress={() => onOpen(item.id)}
-      style={({ pressed }) => [
-        styles.gridCard,
-        {
+      style={({ pressed }) => [pressed && { opacity: 0.92 }]}>
+      <Card
+        accentColor={accentColor}
+        style={{
           borderColor: surface.sheetBorder,
           backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : palette.sheet,
-        },
-        pressed && { opacity: 0.92 },
-      ]}>
-      <View style={styles.gridCardRow}>
-        <View style={[styles.gridCardAccent, { backgroundColor: accentColor }]} />
+        }}>
         <View style={[styles.gridCardBody, compact && styles.gridCardBodyCompact]}>
           <View style={styles.gridCardTop}>
             {open ? (
@@ -319,7 +315,7 @@ function ProfileDecisionCard({
                 style={[
                   styles.statusPill,
                   {
-                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${PROFILE_TAB_LIGHT.sky}10`,
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${profileLight.sky}10`,
                     borderWidth: StyleSheet.hairlineWidth,
                     borderColor: surface.hairline,
                   },
@@ -338,7 +334,7 @@ function ProfileDecisionCard({
             {item.hint}
           </Text>
         </View>
-      </View>
+      </Card>
     </Pressable>
   );
 }
@@ -467,11 +463,7 @@ export default function YouScreen() {
     <>
       <View style={[styles.heroPanel, { borderColor: surface.hairline }]}>
         <LinearGradient
-          colors={
-            isDark
-              ? ['rgba(61,255,184,0.14)', 'rgba(84,220,255,0.07)', 'rgba(15,23,42,0.02)']
-              : [`${PROFILE_TAB_LIGHT.sky}33`, `${PROFILE_TAB_LIGHT.pink}14`, '#ffffff']
-          }
+          colors={isDark ? [...PROFILE_HERO_GRADIENT_DARK] : [...PROFILE_HERO_GRADIENT_LIGHT]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={StyleSheet.absoluteFillObject}
@@ -519,10 +511,10 @@ export default function YouScreen() {
                       isPremium
                         ? isDark
                           ? [`${palette.neonMint}ee`, `${palette.neonSky}cc`]
-                          : [`${PROFILE_TAB_LIGHT.mint}e8`, `${PROFILE_TAB_LIGHT.sky}c8`]
+                          : [`${profileLight.mint}e8`, `${profileLight.sky}c8`]
                         : isDark
                           ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
-                          : [`${PROFILE_TAB_LIGHT.sky}d0`, `${PROFILE_TAB_LIGHT.mint}b8`]
+                          : [`${profileLight.sky}d0`, `${profileLight.mint}b8`]
                     }
                     start={{ x: 0, y: 0.5 }}
                     end={{ x: 1, y: 0.5 }}
@@ -560,7 +552,7 @@ export default function YouScreen() {
             },
           ]}>
           <LinearGradient
-            colors={isDark ? [palette.neonMint, palette.neonSky] : [PROFILE_TAB_LIGHT.sky, PROFILE_TAB_LIGHT.mint]}
+            colors={isDark ? [palette.neonMint, palette.neonSky] : [profileLight.sky, profileLight.mint]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
             style={styles.walletAccent}
@@ -593,21 +585,15 @@ export default function YouScreen() {
                   collected from votes, validations & boosts driven by others
                 </Text>
               </View>
-              <Pressable
-                accessibilityRole="button"
+              <Button
+                variant="gradient"
+                label="add points"
                 accessibilityLabel="Add points"
                 accessibilityHint="Open ways to earn more points when available"
                 onPress={handleAddPoints}
-                style={({ pressed }) => [styles.walletCta, pressed && { opacity: 0.9, transform: [{ scale: 0.985 }] }]}>
-                <LinearGradient
-                  colors={isDark ? [`${palette.neonMint}f0`, '#2ad4b4'] : [PROFILE_TAB_LIGHT.sky, PROFILE_TAB_LIGHT.mint]}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                  style={styles.walletCtaGrad}>
-                  <FontAwesome name="plus-circle" size={12} color={chrom.ctaOnGradient} />
-                  <Text style={[styles.walletCtaLabel, { color: chrom.ctaOnGradient }]}>add points</Text>
-                </LinearGradient>
-              </Pressable>
+                leftIcon={<FontAwesome name="plus-circle" size={12} color={palette.white} />}
+                style={styles.walletCta}
+              />
             </View>
 
             <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>
@@ -620,10 +606,7 @@ export default function YouScreen() {
       </View>
 
       {!isPremium ? (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Upgrade to Premium for unlimited Expert Council"
-          onPress={handleUpgradePremium}
+        <Card
           style={[
             styles.premiumUpsell,
             {
@@ -632,15 +615,23 @@ export default function YouScreen() {
               backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : palette.sheet,
             },
           ]}>
-          <FontAwesome name="star" size={14} color={isDark ? palette.neonMint : PROFILE_TAB_LIGHT.mint} />
-          <View style={{ flex: 1 }}>
-            <Text style={[styles.premiumUpsellTitle, { color: surface.textPrimary }]}>Expert Council · Premium</Text>
-            <Text style={[styles.premiumUpsellSub, { color: surface.textMuted }]}>
-              Unlimited multi-expert sessions — or pay {councilSessionCost} points each time.
-            </Text>
+          <View style={styles.premiumUpsellRow}>
+            <FontAwesome name="star" size={14} color={isDark ? palette.neonMint : profileLight.mint} />
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.premiumUpsellTitle, { color: surface.textPrimary }]}>Expert Council · Premium</Text>
+              <Text style={[styles.premiumUpsellSub, { color: surface.textMuted }]}>
+                Unlimited multi-expert sessions — or pay {councilSessionCost} points each time.
+              </Text>
+            </View>
+            <Button
+              variant="gradient"
+              label="Upgrade"
+              accessibilityLabel="Upgrade to Premium for unlimited Expert Council"
+              onPress={handleUpgradePremium}
+              style={styles.premiumCta}
+            />
           </View>
-          <FontAwesome name="chevron-right" size={12} color={surface.textMuted} />
-        </Pressable>
+        </Card>
       ) : null}
 
       <View style={styles.profileTabsWrap}>
@@ -800,15 +791,18 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   premiumUpsell: {
+    marginTop: spacing.sm,
+    marginBottom: spacing.sm,
+  },
+  premiumUpsellRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    marginTop: spacing.sm,
-    marginBottom: spacing.sm,
+    width: '100%',
+  },
+  premiumCta: {
+    flexShrink: 0,
+    minWidth: 96,
   },
   premiumUpsellTitle: {
     fontSize: 14,
@@ -935,33 +929,8 @@ const styles = StyleSheet.create({
     maxWidth: 220,
   },
   walletCta: {
-    borderRadius: 999,
-    overflow: 'hidden',
     flexShrink: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: palette.neonMint,
-        shadowOpacity: 0.2,
-        shadowRadius: 6,
-        shadowOffset: { width: 0, height: 2 },
-      },
-      android: { elevation: 2 },
-      default: {},
-    }),
-  },
-  walletCtaGrad: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-  },
-  walletCtaLabel: {
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 0.12,
-    textTransform: 'lowercase',
+    minWidth: 120,
   },
   walletDisclaimer: {
     fontSize: 9,
@@ -1101,10 +1070,11 @@ const styles = StyleSheet.create({
   },
   gridCardBody: {
     flex: 1,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
     justifyContent: 'flex-start',
     minWidth: 0,
+    minHeight: 110,
   },
   gridCardBodyCompact: {
     paddingBottom: 10,

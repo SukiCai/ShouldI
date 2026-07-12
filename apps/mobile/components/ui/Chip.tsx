@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { resolveAppChromatics } from '@/constants/appChromatics';
 import { palette, profileNeutralStroke, radius, themeSurface, typography } from '@/constants/theme';
 
 type Props = PropsWithChildren<{
@@ -14,6 +15,8 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
+  const chrom = resolveAppChromatics(isDark, surface);
+  const accent = chrom.mint;
 
   return (
     <Pressable
@@ -27,10 +30,10 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
           backgroundColor: surface.groupedSurface,
           borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.18),
         },
-        selected ? styles.shellSelected : undefined,
+        selected ? { backgroundColor: `${accent}26`, borderColor: accent } : undefined,
       ]}>
       <Text
-        style={[typography.compact, selected ? styles.labelSelected : { color: surface.textPrimary, textAlign: 'center' }]}>
+        style={[typography.compact, selected ? { color: accent, fontWeight: '700', textAlign: 'center' } : { color: surface.textPrimary, textAlign: 'center' }]}>
         {children}
       </Text>
     </Pressable>
@@ -43,14 +46,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-  },
-  shellSelected: {
-    backgroundColor: palette.accent + '26',
-    borderColor: palette.accent,
-  },
-  labelSelected: {
-    color: palette.accent,
-    fontWeight: '700',
-    textAlign: 'center',
   },
 });

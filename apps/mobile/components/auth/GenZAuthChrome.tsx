@@ -37,6 +37,7 @@ import Svg, { Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
 import { palette, profileTypography, radius, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
+import Button from '@/components/ui/Button';
 import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from '@/components/ui/OledSignUpBackdrop';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -825,7 +826,7 @@ export function GenZAuthChrome({
   const trioRasterHero = oled && (heroAvatars?.length ?? 0) >= 3;
   /** ~55% sheet */
   const sheetMinH = Math.max(392, Math.round(SCREEN_H * 0.52));
-  const topR = 46;
+  const topR = radius.sheet;
   const notchHalf = Math.min(Math.floor(SCREEN_W * 0.26), Math.round(SCREEN_W / 2) - 28);
   const notchDip = 70;
   const oledInsetPad = Math.max(insets.bottom, Platform.OS === 'android' ? 14 : 8);
@@ -920,8 +921,9 @@ export function GenZAuthChrome({
           {...(panResponder ? panResponder.panHandlers : {})}
           pointerEvents="box-none"
           style={[styles.ctaDock, { bottom: Math.max(insets.bottom, 10) }]}>
-          <Pressable
-            accessibilityRole="button"
+          <Button
+            variant="primary"
+            label={footerCtaLabel}
             accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
             accessibilityHint={
               footerSubtitle ??
@@ -931,36 +933,8 @@ export function GenZAuthChrome({
               void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
               onFooterPress();
             }}
-            style={({ pressed }) =>
-              [
-                styles.ctaPress,
-                styles.ctaPressDocked,
-                pressed &&
-                  ({
-                    opacity: 0.96,
-                    transform: [{ scale: 0.985 }],
-                  } as const),
-              ]
-            }>
-            <LinearGradient
-              colors={['#0a0d12', palette.heroInk, '#131820']}
-              locations={[0, 0.45, 1]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.ctaGradient}>
-              <View style={{ flexShrink: 1 }}>
-                <Text style={styles.ctaLabel}>{footerCtaLabel}</Text>
-                {footerSubtitle ? <Text style={styles.ctaSubtitle}>{footerSubtitle}</Text> : null}
-              </View>
-              <LinearGradient
-                colors={[`${palette.neonMint}b8`, palette.neonMint]}
-                style={styles.ctaArrowGlow}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}>
-                <Ionicons name="chevron-forward" size={21} color={palette.heroInk} />
-              </LinearGradient>
-            </LinearGradient>
-          </Pressable>
+            style={StyleSheet.flatten([styles.ctaPress, styles.ctaPressDocked])}
+          />
         </View>
       ) : null}
 
@@ -1155,29 +1129,17 @@ export function GenZAuthChrome({
                     </View>
                   ) : null}
                   <View style={[styles.sheetInset, styles.sheetCtaBlock]} pointerEvents="box-none">
-                    <Pressable
-                      accessibilityRole="button"
+                    <Button
+                      variant="primary"
+                      label={footerCtaLabel}
                       accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
                       accessibilityHint={footerSubtitle}
                       onPress={() => {
                         void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
                         onFooterPress();
                       }}
-                      style={({ pressed }) =>
-                        [
-                          styles.ctaPress,
-                          styles.ctaPressInCard,
-                          pressed &&
-                            ({
-                              opacity: 0.96,
-                              transform: [{ scale: 0.985 }],
-                            } as const),
-                        ]
-                      }>
-                      <View style={styles.ctaOledSolid}>
-                        <Text style={styles.ctaOledSolidLabel}>{footerCtaLabel}</Text>
-                      </View>
-                    </Pressable>
+                      style={StyleSheet.flatten([styles.ctaPress, styles.ctaPressInCard])}
+                    />
                     {footerSubtitle ? <Text style={styles.ctaFooterBelowOled}>{footerSubtitle}</Text> : null}
                     {slideHint ? <Text style={styles.ctaSwipeHintBelowOled}>{slideHint}</Text> : null}
                   </View>
@@ -1765,7 +1727,7 @@ const styles = StyleSheet.create({
     width: SCREEN_W,
     alignSelf: 'center',
     backgroundColor: palette.sheet,
-    borderRadius: 26,
+    borderRadius: radius.sheet,
     overflow: 'hidden',
     marginTop: 0,
     ...Platform.select({

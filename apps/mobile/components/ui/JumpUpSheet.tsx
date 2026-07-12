@@ -3,48 +3,24 @@
  * Use for modals, paywalls, rosters, and thread expansions across the app.
  */
 import * as React from 'react';
+import { Animated, Modal, Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+
 import {
-  Animated,
-  Easing,
-  Modal,
-  Pressable,
-  StyleSheet,
-  View,
-  type StyleProp,
-  type ViewStyle,
-} from 'react-native';
+  MOTION,
+  SHEET_BOTTOM_BLEED,
+  useJumpUpMotion,
+} from '@/constants/motion';
+import { radius } from '@/constants/theme';
 
-export const JUMP_UP_SPRING = { friction: 8, tension: 72 } as const;
-export const JUMP_UP_BACKDROP_MS = 220;
-export const SHEET_SLIDE_OFFSET = 420;
-/** Extra sheet height below the safe area so the slide-up never exposes the dim backdrop. */
-export const SHEET_BOTTOM_BLEED = 56;
-
-export function useJumpUpMotion(open: boolean) {
-  const translateY = React.useRef(new Animated.Value(SHEET_SLIDE_OFFSET)).current;
-  const backdropOpacity = React.useRef(new Animated.Value(0)).current;
-
-  React.useEffect(() => {
-    if (!open) return;
-    translateY.setValue(SHEET_SLIDE_OFFSET);
-    backdropOpacity.setValue(0);
-    Animated.parallel([
-      Animated.timing(backdropOpacity, {
-        toValue: 1,
-        duration: JUMP_UP_BACKDROP_MS,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
-      }),
-      Animated.spring(translateY, {
-        toValue: 0,
-        ...JUMP_UP_SPRING,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [backdropOpacity, open, translateY]);
-
-  return { translateY, backdropOpacity };
-}
+export {
+  JUMP_UP_BACKDROP_MS,
+  JUMP_UP_SPRING,
+  MOTION,
+  SHEET_BOTTOM_BLEED,
+  SHEET_SLIDE_OFFSET,
+  useJumpUpMotion,
+  usePrefersReducedMotion,
+} from '@/constants/motion';
 
 export type JumpUpSheetProps = {
   visible: boolean;
@@ -126,8 +102,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    borderTopLeftRadius: radius.sheet,
+    borderTopRightRadius: radius.sheet,
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: 6,
     paddingHorizontal: 0,

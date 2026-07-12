@@ -29,7 +29,8 @@ import {
   InlineDistributionTrack,
   PollQuestionAccentBar,
 } from '@/components/explore/ReelDiscussChrome';
-import { palette, profileNeutralStroke, profileTypography, typography } from '@/constants/theme';
+import { MOTION } from '@/constants/motion';
+import { palette, profileNeutralStroke, profileTypography, radius, typography } from '@/constants/theme';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
 
@@ -132,16 +133,14 @@ function ReelCardMotionWrap({
       }),
       Animated.spring(translateY, {
         toValue: 0,
-        damping: 17,
-        stiffness: 164,
-        mass: 0.78,
+        friction: MOTION.card.friction,
+        tension: MOTION.card.tension,
         useNativeDriver: true,
       }),
       Animated.spring(scale, {
         toValue: 1,
-        damping: 15,
-        stiffness: 178,
-        mass: 0.72,
+        friction: MOTION.card.friction,
+        tension: MOTION.card.tension,
         useNativeDriver: true,
       }),
     ]);
@@ -160,8 +159,8 @@ function ReelCardMotionWrap({
             }),
             Animated.spring(scale, {
               toValue: 1,
-              friction: 7,
-              tension: 220,
+              friction: MOTION.card.friction,
+              tension: MOTION.card.tension,
               useNativeDriver: true,
             }),
           ]).start();
@@ -179,8 +178,8 @@ function ReelCardMotionWrap({
             }),
             Animated.spring(scale, {
               toValue: 1,
-              friction: 8,
-              tension: 200,
+              friction: MOTION.card.friction,
+              tension: MOTION.card.tension,
               useNativeDriver: true,
             }),
           ]).start();
@@ -602,7 +601,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     paddingVertical: 16,
     paddingHorizontal: 18,
-    borderRadius: 26,
+    borderRadius: radius.lg,
     backgroundColor: 'rgba(255,253,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: `${palette.neonPink}28`,

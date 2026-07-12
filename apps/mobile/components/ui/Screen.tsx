@@ -6,12 +6,31 @@ import { screenContentGutter, themeSurface } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 
-type ScreenProps = PropsWithChildren<ViewProps & { padded?: boolean; scroll?: boolean }>;
+type ScreenVariant = 'default' | 'plain' | 'mist';
 
-export default function Screen({ children, padded = true, scroll = false, style, ...rest }: ScreenProps) {
+type ScreenProps = PropsWithChildren<
+  ViewProps & {
+    padded?: boolean;
+    scroll?: boolean;
+    /** `plain` — no OLED speckles (Settings, light editorial). `mist` — full black canvas. */
+    variant?: ScreenVariant;
+  }
+>;
+
+export default function Screen({
+  children,
+  padded = true,
+  scroll = false,
+  variant = 'default',
+  style,
+  ...rest
+}: ScreenProps) {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
+  const showSpeckles = variant === 'default';
+  const canvas =
+    variant === 'mist' ? surface.canvasSecondary : surface.canvas;
   const inset = padded
     ? [
         styles.paddedNoTop,
@@ -39,11 +58,13 @@ export default function Screen({ children, padded = true, scroll = false, style,
     <SafeAreaView
       {...rest}
       edges={['left', 'right']}
-      style={[styles.outer, { backgroundColor: surface.canvas }, padded && styles.horizontalPad, style]}
+      style={[styles.outer, { backgroundColor: canvas }, padded && styles.horizontalPad, style]}
     >
-      <View pointerEvents="none" style={styles.signUpBackdrop}>
-        <OledFluorSpeckles />
-      </View>
+      {showSpeckles ? (
+        <View pointerEvents="none" style={styles.signUpBackdrop}>
+          <OledFluorSpeckles />
+        </View>
+      ) : null}
       <View style={[styles.contentLayer, inset]}>{content}</View>
     </SafeAreaView>
   );

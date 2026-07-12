@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useMemo } from 'react';
 import 'react-native-reanimated';
 
-import { palette, themeSurface } from '@/constants/theme';
+import { palette, profileLight, themeSurface } from '@/constants/theme';
 import { AppearanceProvider, useAppearance } from '@/lib/appearance';
 
 const navigationDark: Theme = {
@@ -85,7 +85,7 @@ function RootLayoutNav() {
       dark: false,
       colors: {
         ...DefaultTheme.colors,
-        primary: '#0d9488',
+        primary: profileLight.mint,
         background: surface.canvas,
         card: palette.sheet,
         text: surface.textPrimary,
@@ -112,7 +112,7 @@ function RootLayoutNav() {
           name="plot-deck"
           options={{
             title: 'Plot Deck',
-            headerTintColor: isDark ? palette.neonMint : '#0d9488',
+            headerTintColor: isDark ? palette.neonMint : profileLight.mint,
             headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
             headerStyle: { backgroundColor: surface.canvas },
             headerShadowVisible: false,

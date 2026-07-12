@@ -7,11 +7,11 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 
 import { AuthFields } from '@/components/auth/GenZAuthChrome';
+import TextField from '@/components/ui/TextField';
 import { palette, profileTypography } from '@/constants/theme';
 
 type Props = {
@@ -51,7 +51,6 @@ export function AuthCredentialFields({
   onToggleShowPassword,
 }: Props) {
   const [phoneFocus, setPhoneFocus] = React.useState(false);
-  const [pwdFocus, setPwdFocus] = React.useState(false);
 
   return (
     <View style={styles.block}>
@@ -69,11 +68,15 @@ export function AuthCredentialFields({
           <Ionicons name="chevron-down" size={17} color={profileTypography.subdued} />
         </Pressable>
 
-        <View style={[AuthFields.inputPill, phoneFocus ? AuthFields.controlFocused : null]}>
-          <TextInput
+        <View
+          style={[
+            AuthFields.inputPill,
+            phoneFocus ? AuthFields.controlFocused : null,
+            styles.phoneShell,
+          ]}>
+          <TextField
             value={phone}
             placeholder="––– ––– ––––"
-            placeholderTextColor={`${profileTypography.subdued}c4`}
             onChangeText={(raw) => onPhoneChange(formatUsPhoneDigits(raw))}
             keyboardType="phone-pad"
             autoCorrect={false}
@@ -84,29 +87,25 @@ export function AuthCredentialFields({
             }}
             onBlur={() => setPhoneFocus(false)}
             selectionColor={`${palette.neonMint}c4`}
-            style={[AuthFields.pwdInput, { letterSpacing: phone.trim() ? 0.35 : 1.2 }]}
+            containerStyle={styles.phoneFieldInner}
+            style={[AuthFields.pwdInput, styles.phoneInput, { letterSpacing: phone.trim() ? 0.35 : 1.2 }]}
           />
         </View>
       </View>
 
-      <View style={[AuthFields.inputPill, pwdFocus ? AuthFields.controlFocused : null]}>
+      <View style={[AuthFields.inputPill, styles.passwordShell]}>
         <View style={AuthFields.pwdRow}>
-          <TextInput
+          <TextField
             value={password}
             placeholder="Password"
-            placeholderTextColor={`${profileTypography.subdued}c4`}
             onChangeText={onPasswordChange}
             secureTextEntry={!showPassword}
             accessibilityLabel="Password"
             autoCorrect={false}
             autoCapitalize="none"
-            onFocus={() => {
-              void vibe();
-              setPwdFocus(true);
-            }}
-            onBlur={() => setPwdFocus(false)}
             selectionColor={`${palette.neonMint}c4`}
-            style={AuthFields.pwdInput}
+            containerStyle={styles.passwordField}
+            style={[AuthFields.pwdInput, styles.passwordInput]}
           />
           <Pressable
             accessibilityRole="button"
@@ -130,5 +129,31 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 4,
     pointerEvents: 'auto',
+  },
+  phoneShell: {
+    flex: 1,
+    marginBottom: 0,
+  },
+  phoneFieldInner: {
+    marginBottom: 0,
+  },
+  phoneInput: {
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    paddingHorizontal: 0,
+    minHeight: 50,
+  },
+  passwordShell: {
+    marginBottom: 0,
+  },
+  passwordField: {
+    flex: 1,
+    marginBottom: 0,
+  },
+  passwordInput: {
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    paddingHorizontal: 0,
+    minHeight: 50,
   },
 });

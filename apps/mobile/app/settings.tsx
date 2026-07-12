@@ -1,4 +1,3 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import * as React from 'react';
@@ -6,7 +5,6 @@ import {
   Alert,
   Platform,
   Pressable,
-  ScrollView,
   StyleSheet,
   Switch,
   Text,
@@ -16,6 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { GlassCard, SectionHeader } from '@/components/ui/Premium';
+import { ListRow, Screen } from '@/components/ui';
 import { palette, spacing, themeSurface, typography } from '@/constants/theme';
 import type { AppearancePreference } from '@/lib/appearance';
 import { useAppearance } from '@/lib/appearance';
@@ -41,51 +40,9 @@ export default function SettingsScreen() {
     setPreference(next);
   };
 
-  const Row = ({
-    icon,
-    title,
-    subtitle,
-    children,
-    onPress,
-    showChevron,
-    isLast,
-  }: {
-    icon: React.ComponentProps<typeof FontAwesome>['name'];
-    title: string;
-    subtitle?: string;
-    children?: React.ReactNode;
-    onPress?: () => void;
-    showChevron?: boolean;
-    isLast?: boolean;
-  }) => (
-    <Pressable
-      accessibilityRole={onPress ? 'button' : undefined}
-      onPress={onPress}
-      disabled={!onPress}
-      style={({ pressed }) => [
-        styles.row,
-        !isLast && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: surface.hairline },
-        onPress && pressed && { backgroundColor: surface.pressedOverlay },
-      ]}>
-      <View style={styles.rowIconWrap}>
-        <FontAwesome name={icon} size={17} color={palette.neonMint} />
-      </View>
-      <View style={styles.rowText}>
-        <Text style={[typography.compact, { color: surface.textPrimary, fontWeight: '600' }]}>{title}</Text>
-        {subtitle ? (
-          <Text style={[typography.caption, { color: surface.textMuted, marginTop: 3 }]}>{subtitle}</Text>
-        ) : null}
-      </View>
-      {children}
-      {showChevron ? (
-        <FontAwesome name="chevron-right" size={14} color={surface.textMuted} style={{ marginLeft: 8 }} />
-      ) : null}
-    </Pressable>
-  );
-
   return (
-    <View style={[styles.root, { backgroundColor: surface.canvas, paddingTop: topPad }]}>
-      <View style={styles.topBar}>
+    <Screen variant="plain" padded={false} scroll>
+      <View style={[styles.topBar, { paddingTop: topPad }]}>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Back"
@@ -95,45 +52,41 @@ export default function SettingsScreen() {
             styles.backBtn,
             pressed && { opacity: 0.75 },
           ]}>
-          <FontAwesome name="chevron-left" size={18} color={surface.textPrimary} />
+          <Text style={{ fontSize: 22, color: surface.textPrimary }}>‹</Text>
         </Pressable>
         <Text style={[typography.title, { color: surface.textPrimary, fontWeight: '700' }]}>Settings</Text>
         <View style={{ width: 40 }} />
       </View>
 
-      <ScrollView
-        contentInsetAdjustmentBehavior="always"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: Math.max(insets.bottom + 24, 40), paddingHorizontal: 20 }}>
+      <View style={{ paddingBottom: Math.max(insets.bottom + 24, 40), paddingHorizontal: 20 }}>
         <Text style={[typography.caption, styles.groupLabel, { color: surface.textMuted }]}>Appearance</Text>
         <GlassCard style={styles.groupCard}>
           {(
             [
-              { key: 'system' as const, label: 'System default', sub: 'Match this device' },
-              { key: 'light' as const, label: 'Light', sub: 'Bright surfaces' },
-              { key: 'dark' as const, label: 'Dark', sub: 'OLED-friendly canvas' },
+              { key: 'system' as const, label: 'System default', sub: 'Match this device', icon: 'ellipse-outline' as const },
+              { key: 'light' as const, label: 'Light', sub: 'Bright surfaces', icon: 'sunny-outline' as const },
+              { key: 'dark' as const, label: 'Dark', sub: 'OLED-friendly canvas', icon: 'moon-outline' as const },
             ] as const
           ).map((opt, i, arr) => (
-            <Row
+            <ListRow
               key={opt.key}
-              icon={opt.key === 'system' ? 'circle-o' : opt.key === 'light' ? 'sun-o' : 'moon-o'}
+              icon={opt.icon}
               title={opt.label}
               subtitle={opt.sub}
               onPress={() => setAppearance(opt.key)}
-              isLast={i === arr.length - 1}
-              showChevron={false}>
+              isLast={i === arr.length - 1}>
               {preference === opt.key ? (
-                <FontAwesome name="check" size={16} color={palette.neonMint} />
+                <Text style={{ color: palette.neonMint, fontWeight: '700' }}>✓</Text>
               ) : (
                 <View style={{ width: 16 }} />
               )}
-            </Row>
+            </ListRow>
           ))}
         </GlassCard>
 
         <SectionHeader title="Notifications" />
         <GlassCard style={styles.groupCard}>
-          <Row icon="bell" title="Push notifications" subtitle="Votes, replies, outcomes" isLast={false}>
+          <ListRow icon="notifications-outline" title="Push notifications" subtitle="Votes, replies, outcomes" isLast={false}>
             <Switch
               accessibilityLabel="Push notifications"
               value={pushEnabled}
@@ -141,8 +94,8 @@ export default function SettingsScreen() {
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
               thumbColor={pushEnabled ? palette.neonMint : switchThumbOff}
             />
-          </Row>
-          <Row icon="envelope-o" title="Weekly digest" subtitle="Highlights from your circles" isLast={false}>
+          </ListRow>
+          <ListRow icon="mail-outline" title="Weekly digest" subtitle="Highlights from your circles" isLast={false}>
             <Switch
               accessibilityLabel="Weekly digest email"
               value={emailDigest}
@@ -150,8 +103,8 @@ export default function SettingsScreen() {
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
               thumbColor={emailDigest ? palette.neonMint : switchThumbOff}
             />
-          </Row>
-          <Row icon="at" title="Mentions & tags" subtitle="When someone references you" isLast>
+          </ListRow>
+          <ListRow icon="at" title="Mentions & tags" subtitle="When someone references you" isLast>
             <Switch
               accessibilityLabel="Mention alerts"
               value={mentionAlerts}
@@ -159,13 +112,13 @@ export default function SettingsScreen() {
               trackColor={{ false: surface.hairline, true: `${palette.neonMint}55` }}
               thumbColor={mentionAlerts ? palette.neonMint : switchThumbOff}
             />
-          </Row>
+          </ListRow>
         </GlassCard>
 
         <SectionHeader title="Privacy & data" />
         <GlassCard style={styles.groupCard}>
-          <Row
-            icon="lock"
+          <ListRow
+            icon="lock-closed-outline"
             title="Privacy center"
             subtitle="Visibility, blocked accounts, data"
             onPress={() =>
@@ -174,8 +127,8 @@ export default function SettingsScreen() {
             showChevron
             isLast={false}
           />
-          <Row
-            icon="eye"
+          <ListRow
+            icon="eye-outline"
             title="Ad & personalization"
             subtitle="Tune recommendations"
             onPress={() => Alert.alert('Personalization', 'Fine-grained ad and recommendation controls ship with v1.')}
@@ -186,22 +139,22 @@ export default function SettingsScreen() {
 
         <SectionHeader title="Support" />
         <GlassCard style={styles.groupCard}>
-          <Row
-            icon="question-circle"
+          <ListRow
+            icon="help-circle-outline"
             title="Help & FAQ"
             onPress={() => Alert.alert('Help', 'Support and guides will open in-browser shortly.')}
             showChevron
             isLast={false}
           />
-          <Row
-            icon="comment"
+          <ListRow
+            icon="chatbubble-outline"
             title="Send feedback"
             onPress={() => Alert.alert('Feedback', 'Thanks — we read every note.')}
             showChevron
             isLast={false}
           />
-          <Row
-            icon="info-circle"
+          <ListRow
+            icon="information-circle-outline"
             title="About ShouldI"
             subtitle="Version 1.0 · Terms & licenses"
             onPress={() =>
@@ -214,15 +167,12 @@ export default function SettingsScreen() {
             isLast
           />
         </GlassCard>
-      </ScrollView>
-    </View>
+      </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
   topBar: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -249,19 +199,5 @@ const styles = StyleSheet.create({
     padding: 0,
     paddingVertical: 4,
     overflow: 'hidden',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: spacing.md,
-  },
-  rowIconWrap: {
-    width: 36,
-    alignItems: 'center',
-  },
-  rowText: {
-    flex: 1,
-    paddingRight: 8,
   },
 });
