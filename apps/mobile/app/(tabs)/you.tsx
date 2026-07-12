@@ -1,4 +1,4 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
@@ -18,8 +18,11 @@ import {
 } from 'react-native';
 import Animated, {
   Easing,
+  interpolate,
+  type SharedValue,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withRepeat,
   withSequence,
   withSpring,
@@ -28,21 +31,77 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { Button, Card, Screen } from '@/components/ui';
+import { Card, EmptyState, Screen } from '@/components/ui';
+import { MOTION, usePrefersReducedMotion } from '@/constants/motion';
 import { resolveYouChromatics } from '@/constants/appChromatics';
 import {
+  elevation,
+  palette,
   PROFILE_HERO_GRADIENT_DARK,
   PROFILE_HERO_GRADIENT_LIGHT,
-  palette,
   profileLight,
+  profileNeutralStroke,
+  radius,
   screenContentGutter,
   spacing,
   themeSurface,
-  typography,
 } from '@/constants/theme';
 import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 
+import { ProfileStatSheet, type DemoPerson, type LikesBreakdownRow, type SocialStatKey } from './you/components/ProfileStatSheet';
+import { WalletHistorySheet } from './you/components/WalletHistorySheet';
+
 const AVATAR = require('@/constants/users/user-char-01.png');
+const AVATAR_SIZE = 72;
+
+function ProfileAvatar({
+  surface,
+  reducedMotion,
+}: {
+  surface: ReturnType<typeof themeSurface>;
+  reducedMotion: boolean;
+}) {
+  const press = useSharedValue(1);
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }],
+  }));
+
+  return (
+    <Pressable
+      accessibilityRole="image"
+      accessibilityLabel="Profile photo"
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(0.96, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+      }}
+      onPress={() => {
+        if (Platform.OS !== 'web') {
+          void Haptics.selectionAsync().catch(() => undefined);
+        }
+      }}>
+      <Animated.View style={shellStyle}>
+        <LinearGradient
+          colors={[`${palette.neonMint}`, `${palette.neonSky}`, `${palette.neonPink}`]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.avatarRing}>
+          <View style={[styles.avatarCutout, { backgroundColor: surface.canvas }]}>
+            <Image
+              source={AVATAR}
+              style={styles.avatarImg}
+              resizeMode="cover"
+              accessibilityIgnoresInvertColors
+            />
+          </View>
+        </LinearGradient>
+      </Animated.View>
+    </Pressable>
+  );
+}
 
 /** Demo social metrics until profile API exists */
 const DEMO_STATS = {
@@ -54,6 +113,29 @@ const DEMO_STATS = {
   /** Subset credited when others validate your threads, boosts, referrals, etc. (demo split). */
   pointsFromOthers: 620,
 } as const;
+
+const DEMO_FOLLOWERS: DemoPerson[] = [
+  { id: 'f1', name: 'Alex Chen', handle: '@alexc', subtitle: 'Followed after your remote job thread' },
+  { id: 'f2', name: 'Maya Ortiz', handle: '@maya', subtitle: 'Followed 3 days ago' },
+  { id: 'f3', name: 'Sam Rivera', handle: '@samr', subtitle: 'Followed last week' },
+  { id: 'f4', name: 'Priya Nair', handle: '@priya', subtitle: 'Followed 2 weeks ago' },
+  { id: 'f5', name: 'Jordan Lee', handle: '@jlee', subtitle: 'Followed after your lease thread' },
+];
+
+const DEMO_FOLLOWING: DemoPerson[] = [
+  { id: 'o1', name: 'Nina Patel', handle: '@ninap', subtitle: 'Posts career pivot threads' },
+  { id: 'o2', name: 'Chris Wu', handle: '@chrisw', subtitle: 'Housing and money decisions' },
+  { id: 'o3', name: 'Elena Rossi', handle: '@elenar', subtitle: 'Relationship and travel votes' },
+  { id: 'o4', name: 'Devon Hayes', handle: '@devon', subtitle: 'Remote work debates' },
+];
+
+const DEMO_LIKES_BREAKDOWN: LikesBreakdownRow[] = [
+  { id: 'l1', label: 'Validations on your threads', count: 412 },
+  { id: 'l2', label: 'Boosts from others', count: 318 },
+  { id: 'l3', label: 'Votes on your decisions', count: 212 },
+];
+
+type ProfileSheet = 'wallet' | SocialStatKey | null;
 
 type DecisionPreview = {
   id: string;
@@ -129,16 +211,21 @@ const CARD_ACCENT_LIGHT: Record<DecisionPreview['accent'], string> = {
 
 type TabKey = 'yours' | 'orbit' | 'saved';
 
-const TABS: { key: TabKey; label: string; getData: () => DecisionPreview[] }[] = [
-  { key: 'yours', label: 'Dropped', getData: () => YOUR_DECISIONS },
-  { key: 'orbit', label: 'Orbit', getData: () => FOLLOWING },
-  { key: 'saved', label: 'Saved', getData: () => STARRED },
+const TABS: {
+  key: TabKey;
+  label: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  getData: () => DecisionPreview[];
+}[] = [
+  { key: 'yours', label: 'Mine', icon: 'grid-outline', getData: () => YOUR_DECISIONS },
+  { key: 'orbit', label: 'Following', icon: 'people-outline', getData: () => FOLLOWING },
+  { key: 'saved', label: 'Saved', icon: 'star-outline', getData: () => STARRED },
 ];
 
 const GRID_GAP = 12;
-const STAT_GAP = 8;
-
-const TAB_SPRING = { damping: 24, stiffness: 340, mass: 0.38 };
+const GRID_CARD_HEIGHT = 120;
+const STAGGER_MS = 42;
+const THEME_FADE_MS = 240;
 
 /** Compact “on-air” cue — dot opacity only, no halo glow */
 function LivePulsePill({ surface, isDark }: { surface: ReturnType<typeof themeSurface>; isDark: boolean }) {
@@ -175,104 +262,345 @@ type ProfileTabStripProps = {
   surface: ReturnType<typeof themeSurface>;
 };
 
-function ProfileTabStrip({ activeTab, onSelect, isDark, surface }: ProfileTabStripProps) {
+function ProfileSegmentedTabs({ activeTab, onSelect, isDark, surface }: ProfileTabStripProps) {
   const chrom = resolveYouChromatics(isDark, surface);
+  const reducedMotion = usePrefersReducedMotion();
   const [trackWidth, setTrackWidth] = React.useState(0);
-  const lineX = useSharedValue(0);
-  const lineW = useSharedValue(0);
+  const indicatorX = useSharedValue(0);
+  const indicatorW = useSharedValue(0);
+  const selectionPop = useSharedValue(1);
 
-  const moveUnderline = (key: TabKey, width: number, animated: boolean) => {
-    if (width < 1) return;
-    const seg = width / 3;
-    const w = Math.max(32, Math.min(seg - 16, seg * 0.52));
-    const idx = TABS.findIndex((t) => t.key === key);
-    const x = idx * seg + (seg - w) / 2;
-    lineW.value = w;
-    if (animated) {
-      lineX.value = withSpring(x, TAB_SPRING);
-    } else {
-      lineX.value = x;
-    }
-  };
+  const activeIndex = React.useMemo(
+    () => Math.max(0, TABS.findIndex((t) => t.key === activeTab)),
+    [activeTab],
+  );
+
+  const moveIndicator = React.useCallback(
+    (index: number, width: number, animated: boolean) => {
+      if (width < 1) return;
+      const gap = 6;
+      const horizontalPad = 4;
+      const inner = width - horizontalPad * 2;
+      const seg = (inner - gap * (TABS.length - 1)) / TABS.length;
+      const x = horizontalPad + index * (seg + gap);
+      indicatorW.value = seg;
+      if (animated && !reducedMotion) {
+        indicatorX.value = withSpring(x, MOTION.tab);
+        selectionPop.value = withSequence(
+          withSpring(1.04, { damping: 18, stiffness: 420, mass: 0.34 }),
+          withSpring(1, MOTION.tab),
+        );
+      } else {
+        indicatorX.value = x;
+        selectionPop.value = 1;
+      }
+    },
+    [indicatorW, indicatorX, reducedMotion, selectionPop],
+  );
 
   React.useEffect(() => {
-    moveUnderline(activeTab, trackWidth, true);
-  }, [activeTab, trackWidth]);
+    moveIndicator(activeIndex, trackWidth, true);
+  }, [activeIndex, moveIndicator, trackWidth]);
 
   const onTrackLayout = (e: LayoutChangeEvent) => {
     const w = e.nativeEvent.layout.width;
     setTrackWidth(w);
-    moveUnderline(activeTab, w, false);
+    moveIndicator(activeIndex, w, false);
   };
 
-  const underlineStyle = useAnimatedStyle(() => ({
-    width: lineW.value,
-    transform: [{ translateX: lineX.value }],
+  const indicatorStyle = useAnimatedStyle(() => ({
+    width: indicatorW.value,
+    transform: [{ translateX: indicatorX.value }, { scale: selectionPop.value }],
   }));
 
+  const trackBg = isDark ? 'rgba(255,255,255,0.06)' : palette.field;
+  const indicatorColors = isDark
+    ? ([`${chrom.tabUnderline}44`, `${palette.neonSky}18`] as const)
+    : ([`${profileLight.mint}28`, `${profileLight.sky}16`] as const);
+
   return (
-    <View style={styles.tabBarWrap} onLayout={onTrackLayout}>
-      <View style={styles.tabBarRow}>
-        {TABS.map((t) => {
-          const active = activeTab === t.key;
-          return (
-            <Pressable
-              key={t.key}
-              accessibilityRole="button"
-              accessibilityLabel={t.label}
-              accessibilityState={{ selected: active }}
-              onPress={() => onSelect(t.key)}
-              style={({ pressed }) => [styles.tabBarHit, pressed && !active && { opacity: 0.85 }]}>
-              <Text
-                numberOfLines={1}
-                style={[
-                  styles.tabBarLabel,
-                  {
-                    color: active ? chrom.tabActive : chrom.tabInactive,
-                    fontWeight: active ? '700' : '500',
-                    letterSpacing: active ? -0.2 : 0.15,
-                  },
-                ]}>
-                {t.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
-      <View style={[styles.tabUnderlineTrack, { backgroundColor: chrom.tabTrack }]}>
+    <View style={[styles.segmentTrack, { backgroundColor: trackBg }]} onLayout={onTrackLayout}>
+      {trackWidth > 0 ? (
         <Animated.View
-          style={[styles.tabUnderlineBar, underlineStyle, { backgroundColor: chrom.tabUnderline }]}
-        />
-      </View>
+          pointerEvents="none"
+          style={[
+            styles.segmentIndicator,
+            { borderColor: isDark ? `${chrom.tabUnderline}66` : `${profileLight.mint}44` },
+            indicatorStyle,
+          ]}>
+          <LinearGradient
+            colors={indicatorColors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </Animated.View>
+      ) : null}
+
+      {TABS.map((t) => {
+        const active = activeTab === t.key;
+        return (
+          <SegmentTabPill
+            key={t.key}
+            label={t.label}
+            icon={t.icon}
+            active={active}
+            chrom={chrom}
+            reducedMotion={reducedMotion}
+            onPress={() => onSelect(t.key)}
+          />
+        );
+      })}
     </View>
   );
 }
 
-function StatChipFixed({
-  value,
+function SegmentTabPill({
   label,
+  icon,
+  active,
+  chrom,
+  reducedMotion,
+  onPress,
+}: {
+  label: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  active: boolean;
+  chrom: ReturnType<typeof resolveYouChromatics>;
+  reducedMotion: boolean;
+  onPress: () => void;
+}) {
+  const press = useSharedValue(1);
+
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }],
+  }));
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityState={{ selected: active }}
+      onPress={onPress}
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(MOTION.press.scale, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+      }}
+      style={styles.segmentHit}>
+      <Animated.View style={[styles.segmentPill, shellStyle]}>
+        <Ionicons name={icon} size={13} color={active ? chrom.tabActive : chrom.tabInactive} />
+        <Text
+          numberOfLines={1}
+          style={[
+            styles.segmentLabel,
+            {
+              color: active ? chrom.tabActive : chrom.tabInactive,
+              fontWeight: active ? '700' : '500',
+            },
+          ]}>
+          {label}
+        </Text>
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+function InlineMetricsRow({
+  stats,
   surface,
   isDark,
+  onPressStat,
+}: {
+  stats: readonly { value: number; label: string; key: SocialStatKey }[];
+  surface: ReturnType<typeof themeSurface>;
+  isDark: boolean;
+  onPressStat: (key: SocialStatKey) => void;
+}) {
+  const chrom = resolveYouChromatics(isDark, surface);
+  const reducedMotion = usePrefersReducedMotion();
+
+  return (
+    <View style={styles.metricsRow}>
+      {stats.map((s, index) => (
+        <React.Fragment key={s.label}>
+          {index > 0 ? <View style={[styles.metricsDivider, { backgroundColor: surface.hairline }]} /> : null}
+          <MetricHit
+            value={s.value}
+            label={s.label}
+            chrom={chrom}
+            reducedMotion={reducedMotion}
+            onPress={() => onPressStat(s.key)}
+          />
+        </React.Fragment>
+      ))}
+    </View>
+  );
+}
+
+function MetricHit({
+  value,
+  label,
+  chrom,
+  reducedMotion,
+  onPress,
 }: {
   value: number;
   label: string;
-  surface: ReturnType<typeof themeSurface>;
-  isDark: boolean;
+  chrom: ReturnType<typeof resolveYouChromatics>;
+  reducedMotion: boolean;
+  onPress: () => void;
 }) {
-  const chrom = resolveYouChromatics(isDark, surface);
+  const press = useSharedValue(1);
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }],
+    opacity: interpolate(press.value, [MOTION.press.scale, 1], [0.92, 1]),
+  }));
+
   return (
-    <View
-      style={[
-        styles.statChip,
-        {
-          backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.85)',
-          borderColor: surface.hairline,
-        },
-      ]}>
-      <Text style={[styles.statValue, { color: chrom.textPrimary }]}>{value.toLocaleString()}</Text>
-      <Text style={[styles.statLabel, { color: chrom.textMuted }]} numberOfLines={2}>
-        {label}
-      </Text>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${value.toLocaleString()} ${label}`}
+      onPress={onPress}
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(MOTION.press.scale, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+      }}
+      style={styles.metricHit}>
+      <Animated.View style={shellStyle}>
+        <Text style={[styles.metricValue, { color: chrom.textPrimary }]}>{value.toLocaleString()}</Text>
+        <Text style={[styles.metricLabel, { color: chrom.textMuted }]} numberOfLines={1}>
+          {label}
+        </Text>
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+/** Commercial wallet hero — points + membership are primary monetization surfaces. */
+function WalletHeroBand({
+  pointsBalance,
+  isPremium,
+  chrom,
+  isDark,
+  onAddPoints,
+  onOpenDetails,
+  onUpgradePremium,
+}: {
+  pointsBalance: number;
+  isPremium: boolean;
+  chrom: ReturnType<typeof resolveYouChromatics>;
+  isDark: boolean;
+  onAddPoints: () => void;
+  onOpenDetails: () => void;
+  onUpgradePremium: () => void;
+}) {
+  const reducedMotion = usePrefersReducedMotion();
+  const detailPress = useSharedValue(1);
+  const addPress = useSharedValue(1);
+
+  const detailStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: detailPress.value }],
+    opacity: interpolate(detailPress.value, [MOTION.press.scale, 1], [0.94, 1]),
+  }));
+
+  const addStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: addPress.value }],
+  }));
+
+  const openDetails = () => {
+    if (Platform.OS !== 'web') {
+      void Haptics.selectionAsync().catch(() => undefined);
+    }
+    onOpenDetails();
+  };
+
+  const handleAdd = () => {
+    if (Platform.OS !== 'web') {
+      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
+    }
+    onAddPoints();
+  };
+
+  const bandBg = isDark ? 'rgba(61,255,184,0.09)' : `${profileLight.mint}16`;
+  const bandBorder = isDark ? `${chrom.mint}28` : `${profileLight.mint}40`;
+
+  return (
+    <View style={[styles.walletHeroBand, { backgroundColor: bandBg, borderColor: bandBorder }]}>
+      <View style={styles.walletHeroRow}>
+        <View style={styles.walletHeroCopy}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`${pointsBalance.toLocaleString()} points. Tap for wallet details.`}
+            onPress={openDetails}
+            onPressIn={() => {
+              if (reducedMotion) return;
+              detailPress.value = withSpring(MOTION.press.scale, MOTION.tab);
+            }}
+            onPressOut={() => {
+              if (reducedMotion) return;
+              detailPress.value = withSpring(1, MOTION.tab);
+            }}>
+            <Animated.View style={[styles.walletHeroBalanceRow, detailStyle]}>
+              <Text
+                style={[styles.walletHeroNum, { color: chrom.mint }]}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}>
+                {pointsBalance.toLocaleString()}
+              </Text>
+              <Text style={[styles.walletHeroPts, { color: chrom.textMuted }]}>points</Text>
+            </Animated.View>
+          </Pressable>
+
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={isPremium ? 'Premium member benefits' : 'Upgrade to Premium'}
+            onPress={isPremium ? openDetails : onUpgradePremium}
+            hitSlop={4}>
+            <Text
+              style={[
+                styles.walletMembershipLine,
+                { color: isPremium ? chrom.textMuted : chrom.mint },
+              ]}
+              numberOfLines={1}>
+              {isPremium ? 'Premium · unlimited Expert Council' : 'Go Premium · unlimited Council'}
+            </Text>
+          </Pressable>
+        </View>
+
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Add points"
+          onPress={handleAdd}
+          onPressIn={() => {
+            if (reducedMotion) return;
+            addPress.value = withSpring(0.94, MOTION.tab);
+          }}
+          onPressOut={() => {
+            if (reducedMotion) return;
+            addPress.value = withSpring(1, MOTION.tab);
+          }}
+          hitSlop={6}>
+          <Animated.View style={addStyle}>
+            <LinearGradient
+              colors={isDark ? [palette.neonMint, palette.neonSky] : [profileLight.mint, profileLight.sky]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.walletAddPill}>
+              <Ionicons name="add" size={14} color={palette.white} />
+              <Text style={styles.walletAddLabel}>Add</Text>
+            </LinearGradient>
+          </Animated.View>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -282,80 +610,271 @@ function ProfileDecisionCard({
   surface,
   isDark,
   onOpen,
-  compact,
+  listMode,
 }: {
   item: DecisionPreview;
   surface: ReturnType<typeof themeSurface>;
   isDark: boolean;
   onOpen: (id: string) => void;
-  compact?: boolean;
+  listMode?: boolean;
 }) {
   const chrom = resolveYouChromatics(isDark, surface);
   const accentColor = isDark ? ACCENT[item.accent][0] : CARD_ACCENT_LIGHT[item.accent];
   const open = item.status === 'open';
+  const reducedMotion = usePrefersReducedMotion();
+  const press = useSharedValue(1);
+  const lift = useSharedValue(0);
+  const shadowLift = useSharedValue(0);
+
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }, { translateY: lift.value }],
+    ...(Platform.OS === 'ios'
+      ? {
+          shadowColor: '#0f172a',
+          shadowOpacity: interpolate(shadowLift.value, [0, 1], [0.08, 0.18]),
+          shadowRadius: interpolate(shadowLift.value, [0, 1], [10, 18]),
+          shadowOffset: {
+            width: 0,
+            height: interpolate(shadowLift.value, [0, 1], [4, 9]),
+          },
+        }
+      : {
+          elevation: interpolate(shadowLift.value, [0, 1], [2, 5]),
+        }),
+  }));
 
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={item.question}
       onPress={() => onOpen(item.id)}
-      style={({ pressed }) => [pressed && { opacity: 0.92 }]}>
-      <Card
-        accentColor={accentColor}
-        style={{
-          borderColor: surface.sheetBorder,
-          backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : palette.sheet,
-        }}>
-        <View style={[styles.gridCardBody, compact && styles.gridCardBodyCompact]}>
-          <View style={styles.gridCardTop}>
-            {open ? (
-              <LivePulsePill surface={surface} isDark={isDark} />
-            ) : (
-              <View
-                style={[
-                  styles.statusPill,
-                  {
-                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${profileLight.sky}10`,
-                    borderWidth: StyleSheet.hairlineWidth,
-                    borderColor: surface.hairline,
-                  },
-                ]}>
-                <Text style={[styles.statusPillText, { color: chrom.textMuted }]}>done</Text>
-              </View>
-            )}
-            <FontAwesome name="chevron-right" size={11} color={chrom.textMuted} />
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(0.98, MOTION.tab);
+        lift.value = withSpring(-2, MOTION.tab);
+        shadowLift.value = withSpring(1, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+        lift.value = withSpring(0, MOTION.tab);
+        shadowLift.value = withSpring(0, MOTION.tab);
+      }}>
+      <Animated.View style={shellStyle}>
+        <Card
+          accentColor={accentColor}
+          style={{
+            borderColor: surface.sheetBorder,
+            backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : palette.sheet,
+            height: listMode ? undefined : GRID_CARD_HEIGHT,
+            minHeight: listMode ? 96 : GRID_CARD_HEIGHT,
+          }}>
+          <View style={styles.gridCardBody}>
+            <View style={styles.gridCardTop}>
+              {open ? (
+                <LivePulsePill surface={surface} isDark={isDark} />
+              ) : (
+                <View
+                  style={[
+                    styles.statusPill,
+                    {
+                      backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : `${profileLight.sky}10`,
+                      borderWidth: StyleSheet.hairlineWidth,
+                      borderColor: surface.hairline,
+                    },
+                  ]}>
+                  <Text style={[styles.statusPillText, { color: chrom.textMuted }]}>done</Text>
+                </View>
+              )}
+            </View>
+            <Text style={[styles.gridTitle, { color: chrom.textPrimary }]} numberOfLines={listMode ? 2 : 3}>
+              {item.question}
+            </Text>
+            <Text style={[styles.gridHint, { color: chrom.textMuted }]} numberOfLines={1}>
+              {item.hint}
+            </Text>
           </View>
-          <Text
-            style={[styles.gridTitle, { color: chrom.textPrimary }, compact && styles.gridTitleCompact]}
-            numberOfLines={compact ? 3 : 4}>
-            {item.question}
-          </Text>
-          <Text style={[styles.gridHint, { color: chrom.textMuted }]} numberOfLines={2}>
-            {item.hint}
-          </Text>
-        </View>
-      </Card>
+        </Card>
+      </Animated.View>
     </Pressable>
   );
 }
 
-function EmptyCards({
+function StaggeredGridCard({
+  item,
+  index,
+  tabKey,
   surface,
-  message,
   isDark,
+  onOpen,
+  listMode,
+  slideX,
 }: {
+  item: DecisionPreview;
+  index: number;
+  tabKey: TabKey;
   surface: ReturnType<typeof themeSurface>;
-  message: string;
   isDark: boolean;
+  onOpen: (id: string) => void;
+  listMode?: boolean;
+  slideX: SharedValue<number>;
 }) {
-  const chrom = resolveYouChromatics(isDark, surface);
+  const reducedMotion = usePrefersReducedMotion();
+  const enter = useSharedValue(reducedMotion ? 1 : 0);
+
+  React.useEffect(() => {
+    if (reducedMotion) {
+      enter.value = 1;
+      return;
+    }
+    enter.value = 0;
+    enter.value = withDelay(index * STAGGER_MS, withSpring(1, MOTION.tab));
+  }, [enter, index, reducedMotion, tabKey]);
+
+  const enterStyle = useAnimatedStyle(() => ({
+    opacity: enter.value,
+    transform: [{ translateY: (1 - enter.value) * 14 }, { translateX: slideX.value }],
+  }));
+
   return (
-    <View style={[styles.emptyCard, { borderColor: surface.hairline, backgroundColor: surface.statTileBg }]}>
-      <Text style={{ fontSize: 28, marginBottom: 8 }}>✦</Text>
-      <Text style={[typography.compact, { color: chrom.textMuted, textAlign: 'center', lineHeight: 20 }]}>
-        {message}
-      </Text>
-    </View>
+    <Animated.View style={enterStyle}>
+      <ProfileDecisionCard item={item} surface={surface} isDark={isDark} onOpen={onOpen} listMode={listMode} />
+    </Animated.View>
+  );
+}
+
+function SettingsGearButton({
+  onPress,
+  surface,
+  isDark,
+  iconColor,
+  compact,
+}: {
+  onPress: () => void;
+  surface: ReturnType<typeof themeSurface>;
+  isDark: boolean;
+  iconColor: string;
+  compact?: boolean;
+}) {
+  const reducedMotion = usePrefersReducedMotion();
+  const press = useSharedValue(1);
+
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }],
+  }));
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel="Settings"
+      hitSlop={12}
+      onPress={onPress}
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(0.92, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+      }}>
+      <Animated.View
+        style={[
+          compact ? styles.gearCompact : styles.gear,
+          shellStyle,
+          {
+            borderColor: surface.hairline,
+            backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.55)',
+          },
+        ]}>
+        <Ionicons name="settings-outline" size={compact ? 16 : 18} color={iconColor} />
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+function PremiumBadge({
+  isPremium,
+  isDark,
+  onPress,
+  compact,
+}: {
+  isPremium: boolean;
+  isDark: boolean;
+  onPress: () => void;
+  compact?: boolean;
+}) {
+  const reducedMotion = usePrefersReducedMotion();
+  const pop = useSharedValue(1);
+
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pop.value }],
+  }));
+
+  const handlePress = () => {
+    if (!reducedMotion) {
+      pop.value = withSequence(
+        withSpring(0.94, MOTION.tab),
+        withSpring(1, { damping: 14, stiffness: 380, mass: 0.34 }),
+      );
+    }
+    onPress();
+  };
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={isPremium ? 'Premium member' : 'Upgrade to Premium'}
+      onPress={handlePress}
+      hitSlop={8}>
+      <Animated.View style={shellStyle}>
+        <LinearGradient
+          colors={
+            isPremium
+              ? isDark
+                ? [`${palette.neonMint}ee`, `${palette.neonSky}cc`]
+                : [`${profileLight.mint}e8`, `${profileLight.sky}c8`]
+              : isDark
+                ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
+                : [`${profileLight.sky}d0`, `${profileLight.mint}b8`]
+          }
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0.5 }}
+          style={[styles.proBubble, compact && styles.proBubbleCompact]}>
+          <Text style={[styles.proText, compact && styles.proTextCompact]}>
+            {isPremium ? 'premium' : 'pro'}
+          </Text>
+        </LinearGradient>
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+function ThemeFadeOverlay() {
+  const scheme = useColorScheme();
+  const reducedMotion = usePrefersReducedMotion();
+  const fade = useSharedValue(0);
+  const prevScheme = React.useRef(scheme);
+
+  React.useEffect(() => {
+    if (prevScheme.current === scheme) return;
+    if (!reducedMotion) {
+      fade.value = 0.38;
+      fade.value = withTiming(0, { duration: THEME_FADE_MS, easing: Easing.out(Easing.cubic) });
+    }
+    prevScheme.current = scheme;
+  }, [fade, reducedMotion, scheme]);
+
+  const overlayStyle = useAnimatedStyle(() => ({
+    opacity: fade.value,
+  }));
+
+  const wash = scheme === 'dark' ? '#000000' : '#ffffff';
+
+  return (
+    <Animated.View
+      pointerEvents="none"
+      style={[styles.themeFade, { backgroundColor: wash }, overlayStyle]}
+    />
   );
 }
 
@@ -367,10 +886,17 @@ export default function YouScreen() {
   const { width: windowWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = React.useState<TabKey>('yours');
+  const [sheet, setSheet] = React.useState<ProfileSheet>(null);
+  const activeIndex = React.useMemo(
+    () => Math.max(0, TABS.findIndex((t) => t.key === activeTab)),
+    [activeTab],
+  );
+  const prevTabIndex = React.useRef(activeIndex);
+  const isListMode = activeTab === 'saved';
 
   /** Content width inside Screen side padding — single source of truth for columns + grid math. */
   const contentWidth = Math.max(0, windowWidth - screenContentGutter * 2);
-  const columnWidth = (contentWidth - GRID_GAP) / 2;
+  const columnWidth = isListMode ? contentWidth : (contentWidth - GRID_GAP) / 2;
 
   const openDecision = React.useCallback((id: string) => {
     if (Platform.OS !== 'web') {
@@ -388,20 +914,78 @@ export default function YouScreen() {
 
   const selectTab = (key: TabKey) => {
     if (key !== activeTab && Platform.OS !== 'web') {
-      void Haptics.selectionAsync().catch(() => undefined);
+      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
     }
     setActiveTab(key);
   };
 
-  const socialStats = [
-    { value: DEMO_STATS.followers, label: 'followers' },
-    { value: DEMO_STATS.following, label: 'following' },
-    { value: DEMO_STATS.likesReceived, label: 'likes received' },
-  ] as const;
+  const reducedMotion = usePrefersReducedMotion();
+  const gridOpacity = useSharedValue(1);
+  const gridY = useSharedValue(0);
+  const gridX = useSharedValue(0);
 
   const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost, grantDevPoints } =
     useViewerEntitlements();
   const pointsFromOthers = DEMO_STATS.pointsFromOthers;
+
+  React.useEffect(() => {
+    if (reducedMotion) {
+      gridOpacity.value = 1;
+      gridY.value = 0;
+      gridX.value = 0;
+      prevTabIndex.current = activeIndex;
+      return;
+    }
+    const dir = activeIndex > prevTabIndex.current ? 1 : activeIndex < prevTabIndex.current ? -1 : 0;
+    gridOpacity.value = 0.65;
+    gridY.value = 8;
+    gridX.value = dir * 22;
+    gridOpacity.value = withSpring(1, MOTION.tab);
+    gridY.value = withSpring(0, MOTION.tab);
+    gridX.value = withSpring(0, MOTION.tab);
+    prevTabIndex.current = activeIndex;
+  }, [activeIndex, gridOpacity, gridX, gridY, reducedMotion]);
+
+  const gridAnimStyle = useAnimatedStyle(() => ({
+    opacity: gridOpacity.value,
+    transform: [{ translateY: gridY.value }, { translateX: gridX.value }],
+  }));
+
+  const closeSheet = React.useCallback(() => setSheet(null), []);
+
+  const openWalletSheet = React.useCallback(() => {
+    if (Platform.OS !== 'web') {
+      void Haptics.selectionAsync().catch(() => undefined);
+    }
+    setSheet('wallet');
+  }, []);
+
+  const openStatSheet = React.useCallback((key: SocialStatKey) => {
+    if (Platform.OS !== 'web') {
+      void Haptics.selectionAsync().catch(() => undefined);
+    }
+    setSheet(key);
+  }, []);
+
+  const socialStats = [
+    { value: DEMO_STATS.followers, label: 'followers', key: 'followers' as const },
+    { value: DEMO_STATS.following, label: 'following', key: 'following' as const },
+    { value: DEMO_STATS.likesReceived, label: 'likes received', key: 'likes' as const },
+  ] as const;
+
+  const sheetBg = isDark ? palette.nightWash : surface.sheet;
+  const sheetGrab = isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22);
+  const bottomPad = Math.max(insets.bottom, spacing.sm);
+
+  const walletActivity = React.useMemo(
+    () => [
+      { id: 'w1', label: 'Thread validated', amount: 120, when: '2 days ago' },
+      { id: 'w2', label: 'Expert Council session', amount: -councilSessionCost, when: '4 days ago' },
+      { id: 'w3', label: 'Boost from @alexc', amount: 80, when: '1 week ago' },
+      { id: 'w4', label: 'Friend invite bonus', amount: 200, when: '2 weeks ago' },
+    ],
+    [councilSessionCost],
+  );
 
   const handleUpgradePremium = React.useCallback(() => {
     if (Platform.OS !== 'web') {
@@ -445,224 +1029,211 @@ export default function YouScreen() {
   }, [grantDevPoints]);
   const emptyCopy =
     activeTab === 'yours'
-      ? 'Nothing dropped yet — start a decision from the Decide tab.'
+      ? { title: 'No decisions yet', body: 'Start one from the Decide tab.' }
       : activeTab === 'orbit'
-        ? 'Follow threads from Explore to see them here.'
-        : 'Star a decision to stash it for later.';
+        ? { title: 'Not following anyone', body: 'Follow threads from Explore to see them here.' }
+        : { title: 'No saves yet', body: 'Star a decision to stash it for later.' };
+
+  const emptyAction =
+    activeTab === 'yours'
+      ? { label: 'Start a decision', route: '/(tabs)/decide' as const }
+      : activeTab === 'orbit'
+        ? { label: 'Explore threads', route: '/(tabs)/explore' as const }
+        : null;
 
   const renderItem: ListRenderItem<DecisionPreview> = React.useCallback(
-    ({ item }) => (
-      <View style={[styles.gridCell, { width: columnWidth }]}>
-        <ProfileDecisionCard item={item} surface={surface} isDark={isDark} onOpen={openDecision} compact />
+    ({ item, index }) => (
+      <View style={[styles.gridCell, { width: columnWidth }, isListMode && styles.gridCellList]}>
+        <StaggeredGridCard
+          item={item}
+          index={index}
+          tabKey={activeTab}
+          surface={surface}
+          isDark={isDark}
+          onOpen={openDecision}
+          listMode={isListMode}
+          slideX={gridX}
+        />
       </View>
     ),
-    [columnWidth, surface, isDark, openDecision],
+    [activeTab, columnWidth, gridX, isDark, isListMode, openDecision, surface],
   );
 
-  const listHeader = (
+  const profileHeader = (
     <>
-      <View style={[styles.heroPanel, { borderColor: surface.hairline }]}>
+      <View
+        style={[
+          styles.profileHeaderPanel,
+          !isDark && elevation.rest,
+          { borderColor: surface.groupedBorder, backgroundColor: surface.groupedSurface },
+        ]}>
         <LinearGradient
           colors={isDark ? [...PROFILE_HERO_GRADIENT_DARK] : [...PROFILE_HERO_GRADIENT_LIGHT]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={StyleSheet.absoluteFillObject}
+          style={styles.profileHeaderGradient}
         />
-        <View style={styles.heroInner}>
-          <View style={styles.topRow}>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Settings"
-              hitSlop={12}
-              onPress={openSettings}
-              style={({ pressed }) => [
-                styles.gear,
-                {
-                  borderColor: surface.hairline,
-                  backgroundColor: isDark ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.75)',
-                },
-                pressed && { opacity: 0.9 },
-              ]}>
-              <FontAwesome name="cog" size={15} color={chrom.gearIcon} />
-            </Pressable>
-          </View>
-
+        <View style={styles.profileHeaderInner}>
           <View style={styles.identity}>
-            <LinearGradient
-              colors={[`${palette.neonMint}`, `${palette.neonSky}`, `${palette.neonPink}`]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.avatarRing}>
-              <View style={[styles.avatarCutout, { backgroundColor: surface.canvas }]}>
-                <Image source={AVATAR} style={styles.avatarImg} resizeMode="cover" accessibilityIgnoresInvertColors />
-              </View>
-            </LinearGradient>
+            <ProfileAvatar surface={surface} reducedMotion={reducedMotion} />
 
             <View style={styles.nameBlock}>
-              <View style={styles.nameRow}>
-                <Text style={[styles.displayName, { color: chrom.display }]}>Jordan Avery</Text>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={isPremium ? 'Premium member' : 'Upgrade to Premium'}
-                  onPress={handleUpgradePremium}
-                  hitSlop={8}>
-                  <LinearGradient
-                    colors={
-                      isPremium
-                        ? isDark
-                          ? [`${palette.neonMint}ee`, `${palette.neonSky}cc`]
-                          : [`${profileLight.mint}e8`, `${profileLight.sky}c8`]
-                        : isDark
-                          ? [`${palette.neonSky}cc`, `${palette.neonMint}aa`]
-                          : [`${profileLight.sky}d0`, `${profileLight.mint}b8`]
-                    }
-                    start={{ x: 0, y: 0.5 }}
-                    end={{ x: 1, y: 0.5 }}
-                    style={styles.proBubble}>
-                    <Text style={styles.proText}>{isPremium ? 'premium' : 'pro'}</Text>
-                  </LinearGradient>
-                </Pressable>
+              <View style={styles.nameHeaderRow}>
+                <Text style={[styles.displayName, { color: chrom.display }]} numberOfLines={1}>
+                  Jordan Avery
+                </Text>
+                <SettingsGearButton
+                  onPress={openSettings}
+                  surface={surface}
+                  isDark={isDark}
+                  iconColor={chrom.gearIcon}
+                  compact
+                />
               </View>
-              <Text style={[styles.handle, { color: chrom.textMuted }]}>@jordan</Text>
-              <Text style={[styles.tagline, { color: chrom.textMuted }]}>
-                your fit check for big choices ✦ low pressure, high signal
-              </Text>
+              <View style={styles.handleRow}>
+                <Text style={[styles.handle, { color: chrom.textMuted }]}>@jordan</Text>
+                <Text style={[styles.handleDot, { color: chrom.textMuted }]}>·</Text>
+                <PremiumBadge isPremium={isPremium} isDark={isDark} onPress={handleUpgradePremium} compact />
+              </View>
             </View>
           </View>
 
-          <View style={styles.statGridInHero}>
-            <View style={styles.statRow}>
-              {socialStats.map((s) => (
-                <View key={s.label} style={styles.statCell}>
-                  <StatChipFixed value={s.value} label={s.label} surface={surface} isDark={isDark} />
-                </View>
-              ))}
-            </View>
-          </View>
-        </View>
-      </View>
+          <InlineMetricsRow stats={socialStats} surface={surface} isDark={isDark} onPressStat={openStatSheet} />
 
-      <View style={styles.pointsCashOuter}>
-        <View
-          style={[
-            styles.walletCard,
-            {
-              borderColor: surface.hairline,
-              backgroundColor: isDark ? 'rgba(255,255,255,0.055)' : palette.sheet,
-            },
-          ]}>
-          <LinearGradient
-            colors={isDark ? [palette.neonMint, palette.neonSky] : [profileLight.sky, profileLight.mint]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            style={styles.walletAccent}
+          <WalletHeroBand
+            pointsBalance={pointsBalance}
+            isPremium={isPremium}
+            chrom={chrom}
+            isDark={isDark}
+            onAddPoints={handleAddPoints}
+            onOpenDetails={openWalletSheet}
+            onUpgradePremium={handleUpgradePremium}
           />
-          <View
-            style={styles.walletBody}
-            accessibilityLabel={`Rewards. Balance ${pointsBalance.toLocaleString()} points. ${pointsFromOthers.toLocaleString()} points collected from others. Add points.`}>
-            <View style={styles.walletHeader}>
-              <Text style={[styles.walletTitle, { color: chrom.textPrimary }]}>rewards</Text>
-              <View
-                style={[
-                  styles.walletRateCapsule,
-                  { backgroundColor: chrom.walletRateBg, borderColor: chrom.walletRateBorder },
-                ]}>
-                <Text style={[styles.walletRateCapsuleTxt, { color: chrom.walletRate }]}>
-                  {pointsFromOthers.toLocaleString()} from others
-                </Text>
-              </View>
-            </View>
-
-            <View style={styles.walletMainRow}>
-              <View style={styles.walletValueCol}>
-                <View style={styles.walletBalanceRow}>
-                  <Text style={[styles.walletBalanceNum, { color: chrom.walletUsd }]}>
-                    {pointsBalance.toLocaleString()}
-                  </Text>
-                  <Text style={[styles.walletBalancePtsSuffix, { color: chrom.textMuted }]}>pts</Text>
-                </View>
-                <Text style={[styles.walletFromOthersLine, { color: chrom.textMuted }]}>
-                  collected from votes, validations & boosts driven by others
-                </Text>
-              </View>
-              <Button
-                variant="gradient"
-                label="add points"
-                accessibilityLabel="Add points"
-                accessibilityHint="Open ways to earn more points when available"
-                onPress={handleAddPoints}
-                leftIcon={<FontAwesome name="plus-circle" size={12} color={palette.white} />}
-                style={styles.walletCta}
-              />
-            </View>
-
-            <Text style={[styles.walletDisclaimer, { color: chrom.walletDisc }]}>
-              {isPremium
-                ? 'Premium · unlimited Expert Council'
-                : `Council costs ${councilSessionCost} pts/session · demo split · API soon`}
-            </Text>
-          </View>
         </View>
       </View>
-
-      {!isPremium ? (
-        <Card
-          style={[
-            styles.premiumUpsell,
-            {
-              marginHorizontal: screenContentGutter,
-              borderColor: surface.hairline,
-              backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : palette.sheet,
-            },
-          ]}>
-          <View style={styles.premiumUpsellRow}>
-            <FontAwesome name="star" size={14} color={isDark ? palette.neonMint : profileLight.mint} />
-            <View style={{ flex: 1 }}>
-              <Text style={[styles.premiumUpsellTitle, { color: surface.textPrimary }]}>Expert Council · Premium</Text>
-              <Text style={[styles.premiumUpsellSub, { color: surface.textMuted }]}>
-                Unlimited multi-expert sessions — or pay {councilSessionCost} points each time.
-              </Text>
-            </View>
-            <Button
-              variant="gradient"
-              label="Upgrade"
-              accessibilityLabel="Upgrade to Premium for unlimited Expert Council"
-              onPress={handleUpgradePremium}
-              style={styles.premiumCta}
-            />
-          </View>
-        </Card>
-      ) : null}
 
       <View style={styles.profileTabsWrap}>
-        <ProfileTabStrip activeTab={activeTab} onSelect={selectTab} isDark={isDark} surface={surface} />
+        <ProfileSegmentedTabs activeTab={activeTab} onSelect={selectTab} isDark={isDark} surface={surface} />
       </View>
     </>
   );
 
   return (
     <Screen variant="plain" padded scroll={false}>
-      <FlatList
-        data={tabData}
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        ListHeaderComponent={listHeader}
-        ListEmptyComponent={<EmptyCards surface={surface} message={emptyCopy} isDark={isDark} />}
-        columnWrapperStyle={styles.cardColumnWrapper}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-        style={styles.mainList}
-        contentContainerStyle={[
-          styles.listContent,
-          { paddingBottom: Math.max(insets.bottom + 24, 32) },
-        ]}
+      <View style={styles.screenRoot}>
+        <FlatList
+          key={activeTab}
+          data={tabData}
+          numColumns={isListMode ? 1 : 2}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          ListHeaderComponent={profileHeader}
+          ListEmptyComponent={
+            <Animated.View style={gridAnimStyle}>
+              <View style={styles.emptyWrap}>
+                <EmptyState
+                  title={emptyCopy.title}
+                  body={emptyCopy.body}
+                  actionLabel={emptyAction?.label}
+                  onAction={emptyAction ? () => router.push(emptyAction.route) : undefined}
+                />
+              </View>
+            </Animated.View>
+          }
+          columnWrapperStyle={isListMode ? undefined : styles.cardColumnWrapper}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          style={styles.mainList}
+          contentContainerStyle={[
+            styles.listContent,
+            tabData.length === 0 && styles.listContentEmpty,
+            { paddingBottom: Math.max(insets.bottom + 88, 96) },
+          ]}
+        />
+        <ThemeFadeOverlay />
+      </View>
+
+      <WalletHistorySheet
+        visible={sheet === 'wallet'}
+        onClose={closeSheet}
+        backgroundColor={sheetBg}
+        borderTopColor={surface.sheetBorder}
+        bottomInset={bottomPad}
+        grabColor={sheetGrab}
+        primaryTxt={chrom.textPrimary}
+        muted={chrom.textMuted}
+        accentColor={chrom.mint}
+        hairline={surface.hairline}
+        pointsBalance={pointsBalance}
+        pointsFromOthers={pointsFromOthers}
+        isPremium={isPremium}
+        councilSessionCost={councilSessionCost}
+        activity={walletActivity}
+      />
+
+      <ProfileStatSheet
+        visible={sheet === 'followers'}
+        kind="followers"
+        onClose={closeSheet}
+        backgroundColor={sheetBg}
+        borderTopColor={surface.sheetBorder}
+        bottomInset={bottomPad}
+        grabColor={sheetGrab}
+        primaryTxt={chrom.textPrimary}
+        muted={chrom.textMuted}
+        accentColor={chrom.mint}
+        hairline={surface.hairline}
+        total={DEMO_STATS.followers}
+        people={DEMO_FOLLOWERS}
+        likesBreakdown={DEMO_LIKES_BREAKDOWN}
+      />
+
+      <ProfileStatSheet
+        visible={sheet === 'following'}
+        kind="following"
+        onClose={closeSheet}
+        backgroundColor={sheetBg}
+        borderTopColor={surface.sheetBorder}
+        bottomInset={bottomPad}
+        grabColor={sheetGrab}
+        primaryTxt={chrom.textPrimary}
+        muted={chrom.textMuted}
+        accentColor={chrom.mint}
+        hairline={surface.hairline}
+        total={DEMO_STATS.following}
+        people={DEMO_FOLLOWING}
+        likesBreakdown={DEMO_LIKES_BREAKDOWN}
+      />
+
+      <ProfileStatSheet
+        visible={sheet === 'likes'}
+        kind="likes"
+        onClose={closeSheet}
+        backgroundColor={sheetBg}
+        borderTopColor={surface.sheetBorder}
+        bottomInset={bottomPad}
+        grabColor={sheetGrab}
+        primaryTxt={chrom.textPrimary}
+        muted={chrom.textMuted}
+        accentColor={chrom.mint}
+        hairline={surface.hairline}
+        total={DEMO_STATS.likesReceived}
+        people={[]}
+        likesBreakdown={DEMO_LIKES_BREAKDOWN}
       />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  screenRoot: {
+    flex: 1,
+    width: '100%',
+  },
+  themeFade: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 20,
+  },
   mainList: {
     flex: 1,
     width: '100%',
@@ -673,24 +1244,28 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'stretch',
   },
-  heroPanel: {
-    position: 'relative',
+  listContentEmpty: {
+    minHeight: 200,
+  },
+  emptyWrap: {
     width: '100%',
-    borderRadius: 24,
+    paddingVertical: spacing.md,
+  },
+  profileHeaderPanel: {
+    width: '100%',
+    borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    overflow: 'hidden',
-    marginBottom: spacing.md,
-  },
-  heroInner: {
-    paddingHorizontal: spacing.md,
-    paddingTop: spacing.sm,
-    paddingBottom: spacing.lg,
-  },
-  topRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
     marginBottom: spacing.sm,
+    overflow: 'hidden',
+  },
+  profileHeaderGradient: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  profileHeaderInner: {
+    paddingHorizontal: 14,
+    paddingTop: 14,
+    paddingBottom: 4,
+    gap: spacing.sm,
   },
   gear: {
     width: 38,
@@ -700,49 +1275,73 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  gearCompact: {
+    width: 32,
+    height: 32,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   identity: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.md,
+    gap: 14,
   },
   avatarRing: {
-    padding: 2,
+    padding: 3,
     borderRadius: 999,
   },
   avatarCutout: {
-    width: 92,
-    height: 92,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     borderRadius: 999,
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatarImg: {
-    width: 92,
-    height: 92,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
   },
   nameBlock: {
     flex: 1,
     justifyContent: 'center',
     minWidth: 0,
   },
-  nameRow: {
+  nameHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  handleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 2,
     flexWrap: 'wrap',
   },
+  handleDot: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
   displayName: {
-    fontSize: 24,
-    lineHeight: 28,
+    fontSize: 22,
+    lineHeight: 26,
     fontWeight: '800',
-    letterSpacing: -0.8,
-    flexShrink: 1,
+    letterSpacing: -0.65,
+    flex: 1,
+    minWidth: 0,
   },
   proBubble: {
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderRadius: 999,
+  },
+  proBubbleCompact: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
   },
   proText: {
     fontSize: 11,
@@ -751,227 +1350,155 @@ const styles = StyleSheet.create({
     color: palette.heroInk,
     textTransform: 'uppercase',
   },
-  premiumUpsell: {
-    marginTop: spacing.sm,
-    marginBottom: spacing.sm,
+  proTextCompact: {
+    fontSize: 9,
+    letterSpacing: 0.45,
   },
-  premiumUpsellRow: {
+  handle: {
+    fontSize: 13,
+    fontWeight: '600',
+    letterSpacing: -0.15,
+  },
+  metricsRow: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 6,
+  },
+  metricsDivider: {
+    width: StyleSheet.hairlineWidth,
+    height: 32,
+    marginHorizontal: 4,
+  },
+  metricHit: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 4,
+    minWidth: 0,
+  },
+  metricValue: {
+    fontSize: 15,
+    fontWeight: '800',
+    letterSpacing: -0.4,
+    textAlign: 'center',
+    fontVariant: ['tabular-nums'],
+  },
+  metricLabel: {
+    fontSize: 9,
+    fontWeight: '700',
+    marginTop: 2,
+    textTransform: 'lowercase',
+    letterSpacing: 0.12,
+    textAlign: 'center',
+  },
+  walletHeroBand: {
+    width: '100%',
+    borderRadius: radius.sm,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  walletHeroRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    width: '100%',
   },
-  premiumCta: {
-    flexShrink: 0,
-    minWidth: 96,
+  walletHeroCopy: {
+    flex: 1,
+    minWidth: 0,
+    gap: 4,
   },
-  premiumUpsellTitle: {
-    fontSize: 14,
+  walletHeroBalanceRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 6,
+  },
+  walletHeroNum: {
+    fontSize: 28,
+    lineHeight: 32,
     fontWeight: '800',
-    lineHeight: 18,
+    letterSpacing: -1,
+    fontVariant: ['tabular-nums'],
+    flexShrink: 1,
   },
-  premiumUpsellSub: {
-    marginTop: 2,
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: '500',
-  },
-  handle: {
-    fontSize: 15,
+  walletHeroPts: {
+    fontSize: 14,
+    lineHeight: 20,
     fontWeight: '600',
-    marginTop: 2,
-    letterSpacing: -0.2,
+    flexShrink: 0,
+    paddingBottom: 2,
   },
-  tagline: {
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 8,
-    fontWeight: '500',
+  walletMembershipLine: {
+    fontSize: 11,
+    fontWeight: '600',
+    lineHeight: 14,
+    letterSpacing: -0.05,
+  },
+  walletAddPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    paddingHorizontal: 11,
+    paddingVertical: 8,
+    borderRadius: 999,
+    flexShrink: 0,
+  },
+  walletAddLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: palette.white,
     letterSpacing: -0.1,
   },
-  statGridInHero: {
-    width: '100%',
-    marginTop: spacing.md,
-  },
-  pointsCashOuter: {
-    width: '100%',
-    marginBottom: spacing.xs,
-  },
-  walletCard: {
+  segmentTrack: {
+    position: 'relative',
     flexDirection: 'row',
-    alignItems: 'stretch',
-    width: '100%',
-    borderRadius: 16,
+    gap: 6,
+    padding: 4,
+    borderRadius: radius.md,
+    minHeight: 40,
+  },
+  segmentIndicator: {
+    position: 'absolute',
+    top: 4,
+    bottom: 4,
+    left: 0,
+    borderRadius: radius.sm,
     borderWidth: StyleSheet.hairlineWidth,
     overflow: 'hidden',
     ...Platform.select({
       ios: {
-        shadowColor: '#000',
-        shadowOpacity: 0.045,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: profileLight.mint,
+        shadowOpacity: 0.14,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
       },
       android: { elevation: 1 },
       default: {},
     }),
   },
-  walletAccent: {
-    width: 3,
-    alignSelf: 'stretch',
-    minHeight: 1,
-  },
-  walletBody: {
+  segmentHit: {
     flex: 1,
-    minWidth: 0,
-    paddingLeft: 11,
-    paddingRight: 12,
-    paddingVertical: 11,
-    gap: 7,
+    zIndex: 1,
   },
-  walletHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-  },
-  walletTitle: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 1.05,
-    textTransform: 'lowercase',
-    opacity: 0.95,
-  },
-  walletRateCapsule: {
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 999,
-    borderWidth: StyleSheet.hairlineWidth,
-  },
-  walletRateCapsuleTxt: {
-    fontSize: 9,
-    fontWeight: '800',
-    letterSpacing: 0.12,
-    textTransform: 'lowercase',
-  },
-  walletMainRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 10,
-  },
-  walletValueCol: {
+  segmentPill: {
     flex: 1,
-    minWidth: 0,
-    gap: 4,
-    paddingBottom: 0,
-  },
-  walletBalanceRow: {
     flexDirection: 'row',
-    alignItems: 'baseline',
-    flexWrap: 'wrap',
-    gap: 6,
-  },
-  walletBalanceNum: {
-    fontSize: 24,
-    fontWeight: '900',
-    letterSpacing: -0.85,
-    fontVariant: ['tabular-nums'],
-  },
-  walletBalancePtsSuffix: {
-    fontSize: 13,
-    fontWeight: '700',
-    letterSpacing: -0.2,
-  },
-  walletFromOthersLine: {
-    fontSize: 11,
-    fontWeight: '600',
-    letterSpacing: -0.06,
-    lineHeight: 15,
-    maxWidth: 220,
-  },
-  walletCta: {
-    flexShrink: 0,
-    minWidth: 120,
-  },
-  walletDisclaimer: {
-    fontSize: 9,
-    fontWeight: '600',
-    letterSpacing: 0.06,
-    opacity: 0.5,
-    textTransform: 'lowercase',
-  },
-  statRow: {
-    width: '100%',
-    flexDirection: 'row',
-    gap: STAT_GAP,
-    alignItems: 'stretch',
-    justifyContent: 'space-between',
-  },
-  statCell: {
-    flex: 1,
-    minWidth: 0,
-  },
-  statChip: {
-    width: '100%',
-    paddingVertical: 10,
-    paddingHorizontal: 6,
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 62,
+    gap: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    minHeight: 34,
   },
-  statValue: {
-    fontSize: 16,
-    fontWeight: '800',
-    letterSpacing: -0.48,
+  segmentLabel: {
+    fontSize: 12,
     textAlign: 'center',
-  },
-  statLabel: {
-    fontSize: 9,
-    fontWeight: '700',
-    marginTop: 4,
-    textTransform: 'lowercase',
-    letterSpacing: 0.15,
-    textAlign: 'center',
-  },
-  tabBarWrap: {
-    width: '100%',
+    letterSpacing: -0.1,
   },
   profileTabsWrap: {
     width: '100%',
-    marginBottom: spacing.md,
-  },
-  tabBarRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-  },
-  tabBarHit: {
-    flex: 1,
-    minWidth: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 4,
-  },
-  tabBarLabel: {
-    fontSize: 12,
-    textAlign: 'center',
-  },
-  tabUnderlineTrack: {
-    position: 'relative',
-    width: '100%',
-    height: StyleSheet.hairlineWidth * 2,
-    borderRadius: StyleSheet.hairlineWidth,
-    overflow: 'hidden',
-  },
-  tabUnderlineBar: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    height: '100%',
-    borderRadius: 2,
+    marginBottom: spacing.xs,
   },
   livePill: {
     flexDirection: 'row',
@@ -1006,44 +1533,18 @@ const styles = StyleSheet.create({
   gridCell: {
     alignItems: 'stretch',
   },
-  gridCard: {
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    overflow: 'hidden',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOpacity: 0.07,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 4 },
-      },
-      android: { elevation: 2 },
-      default: {},
-    }),
-  },
-  gridCardRow: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    minHeight: 118,
-  },
-  gridCardAccent: {
-    width: 4,
+  gridCellList: {
+    marginBottom: GRID_GAP,
   },
   gridCardBody: {
     flex: 1,
     paddingHorizontal: 0,
     paddingVertical: 0,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     minWidth: 0,
-    minHeight: 110,
-  },
-  gridCardBodyCompact: {
-    paddingBottom: 10,
+    height: GRID_CARD_HEIGHT - 28,
   },
   gridCardTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     marginBottom: 8,
   },
   statusPill: {
@@ -1063,26 +1564,12 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     fontWeight: '700',
     letterSpacing: -0.25,
-  },
-  gridTitleCompact: {
-    fontSize: 12,
-    lineHeight: 16,
+    flex: 1,
   },
   gridHint: {
     fontSize: 10,
     marginTop: 8,
     fontWeight: '500',
     lineHeight: 14,
-  },
-  emptyCard: {
-    width: '100%',
-    borderRadius: 20,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderStyle: 'dashed',
-    padding: spacing.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 160,
-    marginBottom: spacing.md,
   },
 });
