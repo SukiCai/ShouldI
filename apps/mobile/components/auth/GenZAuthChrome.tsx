@@ -35,7 +35,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import Svg, { Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { palette, profileTypography, radius, typography } from '@/constants/theme';
+import { palette, profileTypography, radius, screenContentGutter, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import Button from '@/components/ui/Button';
 import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from '@/components/ui/OledSignUpBackdrop';
@@ -43,6 +43,8 @@ import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
+const CHROME_TOP_PAD = 8;
+const BACK_BTN_SIZE = 40;
 
 function useReducedMotion(): boolean {
   const [reduceMotion, setReduceMotion] = React.useState(false);
@@ -582,11 +584,16 @@ function AnimatedCircularAvatarOrb({
       style={[styles.charOrbSeat, { left: layoutLeft, top: layoutTop, width: diameter, height: diameter, zIndex: index + 3 }]}>
       {!reducedMotion ? (
         <Animated.View style={[animatedStyle, styles.charOrbStack, { width: diameter, height: diameter }]}>
-          <View style={styles.charPlate}>{faceOrb}</View>
+          {faceOrb}
         </Animated.View>
       ) : (
-        <View style={[styles.charOrbStack, { width: diameter, height: diameter }]}>
-          <View style={[styles.charPlate, swarmStaticTiltStyle(rotation)]}>{faceOrb}</View>
+        <View
+          style={[
+            styles.charOrbStack,
+            { width: diameter, height: diameter },
+            swarmStaticTiltStyle(rotation),
+          ]}>
+          {faceOrb}
         </View>
       )}
     </View>
@@ -824,7 +831,7 @@ export function GenZAuthChrome({
   const oledLightCanvas = oled && colorScheme === 'light';
   const oledDarkBillboard = oled && colorScheme !== 'light';
   const trioRasterHero = oled && (heroAvatars?.length ?? 0) >= 3;
-  /** ~55% sheet */
+  /** ~55% sheet — mist SVG; OLED card grows via flex to screen bottom */
   const sheetMinH = Math.max(392, Math.round(SCREEN_H * 0.52));
   const topR = radius.sheet;
   const notchHalf = Math.min(Math.floor(SCREEN_W * 0.26), Math.round(SCREEN_W / 2) - 28);
@@ -949,9 +956,10 @@ export function GenZAuthChrome({
           contentContainerStyle={[
             styles.scrollContent,
             {
-              paddingBottom: oled ? Math.max(24, Math.round(insets.bottom * 0.45)) : footerReserve + 8,
-              paddingTop: Math.max(insets.top, 10) + 46,
+              paddingBottom: oled ? 0 : footerReserve + 8,
+              paddingTop: Math.max(insets.top, 10) + CHROME_TOP_PAD + BACK_BTN_SIZE + 10,
             },
+            oled && { minHeight: SCREEN_H },
           ]}
           showsVerticalScrollIndicator={false}>
           <View
@@ -1105,6 +1113,7 @@ export function GenZAuthChrome({
               styles.sheetStack,
               trioRasterHero && styles.sheetStackSignupTrio,
               oled && styles.sheetStackOledFront,
+              oled && styles.sheetStackOledFill,
               !oled && { minHeight: sheetMinH },
               oled &&
                 Platform.OS === 'ios' &&
@@ -1115,7 +1124,10 @@ export function GenZAuthChrome({
                 } as const),
             ]}>
             {oled ? (
-              <View style={styles.sheetCardOled} pointerEvents="auto" collapsable={false}>
+              <View
+                style={[styles.sheetCardOled, { flex: 1, paddingBottom: Math.max(insets.bottom, 16) }]}
+                pointerEvents="auto"
+                collapsable={false}>
                 <View style={styles.sheetCardForeground} pointerEvents="box-none">
                   <View style={styles.sheetInset} pointerEvents="auto">
                     {sheetHeader}
@@ -1143,7 +1155,6 @@ export function GenZAuthChrome({
                     {footerSubtitle ? <Text style={styles.ctaFooterBelowOled}>{footerSubtitle}</Text> : null}
                     {slideHint ? <Text style={styles.ctaSwipeHintBelowOled}>{slideHint}</Text> : null}
                   </View>
-                  <View style={{ height: scrollBottomPad }} pointerEvents="none" />
                 </View>
               </View>
             ) : (
@@ -1178,12 +1189,14 @@ export function GenZAuthChrome({
         </ScrollView>
       </KeyboardAvoidingView>
 
-      <View style={[styles.chromeOverlay, { paddingTop: insets.top, zIndex: 40 }]} pointerEvents="box-none">
+      <View
+        style={[styles.chromeOverlay, { paddingTop: insets.top + CHROME_TOP_PAD, zIndex: 40 }]}
+        pointerEvents="box-none">
         {router.canGoBack() ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Go back"
-            hitSlop={12}
+            hitSlop={8}
             onPress={() => {
               void bumpHaptic();
               router.back();
@@ -1193,7 +1206,12 @@ export function GenZAuthChrome({
               oledDarkBillboard && styles.backChipOled,
               pressed && styles.backChipPressed,
             ]}>
-            <Ionicons name="chevron-back" size={22} color={oledDarkBillboard ? '#fdfefe' : palette.heroInk} />
+            <Ionicons
+              name="chevron-back"
+              size={22}
+              color={oledDarkBillboard ? '#fdfefe' : palette.heroInk}
+              style={styles.backChevron}
+            />
           </Pressable>
         ) : (
           <View style={styles.backSlot} />
@@ -1380,26 +1398,28 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingHorizontal: 16,
+    paddingHorizontal: screenContentGutter,
     zIndex: 30,
     pointerEvents: 'box-none',
   },
   backSlot: {
-    width: 44,
-    height: 44,
+    width: BACK_BTN_SIZE,
+    height: BACK_BTN_SIZE,
   },
   backChip: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+    width: BACK_BTN_SIZE,
+    height: BACK_BTN_SIZE,
+    borderRadius: BACK_BTN_SIZE / 2,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(255,255,255,0.9)',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: `${palette.heroInk}10`,
-    marginLeft: -2,
+  },
+  backChevron: {
+    marginLeft: 1,
   },
   backChipOled: {
     backgroundColor: 'rgba(15,17,21,0.55)',
@@ -1547,37 +1567,8 @@ const styles = StyleSheet.create({
     marginLeft: -26,
     zIndex: 1,
   },
-  charPlate: {
-    zIndex: 4,
-    shadowColor: '#000',
-    shadowOpacity: Platform.OS === 'ios' ? 0.5 : 0.4,
-    shadowRadius: 18,
-    shadowOffset: { width: 0, height: 8 },
-    ...Platform.select({
-      android: { elevation: 10 },
-      default: {},
-    }),
-  },
-  charRingGlow: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'visible',
-    borderWidth: 0,
-  },
-  charRingGlowPremium: {
-    borderWidth: 0,
-  },
-  charClipInner: {
-    overflow: 'hidden',
-    borderWidth: 0,
-  },
   avatarPlate: {
     zIndex: 2,
-    shadowColor: palette.heroInk,
-    shadowOpacity: 0.07,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 5,
   },
   avatarRing: {
     width: 82,
@@ -1727,7 +1718,10 @@ const styles = StyleSheet.create({
     width: SCREEN_W,
     alignSelf: 'center',
     backgroundColor: palette.sheet,
-    borderRadius: radius.sheet,
+    borderTopLeftRadius: radius.sheet,
+    borderTopRightRadius: radius.sheet,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     overflow: 'hidden',
     marginTop: 0,
     ...Platform.select({
@@ -1745,7 +1739,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     zIndex: 2,
     paddingTop: 36,
-    paddingBottom: 12,
     pointerEvents: 'box-none',
   },
   sheetStackSignupTrio: {
@@ -1761,6 +1754,11 @@ const styles = StyleSheet.create({
       android: { elevation: 24 },
       default: {},
     }),
+  },
+  sheetStackOledFill: {
+    flex: 1,
+    marginTop: 10,
+    justifyContent: 'flex-end',
   },
   sheetSvg: {
     position: 'absolute',
@@ -1782,7 +1780,7 @@ const styles = StyleSheet.create({
     pointerEvents: 'box-none',
   },
   sheetCtaBlock: {
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 0,
     gap: 0,
   },

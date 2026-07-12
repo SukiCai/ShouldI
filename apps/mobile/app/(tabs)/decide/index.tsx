@@ -658,16 +658,6 @@ export default function DecideCategoryScreen() {
     [chrom.mint, isCouncil, isDark],
   );
   const councilTally = finalDecision ? councilVoteTally(finalDecision.expertVerdicts) : null;
-  const headerTitle = isCouncil ? 'Harmence Council' : 'Harmence';
-  const modeLabel = isCouncil ? 'Expert council' : 'One expert';
-  const subtitle =
-    isCouncil && activeExperts.length > 1
-      ? `${activeExperts.length} experts helping`
-      : isCouncil && activeExperts.length === 1
-        ? 'Expert council · building your team'
-        : !isCouncil && primaryExpert
-          ? primaryExpert.title
-          : choicePrompt?.specialistLabel ?? (draft.category ? `${readable[draft.category]} · ${modeLabel}` : modeLabel);
   const progressText = choicePrompt?.progress
     ? choicePrompt.progress.ambiguity !== undefined
       ? `Clarity ${Math.round((1 - choicePrompt.progress.ambiguity) * 100)}%`
@@ -729,14 +719,14 @@ export default function DecideCategoryScreen() {
       return progressText ? `${expertPart} · ${progressText}` : expertPart;
     }
     if (primaryExpert?.title) return primaryExpert.title;
-    return progressText ?? subtitle;
+    return progressText ?? choicePrompt?.specialistLabel ?? null;
   }, [
     activeExperts.length,
+    choicePrompt?.specialistLabel,
     isCouncil,
     primaryExpert?.title,
     progressText,
     showCompactHeader,
-    subtitle,
   ]);
   const threadItems = React.useMemo(
     () => buildThreadItems(messages, expertJoinRows),
@@ -994,24 +984,7 @@ export default function DecideCategoryScreen() {
             hitSlop={{ top: 8, bottom: 8, left: 4, right: 10 }}>
             <Ionicons name="time-outline" size={24} color={chrom.gearIcon} />
           </Pressable>
-          <View style={styles.headerTitleBlock}>
-            <View style={styles.titleRow}>
-              <Text style={[styles.agentTitle, { color: chrom.display }]} numberOfLines={1}>
-                {headerTitle}
-              </Text>
-              {isCouncil && isPremium ? (
-                <View style={[styles.councilPremiumPip, { borderColor: `${council.gold}88`, backgroundColor: `${council.gold}22` }]}>
-                  <Ionicons name="star" size={9} color={council.gold} />
-                </View>
-              ) : null}
-              <View
-                style={[
-                  styles.liveDot,
-                  { backgroundColor: hermesIntegrated ? (isCouncil ? council.violet : chrom.mint) : chrom.textMuted },
-                ]}
-              />
-            </View>
-
+          <View style={styles.headerCenter}>
             {showCompactHeader && headerStatusLine ? (
               <Pressable
                 accessibilityRole="button"
@@ -1054,89 +1027,82 @@ export default function DecideCategoryScreen() {
                   <Ionicons name="chevron-down" size={12} color={chrom.textMuted} />
                 ) : null}
               </Pressable>
-            ) : (
-              <>
-                <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
-                  {subtitle}
-                </Text>
-                {!modeLocked && !booting && !finalReady ? (
-                  <View
+            ) : !modeLocked && !booting && !finalReady ? (
+              <View
+                style={[
+                  styles.headerModeSegment,
+                  { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)' },
+                ]}>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Single expert mode"
+                  accessibilityState={{ selected: mode === 'single' }}
+                  onPress={() => handleModeChange('single')}
+                  style={[
+                    styles.headerModeBtn,
+                    mode === 'single' && {
+                      backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
+                      borderColor: chrom.mint,
+                    },
+                  ]}>
+                  <Text
                     style={[
-                      styles.headerModeSegment,
-                      { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)' },
+                      styles.headerModeBtnText,
+                      { color: mode === 'single' ? chrom.mint : chrom.textMuted },
                     ]}>
-                    <Pressable
-                      accessibilityRole="button"
-                      accessibilityLabel="Single expert mode"
-                      accessibilityState={{ selected: mode === 'single' }}
-                      onPress={() => handleModeChange('single')}
+                    Single
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={
+                    isPremium
+                      ? 'Expert council mode (Premium)'
+                      : canAccessCouncil
+                        ? `Expert council mode, ${councilSessionCost} points per session`
+                        : 'Expert council mode (Premium or points required)'
+                  }
+                  accessibilityState={{ selected: mode === 'complex' }}
+                  onPress={trySelectCouncil}
+                  style={[
+                    styles.headerModeBtn,
+                    mode === 'complex' && styles.headerModeBtnCouncilActive,
+                    !isPremium && mode !== 'complex' && !canAccessCouncil && styles.headerModeBtnLocked,
+                  ]}>
+                  {mode === 'complex' ? (
+                    <LinearGradient
+                      colors={isDark ? ['#4c1d95', '#6d28d9', '#7c3aed'] : ['#c4b5fd', '#a78bfa', '#8b5cf6']}
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 1, y: 1 }}
+                      style={[StyleSheet.absoluteFillObject, { borderRadius: 8 }]}
+                    />
+                  ) : null}
+                  <View style={styles.headerModeBtnInner}>
+                    {!isPremium && mode !== 'complex' ? (
+                      <Ionicons
+                        name={canAccessCouncil ? 'diamond-outline' : 'lock-closed'}
+                        size={11}
+                        color={chrom.textMuted}
+                      />
+                    ) : isPremium && mode === 'complex' ? (
+                      <Ionicons name="star" size={11} color="#fff" />
+                    ) : null}
+                    <Text
                       style={[
-                        styles.headerModeBtn,
-                        mode === 'single' && {
-                          backgroundColor: isDark ? 'rgba(255,255,255,0.14)' : palette.white,
-                          borderColor: chrom.mint,
-                        },
+                        styles.headerModeBtnText,
+                        { color: mode === 'complex' ? '#fff' : chrom.textMuted },
                       ]}>
-                      <Text
-                        style={[
-                          styles.headerModeBtnText,
-                          { color: mode === 'single' ? chrom.mint : chrom.textMuted },
-                        ]}>
-                        Single
-                      </Text>
-                    </Pressable>
-                    <Pressable
-                      accessibilityRole="button"
-                      accessibilityLabel={
-                        isPremium
-                          ? 'Expert council mode (Premium)'
-                          : canAccessCouncil
-                            ? `Expert council mode, ${councilSessionCost} points per session`
-                            : 'Expert council mode (Premium or points required)'
-                      }
-                      accessibilityState={{ selected: mode === 'complex' }}
-                      onPress={trySelectCouncil}
-                      style={[
-                        styles.headerModeBtn,
-                        mode === 'complex' && styles.headerModeBtnCouncilActive,
-                        !isPremium && mode !== 'complex' && !canAccessCouncil && styles.headerModeBtnLocked,
-                      ]}>
-                      {mode === 'complex' ? (
-                        <LinearGradient
-                          colors={isDark ? ['#4c1d95', '#6d28d9', '#7c3aed'] : ['#c4b5fd', '#a78bfa', '#8b5cf6']}
-                          start={{ x: 0, y: 0 }}
-                          end={{ x: 1, y: 1 }}
-                          style={[StyleSheet.absoluteFillObject, { borderRadius: 8 }]}
-                        />
-                      ) : null}
-                      <View style={styles.headerModeBtnInner}>
-                        {!isPremium && mode !== 'complex' ? (
-                          <Ionicons
-                            name={canAccessCouncil ? 'diamond-outline' : 'lock-closed'}
-                            size={11}
-                            color={chrom.textMuted}
-                          />
-                        ) : isPremium ? (
-                          <Ionicons name="star" size={11} color={mode === 'complex' ? '#fff' : chrom.textMuted} />
-                        ) : null}
-                        <Text
-                          style={[
-                            styles.headerModeBtnText,
-                            { color: mode === 'complex' ? '#fff' : chrom.textMuted },
-                          ]}>
-                          Council
-                        </Text>
-                        {!isPremium && mode !== 'complex' ? (
-                          <View style={[styles.headerModeCostPill, { backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.08)' }]}>
-                            <Text style={[styles.headerModeCost, { color: chrom.textMuted }]}>{councilSessionCost}</Text>
-                          </View>
-                        ) : null}
+                      Council
+                    </Text>
+                    {!isPremium && mode !== 'complex' ? (
+                      <View style={[styles.headerModeCostPill, { backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.08)' }]}>
+                        <Text style={[styles.headerModeCost, { color: chrom.textMuted }]}>{councilSessionCost}</Text>
                       </View>
-                    </Pressable>
+                    ) : null}
                   </View>
-                ) : null}
-              </>
-            )}
+                </Pressable>
+              </View>
+            ) : null}
           </View>
           <Pressable
             accessibilityRole="button"
@@ -1697,33 +1663,24 @@ const styles = StyleSheet.create({
   },
   headerTopRow: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-    gap: 6,
-    minHeight: 48,
+    paddingHorizontal: 8,
+    paddingBottom: 6,
+    gap: 4,
+    minHeight: 40,
   },
   headerIconBtn: {
-    width: 44,
-    height: 44,
+    width: 40,
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 1,
   },
-  headerTitleBlock: {
+  headerCenter: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 0,
-    gap: 6,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    maxWidth: '100%',
   },
   headerStatusPill: {
     flexDirection: 'row',
@@ -1757,40 +1714,12 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 999,
   },
-  councilTitleBadge: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  councilPremiumPip: {
-    width: 18,
-    height: 18,
-    borderRadius: 9,
-    borderWidth: StyleSheet.hairlineWidth,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  agentTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    letterSpacing: -0.2,
-  },
-  agentSubtitle: {
-    fontSize: 12,
-    marginTop: 2,
-    maxWidth: 220,
-    textAlign: 'center',
-    fontWeight: '500',
-    lineHeight: 16,
-  },
   headerModeSegment: {
     flexDirection: 'row',
-    marginTop: 8,
     padding: 3,
     borderRadius: 10,
     gap: 2,
+    flexShrink: 0,
   },
   headerModeBtn: {
     paddingHorizontal: 14,
@@ -1878,11 +1807,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     minWidth: 72,
-  },
-  liveDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
   },
   loadingCenter: {
     flex: 1,
