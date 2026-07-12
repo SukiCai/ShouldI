@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, themeSurface, typography } from '@/constants/theme';
+import { resolveAppChromatics } from '@/constants/appChromatics';
+import { themeSurface, typography } from '@/constants/theme';
 
 type Props = {
   icon?: keyof typeof Ionicons.glyphMap;
@@ -25,6 +26,7 @@ export default function ListRow({
 }: Props) {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
+  const chrom = resolveAppChromatics(scheme === 'dark', surface);
 
   return (
     <Pressable
@@ -38,7 +40,7 @@ export default function ListRow({
       ]}>
       {icon ? (
         <View style={styles.iconWrap}>
-          <Ionicons name={icon} size={18} color={palette.neonMint} />
+          <Ionicons name={icon} size={18} color={chrom.mint} />
         </View>
       ) : null}
       <View style={styles.text}>

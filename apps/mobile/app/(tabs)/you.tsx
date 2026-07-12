@@ -1,7 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import * as React from 'react';
 import {
   Alert,
@@ -399,7 +399,7 @@ export default function YouScreen() {
     { value: DEMO_STATS.likesReceived, label: 'likes received' },
   ] as const;
 
-  const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost, grantDevPoints, resetPointsBalance } =
+  const { balance: pointsBalance, isPremium, activatePremium, councilSessionCost, grantDevPoints } =
     useViewerEntitlements();
   const pointsFromOthers = DEMO_STATS.pointsFromOthers;
 
@@ -640,53 +640,14 @@ export default function YouScreen() {
     </>
   );
 
-  const listFooter = (
-    <>
-      <View style={[styles.accountStrip, { borderTopColor: surface.hairline }]}>
-        <Text style={[styles.accountHint, { color: chrom.textMuted }]}>account</Text>
-        <View style={styles.accountLinks}>
-          <Link href="/sign-in" asChild>
-            <Pressable hitSlop={8}>
-              <Text style={[styles.linkText, { color: chrom.linkSignIn }]}>sign in</Text>
-            </Pressable>
-          </Link>
-          <Text style={{ color: chrom.textMuted, opacity: 0.5 }}>·</Text>
-          <Link href="/sign-up" asChild>
-            <Pressable hitSlop={8}>
-              <Text style={[styles.linkText, { color: chrom.linkJoin }]}>join</Text>
-            </Pressable>
-          </Link>
-        </View>
-      </View>
-      {__DEV__ ? (
-        <View style={styles.devWalletRow}>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Reset dev points balance"
-            onPress={() => {
-              resetPointsBalance();
-              Alert.alert('Dev wallet', 'Points reset to 2,450.');
-            }}>
-            <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>reset pts</Text>
-          </Pressable>
-          <Text style={{ color: chrom.textMuted, opacity: 0.5 }}>·</Text>
-          <Link href="/modal">
-            <Text style={[typography.caption, styles.devLink, { color: chrom.textMuted }]}>diagnostics</Text>
-          </Link>
-        </View>
-      ) : null}
-    </>
-  );
-
   return (
-    <Screen padded scroll={false}>
+    <Screen variant="plain" padded scroll={false}>
       <FlatList
         data={tabData}
         numColumns={2}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         ListHeaderComponent={listHeader}
-        ListFooterComponent={listFooter}
         ListEmptyComponent={<EmptyCards surface={surface} message={emptyCopy} isDark={isDark} />}
         columnWrapperStyle={styles.cardColumnWrapper}
         showsVerticalScrollIndicator={false}
@@ -694,7 +655,7 @@ export default function YouScreen() {
         style={styles.mainList}
         contentContainerStyle={[
           styles.listContent,
-          { paddingBottom: Math.max(insets.bottom + 88, 100) },
+          { paddingBottom: Math.max(insets.bottom + 24, 32) },
         ]}
       />
     </Screen>
@@ -1123,45 +1084,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 160,
     marginBottom: spacing.md,
-  },
-  accountStrip: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: spacing.md,
-    marginTop: spacing.sm,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    marginBottom: spacing.md,
-  },
-  accountHint: {
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 0.5,
-    textTransform: 'lowercase',
-  },
-  accountLinks: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  linkText: {
-    fontSize: 14,
-    fontWeight: '800',
-    letterSpacing: -0.2,
-    textTransform: 'lowercase',
-  },
-  devLink: {
-    textAlign: 'center',
-    marginBottom: 72,
-    textDecorationLine: 'underline',
-    textTransform: 'lowercase',
-  },
-  devWalletRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    marginBottom: 72,
   },
 });
