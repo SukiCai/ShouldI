@@ -11,12 +11,20 @@ import {
   Switch,
   Text,
   View,
+  type LayoutChangeEvent,
 } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSequence,
+  withSpring,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { GlassCard } from '@/components/ui/Premium';
 import { ListRow, Screen } from '@/components/ui';
+import { MOTION, usePrefersReducedMotion } from '@/constants/motion';
 import { resolveAppChromatics } from '@/constants/appChromatics';
 import {
   elevation,
@@ -76,47 +84,167 @@ function AppearancePicker({
   chrom: ReturnType<typeof resolveAppChromatics>;
   isDark: boolean;
 }) {
+  const reducedMotion = usePrefersReducedMotion();
+  const [trackWidth, setTrackWidth] = React.useState(0);
+  const indicatorX = useSharedValue(0);
+  const indicatorW = useSharedValue(0);
+  const selectionPop = useSharedValue(1);
+
+  const activeIndex = React.useMemo(
+    () => Math.max(0, APPEARANCE_OPTIONS.findIndex((opt) => opt.key === preference)),
+    [preference],
+  );
+
+  const moveIndicator = React.useCallback(
+    (index: number, width: number, animated: boolean) => {
+      if (width < 1) return;
+      const gap = 8;
+      const horizontalPad = 12;
+      const inner = width - horizontalPad * 2;
+      const seg = (inner - gap * (APPEARANCE_OPTIONS.length - 1)) / APPEARANCE_OPTIONS.length;
+      const x = horizontalPad + index * (seg + gap);
+      indicatorW.value = seg;
+      if (animated && !reducedMotion) {
+        indicatorX.value = withSpring(x, MOTION.tab);
+        selectionPop.value = withSequence(
+          withSpring(1.06, { damping: 18, stiffness: 420, mass: 0.34 }),
+          withSpring(1, MOTION.tab),
+        );
+      } else {
+        indicatorX.value = x;
+        selectionPop.value = 1;
+      }
+    },
+    [indicatorW, indicatorX, reducedMotion, selectionPop],
+  );
+
+  React.useEffect(() => {
+    moveIndicator(activeIndex, trackWidth, true);
+  }, [activeIndex, moveIndicator, trackWidth]);
+
+  const onTrackLayout = (event: LayoutChangeEvent) => {
+    const width = event.nativeEvent.layout.width;
+    setTrackWidth(width);
+    moveIndicator(activeIndex, width, false);
+  };
+
+  const indicatorStyle = useAnimatedStyle(() => ({
+    width: indicatorW.value,
+    transform: [{ translateX: indicatorX.value }, { scale: selectionPop.value }],
+  }));
+
+  const inactiveBg = isDark ? 'rgba(255,255,255,0.04)' : palette.sheet;
+  const indicatorColors = isDark
+    ? ([`${chrom.mint}30`, `${chrom.sky}18`] as const)
+    : ([`${profileLight.mint}24`, `${profileLight.sky}14`] as const);
+
   return (
-    <View style={styles.appearanceRow}>
+    <View style={styles.appearanceTrack} onLayout={onTrackLayout}>
+      {trackWidth > 0 ? (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            styles.appearanceIndicator,
+            { borderColor: `${chrom.mint}55` },
+            indicatorStyle,
+          ]}>
+          <LinearGradient
+            colors={indicatorColors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </Animated.View>
+      ) : null}
+
       {APPEARANCE_OPTIONS.map((opt) => {
         const active = preference === opt.key;
         return (
-          <Pressable
+          <AppearancePill
             key={opt.key}
-            accessibilityRole="button"
-            accessibilityLabel={`${opt.label} appearance`}
-            accessibilityState={{ selected: active }}
-            onPress={() => onSelect(opt.key)}
-            style={({ pressed }) => [
-              styles.appearancePill,
-              {
-                borderColor: active ? chrom.mint : surface.hairline,
-                backgroundColor: active
-                  ? isDark
-                    ? `${chrom.mint}18`
-                    : `${profileLight.mint}14`
-                  : isDark
-                    ? 'rgba(255,255,255,0.04)'
-                    : palette.sheet,
-              },
-              pressed && !active && { opacity: 0.88 },
-            ]}>
-            <Ionicons
-              name={opt.icon}
-              size={18}
-              color={active ? chrom.mint : surface.textMuted}
-            />
-            <Text
-              style={[
-                styles.appearanceLabel,
-                { color: active ? chrom.textPrimary : surface.textMuted, fontWeight: active ? '700' : '600' },
-              ]}>
-              {opt.label}
-            </Text>
-          </Pressable>
+            label={opt.label}
+            icon={opt.icon}
+            active={active}
+            chrom={chrom}
+            surface={surface}
+            inactiveBg={inactiveBg}
+            reducedMotion={reducedMotion}
+            onPress={() => {
+              if (opt.key === preference) return;
+              onSelect(opt.key);
+            }}
+          />
         );
       })}
     </View>
+  );
+}
+
+function AppearancePill({
+  label,
+  icon,
+  active,
+  chrom,
+  surface,
+  inactiveBg,
+  reducedMotion,
+  onPress,
+}: {
+  label: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  active: boolean;
+  chrom: ReturnType<typeof resolveAppChromatics>;
+  surface: ReturnType<typeof themeSurface>;
+  inactiveBg: string;
+  reducedMotion: boolean;
+  onPress: () => void;
+}) {
+  const press = useSharedValue(1);
+
+  const shellStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: press.value }],
+  }));
+
+  const iconStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: active ? 1.04 : 1 }],
+  }));
+
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${label} appearance`}
+      accessibilityState={{ selected: active }}
+      onPress={onPress}
+      onPressIn={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(MOTION.press.scale, MOTION.tab);
+      }}
+      onPressOut={() => {
+        if (reducedMotion) return;
+        press.value = withSpring(1, MOTION.tab);
+      }}
+      style={styles.appearancePillHit}>
+      <Animated.View
+        style={[
+          styles.appearancePill,
+          shellStyle,
+          { backgroundColor: active ? 'transparent' : inactiveBg },
+        ]}>
+        <Animated.View style={iconStyle}>
+          <Ionicons name={icon} size={18} color={active ? chrom.mint : surface.textMuted} />
+        </Animated.View>
+        <Text
+          style={[
+            styles.appearanceLabel,
+            {
+              color: active ? chrom.textPrimary : surface.textMuted,
+              fontWeight: active ? '700' : '600',
+            },
+          ]}>
+          {label}
+        </Text>
+      </Animated.View>
+    </Pressable>
   );
 }
 
@@ -140,8 +268,9 @@ export default function SettingsScreen() {
   const topPad = Math.max(insets.top, 12);
 
   const setAppearance = (next: AppearancePreference) => {
+    if (next === preference) return;
     if (Platform.OS !== 'web') {
-      void Haptics.selectionAsync().catch(() => undefined);
+      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
     }
     setPreference(next);
   };
@@ -377,10 +506,35 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: radius.md,
   },
-  appearanceRow: {
+  appearanceTrack: {
+    position: 'relative',
     flexDirection: 'row',
     gap: 8,
     padding: 12,
+    minHeight: 72,
+  },
+  appearanceIndicator: {
+    position: 'absolute',
+    top: 12,
+    bottom: 12,
+    left: 0,
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+    ...Platform.select({
+      ios: {
+        shadowColor: profileLight.mint,
+        shadowOpacity: 0.18,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 3 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  appearancePillHit: {
+    flex: 1,
+    zIndex: 1,
   },
   appearancePill: {
     flex: 1,
@@ -390,8 +544,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 8,
     borderRadius: radius.md,
-    borderWidth: StyleSheet.hairlineWidth,
-    minHeight: 72,
+    minHeight: 48,
   },
   appearanceLabel: {
     fontSize: 12,
