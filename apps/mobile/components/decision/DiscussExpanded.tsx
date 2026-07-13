@@ -17,6 +17,7 @@ import { Button } from '@/components/ui';
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
 import { useColorScheme } from '@/components/useColorScheme';
 import { discussCardStyles } from '@/components/decision/discussCardStyles';
+import { updateWatching } from '@/lib/exploreUserActivity';
 import { palette, profileNeutralStroke, profileTypography, radius, semantic, spacing, themeSurface, typography } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
@@ -238,14 +239,26 @@ export function DiscussExpanded({
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={saved ? 'Remove saved' : 'Save this decision'}
-              onPress={() => setSaved((s) => !s)}
+              onPress={() =>
+                setSaved((current) => {
+                  const next = !current;
+                  updateWatching(card, { saved: next, followed: following });
+                  return next;
+                })
+              }
               style={({ pressed }) => [styles.topIconBtn, styles.topIconBtnSecondary, { borderColor: surface.groupedBorder }, pressed && styles.topIconBtnPressed]}>
               <Ionicons name={saved ? 'star' : 'star-outline'} size={18} color={saved ? semantic.actionPrimary : surface.textMuted} />
             </Pressable>
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={following ? 'Stop following updates' : 'Follow updates'}
-              onPress={() => setFollowing((f) => !f)}
+              onPress={() =>
+                setFollowing((current) => {
+                  const next = !current;
+                  updateWatching(card, { saved, followed: next });
+                  return next;
+                })
+              }
               style={({ pressed }) => [styles.topIconBtn, styles.topIconBtnSecondary, { borderColor: surface.groupedBorder }, pressed && styles.topIconBtnPressed]}>
               <Ionicons name={following ? 'notifications' : 'notifications-outline'} size={18} color={following ? semantic.actionPrimary : surface.textMuted} />
             </Pressable>

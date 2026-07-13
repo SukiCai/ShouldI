@@ -25,9 +25,9 @@ import { radius, screenContentGutter, semantic, themeSurface, typography } from 
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';
+import { recordParticipation } from '@/lib/exploreUserActivity';
 import {
-  clearPendingHighlightCardId,
-  peekPendingHighlightCardId,
+  consumeHighlightRequest,
   usePostedCommunityCards,
 } from '@/lib/exploreCommunityPosts';
 import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
@@ -108,18 +108,24 @@ export default function ExploreScreen() {
 
   useFocusEffect(
     React.useCallback(() => {
+      const highlightRequest = consumeHighlightRequest();
       const highlightId =
-        peekPendingHighlightCardId() ??
+        highlightRequest?.id ??
         (typeof highlightCardIdParam === 'string' ? highlightCardIdParam : null);
-      if (!highlightId || lastHandledHighlightRef.current === highlightId) return;
+      if (!highlightId) return;
+
+      const isFreshRequest = highlightRequest != null;
+      if (!isFreshRequest && lastHandledHighlightRef.current === highlightId) return;
       lastHandledHighlightRef.current = highlightId;
+
       const postedCard = postedCommunityCards.find((card) => card.id === highlightId);
       if (postedCard) {
         setActiveFilter(CATEGORY_FILTER[postedCard.category]);
       }
       setHighlightedCardId(highlightId);
-      setToast('Posted to community');
-      clearPendingHighlightCardId();
+      setToast(
+        highlightRequest?.source === 'publish' ? 'Posted to community' : 'Your community post',
+      );
       requestAnimationFrame(() => {
         scrollRef.current?.scrollTo({ y: 0, animated: true });
       });
@@ -188,6 +194,7 @@ export default function ExploreScreen() {
       return { ...prev, [card.id]: nextDistribution };
     });
     setToast('Vote recorded');
+    recordParticipation(card, optionId);
     await trackProductEvent({
       name: 'vote_cast',
       cardId: card.id,
