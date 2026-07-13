@@ -21,7 +21,16 @@ export default function DecideNavigator() {
         }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="details" options={{ title: 'Manual details (legacy)' }} />
-        <Stack.Screen name="confirm" options={{ headerShown: false, title: 'Review recommendation card' }} />
+        <Stack.Screen
+          name="confirm"
+          options={{
+            headerShown: true,
+            title: 'Ask the community',
+            headerBackTitle: '',
+            headerTintColor: surface.textPrimary,
+            headerTitleStyle: { color: surface.textDisplay, ...typography.titleSm, fontWeight: '700' },
+          }}
+        />
         <Stack.Screen name="result" options={{ headerBackVisible: false, title: 'Recommendation' }} />
       </Stack>
     </DecideWizardProvider>

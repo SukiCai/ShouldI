@@ -1118,10 +1118,10 @@ export default function DecideCategoryScreen() {
           <View style={styles.verdictActions}>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Review summary card"
+              accessibilityLabel="Ask the community to validate your recommendation"
               onPress={() => router.push('/(tabs)/decide/confirm')}
               style={[styles.verdictPrimary, { backgroundColor: palette.heroInk }]}>
-              <Text style={[styles.verdictPrimaryText, { color: palette.white }]}>Review summary card</Text>
+              <Text style={[styles.verdictPrimaryText, { color: palette.white }]}>Ask the community</Text>
               <Ionicons name="arrow-forward" size={18} color={palette.white} />
             </Pressable>
             <Pressable

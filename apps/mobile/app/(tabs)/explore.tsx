@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import {
   Animated,
@@ -17,18 +17,32 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DiscussExpandTransition, DiscussExpanded, DiscussScreenBackdrop } from '@/components/decide/discuss';
 import { decisionFeedStatus } from '@/components/explore/PagedDecisionFeed';
+import { ExploreDecisionCard } from '@/components/explore/ExploreDecisionCard';
+import { exploreCategoryTheme } from '@/components/explore/exploreCategoryTheme';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
 import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
 import { radius, screenContentGutter, semantic, themeSurface, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';
+import {
+  clearPendingHighlightCardId,
+  peekPendingHighlightCardId,
+  usePostedCommunityCards,
+} from '@/lib/exploreCommunityPosts';
 import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
 import { ExploreFeedResponseSchema } from '@shouldi/contracts';
 import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 
 const FILTERS = ['All', 'Career', 'Money', 'Relationship', 'Life'] as const;
+
+const CATEGORY_FILTER: Record<DecisionCategory, (typeof FILTERS)[number]> = {
+  career: 'Career',
+  money: 'Money',
+  relationship: 'Relationship',
+  life: 'Life',
+};
 
 function formatCompact(n: number): string {
   try {
@@ -38,37 +52,19 @@ function formatCompact(n: number): string {
   }
 }
 
-function categoryTheme(category: string): {
-  label: string;
-  accent: string;
-  soft: string;
-  icon: keyof typeof Ionicons.glyphMap;
-} {
-  const c = category.toLowerCase();
-  if (c.includes('education')) {
-    return { label: 'Education', accent: '#8c7ae6', soft: '#f2edff', icon: 'school-outline' };
-  }
-  if (c.includes('environment')) {
-    return { label: 'Environment', accent: '#56b37c', soft: '#ebf8f0', icon: 'leaf-outline' };
-  }
-  if (c.includes('tech')) {
-    return { label: 'Technology', accent: '#e0b327', soft: '#fff8e4', icon: 'hardware-chip-outline' };
-  }
-  if (c.includes('career')) {
-    return { label: 'Career', accent: '#4a7bd8', soft: '#ebf2ff', icon: 'briefcase-outline' };
-  }
-  return { label: 'Trending', accent: '#7c8aa3', soft: '#eff2f7', icon: 'sparkles-outline' };
-}
-
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
+  const { highlightCardId: highlightCardIdParam } = useLocalSearchParams<{ highlightCardId?: string }>();
+  const postedCommunityCards = usePostedCommunityCards();
+  const scrollRef = React.useRef<ScrollView>(null);
   const [activeFilter, setActiveFilter] = React.useState<(typeof FILTERS)[number]>('All');
   const [selectedByCard, setSelectedByCard] = React.useState<Record<string, string>>({});
   const [localDistributionByCard, setLocalDistributionByCard] = React.useState<Record<string, Record<string, number>>>({});
   const [toast, setToast] = React.useState<string | null>(null);
   const [activeDetailCardId, setActiveDetailCardId] = React.useState<string | null>(null);
+  const [highlightedCardId, setHighlightedCardId] = React.useState<string | null>(null);
   const livePulse = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -98,9 +94,38 @@ export default function ExploreScreen() {
 
   React.useEffect(() => {
     if (!toast) return;
-    const timer = setTimeout(() => setToast(null), 1800);
+    const timer = setTimeout(() => setToast(null), 2200);
     return () => clearTimeout(timer);
   }, [toast]);
+
+  React.useEffect(() => {
+    if (!highlightedCardId) return;
+    const timer = setTimeout(() => setHighlightedCardId(null), 4500);
+    return () => clearTimeout(timer);
+  }, [highlightedCardId]);
+
+  const lastHandledHighlightRef = React.useRef<string | null>(null);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const highlightId =
+        peekPendingHighlightCardId() ??
+        (typeof highlightCardIdParam === 'string' ? highlightCardIdParam : null);
+      if (!highlightId || lastHandledHighlightRef.current === highlightId) return;
+      lastHandledHighlightRef.current = highlightId;
+      const postedCard = postedCommunityCards.find((card) => card.id === highlightId);
+      if (postedCard) {
+        setActiveFilter(CATEGORY_FILTER[postedCard.category]);
+      }
+      setHighlightedCardId(highlightId);
+      setToast('Posted to community');
+      clearPendingHighlightCardId();
+      requestAnimationFrame(() => {
+        scrollRef.current?.scrollTo({ y: 0, animated: true });
+      });
+    }, [highlightCardIdParam, postedCommunityCards]),
+  );
+
   const query = useQuery({
     queryKey: ['explore'],
     queryFn: async () => {
@@ -110,10 +135,11 @@ export default function ExploreScreen() {
   });
 
   const cards = query.data?.cards ?? [];
-  const openCards = React.useMemo(
-    () => cards.filter((c) => decisionFeedStatus(c) === 'open'),
-    [cards],
-  );
+  const openCards = React.useMemo(() => {
+    const postedIds = new Set(postedCommunityCards.map((card) => card.id));
+    const apiOpen = cards.filter((card) => decisionFeedStatus(card) === 'open' && !postedIds.has(card.id));
+    return [...postedCommunityCards, ...apiOpen];
+  }, [cards, postedCommunityCards]);
   const visibleCards = React.useMemo(() => {
     if (activeFilter === 'All') return openCards;
     return openCards.filter((card) => card.category.toLowerCase() === activeFilter.toLowerCase());
@@ -207,6 +233,7 @@ export default function ExploreScreen() {
   return (
     <View style={[styles.surface, { backgroundColor: surface.canvas }]}>
       <ScrollView
+        ref={scrollRef}
         style={styles.scroll}
         contentContainerStyle={{
           paddingTop: Math.max(insets.top + 10, 28),
@@ -242,103 +269,36 @@ export default function ExploreScreen() {
 
         <View style={styles.listWrap}>
           {visibleCards.slice(0, 8).map((card) => {
-            const theme = categoryTheme(card.category);
+            const theme = exploreCategoryTheme(card.category);
             const distributionMap = localDistributionByCard[card.id] ?? Object.fromEntries(card.distribution.map((row) => [row.optionId, row.votes]));
             const totalVotes = card.options.reduce((sum, option) => sum + (distributionMap[option.id] ?? 0), 0);
             const effectivePicked = selectedByCard[card.id] ?? card.myVoteOptionId ?? null;
-            const selectedLabel = card.options.find((option) => option.id === effectivePicked)?.label ?? null;
-            const rows = card.options.map((option) => {
-              const rowVotes = distributionMap[option.id] ?? 0;
-              const pct = totalVotes > 0 ? Math.round((rowVotes / totalVotes) * 100) : 0;
-              return { label: option.label, pct };
-            });
+            const votePctByOptionId = Object.fromEntries(
+              card.options.map((option) => {
+                const rowVotes = distributionMap[option.id] ?? 0;
+                const pct = totalVotes > 0 ? Math.round((rowVotes / totalVotes) * 100) : 0;
+                return [option.id, pct];
+              }),
+            );
             return (
-              <View key={card.id} style={[styles.card, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
-                <Pressable
-                  onPress={() => openDetailCard(card)}
-                  style={({ pressed }) => [styles.cardHeaderTapArea, pressed && styles.cardHeaderTapAreaPressed]}>
-                  <View style={styles.cardTop}>
-                    <View style={styles.cardCategoryRow}>
-                      <View style={[styles.categoryDotWrap, { backgroundColor: theme.soft }]}>
-                        <Ionicons name={theme.icon} size={14} color={theme.accent} />
-                      </View>
-                      <Text style={[styles.categoryLabel, { color: theme.accent }]}>{theme.label}</Text>
-                    </View>
-                    <View style={styles.cardMetaRight}>
-                      <View style={styles.votesMetaLive}>
-                        <Animated.View
-                          style={[
-                            styles.liveDot,
-                            {
-                              opacity: livePulse.interpolate({ inputRange: [0, 1], outputRange: [0.45, 1] }),
-                              transform: [
-                                {
-                                  scale: livePulse.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.15] }),
-                                },
-                              ],
-                            },
-                          ]}
-                        />
-                        <Text style={styles.votesMetaLiveLabel}>Live votes</Text>
-                        <Text style={[styles.votesMetaCount, { color: surface.textMuted }]}>{formatCompact(totalVotes)}</Text>
-                      </View>
-                    </View>
-                  </View>
-                  <Text style={[styles.question, { color: surface.textPrimary }]}>{card.question}</Text>
-                </Pressable>
-
-                <View style={styles.rows}>
-                  {rows.slice(0, 3).map((row, idx) => {
-                    const option = card.options[idx];
-                    const selected = effectivePicked === option?.id;
-                    return (
-                    <Pressable
-                      key={`${card.id}-${idx}`}
-                      onPress={() => {
-                        if (!option?.id) return;
-                        void recordVote(card, option.id, 'option_direct');
-                      }}
-                      style={[styles.rowLine, selected && styles.rowLineSelected]}>
-                      <View style={styles.rowHead}>
-                        <Text style={[styles.rowLabel, { color: surface.textPrimary }]} numberOfLines={1}>
-                          {row.label}
-                        </Text>
-                        <Text style={[styles.rowPct, { color: theme.accent }]}>{row.pct}%</Text>
-                      </View>
-                      <View style={styles.track}>
-                        <View
-                          style={[
-                            styles.fill,
-                            {
-                              width: `${Math.max(2, row.pct)}%`,
-                              backgroundColor: theme.accent,
-                            },
-                          ]}
-                        />
-                      </View>
-                    </Pressable>
-                  );
-                  })}
-                </View>
-
-                <View style={styles.cardFooter}>
-                  <View style={styles.people}>
-                    <Text style={[styles.peopleText, { color: surface.textMuted }]} numberOfLines={1}>
-                      {selectedLabel ? 'Tap an option to change your vote' : 'Tap an option to vote quickly'}
-                    </Text>
-                  </View>
-                  <Pressable
-                    onPress={() => {
-                      openDetailCard(card);
-                    }}
-                    style={[styles.voteBtn, { backgroundColor: theme.soft }]}>
-                    <Text style={[styles.voteBtnText, { color: theme.accent }]}>
-                      Open details
-                    </Text>
-                    <Ionicons name="chevron-forward" size={14} color={theme.accent} />
-                  </Pressable>
-                </View>
-              </View>
+              <ExploreDecisionCard
+                key={card.id}
+                mode="live"
+                highlighted={card.id === highlightedCardId}
+                category={card.category}
+                question={card.question}
+                options={card.options}
+                votePctByOptionId={votePctByOptionId}
+                effectivePicked={effectivePicked}
+                aiSuggestedOptionId={card.aiSuggestedOptionId}
+                totalVotes={totalVotes}
+                livePulse={livePulse}
+                onPressQuestion={() => openDetailCard(card)}
+                onVote={(optionId) => {
+                  void recordVote(card, optionId, 'option_direct');
+                }}
+                onOpenDetails={() => openDetailCard(card)}
+              />
             );
           })}
           {visibleCards.length === 0 ? (

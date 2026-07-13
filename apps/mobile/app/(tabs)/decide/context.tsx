@@ -2,9 +2,9 @@ import type { PropsWithChildren } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Alert } from 'react-native';
 
 import { apiPostJson } from '@/lib/api';
+import { buildExploreCardFromDraft, publishCommunityCard } from '@/lib/exploreCommunityPosts';
 import { userFacingApiError } from '@/lib/userFacingErrors';
 import {
   ChatRequestSchema,
@@ -210,24 +210,12 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       return;
     }
     setError(null);
-    const keyContext = draft.keyMoments
-      .filter((m) => m.impact?.trim())
-      .map((m) => m.impact!.trim())
-      .slice(0, 4);
-    const aiValidation = {
-      verdictLine: draft.communityAiVerdictLine.trim(),
-      verdictBecause: draft.communityAiBecause.trim().slice(0, 400),
-      agreeWithAiVotes: 0,
-      disagreeWithAiVotes: 0,
-      ...(draft.aiConfidenceScore != null ? { confidenceScore: draft.aiConfidenceScore } : {}),
-      ...(keyContext.length > 0 ? { keyContext } : {}),
-    };
-    if (__DEV__) console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
-    Alert.alert(
-      'Sent to Explore',
-      'Peers will thumbs up/down on the recommendation stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
-      [{ text: 'Open Explore', onPress: () => router.replace('/(tabs)/explore') }],
-    );
+    const card = buildExploreCardFromDraft(draft);
+    publishCommunityCard(card);
+    router.replace({
+      pathname: '/(tabs)/explore',
+      params: { highlightCardId: card.id },
+    });
   }, [draft]);
 
   const contextValue = React.useMemo<DecideWizardContextValue>(() => {
