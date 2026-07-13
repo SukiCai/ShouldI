@@ -194,7 +194,7 @@ export function DiscussDraftEditor({ draft, onChange, onBack }: Props) {
               accessibilityLabel="AI decision headline"
               value={draft.communityAiVerdictLine}
               onChangeText={(text) => onChange({ communityAiVerdictLine: text })}
-              placeholder="Harmence leaning headline"
+              placeholder="ShouldI recommendation headline"
               placeholderTextColor={placeholder}
               multiline
               style={[styles.aiDecisionHeadline, styles.editableField, { minHeight: 28 }]}

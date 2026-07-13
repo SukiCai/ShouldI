@@ -28,7 +28,7 @@ export default function Screen({
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
-  const showSpeckles = variant === 'default';
+  const showSpeckles = false;
   const canvas =
     variant === 'mist' ? surface.canvasSecondary : surface.canvas;
   const inset = padded

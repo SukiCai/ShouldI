@@ -32,10 +32,26 @@ export function Title({ style, tone = 'display', ...rest }: AppTextProps) {
   return <Text {...rest} style={[typography.title, { color: useTextColor(tone), fontWeight: '700' }, style]} />;
 }
 
+export function Hero({ style, tone = 'display', ...rest }: AppTextProps) {
+  return <Text {...rest} style={[typography.hero, { color: useTextColor(tone), fontWeight: '800' }, style]} />;
+}
+
 export function Body({ style, tone = 'primary', ...rest }: AppTextProps) {
   return <Text {...rest} style={[typography.body, { color: useTextColor(tone) }, style]} />;
 }
 
 export function Caption({ style, tone = 'muted', ...rest }: AppTextProps) {
   return <Text {...rest} style={[typography.caption, { color: useTextColor(tone) }, style]} />;
+}
+
+export function Subhead({ style, tone = 'primary', ...rest }: AppTextProps) {
+  return <Text {...rest} style={[typography.subhead, { color: useTextColor(tone) }, style]} />;
+}
+
+export function Label({ style, tone = 'muted', ...rest }: AppTextProps) {
+  return <Text {...rest} style={[typography.label, { color: useTextColor(tone) }, style]} />;
+}
+
+export function Micro({ style, tone = 'muted', ...rest }: AppTextProps) {
+  return <Text {...rest} style={[typography.micro, { color: useTextColor(tone) }, style]} />;
 }

@@ -5,8 +5,8 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DiscussDraftEditor } from '@/components/decide/DiscussDraftEditor';
-import { DiscussScreenBackdrop } from '@/components/decision/DiscussScreenBackdrop';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import { DiscussScreenBackdrop } from '@/components/decide/discuss';
+import { Button } from '@/components/ui';
 import { GhostAction } from '@/components/ui/Premium';
 import { useColorScheme } from '@/components/useColorScheme';
 import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
@@ -246,36 +246,36 @@ export default function DecideConfirmScreen() {
           ) : null}
 
           <View style={styles.actions}>
-            <PrimaryButton
-              accessibilityHint="Calls ShouldI briefing API and hydrates Explore fields"
+            <Button
+              accessibilityHint="Calls ShouldI recommendation API and hydrates Explore fields"
               disabled={busy || !draft.category || !draft.title.trim()}
               onPress={() => {
                 void submitBriefing();
               }}>
-              <Text style={styles.onPrimary}>{busy ? 'Synthesizing…' : 'Synthesize briefing into card'}</Text>
-            </PrimaryButton>
+              <Text style={styles.onPrimary}>{busy ? 'Synthesizing…' : 'Generate recommendation card'}</Text>
+            </Button>
 
             <View style={styles.secondaryRow}>
               <View style={[styles.flexBtn, !lastResponse && styles.disabledWrap]} pointerEvents={lastResponse ? 'auto' : 'none'}>
                 <GhostAction
-                  label="Open full briefing"
-                  accessibilityLabel="Open full briefing transcript"
+                  label="Open full recommendation"
+                  accessibilityLabel="Open full recommendation view"
                   onPress={() => {
                     if (lastResponse) router.push('/(tabs)/decide/result');
                   }}
                 />
               </View>
               <View style={styles.flexBtn}>
-                <GhostAction label="Back to chat" accessibilityLabel="Back to Harmence" onPress={() => router.back()} />
+                <GhostAction label="Back to chat" accessibilityLabel="Back to Decide chat" onPress={() => router.back()} />
               </View>
             </View>
 
-            <PrimaryButton
+            <Button
               accessibilityLabel="Publish validation card to Explore"
               disabled={busy || !canPost}
               onPress={() => postCommunityValidationCard()}>
               <Text style={styles.onPrimary}>Post to Explore · peer validation</Text>
-            </PrimaryButton>
+            </Button>
 
             {!lastResponse ? (
               <Text style={[styles.helper, { color: surface.textMuted }]}>

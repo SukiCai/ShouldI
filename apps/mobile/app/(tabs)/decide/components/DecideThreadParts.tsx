@@ -1,11 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import * as React from 'react';
 import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 
 import { MOTION } from '@/constants/motion';
-import { council, screenContentGutter } from '@/constants/theme';
+import { council, palette, screenContentGutter } from '@/constants/theme';
 import type { DecideInterviewExpert } from '@shouldi/contracts';
+
+import { formatSenderDisplay } from './threadHelpers';
 
 export const councilStyles = StyleSheet.create({
   tallyRow: {
@@ -78,8 +79,8 @@ const threadPartStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    paddingVertical: 10,
-    marginBottom: 8,
+    paddingVertical: 8,
+    marginBottom: 6,
   },
   thinkingDots: {
     flexDirection: 'row',
@@ -100,57 +101,25 @@ const threadPartStyles = StyleSheet.create({
   },
   chamberJoinChatRow: {
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 6,
+    marginTop: 2,
+    marginBottom: 12,
   },
-  chamberJoinChatCard: {
+  chamberJoinChatPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-    borderRadius: 14,
+    gap: 6,
+    maxWidth: '94%',
+    borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    overflow: 'hidden',
-    paddingRight: 12,
-    paddingVertical: 11,
-    alignSelf: 'center',
-    width: '100%',
-  },
-  chamberJoinChatCardCouncil: {
-    borderWidth: 1.5,
-    shadowColor: council.violet,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.16,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  chamberJoinChatAccent: {
-    width: 4,
-    alignSelf: 'stretch',
-  },
-  chamberJoinChatCopy: {
-    flex: 1,
-    minWidth: 0,
-    gap: 2,
-  },
-  chamberJoinChatKickerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  chamberJoinChatKicker: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   chamberJoinChatTitle: {
-    fontSize: 14,
-    lineHeight: 18,
-    fontWeight: '800',
-    letterSpacing: -0.2,
-  },
-  chamberJoinChatDetail: {
-    fontSize: 12,
-    lineHeight: 15,
+    fontSize: 11,
+    lineHeight: 14,
     fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
@@ -185,7 +154,7 @@ export function CouncilVoteTally({
 }
 
 export function ThinkingRow({
-  label = 'Harmence is thinking…',
+  label = 'ShouldI is thinking…',
   accent,
   muted,
 }: {
@@ -244,7 +213,7 @@ export function ExpertGlyph({
   const color = expert?.color ?? fallbackColor;
   return (
     <View
-      accessibilityLabel={expert?.title ?? 'Harmence expert'}
+      accessibilityLabel={expert?.title ?? 'Decision expert'}
       style={[
         threadPartStyles.expertGlyph,
         {
@@ -302,110 +271,50 @@ const JOIN_CHAT_ENTER_MS = 280;
 
 export function ChamberJoinChatRow({
   expert,
-  contextText,
   isCouncil,
-  isDark,
   colors,
 }: {
   expert: DecideInterviewExpert;
   contextText?: string;
   isCouncil: boolean;
-  isDark: boolean;
-  colors: { primaryTxt: string; muted: string; composerBorder: string };
+  isDark?: boolean;
+  colors: { primaryTxt: string; muted: string; composerBorder: string; cardBg: string };
 }) {
   const opacity = React.useRef(new Animated.Value(0)).current;
-  const translateY = React.useRef(new Animated.Value(10)).current;
-  const scale = React.useRef(new Animated.Value(0.96)).current;
 
   React.useEffect(() => {
     opacity.setValue(0);
-    translateY.setValue(10);
-    scale.setValue(0.96);
-    Animated.parallel([
-      Animated.spring(translateY, {
-        toValue: 0,
-        ...MOTION.sheet,
-        useNativeDriver: true,
-      }),
-      Animated.spring(scale, {
-        toValue: 1,
-        ...MOTION.card,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: JOIN_CHAT_ENTER_MS,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [expert.id, opacity, scale, translateY]);
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: JOIN_CHAT_ENTER_MS,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start();
+  }, [expert.id, opacity]);
 
-  const accentColor = expert.color ?? council.violet;
-  const cardInner = (
-    <>
-      <View style={[threadPartStyles.chamberJoinChatAccent, { backgroundColor: accentColor }]} />
-      <ExpertGlyph expert={expert} fallbackColor={accentColor} size={30} />
-      <View style={threadPartStyles.chamberJoinChatCopy}>
-        {isCouncil ? (
-          <View style={threadPartStyles.chamberJoinChatKickerRow}>
-            <Ionicons name="sparkles" size={10} color={council.gold} />
-            <Text style={[threadPartStyles.chamberJoinChatKicker, { color: council.gold }]}>ENTERED THE CHAMBER</Text>
-          </View>
-        ) : (
-          <Text style={[threadPartStyles.chamberJoinChatKicker, { color: colors.muted }]}>JOINED THE CONVERSATION</Text>
-        )}
-        <Text
-          style={[
-            threadPartStyles.chamberJoinChatTitle,
-            { color: isCouncil ? (isDark ? '#faf5ff' : '#3b0764') : colors.primaryTxt },
-          ]}
-          numberOfLines={1}>
-          {expert.title}
-        </Text>
-        {contextText ? (
-          <Text
-            style={[
-              threadPartStyles.chamberJoinChatDetail,
-              { color: isCouncil ? (isDark ? '#ddd6fe' : '#6d28d9') : colors.muted },
-            ]}
-            numberOfLines={3}>
-            {contextText}
-          </Text>
-        ) : null}
-      </View>
-      {isCouncil ? <Ionicons name="sparkles" size={16} color={council.gold} /> : null}
-    </>
-  );
+  const accentColor = expert.color ?? palette.accent;
 
   return (
-    <View style={[threadPartStyles.chamberJoinChatRow, threadPartStyles.msgPadH]}>
-      <Animated.View style={{ opacity, transform: [{ translateY }, { scale }], width: '100%', maxWidth: 420 }}>
-        {isCouncil ? (
-          <LinearGradient
-            colors={
-              isDark
-                ? ['rgba(91, 33, 182, 0.55)', 'rgba(109, 40, 217, 0.38)']
-                : ['#ddd6fe', '#c4b5fd']
-            }
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={[threadPartStyles.chamberJoinChatCard, threadPartStyles.chamberJoinChatCardCouncil, { borderColor: `${council.violet}66` }]}>
-            {cardInner}
-          </LinearGradient>
-        ) : (
-          <View
-            style={[
-              threadPartStyles.chamberJoinChatCard,
-              {
-                backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : '#f1f5f9',
-                borderColor: colors.composerBorder,
-              },
-            ]}>
-            {cardInner}
-          </View>
-        )}
-      </Animated.View>
-    </View>
+    <Animated.View
+      style={[
+        threadPartStyles.chamberJoinChatRow,
+        threadPartStyles.msgPadH,
+        { opacity },
+      ]}>
+      <View
+        style={[
+          threadPartStyles.chamberJoinChatPill,
+          {
+            borderColor: colors.composerBorder,
+            backgroundColor: colors.cardBg,
+          },
+        ]}>
+        <ExpertGlyph expert={expert} fallbackColor={accentColor} size={14} />
+        <Text style={[threadPartStyles.chamberJoinChatTitle, { color: colors.muted }]} numberOfLines={2}>
+          {formatSenderDisplay(expert.title)}
+          {isCouncil ? ' joined' : ' added'}
+        </Text>
+      </View>
+    </Animated.View>
   );
 }

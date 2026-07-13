@@ -248,6 +248,18 @@ export const DecideInterviewTurnResponseSchema = z.object({
   choicePrompt: DecideInterviewChoicePromptSchema.optional(),
   finalDecision: DecideInterviewFinalDecisionSchema.optional(),
   previewCard: DecideInterviewPreviewCardSchema.optional(),
+  /** Durable record id created once a meaningful decision is completed. */
+  decisionRecordId: z.string().optional(),
+  /** First-session artifact that summarizes the user's decision posture. */
+  decisionLens: z
+    .object({
+      headline: z.string(),
+      confidenceScore: z.number().int().min(0).max(100),
+      strengths: z.array(z.string()).default([]),
+      blindSpots: z.array(z.string()).default([]),
+      calibrationFocus: z.string().optional(),
+    })
+    .optional(),
   /** True when clarity is high — one more answer may unlock the verdict. */
   almostReady: z.boolean().optional(),
 });
@@ -293,3 +305,122 @@ export const ViewerMeResponseSchema = z.object({
   entitlements: ViewerEntitlementsSchema,
 });
 export type ViewerMeResponse = z.infer<typeof ViewerMeResponseSchema>;
+
+/** Canonical artifact produced by a completed decision flow. */
+export const DecisionRecordSchema = z.object({
+  id: z.string(),
+  sessionId: z.string().nullable().optional(),
+  question: z.string(),
+  category: DecisionCategorySchema.optional(),
+  recommendation: z.string(),
+  rationale: z.string(),
+  confidenceScore: z.number().int().min(0).max(100),
+  tradeoffs: z.array(z.string()).default([]),
+  committedAction: z.string().optional(),
+  createdAt: z.number().int(),
+  updatedAt: z.number().int(),
+});
+export type DecisionRecord = z.infer<typeof DecisionRecordSchema>;
+
+export const DecisionLensSchema = z.object({
+  decisionRecordId: z.string(),
+  headline: z.string(),
+  confidenceScore: z.number().int().min(0).max(100),
+  strengths: z.array(z.string()).default([]),
+  blindSpots: z.array(z.string()).default([]),
+  calibrationFocus: z.string().optional(),
+  generatedAt: z.number().int(),
+});
+export type DecisionLens = z.infer<typeof DecisionLensSchema>;
+
+export const OutcomePredictionSchema = z.object({
+  id: z.string(),
+  decisionRecordId: z.string(),
+  predictionText: z.string(),
+  predictedProbability: z.number().min(0).max(1).optional(),
+  createdAt: z.number().int(),
+});
+export type OutcomePrediction = z.infer<typeof OutcomePredictionSchema>;
+
+export const OutcomeActualSchema = z.object({
+  id: z.string(),
+  decisionRecordId: z.string(),
+  outcomeText: z.string(),
+  happenedAt: z.number().int(),
+  createdAt: z.number().int(),
+});
+export type OutcomeActual = z.infer<typeof OutcomeActualSchema>;
+
+export const OutcomeReplaySchema = z.object({
+  decisionRecordId: z.string(),
+  prediction: OutcomePredictionSchema.optional(),
+  actual: OutcomeActualSchema.optional(),
+  reflection: z.string().optional(),
+  calibrationDelta: z.number().min(-1).max(1).optional(),
+  updatedAt: z.number().int(),
+});
+export type OutcomeReplay = z.infer<typeof OutcomeReplaySchema>;
+
+export const DecisionDnaProfileSchema = z.object({
+  userId: z.string(),
+  values: z.array(z.string()).default([]),
+  riskPreference: z.enum(['low', 'medium', 'high']).default('medium'),
+  blindSpots: z.array(z.string()).default([]),
+  calibrationScore: z.number().min(0).max(100).default(50),
+  trajectory: z.array(z.string()).default([]),
+  updatedAt: z.number().int(),
+});
+export type DecisionDnaProfile = z.infer<typeof DecisionDnaProfileSchema>;
+
+export const DecisionDnaUpdateEventSchema = z.object({
+  id: z.string(),
+  userId: z.string(),
+  decisionRecordId: z.string(),
+  reason: z.enum(['outcome_replay', 'reflection', 'manual_edit']),
+  deltaSummary: z.string(),
+  createdAt: z.number().int(),
+});
+export type DecisionDnaUpdateEvent = z.infer<typeof DecisionDnaUpdateEventSchema>;
+
+export const ExploreVoteRequestSchema = z.object({
+  optionId: z.string(),
+});
+export type ExploreVoteRequest = z.infer<typeof ExploreVoteRequestSchema>;
+
+export const ExploreVoteResponseSchema = z.object({
+  card: ExploreCardSchema,
+});
+export type ExploreVoteResponse = z.infer<typeof ExploreVoteResponseSchema>;
+
+export const ExploreFollowRequestSchema = z.object({
+  follow: z.boolean().default(true),
+});
+export type ExploreFollowRequest = z.infer<typeof ExploreFollowRequestSchema>;
+
+export const ExploreSaveRequestSchema = z.object({
+  save: z.boolean().default(true),
+});
+export type ExploreSaveRequest = z.infer<typeof ExploreSaveRequestSchema>;
+
+export const ProductEventSchema = z.object({
+  id: z.string(),
+  name: z.enum([
+    'decision_completed',
+    'action_committed',
+    'outcome_replayed',
+    'confidence_delta',
+    'prediction_logged',
+    'vote_cast',
+  ]),
+  decisionRecordId: z.string().optional(),
+  cardId: z.string().optional(),
+  value: z.number().optional(),
+  metadata: z.record(z.string(), z.unknown()).default({}),
+  at: z.number().int(),
+});
+export type ProductEvent = z.infer<typeof ProductEventSchema>;
+
+export const ProductEventBatchSchema = z.object({
+  events: z.array(ProductEventSchema).min(1),
+});
+export type ProductEventBatch = z.infer<typeof ProductEventBatchSchema>;

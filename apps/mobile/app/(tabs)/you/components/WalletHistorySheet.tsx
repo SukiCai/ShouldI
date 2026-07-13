@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
-import { screenContentGutter, spacing } from '@/constants/theme';
+import { screenContentGutter, spacing, typography } from '@/constants/theme';
 
 type WalletActivity = {
   id: string;
@@ -172,12 +172,12 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   title: {
-    fontSize: 17,
+    ...typography.titleSm,
     fontWeight: '600',
     letterSpacing: -0.25,
   },
   done: {
-    fontSize: 17,
+    ...typography.titleSm,
     fontWeight: '600',
   },
   balanceBlock: {
@@ -188,13 +188,12 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   balanceNum: {
-    fontSize: 34,
-    fontWeight: '800',
+    ...typography.displayLg,
     letterSpacing: -1,
     fontVariant: ['tabular-nums'],
   },
   balanceSuffix: {
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '600',
   },
   breakdownCard: {
@@ -217,17 +216,16 @@ const styles = StyleSheet.create({
     minWidth: 0,
   },
   breakdownLabel: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '600',
   },
   breakdownHint: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '500',
     marginTop: 2,
-    lineHeight: 14,
   },
   breakdownValue: {
-    fontSize: 16,
+    ...typography.body,
     fontWeight: '800',
     fontVariant: ['tabular-nums'],
   },
@@ -236,7 +234,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 14,
   },
   sectionLabel: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '600',
     letterSpacing: 0.2,
     textTransform: 'uppercase',
@@ -252,9 +250,8 @@ const styles = StyleSheet.create({
   },
   empty: {
     paddingVertical: 20,
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '500',
-    lineHeight: 19,
   },
   activityRow: {
     flexDirection: 'row',
@@ -275,23 +272,22 @@ const styles = StyleSheet.create({
     minWidth: 0,
   },
   activityLabel: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '600',
   },
   activityWhen: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '500',
     marginTop: 2,
   },
   activityAmount: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '700',
     fontVariant: ['tabular-nums'],
   },
   footerNote: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '500',
-    lineHeight: 16,
     paddingHorizontal: screenContentGutter,
     paddingTop: spacing.sm,
     paddingBottom: spacing.xs,

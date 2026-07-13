@@ -50,9 +50,13 @@ export function DecideSessionsSheet({
       bottomInset={bottomInset}
       grabColor={grabColor}>
       <View style={styles.sheetHeadRow}>
-        <Text style={[styles.sheetTitle, { color: primaryTxt }]}>Chats</Text>
-        <Pressable hitSlop={12} onPress={onClose} accessibilityRole="button">
-          <Text style={[styles.sheetClose, { color: muted }]}>Done</Text>
+        <Text style={[styles.sheetTitle, { color: primaryTxt }]}>Past sessions</Text>
+        <Pressable
+          hitSlop={12}
+          onPress={onClose}
+          accessibilityRole="button"
+          style={[styles.sheetCloseBtn, { borderColor: composerBorder, backgroundColor: composerBg }]}>
+          <Ionicons name="close" size={16} color={muted} />
         </Pressable>
       </View>
       <Text style={[styles.sheetHint, { color: muted }]}>{PAST_SESSIONS_HINT}</Text>
@@ -111,9 +115,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: -0.25,
   },
-  sheetClose: {
-    fontSize: 17,
-    fontWeight: '600',
+  sheetCloseBtn: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sheetHint: {
     fontSize: 12,

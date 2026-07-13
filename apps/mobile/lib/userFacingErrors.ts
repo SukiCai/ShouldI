@@ -24,7 +24,7 @@ export function userFacingApiError(
   if (!raw) return fallback;
 
   if (isConnectionFailure(error.message) || isConnectionFailure(raw)) {
-    return 'We couldn’t reach Harmence right now. Check your connection and try again.';
+    return 'We couldn’t reach ShouldI right now. Check your connection and try again.';
   }
 
   if (/^GET\s+\/|^POST\s+\//.test(raw)) {
@@ -41,7 +41,7 @@ export function userFacingApiError(
   }
 
   if (/harmence unreachable/i.test(raw)) {
-    return 'Harmence isn’t available right now. Please try again.';
+    return 'ShouldI isn’t available right now. Please try again.';
   }
 
   if (/COUNCIL_LOCKED/i.test(raw)) {
@@ -53,7 +53,7 @@ export function userFacingApiError(
 
 /** Assistant bubble shown when the intake chat cannot boot. */
 export const HARMENCE_OFFLINE_BUBBLE =
-  'Harmence isn’t available right now.\n\n' +
+  'ShouldI isn’t available right now.\n\n' +
   'Check that you’re online, then tap the edit icon above to start a new chat.';
 
 /** Past-sessions sheet helper — no backend jargon. */

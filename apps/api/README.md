@@ -30,4 +30,4 @@ From the repo root, **`docker compose up --build`** starts **`api`** and the Exp
 - `HERMES_API_URL` — Hermes OpenAI-compatible server (default `http://127.0.0.1:8642`).
 - `HERMES_API_KEY` — Bearer token matching Hermes `API_SERVER_KEY` when set.
 
-See [`../../docs/hermes-setup.md`](../../docs/hermes-setup.md) for gateway + provider key setup.
+See [`../../docs/engineering/hermes-setup.md`](../../docs/engineering/hermes-setup.md) for gateway + provider key setup.

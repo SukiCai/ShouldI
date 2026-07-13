@@ -11,8 +11,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { DiscussExpandTransition } from '@/components/decision/DiscussExpandTransition';
-import { DiscussExpanded } from '@/components/decision/DiscussExpanded';
+import { DiscussExpandTransition, DiscussExpanded } from '@/components/decide/discuss';
 import { ReelCardAtmosphereLayers } from '@/components/explore/ReelDiscussChrome';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import ProvenanceChip from '@/components/ui/ProvenanceChip';

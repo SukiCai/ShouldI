@@ -2,7 +2,6 @@ import { PropsWithChildren } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { resolveAppChromatics } from '@/constants/appChromatics';
 import { palette, profileNeutralStroke, radius, themeSurface, typography } from '@/constants/theme';
 
 type Props = PropsWithChildren<{
@@ -15,8 +14,7 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
-  const chrom = resolveAppChromatics(isDark, surface);
-  const accent = chrom.mint;
+  const accent = isDark ? palette.neonSky : palette.accent;
 
   return (
     <Pressable
@@ -28,9 +26,9 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
         styles.shell,
         {
           backgroundColor: surface.groupedSurface,
-          borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.18),
+          borderColor: isDark ? 'rgba(255,255,255,0.16)' : profileNeutralStroke(0.16),
         },
-        selected ? { backgroundColor: `${accent}26`, borderColor: accent } : undefined,
+        selected ? { backgroundColor: `${accent}20`, borderColor: accent } : undefined,
       ]}>
       <Text
         style={[typography.compact, selected ? { color: accent, fontWeight: '700', textAlign: 'center' } : { color: surface.textPrimary, textAlign: 'center' }]}>

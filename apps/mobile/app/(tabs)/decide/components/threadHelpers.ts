@@ -8,11 +8,16 @@ export function bubbleKey(b: DecideInterviewBubble) {
   return b.id;
 }
 
-const HARMENCE_INTRO_SHORT =
+const SHOULDI_INTRO_SHORT =
   "What's the decision you're wrestling with? I'll ask follow-ups until we reach a clear verdict.";
 
 export function formatBubbleText(text: string): string {
-  return text.replace(/\*\*(.+?)\*\*/g, '$1');
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\bthe\s+this\s+/gi, 'this ')
+    .replace(/\bco-op\s+co-op\b/gi, 'co-op')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 }
 
 export function displayAssistantText(item: DecideInterviewBubble, allMessages: DecideInterviewBubble[]): string {
@@ -23,9 +28,9 @@ export function displayAssistantText(item: DecideInterviewBubble, allMessages: D
   if (
     itemIdx === firstAssistantIdx &&
     itemIdx >= 0 &&
-    (text.includes("I'm Harmence") || text.length > 120)
+    (text.includes("I'm ShouldI") || text.length > 120)
   ) {
-    return HARMENCE_INTRO_SHORT;
+    return SHOULDI_INTRO_SHORT;
   }
   return text;
 }
@@ -110,6 +115,55 @@ export type ExpertJoinRow = {
 export type DecideThreadItem =
   | { kind: 'message'; id: string; at: number; bubble: DecideInterviewBubble; messageIndex: number }
   | { kind: 'expert-join'; id: string; at: number; expert: DecideInterviewExpert; contextText?: string };
+
+export function formatSenderDisplay(label: string): string {
+  if (label === 'You') return 'You';
+  return label
+    .toLowerCase()
+    .replace(/(^|[\s/-])([a-z])/g, (_, sep: string, char: string) => `${sep}${char.toUpperCase()}`);
+}
+
+export function threadSenderLabel(
+  item: DecideThreadItem,
+  resolveExpert: (bubble: DecideInterviewBubble) => Pick<DecideInterviewExpert, 'title'> | null,
+): string | null {
+  if (item.kind !== 'message') return null;
+  const bubble = item.bubble;
+  if (bubble.role === 'user') return 'You';
+  const expert = resolveExpert(bubble);
+  const title = expert?.title?.trim() || bubble.expertTitle?.trim();
+  return title || null;
+}
+
+export function shouldShowThreadSenderEyebrow(
+  index: number,
+  items: DecideThreadItem[],
+  resolveExpert: (bubble: DecideInterviewBubble) => Pick<DecideInterviewExpert, 'title'> | null,
+): boolean {
+  const current = items[index];
+  if (current.kind !== 'message') return false;
+  const label = threadSenderLabel(current, resolveExpert);
+  if (!label) return false;
+
+  if (index > 0) {
+    const prev = items[index - 1];
+    if (prev.kind === 'expert-join') {
+      const joinTitle = prev.expert.title?.trim();
+      if (joinTitle && joinTitle.toLowerCase() === label.toLowerCase()) {
+        return false;
+      }
+    }
+  }
+
+  for (let i = index - 1; i >= 0; i -= 1) {
+    const prev = items[i];
+    if (prev.kind === 'expert-join') continue;
+    if (prev.kind !== 'message') continue;
+    const prevLabel = threadSenderLabel(prev, resolveExpert);
+    if (prevLabel) return prevLabel !== label;
+  }
+  return true;
+}
 
 export function threadItemKey(item: DecideThreadItem): string {
   return item.id;

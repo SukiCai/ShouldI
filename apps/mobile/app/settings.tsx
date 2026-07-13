@@ -477,9 +477,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 17,
-    lineHeight: 22,
-    fontWeight: '700',
+    ...typography.titleSm,
     letterSpacing: -0.3,
   },
   headerSide: {
@@ -547,7 +545,7 @@ const styles = StyleSheet.create({
     minHeight: 48,
   },
   appearanceLabel: {
-    fontSize: 12,
+    ...typography.caption,
     letterSpacing: -0.1,
   },
   footer: {
@@ -558,7 +556,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   footerBrand: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
     letterSpacing: -0.2,
   },

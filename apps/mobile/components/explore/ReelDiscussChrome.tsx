@@ -410,7 +410,7 @@ export function LiveVotesPill({
   voteTotal,
   isLivePoll,
   inline,
-  /** Stronger frost + rim — reel Explore / plot-deck header */
+  /** Stronger frost + rim — reel Explore / Outcome Replay header */
   elevated,
 }: {
   voteTotal: number;

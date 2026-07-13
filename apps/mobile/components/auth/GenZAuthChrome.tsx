@@ -1242,16 +1242,14 @@ export const AuthFields = StyleSheet.create({
     alignSelf: 'stretch',
   },
   muted: {
-    ...typography.compact,
-    fontSize: 13,
+    ...typography.subhead,
     color: profileTypography.subdued,
     textAlign: 'center',
     fontWeight: '500',
     letterSpacing: 0.15,
   },
   boldLink: {
-    fontSize: 22,
-    lineHeight: 28,
+    ...typography.title,
     fontWeight: '800',
     color: palette.heroInk,
     letterSpacing: -0.3,
@@ -1323,8 +1321,7 @@ export const AuthFields = StyleSheet.create({
   },
   pwdInput: {
     flex: 1,
-    ...typography.body,
-    fontSize: 17,
+    ...typography.titleSm,
     color: profileTypography.ink,
     fontWeight: '600',
     paddingVertical: Platform.OS === 'ios' ? 16 : 11,
@@ -1338,8 +1335,7 @@ export const AuthFields = StyleSheet.create({
     paddingHorizontal: 6,
   },
   tertiaryBold: {
-    fontSize: 15,
-    lineHeight: 20,
+    ...typography.bodySm,
     fontWeight: '800',
     color: palette.heroInk,
     textAlign: 'center',
@@ -1491,9 +1487,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   heroTitle: {
-    fontSize: 34,
-    lineHeight: 42,
-    fontWeight: '800',
+    ...typography.displayLg,
     letterSpacing: -1.4,
     color: profileTypography.ink,
     textAlign: 'center',
@@ -1667,11 +1661,10 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 17,
   },
   heroBadgeTxt: {
-    ...typography.compact,
+    ...typography.subhead,
     fontWeight: '800',
     color: palette.heroInk,
     letterSpacing: 4.2,
-    fontSize: 13,
     textTransform: 'uppercase',
     zIndex: 6,
   },
@@ -1826,7 +1819,7 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     alignSelf: 'stretch',
   },
-  /** OLED sign-in / sign-up: flat primary pill (matches `PrimaryButton` primary). */
+  /** OLED sign-in / sign-up: flat primary pill (matches `Button` primary). */
   ctaOledSolid: {
     width: '100%',
     alignItems: 'center',
@@ -1850,8 +1843,7 @@ const styles = StyleSheet.create({
     }),
   },
   ctaOledSolidLabel: {
-    fontSize: 17,
-    fontWeight: '700',
+    ...typography.titleSm,
     letterSpacing: 0.35,
     color: palette.sheet,
     textAlign: 'center',
@@ -1867,15 +1859,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   ctaSwipeHintBelowOled: {
-    ...typography.caption,
+    ...typography.micro,
     color: 'rgba(15,17,21,0.48)',
     textAlign: 'center',
     marginTop: 8,
-    fontWeight: '600',
     letterSpacing: 2,
     textTransform: 'uppercase',
-    fontSize: 10,
-    lineHeight: 14,
     maxWidth: 300,
     alignSelf: 'center',
     paddingHorizontal: 8,
@@ -1894,7 +1883,7 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   ctaLabel: {
-    fontSize: 18,
+    ...typography.h2,
     fontWeight: '800',
     color: palette.sheet,
     letterSpacing: 0.25,
@@ -1909,14 +1898,12 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   ctaSwipeHint: {
-    ...typography.caption,
+    ...typography.micro,
     color: 'rgba(255,255,255,0.48)',
     textAlign: 'center',
     marginTop: 8,
-    fontWeight: '600',
     letterSpacing: 0.4,
     textTransform: 'uppercase',
-    fontSize: 10,
   },
   ctaArrowGlow: {
     width: 46,

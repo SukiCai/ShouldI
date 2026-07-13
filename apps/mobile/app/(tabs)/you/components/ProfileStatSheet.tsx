@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
-import { screenContentGutter, spacing } from '@/constants/theme';
+import { screenContentGutter, spacing, typography } from '@/constants/theme';
 
 export type SocialStatKey = 'followers' | 'following' | 'likes';
 
@@ -174,26 +174,24 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   title: {
-    fontSize: 17,
+    ...typography.titleSm,
     fontWeight: '600',
     letterSpacing: -0.25,
   },
   total: {
-    fontSize: 28,
-    fontWeight: '800',
+    ...typography.hero,
     letterSpacing: -0.8,
     fontVariant: ['tabular-nums'],
   },
   done: {
-    fontSize: 17,
+    ...typography.titleSm,
     fontWeight: '600',
     paddingTop: 2,
   },
   hint: {
-    fontSize: 12,
+    ...typography.caption,
     paddingHorizontal: screenContentGutter,
     marginBottom: 14,
-    lineHeight: 16,
     fontWeight: '500',
   },
   listContent: {
@@ -203,9 +201,8 @@ const styles = StyleSheet.create({
   empty: {
     paddingVertical: 28,
     textAlign: 'center',
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '500',
-    lineHeight: 20,
   },
   personRow: {
     flexDirection: 'row',
@@ -222,7 +219,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   avatarInitial: {
-    fontSize: 16,
+    ...typography.body,
     fontWeight: '800',
   },
   personText: {
@@ -230,19 +227,18 @@ const styles = StyleSheet.create({
     minWidth: 0,
   },
   personName: {
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '600',
   },
   personHandle: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '500',
     marginTop: 1,
   },
   personSubtitle: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '500',
     marginTop: 3,
-    lineHeight: 14,
   },
   likesBody: {
     paddingHorizontal: screenContentGutter,
@@ -267,19 +263,18 @@ const styles = StyleSheet.create({
   },
   likesLabel: {
     flex: 1,
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '600',
     minWidth: 0,
   },
   likesCount: {
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '800',
     fontVariant: ['tabular-nums'],
   },
   demoNote: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '500',
     marginTop: spacing.sm,
-    lineHeight: 15,
   },
 });

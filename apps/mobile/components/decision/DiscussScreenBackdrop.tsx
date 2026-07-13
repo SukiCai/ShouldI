@@ -9,22 +9,36 @@ type Props = {
   category: DecisionCategory;
   coarseGradient: readonly [string, string, string];
   children: React.ReactNode;
+  showAtmosphere?: boolean;
+  showGradient?: boolean;
+  opaqueBackgroundColor?: string;
 };
 
 /** Coarse gradient + Explore atmosphere — same stack as decision Discuss screen. */
-export function DiscussScreenBackdrop({ category, coarseGradient, children }: Props) {
+export function DiscussScreenBackdrop({
+  category,
+  coarseGradient,
+  children,
+  showAtmosphere = true,
+  showGradient = true,
+  opaqueBackgroundColor,
+}: Props) {
   return (
-    <View style={styles.fill}>
-      <LinearGradient
-        colors={[...coarseGradient]}
-        locations={[...REEL_SURFACE_LOCATIONS]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={StyleSheet.absoluteFillObject}
-      />
-      <View style={styles.discussAtmospherePortal} pointerEvents="none">
-        <ReelCardAtmosphereLayers category={category} />
-      </View>
+    <View style={[styles.fill, opaqueBackgroundColor ? { backgroundColor: opaqueBackgroundColor } : null]}>
+      {showGradient ? (
+        <LinearGradient
+          colors={[...coarseGradient]}
+          locations={[...REEL_SURFACE_LOCATIONS]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={StyleSheet.absoluteFillObject}
+        />
+      ) : null}
+      {showAtmosphere ? (
+        <View style={styles.discussAtmospherePortal} pointerEvents="none">
+          <ReelCardAtmosphereLayers category={category} />
+        </View>
+      ) : null}
       {children}
     </View>
   );

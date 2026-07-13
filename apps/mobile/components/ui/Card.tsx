@@ -4,7 +4,7 @@ import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useColorScheme } from '@/components/useColorScheme';
 import { council, elevation, palette, radius, themeSurface } from '@/constants/theme';
 
-type CardVariant = 'surface' | 'elevated' | 'council';
+type CardVariant = 'surface' | 'elevated' | 'council' | 'subtle';
 
 type Props = PropsWithChildren<{
   variant?: CardVariant;
@@ -16,7 +16,7 @@ export default function Card({ children, variant = 'surface', accentColor, style
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
-  const accent = accentColor ?? (variant === 'council' ? council.violet : palette.neonMint);
+  const accent = accentColor ?? (variant === 'council' ? council.violet : palette.accent);
 
   return (
     <View
@@ -27,6 +27,10 @@ export default function Card({ children, variant = 'surface', accentColor, style
         {
           backgroundColor: surface.groupedSurface,
           borderColor: surface.groupedBorder,
+        },
+        variant === 'subtle' && {
+          backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.72)',
+          borderColor: surface.hairline,
         },
         variant === 'council' && {
           backgroundColor: isDark ? 'rgba(91,33,182,0.12)' : '#f5f3ff',
@@ -44,7 +48,7 @@ export default function Card({ children, variant = 'surface', accentColor, style
 
 const styles = StyleSheet.create({
   shell: {
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
     overflow: 'hidden',
     flexDirection: 'row',
@@ -56,6 +60,6 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     minWidth: 0,
-    padding: 14,
+    padding: 16,
   },
 });

@@ -15,16 +15,16 @@ export default function SignUpScreen() {
     Keyboard.dismiss();
     Alert.alert(
       'Sign up preview',
-      'Auth wires up soon — OLED reference + swipe on the capsule to open Sign-in.',
+      'Auth wires up soon — this flow now matches the calm core experience.',
       [{ text: 'OK' }],
     );
   }
 
   return (
     <GenZAuthChrome
-      appearance="oled"
+      appearance="mist"
       heroAvatars={HERO_SIGNUP_AVATARS}
-      headline={"AI can answer. Humans validate."}
+      headline={"Make your next decision with calm clarity."}
       heroBadge="SHOULDI"
       footerCtaLabel="Sign Up"
       footerCtaAccessibilityLabel="Sign up"

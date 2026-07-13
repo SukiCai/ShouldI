@@ -270,7 +270,7 @@ const CHOICE_STEPS = [
     id: 'real_question',
     title: 'Core dilemma',
     question: 'What kind of answer would help most with this decision?',
-    helperText: 'Harmence inferred the topic from your question; this narrows the decision shape.',
+    helperText: 'ShouldI inferred the topic from your question; this narrows the decision shape.',
     options: [
       { id: 'choose_between_two', label: 'Choose between two paths', description: 'A vs B, both plausible.' },
       { id: 'go_or_no_go', label: 'Go / no-go', description: 'Whether to commit, leave, buy, move, publish.' },
@@ -306,7 +306,7 @@ const CHOICE_STEPS = [
   {
     id: 'constraint',
     title: 'Hard constraint',
-    question: 'Which constraint should Harmence treat as least bendable?',
+    question: 'Which constraint should ShouldI treat as least bendable?',
     options: [
       { id: 'money', label: 'Money / runway', description: 'Budget, debt, income, savings, opportunity cost.' },
       { id: 'time', label: 'Time / deadline', description: 'A deadline, season, contract, school or visa clock.' },
@@ -334,7 +334,7 @@ const CAREER_COOP_STEPS = [
     id: 'coop_program_stage',
     title: 'School and co-op stage',
     question: 'Where are you in your program right now?',
-    helperText: 'For a co-op offer, Harmence needs your academic stage before judging upside or risk.',
+    helperText: 'For a co-op offer, ShouldI needs your academic stage before judging upside or risk.',
     options: [
       { id: 'undergrad_first_coop', label: 'Undergrad, first co-op', description: 'This would be your first formal placement.' },
       { id: 'undergrad_repeat_coop', label: 'Undergrad, not first co-op', description: 'You already have co-op/internship experience.' },
@@ -529,7 +529,7 @@ const COOP_WHY_IT_MATTERS: Record<string, string> = {
 };
 
 const OPEN_GREETING =
-  `I'm **Harmence**. Ask your decision in your own words first — I'll infer the topic, pick the right decision lens, then ask only the follow-ups needed for a final recommendation and community-safe preview card.`;
+  `I'm **ShouldI**. Ask your decision in your own words first — I'll infer the topic, pick the right decision lens, then ask only the follow-ups needed for a final recommendation and community-safe preview card.`;
 
 const KNOWN_COMPANIES = [
   'amazon',
@@ -891,7 +891,7 @@ function firstClarifyPromptForInitialQuestion(session: Session): DecideInterview
       id: 'career_offer_lens',
       title: 'Career offer lens',
       question: 'What makes this offer hard to decide?',
-      helperText: 'Harmence inferred this as a career decision and will use the offer lens first.',
+      helperText: 'ShouldI inferred this as a career decision and will use the offer lens first.',
       options: [
         { id: 'compensation', label: 'Money / upside', description: 'Comp, equity, runway, benefits, opportunity cost.' },
         { id: 'growth', label: 'Growth path', description: 'Learning, scope, title, network, future optionality.' },
@@ -1681,7 +1681,7 @@ function fallbackFinal(session: Session): {
       ? `Accept the ${ctx.offerPhrase} if your school and permit office confirm eligibility in writing, then use the first ${checkpointWeeks} weeks as a checkpoint.`
       : `Do not commit to the ${ctx.offerPhrase} until you verify ${permitRisk ? 'school/permit eligibility' : reputationRisk ? 'reputational risk with target employers' : 'the specific role quality'} and compare it against your recruiting pipeline.`;
     const riskFlagLine = riskFlags.length ? ` Key flags: ${riskFlags.map((flag) => flag.label).join('; ')}.` : '';
-    const because = `Harmence weighed that this is ${stage}, your authorization is ${authorization}, the main upside is ${strength}, the main worry is ${risk}, your backup is ${alternative}, and a clear yes depends on ${threshold}.${riskFlagLine}`;
+    const because = `ShouldI weighed that this is ${stage}, your authorization is ${authorization}, the main upside is ${strength}, the main worry is ${risk}, your backup is ${alternative}, and a clear yes depends on ${threshold}.${riskFlagLine}`;
 
     return {
       assistantText: `Distilled what I heard. I have enough to give you a concise recommendation and a community-safe preview card.`,
@@ -1740,7 +1740,7 @@ function fallbackFinal(session: Session): {
   const risk = session.answers.find((a) => a.promptId === 'risk_appetite')?.label ?? 'medium uncertainty';
   const constraint = session.answers.find((a) => a.promptId === 'constraint')?.label ?? 'your main constraint';
   const verdictLine = `Lean: choose the path that protects ${constraint.toLowerCase()}`;
-  const because = `Harmence weighed the stated dilemma (${decision}), your risk tolerance (${risk}), and the least-bendable constraint (${constraint}). The safest read is to pick the option that preserves that constraint while keeping the decision reversible.`;
+  const because = `ShouldI weighed the stated dilemma (${decision}), your risk tolerance (${risk}), and the least-bendable constraint (${constraint}). The safest read is to pick the option that preserves that constraint while keeping the decision reversible.`;
 
   return {
     assistantText: `Distilled what I heard. I have enough to give you a recommendation and a community-safe preview card.`,
@@ -1766,11 +1766,11 @@ function fallbackFinal(session: Session): {
     }),
     previewCard: DecideInterviewPreviewCardSchema.parse({
       category,
-      question: `Would you agree with Harmence's lean on this ${category} decision?`,
-      hook: `Harmence thinks the core issue is ${constraint.toLowerCase()}, not just preference.`,
+      question: `Would you agree with ShouldI's recommendation on this ${category} decision?`,
+      hook: `ShouldI thinks the core issue is ${constraint.toLowerCase()}, not just preference.`,
       tension: because,
       options: [
-        { id: 'agree', label: 'Agree with Harmence' },
+        { id: 'agree', label: 'Agree with ShouldI' },
         { id: 'push_back', label: 'Push back' },
       ],
       aiVerdictLine: verdictLine,
@@ -2160,6 +2160,8 @@ export async function summarizeSessionDetail(id: string): Promise<{
   phase: string;
   isComplete: boolean;
   hermesIntegrated: boolean;
+  mode: 'single' | 'complex';
+  ambiguity?: number;
   activeExperts: DecideInterviewExpert[];
   choicePrompt?: DecideInterviewChoicePrompt;
   finalDecision?: DecideInterviewFinalDecision;
@@ -2187,7 +2189,7 @@ export async function summarizeSessionDetail(id: string): Promise<{
 
 function pickPreview(messages: DecideInterviewBubble[]): string {
   const firstUser = messages.find((m) => m.role === 'user');
-  if (!firstUser) return 'fresh Harmence intake';
+  if (!firstUser) return 'fresh ShouldI intake';
   return firstUser.text.slice(0, 120).replace(/\s+/g, ' ');
 }
 

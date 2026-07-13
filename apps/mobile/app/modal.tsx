@@ -86,7 +86,7 @@ export default function ModalScreen() {
           </Card>
           <EmptyState
             title="Nothing here yet"
-            body="Shared empty state for Explore, Decide, and Plot Deck."
+            body="Shared empty state for Explore, Decide, and Outcome Replay."
             actionLabel="Retry"
             onAction={() => undefined}
           />

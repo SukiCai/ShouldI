@@ -35,7 +35,7 @@ export type DecideDraft = {
   successCriteria: string;
   /** Yes/no crowd question — surfaced on Explore reel */
   communityChallengeQuestion: string;
-  /** Harmence leaning headline */
+  /** ShouldI recommendation headline */
   communityAiVerdictLine: string;
   /** Tradeoffs / risks / rationale — summarized for peers */
   communityAiBecause: string;
@@ -50,6 +50,14 @@ export type DecideDraft = {
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
   keyMoments: KeyMoment[];
   reflection?: DecideInterviewFinalDecision['reflection'];
+  decisionRecordId?: string;
+  decisionLens?: {
+    headline: string;
+    confidenceScore: number;
+    strengths: string[];
+    blindSpots: string[];
+    calibrationFocus?: string;
+  };
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
@@ -75,7 +83,7 @@ export type DecideWizardContextValue = {
   reset(): void;
   lastResponse: ChatResponse | null;
   rememberResponse(parsed: ChatResponse): void;
-  /** Runs `/v1/chat`, hydrates Explore card preview fields, stays on Review briefing until you open full briefing. */
+  /** Runs `/v1/chat`, hydrates Explore card preview fields, stays on review until full recommendation opens. */
   submitBriefing(): Promise<void>;
   /** Mock hand-off — wire to POST /requests later */
   postCommunityValidationCard(): void;
@@ -110,6 +118,8 @@ const blankDraft = (): DecideDraft => ({
   expertVerdicts: [],
   keyMoments: [],
   reflection: undefined,
+  decisionRecordId: undefined,
+  decisionLens: undefined,
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {
@@ -169,7 +179,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
         communityAiBecause: hydrate.communityAiBecause.trim() || hydrate.communityAiBecause,
       });
     } catch (err) {
-      setError(userFacingApiError(err, 'Could not generate your briefing. Please try again.'));
+      setError(userFacingApiError(err, 'Could not generate your recommendation. Please try again.'));
     } finally {
       setBusy(false);
     }
@@ -196,7 +206,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       !draft.communityAiBecause.trim() ||
       draft.pollOptions.some((option) => !option.label.trim())
     ) {
-      setError('Fill the poll question, hook, tradeoff, Harmence stance, and option labels before sending to Explore.');
+      setError('Fill the poll question, hook, tradeoff, recommendation stance, and option labels before sending to Explore.');
       return;
     }
     setError(null);
@@ -215,7 +225,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
     if (__DEV__) console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
     Alert.alert(
       'Sent to Explore',
-      'Peers will thumbs up/down on Harmence stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
+      'Peers will thumbs up/down on the recommendation stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
       [{ text: 'Open Explore', onPress: () => router.replace('/(tabs)/explore') }],
     );
   }, [draft]);

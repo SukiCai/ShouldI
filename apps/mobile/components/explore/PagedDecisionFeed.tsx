@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import { Button } from '@/components/ui';
 import {
   reelDiscussStyles,
   ReelCardSurface,
@@ -43,7 +43,9 @@ export function decisionFeedStatus(card: unknown): 'open' | 'resolved' {
 
 const DEFAULT_SWIPE_CUES = ['More vibes ↑', 'Swipe for next', 'Keep scrolling ↑'] as const;
 
-export const PLOT_DECK_SWIPE_CUES = ['Next dilemma ↑', 'Swipe for more', 'One more ↑'] as const;
+export const OUTCOME_REPLAY_SWIPE_CUES = ['Next dilemma ↑', 'Swipe for more', 'One more ↑'] as const;
+/** @deprecated Use OUTCOME_REPLAY_SWIPE_CUES. */
+export const PLOT_DECK_SWIPE_CUES = OUTCOME_REPLAY_SWIPE_CUES;
 
 export const EXPLORE_FIRST_VOTE_REWARD_POINTS = 2;
 
@@ -59,6 +61,13 @@ export type PagedDecisionFeedProps = {
   /** Landing emphasis on reel #1 (Explore only — subtle extra spring). */
   celebrateLandingHero?: boolean;
   /** First vote on an open reel — surfaced in Explore header balance (demo-local persist). */
+  onEarnExploreVotePoints?: (delta: number) => void;
+};
+
+export type ExploreCardDetailPanelProps = {
+  item: ExploreFeedCard;
+  effectivePicked?: string | null;
+  onPickedChange: (optionId: string) => void;
   onEarnExploreVotePoints?: (delta: number) => void;
 };
 
@@ -99,6 +108,177 @@ function AiDecisionReasonCard({
 
 function totalVotesFromCard(card: ExploreFeedCard): number {
   return card.distribution.reduce((sum, d) => sum + d.votes, 0);
+}
+
+export function ExploreCardDetailPanel({
+  item,
+  effectivePicked,
+  onPickedChange,
+  onEarnExploreVotePoints,
+}: ExploreCardDetailPanelProps) {
+  const status = decisionFeedStatus(item);
+  const isOpen = status === 'open';
+  const isResolved = status === 'resolved';
+  const voteTotalAll = totalVotesFromCard(item);
+  const hasPicked = isResolved || !!effectivePicked;
+
+  return (
+    <ReelCardSurface category={item.category} isOpen={isOpen}>
+      <ReelCardActionBar
+        variant="reel-feed-top"
+        voteSummary={{ voteTotal: voteTotalAll, isLivePoll: isOpen }}
+      />
+      <View style={reelDiscussStyles.pollQuestionRow}>
+        <View style={reelDiscussStyles.pollQuestionTextCol}>
+          <View style={reelDiscussStyles.pollQuestionTitleRow}>
+            <Text
+              accessibilityRole="header"
+              style={[
+                isOpen ? typography.hero : typography.h2,
+                reelDiscussStyles.pollQuestion,
+                reelDiscussStyles.pollQuestionHeadlineFlexible,
+                isOpen && reelDiscussStyles.pollQuestionOpen,
+                isOpen && reelDiscussStyles.pollHeroOpen,
+              ]}>
+              {item.question}
+            </Text>
+            <RewardPointsGem rewardPoints={item.rewardPoints} density="compact" />
+          </View>
+          <PollQuestionAccentBar />
+        </View>
+      </View>
+      {isOpen && !hasPicked ? (
+        <Text style={styles.pickPrompt}>Tap whatever feels closest — zero pressure.</Text>
+      ) : null}
+      {(() => {
+        const total = totalVotesFromCard(item);
+        const aiPickId = item.aiSuggestedOptionId;
+        const aiSuggestedLabel =
+          aiPickId != null ? item.options.find((option) => option.id === aiPickId)?.label ?? null : null;
+        return (
+          <>
+            <View style={reelDiscussStyles.optionWrap}>
+              {item.options.map((option) => {
+                const votes = item.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
+                const percentage = total > 0 ? Math.round((votes / total) * 100) : 0;
+                const selected = effectivePicked === option.id;
+                const aiLeanHere = !!(hasPicked && aiPickId && option.id === aiPickId);
+                const pollBar =
+                  selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
+                const pickedSurfaceStyle =
+                  hasPicked && selected && aiLeanHere
+                    ? reelDiscussStyles.optionPillUserAndAiPick
+                    : hasPicked && selected && !aiLeanHere
+                      ? reelDiscussStyles.optionPillUserPick
+                      : hasPicked && !selected && aiLeanHere
+                        ? reelDiscussStyles.optionPillAiLeanOnly
+                        : undefined;
+                return (
+                  <Pressable
+                    key={option.id}
+                    accessibilityRole="button"
+                    accessibilityLabel={
+                      aiLeanHere
+                        ? `${isResolved ? `${option.label}, voting closed` : `Pick ${option.label}`}; ShouldI AI leaned here`
+                        : isResolved
+                          ? `${option.label}, voting closed`
+                          : `Pick ${option.label}`
+                    }
+                    disabled={isResolved}
+                    onPress={() => {
+                      if (isResolved) return;
+                      const hadPickAlready = !!effectivePicked;
+                      if (Platform.OS !== 'web' && hadPickAlready) {
+                        void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+                      }
+                      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+                      onPickedChange(option.id);
+                      if (isOpen && !hadPickAlready) {
+                        onEarnExploreVotePoints?.(EXPLORE_FIRST_VOTE_REWARD_POINTS);
+                      }
+                    }}
+                    style={({ pressed }) => [
+                      reelDiscussStyles.optionPill,
+                      pickedSurfaceStyle,
+                      isResolved && reelDiscussStyles.optionPillDisabled,
+                      !isResolved && pressed && reelDiscussStyles.optionPillPressed,
+                    ]}>
+                    <View style={reelDiscussStyles.optionTopRow}>
+                      <Text
+                        style={[
+                          reelDiscussStyles.optionText,
+                          selected && reelDiscussStyles.optionTextActive,
+                        ]}>
+                        {option.label}
+                      </Text>
+                      <View style={reelDiscussStyles.optionMetaCluster}>
+                        {selected && hasPicked ? (
+                          <View style={reelDiscussStyles.userPickBadge}>
+                            <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
+                          </View>
+                        ) : null}
+                        {aiLeanHere ? (
+                          <View style={reelDiscussStyles.aiLeanBadge}>
+                            <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
+                          </View>
+                        ) : null}
+                        {hasPicked ? (
+                          <Text style={[reelDiscussStyles.optionMeta, selected && reelDiscussStyles.optionMetaPicked]}>
+                            {percentage}%
+                            {selected ? (isResolved ? ' · Final' : ' · You') : ''}
+                          </Text>
+                        ) : selected ? (
+                          <Text style={reelDiscussStyles.optionMeta}>Selected</Text>
+                        ) : null}
+                      </View>
+                    </View>
+                    {hasPicked ? (
+                      <View>
+                        <InlineDistributionTrack percentage={percentage} emphasis={pollBar} />
+                      </View>
+                    ) : null}
+                  </Pressable>
+                );
+              })}
+            </View>
+            {hasPicked && item.aiValidation ? (
+              <AiDecisionReasonCard
+                v={item.aiValidation}
+                suggestedOptionLabel={aiSuggestedLabel}
+              />
+            ) : null}
+            {hasPicked ? (
+              <Button
+                accessibilityLabel="Join discussion"
+                style={styles.discussButtonBelowChoices}
+                onPress={() =>
+                  router.push({
+                    pathname: '/decision/[id]',
+                    params: {
+                      id: item.id,
+                      fromReel: '1',
+                      reelCategory: item.category,
+                      pickedOption:
+                        typeof effectivePicked === 'string' ? effectivePicked : '',
+                    },
+                  })
+                }>
+                <Text style={styles.buttonLabel}>Join Discussion</Text>
+              </Button>
+            ) : null}
+          </>
+        );
+      })()}
+      {status === 'resolved' ? (
+        <View style={styles.outcomeMerged}>
+          <Text style={[typography.caption, styles.outcomeEyebrow]}>What happened</Text>
+          <Text style={[typography.body, styles.outcomeText]}>{shorten(item.outcome ?? '', 160)}</Text>
+          <Text style={[typography.caption, styles.lessonEyebrow]}>Takeaway</Text>
+          <Text style={[typography.compact, styles.lessonText]}>{shorten(item.takeaway ?? '', 130)}</Text>
+        </View>
+      ) : null}
+    </ReelCardSurface>
+  );
 }
 
 
@@ -354,12 +534,7 @@ export function PagedDecisionFeed({
           index,
         })}
         renderItem={({ item, index }) => {
-          const status = decisionFeedStatus(item);
-          const isOpen = status === 'open';
-          const isResolved = status === 'resolved';
-          const voteTotalAll = totalVotesFromCard(item);
           const effectivePicked = selectedByCard[item.id] ?? item.myVoteOptionId;
-          const hasPicked = isResolved || !!effectivePicked;
 
           return (
             <View style={[styles.pageSheet, { height: pageHeight }]}>
@@ -375,156 +550,17 @@ export function PagedDecisionFeed({
                 bounces
                 {...(Platform.OS === 'ios' ? { directionalLockEnabled: true } : {})}>
                 <ReelCardMotionWrap animationToken={item.id} isLandingHero={celebrateLandingHero && index === 0}>
-                  <ReelCardSurface category={item.category} isOpen={isOpen}>
-                    <ReelCardActionBar
-                      variant="reel-feed-top"
-                      voteSummary={{ voteTotal: voteTotalAll, isLivePoll: isOpen }}
-                    />
-                    <View style={reelDiscussStyles.pollQuestionRow}>
-                      <View style={reelDiscussStyles.pollQuestionTextCol}>
-                        <View style={reelDiscussStyles.pollQuestionTitleRow}>
-                          <Text
-                            accessibilityRole="header"
-                            style={[
-                              isOpen ? typography.hero : typography.h2,
-                              reelDiscussStyles.pollQuestion,
-                              reelDiscussStyles.pollQuestionHeadlineFlexible,
-                              isOpen && reelDiscussStyles.pollQuestionOpen,
-                              isOpen && reelDiscussStyles.pollHeroOpen,
-                            ]}>
-                            {item.question}
-                          </Text>
-                          <RewardPointsGem rewardPoints={item.rewardPoints} density="compact" />
-                        </View>
-                        <PollQuestionAccentBar />
-                      </View>
-                    </View>
-                    {isOpen && !hasPicked ? (
-                      <Text style={styles.pickPrompt}>Tap whatever feels closest — zero pressure.</Text>
-                    ) : null}
-                    {(() => {
-                      const total = totalVotesFromCard(item);
-                      const aiPickId = item.aiSuggestedOptionId;
-                      const aiSuggestedLabel =
-                        aiPickId != null ? item.options.find((option) => option.id === aiPickId)?.label ?? null : null;
-                      return (
-                        <>
-                          <View style={reelDiscussStyles.optionWrap}>
-                            {item.options.map((option) => {
-                              const votes = item.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
-                              const percentage = total > 0 ? Math.round((votes / total) * 100) : 0;
-                              const selected = effectivePicked === option.id;
-                              const aiLeanHere = !!(hasPicked && aiPickId && option.id === aiPickId);
-                              const pollBar =
-                                selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
-                              const pickedSurfaceStyle =
-                                hasPicked && selected && aiLeanHere
-                                  ? reelDiscussStyles.optionPillUserAndAiPick
-                                  : hasPicked && selected && !aiLeanHere
-                                    ? reelDiscussStyles.optionPillUserPick
-                                    : hasPicked && !selected && aiLeanHere
-                                      ? reelDiscussStyles.optionPillAiLeanOnly
-                                      : undefined;
-                              return (
-                                <Pressable
-                                  key={option.id}
-                                  accessibilityRole="button"
-                                  accessibilityLabel={
-                                    aiLeanHere
-                                      ? `${isResolved ? `${option.label}, voting closed` : `Pick ${option.label}`}; ShouldI AI leaned here`
-                                      : isResolved
-                                        ? `${option.label}, voting closed`
-                                        : `Pick ${option.label}`
-                                  }
-                                  disabled={isResolved}
-                                  onPress={() => {
-                                    if (isResolved) return;
-                                    const hadPickAlready = !!(
-                                      selectedByCard[item.id] ?? item.myVoteOptionId
-                                    );
-                                    if (Platform.OS !== 'web' && hadPickAlready) {
-                                      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
-                                    }
-                                    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-                                    setSelectedByCard((prev) => ({
-                                      ...prev,
-                                      [item.id]: option.id,
-                                    }));
-                                    if (isOpen && !hadPickAlready) {
-                                      onEarnExploreVotePoints?.(EXPLORE_FIRST_VOTE_REWARD_POINTS);
-                                    }
-                                  }}
-                                  style={({ pressed }) => [
-                                    reelDiscussStyles.optionPill,
-                                    pickedSurfaceStyle,
-                                    isResolved && reelDiscussStyles.optionPillDisabled,
-                                    !isResolved && pressed && reelDiscussStyles.optionPillPressed,
-                                  ]}>
-                                  <View style={reelDiscussStyles.optionTopRow}>
-                                    <Text style={[reelDiscussStyles.optionText, selected && reelDiscussStyles.optionTextActive]}>{option.label}</Text>
-                                    <View style={reelDiscussStyles.optionMetaCluster}>
-                                      {selected && hasPicked ? (
-                                        <View style={reelDiscussStyles.userPickBadge}>
-                                          <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
-                                        </View>
-                                      ) : null}
-                                      {aiLeanHere ? (
-                                        <View style={reelDiscussStyles.aiLeanBadge}>
-                                          <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
-                                        </View>
-                                      ) : null}
-                                      {hasPicked ? (
-                                        <Text style={[reelDiscussStyles.optionMeta, selected && reelDiscussStyles.optionMetaPicked]}>
-                                          {percentage}%
-                                          {selected ? (isResolved ? ' · Final' : ' · You') : ''}
-                                        </Text>
-                                      ) : selected ? (
-                                        <Text style={reelDiscussStyles.optionMeta}>Selected</Text>
-                                      ) : null}
-                                    </View>
-                                  </View>
-                                  {hasPicked ? <InlineDistributionTrack percentage={percentage} emphasis={pollBar} /> : null}
-                                </Pressable>
-                              );
-                            })}
-                          </View>
-                          {hasPicked && item.aiValidation ? (
-                            <AiDecisionReasonCard
-                              v={item.aiValidation}
-                              suggestedOptionLabel={aiSuggestedLabel}
-                            />
-                          ) : null}
-                          {hasPicked ? (
-                            <PrimaryButton
-                              accessibilityLabel="Join discussion"
-                              style={styles.discussButtonBelowChoices}
-                              onPress={() =>
-                                router.push({
-                                  pathname: '/decision/[id]',
-                                  params: {
-                                    id: item.id,
-                                    fromReel: '1',
-                                    reelCategory: item.category,
-                                    pickedOption:
-                                      typeof effectivePicked === 'string' ? effectivePicked : '',
-                                  },
-                                })
-                              }>
-                              <Text style={styles.buttonLabel}>Join Discussion</Text>
-                            </PrimaryButton>
-                          ) : null}
-                        </>
-                      );
-                    })()}
-                    {status === 'resolved' ? (
-                      <View style={styles.outcomeMerged}>
-                        <Text style={[typography.caption, styles.outcomeEyebrow]}>What happened</Text>
-                        <Text style={[typography.body, styles.outcomeText]}>{shorten(item.outcome ?? '', 160)}</Text>
-                        <Text style={[typography.caption, styles.lessonEyebrow]}>Takeaway</Text>
-                        <Text style={[typography.compact, styles.lessonText]}>{shorten(item.takeaway ?? '', 130)}</Text>
-                      </View>
-                    ) : null}
-                  </ReelCardSurface>
+                  <ExploreCardDetailPanel
+                    item={item}
+                    effectivePicked={effectivePicked}
+                    onPickedChange={(optionId) =>
+                      setSelectedByCard((prev) => ({
+                        ...prev,
+                        [item.id]: optionId,
+                      }))
+                    }
+                    onEarnExploreVotePoints={onEarnExploreVotePoints}
+                  />
                 </ReelCardMotionWrap>
                 {index === 0 ? (
                   <View style={styles.swipeCueOutsideCard}>
@@ -646,16 +682,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   aiReasonLead: {
-    ...typography.h2,
+    ...typography.titleSm,
     color: profileTypography.ink,
-    fontWeight: '700',
     letterSpacing: -0.35,
-    lineHeight: 24,
-    fontSize: 17,
   },
   aiReasonBody: {
+    ...typography.body,
     color: profileTypography.body,
-    lineHeight: 21,
     fontWeight: '500',
   },
   outcomeMerged: {

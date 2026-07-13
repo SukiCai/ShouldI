@@ -43,7 +43,7 @@ export function CommunityValidationCardEditor({ labels, onChange }: Props) {
       </View>
       <Text style={[styles.title, { color: surface.textPrimary }]}>What Explore will show</Text>
       <Text style={[styles.microExplainer, { color: surface.textMuted }]}>
-        Peers rate Harmence&apos;s lean, then answer your sharpened yes/no prompt.
+        Peers rate ShouldI&apos;s recommendation, then answer your sharpened yes/no prompt.
       </Text>
 
       <Label text="AI leaning" muted={surface.textMuted} />
@@ -70,7 +70,7 @@ export function CommunityValidationCardEditor({ labels, onChange }: Props) {
       <View style={[styles.thumbsExplain, { backgroundColor: chipBg, borderColor: chipBorder }]}>
         <FontAwesome name="check-circle" size={14} color={thumbsIconColor} />
         <Text style={[styles.thumbGhostLbl, { color: surface.textMuted }]}>
-          Thumbs ↑↓ on Harmence • then poll below answers your challenge question
+          Thumbs ↑↓ on ShouldI • then poll below answers your challenge question
         </Text>
       </View>
 

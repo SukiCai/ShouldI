@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, profileNeutralStroke, radius, themeSurface, typography } from '@/constants/theme';
+import { radius, themeSurface, typography } from '@/constants/theme';
 
 type Props = TextInputProps & {
   label?: string;
@@ -45,8 +45,8 @@ export default function TextField({
           multiline && styles.inputMultiline,
           {
             color: surface.textPrimary,
-            backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : palette.field,
-            borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.14),
+            backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : '#f2f2f7',
+            borderColor: isDark ? 'rgba(255,255,255,0.16)' : 'rgba(60,60,67,0.18)',
           },
           style,
         ]}
@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
   },
   input: {
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    minHeight: 48,
+    paddingHorizontal: 16,
+    paddingVertical: 13,
+    minHeight: 50,
   },
   inputMultiline: {
     minHeight: 96,

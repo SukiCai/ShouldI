@@ -59,11 +59,10 @@ export function CouncilPaywallSheet({
         <View style={[styles.paywallIconWrap, { backgroundColor: `${council.violet}22` }]}>
           <Ionicons name="people-circle" size={32} color={council.violet} />
         </View>
-        <Text style={[styles.paywallKicker, { color: council.gold }]}>PREMIUM FEATURE</Text>
+        <Text style={[styles.paywallKicker, { color: council.gold }]}>EXPERT MODE</Text>
         <Text style={[styles.paywallTitle, { color: primaryTxt }]}>Expert Council</Text>
         <Text style={[styles.paywallBody, { color: muted }]}>
-          A chamber of specialists debates your decision. You see every vote, risk, and rationale before the final
-          verdict.
+          Multiple specialists review your decision. You get a recommendation, key tradeoffs, and each expert vote.
         </Text>
         <View style={styles.paywallFeatureList}>
           {[
@@ -101,7 +100,7 @@ export function CouncilPaywallSheet({
             <Text style={[styles.paywallPrimaryText, { color: '#fff' }]} numberOfLines={1}>
               Get Premium
             </Text>
-            <Text style={[styles.paywallPrimarySub, { color: 'rgba(255,255,255,0.88)' }]}>unlimited</Text>
+            <Text style={[styles.paywallPrimarySub, { color: 'rgba(255,255,255,0.88)' }]}>unlimited sessions</Text>
           </LinearGradient>
         </Pressable>
         <Pressable
@@ -121,7 +120,7 @@ export function CouncilPaywallSheet({
           <Text style={[styles.paywallSecondaryText, { color: primaryTxt }]} numberOfLines={1}>
             Use {councilSessionCost} points
           </Text>
-          <Text style={[styles.paywallSecondarySub, { color: muted }]}>one session</Text>
+          <Text style={[styles.paywallSecondarySub, { color: muted }]}>this session</Text>
         </Pressable>
         <Pressable
           accessibilityRole="button"

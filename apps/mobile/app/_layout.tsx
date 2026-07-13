@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useMemo } from 'react';
 import 'react-native-reanimated';
 
-import { palette, profileLight, themeSurface } from '@/constants/theme';
+import { palette, themeSurface } from '@/constants/theme';
 import { AppearanceProvider, useAppearance } from '@/lib/appearance';
 
 const navigationDark: Theme = {
@@ -18,12 +18,12 @@ const navigationDark: Theme = {
   dark: true,
   colors: {
     ...DarkTheme.colors,
-    primary: palette.neonMint,
+    primary: palette.accent,
     background: palette.mist,
-    card: palette.sheet,
+    card: palette.nightSlate,
     text: palette.textOnCanvas,
     border: palette.chromeHairline,
-    notification: palette.neonPink,
+    notification: palette.accent,
   },
 };
 
@@ -85,12 +85,12 @@ function RootLayoutNav() {
       dark: false,
       colors: {
         ...DefaultTheme.colors,
-        primary: profileLight.mint,
+        primary: palette.accent,
         background: surface.canvas,
         card: palette.sheet,
         text: surface.textPrimary,
         border: surface.hairline,
-        notification: palette.neonPink,
+        notification: palette.accent,
       },
     };
   }, [isDark, surface.canvas, surface.hairline, surface.textPrimary]);
@@ -111,12 +111,33 @@ function RootLayoutNav() {
         <Stack.Screen
           name="plot-deck"
           options={{
-            title: 'Plot Deck',
-            headerTintColor: isDark ? palette.neonMint : profileLight.mint,
+            title: 'Outcome Replay',
+            headerTintColor: palette.accent,
             headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
             headerStyle: { backgroundColor: surface.canvas },
             headerShadowVisible: false,
             headerBackTitle: 'Explore',
+          }}
+        />
+        <Stack.Screen
+          name="outcome-replay/index"
+          options={{
+            title: 'Outcome Replay',
+            headerTintColor: palette.accent,
+            headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
+            headerStyle: { backgroundColor: surface.canvas },
+            headerShadowVisible: false,
+            headerBackTitle: 'Explore',
+          }}
+        />
+        <Stack.Screen
+          name="outcome-replay/[id]"
+          options={{
+            title: 'Outcome Replay',
+            headerTintColor: palette.accent,
+            headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
+            headerStyle: { backgroundColor: surface.canvas },
+            headerShadowVisible: false,
           }}
         />
         <Stack.Screen name="settings" options={{ headerShown: false, animation: 'slide_from_right' }} />

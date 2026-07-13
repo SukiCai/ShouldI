@@ -111,9 +111,19 @@ export function ExpertRosterSheet({
       ) : (
         <>
           <View style={styles.sheetHeadRow}>
-            <Text style={[styles.sheetTitle, { color: primaryTxt }]}>Active expert</Text>
-            <Pressable hitSlop={12} onPress={onClose} accessibilityRole="button">
-              <Text style={[styles.sheetClose, { color: muted }]}>Done</Text>
+            <Text style={[styles.sheetTitle, { color: primaryTxt }]}>Experts</Text>
+            <Pressable
+              hitSlop={12}
+              onPress={onClose}
+              accessibilityRole="button"
+              style={[
+                styles.councilSheetClose,
+                {
+                  borderColor: composerBorder,
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)',
+                },
+              ]}>
+              <Ionicons name="close" size={18} color={muted} />
             </Pressable>
           </View>
           <Text style={[styles.sheetHint, { color: muted }]}>
@@ -156,10 +166,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
     letterSpacing: -0.25,
-  },
-  sheetClose: {
-    fontSize: 17,
-    fontWeight: '600',
   },
   sheetHint: {
     fontSize: 12,

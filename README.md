@@ -26,9 +26,9 @@ npm run build -w @shouldi/contracts   # emits dist typings for dependents
 
 ### Hermes agent (real AI in Decide / briefing)
 
-ShouldI proxies to **Hermes api_server** when it is running. Full checklist: [`docs/hermes-setup.md`](docs/hermes-setup.md).
+ShouldI proxies to **Hermes api_server** when it is running. Full checklist: [`docs/engineering/hermes-setup.md`](docs/engineering/hermes-setup.md).
 
-Short version: `cd hermes-agent-private && python3 -m venv .venv && source .venv/bin/activate && pip install -e .`, then enable `API_SERVER_ENABLED=true` in `~/.hermes/.env`, add a model provider key, run `hermes gateway` (port **8642**), then `npm run api` (port **8787**). See [`docs/hermes-setup.md`](docs/hermes-setup.md).
+Short version: `cd hermes-agent-private && python3 -m venv .venv && source .venv/bin/activate && pip install -e .`, then enable `API_SERVER_ENABLED=true` in `~/.hermes/.env`, add a model provider key, run `hermes gateway` (port **8642**), then `npm run api` (port **8787**). See [`docs/engineering/hermes-setup.md`](docs/engineering/hermes-setup.md).
 
 ### Run the HTTP API (default port 8787)
 
@@ -92,7 +92,10 @@ npm run mobile
 ### Contribution & architecture
 
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — local setup and conventions  
-- [`docs/architecture.md`](docs/architecture.md) — boundaries and data flow  
+- [`docs/engineering/architecture.md`](docs/engineering/architecture.md) — boundaries and data flow  
+- [`docs/business/ops/shouldi-ui-style-guardrails.md`](docs/business/ops/shouldi-ui-style-guardrails.md) — UI token/style guardrails
+- [`docs/business/ops/shouldi-ui-pr-checklist.md`](docs/business/ops/shouldi-ui-pr-checklist.md) — UI PR quality gate
+- [`docs/business/ops/shouldi-repo-hygiene-guardrails.md`](docs/business/ops/shouldi-repo-hygiene-guardrails.md) — repository hygiene baseline
 
 ### Supabase (next)
 

@@ -9,7 +9,7 @@
 ### Prerequisites
 
 - **Node ≥ 20** (`package.json` `engines`).
-- **Hermes** Python environment when exercising agent paths; see [`docs/hermes-setup.md`](docs/hermes-setup.md).
+- **Hermes** Python environment when exercising agent paths; see [`docs/engineering/hermes-setup.md`](docs/engineering/hermes-setup.md).
 
 ### Local setup
 
@@ -47,4 +47,9 @@ For Hermes in the container, set `HERMES_ROOT` and mount `./hermes-agent-private
 - **API vs client boundaries**: Types and request/response shapes live in **`@shouldi/contracts`**. Implement validation on the server; the mobile app imports types/schemas as needed — avoid duplicating ad-hoc DTO definitions in multiple apps.
 - **Hermes**: Server-side adapter code lives under **`apps/api/`** (`hermes-adapter.ts`, `hermes-resolve.ts`). Respect `HERMES_ROOT` / `SHOULDI_HERMES_ROOT` for non-default checkouts.
 
-For system overview, see **[`docs/architecture.md`](docs/architecture.md)**.
+For system overview, see **[`docs/engineering/architecture.md`](docs/engineering/architecture.md)**.
+
+UI consistency requirements for PMF flows:
+- **[`docs/business/ops/shouldi-ui-style-guardrails.md`](docs/business/ops/shouldi-ui-style-guardrails.md)**
+- **[`docs/business/ops/shouldi-ui-pr-checklist.md`](docs/business/ops/shouldi-ui-pr-checklist.md)**
+- **[`docs/business/ops/shouldi-repo-hygiene-guardrails.md`](docs/business/ops/shouldi-repo-hygiene-guardrails.md)**

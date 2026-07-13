@@ -1,16 +1,17 @@
 import { router } from 'expo-router';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
 import {
   decisionFeedStatus,
   PagedDecisionFeed,
-  PLOT_DECK_SWIPE_CUES,
+  OUTCOME_REPLAY_SWIPE_CUES,
 } from '@/components/explore/PagedDecisionFeed';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
-import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
-import PrimaryButton from '@/components/ui/PrimaryButton';
-import { palette, profileTypography, typography } from '@/constants/theme';
+import { Button } from '@/components/ui';
+import { palette, screenContentGutter, semantic, themeSurface, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { ExploreFeedResponseSchema } from '@shouldi/contracts';
 import { useQuery } from '@tanstack/react-query';
@@ -18,6 +19,8 @@ import * as React from 'react';
 
 export default function PlotDeckScreen() {
   const insets = useSafeAreaInsets();
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
 
   const query = useQuery({
     queryKey: ['explore'],
@@ -34,22 +37,19 @@ export default function PlotDeckScreen() {
   );
 
   if (query.isLoading && !query.data) {
-    return <AppLaunchScreen detail="Loading Plot Deck…" />;
+    return <AppLaunchScreen detail="Loading Outcome Replay…" />;
   }
 
   if (query.error) {
     return (
-      <View style={[styles.center, styles.errorPad]}>
-        <View style={styles.canvasSpeckles} pointerEvents="none">
-          <OledFluorSpeckles />
-        </View>
-        <Text style={[typography.title, styles.sheetHead]}>Couldn’t load Plot Deck</Text>
-        <Text style={[typography.body, styles.centerText, styles.mutedOnBlack]}>
+      <View style={[styles.center, styles.errorPad, { backgroundColor: surface.canvas }]}>
+        <Text style={[typography.title, styles.sheetHead, { color: surface.textDisplay }]}>Couldn’t load Outcome Replay</Text>
+        <Text style={[typography.body, styles.centerText, { color: surface.textMuted }]}>
           Trying <Text style={styles.monoGlow}>{GATEWAY_ORIGIN}</Text>
         </Text>
-        <PrimaryButton accessibilityLabel="Retry loading Plot Deck" onPress={() => query.refetch()}>
+        <Button accessibilityLabel="Retry loading Outcome Replay" onPress={() => query.refetch()}>
           <Text style={styles.buttonLabel}>Retry</Text>
-        </PrimaryButton>
+        </Button>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Back to previous screen"
@@ -62,28 +62,43 @@ export default function PlotDeckScreen() {
   }
 
   return (
-    <View style={styles.surface}>
-      <View style={styles.canvasSpeckles} pointerEvents="none">
-        <OledFluorSpeckles />
+    <View style={[styles.surface, { backgroundColor: surface.canvas }]}>
+      <View
+        style={[
+          styles.headerRow,
+          {
+            paddingTop: Math.max(insets.top + 10, 28),
+          },
+        ]}>
+        <View style={styles.headerCopy}>
+          <Text style={[styles.title, { color: surface.textDisplay }]}>Replay</Text>
+          <Text style={[styles.subtitle, { color: surface.textMuted }]}>Review outcomes and calibrate your next decision.</Text>
+        </View>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Back to Explore"
+          onPress={() => router.replace('/(tabs)/explore')}
+          style={[styles.iconCircle, { backgroundColor: surface.groupedSurface, borderColor: surface.hairline }]}>
+          <Ionicons name="compass-outline" size={20} color={surface.textPrimary} />
+        </Pressable>
       </View>
-      <Text style={[typography.caption, styles.lede, { paddingHorizontal: Math.max(16, insets.left || 16) }]}>
-        After the herd voted — swipe outcomes like reels.
-      </Text>
 
       {resolvedCards.length === 0 ? (
         <View style={styles.emptyFrame}>
-          <Text style={[typography.title, styles.emptyTitle]}>No closed arcs yet</Text>
-          <Text style={[typography.body, styles.emptyBody]}>Hop back to Explore for live dilemmas you can steer.</Text>
-          <PrimaryButton accessibilityLabel="Go to Explore" onPress={() => router.replace('/(tabs)/explore')}>
-            <Text style={styles.buttonLabel}>Explore live reels</Text>
-          </PrimaryButton>
+          <Text style={[typography.title, styles.emptyTitle, { color: surface.textDisplay }]}>No outcome replays yet</Text>
+          <Text style={[typography.body, styles.emptyBody, { color: surface.textMuted }]}>
+            Hop back to Explore for live dilemmas, then return once outcomes close.
+          </Text>
+          <Button accessibilityLabel="Go to Explore" onPress={() => router.replace('/(tabs)/explore')}>
+            <Text style={styles.buttonLabel}>Explore live decisions</Text>
+          </Button>
         </View>
       ) : (
         <PagedDecisionFeed
           cards={resolvedCards}
           headerChromeEstimate={44}
           bottomOverlayExtra={24}
-          swipeCues={PLOT_DECK_SWIPE_CUES}
+          swipeCues={OUTCOME_REPLAY_SWIPE_CUES}
           isFetching={query.isFetching}
           onRefresh={() => query.refetch()}
         />
@@ -95,24 +110,44 @@ export default function PlotDeckScreen() {
 const styles = StyleSheet.create({
   surface: {
     flex: 1,
-    backgroundColor: palette.mist,
+    backgroundColor: '#f5f5f7',
     overflow: 'hidden',
     position: 'relative',
   },
-  canvasSpeckles: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 0,
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: screenContentGutter,
+    marginBottom: 8,
   },
-  lede: {
-    color: palette.textMutedOnCanvas,
-    fontWeight: '600',
-    letterSpacing: 0.3,
-    marginTop: 6,
-    marginBottom: 4,
-    marginLeft: 4,
-    lineHeight: 18,
-    maxWidth: 360,
-    alignSelf: 'flex-start',
+  headerCopy: {
+    flex: 1,
+    minWidth: 0,
+    paddingRight: 12,
+  },
+  title: {
+    ...typography.hero,
+    color: '#0c0d10',
+    fontSize: 36,
+    lineHeight: 40,
+    letterSpacing: -0.8,
+    fontWeight: '800',
+  },
+  subtitle: {
+    ...typography.compact,
+    color: 'rgba(60,60,67,0.72)',
+    marginTop: 2,
+  },
+  iconCircle: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f2f2f7',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(60,60,67,0.2)',
   },
   emptyFrame: {
     flex: 1,
@@ -121,10 +156,10 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   emptyTitle: {
-    color: palette.textOnCanvas,
+    color: '#111113',
   },
   emptyBody: {
-    color: palette.textMutedOnCanvas,
+    color: 'rgba(60,60,67,0.72)',
     lineHeight: 23,
   },
   center: {
@@ -132,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    backgroundColor: palette.mist,
+    backgroundColor: '#f5f5f7',
     paddingHorizontal: 20,
   },
   errorPad: {
@@ -142,24 +177,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   sheetHead: {
-    color: palette.textOnCanvas,
+    color: '#111113',
     textAlign: 'center',
     marginBottom: 4,
   },
   mutedOnBlack: {
-    color: palette.textMutedOnCanvas,
+    color: 'rgba(60,60,67,0.72)',
   },
   monoGlow: {
     ...typography.caption,
     fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
-    color: palette.neonSky,
-  },
-  mono: {
-    ...typography.caption,
-    fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
-  },
-  muted: {
-    color: profileTypography.subdued,
+    color: semantic.actionPrimary,
   },
   buttonLabel: {
     color: palette.white,
@@ -178,7 +206,7 @@ const styles = StyleSheet.create({
   backLinkText: {
     ...typography.compact,
     fontWeight: '700',
-    color: palette.neonMint,
+    color: semantic.actionPrimary,
     textAlign: 'center',
   },
 });

@@ -13,12 +13,14 @@ import * as Haptics from 'expo-haptics';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { MOTION } from '@/constants/motion';
-import { elevation, palette, profileLight, radius, themeSurface, typography } from '@/constants/theme';
+import { elevation, palette, profileLight, radius, semantic, themeSurface, typography } from '@/constants/theme';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'gradient';
+type ButtonIntent = 'default' | 'affirm' | 'danger';
 
 type Props = PropsWithChildren<{
   variant?: ButtonVariant;
+  intent?: ButtonIntent;
   label?: string;
   accessibilityLabel?: string;
   accessibilityHint?: string;
@@ -31,6 +33,7 @@ type Props = PropsWithChildren<{
 export default function Button({
   children,
   variant = 'primary',
+  intent = 'default',
   label,
   accessibilityLabel,
   accessibilityHint,
@@ -42,6 +45,9 @@ export default function Button({
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
+  const resolvedPrimary =
+    intent === 'affirm' ? semantic.actionAffirm : intent === 'danger' ? semantic.actionDanger : semantic.actionPrimary;
+
   const content = label ? (
     <Text
       style={[
@@ -80,7 +86,13 @@ export default function Button({
           style,
         ]}>
         <LinearGradient
-          colors={isDark ? ['#7c3aed', '#6d28d9', '#4c1d95'] : [profileLight.sky, profileLight.mint]}
+          colors={
+            intent === 'danger'
+              ? ['#c97a82', '#a85d64']
+              : intent === 'affirm'
+                ? ['#79bdaa', '#5fa995']
+                : [semantic.actionPrimaryHover, semantic.actionPrimary]
+          }
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.gradientFill}>
@@ -101,12 +113,16 @@ export default function Button({
       style={({ pressed }) => [
         styles.base,
         variant === 'ghost' ? styles.ghost : variant === 'secondary' ? styles.secondary : styles.primary,
+        variant === 'primary' && {
+          backgroundColor: resolvedPrimary,
+          borderColor: `${resolvedPrimary}66`,
+        },
         variant === 'secondary' && {
           backgroundColor: surface.groupedSurface,
           borderColor: surface.groupedBorder,
         },
         variant === 'ghost' && {
-          backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.85)',
+          backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.82)',
           borderColor: isDark ? palette.chromeHairline : surface.hairline,
         },
         pressed && !disabled && styles.pressed,
@@ -140,9 +156,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   primary: {
-    backgroundColor: palette.heroInk,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.signUpMintHairline,
     paddingVertical: 14,
     paddingHorizontal: 20,
     ...elevation.raised,
