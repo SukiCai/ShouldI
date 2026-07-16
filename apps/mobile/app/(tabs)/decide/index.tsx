@@ -21,12 +21,14 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { TabHeaderIconButton, TabScreenHeader } from '@/components/screen/TabScreenHeader';
+import { tabScreenStyles } from '@/components/screen/tabScreenStyles';
 import { resolveAppChromatics } from '@/constants/appChromatics';
 import {
   council,
   palette,
   profileNeutralStroke,
-  profileTypography,
   radius,
   screenContentGutter,
   semantic,
@@ -145,7 +147,7 @@ export default function DecideCategoryScreen() {
       muted: surface.textMuted,
       primaryTxt: surface.textPrimary,
       displayTxt: surface.textDisplay,
-      sendFab: palette.heroInk,
+      sendFab: semantic.actionPrimary,
       modalBg: isDark ? surface.canvasSecondary : surface.sheet,
     }),
     [isDark, surface],
@@ -920,31 +922,37 @@ export default function DecideCategoryScreen() {
             paddingTop: Math.max(insets.top + 10, 28),
           },
         ]}>
-        <View style={styles.headerExploreRow}>
-          <View style={styles.headerTopLine}>
-            <View style={styles.headerCopy}>
-              <Text style={[styles.headerTitleExplore, { color: colors.displayTxt }]}>Decide</Text>
-            </View>
-            <View style={styles.headerActionRow}>
-              <Pressable
-                accessibilityRole="button"
+        <TabScreenHeader
+          title="Decide"
+          subtitle={showSessionStatus ? undefined : headerSubtitle}
+          textDisplay={colors.displayTxt}
+          textMuted={colors.muted}
+          groupedSurface={colors.cardBg}
+          hairline={colors.headerHairline}
+          textPrimary={colors.primaryTxt}
+          action={
+            <View style={tabScreenStyles.headerActionRow}>
+              <TabHeaderIconButton
+                icon="time-outline"
                 accessibilityLabel="Past sessions"
                 onPress={openPastSessions}
-                hitSlop={8}
-                style={styles.headerIconBtnGhost}>
-                <Ionicons name="time-outline" size={22} color={colors.muted} />
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
+                groupedSurface={colors.cardBg}
+                hairline={colors.headerHairline}
+                iconColor={colors.muted}
+                iconSize={22}
+              />
+              <TabHeaderIconButton
+                icon="create-outline"
                 accessibilityLabel="New chat"
                 onPress={startFreshSession}
                 disabled={booting || sending}
-                hitSlop={8}
-                style={[styles.headerIconBtnGhost, (booting || sending) && { opacity: 0.35 }]}>
-                <Ionicons name="create-outline" size={22} color={colors.muted} />
-              </Pressable>
+                groupedSurface={colors.cardBg}
+                hairline={colors.headerHairline}
+                iconColor={colors.muted}
+                iconSize={22}
+              />
             </View>
-          </View>
+          }>
           {showSessionStatus ? (
             <View
               style={[
@@ -960,11 +968,7 @@ export default function DecideCategoryScreen() {
                 onPressExperts={canOpenExpertRoster ? () => setExpertsOpen(true) : undefined}
               />
             </View>
-          ) : (
-            <Text style={[styles.headerSubtitleExplore, { color: colors.muted }]} numberOfLines={2}>
-              {headerSubtitle}
-            </Text>
-          )}
+          ) : null}
           {!modeLocked && !booting && !finalReady ? (
             <DecideModeSegment
               mode={mode}
@@ -976,7 +980,7 @@ export default function DecideCategoryScreen() {
               onSelectCouncil={trySelectCouncil}
             />
           ) : null}
-        </View>
+        </TabScreenHeader>
       </View>
 
       {booting ? (
@@ -1120,9 +1124,9 @@ export default function DecideCategoryScreen() {
               accessibilityRole="button"
               accessibilityLabel="Ask the community to validate your recommendation"
               onPress={() => router.push('/(tabs)/decide/confirm')}
-              style={[styles.verdictPrimary, { backgroundColor: palette.heroInk }]}>
-              <Text style={[styles.verdictPrimaryText, { color: palette.white }]}>Ask the community</Text>
-              <Ionicons name="arrow-forward" size={18} color={palette.white} />
+              style={ctaStyles.primary}>
+              <Text style={ctaStyles.primaryLabel}>Ask the community</Text>
+              <Ionicons name="arrow-forward" size={18} color={palette.sheet} />
             </Pressable>
             <Pressable
               accessibilityRole="button"

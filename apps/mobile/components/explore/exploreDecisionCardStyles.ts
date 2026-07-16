@@ -1,19 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import { radius, typography } from '@/constants/theme';
+import { palette, radius, semantic, typography } from '@/constants/theme';
+import { surfaceCardStyles } from '@/components/screen/surfaceCardStyles';
 
 export const exploreDecisionCardStyles = StyleSheet.create({
   card: {
+    ...surfaceCardStyles.grouped,
     borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    paddingVertical: 14,
-    gap: 12,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 1,
   },
   cardHeaderTapArea: {
     borderRadius: 12,
@@ -56,8 +49,6 @@ export const exploreDecisionCardStyles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(16,185,129,0.22)',
-    backgroundColor: 'rgba(16,185,129,0.08)',
   },
   votesMetaPreview: {
     flexDirection: 'row',
@@ -72,11 +63,9 @@ export const exploreDecisionCardStyles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#059669',
   },
   votesMetaLiveLabel: {
-    ...typography.micro,
-    color: '#059669',
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.2,
     textTransform: 'uppercase',
@@ -118,7 +107,7 @@ export const exploreDecisionCardStyles = StyleSheet.create({
     paddingVertical: 4,
   },
   rowLineSelected: {
-    backgroundColor: 'rgba(79,118,194,0.08)',
+    backgroundColor: `${semantic.actionPrimary}14`,
   },
   rowLineDraft: {
     flexDirection: 'row',
@@ -194,7 +183,7 @@ export const exploreDecisionCardStyles = StyleSheet.create({
     paddingVertical: 2,
   },
   suggestedTagText: {
-    fontSize: 10,
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.15,
   },

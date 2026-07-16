@@ -16,9 +16,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@/components/ui';
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
 import { useColorScheme } from '@/components/useColorScheme';
-import { discussCardStyles } from '@/components/decision/discussCardStyles';
+import { discussCardColors, discussCardStyles } from '@/components/decision/discussCardStyles';
+import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
 import { updateWatching } from '@/lib/exploreUserActivity';
-import { palette, profileNeutralStroke, profileTypography, radius, semantic, spacing, themeSurface, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, radius, semantic, spacing, themeSurface, typography, type ThemeSurface } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
 const TEAM_STRIPES = ['#5a6b84', '#6f7f97', '#8b97ab', '#a2adbf'] as const;
@@ -68,6 +69,9 @@ export function DiscussExpanded({
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
+  const cardColors = discussCardColors(surface);
+  const text = pmfText(surface);
+  const styles = React.useMemo(() => discussExpandedStyles(surface), [surface]);
   const isOpen = card.status === 'open';
   const mergedDistribution = React.useMemo(
     () => card.options.map((option) => ({ optionId: option.id, votes: distributionOverride?.[option.id] ?? card.distribution.find((d) => d.optionId === option.id)?.votes ?? 0 })),
@@ -411,7 +415,7 @@ export function DiscussExpanded({
                 <Ionicons
                   name={aiReaction === 'agree' ? 'thumbs-up' : 'thumbs-up-outline'}
                   size={16}
-                  color={aiReaction === 'agree' ? palette.mint : profileTypography.subdued}
+                  color={aiReaction === 'agree' ? palette.mint : surface.textMuted}
                 />
                 <Text style={[styles.aiReactionLabel, aiReaction === 'agree' && styles.aiReactionLabelOn]}>Agree · {agreeCount}</Text>
               </Pressable>
@@ -430,7 +434,7 @@ export function DiscussExpanded({
                 <Ionicons
                   name={aiReaction === 'disagree' ? 'thumbs-down' : 'thumbs-down-outline'}
                   size={16}
-                  color={aiReaction === 'disagree' ? palette.accent : profileTypography.subdued}
+                  color={aiReaction === 'disagree' ? semantic.actionPrimary : surface.textMuted}
                 />
                 <Text style={[styles.aiReactionLabel, aiReaction === 'disagree' && styles.aiReactionLabelOn]}>Disagree · {disagreeCount}</Text>
               </Pressable>
@@ -450,7 +454,7 @@ export function DiscussExpanded({
                 onPress={() => setSortSheetVisible(true)}
                 hitSlop={10}
                 style={({ pressed }) => [styles.commentSortBtn, pressed && styles.commentSortBtnPressed]}>
-                <Ionicons name="options-outline" size={15} color={profileTypography.subdued} />
+                <Ionicons name="options-outline" size={15} color={surface.textMuted} />
                 <Text style={styles.commentSortBtnText}>{commentSortMode === 'liked' ? 'Most liked' : 'Most latest'}</Text>
               </Pressable>
               <Pressable
@@ -459,7 +463,7 @@ export function DiscussExpanded({
                 onPress={() => setFilterSheetVisible(true)}
                 hitSlop={10}
                 style={({ pressed }) => [styles.commentSortBtn, pressed && styles.commentSortBtnPressed]}>
-                <Ionicons name="filter-outline" size={15} color={profileTypography.subdued} />
+                <Ionicons name="filter-outline" size={15} color={surface.textMuted} />
                 <Text style={styles.commentSortBtnText}>{filterOptionId ? teamTagLabel(card, filterOptionId) : 'All teams'}</Text>
               </Pressable>
             </View>
@@ -481,7 +485,7 @@ export function DiscussExpanded({
           <Text style={[styles.commentEntryText, !effectivePick && styles.commentEntryTextDisabled]}>
             {effectivePick ? 'Drop a comment...' : 'Vote on this card to unlock commenting...'}
           </Text>
-          <Ionicons name="chatbubble-ellipses-outline" size={16} color={profileTypography.subdued} />
+          <Ionicons name="chatbubble-ellipses-outline" size={16} color={surface.textMuted} />
         </Pressable>
 
         {!hasResults ? (
@@ -498,7 +502,7 @@ export function DiscussExpanded({
               post={p}
               depth={0}
               card={card}
-              surface="feed"
+              presentation="feed"
               getReplies={getReplies}
               thumbCount={thumbCount}
               toggleThumb={toggleThumb}
@@ -544,7 +548,7 @@ export function DiscussExpanded({
               hitSlop={10}
               onPress={() => setComposerModalVisible(false)}
               style={({ pressed }) => [styles.composerModalClose, pressed && styles.composerModalClosePressed]}>
-              <Ionicons name="close" size={16} color={profileTypography.subdued} />
+              <Ionicons name="close" size={16} color={surface.textMuted} />
             </Pressable>
           </View>
           <TextInput
@@ -562,7 +566,7 @@ export function DiscussExpanded({
                 ? 'Explain your stance with one concrete reason or example.'
                 : 'Vote on this card to unlock posting…'
             }
-            placeholderTextColor={profileTypography.subdued}
+            placeholderTextColor={surface.textMuted}
             value={draft}
             onChangeText={setDraft}
             maxLength={2000}
@@ -673,7 +677,7 @@ export function DiscussExpanded({
                 hitSlop={12}
                 onPress={() => setThreadModalRoot(null)}
                 style={({ pressed }) => [styles.threadModalClose, pressed && styles.threadModalClosePressed]}>
-                <Ionicons name="chevron-down" size={18} color={profileTypography.body} />
+                <Ionicons name="chevron-down" size={18} color={surface.textPrimary} />
               </Pressable>
               <Text style={styles.threadModalTitle} numberOfLines={2}>
                 Thread
@@ -688,7 +692,7 @@ export function DiscussExpanded({
                 post={threadModalRoot}
                 depth={0}
                 card={card}
-                surface="fullscreen"
+                presentation="fullscreen"
                 getReplies={getReplies}
                 thumbCount={thumbCount}
                 toggleThumb={toggleThumb}
@@ -729,7 +733,7 @@ type DiscussionPostCardProps = Readonly<{
   post: TeamDiscussionPost;
   depth: number;
   card: ExploreCard;
-  surface?: DiscussionSurface;
+  presentation?: DiscussionSurface;
   getReplies: (parentId: string) => TeamDiscussionPost[];
   thumbCount: (p: TeamDiscussionPost) => number;
   toggleThumb: (postId: string) => void;
@@ -749,7 +753,7 @@ function DiscussionPostCard({
   post,
   depth,
   card,
-  surface = 'feed',
+  presentation = 'feed',
   getReplies,
   thumbCount,
   toggleThumb,
@@ -763,6 +767,8 @@ function DiscussionPostCard({
   cancelReply,
   replyEnabled,
 }: DiscussionPostCardProps) {
+  const theme = usePmfSurface();
+  const styles = React.useMemo(() => discussExpandedStyles(theme), [theme]);
   const stripe = teamStripeColor(card, post.optionId);
   const isYou = post.authorName === 'You';
   const replies = getReplies(post.id);
@@ -808,7 +814,7 @@ function DiscussionPostCard({
               liked && styles.actionPillSelected,
               pressed && styles.actionPillPressed,
             ]}>
-            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? palette.accent : profileTypography.subdued} />
+            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? semantic.actionPrimary : theme.textMuted} />
             <Text style={[styles.actionPillLabel, liked && styles.actionPillLabelOn]}>{formatThumbDisplay(n)}</Text>
           </Pressable>
 
@@ -824,24 +830,24 @@ function DiscussionPostCard({
                 composerOpen && styles.replyPillOn,
                 pressed && styles.replyPillPressed,
               ]}>
-              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? palette.accent : profileTypography.subdued} />
+              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? semantic.actionPrimary : theme.textMuted} />
               <Text style={[styles.replyPillText, composerOpen && styles.replyPillTextOn]}>{composerOpen ? 'Close' : 'Reply'}</Text>
             </Pressable>
           ) : null}
         </View>
 
-        {surface === 'feed' && depth === 0 && threadReplyTotal > 0 && onOpenFullThread ? (
+        {presentation === 'feed' && depth === 0 && threadReplyTotal > 0 && onOpenFullThread ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={`View full thread, ${threadReplyTotal} replies`}
             onPress={() => onOpenFullThread(post)}
             style={({ pressed }) => [styles.viewThreadBar, pressed && styles.viewThreadBarPressed]}
             hitSlop={{ top: 4, bottom: 6 }}>
-            <Ionicons name="chatbubbles-outline" size={17} color={palette.accent} />
+            <Ionicons name="chatbubbles-outline" size={17} color={semantic.actionPrimary} />
             <Text style={styles.viewThreadBarLabel}>
               Thread · {threadReplyTotal} {threadReplyTotal === 1 ? 'reply' : 'replies'}
             </Text>
-            <Ionicons name="chevron-forward" size={17} color={profileTypography.subdued} />
+            <Ionicons name="chevron-forward" size={17} color={theme.textMuted} />
           </Pressable>
         ) : null}
 
@@ -850,7 +856,7 @@ function DiscussionPostCard({
             <TextInput
               accessibilityLabel={`Reply to ${post.authorName}`}
               placeholder={`Reply to ${post.authorName}…`}
-              placeholderTextColor={profileTypography.subdued}
+              placeholderTextColor={theme.textMuted}
               style={styles.inlineReplyInput}
               multiline
               value={replyDraft}
@@ -879,14 +885,14 @@ function DiscussionPostCard({
         ) : null}
       </View>
 
-      {surface === 'fullscreen' && depth < MAX_THREAD_DEPTH
+      {presentation === 'fullscreen' && depth < MAX_THREAD_DEPTH
         ? replies.map((child) => (
             <DiscussionPostCard
               key={child.id}
               post={child}
               depth={depth + 1}
               card={card}
-              surface={surface}
+              presentation={presentation}
               getReplies={getReplies}
               thumbCount={thumbCount}
               toggleThumb={toggleThumb}
@@ -906,7 +912,9 @@ function DiscussionPostCard({
   );
 }
 
-const styles = StyleSheet.create({
+function discussExpandedStyles(surface: ThemeSurface) {
+  const text = pmfText(surface);
+  return StyleSheet.create({
   wrap: {
     alignSelf: 'stretch',
     width: '100%',
@@ -934,7 +942,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.1),
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    backgroundColor: surface.groupedSurface,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -944,7 +952,7 @@ const styles = StyleSheet.create({
   },
   topCloseBtn: {
     borderColor: profileNeutralStroke(0.14),
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     opacity: 1,
   },
   topIconBtnPressed: {
@@ -999,15 +1007,15 @@ const styles = StyleSheet.create({
   optionRow: {
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
     paddingHorizontal: 12,
     paddingVertical: 10,
     gap: 6,
   },
   optionRowSelected: {
     borderColor: 'rgba(79,118,194,0.52)',
-    backgroundColor: 'rgba(249,251,255,0.82)',
+    backgroundColor: surface.groupedSurface,
   },
   optionRowTop: {
     flexDirection: 'row',
@@ -1074,7 +1082,7 @@ const styles = StyleSheet.create({
   },
   summaryEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.45,
     textTransform: 'uppercase',
@@ -1082,7 +1090,7 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     ...typography.h2,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     letterSpacing: -0.45,
     paddingHorizontal: 2,
@@ -1091,8 +1099,8 @@ const styles = StyleSheet.create({
     gap: 0,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.9)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
     overflow: 'hidden',
     ...Platform.select({
       ios: {
@@ -1112,18 +1120,18 @@ const styles = StyleSheet.create({
   },
   summaryRowDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: profileNeutralStroke(0.08),
+    borderBottomColor: surface.hairline,
   },
   summaryRowLabel: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
   },
   summaryRowValue: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 20,
     fontWeight: '500',
   },
@@ -1133,8 +1141,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.88)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -1160,14 +1168,14 @@ const styles = StyleSheet.create({
   },
   aiDecisionPick: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     letterSpacing: 0.12,
     flex: 1,
   },
   aiDecisionHeadline: {
     ...typography.compact,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '700',
     letterSpacing: -0.15,
     lineHeight: 22,
@@ -1175,7 +1183,7 @@ const styles = StyleSheet.create({
   },
   aiDecisionReason: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 18,
     fontWeight: '500',
   },
@@ -1207,7 +1215,7 @@ const styles = StyleSheet.create({
   },
   keyContextEyebrow: {
     ...typography.micro,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '700',
     letterSpacing: 0.2,
     textTransform: 'uppercase',
@@ -1230,7 +1238,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 19,
     fontWeight: '600',
-    color: profileTypography.body,
+    ...text.primary,
   },
   aiReactionRow: {
     flexDirection: 'row',
@@ -1246,7 +1254,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.7)',
   },
   aiReactionPillAgreeOn: {
@@ -1262,11 +1270,11 @@ const styles = StyleSheet.create({
   },
   aiReactionLabel: {
     ...typography.micro,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '700',
   },
   aiReactionLabelOn: {
-    color: profileTypography.ink,
+    ...text.display,
   },
   workflowHeader: {
     gap: 6,
@@ -1274,20 +1282,20 @@ const styles = StyleSheet.create({
   },
   workflowEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.45,
     textTransform: 'uppercase',
   },
   workflowTitle: {
     ...typography.h2,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     letterSpacing: -0.45,
   },
   workflowBody: {
     ...typography.compact,
-    color: profileTypography.emphasis,
+    ...text.display,
     lineHeight: 20,
     fontWeight: '500',
   },
@@ -1299,7 +1307,7 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.86)',
     ...Platform.select({
       ios: {
@@ -1332,20 +1340,20 @@ const styles = StyleSheet.create({
   },
   stageBadgeText: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
   },
   stageTitle: {
     ...typography.compact,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     fontSize: 15,
   },
   stageBody: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 20,
     fontWeight: '500',
   },
@@ -1367,12 +1375,12 @@ const styles = StyleSheet.create({
   },
   signalChipText: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '700',
   },
   stageMiniLabel: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
@@ -1388,16 +1396,16 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     backgroundColor: 'rgba(255,255,255,0.96)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
   },
   audienceChipText: {
     ...typography.caption,
-    color: profileTypography.emphasis,
+    ...text.display,
     fontWeight: '700',
   },
   stageFootnote: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     lineHeight: 17,
     fontWeight: '600',
   },
@@ -1406,7 +1414,7 @@ const styles = StyleSheet.create({
   },
   spotlightEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
@@ -1423,7 +1431,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     gap: 8,
   },
   spotlightTopRow: {
@@ -1436,19 +1444,19 @@ const styles = StyleSheet.create({
   },
   spotlightAuthor: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '800',
     flex: 1,
   },
   spotlightBody: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 19,
     fontWeight: '500',
   },
   spotlightLane: {
     ...typography.caption,
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '700',
   },
   commentsDividerWrap: {
@@ -1468,7 +1476,7 @@ const styles = StyleSheet.create({
   },
   commentsDividerMeta: {
     ...typography.micro,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
   },
   commentSortBtn: {
@@ -1487,7 +1495,7 @@ const styles = StyleSheet.create({
   },
   commentSortBtnText: {
     ...typography.micro,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '700',
   },
   commentEntryBar: {
@@ -1497,7 +1505,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.09),
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -1518,12 +1526,12 @@ const styles = StyleSheet.create({
   },
   commentEntryText: {
     ...typography.compact,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '500',
     flex: 1,
   },
   commentEntryTextDisabled: {
-    color: profileTypography.subdued,
+    ...text.muted,
   },
   filterRail: {
     marginTop: 2,
@@ -1547,7 +1555,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.09),
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     maxWidth: 220,
     ...Platform.select({
       ios: {
@@ -1576,12 +1584,12 @@ const styles = StyleSheet.create({
   },
   filterChipText: {
     ...typography.micro,
-    color: profileTypography.emphasis,
+    ...text.display,
     fontWeight: '600',
     flexShrink: 1,
   },
   filterChipTextOn: {
-    color: profileTypography.body,
+    ...text.primary,
   },
   filterTeamDot: {
     width: 6,
@@ -1609,7 +1617,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     maxWidth: '100%',
     flexShrink: 1,
     ...Platform.select({
@@ -1632,12 +1640,12 @@ const styles = StyleSheet.create({
   teamBadgeText: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     flexShrink: 1,
   },
   teamBadgeMeta: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     marginLeft: 4,
   },
@@ -1650,12 +1658,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     borderLeftWidth: 1,
     borderRadius: radius.md,
-    backgroundColor: 'rgba(255,255,255,0.88)',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.04),
     ...Platform.select({
       ios: {
-        shadowColor: profileTypography.ink,
+        shadowColor: surface.textDisplay,
         shadowOpacity: 0.008,
         shadowRadius: 1,
         shadowOffset: { width: 0, height: 1 },
@@ -1677,7 +1685,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.1),
     overflow: 'hidden',
@@ -1689,7 +1697,7 @@ const styles = StyleSheet.create({
   threadAuthor: {
     ...typography.caption,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     flexShrink: 1,
   },
   teamInlineTag: {
@@ -1710,17 +1718,17 @@ const styles = StyleSheet.create({
   teamInlineText: {
     fontSize: 10,
     lineHeight: 12,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '700',
   },
   youInline: {
     ...typography.micro,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '700',
   },
   threadTime: {
     ...typography.micro,
-    color: profileTypography.subdued,
+    ...text.muted,
     marginLeft: 2,
     fontWeight: '600',
   },
@@ -1743,7 +1751,7 @@ const styles = StyleSheet.create({
   },
   threadBody: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '400',
     lineHeight: 19,
     letterSpacing: -0.1,
@@ -1775,11 +1783,11 @@ const styles = StyleSheet.create({
   actionPillLabel: {
     ...typography.micro,
     fontWeight: '600',
-    color: profileTypography.subdued,
+    ...text.muted,
     minWidth: 0,
   },
   actionPillLabelOn: {
-    color: profileTypography.body,
+    ...text.primary,
   },
   replyPill: {
     flexDirection: 'row',
@@ -1801,10 +1809,10 @@ const styles = StyleSheet.create({
   replyPillText: {
     ...typography.micro,
     fontWeight: '600',
-    color: profileTypography.subdued,
+    ...text.muted,
   },
   replyPillTextOn: {
-    color: profileTypography.body,
+    ...text.primary,
   },
   threadBranch: {
     marginTop: 2,
@@ -1825,12 +1833,12 @@ const styles = StyleSheet.create({
     maxHeight: 140,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.12),
-    backgroundColor: '#ffffff',
+    borderColor: surface.hairline,
+    backgroundColor: surface.groupedSurface,
     paddingHorizontal: spacing.sm,
     paddingVertical: 11,
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
   },
   inlineReplyActions: {
     flexDirection: 'row',
@@ -1845,13 +1853,13 @@ const styles = StyleSheet.create({
   inlineReplyGhostText: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.subdued,
+    ...text.muted,
   },
   inlineReplyPrimary: {
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderRadius: radius.pill,
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
   },
   inlineReplyPrimaryDisabled: {
     opacity: 0.38,
@@ -1874,7 +1882,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'rgba(255,255,255,0.4)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.12),
+    borderColor: surface.hairline,
   },
   viewThreadBarPressed: {
     opacity: 0.9,
@@ -1884,7 +1892,7 @@ const styles = StyleSheet.create({
     flex: 1,
     ...typography.micro,
     fontWeight: '600',
-    color: profileTypography.emphasis,
+    ...text.display,
     minWidth: 0,
   },
   threadModalHeader: {
@@ -1894,7 +1902,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingBottom: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: profileNeutralStroke(0.08),
+    borderBottomColor: surface.hairline,
   },
   threadModalClose: {
     width: 32,
@@ -1903,7 +1911,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.12),
+    borderColor: surface.hairline,
     backgroundColor: 'rgba(255,255,255,0.82)',
   },
   threadModalClosePressed: {
@@ -1913,7 +1921,7 @@ const styles = StyleSheet.create({
     flex: 1,
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     textAlign: 'center',
     minWidth: 0,
   },
@@ -1932,7 +1940,7 @@ const styles = StyleSheet.create({
   },
   sortSheetTitle: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '700',
     marginBottom: 2,
   },
@@ -1944,7 +1952,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.86)',
   },
   sortSheetActionPressed: {
@@ -1952,7 +1960,7 @@ const styles = StyleSheet.create({
   },
   sortSheetActionText: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '600',
   },
   sortSheetTeamLabel: {
@@ -1966,18 +1974,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     borderRadius: radius.lg,
     gap: 6,
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.07),
   },
   emptyTitle: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
   },
   emptySubtitle: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     lineHeight: 17,
     fontWeight: '500',
   },
@@ -1995,7 +2003,7 @@ const styles = StyleSheet.create({
     borderColor: profileNeutralStroke(0.07),
     ...Platform.select({
       ios: {
-        shadowColor: profileTypography.ink,
+        shadowColor: surface.textDisplay,
         shadowOpacity: 0.02,
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 1 },
@@ -2022,15 +2030,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.12),
-    backgroundColor: '#ffffff',
+    borderColor: surface.hairline,
+    backgroundColor: surface.groupedSurface,
   },
   composerModalClosePressed: {
     opacity: 0.72,
   },
   composerEyebrow: {
     ...typography.micro,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '700',
     letterSpacing: 0.25,
     textTransform: 'uppercase',
@@ -2040,12 +2048,12 @@ const styles = StyleSheet.create({
     maxHeight: 148,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.94)',
     paddingHorizontal: spacing.sm,
     paddingVertical: 10,
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     textAlignVertical: 'top',
   },
   postBtn: {
@@ -2062,9 +2070,9 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     borderRadius: radius.lg,
     gap: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.12),
+    borderColor: surface.hairline,
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -2079,12 +2087,13 @@ const styles = StyleSheet.create({
   needVoteTitle: {
     ...typography.compact,
     fontWeight: '800',
-    color: profileTypography.body,
+    ...text.primary,
   },
   needVoteBody: {
     ...typography.caption,
-    color: profileTypography.emphasis,
+    ...text.display,
     lineHeight: 18,
     fontWeight: '500',
   },
 });
+}

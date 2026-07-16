@@ -1,4 +1,4 @@
-import { palette, themeSurface, typography } from '@/constants/theme';
+import { palette, semantic, themeSurface, typography } from '@/constants/theme';
 import { GATEWAY_ORIGIN } from '@/lib/api';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: 'flex-start',
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderRadius: 10,

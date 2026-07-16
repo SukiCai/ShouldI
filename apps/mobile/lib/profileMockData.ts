@@ -1,5 +1,7 @@
 import type { Ionicons } from '@expo/vector-icons';
 
+import type { DecisionDnaProfile, DecisionRecord } from '@shouldi/contracts';
+
 export type ProfileStatMock = {
   icon: keyof typeof Ionicons.glyphMap;
   iconColor: string;
@@ -159,3 +161,72 @@ export const PROFILE_MOCK = {
     },
   ] satisfies ProfileGrowthCardMock[],
 } as const;
+
+const DEMO_NOW = Date.UTC(2026, 6, 10, 12, 0, 0);
+
+/** Synthetic decision records so the Next Step card can target Outcome Replay in demo mode. */
+export const PROFILE_DEMO_DECISIONS: DecisionRecord[] = [
+  {
+    id: 'mock-stripe-offer',
+    question: 'Job offer at Stripe',
+    category: 'career',
+    recommendation: 'Negotiate scope, then accept if the role matches your growth goals.',
+    rationale: 'Strong brand, comp, and team fit outweigh relocation friction.',
+    confidenceScore: 74,
+    tradeoffs: ['Higher cost of living', 'Leaving current network'],
+    committedAction: 'Accepted after negotiation',
+    createdAt: DEMO_NOW - 2 * 86_400_000,
+    updatedAt: DEMO_NOW - 86_400_000,
+  },
+  {
+    id: 'mock-grad-school',
+    question: 'Apply to grad school?',
+    category: 'career',
+    recommendation: 'Apply to two programs and defer until you finish your current project.',
+    rationale: 'Timing is tight, but the upside warrants a structured application sprint.',
+    confidenceScore: 61,
+    tradeoffs: ['Application cost', 'Time away from work'],
+    createdAt: DEMO_NOW - 5 * 86_400_000,
+    updatedAt: DEMO_NOW - 4 * 86_400_000,
+  },
+  {
+    id: 'mock-nyc-move',
+    question: 'Move back to NYC?',
+    category: 'life',
+    recommendation: 'Stay put for six months, then reassess with clearer job constraints.',
+    rationale: 'Short-term stability matters more than an immediate geography change.',
+    confidenceScore: 68,
+    tradeoffs: ['Higher rent in NYC', 'Distance from family'],
+    committedAction: 'Staying for now',
+    createdAt: DEMO_NOW - 7 * 86_400_000,
+    updatedAt: DEMO_NOW - 6 * 86_400_000,
+  },
+  {
+    id: 'mock-index-funds',
+    question: 'Invest more in index funds?',
+    category: 'money',
+    recommendation: 'Increase monthly contributions by a modest fixed amount.',
+    rationale: 'Diversified index exposure fits your long-term risk profile.',
+    confidenceScore: 71,
+    tradeoffs: ['Less cash on hand', 'Market volatility'],
+    committedAction: 'Increased monthly contribution',
+    createdAt: DEMO_NOW - 14 * 86_400_000,
+    updatedAt: DEMO_NOW - 13 * 86_400_000,
+  },
+];
+
+export const PROFILE_DEMO_DNA: DecisionDnaProfile = {
+  userId: 'demo-user',
+  values: ['Clarity', 'Long-term thinking'],
+  riskPreference: 'medium',
+  blindSpots: ['Challenge confirmation bias and overplanning.'],
+  calibrationScore: 71,
+  trajectory: [
+    'You seek clarity, take time to decide, and prefer considered risks over impulsive ones.',
+    'Great at research and follow-through.',
+  ],
+  updatedAt: DEMO_NOW,
+};
+
+/** Use demo copy when the API has not returned any decisions yet. */
+export const PROFILE_DEMO_WHEN_EMPTY = true;

@@ -20,7 +20,10 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button } from '@/components/ui';
+import { usePmfChrome } from '@/components/screen/PmfChromeContext';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { pmfText, reelOptionPillChrome, reelVoteBadgeChrome, usePmfSurface } from '@/components/screen/pmfChrome';
+import { useColorScheme } from '@/components/useColorScheme';
 import {
   reelDiscussStyles,
   ReelCardSurface,
@@ -30,7 +33,7 @@ import {
   PollQuestionAccentBar,
 } from '@/components/explore/ReelDiscussChrome';
 import { MOTION } from '@/constants/motion';
-import { palette, profileNeutralStroke, profileTypography, radius, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, radius, semantic, themeSurface, typography, type ThemeSurface } from '@/constants/theme';
 
 export type ExploreFeedCard = ExploreFeedResponse['cards'][number];
 
@@ -62,6 +65,8 @@ export type PagedDecisionFeedProps = {
   celebrateLandingHero?: boolean;
   /** First vote on an open reel — surfaced in Explore header balance (demo-local persist). */
   onEarnExploreVotePoints?: (delta: number) => void;
+  /** Replay tab — quiet grouped cards without category atmosphere wash. */
+  quietPresentation?: boolean;
 };
 
 export type ExploreCardDetailPanelProps = {
@@ -69,6 +74,7 @@ export type ExploreCardDetailPanelProps = {
   effectivePicked?: string | null;
   onPickedChange: (optionId: string) => void;
   onEarnExploreVotePoints?: (delta: number) => void;
+  quietPresentation?: boolean;
 };
 
 function shorten(text: string, max = 150): string {
@@ -84,24 +90,34 @@ function AiDecisionReasonCard({
   v: NonNullable<ExploreFeedCard['aiValidation']>;
   suggestedOptionLabel?: string | null;
 }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const styles = React.useMemo(() => pagedFeedStyles(surface), [surface]);
   const detail = shorten(v.verdictBecause, 300);
   return (
     <View
-      style={styles.aiReasonCard}
+      style={[
+        styles.aiReasonCard,
+        {
+          backgroundColor: surface.groupedSurface,
+          borderColor: surface.groupedBorder,
+          borderLeftColor: surface.textDisplay,
+        },
+      ]}
       accessibilityRole="text"
       accessibilityLabel={`AI decision. ${suggestedOptionLabel ? `Suggested option ${suggestedOptionLabel}. ` : ''}${v.verdictLine}. ${detail}`}>
       <View style={styles.aiReasonEyebrowRow}>
-        <View style={styles.aiReasonBadge}>
+        <View style={[styles.aiReasonBadge, { backgroundColor: surface.textDisplay }]}>
           <Text style={styles.aiReasonBadgeLabel}>AI DECISION</Text>
         </View>
         {suggestedOptionLabel ? (
-          <Text style={styles.aiReasonEyebrow}>Lean: {suggestedOptionLabel}</Text>
+          <Text style={[styles.aiReasonEyebrow, { color: surface.textMuted }]}>Lean: {suggestedOptionLabel}</Text>
         ) : (
-          <Text style={styles.aiReasonEyebrow}>Reason summary</Text>
+          <Text style={[styles.aiReasonEyebrow, { color: surface.textMuted }]}>Reason summary</Text>
         )}
       </View>
-      <Text style={styles.aiReasonLead}>{v.verdictLine}</Text>
-      <Text style={[typography.compact, styles.aiReasonBody]}>{detail}</Text>
+      <Text style={[styles.aiReasonLead, { color: surface.textDisplay }]}>{v.verdictLine}</Text>
+      <Text style={[styles.aiReasonBody, { color: surface.textPrimary }]}>{detail}</Text>
     </View>
   );
 }
@@ -115,7 +131,11 @@ export function ExploreCardDetailPanel({
   effectivePicked,
   onPickedChange,
   onEarnExploreVotePoints,
+  quietPresentation = false,
 }: ExploreCardDetailPanelProps) {
+  const surface = usePmfChrome();
+  const text = pmfText(surface);
+  const styles = React.useMemo(() => pagedFeedStyles(surface), [surface]);
   const status = decisionFeedStatus(item);
   const isOpen = status === 'open';
   const isResolved = status === 'resolved';
@@ -123,7 +143,7 @@ export function ExploreCardDetailPanel({
   const hasPicked = isResolved || !!effectivePicked;
 
   return (
-    <ReelCardSurface category={item.category} isOpen={isOpen}>
+    <ReelCardSurface category={item.category} isOpen={isOpen} suppressAtmosphere={quietPresentation}>
       <ReelCardActionBar
         variant="reel-feed-top"
         voteSummary={{ voteTotal: voteTotalAll, isLivePoll: isOpen }}
@@ -139,6 +159,7 @@ export function ExploreCardDetailPanel({
                 reelDiscussStyles.pollQuestionHeadlineFlexible,
                 isOpen && reelDiscussStyles.pollQuestionOpen,
                 isOpen && reelDiscussStyles.pollHeroOpen,
+                text.display,
               ]}>
               {item.question}
             </Text>
@@ -148,7 +169,7 @@ export function ExploreCardDetailPanel({
         </View>
       </View>
       {isOpen && !hasPicked ? (
-        <Text style={styles.pickPrompt}>Tap whatever feels closest — zero pressure.</Text>
+        <Text style={[styles.pickPrompt, text.primary]}>Tap whatever feels closest — zero pressure.</Text>
       ) : null}
       {(() => {
         const total = totalVotesFromCard(item);
@@ -165,14 +186,16 @@ export function ExploreCardDetailPanel({
                 const aiLeanHere = !!(hasPicked && aiPickId && option.id === aiPickId);
                 const pollBar =
                   selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
-                const pickedSurfaceStyle =
+                const pillEmphasis: 'default' | 'user' | 'ai' | 'userAndAi' =
                   hasPicked && selected && aiLeanHere
-                    ? reelDiscussStyles.optionPillUserAndAiPick
-                    : hasPicked && selected && !aiLeanHere
-                      ? reelDiscussStyles.optionPillUserPick
-                      : hasPicked && !selected && aiLeanHere
-                        ? reelDiscussStyles.optionPillAiLeanOnly
-                        : undefined;
+                    ? 'userAndAi'
+                    : hasPicked && selected
+                      ? 'user'
+                      : hasPicked && aiLeanHere
+                        ? 'ai'
+                        : 'default';
+                const userBadge = reelVoteBadgeChrome('user', surface);
+                const aiBadge = reelVoteBadgeChrome('ai', surface);
                 return (
                   <Pressable
                     key={option.id}
@@ -199,7 +222,7 @@ export function ExploreCardDetailPanel({
                     }}
                     style={({ pressed }) => [
                       reelDiscussStyles.optionPill,
-                      pickedSurfaceStyle,
+                      reelOptionPillChrome(surface, pillEmphasis),
                       isResolved && reelDiscussStyles.optionPillDisabled,
                       !isResolved && pressed && reelDiscussStyles.optionPillPressed,
                     ]}>
@@ -207,28 +230,30 @@ export function ExploreCardDetailPanel({
                       <Text
                         style={[
                           reelDiscussStyles.optionText,
+                          text.primary,
                           selected && reelDiscussStyles.optionTextActive,
+                          selected && { color: semantic.actionPrimary },
                         ]}>
                         {option.label}
                       </Text>
                       <View style={reelDiscussStyles.optionMetaCluster}>
                         {selected && hasPicked ? (
-                          <View style={reelDiscussStyles.userPickBadge}>
-                            <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
+                          <View style={[reelDiscussStyles.userPickBadge, userBadge.shell]}>
+                            <Text style={[reelDiscussStyles.userPickBadgeText, userBadge.text]}>YOU</Text>
                           </View>
                         ) : null}
                         {aiLeanHere ? (
-                          <View style={reelDiscussStyles.aiLeanBadge}>
-                            <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
+                          <View style={[reelDiscussStyles.aiLeanBadge, aiBadge.shell]}>
+                            <Text style={[reelDiscussStyles.aiLeanBadgeText, aiBadge.text]}>AI</Text>
                           </View>
                         ) : null}
                         {hasPicked ? (
-                          <Text style={[reelDiscussStyles.optionMeta, selected && reelDiscussStyles.optionMetaPicked]}>
+                          <Text style={[reelDiscussStyles.optionMeta, text.muted, selected && reelDiscussStyles.optionMetaPicked, selected && { color: semantic.actionPrimary }]}>
                             {percentage}%
                             {selected ? (isResolved ? ' · Final' : ' · You') : ''}
                           </Text>
                         ) : selected ? (
-                          <Text style={reelDiscussStyles.optionMeta}>Selected</Text>
+                          <Text style={[reelDiscussStyles.optionMeta, text.muted]}>Selected</Text>
                         ) : null}
                       </View>
                     </View>
@@ -248,9 +273,9 @@ export function ExploreCardDetailPanel({
               />
             ) : null}
             {hasPicked ? (
-              <Button
+              <Pressable
+                accessibilityRole="button"
                 accessibilityLabel="Join discussion"
-                style={styles.discussButtonBelowChoices}
                 onPress={() =>
                   router.push({
                     pathname: '/decision/[id]',
@@ -262,9 +287,14 @@ export function ExploreCardDetailPanel({
                         typeof effectivePicked === 'string' ? effectivePicked : '',
                     },
                   })
-                }>
-                <Text style={styles.buttonLabel}>Join Discussion</Text>
-              </Button>
+                }
+                style={({ pressed }) => [
+                  ctaStyles.primary,
+                  styles.discussButtonBelowChoices,
+                  pressed && { opacity: 0.92 },
+                ]}>
+                <Text style={ctaStyles.primaryLabel}>Join Discussion</Text>
+              </Pressable>
             ) : null}
           </>
         );
@@ -292,6 +322,8 @@ function ReelCardMotionWrap({
   isLandingHero: boolean;
   children: React.ReactNode;
 }) {
+  const surface = usePmfSurface();
+  const styles = React.useMemo(() => pagedFeedStyles(surface), [surface]);
   const opacity = React.useRef(new Animated.Value(1)).current;
   const translateY = React.useRef(new Animated.Value(0)).current;
   const scale = React.useRef(new Animated.Value(1)).current;
@@ -391,6 +423,8 @@ function BouncySwipeCue({
   index: number;
   cues: readonly string[];
 }) {
+  const surface = usePmfSurface();
+  const styles = React.useMemo(() => pagedFeedStyles(surface), [surface]);
   const bounce = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -429,7 +463,7 @@ function BouncySwipeCue({
     <View style={styles.swipeCueCluster} accessibilityRole="text">
       <Animated.View style={{ opacity: arrowOpacity, transform: [{ translateY: arrowY }] }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <View style={styles.swipeCueOrb}>
-          <Ionicons name="chevron-up" size={21} color={profileTypography.subdued} />
+          <Ionicons name="chevron-up" size={21} color={surface.textMuted} />
         </View>
       </Animated.View>
       <Text style={[typography.compact, styles.scrollCue]}>{line}</Text>
@@ -446,7 +480,10 @@ export function PagedDecisionFeed({
   onRefresh,
   celebrateLandingHero = false,
   onEarnExploreVotePoints,
+  quietPresentation = false,
 }: PagedDecisionFeedProps) {
+  const surface = usePmfSurface();
+  const styles = React.useMemo(() => pagedFeedStyles(surface), [surface]);
   const insets = useSafeAreaInsets();
   const { height: windowHeight } = useWindowDimensions();
   const [selectedByCard, setSelectedByCard] = React.useState<Record<string, string>>({});
@@ -560,6 +597,7 @@ export function PagedDecisionFeed({
                       }))
                     }
                     onEarnExploreVotePoints={onEarnExploreVotePoints}
+                    quietPresentation={quietPresentation}
                   />
                 </ReelCardMotionWrap>
                 {index === 0 ? (
@@ -576,7 +614,9 @@ export function PagedDecisionFeed({
   );
 }
 
-const styles = StyleSheet.create({
+function pagedFeedStyles(surface: ThemeSurface) {
+  const text = pmfText(surface);
+  return StyleSheet.create({
   feedFrame: {
     flex: 1,
     minHeight: 0,
@@ -610,8 +650,6 @@ const styles = StyleSheet.create({
     marginTop: 14,
     marginBottom: 6,
     alignSelf: 'stretch',
-    borderRadius: 18,
-    overflow: 'hidden',
   },
   swipeCueOutsideCard: {
     alignSelf: 'stretch',
@@ -623,7 +661,7 @@ const styles = StyleSheet.create({
 
   pickPrompt: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '600',
     marginTop: 6,
     marginBottom: 10,
@@ -638,15 +676,12 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 18,
     borderRadius: radius.lg,
-    backgroundColor: 'rgba(255,253,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonPink}28`,
     borderLeftWidth: 4,
-    borderLeftColor: '#0f172a',
     gap: 10,
     ...Platform.select({
       ios: {
-        shadowColor: palette.heroInk,
+        shadowColor: '#0b1224',
         shadowOpacity: 0.08,
         shadowRadius: 14,
         shadowOffset: { width: 0, height: 4 },
@@ -665,41 +700,35 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 8,
     paddingVertical: 3,
-    backgroundColor: '#0f172a',
   },
   aiReasonBadgeLabel: {
-    fontSize: 9,
-    lineHeight: 12,
-    fontWeight: '800',
+    ...typography.label,
     letterSpacing: 0.6,
-    color: palette.white,
+    color: palette.sheet,
   },
   aiReasonEyebrow: {
     ...typography.caption,
     fontWeight: '600',
-    color: profileTypography.subdued,
     letterSpacing: 0.12,
     flex: 1,
   },
   aiReasonLead: {
     ...typography.titleSm,
-    color: profileTypography.ink,
     letterSpacing: -0.35,
   },
   aiReasonBody: {
     ...typography.body,
-    color: profileTypography.body,
     fontWeight: '500',
   },
   outcomeMerged: {
     marginTop: 4,
     paddingTop: 14,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: profileNeutralStroke(0.06),
+    borderTopColor: surface.hairline,
     gap: 8,
   },
   outcomeEyebrow: {
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     textTransform: 'none',
     letterSpacing: 0.08,
@@ -707,7 +736,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   outcomeText: {
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '500',
     lineHeight: 24,
     marginBottom: 2,
@@ -715,20 +744,20 @@ const styles = StyleSheet.create({
   lessonEyebrow: {
     marginTop: 8,
     marginBottom: 2,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     fontSize: 12,
     textTransform: 'none',
     letterSpacing: 0.08,
   },
   lessonText: {
-    color: profileTypography.emphasis,
+    ...text.display,
     lineHeight: 22,
     fontWeight: '400',
   },
   scrollCue: {
     textAlign: 'center',
-    color: profileTypography.subdued,
+    ...text.muted,
     paddingHorizontal: 12,
     lineHeight: 21,
     fontWeight: '500',
@@ -748,9 +777,9 @@ const styles = StyleSheet.create({
     borderRadius: 19,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.96)',
-    borderWidth: 1,
-    borderColor: `${palette.neonSky}46`,
+    backgroundColor: surface.groupedSurface,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: surface.hairline,
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -763,9 +792,6 @@ const styles = StyleSheet.create({
     }),
   },
 
-  buttonLabel: {
-    color: palette.white,
-    fontWeight: '600',
-    fontSize: 16,
-  },
 });
+}
+

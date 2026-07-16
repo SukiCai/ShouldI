@@ -173,6 +173,13 @@ export const typography = {
     lineHeight: 11,
     fontWeight: '600' as const,
   },
+  /** Explore / Decide / Replay / You tab titles */
+  tabDisplay: {
+    fontSize: 36,
+    lineHeight: 40,
+    fontWeight: '800' as const,
+    letterSpacing: -0.8,
+  },
 };
 
 /** Alias for stack header titles — same as titleSm. */

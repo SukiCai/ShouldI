@@ -11,8 +11,9 @@ import {
 } from 'react-native';
 
 import { AuthFields } from '@/components/auth/GenZAuthChrome';
+import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
 import TextField from '@/components/ui/TextField';
-import { palette, profileTypography } from '@/constants/theme';
+import { semantic } from '@/constants/theme';
 
 type Props = {
   phone: string;
@@ -50,6 +51,8 @@ export function AuthCredentialFields({
   showPassword,
   onToggleShowPassword,
 }: Props) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
   const [phoneFocus, setPhoneFocus] = React.useState(false);
 
   return (
@@ -65,7 +68,7 @@ export function AuthCredentialFields({
           onPress={() => void vibe().then(() => Alert.alert('Country picker', 'More regions ship soon.'))}>
           <Text style={AuthFields.countryEmoji}>🇺🇸</Text>
           <Text style={AuthFields.countryCode}>+1</Text>
-          <Ionicons name="chevron-down" size={17} color={profileTypography.subdued} />
+          <Ionicons name="chevron-down" size={17} color={surface.textMuted} />
         </Pressable>
 
         <View
@@ -86,7 +89,7 @@ export function AuthCredentialFields({
               setPhoneFocus(true);
             }}
             onBlur={() => setPhoneFocus(false)}
-            selectionColor={`${palette.neonMint}c4`}
+            selectionColor={`${semantic.actionPrimary}c4`}
             containerStyle={styles.phoneFieldInner}
             style={[AuthFields.pwdInput, styles.phoneInput, { letterSpacing: phone.trim() ? 0.35 : 1.2 }]}
           />
@@ -103,7 +106,7 @@ export function AuthCredentialFields({
             accessibilityLabel="Password"
             autoCorrect={false}
             autoCapitalize="none"
-            selectionColor={`${palette.neonMint}c4`}
+            selectionColor={`${semantic.actionPrimary}c4`}
             containerStyle={styles.passwordField}
             style={[AuthFields.pwdInput, styles.passwordInput]}
           />
@@ -115,7 +118,7 @@ export function AuthCredentialFields({
               void vibe();
               onToggleShowPassword();
             }}>
-            <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={22} color={profileTypography.subdued} />
+            <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={22} color={surface.textMuted} />
           </Pressable>
         </View>
       </View>

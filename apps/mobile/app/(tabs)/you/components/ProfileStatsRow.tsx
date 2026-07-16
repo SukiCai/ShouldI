@@ -1,19 +1,33 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { council, screenContentGutter, semantic } from '@/constants/theme';
+import type { ProfileStatDestination } from '@/lib/profileScreenData';
 import type { ProfileStatMock } from '@/lib/profileMockData';
 
 import { youScreenStyles as styles } from './youScreenStyles';
 
+type ProfileMomentumStat = ProfileStatMock & {
+  destination: ProfileStatDestination;
+};
+
 type ProfileStatsRowProps = {
-  stats: ProfileStatMock[];
+  stats: ProfileMomentumStat[];
   textDisplay: string;
   textMuted: string;
   statTileBg: string;
   statTileBorder: string;
 };
+
+function navigateStat(destination: ProfileStatDestination) {
+  if (destination === 'decide') {
+    router.replace('/(tabs)/decide');
+    return;
+  }
+  router.replace('/(tabs)/replay');
+}
 
 function StatCard({
   item,
@@ -22,14 +36,22 @@ function StatCard({
   statTileBg,
   statTileBorder,
 }: {
-  item: ProfileStatMock;
+  item: ProfileMomentumStat;
   textDisplay: string;
   textMuted: string;
   statTileBg: string;
   statTileBorder: string;
 }) {
   return (
-    <View style={[styles.statMiniCard, { backgroundColor: statTileBg, borderColor: statTileBorder }]}>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${item.label}: ${item.value}. ${item.hint}`}
+      onPress={() => navigateStat(item.destination)}
+      style={({ pressed }) => [
+        styles.statMiniCard,
+        { backgroundColor: statTileBg, borderColor: statTileBorder },
+        pressed && { opacity: 0.92 },
+      ]}>
       <View style={[styles.statIconWrap, { backgroundColor: item.iconBg }]}>
         <Ionicons name={item.icon} size={16} color={item.iconColor} />
       </View>
@@ -40,7 +62,7 @@ function StatCard({
       <Text style={[styles.statMiniHint, { color: semantic.actionAffirm }]} numberOfLines={2}>
         {item.hint}
       </Text>
-    </View>
+    </Pressable>
   );
 }
 

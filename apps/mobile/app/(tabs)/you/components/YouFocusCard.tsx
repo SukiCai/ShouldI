@@ -74,9 +74,7 @@ export function YouFocusCard(props: YouFocusCardProps) {
         },
       ]}>
       <Text style={[styles.sectionLabel, { color: props.textMuted }]}>Next step</Text>
-      <Text style={[styles.focusTitle, { color: props.textDisplay, fontSize: 22, lineHeight: 28 }]}>
-        {action.title}
-      </Text>
+      <Text style={[styles.focusTitle, { color: props.textDisplay }]}>{action.title}</Text>
       <Text style={[styles.focusBody, { color: props.textMuted }]}>{action.body}</Text>
       <Pressable
         accessibilityRole="button"

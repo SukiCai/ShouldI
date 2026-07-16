@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import {
@@ -16,12 +15,14 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DiscussExpandTransition, DiscussExpanded, DiscussScreenBackdrop } from '@/components/decide/discuss';
+import { TabScreenHeader } from '@/components/screen/TabScreenHeader';
 import { decisionFeedStatus } from '@/components/explore/PagedDecisionFeed';
 import { ExploreDecisionCard } from '@/components/explore/ExploreDecisionCard';
 import { exploreCategoryTheme } from '@/components/explore/exploreCategoryTheme';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
 import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
-import { radius, screenContentGutter, semantic, themeSurface, typography } from '@/constants/theme';
+import { radius, screenContentGutter, semantic, themeSurface, typography, palette } from '@/constants/theme';
+import { ctaStyles } from '@/components/screen/ctaStyles';
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';
@@ -230,8 +231,8 @@ export default function ExploreScreen() {
       <View style={[styles.errorWrap, { backgroundColor: surface.canvas }]}>
         <Text style={[styles.errorTitle, { color: surface.textDisplay }]}>Couldn't connect</Text>
         <Text style={[styles.errorBody, { color: surface.textMuted }]}>{`Trying ${GATEWAY_ORIGIN}\nRun npm run api locally`}</Text>
-        <Pressable onPress={() => query.refetch()} style={[styles.retryBtn, { backgroundColor: semantic.actionPrimary }]}>
-          <Text style={styles.retryText}>Retry</Text>
+        <Pressable onPress={() => query.refetch()} style={ctaStyles.primary}>
+          <Text style={ctaStyles.primaryLabel}>Retry</Text>
         </Pressable>
       </View>
     );
@@ -247,12 +248,15 @@ export default function ExploreScreen() {
           paddingBottom: Math.max(insets.bottom + 90, 120),
         }}
         showsVerticalScrollIndicator={false}>
-        <View style={styles.headerRow}>
-          <View style={styles.headerCopy}>
-            <Text style={[styles.title, { color: surface.textDisplay }]}>Explore</Text>
-            <Text style={[styles.subtitle, { color: surface.textMuted }]}>Start with one vote. Learn from real decision outcomes.</Text>
-          </View>
-        </View>
+        <TabScreenHeader
+          title="Explore"
+          subtitle="Start with one vote. Learn from real decision outcomes."
+          textDisplay={surface.textDisplay}
+          textMuted={surface.textMuted}
+          groupedSurface={surface.groupedSurface}
+          hairline={surface.hairline}
+          textPrimary={surface.textPrimary}
+        />
 
         <View style={styles.filterRow}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filterContent}>
@@ -263,11 +267,17 @@ export default function ExploreScreen() {
                   key={filter}
                   onPress={() => setActiveFilter(filter)}
                   style={[
-                    styles.filterChip,
-                    active && styles.filterChipActive,
+                    ctaStyles.segmentChip,
                     active ? { backgroundColor: semantic.actionPrimary } : null,
                   ]}>
-                  <Text style={[styles.filterLabel, { color: surface.textMuted }, active && styles.filterLabelActive]}>{filter}</Text>
+                  <Text
+                    style={[
+                      ctaStyles.segmentChipLabel,
+                      { color: active ? palette.sheet : surface.textMuted },
+                      active && ctaStyles.segmentChipLabelActive,
+                    ]}>
+                    {filter}
+                  </Text>
                 </Pressable>
               );
             })}
@@ -312,8 +322,8 @@ export default function ExploreScreen() {
             <View style={[styles.empty, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
               <Text style={[styles.emptyTitle, { color: surface.textDisplay }]}>You're caught up</Text>
               <Text style={[styles.emptyBody, { color: surface.textMuted }]}>No open decisions in this filter. Check Outcome Replay instead.</Text>
-              <Pressable onPress={() => router.push('/outcome-replay')} style={[styles.retryBtn, { backgroundColor: semantic.actionPrimary }]}>
-                <Text style={styles.retryText}>Open Outcome Replay</Text>
+              <Pressable onPress={() => router.push('/(tabs)/replay')} style={ctaStyles.primary}>
+                <Text style={ctaStyles.primaryLabel}>Open Outcome Replay</Text>
               </Pressable>
             </View>
           ) : null}
@@ -368,35 +378,9 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   surface: {
     flex: 1,
-    backgroundColor: '#f5f5f7',
   },
   scroll: {
     flex: 1,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: screenContentGutter,
-    marginBottom: 14,
-  },
-  headerCopy: {
-    flex: 1,
-    minWidth: 0,
-    paddingRight: 12,
-  },
-  title: {
-    ...typography.hero,
-    color: '#0c0d10',
-    fontSize: 36,
-    lineHeight: 40,
-    letterSpacing: -0.8,
-    fontWeight: '800',
-  },
-  subtitle: {
-    ...typography.compact,
-    color: 'rgba(60,60,67,0.72)',
-    marginTop: 2,
   },
   filterRow: {
     paddingHorizontal: screenContentGutter,
@@ -406,238 +390,42 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingRight: 8,
   },
-  filterChip: {
-    borderRadius: radius.pill,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    backgroundColor: 'transparent',
-  },
-  filterChipActive: {
-    backgroundColor: '#111113',
-  },
-  filterLabel: {
-    ...typography.compact,
-    color: 'rgba(60,60,67,0.75)',
-    fontWeight: '600',
-  },
-  filterLabelActive: {
-    color: '#ffffff',
-  },
   listWrap: {
     paddingHorizontal: screenContentGutter,
     gap: 12,
   },
-  card: {
-    backgroundColor: '#ffffff',
-    borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(60,60,67,0.12)',
-    paddingHorizontal: 14,
-    paddingVertical: 14,
-    gap: 12,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 1,
-  },
-  cardHeaderTapArea: {
-    borderRadius: 12,
-  },
-  cardHeaderTapAreaPressed: {
-    opacity: 0.92,
-  },
-  cardTop: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 10,
-  },
-  liveDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#059669',
-  },
-  cardCategoryRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  categoryDotWrap: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  categoryLabel: {
-    ...typography.caption,
-    fontWeight: '700',
-  },
-  cardMetaRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  votesMetaLive: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 999,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(16,185,129,0.22)',
-    backgroundColor: 'rgba(16,185,129,0.08)',
-  },
-  votesMetaLiveLabel: {
-    ...typography.micro,
-    color: '#059669',
-    fontWeight: '700',
-    letterSpacing: 0.2,
-    textTransform: 'uppercase',
-  },
-  votesMetaCount: {
-    ...typography.caption,
-    fontWeight: '700',
-  },
-  question: {
-    ...typography.title,
-    color: '#121316',
-    marginTop: 6,
-    lineHeight: 28,
-    fontWeight: '700',
-    letterSpacing: -0.2,
-  },
-  rows: {
-    gap: 9,
-  },
-  rowLine: {
-    gap: 5,
-    borderRadius: 10,
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-  },
-  rowLineSelected: {
-    backgroundColor: 'rgba(79,118,194,0.08)',
-  },
-  rowHead: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-  },
-  rowLabel: {
-    ...typography.caption,
-    color: '#3a3d44',
-    flex: 1,
-  },
-  rowPct: {
-    ...typography.caption,
-    fontWeight: '700',
-  },
-  track: {
-    height: 3,
-    borderRadius: 999,
-    backgroundColor: '#eceef3',
-    overflow: 'hidden',
-  },
-  fill: {
-    height: '100%',
-    borderRadius: 999,
-  },
-  cardFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 12,
-    marginTop: 2,
-  },
-  people: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    flex: 1,
-    minWidth: 0,
-  },
-  avatars: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  avatar: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
-  },
-  avatarOverlap: {
-    marginLeft: -6,
-  },
-  peopleText: {
-    ...typography.caption,
-    flex: 1,
-    fontWeight: '600',
-  },
-  voteBtn: {
-    borderRadius: radius.pill,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-  },
-  voteBtnText: {
-    ...typography.compact,
-    fontWeight: '700',
-  },
   empty: {
-    backgroundColor: '#fff',
-    borderRadius: 16,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(60,60,67,0.12)',
-    padding: 18,
-    alignItems: 'center',
+    paddingHorizontal: 18,
+    paddingVertical: 22,
     gap: 6,
+    alignItems: 'center',
   },
   emptyTitle: {
-    ...typography.h2,
-    color: '#111113',
+    ...typography.title,
+    fontWeight: '800',
   },
   emptyBody: {
     ...typography.compact,
-    color: 'rgba(60,60,67,0.68)',
+    lineHeight: 21,
+    textAlign: 'center',
   },
   errorWrap: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f5f5f7',
     paddingHorizontal: 28,
     gap: 10,
   },
   errorTitle: {
     ...typography.title,
-    color: '#111113',
     fontWeight: '800',
   },
   errorBody: {
     ...typography.compact,
-    color: 'rgba(60,60,67,0.72)',
+    lineHeight: 21,
     textAlign: 'center',
-  },
-  retryBtn: {
-    marginTop: 4,
-    backgroundColor: '#111113',
-    borderRadius: radius.pill,
-    paddingHorizontal: 18,
-    paddingVertical: 10,
-  },
-  retryText: {
-    ...typography.compact,
-    color: '#fff',
-    fontWeight: '700',
   },
   toastWrap: {
     position: 'absolute',
@@ -655,25 +443,6 @@ const styles = StyleSheet.create({
   toastText: {
     ...typography.compact,
     fontWeight: '700',
-  },
-  sheetBody: {
-    paddingHorizontal: 20,
-    paddingBottom: 8,
-    gap: 10,
-  },
-  sheetTitle: {
-    ...typography.titleSm,
-    fontWeight: '800',
-  },
-  sheetAction: {
-    minHeight: 44,
-    justifyContent: 'center',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(60,60,67,0.18)',
-  },
-  sheetActionText: {
-    ...typography.bodySm,
-    fontWeight: '600',
   },
   detailOverlayShell: {
     ...StyleSheet.absoluteFillObject,

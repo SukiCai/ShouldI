@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { radius, screenContentGutter, typography } from '@/constants/theme';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { surfaceCardStyles } from '@/components/screen/surfaceCardStyles';
+import { tabScreenStyles } from '@/components/screen/tabScreenStyles';
+import { palette, radius, screenContentGutter, typography } from '@/constants/theme';
 
-/** Shared chrome for the You tab — aligned with Explore feed surfaces. */
+/** Shared chrome for tab screens — headers aligned via `TabScreenHeader`. */
 export const youScreenStyles = StyleSheet.create({
   surface: {
     flex: 1,
@@ -10,39 +13,11 @@ export const youScreenStyles = StyleSheet.create({
   scroll: {
     flex: 1,
   },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: screenContentGutter,
-    marginBottom: 16,
-    gap: 12,
-  },
-  headerCopy: {
-    flex: 1,
-    minWidth: 0,
-    paddingRight: 4,
-  },
-  title: {
-    ...typography.hero,
-    fontSize: 36,
-    lineHeight: 40,
-    letterSpacing: -0.8,
-    fontWeight: '800',
-  },
-  subtitle: {
-    ...typography.compact,
-    marginTop: 2,
-    lineHeight: 21,
-  },
-  iconCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: StyleSheet.hairlineWidth,
-  },
+  headerRow: tabScreenStyles.headerRow,
+  headerCopy: tabScreenStyles.headerCopy,
+  title: tabScreenStyles.title,
+  subtitle: tabScreenStyles.subtitle,
+  iconCircle: tabScreenStyles.iconCircle,
   sectionWrap: {
     paddingHorizontal: screenContentGutter,
     gap: 12,
@@ -56,16 +31,8 @@ export const youScreenStyles = StyleSheet.create({
     marginBottom: 2,
   },
   feedCard: {
+    ...surfaceCardStyles.grouped,
     borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    paddingVertical: 14,
-    gap: 10,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 1,
   },
   primaryBtn: {
     alignSelf: 'flex-start',
@@ -75,45 +42,26 @@ export const youScreenStyles = StyleSheet.create({
     marginTop: 2,
   },
   primaryBtnText: {
-    ...typography.compact,
-    color: '#ffffff',
-    fontWeight: '700',
+    ...ctaStyles.primaryLabel,
   },
   focusCard: {
-    borderRadius: 20,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 16,
-    paddingTop: 18,
-    paddingBottom: 12,
-    gap: 10,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.06,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 2,
+    ...surfaceCardStyles.focus,
   },
   focusTitle: {
     ...typography.title,
-    fontSize: 26,
-    lineHeight: 32,
     fontWeight: '800',
-    letterSpacing: -0.5,
+    letterSpacing: -0.3,
   },
   focusBody: {
     ...typography.compact,
     lineHeight: 21,
   },
   focusPrimaryBtn: {
-    borderRadius: radius.pill,
-    paddingHorizontal: 18,
-    paddingVertical: 13,
-    alignItems: 'center',
+    ...ctaStyles.primary,
     marginTop: 2,
   },
   focusPrimaryBtnText: {
-    ...typography.titleSm,
-    color: '#ffffff',
-    fontWeight: '700',
+    ...ctaStyles.primaryLabel,
   },
   focusLensBlock: {
     gap: 8,
@@ -327,12 +275,8 @@ export const youScreenStyles = StyleSheet.create({
   },
   insightCardShell: {
     flex: 1,
-    borderWidth: StyleSheet.hairlineWidth,
-    shadowColor: '#0b1224',
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 1,
+    ...surfaceCardStyles.grouped,
+    borderRadius: radius.hero,
   },
   insightCardColumn: {
     justifyContent: 'space-between',
@@ -357,10 +301,7 @@ export const youScreenStyles = StyleSheet.create({
     gap: 0,
   },
   insightFeedCard: {
-    paddingHorizontal: 12,
-    paddingVertical: 14,
-    gap: 6,
-    borderRadius: 24,
+    ...surfaceCardStyles.insight,
   },
   dnaSummaryBoxCompact: {
     borderRadius: 10,
@@ -370,8 +311,7 @@ export const youScreenStyles = StyleSheet.create({
   },
   dnaSummaryCompact: {
     ...typography.caption,
-    fontSize: 9,
-    lineHeight: 13,
+    lineHeight: 16,
     fontStyle: 'italic',
   },
   dnaSummaryText: {
@@ -379,6 +319,24 @@ export const youScreenStyles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 18,
     fontStyle: 'italic',
+  },
+  dnaTeaserBox: {
+    alignItems: 'center',
+    paddingVertical: 12,
+    gap: 4,
+  },
+  dnaTeaserTitle: {
+    ...typography.titleSm,
+    fontWeight: '700',
+  },
+  dnaTeaserBody: {
+    ...typography.compact,
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  recentEmptyState: {
+    paddingVertical: 12,
+    paddingHorizontal: 4,
   },
   identityRow: {
     flexDirection: 'row',
@@ -491,15 +449,12 @@ export const youScreenStyles = StyleSheet.create({
   },
   growthCardTitle: {
     ...typography.caption,
-    fontSize: 11,
     fontWeight: '700',
     textAlign: 'center',
-    lineHeight: 14,
   },
   growthCardBody: {
     ...typography.caption,
-    fontSize: 10,
-    lineHeight: 13,
+    lineHeight: 16,
     textAlign: 'center',
     fontWeight: '500',
   },
@@ -539,13 +494,11 @@ export const youScreenStyles = StyleSheet.create({
   },
   recentDecisionTitleCompact: {
     ...typography.caption,
-    fontSize: 11,
     fontWeight: '700',
-    lineHeight: 14,
   },
   postFootCompact: {
-    fontSize: 9,
-    lineHeight: 12,
+    ...typography.caption,
+    lineHeight: 16,
   },
   statusPillInsight: {
     borderRadius: radius.pill,
@@ -555,10 +508,8 @@ export const youScreenStyles = StyleSheet.create({
     maxWidth: 56,
   },
   statusPillInsightText: {
-    ...typography.nano,
-    fontSize: 7,
+    ...typography.caption,
     fontWeight: '700',
-    lineHeight: 9,
     textAlign: 'center',
   },
   startDecisionBtn: {
@@ -589,9 +540,7 @@ export const youScreenStyles = StyleSheet.create({
   },
   startDecisionBtnTextCompact: {
     ...typography.caption,
-    fontSize: 11,
     fontWeight: '600',
-    lineHeight: 14,
   },
   identityCard: {
     gap: 12,
@@ -686,6 +635,11 @@ export const youScreenStyles = StyleSheet.create({
   statTileHint: {
     ...typography.caption,
     lineHeight: 15,
+  },
+  dnaRadarWrap: {
+    paddingTop: 4,
+    paddingBottom: 2,
+    overflow: 'visible',
   },
   dnaSummaryBox: {
     flexDirection: 'row',

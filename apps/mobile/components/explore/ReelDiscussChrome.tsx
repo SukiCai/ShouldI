@@ -20,12 +20,14 @@ import {
   REEL_EDGE_GLOSS,
   REEL_PANEL_DIAGONAL,
 } from '@/constants/reelSurfaceGradients';
+import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
+import { PmfChromeProvider } from '@/components/screen/PmfChromeContext';
 import {
   palette,
   profileLight,
   profileNeutralStroke,
-  profileTypography,
   radius,
+  semantic,
   typography,
 } from '@/constants/theme';
 
@@ -48,6 +50,8 @@ export function RewardPointsGem({
   /** `compact` — sits inline after the reel title */
   density?: 'comfortable' | 'compact';
 }) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
   const pts = typeof rewardPoints === 'number' ? rewardPoints : NaN;
   if (!Number.isFinite(pts) || pts <= 0) return null;
   const a11y = `本题奖励积分 ${pts}，参与讨论或贡献优质观点可获得`;
@@ -64,8 +68,8 @@ export function RewardPointsGem({
         start={{ x: 0.08, y: 0 }}
         end={{ x: 0.95, y: 1 }}
         style={chipStyle}>
-        <Ionicons name="sparkles" size={density === 'compact' ? 12 : 14} color={palette.neonPink} />
-        <Text style={textStyle}>{pts} 积分</Text>
+        <Ionicons name="sparkles" size={density === 'compact' ? 12 : 14} color={semantic.actionPrimary} />
+        <Text style={[textStyle, text.display]}>{pts} 积分</Text>
       </LinearGradient>
     </View>
   );
@@ -135,22 +139,45 @@ export function ReelCardSurface({
   layout?: 'card' | 'fullscreen';
   suppressAtmosphere?: boolean;
 }) {
+  const surface = usePmfSurface();
   const innerPad =
     layout === 'fullscreen'
       ? [reelDiscussStyles.reelCardInnerFullscreen, isOpen && reelDiscussStyles.reelCardInnerOpen]
       : [reelDiscussStyles.reelCardInner, isOpen && reelDiscussStyles.reelCardInnerOpen];
 
   if (layout === 'fullscreen' && suppressAtmosphere) {
-    return <View style={innerPad}>{children}</View>;
+    return (
+      <PmfChromeProvider surface={surface}>
+        <View style={innerPad}>{children}</View>
+      </PmfChromeProvider>
+    );
   }
 
   const outerStyle =
-    layout === 'fullscreen' ? [reelDiscussStyles.reelCardOuter, reelDiscussStyles.reelCardOuterFullscreen] : reelDiscussStyles.reelCardOuter;
+    layout === 'fullscreen'
+      ? [
+          reelDiscussStyles.reelCardOuter,
+          reelDiscussStyles.reelCardOuterFullscreen,
+          { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder },
+        ]
+      : suppressAtmosphere
+        ? [
+            reelDiscussStyles.reelCardOuter,
+            reelDiscussStyles.reelCardOuterQuiet,
+            { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder },
+          ]
+        : [
+            reelDiscussStyles.reelCardOuter,
+            reelDiscussStyles.reelCardOuterExplore,
+            { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder },
+          ];
   return (
-    <View style={outerStyle}>
-      {!suppressAtmosphere ? <ReelCardAtmosphereLayers category={category} /> : null}
-      <View style={innerPad}>{children}</View>
-    </View>
+    <PmfChromeProvider surface={surface}>
+      <View style={outerStyle}>
+        {!suppressAtmosphere ? <ReelCardAtmosphereLayers category={category} /> : null}
+        <View style={innerPad}>{children}</View>
+      </View>
+    </PmfChromeProvider>
   );
 }
 
@@ -168,6 +195,8 @@ function ReelCardTrailingIcons({
   onToggleSave,
   onToggleFollow,
 }: ReelCardTrailingIconsProps) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
   const saveLabel = saved ? 'Saved — tap to remove from saved' : 'Save this dilemma';
   const followLabel = following ? 'Following — tap to stop update alerts' : 'Follow for updates';
   return (
@@ -196,11 +225,11 @@ function ReelCardTrailingIcons({
               reelDiscussStyles.toolbarIconGem,
               Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
             ]}>
-            <Ionicons name="star" size={19} color={profileTypography.emphasis} />
+            <Ionicons name="star" size={19} color={surface.textPrimary} />
           </LinearGradient>
         ) : (
           <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-            <Ionicons name="star-outline" size={20} color={profileTypography.subdued} />
+            <Ionicons name="star-outline" size={20} color={surface.textMuted} />
           </View>
         )}
       </Pressable>
@@ -228,11 +257,11 @@ function ReelCardTrailingIcons({
               reelDiscussStyles.toolbarIconGem,
               Platform.OS === 'android' ? reelDiscussStyles.toolbarIconGemRaisedAndroid : null,
             ]}>
-            <Ionicons name="notifications" size={18} color={palette.heroInk} />
+            <Ionicons name="notifications" size={18} color={palette.sheet} />
           </LinearGradient>
         ) : (
           <View style={[reelDiscussStyles.toolbarIconGem, reelDiscussStyles.toolbarIconFrost]}>
-            <Ionicons name="notifications-outline" size={19} color={profileTypography.subdued} />
+            <Ionicons name="notifications-outline" size={19} color={surface.textMuted} />
           </View>
         )}
       </Pressable>
@@ -267,6 +296,9 @@ export type ReelCardActionBarProps =
     };
 
 export function ReelCardActionBar(props: ReelCardActionBarProps) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
+
   if (props.variant === 'reel-feed-top') {
     return (
       <View style={[reelDiscussStyles.cardTopRow, reelDiscussStyles.cardTopRowVotesOnly]}>
@@ -293,7 +325,7 @@ export function ReelCardActionBar(props: ReelCardActionBarProps) {
             reelDiscussStyles.toolbarBackGem,
             pressed && reelDiscussStyles.toolbarIconHitPressed,
           ]}>
-          <Ionicons name="chevron-back" size={22} color={profileTypography.body} />
+          <Ionicons name="chevron-back" size={22} color={surface.textPrimary} />
         </Pressable>
         <View style={reelDiscussStyles.cardTopRowSpacer} />
         <LiveVotesPill elevated voteTotal={props.voteSummary.voteTotal} isLivePoll={props.voteSummary.isLivePoll} />
@@ -337,7 +369,7 @@ export function ReelCardActionBar(props: ReelCardActionBarProps) {
             reelDiscussStyles.toolbarBackGem,
             pressed && reelDiscussStyles.toolbarIconHitPressed,
           ]}>
-          <Ionicons name="chevron-back" size={22} color={profileTypography.body} />
+          <Ionicons name="chevron-back" size={22} color={surface.textPrimary} />
         </Pressable>
       ) : hasRewardPoints ? (
         /** 信息流左侧：悬赏积分替换原「分类」圆角标签 */
@@ -346,7 +378,7 @@ export function ReelCardActionBar(props: ReelCardActionBarProps) {
         </View>
       ) : (
         <View style={reelDiscussStyles.categoryChip}>
-          <Text style={reelDiscussStyles.categoryChipText}>{formatCategoryLabel(category)}</Text>
+          <Text style={[reelDiscussStyles.categoryChipText, text.display]}>{formatCategoryLabel(category)}</Text>
         </View>
       )}
       <View style={reelDiscussStyles.cardActionBarTrailing}>
@@ -418,19 +450,22 @@ export function LiveVotesPill({
   inline?: boolean;
   elevated?: boolean;
 }) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
   const pillChrome = [
     reelDiscussStyles.headerVotePill,
     inline && reelDiscussStyles.headerVotePillInline,
+    { borderColor: surface.hairline, backgroundColor: surface.groupedSurface },
   ];
 
   const body = (
     <>
       {isLivePoll ? <LivePulseDot /> : null}
       <View style={[reelDiscussStyles.headerVoteTextStack, inline && reelDiscussStyles.headerVoteTextStackInline]}>
-        <Text style={[reelDiscussStyles.headerVoteStrong, inline && reelDiscussStyles.headerVoteStrongInline]}>
+        <Text style={[reelDiscussStyles.headerVoteStrong, inline && reelDiscussStyles.headerVoteStrongInline, text.display]}>
           {compactVoteCount(voteTotal)}
         </Text>
-        <Text style={[reelDiscussStyles.headerVoteMicro, inline && reelDiscussStyles.headerVoteMicroInline]}>
+        <Text style={[reelDiscussStyles.headerVoteMicro, inline && reelDiscussStyles.headerVoteMicroInline, text.muted]}>
           {inline
             ? isLivePoll
               ? 'Live'
@@ -448,15 +483,10 @@ export function LiveVotesPill({
       <View
         accessibilityRole="text"
         accessibilityLabel={`${voteTotal.toLocaleString()} ${isLivePoll ? 'live votes' : 'total votes'}`}
-        style={reelDiscussStyles.headerVotePillElevatedOuter}>
-        <LinearGradient
-          pointerEvents="none"
-          colors={['rgba(255,253,254,0.97)', `${palette.neonSky}26`, `${palette.neonPink}22`]}
-          locations={[0, 0.48, 1]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={StyleSheet.absoluteFillObject}
-        />
+        style={[
+          reelDiscussStyles.headerVotePillElevatedOuter,
+          { backgroundColor: surface.groupedSurface, borderColor: surface.hairline },
+        ]}>
         <View style={reelDiscussStyles.headerVotePillElevatedInner}>{body}</View>
       </View>
     );
@@ -472,17 +502,13 @@ export function LiveVotesPill({
   );
 }
 
-/** Gradient accent under poll headline — friendlier Gen‑Z “signal” strip than flat cobalt. */
+/** Accent strip under poll headline — PMF primary. */
 export function PollQuestionAccentBar() {
   return (
-    <LinearGradient
+    <View
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      colors={[`${palette.neonPink}cc`, palette.accent, `${palette.neonSky}bb`]}
-      locations={[0, 0.5, 1]}
-      start={{ x: 0, y: 0.5 }}
-      end={{ x: 1, y: 0.5 }}
-      style={reelDiscussStyles.pollQuestionAccentBar}
+      style={[reelDiscussStyles.pollQuestionAccentBar, { backgroundColor: semantic.actionPrimary }]}
     />
   );
 }
@@ -532,15 +558,33 @@ export const reelDiscussStyles = StyleSheet.create({
     flexDirection: 'column',
     borderRadius: radius.hero,
     borderWidth: Platform.OS === 'ios' ? 1 : StyleSheet.hairlineWidth,
-    borderColor: 'rgba(199,174,255,0.35)',
-    /** Milky frost — reads cleanly on chaotic Explore mesh without feeling cold */
-    backgroundColor: 'rgba(255,254,253,0.92)',
     overflow: 'hidden',
-    shadowColor: `${palette.heroInk}`,
-    shadowOpacity: Platform.OS === 'ios' ? 0.08 : 0.11,
-    shadowRadius: Platform.OS === 'ios' ? 38 : 28,
-    shadowOffset: { width: 0, height: Platform.OS === 'ios' ? 18 : 13 },
-    elevation: Platform.OS === 'android' ? 11 : 0,
+  },
+  /** Replay / quiet PMF — same elevation as You focus cards */
+  reelCardOuterQuiet: {
+    borderRadius: radius.lg,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.06,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: { elevation: 2 },
+      default: {},
+    }),
+  },
+  reelCardOuterExplore: {
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.08,
+        shadowRadius: 24,
+        shadowOffset: { width: 0, height: 10 },
+      },
+      android: { elevation: 5 },
+      default: {},
+    }),
   },
   reelCardOuterFullscreen: {
     alignSelf: 'stretch',
@@ -629,7 +673,6 @@ export const reelDiscussStyles = StyleSheet.create({
     lineHeight: 15,
     fontWeight: '600',
     letterSpacing: 0.25,
-    color: profileTypography.emphasis,
     textTransform: 'capitalize',
   },
   cardActionBarTrailing: {
@@ -653,7 +696,7 @@ export const reelDiscussStyles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonPink}50`,
+    borderColor: profileNeutralStroke(0.12),
     flexShrink: 0,
     overflow: 'hidden',
     ...Platform.select({
@@ -671,7 +714,6 @@ export const reelDiscussStyles = StyleSheet.create({
     lineHeight: 15,
     fontWeight: '800',
     letterSpacing: 0.06,
-    color: profileTypography.emphasis,
     fontVariant: ['tabular-nums'],
   },
   rewardPointsChipCompact: {
@@ -684,7 +726,6 @@ export const reelDiscussStyles = StyleSheet.create({
     lineHeight: 14,
     fontWeight: '800',
     letterSpacing: 0.04,
-    color: profileTypography.emphasis,
     fontVariant: ['tabular-nums'],
   },
   rewardPointsGemShrink: {
@@ -832,7 +873,6 @@ export const reelDiscussStyles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 18,
     fontWeight: '800',
-    color: profileTypography.ink,
     letterSpacing: -0.45,
     fontVariant: ['tabular-nums'],
   },
@@ -840,7 +880,6 @@ export const reelDiscussStyles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 13,
     fontWeight: '700',
-    color: profileTypography.subdued,
     letterSpacing: 0.12,
   },
   headerVoteStrongInline: {
@@ -860,8 +899,8 @@ export const reelDiscussStyles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 999,
-    backgroundColor: palette.neonPink,
-    shadowColor: palette.neonPink,
+    backgroundColor: palette.livePulse,
+    shadowColor: palette.livePulse,
     shadowOpacity: Platform.OS === 'ios' ? 0.55 : 0,
     shadowRadius: Platform.OS === 'ios' ? 4 : 0,
     shadowOffset: { width: 0, height: 0 },
@@ -889,7 +928,6 @@ export const reelDiscussStyles = StyleSheet.create({
     opacity: 0.94,
   },
   pollQuestion: {
-    color: profileTypography.ink,
     marginTop: 0,
   },
   pollQuestionOpen: {
@@ -901,7 +939,6 @@ export const reelDiscussStyles = StyleSheet.create({
     letterSpacing: -0.7,
     lineHeight: 36,
     minHeight: 72,
-    color: profileTypography.emphasis,
   },
   /** Question + optional 积分 chip on one wrapping row */
   pollQuestionTitleRow: {
@@ -922,10 +959,8 @@ export const reelDiscussStyles = StyleSheet.create({
     marginTop: 2,
   },
   optionPill: {
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: `${palette.heroInk}14`,
-    backgroundColor: 'rgba(255,255,255,0.93)',
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 18,
     paddingVertical: 16,
     flexDirection: 'column',
@@ -933,54 +968,14 @@ export const reelDiscussStyles = StyleSheet.create({
     gap: 12,
     ...Platform.select({
       ios: {
-        shadowColor: `${palette.heroInk}`,
-        shadowOpacity: 0.048,
-        shadowRadius: 16,
-        shadowOffset: { width: 0, height: 5 },
-      },
-      android: { elevation: 2 },
-      default: {},
-    }),
-  },
-  /** Cobalt rim — unmistakably “your vote” vs mint assistant cues */
-  optionPillUserPick: {
-    borderWidth: 2,
-    borderColor: `${palette.accent}7a`,
-    backgroundColor: `${palette.accent}12`,
-    ...Platform.select({
-      ios: {
-        shadowColor: palette.accent,
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.04,
+        shadowRadius: 8,
         shadowOffset: { width: 0, height: 2 },
       },
+      android: { elevation: 1 },
       default: {},
     }),
-  },
-  /** Assistant-lean row when it is not yours — ink/black frame (editorial, vs cobalt “you”) */
-  optionPillAiLeanOnly: {
-    borderWidth: 2,
-    borderColor: 'rgba(13,13,17,0.82)',
-    backgroundColor: 'rgba(13,13,17,0.055)',
-    ...Platform.select({
-      ios: {
-        shadowColor: palette.heroInk,
-        shadowOpacity: 0.08,
-        shadowRadius: 10,
-        shadowOffset: { width: 0, height: 2 },
-      },
-      default: {},
-    }),
-  },
-  /** User pick === AI suggestion — dual edge: you = cobalt, assistant = ink */
-  optionPillUserAndAiPick: {
-    borderWidth: 1,
-    borderColor: profileNeutralStroke(0.1),
-    backgroundColor: 'rgba(246,251,251,0.96)',
-    borderLeftWidth: 5,
-    borderLeftColor: palette.accent,
-    borderRightWidth: 5,
-    borderRightColor: palette.heroInk,
   },
   optionPillDisabled: {
     opacity: 0.92,
@@ -1005,35 +1000,26 @@ export const reelDiscussStyles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    backgroundColor: 'rgba(42,39,71,0.94)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.12)',
   },
   aiLeanBadgeText: {
-    fontSize: 10,
-    lineHeight: 12,
+    ...typography.caption,
     fontWeight: '800',
-    letterSpacing: 0.5,
-    color: palette.white,
+    letterSpacing: 0.4,
   },
   userPickBadge: {
     borderRadius: 999,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    backgroundColor: `${palette.accent}18`,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.accent}42`,
   },
   userPickBadgeText: {
-    fontSize: 10,
-    lineHeight: 12,
+    ...typography.caption,
     fontWeight: '800',
-    letterSpacing: 0.45,
-    color: palette.accent,
+    letterSpacing: 0.35,
   },
   optionText: {
     ...typography.compact,
-    color: profileTypography.body,
     flex: 1,
     marginRight: 10,
     fontWeight: '500',
@@ -1041,39 +1027,38 @@ export const reelDiscussStyles = StyleSheet.create({
     fontSize: 16,
   },
   optionTextActive: {
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '800',
   },
   optionMeta: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '700',
   },
   optionMetaPicked: {
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '800',
     fontVariant: ['tabular-nums'],
   },
   inlineTrack: {
     height: 6,
     borderRadius: 999,
-    backgroundColor: `${palette.heroInk}0f`,
+    backgroundColor: profileNeutralStroke(0.08),
     overflow: 'hidden',
     width: '100%',
   },
   inlineFillNeutral: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: `${palette.heroInk}2e`,
+    backgroundColor: profileNeutralStroke(0.18),
   },
   inlineFillUser: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: palette.accent,
+    backgroundColor: semantic.actionPrimary,
   },
   inlineFillAi: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
   },
 });

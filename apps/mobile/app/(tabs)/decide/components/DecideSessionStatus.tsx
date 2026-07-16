@@ -74,7 +74,7 @@ export function DecideSessionStatus({
                 styles.progressFill,
                 {
                   width: `${Math.min(100, Math.max(0, clarityValue))}%`,
-                  backgroundColor: palette.heroInk,
+                  backgroundColor: semantic.actionPrimary,
                 },
               ]}
             />
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   avatarMoreText: {
-    fontSize: 9,
+    ...typography.caption,
     fontWeight: '700',
   },
   avatarPlaceholder: {

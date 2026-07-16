@@ -1,17 +1,16 @@
 import { Platform, StyleSheet } from 'react-native';
 
-import { palette, screenContentGutter, typography } from '@/constants/theme';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { surfaceCardStyles } from '@/components/screen/surfaceCardStyles';
+import { palette, radius, screenContentGutter, semantic, typography } from '@/constants/theme';
 
 export const decideSummaryStyles = StyleSheet.create({
   wrap: {
     gap: 12,
   },
   sectionCard: {
-    borderRadius: 14,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    gap: 8,
+    ...surfaceCardStyles.grouped,
+    borderRadius: radius.lg,
   },
   sectionEyebrow: {
     ...typography.caption,
@@ -25,9 +24,7 @@ export const decideSummaryStyles = StyleSheet.create({
   },
   heroInput: {
     ...typography.hero,
-    fontSize: 28,
-    lineHeight: 34,
-    letterSpacing: -0.6,
+    letterSpacing: -0.4,
     fontWeight: '800',
     padding: 0,
     margin: 0,
@@ -69,7 +66,7 @@ export const decideSummaryStyles = StyleSheet.create({
   confidenceFill: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
   },
   optionList: {
     borderTopWidth: StyleSheet.hairlineWidth,
@@ -108,7 +105,7 @@ export const decideSummaryStyles = StyleSheet.create({
     paddingVertical: 2,
   },
   suggestedPillText: {
-    fontSize: 10,
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.2,
   },
@@ -166,17 +163,11 @@ export const decideSummaryStyles = StyleSheet.create({
     paddingBottom: Platform.OS === 'ios' ? 8 : 4,
   },
   primaryBtn: {
+    ...ctaStyles.primary,
     minHeight: 50,
-    borderRadius: 999,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 18,
-    backgroundColor: palette.heroInk,
   },
   primaryBtnText: {
-    ...typography.compact,
-    color: palette.white,
-    fontWeight: '700',
+    ...ctaStyles.primaryLabel,
   },
   secondaryBtn: {
     minHeight: 46,

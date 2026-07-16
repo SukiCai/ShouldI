@@ -111,29 +111,19 @@ function RootLayoutNav() {
         <Stack.Screen
           name="plot-deck"
           options={{
-            title: 'Outcome Replay',
-            headerTintColor: palette.accent,
-            headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
-            headerStyle: { backgroundColor: surface.canvas },
-            headerShadowVisible: false,
-            headerBackTitle: 'Explore',
+            headerShown: false,
           }}
         />
         <Stack.Screen
           name="outcome-replay/index"
           options={{
-            title: 'Outcome Replay',
-            headerTintColor: palette.accent,
-            headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
-            headerStyle: { backgroundColor: surface.canvas },
-            headerShadowVisible: false,
-            headerBackTitle: 'Explore',
+            headerShown: false,
           }}
         />
         <Stack.Screen
           name="outcome-replay/[id]"
           options={{
-            title: 'Outcome Replay',
+            title: 'Log outcome',
             headerTintColor: palette.accent,
             headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
             headerStyle: { backgroundColor: surface.canvas },

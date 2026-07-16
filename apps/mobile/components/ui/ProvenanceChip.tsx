@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { palette, profileTypography, typography } from '@/constants/theme';
+import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
+import { semantic, typography } from '@/constants/theme';
 import type { Provenance } from '@shouldi/contracts';
 
 const labelMap: Record<Provenance, string> = {
@@ -13,9 +14,17 @@ const labelMap: Record<Provenance, string> = {
 type Props = { provenance: Provenance };
 
 export default function ProvenanceChip({ provenance }: Props) {
+  const surface = usePmfSurface();
+  const text = pmfText(surface);
   return (
-    <View accessibilityRole="text" accessibilityLabel={labelMap[provenance]} style={styles.shell}>
-      <Text style={[typography.caption, styles.text]}>{labelMap[provenance]}</Text>
+    <View
+      accessibilityRole="text"
+      accessibilityLabel={labelMap[provenance]}
+      style={[
+        styles.shell,
+        { backgroundColor: surface.groupedSurface, borderColor: surface.hairline },
+      ]}>
+      <Text style={[typography.caption, styles.text, text.primary]}>{labelMap[provenance]}</Text>
     </View>
   );
 }
@@ -26,13 +35,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 999,
-    backgroundColor: palette.accentSoft,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cad6ff',
   },
   text: {
-    color: profileTypography.body,
+    color: semantic.actionPrimary,
     textTransform: 'uppercase',
     letterSpacing: 0.4,
+    fontWeight: '600',
   },
 });

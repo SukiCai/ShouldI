@@ -6,7 +6,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { exploreCategoryTheme } from '@/components/explore/exploreCategoryTheme';
 import { DraftOptionReorderList } from '@/components/explore/DraftOptionReorderList';
 import { exploreDecisionCardStyles as styles } from '@/components/explore/exploreDecisionCardStyles';
-import { semantic, themeSurface } from '@/constants/theme';
+import { semantic, palette, themeSurface } from '@/constants/theme';
 
 export type ExploreCardOption = {
   id: string;
@@ -108,10 +108,11 @@ export function ExploreDecisionCard(props: ExploreDecisionCardProps) {
               <Text style={[styles.categoryLabel, { color: theme.accent }]}>{theme.label}</Text>
             </View>
             <View style={styles.cardMetaRight}>
-              <View style={styles.votesMetaLive}>
+              <View style={[styles.votesMetaLive, { borderColor: `${palette.livePulse}38`, backgroundColor: `${palette.livePulse}14` }]}>
                 <Animated.View
                   style={[
                     styles.liveDot,
+                    { backgroundColor: palette.livePulse },
                     {
                       opacity: livePulse.interpolate({ inputRange: [0, 1], outputRange: [0.45, 1] }),
                       transform: [
@@ -122,7 +123,7 @@ export function ExploreDecisionCard(props: ExploreDecisionCardProps) {
                     },
                   ]}
                 />
-                <Text style={styles.votesMetaLiveLabel}>Live votes</Text>
+                <Text style={[styles.votesMetaLiveLabel, { color: palette.livePulse }]}>Live votes</Text>
                 <Text style={[styles.votesMetaCount, { color: surface.textMuted }]}>{formatVoteCount(totalVotes)}</Text>
               </View>
             </View>

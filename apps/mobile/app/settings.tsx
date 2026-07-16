@@ -34,6 +34,7 @@ import {
   profileLight,
   radius,
   screenContentGutter,
+  semantic,
   spacing,
   themeSurface,
   typography,
@@ -255,8 +256,8 @@ export default function SettingsScreen() {
   const surface = themeSurface(scheme);
   const chrom = resolveAppChromatics(isDark, surface);
   const switchThumbOff = isDark ? '#585f68' : palette.sheet;
-  const switchTrackOn = isDark ? `${palette.neonMint}55` : `${profileLight.mint}66`;
-  const switchThumbOn = isDark ? palette.neonMint : profileLight.mint;
+  const switchTrackOn = isDark ? `${semantic.actionAffirm}55` : `${semantic.actionAffirm}44`;
+  const switchThumbOn = semantic.actionAffirm;
 
   const { preference, setPreference } = useAppearance();
   const { resetPointsBalance } = useViewerEntitlements();
