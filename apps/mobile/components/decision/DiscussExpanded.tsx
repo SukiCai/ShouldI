@@ -3,6 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import * as React from 'react';
 import {
+  AccessibilityInfo,
   Platform,
   Pressable,
   ScrollView,
@@ -18,28 +19,24 @@ import JumpUpSheet from '@/components/ui/JumpUpSheet';
 import { useColorScheme } from '@/components/useColorScheme';
 import { discussCardColors, discussCardStyles } from '@/components/decision/discussCardStyles';
 import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
+import { ctaStyles } from '@/components/screen/ctaStyles';
 import { updateWatching } from '@/lib/exploreUserActivity';
+import {
+  optionActionLabel,
+  optionAffiliationLabel,
+  optionLabelForId,
+  optionLabelForIdCompact,
+  optionTeamBarFill,
+  optionTeamBorder,
+  optionTeamColor,
+  optionTeamSoftBg,
+  OPTION_LABEL_MAX,
+} from '@/lib/optionTeamChrome';
 import { palette, profileNeutralStroke, radius, semantic, spacing, themeSurface, typography, type ThemeSurface } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
 
-const TEAM_STRIPES = ['#5a6b84', '#6f7f97', '#8b97ab', '#a2adbf'] as const;
-
-function optionIndex(card: ExploreCard, optionId: string): number {
-  const i = card.options.findIndex((o) => o.id === optionId);
-  return i >= 0 ? i : 0;
-}
-
-function teamStripeColor(card: ExploreCard, optionId: string): string {
-  return TEAM_STRIPES[optionIndex(card, optionId) % TEAM_STRIPES.length]!;
-}
-
 function optionLabel(card: ExploreCard, optionId: string): string {
   return card.options.find((o) => o.id === optionId)?.label ?? 'Team';
-}
-
-function teamTagLabel(card: ExploreCard, optionId: string): string {
-  const idx = optionIndex(card, optionId);
-  return idx % 2 === 0 ? '红队' : '蓝队';
 }
 
 type DiscussExpandedProps = {
@@ -78,7 +75,13 @@ export function DiscussExpanded({
     [card, distributionOverride],
   );
   const voteTotal = mergedDistribution.reduce((sum, row) => sum + row.votes, 0);
-  const effectivePick = (pickedOptionOverride?.trim() || pickedOptionFromRoute?.trim() || card.myVoteOptionId) ?? undefined;
+  const [localTeamOverride, setLocalTeamOverride] = React.useState<string | null>(null);
+  const effectivePick =
+    (localTeamOverride?.trim() ||
+      pickedOptionOverride?.trim() ||
+      pickedOptionFromRoute?.trim() ||
+      card.myVoteOptionId) ??
+    undefined;
   const hasResults = isOpen ? !!effectivePick : true;
 
   const [saved, setSaved] = React.useState(card.savedByMe ?? false);
@@ -96,6 +99,8 @@ export function DiscussExpanded({
   const [commentSortMode, setCommentSortMode] = React.useState<CommentSortMode>('liked');
   const [sortSheetVisible, setSortSheetVisible] = React.useState(false);
   const [filterSheetVisible, setFilterSheetVisible] = React.useState(false);
+  const [changeTeamPrompt, setChangeTeamPrompt] = React.useState<TeamDiscussionPost | null>(null);
+  const [teamChangeToast, setTeamChangeToast] = React.useState<string | null>(null);
 
   const allDiscussionRows = React.useMemo(() => {
     const seed = card.discussionPosts ?? [];
@@ -155,11 +160,57 @@ export function DiscussExpanded({
     [userThumbUp],
   );
 
-  const toggleThumb = React.useCallback((postId: string) => {
-    if (Platform.OS !== 'web') {
-      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+  React.useEffect(() => {
+    if (!teamChangeToast) return;
+    const timer = setTimeout(() => setTeamChangeToast(null), 3200);
+    return () => clearTimeout(timer);
+  }, [teamChangeToast]);
+
+  const handleThumbPress = React.useCallback(
+    (post: TeamDiscussionPost) => {
+      const wasLiked = !!userThumbUp[post.id];
+      const willLike = !wasLiked;
+
+      if (Platform.OS !== 'web') {
+        void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+      }
+      setUserThumbUp((prev) => ({ ...prev, [post.id]: willLike }));
+
+      const crossTeamLike =
+        willLike &&
+        !!effectivePick &&
+        post.optionId !== effectivePick &&
+        post.authorName !== 'You';
+
+      if (crossTeamLike) {
+        setChangeTeamPrompt(post);
+      }
+    },
+    [effectivePick, userThumbUp],
+  );
+
+  const confirmChangeTeam = React.useCallback(() => {
+    const post = changeTeamPrompt;
+    if (!post) return;
+
+    setLocalTeamOverride(post.optionId);
+    onSelectOption?.(post.optionId);
+    setChangeTeamPrompt(null);
+
+    const label = optionLabel(card, post.optionId);
+    const message = `Valid decision point — this makes a strong case for “${label}”.`;
+    setTeamChangeToast(message);
+
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      AccessibilityInfo.announceForAccessibility(message);
     }
-    setUserThumbUp((prev) => ({ ...prev, [postId]: !prev[postId] }));
+    if (Platform.OS !== 'web') {
+      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+    }
+  }, [changeTeamPrompt, card, onSelectOption]);
+
+  const dismissChangeTeamPrompt = React.useCallback(() => {
+    setChangeTeamPrompt(null);
   }, []);
 
   const submit = React.useCallback(() => {
@@ -237,6 +288,13 @@ export function DiscussExpanded({
 
   return (
     <View style={styles.wrap}>
+      {teamChangeToast ? (
+        <View style={styles.toastWrap} pointerEvents="none">
+          <View style={[styles.toast, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
+            <Text style={[styles.toastText, { color: surface.textPrimary }]}>{teamChangeToast}</Text>
+          </View>
+        </View>
+      ) : null}
       <View style={[styles.screenCard, { backgroundColor: surface.canvas }]}>
         <View style={styles.topBar}>
           <View style={styles.topActions}>
@@ -282,11 +340,12 @@ export function DiscussExpanded({
         </View>
 
         <View style={styles.optionsWrap}>
-          {card.options.map((option) => {
+          {card.options.map((option, optionIdx) => {
             const votes = mergedDistribution.find((d) => d.optionId === option.id)?.votes ?? 0;
             const percentage = voteTotal > 0 ? Math.round((votes / voteTotal) * 100) : 0;
             const selected = effectivePick === option.id;
             const aiLeanHere = !!(hasResults && card.aiSuggestedOptionId && option.id === card.aiSuggestedOptionId);
+            const teamColor = optionTeamColor(card.options, option.id);
             return (
               <Pressable
                 key={option.id}
@@ -296,13 +355,20 @@ export function DiscussExpanded({
                 onPress={() => onSelectOption?.(option.id)}
                 style={({ pressed }) => [
                   styles.optionRow,
-                  { borderColor: surface.groupedBorder, backgroundColor: surface.groupedSurface },
-                  selected && styles.optionRowSelected,
+                  {
+                    borderColor: selected ? optionTeamBorder(teamColor) : surface.groupedBorder,
+                    backgroundColor: selected ? optionTeamSoftBg(teamColor, '10') : surface.groupedSurface,
+                  },
                   pressed && styles.optionVoteTapPressed,
                 ]}>
                 <View style={styles.optionRowTop}>
-                  <Text style={[styles.optionRowLabel, { color: surface.textPrimary }]}>{option.label}</Text>
-                  <Text style={[styles.optionRowPct, { color: surface.textMuted }]}>
+                  <Text
+                    style={[styles.optionRowLabel, { color: surface.textPrimary }]}
+                    numberOfLines={2}
+                    ellipsizeMode="tail">
+                    {option.label}
+                  </Text>
+                  <Text style={[styles.optionRowPct, { color: selected ? teamColor : surface.textMuted }]}>
                     {`${percentage}%${selected ? ' · you' : ''}${aiLeanHere ? ' · ai' : ''}`}
                   </Text>
                 </View>
@@ -310,7 +376,10 @@ export function DiscussExpanded({
                   <View
                     style={[
                       styles.optionFill,
-                      { width: `${Math.max(3, percentage)}%`, backgroundColor: selected ? semantic.actionPrimary : aiLeanHere ? semantic.actionAffirm : surface.textMuted },
+                      {
+                        width: `${Math.max(3, percentage)}%`,
+                        backgroundColor: optionTeamBarFill(teamColor, selected ? 'user' : aiLeanHere ? 'ai' : 'neutral'),
+                      },
                     ]}
                   />
                 </View>
@@ -459,12 +528,20 @@ export function DiscussExpanded({
               </Pressable>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Team filter options"
+                accessibilityLabel={
+                  filterOptionId
+                    ? `Filter by ${optionLabelForId(card.options, filterOptionId)}`
+                    : 'Option filter, showing all options'
+                }
                 onPress={() => setFilterSheetVisible(true)}
                 hitSlop={10}
-                style={({ pressed }) => [styles.commentSortBtn, pressed && styles.commentSortBtnPressed]}>
+                style={({ pressed }) => [styles.commentSortBtn, styles.commentSortBtnFlex, pressed && styles.commentSortBtnPressed]}>
                 <Ionicons name="filter-outline" size={15} color={surface.textMuted} />
-                <Text style={styles.commentSortBtnText}>{filterOptionId ? teamTagLabel(card, filterOptionId) : 'All teams'}</Text>
+                <Text style={styles.commentSortBtnText} numberOfLines={1} ellipsizeMode="tail">
+                  {filterOptionId
+                    ? optionLabelForIdCompact(card.options, filterOptionId, OPTION_LABEL_MAX.filter)
+                    : 'All options'}
+                </Text>
               </Pressable>
             </View>
           </View>
@@ -491,7 +568,7 @@ export function DiscussExpanded({
         {!hasResults ? (
           <View style={styles.needVoteCallout}>
             <Text style={styles.needVoteTitle}>Vote to unlock posting</Text>
-            <Text style={styles.needVoteBody}>You can browse existing threads now. Replying and publishing open after you choose a side.</Text>
+            <Text style={styles.needVoteBody}>You can browse existing threads now. Replying and publishing open after you pick an option.</Text>
           </View>
         ) : null}
 
@@ -505,7 +582,7 @@ export function DiscussExpanded({
               presentation="feed"
               getReplies={getReplies}
               thumbCount={thumbCount}
-              toggleThumb={toggleThumb}
+              toggleThumb={handleThumbPress}
               isThumbSelected={(id) => !!userThumbUp[id]}
               replyingToId={replyingToId}
               onToggleReplyComposer={onPressReplyTo}
@@ -527,6 +604,56 @@ export function DiscussExpanded({
         ) : null}
 
       </View>
+
+      <JumpUpSheet
+        visible={changeTeamPrompt != null}
+        onClose={dismissChangeTeamPrompt}
+        backgroundColor={surface.groupedSurface}
+        borderTopColor={surface.hairline}
+        bottomInset={insets.bottom}
+        maxHeight="52%"
+        grabColor={surface.hairline}
+        dismissAccessibilityLabel="Dismiss rethink choice prompt">
+        {changeTeamPrompt && effectivePick ? (
+          <View style={styles.changeTeamSheetBody}>
+            <Text style={[styles.sortSheetTitle, text.display]}>Rethink this choice?</Text>
+            <Text style={[styles.changeTeamBody, text.primary]}>
+              You found this reasoning compelling while you&apos;re on{' '}
+              <Text style={{ fontWeight: '700' }} numberOfLines={2} ellipsizeMode="tail">
+                {optionLabelForId(card.options, effectivePick)}
+              </Text>
+              . It might be worth switching.
+            </Text>
+            <View style={[styles.changeTeamQuote, { borderColor: surface.hairline, backgroundColor: surface.canvas }]}>
+              <Text style={[styles.changeTeamQuoteAuthor, text.muted]} numberOfLines={1} ellipsizeMode="tail">
+                {changeTeamPrompt.authorName} ·{' '}
+                {optionAffiliationLabel(optionLabelForId(card.options, changeTeamPrompt.optionId))}
+              </Text>
+              <Text style={[styles.changeTeamQuoteBody, text.primary]} numberOfLines={4}>
+                {changeTeamPrompt.body}
+              </Text>
+            </View>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Switch to ${optionLabel(card, changeTeamPrompt.optionId)}`}
+              onPress={confirmChangeTeam}
+              style={({ pressed }) => [ctaStyles.primary, pressed && { opacity: 0.92 }]}>
+              <Text style={ctaStyles.primaryLabel} numberOfLines={2} ellipsizeMode="tail">
+                {optionActionLabel('Switch to', optionLabel(card, changeTeamPrompt.optionId))}
+              </Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Keep ${optionLabel(card, effectivePick)}`}
+              onPress={dismissChangeTeamPrompt}
+              style={({ pressed }) => [styles.changeTeamStayBtn, pressed && { opacity: 0.7 }]}>
+              <Text style={[styles.changeTeamStayText, { color: semantic.actionPrimary }]} numberOfLines={2} ellipsizeMode="tail">
+                {optionActionLabel('Keep', optionLabel(card, effectivePick))}
+              </Text>
+            </Pressable>
+          </View>
+        ) : null}
+      </JumpUpSheet>
 
       <JumpUpSheet
         visible={composerModalVisible}
@@ -625,9 +752,9 @@ export function DiscussExpanded({
         bottomInset={insets.bottom}
         maxHeight="38%"
         grabColor={profileNeutralStroke(0.22)}
-        dismissAccessibilityLabel="Close team filter options">
+        dismissAccessibilityLabel="Close option filter">
         <View style={styles.sortSheetBody}>
-          <Text style={styles.sortSheetTitle}>Filter by team</Text>
+          <Text style={styles.sortSheetTitle}>Filter by option</Text>
           <Pressable
             accessibilityRole="button"
             accessibilityState={{ selected: filterOptionId === null }}
@@ -636,7 +763,7 @@ export function DiscussExpanded({
               setFilterOptionId(null);
               setFilterSheetVisible(false);
             }}>
-            <Text style={styles.sortSheetActionText}>All teams</Text>
+            <Text style={styles.sortSheetActionText}>All options</Text>
             {filterOptionId === null ? <Ionicons name="checkmark" size={16} color={semantic.actionPrimary} /> : null}
           </Pressable>
           {card.options.map((option) => (
@@ -650,10 +777,14 @@ export function DiscussExpanded({
                 setFilterSheetVisible(false);
               }}>
               <View style={styles.sortSheetTeamLabel}>
-                <View style={[styles.filterTeamDot, { backgroundColor: teamStripeColor(card, option.id) }]} />
-                <Text style={styles.sortSheetActionText}>{teamTagLabel(card, option.id)}</Text>
+                <View style={[styles.filterTeamDot, { backgroundColor: optionTeamColor(card.options, option.id) }]} />
+                <Text style={[styles.sortSheetActionText, styles.sortSheetOptionText]} numberOfLines={2} ellipsizeMode="tail">
+                  {option.label}
+                </Text>
               </View>
-              {filterOptionId === option.id ? <Ionicons name="checkmark" size={16} color={semantic.actionPrimary} /> : null}
+              {filterOptionId === option.id ? (
+                <Ionicons name="checkmark" size={16} color={optionTeamColor(card.options, option.id)} />
+              ) : null}
             </Pressable>
           ))}
         </View>
@@ -695,7 +826,7 @@ export function DiscussExpanded({
                 presentation="fullscreen"
                 getReplies={getReplies}
                 thumbCount={thumbCount}
-                toggleThumb={toggleThumb}
+                toggleThumb={handleThumbPress}
                 isThumbSelected={(id) => !!userThumbUp[id]}
                 replyingToId={replyingToId}
                 onToggleReplyComposer={onPressReplyTo}
@@ -736,7 +867,7 @@ type DiscussionPostCardProps = Readonly<{
   presentation?: DiscussionSurface;
   getReplies: (parentId: string) => TeamDiscussionPost[];
   thumbCount: (p: TeamDiscussionPost) => number;
-  toggleThumb: (postId: string) => void;
+  toggleThumb: (post: TeamDiscussionPost) => void;
   isThumbSelected: (postId: string) => boolean;
   replyingToId: string | null;
   onToggleReplyComposer: (postId: string) => void;
@@ -769,7 +900,9 @@ function DiscussionPostCard({
 }: DiscussionPostCardProps) {
   const theme = usePmfSurface();
   const styles = React.useMemo(() => discussExpandedStyles(theme), [theme]);
-  const stripe = teamStripeColor(card, post.optionId);
+  const stripe = optionTeamColor(card.options, post.optionId);
+  const affiliation = optionAffiliationLabel(optionLabelForId(card.options, post.optionId));
+  const affiliationA11y = `For ${optionLabelForId(card.options, post.optionId)}`;
   const isYou = post.authorName === 'You';
   const replies = getReplies(post.id);
   const threadReplyTotal = React.useMemo(
@@ -792,9 +925,13 @@ function DiscussionPostCard({
           </View>
           <Text style={[typography.compact, styles.threadAuthor]}>{post.authorName}</Text>
           {depth === 0 ? (
-            <View style={[styles.teamInlineTag, { borderColor: `${stripe}44`, backgroundColor: `${stripe}14` }]}>
+            <View
+              accessibilityLabel={affiliationA11y}
+              style={[styles.teamInlineTag, { borderColor: `${stripe}44`, backgroundColor: `${stripe}14`, maxWidth: '46%' }]}>
               <View style={[styles.teamInlineDot, { backgroundColor: stripe }]} />
-              <Text style={styles.teamInlineText}>{teamTagLabel(card, post.optionId)}</Text>
+              <Text style={[styles.teamInlineText, { color: stripe }]} numberOfLines={1} ellipsizeMode="tail">
+                {affiliation}
+              </Text>
             </View>
           ) : null}
           {post.timeLabel ? <Text style={styles.threadTime}>{post.timeLabel}</Text> : null}
@@ -807,7 +944,7 @@ function DiscussionPostCard({
             accessibilityRole="button"
             accessibilityLabel={liked ? `Remove helpful. ${formatThumbDisplay(n)} helpful votes.` : `Mark helpful. ${formatThumbDisplay(n)} helpful votes.`}
             accessibilityState={{ selected: liked }}
-            onPress={() => toggleThumb(post.id)}
+            onPress={() => toggleThumb(post)}
             hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
             style={({ pressed }) => [
               styles.actionPill,
@@ -1026,12 +1163,15 @@ function discussExpandedStyles(surface: ThemeSurface) {
   optionRowLabel: {
     ...typography.compact,
     flex: 1,
+    flexShrink: 1,
+    minWidth: 0,
     fontWeight: '700',
   },
   optionRowPct: {
     ...typography.micro,
     fontWeight: '700',
     letterSpacing: 0.1,
+    flexShrink: 0,
   },
   optionTrack: {
     height: 2,
@@ -1493,10 +1633,17 @@ function discussExpandedStyles(surface: ThemeSurface) {
   commentSortBtnPressed: {
     opacity: 0.78,
   },
+  commentSortBtnFlex: {
+    flexShrink: 1,
+    minWidth: 0,
+    maxWidth: '48%',
+  },
   commentSortBtnText: {
     ...typography.micro,
     ...text.muted,
     fontWeight: '700',
+    flexShrink: 1,
+    minWidth: 0,
   },
   commentEntryBar: {
     marginTop: 4,
@@ -1708,7 +1855,8 @@ function discussExpandedStyles(surface: ThemeSurface) {
     paddingVertical: 1,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    flexShrink: 0,
+    flexShrink: 1,
+    minWidth: 0,
   },
   teamInlineDot: {
     width: 5,
@@ -1720,6 +1868,8 @@ function discussExpandedStyles(surface: ThemeSurface) {
     lineHeight: 12,
     ...text.muted,
     fontWeight: '700',
+    flexShrink: 1,
+    minWidth: 0,
   },
   youInline: {
     ...typography.micro,
@@ -1963,10 +2113,17 @@ function discussExpandedStyles(surface: ThemeSurface) {
     ...text.primary,
     fontWeight: '600',
   },
+  sortSheetOptionText: {
+    flex: 1,
+    minWidth: 0,
+    marginRight: 8,
+  },
   sortSheetTeamLabel: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    flex: 1,
+    minWidth: 0,
   },
   emptyCard: {
     marginTop: 14,
@@ -2094,6 +2251,62 @@ function discussExpandedStyles(surface: ThemeSurface) {
     ...text.display,
     lineHeight: 18,
     fontWeight: '500',
+  },
+  toastWrap: {
+    position: 'absolute',
+    top: 8,
+    left: 0,
+    right: 0,
+    zIndex: 30,
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+  },
+  toast: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    maxWidth: '100%',
+  },
+  toastText: {
+    ...typography.compact,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  changeTeamSheetBody: {
+    paddingHorizontal: spacing.md,
+    paddingTop: 4,
+    gap: 14,
+  },
+  changeTeamBody: {
+    ...typography.compact,
+    lineHeight: 22,
+    fontWeight: '500',
+  },
+  changeTeamQuote: {
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 6,
+  },
+  changeTeamQuoteAuthor: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  changeTeamQuoteBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
+  },
+  changeTeamStayBtn: {
+    alignSelf: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  changeTeamStayText: {
+    ...typography.compact,
+    fontWeight: '700',
   },
 });
 }

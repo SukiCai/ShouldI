@@ -22,7 +22,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { usePmfChrome } from '@/components/screen/PmfChromeContext';
 import { ctaStyles } from '@/components/screen/ctaStyles';
-import { pmfText, reelOptionPillChrome, reelVoteBadgeChrome, usePmfSurface } from '@/components/screen/pmfChrome';
+import { pmfText, reelVoteBadgeChrome, usePmfSurface } from '@/components/screen/pmfChrome';
+import { optionTeamColor, optionTeamPillChrome } from '@/lib/optionTeamChrome';
 import { useColorScheme } from '@/components/useColorScheme';
 import {
   reelDiscussStyles,
@@ -179,11 +180,12 @@ export function ExploreCardDetailPanel({
         return (
           <>
             <View style={reelDiscussStyles.optionWrap}>
-              {item.options.map((option) => {
+              {item.options.map((option, optionIdx) => {
                 const votes = item.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
                 const percentage = total > 0 ? Math.round((votes / total) * 100) : 0;
                 const selected = effectivePicked === option.id;
                 const aiLeanHere = !!(hasPicked && aiPickId && option.id === aiPickId);
+                const teamColor = optionTeamColor(item.options, option.id);
                 const pollBar =
                   selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
                 const pillEmphasis: 'default' | 'user' | 'ai' | 'userAndAi' =
@@ -222,7 +224,7 @@ export function ExploreCardDetailPanel({
                     }}
                     style={({ pressed }) => [
                       reelDiscussStyles.optionPill,
-                      reelOptionPillChrome(surface, pillEmphasis),
+                      optionTeamPillChrome(optionIdx, surface, pillEmphasis),
                       isResolved && reelDiscussStyles.optionPillDisabled,
                       !isResolved && pressed && reelDiscussStyles.optionPillPressed,
                     ]}>
@@ -232,8 +234,10 @@ export function ExploreCardDetailPanel({
                           reelDiscussStyles.optionText,
                           text.primary,
                           selected && reelDiscussStyles.optionTextActive,
-                          selected && { color: semantic.actionPrimary },
-                        ]}>
+                          selected && { color: teamColor },
+                        ]}
+                        numberOfLines={2}
+                        ellipsizeMode="tail">
                         {option.label}
                       </Text>
                       <View style={reelDiscussStyles.optionMetaCluster}>
@@ -248,7 +252,7 @@ export function ExploreCardDetailPanel({
                           </View>
                         ) : null}
                         {hasPicked ? (
-                          <Text style={[reelDiscussStyles.optionMeta, text.muted, selected && reelDiscussStyles.optionMetaPicked, selected && { color: semantic.actionPrimary }]}>
+                          <Text style={[reelDiscussStyles.optionMeta, text.muted, selected && reelDiscussStyles.optionMetaPicked, selected && { color: teamColor }]}>
                             {percentage}%
                             {selected ? (isResolved ? ' · Final' : ' · You') : ''}
                           </Text>
@@ -259,7 +263,7 @@ export function ExploreCardDetailPanel({
                     </View>
                     {hasPicked ? (
                       <View>
-                        <InlineDistributionTrack percentage={percentage} emphasis={pollBar} />
+                        <InlineDistributionTrack percentage={percentage} emphasis={pollBar} teamColor={teamColor} />
                       </View>
                     ) : null}
                   </Pressable>

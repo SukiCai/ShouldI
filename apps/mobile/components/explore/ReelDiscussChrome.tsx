@@ -30,6 +30,7 @@ import {
   semantic,
   typography,
 } from '@/constants/theme';
+import { optionTeamBarFill } from '@/lib/optionTeamChrome';
 
 import type { ExploreFeedResponse } from '@shouldi/contracts';
 
@@ -518,9 +519,12 @@ export type PollBarEmphasis = 'neutral' | 'user' | 'ai';
 export function InlineDistributionTrack({
   percentage,
   emphasis = 'neutral',
+  teamColor,
 }: {
   percentage: number;
   emphasis?: PollBarEmphasis;
+  /** When set, bar fill follows the option's team color instead of generic primary. */
+  teamColor?: string;
 }) {
   const progress = React.useRef(new Animated.Value(0)).current;
 
@@ -539,15 +543,17 @@ export function InlineDistributionTrack({
   });
 
   const fillStyle =
-    emphasis === 'user'
-      ? reelDiscussStyles.inlineFillUser
-      : emphasis === 'ai'
-        ? reelDiscussStyles.inlineFillAi
-        : reelDiscussStyles.inlineFillNeutral;
+    teamColor != null
+      ? { backgroundColor: optionTeamBarFill(teamColor, emphasis) }
+      : emphasis === 'user'
+        ? reelDiscussStyles.inlineFillUser
+        : emphasis === 'ai'
+          ? reelDiscussStyles.inlineFillAi
+          : reelDiscussStyles.inlineFillNeutral;
 
   return (
     <View style={reelDiscussStyles.inlineTrack}>
-      <Animated.View style={[fillStyle, { width: animatedWidth }]} />
+      <Animated.View style={[reelDiscussStyles.inlineFillBase, fillStyle, { width: animatedWidth }]} />
     </View>
   );
 }
@@ -996,6 +1002,25 @@ export const reelDiscussStyles = StyleSheet.create({
     gap: 6,
     flexShrink: 0,
   },
+  teamBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  teamBadgeDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  teamBadgeText: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.15,
+  },
   aiLeanBadge: {
     borderRadius: 999,
     paddingHorizontal: 8,
@@ -1021,6 +1046,8 @@ export const reelDiscussStyles = StyleSheet.create({
   optionText: {
     ...typography.compact,
     flex: 1,
+    flexShrink: 1,
+    minWidth: 0,
     marginRight: 10,
     fontWeight: '500',
     lineHeight: 22,
@@ -1050,6 +1077,10 @@ export const reelDiscussStyles = StyleSheet.create({
     height: '100%',
     borderRadius: 999,
     backgroundColor: profileNeutralStroke(0.18),
+  },
+  inlineFillBase: {
+    height: '100%',
+    borderRadius: 999,
   },
   inlineFillUser: {
     height: '100%',

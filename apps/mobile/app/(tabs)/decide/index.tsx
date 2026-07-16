@@ -816,10 +816,8 @@ export default function DecideCategoryScreen() {
       finalDecision.reflection?.summary)
   );
 
-  const choiceContextNote = React.useMemo(() => {
-    if (!choicePrompt) return null;
-    return choicePrompt.helperText?.trim() || choicePrompt.whyItMatters?.trim() || null;
-  }, [choicePrompt]);
+  const choiceWhyItMatters = React.useMemo(() => choicePrompt?.whyItMatters?.trim() || null, [choicePrompt]);
+  const choiceHelperNote = React.useMemo(() => choicePrompt?.helperText?.trim() || null, [choicePrompt]);
 
   const renderChoiceOptionsList = () => {
     if (!choicePrompt || finalReady || isTypingCustomChoice || sending) return null;
@@ -899,9 +897,26 @@ export default function DecideCategoryScreen() {
             {almostReady ? (
               <Text style={[styles.almostReadyHint, { color: colors.muted }]}>Almost ready — one or two more answers.</Text>
             ) : null}
-            {choiceContextNote ? (
-              <Text style={[styles.choiceNote, { color: colors.muted }]} numberOfLines={2}>
-                {choiceContextNote}
+            {choiceWhyItMatters ? (
+              <View
+                accessibilityRole="text"
+                accessibilityLabel={`Why this matters. ${choiceWhyItMatters}`}
+                style={[
+                  styles.whyCard,
+                  {
+                    backgroundColor: isDark ? 'rgba(95,169,149,0.08)' : `${semantic.actionAffirm}10`,
+                    borderColor: isDark ? 'rgba(95,169,149,0.22)' : `${semantic.actionAffirm}30`,
+                  },
+                ]}>
+                <Text style={[styles.whyLabel, { color: semantic.actionAffirm }]}>Why this matters</Text>
+                <Text style={[styles.whyText, { color: colors.primaryTxt }]} numberOfLines={4}>
+                  {choiceWhyItMatters}
+                </Text>
+              </View>
+            ) : null}
+            {choiceHelperNote ? (
+              <Text style={[styles.choiceNote, { color: colors.muted }]} numberOfLines={3}>
+                {choiceHelperNote}
               </Text>
             ) : null}
           </View>
@@ -2062,7 +2077,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingTop: 14,
     paddingBottom: 8,
-    gap: 4,
+    gap: 8,
   },
   choiceQuestionText: {
     ...typography.compact,
@@ -2409,16 +2424,16 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 10,
     paddingVertical: 9,
-    gap: 3,
+    gap: 4,
   },
   whyLabel: {
     ...typography.micro,
     fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.45,
+    letterSpacing: 0.35,
   },
   whyText: {
-    ...typography.subhead,
+    ...typography.caption,
+    lineHeight: 18,
     fontWeight: '500',
   },
   clarifyHelper: {

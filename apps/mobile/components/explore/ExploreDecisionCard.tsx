@@ -1,11 +1,17 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
-import { Animated, Pressable, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Animated, Pressable, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { exploreCategoryTheme } from '@/components/explore/exploreCategoryTheme';
 import { DraftOptionReorderList } from '@/components/explore/DraftOptionReorderList';
 import { exploreDecisionCardStyles as styles } from '@/components/explore/exploreDecisionCardStyles';
+import {
+  optionTeamBarFill,
+  optionTeamBorder,
+  optionTeamColor,
+  optionTeamSoftBg,
+} from '@/lib/optionTeamChrome';
 import { semantic, palette, themeSurface } from '@/constants/theme';
 
 export type ExploreCardOption = {
@@ -34,6 +40,24 @@ type LiveProps = CardChromeProps & {
   onOpenDetails?(): void;
 };
 
+type ReplayProps = CardChromeProps & {
+  mode: 'replay';
+  /** What actually happened — card hero */
+  outcomeHeadline: string;
+  /** Original dilemma — supporting context */
+  questionContext: string;
+  /** Reusable lesson / takeaway */
+  lessonText: string;
+  userPickLabel?: string | null;
+  winningLabel?: string | null;
+  predictionMatch?: 'match' | 'miss' | 'unknown';
+  totalVotes: number;
+  formatVoteCount?(n: number): string;
+  onPressCard?(): void;
+  onApplySimilar?(): void;
+  onOpenDetails?(): void;
+};
+
 type DraftProps = CardChromeProps & {
   mode: 'draft';
   question: string;
@@ -48,7 +72,7 @@ type DraftProps = CardChromeProps & {
   onReorderOptions?(options: ExploreCardOption[]): void;
 };
 
-export type ExploreDecisionCardProps = LiveProps | DraftProps;
+export type ExploreDecisionCardProps = LiveProps | ReplayProps | DraftProps;
 
 function formatCompact(n: number): string {
   try {
@@ -77,6 +101,115 @@ export function ExploreDecisionCard(props: ExploreDecisionCardProps) {
       : null,
     props.style,
   ];
+
+  if (props.mode === 'replay') {
+    const {
+      outcomeHeadline,
+      questionContext,
+      lessonText,
+      userPickLabel,
+      winningLabel,
+      predictionMatch = 'unknown',
+      totalVotes,
+      formatVoteCount = formatCompact,
+      onPressCard,
+      onApplySimilar,
+      onOpenDetails,
+    } = props;
+
+    const matchLabel =
+      predictionMatch === 'match' ? 'Aligned' : predictionMatch === 'miss' ? 'Missed' : '—';
+    const matchColor =
+      predictionMatch === 'match'
+        ? semantic.actionAffirm
+        : predictionMatch === 'miss'
+          ? semantic.actionCaution
+          : surface.textMuted;
+
+    return (
+      <View style={cardStyle}>
+        <Pressable
+          onPress={onPressCard}
+          disabled={!onPressCard}
+          style={({ pressed }) => [styles.cardHeaderTapArea, pressed && styles.cardHeaderTapAreaPressed]}>
+          <View style={styles.cardTop}>
+            <View style={styles.cardCategoryRow}>
+              <View style={[styles.categoryDotWrap, { backgroundColor: theme.soft }]}>
+                <Ionicons name={theme.icon} size={14} color={theme.accent} />
+              </View>
+              <Text style={[styles.categoryLabel, { color: theme.accent }]}>{theme.label}</Text>
+            </View>
+            <View style={styles.cardMetaRight}>
+              <View
+                style={[
+                  styles.votesMetaPreview,
+                  { borderColor: `${semantic.actionAffirm}38`, backgroundColor: `${semantic.actionAffirm}12` },
+                ]}>
+                <Text style={[styles.votesMetaPreviewLabel, { color: semantic.actionAffirm }]}>Resolved</Text>
+                <Text style={[styles.votesMetaCount, { color: surface.textMuted }]}>
+                  {formatVoteCount(totalVotes)}
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <Text style={[styles.replayOutcomeHeadline, { color: surface.textDisplay }]} numberOfLines={3}>
+            {outcomeHeadline}
+          </Text>
+          <Text style={[styles.replayQuestionContext, { color: surface.textMuted }]} numberOfLines={2}>
+            {questionContext}
+          </Text>
+        </Pressable>
+
+        <View style={styles.calibrationRow}>
+          <View style={[styles.calibrationCell, { borderColor: surface.hairline, backgroundColor: surface.canvas }]}>
+            <Text style={[styles.calibrationEyebrow, { color: surface.textMuted }]}>You picked</Text>
+            <Text style={[styles.calibrationValue, { color: surface.textPrimary }]} numberOfLines={2}>
+              {userPickLabel ?? 'No vote'}
+            </Text>
+          </View>
+          <View style={[styles.calibrationCell, { borderColor: surface.hairline, backgroundColor: surface.canvas }]}>
+            <Text style={[styles.calibrationEyebrow, { color: surface.textMuted }]}>Outcome</Text>
+            <Text style={[styles.calibrationValue, { color: surface.textPrimary }]} numberOfLines={2}>
+              {winningLabel ?? 'See details'}
+            </Text>
+          </View>
+          <View style={[styles.calibrationCell, { borderColor: surface.hairline, backgroundColor: surface.canvas }]}>
+            <Text style={[styles.calibrationEyebrow, { color: surface.textMuted }]}>Match</Text>
+            <Text style={[styles.calibrationValue, { color: matchColor }]}>{matchLabel}</Text>
+          </View>
+        </View>
+
+        <View style={styles.lessonBlock}>
+          <Text style={[styles.lessonEyebrow, { color: surface.textMuted }]}>Lesson</Text>
+          <Text style={[styles.lessonBody, { color: surface.textPrimary }]} numberOfLines={3}>
+            {lessonText}
+          </Text>
+        </View>
+
+        <View style={styles.replayFooter}>
+          {onApplySimilar ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Start a similar decision in Decide"
+              onPress={onApplySimilar}
+              style={[styles.replayPrimaryBtn, { backgroundColor: semantic.actionPrimary }]}>
+              <Text style={styles.replayPrimaryBtnText}>Start similar decision</Text>
+            </Pressable>
+          ) : null}
+          {onOpenDetails ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Open full outcome details"
+              onPress={onOpenDetails}
+              style={styles.replayGhostBtn}>
+              <Text style={[styles.replayGhostBtnText, { color: semantic.actionPrimary }]}>Details</Text>
+            </Pressable>
+          ) : null}
+        </View>
+      </View>
+    );
+  }
 
   if (props.mode === 'live') {
     const {
@@ -136,18 +269,29 @@ export function ExploreDecisionCard(props: ExploreDecisionCardProps) {
             const pct = votePctByOptionId[option.id] ?? 0;
             const selected = effectivePicked === option.id;
             const aiLean = aiSuggestedOptionId === option.id;
+            const optionColor = optionTeamColor(options, option.id);
             return (
               <Pressable
                 key={option.id}
                 accessibilityRole="button"
                 accessibilityLabel={`Vote for ${option.label}`}
                 onPress={() => onVote(option.id)}
-                style={[styles.rowLine, selected && styles.rowLineSelected]}>
+                style={[
+                  styles.rowLine,
+                  selected && {
+                    backgroundColor: optionTeamSoftBg(optionColor, '14'),
+                    borderWidth: StyleSheet.hairlineWidth,
+                    borderColor: optionTeamBorder(optionColor, '40'),
+                  },
+                ]}>
                 <View style={styles.rowHead}>
-                  <Text style={[styles.rowLabel, { color: surface.textPrimary }]} numberOfLines={1}>
+                  <Text
+                    style={[styles.rowLabel, { color: surface.textPrimary }]}
+                    numberOfLines={2}
+                    ellipsizeMode="tail">
                     {option.label}
                   </Text>
-                  <Text style={[styles.rowPct, { color: theme.accent }]}>
+                  <Text style={[styles.rowPct, { color: selected ? optionColor : surface.textMuted, flexShrink: 0 }]}>
                     {pct}%
                     {selected ? ' · you' : ''}
                     {aiLean && effectivePicked ? ' · ai' : ''}
@@ -159,7 +303,7 @@ export function ExploreDecisionCard(props: ExploreDecisionCardProps) {
                       styles.fill,
                       {
                         width: `${Math.max(2, pct)}%`,
-                        backgroundColor: theme.accent,
+                        backgroundColor: optionTeamBarFill(optionColor, selected ? 'user' : aiLean ? 'ai' : 'neutral'),
                       },
                     ]}
                   />

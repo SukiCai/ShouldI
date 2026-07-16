@@ -156,6 +156,8 @@ export const exploreDecisionCardStyles = StyleSheet.create({
   rowLabel: {
     ...typography.caption,
     flex: 1,
+    flexShrink: 1,
+    minWidth: 0,
     fontWeight: '600',
   },
   rowLabelInput: {
@@ -195,6 +197,88 @@ export const exploreDecisionCardStyles = StyleSheet.create({
   fill: {
     height: '100%',
     borderRadius: 999,
+  },
+  replayOutcomeHeadline: {
+    ...typography.title,
+    marginTop: 8,
+    lineHeight: 28,
+    fontWeight: '700',
+    letterSpacing: -0.25,
+  },
+  replayQuestionContext: {
+    ...typography.caption,
+    marginTop: 6,
+    lineHeight: 18,
+    fontWeight: '500',
+  },
+  calibrationRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 14,
+  },
+  calibrationCell: {
+    flex: 1,
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 8,
+    paddingVertical: 10,
+    gap: 4,
+    minWidth: 0,
+  },
+  calibrationEyebrow: {
+    ...typography.caption,
+    fontWeight: '600',
+    letterSpacing: 0.08,
+    textTransform: 'uppercase',
+  },
+  calibrationValue: {
+    ...typography.caption,
+    fontWeight: '700',
+    lineHeight: 17,
+  },
+  lessonBlock: {
+    marginTop: 14,
+    gap: 4,
+  },
+  lessonEyebrow: {
+    ...typography.caption,
+    fontWeight: '700',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  lessonBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
+  },
+  replayFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 14,
+  },
+  replayPrimaryBtn: {
+    flex: 1,
+    borderRadius: radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  replayPrimaryBtnText: {
+    ...typography.compact,
+    fontWeight: '700',
+    color: palette.sheet,
+  },
+  replayGhostBtn: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
+  replayGhostBtnText: {
+    ...typography.compact,
+    fontWeight: '700',
   },
   cardFooter: {
     flexDirection: 'row',
