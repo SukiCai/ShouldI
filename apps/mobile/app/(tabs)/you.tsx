@@ -6,8 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AppLaunchScreen } from '@/components/ui/AppLaunchScreen';
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson } from '@/lib/api';
-import { usePostedCommunityCards } from '@/lib/exploreCommunityPosts';
-import { latestDecisionRecord, resolveProfileScreen } from '@/lib/profileScreenData';
+import { resolveProfileScreen } from '@/lib/profileScreenData';
 import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 import { themeSurface } from '@/constants/theme';
 import { DecisionDnaProfileSchema, DecisionRecordSchema } from '@shouldi/contracts';
@@ -15,11 +14,9 @@ import { DecisionDnaProfileSchema, DecisionRecordSchema } from '@shouldi/contrac
 import { ProfileDnaCard } from '@/app/(tabs)/you/components/ProfileDnaCard';
 import { ProfileGrowthSection } from '@/app/(tabs)/you/components/ProfileGrowthSection';
 import { ProfileHeader } from '@/app/(tabs)/you/components/ProfileHeader';
-import { ProfileIdentityCard } from '@/app/(tabs)/you/components/ProfileIdentityCard';
 import { ProfilePerspectivesSection } from '@/app/(tabs)/you/components/ProfilePerspectivesSection';
-import { ProfileStatsRow } from '@/app/(tabs)/you/components/ProfileStatsRow';
 import { RecentDecisionsSection } from '@/app/(tabs)/you/components/RecentDecisionsSection';
-import { YouFocusCard } from '@/app/(tabs)/you/components/YouFocusCard';
+import { YouProfileHero } from '@/app/(tabs)/you/components/YouProfileHero';
 import { youScreenStyles as styles } from '@/app/(tabs)/you/components/youScreenStyles';
 
 type DecisionsListResponse = { decisions: Array<unknown> };
@@ -28,8 +25,7 @@ export default function YouScreen() {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
-  const { hydrated: entitlementsHydrated, isPremium } = useViewerEntitlements();
-  const communityPosts = usePostedCommunityCards();
+  const { hydrated: entitlementsHydrated, isPremium, balance } = useViewerEntitlements();
 
   const dnaQuery = useQuery({
     queryKey: ['me-dna'],
@@ -74,33 +70,23 @@ export default function YouScreen() {
         showsVerticalScrollIndicator={false}>
         <ProfileHeader textDisplay={surface.textDisplay} textMuted={surface.textMuted} />
 
-        <ProfileIdentityCard
-          displayName={profile.displayName}
-          isPremium={profile.isPremium}
-          decisionsCount={profile.decisionsCount}
-          memberSinceLabel={profile.memberSinceLabel}
-          textDisplay={surface.textDisplay}
-          textMuted={surface.textMuted}
-        />
-
         <View style={styles.sectionWrap}>
-          <YouFocusCard
-            latestDecision={latestDecisionRecord(profile.decisions)}
-            communityPostCount={communityPosts.length}
+          <YouProfileHero
+            displayName={profile.displayName}
+            isPremium={isPremium}
+            pointsBalance={balance}
+            walletHydrated={entitlementsHydrated}
+            decisionsCount={profile.decisionsCount}
+            memberSinceLabel={profile.memberSinceLabel}
+            showOnboardingCta={!profile.useDemo && profile.decisionsCount === 0}
             textDisplay={surface.textDisplay}
+            textPrimary={surface.textPrimary}
             textMuted={surface.textMuted}
             groupedSurface={surface.groupedSurface}
             groupedBorder={surface.groupedBorder}
+            hairline={surface.hairline}
           />
         </View>
-
-        <ProfileStatsRow
-          stats={profile.momentumStats}
-          textDisplay={surface.textDisplay}
-          textMuted={surface.textMuted}
-          statTileBg={surface.statTileBg}
-          statTileBorder={surface.statTileBorder}
-        />
 
         <ProfilePerspectivesSection
           lensLibraryUnlocked={profile.useDemo || profile.decisionsCount > 0}
@@ -116,20 +102,23 @@ export default function YouScreen() {
           bottomInset={insets.bottom}
         />
 
-        <RecentDecisionsSection
-          decisions={profile.recentDecisions}
-          textDisplay={surface.textDisplay}
-          textPrimary={surface.textPrimary}
-          textMuted={surface.textMuted}
-          groupedSurface={surface.groupedSurface}
-          groupedBorder={surface.groupedBorder}
-          hairline={surface.hairline}
-        />
+        {profile.recentDecisions.length > 0 ? (
+          <RecentDecisionsSection
+            decisions={profile.recentDecisions}
+            textDisplay={surface.textDisplay}
+            textPrimary={surface.textPrimary}
+            textMuted={surface.textMuted}
+            groupedSurface={surface.groupedSurface}
+            groupedBorder={surface.groupedBorder}
+            hairline={surface.hairline}
+          />
+        ) : null}
 
         <ProfileDnaCard
           summary={profile.dnaSummary}
           dimensions={profile.dnaDimensions}
           decisionsCount={profile.decisionsCount}
+          metricsSubline={profile.dnaMetricsSubline}
           textDisplay={surface.textDisplay}
           textPrimary={surface.textPrimary}
           textMuted={surface.textMuted}

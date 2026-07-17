@@ -50,7 +50,9 @@ export function ProfileGrowthSection({
           accessibilityLabel="Open Growth insights"
           onPress={() => router.replace('/(tabs)/replay')}
           style={styles.insightCardHeader}>
-          <Text style={[styles.insightCardTitle, { color: textDisplay }]}>Growth</Text>
+          <View style={styles.sectionHeaderCopy}>
+            <Text style={[styles.insightCardTitle, { color: textDisplay }]}>Growth</Text>
+          </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
         </Pressable>
 
@@ -63,7 +65,7 @@ export function ProfileGrowthSection({
                   accessibilityRole="button"
                   accessibilityLabel={card.title}
                   onPress={cardDestination(card.tone)}
-                  style={({ pressed }) => [styles.growthColumn, pressed && { opacity: 0.92 }]}>
+                  style={({ pressed }) => [styles.growthColumn, pressed && { opacity: 0.88 }]}>
                   <View style={[styles.growthIconWrap, { backgroundColor: card.iconBg }]}>
                     <Ionicons name={card.icon} size={18} color={card.iconColor} />
                   </View>

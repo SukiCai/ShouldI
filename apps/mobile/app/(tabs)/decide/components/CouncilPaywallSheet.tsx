@@ -88,7 +88,7 @@ export function CouncilPaywallSheet({
           accessibilityLabel="Get Premium subscription"
           onPress={() => {
             onClose();
-            router.push('/(tabs)/you');
+            router.push('/wallet');
           }}
           style={styles.paywallPrimaryWrap}>
           <LinearGradient
@@ -102,6 +102,25 @@ export function CouncilPaywallSheet({
             </Text>
             <Text style={[styles.paywallPrimarySub, { color: 'rgba(255,255,255,0.88)' }]}>unlimited sessions</Text>
           </LinearGradient>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Buy points"
+          onPress={() => {
+            onClose();
+            router.push('/wallet');
+          }}
+          style={[
+            styles.paywallSecondary,
+            {
+              borderColor: `${council.gold}55`,
+              backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.72)',
+            },
+          ]}>
+          <Ionicons name="wallet-outline" size={16} color={council.gold} />
+          <Text style={[styles.paywallSecondaryText, { color: primaryTxt }]} numberOfLines={1}>
+            Buy points
+          </Text>
         </Pressable>
         <Pressable
           accessibilityRole="button"

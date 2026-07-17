@@ -17,6 +17,8 @@ export type ProfileDnaDimensionMock = {
   level: 'High' | 'Medium' | 'Low';
 };
 
+export type ProfileRecentDecisionStatus = 'in_progress' | 'needs_outcome' | 'decided';
+
 export type ProfileRecentDecisionMock = {
   id: string;
   title: string;
@@ -25,7 +27,7 @@ export type ProfileRecentDecisionMock = {
   iconColor: string;
   iconBg: string;
   whenLabel: string;
-  status: 'decided' | 'in_progress';
+  status: ProfileRecentDecisionStatus;
 };
 
 export type ProfileGrowthCardMock = {
@@ -98,7 +100,7 @@ export const PROFILE_MOCK = {
       iconColor: '#56b37c',
       iconBg: '#ebf8f0',
       whenLabel: '2 days ago',
-      status: 'decided',
+      status: 'needs_outcome',
     },
     {
       id: 'mock-grad-school',

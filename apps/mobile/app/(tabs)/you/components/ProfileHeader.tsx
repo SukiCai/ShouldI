@@ -1,9 +1,7 @@
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Text } from 'react-native';
 
 import { TabHeaderIconButton, TabScreenHeader } from '@/components/screen/TabScreenHeader';
-import { tabScreenStyles as styles } from '@/components/screen/tabScreenStyles';
 import { themeSurface } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -24,15 +22,8 @@ export function ProfileHeader({ textDisplay, textMuted }: ProfileHeaderProps) {
       groupedSurface={surface.groupedSurface}
       hairline={surface.hairline}
       textPrimary={surface.textPrimary}
-      blockStyle={{ marginBottom: 8 }}
-      subtitle={
-        <>
-          <Text style={[styles.subtitle, { color: textMuted }]}>Understand your patterns.</Text>
-          <Text style={[styles.subtitle, { color: textMuted, marginTop: 0 }]}>
-            Make better decisions.
-          </Text>
-        </>
-      }
+      blockStyle={{ marginBottom: 12 }}
+      subtitle="Understand your patterns. Make better decisions."
       action={
         <TabHeaderIconButton
           icon="settings-outline"

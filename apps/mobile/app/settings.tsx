@@ -260,7 +260,7 @@ export default function SettingsScreen() {
   const switchThumbOn = semantic.actionAffirm;
 
   const { preference, setPreference } = useAppearance();
-  const { resetPointsBalance } = useViewerEntitlements();
+  const { balance, isPremium, resetPointsBalance } = useViewerEntitlements();
 
   const [pushEnabled, setPushEnabled] = React.useState(true);
   const [emailDigest, setEmailDigest] = React.useState(false);
@@ -327,6 +327,18 @@ export default function SettingsScreen() {
         </SettingsSection>
 
         <SettingsSection title="Account" surface={surface}>
+          <ListRow
+            icon="wallet-outline"
+            title="Wallet & membership"
+            subtitle={
+              isPremium
+                ? `Premium · ${balance.toLocaleString()} pts`
+                : `${balance.toLocaleString()} points`
+            }
+            onPress={() => router.push('/wallet')}
+            showChevron
+            isLast={false}
+          />
           <ListRow
             icon="log-in-outline"
             title="Sign in"

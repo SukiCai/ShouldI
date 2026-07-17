@@ -4,9 +4,15 @@ import * as React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { semantic } from '@/constants/theme';
-import type { ProfileRecentDecisionMock } from '@/lib/profileMockData';
+import type { ProfileRecentDecisionMock, ProfileRecentDecisionStatus } from '@/lib/profileMockData';
 
 import { youScreenStyles as styles } from './youScreenStyles';
+
+const statusPillStyle = {
+  paddingHorizontal: 10,
+  paddingVertical: 4,
+  flexShrink: 0 as const,
+};
 
 type RecentDecisionsSectionProps = {
   decisions: ProfileRecentDecisionMock[];
@@ -18,23 +24,29 @@ type RecentDecisionsSectionProps = {
   hairline: string;
 };
 
-function StatusPill({ isDecided }: { isDecided: boolean }) {
+function statusPillCopy(status: ProfileRecentDecisionStatus): string {
+  if (status === 'needs_outcome') return 'Log outcome';
+  if (status === 'in_progress') return 'In progress';
+  return 'Decided';
+}
+
+function StatusPill({ status }: { status: ProfileRecentDecisionStatus }) {
+  const isNeedsOutcome = status === 'needs_outcome';
+  const isInProgress = status === 'in_progress';
+  const color = isNeedsOutcome
+    ? semantic.actionPrimary
+    : isInProgress
+      ? semantic.actionCaution
+      : semantic.actionAffirm;
+  const bg = isNeedsOutcome
+    ? `${semantic.actionPrimary}18`
+    : isInProgress
+      ? `${semantic.actionCaution}20`
+      : `${semantic.actionAffirm}18`;
+
   return (
-    <View
-      style={[
-        styles.statusPill,
-        {
-          backgroundColor: isDecided ? `${semantic.actionAffirm}18` : `${semantic.actionCaution}20`,
-          flexShrink: 0,
-        },
-      ]}>
-      <Text
-        style={[
-          styles.statusPillText,
-          { color: isDecided ? semantic.actionAffirm : semantic.actionCaution },
-        ]}>
-        {isDecided ? 'Decided' : 'In Progress'}
-      </Text>
+    <View style={[styles.statusPill, statusPillStyle, { backgroundColor: bg }]}>
+      <Text style={[styles.statusPillText, { color }]}>{statusPillCopy(status)}</Text>
     </View>
   );
 }
@@ -48,6 +60,8 @@ export function RecentDecisionsSection({
   groupedBorder,
   hairline,
 }: RecentDecisionsSectionProps) {
+  const pendingCount = decisions.filter((row) => row.status === 'needs_outcome').length;
+
   return (
     <View style={styles.sectionWrap}>
       <View
@@ -61,21 +75,19 @@ export function RecentDecisionsSection({
           accessibilityLabel="View all decisions"
           onPress={() => router.replace('/(tabs)/replay')}
           style={styles.insightCardHeader}>
-          <Text style={[styles.insightCardTitle, { color: textDisplay }]}>Recent Decisions</Text>
+          <View style={styles.sectionHeaderCopy}>
+            <Text style={[styles.insightCardTitle, { color: textDisplay }]}>Recent decisions</Text>
+            {pendingCount > 0 ? (
+              <Text style={[styles.postFoot, { color: textMuted }]}>
+                {pendingCount} outcome{pendingCount === 1 ? '' : 's'} to log
+              </Text>
+            ) : null}
+          </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
         </Pressable>
 
-        {decisions.length === 0 ? (
-          <View style={styles.recentEmptyState}>
-            <Text style={[styles.cardBody, { color: textMuted }]}>
-              Your recent decisions will appear here after you complete Decide.
-            </Text>
-          </View>
-        ) : null}
-
         {decisions.map((decision, index) => {
           const isLast = index === decisions.length - 1;
-          const isDecided = decision.status === 'decided';
           return (
             <Pressable
               key={decision.id}
@@ -93,7 +105,7 @@ export function RecentDecisionsSection({
                   borderBottomColor: hairline,
                   borderBottomWidth: StyleSheet.hairlineWidth,
                 },
-                pressed && { opacity: 0.9 },
+                pressed && { opacity: 0.88 },
               ]}>
               <View style={styles.recentDecisionRowLayout}>
                 <View style={[styles.recentIconWrap, { backgroundColor: decision.iconBg }]}>
@@ -104,10 +116,10 @@ export function RecentDecisionsSection({
                     {decision.title}
                   </Text>
                   <Text style={[styles.postFoot, { color: textMuted }]}>
-                    {decision.categoryLabel} • {decision.whenLabel}
+                    {decision.categoryLabel} · {decision.whenLabel}
                   </Text>
                 </View>
-                <StatusPill isDecided={isDecided} />
+                <StatusPill status={decision.status} />
               </View>
             </Pressable>
           );
@@ -119,9 +131,10 @@ export function RecentDecisionsSection({
           onPress={() => router.replace('/(tabs)/decide')}
           style={[
             styles.ghostBtn,
-            { borderColor: groupedBorder, marginTop: 12, marginBottom: 2, alignSelf: 'stretch', alignItems: 'center' },
+            styles.cardListFooterBtn,
+            { borderColor: groupedBorder },
           ]}>
-          <Text style={[styles.ghostBtnText, { color: textPrimary }]}>Start a new decision</Text>
+          <Text style={[styles.ghostBtnText, { color: textPrimary }]}>Start a decision</Text>
         </Pressable>
       </View>
     </View>

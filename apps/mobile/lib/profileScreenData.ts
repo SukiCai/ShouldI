@@ -14,18 +14,59 @@ import type {
   ProfileDnaDimensionMock,
   ProfileGrowthCardMock,
   ProfileRecentDecisionMock,
+  ProfileRecentDecisionStatus,
   ProfileStatMock,
 } from '@/lib/profileMockData';
-import { PROFILE_DEMO_DNA, PROFILE_DEMO_DECISIONS, PROFILE_DEMO_WHEN_EMPTY, PROFILE_MOCK } from '@/lib/profileMockData';
+import {
+  PROFILE_DEMO_DNA,
+  PROFILE_DEMO_DECISIONS,
+  PROFILE_DEMO_WHEN_EMPTY,
+  PROFILE_MOCK,
+} from '@/lib/profileMockData';
 
 export const DNA_RADAR_MIN_DECISIONS = 3;
 
 export type ProfileStatDestination = 'replay' | 'decide';
 
-export type ProfileMomentumStat = ProfileStatMock & {
+type ProfileMomentumStat = ProfileStatMock & {
   tone: ProfileStatTone;
   destination: ProfileStatDestination;
 };
+
+function formatDnaMetricsSubline(stats: ProfileMomentumStat[]): string | null {
+  const follow = stats.find((row) => row.tone === 'followThrough');
+  const calibration = stats.find((row) => row.tone === 'calibration');
+  const parts: string[] = [];
+  if (follow && follow.value !== '—') parts.push(`${follow.value} followed through`);
+  if (calibration && calibration.value !== '—') parts.push(`Calibration ${calibration.value}`);
+  return parts.length > 0 ? parts.join(' · ') : null;
+}
+
+function buildDemoMomentumStats(): ProfileMomentumStat[] {
+  const followColors = statChromatic('followThrough');
+  const calibrationColors = statChromatic('calibration');
+
+  return [
+    {
+      icon: 'locate',
+      ...followColors,
+      value: '78%',
+      label: 'Followed through',
+      hint: 'Above average',
+      tone: 'followThrough',
+      destination: 'replay',
+    },
+    {
+      icon: 'trending-up',
+      ...calibrationColors,
+      value: '0.71',
+      label: 'Calibration',
+      hint: '↗ Improving',
+      tone: 'calibration',
+      destination: 'replay',
+    },
+  ];
+}
 
 function formatRelativeWhen(ts: number): string {
   const delta = Date.now() - ts;
@@ -60,6 +101,24 @@ function isDecisionDecided(decision: DecisionRecord): boolean {
   return Boolean(decision.committedAction?.trim()) || decision.updatedAt - decision.createdAt > 86_400_000;
 }
 
+function resolveRecentDecisionStatus(decision: DecisionRecord): ProfileRecentDecisionStatus {
+  if (decision.committedAction?.trim()) return 'needs_outcome';
+  if (isDecisionDecided(decision)) return 'decided';
+  return 'in_progress';
+}
+
+function recentDecisionPriority(status: ProfileRecentDecisionStatus): number {
+  if (status === 'needs_outcome') return 0;
+  if (status === 'in_progress') return 1;
+  return 2;
+}
+
+export function sortRecentDecisionRows(
+  rows: ProfileRecentDecisionMock[],
+): ProfileRecentDecisionMock[] {
+  return [...rows].sort((a, b) => recentDecisionPriority(a.status) - recentDecisionPriority(b.status));
+}
+
 export function mapDecisionToRecentRow(decision: DecisionRecord): ProfileRecentDecisionMock {
   const theme = exploreCategoryTheme(decision.category ?? 'life');
   const iconName = theme.icon.endsWith('-outline')
@@ -73,34 +132,8 @@ export function mapDecisionToRecentRow(decision: DecisionRecord): ProfileRecentD
     iconColor: theme.accent,
     iconBg: theme.soft,
     whenLabel: formatRelativeWhen(decision.createdAt),
-    status: isDecisionDecided(decision) ? 'decided' : 'in_progress',
+    status: resolveRecentDecisionStatus(decision),
   };
-}
-
-export function buildDemoMomentumStats(): ProfileMomentumStat[] {
-  const followColors = statChromatic('followThrough');
-  const calibrationColors = statChromatic('calibration');
-
-  return [
-    {
-      icon: 'locate',
-      ...followColors,
-      value: '78%',
-      label: 'Followed through',
-      hint: 'Above average',
-      tone: 'followThrough',
-      destination: 'replay',
-    },
-    {
-      icon: 'trending-up',
-      ...calibrationColors,
-      value: '0.71',
-      label: 'Calibration',
-      hint: '↗ Improving',
-      tone: 'calibration',
-      destination: 'replay',
-    },
-  ];
 }
 
 export type ResolvedProfileScreen = {
@@ -111,7 +144,7 @@ export type ResolvedProfileScreen = {
   memberSinceLabel: string;
   decisions: DecisionRecord[];
   dna?: DecisionDnaProfile;
-  momentumStats: ProfileMomentumStat[];
+  dnaMetricsSubline: string | null;
   recentDecisions: ProfileRecentDecisionMock[];
   growthCards: ProfileGrowthCardMock[];
   dnaSummary: string;
@@ -148,8 +181,8 @@ export function resolveProfileScreen({
       memberSinceLabel: PROFILE_MOCK.memberSinceLabel,
       decisions: PROFILE_DEMO_DECISIONS,
       dna: demoDna,
-      momentumStats: buildDemoMomentumStats(),
-      recentDecisions: [...PROFILE_MOCK.recentDecisions],
+      dnaMetricsSubline: formatDnaMetricsSubline(buildDemoMomentumStats()),
+      recentDecisions: sortRecentDecisionRows([...PROFILE_MOCK.recentDecisions]),
       growthCards: [...PROFILE_MOCK.growthCards],
       dnaSummary: PROFILE_MOCK.dnaSummary,
       dnaDimensions: [...PROFILE_MOCK.dnaDimensions],
@@ -165,7 +198,7 @@ export function resolveProfileScreen({
     memberSinceLabel: formatMemberSince(decisions),
     decisions,
     dna,
-    momentumStats: buildMomentumStats(decisions, dna?.calibrationScore),
+    dnaMetricsSubline: formatDnaMetricsSubline(buildMomentumStats(decisions, dna?.calibrationScore)),
     recentDecisions: recentDecisionRows(decisions),
     growthCards: buildGrowthCards(dna),
     dnaSummary: resolveDnaSummary(dna),
@@ -173,7 +206,7 @@ export function resolveProfileScreen({
   };
 }
 
-export function buildMomentumStats(
+function buildMomentumStats(
   decisions: DecisionRecord[],
   calibrationScore?: number,
 ): ProfileMomentumStat[] {
@@ -276,8 +309,10 @@ export function recentDecisionRows(
   decisions: DecisionRecord[],
   limit = 4,
 ): ProfileRecentDecisionMock[] {
-  return [...decisions]
-    .sort((a, b) => b.updatedAt - a.updatedAt)
-    .slice(0, limit)
-    .map(mapDecisionToRecentRow);
+  return sortRecentDecisionRows(
+    [...decisions]
+      .sort((a, b) => b.updatedAt - a.updatedAt)
+      .slice(0, limit)
+      .map(mapDecisionToRecentRow),
+  );
 }

@@ -79,15 +79,46 @@ function UnlockedStatusPill({ status }: { status: DiscoveredExpertStatus }) {
   );
 }
 
-function LockedPill() {
+function LockedPill({ textMuted, groupedBorder }: { textMuted: string; groupedBorder: string }) {
   return (
     <View
       style={[
         styles.statusPill,
         perspectivePillStyle,
-        { backgroundColor: `${semantic.actionCaution}14` },
+        localStyles.lockedPill,
+        { borderColor: groupedBorder },
       ]}>
-      <Text style={[styles.statusPillText, { color: semantic.actionCaution }]}>Locked</Text>
+      <Ionicons name="lock-closed-outline" size={11} color={textMuted} />
+      <Text style={[styles.statusPillText, { color: textMuted }]}>Locked</Text>
+    </View>
+  );
+}
+
+function LockedSilhouetteIcon({
+  catalog,
+  groupedBorder,
+  surfaceBg,
+}: {
+  catalog: LensSlot['catalog'];
+  groupedBorder: string;
+  surfaceBg: string;
+}) {
+  const accent = catalog.color ?? semantic.actionPrimary;
+  const iconName = catalog.icon as keyof typeof Ionicons.glyphMap;
+
+  return (
+    <View style={localStyles.lockedIconShell}>
+      <View
+        style={[
+          styles.recentIconWrap,
+          localStyles.lockedIconWrap,
+          { backgroundColor: `${accent}14`, borderColor: `${accent}28` },
+        ]}>
+        <Ionicons name={iconName} size={16} color={`${accent}88`} />
+      </View>
+      <View style={[localStyles.lockedIconBadge, { backgroundColor: surfaceBg, borderColor: groupedBorder }]}>
+        <Ionicons name="lock-closed" size={9} color={accent} />
+      </View>
     </View>
   );
 }
@@ -139,17 +170,16 @@ function UnlockedRow({
       onPress={onPress}
       style={({ pressed }) => [
         styles.recentDecisionRow,
-        styles.recentDecisionRowCompact,
         horizontalInset > 0 && { paddingHorizontal: horizontalInset },
         !isLast && { borderBottomColor: hairline, borderBottomWidth: StyleSheet.hairlineWidth },
-        pressed && { opacity: 0.9 },
+        pressed && { opacity: 0.88 },
       ]}>
       <View style={styles.recentDecisionRowLayout}>
-        <View style={[styles.recentIconWrapCompact, { backgroundColor: `${iconColor}18` }]}>
-          <Ionicons name={iconName} size={15} color={iconColor} />
+        <View style={[styles.recentIconWrap, { backgroundColor: `${iconColor}18` }]}>
+          <Ionicons name={iconName} size={16} color={iconColor} />
         </View>
         <View style={styles.recentDecisionCopy}>
-          <Text style={[styles.recentDecisionTitleCompact, { color: textDisplay }]} numberOfLines={1}>
+          <Text style={[styles.recentDecisionTitle, { color: textDisplay }]} numberOfLines={2}>
             {row.expert.title}
           </Text>
           <Text style={[styles.postFoot, { color: textMuted }]} numberOfLines={1}>
@@ -167,6 +197,8 @@ function LockedRow({
   textDisplay,
   textMuted,
   hairline,
+  groupedBorder,
+  groupedSurface,
   isLast,
   onPress,
   horizontalInset = 0,
@@ -175,6 +207,8 @@ function LockedRow({
   textDisplay: string;
   textMuted: string;
   hairline: string;
+  groupedBorder: string;
+  groupedSurface: string;
   isLast: boolean;
   onPress: () => void;
   horizontalInset?: number;
@@ -182,28 +216,29 @@ function LockedRow({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Locked perspective: ${slot.catalog.frameworkLabel}`}
+      accessibilityLabel={`Locked perspective: ${slot.catalog.title}`}
       onPress={onPress}
       style={({ pressed }) => [
         styles.recentDecisionRow,
-        styles.recentDecisionRowCompact,
         horizontalInset > 0 && { paddingHorizontal: horizontalInset },
         !isLast && { borderBottomColor: hairline, borderBottomWidth: StyleSheet.hairlineWidth },
         pressed && { opacity: 0.88 },
       ]}>
       <View style={styles.recentDecisionRowLayout}>
-        <View style={[styles.recentIconWrapCompact, { backgroundColor: `${textMuted}14` }]}>
-          <Ionicons name="lock-closed-outline" size={14} color={textMuted} />
-        </View>
+        <LockedSilhouetteIcon
+          catalog={slot.catalog}
+          groupedBorder={groupedBorder}
+          surfaceBg={groupedSurface}
+        />
         <View style={styles.recentDecisionCopy}>
-          <Text style={[styles.recentDecisionTitleCompact, { color: textMuted }]} numberOfLines={1}>
-            {slot.catalog.frameworkLabel}
+          <Text style={[styles.recentDecisionTitle, { color: textDisplay }]} numberOfLines={2}>
+            {slot.catalog.title}
           </Text>
           <Text style={[styles.postFoot, { color: textMuted }]} numberOfLines={1}>
-            Unlocks when this lens joins a Decide session
+            {slot.catalog.frameworkLabel} · Discover in Decide
           </Text>
         </View>
-        <LockedPill />
+        <LockedPill textMuted={textMuted} groupedBorder={groupedBorder} />
       </View>
     </Pressable>
   );
@@ -360,6 +395,8 @@ function PerspectivesLibrarySheet({
                 textDisplay={textDisplay}
                 textMuted={textMuted}
                 hairline={groupedBorder}
+                groupedBorder={groupedBorder}
+                groupedSurface={backgroundColor}
                 horizontalInset={screenContentGutter}
                 isLast={index === locked.length - 1}
                 onPress={() => {
@@ -468,7 +505,9 @@ export function ProfilePerspectivesSection({
             { backgroundColor: groupedSurface, borderColor: groupedBorder, gap: 10 },
           ]}>
           <View style={styles.insightCardHeader}>
-            <Text style={[styles.insightCardTitle, { color: textDisplay }]}>My perspectives</Text>
+            <View style={styles.sectionHeaderCopy}>
+              <Text style={[styles.insightCardTitle, { color: textDisplay }]}>My perspectives</Text>
+            </View>
             <View style={[styles.statusPill, { backgroundColor: `${semantic.actionCaution}14` }]}>
               <Text style={[styles.statusPillText, { color: semantic.actionCaution }]}>Locked</Text>
             </View>
@@ -482,7 +521,8 @@ export function ProfilePerspectivesSection({
             onPress={() => router.replace('/(tabs)/decide')}
             style={[
               styles.ghostBtn,
-              { borderColor: groupedBorder, alignSelf: 'stretch', alignItems: 'center' },
+              styles.cardListFooterBtn,
+              { borderColor: groupedBorder },
             ]}>
             <Text style={[styles.ghostBtnText, { color: textPrimary }]}>Start a decision</Text>
           </Pressable>
@@ -513,14 +553,16 @@ export function ProfilePerspectivesSection({
           accessibilityLabel="Open perspective library"
           onPress={() => setLibraryOpen(true)}
           style={styles.insightCardHeader}>
-          <Text style={[styles.insightCardTitle, { color: textDisplay }]}>My perspectives</Text>
+          <View style={styles.sectionHeaderCopy}>
+            <Text style={[styles.insightCardTitle, { color: textDisplay }]}>My perspectives</Text>
+            <Text style={[styles.postFoot, { color: textMuted }]}>
+              {unlockedTotal} of {collectibleTotal} unlocked
+            </Text>
+          </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
         </Pressable>
 
         <View style={localStyles.progressBlock}>
-          <Text style={[styles.postFoot, { color: textMuted }]}>
-            {unlockedTotal} of {collectibleTotal} unlocked
-          </Text>
           <UnlockProgressBar
             unlocked={unlockedTotal}
             total={collectibleTotal}
@@ -548,6 +590,8 @@ export function ProfilePerspectivesSection({
             textDisplay={textDisplay}
             textMuted={textMuted}
             hairline={hairline}
+            groupedBorder={groupedBorder}
+            groupedSurface={groupedSurface}
             isLast={index === previewLocked.length - 1 && !showLibraryLink}
             onPress={() => router.replace('/(tabs)/decide')}
           />
@@ -560,13 +604,8 @@ export function ProfilePerspectivesSection({
             onPress={() => setLibraryOpen(true)}
             style={[
               styles.ghostBtn,
-              {
-                borderColor: groupedBorder,
-                marginTop: 8,
-                marginBottom: 2,
-                alignSelf: 'stretch',
-                alignItems: 'center',
-              },
+              styles.cardListFooterBtn,
+              { borderColor: groupedBorder },
             ]}>
             <Text style={[styles.ghostBtnText, { color: textPrimary }]}>
               View library ({collectibleTotal})
@@ -615,8 +654,35 @@ function collectibleTotalFallback(
 }
 
 const localStyles = StyleSheet.create({
+  lockedIconShell: {
+    width: 36,
+    height: 36,
+    flexShrink: 0,
+  },
+  lockedIconWrap: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderStyle: 'dashed',
+  },
+  lockedIconBadge: {
+    position: 'absolute',
+    right: -1,
+    bottom: -1,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lockedPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'transparent',
+    borderWidth: StyleSheet.hairlineWidth,
+  },
   progressBlock: {
-    paddingBottom: 10,
+    paddingBottom: 8,
     gap: 6,
   },
   progressTrack: {
