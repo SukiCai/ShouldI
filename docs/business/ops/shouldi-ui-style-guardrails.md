@@ -12,6 +12,19 @@ Applies to all core PMF flows in `@shouldi/mobile`:
 - You
 - Auth entry
 
+Auth entry uses the **OLED billboard** chrome (`GenZAuthChrome` `appearance="oled"`) as an intentional brand-entry exception — black hero band + half-screen white notch sheet. Core tabs remain mist / Quiet Intelligence.
+
+Auth sheet hierarchy (aligned with progressive disclosure + mobile signup research):
+
+1. Link toggle (Sign In ↔ Sign Up) — not a segment control
+2. Social continue (Apple / Google) — fastest path, above phone
+3. Quiet `or use phone` divider
+4. Phone + password (Sign Up: phone step → password step)
+5. Forgot password on Sign In only
+6. **Docked** primary CTA in the bottom scoop (`ctaPlacement="docked"`) — one button, never duplicated in-sheet
+
+Defer account creation until after first meaningful decision when product allows (PMF Principle #5). Explore triggers `SaveProgressSheet` after the guest's first vote (`lib/guestSignupPrompt.ts`).
+
 ## Token Mapping (Core)
 
 Use semantic tokens first. Avoid direct color literals in feature screens.

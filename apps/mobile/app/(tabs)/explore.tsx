@@ -15,6 +15,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DiscussExpandTransition, DiscussExpanded, DiscussScreenBackdrop } from '@/components/decide/discuss';
+import SaveProgressSheet from '@/components/auth/SaveProgressSheet';
 import { TabScreenHeader } from '@/components/screen/TabScreenHeader';
 import { decisionFeedStatus } from '@/components/explore/PagedDecisionFeed';
 import { ExploreDecisionCard } from '@/components/explore/ExploreDecisionCard';
@@ -27,6 +28,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, GATEWAY_ORIGIN } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';
 import { recordParticipation } from '@/lib/exploreUserActivity';
+import { incrementGuestVoteCount, shouldPromptSaveProgress } from '@/lib/guestSignupPrompt';
 import {
   consumeHighlightRequest,
   usePostedCommunityCards,
@@ -66,6 +68,7 @@ export default function ExploreScreen() {
   const [toast, setToast] = React.useState<string | null>(null);
   const [activeDetailCardId, setActiveDetailCardId] = React.useState<string | null>(null);
   const [highlightedCardId, setHighlightedCardId] = React.useState<string | null>(null);
+  const [saveProgressOpen, setSaveProgressOpen] = React.useState(false);
   const livePulse = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -196,6 +199,14 @@ export default function ExploreScreen() {
     });
     setToast('Vote recorded');
     recordParticipation(card, optionId);
+    if (!previousVote) {
+      void (async () => {
+        const voteCount = await incrementGuestVoteCount();
+        if (voteCount === 1 && (await shouldPromptSaveProgress())) {
+          setSaveProgressOpen(true);
+        }
+      })();
+    }
     await trackProductEvent({
       name: 'vote_cast',
       cardId: card.id,
@@ -371,6 +382,13 @@ export default function ExploreScreen() {
           </DiscussExpandTransition>
         </View>
       ) : null}
+
+      <SaveProgressSheet
+        visible={saveProgressOpen}
+        onClose={() => setSaveProgressOpen(false)}
+        surface={surface}
+        returnTo="/explore"
+      />
     </View>
   );
 }

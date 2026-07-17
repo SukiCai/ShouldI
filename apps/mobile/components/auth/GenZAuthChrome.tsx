@@ -27,15 +27,20 @@ import Animated, {
   Easing,
   Extrapolation,
   interpolate,
+  runOnJS,
+  useAnimatedReaction,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withRepeat,
+  withSpring,
   withTiming,
 } from 'react-native-reanimated';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Svg, { Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { palette, profileTypography, radius, screenContentGutter, typography } from '@/constants/theme';
+import { MOTION } from '@/constants/motion';
+import { palette, profileTypography, radius, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import Button from '@/components/ui/Button';
 import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from '@/components/ui/OledSignUpBackdrop';
@@ -43,8 +48,26 @@ import { OledFluorSpeckles, OLED_LUMA_MINT, OLED_LUMA_PINK, OLED_LUMA_SKY } from
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
-const CHROME_TOP_PAD = 8;
-const BACK_BTN_SIZE = 40;
+/** Space under the status bar before the back chip — 8 felt flush to the top. */
+const CHROME_TOP_PAD = 12;
+const BACK_BTN_SIZE = 44;
+const AUTH_EXPAND_SNAP = 0.38;
+/** Collapsed notch sheet — shorter so hero headline clears the card top. */
+const AUTH_SHEET_MIN_H = Math.max(348, Math.round(SCREEN_H * 0.435));
+/**
+ * Pixel-traced from auth reference card:
+ * topR ≈ 0.10·W, scoop mouth ≈ 0.85·W, depth ≈ 0.19·W, tiny bottom feet (~0.06·W).
+ * Side gutter keeps a slim black reveal between card and screen edges.
+ */
+const AUTH_CARD_GUTTER = Math.max(10, Math.round(SCREEN_W * 0.028));
+const AUTH_CARD_W = SCREEN_W - AUTH_CARD_GUTTER * 2;
+const AUTH_CARD_TOP_R = Math.round(Math.min(64, Math.max(48, AUTH_CARD_W * 0.128)));
+/** Leading inset for the back chip — sits with the card edge + a little air. */
+const AUTH_BACK_INSET = Math.max(16, Math.round(SCREEN_W * 0.028) + 6);
+const AUTH_SCOOP_MOUTH_FRAC = 0.855;
+const AUTH_SCOOP_DEPTH_FRAC = 0.19;
+/** Continuous-corner tangent factor — longer edge run-in than a circular arc (less “kink”). */
+const AUTH_CORNER_K = 0.62;
 
 function useReducedMotion(): boolean {
   const [reduceMotion, setReduceMotion] = React.useState(false);
@@ -77,73 +100,37 @@ function useReducedMotion(): boolean {
   return reduceMotion;
 }
 
-function sheetBottomCornerR(w: number, h: number, topR: number): number {
-  return Math.max(13, Math.min(26, Math.min(topR * 0.52, w * 0.062, h * 0.068)));
-}
-
 /**
- * One symmetric quadratic from current point `(xR, yB)` to `(xL, yB)`:
- * parabolic bell — smooth apex, no segmented cubics needed.
- *
- * Control at `(mid, yB − 2·depth)` so the midpoint depth from the chord is `depth`.
+ * Reference silhouette: continuous (squircle-like) side corners + wide U scoop.
+ * Top L/R use cubic continuous corners — smoother than circular `Q` arcs.
  */
-function gaussianScoopBell(mid: number, xL: number, _xR: number, yB: number, depth: number): string {
-  const cy = yB - 2 * depth;
-  return `Q ${mid},${cy} ${xL},${yB}`;
-}
-
-/** White sheet SVG: rounded top + smooth bottom fillets + Gaussian center scoop (~⅓ chord). */
-function notchSheetPath(w: number, h: number, topR: number, notchHalf: number, notchDip: number) {
+function notchSheetPath(w: number, h: number, topR: number, mouthFrac: number, depthFrac: number) {
   const r = Math.min(topR, w / 2 - 1);
+  const k = AUTH_CORNER_K;
   const mid = w / 2;
-  const n = Math.min(notchHalf, mid - 28);
-  const d = notchDip;
-  const br = sheetBottomCornerR(w, h, topR);
-  const brK = 0.42;
-
-  const xBellL = mid - n;
-  const xBellR = mid + n;
-  const xR0 = w - br;
-
-  const rightSpan = xR0 - xBellR;
-  const wingBow = Math.min(6.25, Math.max(2.4, d * 0.11));
-
-  let rightWing: string[];
-  if (rightSpan <= 4) {
-    const p2Sm = xBellR + rightSpan / 2;
-    rightWing = [`C ${xR0 - 1},${h} ${p2Sm},${h - wingBow * 0.75} ${xBellR},${h}`];
-  } else {
-    const p1Wx = xR0 - Math.min(rightSpan * 0.38, Math.max(rightSpan * 0.08, rightSpan - 10));
-    const p2Wx = Math.max(xBellR + 3, Math.min(xR0 - 3, xBellR + rightSpan * 0.5));
-    rightWing = [`C ${p1Wx},${h} ${p2Wx},${h - wingBow} ${xBellR},${h}`];
-  }
-
-  const xBL = br;
-  const leftSpan = xBellL - xBL;
-  let leftWing: string[];
-  if (leftSpan <= 4) {
-    const p2SmL = xBellL - leftSpan / 2;
-    leftWing = [`C ${xBellL - 1},${h} ${p2SmL},${h - wingBow * 0.75} ${xBL},${h}`];
-  } else {
-    const p1Lx = xBellL - Math.min(leftSpan * 0.38, Math.max(leftSpan * 0.08, leftSpan - 10));
-    const p2Lx = Math.min(xBellL - 3, Math.max(xBL + 3, xBL + leftSpan * 0.58));
-    leftWing = [`C ${p1Lx},${h} ${p2Lx},${h - wingBow} ${xBL},${h}`];
-  }
-
-  const scoop = gaussianScoopBell(mid, xBellL, xBellR, h, d);
+  const mouth = Math.min(w * mouthFrac, w - 28);
+  const n = mouth / 2;
+  const d = Math.min(Math.max(68, w * depthFrac), h * 0.32);
+  /** Bottom feet — a bit larger + continuous so side→scoop reads as one soft curve. */
+  const br = Math.min(Math.max(28, w * 0.078), (w - mouth) * 0.52);
+  const apexY = h - d;
+  const lobeK = 0.62;
 
   return [
     `M ${r},0`,
     `H ${w - r}`,
-    `Q ${w},0 ${w},${r}`,
+    // top-right continuous corner
+    `C ${w - r * (1 - k)},0 ${w},${r * (1 - k)} ${w},${r}`,
     `V ${h - br}`,
-    `C ${w},${h - br * brK} ${w - br * brK},${h} ${xR0},${h}`,
-    ...rightWing,
-    scoop,
-    ...leftWing,
-    `C ${br * brK},${h} 0,${h - br * brK} 0,${h - br}`,
+    // right foot → scoop (continuous)
+    `C ${w},${h - br * (1 - k)} ${w - br * (1 - k)},${h} ${mid + n},${h}`,
+    `C ${mid + n * 0.64},${h} ${mid + n * 0.36},${apexY} ${mid},${apexY}`,
+    `C ${mid - n * 0.36},${apexY} ${mid - n * 0.64},${h} ${mid - n},${h}`,
+    // scoop → left foot (continuous)
+    `C ${br * (1 - k)},${h} 0,${h - br * (1 - k)} 0,${h - br}`,
     `V ${r}`,
-    `Q 0,0 ${r},0`,
+    // top-left continuous corner
+    `C 0,${r * (1 - k)} ${r * (1 - k)},0 ${r},0`,
     `Z`,
   ].join(' ');
 }
@@ -607,18 +594,22 @@ function HeroCircularCluster({
   sources,
   motionTier,
   signupTrioAvoidSheetOverlap,
+  clusterScale = 1,
 }: {
   sources: ImageSourcePropType[];
   motionTier: HeroMotionTier;
   /** Extra foot room + stacking guard for OLED signup — bottom orb vs white sheet chrome. */
   signupTrioAvoidSheetOverlap?: boolean;
+  /** Scales the triangle cluster — use ~0.72 for compact auth decor. */
+  clusterScale?: number;
 }) {
   const faces = sources.slice(0, OLED_CLUSTER_FACE_COUNT);
   const n = faces.length;
   if (n === 0) return null;
 
   /* Slightly tighter margins + allow mild overshoot on wide screens → larger overall orbs */
-  const swarmScale = Math.min(1.04, (SCREEN_W - 40) / (OLED_TRIANGLE_BOUNDS.w + 24));
+  const swarmScale =
+    Math.min(1.04, (SCREEN_W - 40) / (OLED_TRIANGLE_BOUNDS.w + 24)) * Math.max(0.55, clusterScale);
 
   const { arenaWidth, scaledSlots, slotShiftX, centroidCx, centroidCy } = React.useMemo(() => {
     const slots = OLED_TRI_SLOTS.slice(0, n).map((slot) => ({
@@ -773,15 +764,20 @@ export type SwipeAlternateOpts = {
 
 type GenZAuthChromeProps = {
   appearance?: 'mist' | 'oled';
-  headline: string;
+  /** Optional — omit for compact auth (form-first). */
+  headline?: string;
   subtitle?: string;
-  heroBadge: string;
+  heroBadge?: string;
   /** Optional PNG illustration (three avatars artwork). Falls back to emoji cluster when omitted. */
   heroImage?: ImageSourcePropType;
   /** Raster neon-ring avatar swarm (`constants/users`). */
   heroAvatars?: ImageSourcePropType[];
   /** OLED hero choreography — `premium` adds brighter halos + Lissajous float. */
   heroMotion?: HeroMotionTier;
+  /** Compact form-first layout — decor hero + in-card sheet. Omit for classic half-screen split. */
+  compact?: boolean;
+  /** `docked` = notch half-sheet + bottom capsule CTA (reference layout). `inCard` = CTA inside sheet. */
+  ctaPlacement?: 'docked' | 'inCard';
   sheetHeader: React.ReactNode;
   children: React.ReactNode;
   tertiaryRow?: React.ReactNode;
@@ -800,7 +796,7 @@ export function GenZAuthChrome({
   appearance = 'mist',
   headline,
   subtitle,
-  heroBadge,
+  heroBadge = '',
   heroImage,
   heroAvatars,
   heroMotion = 'standard',
@@ -814,16 +810,26 @@ export function GenZAuthChrome({
   slideHint,
   swipeAlternate,
   scrollBottomPad = 100,
+  compact = false,
+  ctaPlacement = 'docked',
   style,
 }: GenZAuthChromeProps) {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const scrollRef = React.useRef<ScrollView>(null);
-
-  const scrollSheetHeroToTop = React.useCallback(() => {
-    Keyboard.dismiss();
-    scrollRef.current?.scrollTo({ y: 0, animated: true });
-  }, []);
+  const scrollY = useSharedValue(0);
+  const expandDragStartY = useSharedValue(0);
+  const expandDistanceSv = useSharedValue(200);
+  const sheetMinHSv = useSharedValue(AUTH_SHEET_MIN_H);
+  const expandedSheetHSv = useSharedValue(AUTH_SHEET_MIN_H + 120);
+  const topRadiusSv = useSharedValue(AUTH_CARD_TOP_R);
+  const collapsedBottomSv = useSharedValue(16);
+  const safeBottomSv = useSharedValue(16);
+  /** 0 → off-screen below; 1 → settled. First-mount slide-up for the docked card. */
+  const sheetEnter = useSharedValue(0);
+  const reduceMotion = useReducedMotion();
+  /** Collapsed = docked CTA only; expanded = in-sheet CTA only — never both mounted. */
+  const [useInSheetCta, setUseInSheetCta] = React.useState(false);
 
   const oled = appearance === 'oled';
   const colorScheme = useColorScheme();
@@ -831,17 +837,229 @@ export function GenZAuthChrome({
   const oledLightCanvas = oled && colorScheme === 'light';
   const oledDarkBillboard = oled && colorScheme !== 'light';
   const trioRasterHero = oled && (heroAvatars?.length ?? 0) >= 3;
-  /** ~55% sheet — mist SVG; OLED card grows via flex to screen bottom */
-  const sheetMinH = Math.max(392, Math.round(SCREEN_H * 0.52));
-  const topR = radius.sheet;
-  const notchHalf = Math.min(Math.floor(SCREEN_W * 0.26), Math.round(SCREEN_W / 2) - 28);
-  const notchDip = 70;
+  const halfScreen = !compact;
+  const dockedCta = !compact && ctaPlacement === 'docked';
+  const showHeroVisual = (heroAvatars?.length ?? 0) >= 3 || !!heroImage;
+  const showHeroCopy = halfScreen && !!(headline?.trim() || subtitle?.trim());
+  const decorHero = compact && showHeroVisual;
+  /** ~52% sheet — notch SVG for docked half-screen (OLED hero + white sheet). */
+  const sheetMinH = AUTH_SHEET_MIN_H;
+  const topR = AUTH_CARD_TOP_R;
+  const cardW = AUTH_CARD_W;
+  const cardGutter = AUTH_CARD_GUTTER;
+  const notchDip = Math.round(Math.min(Math.max(68, cardW * AUTH_SCOOP_DEPTH_FRAC), sheetMinH * 0.32));
   const oledInsetPad = Math.max(insets.bottom, Platform.OS === 'android' ? 14 : 8);
-  const ctaBump = notchDip + Math.round(Math.max(56, Math.round(notchDip + 26)) * 0.82);
-  /** Bottom scroll padding for Mist (docked CTA). OLED CTA is in-card — see ScrollView padding. */
-  const footerReserve = ctaBump + 44 + oledInsetPad;
+  const footerReserve = notchDip + 28 + oledInsetPad;
+  const mistSheetPath =
+    halfScreen && dockedCta
+      ? notchSheetPath(cardW, sheetMinH, topR, AUTH_SCOOP_MOUTH_FRAC, AUTH_SCOOP_DEPTH_FRAC)
+      : '';
 
-  const mistSheetPath = notchSheetPath(SCREEN_W, sheetMinH, topR, notchHalf, notchDip);
+  const topChrome = Math.max(insets.top, 10) + CHROME_TOP_PAD + BACK_BTN_SIZE;
+  /** Sheet sits on the safe-area floor — scoop + CTA are inside the card, not a second dock below. */
+  const collapsedBottom = Math.max(insets.bottom, 10);
+  const safeBottom = Math.max(insets.bottom, 16);
+  const sheetTopCollapsed = SCREEN_H - collapsedBottom - sheetMinH;
+  const expandedSheetH = SCREEN_H - topChrome - safeBottom;
+  const expandDistance = Math.max(160, sheetTopCollapsed - topChrome);
+
+  React.useEffect(() => {
+    expandDistanceSv.value = expandDistance;
+    sheetMinHSv.value = sheetMinH;
+    expandedSheetHSv.value = expandedSheetH;
+    topRadiusSv.value = AUTH_CARD_TOP_R;
+    collapsedBottomSv.value = collapsedBottom;
+    safeBottomSv.value = safeBottom;
+  }, [
+    collapsedBottom,
+    expandDistance,
+    expandedSheetH,
+    expandDistanceSv,
+    expandedSheetHSv,
+    safeBottom,
+    collapsedBottomSv,
+    safeBottomSv,
+    sheetMinH,
+    sheetMinHSv,
+    topRadiusSv,
+  ]);
+
+  React.useEffect(() => {
+    if (reduceMotion) {
+      sheetEnter.value = 1;
+      return;
+    }
+    sheetEnter.value = 0;
+    sheetEnter.value = withDelay(
+      40,
+      withSpring(1, {
+        damping: 18,
+        stiffness: 190,
+        mass: 0.88,
+        overshootClamping: false,
+      }),
+    );
+  }, [reduceMotion, sheetEnter]);
+
+  const expandPanGesture = React.useMemo(
+    () =>
+      Gesture.Pan()
+        .activeOffsetY([-6, 6])
+        .onBegin(() => {
+          expandDragStartY.value = scrollY.value;
+        })
+        .onUpdate((event) => {
+          const dist = expandDistanceSv.value;
+          scrollY.value = Math.max(
+            0,
+            Math.min(dist, expandDragStartY.value - event.translationY),
+          );
+        })
+        .onEnd((event) => {
+          const dist = expandDistanceSv.value;
+          if (dist <= 0) return;
+          const open = scrollY.value > dist * AUTH_EXPAND_SNAP || event.velocityY < -620;
+          scrollY.value = withSpring(open ? dist : 0, { damping: 22, stiffness: 220 });
+        }),
+    [expandDistanceSv, expandDragStartY, scrollY],
+  );
+
+  useAnimatedReaction(
+    () => {
+      const dist = expandDistanceSv.value;
+      const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+      return progress >= 0.5 ? 1 : 0;
+    },
+    (next, prev) => {
+      if (!dockedCta || next === prev) return;
+      runOnJS(setUseInSheetCta)(next === 1);
+    },
+    [dockedCta],
+  );
+
+  const scrollSheetHeroToTop = React.useCallback(() => {
+    Keyboard.dismiss();
+    if (dockedCta) {
+      scrollY.value = reduceMotion ? 0 : withSpring(0, { damping: 22, stiffness: 220 });
+      return;
+    }
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
+  }, [dockedCta, reduceMotion, scrollY]);
+
+  const heroExpandStyle = useAnimatedStyle(() => {
+    const dist = expandDistanceSv.value;
+    const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+    return {
+      opacity: interpolate(progress, [0, 0.72], [1, 0], Extrapolation.CLAMP),
+      transform: [
+        {
+          translateY: interpolate(progress, [0, 1], [0, -28], Extrapolation.CLAMP),
+        },
+        {
+          scale: interpolate(progress, [0, 1], [1, 0.94], Extrapolation.CLAMP),
+        },
+      ],
+    };
+  });
+
+  const sheetPinnedStyle = useAnimatedStyle(() => {
+    const dist = expandDistanceSv.value;
+    const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+    const minH = sheetMinHSv.value;
+    const maxH = expandedSheetHSv.value;
+    const height = minH + progress * (maxH - minH);
+    const bottom =
+      collapsedBottomSv.value + (safeBottomSv.value - collapsedBottomSv.value) * progress;
+    const topRadius = topRadiusSv.value * (1 - progress);
+    const enter = sheetEnter.value;
+    // Allow slight overshoot past 1 so the spring can bounce above the rest seat.
+    const enterY = interpolate(enter, [0, 1], [minH + 72, 0]);
+    return {
+      height,
+      bottom,
+      borderTopLeftRadius: topRadius,
+      borderTopRightRadius: topRadius,
+      opacity: interpolate(enter, [0, 0.22, 1], [0, 1, 1], Extrapolation.CLAMP),
+      transform: [{ translateY: enterY }],
+    };
+  });
+
+  const sheetScoopFadeStyle = useAnimatedStyle(() => {
+    const dist = expandDistanceSv.value;
+    const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+    return {
+      opacity: interpolate(progress, [0, 0.55], [1, 0], Extrapolation.CLAMP),
+    };
+  });
+
+  /** Rect fill only while expanding — collapsed card shape is SVG-only. */
+  const sheetRectFillStyle = useAnimatedStyle(() => {
+    const dist = expandDistanceSv.value;
+    const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+    return {
+      opacity: interpolate(progress, [0.35, 0.7], [0, 1], Extrapolation.CLAMP),
+    };
+  });
+
+  const ctaDockExpandStyle = useAnimatedStyle(() => {
+    const dist = expandDistanceSv.value;
+    const progress = dist > 0 ? Math.min(scrollY.value / dist, 1) : 0;
+    const enter = sheetEnter.value;
+    const enterY = interpolate(enter, [0, 1], [sheetMinHSv.value + 72, 0]);
+    const expandY = interpolate(progress, [0.3, 0.55], [0, 88], Extrapolation.CLAMP);
+    return {
+      opacity:
+        interpolate(enter, [0, 0.22, 1], [0, 1, 1], Extrapolation.CLAMP) *
+        interpolate(progress, [0, 0.32, 0.46], [1, 1, 0], Extrapolation.CLAMP),
+      transform: [{ translateY: enterY + expandY }],
+    };
+  });
+
+  /** Scoop CTA — text sits in the notch; ink follows canvas (white on OLED black, dark on light mist). */
+  const renderScoopCtaPressable = () => (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
+      accessibilityHint={
+        footerSubtitle ??
+        (swipeAlternate ? 'Swipe near the bottom button to flip between Sign up and Sign in' : undefined)
+      }
+      onPress={() => {
+        void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
+        onFooterPress();
+      }}
+      style={({ pressed }) => [styles.ctaScoopHit, pressed && styles.ctaScoopHitPressed]}>
+      <Text
+        style={[
+          styles.ctaScoopLabel,
+          oledDarkBillboard ? styles.ctaScoopLabelDark : styles.ctaScoopLabelLight,
+        ]}>
+        {footerCtaLabel}
+      </Text>
+    </Pressable>
+  );
+
+  const renderAuthCtaPressable = (styleExtras: StyleProp<ViewStyle>) => (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
+      accessibilityHint={
+        footerSubtitle ??
+        (swipeAlternate ? 'Swipe near the bottom button to flip between Sign up and Sign in' : undefined)
+      }
+      onPress={() => {
+        void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
+        onFooterPress();
+      }}
+      style={({ pressed }) => [
+        styles.ctaOledSolid,
+        styles.ctaPressDocked,
+        styleExtras,
+        pressed && styles.backChipPressed,
+      ]}>
+      <Text style={styles.ctaOledSolidLabel}>{footerCtaLabel}</Text>
+    </Pressable>
+  );
 
   const panResponder = React.useMemo(
     () =>
@@ -878,7 +1096,7 @@ export function GenZAuthChrome({
         oledDarkBillboard && styles.authSurfaceDarkRoot,
         style,
       ]}>
-      <StatusBar style={oledLightCanvas ? 'dark' : 'light'} />
+      <StatusBar style={oledDarkBillboard ? 'light' : 'dark'} />
 
       {oled ? (
         oledLightCanvas ? (
@@ -916,39 +1134,250 @@ export function GenZAuthChrome({
         </>
       )}
 
-      {!oled ? (
-        <View pointerEvents="none" style={[styles.ctaGlow, { bottom: Math.max(insets.bottom, 12) }]}>
-          <View style={styles.ctaGlowInner} />
-        </View>
-      ) : null}
-
-      {/* Mist: docked capsule CTA. OLED: CTA renders inside sheet (see ScrollView card). */}
-      {!oled ? (
-        <View
+      {dockedCta && !useInSheetCta ? (
+        <Animated.View
           {...(panResponder ? panResponder.panHandlers : {})}
           pointerEvents="box-none"
-          style={[styles.ctaDock, { bottom: Math.max(insets.bottom, 10) }]}>
-          <Button
-            variant="primary"
-            label={footerCtaLabel}
-            accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
-            accessibilityHint={
-              footerSubtitle ??
-              (swipeAlternate ? 'Swipe near the bottom button to flip between Sign up and Sign in' : undefined)
-            }
-            onPress={() => {
-              void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
-              onFooterPress();
-            }}
-            style={StyleSheet.flatten([styles.ctaPress, styles.ctaPressDocked])}
-          />
-        </View>
+          style={[
+            styles.ctaDock,
+            {
+              bottom: collapsedBottom,
+              height: notchDip,
+            },
+            ctaDockExpandStyle,
+          ]}>
+          {renderScoopCtaPressable()}
+        </Animated.View>
       ) : null}
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{ flex: 1, zIndex: 24 }}
         pointerEvents="box-none">
+        {dockedCta ? (
+          <>
+            {(showHeroVisual || showHeroCopy) ? (
+              <Animated.View
+                pointerEvents="box-none"
+                style={[
+                  styles.heroExpandOverlay,
+                  { paddingTop: topChrome + 6 },
+                  heroExpandStyle,
+                  trioRasterHero && styles.heroClusterZUnderSignupSheet,
+                ]}>
+                {showHeroVisual ? (
+                  <View
+                    pointerEvents="box-none"
+                    style={[
+                      styles.heroCluster,
+                      trioRasterHero && styles.heroClusterZUnderSignupSheet,
+                    ]}>
+                    <View
+                      pointerEvents="box-none"
+                      style={[
+                        styles.heroInner,
+                        (heroAvatars?.length ?? 0) >= 3 || heroImage ? styles.heroInnerTall : null,
+                      ]}>
+                      {(heroAvatars?.length ?? 0) >= 3 ? (
+                        <HeroCircularCluster
+                          sources={heroAvatars ?? []}
+                          motionTier={heroMotion}
+                          signupTrioAvoidSheetOverlap={trioRasterHero}
+                        />
+                      ) : heroImage ? (
+                        <HeroRaster heroImage={heroImage} minHeight={228} />
+                      ) : (
+                        <AvatarFallback />
+                      )}
+                      {heroBadge.trim() ? (
+                        <View
+                          style={[
+                            styles.heroBadgeOuter,
+                            oledDarkBillboard ? glassBadgeOled : glassBadgeMist,
+                            oled && (heroAvatars?.length ?? 0) >= 3 ? styles.heroBadgeOledTriangle : null,
+                          ]}>
+                          {oledDarkBillboard ? (
+                            <>
+                              {Platform.OS === 'web' ? (
+                                <View
+                                  pointerEvents="none"
+                                  style={[styles.heroBadgeBlurPlate, styles.heroBadgeFrostFallbackWeb]}
+                                />
+                              ) : (
+                                <BlurView
+                                  pointerEvents="none"
+                                  tint="dark"
+                                  intensity={Platform.OS === 'ios' ? 78 : 92}
+                                  style={styles.heroBadgeBlurPlate}
+                                  {...(Platform.OS === 'android'
+                                    ? ({
+                                        experimentalBlurMethod: 'dimezisBlurView',
+                                        blurReductionFactor: 5,
+                                      } as const)
+                                    : {})}
+                                />
+                              )}
+                              <View pointerEvents="none" style={styles.heroBadgeFrostTint} />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={['rgba(255,255,255,0.13)', 'rgba(255,255,255,0.02)', 'rgba(14,14,26,0.5)']}
+                                locations={[0, 0.42, 1]}
+                                start={{ x: 0.12, y: 0 }}
+                                end={{ x: 0.88, y: 1 }}
+                                style={StyleSheet.absoluteFillObject}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={['rgba(255,255,255,0.22)', 'rgba(255,255,255,0)']}
+                                locations={[0, 1]}
+                                start={{ x: 0.25, y: 0 }}
+                                end={{ x: 0.65, y: 0.55 }}
+                                style={styles.heroBadgeTopSheenFrost}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.12)', 'rgba(255,255,255,0)']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 0 }}
+                                style={styles.heroBadgeFrostHairline}
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={[
+                                  'rgba(255,248,252,0.9)',
+                                  'rgba(244,232,248,0.68)',
+                                  'rgba(232,242,252,0.82)',
+                                ]}
+                                locations={[0, 0.48, 1]}
+                                start={{ x: 0.08, y: 0 }}
+                                end={{ x: 0.92, y: 1 }}
+                                style={StyleSheet.absoluteFillObject}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={[
+                                  'rgba(255,204,228,0.58)',
+                                  'rgba(230,248,255,0.4)',
+                                  'rgba(240,252,255,0.22)',
+                                ]}
+                                locations={[0, 0.55, 1]}
+                                start={{ x: 0.12, y: 0 }}
+                                end={{ x: 0.88, y: 1 }}
+                                style={StyleSheet.absoluteFillObject}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={[`${palette.neonPink}f5`, `${palette.bokehViolet}ef`, `${palette.neonSky}f2`]}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={styles.heroBadgeLeftAccent}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={[
+                                  'rgba(255,255,255,0)',
+                                  'rgba(255,77,148,0.85)',
+                                  'rgba(94,228,255,0.78)',
+                                  'rgba(255,255,255,0)',
+                                ]}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 0 }}
+                                style={styles.heroBadgeBottomGleam}
+                              />
+                              <LinearGradient
+                                pointerEvents="none"
+                                colors={['rgba(255,255,255,0.5)', 'rgba(255,255,255,0)']}
+                                locations={[0, 1]}
+                                start={{ x: 0.3, y: 0 }}
+                                end={{ x: 0.7, y: 0.55 }}
+                                style={styles.heroBadgeTopSheen}
+                              />
+                            </>
+                          )}
+                          <Text style={[styles.heroBadgeTxt, oledDarkBillboard ? styles.heroBadgeTxtOled : null]}>
+                            {heroBadge}
+                          </Text>
+                        </View>
+                      ) : null}
+                    </View>
+                  </View>
+                ) : null}
+                {showHeroCopy ? (
+                  <View
+                    pointerEvents="box-none"
+                    style={[styles.heroHeadlineSpacer, trioRasterHero && styles.heroHeadSpacerSignupTrio]}>
+                    <View style={styles.titleBlock}>
+                      {headline?.trim() ? (
+                        <Text style={[styles.heroTitle, oledDarkBillboard ? styles.heroTitleOled : styles.heroTitleMist]}>
+                          {headline}
+                        </Text>
+                      ) : null}
+                      {subtitle ? (
+                        <Text style={[styles.heroSub, oledDarkBillboard ? styles.heroSubOled : null]}>{subtitle}</Text>
+                      ) : null}
+                    </View>
+                  </View>
+                ) : null}
+              </Animated.View>
+            ) : null}
+
+            <GestureDetector gesture={expandPanGesture}>
+              <Animated.View
+                style={[
+                  styles.sheetExpandPinned,
+                  { left: cardGutter, right: cardGutter, width: cardW },
+                  sheetPinnedStyle,
+                ]}>
+                <Animated.View
+                  pointerEvents="none"
+                  style={[styles.sheetExpandRectFill, sheetRectFillStyle]}
+                />
+                <Animated.View
+                  style={[styles.sheetExpandScoop, { height: sheetMinH }, sheetScoopFadeStyle]}
+                  pointerEvents="none">
+                  <Svg width={cardW} height={sheetMinH} pointerEvents="none">
+                    <Path d={mistSheetPath} fill={palette.sheet} />
+                  </Svg>
+                </Animated.View>
+                <View style={styles.sheetExpandGrab} pointerEvents="none">
+                  <View style={styles.sheetExpandGrabPill} />
+                </View>
+                <GestureDetector gesture={Gesture.Native()}>
+                  <ScrollView
+                    keyboardShouldPersistTaps="always"
+                    showsVerticalScrollIndicator={false}
+                    style={styles.sheetExpandFormScroll}
+                    contentContainerStyle={[
+                      styles.sheetExpandFormScrollContent,
+                      { paddingBottom: useInSheetCta ? 24 : notchDip + 8 },
+                    ]}>
+                    <View style={styles.sheetExpandFormInner}>
+                      <View style={styles.sheetInset} pointerEvents="auto">
+                        {sheetHeader}
+                      </View>
+                      <View style={[styles.sheetInset, styles.sheetForm]} pointerEvents="auto">
+                        {children}
+                      </View>
+                      {tertiaryRow ? (
+                        <View style={styles.sheetInset} pointerEvents="auto">
+                          {tertiaryRow}
+                        </View>
+                      ) : null}
+                      {useInSheetCta ? (
+                        <View style={[styles.sheetInset, styles.sheetCtaBlock]} pointerEvents="auto">
+                          {renderAuthCtaPressable(styles.ctaPressInCard)}
+                        </View>
+                      ) : null}
+                    </View>
+                  </ScrollView>
+                </GestureDetector>
+              </Animated.View>
+            </GestureDetector>
+          </>
+        ) : (
         <ScrollView
           ref={scrollRef}
           keyboardShouldPersistTaps="always"
@@ -956,26 +1385,40 @@ export function GenZAuthChrome({
           contentContainerStyle={[
             styles.scrollContent,
             {
-              paddingBottom: oled ? 0 : footerReserve + 8,
-              paddingTop: Math.max(insets.top, 10) + CHROME_TOP_PAD + BACK_BTN_SIZE + 10,
+              paddingBottom: dockedCta ? footerReserve + 8 : Math.max(insets.bottom, 12),
+              paddingTop:
+                Math.max(insets.top, 10) +
+                CHROME_TOP_PAD +
+                BACK_BTN_SIZE +
+                (decorHero ? 2 : showHeroVisual ? 10 : 4),
             },
-            oled && { minHeight: SCREEN_H },
+            halfScreen && { minHeight: SCREEN_H },
           ]}
           showsVerticalScrollIndicator={false}>
+          {showHeroVisual ? (
           <View
-            pointerEvents={oled ? 'box-none' : 'auto'}
-            style={[styles.heroCluster, trioRasterHero && styles.heroClusterZUnderSignupSheet]}>
+            pointerEvents="box-none"
+            style={[
+              styles.heroCluster,
+              decorHero && styles.heroClusterDecor,
+              trioRasterHero && styles.heroClusterZUnderSignupSheet,
+            ]}>
             <View
-              pointerEvents={oled ? 'box-none' : 'auto'}
+              pointerEvents="box-none"
               style={[
                 styles.heroInner,
-                (heroAvatars?.length ?? 0) >= 3 || heroImage ? styles.heroInnerTall : null,
+                decorHero
+                  ? styles.heroInnerDecor
+                  : (heroAvatars?.length ?? 0) >= 3 || heroImage
+                    ? styles.heroInnerTall
+                    : null,
               ]}>
               {(heroAvatars?.length ?? 0) >= 3 ? (
                 <HeroCircularCluster
                   sources={heroAvatars ?? []}
                   motionTier={heroMotion}
                   signupTrioAvoidSheetOverlap={trioRasterHero}
+                  clusterScale={decorHero ? 0.74 : 1}
                 />
               ) : heroImage ? (
                 <HeroRaster heroImage={heroImage} minHeight={228} />
@@ -1097,67 +1540,37 @@ export function GenZAuthChrome({
               ) : null}
             </View>
           </View>
-          <View
-            pointerEvents={oled ? 'box-none' : 'auto'}
-            style={[styles.heroHeadlineSpacer, trioRasterHero && styles.heroHeadSpacerSignupTrio]}>
-            <View style={styles.titleBlock}>
-              <Text style={[styles.heroTitle, oledDarkBillboard ? styles.heroTitleOled : null]}>{headline}</Text>
-              {subtitle ? (
-                <Text style={[styles.heroSub, oledDarkBillboard ? styles.heroSubOled : null]}>{subtitle}</Text>
-              ) : null}
+          ) : null}
+          {showHeroCopy ? (
+            <View
+              pointerEvents="box-none"
+              style={[styles.heroHeadlineSpacer, trioRasterHero && styles.heroHeadSpacerSignupTrio]}>
+              <View style={styles.titleBlock}>
+                {headline?.trim() ? (
+                  <Text style={[styles.heroTitle, oledDarkBillboard ? styles.heroTitleOled : styles.heroTitleMist]}>
+                    {headline}
+                  </Text>
+                ) : null}
+                {subtitle ? (
+                  <Text style={[styles.heroSub, oledDarkBillboard ? styles.heroSubOled : null]}>{subtitle}</Text>
+                ) : null}
+              </View>
             </View>
-          </View>
+          ) : null}
 
           <View
             style={[
               styles.sheetStack,
+              halfScreen && !dockedCta && styles.sheetStackFill,
+              halfScreen && !dockedCta && styles.sheetStackFront,
+              compact && styles.sheetStackCompact,
+              dockedCta && { minHeight: sheetMinH },
+              halfScreen && !dockedCta && showHeroVisual && styles.sheetStackHeroOverlap,
               trioRasterHero && styles.sheetStackSignupTrio,
-              oled && styles.sheetStackOledFront,
-              oled && styles.sheetStackOledFill,
-              !oled && { minHeight: sheetMinH },
-              oled &&
-                Platform.OS === 'ios' &&
-                ({
-                  shadowOpacity: 0,
-                  shadowRadius: 0,
-                  shadowOffset: { width: 0, height: 0 },
-                } as const),
+              oled && halfScreen && !dockedCta && styles.sheetStackOledFill,
+              oled && halfScreen && !dockedCta && styles.sheetStackOledFront,
             ]}>
-            {oled ? (
-              <View
-                style={[styles.sheetCardOled, { flex: 1, paddingBottom: Math.max(insets.bottom, 16) }]}
-                pointerEvents="auto"
-                collapsable={false}>
-                <View style={styles.sheetCardForeground} pointerEvents="box-none">
-                  <View style={styles.sheetInset} pointerEvents="auto">
-                    {sheetHeader}
-                  </View>
-                  <View style={[styles.sheetInset, styles.sheetForm]} pointerEvents="auto">
-                    {children}
-                  </View>
-                  {tertiaryRow ? (
-                    <View style={styles.sheetInset} pointerEvents="auto">
-                      {tertiaryRow}
-                    </View>
-                  ) : null}
-                  <View style={[styles.sheetInset, styles.sheetCtaBlock]} pointerEvents="box-none">
-                    <Button
-                      variant="primary"
-                      label={footerCtaLabel}
-                      accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
-                      accessibilityHint={footerSubtitle}
-                      onPress={() => {
-                        void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
-                        onFooterPress();
-                      }}
-                      style={StyleSheet.flatten([styles.ctaPress, styles.ctaPressInCard])}
-                    />
-                    {footerSubtitle ? <Text style={styles.ctaFooterBelowOled}>{footerSubtitle}</Text> : null}
-                    {slideHint ? <Text style={styles.ctaSwipeHintBelowOled}>{slideHint}</Text> : null}
-                  </View>
-                </View>
-              </View>
-            ) : (
+            {dockedCta ? (
               <>
                 <Svg width={SCREEN_W} height={sheetMinH} pointerEvents="none" style={styles.sheetSvg}>
                   <Path d={mistSheetPath} fill={palette.sheet} />
@@ -1184,19 +1597,70 @@ export function GenZAuthChrome({
                   <View style={{ height: scrollBottomPad }} pointerEvents="none" />
                 </View>
               </>
+            ) : (
+              <View
+                {...(panResponder ? panResponder.panHandlers : {})}
+                style={[
+                  oled && halfScreen ? styles.sheetCardOled : styles.sheetCardAuth,
+                  halfScreen && { flex: 1 },
+                  { paddingBottom: Math.max(insets.bottom, 16) },
+                ]}
+                pointerEvents="auto"
+                collapsable={false}>
+                <View style={styles.sheetCardForeground} pointerEvents="box-none">
+                  <View style={styles.sheetInset} pointerEvents="auto">
+                    {sheetHeader}
+                  </View>
+                  <View style={[styles.sheetInset, styles.sheetForm]} pointerEvents="auto">
+                    {children}
+                  </View>
+                  {tertiaryRow ? (
+                    <View style={styles.sheetInset} pointerEvents="auto">
+                      {tertiaryRow}
+                    </View>
+                  ) : null}
+                  <View style={[styles.sheetInset, styles.sheetCtaBlock]} pointerEvents="box-none">
+                    <Button
+                      variant="primary"
+                      label={footerCtaLabel}
+                      accessibilityLabel={footerCtaAccessibilityLabel ?? footerCtaLabel}
+                      accessibilityHint={
+                        footerSubtitle ??
+                        (swipeAlternate ? 'Swipe the form to switch between Sign in and Sign up' : undefined)
+                      }
+                      onPress={() => {
+                        void bumpHaptic(Haptics.ImpactFeedbackStyle.Medium);
+                        onFooterPress();
+                      }}
+                      style={StyleSheet.flatten([styles.ctaPress, styles.ctaPressInCard])}
+                    />
+                    {footerSubtitle ? <Text style={styles.ctaFooterBelowOled}>{footerSubtitle}</Text> : null}
+                    {slideHint ? <Text style={styles.ctaSwipeHintBelowOled}>{slideHint}</Text> : null}
+                  </View>
+                </View>
+              </View>
             )}
           </View>
         </ScrollView>
+        )}
       </KeyboardAvoidingView>
 
       <View
-        style={[styles.chromeOverlay, { paddingTop: insets.top + CHROME_TOP_PAD, zIndex: 40 }]}
+        style={[
+          styles.chromeOverlay,
+          {
+            paddingTop: Math.max(insets.top, 8) + CHROME_TOP_PAD,
+            paddingLeft: Math.max(insets.left, 0) + AUTH_BACK_INSET,
+            paddingRight: Math.max(insets.right, 0) + AUTH_BACK_INSET,
+            zIndex: 40,
+          },
+        ]}
         pointerEvents="box-none">
         {router.canGoBack() ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Go back"
-            hitSlop={8}
+            hitSlop={10}
             onPress={() => {
               void bumpHaptic();
               router.back();
@@ -1254,6 +1718,19 @@ export const AuthFields = StyleSheet.create({
     color: palette.heroInk,
     letterSpacing: -0.3,
     textAlign: 'center',
+  },
+  sheetLead: {
+    ...typography.bodySm,
+    color: profileTypography.subdued,
+    textAlign: 'center',
+    fontWeight: '500',
+    letterSpacing: 0.1,
+    lineHeight: 20,
+    paddingHorizontal: 8,
+  },
+  sheetHeaderStack: {
+    gap: 16,
+    alignSelf: 'stretch',
   },
   phoneRow: {
     flexDirection: 'row',
@@ -1334,6 +1811,13 @@ export const AuthFields = StyleSheet.create({
     marginBottom: 4,
     paddingHorizontal: 6,
   },
+  tertiaryStack: {
+    alignItems: 'center',
+    gap: 10,
+    marginTop: 4,
+    marginBottom: 2,
+    paddingHorizontal: 6,
+  },
   tertiaryBold: {
     ...typography.bodySm,
     fontWeight: '800',
@@ -1396,7 +1880,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingHorizontal: screenContentGutter,
     zIndex: 30,
     pointerEvents: 'box-none',
   },
@@ -1414,8 +1897,9 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: `${palette.heroInk}10`,
   },
+  /** Ionicons chevron-back sits optically right — nudge for even padding in the circle. */
   backChevron: {
-    marginLeft: 1,
+    marginLeft: -2,
   },
   backChipOled: {
     backgroundColor: 'rgba(15,17,21,0.55)',
@@ -1427,6 +1911,52 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+  },
+  heroExpandOverlay: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 18,
+    alignItems: 'center',
+  },
+  sheetExpandPinned: {
+    position: 'absolute',
+    /** Transparent — white fill comes only from the notched SVG path (rect fill hides the scoop). */
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+    zIndex: 16,
+  },
+  sheetExpandGrab: {
+    alignItems: 'center',
+    paddingTop: 10,
+    paddingBottom: 4,
+  },
+  sheetExpandGrabPill: {
+    width: 42,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: 'rgba(15,17,21,0.14)',
+  },
+  sheetExpandFormScroll: {
+    flex: 1,
+  },
+  sheetExpandFormScrollContent: {
+    flexGrow: 1,
+    paddingBottom: 8,
+  },
+  sheetExpandScoop: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  sheetExpandRectFill: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: palette.sheet,
+  },
+  sheetExpandFormInner: {
+    paddingTop: 4,
+    zIndex: 2,
   },
   heroCluster: {
     alignItems: 'center',
@@ -1453,6 +1983,16 @@ const styles = StyleSheet.create({
     marginTop: -60,
     paddingBottom: 22,
     zIndex: 14,
+  },
+  heroClusterDecor: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    marginBottom: -12,
+  },
+  heroInnerDecor: {
+    minHeight: 172,
+    paddingTop: 0,
+    overflow: 'visible',
   },
   heroInner: {
     position: 'relative',
@@ -1689,6 +2229,61 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  heroTitleMist: {
+    textShadowColor: 'transparent',
+    textShadowRadius: 0,
+  },
+  heroClusterCompact: {
+    paddingVertical: 0,
+  },
+  heroInnerCompact: {
+    minHeight: 0,
+    paddingTop: 0,
+  },
+  sheetStackFill: {
+    flex: 1,
+    marginTop: 10,
+    justifyContent: 'flex-end',
+  },
+  sheetStackFront: {
+    zIndex: 38,
+    position: 'relative',
+    ...Platform.select({
+      ios: {},
+      android: { elevation: 24 },
+      default: {},
+    }),
+  },
+  sheetStackCompact: {
+    marginTop: 4,
+  },
+  /** Pull mist notch sheet up under avatar cluster when headline is omitted. */
+  sheetStackHeroOverlap: {
+    marginTop: -32,
+    zIndex: 12,
+  },
+  sheetCardAuth: {
+    position: 'relative',
+    width: SCREEN_W,
+    alignSelf: 'center',
+    backgroundColor: palette.sheet,
+    borderTopLeftRadius: radius.sheet,
+    borderTopRightRadius: radius.sheet,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    overflow: 'hidden',
+    marginTop: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.08,
+        shadowRadius: 24,
+        shadowOffset: { width: 0, height: -8 },
+      },
+      android: { elevation: 6 },
+      default: {},
+    }),
+  },
   sheetStack: {
     position: 'relative',
     width: SCREEN_W,
@@ -1731,7 +2326,7 @@ const styles = StyleSheet.create({
   sheetCardForeground: {
     position: 'relative',
     zIndex: 2,
-    paddingTop: 36,
+    paddingTop: 24,
     pointerEvents: 'box-none',
   },
   sheetStackSignupTrio: {
@@ -1791,10 +2386,34 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
+    justifyContent: 'center',
     zIndex: 26,
     paddingHorizontal: 28,
-    paddingVertical: 18,
     pointerEvents: 'box-none',
+  },
+  ctaScoopHit: {
+    minWidth: Math.min(220, SCREEN_W * 0.56),
+    minHeight: 48,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  ctaScoopHitPressed: {
+    opacity: 0.72,
+  },
+  ctaScoopLabel: {
+    ...typography.titleSm,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+    textAlign: 'center',
+  },
+  /** Dark OLED billboard — white label in the black scoop. */
+  ctaScoopLabelDark: {
+    color: palette.sheet,
+  },
+  /** Light mist canvas — dark label so Sign In / Continue stay readable. */
+  ctaScoopLabelLight: {
+    color: palette.heroInk,
   },
   ctaPress: {
     borderRadius: radius.pill,
@@ -1819,7 +2438,7 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     alignSelf: 'stretch',
   },
-  /** OLED sign-in / sign-up: flat primary pill (matches `Button` primary). */
+  /** OLED sign-in / sign-up: single flat primary pill — mint rim/glow on the button itself (no second ghost pill). */
   ctaOledSolid: {
     width: '100%',
     alignItems: 'center',
@@ -1831,12 +2450,12 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: palette.signUpMintHairline,
-    ...Platform.select({
+    ...Platform.select<ViewStyle>({
       ios: {
-        shadowColor: '#000',
-        shadowOpacity: 0.45,
-        shadowRadius: 14,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: palette.neonMint,
+        shadowOpacity: 0.32,
+        shadowRadius: 18,
+        shadowOffset: { width: 0, height: 6 },
       },
       android: { elevation: 6 },
       default: {},
@@ -1911,24 +2530,5 @@ const styles = StyleSheet.create({
     borderRadius: 23,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  ctaGlow: {
-    position: 'absolute',
-    left: SCREEN_W / 2 - SCREEN_W * 0.42,
-    width: SCREEN_W * 0.84,
-    maxWidth: 380,
-    height: 64,
-    zIndex: 3,
-    opacity: Platform.OS === 'ios' ? 0.85 : 0.55,
-    pointerEvents: 'none',
-  },
-  ctaGlowInner: {
-    flex: 1,
-    borderRadius: radius.pill,
-    backgroundColor: 'transparent',
-    shadowColor: palette.neonMint,
-    shadowOpacity: 0.28,
-    shadowRadius: 24,
-    shadowOffset: { width: 0, height: 0 },
   },
 });

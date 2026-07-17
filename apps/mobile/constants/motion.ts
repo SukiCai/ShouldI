@@ -3,9 +3,26 @@ import { AccessibilityInfo, Animated, Easing } from 'react-native';
 
 /** Canonical motion tokens — single source for sheets, cards, and press feedback. */
 export const MOTION = {
+  duration: {
+    micro: 100,
+    short: 200,
+    medium: 280,
+    long: 450,
+    reducedCrossfade: 120,
+  },
   sheet: { friction: 8, tension: 72 },
   card: { friction: 7, tension: 80 },
   tab: { damping: 24, stiffness: 340, mass: 0.38 },
+  segmentSlide: {
+    damping: 17,
+    stiffness: 230,
+    mass: 0.52,
+  },
+  segmentPop: {
+    damping: 11,
+    stiffness: 420,
+    mass: 0.3,
+  },
   press: { scale: 0.985 },
   backdropMs: 220,
   sheetSlideOffset: 420,
