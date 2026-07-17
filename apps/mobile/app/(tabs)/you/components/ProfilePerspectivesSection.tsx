@@ -33,6 +33,7 @@ import {
   type DiscoveredExpertStatus,
 } from '@shouldi/contracts';
 
+import { AnimatedProgressBar, ProfileSpringPress } from './profileMotion';
 import { youScreenStyles as styles } from './youScreenStyles';
 
 const PREVIEW_UNLOCKED = 2;
@@ -134,13 +135,8 @@ function UnlockProgressBar({
   trackColor: string;
   fillColor: string;
 }) {
-  const ratio = total > 0 ? Math.min(1, unlocked / total) : 0;
-  return (
-    <View style={[localStyles.progressTrack, { backgroundColor: trackColor }]}>
-      <View style={[localStyles.progressFill, { backgroundColor: fillColor, flex: ratio }]} />
-      <View style={{ flex: 1 - ratio }} />
-    </View>
-  );
+  const ratio = total > 0 ? unlocked / total : 0;
+  return <AnimatedProgressBar progress={ratio} trackColor={trackColor} fillColor={fillColor} />;
 }
 
 function UnlockedRow({
@@ -164,15 +160,15 @@ function UnlockedRow({
   const iconColor = row.expert.color ?? semantic.actionPrimary;
 
   return (
-    <Pressable
+    <ProfileSpringPress
       accessibilityRole="button"
       accessibilityLabel={`Open ${row.expert.title}`}
+      haptic="none"
       onPress={onPress}
-      style={({ pressed }) => [
+      style={[
         styles.recentDecisionRow,
         horizontalInset > 0 && { paddingHorizontal: horizontalInset },
         !isLast && { borderBottomColor: hairline, borderBottomWidth: StyleSheet.hairlineWidth },
-        pressed && { opacity: 0.88 },
       ]}>
       <View style={styles.recentDecisionRowLayout}>
         <View style={[styles.recentIconWrap, { backgroundColor: `${iconColor}18` }]}>
@@ -188,7 +184,7 @@ function UnlockedRow({
         </View>
         <UnlockedStatusPill status={row.status} />
       </View>
-    </Pressable>
+    </ProfileSpringPress>
   );
 }
 
@@ -214,15 +210,15 @@ function LockedRow({
   horizontalInset?: number;
 }) {
   return (
-    <Pressable
+    <ProfileSpringPress
       accessibilityRole="button"
       accessibilityLabel={`Locked perspective: ${slot.catalog.title}`}
+      haptic="none"
       onPress={onPress}
-      style={({ pressed }) => [
+      style={[
         styles.recentDecisionRow,
         horizontalInset > 0 && { paddingHorizontal: horizontalInset },
         !isLast && { borderBottomColor: hairline, borderBottomWidth: StyleSheet.hairlineWidth },
-        pressed && { opacity: 0.88 },
       ]}>
       <View style={styles.recentDecisionRowLayout}>
         <LockedSilhouetteIcon
@@ -240,7 +236,7 @@ function LockedRow({
         </View>
         <LockedPill textMuted={textMuted} groupedBorder={groupedBorder} />
       </View>
-    </Pressable>
+    </ProfileSpringPress>
   );
 }
 
@@ -515,9 +511,10 @@ export function ProfilePerspectivesSection({
           <Text style={[styles.cardBody, { color: textMuted, lineHeight: 20 }]}>
             Complete your first Decide session to unlock specialist perspectives.
           </Text>
-          <Pressable
+          <ProfileSpringPress
             accessibilityRole="button"
             accessibilityLabel="Start a decision"
+            haptic="light"
             onPress={() => router.replace('/(tabs)/decide')}
             style={[
               styles.ghostBtn,
@@ -525,7 +522,7 @@ export function ProfilePerspectivesSection({
               { borderColor: groupedBorder },
             ]}>
             <Text style={[styles.ghostBtnText, { color: textPrimary }]}>Start a decision</Text>
-          </Pressable>
+          </ProfileSpringPress>
         </View>
       </View>
     );
@@ -548,9 +545,10 @@ export function ProfilePerspectivesSection({
           styles.insightCardShell,
           { backgroundColor: groupedSurface, borderColor: groupedBorder, gap: 0 },
         ]}>
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
           accessibilityLabel="Open perspective library"
+          haptic="selection"
           onPress={() => setLibraryOpen(true)}
           style={styles.insightCardHeader}>
           <View style={styles.sectionHeaderCopy}>
@@ -560,7 +558,7 @@ export function ProfilePerspectivesSection({
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
-        </Pressable>
+        </ProfileSpringPress>
 
         <View style={localStyles.progressBlock}>
           <UnlockProgressBar
@@ -598,9 +596,10 @@ export function ProfilePerspectivesSection({
         ))}
 
         {showLibraryLink ? (
-          <Pressable
+          <ProfileSpringPress
             accessibilityRole="button"
             accessibilityLabel="Open perspective library"
+            haptic="light"
             onPress={() => setLibraryOpen(true)}
             style={[
               styles.ghostBtn,
@@ -610,7 +609,7 @@ export function ProfilePerspectivesSection({
             <Text style={[styles.ghostBtnText, { color: textPrimary }]}>
               View library ({collectibleTotal})
             </Text>
-          </Pressable>
+          </ProfileSpringPress>
         ) : null}
       </View>
 
@@ -684,15 +683,6 @@ const localStyles = StyleSheet.create({
   progressBlock: {
     paddingBottom: 8,
     gap: 6,
-  },
-  progressTrack: {
-    flexDirection: 'row',
-    height: 4,
-    borderRadius: 2,
-    overflow: 'hidden',
-  },
-  progressFill: {
-    borderRadius: 2,
   },
   sheetTitle: {
     fontSize: 17,

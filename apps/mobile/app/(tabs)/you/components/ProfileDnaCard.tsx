@@ -1,9 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { semantic } from '@/constants/theme';
+import { usePrefersReducedMotion } from '@/constants/motion';
 import { dnaSummarySurfaceBg } from '@/lib/profileChromatic';
 import {
   buildDnaAccessibilityLabel,
@@ -12,6 +14,7 @@ import {
 import type { ProfileDnaDimensionMock } from '@/lib/profileMockData';
 
 import { ProfileDnaRadar } from './ProfileDnaRadar';
+import { ProfileSpringPress } from './profileMotion';
 import { youScreenStyles as styles } from './youScreenStyles';
 
 type ProfileDnaCardProps = {
@@ -37,9 +40,11 @@ export function ProfileDnaCard({
   groupedSurface,
   groupedBorder,
 }: ProfileDnaCardProps) {
+  const reducedMotion = usePrefersReducedMotion();
   const showRadar = decisionsCount >= DNA_RADAR_MIN_DECISIONS && dimensions.length > 0;
   const radarLabel = buildDnaAccessibilityLabel(dimensions);
   const summaryBg = dnaSummarySurfaceBg();
+  const radarEntering = reducedMotion ? undefined : FadeIn.delay(80).duration(480).springify().damping(20);
 
   return (
     <View style={styles.sectionWrap}>
@@ -49,9 +54,10 @@ export function ProfileDnaCard({
           styles.insightCardShell,
           { backgroundColor: groupedSurface, borderColor: groupedBorder },
         ]}>
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
           accessibilityLabel="View Decision DNA"
+          haptic="selection"
           onPress={() => router.replace('/(tabs)/replay')}
           style={[styles.insightCardHeader, metricsSubline ? { marginBottom: 2 } : null]}>
           <View style={styles.sectionHeaderCopy}>
@@ -63,10 +69,11 @@ export function ProfileDnaCard({
             ) : null}
           </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
-        </Pressable>
+        </ProfileSpringPress>
 
         {showRadar ? (
-          <View
+          <Animated.View
+            entering={radarEntering}
             style={styles.dnaRadarWrap}
             accessible
             accessibilityRole="image"
@@ -79,7 +86,7 @@ export function ProfileDnaCard({
               labelColor={textDisplay}
               levelColor={textMuted}
             />
-          </View>
+          </Animated.View>
         ) : (
           <View style={styles.dnaTeaserBox}>
             <Text style={[styles.dnaTeaserTitle, { color: textDisplay }]}>Pattern forming</Text>

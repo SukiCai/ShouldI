@@ -1,17 +1,30 @@
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
+import type { ImageSourcePropType } from 'react-native';
 
-import { semantic, typography } from '@/constants/theme';
+import { useColorScheme } from '@/components/useColorScheme';
+import {
+  PROFILE_HERO_GRADIENT_DARK,
+  PROFILE_HERO_GRADIENT_LIGHT,
+  radius,
+  semantic,
+  typography,
+} from '@/constants/theme';
+import { usePrefersReducedMotion } from '@/constants/motion';
 import { COUNCIL_SESSION_POINTS_COST } from '@/lib/useViewerEntitlements';
 
+import { ProfileAvatar } from './ProfileAvatar';
+import { ProfileSpringPress } from './profileMotion';
 import { youScreenStyles as styles } from './youScreenStyles';
-
-const MOCK_AVATAR = require('@/assets/images/profile-mock-avatar.jpg');
 
 type YouProfileHeroProps = {
   displayName: string;
+  avatarEmoji: string;
+  avatarSource?: ImageSourcePropType;
   isPremium: boolean;
   pointsBalance: number;
   walletHydrated: boolean;
@@ -42,6 +55,8 @@ function walletFooterCopy(isPremium: boolean, balance: number): {
 
 export function YouProfileHero({
   displayName,
+  avatarEmoji,
+  avatarSource,
   isPremium,
   pointsBalance,
   walletHydrated,
@@ -55,17 +70,37 @@ export function YouProfileHero({
   groupedBorder,
   hairline,
 }: YouProfileHeroProps) {
+  const scheme = useColorScheme();
+  const isDark = scheme === 'dark';
+  const reducedMotion = usePrefersReducedMotion();
   const wallet = walletHydrated ? walletFooterCopy(isPremium, pointsBalance) : null;
+
+  const avatarEntering = reducedMotion ? undefined : FadeIn.duration(420).springify().damping(20);
 
   return (
     <View
       style={[
         styles.insightFeedCard,
         styles.insightCardShell,
+        heroStyles.cardShell,
         { backgroundColor: groupedSurface, borderColor: groupedBorder },
       ]}>
+      <LinearGradient
+        colors={isDark ? [...PROFILE_HERO_GRADIENT_DARK] : [...PROFILE_HERO_GRADIENT_LIGHT]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={StyleSheet.absoluteFillObject}
+      />
+
       <View style={heroStyles.identityBlock}>
-        <Image source={MOCK_AVATAR} style={heroStyles.avatar} />
+        <Animated.View entering={avatarEntering}>
+          <ProfileAvatar
+            emoji={avatarEmoji}
+            imageSource={avatarSource}
+            borderColor={groupedBorder}
+            surfaceColor={groupedSurface}
+          />
+        </Animated.View>
         <View style={styles.identityCopy}>
           <View style={styles.identityNameRow}>
             <Text style={[styles.identityName, { color: textDisplay }]} numberOfLines={1}>
@@ -91,14 +126,15 @@ export function YouProfileHero({
       </View>
 
       {wallet ? (
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
           accessibilityLabel={`Open wallet and membership, ${wallet.balanceLabel}`}
+          haptic="selection"
           onPress={() => router.push('/wallet')}
-          style={({ pressed }) => [
+          style={[
             heroStyles.walletFooter,
-            { borderTopColor: hairline },
-            pressed && { backgroundColor: `${textPrimary}06` },
+            !showOnboardingCta && heroStyles.walletFooterFlush,
+            { borderTopColor: hairline, borderBottomLeftRadius: radius.hero, borderBottomRightRadius: radius.hero },
           ]}>
           <View style={heroStyles.walletRow}>
             <Text style={[heroStyles.walletLabel, { color: textPrimary }]} numberOfLines={1}>
@@ -116,49 +152,47 @@ export function YouProfileHero({
               {wallet.hint}
             </Text>
           ) : null}
-        </Pressable>
+        </ProfileSpringPress>
       ) : null}
 
       {showOnboardingCta ? (
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
           accessibilityLabel="Start your first decision"
+          haptic="light"
           onPress={() => router.replace('/(tabs)/decide')}
-          style={({ pressed }) => [
+          style={[
             styles.focusPrimaryBtn,
             heroStyles.onboardingBtn,
             { backgroundColor: semantic.actionPrimary },
-            pressed && { opacity: 0.92 },
           ]}>
           <Text style={styles.focusPrimaryBtnText}>Start your first decision</Text>
-        </Pressable>
+        </ProfileSpringPress>
       ) : null}
     </View>
   );
 }
 
 const heroStyles = StyleSheet.create({
+  cardShell: {
+    overflow: 'hidden',
+  },
   identityBlock: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
   },
-  avatar: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-  },
   walletFooter: {
     borderTopWidth: StyleSheet.hairlineWidth,
     marginTop: 12,
     marginHorizontal: -14,
-    marginBottom: -14,
     paddingHorizontal: 14,
     paddingTop: 11,
     paddingBottom: 12,
-    borderBottomLeftRadius: 18,
-    borderBottomRightRadius: 18,
     gap: 4,
+  },
+  walletFooterFlush: {
+    marginBottom: -14,
   },
   walletRow: {
     flexDirection: 'row',

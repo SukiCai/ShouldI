@@ -11,8 +11,8 @@ import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 import { themeSurface } from '@/constants/theme';
 import { DecisionDnaProfileSchema, DecisionRecordSchema } from '@shouldi/contracts';
 
+import { ProfileSectionEntrance } from '@/app/(tabs)/you/components/profileMotion';
 import { ProfileDnaCard } from '@/app/(tabs)/you/components/ProfileDnaCard';
-import { ProfileGrowthSection } from '@/app/(tabs)/you/components/ProfileGrowthSection';
 import { ProfileHeader } from '@/app/(tabs)/you/components/ProfileHeader';
 import { ProfilePerspectivesSection } from '@/app/(tabs)/you/components/ProfilePerspectivesSection';
 import { RecentDecisionsSection } from '@/app/(tabs)/you/components/RecentDecisionsSection';
@@ -68,73 +68,75 @@ export default function YouScreen() {
           paddingBottom: Math.max(insets.bottom + 96, 120),
         }}
         showsVerticalScrollIndicator={false}>
-        <ProfileHeader textDisplay={surface.textDisplay} textMuted={surface.textMuted} />
+        <ProfileSectionEntrance index={0}>
+          <ProfileHeader textDisplay={surface.textDisplay} textMuted={surface.textMuted} />
+        </ProfileSectionEntrance>
 
-        <View style={styles.sectionWrap}>
-          <YouProfileHero
-            displayName={profile.displayName}
-            isPremium={isPremium}
-            pointsBalance={balance}
-            walletHydrated={entitlementsHydrated}
-            decisionsCount={profile.decisionsCount}
-            memberSinceLabel={profile.memberSinceLabel}
-            showOnboardingCta={!profile.useDemo && profile.decisionsCount === 0}
+        <ProfileSectionEntrance index={1}>
+          <View style={styles.sectionWrap}>
+            <YouProfileHero
+              displayName={profile.displayName}
+              avatarEmoji={profile.avatarEmoji}
+              avatarSource={profile.avatarSource}
+              isPremium={isPremium}
+              pointsBalance={balance}
+              walletHydrated={entitlementsHydrated}
+              decisionsCount={profile.decisionsCount}
+              memberSinceLabel={profile.memberSinceLabel}
+              showOnboardingCta={!profile.useDemo && profile.decisionsCount === 0}
+              textDisplay={surface.textDisplay}
+              textPrimary={surface.textPrimary}
+              textMuted={surface.textMuted}
+              groupedSurface={surface.groupedSurface}
+              groupedBorder={surface.groupedBorder}
+              hairline={surface.hairline}
+            />
+          </View>
+        </ProfileSectionEntrance>
+
+        <ProfileSectionEntrance index={2}>
+          <ProfilePerspectivesSection
+            lensLibraryUnlocked={profile.useDemo || profile.decisionsCount > 0}
+            useDemo={profile.useDemo}
             textDisplay={surface.textDisplay}
             textPrimary={surface.textPrimary}
             textMuted={surface.textMuted}
             groupedSurface={surface.groupedSurface}
             groupedBorder={surface.groupedBorder}
             hairline={surface.hairline}
+            modalBg={surface.sheet}
+            isDark={scheme === 'dark'}
+            bottomInset={insets.bottom}
           />
-        </View>
-
-        <ProfilePerspectivesSection
-          lensLibraryUnlocked={profile.useDemo || profile.decisionsCount > 0}
-          useDemo={profile.useDemo}
-          textDisplay={surface.textDisplay}
-          textPrimary={surface.textPrimary}
-          textMuted={surface.textMuted}
-          groupedSurface={surface.groupedSurface}
-          groupedBorder={surface.groupedBorder}
-          hairline={surface.hairline}
-          modalBg={surface.sheet}
-          isDark={scheme === 'dark'}
-          bottomInset={insets.bottom}
-        />
+        </ProfileSectionEntrance>
 
         {profile.recentDecisions.length > 0 ? (
-          <RecentDecisionsSection
-            decisions={profile.recentDecisions}
+          <ProfileSectionEntrance index={3}>
+            <RecentDecisionsSection
+              decisions={profile.recentDecisions}
+              textDisplay={surface.textDisplay}
+              textPrimary={surface.textPrimary}
+              textMuted={surface.textMuted}
+              groupedSurface={surface.groupedSurface}
+              groupedBorder={surface.groupedBorder}
+              hairline={surface.hairline}
+            />
+          </ProfileSectionEntrance>
+        ) : null}
+
+        <ProfileSectionEntrance index={profile.recentDecisions.length > 0 ? 4 : 3}>
+          <ProfileDnaCard
+            summary={profile.dnaSummary}
+            dimensions={profile.dnaDimensions}
+            decisionsCount={profile.decisionsCount}
+            metricsSubline={profile.dnaMetricsSubline}
             textDisplay={surface.textDisplay}
             textPrimary={surface.textPrimary}
             textMuted={surface.textMuted}
             groupedSurface={surface.groupedSurface}
             groupedBorder={surface.groupedBorder}
-            hairline={surface.hairline}
           />
-        ) : null}
-
-        <ProfileDnaCard
-          summary={profile.dnaSummary}
-          dimensions={profile.dnaDimensions}
-          decisionsCount={profile.decisionsCount}
-          metricsSubline={profile.dnaMetricsSubline}
-          textDisplay={surface.textDisplay}
-          textPrimary={surface.textPrimary}
-          textMuted={surface.textMuted}
-          groupedSurface={surface.groupedSurface}
-          groupedBorder={surface.groupedBorder}
-        />
-
-        <ProfileGrowthSection
-          cards={profile.growthCards}
-          textDisplay={surface.textDisplay}
-          textPrimary={surface.textPrimary}
-          textMuted={surface.textMuted}
-          groupedSurface={surface.groupedSurface}
-          groupedBorder={surface.groupedBorder}
-          hairline={surface.hairline}
-        />
+        </ProfileSectionEntrance>
       </ScrollView>
     </View>
   );

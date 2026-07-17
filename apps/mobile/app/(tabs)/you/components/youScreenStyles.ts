@@ -304,7 +304,6 @@ export const youScreenStyles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     lineHeight: 16,
-    flex: 1,
     letterSpacing: -0.2,
   },
   insightListBody: {

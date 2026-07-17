@@ -1,5 +1,6 @@
 import type { Ionicons } from '@expo/vector-icons';
 
+import { PROFILE_DEMO_AVATAR } from '@/constants/users/avatarSources';
 import type { DecisionDnaProfile, DecisionRecord } from '@shouldi/contracts';
 
 export type ProfileStatMock = {
@@ -43,6 +44,8 @@ export type ProfileGrowthCardMock = {
 /** Static profile demo — pixel-matched to the mobile Profile design mock. */
 export const PROFILE_MOCK = {
   displayName: 'Eleanor Park',
+  avatarEmoji: '✨',
+  avatarSource: PROFILE_DEMO_AVATAR,
   isPremium: true,
   decisionsCount: 47,
   memberSinceLabel: 'Member since May 2024',

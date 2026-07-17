@@ -1,11 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { semantic } from '@/constants/theme';
 import type { ProfileRecentDecisionMock, ProfileRecentDecisionStatus } from '@/lib/profileMockData';
 
+import { ProfileSpringPress } from './profileMotion';
 import { youScreenStyles as styles } from './youScreenStyles';
 
 const statusPillStyle = {
@@ -70,9 +71,10 @@ export function RecentDecisionsSection({
           styles.insightCardShell,
           { backgroundColor: groupedSurface, borderColor: groupedBorder, gap: 0 },
         ]}>
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
           accessibilityLabel="View all decisions"
+          haptic="selection"
           onPress={() => router.replace('/(tabs)/replay')}
           style={styles.insightCardHeader}>
           <View style={styles.sectionHeaderCopy}>
@@ -84,28 +86,28 @@ export function RecentDecisionsSection({
             ) : null}
           </View>
           <Ionicons name="chevron-forward" size={14} color={textMuted} />
-        </Pressable>
+        </ProfileSpringPress>
 
         {decisions.map((decision, index) => {
           const isLast = index === decisions.length - 1;
           return (
-            <Pressable
+            <ProfileSpringPress
               key={decision.id}
               accessibilityRole="button"
               accessibilityLabel={`Open ${decision.title}`}
+              haptic="none"
               onPress={() =>
                 router.push({
                   pathname: '/outcome-replay/[id]',
                   params: { id: decision.id },
                 })
               }
-              style={({ pressed }) => [
+              style={[
                 styles.recentDecisionRow,
                 !isLast && {
                   borderBottomColor: hairline,
                   borderBottomWidth: StyleSheet.hairlineWidth,
                 },
-                pressed && { opacity: 0.88 },
               ]}>
               <View style={styles.recentDecisionRowLayout}>
                 <View style={[styles.recentIconWrap, { backgroundColor: decision.iconBg }]}>
@@ -121,13 +123,14 @@ export function RecentDecisionsSection({
                 </View>
                 <StatusPill status={decision.status} />
               </View>
-            </Pressable>
+            </ProfileSpringPress>
           );
         })}
 
-        <Pressable
+        <ProfileSpringPress
           accessibilityRole="button"
-          accessibilityLabel="Start a new decision"
+          accessibilityLabel="Start a decision"
+          haptic="light"
           onPress={() => router.replace('/(tabs)/decide')}
           style={[
             styles.ghostBtn,
@@ -135,7 +138,7 @@ export function RecentDecisionsSection({
             { borderColor: groupedBorder },
           ]}>
           <Text style={[styles.ghostBtnText, { color: textPrimary }]}>Start a decision</Text>
-        </Pressable>
+        </ProfileSpringPress>
       </View>
     </View>
   );

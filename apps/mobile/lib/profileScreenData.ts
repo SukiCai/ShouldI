@@ -1,3 +1,5 @@
+import type { ImageSourcePropType } from 'react-native';
+
 import type { Ionicons } from '@expo/vector-icons';
 
 import { exploreCategoryTheme } from '@/components/explore/exploreCategoryTheme';
@@ -17,6 +19,9 @@ import type {
   ProfileRecentDecisionStatus,
   ProfileStatMock,
 } from '@/lib/profileMockData';
+import {
+  DEFAULT_VIEWER_AVATAR_EMOJI,
+} from '@/constants/users/avatarSources';
 import {
   PROFILE_DEMO_DNA,
   PROFILE_DEMO_DECISIONS,
@@ -139,6 +144,8 @@ export function mapDecisionToRecentRow(decision: DecisionRecord): ProfileRecentD
 export type ResolvedProfileScreen = {
   useDemo: boolean;
   displayName: string;
+  avatarEmoji: string;
+  avatarSource?: ImageSourcePropType;
   isPremium: boolean;
   decisionsCount: number;
   memberSinceLabel: string;
@@ -176,6 +183,8 @@ export function resolveProfileScreen({
     return {
       useDemo: true,
       displayName: PROFILE_MOCK.displayName,
+      avatarEmoji: PROFILE_MOCK.avatarEmoji,
+      avatarSource: PROFILE_MOCK.avatarSource,
       isPremium: PROFILE_MOCK.isPremium,
       decisionsCount: PROFILE_MOCK.decisionsCount,
       memberSinceLabel: PROFILE_MOCK.memberSinceLabel,
@@ -193,6 +202,8 @@ export function resolveProfileScreen({
   return {
     useDemo: false,
     displayName: 'You',
+    avatarEmoji: DEFAULT_VIEWER_AVATAR_EMOJI,
+    avatarSource: undefined,
     isPremium,
     decisionsCount,
     memberSinceLabel: formatMemberSince(decisions),
