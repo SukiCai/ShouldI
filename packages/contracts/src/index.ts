@@ -127,6 +127,44 @@ export const DecideInterviewExpertSchema = z.object({
 });
 export type DecideInterviewExpert = z.infer<typeof DecideInterviewExpertSchema>;
 
+export const ExpertCatalogEntrySchema = DecideInterviewExpertSchema.extend({
+  frameworkId: z.string(),
+  frameworkLabel: z.string(),
+  discoveryBlurb: z.string(),
+  lensDomain: z.enum(['career', 'relationship', 'general']),
+});
+export type ExpertCatalogEntry = z.infer<typeof ExpertCatalogEntrySchema>;
+
+export const DiscoveredExpertStatusSchema = z.enum(['discovered', 'applied', 'calibrated']);
+export type DiscoveredExpertStatus = z.infer<typeof DiscoveredExpertStatusSchema>;
+
+export const DiscoveredExpertSchema = z.object({
+  expertId: z.string(),
+  expert: DecideInterviewExpertSchema,
+  frameworkLabel: z.string(),
+  discoveryBlurb: z.string(),
+  activationInstruction: z.string().optional(),
+  status: DiscoveredExpertStatusSchema,
+  firstDiscoveredAt: z.number().int(),
+  lastUsedAt: z.number().int(),
+  sessionCount: z.number().int().nonnegative(),
+  decisionRecordIds: z.array(z.string()).default([]),
+  lastSessionId: z.string().optional(),
+});
+export type DiscoveredExpert = z.infer<typeof DiscoveredExpertSchema>;
+
+export const ViewerExpertsResponseSchema = z.object({
+  experts: z.array(DiscoveredExpertSchema),
+  totalDiscovered: z.number().int().nonnegative(),
+  totalCollectible: z.number().int().nonnegative().optional(),
+});
+export type ViewerExpertsResponse = z.infer<typeof ViewerExpertsResponseSchema>;
+
+export const ExpertCatalogResponseSchema = z.object({
+  experts: z.array(ExpertCatalogEntrySchema),
+});
+export type ExpertCatalogResponse = z.infer<typeof ExpertCatalogResponseSchema>;
+
 export const DecideInterviewTurnRequestSchema = z.object({
   sessionId: z.string().nullable().optional(),
   userText: z.string().optional().default(''),
@@ -244,6 +282,8 @@ export const DecideInterviewTurnResponseSchema = z.object({
   ambiguity: z.number().min(0).max(1).optional(),
   activeExperts: z.array(DecideInterviewExpertSchema).default([]),
   newlyActivatedExperts: z.array(DecideInterviewExpertSchema).default([]),
+  /** Perspectives newly added to the user's collection this turn. */
+  expertDiscoveries: z.array(DiscoveredExpertSchema).default([]),
   suggestedDraftHints: DecideInterviewDraftHintsSchema.optional(),
   choicePrompt: DecideInterviewChoicePromptSchema.optional(),
   finalDecision: DecideInterviewFinalDecisionSchema.optional(),
@@ -316,6 +356,7 @@ export const DecisionRecordSchema = z.object({
   rationale: z.string(),
   confidenceScore: z.number().int().min(0).max(100),
   tradeoffs: z.array(z.string()).default([]),
+  expertIdsUsed: z.array(z.string()).default([]),
   committedAction: z.string().optional(),
   createdAt: z.number().int(),
   updatedAt: z.number().int(),

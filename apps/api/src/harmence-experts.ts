@@ -1,6 +1,12 @@
-import type { DecideInterviewExpert } from '@shouldi/contracts';
+import type { DecideInterviewExpert, ExpertCatalogEntry } from '@shouldi/contracts';
+
+export type LensDomain = 'career' | 'relationship' | 'general';
 
 export type HarmenceExpert = DecideInterviewExpert & {
+  frameworkId: string;
+  frameworkLabel: string;
+  discoveryBlurb: string;
+  lensDomain: LensDomain;
   priority: number;
   triggerPatterns: RegExp[];
   activationInstruction: string;
@@ -14,6 +20,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'smart_talk',
     icon: 'sparkles-outline',
     color: '#2DD4BF',
+    frameworkId: 'decision-framing',
+    frameworkLabel: 'Decision framing',
+    discoveryBlurb: 'Clarifies stakes, constraints, and what would change the answer before you commit.',
+    lensDomain: 'general',
     priority: 10,
     triggerPatterns: [],
     activationInstruction:
@@ -26,6 +36,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'intl-job-search',
     icon: 'briefcase-outline',
     color: '#38BDF8',
+    frameworkId: 'opportunity-cost',
+    frameworkLabel: 'Opportunity cost',
+    discoveryBlurb: 'Compares this offer against realistic alternatives and recruiting windows—not just the logo.',
+    lensDomain: 'career',
     priority: 90,
     triggerPatterns: [/\bco-?op\b/i, /\bintern(ship)?\b/i, /\boffer\b/i, /\bplacement\b/i],
     activationInstruction:
@@ -38,6 +52,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'intl-student-advisor',
     icon: 'earth-outline',
     color: '#34D399',
+    frameworkId: 'risk-budgeting',
+    frameworkLabel: 'Risk & immigration path',
+    discoveryBlurb: 'Surfaces visa, work authorization, and timeline risk before career recommendations land.',
+    lensDomain: 'career',
     priority: 100,
     triggerPatterns: [
       /\binternational\b/i,
@@ -61,6 +79,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'stay-or-return',
     icon: 'airplane-outline',
     color: '#F59E0B',
+    frameworkId: 'regret-minimization',
+    frameworkLabel: 'Regret minimization',
+    discoveryBlurb: 'Frames stay-vs-return as a long-horizon compounding question—not a mood-of-the-moment call.',
+    lensDomain: 'career',
     priority: 95,
     triggerPatterns: [
       /\bstay or return\b/i,
@@ -80,6 +102,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'pm-career-expert',
     icon: 'analytics-outline',
     color: '#A78BFA',
+    frameworkId: 'career-compounding',
+    frameworkLabel: 'Career compounding',
+    discoveryBlurb: 'Evaluates scope, title, and org ceiling against long-term product leadership growth.',
+    lensDomain: 'career',
     priority: 70,
     triggerPatterns: [/\bPM\b/i, /\bproduct manager\b/i, /\bpromotion\b/i, /\bscope\b/i, /\bMBA\b/i],
     activationInstruction:
@@ -92,6 +118,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'grad-school-advisor',
     icon: 'school-outline',
     color: '#818CF8',
+    frameworkId: 'expected-value',
+    frameworkLabel: 'Education ROI',
+    discoveryBlurb: 'Models funding, advisor fit, and immigration runway—not just program rank.',
+    lensDomain: 'career',
     priority: 85,
     triggerPatterns: [
       /\bPhD\b/i,
@@ -114,6 +144,10 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     skillName: 'smart_talk',
     icon: 'heart-outline',
     color: '#FB7185',
+    frameworkId: 'attachment-repair',
+    frameworkLabel: 'Relationship patterns',
+    discoveryBlurb: 'Separates repairable conflict from repeated trust breaks and safety concerns.',
+    lensDomain: 'relationship',
     priority: 80,
     triggerPatterns: [
       /\bpartner\b/i,
@@ -133,6 +167,8 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
   },
 ];
 
+const MAX_LINKED_DECISIONS = 12;
+
 export function publicExpert(expert: HarmenceExpert): DecideInterviewExpert {
   return {
     id: expert.id,
@@ -142,6 +178,28 @@ export function publicExpert(expert: HarmenceExpert): DecideInterviewExpert {
     icon: expert.icon,
     color: expert.color,
   };
+}
+
+export function publicCatalogExpert(expert: HarmenceExpert): ExpertCatalogEntry {
+  return {
+    ...publicExpert(expert),
+    frameworkId: expert.frameworkId,
+    frameworkLabel: expert.frameworkLabel,
+    discoveryBlurb: expert.discoveryBlurb,
+    lensDomain: expert.lensDomain,
+  };
+}
+
+export function collectibleExperts(): HarmenceExpert[] {
+  return HARMENCE_EXPERTS.filter((expert) => expert.lensDomain !== 'general');
+}
+
+export function totalCollectibleLenses(): number {
+  return collectibleExperts().length;
+}
+
+export function listCatalogExperts(): ExpertCatalogEntry[] {
+  return HARMENCE_EXPERTS.map(publicCatalogExpert);
 }
 
 export function expertById(id: string): HarmenceExpert | undefined {
@@ -158,10 +216,16 @@ export function publicExperts(ids: string[]): DecideInterviewExpert[] {
   return ids.map((id) => expertById(id)).filter((x): x is HarmenceExpert => !!x).map(publicExpert);
 }
 
-export function selectExpertsFromText(text: string): HarmenceExpert[] {
+export function selectExpertsFromText(text: string, discoveredExpertIds: string[] = []): HarmenceExpert[] {
+  const discoveredBoost = new Set(discoveredExpertIds);
   const matched = HARMENCE_EXPERTS.filter((expert) =>
     expert.triggerPatterns.some((pattern) => pattern.test(text)),
-  ).sort((a, b) => b.priority - a.priority);
+  ).sort((a, b) => {
+    const boostA = discoveredBoost.has(a.id) ? 1 : 0;
+    const boostB = discoveredBoost.has(b.id) ? 1 : 0;
+    if (boostB !== boostA) return boostB - boostA;
+    return b.priority - a.priority;
+  });
 
   if (matched.length > 0) return matched;
 
@@ -189,3 +253,5 @@ export function expertPrelude(experts: HarmenceExpert[]): string {
     )
     .join('\n\n');
 }
+
+export { MAX_LINKED_DECISIONS };

@@ -16,6 +16,7 @@ import { ProfileDnaCard } from '@/app/(tabs)/you/components/ProfileDnaCard';
 import { ProfileGrowthSection } from '@/app/(tabs)/you/components/ProfileGrowthSection';
 import { ProfileHeader } from '@/app/(tabs)/you/components/ProfileHeader';
 import { ProfileIdentityCard } from '@/app/(tabs)/you/components/ProfileIdentityCard';
+import { ProfilePerspectivesSection } from '@/app/(tabs)/you/components/ProfilePerspectivesSection';
 import { ProfileStatsRow } from '@/app/(tabs)/you/components/ProfileStatsRow';
 import { RecentDecisionsSection } from '@/app/(tabs)/you/components/RecentDecisionsSection';
 import { YouFocusCard } from '@/app/(tabs)/you/components/YouFocusCard';
@@ -99,6 +100,20 @@ export default function YouScreen() {
           textMuted={surface.textMuted}
           statTileBg={surface.statTileBg}
           statTileBorder={surface.statTileBorder}
+        />
+
+        <ProfilePerspectivesSection
+          lensLibraryUnlocked={profile.useDemo || profile.decisionsCount > 0}
+          useDemo={profile.useDemo}
+          textDisplay={surface.textDisplay}
+          textPrimary={surface.textPrimary}
+          textMuted={surface.textMuted}
+          groupedSurface={surface.groupedSurface}
+          groupedBorder={surface.groupedBorder}
+          hairline={surface.hairline}
+          modalBg={surface.sheet}
+          isDark={scheme === 'dark'}
+          bottomInset={insets.bottom}
         />
 
         <RecentDecisionsSection

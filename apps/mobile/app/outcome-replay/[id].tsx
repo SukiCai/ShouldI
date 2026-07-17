@@ -4,13 +4,18 @@ import { useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ExpertGlyph } from '@/app/(tabs)/decide/components/DecideThreadParts';
 import { ctaStyles } from '@/components/screen/ctaStyles';
 import { youScreenStyles as styles } from '@/app/(tabs)/you/components/youScreenStyles';
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, apiPostJson } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';
-import { radius, screenContentGutter, themeSurface } from '@/constants/theme';
-import { OutcomeReplaySchema } from '@shouldi/contracts';
+import { radius, screenContentGutter, semantic, themeSurface } from '@/constants/theme';
+import {
+  DecisionRecordSchema,
+  ExpertCatalogResponseSchema,
+  OutcomeReplaySchema,
+} from '@shouldi/contracts';
 
 type ReplayPayload = {
   predictionText?: string;
@@ -55,6 +60,24 @@ export default function OutcomeReplayDetailScreen() {
     },
   });
 
+  const decisionQuery = useQuery({
+    queryKey: ['decision', id],
+    enabled: !!id,
+    queryFn: async () => {
+      const data = await apiGetJson(`/v1/decisions/${id}`);
+      return DecisionRecordSchema.parse(data);
+    },
+  });
+
+  const catalogQuery = useQuery({
+    queryKey: ['experts-catalog'],
+    queryFn: async () => {
+      const data = await apiGetJson('/v1/experts/catalog');
+      return ExpertCatalogResponseSchema.parse(data);
+    },
+    staleTime: 60_000 * 30,
+  });
+
   const saveMutation = useMutation({
     mutationFn: async (payload: ReplayPayload) => {
       if (!id) return;
@@ -90,6 +113,17 @@ export default function OutcomeReplayDetailScreen() {
   });
 
   const replay = replayQuery.data;
+  const decision = decisionQuery.data;
+  const catalogById = React.useMemo(() => {
+    const map = new Map<string, NonNullable<typeof catalogQuery.data>['experts'][number]>();
+    for (const row of catalogQuery.data?.experts ?? []) {
+      map.set(row.id, row);
+    }
+    return map;
+  }, [catalogQuery.data]);
+  const perspectivesUsed = (decision?.expertIdsUsed ?? [])
+    .map((expertId) => catalogById.get(expertId))
+    .filter((row): row is NonNullable<typeof row> => !!row && row.id !== 'general-decision');
   const calibrationLabel =
     replay?.calibrationDelta != null ? replay.calibrationDelta.toFixed(2) : 'Not enough data';
 
@@ -134,6 +168,43 @@ export default function OutcomeReplayDetailScreen() {
             textMuted={surface.textMuted}
           />
         </View>
+
+        {perspectivesUsed.length > 0 ? (
+          <View
+            style={[
+              styles.insightFeedCard,
+              styles.insightCardShell,
+              { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder, gap: 10 },
+            ]}>
+            <Text style={[styles.insightCardTitle, { color: surface.textDisplay }]}>Perspectives used</Text>
+            <Text style={[styles.cardBody, { color: surface.textMuted, lineHeight: 18 }]}>
+              Specialist lenses that shaped this decision.
+            </Text>
+            <View style={localStyles.perspectiveRow}>
+              {perspectivesUsed.map((expert) => (
+                <View
+                  key={expert.id}
+                  style={[
+                    localStyles.perspectiveChip,
+                    {
+                      borderColor: `${expert.color}33`,
+                      backgroundColor: surface.canvas,
+                    },
+                  ]}>
+                  <ExpertGlyph expert={expert} fallbackColor={semantic.actionAffirm} size={28} />
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text style={[localStyles.perspectiveChipTitle, { color: surface.textDisplay }]} numberOfLines={1}>
+                      {expert.title}
+                    </Text>
+                    <Text style={[localStyles.perspectiveChipFramework, { color: expert.color }]} numberOfLines={1}>
+                      {expert.frameworkLabel}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          </View>
+        ) : null}
 
         <View
           style={[
@@ -212,6 +283,27 @@ const localStyles = StyleSheet.create({
   fieldRow: {
     gap: 2,
     marginTop: 4,
+  },
+  perspectiveRow: {
+    gap: 8,
+  },
+  perspectiveChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.md,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+  perspectiveChipTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  perspectiveChipFramework: {
+    fontSize: 11,
+    fontWeight: '600',
+    marginTop: 1,
   },
   input: {
     borderWidth: StyleSheet.hairlineWidth,

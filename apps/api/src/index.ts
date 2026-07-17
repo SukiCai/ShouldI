@@ -17,6 +17,8 @@ import {
   OutcomeReplaySchema,
   ProductEventBatchSchema,
   ProductEventSchema,
+  ExpertCatalogResponseSchema,
+  ViewerExpertsResponseSchema,
   ViewerMeResponseSchema,
 } from '@shouldi/contracts';
 import type { DecideInterviewFinalDecision } from '@shouldi/contracts';
@@ -47,6 +49,13 @@ import {
   upsertOutcomeActual,
   upsertOutcomePrediction,
 } from './decision-lifecycle.js';
+import {
+  expertCatalogResponse,
+  getUserExpert,
+  markExpertsApplied,
+  resolveUserIdFromAuth,
+  viewerExpertsResponse,
+} from './expert-discovery.js';
 
 const app = new Hono();
 
@@ -60,6 +69,22 @@ app.get('/health', (c) =>
     service: 'shouldi-gateway',
   }),
 );
+
+app.get('/v1/me/experts', (c) => {
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
+  return c.json(viewerExpertsResponse(userId));
+});
+
+app.get('/v1/me/experts/:id', (c) => {
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
+  const expert = getUserExpert(userId, c.req.param('id'));
+  if (!expert) return c.json({ error: 'NOT_FOUND' }, 404);
+  return c.json(expert);
+});
+
+app.get('/v1/experts/catalog', (c) => {
+  return c.json(ExpertCatalogResponseSchema.parse(expertCatalogResponse()));
+});
 
 app.get('/v1/me', (c) => {
   const auth = c.req.header('authorization');
@@ -170,22 +195,37 @@ app.post('/v1/harmence/interview/turn', async (c) => {
     return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
   }
   try {
+    const userId = resolveUserIdFromAuth(c.req.header('authorization'));
     const res = await handleInterviewTurn(
       parsed.data.sessionId ?? null,
       parsed.data.userText ?? '',
       parsed.data.selectedOptionId,
       parsed.data.mode,
       parsed.data.councilUnlock,
+      userId,
     );
     const enriched = { ...res } as typeof res & { decisionRecordId?: string; decisionLens?: unknown };
     if (res.isComplete && res.finalDecision) {
       const finalDecision = res.finalDecision as DecideInterviewFinalDecision;
       const questionFromUser =
         res.bubbles.find((bubble) => bubble.role === 'user' && bubble.text.trim().length > 0)?.text ?? 'Important decision';
+      const expertIdsUsed = [
+        ...new Set([
+          ...res.activeExperts.map((expert) => expert.id),
+          ...finalDecision.expertVerdicts.map((verdict) => verdict.expertId),
+        ]),
+      ].filter((id) => id !== 'general-decision');
       const created = createDecisionRecordFromFinalDecision({
         sessionId: res.sessionId,
         question: questionFromUser,
         finalDecision,
+        expertIdsUsed,
+      });
+      markExpertsApplied({
+        userId,
+        sessionId: res.sessionId,
+        expertIds: expertIdsUsed,
+        decisionRecordId: created.record.id,
       });
       enriched.decisionRecordId = created.record.id;
       enriched.decisionLens = created.lens;

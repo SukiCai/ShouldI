@@ -53,6 +53,7 @@ import {
   type DecideInterviewChoicePrompt,
   type DecideInterviewExpert,
   type DecideInterviewFinalDecision,
+  type DiscoveredExpert,
 } from '@shouldi/contracts';
 
 import { CouncilPaywallSheet } from './components/CouncilPaywallSheet';
@@ -65,6 +66,7 @@ import {
   ExpertGlyph,
   ThinkingRow,
 } from './components/DecideThreadParts';
+import { ExpertDiscoverySheet } from './components/ExpertDiscoverySheet';
 import { ExpertRosterSheet } from './components/ExpertRosterSheet';
 import {
   appendExpertJoinRows,
@@ -177,6 +179,9 @@ export default function DecideCategoryScreen() {
   const [expertsOpen, setExpertsOpen] = React.useState(false);
   const [almostReady, setAlmostReady] = React.useState(false);
   const [councilPaywallOpen, setCouncilPaywallOpen] = React.useState(false);
+  const [discoveryOpen, setDiscoveryOpen] = React.useState(false);
+  const [expertDiscoveries, setExpertDiscoveries] = React.useState<DiscoveredExpert[]>([]);
+  const [discoveryJoinContext, setDiscoveryJoinContext] = React.useState<string | undefined>(undefined);
   const modeRef = React.useRef(mode);
   modeRef.current = mode;
   const councilUnlockRef = React.useRef<CouncilUnlockMethod | null>(null);
@@ -346,14 +351,29 @@ export default function DecideCategoryScreen() {
       setHermesIntegrated(parsed.hermesIntegrated);
       setActiveExperts(parsed.activeExperts ?? []);
       const newlyJoined = parsed.newlyActivatedExperts ?? [];
+      const turnDiscoveries = parsed.expertDiscoveries ?? [];
       if (newlyJoined.length > 0) {
         setRecentJoinExpertIds(new Set(newlyJoined.map((expert) => expert.id)));
         if (modeRef.current === 'complex' && Platform.OS !== 'web') {
           void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
         }
       }
+      if (turnDiscoveries.length > 0) {
+        setExpertDiscoveries(turnDiscoveries);
+        setDiscoveryOpen(true);
+        if (Platform.OS !== 'web') {
+          void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+        }
+      }
       setMessages((prev) => {
         let merged = mergeDeduped(prev, parsed.bubbles);
+        const lastUser = [...merged].filter((message) => message.role === 'user').at(-1);
+        if (turnDiscoveries.length > 0) {
+          const signal = lastUser?.text?.trim();
+          setDiscoveryJoinContext(
+            signal && signal.length > 48 ? `${signal.slice(0, 48).trim()}…` : signal || undefined,
+          );
+        }
         if (parsed.choicePrompt) {
           const headline = choicePromptHeadline(parsed.choicePrompt);
           for (let i = merged.length - 1; i >= 0; i -= 1) {
@@ -371,7 +391,6 @@ export default function DecideCategoryScreen() {
           }
         }
         if (newlyJoined.length > 0) {
-          const lastUser = [...merged].filter((message) => message.role === 'user').at(-1);
           const anchorAt = joinAnchorAt(merged);
           const contextByExpertId = new Map(
             newlyJoined.map((expert) => [
@@ -1452,6 +1471,25 @@ export default function DecideCategoryScreen() {
         onActivateCouncilMode={activateCouncilMode}
         grantDevPoints={grantDevPoints}
         activatePremium={activatePremium}
+      />
+
+      <ExpertDiscoverySheet
+        visible={discoveryOpen}
+        onClose={() => {
+          setDiscoveryOpen(false);
+          setExpertDiscoveries([]);
+          setDiscoveryJoinContext(undefined);
+        }}
+        discoveries={expertDiscoveries}
+        backgroundColor={colors.modalBg}
+        borderTopColor={colors.composerBorder}
+        bottomInset={bottomPad}
+        grabColor={isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22)}
+        isDark={isDark}
+        primaryTxt={colors.primaryTxt}
+        muted={colors.muted}
+        composerBorder={colors.composerBorder}
+        joinContext={discoveryJoinContext}
       />
 
     </KeyboardAvoidingView>

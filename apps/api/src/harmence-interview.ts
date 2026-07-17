@@ -41,6 +41,10 @@ import {
   type HarmenceExpert,
 } from './harmence-experts.js';
 import {
+  discoveredExpertIdsForUser,
+  recordExpertDiscoveries,
+} from './expert-discovery.js';
+import {
   hermesChatCompletion,
   isHermesAgentLive,
 } from './hermes-client.js';
@@ -206,6 +210,7 @@ type PsychProfile = {
 
 type Session = {
   id: string;
+  userId?: string;
   bubbles: DecideInterviewBubble[];
   answers: InterviewAnswer[];
   playbookId?: string;
@@ -1001,10 +1006,17 @@ async function askHermesForNextChoice(
   };
 }
 
+function viewerUserId(session: Session): string {
+  return session.userId ?? 'anonymous-local';
+}
+
 function expertsForSession(session: Session): HarmenceExpert[] {
   const experts = session.activeExpertIds.map((id) => expertById(id)).filter((x): x is HarmenceExpert => !!x);
   if (experts.length > 0) return experts;
-  return selectExpertsFromText(initialQuestionFor(session) || collectedSummary(session));
+  return selectExpertsFromText(
+    initialQuestionFor(session) || collectedSummary(session),
+    discoveredExpertIdsForUser(viewerUserId(session)),
+  );
 }
 
 function expertBubbleMeta(
@@ -1169,7 +1181,7 @@ async function routeExpertsForTurn(
   hermesIntegrated: boolean,
 ): Promise<{ activeExperts: HarmenceExpert[]; newlyActivatedExperts: HarmenceExpert[] }> {
   const baseText = [initialQuestionFor(session), collectedSummary(session), latestText].filter(Boolean).join('\n');
-  const deterministic = selectExpertsFromText(baseText);
+  const deterministic = selectExpertsFromText(baseText, discoveredExpertIdsForUser(viewerUserId(session)));
   let requested = deterministic;
 
   if (hermesIntegrated) {
@@ -2224,6 +2236,7 @@ export async function handleInterviewTurn(
   selectedOptionId?: string,
   requestedMode?: 'single' | 'complex',
   councilUnlock?: 'premium' | 'points',
+  userId?: string | null,
 ): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
   let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
@@ -2240,6 +2253,7 @@ export async function handleInterviewTurn(
     }
     session = {
       id: randomUUID(),
+      userId: userId ?? 'anonymous-local',
       bubbles: [],
       answers: [],
       activeExpertIds: [],
@@ -2254,6 +2268,7 @@ export async function handleInterviewTurn(
   }
 
   session.updatedAt = Date.now();
+  if (userId && !session.userId) session.userId = userId;
   // Backward-compat: sessions created before mode/smartTalkState were added
   if (!session.mode) session.mode = 'single';
   if (!session.smartTalkState) session.smartTalkState = defaultSmartTalkState();
@@ -2269,6 +2284,7 @@ export async function handleInterviewTurn(
       mode: session.mode,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
     });
   }
@@ -2286,6 +2302,7 @@ export async function handleInterviewTurn(
       ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
       choicePrompt: session.lastPrompt,
     });
@@ -2303,6 +2320,7 @@ export async function handleInterviewTurn(
       ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
       choicePrompt: session.lastPrompt,
     });
@@ -2319,7 +2337,7 @@ export async function handleInterviewTurn(
     session.bubbles.push(bubble('user', userText));
     // Lock domain skills for smart_talk on the first real message
     if (session.activeExpertIds.length === 0) {
-      const matched = selectExpertsFromText(userText);
+      const matched = selectExpertsFromText(userText, discoveredExpertIdsForUser(viewerUserId(session)));
       if (session.mode === 'single') {
         const top = matched[0];
         session.activeExpertIds = top ? [top.id] : ['general-decision'];
@@ -2436,6 +2454,15 @@ export async function handleInterviewTurn(
 
   const clientBubbles = sanitizeBubblesForClient(session);
 
+  const discoveryExperts = newlyActivatedExperts
+    .map((expert) => expertById(expert.id))
+    .filter((expert): expert is HarmenceExpert => !!expert);
+  const expertDiscoveries = recordExpertDiscoveries({
+    userId: viewerUserId(session),
+    sessionId: session.id,
+    experts: discoveryExperts,
+  });
+
   return DecideInterviewTurnResponseSchema.parse({
     sessionId: session.id,
     bubbles: clientBubbles.slice(-2),
@@ -2446,6 +2473,7 @@ export async function handleInterviewTurn(
     ambiguity: session.smartTalkState.ambiguity,
     activeExperts,
     newlyActivatedExperts,
+    expertDiscoveries,
     suggestedDraftHints,
     choicePrompt,
     finalDecision,

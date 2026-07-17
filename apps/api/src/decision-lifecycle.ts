@@ -49,12 +49,17 @@ export function createDecisionRecordFromFinalDecision(params: {
   question: string;
   category?: DecisionRecord['category'];
   finalDecision: DecideInterviewFinalDecision;
+  expertIdsUsed?: string[];
 }): { record: DecisionRecord; lens: DecisionLens } {
   const id = newId('dec');
   const ts = nowTs();
   const confidenceScore =
     params.finalDecision.confidenceScore ??
     (params.finalDecision.confidence === 'high' ? 80 : params.finalDecision.confidence === 'low' ? 45 : 65);
+  const expertIdsFromVerdicts = params.finalDecision.expertVerdicts.map((v) => v.expertId);
+  const expertIdsUsed = [
+    ...new Set([...(params.expertIdsUsed ?? []), ...expertIdsFromVerdicts]),
+  ].filter((id) => id !== 'general-decision');
   const record: DecisionRecord = {
     id,
     sessionId: params.sessionId ?? null,
@@ -64,6 +69,7 @@ export function createDecisionRecordFromFinalDecision(params: {
     rationale: params.finalDecision.rationale,
     confidenceScore,
     tradeoffs: params.finalDecision.reflection?.concerns ?? [],
+    expertIdsUsed,
     committedAction: params.finalDecision.nextSteps[0],
     createdAt: ts,
     updatedAt: ts,
