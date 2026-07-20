@@ -30,6 +30,25 @@ def score_bar(score: int, width: int = 20) -> str:
     return "█" * filled + "░" * (width - filled)
 
 
+def check_location_precheck(skill_content: str, config: dict) -> dict:
+    """Deterministic (non-LLM) gate: if this skill is marked as needing a location
+    precheck, the built SKILL.md must actually contain both the frontmatter flag
+    and the Step 0 section. This catches drift that an LLM rubric score can miss —
+    e.g. a regeneration that silently dropped the section.
+    """
+    required = bool(config.get("requires_location_precheck", False))
+    if not required:
+        return {"required": False, "ok": True, "issues": []}
+
+    issues = []
+    if "requires_location_precheck: true" not in skill_content:
+        issues.append("config.yaml sets requires_location_precheck: true but SKILL.md frontmatter is missing 'requires_location_precheck: true'")
+    if "## Step 0: Location Diagnosis" not in skill_content:
+        issues.append("Missing '## Step 0: Location Diagnosis' section required for skills with country-specific advice")
+
+    return {"required": True, "ok": len(issues) == 0, "issues": issues}
+
+
 def evaluate_skill(skill_dir: Path, config: dict, model: str) -> dict:
     skill_path = skill_dir / "skill" / "SKILL.md"
     if not skill_path.exists():
@@ -57,6 +76,8 @@ def evaluate_skill(skill_dir: Path, config: dict, model: str) -> dict:
         print(f"[error] JSON parse failed: {e}")
         print(f"Raw output (first 400 chars): {raw[:400]}")
         sys.exit(1)
+
+    result["location_precheck"] = check_location_precheck(skill_content, config)
 
     return result
 
@@ -115,6 +136,13 @@ def format_report(result: dict) -> str:
         for item in result["missing_coverage"]:
             lines.append(f"    • {item}")
 
+    precheck = result.get("location_precheck")
+    if precheck and precheck.get("required"):
+        status = "✓ PASS" if precheck.get("ok") else "✗ FAIL"
+        lines.append(f"\n  Location Precheck Gate: {status}")
+        for item in precheck.get("issues", []):
+            lines.append(f"    • {item}")
+
     lines.append("")
     return "\n".join(lines)
 
@@ -150,16 +178,23 @@ def main() -> None:
         if not skill_dirs:
             sys.exit("No skills with SKILL.md found.")
         print(f"\nEvaluating {len(skill_dirs)} skill(s)...\n")
+        gate_failures: list[str] = []
         for sd in sorted(skill_dirs):
             try:
                 config = load_config(sd)
                 result = evaluate_skill(sd, config, args.model)
                 print_report(result)
+                precheck = result.get("location_precheck") or {}
+                if precheck.get("required") and not precheck.get("ok"):
+                    gate_failures.append(sd.name)
                 if not args.no_save:
                     report_path = save_report(sd, result)
                     print(f"  Report saved → {report_path.relative_to(sd.parent.parent)} (+ .txt)\n")
             except SystemExit:
                 print(f"  [skip] {sd.name} — evaluation failed\n")
+        if gate_failures:
+            print(f"\n[location precheck gate] FAILED for: {', '.join(gate_failures)}")
+            sys.exit(1)
         return
 
     if not args.skill:
@@ -177,6 +212,11 @@ def main() -> None:
     if not args.no_save:
         report_path = save_report(skill_dir, result)
         print(f"Report saved → {report_path.relative_to(skill_dir.parent.parent)} (+ .txt)")
+
+    precheck = result.get("location_precheck") or {}
+    if precheck.get("required") and not precheck.get("ok"):
+        print(f"\n[location precheck gate] FAILED for: {args.skill}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

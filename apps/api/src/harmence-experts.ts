@@ -4,6 +4,14 @@ export type HarmenceExpert = DecideInterviewExpert & {
   priority: number;
   triggerPatterns: RegExp[];
   activationInstruction: string;
+  /**
+   * Skills with country-differentiated content (US/Canada legal frameworks,
+   * salary benchmarks, immigration mechanics). Keep this in sync with
+   * `requires_location_precheck` in the matching skill-builder config.yaml —
+   * run hermes-agent-private/skill-builder/scripts/check_location_sync.py
+   * after changing either side.
+   */
+  requiresLocationPrecheck?: boolean;
 };
 
 export const HARMENCE_EXPERTS: HarmenceExpert[] = [
@@ -30,6 +38,7 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     triggerPatterns: [/\bco-?op\b/i, /\bintern(ship)?\b/i, /\boffer\b/i, /\bplacement\b/i],
     activationInstruction:
       'Use the intl-job-search skill to evaluate co-op/internship offer quality, employer signal, recruiting timeline, sponsorship execution, and realistic alternatives.',
+    requiresLocationPrecheck: true,
   },
   {
     id: 'intl-student',
@@ -53,6 +62,7 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     ],
     activationInstruction:
       'Use the intl-student-advisor skill. Diagnose country, current status, target country, timeline, work authorization, and immigration-security trade-offs before making career recommendations.',
+    requiresLocationPrecheck: true,
   },
   {
     id: 'stay-or-return',
@@ -72,6 +82,7 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     ],
     activationInstruction:
       'Use the stay-or-return skill. Frame as a 10-year compounding question across career, financial, immigration, and relational dimensions — not a current-conditions comparison. Diagnose visa category and realistic GC timeline, actual savings rate, entrepreneurship intent, and whether the conclusion is driven by analysis or fear of failure.',
+    requiresLocationPrecheck: true,
   },
   {
     id: 'pm-career',
@@ -84,6 +95,29 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     triggerPatterns: [/\bPM\b/i, /\bproduct manager\b/i, /\bpromotion\b/i, /\bscope\b/i, /\bMBA\b/i],
     activationInstruction:
       'Use the pm-career-expert skill to evaluate scope, title, career growth, org ceiling vs skill gap, and long-term compounding.',
+    requiresLocationPrecheck: true,
+  },
+  {
+    id: 'salary-negotiation',
+    title: 'Salary Negotiation Expert',
+    subtitle: 'Offer comp, equity, competing-offer leverage',
+    skillName: 'salary-negotiation',
+    icon: 'cash-outline',
+    color: '#EAB308',
+    priority: 75,
+    triggerPatterns: [
+      /\bnegotiat/i,
+      /\bexploding offer\b/i,
+      /\bcompeting offer\b/i,
+      /\bsigning bonus\b/i,
+      /\bRSU\b/,
+      /\bequity\b/i,
+      /\bbase salary\b/i,
+      /\bcompensation\b/i,
+    ],
+    activationInstruction:
+      'Use the salary-negotiation skill to evaluate total compensation structure, competing-offer leverage, equity valuation, exploding-offer handling, and level placement strategy.',
+    requiresLocationPrecheck: true,
   },
   {
     id: 'grad-school',
@@ -106,6 +140,7 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     ],
     activationInstruction:
       'Use the grad-school-advisor skill. Never give program advice before establishing research clarity, citizenship/immigration status, target geography, and funding structure. Evaluate at the advisor level, not program rank. For international students, model STEM OPT eligibility and PhD-as-immigration-runway explicitly.',
+    requiresLocationPrecheck: true,
   },
   {
     id: 'relationship',

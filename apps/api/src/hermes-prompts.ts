@@ -106,6 +106,21 @@ Rules:
 - If unclear, pick the best default expert from the catalog.`;
 
 
+/**
+ * Injected by harmence-interview.ts as its own leading block (not buried among
+ * other rules) when an active domain skill has requiresLocationPrecheck: true
+ * and the session has no answer recorded for promptId "location_precheck" yet.
+ * See HarmenceExpert.requiresLocationPrecheck in harmence-experts.ts and
+ * hermes-agent-private/skill-builder/SKILL_BUILDER_WORKFLOW.md §7b.
+ */
+export const LOCATION_PRECHECK_FORCE_PROMPT = `MANDATORY FIRST STEP — LOCATION UNKNOWN
+This session has NOT yet established the user's country/location, and at least one active domain skill requires it before giving country-specific advice. Your ONLY choicePrompt this turn MUST be the location question — do not ask anything else, do not skip it, do not infer location from earlier free text.
+Use exactly this shape for choicePrompt:
+  "id": "location_precheck"
+  "question": "Which country are you currently in / studying / working in?"
+  "options": four options covering US, Canada, Other, and Haven't arrived yet (label/description up to you, but keep exactly four options and this coverage)
+Do NOT ask about visa/immigration status in the same question — country must be confirmed first. Set readyForFinal to false this turn.`;
+
 export const CHALLENGE_MODE_INSTRUCTIONS: Record<string, string> = {
   contrarian:
     'CHALLENGE MODE — CONTRARIAN: This round, challenge one assumption the user seems to take as fixed. Ask whether that constraint can actually be changed.',
@@ -117,7 +132,7 @@ export const CHALLENGE_MODE_INSTRUCTIONS: Record<string, string> = {
 
 export const HARMENCE_SMART_TALK_DRIVER_PROMPT = `You are Harmence. First call skill_view('smart_talk') to load the full 4D interview framework, then follow its Steps A→C→C.5→D→E procedure exactly.
 
-OUTPUT OVERRIDE: Do not call clarify() or smart_talk_state(). State is provided by the caller each turn. Instead return ONLY valid JSON, no markdown fences.
+{LOCATION_PRECHECK}OUTPUT OVERRIDE: Do not call clarify() or smart_talk_state(). State is provided by the caller each turn. Instead return ONLY valid JSON, no markdown fences.
 
 Available domain skills for Step C.5:
 {AVAILABLE_SKILLS}
@@ -146,8 +161,7 @@ Shape:
 }
 
 ShouldI overrides (take precedence over skill defaults):
-- Set readyForFinal: true when all dimension scores ≥ 0.60 or answer count ≥ 10.
-- Location pre-check (mandatory, runs before Step C): if intl-student-advisor, stay-or-return, grad-school-advisor, pm-career-expert, salary-negotiation, or intl-job-search is in the available domain skills AND no country or location has been established in collected answers → the FIRST question must be ONLY "which country are you currently in / studying / working in?" with options [US, Canada, Other, Haven't arrived yet]. Do NOT ask about visa/immigration status in the same question — country must be confirmed first. Skip this pre-check once country is established.
+- Set readyForFinal: true when all dimension scores ≥ 0.80 or answer count ≥ 10.
 - Option coherence (mandatory): Every option you generate must be consistent with facts already established in collected answers. Never include options that contradict the user's stated situation. Examples: do NOT include "return offer" or "meet minimum time for return offer" options if the user has confirmed they are a full-time employee (return offers are for interns/co-ops only); do NOT include co-op or internship eligibility options for users who have confirmed they are not students. When in CHALLENGE MODE, challenge assumptions — not the user's established facts.
 - ${LANGUAGE_RULE}`;
 

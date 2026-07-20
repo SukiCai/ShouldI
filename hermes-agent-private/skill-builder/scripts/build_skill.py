@@ -27,6 +27,15 @@ REPO_ROOT = Path(__file__).parent.parent.parent  # hermes-base-agent/
 # Prevents prompt from exceeding the 1M-token context limit.
 MAX_INSIGHTS_PER_CATEGORY = 40
 
+# Inserted into build_skill.txt (single-country template) only when
+# config.yaml sets requires_location_precheck: true. The multicountry
+# template already hardcodes an equivalent Step 0 unconditionally.
+LOCATION_PRECHECK_INSTRUCTION = """## Step 0: Location Diagnosis — Always Run First
+
+[Before any other step, list the 3–5 questions needed to establish the user's country/location and any jurisdiction-specific facts (state/province, status, target country) that change which version of the advice applies. Pull these from the extracted insights' region-scoped content where available. State explicitly: do NOT give location-specific advice until this is established.]
+
+"""
+
 
 def _cap_insights(data: dict, max_per_cat: int = MAX_INSIGHTS_PER_CATEGORY) -> dict:
     """Recursively cap insight lists so the prompt stays within context limits."""
@@ -77,6 +86,9 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
 
     prompt_file = "build_skill_multicountry.txt" if countries else "build_skill.txt"
 
+    requires_location_precheck = bool(config.get("requires_location_precheck", False))
+    location_precheck_instruction = LOCATION_PRECHECK_INSTRUCTION if requires_location_precheck else ""
+
     # For multicountry skills, pass the country-indexed view to give the model structured input
     insights_payload = merged.get("_country_index", merged) if countries else merged
     insights_payload = _cap_insights(insights_payload)
@@ -104,6 +116,8 @@ def build_skill(skill_dir: Path, config: dict, model: str) -> str:
         .replace("{{tags}}", ", ".join(config.get("tags", [])))
         .replace("{{source_count}}", str(source_count))
         .replace("{{countries_list}}", countries_list)
+        .replace("{{requires_location_precheck}}", "true" if requires_location_precheck else "false")
+        .replace("{{location_precheck_instruction}}", location_precheck_instruction)
         .replace("{{merged_insights_json}}", json.dumps(insights_payload, indent=2, ensure_ascii=False))
         .replace("{{community_insights_json}}", community_json)
         .replace("{{has_community}}", "true" if has_community else "false")

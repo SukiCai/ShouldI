@@ -45,6 +45,7 @@ import {
   HARMENCE_PSYCH_ANALYST_PROMPT,
   HARMENCE_SMART_TALK_DRIVER_PROMPT,
   HARMENCE_SMART_TALK_SYNTHESIS_PROMPT,
+  LOCATION_PRECHECK_FORCE_PROMPT,
 } from './hermes-prompts.js';
 
 type OfferContext = {
@@ -610,20 +611,66 @@ async function hermesIntegratedFlag(): Promise<boolean> {
   return isHermesAgentLive();
 }
 
-function extractJsonObject(text: string): unknown | null {
-  const trimmed = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
-  try {
-    return JSON.parse(trimmed);
-  } catch {
-    const start = trimmed.indexOf('{');
-    const end = trimmed.lastIndexOf('}');
-    if (start === -1 || end === -1 || end <= start) return null;
-    try {
-      return JSON.parse(trimmed.slice(start, end + 1));
-    } catch {
-      return null;
+/**
+ * LLMs frequently emit multi-paragraph string values with literal newlines/tabs
+ * instead of escaped \n/\t, which is invalid JSON and makes JSON.parse throw
+ * even though the structure is otherwise well-formed. Walk the text tracking
+ * whether we're inside a quoted string (respecting backslash escapes) and
+ * escape raw control characters found there before re-attempting parse.
+ */
+function escapeRawControlCharsInStrings(text: string): string {
+  let result = '';
+  let inString = false;
+  let escaped = false;
+  for (const ch of text) {
+    if (inString) {
+      if (escaped) {
+        result += ch;
+        escaped = false;
+      } else if (ch === '\\') {
+        result += ch;
+        escaped = true;
+      } else if (ch === '"') {
+        inString = false;
+        result += ch;
+      } else if (ch === '\n') {
+        result += '\\n';
+      } else if (ch === '\r') {
+        result += '\\r';
+      } else if (ch === '\t') {
+        result += '\\t';
+      } else {
+        result += ch;
+      }
+    } else {
+      if (ch === '"') inString = true;
+      result += ch;
     }
   }
+  return result;
+}
+
+function extractJsonObject(text: string): unknown | null {
+  const trimmed = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+  const start = trimmed.indexOf('{');
+  const end = trimmed.lastIndexOf('}');
+  const candidates = [trimmed];
+  if (start !== -1 && end !== -1 && end > start) {
+    candidates.push(trimmed.slice(start, end + 1));
+  }
+  for (const candidate of candidates) {
+    try {
+      return JSON.parse(candidate);
+    } catch {
+      // fall through to the repair attempt below
+    }
+    try {
+      return JSON.parse(escapeRawControlCharsInStrings(candidate));
+    } catch {
+      // try the next candidate, if any
+    }
+  }
+  return null;
 }
 
 function collectedSummary(session: Session): string {
@@ -1301,16 +1348,26 @@ async function runPsychAnalysis(session: Session): Promise<void> {
   }
 }
 
+// Deterministic — not inferred from free-text answers. Set the instant the
+// user answers the code-forced location_precheck choicePrompt (see
+// LOCATION_PRECHECK_FORCE_PROMPT and needsLocationPrecheck below).
+function sessionLocationEstablished(session: Session): boolean {
+  return session.answers.some((a) => a.promptId === 'location_precheck');
+}
+
 function buildSmartTalkDriverPrompt(
   availableSkills: HarmenceExpert[],
   challengeMode: ReturnType<typeof buildChallengeInstruction>,
   psychProfile?: PsychProfile,
+  needsLocationPrecheck?: boolean,
 ): string {
   const skillsList = formatAvailableSkillsForPrompt(availableSkills);
   const challengeInstruction = challengeMode ? (CHALLENGE_MODE_INSTRUCTIONS[challengeMode] ?? '') : '';
+  const locationPrecheck = needsLocationPrecheck ? `${LOCATION_PRECHECK_FORCE_PROMPT}\n\n` : '';
   let prompt = HARMENCE_SMART_TALK_DRIVER_PROMPT
     .replace('{AVAILABLE_SKILLS}', skillsList)
-    .replace('{CHALLENGE_MODE}', challengeInstruction);
+    .replace('{CHALLENGE_MODE}', challengeInstruction)
+    .replace('{LOCATION_PRECHECK}', locationPrecheck);
   if (psychProfile) {
     prompt += buildPsychProfileSection(psychProfile);
   }
@@ -1349,7 +1406,14 @@ async function askSmartTalkForNextChoice(
   }
 
   const challengeMode = buildChallengeInstruction(session.smartTalkState);
-  const systemPrompt = buildSmartTalkDriverPrompt(activeExperts, challengeMode, session.psychProfile);
+  const needsLocationPrecheck =
+    activeExperts.some((e) => e.requiresLocationPrecheck) && !sessionLocationEstablished(session);
+  const systemPrompt = buildSmartTalkDriverPrompt(
+    activeExperts,
+    challengeMode,
+    session.psychProfile,
+    needsLocationPrecheck,
+  );
   const answerCount = session.answers.filter((a) => a.promptId !== 'initial_question').length;
 
   const result = await hermesChatCompletion({

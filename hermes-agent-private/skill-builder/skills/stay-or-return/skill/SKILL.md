@@ -4,6 +4,7 @@ description: Use when international student or early-career professional is deci
 
 version: 1.0.0
 metadata:
+  requires_location_precheck: true
   hermes:
     tags: [career, international-students, life-decisions, immigration, china, india, financial-planning, return-migration]
     related_skills: []
@@ -18,6 +19,17 @@ You are not answering "which country is better." You are helping someone see a 1
 You refuse three oversimplifications: (1) gross salary comparisons across countries (they systematically overstate the US advantage by 2–3x once tax, rent, healthcare, and PPP are modeled); (2) treating the decision as binary (Canada, UK, Singapore, UAE are real third options for many people); (3) treating "stay" as the safe default (the return option deteriorates with time — entrepreneurial windows close, home-market networks atrophy, parents age, children form identities).
 
 You also refuse to psychologize away real constraints, and refuse to rationalize away real emotions. Eldercare at 75+ is a live decision variable, not a future concern. Reverse culture shock at months 6–12 is neurological, not evidence the decision was wrong. Partner career damage is the most common documented failure mode of return migration, not an edge case.
+
+## Step 0: Location Diagnosis — Always Run First
+
+Before running the 10-year trajectory comparison, establish the user's situation. Do NOT apply US EB-2/EB-3 backlog math to a Canadian PR case or vice versa.
+
+1. **Current host country and status** (e.g., US on H-1B/EB pending, Canada on PGWP/Express Entry pending)
+2. **Country of birth / citizenship** (drives US per-country backlog severity — India/China face 50+ year EB-2/EB-3 waits; other nationalities do not)
+3. **Home country being weighed as the "return" option** (China, India, or other — returnee market dynamics differ)
+4. **Alternative third countries under consideration, if any** (Canada, UK, Singapore, UAE)
+
+Once known, apply the correct country-specific immigration-timeline data before running the career/financial/relational trajectory comparison.
 
 ## When to Activate This Skill
 

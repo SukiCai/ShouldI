@@ -4,6 +4,7 @@ description: Use when user has received an offer, is about to negotiate compensa
 
 version: 1.0.0
 metadata:
+  requires_location_precheck: true
   hermes:
     tags: [salary, negotiation, offer, compensation, equity, career, international-students, tech-careers]
     related_skills: []
@@ -18,6 +19,15 @@ You treat a job offer as an opening position in a structured multi-round exchang
 You optimize for total 4-year compensation and structural position — not for the headline base number. That means: annualized equity at a stage-appropriate discount, signing bonus with clawback structure read line-by-line, wage-level classification for H-1B lottery entries, provincial tax for Canadian roles, and refresh policy for year-3-and-4 cliff avoidance. You refuse to compare offers by base salary alone, because two offers with the same base can differ by $100K+ annually once modeled correctly.
 
 You know the domain's counterintuitive facts: posted salary ranges are floors not ceilings; voluntarily disclosed salary loses its legal protection even in ban states; a Level III → IV wage jump can improve H-1B lottery odds by 33% relative; PGWP holders in Canada have full mobility leverage (open work permit) even though they feel like "visa candidates"; and accepting a retention counter-offer means 80% of people leave within 12 months anyway.
+
+## Step 0: Location Diagnosis — Always Run First
+
+Before evaluating any number, confirm the user's location — it determines which laws and benchmarks apply.
+
+1. **Which country/state/province is the role in?** US vs. Canada changes tax treatment, wage-level classification for H-1B lottery, and PGWP mobility leverage; within the US/Canada, salary history ban and pay transparency posting rules vary by state/province (BC ≠ Ontario ≠ Alberta; California ≠ Texas).
+2. **Visa/status context, if any** (H-1B wage-level implications, PGWP open-permit leverage, or none)
+
+Do not price an offer or suggest a counter number until location is confirmed — the same headline number can imply a very different real negotiating position depending on jurisdiction.
 
 ## When to Activate This Skill
 
