@@ -1,13 +1,17 @@
-import { palette } from '@/constants/theme';
+import { palette, semantic, themeSurface, typography } from '@/constants/theme';
 import { GATEWAY_ORIGIN } from '@/lib/api';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text } from '@/components/Themed';
+import { Button, Card, Chip, EmptyState, TextField } from '@/components/ui';
+import { Body, Caption, Eyebrow, Title } from '@/components/ui/AppText';
+import { useColorScheme } from '@/components/useColorScheme';
 
 export default function ModalScreen() {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   const [ping, setPing] = React.useState<{ ok: boolean | null; ms: number | null; detail?: string }>({
     ok: null,
     ms: null,
@@ -33,30 +37,63 @@ export default function ModalScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.scroll}>
+    <ScrollView
+      contentContainerStyle={[styles.scroll, { backgroundColor: surface.canvas }]}
+      style={{ backgroundColor: surface.canvas }}>
       <View style={styles.container}>
-        <Text style={styles.title}>Diagnostics (dev)</Text>
+        <Text style={[styles.title, { color: surface.textPrimary }]}>Diagnostics (dev)</Text>
         <View style={styles.block}>
-          <Text style={styles.label}>API base (effective)</Text>
-          <Text style={styles.mono}>{GATEWAY_ORIGIN}</Text>
-          <Text style={styles.hint}>Override with EXPO_PUBLIC_API_URL in apps/mobile/.env.development.</Text>
+          <Text style={[styles.label, { color: surface.textMuted }]}>API base (effective)</Text>
+          <Text style={[styles.mono, { color: surface.textPrimary }]}>{GATEWAY_ORIGIN}</Text>
+          <Text style={[styles.hint, { color: surface.textMuted }]}>
+            Override with EXPO_PUBLIC_API_URL in apps/mobile/.env.development.
+          </Text>
         </View>
         <View style={styles.block}>
-          <Text style={styles.label}>Reachability</Text>
+          <Text style={[styles.label, { color: surface.textMuted }]}>Reachability</Text>
           <Pressable style={styles.button} onPress={() => void pingHealth()}>
             <Text style={styles.buttonText}>GET /health</Text>
           </Pressable>
           {ping.ms != null ? (
             <View style={{ marginTop: 8 }}>
-              <Text style={styles.mono}>{ping.detail ?? ''}</Text>
-              <Text style={styles.small}>{`${ping.ms} ms`}</Text>
+              <Text style={[styles.mono, { color: surface.textPrimary }]}>{ping.detail ?? ''}</Text>
+              <Text style={[styles.small, { color: surface.textMuted }]}>{`${ping.ms} ms`}</Text>
             </View>
           ) : null}
         </View>
-        <View style={styles.separator} />
+        <View style={[styles.separator, { backgroundColor: surface.hairline }]} />
+        <Text style={[styles.title, { color: surface.textPrimary, fontSize: 18 }]}>UI primitives (dev)</Text>
+        <View style={styles.gallery}>
+          <Eyebrow>Buttons</Eyebrow>
+          <Button label="Primary" onPress={() => undefined} style={styles.galleryItem} />
+          <Button label="Secondary" variant="secondary" onPress={() => undefined} style={styles.galleryItem} />
+          <Button label="Ghost" variant="ghost" onPress={() => undefined} style={styles.galleryItem} />
+          <Button label="Gradient" variant="gradient" onPress={() => undefined} style={styles.galleryItem} />
+          <Eyebrow style={{ marginTop: 12 }}>Chips & fields</Eyebrow>
+          <View style={styles.chipRow}>
+            <Chip>Option A</Chip>
+            <Chip selected>Selected</Chip>
+          </View>
+          <TextField label="Email" placeholder="you@example.com" containerStyle={styles.galleryItem} />
+          <Eyebrow style={{ marginTop: 12 }}>Cards</Eyebrow>
+          <Card style={styles.galleryItem}>
+            <Title>Surface card</Title>
+            <Body tone="muted">Standard grouped surface with rest elevation.</Body>
+          </Card>
+          <Card variant="council" style={styles.galleryItem}>
+            <Title>Council card</Title>
+            <Caption>Violet accent bar for Expert Council flows.</Caption>
+          </Card>
+          <EmptyState
+            title="Nothing here yet"
+            body="Shared empty state for Explore, Decide, and Outcome Replay."
+            actionLabel="Retry"
+            onAction={() => undefined}
+          />
+        </View>
+        <View style={[styles.separator, { backgroundColor: surface.hairline }]} />
         <EditScreenInfo path="app/modal.tsx" />
 
-        {/* Use a light status bar on iOS to account for the black space above the modal */}
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       </View>
     </ScrollView>
@@ -75,14 +112,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    ...typography.title,
     marginBottom: 16,
   },
   label: {
-    fontSize: 13,
+    ...typography.caption,
     fontWeight: '600',
-    opacity: 0.7,
     marginBottom: 4,
   },
   block: {
@@ -98,22 +133,33 @@ const styles = StyleSheet.create({
   hint: {
     marginTop: 8,
     fontSize: 12,
-    opacity: 0.6,
   },
   button: {
     alignSelf: 'flex-start',
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 6,
   },
   buttonText: { color: '#fff', fontWeight: '600' },
-  small: { fontSize: 11, opacity: 0.6, marginTop: 4 },
+  small: { fontSize: 11, marginTop: 4 },
   separator: {
     marginVertical: 20,
     height: 1,
-    backgroundColor: 'rgba(128,128,128,0.35)',
     width: '100%',
+  },
+  gallery: {
+    gap: 10,
+    marginBottom: 8,
+  },
+  galleryItem: {
+    marginTop: 4,
+  },
+  chipRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 4,
   },
 });

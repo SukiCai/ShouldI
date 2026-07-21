@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 # Builds and runs `@shouldi/api` only. Build from repo root:
 #   docker build -f apps/api/Dockerfile -t shouldi-api .
 FROM node:20-bookworm-slim AS builder
@@ -9,7 +10,8 @@ COPY apps/api/package.json apps/api/
 COPY apps/mobile/package.json apps/mobile/
 COPY packages/contracts/package.json packages/contracts/
 
-RUN npm ci -w @shouldi/api --include-workspace-root
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci -w @shouldi/api --include-workspace-root
 
 COPY packages/contracts/src packages/contracts/src
 COPY packages/contracts/tsconfig.json packages/contracts/tsconfig.json
@@ -31,7 +33,8 @@ COPY apps/api/package.json apps/api/
 COPY apps/mobile/package.json apps/mobile/
 COPY packages/contracts/package.json packages/contracts/
 
-RUN npm ci -w @shouldi/api --include-workspace-root --omit=dev
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci -w @shouldi/api --include-workspace-root --omit=dev
 
 COPY --from=builder /app/packages/contracts/dist packages/contracts/dist
 COPY --from=builder /app/apps/api/dist apps/api/dist

@@ -360,6 +360,47 @@ Run `check_location_sync.py` any time you add a skill, remove a skill, or flip e
 
 ---
 
+## 7c. Expert-Card / Collectible-Catalog Integration (Mandatory for All Expert Skills)
+
+The mobile app has a "collect experts / perspective lenses" feature: as a user's decision surfaces a domain expert, they *discover* that expert as a collectible "lens" shown on a card and grouped in the Profile → Perspectives collection. Every expert skill MUST carry the four catalog fields that drive this UI, on **both sides of the stack** — same two-sided, automated-gate pattern as §7b's location precheck.
+
+### The four fields (what they do)
+
+| Field | User-facing? | Purpose |
+|-------|-------------|---------|
+| `framework_id` | No | Internal lens key (e.g. `opportunity-cost`). Dedupe / grouping key; never rendered. |
+| `framework_label` | Yes | Human-readable lens name shown on the card (e.g. `Opportunity cost`). |
+| `discovery_blurb` | Yes | One-line pitch shown when the user discovers the expert (like a collectible card's back-of-card text). |
+| `lens_domain` | Indirectly | `career` \| `relationship` \| `general`. Drives the collection tabs. **`general` experts are NOT counted as collectible** (they are the default fallback, e.g. `general-decision`), so only use `general` for a true catch-all. |
+
+### The two sides (single source of truth on each side)
+
+1. **`config.yaml`** (skill-content side) — set all four:
+   ```yaml
+   framework_id: opportunity-cost
+   framework_label: Opportunity cost
+   discovery_blurb: "Compares this offer against realistic alternatives and recruiting windows—not just the logo."
+   lens_domain: career
+   ```
+   Authored alongside the skill. `framework_label` and `discovery_blurb` are user-visible copy — write them to sit next to the other experts' blurbs in tone (short, concrete, "what this lens sees that you might miss").
+
+2. **`apps/api/src/harmence-experts.ts`** (runtime side) — set the matching `HarmenceExpert` entry's `frameworkId` / `frameworkLabel` / `discoveryBlurb` / `lensDomain` to the **same values** (matched by `skillName` == the skill's `slug`). This is the copy the app actually ships. A missing field here fails `tsc`, so the silent-drift risk is a config.yaml value diverging from the shipped TS value.
+
+> **Not auto-generated.** Like `requiresLocationPrecheck`, these fields are hand-written in `harmence-experts.ts` (which also hand-holds `title`/`subtitle`/`icon`/`color`/`triggerPatterns`) — the pipeline does not emit them. `config.yaml` is the authoring record; the gate below catches drift.
+
+### Enforcement — run this, don't just remember it
+
+```bash
+# Cross-stack sync gate: fails if config.yaml and harmence-experts.ts disagree
+# on any of the four catalog fields, if a field is missing, if lens_domain is
+# invalid, or if a skill-builder skill isn't registered in HARMENCE_EXPERTS.
+python scripts/check_catalog_sync.py
+```
+
+Run `check_catalog_sync.py` any time you add a skill, remove a skill, or change any of the four fields on either side (same cadence as `check_location_sync.py`). `smart_talk`-backed experts (`general-decision`, `relationship`) are hand-authored in the TS catalog with no config.yaml and are intentionally skipped via `SKIP_SKILL_NAMES`.
+
+---
+
 ## 8. Skills Reference
 
 Current skills in this skill-builder instance:

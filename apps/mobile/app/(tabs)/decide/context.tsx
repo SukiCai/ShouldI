@@ -2,9 +2,10 @@ import type { PropsWithChildren } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import * as React from 'react';
-import { Alert } from 'react-native';
 
 import { apiPostJson } from '@/lib/api';
+import { buildExploreCardFromDraft, publishCommunityCard } from '@/lib/exploreCommunityPosts';
+import { userFacingApiError } from '@/lib/userFacingErrors';
 import {
   ChatRequestSchema,
   ChatResponseSchema,
@@ -34,7 +35,7 @@ export type DecideDraft = {
   successCriteria: string;
   /** Yes/no crowd question — surfaced on Explore reel */
   communityChallengeQuestion: string;
-  /** Harmence leaning headline */
+  /** ShouldI recommendation headline */
   communityAiVerdictLine: string;
   /** Tradeoffs / risks / rationale — summarized for peers */
   communityAiBecause: string;
@@ -48,6 +49,15 @@ export type DecideDraft = {
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
   keyMoments: KeyMoment[];
+  reflection?: DecideInterviewFinalDecision['reflection'];
+  decisionRecordId?: string;
+  decisionLens?: {
+    headline: string;
+    confidenceScore: number;
+    strengths: string[];
+    blindSpots: string[];
+    calibrationFocus?: string;
+  };
 };
 
 const STORAGE_KEY = 'shouldi/decide-draft';
@@ -73,7 +83,7 @@ export type DecideWizardContextValue = {
   reset(): void;
   lastResponse: ChatResponse | null;
   rememberResponse(parsed: ChatResponse): void;
-  /** Runs `/v1/chat`, hydrates Explore card preview fields, stays on Review briefing until you open full briefing. */
+  /** Runs `/v1/chat`, hydrates Explore card preview fields, stays on review until full recommendation opens. */
   submitBriefing(): Promise<void>;
   /** Mock hand-off — wire to POST /requests later */
   postCommunityValidationCard(): void;
@@ -107,6 +117,9 @@ const blankDraft = (): DecideDraft => ({
   rewardPoints: 10,
   expertVerdicts: [],
   keyMoments: [],
+  reflection: undefined,
+  decisionRecordId: undefined,
+  decisionLens: undefined,
 });
 
 export default function DecideWizardProvider({ children }: PropsWithChildren) {
@@ -166,8 +179,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
         communityAiBecause: hydrate.communityAiBecause.trim() || hydrate.communityAiBecause,
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Something went sideways.';
-      setError(message);
+      setError(userFacingApiError(err, 'Could not generate your recommendation. Please try again.'));
     } finally {
       setBusy(false);
     }
@@ -194,28 +206,16 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
       !draft.communityAiBecause.trim() ||
       draft.pollOptions.some((option) => !option.label.trim())
     ) {
-      setError('Fill the poll question, hook, tradeoff, Harmence stance, and option labels before sending to Explore.');
+      setError('Fill the poll question, hook, tradeoff, recommendation stance, and option labels before sending to Explore.');
       return;
     }
     setError(null);
-    const keyContext = draft.keyMoments
-      .filter((m) => m.impact?.trim())
-      .map((m) => m.impact!.trim())
-      .slice(0, 4);
-    const aiValidation = {
-      verdictLine: draft.communityAiVerdictLine.trim(),
-      verdictBecause: draft.communityAiBecause.trim().slice(0, 400),
-      agreeWithAiVotes: 0,
-      disagreeWithAiVotes: 0,
-      ...(draft.aiConfidenceScore != null ? { confidenceScore: draft.aiConfidenceScore } : {}),
-      ...(keyContext.length > 0 ? { keyContext } : {}),
-    };
-    if (__DEV__) console.debug('[postCard] aiValidation:', JSON.stringify(aiValidation));
-    Alert.alert(
-      'Sent to Explore',
-      'Peers will thumbs up/down on Harmence stance, then answer your challenge. (Demo queues locally — swap for POST /requests when wired.)',
-      [{ text: 'Open Explore', onPress: () => router.replace('/(tabs)/explore') }],
-    );
+    const card = buildExploreCardFromDraft(draft);
+    publishCommunityCard(card);
+    router.replace({
+      pathname: '/(tabs)/explore',
+      params: { highlightCardId: card.id },
+    });
   }, [draft]);
 
   const contextValue = React.useMemo<DecideWizardContextValue>(() => {

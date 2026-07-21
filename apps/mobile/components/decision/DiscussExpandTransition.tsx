@@ -13,8 +13,8 @@ const SCALE_MIN = 0.932;
 /** Subtle upward settle — reads less “floating scale” than transform-only. */
 const Y_ENTER = 12;
 const EXPAND_MS = 400;
-/** Brief scrim frames the gesture; fades as the sheet settles. */
-const SCRIM_ALPHA = 0.1;
+/** Brief scrim frames the gesture while keeping destination fully opaque. */
+const SCRIM_ALPHA = 0.06;
 
 type DiscussExpandTransitionProps = {
   children: React.ReactNode;
@@ -68,7 +68,7 @@ export function DiscussExpandTransition({ children }: DiscussExpandTransitionPro
       overflow: 'hidden' as const,
       transform: [{ translateY: (1 - p) * Y_ENTER }, { scale }],
       borderRadius: CARD_CORNER * (1 - p),
-      opacity: 0.962 + 0.038 * p,
+      opacity: 1,
     };
   });
 

@@ -1,3 +1,5 @@
+import { Platform, type ViewStyle } from 'react-native';
+
 export const palette = {
   /** Ink family — dusty blue-grey (trust, editorial). */
   slate950: '#2c343c',
@@ -36,7 +38,7 @@ export const palette = {
   /** Ink for filled CTAs; keep punchy blacks on pastel chrome. */
   heroInk: '#0d0d11',
 
-  /** Neon accents — fluorescent pastels against black. */
+  /** Legacy neon accents (brand-entry only, avoid in core PMF flows). */
   neonPink: '#ff4d94',
   neonMint: '#3dffb8',
   neonSky: '#54dcff',
@@ -78,38 +80,110 @@ export const palette = {
   backdropMid: '#4f96b5',
 };
 
+/**
+ * Semantic design tokens for core product surfaces.
+ * Prefer these over direct palette literals in PMF flows.
+ */
+export const semantic = {
+  actionPrimary: palette.accent,
+  actionPrimaryHover: palette.accentBloom,
+  actionAffirm: palette.mint,
+  actionCaution: palette.warning,
+  actionDanger: palette.danger,
+  emphasis: '#454545',
+};
+
+/** App-wide type scale — prefer spreading these tokens over ad-hoc fontSize values. */
 export const typography = {
+  /** Auth hero, wallet sheet totals */
+  displayLg: {
+    fontSize: 34,
+    lineHeight: 42,
+    fontWeight: '800' as const,
+  },
+  /** Profile wallet balance, stat heroes */
   hero: {
     fontSize: 28,
-    lineHeight: 34,
-    fontWeight: '600' as const,
+    lineHeight: 32,
+    fontWeight: '800' as const,
   },
+  /** Display name, empty-state titles */
   title: {
     fontSize: 22,
     lineHeight: 28,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
   },
+  /** Nav bars, sheet titles, form inputs, primary CTAs */
+  titleSm: {
+    fontSize: 17,
+    lineHeight: 22,
+    fontWeight: '700' as const,
+  },
+  /** Section headers, gradient CTA labels */
   h2: {
     fontSize: 18,
     lineHeight: 24,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
   },
+  /** Chat bubbles, primary reading copy */
   body: {
     fontSize: 16,
     lineHeight: 23,
     fontWeight: '400' as const,
   },
+  /** Secondary emphasis — metrics, verdict reason */
+  bodySm: {
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: '600' as const,
+  },
+  /** Chips, secondary lines, handles */
   compact: {
     fontSize: 14,
     lineHeight: 20,
     fontWeight: '500' as const,
   },
+  /** Grid titles, kickers, footer brand */
+  subhead: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '600' as const,
+  },
+  /** Eyebrows, segment labels */
   caption: {
     fontSize: 12,
     lineHeight: 16,
     fontWeight: '500' as const,
   },
+  /** Badges, uppercase stamps, progress */
+  label: {
+    fontSize: 11,
+    lineHeight: 14,
+    fontWeight: '700' as const,
+  },
+  /** Live pills, suffixes, status chips */
+  micro: {
+    fontSize: 10,
+    lineHeight: 13,
+    fontWeight: '700' as const,
+  },
+  /** Tab bar, metric labels under numbers */
+  nano: {
+    fontSize: 9,
+    lineHeight: 11,
+    fontWeight: '600' as const,
+  },
+  /** Explore / Decide / Replay / You tab titles */
+  tabDisplay: {
+    fontSize: 36,
+    lineHeight: 40,
+    fontWeight: '800' as const,
+    letterSpacing: -0.8,
+  },
 };
+
+/** Alias for stack header titles — same as titleSm. */
+export const navTitle = typography.titleSm;
 
 export const spacing = {
   xs: 6,
@@ -124,9 +198,44 @@ export const screenContentGutter = 20;
 
 export const radius = {
   pill: 999,
-  lg: 20,
+  sm: 12,
   md: 16,
+  lg: 20,
+  /** Cinematic hero surfaces (Explore reel only). */
+  hero: 24,
+  sheet: 16,
 };
+
+/** Expert Council feature accent — keep distinct from global mint/sky. */
+export const council = {
+  violet: '#8b5cf6',
+  gold: '#f59e0b',
+  gradientDark: ['#0c0618', '#1a0f3d', '#0a1628'] as const,
+  gradientLight: ['#f5f0ff', '#ede9fe', '#dbeafe'] as const,
+};
+
+export const elevation = {
+  rest: Platform.select<ViewStyle>({
+    ios: {
+      shadowColor: '#0f172a',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 12,
+    },
+    android: { elevation: 3 },
+    default: {},
+  }),
+  raised: Platform.select<ViewStyle>({
+    ios: {
+      shadowColor: '#0f172a',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.14,
+      shadowRadius: 20,
+    },
+    android: { elevation: 6 },
+    default: {},
+  }),
+} as const;
 
 /**
  * Profile-tab (You) light neutrals + pastel accents — warm grays, not cool slate.
@@ -188,25 +297,25 @@ export function themeSurface(scheme: 'light' | 'dark') {
   const isDark = scheme === 'dark';
   const L = profileLight;
   return {
-    canvas: isDark ? palette.mist : '#f7f9fb',
-    canvasSecondary: isDark ? palette.nightWash : '#eef1f4',
+    canvas: isDark ? '#0b0c0f' : '#f5f5f7',
+    canvasSecondary: isDark ? '#121419' : '#eceef2',
     /** Primary body copy */
-    textPrimary: isDark ? palette.textOnCanvas : L.body,
+    textPrimary: isDark ? 'rgba(245,245,247,0.92)' : '#1d1d1f',
     /** Strong headlines / display */
-    textDisplay: isDark ? palette.textOnCanvas : L.ink,
-    textMuted: isDark ? palette.textMutedOnCanvas : L.muted,
-    hairline: isDark ? palette.chromeHairline : L.tabTrack,
+    textDisplay: isDark ? '#ffffff' : '#111113',
+    textMuted: isDark ? 'rgba(245,245,247,0.62)' : 'rgba(60,60,67,0.62)',
+    hairline: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(60,60,67,0.24)',
     sheet: palette.sheet,
-    sheetBorder: isDark ? 'rgba(15,23,42,0.06)' : profileNeutralStroke(0.09),
+    sheetBorder: isDark ? 'rgba(255,255,255,0.14)' : 'rgba(60,60,67,0.18)',
     /** Lists / Premium GlassCard — never force pure white sheet on OLED (was invisible with light text tokens). */
-    groupedSurface: isDark ? 'rgba(255,255,255,0.08)' : palette.sheet,
-    groupedBorder: isDark ? palette.chromeHairline : profileNeutralStroke(0.09),
-    heroBorder: isDark ? palette.signUpMintHairline : profileNeutralStroke(0.12),
-    tabBar: isDark ? palette.mist : '#f9fafc',
-    tabBarBorder: isDark ? palette.chromeHairline : profileNeutralStroke(0.08),
-    inactiveTab: isDark ? palette.textMutedOnCanvas : L.tabInactive,
-    statTileBg: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.95)',
-    statTileBorder: isDark ? 'rgba(255,255,255,0.1)' : profileNeutralStroke(0.06),
-    pressedOverlay: isDark ? 'rgba(255,255,255,0.08)' : profileNeutralStroke(0.06),
+    groupedSurface: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.86)',
+    groupedBorder: isDark ? 'rgba(255,255,255,0.14)' : 'rgba(60,60,67,0.14)',
+    heroBorder: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(60,60,67,0.2)',
+    tabBar: isDark ? '#111216' : 'rgba(248,248,250,0.94)',
+    tabBarBorder: isDark ? 'rgba(255,255,255,0.14)' : 'rgba(60,60,67,0.12)',
+    inactiveTab: isDark ? 'rgba(235,235,245,0.5)' : 'rgba(60,60,67,0.6)',
+    statTileBg: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.94)',
+    statTileBorder: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(60,60,67,0.12)',
+    pressedOverlay: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(60,60,67,0.08)',
   };
 }

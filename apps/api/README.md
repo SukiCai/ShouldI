@@ -1,6 +1,6 @@
 ## `@shouldi/api`
 
-HTTP API (Node + Hono) backed by embedded **Hermes** at [`../../hermes-agent-private`](../../hermes-agent-private) (git submodule at repo root).
+HTTP API (Node + Hono) backed by vendored **Hermes** at [`../../hermes-agent-private`](../../hermes-agent-private).
 
 ### Routes (MVP)
 
@@ -26,8 +26,8 @@ From the repo root, **`docker compose up --build`** starts **`api`** and the Exp
 ### Env
 
 - `PORT` — overrides default `8787`.
-- `HERMES_ROOT` or `SHOULDI_HERMES_ROOT` — optional absolute path to a Hermes checkout (overrides embedded submodule path).
+- `HERMES_ROOT` or `SHOULDI_HERMES_ROOT` — optional absolute path to a Hermes checkout (overrides vendored `hermes-agent-private/`).
 - `HERMES_API_URL` — Hermes OpenAI-compatible server (default `http://127.0.0.1:8642`).
 - `HERMES_API_KEY` — Bearer token matching Hermes `API_SERVER_KEY` when set.
 
-See [`../../docs/hermes-setup.md`](../../docs/hermes-setup.md) for gateway + provider key setup.
+See [`../../docs/engineering/hermes-setup.md`](../../docs/engineering/hermes-setup.md) for gateway + provider key setup.

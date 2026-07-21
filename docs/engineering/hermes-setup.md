@@ -44,13 +44,14 @@ Services:
 |-----------------|------|-----------|
 | `hermes` | Full Hermes agent + OpenAI-compatible api_server | 8642 |
 | `api` | ShouldI gateway; proxies interview + briefing to Hermes | 8787 |
-| `web` | Static Expo web app | 8080 |
+| `web` | Static Expo web app | 18080 (`SHOULDI_WEB_HOST_PORT`) |
 
 Verify:
 
 ```bash
 curl -s http://localhost:8642/health
 curl -s http://localhost:8787/v1/hermes
+open http://localhost:18080
 ```
 
 ## 1. Hermes source tree
@@ -94,7 +95,7 @@ Add to **`~/.hermes/.env`**:
 API_SERVER_ENABLED=true
 API_SERVER_KEY=change-me-local-dev
 # Optional — only if something other than ShouldI calls Hermes directly from a browser
-# API_SERVER_CORS_ORIGINS=http://localhost:8080
+# API_SERVER_CORS_ORIGINS=http://localhost:18080
 ```
 
 Default listen address is **`127.0.0.1:8642`**. To bind all interfaces (Docker LAN, etc.) use `API_SERVER_HOST=0.0.0.0` — **requires** `API_SERVER_KEY`.
@@ -191,7 +192,7 @@ When `apiLive` is `true`, **Decide → Harmence chat** and **Review briefing** (
 
 ## Docker note
 
-`docker compose up` builds a slim Hermes image from `docker/hermes/Dockerfile` (embedded submodule). It is faster than the upstream `nousresearch/hermes-agent` image but still runs the full agent loop via `hermes gateway run`. Persisted state lives in the `hermes-data` volume or your bind-mounted `SHOULDI_HERMES_DATA`.
+`docker compose up` builds a slim Hermes image from `docker/hermes/Dockerfile` (vendored `hermes-agent-private/` tree). It is faster than the upstream `nousresearch/hermes-agent` image but still runs the full agent loop via `hermes gateway run`. Persisted state lives in the `hermes-data` volume or your bind-mounted `SHOULDI_HERMES_DATA`.
 
 ## Troubleshooting
 

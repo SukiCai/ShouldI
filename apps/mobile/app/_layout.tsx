@@ -18,12 +18,12 @@ const navigationDark: Theme = {
   dark: true,
   colors: {
     ...DarkTheme.colors,
-    primary: palette.neonMint,
+    primary: palette.accent,
     background: palette.mist,
-    card: palette.sheet,
+    card: palette.nightSlate,
     text: palette.textOnCanvas,
     border: palette.chromeHairline,
-    notification: palette.neonPink,
+    notification: palette.accent,
   },
 };
 
@@ -85,12 +85,12 @@ function RootLayoutNav() {
       dark: false,
       colors: {
         ...DefaultTheme.colors,
-        primary: '#0d9488',
+        primary: palette.accent,
         background: surface.canvas,
         card: palette.sheet,
         text: surface.textPrimary,
         border: surface.hairline,
-        notification: palette.neonPink,
+        notification: palette.accent,
       },
     };
   }, [isDark, surface.canvas, surface.hairline, surface.textPrimary]);
@@ -111,15 +111,27 @@ function RootLayoutNav() {
         <Stack.Screen
           name="plot-deck"
           options={{
-            title: 'Plot Deck',
-            headerTintColor: isDark ? palette.neonMint : '#0d9488',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="outcome-replay/index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="outcome-replay/[id]"
+          options={{
+            title: 'Log outcome',
+            headerTintColor: palette.accent,
             headerTitleStyle: { color: surface.textPrimary, fontWeight: '700' },
             headerStyle: { backgroundColor: surface.canvas },
             headerShadowVisible: false,
-            headerBackTitle: 'Explore',
           }}
         />
         <Stack.Screen name="settings" options={{ headerShown: false, animation: 'slide_from_right' }} />
+        <Stack.Screen name="wallet" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="sign-up" options={{ headerShown: false, animation: 'slide_from_right' }} />
         <Stack.Screen name="sign-in" options={{ headerShown: false, animation: 'slide_from_right' }} />

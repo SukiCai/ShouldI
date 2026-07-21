@@ -2,7 +2,7 @@ import type { PropsWithChildren, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { palette, profileNeutralStroke, radius, spacing, themeSurface, typography } from '@/constants/theme';
+import { palette, profileNeutralStroke, radius, semantic, spacing, themeSurface, typography } from '@/constants/theme';
 import { OledFluorSpeckles } from '@/components/ui/OledSignUpBackdrop';
 
 export function GradientHero({
@@ -24,7 +24,7 @@ export function GradientHero({
         <OledFluorSpeckles />
       </View>
       <View style={{ flex: 1, zIndex: 1 }}>
-        {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
+        {eyebrow ? <Text style={[styles.eyebrow, { color: semantic.actionPrimary }]}>{eyebrow}</Text> : null}
         <Text style={[typography.title, styles.heroHeadline, { color: surface.textDisplay }]}>{title}</Text>
         {subtitle ? <Text style={[styles.heroSub, { color: surface.textMuted }]}>{subtitle}</Text> : null}
       </View>
@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
     ...typography.caption,
     textTransform: 'uppercase',
     letterSpacing: 0.9,
-    color: palette.neonMint,
     fontWeight: '700',
     marginBottom: 2,
   },
@@ -182,10 +181,10 @@ const styles = StyleSheet.create({
   cardShadow: {
     ...Platform.select({
       ios: {
-        shadowColor: palette.neonMint,
-        shadowOpacity: 0.14,
-        shadowRadius: 18,
-        shadowOffset: { width: 0, height: 8 },
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.06,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 4 },
       },
       android: {
         elevation: 3,
@@ -217,23 +216,23 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   pillBrand: {
-    backgroundColor: `${palette.neonSky}26`,
-    borderColor: `${palette.neonSky}55`,
+    backgroundColor: `${semantic.actionPrimary}18`,
+    borderColor: `${semantic.actionPrimary}42`,
   },
   pillGood: {
-    backgroundColor: `${palette.neonMint}24`,
-    borderColor: `${palette.neonMint}4d`,
+    backgroundColor: `${semantic.actionAffirm}18`,
+    borderColor: `${semantic.actionAffirm}42`,
   },
   pillTextBase: {
     ...typography.caption,
     fontWeight: '600',
   },
   pillTxtBrand: {
-    color: '#06202c',
+    color: semantic.actionPrimary,
     fontWeight: '700',
   },
   pillTxtGood: {
-    color: '#042f24',
+    color: semantic.actionAffirm,
     fontWeight: '700',
   },
   ghostBtn: {

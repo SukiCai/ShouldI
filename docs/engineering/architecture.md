@@ -4,7 +4,7 @@
 
 1. **`@shouldi/mobile`** speaks only HTTPS to **`@shouldi/api`** — no embedded Python runtime in the Expo bundle.
 2. **One source of truth** for wire shapes: **`@shouldi/contracts`** (Zod).
-3. **Hermes** is optional at dev time but anchored at `./hermes-agent-private` via submodule unless overridden by env.
+3. **Hermes** is optional at dev time but anchored at vendored `./hermes-agent-private` unless overridden by env.
 
 ### High-level flow
 
@@ -38,3 +38,11 @@ flowchart LR
 
 - **Repo root**: `shouldi-repo-root/` contains `apps/`, `packages/`, `hermes-agent-private/`, and a single **`package-lock.json`** for workspaces.
 - **Build order**: dependents expect **`@shouldi/contracts`** `dist/` to exist; `predev` / `prestart` on the API triggers a contracts build — run `npm run build -w @shouldi/contracts` after clone or contracts changes before typechecking other packages alone.
+
+### Terminology map
+
+- **Hermes**: the upstream agent runtime and infrastructure (`hermes-agent-private`, gateway, provider/tool stack).
+- **Harmence**: internal intake pipeline naming used by some ShouldI API routes and modules (legacy codename retained for compatibility).
+- **ShouldI**: product-facing naming used in UI, copy, and recommendation/outcome flows.
+
+Rule of thumb: keep user-facing surfaces on "ShouldI" terminology; treat "Harmence" as implementation detail unless a route/module rename is explicitly scheduled.

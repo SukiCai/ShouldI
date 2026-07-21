@@ -1,0 +1,29 @@
+# Live-reload web UI — use with backend services from compose.yaml:
+#   docker compose -f compose.yaml -f compose.dev.yaml up -d api hermes web-dev
+#
+# Open http://localhost:8082 — edits under apps/mobile/ refresh automatically.
+
+services:
+  web-dev:
+    build:
+      context: .
+      dockerfile: docker/web-dev/Dockerfile
+    ports:
+      - "${EXPO_WEB_PORT:-8082}:8082"
+    environment:
+      EXPO_PUBLIC_API_URL: http://host.docker.internal:${SHOULDI_API_HOST_PORT:-8787}
+      EXPO_WEB_PORT: "8082"
+      EXPO_NO_TELEMETRY: "1"
+      # Reliable file watching when bind-mounting from macOS Docker Desktop
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - .:/app
+      - web-dev-node-modules:/app/node_modules
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
+
+volumes:
+  web-dev-node-modules:

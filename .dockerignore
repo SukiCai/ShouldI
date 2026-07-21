@@ -1,24 +1,24 @@
-**/node_modules
+# Shared repo-root context for api + web images only (hermes uses its own context).
 .git
 .cursor
 .idea
+.env
+.env.*
 **/*.md
 **/dist
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/.venv
+**/venv
 
-# Hermes submodule — include source for docker/hermes build; drop heavy artifacts.
-hermes-agent-private/.venv
-hermes-agent-private/**/node_modules
-hermes-agent-private/**/.git
-hermes-agent-private/**/__pycache__
-hermes-agent-private/website
-hermes-agent-private/tests
-hermes-agent-private/mock-app
-hermes-agent-private/tinker-atropos
-hermes-agent-private/environments
-hermes-agent-private/.playwright
+# Not needed for api/web builds — hermes has a separate build context.
+hermes-agent-private
+docker/hermes
+stripe-vo-practice
+docs
 
-# Exclude native / local Expo baggage; keep source for the web image build.
-apps/mobile/node_modules
+# Expo / native baggage
 apps/mobile/android
 apps/mobile/ios
 apps/mobile/.expo

@@ -3,7 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import * as React from 'react';
 import {
-  Modal,
+  AccessibilityInfo,
   Platform,
   Pressable,
   ScrollView,
@@ -14,30 +14,26 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import { Button } from '@/components/ui';
+import JumpUpSheet from '@/components/ui/JumpUpSheet';
+import { useColorScheme } from '@/components/useColorScheme';
+import { discussCardColors, discussCardStyles } from '@/components/decision/discussCardStyles';
+import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { updateWatching } from '@/lib/exploreUserActivity';
 import {
-  InlineDistributionTrack,
-  PollQuestionAccentBar,
-  ReelCardActionBar,
-  ReelCardSurface,
-  RewardPointsGem,
-  reelDiscussStyles,
-  totalVotesFromDistribution,
-} from '@/components/explore/ReelDiscussChrome';
-import { discussCardStyles } from '@/components/decision/discussCardStyles';
-import { palette, profileNeutralStroke, profileTypography, radius, spacing, typography } from '@/constants/theme';
+  optionActionLabel,
+  optionAffiliationLabel,
+  optionLabelForId,
+  optionLabelForIdCompact,
+  optionTeamBarFill,
+  optionTeamBorder,
+  optionTeamColor,
+  optionTeamSoftBg,
+  OPTION_LABEL_MAX,
+} from '@/lib/optionTeamChrome';
+import { palette, profileNeutralStroke, radius, semantic, spacing, themeSurface, typography, type ThemeSurface } from '@/constants/theme';
 import type { ExploreCard, TeamDiscussionPost } from '@shouldi/contracts';
-
-const TEAM_STRIPES = [palette.accent, palette.mint, palette.playful, palette.accentBloom] as const;
-
-function optionIndex(card: ExploreCard, optionId: string): number {
-  const i = card.options.findIndex((o) => o.id === optionId);
-  return i >= 0 ? i : 0;
-}
-
-function teamStripeColor(card: ExploreCard, optionId: string): string {
-  return TEAM_STRIPES[optionIndex(card, optionId) % TEAM_STRIPES.length]!;
-}
 
 function optionLabel(card: ExploreCard, optionId: string): string {
   return card.options.find((o) => o.id === optionId)?.label ?? 'Team';
@@ -47,13 +43,45 @@ type DiscussExpandedProps = {
   card: ExploreCard;
   /** Pass-through from Explore reel selection (query param). */
   pickedOptionFromRoute?: string | null;
+  /** Optional explicit selected option from host screen state. */
+  pickedOptionOverride?: string | null;
+  /** Optional vote distribution override keyed by option id. */
+  distributionOverride?: Record<string, number>;
+  /** Host-provided close handler (for in-place modal usage). */
+  onRequestClose?: () => void;
+  /** Host-provided vote selection callback. */
+  onSelectOption?: (optionId: string) => void;
 };
 
-export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpandedProps) {
+type CommentSortMode = 'liked' | 'latest';
+
+export function DiscussExpanded({
+  card,
+  pickedOptionFromRoute,
+  pickedOptionOverride,
+  distributionOverride,
+  onRequestClose,
+  onSelectOption,
+}: DiscussExpandedProps) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
+  const cardColors = discussCardColors(surface);
+  const text = pmfText(surface);
+  const styles = React.useMemo(() => discussExpandedStyles(surface), [surface]);
   const isOpen = card.status === 'open';
-  const voteTotal = totalVotesFromDistribution(card.distribution);
-  const effectivePick = (pickedOptionFromRoute?.trim() || card.myVoteOptionId) ?? undefined;
+  const mergedDistribution = React.useMemo(
+    () => card.options.map((option) => ({ optionId: option.id, votes: distributionOverride?.[option.id] ?? card.distribution.find((d) => d.optionId === option.id)?.votes ?? 0 })),
+    [card, distributionOverride],
+  );
+  const voteTotal = mergedDistribution.reduce((sum, row) => sum + row.votes, 0);
+  const [localTeamOverride, setLocalTeamOverride] = React.useState<string | null>(null);
+  const effectivePick =
+    (localTeamOverride?.trim() ||
+      pickedOptionOverride?.trim() ||
+      pickedOptionFromRoute?.trim() ||
+      card.myVoteOptionId) ??
+    undefined;
   const hasResults = isOpen ? !!effectivePick : true;
 
   const [saved, setSaved] = React.useState(card.savedByMe ?? false);
@@ -67,6 +95,12 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
   const [replyingToId, setReplyingToId] = React.useState<string | null>(null);
   const [replyDraft, setReplyDraft] = React.useState('');
   const [threadModalRoot, setThreadModalRoot] = React.useState<TeamDiscussionPost | null>(null);
+  const [composerModalVisible, setComposerModalVisible] = React.useState(false);
+  const [commentSortMode, setCommentSortMode] = React.useState<CommentSortMode>('liked');
+  const [sortSheetVisible, setSortSheetVisible] = React.useState(false);
+  const [filterSheetVisible, setFilterSheetVisible] = React.useState(false);
+  const [changeTeamPrompt, setChangeTeamPrompt] = React.useState<TeamDiscussionPost | null>(null);
+  const [teamChangeToast, setTeamChangeToast] = React.useState<string | null>(null);
 
   const allDiscussionRows = React.useMemo(() => {
     const seed = card.discussionPosts ?? [];
@@ -79,20 +113,16 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
   );
 
   const filteredTopLevel = React.useMemo(() => {
-    if (!filterOptionId) return topLevelDiscussion;
-    return topLevelDiscussion.filter((p) => p.optionId === filterOptionId);
-  }, [topLevelDiscussion, filterOptionId]);
+    const scoped = filterOptionId
+      ? topLevelDiscussion.filter((p) => p.optionId === filterOptionId)
+      : topLevelDiscussion;
+    if (commentSortMode === 'latest') return scoped;
+    return scoped
+      .slice()
+      .sort((a, b) => (b.upvoteCount ?? 0) - (a.upvoteCount ?? 0));
+  }, [topLevelDiscussion, filterOptionId, commentSortMode]);
 
-  const grouped = React.useMemo(() => {
-    const m = new Map<string, TeamDiscussionPost[]>();
-    for (const o of card.options) m.set(o.id, []);
-    for (const p of filteredTopLevel) {
-      const arr = m.get(p.optionId);
-      if (arr) arr.push(p);
-      else m.set(p.optionId, [p]);
-    }
-    return card.options.map((o) => ({ option: o, posts: m.get(o.id) ?? [] }));
-  }, [card.options, filteredTopLevel]);
+  const composerInputRef = React.useRef<TextInput>(null);
   const aiSuggestedLabel = React.useMemo(
     () => (card.aiSuggestedOptionId ? optionLabel(card, card.aiSuggestedOptionId) : null),
     [card],
@@ -130,11 +160,57 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
     [userThumbUp],
   );
 
-  const toggleThumb = React.useCallback((postId: string) => {
-    if (Platform.OS !== 'web') {
-      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+  React.useEffect(() => {
+    if (!teamChangeToast) return;
+    const timer = setTimeout(() => setTeamChangeToast(null), 3200);
+    return () => clearTimeout(timer);
+  }, [teamChangeToast]);
+
+  const handleThumbPress = React.useCallback(
+    (post: TeamDiscussionPost) => {
+      const wasLiked = !!userThumbUp[post.id];
+      const willLike = !wasLiked;
+
+      if (Platform.OS !== 'web') {
+        void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => undefined);
+      }
+      setUserThumbUp((prev) => ({ ...prev, [post.id]: willLike }));
+
+      const crossTeamLike =
+        willLike &&
+        !!effectivePick &&
+        post.optionId !== effectivePick &&
+        post.authorName !== 'You';
+
+      if (crossTeamLike) {
+        setChangeTeamPrompt(post);
+      }
+    },
+    [effectivePick, userThumbUp],
+  );
+
+  const confirmChangeTeam = React.useCallback(() => {
+    const post = changeTeamPrompt;
+    if (!post) return;
+
+    setLocalTeamOverride(post.optionId);
+    onSelectOption?.(post.optionId);
+    setChangeTeamPrompt(null);
+
+    const label = optionLabel(card, post.optionId);
+    const message = `Valid decision point — this makes a strong case for “${label}”.`;
+    setTeamChangeToast(message);
+
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      AccessibilityInfo.announceForAccessibility(message);
     }
-    setUserThumbUp((prev) => ({ ...prev, [postId]: !prev[postId] }));
+    if (Platform.OS !== 'web') {
+      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+    }
+  }, [changeTeamPrompt, card, onSelectOption]);
+
+  const dismissChangeTeamPrompt = React.useCallback(() => {
+    setChangeTeamPrompt(null);
   }, []);
 
   const submit = React.useCallback(() => {
@@ -151,7 +227,14 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
     };
     setLocalPosts((prev) => [next, ...prev]);
     setDraft('');
+    setComposerModalVisible(false);
   }, [draft, effectivePick]);
+
+  React.useEffect(() => {
+    if (!composerModalVisible) return;
+    const timer = setTimeout(() => composerInputRef.current?.focus(), 120);
+    return () => clearTimeout(timer);
+  }, [composerModalVisible]);
 
   const submitReply = React.useCallback(
     (parent: TeamDiscussionPost) => {
@@ -205,145 +288,184 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
 
   return (
     <View style={styles.wrap}>
-      <ReelCardSurface category={card.category} isOpen={isOpen} layout="fullscreen" suppressAtmosphere>
-        <ReelCardActionBar
-          variant="discuss-top"
-          voteSummary={{ voteTotal, isLivePoll: isOpen }}
-          saved={saved}
-          following={following}
-          onToggleSave={() => setSaved((s) => !s)}
-          onToggleFollow={() => setFollowing((f) => !f)}
-          onLeadingBackPress={() => router.back()}
-        />
-
-        <View style={reelDiscussStyles.pollQuestionRow}>
-          <View style={reelDiscussStyles.pollQuestionTextCol}>
-            <View style={reelDiscussStyles.pollQuestionTitleRow}>
-              <Text
-                accessibilityRole="header"
-                style={[
-                  isOpen ? typography.hero : typography.h2,
-                  reelDiscussStyles.pollQuestion,
-                  reelDiscussStyles.pollQuestionHeadlineFlexible,
-                  isOpen && reelDiscussStyles.pollQuestionOpen,
-                  isOpen && reelDiscussStyles.pollHeroOpen,
-                ]}>
-                {card.question}
-              </Text>
-              <RewardPointsGem rewardPoints={card.rewardPoints} density="compact" />
-            </View>
-            <PollQuestionAccentBar />
+      {teamChangeToast ? (
+        <View style={styles.toastWrap} pointerEvents="none">
+          <View style={[styles.toast, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
+            <Text style={[styles.toastText, { color: surface.textPrimary }]}>{teamChangeToast}</Text>
+          </View>
+        </View>
+      ) : null}
+      <View style={[styles.screenCard, { backgroundColor: surface.canvas }]}>
+        <View style={styles.topBar}>
+          <View style={styles.topActions}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={saved ? 'Remove saved' : 'Save this decision'}
+              onPress={() =>
+                setSaved((current) => {
+                  const next = !current;
+                  updateWatching(card, { saved: next, followed: following });
+                  return next;
+                })
+              }
+              style={({ pressed }) => [styles.topIconBtn, styles.topIconBtnSecondary, { borderColor: surface.groupedBorder }, pressed && styles.topIconBtnPressed]}>
+              <Ionicons name={saved ? 'star' : 'star-outline'} size={18} color={saved ? semantic.actionPrimary : surface.textMuted} />
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={following ? 'Stop following updates' : 'Follow updates'}
+              onPress={() =>
+                setFollowing((current) => {
+                  const next = !current;
+                  updateWatching(card, { saved, followed: next });
+                  return next;
+                })
+              }
+              style={({ pressed }) => [styles.topIconBtn, styles.topIconBtnSecondary, { borderColor: surface.groupedBorder }, pressed && styles.topIconBtnPressed]}>
+              <Ionicons name={following ? 'notifications' : 'notifications-outline'} size={18} color={following ? semantic.actionPrimary : surface.textMuted} />
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Close detail"
+              onPress={() => (onRequestClose ? onRequestClose() : router.back())}
+              style={({ pressed }) => [styles.topIconBtn, styles.topCloseBtn, pressed && styles.topIconBtnPressed]}>
+              <Ionicons name="close" size={18} color={surface.textPrimary} />
+            </Pressable>
           </View>
         </View>
 
-        <View style={reelDiscussStyles.optionWrap}>
-          {card.options.map((option) => {
-            const votes = card.distribution.find((d) => d.optionId === option.id)?.votes ?? 0;
+        <View style={styles.questionBlock}>
+          <Text style={[styles.questionEyebrow, { color: surface.textMuted }]}>Decision</Text>
+          <Text style={[styles.questionHeadline, { color: surface.textPrimary }]}>{card.question}</Text>
+        </View>
+
+        <View style={styles.optionsWrap}>
+          {card.options.map((option, optionIdx) => {
+            const votes = mergedDistribution.find((d) => d.optionId === option.id)?.votes ?? 0;
             const percentage = voteTotal > 0 ? Math.round((votes / voteTotal) * 100) : 0;
             const selected = effectivePick === option.id;
             const aiLeanHere = !!(hasResults && card.aiSuggestedOptionId && option.id === card.aiSuggestedOptionId);
-            const pollBar = selected ? 'user' : aiLeanHere ? 'ai' : ('neutral' as const);
-            const pickedSurfaceStyle =
-              hasResults && selected && aiLeanHere
-                ? reelDiscussStyles.optionPillUserAndAiPick
-                : hasResults && selected && !aiLeanHere
-                  ? reelDiscussStyles.optionPillUserPick
-                  : hasResults && !selected && aiLeanHere
-                    ? reelDiscussStyles.optionPillAiLeanOnly
-                    : undefined;
+            const teamColor = optionTeamColor(card.options, option.id);
             return (
-              <View
+              <Pressable
                 key={option.id}
-                style={[reelDiscussStyles.optionPill, pickedSurfaceStyle]}>
-                <View style={reelDiscussStyles.optionTopRow}>
-                  <Text style={[reelDiscussStyles.optionText, selected && reelDiscussStyles.optionTextActive]}>
+                accessibilityRole="button"
+                accessibilityLabel={`Vote for ${option.label}`}
+                disabled={!onSelectOption || !isOpen}
+                onPress={() => onSelectOption?.(option.id)}
+                style={({ pressed }) => [
+                  styles.optionRow,
+                  {
+                    borderColor: selected ? optionTeamBorder(teamColor) : surface.groupedBorder,
+                    backgroundColor: selected ? optionTeamSoftBg(teamColor, '10') : surface.groupedSurface,
+                  },
+                  pressed && styles.optionVoteTapPressed,
+                ]}>
+                <View style={styles.optionRowTop}>
+                  <Text
+                    style={[styles.optionRowLabel, { color: surface.textPrimary }]}
+                    numberOfLines={2}
+                    ellipsizeMode="tail">
                     {option.label}
                   </Text>
-                  <View style={reelDiscussStyles.optionMetaCluster}>
-                    {selected && hasResults ? (
-                      <View style={reelDiscussStyles.userPickBadge}>
-                        <Text style={reelDiscussStyles.userPickBadgeText}>YOU</Text>
-                      </View>
-                    ) : null}
-                    {aiLeanHere ? (
-                      <View style={reelDiscussStyles.aiLeanBadge}>
-                        <Text style={reelDiscussStyles.aiLeanBadgeText}>AI</Text>
-                      </View>
-                    ) : null}
-                    {hasResults ? (
-                      <Text style={[reelDiscussStyles.optionMeta, selected && reelDiscussStyles.optionMetaPicked]}>
-                        {percentage}%
-                        {selected ? (isOpen ? ' · You' : ' · Your side') : ''}
-                      </Text>
-                    ) : null}
-                  </View>
+                  <Text style={[styles.optionRowPct, { color: selected ? teamColor : surface.textMuted }]}>
+                    {`${percentage}%${selected ? ' · you' : ''}${aiLeanHere ? ' · ai' : ''}`}
+                  </Text>
                 </View>
-                {hasResults ? <InlineDistributionTrack percentage={percentage} emphasis={pollBar} /> : null}
-              </View>
+                <View style={[styles.optionTrack, { backgroundColor: surface.hairline }]}>
+                  <View
+                    style={[
+                      styles.optionFill,
+                      {
+                        width: `${Math.max(3, percentage)}%`,
+                        backgroundColor: optionTeamBarFill(teamColor, selected ? 'user' : aiLeanHere ? 'ai' : 'neutral'),
+                      },
+                    ]}
+                  />
+                </View>
+              </Pressable>
             );
           })}
         </View>
 
         <View style={styles.summarySection}>
-          <View style={styles.aiDecisionCard}>
+          <View
+            style={[
+              styles.aiDecisionCard,
+              { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder },
+              !hasResults && styles.secondarySectionMuted,
+            ]}>
             <View style={styles.aiDecisionHeaderRow}>
-              <View style={styles.aiDecisionBadge}>
-                <Text style={styles.aiDecisionBadgeText}>AI DECISION</Text>
-              </View>
+                <Text style={[styles.aiSectionLabel, { color: surface.textMuted }]}>AI recommendation</Text>
               {card.aiValidation?.confidenceScore != null ? (
-                <View style={[
-                  styles.confidencePill,
-                  {
-                    borderColor: card.aiValidation.confidenceScore >= 70
-                      ? 'rgba(95,169,149,0.35)'
-                      : card.aiValidation.confidenceScore >= 45
-                        ? 'rgba(217,119,6,0.35)'
-                        : 'rgba(220,38,38,0.30)',
-                    backgroundColor: card.aiValidation.confidenceScore >= 70
-                      ? 'rgba(228,248,240,0.92)'
-                      : card.aiValidation.confidenceScore >= 45
-                        ? 'rgba(255,243,220,0.92)'
-                        : 'rgba(255,235,235,0.92)',
-                  }
-                ]}>
-                  <View style={[
-                    styles.confidenceDot,
+                <View
+                  style={[
+                    styles.confidencePill,
                     {
-                      backgroundColor: card.aiValidation.confidenceScore >= 70
-                        ? '#5fa995'
-                        : card.aiValidation.confidenceScore >= 45
-                          ? '#d97706'
-                          : '#dc2626',
-                    }
-                  ]} />
-                  <Text style={[
-                    styles.confidenceLabel,
-                    {
-                      color: card.aiValidation.confidenceScore >= 70
-                        ? '#5fa995'
-                        : card.aiValidation.confidenceScore >= 45
-                          ? '#d97706'
-                          : '#dc2626',
-                    }
+                      borderColor:
+                        card.aiValidation.confidenceScore >= 70
+                          ? 'rgba(95,169,149,0.35)'
+                          : card.aiValidation.confidenceScore >= 45
+                            ? 'rgba(217,119,6,0.35)'
+                            : 'rgba(220,38,38,0.30)',
+                      backgroundColor:
+                        card.aiValidation.confidenceScore >= 70
+                          ? 'rgba(228,248,240,0.92)'
+                          : card.aiValidation.confidenceScore >= 45
+                            ? 'rgba(255,243,220,0.92)'
+                            : 'rgba(255,235,235,0.92)',
+                    },
                   ]}>
+                  <View
+                    style={[
+                      styles.confidenceDot,
+                      {
+                        backgroundColor:
+                          card.aiValidation.confidenceScore >= 70
+                            ? '#5fa995'
+                            : card.aiValidation.confidenceScore >= 45
+                              ? '#d97706'
+                              : '#dc2626',
+                      },
+                    ]}
+                  />
+                  <Text
+                    style={[
+                      styles.confidenceLabel,
+                      {
+                        color:
+                          card.aiValidation.confidenceScore >= 70
+                            ? '#5fa995'
+                            : card.aiValidation.confidenceScore >= 45
+                              ? '#d97706'
+                              : '#dc2626',
+                      },
+                    ]}>
                     {card.aiValidation.confidenceScore}% confidence
                   </Text>
                 </View>
               ) : null}
             </View>
-            <Text style={styles.aiDecisionHeadline}>{aiDecisionHeadline}</Text>
-            <Text style={styles.aiDecisionReason} numberOfLines={3}>{aiDecisionReason}</Text>
+            <Text style={[styles.aiDecisionHeadline, { color: surface.textPrimary }]}>{aiDecisionHeadline}</Text>
 
             {card.aiValidation?.keyContext && card.aiValidation.keyContext.length > 0 ? (
               <View style={styles.keyContextSection}>
-                <Text style={styles.keyContextEyebrow}>Key context</Text>
-                {card.aiValidation.keyContext.map((ctx, i) => (
-                  <View key={i} style={[discussCardStyles.momentCard, { borderLeftWidth: 3, borderLeftColor: palette.accent }]}>
+                <Text style={[styles.keyContextEyebrow, { color: surface.textMuted }]}>Key context</Text>
+                {card.aiValidation.keyContext.slice(0, hasResults ? 3 : 2).map((ctx, i) => (
+                  <View key={i} style={[discussCardStyles.momentCard, { borderLeftWidth: 3, borderLeftColor: semantic.actionPrimary }]}>
                     <Text style={discussCardStyles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
-                    <Text style={discussCardStyles.momentCardTitle} numberOfLines={2}>{ctx}</Text>
+                    <Text style={discussCardStyles.momentCardTitle} numberOfLines={2}>
+                      {ctx}
+                    </Text>
                   </View>
                 ))}
               </View>
+            ) : null}
+            <Text style={[styles.aiDecisionReason, { color: surface.textMuted }]} numberOfLines={hasResults ? 4 : 2}>
+              {aiDecisionReason}
+            </Text>
+            {!hasResults ? (
+              <Text style={[styles.secondaryHint, { color: surface.textMuted }]}>Cast your vote to unlock full AI reasoning and interaction.</Text>
             ) : null}
 
             <View style={styles.aiReactionRow}>
@@ -351,186 +473,334 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 accessibilityRole="button"
                 accessibilityLabel={`Agree with AI. ${agreeCount} agrees.`}
                 accessibilityState={{ selected: aiReaction === 'agree' }}
+                disabled={!hasResults}
                 onPress={() => onPressAiReaction('agree')}
                 style={({ pressed }) => [
                   styles.aiReactionPill,
                   aiReaction === 'agree' && styles.aiReactionPillAgreeOn,
                   pressed && styles.aiReactionPillPressed,
+                  !hasResults && styles.disabledPill,
                 ]}>
                 <Ionicons
                   name={aiReaction === 'agree' ? 'thumbs-up' : 'thumbs-up-outline'}
                   size={16}
-                  color={aiReaction === 'agree' ? palette.mint : profileTypography.subdued}
+                  color={aiReaction === 'agree' ? palette.mint : surface.textMuted}
                 />
-                <Text style={[styles.aiReactionLabel, aiReaction === 'agree' && styles.aiReactionLabelOn]}>
-                  Agree · {agreeCount}
-                </Text>
+                <Text style={[styles.aiReactionLabel, aiReaction === 'agree' && styles.aiReactionLabelOn]}>Agree · {agreeCount}</Text>
               </Pressable>
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel={`Disagree with AI. ${disagreeCount} disagrees.`}
                 accessibilityState={{ selected: aiReaction === 'disagree' }}
+                disabled={!hasResults}
                 onPress={() => onPressAiReaction('disagree')}
                 style={({ pressed }) => [
                   styles.aiReactionPill,
                   aiReaction === 'disagree' && styles.aiReactionPillDisagreeOn,
                   pressed && styles.aiReactionPillPressed,
+                  !hasResults && styles.disabledPill,
                 ]}>
                 <Ionicons
                   name={aiReaction === 'disagree' ? 'thumbs-down' : 'thumbs-down-outline'}
                   size={16}
-                  color={aiReaction === 'disagree' ? palette.accent : profileTypography.subdued}
+                  color={aiReaction === 'disagree' ? semantic.actionPrimary : surface.textMuted}
                 />
-                <Text style={[styles.aiReactionLabel, aiReaction === 'disagree' && styles.aiReactionLabelOn]}>
-                  Disagree · {disagreeCount}
+                <Text style={[styles.aiReactionLabel, aiReaction === 'disagree' && styles.aiReactionLabelOn]}>Disagree · {disagreeCount}</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+
+        <View style={[styles.commentsDividerWrap, !hasResults && styles.secondarySectionMuted]}>
+          <View style={styles.commentsMetaRow}>
+            <Text style={styles.commentsDividerMeta}>
+              {filteredTopLevel.length} {filteredTopLevel.length === 1 ? 'comment' : 'comments'}
+            </Text>
+            <View style={styles.commentControlRow}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Comment sorting options"
+                onPress={() => setSortSheetVisible(true)}
+                hitSlop={10}
+                style={({ pressed }) => [styles.commentSortBtn, pressed && styles.commentSortBtnPressed]}>
+                <Ionicons name="options-outline" size={15} color={surface.textMuted} />
+                <Text style={styles.commentSortBtnText}>{commentSortMode === 'liked' ? 'Most liked' : 'Most latest'}</Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={
+                  filterOptionId
+                    ? `Filter by ${optionLabelForId(card.options, filterOptionId)}`
+                    : 'Option filter, showing all options'
+                }
+                onPress={() => setFilterSheetVisible(true)}
+                hitSlop={10}
+                style={({ pressed }) => [styles.commentSortBtn, styles.commentSortBtnFlex, pressed && styles.commentSortBtnPressed]}>
+                <Ionicons name="filter-outline" size={15} color={surface.textMuted} />
+                <Text style={styles.commentSortBtnText} numberOfLines={1} ellipsizeMode="tail">
+                  {filterOptionId
+                    ? optionLabelForIdCompact(card.options, filterOptionId, OPTION_LABEL_MAX.filter)
+                    : 'All options'}
                 </Text>
               </Pressable>
             </View>
           </View>
         </View>
 
-        <View style={styles.communitySectionHeader}>
-          <Text style={styles.communitySectionEyebrow}>Discussion</Text>
-          <Text style={styles.communitySectionTitle}>Community responses</Text>
-          <Text style={styles.communitySectionBody}>
-            Read reactions to the AI decision, then add your own take beneath the side you support.
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={effectivePick ? 'Write a comment' : 'Vote first to unlock commenting'}
+          accessibilityState={{ disabled: !effectivePick }}
+          disabled={!effectivePick}
+          onPress={() => setComposerModalVisible(true)}
+          style={({ pressed }) => [
+            styles.commentEntryBar,
+            !effectivePick && styles.commentEntryBarDisabled,
+            pressed && effectivePick && styles.commentEntryBarPressed,
+          ]}>
+          <View style={styles.commentEntryDot} />
+          <Text style={[styles.commentEntryText, !effectivePick && styles.commentEntryTextDisabled]}>
+            {effectivePick ? 'Drop a comment...' : 'Vote on this card to unlock commenting...'}
           </Text>
-          <Text style={styles.communitySectionMeta}>
-            {filteredTopLevel.length} {filteredTopLevel.length === 1 ? 'top-level note' : 'top-level notes'}
-          </Text>
+          <Ionicons name="chatbubble-ellipses-outline" size={16} color={surface.textMuted} />
+        </Pressable>
+
+        {!hasResults ? (
+          <View style={styles.needVoteCallout}>
+            <Text style={styles.needVoteTitle}>Vote to unlock posting</Text>
+            <Text style={styles.needVoteBody}>You can browse existing threads now. Replying and publishing open after you pick an option.</Text>
+          </View>
+        ) : null}
+
+        <View style={[styles.feedList, !hasResults && styles.secondarySectionMuted]}>
+          {filteredTopLevel.map((p) => (
+            <DiscussionPostCard
+              key={p.id}
+              post={p}
+              depth={0}
+              card={card}
+              presentation="feed"
+              getReplies={getReplies}
+              thumbCount={thumbCount}
+              toggleThumb={handleThumbPress}
+              isThumbSelected={(id) => !!userThumbUp[id]}
+              replyingToId={replyingToId}
+              onToggleReplyComposer={onPressReplyTo}
+              onOpenFullThread={setThreadModalRoot}
+              replyDraft={replyDraft}
+              setReplyDraft={setReplyDraft}
+              submitReply={submitReply}
+              cancelReply={cancelReply}
+              replyEnabled={!!effectivePick}
+            />
+          ))}
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRail} contentContainerStyle={styles.filterRailContent}>
+        {filteredTopLevel.length === 0 ? (
+          <View style={styles.emptyCard}>
+            <Text style={styles.emptyTitle}>No responses in this slice yet</Text>
+            <Text style={styles.emptySubtitle}>Broaden the filter or be the first to explain your choice.</Text>
+          </View>
+        ) : null}
+
+      </View>
+
+      <JumpUpSheet
+        visible={changeTeamPrompt != null}
+        onClose={dismissChangeTeamPrompt}
+        backgroundColor={surface.groupedSurface}
+        borderTopColor={surface.hairline}
+        bottomInset={insets.bottom}
+        maxHeight="52%"
+        grabColor={surface.hairline}
+        dismissAccessibilityLabel="Dismiss rethink choice prompt">
+        {changeTeamPrompt && effectivePick ? (
+          <View style={styles.changeTeamSheetBody}>
+            <Text style={[styles.sortSheetTitle, text.display]}>Rethink this choice?</Text>
+            <Text style={[styles.changeTeamBody, text.primary]}>
+              You found this reasoning compelling while you&apos;re on{' '}
+              <Text style={{ fontWeight: '700' }} numberOfLines={2} ellipsizeMode="tail">
+                {optionLabelForId(card.options, effectivePick)}
+              </Text>
+              . It might be worth switching.
+            </Text>
+            <View style={[styles.changeTeamQuote, { borderColor: surface.hairline, backgroundColor: surface.canvas }]}>
+              <Text style={[styles.changeTeamQuoteAuthor, text.muted]} numberOfLines={1} ellipsizeMode="tail">
+                {changeTeamPrompt.authorName} ·{' '}
+                {optionAffiliationLabel(optionLabelForId(card.options, changeTeamPrompt.optionId))}
+              </Text>
+              <Text style={[styles.changeTeamQuoteBody, text.primary]} numberOfLines={4}>
+                {changeTeamPrompt.body}
+              </Text>
+            </View>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Switch to ${optionLabel(card, changeTeamPrompt.optionId)}`}
+              onPress={confirmChangeTeam}
+              style={({ pressed }) => [ctaStyles.primary, pressed && { opacity: 0.92 }]}>
+              <Text style={ctaStyles.primaryLabel} numberOfLines={2} ellipsizeMode="tail">
+                {optionActionLabel('Switch to', optionLabel(card, changeTeamPrompt.optionId))}
+              </Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Keep ${optionLabel(card, effectivePick)}`}
+              onPress={dismissChangeTeamPrompt}
+              style={({ pressed }) => [styles.changeTeamStayBtn, pressed && { opacity: 0.7 }]}>
+              <Text style={[styles.changeTeamStayText, { color: semantic.actionPrimary }]} numberOfLines={2} ellipsizeMode="tail">
+                {optionActionLabel('Keep', optionLabel(card, effectivePick))}
+              </Text>
+            </Pressable>
+          </View>
+        ) : null}
+      </JumpUpSheet>
+
+      <JumpUpSheet
+        visible={composerModalVisible}
+        onClose={() => setComposerModalVisible(false)}
+        backgroundColor="rgba(253,251,247,0.98)"
+        borderTopColor={profileNeutralStroke(0.12)}
+        bottomInset={insets.bottom}
+        maxHeight="58%"
+        grabColor={profileNeutralStroke(0.22)}
+        dismissAccessibilityLabel="Close comment composer">
+        <View style={[styles.composerSheet, styles.composerSheetModal]}>
+          <View style={styles.composerModalHeader}>
+            <Text style={styles.composerEyebrow}>
+              {effectivePick ? `Posting as · ${optionLabel(card, effectivePick)}` : 'Join this discussion'}
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Close comment composer"
+              hitSlop={10}
+              onPress={() => setComposerModalVisible(false)}
+              style={({ pressed }) => [styles.composerModalClose, pressed && styles.composerModalClosePressed]}>
+              <Ionicons name="close" size={16} color={surface.textMuted} />
+            </Pressable>
+          </View>
+          <TextInput
+            ref={composerInputRef}
+            accessibilityLabel={
+              effectivePick
+                ? `Write a response for ${optionLabel(card, effectivePick)}`
+                : 'Discussion composer disabled until you vote'
+            }
+            style={styles.input}
+            multiline
+            editable={!!effectivePick}
+            placeholder={
+              effectivePick
+                ? 'Explain your stance with one concrete reason or example.'
+                : 'Vote on this card to unlock posting…'
+            }
+            placeholderTextColor={surface.textMuted}
+            value={draft}
+            onChangeText={setDraft}
+            maxLength={2000}
+          />
+          <Button
+            accessibilityLabel="Publish discussion comment"
+            style={styles.postBtn}
+            disabled={!effectivePick || draft.trim().length < 4}
+            onPress={submit}>
+            <Text style={styles.postBtnLabel}>Share response</Text>
+          </Button>
+        </View>
+      </JumpUpSheet>
+
+      <JumpUpSheet
+        visible={sortSheetVisible}
+        onClose={() => setSortSheetVisible(false)}
+        backgroundColor="rgba(253,251,247,0.98)"
+        borderTopColor={profileNeutralStroke(0.12)}
+        bottomInset={insets.bottom}
+        maxHeight="32%"
+        grabColor={profileNeutralStroke(0.22)}
+        dismissAccessibilityLabel="Close comment sort options">
+        <View style={styles.sortSheetBody}>
+          <Text style={styles.sortSheetTitle}>Sort comments</Text>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityState={{ selected: commentSortMode === 'liked' }}
+            style={({ pressed }) => [styles.sortSheetAction, pressed && styles.sortSheetActionPressed]}
+            onPress={() => {
+              setCommentSortMode('liked');
+              setSortSheetVisible(false);
+            }}>
+            <Text style={styles.sortSheetActionText}>Most liked</Text>
+            {commentSortMode === 'liked' ? <Ionicons name="checkmark" size={16} color={semantic.actionPrimary} /> : null}
+          </Pressable>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityState={{ selected: commentSortMode === 'latest' }}
+            style={({ pressed }) => [styles.sortSheetAction, pressed && styles.sortSheetActionPressed]}
+            onPress={() => {
+              setCommentSortMode('latest');
+              setSortSheetVisible(false);
+            }}>
+            <Text style={styles.sortSheetActionText}>Most latest</Text>
+            {commentSortMode === 'latest' ? <Ionicons name="checkmark" size={16} color={semantic.actionPrimary} /> : null}
+          </Pressable>
+        </View>
+      </JumpUpSheet>
+
+      <JumpUpSheet
+        visible={filterSheetVisible}
+        onClose={() => setFilterSheetVisible(false)}
+        backgroundColor="rgba(253,251,247,0.98)"
+        borderTopColor={profileNeutralStroke(0.12)}
+        bottomInset={insets.bottom}
+        maxHeight="38%"
+        grabColor={profileNeutralStroke(0.22)}
+        dismissAccessibilityLabel="Close option filter">
+        <View style={styles.sortSheetBody}>
+          <Text style={styles.sortSheetTitle}>Filter by option</Text>
           <Pressable
             accessibilityRole="button"
             accessibilityState={{ selected: filterOptionId === null }}
-            onPress={() => setFilterOptionId(null)}
-            style={[styles.filterChip, filterOptionId === null && styles.filterChipOn]}>
-            <Text style={[styles.filterChipText, filterOptionId === null && styles.filterChipTextOn]}>All perspectives</Text>
+            style={({ pressed }) => [styles.sortSheetAction, pressed && styles.sortSheetActionPressed]}
+            onPress={() => {
+              setFilterOptionId(null);
+              setFilterSheetVisible(false);
+            }}>
+            <Text style={styles.sortSheetActionText}>All options</Text>
+            {filterOptionId === null ? <Ionicons name="checkmark" size={16} color={semantic.actionPrimary} /> : null}
           </Pressable>
-          {card.options.map((o, idx) => (
+          {card.options.map((option) => (
             <Pressable
-              key={o.id}
+              key={option.id}
               accessibilityRole="button"
-              accessibilityState={{ selected: filterOptionId === o.id }}
-              onPress={() => setFilterOptionId(filterOptionId === o.id ? null : o.id)}
-              style={[styles.filterChip, filterOptionId === o.id && styles.filterChipOn]}>
-              <View style={[styles.filterStripe, { backgroundColor: TEAM_STRIPES[idx % TEAM_STRIPES.length] }]} />
-              <Text
-                style={[styles.filterChipText, filterOptionId === o.id && styles.filterChipTextOn]}
-                numberOfLines={1}>
-                {o.label}
-              </Text>
+              accessibilityState={{ selected: filterOptionId === option.id }}
+              style={({ pressed }) => [styles.sortSheetAction, pressed && styles.sortSheetActionPressed]}
+              onPress={() => {
+                setFilterOptionId(option.id);
+                setFilterSheetVisible(false);
+              }}>
+              <View style={styles.sortSheetTeamLabel}>
+                <View style={[styles.filterTeamDot, { backgroundColor: optionTeamColor(card.options, option.id) }]} />
+                <Text style={[styles.sortSheetActionText, styles.sortSheetOptionText]} numberOfLines={2} ellipsizeMode="tail">
+                  {option.label}
+                </Text>
+              </View>
+              {filterOptionId === option.id ? (
+                <Ionicons name="checkmark" size={16} color={optionTeamColor(card.options, option.id)} />
+              ) : null}
             </Pressable>
           ))}
-        </ScrollView>
+        </View>
+      </JumpUpSheet>
 
-        {!effectivePick ? (
-          <View style={styles.needVoteCallout}>
-            <Text style={styles.needVoteTitle}>
-              {isOpen ? 'Choose a side before you post' : 'Join the discussion with a stance'}
-            </Text>
-            <Text style={styles.needVoteBody}>
-              {isOpen
-                ? 'Your vote decides which side your response appears under. Head back to Explore, tap an option, then reopen Discuss.'
-                : 'Every note here is tagged by the side it supports. To add your response under the right team, return to the reel, tap the stance you identify with, then open Discuss again.'}
-            </Text>
-          </View>
-        ) : (
-          <>
-            {grouped.map(({ option, posts }) => {
-              if (posts.length === 0) return null;
-              const stripe = teamStripeColor(card, option.id);
-              const voiceCount = allDiscussionRows.filter((p) => p.optionId === option.id).length;
-              return (
-                <View key={option.id} style={styles.teamBlock}>
-                  <View style={styles.teamBlockHeader}>
-                    <View style={[styles.teamBadge, { borderColor: stripe }]}>
-                      <View style={[styles.teamBadgeDot, { backgroundColor: stripe }]} />
-                      <Text style={styles.teamBadgeText}>{option.label}</Text>
-                      <Text style={styles.teamBadgeMeta}>
-                        {voiceCount} {voiceCount === 1 ? 'response' : 'responses'}
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={styles.threadList}>
-                    {posts.map((p) => (
-                      <DiscussionPostCard
-                        key={p.id}
-                        post={p}
-                        depth={0}
-                        card={card}
-                        surface="feed"
-                        getReplies={getReplies}
-                        thumbCount={thumbCount}
-                        toggleThumb={toggleThumb}
-                        isThumbSelected={(id) => !!userThumbUp[id]}
-                        replyingToId={replyingToId}
-                        onToggleReplyComposer={onPressReplyTo}
-                        onOpenFullThread={setThreadModalRoot}
-                        replyDraft={replyDraft}
-                        setReplyDraft={setReplyDraft}
-                        submitReply={submitReply}
-                        cancelReply={cancelReply}
-                        replyEnabled={!!effectivePick}
-                      />
-                    ))}
-                  </View>
-                </View>
-              );
-            })}
-
-            {filteredTopLevel.length === 0 ? (
-              <View style={styles.emptyCard}>
-                <Text style={styles.emptyTitle}>No responses in this slice yet</Text>
-                <Text style={styles.emptySubtitle}>Broaden the filter or be the first to explain why you agree or disagree.</Text>
-              </View>
-            ) : null}
-
-            <View style={styles.composerSheet}>
-              <Text style={styles.composerEyebrow}>
-                {effectivePick
-                  ? `Posting as · ${optionLabel(card, effectivePick)}`
-                  : 'Join this discussion'}
-              </Text>
-              <TextInput
-                accessibilityLabel={
-                  effectivePick
-                    ? `Write a response for ${optionLabel(card, effectivePick)}`
-                    : 'Discussion composer disabled until you vote'
-                }
-                style={styles.input}
-                multiline
-                editable={!!effectivePick}
-                placeholder={
-                  effectivePick
-                    ? 'Explain why you agree or disagree with the AI, and share what happened in your own experience.'
-                    : 'Vote on Explore to unlock posting…'
-                }
-                placeholderTextColor={profileTypography.subdued}
-                value={draft}
-                onChangeText={setDraft}
-                maxLength={2000}
-              />
-              <PrimaryButton
-                accessibilityLabel="Publish discussion comment"
-                style={styles.postBtn}
-                disabled={!effectivePick || draft.trim().length < 4}
-                onPress={submit}>
-                <Text style={styles.postBtnLabel}>Share response</Text>
-              </PrimaryButton>
-            </View>
-          </>
-        )}
-      </ReelCardSurface>
-
-      <Modal
+      <JumpUpSheet
         visible={threadModalRoot != null}
-        animationType="slide"
-        presentationStyle="pageSheet"
-        onRequestClose={() => setThreadModalRoot(null)}>
+        onClose={() => setThreadModalRoot(null)}
+        backgroundColor="rgba(253,251,247,0.98)"
+        borderTopColor={profileNeutralStroke(0.12)}
+        bottomInset={insets.bottom}
+        maxHeight="94%"
+        grabColor={profileNeutralStroke(0.22)}
+        dismissAccessibilityLabel="Close thread">
         {threadModalRoot ? (
-          <View style={[styles.threadModalRoot, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+          <>
             <View style={styles.threadModalHeader}>
               <Pressable
                 accessibilityRole="button"
@@ -538,10 +808,10 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 hitSlop={12}
                 onPress={() => setThreadModalRoot(null)}
                 style={({ pressed }) => [styles.threadModalClose, pressed && styles.threadModalClosePressed]}>
-                <Text style={styles.threadModalCloseText}>Close</Text>
+                <Ionicons name="chevron-down" size={18} color={surface.textPrimary} />
               </Pressable>
               <Text style={styles.threadModalTitle} numberOfLines={2}>
-                {threadModalRoot.body.split('\n')[0]?.trim().slice(0, 120) || 'Thread'}
+                Thread
               </Text>
               <View style={styles.threadModalHeaderSpacer} />
             </View>
@@ -553,10 +823,10 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 post={threadModalRoot}
                 depth={0}
                 card={card}
-                surface="fullscreen"
+                presentation="fullscreen"
                 getReplies={getReplies}
                 thumbCount={thumbCount}
-                toggleThumb={toggleThumb}
+                toggleThumb={handleThumbPress}
                 isThumbSelected={(id) => !!userThumbUp[id]}
                 replyingToId={replyingToId}
                 onToggleReplyComposer={onPressReplyTo}
@@ -567,9 +837,9 @@ export function DiscussExpanded({ card, pickedOptionFromRoute }: DiscussExpanded
                 replyEnabled={!!effectivePick}
               />
             </ScrollView>
-          </View>
+          </>
         ) : null}
-      </Modal>
+      </JumpUpSheet>
     </View>
   );
 }
@@ -594,10 +864,10 @@ type DiscussionPostCardProps = Readonly<{
   post: TeamDiscussionPost;
   depth: number;
   card: ExploreCard;
-  surface?: DiscussionSurface;
+  presentation?: DiscussionSurface;
   getReplies: (parentId: string) => TeamDiscussionPost[];
   thumbCount: (p: TeamDiscussionPost) => number;
-  toggleThumb: (postId: string) => void;
+  toggleThumb: (post: TeamDiscussionPost) => void;
   isThumbSelected: (postId: string) => boolean;
   replyingToId: string | null;
   onToggleReplyComposer: (postId: string) => void;
@@ -614,7 +884,7 @@ function DiscussionPostCard({
   post,
   depth,
   card,
-  surface = 'feed',
+  presentation = 'feed',
   getReplies,
   thumbCount,
   toggleThumb,
@@ -628,7 +898,11 @@ function DiscussionPostCard({
   cancelReply,
   replyEnabled,
 }: DiscussionPostCardProps) {
-  const stripe = teamStripeColor(card, post.optionId);
+  const theme = usePmfSurface();
+  const styles = React.useMemo(() => discussExpandedStyles(theme), [theme]);
+  const stripe = optionTeamColor(card.options, post.optionId);
+  const affiliation = optionAffiliationLabel(optionLabelForId(card.options, post.optionId));
+  const affiliationA11y = `For ${optionLabelForId(card.options, post.optionId)}`;
   const isYou = post.authorName === 'You';
   const replies = getReplies(post.id);
   const threadReplyTotal = React.useMemo(
@@ -644,21 +918,24 @@ function DiscussionPostCard({
     <View style={depth > 0 ? styles.threadBranch : undefined}>
       <View style={[styles.threadRow, depth > 0 && styles.threadRowNested, { borderLeftColor: stripe }]}>
         <View style={styles.threadRowTop}>
-          <Text accessible={false} style={styles.threadEmoji}>
-            {post.authorEmoji}
-          </Text>
+          <View style={styles.threadAvatarShell}>
+            <Text accessible={false} style={styles.threadAvatarEmoji}>
+              {post.authorEmoji}
+            </Text>
+          </View>
           <Text style={[typography.compact, styles.threadAuthor]}>{post.authorName}</Text>
-          {depth > 0 ? (
-            <View style={styles.depthReplyBadge}>
-              <Text style={styles.depthReplyBadgeText}>Reply</Text>
+          {depth === 0 ? (
+            <View
+              accessibilityLabel={affiliationA11y}
+              style={[styles.teamInlineTag, { borderColor: `${stripe}44`, backgroundColor: `${stripe}14`, maxWidth: '46%' }]}>
+              <View style={[styles.teamInlineDot, { backgroundColor: stripe }]} />
+              <Text style={[styles.teamInlineText, { color: stripe }]} numberOfLines={1} ellipsizeMode="tail">
+                {affiliation}
+              </Text>
             </View>
           ) : null}
           {post.timeLabel ? <Text style={styles.threadTime}>{post.timeLabel}</Text> : null}
-          {isYou ? (
-            <View style={styles.youPill}>
-              <Text style={styles.youPillText}>Your post</Text>
-            </View>
-          ) : null}
+          {isYou ? <Text style={styles.youInline}>You</Text> : null}
         </View>
         <Text style={styles.threadBody}>{post.body}</Text>
 
@@ -667,14 +944,14 @@ function DiscussionPostCard({
             accessibilityRole="button"
             accessibilityLabel={liked ? `Remove helpful. ${formatThumbDisplay(n)} helpful votes.` : `Mark helpful. ${formatThumbDisplay(n)} helpful votes.`}
             accessibilityState={{ selected: liked }}
-            onPress={() => toggleThumb(post.id)}
+            onPress={() => toggleThumb(post)}
             hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
             style={({ pressed }) => [
               styles.actionPill,
               liked && styles.actionPillSelected,
               pressed && styles.actionPillPressed,
             ]}>
-            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? palette.accent : profileTypography.subdued} />
+            <Ionicons name={liked ? 'thumbs-up' : 'thumbs-up-outline'} size={17} color={liked ? semantic.actionPrimary : theme.textMuted} />
             <Text style={[styles.actionPillLabel, liked && styles.actionPillLabelOn]}>{formatThumbDisplay(n)}</Text>
           </Pressable>
 
@@ -690,24 +967,24 @@ function DiscussionPostCard({
                 composerOpen && styles.replyPillOn,
                 pressed && styles.replyPillPressed,
               ]}>
-              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? palette.accent : profileTypography.subdued} />
+              <Ionicons name="return-down-forward-outline" size={16} color={composerOpen ? semantic.actionPrimary : theme.textMuted} />
               <Text style={[styles.replyPillText, composerOpen && styles.replyPillTextOn]}>{composerOpen ? 'Close' : 'Reply'}</Text>
             </Pressable>
           ) : null}
         </View>
 
-        {surface === 'feed' && depth === 0 && threadReplyTotal > 0 && onOpenFullThread ? (
+        {presentation === 'feed' && depth === 0 && threadReplyTotal > 0 && onOpenFullThread ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={`View full thread, ${threadReplyTotal} replies`}
             onPress={() => onOpenFullThread(post)}
             style={({ pressed }) => [styles.viewThreadBar, pressed && styles.viewThreadBarPressed]}
             hitSlop={{ top: 4, bottom: 6 }}>
-            <Ionicons name="chatbubbles-outline" size={17} color={palette.accent} />
+            <Ionicons name="chatbubbles-outline" size={17} color={semantic.actionPrimary} />
             <Text style={styles.viewThreadBarLabel}>
-              View full thread · {threadReplyTotal} {threadReplyTotal === 1 ? 'reply' : 'replies'}
+              Thread · {threadReplyTotal} {threadReplyTotal === 1 ? 'reply' : 'replies'}
             </Text>
-            <Ionicons name="chevron-forward" size={17} color={profileTypography.subdued} />
+            <Ionicons name="chevron-forward" size={17} color={theme.textMuted} />
           </Pressable>
         ) : null}
 
@@ -716,7 +993,7 @@ function DiscussionPostCard({
             <TextInput
               accessibilityLabel={`Reply to ${post.authorName}`}
               placeholder={`Reply to ${post.authorName}…`}
-              placeholderTextColor={profileTypography.subdued}
+              placeholderTextColor={theme.textMuted}
               style={styles.inlineReplyInput}
               multiline
               value={replyDraft}
@@ -745,14 +1022,14 @@ function DiscussionPostCard({
         ) : null}
       </View>
 
-      {depth < MAX_THREAD_DEPTH
-          ? replies.map((child) => (
+      {presentation === 'fullscreen' && depth < MAX_THREAD_DEPTH
+        ? replies.map((child) => (
             <DiscussionPostCard
               key={child.id}
               post={child}
               depth={depth + 1}
               card={card}
-              surface={surface}
+              presentation={presentation}
               getReplies={getReplies}
               thumbCount={thumbCount}
               toggleThumb={toggleThumb}
@@ -772,18 +1049,180 @@ function DiscussionPostCard({
   );
 }
 
-const styles = StyleSheet.create({
+function discussExpandedStyles(surface: ThemeSurface) {
+  const text = pmfText(surface);
+  return StyleSheet.create({
   wrap: {
     alignSelf: 'stretch',
     width: '100%',
   },
+  screenCard: {
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.sm,
+    paddingBottom: spacing.sm,
+  },
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    gap: 8,
+    marginBottom: 8,
+  },
+  topActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  topIconBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    backgroundColor: surface.groupedSurface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  topIconBtnSecondary: {
+    opacity: 0.72,
+    backgroundColor: 'rgba(255,255,255,0.58)',
+  },
+  topCloseBtn: {
+    borderColor: profileNeutralStroke(0.14),
+    backgroundColor: surface.groupedSurface,
+    opacity: 1,
+  },
+  topIconBtnPressed: {
+    opacity: 0.8,
+  },
+  voteMetaPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    backgroundColor: 'rgba(255,255,255,0.74)',
+    paddingHorizontal: 9,
+    paddingVertical: 5,
+  },
+  voteMetaDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  voteMetaText: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  questionBlock: {
+    gap: 4,
+    marginBottom: 8,
+  },
+  questionEyebrow: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.22,
+    textTransform: 'uppercase',
+  },
+  pointsInlineText: {
+    ...typography.compact,
+    fontWeight: '600',
+    opacity: 0.82,
+  },
+  questionHeadline: {
+    ...typography.h2,
+    fontWeight: '800',
+    letterSpacing: -0.2,
+    lineHeight: 34,
+    fontSize: 20,
+  },
+  optionsWrap: {
+    gap: 8,
+    marginBottom: 4,
+  },
+  optionRow: {
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 6,
+  },
+  optionRowSelected: {
+    borderColor: 'rgba(79,118,194,0.52)',
+    backgroundColor: surface.groupedSurface,
+  },
+  optionRowTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  optionRowLabel: {
+    ...typography.compact,
+    flex: 1,
+    flexShrink: 1,
+    minWidth: 0,
+    fontWeight: '700',
+  },
+  optionRowPct: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.1,
+    flexShrink: 0,
+  },
+  optionTrack: {
+    height: 2,
+    borderRadius: 999,
+    overflow: 'hidden',
+  },
+  optionFill: {
+    height: '100%',
+    borderRadius: 999,
+  },
+  optionVoteTap: {
+    borderRadius: radius.md,
+  },
+  optionVoteTapPressed: {
+    opacity: 0.92,
+  },
+  secondarySectionMuted: {
+    opacity: 0.58,
+  },
+  secondaryHint: {
+    ...typography.caption,
+    lineHeight: 18,
+    fontWeight: '600',
+  },
+  disabledPill: {
+    opacity: 0.6,
+  },
+  voteUnlockCard: {
+    marginTop: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.lg,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 14,
+    gap: 6,
+  },
+  voteUnlockTitle: {
+    ...typography.compact,
+    fontWeight: '800',
+  },
+  voteUnlockBody: {
+    ...typography.caption,
+    lineHeight: 18,
+    fontWeight: '500',
+  },
   summarySection: {
-    marginTop: 18,
-    gap: 14,
+    marginTop: 14,
+    gap: 10,
   },
   summaryEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.45,
     textTransform: 'uppercase',
@@ -791,7 +1230,7 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     ...typography.h2,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     letterSpacing: -0.45,
     paddingHorizontal: 2,
@@ -800,8 +1239,8 @@ const styles = StyleSheet.create({
     gap: 0,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.9)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
     overflow: 'hidden',
     ...Platform.select({
       ios: {
@@ -821,90 +1260,81 @@ const styles = StyleSheet.create({
   },
   summaryRowDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: profileNeutralStroke(0.08),
+    borderBottomColor: surface.hairline,
   },
   summaryRowLabel: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
   },
   summaryRowValue: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 20,
     fontWeight: '500',
   },
   aiDecisionCard: {
-    gap: 10,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    borderRadius: 26,
+    gap: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonPink}28`,
-    borderLeftWidth: 4,
-    borderLeftColor: '#0f172a',
-    backgroundColor: 'rgba(255,253,255,0.92)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: surface.groupedSurface,
     ...Platform.select({
       ios: {
-        shadowColor: palette.heroInk,
-        shadowOpacity: 0.08,
-        shadowRadius: 14,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.015,
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: 1 },
       },
-      android: { elevation: 2 },
+      android: { elevation: 0 },
       default: {},
     }),
   },
   aiDecisionHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 10,
   },
-  aiDecisionBadge: {
-    borderRadius: 999,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    backgroundColor: '#0f172a',
-  },
-  aiDecisionBadgeText: {
-    fontSize: 9,
-    lineHeight: 12,
-    fontWeight: '800',
-    letterSpacing: 0.6,
-    color: palette.white,
+  aiSectionLabel: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.25,
+    textTransform: 'uppercase',
   },
   aiDecisionPick: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     letterSpacing: 0.12,
     flex: 1,
   },
   aiDecisionHeadline: {
-    ...typography.h2,
-    color: profileTypography.ink,
+    ...typography.compact,
+    ...text.display,
     fontWeight: '700',
-    letterSpacing: -0.35,
-    lineHeight: 24,
-    fontSize: 17,
+    letterSpacing: -0.15,
+    lineHeight: 22,
+    fontSize: 16,
   },
   aiDecisionReason: {
-    ...typography.compact,
-    color: profileTypography.body,
-    lineHeight: 21,
+    ...typography.caption,
+    ...text.primary,
+    lineHeight: 18,
     fontWeight: '500',
   },
   confidencePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
+    gap: 4,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
   },
   confidenceDot: {
     width: 6,
@@ -912,22 +1342,22 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   confidenceLabel: {
-    fontSize: 11,
-    fontWeight: '700',
+    fontSize: 10,
+    fontWeight: '600',
     letterSpacing: 0.2,
   },
   keyContextSection: {
-    marginTop: 2,
-    paddingTop: 12,
+    marginTop: 0,
+    paddingTop: 8,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: profileNeutralStroke(0.08),
-    gap: 8,
+    gap: 6,
   },
   keyContextEyebrow: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    fontWeight: '800',
-    letterSpacing: 0.35,
+    ...typography.micro,
+    ...text.muted,
+    fontWeight: '700',
+    letterSpacing: 0.2,
     textTransform: 'uppercase',
     marginBottom: 2,
   },
@@ -948,43 +1378,43 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 19,
     fontWeight: '600',
-    color: profileTypography.body,
+    ...text.primary,
   },
   aiReactionRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 10,
+    gap: 8,
     marginTop: 2,
   },
   aiReactionPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 9,
+    gap: 5,
+    paddingHorizontal: 9,
+    paddingVertical: 6,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.1),
-    backgroundColor: 'rgba(255,255,255,0.82)',
+    borderColor: surface.groupedBorder,
+    backgroundColor: 'rgba(255,255,255,0.7)',
   },
   aiReactionPillAgreeOn: {
-    borderColor: 'rgba(95,169,149,0.35)',
-    backgroundColor: 'rgba(228,248,240,0.92)',
+    borderColor: 'rgba(95,169,149,0.28)',
+    backgroundColor: 'rgba(240,248,244,1)',
   },
   aiReactionPillDisagreeOn: {
-    borderColor: 'rgba(79,118,194,0.35)',
-    backgroundColor: 'rgba(230,238,255,0.92)',
+    borderColor: 'rgba(125,138,160,0.28)',
+    backgroundColor: 'rgba(246,247,249,1)',
   },
   aiReactionPillPressed: {
     opacity: 0.9,
   },
   aiReactionLabel: {
-    ...typography.caption,
-    color: profileTypography.body,
-    fontWeight: '800',
+    ...typography.micro,
+    ...text.primary,
+    fontWeight: '700',
   },
   aiReactionLabelOn: {
-    color: profileTypography.ink,
+    ...text.display,
   },
   workflowHeader: {
     gap: 6,
@@ -992,20 +1422,20 @@ const styles = StyleSheet.create({
   },
   workflowEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.45,
     textTransform: 'uppercase',
   },
   workflowTitle: {
     ...typography.h2,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     letterSpacing: -0.45,
   },
   workflowBody: {
     ...typography.compact,
-    color: profileTypography.emphasis,
+    ...text.display,
     lineHeight: 20,
     fontWeight: '500',
   },
@@ -1017,7 +1447,7 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.86)',
     ...Platform.select({
       ios: {
@@ -1050,20 +1480,20 @@ const styles = StyleSheet.create({
   },
   stageBadgeText: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
   },
   stageTitle: {
     ...typography.compact,
-    color: profileTypography.ink,
+    ...text.display,
     fontWeight: '800',
     fontSize: 15,
   },
   stageBody: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 20,
     fontWeight: '500',
   },
@@ -1085,12 +1515,12 @@ const styles = StyleSheet.create({
   },
   signalChipText: {
     ...typography.caption,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '700',
   },
   stageMiniLabel: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
@@ -1106,16 +1536,16 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     backgroundColor: 'rgba(255,255,255,0.96)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
   },
   audienceChipText: {
     ...typography.caption,
-    color: profileTypography.emphasis,
+    ...text.display,
     fontWeight: '700',
   },
   stageFootnote: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     lineHeight: 17,
     fontWeight: '600',
   },
@@ -1124,7 +1554,7 @@ const styles = StyleSheet.create({
   },
   spotlightEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
@@ -1141,7 +1571,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
+    borderColor: surface.groupedBorder,
     gap: 8,
   },
   spotlightTopRow: {
@@ -1154,78 +1584,144 @@ const styles = StyleSheet.create({
   },
   spotlightAuthor: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     fontWeight: '800',
     flex: 1,
   },
   spotlightBody: {
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
     lineHeight: 19,
     fontWeight: '500',
   },
   spotlightLane: {
     ...typography.caption,
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '700',
   },
-  communitySectionHeader: {
-    marginTop: 18,
+  commentsDividerWrap: {
+    marginTop: 8,
+    marginBottom: 2,
+  },
+  commentsMetaRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  commentControlRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  commentsDividerMeta: {
+    ...typography.micro,
+    ...text.muted,
+    fontWeight: '600',
+  },
+  commentSortBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 5,
-    paddingHorizontal: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    backgroundColor: 'rgba(255,255,255,0.64)',
   },
-  communitySectionEyebrow: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    fontWeight: '800',
-    letterSpacing: 0.45,
-    textTransform: 'uppercase',
+  commentSortBtnPressed: {
+    opacity: 0.78,
   },
-  communitySectionTitle: {
-    ...typography.h2,
-    color: profileTypography.ink,
-    fontWeight: '800',
-    letterSpacing: -0.4,
+  commentSortBtnFlex: {
+    flexShrink: 1,
+    minWidth: 0,
+    maxWidth: '48%',
   },
-  communitySectionBody: {
-    ...typography.compact,
-    color: profileTypography.emphasis,
-    lineHeight: 20,
-    fontWeight: '500',
-  },
-  communitySectionMeta: {
-    ...typography.caption,
-    color: profileTypography.subdued,
+  commentSortBtnText: {
+    ...typography.micro,
+    ...text.muted,
     fontWeight: '700',
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  commentEntryBar: {
+    marginTop: 4,
+    marginBottom: 2,
+    minHeight: 36,
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.09),
+    backgroundColor: surface.groupedSurface,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  commentEntryBarDisabled: {
+    opacity: 0.72,
+  },
+  commentEntryBarPressed: {
+    opacity: 0.86,
+  },
+  commentEntryDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: profileNeutralStroke(0.3),
+    flexShrink: 0,
+  },
+  commentEntryText: {
+    ...typography.compact,
+    ...text.muted,
+    fontWeight: '500',
+    flex: 1,
+  },
+  commentEntryTextDisabled: {
+    ...text.muted,
   },
   filterRail: {
-    marginTop: 14,
+    marginTop: 2,
     marginBottom: 2,
     flexGrow: 0,
   },
   filterRailContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 6,
+    paddingVertical: 4,
     paddingRight: spacing.sm,
     gap: 0,
   },
   filterChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 14,
-    paddingVertical: 9,
-    marginRight: 8,
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginRight: 7,
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.09),
-    backgroundColor: 'rgba(255,255,255,0.82)',
+    backgroundColor: surface.groupedSurface,
     maxWidth: 220,
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
-        shadowOpacity: 0.035,
+        shadowOpacity: 0.01,
+        shadowRadius: 1,
+        shadowOffset: { width: 0, height: 1 },
+      },
+      android: { elevation: 0 },
+      default: {},
+    }),
+  },
+  filterChipOn: {
+    borderColor: 'rgba(96,110,130,0.28)',
+    backgroundColor: 'rgba(246,247,249,1)',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.04,
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 1 },
       },
@@ -1233,39 +1729,28 @@ const styles = StyleSheet.create({
       default: {},
     }),
   },
-  filterChipOn: {
-    borderColor: 'rgba(79,118,194,0.5)',
-    backgroundColor: 'rgba(227,236,255,0.95)',
-    ...Platform.select({
-      ios: {
-        shadowColor: palette.accent,
-        shadowOpacity: 0.12,
-        shadowRadius: 8,
-        shadowOffset: { width: 0, height: 2 },
-      },
-      android: { elevation: 2 },
-      default: {},
-    }),
-  },
   filterChipText: {
-    ...typography.compact,
-    color: profileTypography.emphasis,
+    ...typography.micro,
+    ...text.display,
     fontWeight: '600',
     flexShrink: 1,
   },
   filterChipTextOn: {
-    color: palette.accent,
+    ...text.primary,
   },
-  filterStripe: {
-    width: 4,
-    height: 16,
-    borderRadius: 2,
-    marginRight: 2,
+  filterTeamDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
     flexShrink: 0,
   },
-  teamBlock: {
-    marginTop: 16,
+  feedList: {
+    marginTop: 8,
     gap: 8,
+  },
+  teamBlock: {
+    marginTop: 14,
+    gap: 10,
   },
   teamBlockHeader: {
     flexDirection: 'row',
@@ -1274,12 +1759,12 @@ const styles = StyleSheet.create({
   teamBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    paddingHorizontal: 13,
-    paddingVertical: 8,
+    gap: 7,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    backgroundColor: 'rgba(255,255,255,0.84)',
+    backgroundColor: surface.groupedSurface,
     maxWidth: '100%',
     flexShrink: 1,
     ...Platform.select({
@@ -1302,57 +1787,99 @@ const styles = StyleSheet.create({
   teamBadgeText: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     flexShrink: 1,
   },
   teamBadgeMeta: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     fontWeight: '600',
     marginLeft: 4,
   },
   threadList: {
-    gap: 10,
+    gap: 12,
   },
   threadRow: {
-    paddingVertical: 14,
-    paddingHorizontal: 14,
-    paddingLeft: 15,
-    borderLeftWidth: 4,
-    borderRadius: radius.lg,
-    backgroundColor: 'rgba(255,255,255,0.88)',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    paddingLeft: 10,
+    borderLeftWidth: 1,
+    borderRadius: radius.md,
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.06),
+    borderColor: profileNeutralStroke(0.04),
     ...Platform.select({
       ios: {
-        shadowColor: profileTypography.ink,
-        shadowOpacity: 0.04,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 3 },
+        shadowColor: surface.textDisplay,
+        shadowOpacity: 0.008,
+        shadowRadius: 1,
+        shadowOffset: { width: 0, height: 1 },
       },
-      android: { elevation: 2 },
+      android: { elevation: 0 },
       default: {},
     }),
   },
   threadRowTop: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 5,
     flexWrap: 'wrap',
-    marginBottom: 6,
+    marginBottom: 3,
   },
-  threadEmoji: {
-    fontSize: 16,
+  threadAvatarShell: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: surface.groupedSurface,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.1),
+    overflow: 'hidden',
+  },
+  threadAvatarEmoji: {
+    fontSize: 14,
+    lineHeight: 16,
   },
   threadAuthor: {
+    ...typography.caption,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     flexShrink: 1,
   },
+  teamInlineTag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  teamInlineDot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+  },
+  teamInlineText: {
+    fontSize: 10,
+    lineHeight: 12,
+    ...text.muted,
+    fontWeight: '700',
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  youInline: {
+    ...typography.micro,
+    ...text.muted,
+    fontWeight: '700',
+  },
   threadTime: {
-    ...typography.caption,
-    color: profileTypography.subdued,
-    marginLeft: 4,
+    ...typography.micro,
+    ...text.muted,
+    marginLeft: 2,
     fontWeight: '600',
   },
   youPill: {
@@ -1373,97 +1900,79 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   threadBody: {
-    ...typography.body,
-    color: profileTypography.body,
+    ...typography.compact,
+    ...text.primary,
     fontWeight: '400',
-    lineHeight: 23,
+    lineHeight: 19,
     letterSpacing: -0.1,
   },
   threadActions: {
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 10,
+    gap: 10,
+    marginTop: 6,
   },
   actionPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 11,
-    paddingVertical: 7,
-    borderRadius: radius.pill,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.55)',
+    gap: 4,
+    paddingHorizontal: 2,
+    paddingVertical: 1,
+    borderRadius: 0,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
   },
   actionPillSelected: {
-    borderColor: 'rgba(79,118,194,0.45)',
-    backgroundColor: 'rgba(230,238,255,0.85)',
+    borderColor: 'rgba(96,110,130,0.3)',
+    backgroundColor: 'rgba(246,247,249,1)',
   },
   actionPillPressed: {
     opacity: 0.88,
   },
   actionPillLabel: {
-    ...typography.caption,
-    fontWeight: '700',
-    color: profileTypography.subdued,
-    minWidth: 16,
+    ...typography.micro,
+    fontWeight: '600',
+    ...text.muted,
+    minWidth: 0,
   },
   actionPillLabelOn: {
-    color: palette.accent,
+    ...text.primary,
   },
   replyPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 11,
-    paddingVertical: 7,
-    borderRadius: radius.pill,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.45)',
+    gap: 4,
+    paddingHorizontal: 2,
+    paddingVertical: 1,
+    borderRadius: 0,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
   },
   replyPillOn: {
-    borderColor: 'rgba(79,118,194,0.35)',
-    backgroundColor: 'rgba(233,239,255,0.75)',
+    borderColor: 'rgba(96,110,130,0.3)',
+    backgroundColor: 'rgba(246,247,249,1)',
   },
   replyPillPressed: {
     opacity: 0.9,
   },
   replyPillText: {
-    ...typography.caption,
-    fontWeight: '700',
-    color: profileTypography.subdued,
+    ...typography.micro,
+    fontWeight: '600',
+    ...text.muted,
   },
   replyPillTextOn: {
-    color: palette.accent,
+    ...text.primary,
   },
   threadBranch: {
-    marginTop: 6,
-    marginLeft: 8,
-    paddingLeft: 10,
-    borderLeftWidth: 2,
+    marginTop: 2,
+    marginLeft: 5,
+    paddingLeft: 6,
+    borderLeftWidth: 1,
     borderLeftColor: profileNeutralStroke(0.06),
   },
   threadRowNested: {
     backgroundColor: 'rgba(255,255,255,0.8)',
-  },
-  depthReplyBadge: {
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-    borderRadius: 6,
-    backgroundColor: profileNeutralStroke(0.05),
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.06),
-  },
-  depthReplyBadgeText: {
-    fontSize: 10,
-    lineHeight: 13,
-    fontWeight: '800',
-    color: profileTypography.subdued,
-    letterSpacing: 0.3,
-    textTransform: 'uppercase',
   },
   inlineReplyComposer: {
     marginTop: 12,
@@ -1474,12 +1983,12 @@ const styles = StyleSheet.create({
     maxHeight: 140,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79,118,194,0.22)',
-    backgroundColor: 'rgba(255,255,255,0.95)',
+    borderColor: surface.hairline,
+    backgroundColor: surface.groupedSurface,
     paddingHorizontal: spacing.sm,
     paddingVertical: 11,
     ...typography.compact,
-    color: profileTypography.body,
+    ...text.primary,
   },
   inlineReplyActions: {
     flexDirection: 'row',
@@ -1494,13 +2003,13 @@ const styles = StyleSheet.create({
   inlineReplyGhostText: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.subdued,
+    ...text.muted,
   },
   inlineReplyPrimary: {
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderRadius: radius.pill,
-    backgroundColor: palette.heroInk,
+    backgroundColor: semantic.actionPrimary,
   },
   inlineReplyPrimaryDisabled: {
     opacity: 0.38,
@@ -1516,67 +2025,105 @@ const styles = StyleSheet.create({
   viewThreadBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginTop: 11,
-    paddingVertical: 10,
-    paddingHorizontal: 11,
-    borderRadius: radius.md,
-    backgroundColor: 'rgba(227,236,255,0.55)',
+    gap: 6,
+    marginTop: 6,
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.4)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79,118,194,0.18)',
+    borderColor: surface.hairline,
   },
   viewThreadBarPressed: {
     opacity: 0.9,
-    backgroundColor: 'rgba(210,226,255,0.75)',
+    backgroundColor: 'rgba(246,247,249,1)',
   },
   viewThreadBarLabel: {
     flex: 1,
-    ...typography.compact,
-    fontWeight: '700',
-    color: profileTypography.emphasis,
+    ...typography.micro,
+    fontWeight: '600',
+    ...text.display,
     minWidth: 0,
-  },
-  threadModalRoot: {
-    flex: 1,
-    backgroundColor: 'rgba(253,251,247,0.98)',
   },
   threadModalHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
     paddingHorizontal: spacing.sm,
-    paddingBottom: 10,
+    paddingBottom: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: profileNeutralStroke(0.08),
+    borderBottomColor: surface.hairline,
   },
   threadModalClose: {
-    paddingVertical: 8,
-    paddingHorizontal: 4,
-    minWidth: 64,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: surface.hairline,
+    backgroundColor: 'rgba(255,255,255,0.82)',
   },
   threadModalClosePressed: {
     opacity: 0.65,
   },
-  threadModalCloseText: {
-    ...typography.compact,
-    fontWeight: '800',
-    color: palette.accent,
-  },
   threadModalTitle: {
     flex: 1,
-    ...typography.caption,
+    ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
     textAlign: 'center',
     minWidth: 0,
   },
   threadModalHeaderSpacer: {
-    minWidth: 64,
+    minWidth: 32,
   },
   threadModalScrollContent: {
     paddingHorizontal: spacing.sm,
     paddingTop: 14,
     paddingBottom: spacing.lg,
+  },
+  sortSheetBody: {
+    paddingHorizontal: spacing.sm,
+    paddingBottom: Math.max(spacing.md, 18),
+    gap: 8,
+  },
+  sortSheetTitle: {
+    ...typography.compact,
+    ...text.primary,
+    fontWeight: '700',
+    marginBottom: 2,
+  },
+  sortSheetAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 11,
+    paddingHorizontal: 10,
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: surface.groupedBorder,
+    backgroundColor: 'rgba(255,255,255,0.86)',
+  },
+  sortSheetActionPressed: {
+    opacity: 0.8,
+  },
+  sortSheetActionText: {
+    ...typography.compact,
+    ...text.primary,
+    fontWeight: '600',
+  },
+  sortSheetOptionText: {
+    flex: 1,
+    minWidth: 0,
+    marginRight: 8,
+  },
+  sortSheetTeamLabel: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    flex: 1,
+    minWidth: 0,
   },
   emptyCard: {
     marginTop: 14,
@@ -1584,69 +2131,91 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     borderRadius: radius.lg,
     gap: 6,
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: profileNeutralStroke(0.07),
   },
   emptyTitle: {
     ...typography.compact,
     fontWeight: '700',
-    color: profileTypography.body,
+    ...text.primary,
   },
   emptySubtitle: {
     ...typography.caption,
-    color: profileTypography.subdued,
+    ...text.muted,
     lineHeight: 17,
     fontWeight: '500',
   },
   composerSheet: {
-    marginTop: 22,
-    paddingTop: 18,
+    marginTop: 12,
+    paddingTop: 10,
     paddingHorizontal: spacing.sm,
     paddingBottom: spacing.xs,
-    marginHorizontal: -spacing.sm,
+    marginHorizontal: 0,
     marginBottom: 4,
-    gap: 12,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: profileNeutralStroke(0.07),
-    borderRadius: radius.lg,
-    backgroundColor: 'rgba(253,251,247,0.55)',
+    gap: 8,
+    borderRadius: radius.md,
+    backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.65)',
+    borderColor: profileNeutralStroke(0.07),
     ...Platform.select({
       ios: {
-        shadowColor: profileTypography.ink,
-        shadowOpacity: 0.05,
-        shadowRadius: 16,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: surface.textDisplay,
+        shadowOpacity: 0.02,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 1 },
       },
-      android: { elevation: 2 },
+      android: { elevation: 0 },
       default: {},
     }),
   },
+  composerSheetModal: {
+    marginTop: 0,
+    marginBottom: 0,
+    paddingTop: 4,
+  },
+  composerModalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  composerModalClose: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: surface.hairline,
+    backgroundColor: surface.groupedSurface,
+  },
+  composerModalClosePressed: {
+    opacity: 0.72,
+  },
   composerEyebrow: {
-    ...typography.caption,
-    color: profileTypography.body,
-    fontWeight: '800',
-    letterSpacing: 0.35,
+    ...typography.micro,
+    ...text.primary,
+    fontWeight: '700',
+    letterSpacing: 0.25,
     textTransform: 'uppercase',
   },
   input: {
-    minHeight: 96,
-    maxHeight: 168,
+    minHeight: 84,
+    maxHeight: 148,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.09),
+    borderColor: surface.groupedBorder,
     backgroundColor: 'rgba(255,255,255,0.94)',
     paddingHorizontal: spacing.sm,
-    paddingVertical: 13,
-    ...typography.body,
-    color: profileTypography.body,
+    paddingVertical: 10,
+    ...typography.compact,
+    ...text.primary,
     textAlignVertical: 'top',
   },
   postBtn: {
     alignSelf: 'stretch',
-    marginBottom: spacing.xs,
+    marginBottom: 0,
   },
   postBtnLabel: {
     color: palette.white,
@@ -1658,15 +2227,15 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     borderRadius: radius.lg,
     gap: 8,
-    backgroundColor: 'rgba(255,255,255,0.82)',
+    backgroundColor: surface.groupedSurface,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79,118,194,0.18)',
+    borderColor: surface.hairline,
     ...Platform.select({
       ios: {
-        shadowColor: palette.accent,
-        shadowOpacity: 0.06,
-        shadowRadius: 10,
-        shadowOffset: { width: 0, height: 3 },
+        shadowColor: '#0b1224',
+        shadowOpacity: 0.03,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
       },
       android: { elevation: 1 },
       default: {},
@@ -1675,12 +2244,69 @@ const styles = StyleSheet.create({
   needVoteTitle: {
     ...typography.compact,
     fontWeight: '800',
-    color: profileTypography.body,
+    ...text.primary,
   },
   needVoteBody: {
     ...typography.caption,
-    color: profileTypography.emphasis,
+    ...text.display,
     lineHeight: 18,
     fontWeight: '500',
   },
+  toastWrap: {
+    position: 'absolute',
+    top: 8,
+    left: 0,
+    right: 0,
+    zIndex: 30,
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+  },
+  toast: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    maxWidth: '100%',
+  },
+  toastText: {
+    ...typography.compact,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  changeTeamSheetBody: {
+    paddingHorizontal: spacing.md,
+    paddingTop: 4,
+    gap: 14,
+  },
+  changeTeamBody: {
+    ...typography.compact,
+    lineHeight: 22,
+    fontWeight: '500',
+  },
+  changeTeamQuote: {
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 6,
+  },
+  changeTeamQuoteAuthor: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  changeTeamQuoteBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
+  },
+  changeTeamStayBtn: {
+    alignSelf: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  changeTeamStayText: {
+    ...typography.compact,
+    fontWeight: '700',
+  },
 });
+}

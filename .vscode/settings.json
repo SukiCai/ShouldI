@@ -1,0 +1,19 @@
+{
+  "remote.autoForwardPorts": true,
+  "remote.portsAttributes": {
+    "18080": {
+      "label": "ShouldI Web (Docker)",
+      "onAutoForward": "openBrowser"
+    },
+    "8082": {
+      "label": "ShouldI Web (live dev)",
+      "onAutoForward": "openBrowser"
+    },
+    "8787": {
+      "label": "ShouldI API"
+    },
+    "8642": {
+      "label": "Hermes API"
+    }
+  }
+}

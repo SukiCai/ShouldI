@@ -1,6 +1,13 @@
 name: Stay or Return Decision Advisor
 slug: stay-or-return
 requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+framework_id: regret-minimization
+framework_label: Regret minimization
+discovery_blurb: "Frames stay-vs-return as a long-horizon compounding question—not a mood-of-the-moment call."
+lens_domain: career
 description: >
   Use when international student or early-career professional is deciding whether to
   stay in their host country or return home — e.g., "should I go back to

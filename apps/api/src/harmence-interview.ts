@@ -17,9 +17,18 @@ import {
   type DecideInterviewExpert,
   type DecideInterviewFinalDecision,
   type DecideInterviewPreviewCard,
+  type DecideInterviewReflection,
   type DecideInterviewTurnResponse,
 } from '@shouldi/contracts';
 import { randomUUID } from 'crypto';
+
+export class CouncilLockedError extends Error {
+  readonly code = 'COUNCIL_LOCKED' as const;
+  constructor(message = 'Expert Council requires Premium or points.') {
+    super(message);
+    this.name = 'CouncilLockedError';
+  }
+}
 
 import {
   expertById,
@@ -31,6 +40,10 @@ import {
   selectExpertsFromText,
   type HarmenceExpert,
 } from './harmence-experts.js';
+import {
+  discoveredExpertIdsForUser,
+  recordExpertDiscoveries,
+} from './expert-discovery.js';
 import {
   hermesChatCompletion,
   isHermesAgentLive,
@@ -104,6 +117,91 @@ function buildChallengeInstruction(state: SmartTalkState): 'contrarian' | 'simpl
   return '';
 }
 
+const META_ASSISTANT_RE =
+  /wants to check the highest-leverage unknown|before the council recommends/i;
+
+function resolveQuestionHeadline(question: string, title?: string): string {
+  const trimmed = question.trim();
+  if (trimmed && !META_ASSISTANT_RE.test(trimmed)) return trimmed;
+  if (title?.trim()) {
+    return `What best describes the ${title.trim().toLowerCase()}?`;
+  }
+  return 'Which of these fits your situation?';
+}
+
+function normalizeAssistantText(
+  text: string,
+  _speaker: HarmenceExpert,
+  choicePrompt?: DecideInterviewChoicePrompt,
+): string {
+  const trimmed = text.trim();
+  if (choicePrompt) {
+    return resolveQuestionHeadline(choicePrompt.question, choicePrompt.title);
+  }
+  if (!META_ASSISTANT_RE.test(trimmed)) {
+    return trimmed;
+  }
+  return 'Which of these fits your situation?';
+}
+
+function sanitizeBubblesForClient(session: Session): DecideInterviewBubble[] {
+  const clarifyAnswers = session.answers.filter((a) => a.promptId !== 'initial_question');
+  let clarifyIdx = 0;
+
+  return session.bubbles.map((rawBubble, index) => {
+    if (rawBubble.role !== 'assistant' || index === 0) return rawBubble;
+
+    const storedQuestion = rawBubble.question?.trim();
+    if (storedQuestion) {
+      const headline = resolveQuestionHeadline(storedQuestion, rawBubble.expertTitle);
+      return { ...rawBubble, text: headline, question: storedQuestion };
+    }
+
+    let text = rawBubble.text.trim();
+    const expertTitle = rawBubble.expertTitle;
+    if (expertTitle && text.startsWith(`${expertTitle}:`)) {
+      text = text.slice(expertTitle.length + 1).trim();
+    }
+
+    if (text && !META_ASSISTANT_RE.test(text)) {
+      return { ...rawBubble, text };
+    }
+
+    const recovered = clarifyAnswers[clarifyIdx]?.question?.trim();
+    clarifyIdx += 1;
+    if (recovered) {
+      const headline = resolveQuestionHeadline(recovered, rawBubble.expertTitle);
+      return { ...rawBubble, text: headline, question: recovered };
+    }
+
+    return { ...rawBubble, text: 'Which of these fits your situation?' };
+  });
+}
+
+function buildUserReflection(psychProfile?: PsychProfile): DecideInterviewReflection | undefined {
+  if (!psychProfile) return undefined;
+  const parts: string[] = [];
+  if (psychProfile.emotionalState.trim()) parts.push(psychProfile.emotionalState.trim());
+  if (psychProfile.hiddenMotivation.trim()) {
+    const motive = psychProfile.hiddenMotivation.trim().replace(/\.$/, '');
+    parts.push(`You may also be weighing whether ${motive}.`);
+  }
+  const concerns = psychProfile.underlyingConcerns.filter(Boolean).slice(-3);
+  if (parts.length === 0 && concerns.length === 0) return undefined;
+  return {
+    summary: parts.join(' ') || 'Several factors seem to be pulling on this decision.',
+    concerns: concerns.length > 0 ? concerns : undefined,
+  };
+}
+
+function attachReflection(
+  decision: DecideInterviewFinalDecision,
+  psychProfile?: PsychProfile,
+): DecideInterviewFinalDecision {
+  const reflection = buildUserReflection(psychProfile);
+  return reflection ? { ...decision, reflection } : decision;
+}
+
 type PsychProfile = {
   underlyingConcerns: string[];
   emotionalState: string;
@@ -113,6 +211,7 @@ type PsychProfile = {
 
 type Session = {
   id: string;
+  userId?: string;
   bubbles: DecideInterviewBubble[];
   answers: InterviewAnswer[];
   playbookId?: string;
@@ -177,7 +276,7 @@ const CHOICE_STEPS = [
     id: 'real_question',
     title: 'Core dilemma',
     question: 'What kind of answer would help most with this decision?',
-    helperText: 'Harmence inferred the topic from your question; this narrows the decision shape.',
+    helperText: 'ShouldI inferred the topic from your question; this narrows the decision shape.',
     options: [
       { id: 'choose_between_two', label: 'Choose between two paths', description: 'A vs B, both plausible.' },
       { id: 'go_or_no_go', label: 'Go / no-go', description: 'Whether to commit, leave, buy, move, publish.' },
@@ -213,7 +312,7 @@ const CHOICE_STEPS = [
   {
     id: 'constraint',
     title: 'Hard constraint',
-    question: 'Which constraint should Harmence treat as least bendable?',
+    question: 'Which constraint should ShouldI treat as least bendable?',
     options: [
       { id: 'money', label: 'Money / runway', description: 'Budget, debt, income, savings, opportunity cost.' },
       { id: 'time', label: 'Time / deadline', description: 'A deadline, season, contract, school or visa clock.' },
@@ -241,7 +340,7 @@ const CAREER_COOP_STEPS = [
     id: 'coop_program_stage',
     title: 'School and co-op stage',
     question: 'Where are you in your program right now?',
-    helperText: 'For a co-op offer, Harmence needs your academic stage before judging upside or risk.',
+    helperText: 'For a co-op offer, ShouldI needs your academic stage before judging upside or risk.',
     options: [
       { id: 'undergrad_first_coop', label: 'Undergrad, first co-op', description: 'This would be your first formal placement.' },
       { id: 'undergrad_repeat_coop', label: 'Undergrad, not first co-op', description: 'You already have co-op/internship experience.' },
@@ -436,7 +535,7 @@ const COOP_WHY_IT_MATTERS: Record<string, string> = {
 };
 
 const OPEN_GREETING =
-  `I'm **Harmence**. Ask your decision in your own words first — I'll infer the topic, pick the right decision lens, then ask only the follow-ups needed for a final recommendation and community-safe preview card.`;
+  `I'm **ShouldI**. Ask your decision in your own words first — I'll infer the topic, pick the right decision lens, then ask only the follow-ups needed for a final recommendation and community-safe preview card.`;
 
 const KNOWN_COMPANIES = [
   'amazon',
@@ -562,7 +661,12 @@ function contextualizeCoopStep(step: ChoicePromptTemplate, ctx: OfferContext): D
 function bubble(
   role: DecideInterviewBubble['role'],
   text: string,
-  meta: Partial<Pick<DecideInterviewBubble, 'expertId' | 'expertTitle' | 'expertIcon' | 'expertColor' | 'supportingExpertIds'>> = {},
+  meta: Partial<
+    Pick<
+      DecideInterviewBubble,
+      'expertId' | 'expertTitle' | 'expertIcon' | 'expertColor' | 'supportingExpertIds' | 'question'
+    >
+  > = {},
 ): DecideInterviewBubble {
   return DecideInterviewBubbleSchema.parse({
     id: `${role}-${randomUUID()}`,
@@ -839,7 +943,7 @@ function firstClarifyPromptForInitialQuestion(session: Session): DecideInterview
       id: 'career_offer_lens',
       title: 'Career offer lens',
       question: 'What makes this offer hard to decide?',
-      helperText: 'Harmence inferred this as a career decision and will use the offer lens first.',
+      helperText: 'ShouldI inferred this as a career decision and will use the offer lens first.',
       options: [
         { id: 'compensation', label: 'Money / upside', description: 'Comp, equity, runway, benefits, opportunity cost.' },
         { id: 'growth', label: 'Growth path', description: 'Learning, scope, title, network, future optionality.' },
@@ -949,10 +1053,17 @@ async function askHermesForNextChoice(
   };
 }
 
+function viewerUserId(session: Session): string {
+  return session.userId ?? 'anonymous-local';
+}
+
 function expertsForSession(session: Session): HarmenceExpert[] {
   const experts = session.activeExpertIds.map((id) => expertById(id)).filter((x): x is HarmenceExpert => !!x);
   if (experts.length > 0) return experts;
-  return selectExpertsFromText(initialQuestionFor(session) || collectedSummary(session));
+  return selectExpertsFromText(
+    initialQuestionFor(session) || collectedSummary(session),
+    discoveredExpertIdsForUser(viewerUserId(session)),
+  );
 }
 
 function expertBubbleMeta(
@@ -1117,7 +1228,7 @@ async function routeExpertsForTurn(
   hermesIntegrated: boolean,
 ): Promise<{ activeExperts: HarmenceExpert[]; newlyActivatedExperts: HarmenceExpert[] }> {
   const baseText = [initialQuestionFor(session), collectedSummary(session), latestText].filter(Boolean).join('\n');
-  const deterministic = selectExpertsFromText(baseText);
+  const deterministic = selectExpertsFromText(baseText, discoveredExpertIdsForUser(viewerUserId(session)));
   let requested = deterministic;
 
   if (hermesIntegrated) {
@@ -1246,7 +1357,11 @@ function fallbackExpertChoice(
           : generalQuestion;
   const actualSpeaker = expertById(choicePrompt.speakerExpertId ?? speaker.id) ?? speaker;
   return {
-    assistantText: `${actualSpeaker.title} wants to check the highest-leverage unknown before the council recommends.`,
+    assistantText: normalizeAssistantText(
+      `${actualSpeaker.title}: ${choicePrompt.question}`,
+      actualSpeaker,
+      choicePrompt,
+    ),
     choicePrompt,
     readyForFinal: false,
     speaker: actualSpeaker,
@@ -1499,16 +1614,16 @@ async function askSmartTalkForNextChoice(
       }
       calledExperts.push(expert);
     }
-    if (calledExperts.length > 0) {
+    if (calledExperts.length > 0 && session.mode === 'complex') {
       session.activeExpertIds = mergeExpertIds(session.activeExpertIds, calledExperts);
     }
   }
 
-  // Refresh activeExperts/newlyActivatedExperts after domain-skill activations so the
-  // turn response and momentum log expertsJoined reflect experts added this turn.
+  // Refresh activeExperts/newlyActivatedExperts after domain-skill activations (council only).
   const prevActiveIds = new Set(activeExperts.map((e) => e.id));
   const refreshedExperts = expertsForSession(session);
-  const domainActivated = refreshedExperts.filter((e) => !prevActiveIds.has(e.id));
+  const domainActivated =
+    session.mode === 'complex' ? refreshedExperts.filter((e) => !prevActiveIds.has(e.id)) : [];
   if (domainActivated.length > 0) {
     activeExperts = refreshedExperts;
     newlyActivatedExperts = [...newlyActivatedExperts, ...domainActivated];
@@ -1592,7 +1707,7 @@ async function askSmartTalkForNextChoice(
   });
 
   return {
-    assistantText: resolvedAssistantText,
+    assistantText: normalizeAssistantText(resolvedAssistantText, speaker, choicePrompt),
     choicePrompt,
     readyForFinal: false,
     activeExperts,
@@ -1642,7 +1757,7 @@ function fallbackFinal(session: Session): {
       ? `Accept the ${ctx.offerPhrase} if your school and permit office confirm eligibility in writing, then use the first ${checkpointWeeks} weeks as a checkpoint.`
       : `Do not commit to the ${ctx.offerPhrase} until you verify ${permitRisk ? 'school/permit eligibility' : reputationRisk ? 'reputational risk with target employers' : 'the specific role quality'} and compare it against your recruiting pipeline.`;
     const riskFlagLine = riskFlags.length ? ` Key flags: ${riskFlags.map((flag) => flag.label).join('; ')}.` : '';
-    const because = `Harmence weighed that this is ${stage}, your authorization is ${authorization}, the main upside is ${strength}, the main worry is ${risk}, your backup is ${alternative}, and a clear yes depends on ${threshold}.${riskFlagLine}`;
+    const because = `ShouldI weighed that this is ${stage}, your authorization is ${authorization}, the main upside is ${strength}, the main worry is ${risk}, your backup is ${alternative}, and a clear yes depends on ${threshold}.${riskFlagLine}`;
 
     return {
       assistantText: `Distilled what I heard. I have enough to give you a concise recommendation and a community-safe preview card.`,
@@ -1701,7 +1816,7 @@ function fallbackFinal(session: Session): {
   const risk = session.answers.find((a) => a.promptId === 'risk_appetite')?.label ?? 'medium uncertainty';
   const constraint = session.answers.find((a) => a.promptId === 'constraint')?.label ?? 'your main constraint';
   const verdictLine = `Lean: choose the path that protects ${constraint.toLowerCase()}`;
-  const because = `Harmence weighed the stated dilemma (${decision}), your risk tolerance (${risk}), and the least-bendable constraint (${constraint}). The safest read is to pick the option that preserves that constraint while keeping the decision reversible.`;
+  const because = `ShouldI weighed the stated dilemma (${decision}), your risk tolerance (${risk}), and the least-bendable constraint (${constraint}). The safest read is to pick the option that preserves that constraint while keeping the decision reversible.`;
 
   return {
     assistantText: `Distilled what I heard. I have enough to give you a recommendation and a community-safe preview card.`,
@@ -1727,11 +1842,11 @@ function fallbackFinal(session: Session): {
     }),
     previewCard: DecideInterviewPreviewCardSchema.parse({
       category,
-      question: `Would you agree with Harmence's lean on this ${category} decision?`,
-      hook: `Harmence thinks the core issue is ${constraint.toLowerCase()}, not just preference.`,
+      question: `Would you agree with ShouldI's recommendation on this ${category} decision?`,
+      hook: `ShouldI thinks the core issue is ${constraint.toLowerCase()}, not just preference.`,
       tension: because,
       options: [
-        { id: 'agree', label: 'Agree with Harmence' },
+        { id: 'agree', label: 'Agree with ShouldI' },
         { id: 'push_back', label: 'Push back' },
       ],
       aiVerdictLine: verdictLine,
@@ -2020,6 +2135,9 @@ async function askSmartTalkComplexFinal(
         content: [
           `Original question: ${initialQuestionFor(session)}`,
           `Collected answers:\n${collectedSummary(session)}`,
+          session.psychProfile
+            ? `User reflection context (soft — do not quote clinically):\n${JSON.stringify(buildUserReflection(session.psychProfile))}`
+            : '',
           `Expert verdicts:\n${JSON.stringify(expertVerdicts, null, 2)}`,
           consensusInstruction,
           keyMomentCandidates.length > 0
@@ -2118,6 +2236,8 @@ export async function summarizeSessionDetail(id: string): Promise<{
   phase: string;
   isComplete: boolean;
   hermesIntegrated: boolean;
+  mode: 'single' | 'complex';
+  ambiguity?: number;
   activeExperts: DecideInterviewExpert[];
   choicePrompt?: DecideInterviewChoicePrompt;
   finalDecision?: DecideInterviewFinalDecision;
@@ -2131,10 +2251,12 @@ export async function summarizeSessionDetail(id: string): Promise<{
   return {
     id: session.id,
     updatedAt: session.updatedAt,
-    bubbles: [...session.bubbles],
+    bubbles: sanitizeBubblesForClient(session),
     phase,
     isComplete: session.isComplete,
     hermesIntegrated,
+    mode: session.mode,
+    ambiguity: session.smartTalkState.ambiguity,
     activeExperts: publicExperts(session.activeExpertIds),
     choicePrompt: session.lastPrompt,
     finalDecision: session.finalDecision,
@@ -2143,7 +2265,7 @@ export async function summarizeSessionDetail(id: string): Promise<{
 
 function pickPreview(messages: DecideInterviewBubble[]): string {
   const firstUser = messages.find((m) => m.role === 'user');
-  if (!firstUser) return 'fresh Harmence intake';
+  if (!firstUser) return 'fresh ShouldI intake';
   return firstUser.text.slice(0, 120).replace(/\s+/g, ' ');
 }
 
@@ -2177,6 +2299,8 @@ export async function handleInterviewTurn(
   userTextRaw: string,
   selectedOptionId?: string,
   requestedMode?: 'single' | 'complex',
+  councilUnlock?: 'premium' | 'points',
+  userId?: string | null,
 ): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
   let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
@@ -2187,14 +2311,19 @@ export async function handleInterviewTurn(
     if (sessionId) {
       throw new Error('UNKNOWN_SESSION');
     }
+    const mode = requestedMode ?? 'single';
+    if (mode === 'complex' && !councilUnlock) {
+      throw new CouncilLockedError();
+    }
     session = {
       id: randomUUID(),
+      userId: userId ?? 'anonymous-local',
       bubbles: [],
       answers: [],
       activeExpertIds: [],
       isComplete: false,
       updatedAt: Date.now(),
-      mode: requestedMode ?? 'single',
+      mode,
       smartTalkState: defaultSmartTalkState(),
     };
     STORE.set(session.id, session);
@@ -2203,6 +2332,7 @@ export async function handleInterviewTurn(
   }
 
   session.updatedAt = Date.now();
+  if (userId && !session.userId) session.userId = userId;
   // Backward-compat: sessions created before mode/smartTalkState were added
   if (!session.mode) session.mode = 'single';
   if (!session.smartTalkState) session.smartTalkState = defaultSmartTalkState();
@@ -2218,6 +2348,7 @@ export async function handleInterviewTurn(
       mode: session.mode,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
     });
   }
@@ -2235,6 +2366,7 @@ export async function handleInterviewTurn(
       ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
       choicePrompt: session.lastPrompt,
     });
@@ -2252,6 +2384,7 @@ export async function handleInterviewTurn(
       ambiguity: session.smartTalkState.ambiguity,
       activeExperts: publicExperts(session.activeExpertIds),
       newlyActivatedExperts: [],
+      expertDiscoveries: [],
       suggestedDraftHints: undefined,
       choicePrompt: session.lastPrompt,
     });
@@ -2268,7 +2401,7 @@ export async function handleInterviewTurn(
     session.bubbles.push(bubble('user', userText));
     // Lock domain skills for smart_talk on the first real message
     if (session.activeExpertIds.length === 0) {
-      const matched = selectExpertsFromText(userText);
+      const matched = selectExpertsFromText(userText, discoveredExpertIdsForUser(viewerUserId(session)));
       if (session.mode === 'single') {
         const top = matched[0];
         session.activeExpertIds = top ? [top.id] : ['general-decision'];
@@ -2293,7 +2426,7 @@ export async function handleInterviewTurn(
     activeExperts = next.activeExperts.map(publicExpert);
     newlyActivatedExperts = next.newlyActivatedExperts.map(publicExpert);
     if (!next.readyForFinal && next.choicePrompt) {
-      assistantText = next.assistantText;
+      assistantText = normalizeAssistantText(next.assistantText, next.speaker, next.choicePrompt);
       choicePrompt = next.choicePrompt;
       phase = choicePrompt.id;
       session.lastPrompt = choicePrompt;
@@ -2317,7 +2450,7 @@ export async function handleInterviewTurn(
       ]
         .filter(Boolean)
         .join('\n');
-      finalDecision = final.finalDecision;
+      finalDecision = attachReflection(final.finalDecision, session.psychProfile);
       previewCard = final.previewCard;
       suggestedDraftHints = summarizeDraft(session, previewCard);
       session.lastPrompt = undefined;
@@ -2334,8 +2467,12 @@ export async function handleInterviewTurn(
         : hermesIntegrated
           ? await askHermesForNextChoice(session, nextDefaultPrompt)
           : { assistantText: `Got it. Next, let's sharpen the frame.`, choicePrompt: nextDefaultPrompt };
-      assistantText = next.assistantText;
       choicePrompt = next.choicePrompt;
+      assistantText = normalizeAssistantText(
+        next.assistantText,
+        expertById(choicePrompt.speakerExpertId ?? '') ?? expertById('general-decision')!,
+        choicePrompt,
+      );
       phase = choicePrompt.id;
       session.lastPrompt = choicePrompt;
       const activePlaybook = playbookForSession(session);
@@ -2355,7 +2492,7 @@ export async function handleInterviewTurn(
       ]
         .filter(Boolean)
         .join('\n');
-      finalDecision = final.finalDecision;
+      finalDecision = attachReflection(final.finalDecision, session.psychProfile);
       previewCard = final.previewCard;
       suggestedDraftHints = summarizeDraft(session, previewCard);
       session.lastPrompt = undefined;
@@ -2365,7 +2502,12 @@ export async function handleInterviewTurn(
     }
   }
 
-  session.bubbles.push(bubble('assistant', assistantText, assistantMeta));
+  session.bubbles.push(
+    bubble('assistant', assistantText, {
+      ...assistantMeta,
+      ...(choicePrompt ? { question: choicePrompt.question } : {}),
+    }),
+  );
 
   if (process.env.DEBUG && process.env.NODE_ENV !== 'production') {
     console.debug('[harmence-turn] choicePromptId:', choicePrompt?.id);
@@ -2374,9 +2516,20 @@ export async function handleInterviewTurn(
     console.debug('[harmence-turn] ambiguity:', session.smartTalkState.ambiguity.toFixed(3), '| scores:', JSON.stringify(session.smartTalkState.scores));
   }
 
+  const clientBubbles = sanitizeBubblesForClient(session);
+
+  const discoveryExperts = newlyActivatedExperts
+    .map((expert) => expertById(expert.id))
+    .filter((expert): expert is HarmenceExpert => !!expert);
+  const expertDiscoveries = recordExpertDiscoveries({
+    userId: viewerUserId(session),
+    sessionId: session.id,
+    experts: discoveryExperts,
+  });
+
   return DecideInterviewTurnResponseSchema.parse({
     sessionId: session.id,
-    bubbles: session.bubbles.slice(-2),
+    bubbles: clientBubbles.slice(-2),
     phase,
     isComplete: !choicePrompt,
     hermesIntegrated,
@@ -2384,9 +2537,11 @@ export async function handleInterviewTurn(
     ambiguity: session.smartTalkState.ambiguity,
     activeExperts,
     newlyActivatedExperts,
+    expertDiscoveries,
     suggestedDraftHints,
     choicePrompt,
     finalDecision,
     previewCard,
+    almostReady: choicePrompt && session.smartTalkState.ambiguity <= 0.35 ? true : undefined,
   });
 }

@@ -4,12 +4,12 @@
 
 - **`apps/`** — runnable surfaces (Expo client, Node HTTP API). Prefer thin UI/routing here; push shared semantics into **`packages/`** when both sides need them.
 - **`packages/`** — libraries with clear consumers (today: **`@shouldi/contracts`** — Zod schemas / API types).
-- **`hermes-agent-private/`** — Hermes upstream as a git submodule at the repo root. The native app never bundles or imports Python from here.
+- **`hermes-agent-private/`** — vendored Hermes source at the repo root. The native app never bundles or imports Python from here.
 
 ### Prerequisites
 
 - **Node ≥ 20** (`package.json` `engines`).
-- **Hermes** Python environment when exercising agent paths; submodule: `git submodule update --init --recursive` from the repo root.
+- **Hermes** Python environment when exercising agent paths; see [`docs/engineering/hermes-setup.md`](docs/engineering/hermes-setup.md).
 
 ### Local setup
 
@@ -47,4 +47,9 @@ For Hermes in the container, set `HERMES_ROOT` and mount `./hermes-agent-private
 - **API vs client boundaries**: Types and request/response shapes live in **`@shouldi/contracts`**. Implement validation on the server; the mobile app imports types/schemas as needed — avoid duplicating ad-hoc DTO definitions in multiple apps.
 - **Hermes**: Server-side adapter code lives under **`apps/api/`** (`hermes-adapter.ts`, `hermes-resolve.ts`). Respect `HERMES_ROOT` / `SHOULDI_HERMES_ROOT` for non-default checkouts.
 
-For system overview, see **[`docs/architecture.md`](docs/architecture.md)**.
+For system overview, see **[`docs/engineering/architecture.md`](docs/engineering/architecture.md)**.
+
+UI consistency requirements for PMF flows:
+- **[`docs/business/ops/shouldi-ui-style-guardrails.md`](docs/business/ops/shouldi-ui-style-guardrails.md)**
+- **[`docs/business/ops/shouldi-ui-pr-checklist.md`](docs/business/ops/shouldi-ui-pr-checklist.md)**
+- **[`docs/business/ops/shouldi-repo-hygiene-guardrails.md`](docs/business/ops/shouldi-repo-hygiene-guardrails.md)**
