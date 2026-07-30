@@ -1,8 +1,10 @@
 import { Platform, StyleSheet } from 'react-native';
 
-import { palette, profileNeutralStroke, profileTypography, radius, spacing, typography } from '@/constants/theme';
+import { pmfText } from '@/components/screen/pmfChrome';
+import { surfaceCardStyles } from '@/components/screen/surfaceCardStyles';
+import { palette, radius, semantic, spacing, type ThemeSurface, typography } from '@/constants/theme';
 
-/** Shared Discuss / Review-draft card chrome — keep in sync with DiscussExpanded. */
+/** Shared Discuss / Review-draft card chrome — colors via `discussCardColors(surface)`. */
 export const discussCardStyles = StyleSheet.create({
   wrap: {
     alignSelf: 'stretch',
@@ -16,15 +18,12 @@ export const discussCardStyles = StyleSheet.create({
     gap: 10,
     paddingVertical: 16,
     paddingHorizontal: 18,
-    borderRadius: 26,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: `${palette.neonPink}28`,
     borderLeftWidth: 4,
-    borderLeftColor: '#0f172a',
-    backgroundColor: 'rgba(255,253,255,0.92)',
     ...Platform.select({
       ios: {
-        shadowColor: palette.heroInk,
+        shadowColor: '#0b1224',
         shadowOpacity: 0.08,
         shadowRadius: 14,
         shadowOffset: { width: 0, height: 4 },
@@ -43,18 +42,14 @@ export const discussCardStyles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 8,
     paddingVertical: 3,
-    backgroundColor: '#0f172a',
   },
   aiDecisionBadgeText: {
-    fontSize: 9,
-    lineHeight: 12,
-    fontWeight: '800',
+    ...typography.label,
     letterSpacing: 0.6,
-    color: palette.white,
+    color: palette.sheet,
   },
   aiDecisionPick: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '600',
     letterSpacing: 0.12,
     flex: 1,
@@ -74,21 +69,17 @@ export const discussCardStyles = StyleSheet.create({
     borderRadius: 3,
   },
   confidenceLabel: {
-    fontSize: 11,
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.2,
   },
   aiDecisionHeadline: {
-    ...typography.h2,
-    color: profileTypography.ink,
+    ...typography.titleSm,
     fontWeight: '700',
     letterSpacing: -0.35,
-    lineHeight: 24,
-    fontSize: 17,
   },
   aiDecisionReason: {
     ...typography.compact,
-    color: profileTypography.body,
     lineHeight: 21,
     fontWeight: '500',
   },
@@ -96,44 +87,36 @@ export const discussCardStyles = StyleSheet.create({
     marginTop: 2,
     paddingTop: 12,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: profileNeutralStroke(0.08),
     gap: 8,
   },
   keyContextEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
     marginBottom: 2,
   },
   momentCard: {
-    borderRadius: 14,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 14,
     paddingVertical: 12,
     gap: 4,
-    backgroundColor: 'rgba(255,255,255,0.9)',
-    borderColor: profileNeutralStroke(0.09),
   },
   momentOrdinal: {
-    fontSize: 10,
+    ...typography.caption,
     fontWeight: '800',
     letterSpacing: 0.5,
-    lineHeight: 13,
-    color: profileTypography.subdued,
   },
   momentCardTitle: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '700',
     lineHeight: 20,
-    color: profileTypography.ink,
   },
   momentCardSub: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '500',
     lineHeight: 16,
-    color: profileTypography.subdued,
     fontStyle: 'italic',
   },
   aiReactionRow: {
@@ -150,12 +133,9 @@ export const discussCardStyles = StyleSheet.create({
     paddingVertical: 9,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.1),
-    backgroundColor: 'rgba(255,255,255,0.82)',
   },
   aiReactionLabel: {
     ...typography.caption,
-    color: profileTypography.body,
     fontWeight: '800',
   },
   communitySectionHeader: {
@@ -165,26 +145,22 @@ export const discussCardStyles = StyleSheet.create({
   },
   communitySectionEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '800',
     letterSpacing: 0.45,
     textTransform: 'uppercase',
   },
   communitySectionTitle: {
     ...typography.h2,
-    color: profileTypography.ink,
     fontWeight: '800',
     letterSpacing: -0.4,
   },
   communitySectionBody: {
     ...typography.compact,
-    color: profileTypography.emphasis,
     lineHeight: 20,
     fontWeight: '500',
   },
   communitySectionMeta: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '700',
   },
   filterRail: {
@@ -208,8 +184,6 @@ export const discussCardStyles = StyleSheet.create({
     marginRight: 8,
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.09),
-    backgroundColor: 'rgba(255,255,255,0.82)',
     maxWidth: 220,
     ...Platform.select({
       ios: {
@@ -223,17 +197,16 @@ export const discussCardStyles = StyleSheet.create({
     }),
   },
   filterChipOn: {
-    borderColor: 'rgba(79,118,194,0.5)',
-    backgroundColor: 'rgba(227,236,255,0.95)',
+    borderColor: `${semantic.actionPrimary}80`,
+    backgroundColor: `${semantic.actionPrimary}18`,
   },
   filterChipText: {
     ...typography.compact,
-    color: profileTypography.emphasis,
     fontWeight: '600',
     flexShrink: 1,
   },
   filterChipTextOn: {
-    color: palette.accent,
+    color: semantic.actionPrimary,
   },
   filterStripe: {
     width: 4,
@@ -252,12 +225,10 @@ export const discussCardStyles = StyleSheet.create({
     paddingLeft: 15,
     borderLeftWidth: 4,
     borderRadius: radius.lg,
-    backgroundColor: 'rgba(255,255,255,0.88)',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.06),
     ...Platform.select({
       ios: {
-        shadowColor: profileTypography.ink,
+        shadowColor: '#0b1224',
         shadowOpacity: 0.04,
         shadowRadius: 12,
         shadowOffset: { width: 0, height: 3 },
@@ -278,12 +249,10 @@ export const discussCardStyles = StyleSheet.create({
   },
   threadAuthor: {
     fontWeight: '700',
-    color: profileTypography.body,
     flexShrink: 1,
   },
   threadTime: {
     ...typography.caption,
-    color: profileTypography.subdued,
     marginLeft: 4,
     fontWeight: '600',
   },
@@ -292,21 +261,19 @@ export const discussCardStyles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 999,
-    backgroundColor: 'rgba(79,118,194,0.12)',
+    backgroundColor: `${semantic.actionPrimary}18`,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(79,118,194,0.28)',
+    borderColor: `${semantic.actionPrimary}45`,
   },
   draftPillText: {
-    fontSize: 10,
-    lineHeight: 13,
+    ...typography.caption,
     fontWeight: '800',
-    color: palette.accent,
+    color: semantic.actionPrimary,
     letterSpacing: 0.2,
     textTransform: 'uppercase',
   },
   threadBody: {
     ...typography.body,
-    color: profileTypography.body,
     fontWeight: '400',
     lineHeight: 23,
     letterSpacing: -0.1,
@@ -317,8 +284,6 @@ export const discussCardStyles = StyleSheet.create({
     padding: spacing.md,
     borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: profileNeutralStroke(0.08),
-    backgroundColor: 'rgba(255,255,255,0.9)',
     ...Platform.select({
       ios: {
         shadowColor: '#0b1224',
@@ -332,14 +297,12 @@ export const discussCardStyles = StyleSheet.create({
   },
   composerEyebrow: {
     ...typography.caption,
-    color: profileTypography.subdued,
     fontWeight: '800',
     letterSpacing: 0.35,
     textTransform: 'uppercase',
   },
   composerInput: {
     ...typography.body,
-    color: profileTypography.body,
     lineHeight: 23,
     minHeight: 88,
     maxHeight: 160,
@@ -356,7 +319,7 @@ export const discussCardStyles = StyleSheet.create({
   },
   addPreviewText: {
     ...typography.compact,
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '700',
   },
   editableField: {
@@ -366,3 +329,55 @@ export const discussCardStyles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
 });
+
+/** Runtime color + surface fills for Discuss cards. */
+export function discussCardColors(surface: ThemeSurface) {
+  const t = pmfText(surface);
+  return {
+    aiDecisionCard: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.groupedBorder,
+      borderLeftColor: surface.textDisplay,
+    },
+    aiDecisionBadge: { backgroundColor: surface.textDisplay },
+    aiDecisionPick: t.muted,
+    aiDecisionHeadline: t.display,
+    aiDecisionReason: t.primary,
+    keyContextSection: { borderTopColor: surface.hairline },
+    keyContextEyebrow: t.muted,
+    momentCard: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.groupedBorder,
+    },
+    momentOrdinal: t.muted,
+    momentCardTitle: t.display,
+    momentCardSub: t.muted,
+    aiReactionPill: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.hairline,
+    },
+    aiReactionLabel: t.primary,
+    communitySectionEyebrow: t.muted,
+    communitySectionTitle: t.display,
+    communitySectionBody: t.primary,
+    communitySectionMeta: t.muted,
+    filterChip: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.hairline,
+    },
+    filterChipText: t.primary,
+    threadRow: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.hairline,
+    },
+    threadAuthor: t.primary,
+    threadTime: t.muted,
+    threadBody: t.primary,
+    composerSheet: {
+      backgroundColor: surface.groupedSurface,
+      borderColor: surface.hairline,
+    },
+    composerEyebrow: t.muted,
+    composerInput: t.primary,
+  } as const;
+}

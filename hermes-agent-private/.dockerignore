@@ -1,31 +1,21 @@
-# Git
-.git
-.gitignore
-.gitmodules
-
-# Dependencies
-node_modules
-**/node_modules
+# Slim ShouldI gateway image — drop dev/docs/heavy trees not needed for api_server.
 .venv
-**/.venv
-
-# Built artifacts that are regenerated inside the image.  Excluded so local
-# rebuilds on the developer's machine don't invalidate the npm-install layer
-# that now depends on the full ui-tui/packages/hermes-ink/ tree being present.
-ui-tui/dist/
-ui-tui/packages/hermes-ink/dist/
-
-# CI/CD
-.github
-
-# Environment files
-.env
-
-*.md
-
-# Runtime data (bind-mounted at /opt/data; must not leak into build context)
-data/
-
-# Compose/profile runtime state (bind-mounted; avoid ownership/secret issues)
-hermes-config/
-runtime/
+venv
+**/.git
+**/__pycache__
+**/.pytest_cache
+**/.playwright
+**/node_modules
+website
+tests
+mock-app
+tinker-atropos
+environments
+skill-builder
+optional-skills
+ui-tui
+web
+acp_adapter
+nix
+scripts
+uv.lock

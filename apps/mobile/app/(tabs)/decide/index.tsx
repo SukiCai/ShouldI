@@ -1,6 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import {
@@ -9,7 +8,6 @@ import {
   Easing,
   FlatList,
   KeyboardAvoidingView,
-  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -17,24 +15,33 @@ import {
   Text,
   TextInput,
   View,
-  useWindowDimensions,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { TabHeaderIconButton, TabScreenHeader } from '@/components/screen/TabScreenHeader';
+import { tabScreenStyles } from '@/components/screen/tabScreenStyles';
 import { resolveAppChromatics } from '@/constants/appChromatics';
 import {
-  PROFILE_HERO_GRADIENT_DARK,
-  PROFILE_HERO_GRADIENT_LIGHT,
+  council,
   palette,
   profileNeutralStroke,
-  profileTypography,
+  radius,
   screenContentGutter,
+  semantic,
   spacing,
   themeSurface,
   typography,
 } from '@/constants/theme';
-import { apiGetJson, apiPostJson, GATEWAY_ORIGIN } from '@/lib/api';
+import { apiGetJson, apiPostJson } from '@/lib/api';
+import { HARMENCE_OFFLINE_BUBBLE, userFacingApiError } from '@/lib/userFacingErrors';
+import {
+  useViewerEntitlements,
+  type CouncilUnlockMethod,
+} from '@/lib/useViewerEntitlements';
 import type { DecisionCategory } from '@shouldi/contracts';
 import {
   DecideInterviewSessionDetailSchema,
@@ -46,8 +53,39 @@ import {
   type DecideInterviewChoicePrompt,
   type DecideInterviewExpert,
   type DecideInterviewFinalDecision,
+  type DiscoveredExpert,
 } from '@shouldi/contracts';
 
+import { CouncilPaywallSheet } from './components/CouncilPaywallSheet';
+import { DecideModeSegment } from './components/DecideModeSegment';
+import { DecideSessionStatus } from './components/DecideSessionStatus';
+import { DecideSessionsSheet } from './components/DecideSessionsSheet';
+import {
+  ChamberJoinChatRow,
+  CouncilVoteTally,
+  ExpertGlyph,
+  ThinkingRow,
+} from './components/DecideThreadParts';
+import { ExpertDiscoverySheet } from './components/ExpertDiscoverySheet';
+import { ExpertRosterSheet } from './components/ExpertRosterSheet';
+import {
+  appendExpertJoinRows,
+  assistantBubbleBody,
+  buildThreadItems,
+  choicePromptHeadline,
+  councilVoteStamp,
+  councilVoteTally,
+  expertCouncilSummary,
+  formatSenderDisplay,
+  joinAnchorAt,
+  joinContextForExpert,
+  mergeDeduped,
+  shouldShowThreadSenderEyebrow,
+  threadItemKey,
+  threadSenderLabel,
+  type DecideThreadItem,
+  type ExpertJoinRow,
+} from './components/threadHelpers';
 import { useDecideWizard } from './context';
 
 const readable: Record<DecisionCategory, string> = {
@@ -57,20 +95,15 @@ const readable: Record<DecisionCategory, string> = {
   money: 'Money trade-off',
 };
 
-function bubbleKey(b: DecideInterviewBubble) {
-  return b.id;
-}
-
-const STARTER_PROMPTS = [
-  'Should I accept a co-op offer at a big-tech company?',
-  'Should I take this full-time job offer?',
-  'Should I break up with my partner?',
-  'Should I make a major purchase?',
+const STARTER_CHIPS = [
+  { short: 'Co-op offer', prompt: 'Should I accept this co-op offer?' },
+  { short: 'Job offer', prompt: 'Should I take this full-time offer?' },
+  { short: 'Break up', prompt: 'Should I end this relationship?' },
+  { short: 'Big purchase', prompt: 'Should I make this major purchase now?' },
 ] as const;
 
-function formatBubbleText(text: string): string {
-  return text.replace(/\*\*(.+?)\*\*/g, '$1');
-}
+const COUNCIL_GRADIENT_DARK = council.gradientDark;
+const COUNCIL_GRADIENT_LIGHT = council.gradientLight;
 
 function progressRatio(progress: NonNullable<DecideInterviewChoicePrompt['progress']>): number {
   if (progress.ambiguity !== undefined) {
@@ -83,116 +116,43 @@ function progressRatio(progress: NonNullable<DecideInterviewChoicePrompt['progre
   return Math.min(1, Math.max(0, progress.checked / progress.total));
 }
 
-function ThinkingRow({
-  label = 'Harmence is thinking…',
-  accent,
-  muted,
-}: {
-  label?: string;
-  accent: string;
-  muted: string;
-}) {
-  const dot1 = React.useRef(new Animated.Value(0.35)).current;
-  const dot2 = React.useRef(new Animated.Value(0.35)).current;
-  const dot3 = React.useRef(new Animated.Value(0.35)).current;
-
-  React.useEffect(() => {
-    const pulse = (value: Animated.Value, delay: number) =>
-      Animated.loop(
-        Animated.sequence([
-          Animated.delay(delay),
-          Animated.timing(value, { toValue: 1, duration: 420, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-          Animated.timing(value, { toValue: 0.35, duration: 420, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-        ]),
-      );
-    const a1 = pulse(dot1, 0);
-    const a2 = pulse(dot2, 140);
-    const a3 = pulse(dot3, 280);
-    a1.start();
-    a2.start();
-    a3.start();
-    return () => {
-      a1.stop();
-      a2.stop();
-      a3.stop();
-    };
-  }, [dot1, dot2, dot3]);
-
-  return (
-    <View style={[styles.thinkingRow, styles.msgPadH]}>
-      <View style={styles.thinkingDots}>
-        {[dot1, dot2, dot3].map((dot, i) => (
-          <Animated.View key={i} style={[styles.thinkingDot, { backgroundColor: accent, opacity: dot }]} />
-        ))}
-      </View>
-      <Text style={[styles.thinkingLabel, { color: muted }]}>{label}</Text>
-    </View>
-  );
-}
-
-function ExpertGlyph({
-  expert,
-  fallbackColor,
-  size = 30,
-}: {
-  expert?: Pick<DecideInterviewExpert, 'title' | 'icon' | 'color'> | null;
-  fallbackColor: string;
-  size?: number;
-}) {
-  const iconName = (expert?.icon ?? 'sparkles-outline') as keyof typeof Ionicons.glyphMap;
-  const color = expert?.color ?? fallbackColor;
-  return (
-    <View
-      accessibilityLabel={expert?.title ?? 'Harmence expert'}
-      style={[
-        styles.expertGlyph,
-        {
-          width: size,
-          height: size,
-          borderRadius: size / 2,
-          backgroundColor: `${color}22`,
-          borderColor: `${color}55`,
-        },
-      ]}>
-      <Ionicons name={iconName} size={Math.max(13, Math.floor(size * 0.52))} color={color} />
-    </View>
-  );
-}
-
-function mergeDeduped(messages: DecideInterviewBubble[], additions: DecideInterviewBubble[]) {
-  const map = new Map<string, DecideInterviewBubble>();
-  for (const m of messages) map.set(bubbleKey(m), m);
-  for (const m of additions) map.set(bubbleKey(m), m);
-  return Array.from(map.values()).sort((a, b) => a.at - b.at);
-}
-
 export default function DecideCategoryScreen() {
   const params = useLocalSearchParams<{ category?: DecisionCategory }>();
   const { draft, updateDraft } = useDecideWizard();
+  const {
+    balance: pointsBalance,
+    hydrated: entitlementsHydrated,
+    isPremium,
+    canAccessCouncil,
+    canUseCouncilWithPoints,
+    councilSessionCost,
+    unlockCouncilWithPoints,
+    refundCouncilPoints,
+    resolveCouncilUnlock,
+    grantDevPoints,
+    activatePremium,
+  } = useViewerEntitlements();
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const insets = useSafeAreaInsets();
-  const { height: windowHeight } = useWindowDimensions();
   const isDark = scheme === 'dark';
   const chrom = React.useMemo(() => resolveAppChromatics(isDark, surface), [isDark, surface]);
 
   const colors = React.useMemo(
     () => ({
       pageBg: surface.canvas,
-      composerBg: isDark ? surface.groupedSurface : surface.statTileBg,
-      composerBorder: isDark ? 'rgba(255,255,255,0.12)' : surface.groupedBorder,
-      assistantBubbleBg: isDark ? surface.groupedSurface : surface.statTileBg,
-      assistantBubbleBorder: isDark ? 'rgba(255,255,255,0.1)' : surface.groupedBorder,
-      userBubbleBg: isDark ? palette.heroInk : `${chrom.sky}20`,
-      userBubbleBorder: isDark ? 'rgba(255,255,255,0.1)' : `${chrom.sky}42`,
+      composerBg: surface.groupedSurface,
+      composerBorder: surface.groupedBorder,
+      cardBg: surface.groupedSurface,
+      cardBorder: surface.groupedBorder,
       headerHairline: surface.hairline,
       muted: surface.textMuted,
       primaryTxt: surface.textPrimary,
-      sendFab: chrom.mint,
-      modalBg: isDark ? palette.nightWash : surface.sheet,
-      sparklesGlyph: chrom.mint,
+      displayTxt: surface.textDisplay,
+      sendFab: semantic.actionPrimary,
+      modalBg: isDark ? surface.canvasSecondary : surface.sheet,
     }),
-    [isDark, surface, chrom],
+    [isDark, surface],
   );
 
   const [sessionId, setSessionId] = React.useState<string | null>(null);
@@ -206,7 +166,8 @@ export default function DecideCategoryScreen() {
   const [listLoading, setListLoading] = React.useState(false);
   const [hermesIntegrated, setHermesIntegrated] = React.useState(false);
   const [activeExperts, setActiveExperts] = React.useState<DecideInterviewExpert[]>([]);
-  const [newlyActivatedExperts, setNewlyActivatedExperts] = React.useState<DecideInterviewExpert[]>([]);
+  const [expertJoinRows, setExpertJoinRows] = React.useState<ExpertJoinRow[]>([]);
+  const [recentJoinExpertIds, setRecentJoinExpertIds] = React.useState<Set<string>>(() => new Set());
   const [choicePrompt, setChoicePrompt] = React.useState<DecideInterviewChoicePrompt | null>(null);
   const [isTypingCustomChoice, setIsTypingCustomChoice] = React.useState(false);
   const [customChoice, setCustomChoice] = React.useState('');
@@ -215,14 +176,81 @@ export default function DecideCategoryScreen() {
   const [mode, setMode] = React.useState<'single' | 'complex'>('single');
   const [sessionStarted, setSessionStarted] = React.useState(false);
   const [bootKey, setBootKey] = React.useState(0);
+  const [expertsOpen, setExpertsOpen] = React.useState(false);
+  const [almostReady, setAlmostReady] = React.useState(false);
+  const [councilPaywallOpen, setCouncilPaywallOpen] = React.useState(false);
+  const [discoveryOpen, setDiscoveryOpen] = React.useState(false);
+  const [expertDiscoveries, setExpertDiscoveries] = React.useState<DiscoveredExpert[]>([]);
+  const [discoveryJoinContext, setDiscoveryJoinContext] = React.useState<string | undefined>(undefined);
   const modeRef = React.useRef(mode);
   modeRef.current = mode;
+  const councilUnlockRef = React.useRef<CouncilUnlockMethod | null>(null);
+  const councilPointsChargedRef = React.useRef(false);
+
+  const buildBootstrapTurnBody = React.useCallback(() => {
+    const currentMode = modeRef.current;
+    return DecideInterviewTurnRequestSchema.parse({
+      mode: currentMode,
+      ...(currentMode === 'complex' && councilUnlockRef.current
+        ? { councilUnlock: councilUnlockRef.current }
+        : {}),
+    });
+  }, []);
+
+  const refundCouncilIfCharged = React.useCallback(() => {
+    if (councilPointsChargedRef.current) {
+      refundCouncilPoints();
+      councilPointsChargedRef.current = false;
+    }
+    councilUnlockRef.current = null;
+  }, [refundCouncilPoints]);
+
+  const activateCouncilMode = React.useCallback(
+    (unlock: CouncilUnlockMethod) => {
+      if (sessionStarted) return;
+      if (unlock === 'points') {
+        if (!unlockCouncilWithPoints()) {
+          setCouncilPaywallOpen(true);
+          return;
+        }
+        councilPointsChargedRef.current = true;
+      }
+      councilUnlockRef.current = unlock;
+      setMode('complex');
+      setSessionId(null);
+      setMessages([]);
+      setRecentJoinExpertIds(new Set());
+      setExpertJoinRows([]);
+      setFinalDecision(null);
+      setFinalReady(false);
+      setChoicePrompt(null);
+      setSessionStarted(false);
+      setCouncilPaywallOpen(false);
+      setBootKey((k) => k + 1);
+    },
+    [sessionStarted, unlockCouncilWithPoints],
+  );
+
+  const trySelectCouncil = React.useCallback(() => {
+    if (mode === 'complex' || sessionStarted) return;
+    const unlock = resolveCouncilUnlock();
+    if (unlock === 'premium') {
+      activateCouncilMode('premium');
+      return;
+    }
+    setCouncilPaywallOpen(true);
+  }, [activateCouncilMode, mode, resolveCouncilUnlock, sessionStarted]);
 
   const handleModeChange = React.useCallback(
     (newMode: 'single' | 'complex') => {
       if (newMode === mode) return;
       if (sessionStarted) return;
-      setMode(newMode);
+      if (newMode === 'complex') {
+        trySelectCouncil();
+        return;
+      }
+      refundCouncilIfCharged();
+      setMode('single');
       setSessionId(null);
       setMessages([]);
       setFinalDecision(null);
@@ -231,10 +259,12 @@ export default function DecideCategoryScreen() {
       setSessionStarted(false);
       setBootKey((k) => k + 1);
     },
-    [mode, sessionStarted],
+    [mode, refundCouncilIfCharged, sessionStarted, trySelectCouncil],
   );
 
-  const listRef = React.useRef<FlatList>(null);
+  const listRef = React.useRef<FlatList<DecideThreadItem>>(null);
+  const followLatestRef = React.useRef(true);
+  const lastChoicePromptIdRef = React.useRef<string | null>(null);
   const verdictAnim = React.useRef(new Animated.Value(0)).current;
   const [verdictExpanded, setVerdictExpanded] = React.useState(false);
   const choiceCardAnim = React.useRef(new Animated.Value(0)).current;
@@ -316,10 +346,62 @@ export default function DecideCategoryScreen() {
     (payload: unknown) => {
       const parsed = DecideInterviewTurnResponseSchema.parse(payload);
       setSessionId(parsed.sessionId);
+      if (parsed.mode) setMode(parsed.mode);
+      setAlmostReady(parsed.almostReady ?? false);
       setHermesIntegrated(parsed.hermesIntegrated);
       setActiveExperts(parsed.activeExperts ?? []);
-      setNewlyActivatedExperts(parsed.newlyActivatedExperts ?? []);
-      setMessages((prev) => mergeDeduped(prev, parsed.bubbles));
+      const newlyJoined = parsed.newlyActivatedExperts ?? [];
+      const turnDiscoveries = parsed.expertDiscoveries ?? [];
+      if (newlyJoined.length > 0) {
+        setRecentJoinExpertIds(new Set(newlyJoined.map((expert) => expert.id)));
+        if (modeRef.current === 'complex' && Platform.OS !== 'web') {
+          void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+        }
+      }
+      if (turnDiscoveries.length > 0) {
+        setExpertDiscoveries(turnDiscoveries);
+        setDiscoveryOpen(true);
+        if (Platform.OS !== 'web') {
+          void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+        }
+      }
+      setMessages((prev) => {
+        let merged = mergeDeduped(prev, parsed.bubbles);
+        const lastUser = [...merged].filter((message) => message.role === 'user').at(-1);
+        if (turnDiscoveries.length > 0) {
+          const signal = lastUser?.text?.trim();
+          setDiscoveryJoinContext(
+            signal && signal.length > 48 ? `${signal.slice(0, 48).trim()}…` : signal || undefined,
+          );
+        }
+        if (parsed.choicePrompt) {
+          const headline = choicePromptHeadline(parsed.choicePrompt);
+          for (let i = merged.length - 1; i >= 0; i -= 1) {
+            if (merged[i]?.role !== 'assistant') continue;
+            merged = [
+              ...merged.slice(0, i),
+              {
+                ...merged[i],
+                question: parsed.choicePrompt.question,
+                text: headline,
+              },
+              ...merged.slice(i + 1),
+            ];
+            break;
+          }
+        }
+        if (newlyJoined.length > 0) {
+          const anchorAt = joinAnchorAt(merged);
+          const contextByExpertId = new Map(
+            newlyJoined.map((expert) => [
+              expert.id,
+              joinContextForExpert(expert, parsed.choicePrompt ?? null, lastUser?.text),
+            ]),
+          );
+          setExpertJoinRows((rows) => appendExpertJoinRows(rows, newlyJoined, anchorAt, contextByExpertId));
+        }
+        return merged;
+      });
       setChoicePrompt(parsed.choicePrompt ?? null);
       setIsTypingCustomChoice(false);
       setCustomChoice('');
@@ -365,6 +447,7 @@ export default function DecideCategoryScreen() {
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: fd?.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd?.keyMoments ?? d.keyMoments,
+          reflection: fd?.reflection ?? d.reflection,
           aiConfidenceScore: (() => {
             if (fd?.confidenceScore != null) {
               return fd.confidenceScore;
@@ -374,10 +457,11 @@ export default function DecideCategoryScreen() {
             }
             return parsed.ambiguity != null ? Math.round((1 - parsed.ambiguity) * 100) : d.aiConfidenceScore;
           })(),
+          decisionRecordId: parsed.decisionRecordId ?? d.decisionRecordId,
+          decisionLens: parsed.decisionLens ?? d.decisionLens,
         });
       }
 
-      queueMicrotask(() => listRef.current?.scrollToEnd({ animated: true }));
       return parsed;
     },
     [updateDraft],
@@ -389,18 +473,23 @@ export default function DecideCategoryScreen() {
       setBooting(true);
       setError(null);
       try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
-        if (!cancelled) applyTurnPayload(payload);
+        const payload = await apiPostJson('/v1/harmence/interview/turn', buildBootstrapTurnBody());
+        if (!cancelled) {
+          applyTurnPayload(payload);
+          councilPointsChargedRef.current = false;
+        }
       } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : 'Harmence unreachable');
+          refundCouncilIfCharged();
+          if (modeRef.current === 'complex') {
+            setMode('single');
+          }
+          setError(userFacingApiError(e, 'ShouldI isn’t available right now. Please try again.'));
           setMessages([
             {
               id: 'assistant-offline',
               role: 'assistant',
-              text:
-                `Could not reach Harmence (${GATEWAY_ORIGIN}).\n\n` +
-                `Start gateway: npm run api`,
+              text: HARMENCE_OFFLINE_BUBBLE,
               at: Date.now(),
               supportingExpertIds: [],
             },
@@ -413,7 +502,7 @@ export default function DecideCategoryScreen() {
     return () => {
       cancelled = true;
     };
-  }, [applyTurnPayload, bootKey]);
+  }, [applyTurnPayload, bootKey, buildBootstrapTurnBody, refundCouncilIfCharged]);
 
   const openPastSessions = () => {
     setSessionsOpen(true);
@@ -428,29 +517,53 @@ export default function DecideCategoryScreen() {
       const raw = await apiGetJson<unknown>(`/v1/harmence/interview/sessions/${encodeURIComponent(sid)}`);
       const detail = DecideInterviewSessionDetailSchema.parse(raw);
       setSessionId(detail.id);
+      if (detail.mode) setMode(detail.mode);
+      setAlmostReady(false);
       setHermesIntegrated(detail.hermesIntegrated);
       setActiveExperts(detail.activeExperts ?? []);
-      setNewlyActivatedExperts([]);
+      setExpertJoinRows([]);
+      setRecentJoinExpertIds(new Set());
       setMessages([...detail.bubbles].sort((a, b) => a.at - b.at));
       setChoicePrompt(detail.choicePrompt ?? null);
+      lastChoicePromptIdRef.current = detail.choicePrompt?.id ?? null;
+      followLatestRef.current = true;
       setIsTypingCustomChoice(false);
       setCustomChoice('');
       setFinalReady(detail.isComplete);
       setFinalDecision(detail.finalDecision ?? null);
       setVerdictExpanded(false);
+      if (detail.isComplete && detail.finalDecision) {
+        const fd = detail.finalDecision;
+        const d = draftRef.current;
+        updateDraft({
+          expertVerdicts: fd.expertVerdicts ?? d.expertVerdicts,
+          keyMoments: fd.keyMoments ?? d.keyMoments,
+          reflection: fd.reflection ?? d.reflection,
+          communityAiVerdictLine: fd.verdictLine?.trim() || d.communityAiVerdictLine,
+          communityAiBecause:
+            [fd.recommendation, fd.rationale].filter(Boolean).join('\n\n') || d.communityAiBecause,
+          aiConfidenceScore:
+            fd.confidenceScore ??
+            ({ low: 35, medium: 60, high: 82 } as Record<string, number>)[fd.confidence] ??
+            d.aiConfidenceScore,
+        });
+      }
       queueMicrotask(() => listRef.current?.scrollToEnd({ animated: false }));
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not reopen session.');
+      setError(userFacingApiError(e, 'Could not reopen that chat. Please try again.'));
     } finally {
       setBooting(false);
     }
-  }, []);
+  }, [updateDraft]);
 
   const startFreshSession = React.useCallback(() => {
     setSessionId(null);
     setMessages([]);
     setActiveExperts([]);
-    setNewlyActivatedExperts([]);
+    setExpertJoinRows([]);
+    setRecentJoinExpertIds(new Set());
+    followLatestRef.current = true;
+    lastChoicePromptIdRef.current = null;
     setChoicePrompt(null);
     setSessionStarted(false);
     setIsTypingCustomChoice(false);
@@ -459,18 +572,10 @@ export default function DecideCategoryScreen() {
     setFinalDecision(null);
     setVerdictExpanded(false);
     setError(null);
-    setBooting(true);
-    void (async () => {
-      try {
-        const payload = await apiPostJson('/v1/harmence/interview/turn', DecideInterviewTurnRequestSchema.parse({ mode: modeRef.current }));
-        applyTurnPayload(payload);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Harmence unreachable');
-      } finally {
-        setBooting(false);
-      }
-    })();
-  }, [applyTurnPayload]);
+    refundCouncilIfCharged();
+    setMode('single');
+    setBootKey((k) => k + 1);
+  }, [refundCouncilIfCharged]);
 
   const submitUserText = React.useCallback(
     async (text: string) => {
@@ -479,6 +584,7 @@ export default function DecideCategoryScreen() {
       setSessionStarted(true);
       setSending(true);
       setError(null);
+      followLatestRef.current = true;
       try {
         const payload = await apiPostJson(
           `/v1/harmence/interview/turn`,
@@ -490,7 +596,7 @@ export default function DecideCategoryScreen() {
         setInput('');
         applyTurnPayload(payload);
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Send failed');
+        setError(userFacingApiError(e, 'Could not send your message. Please try again.'));
       } finally {
         setSending(false);
       }
@@ -499,6 +605,10 @@ export default function DecideCategoryScreen() {
   );
 
   const handleSend = async () => {
+    if (isTypingCustomChoice) {
+      await handleCustomChoiceSubmit();
+      return;
+    }
     await submitUserText(input);
   };
 
@@ -508,6 +618,7 @@ export default function DecideCategoryScreen() {
     setSessionStarted(true);
     setSending(true);
     setError(null);
+    followLatestRef.current = true;
     setIsTypingCustomChoice(false);
     setCustomChoice('');
     try {
@@ -521,7 +632,7 @@ export default function DecideCategoryScreen() {
       );
       applyTurnPayload(payload);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Selection failed');
+      setError(userFacingApiError(e, 'Could not record your choice. Please try again.'));
     } finally {
       setSending(false);
     }
@@ -538,7 +649,6 @@ export default function DecideCategoryScreen() {
 
   const hasUserMessages = messages.some((m) => m.role === 'user');
   const modeLocked = sessionStarted || hasUserMessages;
-  const canReview = finalReady && !!(draft.category && draft.title.trim().length > 0);
   const verdictText = finalDecision?.verdictLine ?? '';
   const verdictWord = React.useMemo(() => {
     const normalized = verdictText.trim().toLowerCase();
@@ -557,10 +667,25 @@ export default function DecideCategoryScreen() {
   const primaryExpert = choicePrompt?.speakerExpertId
     ? expertMap.get(choicePrompt.speakerExpertId)
     : activeExperts[0];
-  const subtitle =
-    activeExperts.length > 1
-      ? `${activeExperts.length} experts helping`
-      : primaryExpert?.title ?? choicePrompt?.specialistLabel ?? (draft.category ? readable[draft.category] : 'Intake assistant');
+  const sessionExperts = React.useMemo(() => {
+    if (activeExperts.length > 0) return activeExperts;
+    if (primaryExpert) return [primaryExpert];
+    return [];
+  }, [activeExperts, primaryExpert]);
+  const isCouncil = mode === 'complex';
+  const councilTheme = React.useMemo(
+    () => ({
+      violet: council.violet,
+      gold: council.gold,
+      headerGrad: (isDark ? COUNCIL_GRADIENT_DARK : COUNCIL_GRADIENT_LIGHT) as readonly [string, string, string],
+      verdictGrad: (isDark
+        ? ['#0f172a', '#1f2937', '#0b1220']
+        : ['#eef2ff', '#f8fafc', '#e0e7ff']) as readonly [string, string, string],
+      accent: isCouncil ? council.violet : chrom.mint,
+    }),
+    [chrom.mint, isCouncil, isDark],
+  );
+  const councilTally = finalDecision ? councilVoteTally(finalDecision.expertVerdicts) : null;
   const progressText = choicePrompt?.progress
     ? choicePrompt.progress.ambiguity !== undefined
       ? `Clarity ${Math.round((1 - choicePrompt.progress.ambiguity) * 100)}%`
@@ -568,21 +693,32 @@ export default function DecideCategoryScreen() {
         ? `Check ${choicePrompt.progress.checked + 1} · adaptive`
         : `${choicePrompt.progress.checked}/${choicePrompt.progress.total} ${choicePrompt.progress.label ?? 'checks'}`
     : null;
-  const progressPercent = choicePrompt?.progress ? progressRatio(choicePrompt.progress) * 100 : 0;
+  const sessionClarityPercent = React.useMemo(() => {
+    if (!choicePrompt?.progress) return null;
+    return Math.round(progressRatio(choicePrompt.progress) * 100);
+  }, [choicePrompt?.progress]);
+  const sessionProgressCaption = React.useMemo(() => {
+    const progress = choicePrompt?.progress;
+    if (!progress || progress.ambiguity !== undefined) return null;
+    if (progress.mode === 'adaptive' || !progress.total) {
+      return `Check ${progress.checked + 1}`;
+    }
+    return `${progress.checked}/${progress.total}${progress.label ? ` ${progress.label}` : ''}`;
+  }, [choicePrompt?.progress]);
   const showStarterPrompts =
     !booting && !choicePrompt && !finalReady && !sending && !!sessionId && messages.length <= 1;
-  const useRichOptions = !!choicePrompt?.options.some((o) => o.description?.trim());
   const verdictAccent =
-    verdictWord === 'YES' ? chrom.mint : verdictWord === 'NO' ? palette.playful : chrom.sky;
-  const softHint = choicePrompt
-    ? choicePrompt.specialistLabel
-      ? 'Pick the answer that best matches your situation.'
-      : 'Tap an option below to continue.'
-    : finalReady
-      ? 'Your recommendation is ready.'
-      : messages.length <= 1
-        ? 'Describe your decision in your own words — or try a starter below.'
-        : 'A few more answers and Harmence can give you a clear verdict.';
+    isCouncil && verdictWord === 'YES'
+      ? palette.mint
+      : isCouncil && verdictWord === 'NO'
+        ? palette.danger
+        : isCouncil
+          ? council.violet
+          : verdictWord === 'YES'
+            ? chrom.mint
+            : verdictWord === 'NO'
+              ? palette.playful
+              : chrom.sky;
   const choiceCardTranslate = choiceCardAnim.interpolate({ inputRange: [0, 1], outputRange: [14, 0] });
   const expertForBubble = React.useCallback(
     (item: DecideInterviewBubble): DecideInterviewExpert | null => {
@@ -590,17 +726,224 @@ export default function DecideCategoryScreen() {
       return (
         expertMap.get(item.expertId) ?? {
           id: item.expertId,
-          title: item.expertTitle ?? 'Harmence expert',
+          title: item.expertTitle ?? 'Decision expert',
           skillName: item.expertTitle ?? item.expertId,
           icon: item.expertIcon ?? 'sparkles-outline',
-          color: item.expertColor ?? chrom.mint,
+          color: item.expertColor ?? semantic.actionPrimary,
         }
       );
     },
-    [chrom.mint, expertMap],
+    [expertMap],
   );
 
   const bottomPad = Math.max(insets.bottom, 10);
+  /** On Decide tab the center button is inline with other tabs. */
+  const tabFabClearance = Platform.select({ ios: 12, android: 10, default: 8 }) ?? 8;
+  const activeChoiceMessageIndex = React.useMemo(() => {
+    if (!choicePrompt || finalReady || isTypingCustomChoice) return -1;
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      if (messages[i]?.role === 'assistant') return i;
+    }
+    return -1;
+  }, [choicePrompt, finalReady, isTypingCustomChoice, messages]);
+  const showCompactHeader = modeLocked || sessionStarted || hasUserMessages;
+  const showSessionStatus =
+    showCompactHeader &&
+    !finalReady &&
+    !booting &&
+    (sessionClarityPercent !== null || sessionExperts.length > 0 || isCouncil);
+  const headerSubtitle = React.useMemo(() => {
+    if (!showCompactHeader) return 'Ask one decision. Get a clear recommendation.';
+    if (isCouncil) {
+      const expertPart =
+        activeExperts.length > 0
+          ? `${activeExperts.length} expert${activeExperts.length === 1 ? '' : 's'}`
+          : 'Assembling council';
+      return progressText ? `${expertPart} · ${progressText}` : expertPart;
+    }
+    if (primaryExpert?.title) {
+      return progressText ? `${primaryExpert.title} · ${progressText}` : primaryExpert.title;
+    }
+    return progressText ?? choicePrompt?.specialistLabel ?? 'In progress';
+  }, [
+    activeExperts.length,
+    choicePrompt?.specialistLabel,
+    isCouncil,
+    primaryExpert?.title,
+    progressText,
+    showCompactHeader,
+  ]);
+  const canOpenExpertRoster = sessionExperts.length > 0;
+  const resolveThreadExpert = React.useCallback(
+    (bubble: DecideInterviewBubble) => expertForBubble(bubble),
+    [expertForBubble],
+  );
+  const threadItems = React.useMemo(
+    () => buildThreadItems(messages, expertJoinRows),
+    [expertJoinRows, messages],
+  );
+  const showFooterChoiceEyebrow = React.useMemo(() => {
+    if (!primaryExpert?.title?.trim()) return false;
+    const lastItem = threadItems.at(-1);
+    if (
+      lastItem?.kind === 'expert-join' &&
+      lastItem.expert.title?.trim().toLowerCase() === primaryExpert.title.trim().toLowerCase()
+    ) {
+      return false;
+    }
+    const lastMessage = [...threadItems].reverse().find((item) => item.kind === 'message');
+    if (!lastMessage) return true;
+    return threadSenderLabel(lastMessage, resolveThreadExpert) !== primaryExpert.title.trim();
+  }, [primaryExpert?.title, resolveThreadExpert, threadItems]);
+
+  const scrollToActiveQuestion = React.useCallback((animated = true) => {
+    setTimeout(() => {
+      listRef.current?.scrollToEnd({ animated });
+    }, 140);
+  }, []);
+
+  const handleListScroll = React.useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+    const distanceFromBottom = contentSize.height - layoutMeasurement.height - contentOffset.y;
+    followLatestRef.current = distanceFromBottom <= 120;
+  }, []);
+
+  React.useEffect(() => {
+    if (!choicePrompt || finalReady || booting || sending) return;
+    if (choicePrompt.id === lastChoicePromptIdRef.current) return;
+    lastChoicePromptIdRef.current = choicePrompt.id;
+    if (!followLatestRef.current) return;
+    scrollToActiveQuestion(true);
+  }, [booting, choicePrompt?.id, finalReady, scrollToActiveQuestion, sending]);
+
+  React.useEffect(() => {
+    if (recentJoinExpertIds.size === 0) return;
+    const timer = setTimeout(() => setRecentJoinExpertIds(new Set()), 2400);
+    return () => clearTimeout(timer);
+  }, [recentJoinExpertIds]);
+
+  const showStarterLaunchPad = showStarterPrompts;
+  const showComposer = !finalReady && (!choicePrompt || isTypingCustomChoice);
+  const showAnswerPane =
+    !finalReady && (showComposer || showStarterLaunchPad || isTypingCustomChoice);
+  const councilSummary = finalDecision ? expertCouncilSummary(finalDecision.expertVerdicts) : null;
+  const canExpandVerdict = !!(
+    finalDecision &&
+    (finalDecision.rationale?.trim() ||
+      finalDecision.nextSteps.length > 0 ||
+      finalDecision.expertVerdicts.length > 0 ||
+      finalDecision.reflection?.summary)
+  );
+
+  const choiceWhyItMatters = React.useMemo(() => choicePrompt?.whyItMatters?.trim() || null, [choicePrompt]);
+  const choiceHelperNote = React.useMemo(() => choicePrompt?.helperText?.trim() || null, [choicePrompt]);
+
+  const renderChoiceOptionsList = () => {
+    if (!choicePrompt || finalReady || isTypingCustomChoice || sending) return null;
+
+    const optionCount = choicePrompt.options.length + (choicePrompt.allowCustomAnswer ? 1 : 0);
+
+    return (
+      <View style={[styles.choiceOptionList, { borderTopColor: colors.cardBorder }]}>
+        {choicePrompt.options.map((option, index) => (
+          <Pressable
+            key={option.id}
+            accessibilityRole="button"
+            accessibilityLabel={`Select ${option.label}`}
+            disabled={sending}
+            onPress={() => {
+              void handleChoiceSelect(option);
+            }}
+            style={({ pressed }) => [
+              styles.choiceOptionRow,
+              index < optionCount - 1 && [styles.choiceOptionRowDivider, { borderBottomColor: colors.cardBorder }],
+              pressed && { backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(15,23,42,0.03)' },
+            ]}>
+            <Text style={[styles.choiceOptionLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
+            {option.description?.trim() ? (
+              <Text style={[styles.choiceOptionDesc, { color: colors.muted }]} numberOfLines={1}>
+              {option.description}
+            </Text>
+            ) : null}
+          </Pressable>
+        ))}
+        {choicePrompt.allowCustomAnswer ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Type another answer"
+            disabled={sending}
+            onPress={() => setIsTypingCustomChoice(true)}
+            style={({ pressed }) => [
+              styles.choiceOptionRow,
+              pressed && { backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(15,23,42,0.03)' },
+            ]}>
+            <Text style={[styles.choiceOptionLabel, { color: colors.muted }]}>Other — type my own answer</Text>
+          </Pressable>
+        ) : null}
+      </View>
+    );
+  };
+
+  const renderActiveChoiceBlock = (
+    questionText: string,
+    expertTitle?: string | null,
+    showSenderEyebrow = true,
+  ) => {
+    if (!choicePrompt || finalReady || isTypingCustomChoice || sending) return null;
+
+    return (
+      <Animated.View
+        style={[
+          styles.threadBlock,
+          styles.msgPadH,
+          { opacity: choiceCardAnim, transform: [{ translateY: choiceCardTranslate }] },
+        ]}>
+        {expertTitle && showSenderEyebrow ? (
+          <Text style={[styles.threadEyebrow, { color: colors.muted }]}>{formatSenderDisplay(expertTitle)}</Text>
+        ) : null}
+        <View
+          style={[
+            styles.activeChoiceCard,
+            {
+              backgroundColor: colors.cardBg,
+              borderColor: colors.cardBorder,
+            },
+          ]}>
+          <View style={styles.activeChoiceQuestion}>
+            <Text selectable style={[styles.choiceQuestionText, { color: colors.primaryTxt }]}>
+              {questionText}
+            </Text>
+            {almostReady ? (
+              <Text style={[styles.almostReadyHint, { color: colors.muted }]}>Almost ready — one or two more answers.</Text>
+            ) : null}
+            {choiceWhyItMatters ? (
+              <View
+                accessibilityRole="text"
+                accessibilityLabel={`Why this matters. ${choiceWhyItMatters}`}
+                style={[
+                  styles.whyCard,
+                  {
+                    backgroundColor: isDark ? 'rgba(95,169,149,0.08)' : `${semantic.actionAffirm}10`,
+                    borderColor: isDark ? 'rgba(95,169,149,0.22)' : `${semantic.actionAffirm}30`,
+                  },
+                ]}>
+                <Text style={[styles.whyLabel, { color: semantic.actionAffirm }]}>Why this matters</Text>
+                <Text style={[styles.whyText, { color: colors.primaryTxt }]} numberOfLines={4}>
+                  {choiceWhyItMatters}
+                </Text>
+              </View>
+            ) : null}
+            {choiceHelperNote ? (
+              <Text style={[styles.choiceNote, { color: colors.muted }]} numberOfLines={3}>
+                {choiceHelperNote}
+              </Text>
+            ) : null}
+          </View>
+          {renderChoiceOptionsList()}
+        </View>
+      </Animated.View>
+    );
+  };
 
   return (
     <KeyboardAvoidingView
@@ -610,308 +953,329 @@ export default function DecideCategoryScreen() {
         style={[
           styles.header,
           {
-            paddingTop: insets.top + 6,
-            borderBottomColor: surface.hairline,
+            paddingTop: Math.max(insets.top + 10, 28),
           },
         ]}>
-        <LinearGradient
-          colors={isDark ? PROFILE_HERO_GRADIENT_DARK : PROFILE_HERO_GRADIENT_LIGHT}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={StyleSheet.absoluteFillObject}
-        />
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Past sessions"
-          onPress={openPastSessions}
-          style={styles.headerIconBtn}
-          hitSlop={{ top: 8, bottom: 8, left: 4, right: 10 }}>
-          <Ionicons name="time-outline" size={24} color={chrom.gearIcon} />
-        </Pressable>
-        <View style={styles.headerTitleBlock}>
-          <View style={styles.titleRow}>
-            <Text style={[styles.agentTitle, { color: chrom.display }]}>
-              {activeExperts.length > 0 ? 'Harmence Council' : 'Harmence'}
-            </Text>
+        <TabScreenHeader
+          title="Decide"
+          subtitle={showSessionStatus ? undefined : headerSubtitle}
+          textDisplay={colors.displayTxt}
+          textMuted={colors.muted}
+          groupedSurface={colors.cardBg}
+          hairline={colors.headerHairline}
+          textPrimary={colors.primaryTxt}
+          action={
+            <View style={tabScreenStyles.headerActionRow}>
+              <TabHeaderIconButton
+                icon="time-outline"
+                accessibilityLabel="Past sessions"
+                onPress={openPastSessions}
+                groupedSurface={colors.cardBg}
+                hairline={colors.headerHairline}
+                iconColor={colors.muted}
+                iconSize={22}
+              />
+              <TabHeaderIconButton
+                icon="create-outline"
+                accessibilityLabel="New chat"
+                onPress={startFreshSession}
+                disabled={booting || sending}
+                groupedSurface={colors.cardBg}
+                hairline={colors.headerHairline}
+                iconColor={colors.muted}
+                iconSize={22}
+              />
+            </View>
+          }>
+          {showSessionStatus ? (
             <View
               style={[
-                styles.liveDot,
-                { backgroundColor: hermesIntegrated ? chrom.mint : chrom.textMuted },
-              ]}
-            />
-          </View>
-          <Text style={[styles.agentSubtitle, { color: chrom.textMuted }]} numberOfLines={1}>
-            {subtitle}
-          </Text>
-          {activeExperts.length > 0 ? (
-            <View style={styles.headerExperts}>
-              {activeExperts.slice(0, 4).map((expert) => (
-                <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={22} />
-              ))}
-            </View>
-          ) : null}
-          {choicePrompt?.progress ? (
-            <View style={[styles.headerProgressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
-              <View
-                style={[
-                  styles.headerProgressFill,
-                  { width: `${progressPercent}%`, backgroundColor: chrom.mint },
-                ]}
+                styles.sessionStatusShell,
+                { backgroundColor: colors.cardBg, borderColor: colors.cardBorder },
+              ]}>
+              <DecideSessionStatus
+                clarityPercent={sessionClarityPercent}
+                progressCaption={sessionProgressCaption}
+                experts={sessionExperts}
+                isCouncil={isCouncil}
+                colors={colors}
+                onPressExperts={canOpenExpertRoster ? () => setExpertsOpen(true) : undefined}
               />
             </View>
           ) : null}
-        </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="New chat"
-          onPress={startFreshSession}
-          disabled={booting || sending}
-          style={[styles.headerIconBtn, (booting || sending) && { opacity: 0.35 }]}
-          hitSlop={{ top: 8, bottom: 8, left: 10, right: 4 }}>
-          <Ionicons name="create-outline" size={24} color={chrom.gearIcon} />
-        </Pressable>
+          {!modeLocked && !booting && !finalReady ? (
+            <DecideModeSegment
+              mode={mode}
+              isDark={isDark}
+              isPremium={isPremium}
+              canAccessCouncil={canAccessCouncil}
+              councilSessionCost={councilSessionCost}
+              onSelectSingle={() => handleModeChange('single')}
+              onSelectCouncil={trySelectCouncil}
+            />
+          ) : null}
+        </TabScreenHeader>
       </View>
 
       {booting ? (
         <View style={styles.loadingCenter}>
-          <ActivityIndicator color={chrom.mint} size="large" />
+          <ActivityIndicator color={semantic.actionPrimary} size="large" />
           <Text style={[styles.loadingLabel, { color: colors.muted }]}>Loading…</Text>
         </View>
       ) : finalReady && finalDecision ? (
-        <View style={styles.verdictScreen}>
-          <LinearGradient
-            colors={isDark ? ['#050816', '#0F172A', '#062B2F'] : ['#E0F2FE', '#F8FAFC', '#D1FAE5']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={StyleSheet.absoluteFillObject}
-          />
-          <Animated.View
-            pointerEvents="none"
-            style={[
-              styles.verdictHalo,
-              {
-                backgroundColor: verdictAccent,
-                opacity: verdictHalo,
-                transform: [{ scale: verdictScale }],
-              },
-            ]}
-          />
+        <View style={[styles.verdictScreen, { backgroundColor: colors.pageBg }]}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={styles.verdictScrollContent}>
-          <Animated.View style={[styles.verdictOrb, { transform: [{ scale: verdictScale }] }]}>
-            <LinearGradient
-              colors={isDark ? [verdictAccent, chrom.sky] : [chrom.sky, verdictAccent]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.verdictOrbGradient}>
-              <Ionicons
-                name={verdictWord === 'NO' ? 'shield-outline' : 'sparkles'}
-                size={34}
-                color={chrom.ctaOnGradient}
-              />
-            </LinearGradient>
-          </Animated.View>
-          <Text style={[styles.verdictKicker, { color: verdictAccent }]}>Harmence decision</Text>
-          <Text style={[styles.verdictWord, { color: verdictAccent }]}>{verdictWord}</Text>
+          <Text style={[styles.verdictEyebrow, { color: colors.muted }]}>
+            {isCouncil ? 'Council recommendation' : 'Recommendation'}
+          </Text>
+          <Text style={[styles.verdictWordHeadline, { color: colors.displayTxt }]}>{verdictWord}</Text>
           <Text style={[styles.verdictSentence, { color: colors.primaryTxt }]}>
             {finalDecision.verdictLine}
           </Text>
-          <Text
-            style={[styles.verdictReason, { color: colors.muted }]}
-            numberOfLines={verdictExpanded ? undefined : 3}>
-            {finalDecision.recommendation}
-          </Text>
-          {verdictExpanded && finalDecision.rationale?.trim() ? (
-            <Text style={[styles.verdictRationale, { color: colors.muted }]}>{finalDecision.rationale}</Text>
+          <View style={[styles.verdictCard, { backgroundColor: colors.cardBg, borderColor: colors.cardBorder }]}>
+            <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Recommendation</Text>
+            <Text
+              style={[styles.verdictReason, { color: colors.primaryTxt }]}
+              numberOfLines={verdictExpanded ? undefined : 4}>
+              {finalDecision.recommendation}
+            </Text>
+          </View>
+          {isCouncil && councilTally && councilTally.total > 0 ? (
+            <CouncilVoteTally yes={councilTally.yes} no={councilTally.no} total={councilTally.total} isDark={isDark} />
+          ) : councilSummary ? (
+            <Text style={[styles.verdictCouncilSummary, { color: colors.muted }]}>{councilSummary}</Text>
+          ) : null}
+          {finalDecision.rationale?.trim() ? (
+            <View style={[styles.verdictCard, { backgroundColor: colors.cardBg, borderColor: colors.cardBorder }]}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Why</Text>
+              <Text
+                style={[styles.verdictRationale, { color: colors.primaryTxt }]}
+                numberOfLines={verdictExpanded ? undefined : 4}>
+                {finalDecision.rationale}
+              </Text>
+            </View>
           ) : null}
           {verdictExpanded && finalDecision.expertVerdicts.length > 0 ? (
             <View style={styles.expertVerdictsWrap}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Individual votes</Text>
               {finalDecision.expertVerdicts.map((verdict) => {
                 const expert = expertMap.get(verdict.expertId);
+                const stamp = councilVoteStamp(verdict.verdictLine);
+                const stampColor =
+                  stamp === 'YES'
+                    ? semantic.actionAffirm
+                    : stamp === 'NO'
+                      ? palette.danger
+                      : semantic.actionPrimary;
                 return (
                   <View
                     key={verdict.expertId}
-                    style={[styles.expertVerdictCard, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
-                    <View style={styles.expertVerdictHead}>
-                      <ExpertGlyph expert={expert} fallbackColor={chrom.mint} size={26} />
-                      <View style={{ flex: 1 }}>
-                        <Text style={[styles.expertVerdictTitle, { color: colors.primaryTxt }]}>
-                          {verdict.expertTitle}
-                        </Text>
-                        <Text style={[styles.expertVerdictLine, { color: expert?.color ?? verdictAccent }]}>
-                          {verdict.verdictLine}
-                        </Text>
+                    style={[
+                      styles.expertVerdictCard,
+                      {
+                        borderColor: colors.cardBorder,
+                        backgroundColor: colors.cardBg,
+                      },
+                    ]}>
+                    <View style={[styles.expertVerdictAccent, { backgroundColor: expert?.color ?? semantic.actionPrimary }]} />
+                    <View style={styles.expertVerdictCardBody}>
+                      <View style={styles.expertVerdictHead}>
+                        <ExpertGlyph expert={expert} fallbackColor={semantic.actionPrimary} size={28} />
+                        <View style={{ flex: 1 }}>
+                          <Text style={[styles.expertVerdictTitle, { color: colors.primaryTxt }]}>
+                            {verdict.expertTitle}
+                          </Text>
+                          <Text style={[styles.expertVerdictLine, { color: colors.muted }]}>
+                            {verdict.verdictLine}
+                          </Text>
+                        </View>
+                        <View style={[styles.voteStamp, { backgroundColor: `${stampColor}22`, borderColor: `${stampColor}55` }]}>
+                          <Text style={[styles.voteStampText, { color: stampColor }]}>{stamp}</Text>
+                        </View>
                       </View>
+                      <Text style={[styles.expertVerdictConfidence, { color: colors.muted }]}>
+                        Confidence · {verdict.confidence}
+                      </Text>
+                      <Text style={[styles.expertVerdictReason, { color: colors.muted }]}>{verdict.reasoning}</Text>
+                      {verdict.risks.length > 0 ? (
+                        <Text style={[styles.expertVerdictMeta, { color: colors.muted }]}>
+                          Risks: {verdict.risks.join(' · ')}
+                        </Text>
+                      ) : null}
                     </View>
-                    <Text style={[styles.expertVerdictReason, { color: colors.muted }]}>{verdict.reasoning}</Text>
                   </View>
                 );
               })}
             </View>
           ) : null}
-          {verdictExpanded && finalDecision.nextSteps.length > 0 ? (
-            <View style={[styles.verdictSteps, { borderColor: colors.composerBorder }]}>
-              <Text style={[styles.verdictStepsTitle, { color: colors.primaryTxt }]}>Next steps</Text>
+          {finalDecision.reflection?.summary ? (
+            <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>What to watch</Text>
+              <Text style={[styles.reflectionBody, { color: colors.primaryTxt }]}>{finalDecision.reflection.summary}</Text>
+              {finalDecision.reflection.concerns?.map((concern) => (
+                <Text key={concern} style={[styles.reflectionConcern, { color: colors.muted }]}>
+                  · {concern}
+                </Text>
+              ))}
+            </View>
+          ) : null}
+          {finalDecision.nextSteps.length > 0 ? (
+            <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Next steps</Text>
               {finalDecision.nextSteps.map((step) => (
                 <View key={step} style={styles.verdictStepRow}>
-                  <View style={[styles.verdictStepDot, { backgroundColor: verdictAccent }]} />
-                  <Text style={[styles.verdictStepText, { color: colors.muted }]}>{step}</Text>
+                  <View style={[styles.verdictStepDot, { backgroundColor: semantic.actionPrimary }]} />
+                  <Text style={[styles.verdictStepText, { color: colors.primaryTxt }]}>{step}</Text>
                 </View>
               ))}
             </View>
           ) : null}
-          {(finalDecision.rationale?.trim() || finalDecision.nextSteps.length > 0) ? (
+          {canExpandVerdict ? (
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={verdictExpanded ? 'Show less detail' : 'See full reasoning'}
               onPress={() => setVerdictExpanded((v) => !v)}
               style={styles.verdictExpandBtn}>
-              <Text style={[styles.verdictExpandText, { color: verdictAccent }]}>
-                {verdictExpanded ? 'Show less' : 'See full reasoning'}
+              <Text style={[styles.verdictExpandText, { color: semantic.actionPrimary }]}>
+                {verdictExpanded
+                  ? 'Show less'
+                  : finalDecision.expertVerdicts.length > 0
+                    ? 'See how each expert voted'
+                    : 'See full reasoning'}
               </Text>
               <Ionicons
                 name={verdictExpanded ? 'chevron-up' : 'chevron-down'}
                 size={16}
-                color={verdictAccent}
+                color={semantic.actionPrimary}
               />
             </Pressable>
           ) : null}
           <View style={styles.verdictActions}>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Review Explore card"
+              accessibilityLabel="Ask the community to validate your recommendation"
               onPress={() => router.push('/(tabs)/decide/confirm')}
-              style={[styles.verdictPrimary, { backgroundColor: chrom.mint }]}>
-              <Text style={[styles.verdictPrimaryText, { color: chrom.ctaOnGradient }]}>Review Explore card</Text>
-              <Ionicons name="arrow-forward" size={18} color={chrom.ctaOnGradient} />
+              style={ctaStyles.primary}>
+              <Text style={ctaStyles.primaryLabel}>Ask the community</Text>
+              <Ionicons name="arrow-forward" size={18} color={palette.sheet} />
             </Pressable>
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Start a new decision"
               onPress={startFreshSession}
-              style={[styles.verdictSecondary, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
+              style={[styles.verdictSecondary, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
               <Text style={[styles.verdictSecondaryText, { color: colors.primaryTxt }]}>Ask another</Text>
             </Pressable>
           </View>
           </ScrollView>
         </View>
       ) : (
+        <View style={styles.interactionShell}>
         <FlatList
           ref={listRef}
-          data={messages}
-          keyExtractor={bubbleKey}
+          data={threadItems}
+          keyExtractor={threadItemKey}
           style={styles.list}
-          contentContainerStyle={[styles.listContent, { flexGrow: 1 }]}
+          contentContainerStyle={[
+            styles.listContent,
+            {
+              flexGrow: 1,
+              paddingBottom:
+                choicePrompt && !finalReady && !isTypingCustomChoice
+                  ? bottomPad + tabFabClearance + spacing.xl
+                  : showAnswerPane
+                    ? spacing.sm
+                    : bottomPad + tabFabClearance,
+            },
+          ]}
           keyboardShouldPersistTaps="handled"
-          onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: true })}
+          onScroll={handleListScroll}
+          scrollEventThrottle={16}
+          ListHeaderComponent={null}
           ListFooterComponent={
-            sending ? (
-              <ThinkingRow accent={chrom.mint} muted={colors.muted} />
-            ) : showStarterPrompts ? (
-              <View style={[styles.starterWrap, styles.msgPadH]}>
-                <View style={[styles.modeSelectorRow, modeLocked && { opacity: 0.38 }]}>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Single mode — one expert"
-                    disabled={modeLocked}
-                    onPress={() => handleModeChange('single')}
-                    style={[
-                      styles.modeBtn,
-                      { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
-                    ]}>
-                    <Text style={[styles.modeBtnLabel, { color: mode === 'single' ? chrom.mint : colors.primaryTxt }]}>Single</Text>
-                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>One expert</Text>
-                  </Pressable>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Complex mode — expert council"
-                    disabled={modeLocked}
-                    onPress={() => handleModeChange('complex')}
-                    style={[
-                      styles.modeBtn,
-                      { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg },
-                    ]}>
-                    <Text style={[styles.modeBtnLabel, { color: mode === 'complex' ? chrom.mint : colors.primaryTxt }]}>Complex</Text>
-                    <Text style={[styles.modeBtnSub, { color: colors.muted }]}>Expert council</Text>
-                  </Pressable>
-                </View>
-                <Text style={[styles.starterEyebrow, { color: colors.muted }]}>Try asking</Text>
-                <View style={styles.starterList}>
-                  {STARTER_PROMPTS.map((prompt) => (
-                    <Pressable
-                      key={prompt}
-                      accessibilityRole="button"
-                      accessibilityLabel={`Ask: ${prompt}`}
-                      onPress={() => {
-                        void submitUserText(prompt);
-                      }}
-                      style={[
-                        styles.starterChip,
-                        {
-                          borderColor: colors.composerBorder,
-                          backgroundColor: colors.composerBg,
-                        },
-                      ]}>
-                      <Ionicons name="chatbubble-ellipses-outline" size={15} color={chrom.mint} />
-                      <Text style={[styles.starterChipText, { color: colors.primaryTxt }]}>{prompt}</Text>
-                    </Pressable>
-                  ))}
-                </View>
-              </View>
-            ) : null
+            <>
+              {sending ? (
+                <ThinkingRow
+                  label={isCouncil ? 'Council is reviewing...' : 'ShouldI is reviewing...'}
+                  accent={semantic.actionPrimary}
+                  muted={colors.muted}
+                />
+              ) : null}
+              {choicePrompt && !finalReady && !isTypingCustomChoice && activeChoiceMessageIndex === -1
+                ? renderActiveChoiceBlock(
+                    choicePromptHeadline(choicePrompt),
+                    primaryExpert?.title,
+                    showFooterChoiceEyebrow,
+                  )
+                : null}
+            </>
           }
-          renderItem={({ item }) =>
-            item.role === 'assistant' ? (
-              <View style={[styles.rowAssistant, styles.msgPadH]}>
-                <View style={styles.assistantLeading}>
-                  <ExpertGlyph expert={expertForBubble(item)} fallbackColor={colors.sparklesGlyph} />
-                  {item.supportingExpertIds.length > 0 ? (
-                    <View style={styles.supportingStack}>
-                      {item.supportingExpertIds.slice(0, 3).map((id) => (
-                        <ExpertGlyph key={id} expert={expertMap.get(id)} fallbackColor={chrom.sky} size={18} />
-                      ))}
-                    </View>
-                  ) : null}
-                </View>
-                <View
-                  style={[
-                    styles.assistantBubble,
-                    {
-                      backgroundColor: colors.assistantBubbleBg,
-                      borderColor: colors.assistantBubbleBorder,
-                    },
-                  ]}>
-                  {expertForBubble(item) ? (
-                    <Text style={[styles.bubbleExpertTitle, { color: expertForBubble(item)?.color ?? chrom.mint }]}>
-                      {expertForBubble(item)?.title}
+          renderItem={({ item, index }) => {
+            if (item.kind === 'expert-join') {
+              return (
+                <ChamberJoinChatRow
+                  expert={item.expert}
+                  contextText={item.contextText}
+                  isCouncil={isCouncil}
+                  isDark={isDark}
+                  colors={colors}
+                />
+              );
+            }
+
+            const bubble = item.bubble;
+            const messageIndex = item.messageIndex;
+            const bubbleExpert = expertForBubble(bubble);
+            const senderLabel = threadSenderLabel(item, resolveThreadExpert);
+            const showSenderEyebrow = shouldShowThreadSenderEyebrow(index, threadItems, resolveThreadExpert);
+
+            return bubble.role === 'assistant' ? (
+              messageIndex === activeChoiceMessageIndex ? (
+                renderActiveChoiceBlock(
+                  assistantBubbleBody(bubble, messages, choicePrompt, true),
+                  bubbleExpert?.title,
+                  showSenderEyebrow,
+                )
+              ) : (
+                <View style={[styles.threadBlock, styles.msgPadH]}>
+                  {senderLabel && showSenderEyebrow ? (
+                    <Text style={[styles.threadEyebrow, { color: colors.muted }]}>
+                      {formatSenderDisplay(senderLabel)}
                     </Text>
                   ) : null}
-                  <Text selectable style={[styles.msgTextAssistant, { color: colors.primaryTxt }]}>
-                    {formatBubbleText(item.text)}
-                  </Text>
+                  <View
+                    style={[
+                      styles.threadCard,
+                      {
+                        backgroundColor: colors.cardBg,
+                        borderColor: colors.cardBorder,
+                      },
+                    ]}>
+                    <Text selectable style={[styles.threadBody, { color: colors.primaryTxt }]}>
+                      {assistantBubbleBody(bubble, messages, choicePrompt, false)}
+                    </Text>
+                  </View>
                 </View>
-              </View>
+              )
             ) : (
-              <View style={[styles.rowUser, styles.msgPadH]}>
-                <View
-                  style={[
-                    styles.userBubble,
-                    {
-                      backgroundColor: colors.userBubbleBg,
-                      borderColor: colors.userBubbleBorder,
-                    },
-                  ]}>
-                  <Text selectable style={[styles.msgTextUser, { color: isDark ? palette.sheet : profileTypography.ink }]}>
-                    {item.text}
+              <View style={[styles.userThreadBlock, styles.msgPadH]}>
+                {senderLabel && showSenderEyebrow ? (
+                  <Text style={[styles.threadEyebrow, styles.threadEyebrowUser, { color: colors.muted }]}>
+                    {formatSenderDisplay(senderLabel)}
+                  </Text>
+                ) : null}
+                <View style={[styles.userThreadCard, { backgroundColor: colors.cardBg, borderColor: colors.cardBorder }]}>
+                  <Text selectable style={[styles.threadBody, { color: colors.primaryTxt }]}>
+                    {bubble.text}
                   </Text>
                 </View>
               </View>
-            )
-          }
+            );
+          }}
         />
-      )}
 
       {error ? (
         <View
@@ -929,271 +1293,65 @@ export default function DecideCategoryScreen() {
         </View>
       ) : null}
 
-      {finalReady && finalDecision ? null : (
+      {!finalReady && showAnswerPane ? (
       <View
           style={[
-            styles.footer,
+            styles.answerPane,
             {
-              paddingBottom: bottomPad,
               backgroundColor: colors.pageBg,
               borderTopColor: colors.headerHairline,
             },
           ]}>
-        {canReview ? (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Review briefing and community validation card"
-            onPress={() => router.push('/(tabs)/decide/confirm')}
-            style={[styles.continuePill, { borderColor: colors.composerBorder, backgroundColor: colors.composerBg }]}>
-            <Text style={[styles.continuePillText, { color: colors.primaryTxt }]}>Review & Explore card</Text>
-            <Ionicons name="arrow-forward-circle-outline" size={18} color={chrom.mint} />
-          </Pressable>
-        ) : (
-          <View style={[styles.softHintWrap, styles.msgPadH]}>
-            <View style={[styles.modeToggleRow, modeLocked && { opacity: 0.38 }]}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Single expert mode"
-                disabled={modeLocked}
-                onPress={() => handleModeChange('single')}
-                style={[styles.modeToggleBtn, { borderColor: mode === 'single' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
-                <Text style={[styles.modeToggleLabel, { color: mode === 'single' ? chrom.mint : colors.muted }]}>Single</Text>
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Expert council mode"
-                disabled={modeLocked}
-                onPress={() => handleModeChange('complex')}
-                style={[styles.modeToggleBtn, { borderColor: mode === 'complex' ? chrom.mint : colors.composerBorder, backgroundColor: colors.composerBg }]}>
-                <Text style={[styles.modeToggleLabel, { color: mode === 'complex' ? chrom.mint : colors.muted }]}>Council</Text>
-              </Pressable>
-            </View>
-            <Text style={[styles.softHint, { color: colors.muted, flex: 1 }]} numberOfLines={2}>
-              {softHint}
-            </Text>
-          </View>
-        )}
-
-        {newlyActivatedExperts.length > 0 ? (
-          <View
-            style={[
-              styles.newExpertBanner,
-              styles.msgPadH,
-              { borderColor: colors.composerBorder, backgroundColor: colors.composerBg },
-            ]}>
-            <View style={styles.newExpertIcons}>
-              {newlyActivatedExperts.map((expert) => (
-                <ExpertGlyph key={expert.id} expert={expert} fallbackColor={chrom.mint} size={24} />
-              ))}
-            </View>
-            <Text style={[styles.newExpertText, { color: colors.primaryTxt }]}>
-              {newlyActivatedExperts.map((expert) => expert.title).join(', ')} joined the council.
-            </Text>
-          </View>
-        ) : null}
-
-        {choicePrompt && !finalReady ? (
-          <Animated.View
-            style={[
-              styles.clarifyCard,
-              {
-                marginHorizontal: screenContentGutter,
-                backgroundColor: colors.composerBg,
-                borderColor: colors.composerBorder,
-                opacity: choiceCardAnim,
-                transform: [{ translateY: choiceCardTranslate }],
-                maxHeight: windowHeight * 0.58,
-              },
-            ]}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              contentContainerStyle={styles.clarifyCardInner}>
-            {sending ? (
-              <View style={styles.clarifySendingRow}>
-                <ActivityIndicator size="small" color={chrom.mint} />
-                <Text style={[styles.clarifySendingText, { color: colors.muted }]}>Updating your profile…</Text>
-              </View>
-            ) : null}
-            {choicePrompt.specialistLabel ? (
-              <View style={styles.specialistRow}>
-                <View style={[styles.specialistPill, { backgroundColor: isDark ? `${chrom.mint}1f` : `${chrom.sky}16`, borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45` }]}>
-                  {primaryExpert ? <ExpertGlyph expert={primaryExpert} fallbackColor={chrom.mint} size={18} /> : (
-                    <Ionicons name="briefcase-outline" size={14} color={isDark ? chrom.mint : chrom.sky} />
-                  )}
-                  <Text style={[styles.specialistPillText, { color: isDark ? chrom.mint : chrom.sky }]}>
-                    {primaryExpert?.title ?? choicePrompt.specialistLabel}
-                  </Text>
+        {showStarterLaunchPad ? (
+          <View style={[styles.launchPad, styles.msgPadH]}>
+            {isCouncil ? (
+              <View style={[styles.councilLaunchCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
+                <View style={styles.councilLaunchInner}>
+                  <Ionicons name="people-circle" size={20} color={colors.muted} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={[styles.councilLaunchTitle, { color: colors.primaryTxt }]}>
+                      {isPremium ? 'Expert Council' : 'Expert Council'}
+                    </Text>
+                    <Text style={[styles.councilLaunchSub, { color: colors.muted }]}>
+                      {isPremium
+                        ? 'Multiple specialists review your case. You see each vote at the end.'
+                        : `${councilSessionCost} points per session. You see each vote at the end.`}
+                    </Text>
+                  </View>
                 </View>
-                {progressText ? (
-                  <Text style={[styles.progressText, { color: colors.muted }]}>{progressText}</Text>
-                ) : null}
-              </View>
-            ) : (
-              <Text style={[styles.clarifyEyebrow, { color: chrom.mint }]}>Choose an option</Text>
-            )}
-            {choicePrompt.progress ? (
-              <View style={[styles.progressTrack, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }]}>
-                <View
-                  style={[styles.progressFill, { width: `${progressPercent}%`, backgroundColor: chrom.mint }]}
-                />
               </View>
             ) : null}
-            {choicePrompt.supportingExpertIds.length > 0 ? (
-              <View style={styles.supportingExpertsRow}>
-                <Text style={[styles.supportingExpertsLabel, { color: colors.muted }]}>Also watching</Text>
-                {choicePrompt.supportingExpertIds.slice(0, 3).map((id) => (
-                  <ExpertGlyph key={id} expert={expertMap.get(id)} fallbackColor={chrom.sky} size={22} />
-                ))}
-              </View>
-            ) : null}
-            <Text style={[styles.clarifyQuestion, { color: colors.primaryTxt }]}>{choicePrompt.question}</Text>
-            {choicePrompt.whyItMatters ? (
-              <View style={[styles.whyCard, { backgroundColor: colors.pageBg, borderColor: colors.composerBorder }]}>
-                <Text style={[styles.whyLabel, { color: chrom.mint }]}>Why this matters</Text>
-                <Text style={[styles.whyText, { color: colors.muted }]}>{choicePrompt.whyItMatters}</Text>
-              </View>
-            ) : null}
-            {choicePrompt.helperText ? (
-              <Text style={[styles.clarifyHelper, { color: colors.muted }]}>{choicePrompt.helperText}</Text>
-            ) : null}
-
-            {isTypingCustomChoice ? (
-              <View style={styles.customChoiceRow}>
-                <TextInput
-                  value={customChoice}
-                  onChangeText={setCustomChoice}
-                  autoFocus
-                  placeholder="Type your answer…"
-                  placeholderTextColor={colors.muted}
-                  editable={!sending}
+            <Text style={[styles.launchPadLabel, { color: colors.muted }]}>Start with</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={styles.launchPadScroll}>
+              {STARTER_CHIPS.map((chip) => (
+                <Pressable
+                  key={chip.prompt}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Ask: ${chip.prompt}`}
+                  onPress={() => {
+                    void submitUserText(chip.prompt);
+                  }}
                   style={[
-                    styles.customChoiceInput,
+                    styles.launchChip,
                     {
-                      color: colors.primaryTxt,
-                      borderColor: colors.composerBorder,
+                      borderColor: colors.cardBorder,
                       backgroundColor: colors.pageBg,
                     },
-                  ]}
-                  onSubmitEditing={() => {
-                    void handleCustomChoiceSubmit();
-                  }}
-                />
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Send custom answer"
-                  disabled={!customChoice.trim() || sending}
-                  onPress={() => {
-                    void handleCustomChoiceSubmit();
-                  }}
-                  style={[styles.customChoiceSend, { backgroundColor: chrom.mint }, (!customChoice.trim() || sending) && { opacity: 0.45 }]}>
-                  {sending ? (
-                    <ActivityIndicator color={chrom.ctaOnGradient} size="small" />
-                  ) : (
-                    <Text style={[styles.customChoiceSendText, { color: chrom.ctaOnGradient }]}>Send</Text>
-                  )}
+                  ]}>
+                  <Text style={[styles.launchChipText, { color: colors.primaryTxt }]}>
+                    {chip.short}
+                  </Text>
                 </Pressable>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Cancel custom answer"
-                  onPress={() => {
-                    setIsTypingCustomChoice(false);
-                    setCustomChoice('');
-                  }}
-                  style={styles.customChoiceCancel}>
-                  <Text style={[styles.customChoiceCancelText, { color: colors.muted }]}>Cancel</Text>
-                </Pressable>
-              </View>
-            ) : useRichOptions ? (
-              <View style={styles.clarifyChoicesColumn}>
-                {choicePrompt.options.map((option) => (
-                  <Pressable
-                    key={option.id}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Select ${option.label}`}
-                    disabled={sending}
-                    onPress={() => {
-                      void handleChoiceSelect(option);
-                    }}
-                    style={[
-                      styles.choiceCard,
-                      {
-                        borderColor: isDark ? `${chrom.mint}45` : `${chrom.sky}45`,
-                        backgroundColor: colors.pageBg,
-                        opacity: sending ? 0.55 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.choiceCardLabel, { color: colors.primaryTxt }]}>{option.label}</Text>
-                    {option.description ? (
-                      <Text style={[styles.choiceCardDesc, { color: colors.muted }]}>{option.description}</Text>
-                    ) : null}
-                  </Pressable>
-                ))}
-                {choicePrompt.allowCustomAnswer ? (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Type another answer"
-                    disabled={sending}
-                    onPress={() => setIsTypingCustomChoice(true)}
-                    style={[
-                      styles.choiceCard,
-                      {
-                        borderColor: colors.composerBorder,
-                        backgroundColor: colors.pageBg,
-                        opacity: sending ? 0.55 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.choiceCardLabel, { color: colors.muted }]}>Other — type my own answer</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            ) : (
-              <View style={styles.clarifyChoices}>
-                {choicePrompt.options.map((option) => (
-                  <Pressable
-                    key={option.id}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Select ${option.label}`}
-                    disabled={sending}
-                    onPress={() => {
-                      void handleChoiceSelect(option);
-                    }}
-                    style={[
-                      styles.clarifyChip,
-                      {
-                        borderColor: isDark ? `${chrom.mint}55` : `${chrom.sky}55`,
-                        backgroundColor: isDark ? `${chrom.mint}16` : `${chrom.sky}14`,
-                        opacity: sending ? 0.5 : 1,
-                      },
-                    ]}>
-                    <Text style={[styles.clarifyChipText, { color: isDark ? chrom.mint : chrom.sky }]}>
-                      {option.label}
-                    </Text>
-                  </Pressable>
-                ))}
-                {choicePrompt.allowCustomAnswer ? (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Type another answer"
-                    disabled={sending}
-                    onPress={() => setIsTypingCustomChoice(true)}
-                    style={[
-                      styles.clarifyChip,
-                      {
-                        borderColor: colors.composerBorder,
-                        backgroundColor: colors.pageBg,
-                      },
-                    ]}>
-                    <Text style={[styles.clarifyChipText, { color: colors.muted }]}>Other…</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            )}
+              ))}
             </ScrollView>
-          </Animated.View>
+          </View>
         ) : null}
 
-        {!finalReady ? (
+        {showComposer ? (
           <View
             style={[
               styles.composerShell,
@@ -1204,105 +1362,135 @@ export default function DecideCategoryScreen() {
               },
             ]}>
             <TextInput
-              value={input}
-              onChangeText={setInput}
+              value={isTypingCustomChoice ? customChoice : input}
+              onChangeText={isTypingCustomChoice ? setCustomChoice : setInput}
               placeholder={
-                choicePrompt
-                  ? 'Or type a custom answer above…'
+                isTypingCustomChoice
+                  ? 'Type your answer...'
                   : booting
                     ? 'Connecting…'
                     : messages.length <= 1
                       ? 'e.g. Should I accept this co-op offer?'
-                      : 'Add more context…'
+                      : 'Add context...'
               }
               placeholderTextColor={colors.muted}
-              editable={!choicePrompt && !booting && !sending && !!sessionId}
+              editable={!booting && !sending && !!sessionId}
+              autoFocus={isTypingCustomChoice}
               style={[styles.composerInput, { color: colors.primaryTxt }]}
               multiline
               maxFontSizeMultiplier={Platform.OS === 'ios' ? 1.35 : undefined}
             />
+            {isTypingCustomChoice ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Cancel custom answer"
+                onPress={() => {
+                  setIsTypingCustomChoice(false);
+                  setCustomChoice('');
+                }}
+                style={styles.customChoiceCancelBtn}>
+                <Ionicons name="close" size={16} color={colors.muted} />
+              </Pressable>
+            ) : null}
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Send message"
+              accessibilityLabel={isTypingCustomChoice ? 'Send custom answer' : 'Send message'}
               onPress={() => {
                 void handleSend();
               }}
-              disabled={!input.trim() || booting || !sessionId || sending}
+              disabled={
+                isTypingCustomChoice
+                  ? !customChoice.trim() || sending
+                  : !input.trim() || booting || !sessionId || sending
+              }
               style={[
                 styles.sendCircle,
                 { backgroundColor: colors.sendFab },
-                (!input.trim() || booting || !sessionId || sending) && styles.sendCircleDisabled,
+                (isTypingCustomChoice
+                  ? !customChoice.trim() || sending
+                  : !input.trim() || booting || !sessionId || sending) && styles.sendCircleDisabled,
               ]}>
               {sending ? (
-                <ActivityIndicator color={chrom.ctaOnGradient} size="small" />
+                <ActivityIndicator color={palette.white} size="small" />
               ) : (
-                <Ionicons name="paper-plane-outline" size={17} color={chrom.ctaOnGradient} />
+                <Ionicons name="paper-plane-outline" size={17} color={palette.white} />
               )}
             </Pressable>
           </View>
         ) : null}
         </View>
+      ) : null}
+        </View>
       )}
 
-      <Modal transparent animationType="slide" visible={sessionsOpen} onRequestClose={() => setSessionsOpen(false)}>
-        <View style={[styles.sheetBackdrop]}>
-          <Pressable style={styles.sheetBackdropTouch} accessibilityLabel="Dismiss" onPress={() => setSessionsOpen(false)} />
-          <View
-            style={[
-              styles.sheetCard,
-              { backgroundColor: colors.modalBg, paddingBottom: bottomPad + 12, borderTopColor: colors.composerBorder },
-            ]}>
-            <View style={[styles.sheetGrab, { backgroundColor: isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22) }]} />
-            <View style={styles.sheetHeadRow}>
-              <Text style={[styles.sheetTitle, { color: colors.primaryTxt }]}>Chats</Text>
-              <Pressable hitSlop={12} onPress={() => setSessionsOpen(false)} accessibilityRole="button">
-                <Text style={[styles.sheetClose, { color: colors.muted }]}>Done</Text>
-              </Pressable>
-            </View>
-            <Text style={[styles.sheetHint, { color: colors.muted }]}>
-              Sessions live in gateway memory until you restart the API.
-            </Text>
-            {listLoading ? (
-              <ActivityIndicator color={chrom.mint} style={{ marginVertical: spacing.lg }} />
-            ) : (
-              <FlatList
-                data={sessions}
-                keyExtractor={(s) => s.id}
-                keyboardShouldPersistTaps="handled"
-                contentContainerStyle={styles.sheetList}
-                ListEmptyComponent={
-                  <Text style={[styles.emptyList, { color: colors.muted }]}>No past conversations.</Text>
-                }
-                renderItem={({ item }) => (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel={`Open chat ${item.preview}`}
-                    onPress={() => void activateSessionFromHistory(item.id)}
-                    style={[styles.sheetRow, { borderBottomColor: colors.composerBorder }]}>
-                    <View style={[styles.sheetRowGlyph, { backgroundColor: colors.composerBg }]}>
-                      <Ionicons name="chatbubbles-outline" size={17} color={chrom.sky} />
-                    </View>
-                    <View style={{ flex: 1, minWidth: 0 }}>
-                      <Text numberOfLines={2} style={[styles.sheetRowTitle, { color: colors.primaryTxt }]}>
-                        {item.preview || 'New intake'}
-                      </Text>
-                      <Text style={[styles.sheetRowTs, { color: colors.muted }]}>
-                        {new Date(item.updatedAt).toLocaleString(undefined, {
-                          month: 'short',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        })}
-                      </Text>
-                    </View>
-                    <Ionicons name="chevron-forward" size={20} color={colors.muted} />
-                  </Pressable>
-                )}
-              />
-            )}
-          </View>
-        </View>
-      </Modal>
+      <DecideSessionsSheet
+        visible={sessionsOpen}
+        onClose={() => setSessionsOpen(false)}
+        backgroundColor={colors.modalBg}
+        borderTopColor={colors.composerBorder}
+        bottomInset={bottomPad}
+        grabColor={isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22)}
+        listLoading={listLoading}
+        sessions={sessions}
+        primaryTxt={colors.primaryTxt}
+        muted={colors.muted}
+        composerBorder={colors.composerBorder}
+        composerBg={colors.composerBg}
+        accentColor={semantic.actionPrimary}
+        onActivateSession={activateSessionFromHistory}
+      />
+
+      <ExpertRosterSheet
+        visible={expertsOpen}
+        onClose={() => setExpertsOpen(false)}
+        backgroundColor={colors.modalBg}
+        borderTopColor={colors.composerBorder}
+        bottomInset={bottomPad}
+        grabColor={isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22)}
+        isCouncil={isCouncil}
+        isDark={isDark}
+        primaryTxt={colors.primaryTxt}
+        muted={colors.muted}
+        composerBorder={colors.composerBorder}
+        accentColor={semantic.actionPrimary}
+        activeExperts={activeExperts}
+      />
+
+      <CouncilPaywallSheet
+        visible={councilPaywallOpen}
+        onClose={() => setCouncilPaywallOpen(false)}
+        bottomInset={bottomPad}
+        grabColor={isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22)}
+        isDark={isDark}
+        primaryTxt={colors.primaryTxt}
+        muted={colors.muted}
+        entitlementsHydrated={entitlementsHydrated}
+        pointsBalance={pointsBalance}
+        councilSessionCost={councilSessionCost}
+        canUseCouncilWithPoints={canUseCouncilWithPoints}
+        onActivateCouncilMode={activateCouncilMode}
+        grantDevPoints={grantDevPoints}
+        activatePremium={activatePremium}
+      />
+
+      <ExpertDiscoverySheet
+        visible={discoveryOpen}
+        onClose={() => {
+          setDiscoveryOpen(false);
+          setExpertDiscoveries([]);
+          setDiscoveryJoinContext(undefined);
+        }}
+        discoveries={expertDiscoveries}
+        backgroundColor={colors.modalBg}
+        borderTopColor={colors.composerBorder}
+        bottomInset={bottomPad}
+        grabColor={isDark ? profileNeutralStroke(0.38) : profileNeutralStroke(0.22)}
+        isDark={isDark}
+        primaryTxt={colors.primaryTxt}
+        muted={colors.muted}
+        composerBorder={colors.composerBorder}
+        joinContext={discoveryJoinContext}
+      />
 
     </KeyboardAvoidingView>
   );
@@ -1313,46 +1501,135 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-    minHeight: 48,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    gap: 6,
+    flexDirection: 'column',
+    gap: 0,
     overflow: 'hidden',
     position: 'relative',
   },
+  headerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: screenContentGutter,
+    paddingBottom: 8,
+    gap: 4,
+    minHeight: 56,
+  },
   headerIconBtn: {
-    width: 44,
-    height: 44,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  headerTitleBlock: {
+  headerIconBtnGhost: {
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerExploreRow: {
+    gap: 8,
+    paddingHorizontal: screenContentGutter,
+    paddingBottom: 14,
+  },
+  headerTopLine: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  headerCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  headerActionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    flexShrink: 0,
+  },
+  headerTitleExplore: {
+    ...typography.hero,
+    fontSize: 36,
+    lineHeight: 40,
+    letterSpacing: -0.8,
+    fontWeight: '800',
+  },
+  headerSubtitleExplore: {
+    ...typography.compact,
+    lineHeight: 20,
+    marginTop: 2,
+    flex: 1,
+  },
+  headerSubtitlePressable: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'flex-start',
+    maxWidth: '100%',
+  },
+  sessionStatusShell: {
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+  },
+  headerCenter: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 0,
   },
-  titleRow: {
-    flexDirection: 'row',
+  headerTitleBlock: {
     alignItems: 'center',
-    gap: 8,
+    gap: 2,
+    marginBottom: 6,
   },
-  agentTitle: {
-    fontSize: 17,
-    fontWeight: '600',
+  headerTitle: {
+    ...typography.titleSm,
+    fontWeight: '800',
     letterSpacing: -0.2,
   },
-  agentSubtitle: {
-    fontSize: 12,
-    marginTop: 2,
-    maxWidth: 220,
+  headerSubtitle: {
+    ...typography.caption,
+    lineHeight: 17,
     textAlign: 'center',
-    fontWeight: '500',
+  },
+  headerStatusPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    maxWidth: '100%',
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  headerStatusAvatars: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerStatusAvatarOverlap: {
+    marginLeft: -6,
+  },
+  headerStatusText: {
+    flexShrink: 1,
+    ...typography.caption,
+    fontWeight: '600',
     lineHeight: 16,
+  },
+  headerProgressEdge: {
+    height: 3,
+    width: '100%',
+    overflow: 'hidden',
+  },
+  headerProgressEdgeFill: {
+    height: '100%',
+    borderRadius: 999,
+  },
+  headerModeSegmentWrap: {
+    marginTop: 0,
   },
   headerExperts: {
     flexDirection: 'row',
@@ -1361,8 +1638,33 @@ const styles = StyleSheet.create({
     gap: 4,
     marginTop: 6,
   },
-  headerProgressTrack: {
+  headerExpertsCouncil: {
+    gap: 0,
+  },
+  headerExpertOverlap: {
+    marginLeft: -8,
+  },
+  expertOverflow: {
+    minWidth: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  expertOverflowText: {
+    ...typography.micro,
+    fontWeight: '800',
+  },
+  headerProgressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
     marginTop: 8,
+  },
+  headerProgressTrack: {
     width: 120,
     height: 4,
     borderRadius: 999,
@@ -1372,10 +1674,10 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 999,
   },
-  liveDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+  headerProgressLabel: {
+    ...typography.label,
+    fontWeight: '700',
+    minWidth: 72,
   },
   loadingCenter: {
     flex: 1,
@@ -1385,80 +1687,80 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
   },
   loadingLabel: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '500',
   },
   verdictScreen: {
     flex: 1,
-    overflow: 'hidden',
   },
   verdictScrollContent: {
     flexGrow: 1,
-    alignItems: 'center' as const,
-    justifyContent: 'center' as const,
     paddingHorizontal: screenContentGutter,
-    paddingVertical: 32,
+    paddingTop: 24,
+    paddingBottom: 32,
+    gap: 12,
   },
-  verdictHalo: {
-    position: 'absolute',
-    width: 260,
-    height: 260,
-    borderRadius: 130,
-  },
-  verdictOrb: {
-    width: 92,
-    height: 92,
-    borderRadius: 46,
-    marginBottom: 28,
-    shadowColor: '#000',
-    shadowOpacity: 0.18,
-    shadowRadius: 24,
-    shadowOffset: { width: 0, height: 14 },
-    elevation: 8,
-  },
-  verdictOrbGradient: {
-    flex: 1,
-    borderRadius: 46,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  verdictKicker: {
-    fontSize: 13,
-    fontWeight: '800',
-    letterSpacing: 1.6,
+  verdictEyebrow: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.35,
     textTransform: 'uppercase',
-    marginBottom: 12,
   },
-  verdictWord: {
-    fontSize: 64,
-    lineHeight: 72,
-    fontWeight: '900',
-    letterSpacing: -3,
-    textAlign: 'center',
-  },
-  verdictSentence: {
-    marginTop: 10,
-    fontSize: 23,
-    lineHeight: 30,
+  verdictWordHeadline: {
+    ...typography.hero,
+    fontSize: 34,
+    lineHeight: 38,
     fontWeight: '800',
-    textAlign: 'center',
     letterSpacing: -0.6,
   },
-  verdictReason: {
-    marginTop: 14,
-    maxWidth: 360,
-    fontSize: 15,
-    lineHeight: 22,
+  verdictCard: {
+    width: '100%',
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 6,
+    shadowColor: '#0b1224',
+    shadowOpacity: 0.04,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 1,
+  },
+  verdictCardLabel: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  verdictSentence: {
+    ...typography.titleSm,
+    lineHeight: 24,
+    fontWeight: '700',
+    letterSpacing: -0.2,
+  },
+  verdictSectionLabel: {
+    marginTop: 12,
+    ...typography.micro,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  },
+  verdictCouncilSummary: {
+    marginTop: 10,
+    ...typography.compact,
     fontWeight: '600',
     textAlign: 'center',
   },
-  verdictRationale: {
-    marginTop: 12,
-    maxWidth: 360,
-    fontSize: 14,
+  verdictReason: {
+    ...typography.compact,
     lineHeight: 21,
     fontWeight: '500',
-    textAlign: 'center',
+  },
+  verdictRationale: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
   },
   expertVerdictsWrap: {
     width: '100%',
@@ -1469,9 +1771,39 @@ const styles = StyleSheet.create({
   expertVerdictCard: {
     borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+    flexDirection: 'row',
+  },
+  expertVerdictCardCouncil: {},
+  expertVerdictAccent: {
+    width: 4,
+  },
+  expertVerdictCardBody: {
+    flex: 1,
     paddingHorizontal: 14,
     paddingVertical: 12,
     gap: 8,
+  },
+  councilSectionLabel: {
+    ...typography.label,
+    fontWeight: '900',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  voteStamp: {
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    minWidth: 44,
+    alignItems: 'center',
+  },
+  voteStampText: {
+    ...typography.label,
+    fontWeight: '900',
+    letterSpacing: 0.6,
   },
   expertVerdictHead: {
     flexDirection: 'row',
@@ -1479,17 +1811,54 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   expertVerdictTitle: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
   },
   expertVerdictLine: {
     marginTop: 2,
-    fontSize: 13,
-    lineHeight: 18,
+    ...typography.subhead,
     fontWeight: '800',
   },
   expertVerdictReason: {
-    fontSize: 13,
+    ...typography.subhead,
+    lineHeight: 19,
+    fontWeight: '500',
+  },
+  expertVerdictConfidence: {
+    marginTop: 2,
+    ...typography.label,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+    textTransform: 'uppercase',
+  },
+  expertVerdictMeta: {
+    ...typography.caption,
+    lineHeight: 17,
+    fontWeight: '500',
+  },
+  reflectionCard: {
+    width: '100%',
+    maxWidth: 380,
+    marginTop: 14,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 6,
+  },
+  reflectionTitle: {
+    ...typography.caption,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
+  reflectionBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '600',
+  },
+  reflectionConcern: {
+    ...typography.subhead,
     lineHeight: 19,
     fontWeight: '500',
   },
@@ -1504,7 +1873,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   verdictStepsTitle: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
     letterSpacing: 0.4,
     textTransform: 'uppercase',
@@ -1522,8 +1891,7 @@ const styles = StyleSheet.create({
   },
   verdictStepText: {
     flex: 1,
-    fontSize: 14,
-    lineHeight: 20,
+    ...typography.compact,
     fontWeight: '500',
   },
   verdictExpandBtn: {
@@ -1535,13 +1903,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   verdictExpandText: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '700',
   },
   verdictActions: {
     width: '100%',
-    maxWidth: 360,
-    marginTop: 32,
+    marginTop: 16,
     gap: 10,
   },
   verdictPrimary: {
@@ -1553,7 +1920,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   verdictPrimaryText: {
-    fontSize: 16,
+    ...typography.body,
     fontWeight: '800',
   },
   verdictSecondary: {
@@ -1564,16 +1931,143 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   verdictSecondaryText: {
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '700',
   },
   list: {
     flex: 1,
+    minHeight: 0,
+  },
+  interactionShell: {
+    flex: 1,
+    minHeight: 0,
+  },
+  answerPane: {
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.md,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: spacing.sm,
+    flexShrink: 0,
+  },
+  launchPad: {
+    gap: 8,
+  },
+  councilHint: {
+    ...typography.subhead,
+    fontWeight: '500',
+    marginBottom: 2,
+  },
+  councilLaunchCard: {
+    borderRadius: 14,
+    marginBottom: 6,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  councilLaunchInner: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 11,
+  },
+  councilLaunchTitle: {
+    ...typography.compact,
+    fontWeight: '800',
+    lineHeight: 18,
+  },
+  councilLaunchSub: {
+    marginTop: 3,
+    ...typography.caption,
+    lineHeight: 17,
+    fontWeight: '500',
+  },
+  launchPadLabel: {
+    ...typography.label,
+    fontWeight: '700',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
+  launchPadScroll: {
+    gap: 8,
+    paddingRight: screenContentGutter,
+  },
+  launchChip: {
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+  },
+  launchChipText: {
+    ...typography.compact,
+    fontWeight: '600',
+    lineHeight: 18,
   },
   listContent: {
     paddingVertical: spacing.sm,
     paddingBottom: spacing.md,
+    gap: 10,
+  },
+  threadBlock: {
+    marginBottom: 14,
     gap: 4,
+  },
+  threadEyebrow: {
+    ...typography.caption,
+    fontWeight: '600',
+    letterSpacing: 0.1,
+    paddingHorizontal: 2,
+    marginBottom: 4,
+  },
+  threadEyebrowUser: {
+    alignSelf: 'flex-end',
+  },
+  threadCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  threadCardActive: {
+    borderWidth: 1,
+  },
+  threadBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
+  },
+  userThreadBlock: {
+    marginBottom: 10,
+    alignItems: 'flex-end',
+    gap: 0,
+  },
+  userThreadCard: {
+    maxWidth: '92%',
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  optionRow: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 4,
+  },
+  optionRowPressed: {
+    opacity: 0.9,
+    backgroundColor: 'rgba(79,118,194,0.06)',
+  },
+  optionRowOther: {
+    minHeight: 44,
+  },
+  optionRowLabel: {
+    ...typography.compact,
+    fontWeight: '700',
+  },
+  optionRowDesc: {
+    ...typography.caption,
+    fontWeight: '500',
+    lineHeight: 17,
   },
   msgPadH: {
     paddingHorizontal: screenContentGutter,
@@ -1581,17 +2075,12 @@ const styles = StyleSheet.create({
   rowAssistant: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 16,
+    marginBottom: 14,
     gap: 10,
   },
   assistantLeading: {
     paddingTop: 2,
     alignItems: 'center',
-  },
-  expertGlyph: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: StyleSheet.hairlineWidth,
   },
   supportingStack: {
     marginTop: -4,
@@ -1608,64 +2097,135 @@ const styles = StyleSheet.create({
   assistantBubble: {
     flex: 1,
     maxWidth: '100%',
-    borderRadius: 20,
+    borderRadius: 16,
     borderTopLeftRadius: 6,
-    paddingHorizontal: 16,
-    paddingVertical: 13,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
     borderWidth: StyleSheet.hairlineWidth,
+  },
+  assistantBubbleActive: {
+    borderWidth: 1,
+  },
+  activeChoiceCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+  },
+  activeChoiceQuestion: {
+    paddingHorizontal: 14,
+    paddingTop: 14,
+    paddingBottom: 8,
+    gap: 8,
+  },
+  choiceQuestionText: {
+    ...typography.compact,
+    lineHeight: 22,
+    fontWeight: '600',
+  },
+  choiceNote: {
+    ...typography.caption,
+    fontWeight: '500',
+    lineHeight: 16,
+    fontSize: 12,
+  },
+  choiceOptionList: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  choiceOptionRow: {
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    gap: 1,
+  },
+  choiceOptionRowDivider: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  choiceOptionLabel: {
+    ...typography.compact,
+    fontWeight: '600',
+    lineHeight: 17,
+  },
+  choiceOptionDesc: {
+    ...typography.caption,
+    fontWeight: '500',
+    lineHeight: 15,
+    fontSize: 12,
+  },
+  choicePanel: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 12,
+    gap: 8,
+    marginTop: 8,
+    shadowColor: '#0b1224',
+    shadowOpacity: 0.04,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 1,
+  },
+  councilChoiceEyebrow: {
+    marginBottom: 0,
+  },
+  councilChoiceEyebrowText: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+  },
+  choiceHelperRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 6,
+    paddingHorizontal: 2,
+  },
+  choiceHelperText: {
+    ...typography.caption,
+    fontWeight: '500',
+    lineHeight: 17,
+  },
+  choiceContextText: {
+    ...typography.caption,
+    fontWeight: '500',
+    lineHeight: 17,
   },
   rowUser: {
     alignItems: 'flex-end',
-    marginBottom: 14,
+    marginBottom: 12,
     marginLeft: 48,
   },
   userBubble: {
     alignSelf: 'flex-end',
     maxWidth: '92%',
-    borderRadius: 20,
+    borderRadius: 16,
     borderTopRightRadius: 6,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
     borderWidth: StyleSheet.hairlineWidth,
   },
   msgTextAssistant: {
-    ...typography.body,
-    fontSize: 16,
-    lineHeight: 24,
+    ...typography.bodySm,
+    lineHeight: 21,
   },
   bubbleExpertTitle: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '900',
     letterSpacing: 0.5,
     textTransform: 'uppercase',
     marginBottom: 6,
   },
   msgTextUser: {
-    ...typography.body,
-    fontSize: 16,
-    lineHeight: 24,
+    ...typography.bodySm,
+    lineHeight: 21,
     fontWeight: '500',
   },
-  thinkingRow: {
-    flexDirection: 'row',
+  customChoiceCancelBtn: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: profileNeutralStroke(0.14),
     alignItems: 'center',
-    gap: 10,
-    paddingVertical: 10,
-    marginBottom: 8,
-  },
-  thinkingDots: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-  },
-  thinkingDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 3.5,
-  },
-  thinkingLabel: {
-    fontSize: 13,
-    fontWeight: '600',
+    justifyContent: 'center',
+    marginRight: 6,
   },
   starterWrap: {
     paddingTop: 8,
@@ -1673,7 +2233,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   starterEyebrow: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.6,
     textTransform: 'uppercase',
@@ -1692,8 +2252,7 @@ const styles = StyleSheet.create({
   },
   starterChipText: {
     flex: 1,
-    fontSize: 14,
-    lineHeight: 20,
+    ...typography.compact,
     fontWeight: '600',
   },
   modeSelectorRow: {
@@ -1711,12 +2270,12 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   modeBtnLabel: {
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '700',
     lineHeight: 18,
   },
   modeBtnSub: {
-    fontSize: 11,
+    ...typography.label,
     lineHeight: 15,
   },
   errorBanner: {
@@ -1732,8 +2291,7 @@ const styles = StyleSheet.create({
   },
   errorBannerTxt: {
     flex: 1,
-    fontSize: 13,
-    lineHeight: 18,
+    ...typography.subhead,
     fontWeight: '500',
   },
   footer: {
@@ -1753,7 +2311,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   continuePillText: {
-    fontSize: 15,
+    ...typography.bodySm,
     fontWeight: '600',
   },
   softHintWrap: {
@@ -1764,7 +2322,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   softHint: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '500',
     textAlign: 'right',
     paddingHorizontal: 4,
@@ -1781,143 +2339,43 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   modeToggleLabel: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '600',
-  },
-  newExpertBanner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginHorizontal: screenContentGutter,
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-  },
-  newExpertIcons: {
-    flexDirection: 'row',
-    gap: 4,
-  },
-  newExpertText: {
-    flex: 1,
-    fontSize: 13,
-    lineHeight: 18,
-    fontWeight: '700',
   },
   composerShell: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     gap: 8,
-    borderRadius: 26,
+    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingLeft: 16,
-    paddingRight: 6,
-    paddingVertical: 6,
-    marginTop: 4,
+    paddingLeft: 14,
+    paddingRight: 10,
+    paddingVertical: 10,
     minHeight: 48,
     maxHeight: Platform.OS === 'web' ? 160 : undefined,
   },
   composerInput: {
     flex: 1,
-    minHeight: 36,
+    minHeight: 22,
     maxHeight: 120,
-    fontSize: 16,
+    ...typography.body,
     lineHeight: 22,
-    paddingTop: Platform.OS === 'ios' ? 8 : 6,
-    paddingBottom: Platform.OS === 'ios' ? 8 : 6,
+    paddingTop: 0,
+    paddingBottom: 0,
+    margin: 0,
     fontWeight: '400',
+    ...(Platform.OS === 'android' ? { includeFontPadding: false, textAlignVertical: 'center' } : {}),
   },
   sendCircle: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
+    width: 34,
+    height: 34,
+    borderRadius: 17,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 1,
+    flexShrink: 0,
   },
   sendCircleDisabled: {
     opacity: 0.38,
-  },
-  sheetBackdrop: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  sheetBackdropTouch: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.48)',
-  },
-  sheetCard: {
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    maxHeight: '78%',
-    paddingTop: 6,
-    paddingHorizontal: 0,
-  },
-  sheetGrab: {
-    width: 44,
-    height: 5,
-    borderRadius: 3,
-    alignSelf: 'center',
-    marginBottom: 14,
-    marginTop: 4,
-  },
-  sheetHeadRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: screenContentGutter,
-    marginBottom: 6,
-  },
-  sheetTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    letterSpacing: -0.25,
-  },
-  sheetClose: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
-  sheetHint: {
-    fontSize: 12,
-    paddingHorizontal: screenContentGutter,
-    marginBottom: 14,
-    lineHeight: 16,
-    fontWeight: '500',
-  },
-  sheetList: {
-    paddingHorizontal: screenContentGutter,
-    paddingBottom: spacing.sm,
-    gap: 0,
-  },
-  emptyList: {
-    paddingVertical: 28,
-    textAlign: 'center',
-    fontSize: 15,
-    fontWeight: '500',
-  },
-  sheetRow: {
-    flexDirection: 'row',
-    gap: spacing.sm,
-    alignItems: 'center',
-    paddingVertical: 14,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  sheetRowGlyph: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sheetRowTitle: {
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  sheetRowTs: {
-    marginTop: 3,
-    fontSize: 12,
-    fontWeight: '500',
   },
   clarifyCard: {
     borderRadius: 18,
@@ -1930,7 +2388,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   clarifyEyebrow: {
-    fontSize: 11,
+    ...typography.label,
     fontWeight: '800',
     letterSpacing: 0.9,
     textTransform: 'uppercase',
@@ -1952,11 +2410,11 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   specialistPillText: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '800',
   },
   progressText: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '700',
     flexShrink: 0,
   },
@@ -1975,8 +2433,14 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   supportingExpertsLabel: {
-    fontSize: 12,
+    ...typography.micro,
     fontWeight: '700',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  almostReadyHint: {
+    ...typography.caption,
+    fontWeight: '600',
   },
   clarifySendingRow: {
     flexDirection: 'row',
@@ -1985,36 +2449,34 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   clarifySendingText: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '600',
   },
   clarifyQuestion: {
-    fontSize: 15,
+    ...typography.bodySm,
     lineHeight: 21,
     fontWeight: '700',
   },
   whyCard: {
-    borderRadius: 14,
+    borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    gap: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 9,
+    gap: 4,
   },
   whyLabel: {
-    fontSize: 11,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-    letterSpacing: 0.7,
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.35,
   },
   whyText: {
-    fontSize: 13,
+    ...typography.caption,
     lineHeight: 18,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   clarifyHelper: {
     marginTop: -2,
-    fontSize: 13,
-    lineHeight: 18,
+    ...typography.subhead,
     fontWeight: '500',
   },
   clarifyChoices: {
@@ -2023,35 +2485,45 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   clarifyChoicesColumn: {
-    gap: 8,
+    gap: 6,
   },
   choiceCard: {
-    borderRadius: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 12,
-    paddingVertical: 11,
-    gap: 3,
+    paddingVertical: 10,
+    gap: 10,
+    minHeight: 48,
+  },
+  choiceCardOther: {
+    minHeight: 48,
+  },
+  choiceCardBody: {
+    flex: 1,
+    minWidth: 0,
+    gap: 2,
   },
   choiceCardLabel: {
-    fontSize: 14,
-    lineHeight: 19,
-    fontWeight: '800',
+    ...typography.compact,
+    lineHeight: 18,
+    fontWeight: '700',
   },
   choiceCardDesc: {
-    fontSize: 13,
-    lineHeight: 18,
+    ...typography.caption,
     fontWeight: '500',
   },
   clarifyChip: {
     borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
   },
   clarifyChipText: {
-    fontSize: 13,
-    lineHeight: 17,
-    fontWeight: '700',
+    ...typography.caption,
+    lineHeight: 16,
+    fontWeight: '600',
   },
   customChoiceRow: {
     flexDirection: 'row',
@@ -2064,7 +2536,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 12,
-    fontSize: 14,
+    ...typography.compact,
     fontWeight: '500',
   },
   customChoiceSend: {
@@ -2075,7 +2547,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   customChoiceSendText: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
   },
   customChoiceCancel: {
@@ -2083,7 +2555,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   customChoiceCancelText: {
-    fontSize: 12,
+    ...typography.caption,
     fontWeight: '700',
   },
 });

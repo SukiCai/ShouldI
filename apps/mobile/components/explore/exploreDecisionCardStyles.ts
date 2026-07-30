@@ -1,0 +1,328 @@
+import { StyleSheet } from 'react-native';
+
+import { palette, radius, semantic, typography } from '@/constants/theme';
+import { surfaceCardStyles } from '@/components/screen/surfaceCardStyles';
+
+export const exploreDecisionCardStyles = StyleSheet.create({
+  card: {
+    ...surfaceCardStyles.grouped,
+    borderRadius: 18,
+  },
+  cardHeaderTapArea: {
+    borderRadius: 12,
+  },
+  cardHeaderTapAreaPressed: {
+    opacity: 0.92,
+  },
+  cardTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  cardCategoryRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  categoryDotWrap: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryLabel: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  cardMetaRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  votesMetaLive: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  votesMetaPreview: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  liveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  votesMetaLiveLabel: {
+    ...typography.caption,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+    textTransform: 'uppercase',
+  },
+  votesMetaPreviewLabel: {
+    ...typography.micro,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+    textTransform: 'uppercase',
+  },
+  votesMetaCount: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  question: {
+    ...typography.title,
+    marginTop: 6,
+    lineHeight: 28,
+    fontWeight: '700',
+    letterSpacing: -0.2,
+  },
+  questionInput: {
+    ...typography.title,
+    marginTop: 6,
+    lineHeight: 28,
+    fontWeight: '700',
+    letterSpacing: -0.2,
+    padding: 0,
+    margin: 0,
+    minHeight: 28,
+  },
+  rows: {
+    gap: 9,
+  },
+  rowLine: {
+    gap: 5,
+    borderRadius: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+  },
+  rowLineSelected: {
+    backgroundColor: `${semantic.actionPrimary}14`,
+  },
+  rowLineDraft: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    gap: 4,
+    borderRadius: 10,
+    paddingHorizontal: 2,
+    paddingVertical: 4,
+  },
+  rowLineAiLean: {
+    backgroundColor: 'rgba(15,23,42,0.04)',
+  },
+  dragHandle: {
+    width: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 6,
+  },
+  sideIconSpacer: {
+    width: 28,
+  },
+  removeOptionBtn: {
+    width: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 6,
+  },
+  rowDragging: {
+    shadowColor: '#0b1224',
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  rowBody: {
+    flex: 1,
+    minWidth: 0,
+    gap: 5,
+  },
+  rowHead: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  rowLabel: {
+    ...typography.caption,
+    flex: 1,
+    flexShrink: 1,
+    minWidth: 0,
+    fontWeight: '600',
+  },
+  rowLabelInput: {
+    ...typography.caption,
+    flex: 1,
+    fontWeight: '600',
+    padding: 0,
+    margin: 0,
+    minHeight: 18,
+  },
+  rowMeta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    flexShrink: 0,
+  },
+  rowPct: {
+    ...typography.caption,
+    fontWeight: '700',
+  },
+  suggestedTag: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+  },
+  suggestedTagText: {
+    ...typography.caption,
+    fontWeight: '700',
+    letterSpacing: 0.15,
+  },
+  track: {
+    height: 3,
+    borderRadius: 999,
+    overflow: 'hidden',
+  },
+  fill: {
+    height: '100%',
+    borderRadius: 999,
+  },
+  replayOutcomeHeadline: {
+    ...typography.title,
+    marginTop: 8,
+    lineHeight: 28,
+    fontWeight: '700',
+    letterSpacing: -0.25,
+  },
+  replayQuestionContext: {
+    ...typography.caption,
+    marginTop: 6,
+    lineHeight: 18,
+    fontWeight: '500',
+  },
+  calibrationRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 14,
+  },
+  calibrationCell: {
+    flex: 1,
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 8,
+    paddingVertical: 10,
+    gap: 4,
+    minWidth: 0,
+  },
+  calibrationEyebrow: {
+    ...typography.caption,
+    fontWeight: '600',
+    letterSpacing: 0.08,
+    textTransform: 'uppercase',
+  },
+  calibrationValue: {
+    ...typography.caption,
+    fontWeight: '700',
+    lineHeight: 17,
+  },
+  lessonBlock: {
+    marginTop: 14,
+    gap: 4,
+  },
+  lessonEyebrow: {
+    ...typography.caption,
+    fontWeight: '700',
+    letterSpacing: 0.35,
+    textTransform: 'uppercase',
+  },
+  lessonBody: {
+    ...typography.compact,
+    lineHeight: 21,
+    fontWeight: '500',
+  },
+  replayFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 14,
+  },
+  replayPrimaryBtn: {
+    flex: 1,
+    borderRadius: radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  replayPrimaryBtnText: {
+    ...typography.compact,
+    fontWeight: '700',
+    color: palette.sheet,
+  },
+  replayGhostBtn: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
+  replayGhostBtnText: {
+    ...typography.compact,
+    fontWeight: '700',
+  },
+  cardFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginTop: 2,
+  },
+  peopleText: {
+    ...typography.caption,
+    flex: 1,
+    fontWeight: '600',
+  },
+  voteBtn: {
+    borderRadius: radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  voteBtnText: {
+    ...typography.compact,
+    fontWeight: '700',
+  },
+  addOptionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 2,
+  },
+  addOptionIconSlot: {
+    width: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addOptionText: {
+    ...typography.compact,
+    fontWeight: '600',
+    flex: 1,
+    minWidth: 0,
+  },
+  addOptionTrailingSpacer: {
+    width: 28,
+  },
+});

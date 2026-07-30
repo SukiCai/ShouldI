@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "mobile": "npm run start -w @shouldi/mobile",
+    "dev:web": "docker compose -f compose.yaml -f compose.dev.yaml up web-dev",
     "api": "npm run dev -w @shouldi/api",
     "gateway": "npm run api",
     "build": "npm run build -w @shouldi/contracts"

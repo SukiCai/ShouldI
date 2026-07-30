@@ -499,7 +499,7 @@ function MinimalExploreBar({
           <Pressable
             accessibilityRole="link"
             accessibilityHint={footerLink.accessibilityHint}
-            accessibilityLabel="Plot Deck"
+            accessibilityLabel="Outcome Replay"
             onPress={footerLink.onPress}
             hitSlop={{ top: 10, bottom: 10, left: 8, right: 8 }}
             style={({ pressed }) => [minimalStyles.plotLinkWrap, pressed && minimalStyles.plotLinkPressed]}>
@@ -642,8 +642,7 @@ const minimalStyles = StyleSheet.create({
     }),
   },
   title: {
-    fontSize: 15,
-    lineHeight: 19,
+    ...typography.bodySm,
     fontWeight: '700',
     letterSpacing: -0.35,
   },
@@ -691,8 +690,7 @@ const minimalStyles = StyleSheet.create({
     gap: 3,
   },
   ptsSuffix: {
-    fontSize: 10,
-    lineHeight: 12,
+    ...typography.micro,
     fontWeight: '800',
     letterSpacing: 0.02,
     color: profileTypography.subdued,
@@ -724,8 +722,7 @@ const minimalStyles = StyleSheet.create({
     }),
   },
   earnBurstText: {
-    fontSize: 15,
-    lineHeight: 18,
+    ...typography.bodySm,
     fontWeight: '900',
     letterSpacing: -0.3,
     fontVariant: ['tabular-nums'],
@@ -753,7 +750,7 @@ const minimalStyles = StyleSheet.create({
     opacity: 0.85,
   },
   liveCount: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
     letterSpacing: -0.35,
     color: profileTypography.ink,
@@ -772,8 +769,7 @@ const minimalStyles = StyleSheet.create({
     opacity: 0.65,
   },
   plotLinkText: {
-    fontSize: 12,
-    lineHeight: 16,
+    ...typography.caption,
     fontWeight: '700',
     letterSpacing: 0.15,
     textAlign: 'right',
@@ -823,7 +819,7 @@ const dramaticStyles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   brand: {
-    fontSize: 13,
+    ...typography.subhead,
     fontWeight: '800',
     letterSpacing: 3.2,
     color: palette.textMutedOnCanvas,
@@ -841,9 +837,7 @@ const dramaticStyles = StyleSheet.create({
   },
   headline: {
     color: palette.textOnCanvas,
-    fontSize: 28,
-    lineHeight: 32,
-    fontWeight: '800',
+    ...typography.hero,
     letterSpacing: -0.8,
     marginTop: 2,
     ...Platform.select({
@@ -882,7 +876,7 @@ const dramaticStyles = StyleSheet.create({
   },
   statGlyph: {
     color: rgba255(255, 255, 255, 0.7),
-    fontSize: 12,
+    ...typography.caption,
     marginBottom: 2,
     fontWeight: '700',
   },
@@ -895,7 +889,7 @@ const dramaticStyles = StyleSheet.create({
     fontVariant: ['tabular-nums'],
   },
   statCaps: {
-    fontSize: 10,
+    ...typography.micro,
     fontWeight: '800',
     letterSpacing: 2.4,
     color: rgba255(255, 255, 255, 0.92),

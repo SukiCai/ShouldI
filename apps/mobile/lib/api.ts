@@ -108,7 +108,15 @@ export async function apiPostJson<T>(path: string, body: unknown): Promise<T> {
   }
 
   if (!res.ok) {
-    throw new Error(`POST ${path} HTTP ${res.status} → ${GATEWAY_ORIGIN}`);
+    const code =
+      typeof json === 'object' && json !== null && 'error' in json
+        ? String((json as { error: unknown }).error)
+        : '';
+    const detail =
+      typeof json === 'object' && json !== null && 'message' in json
+        ? String((json as { message: unknown }).message)
+        : '';
+    throw new Error(code || detail || `POST ${path} HTTP ${res.status} → ${GATEWAY_ORIGIN}`);
   }
 
   return json as Promise<T>;

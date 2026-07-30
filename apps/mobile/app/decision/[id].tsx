@@ -11,18 +11,20 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { DiscussExpandTransition } from '@/components/decision/DiscussExpandTransition';
-import { DiscussExpanded } from '@/components/decision/DiscussExpanded';
+import { DiscussExpandTransition, DiscussExpanded } from '@/components/decide/discuss';
 import { ReelCardAtmosphereLayers } from '@/components/explore/ReelDiscussChrome';
 import { GlassCard, GradientHero, PillTag, SectionHeader } from '@/components/ui/Premium';
 import ProvenanceChip from '@/components/ui/ProvenanceChip';
+import { ctaStyles } from '@/components/screen/ctaStyles';
+import { pmfText } from '@/components/screen/pmfChrome';
 import Screen from '@/components/ui/Screen';
+import { useColorScheme } from '@/components/useColorScheme';
 import {
   REEL_SURFACE_LOCATIONS,
   reelDiscussBackdropCategory,
   reelSurfaceGradientCoarse,
 } from '@/constants/reelSurfaceGradients';
-import { palette, profileTypography, spacing, typography } from '@/constants/theme';
+import { palette, semantic, spacing, themeSurface, typography, type ThemeSurface } from '@/constants/theme';
 import { apiGetJson } from '@/lib/api';
 import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
 import { ExploreCardSchema } from '@shouldi/contracts';
@@ -54,6 +56,10 @@ type DecisionSectionsProps = {
 };
 
 function DecisionSections({ card, reelPresentation }: DecisionSectionsProps) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const text = pmfText(surface);
+  const styles = React.useMemo(() => decisionDetailStyles(surface), [surface]);
   const [followed, setFollowed] = React.useState(false);
   const total = totalVotes(card);
   const effectivePicked = card.myVoteOptionId ?? null;
@@ -119,8 +125,8 @@ function DecisionSections({ card, reelPresentation }: DecisionSectionsProps) {
               accessibilityRole="button"
               accessibilityLabel="Open Decide to work through your own choice"
               onPress={() => router.push('/(tabs)/decide')}
-              style={({ pressed }) => [styles.decideLink, pressed && styles.decideLinkPressed]}>
-              <Text style={styles.decideLinkText}>Structure your decision in Decide →</Text>
+              style={({ pressed }) => [ctaStyles.primary, pressed && styles.decideLinkPressed]}>
+              <Text style={ctaStyles.primaryLabel}>Structure your decision in Decide →</Text>
             </Pressable>
           </GlassCard>
         </>
@@ -132,8 +138,8 @@ function DecisionSections({ card, reelPresentation }: DecisionSectionsProps) {
           accessibilityRole="button"
           accessibilityLabel="Follow this decision"
           onPress={() => setFollowed((v: boolean) => !v)}
-          style={[styles.followBtn, followOn && styles.followBtnOn]}>
-          <Text style={[styles.followLabel, followOn && styles.followLabelOn]}>
+          style={[ctaStyles.secondary, followOn && styles.followBtnOn]}>
+          <Text style={[ctaStyles.secondaryLabel, followOn && styles.followLabelOn]}>
             {followOn ? 'Following for updates' : 'Follow this decision'}
           </Text>
         </Pressable>
@@ -214,6 +220,9 @@ function ReelDiscussChrome({ screenTint, children }: { screenTint: string; child
 }
 
 function DecisionDetailStandard({ id }: { id: string }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const styles = React.useMemo(() => decisionDetailStyles(surface), [surface]);
   const query = useQuery({
     enabled: !!id,
     queryKey: ['decision-detail', id],
@@ -254,6 +263,9 @@ function DecisionDetailFromReel({
   reelCategoryRaw: string | string[] | undefined;
   pickedOptionRaw: string | string[] | undefined;
 }) {
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
+  const styles = React.useMemo(() => decisionDetailStyles(surface), [surface]);
   const insets = useSafeAreaInsets();
 
   const query = useQuery({
@@ -314,7 +326,7 @@ function DecisionDetailFromReel({
                   paddingRight: Math.max(insets.right, 0),
                 },
               ]}>
-              <ActivityIndicator size="large" color={palette.neonMint} />
+              <ActivityIndicator size="large" color={semantic.actionPrimary} />
               <Text style={styles.loaderLabel}>Opening thread…</Text>
             </View>
           </DiscussBackdropStack>
@@ -351,6 +363,8 @@ function DecisionDetailFromReel({
 
 export default function DecisionDetailScreen() {
   const navigation = useNavigation();
+  const scheme = useColorScheme();
+  const surface = themeSurface(scheme);
   const params = useLocalSearchParams<{
     id: string | string[];
     fromReel?: string | string[];
@@ -379,11 +393,11 @@ export default function DecisionDetailScreen() {
       title: 'Decision details',
       headerTransparent: false,
       headerShadowVisible: false,
-      headerTintColor: palette.neonMint,
-      headerStyle: { backgroundColor: palette.mist },
-      headerTitleStyle: { color: palette.textOnCanvas, fontWeight: '700', fontSize: 17 },
+      headerTintColor: semantic.actionPrimary,
+      headerStyle: { backgroundColor: surface.canvas },
+      headerTitleStyle: { color: surface.textPrimary, fontWeight: '700', fontSize: 17 },
     } as object);
-  }, [navigation, fromReel]);
+  }, [navigation, fromReel, surface.canvas, surface.textPrimary]);
 
   if (!fromReel) {
     return <DecisionDetailStandard id={id} />;
@@ -392,7 +406,11 @@ export default function DecisionDetailScreen() {
   return <DecisionDetailFromReel id={id} reelCategoryRaw={params.reelCategory} pickedOptionRaw={pickedOption} />;
 }
 
-const styles = StyleSheet.create({
+const styles = decisionDetailStyles(themeSurface('light'));
+
+function decisionDetailStyles(surface: ThemeSurface) {
+  const text = pmfText(surface);
+  return StyleSheet.create({
   reelOuter: {
     flex: 1,
   },
@@ -409,10 +427,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   standardScreenTitle: {
-    color: palette.textOnCanvas,
+    ...text.display,
   },
   standardScreenMuted: {
-    color: palette.textMutedOnCanvas,
+    ...text.muted,
   },
   discussAtmospherePortal: {
     ...StyleSheet.absoluteFillObject,
@@ -428,41 +446,41 @@ const styles = StyleSheet.create({
   },
   loaderLabel: {
     ...typography.body,
-    color: 'rgba(11,18,36,0.85)',
+    ...text.primary,
     fontWeight: '600',
   },
   onGradientTitle: {
     ...typography.title,
-    color: profileTypography.ink,
+    ...text.display,
   },
   frostPanel: {
-    backgroundColor: 'rgba(255,255,255,0.86)',
-    borderColor: 'rgba(255,255,255,0.55)',
+    backgroundColor: surface.groupedSurface,
+    borderColor: surface.groupedBorder,
     borderWidth: StyleSheet.hairlineWidth,
   },
   topicCard: {
     gap: 8,
   },
   threadHeroCard: {
-    backgroundColor: 'rgba(253,253,253,0.58)',
+    backgroundColor: surface.groupedSurface,
     borderRadius: 20,
     padding: 18,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.72)',
+    borderColor: surface.groupedBorder,
     marginBottom: 4,
     gap: 6,
   },
   threadEyebrow: {
     ...typography.caption,
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '800',
     textTransform: 'uppercase',
     letterSpacing: 1.6,
-    fontSize: 11,
+    fontSize: 12,
   },
   threadTitle: {
     ...typography.hero,
-    color: profileTypography.ink,
+    ...text.display,
     marginTop: 2,
     letterSpacing: -0.3,
     lineHeight: 36,
@@ -471,8 +489,7 @@ const styles = StyleSheet.create({
   },
   threadSub: {
     ...typography.compact,
-    color: profileTypography.emphasis,
-    opacity: 0.95,
+    ...text.muted,
     marginTop: 2,
   },
   metaRow: {
@@ -483,17 +500,17 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   categoryPill: {
-    backgroundColor: palette.accentSoft,
+    backgroundColor: surface.groupedSurface,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cdd9ff',
+    borderColor: surface.hairline,
     justifyContent: 'center',
   },
   categoryPillText: {
     ...typography.caption,
-    color: palette.accent,
+    color: semantic.actionPrimary,
     fontWeight: '700',
     textTransform: 'uppercase',
     letterSpacing: 0.6,
@@ -506,69 +523,41 @@ const styles = StyleSheet.create({
   statusTag: {
     alignSelf: 'center',
   },
-  decideLink: {
-    alignSelf: 'flex-start',
-    marginTop: 4,
-    paddingVertical: 10,
-    paddingHorizontal: 14,
-    borderRadius: 999,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cdd9ff',
-    backgroundColor: palette.accentSoft,
-  },
   decideLinkPressed: {
     opacity: 0.9,
   },
-  decideLinkText: {
-    ...typography.compact,
-    color: palette.accent,
-    fontWeight: '700',
-  },
   discuss: {
     ...typography.body,
-    color: profileTypography.body,
+    ...text.primary,
   },
   label: {
     ...typography.caption,
     marginTop: spacing.xs,
-    color: profileTypography.subdued,
+    ...text.muted,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
   },
-  followBtn: {
-    borderRadius: 999,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#cad6ff',
-    backgroundColor: '#eef3ff',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    alignItems: 'center',
-  },
   followBtnOn: {
-    borderColor: '#bfe4d1',
-    backgroundColor: '#e9f8f2',
-  },
-  followLabel: {
-    ...typography.compact,
-    color: palette.accent,
-    fontWeight: '700',
+    borderColor: semantic.actionAffirm,
+    backgroundColor: `${semantic.actionAffirm}18`,
   },
   followLabelOn: {
-    color: palette.mint,
+    color: semantic.actionAffirm,
   },
   rewardGood: {
     ...typography.body,
-    color: palette.mint,
+    color: semantic.actionAffirm,
     fontWeight: '700',
   },
   aiSuggestedEmphasis: {
     fontWeight: '800',
-    color: palette.accent,
+    color: semantic.actionPrimary,
   },
   aiSuggestionNoteDetail: {
     ...typography.caption,
     marginTop: spacing.sm,
-    color: profileTypography.subdued,
+    ...text.muted,
     lineHeight: 18,
   },
 });
+}

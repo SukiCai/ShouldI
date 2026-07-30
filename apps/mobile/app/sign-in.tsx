@@ -1,36 +1,59 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import { Alert, Keyboard, Pressable, Text, View } from 'react-native';
 
-import { AuthCredentialFields } from '@/components/auth/AuthCredentialFields';
+import { AuthCredentialFields, phoneDigitsValid } from '@/components/auth/AuthCredentialFields';
 import { AuthFields, GenZAuthChrome } from '@/components/auth/GenZAuthChrome';
+import { DEFAULT_DIAL_COUNTRY, findDialCountry } from '@/constants/auth/dialCountries';
+import { markAuthenticatedPreview } from '@/lib/guestSignupPrompt';
 import { HERO_AVATAR_CLUSTER } from '@/constants/users/avatarSources';
 
+function resolveReturnTo(raw: string | string[] | undefined): string {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (typeof value === 'string' && value.startsWith('/')) return value;
+  return '/explore';
+}
+
 export default function SignInScreen() {
+  const { returnTo: returnToParam } = useLocalSearchParams<{ returnTo?: string }>();
+  const returnTo = resolveReturnTo(returnToParam);
   const [phone, setPhone] = React.useState('');
+  const [countryIso, setCountryIso] = React.useState(DEFAULT_DIAL_COUNTRY.iso);
   const [password, setPassword] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
+  const country = findDialCountry(countryIso);
 
-  function onContinue() {
+  async function onContinue() {
     Keyboard.dismiss();
-    Alert.alert(
-      'Sign in preview',
-      'Auth wires up soon — matches the OLED reference layout.',
-      [{ text: 'OK' }],
-    );
+    if (!phoneDigitsValid(phone, country)) {
+      Alert.alert('Phone number', `Enter a valid ${country.minDigits}-digit phone number.`);
+      return;
+    }
+    if (!password.trim()) {
+      Alert.alert('Password', 'Enter your password.');
+      return;
+    }
+    await markAuthenticatedPreview();
+    Alert.alert('Signed in', 'Session preview — auth backend ships soon.', [
+      {
+        text: 'OK',
+        onPress: () => router.replace(returnTo as '/explore'),
+      },
+    ]);
   }
 
   return (
     <GenZAuthChrome
       appearance="oled"
       heroAvatars={HERO_AVATAR_CLUSTER}
-      headline={"AI can answer. Humans validate."}
+      headline={"Let's get you signed in!"}
       heroBadge="SHOULDI"
+      heroMotion="standard"
+      ctaPlacement="docked"
       footerCtaLabel="Sign In"
       footerCtaAccessibilityLabel="Sign in"
       swipeAlternate={{ pathname: '/sign-up', direction: 'down' }}
-      scrollBottomPad={56}
-      onFooterPress={onContinue}
+      onFooterPress={() => void onContinue()}
       sheetHeader={
         <View style={AuthFields.linkRowWrap}>
           <Text style={AuthFields.muted}>You don't have an account yet?</Text>
@@ -56,6 +79,8 @@ export default function SignInScreen() {
       <AuthCredentialFields
         phone={phone}
         onPhoneChange={setPhone}
+        countryIso={countryIso}
+        onCountryIsoChange={setCountryIso}
         password={password}
         onPasswordChange={setPassword}
         showPassword={showPassword}

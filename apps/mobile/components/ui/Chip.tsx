@@ -14,6 +14,7 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
   const isDark = scheme === 'dark';
+  const accent = isDark ? palette.neonSky : palette.accent;
 
   return (
     <Pressable
@@ -25,12 +26,12 @@ export default function Chip({ children, selected, onPress, accessibilityLabel }
         styles.shell,
         {
           backgroundColor: surface.groupedSurface,
-          borderColor: isDark ? palette.chromeHairline : profileNeutralStroke(0.18),
+          borderColor: isDark ? 'rgba(255,255,255,0.16)' : profileNeutralStroke(0.16),
         },
-        selected ? styles.shellSelected : undefined,
+        selected ? { backgroundColor: `${accent}20`, borderColor: accent } : undefined,
       ]}>
       <Text
-        style={[typography.compact, selected ? styles.labelSelected : { color: surface.textPrimary, textAlign: 'center' }]}>
+        style={[typography.compact, selected ? { color: accent, fontWeight: '700', textAlign: 'center' } : { color: surface.textPrimary, textAlign: 'center' }]}>
         {children}
       </Text>
     </Pressable>
@@ -43,14 +44,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-  },
-  shellSelected: {
-    backgroundColor: palette.accent + '26',
-    borderColor: palette.accent,
-  },
-  labelSelected: {
-    color: palette.accent,
-    fontWeight: '700',
-    textAlign: 'center',
   },
 });
