@@ -1111,6 +1111,22 @@ export default function DecideCategoryScreen() {
               })}
             </View>
           ) : null}
+          {finalDecision.keyMoments.length > 0 ? (
+            <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Key moments</Text>
+              {[...finalDecision.keyMoments]
+                .sort((a, b) => b.magnitude - a.magnitude)
+                .slice(0, 4)
+                .map((moment, index) => (
+                  <View key={index} style={styles.verdictStepRow}>
+                    <View style={[styles.verdictStepDot, { backgroundColor: semantic.actionPrimary }]} />
+                    <Text style={[styles.verdictStepText, { color: colors.primaryTxt }]}>
+                      {moment.impact?.trim() || moment.answer}
+                    </Text>
+                  </View>
+                ))}
+            </View>
+          ) : null}
           {finalDecision.reflection?.summary ? (
             <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
               <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>What to watch</Text>
@@ -1136,7 +1152,13 @@ export default function DecideCategoryScreen() {
           {canExpandVerdict ? (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={verdictExpanded ? 'Show less detail' : 'See full reasoning'}
+              accessibilityLabel={
+                verdictExpanded
+                  ? 'Show less'
+                  : finalDecision.expertVerdicts.length > 0
+                    ? 'See how each expert voted'
+                    : 'See full reasoning'
+              }
               onPress={() => setVerdictExpanded((v) => !v)}
               style={styles.verdictExpandBtn}>
               <Text style={[styles.verdictExpandText, { color: semantic.actionPrimary }]}>

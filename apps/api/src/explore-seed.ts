@@ -46,6 +46,7 @@ const exploreCardsBase: ExploreCardDraft[] = [
         'CPT 学期规则需书面确认才能安全接受',
         '实习时间可能与毕业排期冲突',
       ],
+      expertVerdicts: [],
     },
   },
   {

@@ -91,6 +91,10 @@ export function buildExploreCardFromDraft(draft: DecideDraft): ExploreCard {
     .filter((moment) => moment.impact?.trim())
     .map((moment) => moment.impact!.trim())
     .slice(0, 4);
+  const expertVerdicts = draft.expertVerdicts.map((verdict) => ({
+    expertTitle: verdict.expertTitle,
+    verdictLine: verdict.verdictLine,
+  }));
 
   return ExploreCardSchema.parse({
     id,
@@ -117,6 +121,7 @@ export function buildExploreCardFromDraft(draft: DecideDraft): ExploreCard {
       disagreeWithAiVotes: 0,
       ...(draft.aiConfidenceScore != null ? { confidenceScore: draft.aiConfidenceScore } : {}),
       keyContext,
+      expertVerdicts,
     },
     matchHint: 'Your community post',
   });

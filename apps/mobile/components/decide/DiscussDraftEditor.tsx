@@ -85,6 +85,7 @@ export function DiscussDraftEditor({ draft, onChange }: Props) {
         verdictBecause={draft.communityAiBecause}
         confidenceScore={draft.aiConfidenceScore}
         keyMoments={draft.keyMoments}
+        expertVerdicts={draft.expertVerdicts}
         onChangeVerdictLine={(text) => onChange({ communityAiVerdictLine: text })}
         onChangeVerdictBecause={(text) => onChange({ communityAiBecause: text })}
       />

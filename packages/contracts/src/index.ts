@@ -65,6 +65,15 @@ export const ExploreCardSchema = z.object({
       confidenceScore: z.number().int().min(0).max(100).optional(),
       /** Short peer-readable context labels, e.g. ["Goal: return offer + PR pathway", "Risk: pre-PGWP stage"]. */
       keyContext: z.array(z.string()).default([]),
+      /** Council-mode only: one line per expert who voted, for a compact vote breakdown on the public card. */
+      expertVerdicts: z
+        .array(
+          z.object({
+            expertTitle: z.string(),
+            verdictLine: z.string(),
+          }),
+        )
+        .default([]),
     })
     .optional(),
   matchHint: z.string().optional(),

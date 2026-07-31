@@ -56,6 +56,7 @@ type Props = {
   verdictBecause: string;
   confidenceScore?: number;
   keyMoments?: DecideInterviewFinalDecision['keyMoments'];
+  expertVerdicts?: DecideInterviewFinalDecision['expertVerdicts'];
   onChangeVerdictLine(text: string): void;
   onChangeVerdictBecause(text: string): void;
 };
@@ -65,6 +66,7 @@ export function ExploreCardAiLeanEditor({
   verdictBecause,
   confidenceScore,
   keyMoments,
+  expertVerdicts,
   onChangeVerdictLine,
   onChangeVerdictBecause,
 }: Props) {
@@ -86,7 +88,7 @@ export function ExploreCardAiLeanEditor({
 
       {confidenceScore != null ? (
         <View style={styles.clarityRow}>
-          <Text style={[styles.clarityLabel, { color: surface.textMuted }]}>Clarity</Text>
+          <Text style={[styles.clarityLabel, { color: surface.textMuted }]}>AI Confidence</Text>
           <Text style={[styles.clarityValue, { color: surface.textPrimary }]}>{confidenceScore}%</Text>
         </View>
       ) : null}
@@ -128,6 +130,19 @@ export function ExploreCardAiLeanEditor({
           {keyContext.map((line, index) => (
             <Text key={index} style={[styles.keyContextLine, { color: surface.textMuted }]}>
               · {line}
+            </Text>
+          ))}
+        </View>
+      ) : null}
+
+      {expertVerdicts && expertVerdicts.length > 0 ? (
+        <View style={[styles.keyContextBlock, { borderTopColor: surface.groupedBorder }]}>
+          <Text style={[styles.keyContextEyebrow, { color: surface.textMuted }]}>
+            {expertVerdicts.length} experts weighed in
+          </Text>
+          {expertVerdicts.map((expert, index) => (
+            <Text key={index} style={[styles.keyContextLine, { color: surface.textMuted }]}>
+              · {expert.expertTitle}: {expert.verdictLine}
             </Text>
           ))}
         </View>
