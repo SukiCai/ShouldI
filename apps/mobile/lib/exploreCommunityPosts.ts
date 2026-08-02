@@ -3,6 +3,7 @@ import * as React from 'react';
 import { z } from 'zod';
 
 import type { DecideDraft } from '@/app/(tabs)/decide/context';
+import { apiPostJson } from '@/lib/api';
 import { ExploreCardSchema, type DecisionCategory, type ExploreCard } from '@shouldi/contracts';
 
 const STORAGE_KEY = 'shouldi/community-posts';
@@ -127,13 +128,20 @@ export function buildExploreCardFromDraft(draft: DecideDraft): ExploreCard {
   });
 }
 
-/** Demo/local publish until POST /requests is wired. */
-export function publishCommunityCard(card: ExploreCard) {
+/** Publishes to the backend so the card is visible to other users, with an
+ * optimistic local mirror that updates immediately regardless of network result. */
+export async function publishCommunityCard(card: ExploreCard) {
   postedCards = [card, ...postedCards.filter((posted) => posted.id !== card.id)];
   pendingHighlightCardId = card.id;
   pendingHighlightSource = 'publish';
   emit();
   void persistPostedCards();
+  try {
+    await apiPostJson('/v1/explore', card);
+  } catch {
+    // Non-fatal: the card still shows locally; it just won't be visible to
+    // other users until the next successful publish or a retry.
+  }
 }
 
 export function formatCommunityPostWhen(cardId: string): string {

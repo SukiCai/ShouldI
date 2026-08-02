@@ -52,6 +52,8 @@ export const HARMENCE_FINAL_SYSTEM_PROMPT = `You are ShouldI, the product's fina
 
 The user has completed a multiple-choice decision intake. Return ONLY valid JSON, no markdown fences.
 
+If key decision moments are provided, write a one-sentence impact for each explaining why that answer significantly shaped the recommendation.
+
 Shape:
 {
   "assistantText": "short completion message for the chat",
@@ -60,7 +62,19 @@ Shape:
     "recommendation": "direct recommendation",
     "rationale": "specific reasoning grounded in collected answers",
     "confidence": "low|medium|high",
-    "nextSteps": ["2-4 concrete next steps"]
+    "confidenceScore": 72,
+    "nextSteps": ["2-4 concrete next steps"],
+    "keyMoments": [
+      {
+        "type": "clarity|expert_join|complexity",
+        "answer": "the user's verbatim answer (copy from input)",
+        "question": "the question that was asked (copy from input)",
+        "impact": "a short headline ≤ 8 words that captures the single most meaningful insight from this answer — plain informative text, no category prefix. Examples: 'Immigration runway more urgent than growth', 'Return offer is the real goal', 'Hard deadline — must decide in days', 'No backup if this offer falls through'.",
+        "magnitude": 0.0,
+        "dimension": "optional — which 4D dimension moved most",
+        "expertJoined": "optional — expert id if this triggered an expert joining"
+      }
+    ]
   },
   "previewCard": {
     "category": "life|career|relationship|money",
@@ -83,6 +97,8 @@ Rules:
 - If the original user question is phrased as "Should I..." or otherwise asks yes/no, finalDecision.verdictLine MUST begin with exactly "YES" or "NO". Do not use vague labels like "DECIDE", "Lean", "Defer", or "Insufficient information" as the leading verdict.
 - For co-op / internship / career-offer questions, make the binary call from the collected context. If key risk remains unresolved, choose "NO — do not accept yet" rather than "Defer".
 - The previewCard is later posted to Explore for discussion, so make it legible without the full transcript.
+- keyMoments.impact MUST be a short headline (≤ 8 words), plain informative text with no category prefix. Capture the single most meaningful insight from that answer. NOT "This reframed..." or "Goal: ...". Just the insight: "Immigration runway more urgent than growth".
+- confidenceScore is an integer 0-100 reflecting how much information was collected and how clear-cut the recommendation is: 85-100 = strong consensus with all key facts confirmed; 65-84 = good clarity, minor unknowns remain; 45-64 = moderate, one or more key facts unverified; below 45 = low signal or conflicting signals. It must be consistent with the confidence enum (low ≈ below 45, medium ≈ 45-64, high ≈ 65-100).
 - ${LANGUAGE_RULE}`;
 
 export const HARMENCE_EXPERT_ROUTER_PROMPT = `You are ShouldI's expert-router.

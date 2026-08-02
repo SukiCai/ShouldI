@@ -211,7 +211,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
     }
     setError(null);
     const card = buildExploreCardFromDraft(draft);
-    publishCommunityCard(card);
+    void publishCommunityCard(card);
     router.replace({
       pathname: '/(tabs)/explore',
       params: { highlightCardId: card.id },

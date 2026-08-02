@@ -113,6 +113,17 @@ app.get('/v1/explore/:id', (c) => {
   return c.json(ExploreCardSchema.parse(card));
 });
 
+app.post('/v1/explore', async (c) => {
+  const body = await c.req.json().catch(() => ({}));
+  const parsed = ExploreCardSchema.safeParse(body);
+  if (!parsed.success) {
+    return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
+  }
+  const card = parsed.data;
+  exploreStore.set(card.id, card);
+  return c.json({ card }, 201);
+});
+
 app.post('/v1/explore/:id/vote', async (c) => {
   const id = c.req.param('id');
   const card = exploreStore.get(id);

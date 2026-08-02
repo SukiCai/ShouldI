@@ -1873,12 +1873,23 @@ async function askHermesForFinal(session: Session): Promise<{
   previewCard: DecideInterviewPreviewCard;
 }> {
   const fallback = fallbackFinal(session);
+  const keyMomentCandidates = selectKeyMoments(session.smartTalkState.momentumLog);
 
   const result = await hermesChatCompletion({
     sessionId: session.id,
     messages: [
       { role: 'system', content: HARMENCE_FINAL_SYSTEM_PROMPT },
-      { role: 'user', content: `Collected answers:\n${collectedSummary(session)}\n\nOriginal question:\n${initialQuestionFor(session) || '(unknown)'}\n\nOffer context:\n${JSON.stringify(offerContextFor(session))}` },
+      {
+        role: 'user',
+        content: [
+          `Collected answers:\n${collectedSummary(session)}`,
+          `Original question:\n${initialQuestionFor(session) || '(unknown)'}`,
+          `Offer context:\n${JSON.stringify(offerContextFor(session))}`,
+          keyMomentCandidates.length > 0
+            ? `Key decision moments (ranked by impact — write one-sentence impact for each):\n${JSON.stringify(keyMomentCandidates, null, 2)}`
+            : '',
+        ].filter(Boolean).join('\n\n'),
+      },
     ],
   });
   if (!result.ok) return fallback;
@@ -1886,7 +1897,13 @@ async function askHermesForFinal(session: Session): Promise<{
   const raw = extractJsonObject(result.content);
   if (!raw || typeof raw !== 'object') return fallback;
   const candidate = raw as { assistantText?: unknown; finalDecision?: unknown; previewCard?: unknown };
-  const finalDecision = DecideInterviewFinalDecisionSchema.safeParse(candidate.finalDecision);
+  const rawFinalDecision = candidate.finalDecision && typeof candidate.finalDecision === 'object'
+    ? (candidate.finalDecision as Record<string, unknown>)
+    : {};
+  const finalDecision = DecideInterviewFinalDecisionSchema.safeParse({
+    ...rawFinalDecision,
+    keyMoments: Array.isArray(rawFinalDecision.keyMoments) ? rawFinalDecision.keyMoments : [],
+  });
   const previewCard = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
   if (!finalDecision.success || !previewCard.success) return fallback;
   if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
