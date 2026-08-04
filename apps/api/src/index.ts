@@ -2,6 +2,9 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import {
+  AuthCredentialsRequestSchema,
+  AuthResponseSchema,
+  ChangePasswordRequestSchema,
   DecisionDnaProfileSchema,
   DecisionLensSchema,
   DecisionRecordSchema,
@@ -22,6 +25,7 @@ import {
   ViewerMeResponseSchema,
 } from '@shouldi/contracts';
 import type { DecideInterviewFinalDecision } from '@shouldi/contracts';
+import { signUp, signIn, changePassword } from './auth.js';
 import { seededExploreCards } from './explore-seed.js';
 import {
   CouncilLockedError,
@@ -70,6 +74,50 @@ app.get('/health', (c) =>
   }),
 );
 
+const AUTH_ERROR_STATUS: Record<string, 400 | 401 | 409> = {
+  INVALID_PHONE: 400,
+  WEAK_PASSWORD: 400,
+  PHONE_TAKEN: 409,
+  INVALID_CREDENTIALS: 401,
+};
+
+app.post('/v1/auth/signup', async (c) => {
+  const body = await c.req.json().catch(() => ({}));
+  const parsed = AuthCredentialsRequestSchema.safeParse(body);
+  if (!parsed.success) return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
+  const result = signUp(parsed.data.phone, parsed.data.password);
+  if (!result.ok) return c.json({ error: result.reason }, AUTH_ERROR_STATUS[result.reason]);
+  return c.json(AuthResponseSchema.parse({ userId: result.userId, token: result.token }), 201);
+});
+
+app.post('/v1/auth/signin', async (c) => {
+  const body = await c.req.json().catch(() => ({}));
+  const parsed = AuthCredentialsRequestSchema.safeParse(body);
+  if (!parsed.success) return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
+  const result = signIn(parsed.data.phone, parsed.data.password);
+  if (!result.ok) return c.json({ error: result.reason }, AUTH_ERROR_STATUS[result.reason]);
+  return c.json(AuthResponseSchema.parse({ userId: result.userId, token: result.token }));
+});
+
+const CHANGE_PASSWORD_ERROR_STATUS: Record<string, 400 | 401 | 404> = {
+  INVALID_CURRENT_PASSWORD: 401,
+  WEAK_PASSWORD: 400,
+  USER_NOT_FOUND: 404,
+};
+
+app.post('/v1/auth/change-password', async (c) => {
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
+  if (userId === 'anonymous-local') return c.json({ error: 'UNAUTHENTICATED' }, 401);
+
+  const body = await c.req.json().catch(() => ({}));
+  const parsed = ChangePasswordRequestSchema.safeParse(body);
+  if (!parsed.success) return c.json({ error: 'INVALID_REQUEST', issues: parsed.error.flatten() }, 400);
+
+  const result = changePassword(userId, parsed.data.currentPassword, parsed.data.newPassword);
+  if (!result.ok) return c.json({ error: result.reason }, CHANGE_PASSWORD_ERROR_STATUS[result.reason]);
+  return c.json({ ok: true });
+});
+
 app.get('/v1/me/experts', (c) => {
   const userId = resolveUserIdFromAuth(c.req.header('authorization'));
   return c.json(viewerExpertsResponse(userId));
@@ -88,10 +136,12 @@ app.get('/v1/experts/catalog', (c) => {
 
 app.get('/v1/me', (c) => {
   const auth = c.req.header('authorization');
+  const userId = resolveUserIdFromAuth(auth);
+  const anonymous = userId === 'anonymous-local';
   return c.json(
     ViewerMeResponseSchema.parse({
-    anonymous: !auth,
-    userId: auth ? 'signed-in-placeholder' : null,
+    anonymous,
+    userId: anonymous ? null : userId,
     entitlements: {
       isPremium: false,
       pointsBalance: 2450,
@@ -329,7 +379,7 @@ app.post('/v1/decisions/:id/reflection', async (c) => {
     return c.json({ error: 'INVALID_REQUEST' }, 400);
   }
   const replay = setOutcomeReplayReflection(id, body.reflection);
-  const userId = body.userId ?? 'signed-in-placeholder';
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
   const dna = getDecisionDna(userId);
   const updated = patchDecisionDna(userId, {
     trajectory: [body.reflection, ...dna.trajectory].slice(0, 10),
@@ -358,19 +408,19 @@ app.get('/v1/decisions/:id/replay', (c) => {
 });
 
 app.get('/v1/me/dna', (c) => {
-  const userId = c.req.query('userId') ?? 'signed-in-placeholder';
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
   return c.json(DecisionDnaProfileSchema.parse(getDecisionDna(userId)));
 });
 
 app.patch('/v1/me/dna', async (c) => {
-  const userId = c.req.query('userId') ?? 'signed-in-placeholder';
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
   const body = await c.req.json().catch(() => ({}));
   const updated = patchDecisionDna(userId, (body ?? {}) as any);
   return c.json(DecisionDnaProfileSchema.parse(updated));
 });
 
 app.get('/v1/me/dna/history', (c) => {
-  const userId = c.req.query('userId') ?? 'signed-in-placeholder';
+  const userId = resolveUserIdFromAuth(c.req.header('authorization'));
   return c.json({ history: listDecisionDnaHistory(userId) });
 });
 

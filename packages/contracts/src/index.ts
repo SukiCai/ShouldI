@@ -474,3 +474,22 @@ export const ProductEventBatchSchema = z.object({
   events: z.array(ProductEventSchema).min(1),
 });
 export type ProductEventBatch = z.infer<typeof ProductEventBatchSchema>;
+
+export const AuthCredentialsRequestSchema = z.object({
+  /** E.164-ish: leading + and 8-15 digits, e.g. "+14155551234". */
+  phone: z.string().min(8),
+  password: z.string().min(6),
+});
+export type AuthCredentialsRequest = z.infer<typeof AuthCredentialsRequestSchema>;
+
+export const AuthResponseSchema = z.object({
+  userId: z.string(),
+  token: z.string(),
+});
+export type AuthResponse = z.infer<typeof AuthResponseSchema>;
+
+export const ChangePasswordRequestSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z.string().min(6),
+});
+export type ChangePasswordRequest = z.infer<typeof ChangePasswordRequestSchema>;

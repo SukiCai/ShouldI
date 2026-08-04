@@ -41,6 +41,7 @@ import {
 } from '@/constants/theme';
 import type { AppearancePreference } from '@/lib/appearance';
 import { useAppearance } from '@/lib/appearance';
+import { isAuthenticated, signOut } from '@/lib/auth';
 import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 
 type AppearanceOption = {
@@ -265,6 +266,17 @@ export default function SettingsScreen() {
   const [pushEnabled, setPushEnabled] = React.useState(true);
   const [emailDigest, setEmailDigest] = React.useState(false);
   const [mentionAlerts, setMentionAlerts] = React.useState(true);
+  const [signedIn, setSignedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    void isAuthenticated().then((value) => {
+      if (!cancelled) setSignedIn(value);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const topPad = Math.max(insets.top, 12);
 
@@ -339,22 +351,45 @@ export default function SettingsScreen() {
             showChevron
             isLast={false}
           />
-          <ListRow
-            icon="log-in-outline"
-            title="Sign in"
-            subtitle="Existing account"
-            onPress={() => router.push('/sign-in')}
-            showChevron
-            isLast={false}
-          />
-          <ListRow
-            icon="person-add-outline"
-            title="Join"
-            subtitle="Create your profile"
-            onPress={() => router.push('/sign-up')}
-            showChevron
-            isLast
-          />
+          {signedIn ? (
+            <>
+              <ListRow
+                icon="key-outline"
+                title="Change password"
+                onPress={() => router.push('/change-password')}
+                showChevron
+                isLast={false}
+              />
+              <ListRow
+                icon="log-out-outline"
+                title="Sign out"
+                onPress={() => {
+                  void signOut().then(() => setSignedIn(false));
+                }}
+                showChevron
+                isLast
+              />
+            </>
+          ) : (
+            <>
+              <ListRow
+                icon="log-in-outline"
+                title="Sign in"
+                subtitle="Existing account"
+                onPress={() => router.push('/sign-in')}
+                showChevron
+                isLast={false}
+              />
+              <ListRow
+                icon="person-add-outline"
+                title="Join"
+                subtitle="Create your profile"
+                onPress={() => router.push('/sign-up')}
+                showChevron
+                isLast
+              />
+            </>
+          )}
         </SettingsSection>
 
         <SettingsSection title="Notifications" surface={surface}>

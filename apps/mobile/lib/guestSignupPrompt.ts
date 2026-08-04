@@ -1,28 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { isAuthenticated } from '@/lib/auth';
+
 const GUEST_VOTE_COUNT_KEY = 'shouldi:guest-vote-count:v1';
 const SAVE_PROGRESS_DISMISSED_KEY = 'shouldi:save-progress-dismissed:v1';
-const AUTH_SESSION_KEY = 'shouldi:auth-session:v1';
 
-export async function isAuthenticated(): Promise<boolean> {
-  try {
-    const token = await AsyncStorage.getItem(AUTH_SESSION_KEY);
-    return !!token;
-  } catch {
-    return false;
-  }
-}
-
-export type AuthPreviewProvider = 'phone' | 'apple' | 'google';
-
-/** Preview stub — replace when real auth ships. */
-export async function markAuthenticatedPreview(provider: AuthPreviewProvider = 'phone'): Promise<void> {
-  try {
-    await AsyncStorage.setItem(AUTH_SESSION_KEY, `preview:${provider}`);
-  } catch {
-    /* non-fatal */
-  }
-}
+export { isAuthenticated };
 
 export async function incrementGuestVoteCount(): Promise<number> {
   try {

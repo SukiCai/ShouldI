@@ -13,6 +13,7 @@ import {
   totalCollectibleLenses,
   type HarmenceExpert,
 } from './harmence-experts.js';
+import { verifyAuthHeader } from './auth.js';
 
 function nowTs(): number {
   return Date.now();
@@ -55,8 +56,7 @@ function toDiscoveredExpert(
 }
 
 export function resolveUserIdFromAuth(authorization: string | undefined): string {
-  if (authorization?.trim()) return 'signed-in-placeholder';
-  return 'anonymous-local';
+  return verifyAuthHeader(authorization) ?? 'anonymous-local';
 }
 
 export function listUserExperts(userId: string): DiscoveredExpert[] {

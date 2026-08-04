@@ -10,11 +10,17 @@ import {
 import { AuthSocialSignInRow } from '@/components/auth/AuthSocialSignInRow';
 import { AuthFields, GenZAuthChrome } from '@/components/auth/GenZAuthChrome';
 import { DEFAULT_DIAL_COUNTRY, findDialCountry } from '@/constants/auth/dialCountries';
-import { markAuthenticatedPreview } from '@/lib/guestSignupPrompt';
+import { signUp, toE164 } from '@/lib/auth';
 import { HERO_SIGNUP_AVATARS } from '@/constants/users/avatarSources';
 import { palette, typography } from '@/constants/theme';
 
 type SignUpStep = 'phone' | 'password';
+
+const SIGN_UP_ERROR_MESSAGES: Record<string, string> = {
+  PHONE_TAKEN: 'That phone number already has an account — sign in instead.',
+  INVALID_PHONE: 'Enter a valid phone number.',
+  WEAK_PASSWORD: 'Use at least 6 characters.',
+};
 
 function resolveReturnTo(raw: string | string[] | undefined): string {
   const value = Array.isArray(raw) ? raw[0] : raw;
@@ -30,23 +36,30 @@ export default function SignUpScreen() {
   const [countryIso, setCountryIso] = React.useState(DEFAULT_DIAL_COUNTRY.iso);
   const [password, setPassword] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
   const country = findDialCountry(countryIso);
 
   async function finishSignup(provider: 'phone' | 'apple' | 'google' = 'phone') {
+    if (submitting) return;
     Keyboard.dismiss();
-    if (provider === 'phone' && password.trim().length < 6) {
+    if (provider !== 'phone') {
+      Alert.alert('Coming soon', `Sign up with ${provider === 'apple' ? 'Apple' : 'Google'} isn’t available yet — use a phone number for now.`);
+      return;
+    }
+    if (password.trim().length < 6) {
       Alert.alert('Password too short', 'Use at least 6 characters.');
       return;
     }
-    await markAuthenticatedPreview(provider);
-    const title =
-      provider === 'apple' ? 'Continued with Apple' : provider === 'google' ? 'Continued with Google' : 'Account created';
-    Alert.alert(title, 'Your progress will sync when auth backend ships.', [
-      {
-        text: 'OK',
-        onPress: () => router.replace(returnTo as '/explore'),
-      },
-    ]);
+    setSubmitting(true);
+    try {
+      await signUp(toE164(phone, country), password);
+      router.replace(returnTo as '/explore');
+    } catch (e) {
+      const code = e instanceof Error ? e.message : '';
+      Alert.alert('Couldn’t create account', SIGN_UP_ERROR_MESSAGES[code] ?? 'Something went wrong. Try again.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function onFooterPress() {
