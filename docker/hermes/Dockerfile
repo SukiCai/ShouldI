@@ -11,7 +11,7 @@ RUN apt-get update \
 WORKDIR /opt/hermes
 
 # Install metadata first so dependency layers cache when only app code changes.
-COPY pyproject.toml README.md ./
+COPY pyproject.toml README.md cli-config.yaml.example .env.example ./
 
 COPY *.py ./
 COPY agent agent/
@@ -24,6 +24,17 @@ COPY providers providers/
 COPY skills skills/
 COPY tui_gateway tui_gateway/
 COPY docker docker/
+
+# Curated subset of skills/ that ShouldI's Expert Skills catalog maps to
+# (apps/api/src/harmence-experts.ts `skillName` fields). Kept in a separate
+# path so per-user HERMES_HOME instances can point `skills.external_dirs` at
+# just this shared set, not the full skills/ tree (which also has unrelated
+# general-purpose Hermes skills like apple/gaming/devops/mcp/github).
+RUN mkdir -p /opt/hermes/shared-skills \
+  && for s in smart_talk intl-job-search intl-student-advisor stay-or-return \
+              pm-career-expert salary-negotiation grad-school-advisor; do \
+       cp -r "/opt/hermes/skills/$s" /opt/hermes/shared-skills/; \
+     done
 
 RUN --mount=type=cache,target=/root/.cache/pip \
   pip install --upgrade pip \
