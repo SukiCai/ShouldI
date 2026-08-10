@@ -56,18 +56,18 @@ import {
   type DiscoveredExpert,
 } from '@shouldi/contracts';
 
-import { CouncilPaywallSheet } from './components/CouncilPaywallSheet';
-import { DecideModeSegment } from './components/DecideModeSegment';
-import { DecideSessionStatus } from './components/DecideSessionStatus';
-import { DecideSessionsSheet } from './components/DecideSessionsSheet';
+import { CouncilPaywallSheet } from '@/components/decide/CouncilPaywallSheet';
+import { DecideModeSegment } from '@/components/decide/DecideModeSegment';
+import { DecideSessionStatus } from '@/components/decide/DecideSessionStatus';
+import { DecideSessionsSheet } from '@/components/decide/DecideSessionsSheet';
 import {
   ChamberJoinChatRow,
   CouncilVoteTally,
   ExpertGlyph,
   ThinkingRow,
-} from './components/DecideThreadParts';
-import { ExpertDiscoverySheet } from './components/ExpertDiscoverySheet';
-import { ExpertRosterSheet } from './components/ExpertRosterSheet';
+} from '@/components/decide/DecideThreadParts';
+import { ExpertDiscoverySheet } from '@/components/decide/ExpertDiscoverySheet';
+import { ExpertRosterSheet } from '@/components/decide/ExpertRosterSheet';
 import {
   appendExpertJoinRows,
   assistantBubbleBody,
@@ -85,7 +85,7 @@ import {
   threadSenderLabel,
   type DecideThreadItem,
   type ExpertJoinRow,
-} from './components/threadHelpers';
+} from '@/components/decide/threadHelpers';
 import { useDecideWizard } from './context';
 
 const readable: Record<DecisionCategory, string> = {

@@ -11,13 +11,13 @@ import { useViewerEntitlements } from '@/lib/useViewerEntitlements';
 import { themeSurface } from '@/constants/theme';
 import { DecisionDnaProfileSchema, DecisionRecordSchema } from '@shouldi/contracts';
 
-import { ProfileSectionEntrance } from '@/app/(tabs)/you/components/profileMotion';
-import { ProfileDnaCard } from '@/app/(tabs)/you/components/ProfileDnaCard';
-import { ProfileHeader } from '@/app/(tabs)/you/components/ProfileHeader';
-import { ProfilePerspectivesSection } from '@/app/(tabs)/you/components/ProfilePerspectivesSection';
-import { RecentDecisionsSection } from '@/app/(tabs)/you/components/RecentDecisionsSection';
-import { YouProfileHero } from '@/app/(tabs)/you/components/YouProfileHero';
-import { youScreenStyles as styles } from '@/app/(tabs)/you/components/youScreenStyles';
+import { ProfileSectionEntrance } from '@/components/you/profileMotion';
+import { ProfileDnaCard } from '@/components/you/ProfileDnaCard';
+import { ProfileHeader } from '@/components/you/ProfileHeader';
+import { ProfilePerspectivesSection } from '@/components/you/ProfilePerspectivesSection';
+import { RecentDecisionsSection } from '@/components/you/RecentDecisionsSection';
+import { YouProfileHero } from '@/components/you/YouProfileHero';
+import { youScreenStyles as styles } from '@/components/you/youScreenStyles';
 
 type DecisionsListResponse = { decisions: Array<unknown> };
 
