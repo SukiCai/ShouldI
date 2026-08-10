@@ -10,6 +10,22 @@ import type {
   OutcomeReplay,
   ProductEvent,
 } from '@shouldi/contracts';
+import {
+  getDecisionLensRow,
+  getDecisionRecordRow,
+  getDnaRow,
+  getOutcomeReplayRow,
+  insertDnaHistoryRow,
+  insertProductEventRow,
+  listAllDecisionRecordRows,
+  listDecisionRecordRowsForUser,
+  listDnaHistoryRows,
+  listRecentProductEventRows,
+  saveDecisionLensRow,
+  saveDecisionRecordRow,
+  saveDnaRow,
+  saveOutcomeReplayRow,
+} from './db.js';
 
 function nowTs(): number {
   return Date.now();
@@ -18,13 +34,6 @@ function nowTs(): number {
 function newId(prefix: string): string {
   return `${prefix}_${Math.random().toString(36).slice(2, 10)}_${Date.now().toString(36)}`;
 }
-
-const decisionRecords = new Map<string, DecisionRecord>();
-const decisionLensByRecord = new Map<string, DecisionLens>();
-const outcomeReplayByRecord = new Map<string, OutcomeReplay>();
-const dnaByUser = new Map<string, DecisionDnaProfile>();
-const dnaHistoryByUser = new Map<string, DecisionDnaUpdateEvent[]>();
-const productEvents: ProductEvent[] = [];
 
 export function buildDecisionLensFromFinalDecision(
   decisionRecordId: string,
@@ -45,6 +54,7 @@ export function buildDecisionLensFromFinalDecision(
 }
 
 export function createDecisionRecordFromFinalDecision(params: {
+  userId: string;
   sessionId?: string | null;
   question: string;
   category?: DecisionRecord['category'];
@@ -62,6 +72,7 @@ export function createDecisionRecordFromFinalDecision(params: {
   ].filter((id) => id !== 'general-decision');
   const record: DecisionRecord = {
     id,
+    userId: params.userId,
     sessionId: params.sessionId ?? null,
     question: params.question,
     category: params.category,
@@ -75,25 +86,29 @@ export function createDecisionRecordFromFinalDecision(params: {
     updatedAt: ts,
   };
   const lens = buildDecisionLensFromFinalDecision(record.id, params.finalDecision);
-  decisionRecords.set(record.id, record);
-  decisionLensByRecord.set(record.id, lens);
+  saveDecisionRecordRow(record.id, record.userId, record.updatedAt, record);
+  saveDecisionLensRow(record.id, lens);
   return { record, lens };
 }
 
-export function listDecisionRecords(): DecisionRecord[] {
-  return Array.from(decisionRecords.values()).sort((a, b) => b.updatedAt - a.updatedAt);
+export function listDecisionRecords(userId: string): DecisionRecord[] {
+  return listDecisionRecordRowsForUser<DecisionRecord>(userId);
 }
 
-export function getDecisionRecord(id: string): DecisionRecord | undefined {
-  return decisionRecords.get(id);
+/** Returns undefined both when the record doesn't exist AND when it belongs
+ * to a different account — callers map either to 404. */
+export function getDecisionRecord(id: string, userId: string): DecisionRecord | undefined {
+  const record = getDecisionRecordRow<DecisionRecord>(id);
+  if (!record || record.userId !== userId) return undefined;
+  return record;
 }
 
 export function getDecisionLens(decisionRecordId: string): DecisionLens | undefined {
-  return decisionLensByRecord.get(decisionRecordId);
+  return getDecisionLensRow<DecisionLens>(decisionRecordId);
 }
 
 export function upsertOutcomePrediction(decisionRecordId: string, predictionText: string, probability?: number): OutcomeReplay {
-  const replay = outcomeReplayByRecord.get(decisionRecordId) ?? {
+  const replay = getOutcomeReplayRow<OutcomeReplay>(decisionRecordId) ?? {
     decisionRecordId,
     updatedAt: nowTs(),
   };
@@ -106,12 +121,12 @@ export function upsertOutcomePrediction(decisionRecordId: string, predictionText
   };
   replay.prediction = prediction;
   replay.updatedAt = nowTs();
-  outcomeReplayByRecord.set(decisionRecordId, replay);
+  saveOutcomeReplayRow(decisionRecordId, replay);
   return replay;
 }
 
 export function upsertOutcomeActual(decisionRecordId: string, outcomeText: string, happenedAt?: number): OutcomeReplay {
-  const replay = outcomeReplayByRecord.get(decisionRecordId) ?? {
+  const replay = getOutcomeReplayRow<OutcomeReplay>(decisionRecordId) ?? {
     decisionRecordId,
     updatedAt: nowTs(),
   };
@@ -128,23 +143,23 @@ export function upsertOutcomeActual(decisionRecordId: string, outcomeText: strin
     // Positive = under-confident, negative = over-confident (simple baseline).
     replay.calibrationDelta = Math.max(-1, Math.min(1, 0.5 - replay.prediction.predictedProbability));
   }
-  outcomeReplayByRecord.set(decisionRecordId, replay);
+  saveOutcomeReplayRow(decisionRecordId, replay);
   return replay;
 }
 
 export function setOutcomeReplayReflection(decisionRecordId: string, reflection: string): OutcomeReplay {
-  const replay = outcomeReplayByRecord.get(decisionRecordId) ?? {
+  const replay = getOutcomeReplayRow<OutcomeReplay>(decisionRecordId) ?? {
     decisionRecordId,
     updatedAt: nowTs(),
   };
   replay.reflection = reflection;
   replay.updatedAt = nowTs();
-  outcomeReplayByRecord.set(decisionRecordId, replay);
+  saveOutcomeReplayRow(decisionRecordId, replay);
   return replay;
 }
 
 export function getOutcomeReplay(decisionRecordId: string): OutcomeReplay | undefined {
-  return outcomeReplayByRecord.get(decisionRecordId);
+  return getOutcomeReplayRow<OutcomeReplay>(decisionRecordId);
 }
 
 function defaultDna(userId: string): DecisionDnaProfile {
@@ -160,9 +175,11 @@ function defaultDna(userId: string): DecisionDnaProfile {
 }
 
 export function getDecisionDna(userId: string): DecisionDnaProfile {
-  const current = dnaByUser.get(userId) ?? defaultDna(userId);
-  if (!dnaByUser.has(userId)) dnaByUser.set(userId, current);
-  return current;
+  const existing = getDnaRow<DecisionDnaProfile>(userId);
+  if (existing) return existing;
+  const fresh = defaultDna(userId);
+  saveDnaRow(userId, fresh);
+  return fresh;
 }
 
 export function patchDecisionDna(userId: string, patch: Partial<Omit<DecisionDnaProfile, 'userId'>>): DecisionDnaProfile {
@@ -173,7 +190,7 @@ export function patchDecisionDna(userId: string, patch: Partial<Omit<DecisionDna
     userId,
     updatedAt: nowTs(),
   };
-  dnaByUser.set(userId, updated);
+  saveDnaRow(userId, updated);
   return updated;
 }
 
@@ -191,22 +208,20 @@ export function addDecisionDnaUpdate(params: {
     deltaSummary: params.deltaSummary,
     createdAt: nowTs(),
   };
-  const list = dnaHistoryByUser.get(params.userId) ?? [];
-  list.unshift(item);
-  dnaHistoryByUser.set(params.userId, list);
+  insertDnaHistoryRow(params.userId, item.createdAt, item);
   return item;
 }
 
 export function listDecisionDnaHistory(userId: string): DecisionDnaUpdateEvent[] {
-  return dnaHistoryByUser.get(userId) ?? [];
+  return listDnaHistoryRows<DecisionDnaUpdateEvent>(userId);
 }
 
 export function appendProductEvents(events: ProductEvent[]): void {
-  productEvents.push(...events);
+  for (const event of events) insertProductEventRow(event);
 }
 
 export function listProductEvents(limit = 200): ProductEvent[] {
-  return productEvents.slice(-limit);
+  return listRecentProductEventRows<ProductEvent>(limit);
 }
 
 export function getPmfMetrics(): {
@@ -216,10 +231,10 @@ export function getPmfMetrics(): {
   avgConfidenceScore: number;
   calibrationSignals: number;
 } {
-  const records = listDecisionRecords();
+  const records = listAllDecisionRecordRows<DecisionRecord>();
   const meaningfulDecisionsCompleted = records.length;
-  const withOutcome = records.filter((r) => outcomeReplayByRecord.get(r.id)?.actual).length;
-  const withPrediction = records.filter((r) => outcomeReplayByRecord.get(r.id)?.prediction).length;
+  const withOutcome = records.filter((r) => getOutcomeReplayRow<OutcomeReplay>(r.id)?.actual).length;
+  const withPrediction = records.filter((r) => getOutcomeReplayRow<OutcomeReplay>(r.id)?.prediction).length;
   const avgConfidenceScore =
     records.length > 0
       ? Math.round(records.reduce((sum, r) => sum + r.confidenceScore, 0) / records.length)

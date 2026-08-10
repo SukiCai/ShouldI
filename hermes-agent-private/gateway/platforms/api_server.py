@@ -967,6 +967,49 @@ class APIServerAdapter(BasePlatformAdapter):
             },
         })
 
+    async def _handle_user_model_seed(self, request: "web.Request") -> "web.Response":
+        """POST /v1/user-model/seed — idempotent registration seed for the
+        ``user_model`` memory plugin.
+
+        Platforms that authenticate their own users (e.g. ShouldI's own
+        phone+password login) call this once at signup/signin so a
+        ``user_models`` row exists under that stable ``user_id`` before the
+        session-key-scoped memory provider (``X-Hermes-Session-Key`` →
+        ``gateway_session_key`` → ``user_id``) looks one up mid-conversation.
+        Never overwrites inferred traits — see UserModelStore.seed_from_registration.
+        """
+        auth_err = self._check_auth(request)
+        if auth_err:
+            return auth_err
+
+        try:
+            body = await request.json()
+        except (json.JSONDecodeError, Exception):
+            return web.json_response(
+                {"error": {"message": "Invalid JSON in request body"}}, status=400
+            )
+
+        user_id = str(body.get("user_id") or "").strip()
+        if not user_id:
+            return web.json_response(
+                {"error": {"message": "Missing 'user_id'"}}, status=400
+            )
+        profile = body.get("profile")
+        if not isinstance(profile, dict):
+            profile = {}
+
+        try:
+            from hermes_cli.config import get_hermes_home
+            from plugins.memory.user_model.store import UserModelStore
+
+            store = UserModelStore(hermes_home=str(get_hermes_home()))
+            store.seed_from_registration(user_id, profile)
+        except Exception:
+            logger.exception("user-model seed failed for user_id=%r", user_id)
+            return web.json_response({"error": {"message": "Seed failed"}}, status=500)
+
+        return web.json_response({"ok": True})
+
     async def _handle_chat_completions(self, request: "web.Request") -> "web.Response":
         """POST /v1/chat/completions — OpenAI Chat Completions format."""
         auth_err = self._check_auth(request)
@@ -2716,6 +2759,20 @@ class APIServerAdapter(BasePlatformAdapter):
                 conversation_history=conversation_history,
                 task_id=effective_task_id,
             )
+            # Every api_server request builds its own throwaway AIAgent (see
+            # _create_agent() above), so — same as ShouldI's internal_rpc.py
+            # per-turn subprocess — the natural session boundary for memory
+            # providers is "this request is done, the agent is about to be
+            # discarded". Without this, on_session_end() is never called from
+            # anywhere in the codebase and inferred_json/signal_vocab stay
+            # empty forever regardless of how the request got here.
+            # UserModelInferrer throttles the expensive part itself
+            # (MIN_TURNS=3, 1h cooldown), so calling this every request is
+            # cheap. Runs inside this executor thread, not the event loop.
+            try:
+                agent.shutdown_memory_provider(messages=result.get("messages", []))
+            except Exception:
+                pass
             usage = {
                 "input_tokens": getattr(agent, "session_prompt_tokens", 0) or 0,
                 "output_tokens": getattr(agent, "session_completion_tokens", 0) or 0,
@@ -3340,6 +3397,7 @@ class APIServerAdapter(BasePlatformAdapter):
             self._app.router.add_get("/v1/health", self._handle_health)
             self._app.router.add_get("/v1/models", self._handle_models)
             self._app.router.add_get("/v1/capabilities", self._handle_capabilities)
+            self._app.router.add_post("/v1/user-model/seed", self._handle_user_model_seed)
             self._app.router.add_post("/v1/chat/completions", self._handle_chat_completions)
             self._app.router.add_post("/v1/responses", self._handle_responses)
             self._app.router.add_get("/v1/responses/{response_id}", self._handle_get_response)

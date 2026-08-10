@@ -2,7 +2,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { createUser, getUserByPhone, getUserById, updatePasswordHash } from './db.js';
+import { createUser, getUserByPhone, getUserById, incrementTokenVersion, updatePasswordHash } from './db.js';
 
 const JWT_SECRET = process.env.JWT_SECRET?.trim() || 'change-me-local-dev';
 const JWT_EXPIRES_IN = '30d';
@@ -21,8 +21,11 @@ function normalizePhone(phone: string): string | null {
   return trimmed;
 }
 
-function issueToken(userId: string): string {
-  return jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+/** tv (token_version) is embedded so verifyAuthHeader can reject tokens issued
+ * before the account's last password change, instead of trusting a valid
+ * signature alone for the full 30-day lifetime. */
+function issueToken(userId: string, tokenVersion: number): string {
+  return jwt.sign({ sub: userId, tv: tokenVersion }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 }
 
 export function signUp(phoneRaw: string, password: string): AuthResult {
@@ -33,7 +36,7 @@ export function signUp(phoneRaw: string, password: string): AuthResult {
 
   const passwordHash = bcrypt.hashSync(password, BCRYPT_ROUNDS);
   const user = createUser(phone, passwordHash);
-  return { ok: true, userId: user.id, token: issueToken(user.id) };
+  return { ok: true, userId: user.id, token: issueToken(user.id, user.token_version) };
 }
 
 export function signIn(phoneRaw: string, password: string): AuthResult {
@@ -43,7 +46,7 @@ export function signIn(phoneRaw: string, password: string): AuthResult {
   if (!user || !bcrypt.compareSync(password, user.password_hash)) {
     return { ok: false, reason: 'INVALID_CREDENTIALS' };
   }
-  return { ok: true, userId: user.id, token: issueToken(user.id) };
+  return { ok: true, userId: user.id, token: issueToken(user.id, user.token_version) };
 }
 
 export type ChangePasswordResult =
@@ -64,6 +67,10 @@ export function changePassword(
   if (newPassword.length < MIN_PASSWORD_LENGTH) return { ok: false, reason: 'WEAK_PASSWORD' };
 
   updatePasswordHash(userId, bcrypt.hashSync(newPassword, BCRYPT_ROUNDS));
+  // Invalidates every token issued before this point (including a stolen
+  // one an attacker might be holding) — the whole reason someone changes
+  // their password after suspecting unauthorized access.
+  incrementTokenVersion(userId);
   return { ok: true };
 }
 
@@ -76,9 +83,17 @@ export function verifyAuthHeader(authorization: string | undefined): string | nu
   try {
     const payload = jwt.verify(token, JWT_SECRET);
     const sub = typeof payload === 'object' && payload !== null ? payload.sub : null;
+    const tv = typeof payload === 'object' && payload !== null ? payload.tv : null;
     if (typeof sub !== 'string' || !sub) return null;
     // Confirm the user still exists (covers deleted accounts / stale tokens).
-    return getUserById(sub) ? sub : null;
+    const user = getUserById(sub);
+    if (!user) return null;
+    // A valid signature only proves the token was legitimately issued at
+    // some point — not that it's still current. Tokens issued before the
+    // account's last password change carry a stale tv and must be rejected
+    // even though they haven't hit their 30-day expiry yet.
+    if (typeof tv !== 'number' || tv !== user.token_version) return null;
+    return sub;
   } catch {
     return null;
   }

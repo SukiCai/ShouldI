@@ -48,7 +48,10 @@ class UserModelProvider(MemoryProvider):
         return True  # Local SQLite — always available
 
     def initialize(self, session_id: str, **kwargs) -> None:
-        self._user_id = kwargs.get("user_id", "") or ""
+        # api_server (ShouldI's gateway path) only supplies gateway_session_key
+        # (from X-Hermes-Session-Key), not user_id — fall back to it so each
+        # ShouldI account still gets its own isolated long-term memory row.
+        self._user_id = kwargs.get("user_id") or kwargs.get("gateway_session_key") or ""
         hermes_home = kwargs["hermes_home"]
 
         self._store = UserModelStore(hermes_home=hermes_home)

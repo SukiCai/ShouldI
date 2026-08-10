@@ -358,6 +358,7 @@ export type ViewerMeResponse = z.infer<typeof ViewerMeResponseSchema>;
 /** Canonical artifact produced by a completed decision flow. */
 export const DecisionRecordSchema = z.object({
   id: z.string(),
+  userId: z.string(),
   sessionId: z.string().nullable().optional(),
   question: z.string(),
   category: DecisionCategorySchema.optional(),

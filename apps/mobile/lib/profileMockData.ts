@@ -173,6 +173,7 @@ const DEMO_NOW = Date.UTC(2026, 6, 10, 12, 0, 0);
 export const PROFILE_DEMO_DECISIONS: DecisionRecord[] = [
   {
     id: 'mock-stripe-offer',
+    userId: 'mock-demo-user',
     question: 'Job offer at Stripe',
     category: 'career',
     recommendation: 'Negotiate scope, then accept if the role matches your growth goals.',
@@ -186,6 +187,7 @@ export const PROFILE_DEMO_DECISIONS: DecisionRecord[] = [
   },
   {
     id: 'mock-grad-school',
+    userId: 'mock-demo-user',
     question: 'Apply to grad school?',
     category: 'career',
     recommendation: 'Apply to two programs and defer until you finish your current project.',
@@ -198,6 +200,7 @@ export const PROFILE_DEMO_DECISIONS: DecisionRecord[] = [
   },
   {
     id: 'mock-nyc-move',
+    userId: 'mock-demo-user',
     question: 'Move back to NYC?',
     category: 'life',
     recommendation: 'Stay put for six months, then reassess with clearer job constraints.',
@@ -211,6 +214,7 @@ export const PROFILE_DEMO_DECISIONS: DecisionRecord[] = [
   },
   {
     id: 'mock-index-funds',
+    userId: 'mock-demo-user',
     question: 'Invest more in index funds?',
     category: 'money',
     recommendation: 'Increase monthly contributions by a modest fixed amount.',

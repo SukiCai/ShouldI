@@ -30,6 +30,14 @@ export class CouncilLockedError extends Error {
   }
 }
 
+export class SessionAccessDeniedError extends Error {
+  readonly code = 'SESSION_ACCESS_DENIED' as const;
+  constructor(message = 'This session belongs to a different account.') {
+    super(message);
+    this.name = 'SessionAccessDeniedError';
+  }
+}
+
 import {
   expertById,
   expertBySkillName,
@@ -44,6 +52,7 @@ import {
   discoveredExpertIdsForUser,
   recordExpertDiscoveries,
 } from './expert-discovery.js';
+import { getSessionRow, listSessionRowsForUser, saveSessionRow } from './db.js';
 import {
   hermesChatCompletion,
   isHermesAgentLive,
@@ -269,7 +278,48 @@ type DecisionPlaybook = {
   transitions: Partial<Record<string, string>>;
 };
 
-const STORE = new Map<string, Session>();
+function loadSession(id: string): Session | null {
+  return getSessionRow<Session>(id) ?? null;
+}
+
+function persistSession(session: Session): void {
+  saveSessionRow<Session>(session.id, session.userId, session.updatedAt, session);
+}
+
+function loadRecentSessions(userId: string, limit: number): Session[] {
+  return listSessionRowsForUser<Session>(userId, limit);
+}
+
+// Per-session async mutex. handleInterviewTurn's load→mutate→persist cycle
+// has a real await gap in the middle (the LLM call) — without this, two
+// concurrent turns on the same session both load the same pre-mutation
+// state, and whichever finishes last silently overwrites the other's
+// changes (a classic lost-update race; confirmed via a real concurrent-turn
+// test, see docs/engineering/user-account-isolation-test-plan.md, item C1).
+// Keyed by sessionId only — different sessions never block each other.
+const sessionLocks = new Map<string, Promise<unknown>>();
+
+function withSessionLock<T>(sessionId: string, fn: () => Promise<T>): Promise<T> {
+  const prior = sessionLocks.get(sessionId) ?? Promise.resolve();
+  // Run fn after prior settles either way, so one failed turn doesn't
+  // permanently jam the queue for this session.
+  const result = prior.then(fn, fn);
+  // Swallow the outcome for queue-chaining purposes only — the real
+  // success/failure still propagates to the caller via `result`.
+  const queued = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  sessionLocks.set(sessionId, queued);
+  queued.finally(() => {
+    // Only clear the entry if nobody queued behind us in the meantime —
+    // otherwise this would delete the NEXT caller's lock out from under it.
+    if (sessionLocks.get(sessionId) === queued) {
+      sessionLocks.delete(sessionId);
+    }
+  });
+  return result;
+}
 
 const CHOICE_STEPS = [
   {
@@ -1011,6 +1061,7 @@ async function askHermesForNextChoice(
 ): Promise<{ assistantText: string; choicePrompt: DecideInterviewChoicePrompt }> {
   const result = await hermesChatCompletion({
     sessionId: session.id,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_CHOICE_SYSTEM_PROMPT },
       {
@@ -1244,6 +1295,7 @@ async function routeExpertsForTurn(
       }));
     const result = await hermesChatCompletion({
       sessionId: `${session.id}:router`,
+      sessionKey: viewerUserId(session),
       messages: [
         { role: 'system', content: HARMENCE_EXPERT_ROUTER_PROMPT },
         {
@@ -1414,6 +1466,8 @@ async function runPsychAnalysis(session: Session): Promise<void> {
   }
   try {
     const result = await hermesChatCompletion({
+      sessionId: `${session.id}:psych-analyst`,
+      sessionKey: viewerUserId(session),
       messages: [
         { role: 'system', content: HARMENCE_PSYCH_ANALYST_PROMPT },
         {
@@ -1533,6 +1587,7 @@ async function askSmartTalkForNextChoice(
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:smart-talk`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: systemPrompt },
       {
@@ -1877,6 +1932,7 @@ async function askHermesForFinal(session: Session): Promise<{
 
   const result = await hermesChatCompletion({
     sessionId: session.id,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_FINAL_SYSTEM_PROMPT },
       {
@@ -1942,6 +1998,7 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:expert-final`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_EXPERT_FINAL_PROMPT },
       {
@@ -2004,6 +2061,7 @@ async function askExpertIndividualVerdict(
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:expert-verdict:${expert.id}`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_EXPERT_INDIVIDUAL_FINAL_PROMPT },
       {
@@ -2145,6 +2203,7 @@ async function askSmartTalkComplexFinal(
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:smart-talk-synthesis`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_SMART_TALK_SYNTHESIS_PROMPT },
       {
@@ -2223,21 +2282,25 @@ async function askSmartTalkComplexFinal(
   };
 }
 
-export function listInterviewSessions(limit = 60): Session[] {
-  return Array.from(STORE.values())
-    .sort((a, b) => b.updatedAt - a.updatedAt)
-    .slice(0, limit);
+export function listInterviewSessions(userId: string, limit = 60): Session[] {
+  return loadRecentSessions(userId, limit);
 }
 
-export function getInterviewSession(id: string): Session | null {
-  return STORE.get(id) ?? null;
+/** Returns null both when the session doesn't exist AND when it belongs to
+ * a different account — the caller (index.ts) maps either to 404, so a
+ * mismatched owner never leaks "this session exists" via a different status
+ * code. */
+export function getInterviewSession(id: string, userId: string): Session | null {
+  const session = loadSession(id);
+  if (!session || session.userId !== userId) return null;
+  return session;
 }
 
-export function summarizeSessionsForMobile(): {
+export function summarizeSessionsForMobile(userId: string): {
   sessions: { id: string; preview: string; updatedAt: number; messageCount: number }[];
 } {
   return {
-    sessions: listInterviewSessions().map((s) => ({
+    sessions: listInterviewSessions(userId).map((s) => ({
       id: s.id,
       preview: pickPreview(s.bubbles),
       updatedAt: s.updatedAt,
@@ -2246,7 +2309,7 @@ export function summarizeSessionsForMobile(): {
   };
 }
 
-export async function summarizeSessionDetail(id: string): Promise<{
+export async function summarizeSessionDetail(id: string, userId: string): Promise<{
   id: string;
   updatedAt: number;
   bubbles: DecideInterviewBubble[];
@@ -2259,8 +2322,8 @@ export async function summarizeSessionDetail(id: string): Promise<{
   choicePrompt?: DecideInterviewChoicePrompt;
   finalDecision?: DecideInterviewFinalDecision;
 } | null> {
-  const session = STORE.get(id);
-  if (!session) return null;
+  const session = loadSession(id);
+  if (!session || session.userId !== userId) return null;
   const hermesIntegrated = await hermesIntegratedFlag();
 
   const phase = session.lastPrompt?.id ?? (session.isComplete ? 'complete' : 'opening');
@@ -2310,7 +2373,10 @@ function selectedAnswerFromPrompt(
   };
 }
 
-/** Drive one conversational turn (+ optional bootstrap with empty body). */
+/** Drive one conversational turn (+ optional bootstrap with empty body).
+ * Serialized per sessionId (see withSessionLock) — a brand-new session
+ * (no sessionId yet) needs no lock since nothing else can know its
+ * about-to-be-generated id. */
 export async function handleInterviewTurn(
   sessionId: string | undefined | null,
   userTextRaw: string,
@@ -2319,10 +2385,32 @@ export async function handleInterviewTurn(
   councilUnlock?: 'premium' | 'points',
   userId?: string | null,
 ): Promise<DecideInterviewTurnResponse> {
+  const run = () =>
+    runInterviewTurn(sessionId, userTextRaw, selectedOptionId, requestedMode, councilUnlock, userId);
+  return sessionId ? withSessionLock(sessionId, run) : run();
+}
+
+async function runInterviewTurn(
+  sessionId: string | undefined | null,
+  userTextRaw: string,
+  selectedOptionId?: string,
+  requestedMode?: 'single' | 'complex',
+  councilUnlock?: 'premium' | 'points',
+  userId?: string | null,
+): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
-  let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
+  let session: Session | null = sessionId ? loadSession(sessionId) : null;
   let created = false;
   const userText = (userTextRaw ?? '').trim();
+
+  // Sessions are only ever continuable by the exact identity that owns them
+  // (a real userId, or the literal 'anonymous-local' for unauthenticated
+  // callers). Without this, any caller who knows/guesses a sessionId could
+  // read and continue someone else's private conversation — sessionId is a
+  // random UUID, not a secret, so this check is load-bearing, not optional.
+  if (session && session.userId !== (userId ?? 'anonymous-local')) {
+    throw new SessionAccessDeniedError();
+  }
 
   if (!session) {
     if (sessionId) {
@@ -2343,11 +2431,17 @@ export async function handleInterviewTurn(
       mode,
       smartTalkState: defaultSmartTalkState(),
     };
-    STORE.set(session.id, session);
     session.bubbles.push(bubble('assistant', OPEN_GREETING));
     created = true;
   }
 
+  try {
+    return await runTurn(session);
+  } finally {
+    persistSession(session);
+  }
+
+  async function runTurn(session: Session): Promise<DecideInterviewTurnResponse> {
   session.updatedAt = Date.now();
   if (userId && !session.userId) session.userId = userId;
   // Backward-compat: sessions created before mode/smartTalkState were added
@@ -2561,4 +2655,5 @@ export async function handleInterviewTurn(
     previewCard,
     almostReady: choicePrompt && session.smartTalkState.ambiguity <= 0.35 ? true : undefined,
   });
+  }
 }
