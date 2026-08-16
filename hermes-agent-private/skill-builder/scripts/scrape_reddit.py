@@ -54,6 +54,14 @@ SKILL_SUBREDDITS: dict[str, list[str]] = {
         "f1visa", "cscareerquestions", "ImmigrationIndia",
         "ImmigrationCanada", "cscareerquestionsCAD",
     ],
+    # Deliberately excludes crisis/support subreddits (e.g. survivinginfidelity,
+    # domesticviolence) — scraping real posts from people in acute distress as
+    # training corpus is an ethical judgment call, not just a coverage gap.
+    # Safety/abuse-tier content should come from official orgs (thehotline.org,
+    # apa.org) and clinical literature instead. See WORKFLOW notes for this skill.
+    "relationship-decision": [
+        "relationship_advice", "relationships", "BreakUps",
+    ],
 }
 
 # Regions implied by each subreddit — used to tag output files for extract.py

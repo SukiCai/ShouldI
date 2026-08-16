@@ -804,6 +804,53 @@ function escapeRawControlCharsInStrings(text: string): string {
   return result;
 }
 
+/**
+ * Repairs unescaped `"` characters that appear *inside* a JSON string value —
+ * e.g. reasoning text that quotes a phrase with a plain double quote instead
+ * of escaping it: `"reasoning":"...用户对"必须跳槽"这套叙事..."`. A closing quote
+ * is only legitimate if the next non-whitespace character is a JSON
+ * structural character (`,` `}` `]` `:`) or end of input; anything else means
+ * the quote is *inside* the string and needs escaping instead of ending it.
+ */
+function escapeStrayQuotesInStrings(text: string): string {
+  let result = '';
+  let inString = false;
+  let escaped = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i]!;
+    if (!inString) {
+      if (ch === '"') inString = true;
+      result += ch;
+      continue;
+    }
+    if (escaped) {
+      result += ch;
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      result += ch;
+      escaped = true;
+      continue;
+    }
+    if (ch === '"') {
+      let j = i + 1;
+      while (j < text.length && /\s/.test(text[j]!)) j++;
+      const next: string | undefined = text[j];
+      const isRealClose = next === undefined || ',}]:'.includes(next);
+      if (isRealClose) {
+        inString = false;
+        result += ch;
+      } else {
+        result += '\\"';
+      }
+      continue;
+    }
+    result += ch;
+  }
+  return result;
+}
+
 function extractJsonObject(text: string): unknown | null {
   const trimmed = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
   const start = trimmed.indexOf('{');
@@ -812,16 +859,24 @@ function extractJsonObject(text: string): unknown | null {
   if (start !== -1 && end !== -1 && end > start) {
     candidates.push(trimmed.slice(start, end + 1));
   }
+  // Ordered from least to most aggressive repair — stop at the first that parses.
+  const repairs: [string, (s: string) => string][] = [
+    ['none', (s) => s],
+    ['control-chars', escapeRawControlCharsInStrings],
+    ['stray-quotes', escapeStrayQuotesInStrings],
+    ['control-chars+stray-quotes', (s) => escapeRawControlCharsInStrings(escapeStrayQuotesInStrings(s))],
+  ];
   for (const candidate of candidates) {
-    try {
-      return JSON.parse(candidate);
-    } catch {
-      // fall through to the repair attempt below
-    }
-    try {
-      return JSON.parse(escapeRawControlCharsInStrings(candidate));
-    } catch {
-      // try the next candidate, if any
+    for (const [label, repair] of repairs) {
+      try {
+        const parsed = JSON.parse(repair(candidate));
+        if (label !== 'none') {
+          console.log(`[extractJsonObject] parsed only after repair: ${label}`);
+        }
+        return parsed;
+      } catch {
+        // try the next repair, if any
+      }
     }
   }
   return null;
@@ -2095,6 +2150,14 @@ async function askExpertIndividualVerdict(
   if (!raw) {
     console.log(`[expert-verdict:${expert.id}] extractJsonObject returned null`);
     return fallbackVerdict;
+  }
+
+  if (typeof raw.verdictLine !== 'string' || typeof raw.reasoning !== 'string') {
+    console.log(
+      `[expert-verdict:${expert.id}] parsed JSON but missing/invalid field(s) — ` +
+        `verdictLine=${typeof raw.verdictLine} reasoning=${typeof raw.reasoning}; raw:`,
+      raw,
+    );
   }
 
   const validConfidences = ['low', 'medium', 'high'] as const;

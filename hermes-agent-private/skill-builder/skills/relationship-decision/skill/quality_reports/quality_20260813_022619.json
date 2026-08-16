@@ -1,0 +1,51 @@
+{
+  "skill_name": "Relationship Decision Expert",
+  "overall_score": 4.3,
+  "summary": "A genuinely strong skill that combines evidence-based relationship science (Gottman, attachment theory) with concrete jurisdiction-specific legal mechanics — a rare and useful pairing. Its greatest strength is treating abuse screening as a categorical gate rather than a factor, and its willingness to name specific facts (BC 2 years, Ontario zero, California §3011's six factors). Some heuristics repeat conceptual ground and the 'four situations' classification could be more operationally decisive.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 4,
+    "diagnostic_questions": 4,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The opening framing is genuinely counterintuitive and expert: 'A moment of \"I finally see it clearly\" — whether the vision is stay or leave — is a data point about attachment state, not about the relationship.' This directly attacks the naive frame most people bring.",
+    "Categorical treatment of abuse screening as a gate ('One or two abuse indicators exits the framework entirely') with the specific 12-indicator enumeration and three contact modes for the hotline is operationally rigorous — not the usual 'if you feel unsafe, get help' hedge.",
+    "Jurisdiction specificity is excellent and non-obvious: 'BC grants unmarried couples near-married property rights after 2 years; Ontario grants none regardless of duration' and the community-property state list are checkable facts that immediately outperform generic 'consult a lawyer' advice.",
+    "Hidden tradeoffs table is genuinely non-obvious — 'Cohabiting in BC past 2 years without written opt-out' and 'Monitoring/location-sharing as ongoing trust mechanism creates structure requiring permanent surveillance' are things people don't see coming."
+  ],
+  "weaknesses": [
+    "The 'four situations' classifier (abuse / broken / depleted / attachment-distorted) is conceptually clean but underspecified operationally — for 'depleted' vs. 'broken' vs. 'attachment-distorted' the diagnostic criteria overlap and there's no decision procedure for ambiguous cases where contempt is mild but stressor is real.",
+    "Heuristics 1, 3, 4, and 9 partially restate what's already in Expert Framing and Failure Patterns — some consolidation would sharpen the skill.",
+    "Legal coverage is uneven: US community property and CA/Canada details are strong, but equitable distribution states get one sentence, spousal support/alimony frameworks are absent, and the interaction between separation date and property valuation (major in both jurisdictions) is unaddressed.",
+    "Trust-rebuild criteria ('contact ceased, voluntary transparency, proactive disclosure') are good but presented as a checklist without a time frame or a threshold for how consistent behavior needs to be — a novice could still misapply this."
+  ],
+  "improvement_suggestions": [
+    "Add a concrete decision procedure for the four-situation classifier: e.g., a short branching flow (Is contempt entrenched AND repair attempts fail? → broken. External stressor within 12 months AND no contempt AND no betrayal? → depleted. Cycle of pursuit-withdrawal with sudden certainty swings? → attachment-distorted). Right now the classes are described but not operationally distinguished.",
+    "Add a section on spousal support/alimony and separation-date valuation — these are the two legal facts most commonly missed by people mid-decision, and they materially change 'can I afford to leave?' calculations.",
+    "Add a heuristic on time-frame for trust rebuild evaluation: e.g., 'behavioral evidence must sustain across at least one high-stress period and one triggering anniversary/context, not just calm months.' Otherwise the checklist can be gamed short-term.",
+    "Consider adding a diagnostic for 'reactive abuse' / mutual escalation — a common confound where the framework's abuse gate could either falsely trip or falsely acquit. Currently the 12 indicators are presented as if attribution is always clean.",
+    "Merge overlapping heuristics (1 with the framing paragraph on attachment noise; 9 with the failure pattern on setbacks) to reduce redundancy and make each heuristic add distinct signal."
+  ],
+  "generic_advice_flags": [
+    "'Sample across states before deciding' is directionally correct but 'at least three time-points including one calm and one stressed period' is arbitrary and unenforceable in a real conversation — the AI can't verify time-points. It would be stronger as a diagnostic question: 'Has this assessment held during a calm period, or only after a bad interaction?'",
+    "'Depleted relationship — deterioration tracks an external stressor; no betrayal or contempt; conflict is exhaustion, not attack' — 'exhaustion, not attack' is evocative but not a criterion an AI can actually apply without more concrete markers (tone, frequency of contempt-indicators, presence of stonewalling)."
+  ],
+  "missing_coverage": [
+    "Spousal support / alimony frameworks (both US state variation and Canadian Spousal Support Advisory Guidelines) — a major driver of 'how do I leave' decisions.",
+    "Prenuptial and cohabitation agreements — when they hold, when they don't, and the BC opt-out mechanism referenced only in the tradeoffs table.",
+    "Sexless / low-desire relationships as a distinct category — a very common presenting question that doesn't cleanly fit into any of the four situations.",
+    "Reactive abuse and mutual-escalation dynamics — the abuse gate assumes clean attribution.",
+    "Cultural/religious constraints on divorce (get refusal, religious annulment, family pressure) that materially affect the 'how to leave' path.",
+    "The role of individual vs. couples therapy sequencing — when couples therapy is contraindicated (e.g., active abuse, active affair) is a well-established professional standard that's not mentioned."
+  ],
+  "location_precheck": {
+    "required": true,
+    "ok": true,
+    "issues": []
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "source_file": "domestic_abuse_warning_signs_thehotline.txt",
+  "heuristics": [
+    {
+      "rule": "One or two abuse indicators is sufficient to exit the standard relationship-decision framework entirely",
+      "condition": "When any of the 12 enumerated warning signs surface during a relationship-decision conversation...",
+      "action": "...stop the standard repairability diagnostic and redirect immediately to the National Domestic Violence Hotline (1-800-799-SAFE, text START to 88788, or live chat at thehotline.org)",
+      "because": "The source explicitly states that even one or two behaviors constitute a red flag that abuse may be present; continuing to run a 'repairable vs. not' analysis normalizes active abuse as a garden-variety relationship problem"
+    },
+    {
+      "rule": "Abuse warning signs are a categorical override, not additional data points to weigh",
+      "condition": "When a practitioner is midway through a repairability or trust-repair conversation and an abuse indicator emerges...",
+      "action": "...treat the indicator as a hard stop rather than a factor to balance against positive relationship qualities",
+      "because": "Framing abuse behaviors as variables in a cost-benefit analysis implicitly suggests they are negotiable; the source architecture treats them as a boundary that precedes the decision framework, not inputs into it"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Presence of any enumerated abuse behavior",
+      "why_it_matters": "Even a single confirmed behavior from the canonical 12-item list changes the decision context from 'repair vs. leave' to 'safety first'; the entire decision calculus shifts",
+      "how_to_assess": "Screen explicitly for each of the 12 behaviors: criticism/nothing-right framing, extreme jealousy, isolation from support networks, emotional abuse/public shaming, decision control over work or education, financial control or withholding, sexual coercion, substance pressure, intimidation through looks or actions, threats toward children or pets, weapon intimidation, property destruction",
+      "weight": "high"
+    },
+    {
+      "factor": "Access to crisis resources",
+      "why_it_matters": "A person who does not know the hotline exists, or believes their situation does not qualify, may not act even after recognizing warning signs",
+      "how_to_assess": "Confirm whether the person is aware of and able to safely access the hotline (phone, text, or chat options exist because some access modes are safer than others in monitored households)",
+      "weight": "high"
+    },
+    {
+      "factor": "Threshold awareness — knowing that frequency or severity do not have to be extreme before the label applies",
+      "why_it_matters": "People in abusive relationships frequently minimize by comparing to 'worse' cases; the source's explicit one-or-two threshold directly counters this minimization",
+      "how_to_assess": "Ask whether the person believes their situation 'counts' as abuse; if they are using frequency or severity as disqualifiers, the threshold heuristic needs to be surfaced explicitly",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Continuing a standard relationship-repair framework when abuse indicators are present",
+      "unstated_consequence": "The framing itself signals that the behaviors are problems to be solved collaboratively, which can increase the person's sense of responsibility for fixing the abuse and delay recognition that safety — not repair — is the priority",
+      "who_it_affects": "People who are already minimizing or self-blaming, which is disproportionately common in abuse dynamics"
+    },
+    {
+      "choice": "Relying solely on phone contact to reach the hotline",
+      "unstated_consequence": "In households where an abusive partner monitors calls, phone contact may not be safe; the text and live-chat options exist precisely because different access modes carry different risk levels",
+      "who_it_affects": "People living with the abusive partner, particularly those in financially controlled or isolated situations with limited independent device access"
+    },
+    {
+      "choice": "Waiting to see if a behavior repeats before treating it as a warning sign",
+      "unstated_consequence": "The source's threshold explicitly does not require pattern establishment — waiting for recurrence delays access to safety planning resources during the window when intervention is most effective",
+      "who_it_affects": "People early in the escalation cycle who have the most mobility and least entrapment"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Treating abuse indicators as inputs into a repairability cost-benefit analysis rather than as a categorical redirect",
+      "why_it_happens": "Standard relationship-decision frameworks are designed for non-abuse contexts; practitioners or individuals trained on those frameworks apply them uniformly without a prior abuse-screening gate",
+      "consequence": "Abuse is normalized as a 'rough patch' or communication problem, the person pursues couples counseling or repair attempts that can increase danger, and professional resource referral is delayed",
+      "warning_signs": [
+        "The conversation is weighing 'good qualities' against concerning behaviors from the 12-item list",
+        "The framing is 'how do we fix this' rather than 'are you safe right now'"
+      ]
+    },
+    {
+      "pattern": "Requiring multiple or severe instances before applying the abuse label",
+      "why_it_happens": "Cultural narratives about abuse emphasize extreme physical violence; subtler control behaviors (financial withholding, isolation, intimidation through looks) are not recognized as meeting the threshold",
+      "consequence": "The person does not access hotline or safety planning resources until the situation has escalated significantly",
+      "warning_signs": [
+        "Person says 'it's not that bad' or 'it only happened once'",
+        "Conversation focuses on severity or frequency rather than presence of the behavior"
+      ]
+    },
+    {
+      "pattern": "Omitting the text and chat referral options when directing someone to the hotline",
+      "why_it_happens": "The phone number (1-800-799-SAFE) is the most widely known contact method; text (START to 88788) and live chat are less frequently surfaced",
+      "consequence": "People in monitored or unsafe-to-call environments have no actionable path even after receiving the referral",
+      "warning_signs": [
+        "Person expresses that they cannot make calls privately",
+        "Financial or device control has been identified as a present warning sign"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has your partner ever told you that you never do anything right, used demeaning language toward you, or publicly humiliated you?",
+      "what_it_reveals": "Screens for warning signs 1 and 4 (criticism and emotional abuse); these are often the earliest and most normalized indicators",
+      "follow_up_if_yes": "Stop standard framework; surface the one-or-two threshold explicitly and provide hotline referral with all three contact options",
+      "follow_up_if_no": "Continue screening for remaining 10 warning signs before proceeding to standard repairability framework"
+    },
+    {
+      "question": "Has your partner tried to limit your contact with friends or family, or made you feel you needed permission to see people?",
+      "what_it_reveals": "Screens for warning sign 3 (isolation); isolation is a key mechanism that reduces access to support and increases dependency",
+      "follow_up_if_yes": "Stop standard framework; note that isolation may already be limiting the person's ability to safely access resources — address safe contact mode before referral",
+      "follow_up_if_no": "Continue screening for remaining warning signs"
+    },
+    {
+      "question": "Has your partner controlled money in the household without consulting you, or withheld funds you needed?",
+      "what_it_reveals": "Screens for warning sign 6 (financial control); financial control affects both current safety planning and the person's perceived ability to leave",
+      "follow_up_if_yes": "Stop standard framework; financial control intersects with safety planning — hotline's Plan for Safety tools are specifically relevant here",
+      "follow_up_if_no": "Continue screening for remaining warning signs"
+    },
+    {
+      "question": "Have you ever felt afraid of your partner because of a look, a gesture, damage to property, or a threat — even if they never physically harmed you?",
+      "what_it_reveals": "Screens for warning signs 9, 11, and 12 (intimidation, weapon intimidation, property destruction); surfaces the non-physical abuse behaviors that are most frequently minimized",
+      "follow_up_if_yes": "Stop standard framework; validate that non-physical fear-inducing behavior meets the threshold and provide full hotline referral",
+      "follow_up_if_no": "Continue screening; also screens implicitly for whether the person's threshold for 'abuse' is anchored only to physical harm"
+    },
+    {
+      "question": "Do you believe your situation 'counts' as abuse, or does it feel like it's not serious enough to reach out for help?",
+      "what_it_reveals": "Reveals whether minimization or comparative severity thinking is blocking access to resources even when warning signs have already been identified",
+      "follow_up_if_yes": "Confirm the one-or-two threshold from the source explicitly; proceed to referral",
+      "follow_up_if_no": "Explore what the person believes the threshold for 'real' abuse is; address the gap between their threshold and the source's explicit standard"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Abuse is identifiable primarily by physical violence, and non-physical behaviors only count if they are frequent or severe",
+      "actual_reality": "The canonical clinical and hotline framework explicitly includes non-physical behaviors (jealousy, isolation, financial control, intimidation, substance pressure, decision control) and sets the threshold at one or two present behaviors regardless of severity or frequency",
+      "implication": "Any relationship-decision screening process must include a prior gate for the full 12-item list before applying a repairability framework; anchoring to physical harm alone will systematically miss cases that meet the abuse threshold"
+    },
+    {
+      "common_belief": "The hotline is only reachable by phone and is only for people in immediate physical danger",
+      "actual_reality": "The hotline offers phone (1-800-799-SAFE), text (START to 88788), and live chat at thehotline.org, and also provides proactive safety planning tools — not only crisis response",
+      "implication": "Referrals should always include all three contact modes and mention the Plan for Safety tools, because the person's safest access method and urgency level will vary"
+    },
+    {
+      "common_belief": "A relationship-decision framework can be applied universally to any couple considering staying, repairing, or leaving",
+      "actual_reality": "The standard repairability diagnostic is explicitly not appropriate when abuse indicators are present; applying it in that context risks reframing abuse as a mutual communication or compatibility problem",
+      "implication": "Abuse screening must function as a hard prerequisite gate — not a weighted factor — before any repairability or trust-repair conversation begins"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Threshold for abuse recognition",
+      "junior_pattern": "Waits for multiple incidents, physical harm, or the person to self-identify as 'in an abusive relationship' before treating warning signs as abuse-level concerns",
+      "senior_pattern": "Applies the one-or-two behavior threshold from the canonical framework immediately upon surfacing any item from the 12-item list, regardless of frequency, severity, or the person's own label for the relationship",
+      "why_it_matters": "Early-stage or minimized abuse is the window where safety planning is most actionable; waiting for escalation before redirecting costs exactly the time when intervention matters most"
+    },
+    {
+      "dimension": "Framework selection",
+      "junior_pattern": "Applies the same repairability or rough-patch diagnostic uniformly to all relationship-decision conversations, treating concerning behaviors as variables to weigh",
+      "senior_pattern": "Runs a prior abuse-screening gate before selecting which framework to apply; recognizes that abuse indicators are a categorical override that changes the entire conversation architecture",
+      "why_it_matters": "Using the wrong framework does not produce a neutral outcome — it actively normalizes the behavior as a repair problem and can increase danger"
+    },
+    {
+      "dimension": "Referral quality",
+      "junior_pattern": "Provides the phone number only, or provides a generic 'seek help' recommendation without specifying the resource",
+      "senior_pattern": "Provides all three contact modes (phone, text, live chat), names the specific resource (thehotline.org), and mentions the Plan for Safety tools as a proactive option — because the safest access method varies by situation",
+      "why_it_matters": "A referral that cannot be safely acted upon is functionally no referral; matching contact mode to the person's safety constraints is part of the referral, not an optional detail"
+    },
+    {
+      "dimension": "Response to minimization",
+      "junior_pattern": "Accepts the person's own framing that 'it's not that bad' or 'it only happened once' and continues the standard relationship-decision conversation",
+      "senior_pattern": "Recognizes minimization as a predictable feature of abuse dynamics, surfaces the explicit one-or-two threshold from the source to counter it, and does not defer framework selection to the person's self-assessment of severity",
+      "why_it_matters": "Self-minimization is most pronounced in the people who most need the redirect; deferring to it produces systematic under-referral for the highest-risk cases"
+    }
+  ],
+  "_source_type": "authoritative",
+  "_source_weight": 1.2,
+  "_extraction_key": "authoritative_domestic_abuse_warning_signs_thehotline",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

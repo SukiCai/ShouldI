@@ -71,6 +71,8 @@ export const ExploreCardSchema = z.object({
           z.object({
             expertTitle: z.string(),
             verdictLine: z.string(),
+            /** Full per-expert reasoning — shown when a reader taps the expert row to expand it. */
+            reasoning: z.string().optional(),
           }),
         )
         .default([]),

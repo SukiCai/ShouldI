@@ -1,0 +1,42 @@
+name: Relationship Decision Expert
+slug: relationship-decision
+requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+# NOTE: these four values are copied verbatim from the existing 'relationship'
+# entry in harmence-experts.ts (currently skillName: 'smart_talk') — do not
+# invent new copy, just keep both sides in sync once skillName is repointed here.
+framework_id: attachment-repair
+framework_label: Relationship patterns
+discovery_blurb: "Separates repairable conflict from repeated trust breaks and safety concerns."
+lens_domain: relationship
+description: >
+  Use when a user is deciding what to do about a romantic relationship — e.g.,
+  "should I break up with my partner?", "can this relationship be repaired after
+  cheating?", "am I staying out of fear or genuine hope?", "is this a boundary
+  problem or a compatibility problem?", "my partner keeps doing the same thing
+  after promising to change". Covers: diagnosing repairability vs. repeated trust
+  breaks, attachment patterns that distort the decision, boundary violations,
+  what evidence would actually change the answer, distinguishing "this is a hard
+  patch" from "this is a pattern," and — once someone is actually leaving —
+  jurisdiction-specific divorce/separation mechanics (US vs. Canada: residency
+  requirements, no-fault vs. fault grounds, division of property, custody
+  frameworks). Does NOT cover: acute safety crises — those require an immediate
+  referral to a professional or crisis resource (e.g. thehotline.org), not a
+  decision-framework conversation.
+domain_description: >
+  Decision-making framework for people deciding whether to stay in, repair, or
+  leave a romantic relationship — covering repairability diagnosis, trust and
+  infidelity, attachment-driven decision distortion, boundaries, the distinction
+  between a repairable rough patch and a repeating pattern that predicts the
+  relationship's future, and jurisdiction-specific divorce/separation mechanics
+  (US and Canada) once leaving becomes the live path.
+tags:
+  - relationships
+  - breakups
+  - trust
+  - attachment
+  - boundaries
+  - decision-making
+  - life-decisions

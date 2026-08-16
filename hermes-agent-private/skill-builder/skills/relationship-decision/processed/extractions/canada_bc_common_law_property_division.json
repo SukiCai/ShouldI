@@ -1,0 +1,199 @@
+{
+  "source_file": "bc_common_law_property_division.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "2-year cohabitation threshold for statutory property-division rights",
+      "condition": "When an unmarried couple in British Columbia has lived together in a marriage-like relationship for at least two years",
+      "action": "The same property-division rights that apply to married couples under BC's Family Law Act apply to the unmarried couple",
+      "because": "BC's Family Law Act explicitly extends married-couple property-division rights to unmarried couples who meet the 2-year threshold; below two years, no statutory property-division right exists by default",
+      "regulatory_basis": "BC Family Law Act — 2-year marriage-like relationship threshold",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Pre-relationship property stays separate; property acquired during the relationship is shared",
+      "condition": "When the 2-year threshold is met and the couple separates",
+      "action": "Property brought into the relationship by either partner remains that partner's separate property; property acquired together during the relationship is divided",
+      "because": "BC's Family Law Act specifies that common-law partners 'will generally share any property they acquire during the course of their relationship — but not property brought into the relationship'",
+      "regulatory_basis": "BC Family Law Act — family property definition for common-law couples",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Written agreement can opt out of default statutory property-division rules",
+      "condition": "When an unmarried couple in BC does not want the Family Law Act's default property-division rules to apply",
+      "action": "The couple must execute a written agreement contracting out of the statutory default rules",
+      "because": "BC's Family Law Act permits couples to contract out entirely via a written agreement; without such an agreement, the statutory defaults apply automatically once the 2-year threshold is met",
+      "regulatory_basis": "BC Family Law Act — opt-out via written agreement",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Province is a required diagnostic fact for any Canadian unmarried couple considering separation and property division",
+      "condition": "When a Canadian user who is unmarried asks what happens to shared property if they leave a relationship",
+      "action": "Identify the province before answering; BC and Ontario have materially different rules and a generic 'Canada' answer is not valid",
+      "because": "BC grants automatic property-division rights after 2 years of cohabitation; Ontario does not grant automatic property division to common-law couples regardless of duration — province determines whether statutory rights exist at all",
+      "regulatory_basis": "BC Family Law Act vs. Ontario family law framework (province-variance principle)",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Duration of cohabitation in a marriage-like relationship",
+      "why_it_matters": "Determines whether statutory property-division rights under BC's Family Law Act are triggered at all; the threshold is exactly 2 years",
+      "how_to_assess": "Calculate continuous time living together in a marriage-like relationship; if at least 2 years, statutory rights apply; if under 2 years, no default statutory property-division right exists",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether a written opt-out agreement exists",
+      "why_it_matters": "A written agreement can entirely displace the statutory default property-division rules, meaning the Family Law Act's protections may not apply even if the 2-year threshold is met",
+      "how_to_assess": "Determine whether the couple executed a written agreement contracting out of the Family Law Act's default property-division rules prior to or during the relationship",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Timing of asset acquisition — before vs. during the relationship",
+      "why_it_matters": "Pre-relationship assets remain separate and are not subject to division; only assets acquired during the relationship are generally shared",
+      "how_to_assess": "Identify the date each asset was acquired relative to the start of the marriage-like relationship; assets acquired before the relationship began are excluded from division",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Province of residence",
+      "why_it_matters": "Property-division rights for unmarried couples vary dramatically by province; BC grants automatic rights after 2 years, while Ontario does not grant automatic property division to common-law couples regardless of duration",
+      "how_to_assess": "Confirm which Canadian province the couple resides in before applying any property-division analysis; a generic 'Canada' framework is insufficient",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Cohabiting in BC without a written opt-out agreement past the 2-year mark",
+      "unstated_consequence": "Once the 2-year threshold is crossed, the statutory property-division rules of BC's Family Law Act apply automatically and with the same force as they do for married couples — there is no opt-out after the fact without a written agreement executed before or during the relationship",
+      "who_it_affects": "Unmarried partners who assume common-law cohabitation carries no formal property consequences and have not documented their intentions in a written agreement",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relying on a generic 'Canadian common-law' understanding of property rights",
+      "unstated_consequence": "A user in BC has near-equivalent property rights to a married person after 2 years, while a user in Ontario has no automatic statutory property-division right regardless of how long they cohabited — applying the wrong provincial framework produces materially incorrect conclusions about what a departing partner is entitled to",
+      "who_it_affects": "Canadian users in any province other than the one whose rules they are applying, particularly those moving between BC and Ontario or unaware of provincial variance",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Leaving a relationship before the 2-year cohabitation threshold in BC",
+      "unstated_consequence": "Departing before 2 years of marriage-like cohabitation eliminates any statutory property-division claim under BC's Family Law Act; there is no default right to share property acquired during the relationship below that threshold",
+      "who_it_affects": "Partners who contributed financially or materially to a relationship of less than 2 years duration in BC and expect a share of jointly accumulated assets",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Claiming statutory property-division rights in BC after less than 2 years of marriage-like cohabitation",
+      "why_it_happens": "BC's Family Law Act requires at least 2 years of living together in a marriage-like relationship before property-division rights are triggered; below this threshold no statutory right exists by default",
+      "consequence": "No statutory property-division right; claim fails under the Family Law Act",
+      "warning_signs": [
+        "Relationship duration is under 2 years",
+        "No written agreement establishing alternative property arrangements exists"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Attempting to claim a share of a partner's pre-relationship assets at separation",
+      "why_it_happens": "BC's Family Law Act explicitly excludes property brought into the relationship from the pool of family property subject to division; only assets acquired during the relationship are generally shared",
+      "consequence": "Claim to pre-relationship assets fails; those assets remain the separate property of the partner who brought them into the relationship",
+      "warning_signs": [
+        "Asset was owned by one partner before the relationship began",
+        "No written agreement altering the default pre-relationship exclusion"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Applying Ontario common-law property rules to a BC couple or vice versa",
+      "why_it_happens": "Province-specific rules are materially different; BC grants automatic property-division rights after 2 years, Ontario does not grant automatic rights regardless of duration — conflating them produces incorrect outcomes",
+      "consequence": "Materially incorrect assessment of property entitlements, potentially causing a party to forgo or overclaim rights they do or do not have",
+      "warning_signs": [
+        "User or advisor refers to 'Canadian common-law rules' without specifying province",
+        "Analysis does not confirm province before applying property-division framework"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "In which Canadian province does the couple reside or did they reside during the relationship?",
+      "what_it_reveals": "Which provincial property-division framework applies; BC and Ontario have materially different rules for unmarried couples and province is a threshold diagnostic fact",
+      "follow_up_if_yes": "If BC: proceed to assess 2-year cohabitation threshold and written opt-out agreement",
+      "follow_up_if_no": "If not BC: apply the relevant provincial framework; do not apply BC Family Law Act rules",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Have the partners lived together in a marriage-like relationship for at least 2 years?",
+      "what_it_reveals": "Whether the 2-year threshold under BC's Family Law Act is met, which is the gateway condition for any statutory property-division right to exist",
+      "follow_up_if_yes": "Statutory property-division rights under BC's Family Law Act apply unless a written opt-out agreement exists",
+      "follow_up_if_no": "No statutory property-division right exists by default under BC's Family Law Act; assess whether any written agreement creates alternative rights",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Did the couple execute a written agreement contracting out of BC's Family Law Act default property-division rules?",
+      "what_it_reveals": "Whether the statutory defaults have been displaced by private agreement, which entirely removes the Family Law Act's automatic property-division framework",
+      "follow_up_if_yes": "The written agreement governs property division; the Family Law Act defaults do not apply",
+      "follow_up_if_no": "The Family Law Act's default property-division rules apply automatically if the 2-year threshold is met",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Was the asset in question acquired before or during the relationship?",
+      "what_it_reveals": "Whether the asset falls within the 'family property' pool subject to division or is excluded as pre-relationship property",
+      "follow_up_if_yes": "If acquired during the relationship: asset is generally subject to division under BC's Family Law Act",
+      "follow_up_if_no": "If brought into the relationship: asset is excluded from division and remains the separate property of the partner who owned it pre-relationship",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Common-law couples in Canada do not have the same property rights as married couples",
+      "actual_reality": "In British Columbia specifically, unmarried couples who have lived together in a marriage-like relationship for at least 2 years have essentially the same statutory property-division rights as married couples under BC's Family Law Act; this is not true in Ontario, where no automatic property-division right exists for common-law couples regardless of duration",
+      "implication": "A BC common-law partner past the 2-year mark must be advised using the same property-division framework as a married person; assuming no rights exist is factually incorrect under BC law",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Property-division rules for common-law couples are the same across Canada",
+      "actual_reality": "Province determines the applicable rules entirely; BC grants automatic property-division rights after 2 years of marriage-like cohabitation, while Ontario grants no automatic statutory property division to common-law couples regardless of how long they lived together",
+      "implication": "Any advisor or tool answering a Canadian unmarried person's question about property division on separation must obtain the province before applying any framework; a generic 'Canada' answer is not valid",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Before 2013, unmarried BC couples had the same property rights they have today",
+      "actual_reality": "Before 2013, unmarried couples in BC had no statutory right to court-ordered property division at all; the current rights were created by legislative reform reflecting the increasing prevalence of common-law families",
+      "implication": "Advice or case outcomes from before 2013 in BC are not reliable precedent for current statutory rights; the legal landscape changed materially with the Family Law Act reform",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Answering a Canadian unmarried person's property question on separation",
+      "naive_pattern": "Applies a generic 'Canadian common-law' framework or assumes common-law couples have no property rights, without asking for province",
+      "informed_pattern": "Identifies province as the threshold diagnostic fact before any analysis; applies BC Family Law Act framework (2-year threshold, family property definition, written opt-out) for BC residents, and separately identifies that Ontario has no automatic property division for common-law couples",
+      "why_it_matters": "Applying the wrong provincial framework produces materially incorrect conclusions about whether a statutory property-division right exists at all and what assets are in scope",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Assessing whether a BC common-law partner has property rights",
+      "naive_pattern": "Assumes that because the couple is unmarried, property rights are minimal or non-existent regardless of how long they lived together",
+      "informed_pattern": "Checks the 2-year cohabitation threshold first; if met, applies the same property-division analysis as for a married couple under BC's Family Law Act, then checks for a written opt-out agreement that could displace the statutory defaults",
+      "why_it_matters": "A BC common-law partner past 2 years who is not informed of their statutory rights may forfeit entitlements to assets accumulated during the relationship that the Family Law Act would automatically protect",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Advising on the effect of a written cohabitation agreement in BC",
+      "naive_pattern": "Treats a cohabitation agreement as a best-practice nicety but assumes the statutory defaults still apply",
+      "informed_pattern": "Recognizes that a written agreement can entirely contract out of BC's Family Law Act default property-division rules, meaning the statutory framework is fully displaced if such an agreement exists — the agreement, not the Act, governs the outcome",
+      "why_it_matters": "Failing to check for a written opt-out agreement before applying the Family Law Act defaults produces incorrect property-division analysis for couples who have contracted out",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_bc_common_law_property_division",
+  "_source_regions": [
+    "canada"
+  ]
+}

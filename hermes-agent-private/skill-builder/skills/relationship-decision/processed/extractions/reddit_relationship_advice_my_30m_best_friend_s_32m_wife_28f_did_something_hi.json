@@ -1,0 +1,208 @@
+{
+  "source_file": "relationship_advice_my_30m_best_friend_s_32m_wife_28f_did_something_hi.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "When a trusted person in a professional role breaches your confidence once, treat it as a pattern, not a one-time mistake — remove them from your professional life regardless of personal relationship",
+      "condition": "When someone you trusted with sensitive financial or legal information disclosed it to a third party, even if they apologized",
+      "action": "Move your business to a new professional immediately and do not give them access to sensitive information again",
+      "because": "Multiple commenters independently noted that a single breach is evidence of a pattern ('if you catch them it's probably happened before') and the structural incentive to re-offend remains unchanged",
+      "regions": []
+    },
+    {
+      "rule": "Separate the personal relationship decision from the professional reporting decision — they are not the same choice",
+      "condition": "When a friend or friend's spouse commits a professional ethics violation against you",
+      "action": "Evaluate whether to report based on professional harm and ongoing risk, not on whether you want to preserve the friendship",
+      "because": "Commenters consistently distinguished 'do you report to her boss' from 'do you stay friends' as two independent decisions with different criteria",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Ongoing access and structural exposure",
+      "why_it_matters": "If the person who breached your confidence remains in your social network and continues to have incidental access to your financial or legal affairs, the breach will recur — the personal friendship creates a permanent leak channel to your ex",
+      "how_to_assess": "Ask: does this person still interact with my ex? Will they hear about major purchases, travel, or financial decisions through mutual social settings?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Co-parenting relationship damage",
+      "why_it_matters": "Disclosure of inheritance information to a co-parent can permanently alter the power dynamic in custody and financial negotiations, even if the information is legally irrelevant to child support",
+      "how_to_assess": "Has the ex already used the information to make demands or change behavior? Is the co-parenting relationship now adversarial where it was not before?",
+      "weight": "high",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "factor": "Severity of professional violation",
+      "why_it_matters": "Attorney client confidentiality breaches by staff expose the supervising attorney to bar discipline and the firm to liability — the gravity of the violation affects both the ethical weight of reporting and the likely consequence to the firm",
+      "how_to_assess": "Was the disclosed information covered by attorney-client privilege or equivalent professional duty? Did the breach expose the client to financial or legal risk?",
+      "weight": "high",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Choosing not to report the breach to preserve the friendship",
+      "unstated_consequence": "You cannot discuss any significant financial event — travel, home purchase, car, inheritance use — around your friend without risk of it reaching your ex, effectively silencing you in your own friendship indefinitely",
+      "who_it_affects": "Anyone with a contentious co-parenting relationship where financial information can be weaponized",
+      "regions": []
+    },
+    {
+      "choice": "Accepting the apology and moving on without changing professional relationships",
+      "unstated_consequence": "The ex now has a permanent information advantage and a standing grievance she can use to pressure child support arrangements or undermine the co-parenting dynamic for years",
+      "who_it_affects": "Non-custodial parents who pay child support and have significantly higher income than their ex",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Conflating personal loyalty with professional trust — assuming a good friend will also be a trustworthy professional handler of your sensitive information",
+      "why_it_happens": "Social proximity creates an illusion of aligned interests; people assume someone who cares about them personally will protect them professionally, ignoring that the friend also has competing loyalties to the OP's ex",
+      "consequence": "Sensitive legal and financial information was disclosed to an adversarial third party, permanently altering a co-parenting dynamic and creating ongoing financial leverage for the ex",
+      "warning_signs": [
+        "The professional contact has a pre-existing close relationship with someone who has adverse interests to you",
+        "You chose this professional specifically because of the personal relationship rather than professional vetting"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Allowing the subject of the complaint to define the stakes of reporting — accepting their framing that reporting equals destruction",
+      "why_it_happens": "Social pressure from the violator and their spouse ('she begged me not to tell her boss') activates guilt and loyalty, obscuring that the OP is the victim, not the perpetrator of harm",
+      "consequence": "OP is positioned as the decision-maker responsible for the violator's career outcome, shifting moral weight away from the person who actually made the choice to breach",
+      "warning_signs": [
+        "The person who wronged you frames your reporting of the wrong as an act of aggression",
+        "You find yourself calculating how to protect someone who harmed you"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Does the person who breached your confidence still have social proximity to the third party they disclosed to?",
+      "what_it_reveals": "Whether the breach was a one-time accident or a structural ongoing leak — if the social connection remains, the risk of future disclosure is high regardless of apology",
+      "follow_up_if_yes": "Assume future disclosures will happen; decide whether to report based on professional harm, not on whether you believe the apology",
+      "follow_up_if_no": "The immediate structural risk is lower, but the professional violation still occurred and may still warrant reporting on its own merits",
+      "regions": []
+    },
+    {
+      "question": "Has the third party who received the disclosed information already acted on it in a way that harms you?",
+      "what_it_reveals": "Whether the breach has already caused concrete damage versus remaining a potential future risk — this affects both the urgency of reporting and the legal/professional remedies available",
+      "follow_up_if_yes": "Document the actions taken by the third party; this becomes relevant if you pursue a bar complaint, civil claim, or seek to renegotiate co-parenting arrangements",
+      "follow_up_if_no": "You still have the option to get ahead of the situation before the information is weaponized further",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "question": "Would you have selected this professional if they had no personal connection to you?",
+      "what_it_reveals": "Whether the choice was driven by professional merit or social convenience — if social convenience, there may be other corners cut in the professional relationship you haven't noticed yet",
+      "follow_up_if_yes": "The breach is a discrete failure; evaluate it on its own terms",
+      "follow_up_if_no": "The entire professional engagement may need to be reviewed, not just the disclosure incident",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Inheritance automatically affects child support obligations, so an ex has a legitimate interest in knowing about it",
+      "actual_reality": "Inheritance is not a marital asset and is not subject to child support calculations as long as it is kept separate — the ex has no legal entitlement to the information and no legal claim on the funds",
+      "implication": "The ex's anger and demands are not legally grounded; OP does not need to disclose inheritance details and the breach caused real harm with no legitimate justification",
+      "regions": [
+        "us"
+      ]
+    },
+    {
+      "common_belief": "A staff member at a law firm disclosing client information is a minor HR issue that the firm can handle quietly",
+      "actual_reality": "Attorney-client confidentiality extends to support staff; a breach by staff exposes the supervising attorney to bar discipline and the firm to civil liability — it is closer in severity to a HIPAA violation than a minor workplace infraction",
+      "implication": "The professional stakes of the breach are significantly higher than the friend framed them; OP has real leverage and the firm has significant exposure, which changes the calculus on whether and how to report",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to frame the reporting decision",
+      "naive_pattern": "Treats reporting as an act of betrayal against a friend — focuses on 'do I want to hurt them' and feels responsible for the consequence to the violator's career",
+      "informed_pattern": "Treats reporting as a separate professional decision from the friendship — notes that the violator made the choice that created the risk, and that not reporting leaves ongoing structural exposure",
+      "why_it_matters": "Naive framing paralyzes the OP with guilt; informed framing restores agency and clarifies that the OP is responding to harm, not initiating it",
+      "regions": []
+    },
+    {
+      "dimension": "Risk assessment after a trust breach",
+      "naive_pattern": "Accepts the apology and assumes the behavior will not repeat because the person expressed remorse",
+      "informed_pattern": "Recognizes that the structural conditions that enabled the breach — social overlap between the professional contact and the adversarial third party — have not changed, making recurrence likely regardless of intent",
+      "why_it_matters": "Keeping the professional relationship or the level of social openness means future sensitive information will be at ongoing risk",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you don't formally report it, the situation is contained and won't affect your professional relationship with the firm",
+      "why_believed": "Not reporting feels like taking no action, which feels neutral — people assume inaction preserves the status quo",
+      "actual_rule": "The firm has already lost your trust and potentially your business; the supervising attorney may eventually learn why through the account loss alone, and the underlying liability exposure exists whether or not OP reports",
+      "real_consequence": "OP loses the account relationship anyway, but without having formally documented the breach — forfeiting any leverage or legal recourse",
+      "regions": [
+        "us",
+        "canada"
+      ]
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Person used a close friend's spouse — an estate planning attorney's staff member — to set up a trust after receiving an inheritance; the staff member disclosed details of the estate plan to the person's ex (who shares custody of his child) over drinks",
+      "decision": "Person confronted the friend and received an apology; was asked by both the friend and the spouse not to report to her employer",
+      "outcome": "Ex is now aware of the inheritance and is making demands; co-parenting dynamic is damaged; OP is left deciding whether to report while absorbing pressure from both sides not to",
+      "lesson": "Using a personal contact for sensitive professional services creates a conflict of interest that the contact may not be able to manage — especially when that contact has a separate close relationship with someone who has adverse interests to you. The apology does not undo the structural damage to the co-parenting relationship.",
+      "regions": [
+        "us"
+      ]
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Being asked by the person who harmed you — and their spouse — not to report them, framed as 'please don't destroy her career'",
+      "underlying_state": "Guilt displacement — the OP has internalized responsibility for the outcome of reporting rather than attributing it to the person who committed the breach",
+      "how_it_manifests": "OP frames the question as 'how do I navigate not wanting to hurt them' rather than 'what is the right response to what was done to me'",
+      "expert_move": "Reframe: the violator made the choice that put her career at risk when she disclosed; your reporting is a consequence of her action, not a choice you are making about her career",
+      "regions": []
+    },
+    {
+      "trigger": "Trying to preserve a long-standing friendship after the friend's spouse committed a professional violation against you",
+      "underlying_state": "Sunk cost bias in the friendship — investment in the relationship makes it hard to evaluate the violation on its objective merits",
+      "how_it_manifests": "OP emphasizes 'I love both these people' and 'mistakes can happen' — minimizing the severity and the ongoing structural risk in order to avoid the pain of revising the relationship",
+      "expert_move": "Separate the two decisions explicitly: you can choose to maintain the friendship AND report the professional violation — they are not mutually exclusive, and conflating them is what creates paralysis",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I report her and risk destroying her career and my friendship?",
+      "reframe": "The question isn't whether you report — it's whether you can ever discuss your finances around this friend again for the rest of your child's minority",
+      "why_it_works": "Shifts the time horizon from a single decision point to a permanent ongoing condition — makes the real cost of inaction concrete rather than abstract",
+      "example_language": "If you ever go on a trip, buy a new car, buy a new house, your friend's wife will tell your ex",
+      "regions": []
+    },
+    {
+      "original_framing": "She made a mistake and apologized — maybe I can forgive and move on",
+      "reframe": "This is tantamount to catching an employee swiping from the register — if you catch them, it's probably happened before and you'll always wonder if it will happen again",
+      "why_it_works": "Reframes a personal forgiveness question as a professional risk assessment question — forgiveness is irrelevant to whether the structural risk has been resolved",
+      "example_language": "You will always wonder if it's going to happen again",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "reddit_relationship_advice_my_30m_best_friend_s_32m_wife_28f_did_something_hi",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

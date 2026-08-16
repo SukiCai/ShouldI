@@ -2,8 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as React from 'react';
 import { z } from 'zod';
 
-import type { DecideDraft } from '@/app/(tabs)/decide/context';
+import { defaultKeyMomentSelection, type DecideDraft } from '@/app/(tabs)/decide/context';
 import { apiPostJson } from '@/lib/api';
+import { keyMomentTagText } from '@/lib/textExcerpt';
 import { ExploreCardSchema, type DecisionCategory, type ExploreCard } from '@shouldi/contracts';
 
 const STORAGE_KEY = 'shouldi/community-posts';
@@ -88,13 +89,18 @@ export function buildExploreCardFromDraft(draft: DecideDraft): ExploreCard {
     id: option.id,
     label: option.label.trim(),
   }));
+  const selectedKeyMomentIndices =
+    draft.selectedKeyMomentIndices?.length > 0
+      ? draft.selectedKeyMomentIndices
+      : defaultKeyMomentSelection(draft.keyMoments);
   const keyContext = draft.keyMoments
-    .filter((moment) => moment.impact?.trim())
-    .map((moment) => moment.impact!.trim())
-    .slice(0, 4);
+    .filter((_, index) => selectedKeyMomentIndices.includes(index))
+    .map((moment) => keyMomentTagText(moment))
+    .filter(Boolean);
   const expertVerdicts = draft.expertVerdicts.map((verdict) => ({
     expertTitle: verdict.expertTitle,
     verdictLine: verdict.verdictLine,
+    reasoning: verdict.reasoning,
   }));
 
   return ExploreCardSchema.parse({

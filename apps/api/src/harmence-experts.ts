@@ -180,7 +180,7 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
     id: 'relationship',
     title: 'Relationship Decision Expert',
     subtitle: 'Attachment, trust, repairability, boundaries',
-    skillName: 'smart_talk',
+    skillName: 'relationship-decision',
     icon: 'heart-outline',
     color: '#FB7185',
     frameworkId: 'attachment-repair',
@@ -202,7 +202,8 @@ export const HARMENCE_EXPERTS: HarmenceExpert[] = [
       /分手|伴侣|男朋友|女朋友|婚姻|离婚|信任|出轨|复合/,
     ],
     activationInstruction:
-      'Use a relationship decision skill: diagnose repairability, safety, trust, repeated patterns, unmet needs, boundaries, attachment pressure, and what evidence would change the answer. Do not use career or offer framing.',
+      'Use the relationship-decision skill. Screen for abuse first (including the reactive-abuse check — who is escalating/de-escalating, fear asymmetry — before applying the abuse gate), then classify the situation as broken, depleted, or attachment-distorted before offering any repairability judgment. Do not use career or offer framing.',
+    requiresLocationPrecheck: true,
   },
 ];
 

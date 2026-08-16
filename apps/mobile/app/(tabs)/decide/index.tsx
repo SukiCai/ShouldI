@@ -86,7 +86,8 @@ import {
   type DecideThreadItem,
   type ExpertJoinRow,
 } from '@/components/decide/threadHelpers';
-import { useDecideWizard } from './context';
+import { defaultKeyMomentSelection, useDecideWizard } from './context';
+import { keyMomentTagText } from '@/lib/textExcerpt';
 
 const readable: Record<DecisionCategory, string> = {
   life: 'Life path',
@@ -437,8 +438,8 @@ export default function DecideCategoryScreen() {
           communityAiBecause:
             h?.communityAiBecause?.trim()?.length
               ? h.communityAiBecause.trim()
-              : preview?.aiBecause?.trim()
-              || [fd?.recommendation, fd?.rationale].filter(Boolean).join('\n\n')
+              : [fd?.recommendation, fd?.rationale].filter(Boolean).join('\n\n')
+              || preview?.aiBecause?.trim()
               || d.communityAiBecause,
           hook: preview?.hook?.trim() || d.hook,
           tension: preview?.tension?.trim() || d.tension,
@@ -447,6 +448,9 @@ export default function DecideCategoryScreen() {
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: fd?.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd?.keyMoments ?? d.keyMoments,
+          selectedKeyMomentIndices: fd?.keyMoments
+            ? defaultKeyMomentSelection(fd.keyMoments)
+            : d.selectedKeyMomentIndices,
           reflection: fd?.reflection ?? d.reflection,
           aiConfidenceScore: (() => {
             if (fd?.confidenceScore != null) {
@@ -538,6 +542,9 @@ export default function DecideCategoryScreen() {
         updateDraft({
           expertVerdicts: fd.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd.keyMoments ?? d.keyMoments,
+          selectedKeyMomentIndices: fd.keyMoments
+            ? defaultKeyMomentSelection(fd.keyMoments)
+            : d.selectedKeyMomentIndices,
           reflection: fd.reflection ?? d.reflection,
           communityAiVerdictLine: fd.verdictLine?.trim() || d.communityAiVerdictLine,
           communityAiBecause:
@@ -1114,17 +1121,18 @@ export default function DecideCategoryScreen() {
           {finalDecision.keyMoments.length > 0 ? (
             <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
               <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Key moments</Text>
-              {[...finalDecision.keyMoments]
-                .sort((a, b) => b.magnitude - a.magnitude)
-                .slice(0, 4)
-                .map((moment, index) => (
-                  <View key={index} style={styles.verdictStepRow}>
-                    <View style={[styles.verdictStepDot, { backgroundColor: semantic.actionPrimary }]} />
-                    <Text style={[styles.verdictStepText, { color: colors.primaryTxt }]}>
-                      {moment.impact?.trim() || moment.answer}
-                    </Text>
-                  </View>
-                ))}
+              <View style={styles.keyMomentTagRow}>
+                {[...finalDecision.keyMoments]
+                  .sort((a, b) => b.magnitude - a.magnitude)
+                  .slice(0, 4)
+                  .map((moment, index) => (
+                    <View key={index} style={[styles.keyMomentTag, { borderColor: colors.cardBorder }]}>
+                      <Text style={[styles.keyMomentTagText, { color: colors.primaryTxt }]}>
+                        {keyMomentTagText(moment, 110)}
+                      </Text>
+                    </View>
+                  ))}
+              </View>
             </View>
           ) : null}
           {finalDecision.reflection?.summary ? (
@@ -1914,6 +1922,23 @@ const styles = StyleSheet.create({
   verdictStepText: {
     flex: 1,
     ...typography.compact,
+    fontWeight: '500',
+  },
+  keyMomentTagRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 4,
+  },
+  keyMomentTag: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    maxWidth: '100%',
+  },
+  keyMomentTagText: {
+    ...typography.caption,
     fontWeight: '500',
   },
   verdictExpandBtn: {
