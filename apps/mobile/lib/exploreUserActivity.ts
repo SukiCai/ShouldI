@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as React from 'react';
 import { z } from 'zod';
 
+import { apiPostJson } from '@/lib/api';
 import { ExploreCardSchema, type ExploreCard } from '@shouldi/contracts';
 
 const PARTICIPATED_KEY = 'shouldi/explore-participated';
@@ -138,6 +139,16 @@ export function updateWatching(
 
   emit();
   void persistWatching();
+
+  // Sync the flags that actually changed to the backend, best-effort. The
+  // local watching list above stays the source of truth for instant UI
+  // feedback even if this fails or the device is offline.
+  if (flags.saved !== undefined) {
+    void apiPostJson(`/v1/explore/${encodeURIComponent(card.id)}/save`, { save: flags.saved }).catch(() => undefined);
+  }
+  if (flags.followed !== undefined) {
+    void apiPostJson(`/v1/explore/${encodeURIComponent(card.id)}/follow`, { follow: flags.followed }).catch(() => undefined);
+  }
 }
 
 export function formatActivityWhen(timestamp: number): string {

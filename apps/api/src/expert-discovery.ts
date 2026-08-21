@@ -13,24 +13,14 @@ import {
   totalCollectibleLenses,
   type HarmenceExpert,
 } from './harmence-experts.js';
+import { verifyAuthHeader } from './auth.js';
+import { clearExpertDiscoveryRows, getDiscoveryRow, listDiscoveryRowsForUser, saveDiscoveryRow } from './db.js';
 
 function nowTs(): number {
   return Date.now();
 }
 
 type StoredDiscovery = DiscoveredExpert;
-
-/** userId → expertId → discovery */
-const discoveriesByUser = new Map<string, Map<string, StoredDiscovery>>();
-
-function userStore(userId: string): Map<string, StoredDiscovery> {
-  let store = discoveriesByUser.get(userId);
-  if (!store) {
-    store = new Map();
-    discoveriesByUser.set(userId, store);
-  }
-  return store;
-}
 
 function toDiscoveredExpert(
   expert: HarmenceExpert,
@@ -55,17 +45,15 @@ function toDiscoveredExpert(
 }
 
 export function resolveUserIdFromAuth(authorization: string | undefined): string {
-  if (authorization?.trim()) return 'signed-in-placeholder';
-  return 'anonymous-local';
+  return verifyAuthHeader(authorization) ?? 'anonymous-local';
 }
 
 export function listUserExperts(userId: string): DiscoveredExpert[] {
-  const store = userStore(userId);
-  return Array.from(store.values()).sort((a, b) => b.lastUsedAt - a.lastUsedAt);
+  return listDiscoveryRowsForUser<StoredDiscovery>(userId);
 }
 
 export function getUserExpert(userId: string, expertId: string): DiscoveredExpert | undefined {
-  return userStore(userId).get(expertId);
+  return getDiscoveryRow<StoredDiscovery>(userId, expertId);
 }
 
 export function viewerExpertsResponse(userId: string) {
@@ -84,16 +72,15 @@ export function recordExpertDiscoveries(params: {
 }): DiscoveredExpert[] {
   if (params.experts.length === 0) return [];
 
-  const store = userStore(params.userId);
   const delta: DiscoveredExpert[] = [];
 
   for (const expert of params.experts) {
     if (expert.id === 'general-decision') continue;
 
-    const existing = store.get(expert.id);
+    const existing = getDiscoveryRow<StoredDiscovery>(params.userId, expert.id);
     const isNew = !existing;
     const next = toDiscoveredExpert(expert, existing?.status ?? 'discovered', params.sessionId, existing);
-    store.set(expert.id, next);
+    saveDiscoveryRow(params.userId, expert.id, next.lastUsedAt, next);
     if (isNew) delta.push(next);
   }
 
@@ -108,21 +95,22 @@ export function markExpertsApplied(params: {
 }): void {
   if (params.expertIds.length === 0) return;
 
-  const store = userStore(params.userId);
   const ts = nowTs();
 
   for (const expertId of params.expertIds) {
     const catalog = expertById(expertId);
     if (!catalog) continue;
 
-    const existing = store.get(expertId);
+    const existing = getDiscoveryRow<StoredDiscovery>(params.userId, expertId);
     const decisionRecordIds = [...(existing?.decisionRecordIds ?? [])];
     if (!decisionRecordIds.includes(params.decisionRecordId)) {
       decisionRecordIds.unshift(params.decisionRecordId);
     }
 
-    store.set(
+    saveDiscoveryRow(
+      params.userId,
       expertId,
+      ts,
       DiscoveredExpertSchema.parse({
         expertId,
         expert: publicExpert(catalog),
@@ -158,5 +146,5 @@ export function expertDetailForUser(userId: string, expertId: string): Discovere
 
 /** Test helper */
 export function resetExpertDiscoveryStore(): void {
-  discoveriesByUser.clear();
+  clearExpertDiscoveryRows();
 }

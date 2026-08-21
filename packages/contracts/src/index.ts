@@ -65,6 +65,17 @@ export const ExploreCardSchema = z.object({
       confidenceScore: z.number().int().min(0).max(100).optional(),
       /** Short peer-readable context labels, e.g. ["Goal: return offer + PR pathway", "Risk: pre-PGWP stage"]. */
       keyContext: z.array(z.string()).default([]),
+      /** Council-mode only: one line per expert who voted, for a compact vote breakdown on the public card. */
+      expertVerdicts: z
+        .array(
+          z.object({
+            expertTitle: z.string(),
+            verdictLine: z.string(),
+            /** Full per-expert reasoning — shown when a reader taps the expert row to expand it. */
+            reasoning: z.string().optional(),
+          }),
+        )
+        .default([]),
     })
     .optional(),
   matchHint: z.string().optional(),
@@ -349,6 +360,7 @@ export type ViewerMeResponse = z.infer<typeof ViewerMeResponseSchema>;
 /** Canonical artifact produced by a completed decision flow. */
 export const DecisionRecordSchema = z.object({
   id: z.string(),
+  userId: z.string(),
   sessionId: z.string().nullable().optional(),
   question: z.string(),
   category: DecisionCategorySchema.optional(),
@@ -465,3 +477,22 @@ export const ProductEventBatchSchema = z.object({
   events: z.array(ProductEventSchema).min(1),
 });
 export type ProductEventBatch = z.infer<typeof ProductEventBatchSchema>;
+
+export const AuthCredentialsRequestSchema = z.object({
+  /** E.164-ish: leading + and 8-15 digits, e.g. "+14155551234". */
+  phone: z.string().min(8),
+  password: z.string().min(6),
+});
+export type AuthCredentialsRequest = z.infer<typeof AuthCredentialsRequestSchema>;
+
+export const AuthResponseSchema = z.object({
+  userId: z.string(),
+  token: z.string(),
+});
+export type AuthResponse = z.infer<typeof AuthResponseSchema>;
+
+export const ChangePasswordRequestSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z.string().min(6),
+});
+export type ChangePasswordRequest = z.infer<typeof ChangePasswordRequestSchema>;

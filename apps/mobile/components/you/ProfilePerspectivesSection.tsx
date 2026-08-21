@@ -12,7 +12,7 @@ import {
 import { useQuery } from '@tanstack/react-query';
 
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
-import { ExpertGlyph } from '@/app/(tabs)/decide/components/DecideThreadParts';
+import { ExpertGlyph } from '@/components/decide/DecideThreadParts';
 import { apiGetJson } from '@/lib/api';
 import {
   buildLensLibrary,

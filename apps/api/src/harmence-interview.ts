@@ -30,6 +30,14 @@ export class CouncilLockedError extends Error {
   }
 }
 
+export class SessionAccessDeniedError extends Error {
+  readonly code = 'SESSION_ACCESS_DENIED' as const;
+  constructor(message = 'This session belongs to a different account.') {
+    super(message);
+    this.name = 'SessionAccessDeniedError';
+  }
+}
+
 import {
   expertById,
   expertBySkillName,
@@ -44,6 +52,7 @@ import {
   discoveredExpertIdsForUser,
   recordExpertDiscoveries,
 } from './expert-discovery.js';
+import { getSessionRow, listSessionRowsForUser, saveSessionRow } from './db.js';
 import {
   hermesChatCompletion,
   isHermesAgentLive,
@@ -58,6 +67,7 @@ import {
   HARMENCE_PSYCH_ANALYST_PROMPT,
   HARMENCE_SMART_TALK_DRIVER_PROMPT,
   HARMENCE_SMART_TALK_SYNTHESIS_PROMPT,
+  LOCATION_PRECHECK_FORCE_PROMPT,
 } from './hermes-prompts.js';
 
 type OfferContext = {
@@ -268,7 +278,48 @@ type DecisionPlaybook = {
   transitions: Partial<Record<string, string>>;
 };
 
-const STORE = new Map<string, Session>();
+function loadSession(id: string): Session | null {
+  return getSessionRow<Session>(id) ?? null;
+}
+
+function persistSession(session: Session): void {
+  saveSessionRow<Session>(session.id, session.userId, session.updatedAt, session);
+}
+
+function loadRecentSessions(userId: string, limit: number): Session[] {
+  return listSessionRowsForUser<Session>(userId, limit);
+}
+
+// Per-session async mutex. handleInterviewTurn's load→mutate→persist cycle
+// has a real await gap in the middle (the LLM call) — without this, two
+// concurrent turns on the same session both load the same pre-mutation
+// state, and whichever finishes last silently overwrites the other's
+// changes (a classic lost-update race; confirmed via a real concurrent-turn
+// test, see docs/engineering/user-account-isolation-test-plan.md, item C1).
+// Keyed by sessionId only — different sessions never block each other.
+const sessionLocks = new Map<string, Promise<unknown>>();
+
+function withSessionLock<T>(sessionId: string, fn: () => Promise<T>): Promise<T> {
+  const prior = sessionLocks.get(sessionId) ?? Promise.resolve();
+  // Run fn after prior settles either way, so one failed turn doesn't
+  // permanently jam the queue for this session.
+  const result = prior.then(fn, fn);
+  // Swallow the outcome for queue-chaining purposes only — the real
+  // success/failure still propagates to the caller via `result`.
+  const queued = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  sessionLocks.set(sessionId, queued);
+  queued.finally(() => {
+    // Only clear the entry if nobody queued behind us in the meantime —
+    // otherwise this would delete the NEXT caller's lock out from under it.
+    if (sessionLocks.get(sessionId) === queued) {
+      sessionLocks.delete(sessionId);
+    }
+  });
+  return result;
+}
 
 const CHOICE_STEPS = [
   {
@@ -714,20 +765,121 @@ async function hermesIntegratedFlag(): Promise<boolean> {
   return isHermesAgentLive();
 }
 
-function extractJsonObject(text: string): unknown | null {
-  const trimmed = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
-  try {
-    return JSON.parse(trimmed);
-  } catch {
-    const start = trimmed.indexOf('{');
-    const end = trimmed.lastIndexOf('}');
-    if (start === -1 || end === -1 || end <= start) return null;
-    try {
-      return JSON.parse(trimmed.slice(start, end + 1));
-    } catch {
-      return null;
+/**
+ * LLMs frequently emit multi-paragraph string values with literal newlines/tabs
+ * instead of escaped \n/\t, which is invalid JSON and makes JSON.parse throw
+ * even though the structure is otherwise well-formed. Walk the text tracking
+ * whether we're inside a quoted string (respecting backslash escapes) and
+ * escape raw control characters found there before re-attempting parse.
+ */
+function escapeRawControlCharsInStrings(text: string): string {
+  let result = '';
+  let inString = false;
+  let escaped = false;
+  for (const ch of text) {
+    if (inString) {
+      if (escaped) {
+        result += ch;
+        escaped = false;
+      } else if (ch === '\\') {
+        result += ch;
+        escaped = true;
+      } else if (ch === '"') {
+        inString = false;
+        result += ch;
+      } else if (ch === '\n') {
+        result += '\\n';
+      } else if (ch === '\r') {
+        result += '\\r';
+      } else if (ch === '\t') {
+        result += '\\t';
+      } else {
+        result += ch;
+      }
+    } else {
+      if (ch === '"') inString = true;
+      result += ch;
     }
   }
+  return result;
+}
+
+/**
+ * Repairs unescaped `"` characters that appear *inside* a JSON string value —
+ * e.g. reasoning text that quotes a phrase with a plain double quote instead
+ * of escaping it: `"reasoning":"...用户对"必须跳槽"这套叙事..."`. A closing quote
+ * is only legitimate if the next non-whitespace character is a JSON
+ * structural character (`,` `}` `]` `:`) or end of input; anything else means
+ * the quote is *inside* the string and needs escaping instead of ending it.
+ */
+function escapeStrayQuotesInStrings(text: string): string {
+  let result = '';
+  let inString = false;
+  let escaped = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i]!;
+    if (!inString) {
+      if (ch === '"') inString = true;
+      result += ch;
+      continue;
+    }
+    if (escaped) {
+      result += ch;
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      result += ch;
+      escaped = true;
+      continue;
+    }
+    if (ch === '"') {
+      let j = i + 1;
+      while (j < text.length && /\s/.test(text[j]!)) j++;
+      const next: string | undefined = text[j];
+      const isRealClose = next === undefined || ',}]:'.includes(next);
+      if (isRealClose) {
+        inString = false;
+        result += ch;
+      } else {
+        result += '\\"';
+      }
+      continue;
+    }
+    result += ch;
+  }
+  return result;
+}
+
+function extractJsonObject(text: string): unknown | null {
+  const trimmed = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+  const start = trimmed.indexOf('{');
+  const end = trimmed.lastIndexOf('}');
+  const candidates = [trimmed];
+  if (start !== -1 && end !== -1 && end > start) {
+    candidates.push(trimmed.slice(start, end + 1));
+  }
+  // Ordered from least to most aggressive repair — stop at the first that parses.
+  const repairs: [string, (s: string) => string][] = [
+    ['none', (s) => s],
+    ['control-chars', escapeRawControlCharsInStrings],
+    ['stray-quotes', escapeStrayQuotesInStrings],
+    ['control-chars+stray-quotes', (s) => escapeRawControlCharsInStrings(escapeStrayQuotesInStrings(s))],
+  ];
+  for (const candidate of candidates) {
+    for (const [label, repair] of repairs) {
+      try {
+        const parsed = JSON.parse(repair(candidate));
+        if (label !== 'none') {
+          console.log(`[extractJsonObject] parsed only after repair: ${label}`);
+        }
+        return parsed;
+      } catch {
+        // try the next repair, if any
+      }
+    }
+  }
+  return null;
 }
 
 function collectedSummary(session: Session): string {
@@ -964,6 +1116,7 @@ async function askHermesForNextChoice(
 ): Promise<{ assistantText: string; choicePrompt: DecideInterviewChoicePrompt }> {
   const result = await hermesChatCompletion({
     sessionId: session.id,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_CHOICE_SYSTEM_PROMPT },
       {
@@ -1197,6 +1350,7 @@ async function routeExpertsForTurn(
       }));
     const result = await hermesChatCompletion({
       sessionId: `${session.id}:router`,
+      sessionKey: viewerUserId(session),
       messages: [
         { role: 'system', content: HARMENCE_EXPERT_ROUTER_PROMPT },
         {
@@ -1367,6 +1521,8 @@ async function runPsychAnalysis(session: Session): Promise<void> {
   }
   try {
     const result = await hermesChatCompletion({
+      sessionId: `${session.id}:psych-analyst`,
+      sessionKey: viewerUserId(session),
       messages: [
         { role: 'system', content: HARMENCE_PSYCH_ANALYST_PROMPT },
         {
@@ -1416,16 +1572,26 @@ async function runPsychAnalysis(session: Session): Promise<void> {
   }
 }
 
+// Deterministic — not inferred from free-text answers. Set the instant the
+// user answers the code-forced location_precheck choicePrompt (see
+// LOCATION_PRECHECK_FORCE_PROMPT and needsLocationPrecheck below).
+function sessionLocationEstablished(session: Session): boolean {
+  return session.answers.some((a) => a.promptId === 'location_precheck');
+}
+
 function buildSmartTalkDriverPrompt(
   availableSkills: HarmenceExpert[],
   challengeMode: ReturnType<typeof buildChallengeInstruction>,
   psychProfile?: PsychProfile,
+  needsLocationPrecheck?: boolean,
 ): string {
   const skillsList = formatAvailableSkillsForPrompt(availableSkills);
   const challengeInstruction = challengeMode ? (CHALLENGE_MODE_INSTRUCTIONS[challengeMode] ?? '') : '';
+  const locationPrecheck = needsLocationPrecheck ? `${LOCATION_PRECHECK_FORCE_PROMPT}\n\n` : '';
   let prompt = HARMENCE_SMART_TALK_DRIVER_PROMPT
     .replace('{AVAILABLE_SKILLS}', skillsList)
-    .replace('{CHALLENGE_MODE}', challengeInstruction);
+    .replace('{CHALLENGE_MODE}', challengeInstruction)
+    .replace('{LOCATION_PRECHECK}', locationPrecheck);
   if (psychProfile) {
     prompt += buildPsychProfileSection(psychProfile);
   }
@@ -1464,11 +1630,19 @@ async function askSmartTalkForNextChoice(
   }
 
   const challengeMode = buildChallengeInstruction(session.smartTalkState);
-  const systemPrompt = buildSmartTalkDriverPrompt(activeExperts, challengeMode, session.psychProfile);
+  const needsLocationPrecheck =
+    activeExperts.some((e) => e.requiresLocationPrecheck) && !sessionLocationEstablished(session);
+  const systemPrompt = buildSmartTalkDriverPrompt(
+    activeExperts,
+    challengeMode,
+    session.psychProfile,
+    needsLocationPrecheck,
+  );
   const answerCount = session.answers.filter((a) => a.promptId !== 'initial_question').length;
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:smart-talk`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: systemPrompt },
       {
@@ -1809,12 +1983,24 @@ async function askHermesForFinal(session: Session): Promise<{
   previewCard: DecideInterviewPreviewCard;
 }> {
   const fallback = fallbackFinal(session);
+  const keyMomentCandidates = selectKeyMoments(session.smartTalkState.momentumLog);
 
   const result = await hermesChatCompletion({
     sessionId: session.id,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_FINAL_SYSTEM_PROMPT },
-      { role: 'user', content: `Collected answers:\n${collectedSummary(session)}\n\nOriginal question:\n${initialQuestionFor(session) || '(unknown)'}\n\nOffer context:\n${JSON.stringify(offerContextFor(session))}` },
+      {
+        role: 'user',
+        content: [
+          `Collected answers:\n${collectedSummary(session)}`,
+          `Original question:\n${initialQuestionFor(session) || '(unknown)'}`,
+          `Offer context:\n${JSON.stringify(offerContextFor(session))}`,
+          keyMomentCandidates.length > 0
+            ? `Key decision moments (ranked by impact — write one-sentence impact for each):\n${JSON.stringify(keyMomentCandidates, null, 2)}`
+            : '',
+        ].filter(Boolean).join('\n\n'),
+      },
     ],
   });
   if (!result.ok) return fallback;
@@ -1822,7 +2008,13 @@ async function askHermesForFinal(session: Session): Promise<{
   const raw = extractJsonObject(result.content);
   if (!raw || typeof raw !== 'object') return fallback;
   const candidate = raw as { assistantText?: unknown; finalDecision?: unknown; previewCard?: unknown };
-  const finalDecision = DecideInterviewFinalDecisionSchema.safeParse(candidate.finalDecision);
+  const rawFinalDecision = candidate.finalDecision && typeof candidate.finalDecision === 'object'
+    ? (candidate.finalDecision as Record<string, unknown>)
+    : {};
+  const finalDecision = DecideInterviewFinalDecisionSchema.safeParse({
+    ...rawFinalDecision,
+    keyMoments: Array.isArray(rawFinalDecision.keyMoments) ? rawFinalDecision.keyMoments : [],
+  });
   const previewCard = DecideInterviewPreviewCardSchema.safeParse(candidate.previewCard);
   if (!finalDecision.success || !previewCard.success) return fallback;
   if (requiresBinaryVerdict(session) && !/^(yes|no)\b/i.test(finalDecision.data.verdictLine.trim())) {
@@ -1861,6 +2053,7 @@ async function askExpertCouncilForFinal(session: Session, hermesIntegrated: bool
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:expert-final`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_EXPERT_FINAL_PROMPT },
       {
@@ -1923,6 +2116,7 @@ async function askExpertIndividualVerdict(
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:expert-verdict:${expert.id}`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_EXPERT_INDIVIDUAL_FINAL_PROMPT },
       {
@@ -1956,6 +2150,14 @@ async function askExpertIndividualVerdict(
   if (!raw) {
     console.log(`[expert-verdict:${expert.id}] extractJsonObject returned null`);
     return fallbackVerdict;
+  }
+
+  if (typeof raw.verdictLine !== 'string' || typeof raw.reasoning !== 'string') {
+    console.log(
+      `[expert-verdict:${expert.id}] parsed JSON but missing/invalid field(s) — ` +
+        `verdictLine=${typeof raw.verdictLine} reasoning=${typeof raw.reasoning}; raw:`,
+      raw,
+    );
   }
 
   const validConfidences = ['low', 'medium', 'high'] as const;
@@ -2064,6 +2266,7 @@ async function askSmartTalkComplexFinal(
 
   const result = await hermesChatCompletion({
     sessionId: `${session.id}:smart-talk-synthesis`,
+    sessionKey: viewerUserId(session),
     messages: [
       { role: 'system', content: HARMENCE_SMART_TALK_SYNTHESIS_PROMPT },
       {
@@ -2142,21 +2345,25 @@ async function askSmartTalkComplexFinal(
   };
 }
 
-export function listInterviewSessions(limit = 60): Session[] {
-  return Array.from(STORE.values())
-    .sort((a, b) => b.updatedAt - a.updatedAt)
-    .slice(0, limit);
+export function listInterviewSessions(userId: string, limit = 60): Session[] {
+  return loadRecentSessions(userId, limit);
 }
 
-export function getInterviewSession(id: string): Session | null {
-  return STORE.get(id) ?? null;
+/** Returns null both when the session doesn't exist AND when it belongs to
+ * a different account — the caller (index.ts) maps either to 404, so a
+ * mismatched owner never leaks "this session exists" via a different status
+ * code. */
+export function getInterviewSession(id: string, userId: string): Session | null {
+  const session = loadSession(id);
+  if (!session || session.userId !== userId) return null;
+  return session;
 }
 
-export function summarizeSessionsForMobile(): {
+export function summarizeSessionsForMobile(userId: string): {
   sessions: { id: string; preview: string; updatedAt: number; messageCount: number }[];
 } {
   return {
-    sessions: listInterviewSessions().map((s) => ({
+    sessions: listInterviewSessions(userId).map((s) => ({
       id: s.id,
       preview: pickPreview(s.bubbles),
       updatedAt: s.updatedAt,
@@ -2165,7 +2372,7 @@ export function summarizeSessionsForMobile(): {
   };
 }
 
-export async function summarizeSessionDetail(id: string): Promise<{
+export async function summarizeSessionDetail(id: string, userId: string): Promise<{
   id: string;
   updatedAt: number;
   bubbles: DecideInterviewBubble[];
@@ -2178,8 +2385,8 @@ export async function summarizeSessionDetail(id: string): Promise<{
   choicePrompt?: DecideInterviewChoicePrompt;
   finalDecision?: DecideInterviewFinalDecision;
 } | null> {
-  const session = STORE.get(id);
-  if (!session) return null;
+  const session = loadSession(id);
+  if (!session || session.userId !== userId) return null;
   const hermesIntegrated = await hermesIntegratedFlag();
 
   const phase = session.lastPrompt?.id ?? (session.isComplete ? 'complete' : 'opening');
@@ -2229,7 +2436,10 @@ function selectedAnswerFromPrompt(
   };
 }
 
-/** Drive one conversational turn (+ optional bootstrap with empty body). */
+/** Drive one conversational turn (+ optional bootstrap with empty body).
+ * Serialized per sessionId (see withSessionLock) — a brand-new session
+ * (no sessionId yet) needs no lock since nothing else can know its
+ * about-to-be-generated id. */
 export async function handleInterviewTurn(
   sessionId: string | undefined | null,
   userTextRaw: string,
@@ -2238,10 +2448,32 @@ export async function handleInterviewTurn(
   councilUnlock?: 'premium' | 'points',
   userId?: string | null,
 ): Promise<DecideInterviewTurnResponse> {
+  const run = () =>
+    runInterviewTurn(sessionId, userTextRaw, selectedOptionId, requestedMode, councilUnlock, userId);
+  return sessionId ? withSessionLock(sessionId, run) : run();
+}
+
+async function runInterviewTurn(
+  sessionId: string | undefined | null,
+  userTextRaw: string,
+  selectedOptionId?: string,
+  requestedMode?: 'single' | 'complex',
+  councilUnlock?: 'premium' | 'points',
+  userId?: string | null,
+): Promise<DecideInterviewTurnResponse> {
   const hermesIntegrated = await hermesIntegratedFlag();
-  let session: Session | null = sessionId ? (STORE.get(sessionId) ?? null) : null;
+  let session: Session | null = sessionId ? loadSession(sessionId) : null;
   let created = false;
   const userText = (userTextRaw ?? '').trim();
+
+  // Sessions are only ever continuable by the exact identity that owns them
+  // (a real userId, or the literal 'anonymous-local' for unauthenticated
+  // callers). Without this, any caller who knows/guesses a sessionId could
+  // read and continue someone else's private conversation — sessionId is a
+  // random UUID, not a secret, so this check is load-bearing, not optional.
+  if (session && session.userId !== (userId ?? 'anonymous-local')) {
+    throw new SessionAccessDeniedError();
+  }
 
   if (!session) {
     if (sessionId) {
@@ -2262,11 +2494,17 @@ export async function handleInterviewTurn(
       mode,
       smartTalkState: defaultSmartTalkState(),
     };
-    STORE.set(session.id, session);
     session.bubbles.push(bubble('assistant', OPEN_GREETING));
     created = true;
   }
 
+  try {
+    return await runTurn(session);
+  } finally {
+    persistSession(session);
+  }
+
+  async function runTurn(session: Session): Promise<DecideInterviewTurnResponse> {
   session.updatedAt = Date.now();
   if (userId && !session.userId) session.userId = userId;
   // Backward-compat: sessions created before mode/smartTalkState were added
@@ -2480,4 +2718,5 @@ export async function handleInterviewTurn(
     previewCard,
     almostReady: choicePrompt && session.smartTalkState.ambiguity <= 0.35 ? true : undefined,
   });
+  }
 }

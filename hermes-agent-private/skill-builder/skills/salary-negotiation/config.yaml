@@ -1,5 +1,13 @@
 name: Salary & Offer Negotiation Expert
 slug: salary-negotiation
+requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+framework_id: negotiation-leverage
+framework_label: Negotiation leverage
+discovery_blurb: "Weighs total compensation, equity, and competing-offer leverage—not just the headline base salary number."
+lens_domain: career
 description: >
   Use when user has received an offer, is about to negotiate compensation, or is
   evaluating whether their current pay is right — e.g., "how do I negotiate this

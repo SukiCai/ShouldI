@@ -1,5 +1,13 @@
 name: International Student Job Search Strategist
 slug: intl-job-search
+requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+framework_id: opportunity-cost
+framework_label: Opportunity cost
+discovery_blurb: "Compares this offer against realistic alternatives and recruiting windows—not just the logo."
+lens_domain: career
 description: "Use when user is actively searching for a job or internship — targeting companies, writing cold emails, building referral networks, timing applications around visa deadlines, or navigating visa disclosure during hiring. Covers: cold outreach tactics, sponsor-friendly company identification (H1BData.info, USCIS employer hub), OPT/STEM OPT employer targeting in the US, PGWP open-permit employer conversations in Canada, TEER 0-3 job targeting for CEC eligibility, H-1B lottery timing coordination, body-shop/consulting firm risks, salary negotiation under visa constraints, and US vs. Canada job search comparison. Does NOT cover: immigration status mechanics or PR strategy (use intl-student-advisor) or graduate school decisions (use grad-school-advisor)."
 domain_description: Job search strategy and career entry for international students in the US and Canada — including cold outreach, referral acquisition, company targeting, interview positioning, and managing visa status throughout the process
 tags:

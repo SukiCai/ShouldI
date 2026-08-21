@@ -1,0 +1,239 @@
+{
+  "source_file": "community_property_vs_equitable_distribution.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "In community property states, all assets acquired during the marriage are owned equally 50/50 by both spouses regardless of whose name appears on the asset or who earned the income.",
+      "condition": "When a couple divorces and is domiciled in Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, or Wisconsin...",
+      "action": "Apply a mechanical 50/50 split to all marital property, income, and debt acquired during the marriage.",
+      "because": "Community property law treats both spouses as equal co-owners of everything acquired during the marriage by operation of law, not by judicial discretion.",
+      "regulatory_basis": "Cornell Law School LII — Wex: community_property",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Property owned before the marriage, or received individually as a gift or inheritance during the marriage, is classified as separate property and excluded from community property division.",
+      "condition": "When identifying which assets are subject to the 50/50 community property split...",
+      "action": "Exclude pre-marital property and individually received gifts or inheritances from the marital estate subject to division.",
+      "because": "The community property regime only attaches to assets acquired during the marriage; separately held property retains its individual character.",
+      "regulatory_basis": "Cornell Law School LII — Wex: community_property",
+      "country_scope": "us"
+    },
+    {
+      "rule": "In Alaska, community property treatment is opt-in — it applies only if the couple has elected it by agreement.",
+      "condition": "When a couple divorcing in Alaska seeks to determine which property regime governs their marital assets...",
+      "action": "First determine whether the couple entered a community property agreement; if no agreement exists, community property rules do not apply by default.",
+      "because": "Alaska does not impose community property by operation of law; it requires an affirmative election by the spouses.",
+      "regulatory_basis": "Cornell Law School LII — Wex: community_property",
+      "country_scope": "us"
+    },
+    {
+      "rule": "In equitable distribution states (all US states not listed as community property states), courts divide marital property based on fairness factors set by state law, not a mechanical 50/50 split.",
+      "condition": "When a couple divorces in a state outside the nine community property states and Alaska opt-in...",
+      "action": "Submit to a fact-specific judicial process where factors such as marriage length, income disparity, and non-financial contributions (homemaking, supporting a spouse's career) are weighed to determine a division that may or may not be 50/50.",
+      "because": "Equitable distribution is explicitly distinct from equal distribution — the governing standard is fairness, not mathematical equality.",
+      "regulatory_basis": "Cornell Law School LII — Wex: community_property",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "State of domicile at time of divorce",
+      "why_it_matters": "The state in which the couple is domiciled determines which property regime governs the division of marital assets — community property (50/50) or equitable distribution (fact-specific). This is a structural, checkable fact that changes the financial stakes of leaving.",
+      "how_to_assess": "Identify the state of domicile. If the state is Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, or Wisconsin, community property applies. If the state is Alaska, check for an opt-in agreement. All other states use equitable distribution.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Whether an Alaska community property agreement exists",
+      "why_it_matters": "In Alaska, community property treatment is not automatic — it only applies if the couple elected it by agreement. Without such an agreement, equitable distribution governs.",
+      "how_to_assess": "Review whether the spouses executed a community property agreement under Alaska law.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Timing of asset acquisition (during vs. before marriage)",
+      "why_it_matters": "Community property only attaches to assets acquired during the marriage. Pre-marital property and individually received gifts or inheritances are excluded, reducing the marital estate subject to division.",
+      "how_to_assess": "For each significant asset, determine whether it was acquired before the marriage, during the marriage, or received as a gift or inheritance at any point.",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Income disparity between spouses",
+      "why_it_matters": "In equitable distribution states, income disparity is an explicit fairness factor that courts may use to shift the property split away from 50/50.",
+      "how_to_assess": "Compare each spouse's earnings and earning capacity over the course of the marriage.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Non-financial contributions (homemaking, supporting a spouse's career)",
+      "why_it_matters": "In equitable distribution states, non-financial contributions are explicitly recognized as a fairness factor that can shift the property division away from 50/50 in favor of the contributing spouse.",
+      "how_to_assess": "Document the nature and duration of non-financial contributions, such as primary homemaking responsibilities or career sacrifices made to support the other spouse.",
+      "weight": "medium",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Length of marriage",
+      "why_it_matters": "In equitable distribution states, a longer marriage is an explicit fairness factor that can influence the division of marital property.",
+      "how_to_assess": "Calculate total duration of the marriage from date of legal marriage to date of separation or divorce filing.",
+      "weight": "medium",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining domiciled in a community property state at the time of divorce",
+      "unstated_consequence": "Debt accumulated during the marriage is also split 50/50, not just assets — a spouse can be equally liable for the other spouse's marital debt regardless of who incurred it.",
+      "who_it_affects": "Spouses whose partner accumulated significant debt during the marriage (credit cards, business losses, loans) without their direct involvement.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on whose name an asset is titled in a community property state",
+      "unstated_consequence": "Titling has no bearing on ownership rights under community property — both spouses own the asset 50/50 regardless of whose name appears on it or who earned the income to purchase it.",
+      "who_it_affects": "The higher-earning spouse who titled assets solely in their own name, assuming sole ownership.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Entering divorce in an equitable distribution state assuming a 50/50 outcome",
+      "unstated_consequence": "The court has discretion to deviate significantly from 50/50 based on fairness factors, meaning the outcome is negotiated and litigation-dependent rather than predictable.",
+      "who_it_affects": "Either spouse who has planned financially around an assumed equal split without accounting for marriage length, income disparity, or contribution factors.",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Living in Alaska without executing a community property agreement",
+      "unstated_consequence": "Community property protections (including the guaranteed 50/50 split) do not apply by default — the spouse who earned less or contributed non-financially has no automatic equal ownership claim and is subject to equitable distribution instead.",
+      "who_it_affects": "The lower-earning or non-earning spouse in Alaska who assumed community property protections applied automatically.",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Assuming community property rules apply in an equitable distribution state",
+      "why_it_happens": "The majority of US states use equitable distribution, not community property — only nine states plus opt-in Alaska use the 50/50 regime. Confusion arises because 'equitable' sounds like 'equal.'",
+      "consequence": "A spouse may enter divorce proceedings with incorrect expectations about their property entitlement, leading to under-negotiation or failure to document fairness factors that would support a larger share.",
+      "warning_signs": [
+        "Spouse states they are entitled to 'half of everything' without confirming the state's regime",
+        "No documentation of non-financial contributions or income disparity gathered before proceedings"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Treating 'equitable' as synonymous with 'equal' in an equitable distribution state",
+      "why_it_happens": "The official source explicitly states that equitable distribution is 'explicitly distinct from equal' — the governing standard is fairness based on multiple factors, not a mathematical split.",
+      "consequence": "A spouse who contributed significantly through homemaking, career sacrifice, or during a long marriage may fail to assert the fairness factors that would entitle them to more than 50%, or conversely may be awarded less than 50% if factors favor the other spouse.",
+      "warning_signs": [
+        "Party assumes 50/50 without analyzing marriage length, income disparity, or non-financial contributions",
+        "Party fails to present evidence of homemaking or career-support contributions"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Assuming Alaska operates as a community property state without an opt-in agreement",
+      "why_it_happens": "Alaska is frequently listed alongside community property states due to its opt-in availability, creating the mistaken belief that it defaults to community property.",
+      "consequence": "A spouse in Alaska without a community property agreement is subject to equitable distribution, not the automatic 50/50 split — they lose the predictability and equal ownership protections of community property.",
+      "warning_signs": [
+        "Party in Alaska states they are in a 'community property state' without confirming an agreement exists",
+        "No written community property election agreement can be located"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "In which US state are you and your spouse domiciled?",
+      "what_it_reveals": "Determines which property division regime — community property or equitable distribution — governs the divorce.",
+      "follow_up_if_yes": "If the state is Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, or Wisconsin: community property applies — marital assets and debts are split 50/50 by operation of law.",
+      "follow_up_if_no": "If the state is none of the above (and not Alaska): equitable distribution applies — the court will apply state-specific fairness factors to determine the split.",
+      "country_scope": "us"
+    },
+    {
+      "question": "If domiciled in Alaska, did you and your spouse execute a community property agreement?",
+      "what_it_reveals": "Determines whether Alaska's opt-in community property treatment applies or whether the default equitable distribution regime governs.",
+      "follow_up_if_yes": "Community property rules apply — marital assets and debts are split 50/50.",
+      "follow_up_if_no": "Equitable distribution applies — the 50/50 split is not guaranteed and fairness factors will govern.",
+      "country_scope": "us"
+    },
+    {
+      "question": "Was the asset in question acquired during the marriage, or was it owned before the marriage or received as a gift or inheritance?",
+      "what_it_reveals": "Determines whether the asset is marital (subject to division) or separate property (excluded from division) under community property rules.",
+      "follow_up_if_yes": "If acquired during the marriage: the asset is community property subject to 50/50 division in a community property state.",
+      "follow_up_if_no": "If owned before the marriage or received as a gift or inheritance: the asset is separate property and is generally excluded from division.",
+      "country_scope": "us"
+    },
+    {
+      "question": "In an equitable distribution state, what were the respective financial and non-financial contributions of each spouse during the marriage?",
+      "what_it_reveals": "Tests the fairness factors — income disparity, homemaking, and career support — that courts use to determine the property split in equitable distribution states.",
+      "follow_up_if_yes": "If significant non-financial contributions or income disparity exist: these are recognized factors that can shift the division away from 50/50.",
+      "follow_up_if_no": "If contributions were roughly equal and incomes similar: the outcome may approach 50/50 but remains subject to judicial discretion.",
+      "country_scope": "us"
+    },
+    {
+      "question": "How long was the marriage?",
+      "what_it_reveals": "In equitable distribution states, marriage length is an explicit fairness factor that courts weigh in determining property division.",
+      "follow_up_if_yes": "A longer marriage may support a larger share for a lower-earning or non-earning spouse as a recognized fairness factor.",
+      "follow_up_if_no": "A shorter marriage may reduce the weight courts give to non-financial contributions or income disparity in the property split.",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "In a divorce, each spouse is entitled to half of everything regardless of which state they live in.",
+      "actual_reality": "The 50/50 split is only the automatic rule in the nine community property states (and Alaska by opt-in agreement). The majority of US states use equitable distribution, where 'equitable' explicitly does not mean 'equal' — the split is determined by fairness factors including marriage length, income disparity, and non-financial contributions.",
+      "implication": "A person divorcing in an equitable distribution state must actively identify and present the fairness factors that support their desired outcome rather than assuming a 50/50 result.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Whoever's name is on the asset owns it in a community property state.",
+      "actual_reality": "In community property states, titling is irrelevant to ownership — both spouses own all assets acquired during the marriage equally 50/50, regardless of whose name appears on the title or who earned the income used to purchase the asset.",
+      "implication": "A spouse cannot protect an asset from division in a community property state simply by keeping it in their own name.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Alaska is a community property state.",
+      "actual_reality": "Alaska allows community property treatment only as an opt-in — couples must affirmatively elect it by agreement. Without such an agreement, Alaska uses equitable distribution.",
+      "implication": "A spouse in Alaska cannot assume community property protections apply; the existence of a written opt-in agreement must be verified.",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Gifts and inheritances received during the marriage are shared marital property subject to division.",
+      "actual_reality": "Under community property rules, property received individually as a gift or inheritance is classified as separate property and is generally excluded from the marital estate subject to division.",
+      "implication": "A spouse who received a significant inheritance or gift during the marriage should document it as separate property to preserve its exclusion from division.",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Identifying the applicable property division regime",
+      "naive_pattern": "Assumes all US divorces result in a 50/50 split of marital assets and advises accordingly without checking the state.",
+      "informed_pattern": "Immediately identifies the state of domicile and maps it to the correct regime — community property (50/50 by operation of law) or equitable distribution (fairness-factor-based) — before any property analysis.",
+      "why_it_matters": "Giving regime-agnostic property advice in an equitable distribution state causes the person to under-prepare their fairness-factor case; giving it in a community property state causes them to miss the debt co-ownership risk.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Advising a client in Alaska",
+      "naive_pattern": "Lists Alaska alongside community property states and advises the 50/50 split applies automatically.",
+      "informed_pattern": "Flags that Alaska is opt-in only and asks whether the couple executed a community property agreement before determining which regime governs.",
+      "why_it_matters": "Without confirming the opt-in agreement, a spouse may incorrectly assume 50/50 protections exist when equitable distribution actually governs.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Assessing asset ownership in a community property state",
+      "naive_pattern": "Looks at whose name is on the title or account to determine ownership and negotiating position.",
+      "informed_pattern": "Disregards titling entirely for marital assets, focuses on when the asset was acquired (during vs. before marriage) and whether it was a gift or inheritance to determine whether it is community or separate property.",
+      "why_it_matters": "Relying on titling to assess ownership leads to incorrect conclusions about what is and is not subject to the 50/50 split in a community property state.",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Interpreting 'equitable' in equitable distribution states",
+      "naive_pattern": "Treats 'equitable distribution' as a synonym for equal (50/50) distribution and does not gather evidence of fairness factors.",
+      "informed_pattern": "Recognizes that equitable is explicitly distinct from equal per the governing rule, and systematically documents marriage length, income disparity, and non-financial contributions to build a fairness-factor case for the desired split.",
+      "why_it_matters": "Failing to present fairness factors in an equitable distribution state can result in an outcome significantly less favorable than the actual entitlement — or a windfall for the opposing spouse.",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_community_property_vs_equitable_distribution",
+  "_source_regions": [
+    "us"
+  ]
+}

@@ -28,6 +28,7 @@ name: {{skill_slug}}
 description: {{skill_description}}
 version: 1.0.0
 metadata:
+  requires_location_precheck: {{requires_location_precheck}}
   hermes:
     tags: [{{tags}}]
     related_skills: []
@@ -39,7 +40,7 @@ metadata:
 
 [2–3 paragraphs. How does an expert in this domain frame the problem space? What do they optimize for that beginners don't? What do they refuse to oversimplify? What do they know that looks counterintuitive from the outside? Write in second person (you, as the AI using this skill). Do NOT write a persona description — write an epistemic stance.]
 
-## When to Activate This Skill
+{{location_precheck_instruction}}## When to Activate This Skill
 
 [2–4 bullet points: specific user question patterns or situation types that should trigger this skill]
 

@@ -16,6 +16,11 @@ import {
 
 type KeyMoment = DecideInterviewFinalDecision['keyMoments'][number];
 
+/** First 3 key moments in chronological order — mirrors the old fixed-3 preview. */
+export function defaultKeyMomentSelection(keyMoments: KeyMoment[]): number[] {
+  return keyMoments.slice(0, 3).map((_, index) => index);
+}
+
 export type DiscussDraftPollOption = {
   id: string;
   label: string;
@@ -49,6 +54,8 @@ export type DecideDraft = {
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
   keyMoments: KeyMoment[];
+  /** Indices into `keyMoments` chosen to appear as tags on the published post card. */
+  selectedKeyMomentIndices: number[];
   reflection?: DecideInterviewFinalDecision['reflection'];
   decisionRecordId?: string;
   decisionLens?: {
@@ -117,6 +124,7 @@ const blankDraft = (): DecideDraft => ({
   rewardPoints: 10,
   expertVerdicts: [],
   keyMoments: [],
+  selectedKeyMomentIndices: [],
   reflection: undefined,
   decisionRecordId: undefined,
   decisionLens: undefined,
@@ -211,7 +219,7 @@ export default function DecideWizardProvider({ children }: PropsWithChildren) {
     }
     setError(null);
     const card = buildExploreCardFromDraft(draft);
-    publishCommunityCard(card);
+    void publishCommunityCard(card);
     router.replace({
       pathname: '/(tabs)/explore',
       params: { highlightCardId: card.id },

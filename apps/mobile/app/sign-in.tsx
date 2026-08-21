@@ -5,8 +5,13 @@ import { Alert, Keyboard, Pressable, Text, View } from 'react-native';
 import { AuthCredentialFields, phoneDigitsValid } from '@/components/auth/AuthCredentialFields';
 import { AuthFields, GenZAuthChrome } from '@/components/auth/GenZAuthChrome';
 import { DEFAULT_DIAL_COUNTRY, findDialCountry } from '@/constants/auth/dialCountries';
-import { markAuthenticatedPreview } from '@/lib/guestSignupPrompt';
+import { signIn, toE164 } from '@/lib/auth';
 import { HERO_AVATAR_CLUSTER } from '@/constants/users/avatarSources';
+
+const SIGN_IN_ERROR_MESSAGES: Record<string, string> = {
+  INVALID_CREDENTIALS: 'That phone number and password don’t match.',
+  INVALID_PHONE: 'Enter a valid phone number.',
+};
 
 function resolveReturnTo(raw: string | string[] | undefined): string {
   const value = Array.isArray(raw) ? raw[0] : raw;
@@ -21,9 +26,11 @@ export default function SignInScreen() {
   const [countryIso, setCountryIso] = React.useState(DEFAULT_DIAL_COUNTRY.iso);
   const [password, setPassword] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
   const country = findDialCountry(countryIso);
 
   async function onContinue() {
+    if (submitting) return;
     Keyboard.dismiss();
     if (!phoneDigitsValid(phone, country)) {
       Alert.alert('Phone number', `Enter a valid ${country.minDigits}-digit phone number.`);
@@ -33,13 +40,16 @@ export default function SignInScreen() {
       Alert.alert('Password', 'Enter your password.');
       return;
     }
-    await markAuthenticatedPreview();
-    Alert.alert('Signed in', 'Session preview — auth backend ships soon.', [
-      {
-        text: 'OK',
-        onPress: () => router.replace(returnTo as '/explore'),
-      },
-    ]);
+    setSubmitting(true);
+    try {
+      await signIn(toE164(phone, country), password);
+      router.replace(returnTo as '/explore');
+    } catch (e) {
+      const code = e instanceof Error ? e.message : '';
+      Alert.alert('Couldn’t sign in', SIGN_IN_ERROR_MESSAGES[code] ?? 'Something went wrong. Try again.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (

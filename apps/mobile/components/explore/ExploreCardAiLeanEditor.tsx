@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { palette, themeSurface, typography } from '@/constants/theme';
+import { ExpertVerdictList } from '@/components/explore/ExpertVerdictList';
+import { keyMomentTagText } from '@/lib/textExcerpt';
 import type { DecideInterviewFinalDecision } from '@shouldi/contracts';
 
 const BODY_LINE_HEIGHT = 21;
@@ -56,6 +58,9 @@ type Props = {
   verdictBecause: string;
   confidenceScore?: number;
   keyMoments?: DecideInterviewFinalDecision['keyMoments'];
+  selectedKeyMomentIndices?: number[];
+  onToggleKeyMoment?(index: number): void;
+  expertVerdicts?: DecideInterviewFinalDecision['expertVerdicts'];
   onChangeVerdictLine(text: string): void;
   onChangeVerdictBecause(text: string): void;
 };
@@ -65,15 +70,18 @@ export function ExploreCardAiLeanEditor({
   verdictBecause,
   confidenceScore,
   keyMoments,
+  selectedKeyMomentIndices,
+  onToggleKeyMoment,
+  expertVerdicts,
   onChangeVerdictLine,
   onChangeVerdictBecause,
 }: Props) {
   const scheme = useColorScheme();
   const surface = themeSurface(scheme);
-  const keyContext = (keyMoments ?? [])
-    .map((m) => m.impact?.trim() || m.answer?.trim())
-    .filter(Boolean)
-    .slice(0, 3);
+  const selectedSet = new Set(selectedKeyMomentIndices ?? []);
+  const keyContextTags = (keyMoments ?? [])
+    .map((m, index) => ({ index, excerpt: keyMomentTagText(m) }))
+    .filter((tag) => tag.excerpt.length > 0);
 
   return (
     <View
@@ -86,7 +94,7 @@ export function ExploreCardAiLeanEditor({
 
       {confidenceScore != null ? (
         <View style={styles.clarityRow}>
-          <Text style={[styles.clarityLabel, { color: surface.textMuted }]}>Clarity</Text>
+          <Text style={[styles.clarityLabel, { color: surface.textMuted }]}>AI Confidence</Text>
           <Text style={[styles.clarityValue, { color: surface.textPrimary }]}>{confidenceScore}%</Text>
         </View>
       ) : null}
@@ -122,15 +130,44 @@ export function ExploreCardAiLeanEditor({
         style={[styles.bodyInput, { color: surface.textPrimary }]}
       />
 
-      {keyContext.length > 0 ? (
+      {keyContextTags.length > 0 ? (
         <View style={[styles.keyContextBlock, { borderTopColor: surface.groupedBorder }]}>
-          <Text style={[styles.keyContextEyebrow, { color: surface.textMuted }]}>Key context</Text>
-          {keyContext.map((line, index) => (
-            <Text key={index} style={[styles.keyContextLine, { color: surface.textMuted }]}>
-              · {line}
-            </Text>
-          ))}
+          <Text style={[styles.keyContextEyebrow, { color: surface.textMuted }]}>
+            Key context — tap to include on the post card
+          </Text>
+          <View style={styles.keyContextTagRow}>
+            {keyContextTags.map(({ index, excerpt }) => {
+              const selected = selectedSet.has(index);
+              return (
+                <Pressable
+                  key={index}
+                  onPress={() => onToggleKeyMoment?.(index)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected }}
+                  style={[
+                    styles.keyContextTag,
+                    {
+                      backgroundColor: selected ? palette.heroInk : 'transparent',
+                      borderColor: selected ? palette.heroInk : surface.groupedBorder,
+                    },
+                  ]}>
+                  <Text
+                    style={[
+                      styles.keyContextTagText,
+                      { color: selected ? palette.textOnCanvas : surface.textMuted },
+                    ]}
+                    numberOfLines={2}>
+                    {excerpt}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
         </View>
+      ) : null}
+
+      {expertVerdicts && expertVerdicts.length > 0 ? (
+        <ExpertVerdictList expertVerdicts={expertVerdicts} />
       ) : null}
     </View>
   );
@@ -194,9 +231,21 @@ const styles = StyleSheet.create({
     ...typography.caption,
     fontWeight: '600',
   },
-  keyContextLine: {
+  keyContextTagRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 4,
+  },
+  keyContextTag: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    maxWidth: '100%',
+  },
+  keyContextTagText: {
     ...typography.caption,
-    lineHeight: 17,
     fontWeight: '500',
   },
 });

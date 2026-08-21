@@ -1,0 +1,215 @@
+{
+  "source_file": "divorce_act_grounds_separation.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "12-month separation before divorce finalization",
+      "condition": "When a Canadian spouse seeks divorce on the ground of separation",
+      "action": "The application may be filed before 12 months elapse, but the divorce cannot be granted until a full 12 months of separation has passed",
+      "because": "The Divorce Act requires that spouses have separated and lived apart for at least one year before a separation-based divorce can be finalized",
+      "regulatory_basis": "Department of Justice Canada — Divorce Act fact sheet, separation period requirement",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "At least one spouse must have resided in a Canadian province or territory for at least one year before applying",
+      "condition": "When either spouse files for divorce under the federal Divorce Act",
+      "action": "Confirm that at least one spouse meets the one-year provincial/territorial residency requirement before filing",
+      "because": "If neither spouse meets the residency requirement, divorce under the federal Divorce Act is unavailable",
+      "regulatory_basis": "Department of Justice Canada — Divorce Act fact sheet, residency requirement",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "No-fault separation ground is the dominant path; fault-based grounds (cruelty, adultery) require proof and are rarely pursued",
+      "condition": "When a Canadian spouse is choosing which ground to cite for divorce",
+      "action": "Default to the separation ground unless there is a specific legal reason to pursue cruelty or adultery, as those require evidentiary proof",
+      "because": "The existence of the one-year no-fault separation path makes fault-based grounds procedurally burdensome without commensurate benefit in the vast majority of cases",
+      "regulatory_basis": "Department of Justice Canada — Divorce Act fact sheet, three grounds for divorce",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Use 'parenting arrangements' terminology, not 'custody and access', for post-divorce child arrangements",
+      "condition": "When describing where children will live and how decisions about them are made in any Canadian divorce proceeding on or after March 1, 2021",
+      "action": "Apply the term 'parenting arrangements' as defined under the amended Divorce Act",
+      "because": "The Divorce Act was amended effective March 1, 2021 to replace 'custody and access' with 'parenting arrangements', reflecting a statutory reframing of child-related decisions",
+      "regulatory_basis": "Department of Justice Canada — Divorce Act fact sheet, terminology shift effective March 1, 2021",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Ground for divorce selected",
+      "why_it_matters": "The chosen ground determines the evidentiary burden and the timeline to finalization — separation requires waiting one year but no proof of fault; cruelty and adultery require proof but have no mandatory waiting period stated",
+      "how_to_assess": "Identify whether the filing spouse can establish one year of separation (no fault required) versus whether they have provable evidence of cruelty or adultery",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "One-year provincial/territorial residency of at least one spouse",
+      "why_it_matters": "Residency of at least one spouse for at least one year in a Canadian province or territory is a threshold eligibility requirement — without it, the federal Divorce Act does not apply",
+      "how_to_assess": "Confirm the physical residence history of both spouses; if neither has resided in Canada for one year, the Divorce Act route is unavailable",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Date of separation",
+      "why_it_matters": "The 12-month clock for separation-based divorce runs from the date of separation — establishing this date precisely determines when finalization is legally possible",
+      "how_to_assess": "Identify the date on which spouses separated and began living apart; the divorce cannot be finalized until 12 months after that date",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Presence of children and parenting arrangements",
+      "why_it_matters": "Canadian divorce proceedings must address where children will live and how decisions about them will be made under the 'parenting arrangements' framework introduced March 1, 2021",
+      "how_to_assess": "Determine whether the couple has dependent children and whether parenting arrangements have been or can be agreed upon or adjudicated",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Leaving a Canadian marriage and pursuing divorce",
+      "unstated_consequence": "The minimum legal runway to a finalized divorce is at least 12 months from separation — a person who decides to leave cannot legally finalize a divorce in less than one year under the separation ground, which is the predominant route; this timeline is structurally longer than some US state equivalents",
+      "who_it_affects": "Any spouse in a Canadian marriage who believes that separating means a quick legal resolution; particularly affects those who want to remarry or need a finalized divorce for immigration, financial, or personal reasons",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Filing for divorce before the 12 months of separation elapse",
+      "unstated_consequence": "Filing early is permitted, but the divorce cannot be granted until the full 12-month separation period is complete — early filing does not accelerate the finalization date",
+      "who_it_affects": "Spouses who assume that filing promptly will shorten the overall timeline",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Pursuing a fault-based ground (cruelty or adultery) to avoid the one-year wait",
+      "unstated_consequence": "Fault-based grounds require proof, introducing evidentiary burden and litigation complexity that the separation route avoids entirely — the time and cost of proving fault may exceed the time saved by bypassing the one-year period",
+      "who_it_affects": "Spouses who believe citing cruelty or adultery will result in a faster or more advantageous divorce outcome",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Relocating outside Canada before filing for divorce",
+      "unstated_consequence": "If neither spouse has resided in a Canadian province or territory for at least one year, divorce under the federal Divorce Act becomes unavailable — only limited alternatives under the Civil Marriage Act may apply in specific cases",
+      "who_it_affects": "Spouses who have emigrated or are considering emigrating before resolving their marital status legally",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Attempting to finalize a separation-based divorce before 12 months of living apart have elapsed",
+      "why_it_happens": "The Divorce Act mandates that the full one-year separation period must have passed before a divorce on the separation ground can be granted — courts cannot grant the divorce earlier regardless of when the application was filed",
+      "consequence": "Divorce cannot be granted; the application cannot proceed to finalization until the 12-month period is complete",
+      "warning_signs": [
+        "Separation date is less than 12 months before the anticipated finalization hearing",
+        "Parties assume filing date starts the clock rather than the separation date"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Filing for divorce under the Divorce Act when neither spouse meets the one-year Canadian residency requirement",
+      "why_it_happens": "The Act requires at least one spouse to have resided in a Canadian province or territory for at least one year — without this, the court lacks jurisdiction under the Act",
+      "consequence": "Divorce under the federal Divorce Act is unavailable; only limited alternatives under the Civil Marriage Act may exist for specific cases",
+      "warning_signs": [
+        "Both spouses have recently immigrated or emigrated",
+        "Neither spouse has maintained a one-year residence in any Canadian province or territory"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has at least one spouse resided in a Canadian province or territory for at least one year?",
+      "what_it_reveals": "Whether the threshold residency requirement under the Divorce Act is satisfied — without this, the Act does not apply",
+      "follow_up_if_yes": "Proceed to assess which ground for divorce applies and whether the separation period has been met",
+      "follow_up_if_no": "Divorce under the federal Divorce Act is unavailable; explore whether limited alternatives under the Civil Marriage Act apply",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Have the spouses been separated and living apart for at least 12 months?",
+      "what_it_reveals": "Whether the separation-based ground — the predominant no-fault path — is available for finalization",
+      "follow_up_if_yes": "The separation ground is available; the divorce application can be finalized",
+      "follow_up_if_no": "The divorce cannot yet be finalized on separation grounds; determine exact separation date to calculate when finalization becomes possible, or assess whether a fault-based ground with evidentiary proof is being pursued",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the divorce being sought on the ground of cruelty or adultery rather than separation?",
+      "what_it_reveals": "Whether the filing spouse is prepared to meet an evidentiary burden of proof, as both fault-based grounds require proof",
+      "follow_up_if_yes": "Assess whether sufficient evidence exists to establish cruelty or adultery to the court's standard; note that these grounds are rarely pursued given the availability of the no-fault separation route",
+      "follow_up_if_no": "Confirm the separation date and proceed under the one-year separation ground",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Are there dependent children whose living arrangements and decision-making must be addressed?",
+      "what_it_reveals": "Whether parenting arrangements — the statutory term under the Divorce Act as of March 1, 2021 — must be established as part of the divorce proceeding",
+      "follow_up_if_yes": "Parenting arrangements must be addressed; use the terminology and framework in force since March 1, 2021, not the former 'custody and access' language",
+      "follow_up_if_no": "Child-related arrangements are not required; proceed with the divorce on the applicable ground",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Has the divorce application been filed before the 12-month separation period is complete?",
+      "what_it_reveals": "Whether the applicant understands that early filing is permitted but does not accelerate the finalization date",
+      "follow_up_if_yes": "Confirm that the applicant understands finalization cannot occur until the full 12 months have elapsed from the date of separation",
+      "follow_up_if_no": "No issue — filing after 12 months means finalization can proceed without a waiting period post-filing",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You must wait until after the full 12-month separation period before you can file for divorce in Canada",
+      "actual_reality": "The Divorce Act permits filing before the 12-month separation period is complete — the restriction is on finalization, not on filing",
+      "implication": "A spouse can initiate the legal process early while the separation period runs, potentially reducing overall time to finalization after the 12 months elapse",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Proving adultery or cruelty in a Canadian divorce gives the accusing spouse legal or financial advantages over using the separation ground",
+      "actual_reality": "The source identifies cruelty and adultery as rarely pursued precisely because the no-fault separation route exists and fault-based grounds require proof — no advantage from fault grounds is stated",
+      "implication": "In the absence of a specific strategic reason, the separation ground is the standard path; pursuing fault grounds introduces evidentiary complexity without a stated benefit",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Post-divorce child arrangements in Canada are still governed by 'custody and access' terminology",
+      "actual_reality": "Effective March 1, 2021, the Divorce Act replaced 'custody and access' with 'parenting arrangements' — the old terminology is no longer the operative legal framework",
+      "implication": "Any divorce proceedings, agreements, or legal documents referencing child arrangements must use 'parenting arrangements' language to conform to the current Act",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Either spouse can file for divorce in Canada regardless of where they currently live",
+      "actual_reality": "At least one spouse must have resided in a Canadian province or territory for at least one year; if neither spouse meets this requirement, the federal Divorce Act is unavailable",
+      "implication": "Spouses who have both relocated outside Canada must verify residency eligibility before assuming the Divorce Act applies to their situation",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the separation timeline",
+      "naive_pattern": "Assumes that the 12-month clock starts when the divorce application is filed, or that filing immediately triggers eligibility for finalization",
+      "informed_pattern": "Knows that the 12-month clock runs from the date of separation (living apart), that filing can occur before 12 months elapse, but that finalization is legally blocked until the full period passes",
+      "why_it_matters": "Misjudging the timeline leads to incorrect expectations about when a divorce can be legally completed, affecting financial, immigration, and personal planning",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Ground selection strategy",
+      "naive_pattern": "Considers citing adultery or cruelty to avoid the one-year wait or to gain advantage, without accounting for the evidentiary burden those grounds impose",
+      "informed_pattern": "Recognizes that fault-based grounds require proof and are rarely pursued in practice because the no-fault separation route exists; defaults to separation unless there is a specific, evidence-backed reason to use a fault ground",
+      "why_it_matters": "Pursuing a fault ground without sufficient evidence introduces procedural complexity and potential failure without a commensurate benefit",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Residency requirement awareness",
+      "naive_pattern": "Assumes that being married in Canada or having a Canadian marriage certificate is sufficient to file for divorce under the Divorce Act regardless of current residence",
+      "informed_pattern": "Verifies that at least one spouse has resided in a Canadian province or territory for at least one year before filing, and knows that the Act is unavailable if neither spouse meets this threshold",
+      "why_it_matters": "Filing without meeting the residency requirement means the court lacks jurisdiction under the Act, and the application cannot proceed",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Post-2021 child arrangement terminology",
+      "naive_pattern": "Uses 'custody and access' language in legal documents and proceedings because it was the longstanding standard terminology",
+      "informed_pattern": "Applies 'parenting arrangements' as the operative statutory term effective March 1, 2021, and ensures all documents and agreements reflect the current Act language",
+      "why_it_matters": "Using superseded terminology may create ambiguity or non-conformance with the current legal framework in Canadian divorce proceedings",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_divorce_act_grounds_separation",
+  "_source_regions": [
+    "canada"
+  ]
+}

@@ -4,9 +4,9 @@ import { useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { ExpertGlyph } from '@/app/(tabs)/decide/components/DecideThreadParts';
+import { ExpertGlyph } from '@/components/decide/DecideThreadParts';
 import { ctaStyles } from '@/components/screen/ctaStyles';
-import { youScreenStyles as styles } from '@/app/(tabs)/you/components/youScreenStyles';
+import { youScreenStyles as styles } from '@/components/you/youScreenStyles';
 import { useColorScheme } from '@/components/useColorScheme';
 import { apiGetJson, apiPostJson } from '@/lib/api';
 import { trackProductEvent } from '@/lib/analytics';

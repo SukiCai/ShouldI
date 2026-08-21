@@ -71,10 +71,17 @@ export const GATEWAY_ORIGIN =
       })()
     : 'https://YOUR_HOSTED_GATEWAY.invalid');
 
+async function authHeaders(): Promise<Record<string, string>> {
+  // Lazy import avoids a circular dependency (lib/auth.ts itself calls apiPostJson).
+  const { getToken } = await import('@/lib/auth');
+  const token = await getToken();
+  return token ? { authorization: `Bearer ${token}` } : {};
+}
+
 export async function apiGetJson<T>(path: string): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(`${GATEWAY_ORIGIN}${path}`);
+    res = await fetch(`${GATEWAY_ORIGIN}${path}`, { headers: await authHeaders() });
   } catch (e) {
     const hint = e instanceof Error ? e.message : String(e);
     throw new Error(`GET ${path} failed (${hint}) → ${GATEWAY_ORIGIN}`);
@@ -92,6 +99,7 @@ export async function apiPostJson<T>(path: string, body: unknown): Promise<T> {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        ...(await authHeaders()),
       },
       body: JSON.stringify(body),
     });

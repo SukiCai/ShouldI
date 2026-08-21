@@ -1,0 +1,216 @@
+{
+  "source_file": "california_custody_best_interest_factors.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "California courts evaluate custody using the six enumerated factors under California Family Code §3011",
+      "condition": "When a California court is determining child custody",
+      "action": "Judge must weigh: (1) age and health of the child, (2) emotional ties between parents and child, (3) child's ties to school, home, and community, (4) ability of each parent to care for the child, (5) any history of family violence, (6) any regular and ongoing substance abuse by either parent",
+      "because": "These are the statutory factors California Family Code §3011 requires courts to apply under the 'best interests of the child' standard",
+      "regulatory_basis": "California Family Code §3011",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Documented family violence is an explicit statutory aggravating factor in California custody determinations",
+      "condition": "When any history of family violence exists in a custody case",
+      "action": "Court must weigh family violence history as a named factor under §3011 — it is not discretionary to consider or ignore",
+      "because": "California Family Code §3011 explicitly enumerates family violence as one of the six determinative factors, meaning it directly affects custody outcome, not merely background context",
+      "regulatory_basis": "California Family Code §3011",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Regular and ongoing substance abuse by either parent is an explicit statutory aggravating factor in California custody determinations",
+      "condition": "When either parent has a pattern of regular and ongoing substance abuse",
+      "action": "Court must weigh this as a named factor under §3011; the substance abuse must be 'regular and ongoing' — isolated or historical use does not meet the statutory language",
+      "because": "California Family Code §3011 specifies 'regular and ongoing' as the threshold qualifier — the standard is not any substance use but a continuing pattern",
+      "regulatory_basis": "California Family Code §3011",
+      "country_scope": "us"
+    },
+    {
+      "rule": "The 'best interests of the child' standard is used across all US states for custody, but specific enumerated factors vary by state",
+      "condition": "When a custody determination is made in any US state",
+      "action": "Apply the best interests standard using that state's specific enumerated factors — do not assume California's six factors apply universally across states",
+      "because": "The source explicitly states the standard is universal across US states but 'the specific enumerated factors vary by state'",
+      "regulatory_basis": "California Family Code §3011 (California implementation); standard applied in all US states with state-specific factor variations",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Age and health of the child",
+      "why_it_matters": "Directly named in California Family Code §3011 as one of six determinative factors a court weighs when assigning custody",
+      "how_to_assess": "Evaluate the child's current age and any physical or health conditions that may affect caregiving needs or stability requirements",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Emotional ties between each parent and the child",
+      "why_it_matters": "Directly named in California Family Code §3011; courts assess the quality and depth of the bond between each parent and the child",
+      "how_to_assess": "Evaluate the nature and strength of the existing emotional relationship between each parent and the child",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Child's ties to school, home, and community",
+      "why_it_matters": "Directly named in California Family Code §3011; stability and continuity of the child's existing environment is a statutory consideration",
+      "how_to_assess": "Evaluate how established the child is in their current school, residence, and community — disruption of these ties is a factor courts weigh",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Ability of each parent to care for the child",
+      "why_it_matters": "Directly named in California Family Code §3011; courts compare each parent's practical and functional capacity to meet the child's needs",
+      "how_to_assess": "Evaluate each parent's capacity to provide day-to-day care, including financial, physical, and logistical ability",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "History of family violence",
+      "why_it_matters": "Explicitly enumerated as an aggravating factor under California Family Code §3011; its presence materially affects custody outcome and connects to abuse-screening considerations",
+      "how_to_assess": "Evaluate whether any history of family violence exists — documentation strengthens this factor's evidentiary weight in proceedings",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Regular and ongoing substance abuse by either parent",
+      "why_it_matters": "Explicitly enumerated under California Family Code §3011; the statutory threshold is 'regular and ongoing' — not isolated incidents",
+      "how_to_assess": "Assess whether either parent's substance use is regular and ongoing in pattern, not merely historical or isolated",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Leaving a relationship with children and relocating from the family home",
+      "unstated_consequence": "Relocating from the shared home may weaken the departing parent's position on the 'child's ties to school, home, and community' factor under §3011, because the remaining parent maintains continuity of those ties while the departing parent disrupts them",
+      "who_it_affects": "Parents who leave the family home and move to a different neighborhood, school district, or community before a custody order is in place",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Choosing not to document family violence or substance abuse during the relationship",
+      "unstated_consequence": "Family violence and substance abuse are explicit statutory factors under §3011, but they carry evidentiary weight — undocumented history is harder to establish in custody proceedings, even if factually true",
+      "who_it_affects": "Parents who experienced abuse or a partner's substance abuse but did not create contemporaneous documentation (police reports, medical records, witness accounts)",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Framing the decision to leave purely as an adult relationship decision",
+      "unstated_consequence": "Once children are involved, 'best interests of the child' is the governing legal standard — the court's analysis is built on the six §3011 factors, not the adult parties' relationship history or grievances",
+      "who_it_affects": "Parents who focus decision-making and planning on the adult relationship breakdown without anticipating how the six statutory factors will be applied to their specific circumstances",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Parent with history of regular and ongoing substance abuse seeks equal or primary custody",
+      "why_it_happens": "California Family Code §3011 explicitly enumerates regular and ongoing substance abuse as a factor courts must weigh — it is not a background consideration but a named statutory element that directly bears on the custody determination",
+      "consequence": "Court weighs the substance abuse history against that parent's custody request; outcome depends on weight assigned relative to other §3011 factors, but the factor is mandatory for the court to consider",
+      "warning_signs": [
+        "Pattern of regular and ongoing substance use by either parent",
+        "Absence of documentation or treatment records that could rebut the pattern"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Parent with documented history of family violence seeks custody without addressing the statutory factor",
+      "why_it_happens": "Family violence is an explicit aggravating factor under California Family Code §3011 — the court is required to weigh it, and it connects to broader abuse-screening considerations that affect both the relationship and custody calculus",
+      "consequence": "Court weighs documented family violence in the custody determination; the factor is mandatory and cannot be excluded from the analysis",
+      "warning_signs": [
+        "Existing police reports, protective orders, or medical records documenting family violence",
+        "Child has been present during or exposed to incidents of family violence"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is there any history of family violence involving either parent?",
+      "what_it_reveals": "Tests the family violence factor explicitly enumerated under California Family Code §3011 — presence of this factor materially affects the custody determination",
+      "follow_up_if_yes": "Assess whether violence is documented; documentation strengthens the factor's evidentiary weight; also triggers connection to abuse-screening considerations that may override other relationship-repair calculus",
+      "follow_up_if_no": "This §3011 factor is neutral; custody analysis proceeds on the remaining five factors",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does either parent have a pattern of regular and ongoing substance abuse?",
+      "what_it_reveals": "Tests the substance abuse factor under California Family Code §3011 — the statutory threshold is 'regular and ongoing,' not isolated or historical use",
+      "follow_up_if_yes": "Assess whether the pattern is current and documentable; this factor weighs against the affected parent in custody proceedings",
+      "follow_up_if_no": "This §3011 factor is neutral; isolated or past substance use does not meet the statutory threshold of 'regular and ongoing'",
+      "country_scope": "us"
+    },
+    {
+      "question": "How established is the child in their current school, home, and community?",
+      "what_it_reveals": "Tests the community and school ties factor under California Family Code §3011 — stability and continuity of the child's environment is a named statutory consideration",
+      "follow_up_if_yes": "Strong existing ties weigh in favor of the parent who can maintain continuity of those ties post-separation",
+      "follow_up_if_no": "If ties are weak or the child is young and not yet established, this factor carries less determinative weight relative to the other §3011 factors",
+      "country_scope": "us"
+    },
+    {
+      "question": "What is the nature and strength of the emotional bond between each parent and the child?",
+      "what_it_reveals": "Tests the emotional ties factor under California Family Code §3011 — courts assess the quality of the existing relationship between each parent and the child",
+      "follow_up_if_yes": "Strong emotional bond with one parent relative to the other weighs in favor of that parent in custody proceedings",
+      "follow_up_if_no": "If emotional ties are comparable between parents, this factor does not differentiate and the remaining §3011 factors carry greater relative weight",
+      "country_scope": "us"
+    },
+    {
+      "question": "Does each parent have the practical ability to care for the child on a day-to-day basis?",
+      "what_it_reveals": "Tests the caregiving capacity factor under California Family Code §3011 — courts compare each parent's functional ability to meet the child's needs",
+      "follow_up_if_yes": "If both parents have comparable caregiving capacity, this factor does not differentiate and other §3011 factors carry greater weight",
+      "follow_up_if_no": "A significant disparity in caregiving capacity between parents weighs in favor of the more capable parent in the custody determination",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "'The best interests of the child' is a vague, judge-discretion standard with no defined criteria",
+      "actual_reality": "In California, 'best interests of the child' is implemented through six concrete, enumerated factors under California Family Code §3011 — age and health, emotional ties, school/home/community ties, parental caregiving ability, family violence history, and regular/ongoing substance abuse",
+      "implication": "Parents preparing for custody proceedings should evaluate their position on each of the six specific statutory factors, not approach the standard as an undefined discretionary inquiry",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Family violence and substance abuse are general background factors that courts consider alongside everything else",
+      "actual_reality": "Under California Family Code §3011, family violence history and regular and ongoing substance abuse are explicitly enumerated statutory factors — they are mandatory considerations, not discretionary background context",
+      "implication": "Documentation of family violence or substance abuse has direct legal significance in custody proceedings, not merely in the relationship-repair or safety decision",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The 'best interests of the child' factors are the same across all US states",
+      "actual_reality": "The source explicitly states that while all US states use the 'best interests of the child' standard, 'the specific enumerated factors vary by state' — California's six-factor list under §3011 is that state's implementation, not a universal list",
+      "implication": "Parents in states other than California must identify their state's specific enumerated factors rather than assuming California's §3011 factors apply",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "Decisions about leaving a relationship with children are primarily an adult emotional and financial calculus",
+      "actual_reality": "The source states that 'best interests of the child' is 'the literal legal standard a court applies, built from concrete, checkable factors' — the adult relationship history and grievances are not the court's framework; the six §3011 factors are",
+      "implication": "Adults with children must evaluate the custody implications of leaving through the lens of the six statutory factors, not only through the lens of the adult relationship breakdown",
+      "country_scope": "us"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding what 'best interests of the child' means legally",
+      "naive_pattern": "Treats 'best interests of the child' as a flexible, sympathetic phrase judges apply subjectively based on who seems like a better parent overall",
+      "informed_pattern": "Recognizes that in California, 'best interests of the child' is operationalized through six specific enumerated factors under California Family Code §3011, each of which must be assessed and evidenced",
+      "why_it_matters": "A parent who prepares their case around the six statutory factors rather than general impressions of parental fitness is engaging with the actual legal standard the court applies",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Treating family violence and substance abuse as aggravating factors",
+      "naive_pattern": "Assumes family violence and substance abuse are relevant only to safety and relationship decisions — treats their legal relevance to custody as secondary or uncertain",
+      "informed_pattern": "Recognizes that both factors are explicitly enumerated under California Family Code §3011 — they are mandatory statutory considerations in custody proceedings, and documentation created during the relationship becomes direct evidence in the custody analysis",
+      "why_it_matters": "Early documentation of family violence or regular/ongoing substance abuse serves a dual function: safety planning and establishing evidentiary record for the §3011 custody analysis",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Applying California's §3011 factors to other US states",
+      "naive_pattern": "Assumes California's six-factor list is the standard across all US states because the underlying 'best interests' principle is universal",
+      "informed_pattern": "Knows the source explicitly states that specific enumerated factors vary by state — California's §3011 list is California's implementation, and each state has its own statutory enumeration",
+      "why_it_matters": "Applying California's specific factors in a different state means potentially missing or misweighting the factors that actually govern in that jurisdiction",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_california_custody_best_interest_factors",
+  "_source_regions": [
+    "us"
+  ]
+}

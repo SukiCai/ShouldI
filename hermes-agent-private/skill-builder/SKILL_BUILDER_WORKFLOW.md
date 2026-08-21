@@ -327,50 +327,77 @@ If score is below 4.3: add more raw files (target source types with lowest repre
 
 ## 7b. Location Pre-check Integration (Mandatory for All Expert Skills)
 
-Every expert skill that gives country-specific advice MUST complete both steps below before the skill is considered production-ready. This applies to ALL new skills and any skill that gains US/Canada content.
+Every expert skill that gives country-specific advice MUST be marked as such on **both sides of the stack** before it is production-ready. As of 2026-07, this is no longer a manual checklist — it's two flags plus an automated sync check. This applies to ALL new skills and any skill that gains US/Canada content.
 
-### Step A — Add explicit Step 0 to the SKILL.md
+### The two flags (single source of truth on each side)
 
-The skill's SKILL.md must have a `## Step 0: Location Diagnosis — Run First` block immediately after the Expert Framing section. This tells the expert what country context it needs before it applies any country-specific heuristics.
+1. **`config.yaml` → `requires_location_precheck: true`** (skill-content side)
+   Set this in the skill's `config.yaml`. It drives two things automatically via `build_skill.py`:
+   - The generated SKILL.md frontmatter gets `metadata.requires_location_precheck: true`
+   - The generated SKILL.md body gets a `## Step 0: Location Diagnosis` section (single-country template inserts a generic version via `LOCATION_PRECHECK_INSTRUCTION`; the multicountry template always includes it)
 
-**Minimum content for Step 0:**
+   You no longer hand-write the Step 0 section into SKILL.md — set the config flag and (re)run the pipeline. If you must patch an already-built SKILL.md directly (e.g. between pipeline runs), keep the frontmatter flag and heading text (`## Step 0: Location Diagnosis`) exactly as `quality_check.py`'s deterministic gate expects them.
 
-```markdown
-## Step 0: Location Diagnosis — Run First
+2. **`apps/api/src/harmence-experts.ts` → `requiresLocationPrecheck: true`** (runtime side)
+   Set this on the matching `HarmenceExpert` entry (matched by `skillName` == the skill's `slug`). This is what actually forces the interview loop (`harmence-interview.ts`) to ask the location question before anything else when this expert is active and no location has been established yet in the session.
 
-Before giving specific advice, confirm:
-1. **Which country?** (US / Canada / Other) — determines which legal framework, salary benchmarks, and immigration context apply.
-2. **Which state/province?** (for US: relevant for salary history ban, tax; for Canada: BC, Ontario, Alberta, Quebec have different rules)
+### Enforcement — run these, don't just remember them
 
-Do NOT assume US. If the user is in Canada, apply Canadian salary benchmarks, PGWP/LMIA dynamics, provincial pay transparency laws, and Canadian immigration context. If Other, note the limitation of this skill's coverage.
+```bash
+# Deterministic content gate: fails if requires_location_precheck: true
+# but the built SKILL.md is missing the frontmatter flag or Step 0 heading.
+python scripts/quality_check.py --all
+
+# Cross-stack sync gate: fails if config.yaml and harmence-experts.ts disagree
+# about which skills need a location precheck (including a skill that isn't
+# registered in HARMENCE_EXPERTS at all, so the runtime check can never fire).
+python scripts/check_location_sync.py
 ```
 
-Adapt the content to the skill's domain (salary vs. PM career vs. job search).
+Run `check_location_sync.py` any time you add a skill, remove a skill, or flip either flag. This is what replaced the old manual "compliance status" table — that table went stale in practice (see git history: 4 of 6 skills silently lost their Step 0 section across regenerations before this was caught) and was retired 2026-07-13 in favor of the automated gate above.
 
-### Step B — Add the skill slug to the location pre-check in hermes-prompts.ts
+> **Rule:** A skill should NOT set `requiresLocationPrecheck: true` in harmence-experts.ts unless its SKILL.md has country-differentiated content. Forcing the question without content behind it wastes a question.
 
-**File:** `apps/api/src/hermes-prompts.ts`  
-**Line to update:** The `Location pre-check` rule in the ShouldI overrides section.
+---
 
-Current list (as of 2026-07-06):
+## 7c. Expert-Card / Collectible-Catalog Integration (Mandatory for All Expert Skills)
+
+The mobile app has a "collect experts / perspective lenses" feature: as a user's decision surfaces a domain expert, they *discover* that expert as a collectible "lens" shown on a card and grouped in the Profile → Perspectives collection. Every expert skill MUST carry the four catalog fields that drive this UI, on **both sides of the stack** — same two-sided, automated-gate pattern as §7b's location precheck.
+
+### The four fields (what they do)
+
+| Field | User-facing? | Purpose |
+|-------|-------------|---------|
+| `framework_id` | No | Internal lens key (e.g. `opportunity-cost`). Dedupe / grouping key; never rendered. |
+| `framework_label` | Yes | Human-readable lens name shown on the card (e.g. `Opportunity cost`). |
+| `discovery_blurb` | Yes | One-line pitch shown when the user discovers the expert (like a collectible card's back-of-card text). |
+| `lens_domain` | Indirectly | `career` \| `relationship` \| `general`. Drives the collection tabs. **`general` experts are NOT counted as collectible** (they are the default fallback, e.g. `general-decision`), so only use `general` for a true catch-all. |
+
+### The two sides (single source of truth on each side)
+
+1. **`config.yaml`** (skill-content side) — set all four:
+   ```yaml
+   framework_id: opportunity-cost
+   framework_label: Opportunity cost
+   discovery_blurb: "Compares this offer against realistic alternatives and recruiting windows—not just the logo."
+   lens_domain: career
+   ```
+   Authored alongside the skill. `framework_label` and `discovery_blurb` are user-visible copy — write them to sit next to the other experts' blurbs in tone (short, concrete, "what this lens sees that you might miss").
+
+2. **`apps/api/src/harmence-experts.ts`** (runtime side) — set the matching `HarmenceExpert` entry's `frameworkId` / `frameworkLabel` / `discoveryBlurb` / `lensDomain` to the **same values** (matched by `skillName` == the skill's `slug`). This is the copy the app actually ships. A missing field here fails `tsc`, so the silent-drift risk is a config.yaml value diverging from the shipped TS value.
+
+> **Not auto-generated.** Like `requiresLocationPrecheck`, these fields are hand-written in `harmence-experts.ts` (which also hand-holds `title`/`subtitle`/`icon`/`color`/`triggerPatterns`) — the pipeline does not emit them. `config.yaml` is the authoring record; the gate below catches drift.
+
+### Enforcement — run this, don't just remember it
+
+```bash
+# Cross-stack sync gate: fails if config.yaml and harmence-experts.ts disagree
+# on any of the four catalog fields, if a field is missing, if lens_domain is
+# invalid, or if a skill-builder skill isn't registered in HARMENCE_EXPERTS.
+python scripts/check_catalog_sync.py
 ```
-intl-student-advisor, stay-or-return, grad-school-advisor, pm-career-expert, salary-negotiation
-```
 
-Add new skill slug to the comma-separated list in the `if ... is in the available domain skills` clause.
-
-### Compliance status (update when adding new skills)
-
-| Skill slug | Step 0 in SKILL.md | In pre-check prompt |
-|---|---|---|
-| `intl-student-advisor` | ✅ (Step 0: Location Diagnosis) | ✅ |
-| `stay-or-return` | ✅ (Step 0: Location Diagnosis) | ✅ |
-| `grad-school-advisor` | ✅ | ✅ |
-| `intl-job-search` | ✅ (Step 0: Location Diagnosis) | ✅ |
-| `pm-career-expert` | ✅ (Step 0 + Canada PM Market section) | ✅ |
-| `salary-negotiation` | ✅ (Step 1 item 1 asks country) | ✅ |
-
-> **Rule:** A skill should NOT be in the pre-check prompt unless its SKILL.md has Canada-specific content that changes the advice. Adding it to the prompt without country-differentiated content wastes a question.
+Run `check_catalog_sync.py` any time you add a skill, remove a skill, or change any of the four fields on either side (same cadence as `check_location_sync.py`). `smart_talk`-backed experts (`general-decision`, `relationship`) are hand-authored in the TS catalog with no config.yaml and are intentionally skipped via `SKIP_SKILL_NAMES`.
 
 ---
 

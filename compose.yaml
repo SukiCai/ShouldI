@@ -8,12 +8,16 @@ services:
         entrypoint: docker/hermes
     ports:
       - "${SHOULDI_HERMES_HOST_PORT:-8642}:8642"
+      # Phase 6 internal per-turn RPC service — not part of the public
+      # OpenAI-compatible surface, only apps/api should ever call it.
+      - "127.0.0.1:${SHOULDI_HERMES_INTERNAL_RPC_PORT:-8643}:8643"
     environment:
       HERMES_HOME: /opt/data
       API_SERVER_ENABLED: "true"
       API_SERVER_HOST: "0.0.0.0"
       API_SERVER_PORT: "8642"
       API_SERVER_KEY: ${HERMES_API_KEY:-change-me-local-dev}
+      SHOULDI_INTERNAL_RPC_KEY: ${HERMES_API_KEY:-change-me-local-dev}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}

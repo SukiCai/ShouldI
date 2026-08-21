@@ -1,0 +1,227 @@
+{
+  "source_file": "zhihu_如何确定该不该分手.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Use the presence of the breakup question itself as a signal",
+      "condition": "When someone is asking whether they should break up...",
+      "action": "Treat the act of asking as evidence that a serious doubt already exists — then investigate whether the doubt is about the person or just a rough patch",
+      "because": "Top-ranked comment explicitly states: asking the question already signals a breakup impulse has formed; the more useful question is whether mutual attraction still exists",
+      "regions": []
+    },
+    {
+      "rule": "Distinguish mutual-growth relationships from mutual-drain relationships",
+      "condition": "When evaluating whether a long-term relationship is worth continuing...",
+      "action": "Ask whether the relationship makes both people better and more motivated, or whether it leaves both people depleted and stuck",
+      "because": "Top comment frames this as the core diagnostic: good relationships create shared momentum; bad ones make partners obstacles to each other's growth",
+      "regions": []
+    },
+    {
+      "rule": "Normalize minor conflict; escalate response only to sustained unhappiness",
+      "condition": "When small arguments are the primary complaint...",
+      "action": "Do not treat minor friction as a breakup signal; reserve serious consideration for patterns of sustained sadness, suspicion, and disappointment",
+      "because": "Top comment explicitly distinguishes '小吵小闹' (minor bickering) — normal and not breakup-worthy — from chronic emotional lows involving daily suspicion and sadness",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Persistence of mutual attraction",
+      "why_it_matters": "If both partners still genuinely like each other, most surface-level problems are workable; if attraction is gone, no conflict resolution fixes the core deficit",
+      "how_to_assess": "Ask directly: 'Do I still like this person?' and separately: 'Do they still like me?' — treat honest answers as the primary filter before analyzing specific complaints",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Net emotional valence of the relationship",
+      "why_it_matters": "A relationship that produces more sadness, disappointment, and suspicion than happiness is functionally damaging regardless of historical investment",
+      "how_to_assess": "Track subjective emotional state over recent weeks: is the dominant feeling happiness/security or sadness/anxiety/suspicion?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Presence of unforgivable vs. ordinary-flaw behaviors",
+      "why_it_matters": "The top comment distinguishes between ordinary partner flaws (bad temper, gaming habits, low initiative) — which are inherent to the person and should be accepted — vs. genuinely unacceptable acts that override attraction",
+      "how_to_assess": "Separate the complaint list into: 'personality traits I knew or should have known' vs. 'actions that cross a line I cannot accept'; only the latter category justifies exit independent of attraction",
+      "weight": "high",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying in a relationship out of historical investment ('we've been together so long')",
+      "unstated_consequence": "Sunk-cost framing keeps people in relationships where their day-to-day emotional state is chronically negative, compounding the total time lost rather than limiting it",
+      "who_it_affects": "People in long-term relationships who frame exit as 'waste' rather than evaluating current and future emotional trajectory",
+      "regions": []
+    },
+    {
+      "choice": "Accepting a partner's flaws as 'part of who they are'",
+      "unstated_consequence": "This framing is healthy for ordinary personality differences but can be misapplied to genuinely harmful behaviors, normalizing mistreatment under the guise of unconditional acceptance",
+      "who_it_affects": "People who conflate 'accepting imperfection' with tolerating disrespect or emotional harm",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Listing partner flaws as the breakup rationale when the real issue is loss of attraction",
+      "why_it_happens": "It is socially and psychologically easier to cite concrete complaints (gaming, bad temper, low initiative) than to admit 'I no longer feel the same' — the flaw list feels more justifiable",
+      "consequence": "Person either stays because 'the flaws aren't that bad' while ignoring the real problem, or leaves without understanding why, making the same mistake in the next relationship",
+      "warning_signs": [
+        "Complaint list consists entirely of traits that existed at relationship start",
+        "Person cannot answer 'do you still like them?' directly and pivots to listing behaviors"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Treating minor recurring conflict as evidence the relationship is broken",
+      "why_it_happens": "Idealized early-relationship phase creates a reference point; any friction feels like deterioration relative to that baseline",
+      "consequence": "Premature exits from otherwise viable relationships; repeated pattern across multiple relationships as the person never develops conflict tolerance",
+      "warning_signs": [
+        "Primary complaint is 'we argue a lot' without specifying nature or severity",
+        "Person describes early relationship as 'perfect' and current state as 'completely changed'"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Interpreting suspicion and jealousy as relationship problems rather than as diagnostic signals",
+      "why_it_happens": "Second comment states 'all suspicions are true' — the community tendency is to validate suspicion as accurate perception rather than examining whether it reflects trust damage from specific events or anxious attachment",
+      "consequence": "Suspicion that originates from anxious attachment gets misread as evidence of partner wrongdoing, accelerating exits from relationships where no actual breach occurred",
+      "warning_signs": [
+        "Person reports chronic suspicion with no cited specific incident",
+        "Person treats intuition as confirmed fact without evidence"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Do you still genuinely like this person — separate from history, obligation, and fear of being alone?",
+      "what_it_reveals": "Whether the relationship has a functional emotional core worth working with, or whether the complaints are proxies for an attraction that has already ended",
+      "follow_up_if_yes": "Then identify what specific pattern or event is generating the breakup impulse — is it a one-time breach or a repeating dynamic?",
+      "follow_up_if_no": "Then the question shifts from 'should I fix this?' to 'what is keeping me here despite no longer liking them?'",
+      "regions": []
+    },
+    {
+      "question": "Is the relationship making both of you better, or is it making both of you worse?",
+      "what_it_reveals": "Whether the relationship has a growth trajectory or a depletion trajectory — the community frames this as the structural test for long-term viability",
+      "follow_up_if_yes": "Rough patches are expected; investigate whether current problems are temporary stressors or permanent dynamic shifts",
+      "follow_up_if_no": "Mutual depletion is a strong structural signal; investigate whether the pattern is reversible or entrenched",
+      "regions": []
+    },
+    {
+      "question": "Are the things you are unhappy about traits that existed when you chose this person, or are they new behaviors?",
+      "what_it_reveals": "Distinguishes acceptance failures (rejecting who the person always was) from genuine deterioration or boundary violations (new harmful behaviors)",
+      "follow_up_if_yes": "The issue may be misaligned expectations rather than partner failure — recalibration may resolve it without exit",
+      "follow_up_if_no": "New harmful behaviors warrant serious evaluation: are they isolated incidents or emerging patterns?",
+      "regions": []
+    },
+    {
+      "question": "Over the past several weeks, has your dominant emotional state been happiness/security or sadness/suspicion/disappointment?",
+      "what_it_reveals": "Net emotional valence is a more reliable signal than any single incident — chronic negative states indicate the relationship is extracting more than it is giving",
+      "follow_up_if_yes": "Investigate whether the negative state is relationship-generated or externally sourced (work stress, personal health, family) before attributing it to the relationship",
+      "follow_up_if_no": "If baseline is positive with episodic conflict, the relationship likely has a repairable rough patch rather than a structural problem",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you are asking whether to break up, the answer is probably yes",
+      "actual_reality": "Asking the question signals that a breakup impulse exists, but the top comment reframes this: the more important question is whether mutual attraction remains — minor conflict is normal and asking the question during a rough patch does not itself confirm the relationship is over",
+      "implication": "People should not treat the presence of doubt as a sufficient exit signal; they should use the doubt as a prompt to honestly assess attraction and emotional trajectory, not as a verdict",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to read the complaint list",
+      "naive_pattern": "Treats a list of partner flaws as the actual reason to break up; evaluates whether the flaws are 'bad enough' to justify exit",
+      "informed_pattern": "Recognizes that flaw-listing often obscures the real question (is attraction still present?); asks whether the complaints are about who the person fundamentally is or about new harmful behaviors",
+      "why_it_matters": "Acting on flaw lists without the underlying attraction diagnosis leads to either staying with suppressed resentment or exiting and repeating the same cycle with someone new",
+      "regions": []
+    },
+    {
+      "dimension": "How to evaluate relationship quality over time",
+      "naive_pattern": "Compares current state to idealized early phase; frames any gap as relationship failure",
+      "informed_pattern": "Accepts that long-term relationships involve discovering flaws and navigating conflict; evaluates trajectory (are we growing together or depleting each other?) rather than comparing to an early-phase baseline",
+      "why_it_matters": "Naive comparison to honeymoon phase produces premature exits and unrealistic expectations across successive relationships",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "All suspicions are true — if you feel suspicious, something is definitely wrong with your partner",
+      "why_believed": "The second comment states this as a confident aphorism ('所有的怀疑都是真的'); it resonates emotionally because it validates hurt feelings and frames suspicion as reliable intuition",
+      "actual_rule": "Suspicion is a signal worth investigating, but it can originate from anxious attachment, past relationship trauma, or external stress rather than from actual partner misconduct; treating suspicion as confirmed fact without evidence conflates feeling with reality",
+      "real_consequence": "People exit or damage viable relationships by acting on anxiety-driven suspicion as if it were evidence, or they use this belief to avoid examining whether their own attachment style is generating the distress",
+      "regions": []
+    },
+    {
+      "misconception": "Accepting your partner means tolerating everything because 'that's who they are'",
+      "why_believed": "Top comment frames ordinary flaws (temper, hobbies, low initiative) as things partners should accept — this is correct for personality traits but the framing can be over-applied",
+      "actual_rule": "Acceptance of inherent personality traits is healthy; acceptance of genuinely harmful, disrespectful, or boundary-violating behaviors is not the same thing and should not be framed as a virtue",
+      "real_consequence": "People normalize mistreatment by categorizing harmful behaviors as 'just who they are,' suppressing legitimate grievances and remaining in relationships that actively damage them",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [],
+  "psychological_barriers": [
+    {
+      "trigger": "Person asks 'should I break up?' and then immediately recalls how good things were at the start",
+      "underlying_state": "Sunk cost fallacy combined with loss aversion — the happy past feels like an asset that will be wasted if the relationship ends",
+      "how_it_manifests": "Person oscillates between wanting to leave and feeling guilty about 'throwing away' a relationship that was once good; stays in a currently unhappy relationship by mentally living in the past",
+      "expert_move": "Redirect attention from 'what did we have?' to 'what is the current emotional trajectory?' — past happiness does not predict future viability; the relevant question is whether the conditions that created that happiness still exist or can be rebuilt",
+      "regions": []
+    },
+    {
+      "trigger": "Person frames their partner's ordinary traits as newly discovered flaws driving the breakup impulse",
+      "underlying_state": "Disillusionment phase of long-term attachment — the brain is registering what it suppressed during the idealization phase, which feels like the partner has 'changed' when in fact the observer's perception has normalized",
+      "how_it_manifests": "Complaints focus on traits that were present at relationship start (temper, habits, communication style) framed as if they are new revelations justifying exit",
+      "expert_move": "Ask: 'Were these traits present when you chose this person?' — if yes, the real question is whether your tolerance or expectations have shifted, not whether the partner has failed; this separates acceptance work from legitimate boundary violations",
+      "regions": []
+    },
+    {
+      "trigger": "Person reports chronic suspicion and emotional distress but cannot cite specific incidents",
+      "underlying_state": "Anxious attachment or unresolved prior relationship trauma being projected onto the current partner — distress is real but the attribution may be inaccurate",
+      "how_it_manifests": "Person treats generalized unease as evidence of partner wrongdoing; cites the aphorism 'all suspicions are true' to justify certainty without evidence",
+      "expert_move": "Separate the feeling from the attribution: 'You are clearly in distress — let's first figure out whether this distress is partner-generated or something you would carry into the next relationship too'; this prevents exit from a viable relationship while also not dismissing real warning signs",
+      "regions": []
+    },
+    {
+      "trigger": "Person has already formed a breakup impulse but frames it as a neutral 'should I?' question",
+      "underlying_state": "Ambivalence with a lean — the person likely has a direction but is seeking external permission or validation rather than genuine analysis",
+      "how_it_manifests": "Question is posed as open and analytical ('how do I know if I should break up?') but the framing and details reveal a pre-formed conclusion seeking confirmation",
+      "expert_move": "Name the lean explicitly: 'It sounds like part of you already wants to leave — what would it take for you to feel certain that staying is right? That question is often more useful than the exit question'",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "Should I break up with my partner? How do I know if it's the right decision?",
+      "reframe": "The more useful question is not 'should I break up?' but 'do we still genuinely like each other?' — if yes, most problems are workable; if no, the specific complaints are almost beside the point",
+      "why_it_works": "Shifts the analysis from a list of surface complaints (which can always be argued either way) to the foundational emotional condition that determines whether repair work has a substrate to build on",
+      "example_language": "你更应该问自己你们还相互喜欢吗 — 'You should be asking yourself: do you two still like each other?'",
+      "regions": []
+    },
+    {
+      "original_framing": "My partner has so many flaws — bad temper, always gaming, never initiates contact — maybe we're not right for each other",
+      "reframe": "These are part of who they are — you chose this person; the question is whether you can accept who they fundamentally are, not whether they are flawed",
+      "why_it_works": "Redirects from evaluating the partner against an ideal standard to evaluating the person's own choice and acceptance capacity — prevents the cognitive trap of using ordinary human imperfection as a justification for exit when the real issue is unaddressed attraction loss",
+      "example_language": "这都是他的一部分啊 — 'These are all part of who he is'",
+      "regions": []
+    },
+    {
+      "original_framing": "I feel hurt and suspicious — something must be wrong, all suspicions are true",
+      "reframe": "Your feelings are real, but the question of whether your partner has actually done something wrong is separate from the question of whether you are in pain — conflating the two leads to acting on emotion as if it were evidence",
+      "why_it_works": "Introduces the distinction between emotional signal and factual claim — prevents impulsive exits driven by attachment anxiety while also not dismissing the possibility of genuine partner failure",
+      "example_language": "所有的离开都是有征兆的，所有的怀疑都是真的 — this community aphorism ('all suspicions are true') is the framing being challenged; the reframe asks: true about your feelings, or true about your partner's actions?",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_如何确定该不该分手",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

@@ -3,11 +3,11 @@ name: intl-student-advisor
 description: Use when user has questions about immigration status, visa mechanics, status transitions, or long-term PR/green card strategy — e.g., what can I legally do on my current status, OPT/CPT rules and unemployment clocks, H-1B cap and lottery mechanics, PGWP duration and field-of-study requirements, Express Entry CRS score optimization, PNP streams, grace periods, status change options, stay-vs-return-home decisions, and EB green card timelines. Covers US (F-1/OPT/STEM OPT/H-1B/EB-2/EB-3) and Canada (PGWP/CEC/Express Entry/PNP). Does NOT cover: active job search tactics (use intl-job-search) or graduate school selection (use grad-school-advisor).
 version: 1.0.0
 metadata:
+  requires_location_precheck: true
   hermes:
     tags: [immigration, international-students, visa, career, us, canada, opt, h1b, express-entry, pgwp]
     related_skills: []
 ---
-
 # International Student Immigration & Career Advisor
 
 ## Expert Framing
@@ -65,14 +65,14 @@ These apply regardless of country.
 
 ### Universal Hidden Tradeoffs
 
-| Choice | What silently comes with it | Who it hits hardest |
-|---|---|---|
-| Staying on a work visa | Golden handcuffs via immigration: under-negotiating salary, avoiding career risks, staying in unsuitable roles | Early-career workers who most need risk-taking |
-| Accepting verbal sponsorship commitment | Worthless at the moment it matters most; no legal recourse | Students joining startups or firms that have never sponsored |
-| Relying on forum peer advice | Survivorship bias; confident wrong decisions | Students with unusual profile elements (nationality, niche NOC, atypical program) |
-| Treating immigration planning as reactive | Path dependencies foreclose options that cannot be reopened under time pressure | Students who chose program/employer without immigration analysis |
-| Optimizing job offers purely for salary | A higher-salary role with weaker pathway can produce less lifetime value than lower salary with clear PR trajectory | Analytically rigorous students who don't quantify immigration risk |
-| Skipping the $300 attorney consultation | Wrong decision cost is 100–1000x the consultation fee | Cost-sensitive students making six-figure-impact decisions |
+| Choice                                    | What silently comes with it                                                                                         | Who it hits hardest                                                               |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Staying on a work visa                    | Golden handcuffs via immigration: under-negotiating salary, avoiding career risks, staying in unsuitable roles      | Early-career workers who most need risk-taking                                    |
+| Accepting verbal sponsorship commitment   | Worthless at the moment it matters most; no legal recourse                                                          | Students joining startups or firms that have never sponsored                      |
+| Relying on forum peer advice              | Survivorship bias; confident wrong decisions                                                                        | Students with unusual profile elements (nationality, niche NOC, atypical program) |
+| Treating immigration planning as reactive | Path dependencies foreclose options that cannot be reopened under time pressure                                     | Students who chose program/employer without immigration analysis                  |
+| Optimizing job offers purely for salary   | A higher-salary role with weaker pathway can produce less lifetime value than lower salary with clear PR trajectory | Analytically rigorous students who don't quantify immigration risk                |
+| Skipping the $300 attorney consultation   | Wrong decision cost is 100–1000x the consultation fee                                                              | Cost-sensitive students making six-figure-impact decisions                        |
 
 ---
 
@@ -103,16 +103,16 @@ These apply regardless of country.
 
 #### US Decision Factors
 
-| Factor | Why it matters | How to assess | Weight |
-|---|---|---|---|
-| Country of birth | Per-country 7% cap creates 50–100+ year EB-2 waits for India/China | Check current Visa Bulletin Final Action Dates for your country | High |
-| Cumulative full-time CPT months | 12+ months permanently eliminates OPT eligibility | Ask DSO for total; do not rely on personal records | High |
-| STEM degree list eligibility (CIP code) | Determines 12 vs. 36 months of OPT and number of H-1B lottery attempts | Look up exact program on DHS STEM Designated Degree Program List | High |
-| Employer E-Verify enrollment | Required for STEM OPT extension | Verify via E-Verify employer search tool before signing offer | High |
-| OEWS wage level of offered salary | Determines 1–4 H-1B lottery entries under wage-based system | Look up DOL OEWS levels for occupation and geographic area | High |
-| Employer cap-exempt status | Eliminates lottery entirely if employer is university/nonprofit research/gov research | Verify statutory definition, not just nonprofit label | High |
-| Timing of Form I-765 filing | 30 days after DSO SEVIS recommendation, no later than 60 days after graduation | Calendar both deadlines the day the DSO acts | High |
-| Employer sponsorship track record | Verbal willingness ≠ execution capacity | Ask how many they've sponsored, which counsel, prior approval rate | High |
+| Factor                                  | Why it matters                                                                        | How to assess                                                      | Weight |
+| --------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------ |
+| Country of birth                        | Per-country 7% cap creates 50–100+ year EB-2 waits for India/China                   | Check current Visa Bulletin Final Action Dates for your country    | High   |
+| Cumulative full-time CPT months         | 12+ months permanently eliminates OPT eligibility                                     | Ask DSO for total; do not rely on personal records                 | High   |
+| STEM degree list eligibility (CIP code) | Determines 12 vs. 36 months of OPT and number of H-1B lottery attempts                | Look up exact program on DHS STEM Designated Degree Program List   | High   |
+| Employer E-Verify enrollment            | Required for STEM OPT extension                                                       | Verify via E-Verify employer search tool before signing offer      | High   |
+| OEWS wage level of offered salary       | Determines 1–4 H-1B lottery entries under wage-based system                          | Look up DOL OEWS levels for occupation and geographic area         | High   |
+| Employer cap-exempt status              | Eliminates lottery entirely if employer is university/nonprofit research/gov research | Verify statutory definition, not just nonprofit label              | High   |
+| Timing of Form I-765 filing             | 30 days after DSO SEVIS recommendation, no later than 60 days after graduation        | Calendar both deadlines the day the DSO acts                       | High   |
+| Employer sponsorship track record       | Verbal willingness ≠ execution capacity                                              | Ask how many they've sponsored, which counsel, prior approval rate | High   |
 
 #### US Hidden Tradeoffs
 
@@ -161,17 +161,17 @@ These apply regardless of country.
 
 #### Canada Decision Factors
 
-| Factor | Why it matters | How to assess | Weight |
-|---|---|---|---|
-| Study permit application date vs. Nov 1, 2024 / Jun 25, 2025 cutoffs | Determines which PGWP rules apply; grandfathering is binary | Check IRCC submission confirmation date, not approval date | High |
-| Program credential type (degree vs. diploma/certificate) | University degree holders exempt from field-of-study rule; diploma/certificate holders are not | Confirm bachelor's/master's/PhD from a university, not graduate certificate | High |
-| Program CIP code | PGWP eligibility for non-degree programs determined by CIP, not program name | Obtain from registrar; cross-reference IRCC eligible fields list | High |
-| Program length vs. 2-year threshold | 2+ years → 3-year PGWP; under 2 years → shorter PGWP compressing CEC window | Calculate total program months | High |
-| Current CRS score vs. recent draw cut-offs | Determines whether PNP is essential or optional | Use IRCC's official CRS calculator; compare last 6 months of draws | High |
-| NOC TEER category of current job | Only TEER 0/1/2/3 counts for CEC | Look up job title on IRCC NOC database; verify duties match | High |
-| French language proficiency | CLB 7+ adds up to 50 CRS and unlocks French draws | Take TEF Canada or TCF Canada — not DELF | High |
-| Existence and location of job offer | Most PNP streams require provincial job offer; Ontario HCP does not | Verify full-time, indeterminate or 1-year+, NOC on province's list | High |
-| Cumulative unemployment during PGWP | PGWP validity is finite — status expires regardless of PR progress | Track PGWP expiry against expected PR timeline; identify bridge OWP options | Medium |
+| Factor                                                               | Why it matters                                                                                 | How to assess                                                               | Weight |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------ |
+| Study permit application date vs. Nov 1, 2024 / Jun 25, 2025 cutoffs | Determines which PGWP rules apply; grandfathering is binary                                    | Check IRCC submission confirmation date, not approval date                  | High   |
+| Program credential type (degree vs. diploma/certificate)             | University degree holders exempt from field-of-study rule; diploma/certificate holders are not | Confirm bachelor's/master's/PhD from a university, not graduate certificate | High   |
+| Program CIP code                                                     | PGWP eligibility for non-degree programs determined by CIP, not program name                   | Obtain from registrar; cross-reference IRCC eligible fields list            | High   |
+| Program length vs. 2-year threshold                                  | 2+ years → 3-year PGWP; under 2 years → shorter PGWP compressing CEC window                  | Calculate total program months                                              | High   |
+| Current CRS score vs. recent draw cut-offs                           | Determines whether PNP is essential or optional                                                | Use IRCC's official CRS calculator; compare last 6 months of draws          | High   |
+| NOC TEER category of current job                                     | Only TEER 0/1/2/3 counts for CEC                                                               | Look up job title on IRCC NOC database; verify duties match                 | High   |
+| French language proficiency                                          | CLB 7+ adds up to 50 CRS and unlocks French draws                                              | Take TEF Canada or TCF Canada — not DELF                                   | High   |
+| Existence and location of job offer                                  | Most PNP streams require provincial job offer; Ontario HCP does not                            | Verify full-time, indeterminate or 1-year+, NOC on province's list          | High   |
+| Cumulative unemployment during PGWP                                  | PGWP validity is finite — status expires regardless of PR progress                            | Track PGWP expiry against expected PR timeline; identify bridge OWP options | Medium |
 
 #### Canada Hidden Tradeoffs
 
@@ -197,20 +197,20 @@ These apply regardless of country.
 
 ## Informed vs. Uninformed Student Thinking
 
-| Dimension | Uninformed pattern | Informed pattern |
-|---|---|---|
-| Planning horizon | 6–12 months; treats next visa stage as the whole problem | 3–5 years; maps full dependency chain from status to PR before near-term decisions |
-| Contingency planning | One plan; assumes primary succeeds | Plan A, B, C for each transition; verified backups actually accessible |
-| Employer sponsorship evaluation | Takes "yes we sponsor" at face value | Asks operational questions: prior volume, immigration counsel, tracking process |
-| Information sourcing | Primary research is Reddit/Blind/WeChat | Uses forums to generate questions; validates with paid attorney consultation |
-| Status timeline awareness | Cannot state exact expiration or filing deadlines | Knows exact dates 12+ months out; owns the timeline personally |
-| US CPT usage | Treats CPT as unlimited free work authorization | Tracks cumulative full-time months against 12-month OPT-elimination threshold |
-| US EAD and work authorization | Interprets approval notice as work authorization | Waits for physical EAD card; refuses employer pressure to start early |
-| US EB-2 evaluation | Focuses on "do I qualify?" ignoring priority date | Checks Visa Bulletin for country of birth *first*, calculates realistic wait |
-| Canada CEC calculation | Counts co-op and student work toward CEC | Counts only post-graduation, PGWP-authorized TEER 0–3 hours against 1,560 |
-| Canada CRS strategy | Waits passively for score to be reached | Actively pulls levers (French, spouse language, PNP) and monitors category draws |
-| Canada PGWP eligibility check | Assumes DLI enrollment = PGWP eligibility | Verifies specific program CIP code against current IRCC eligible fields list |
-| Stay-vs-return framing | Compares current quality of life | Runs 10-year compounding comparison including immigration stability tax |
+| Dimension                       | Uninformed pattern                                        | Informed pattern                                                                    |
+| ------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Planning horizon                | 6–12 months; treats next visa stage as the whole problem | 3–5 years; maps full dependency chain from status to PR before near-term decisions |
+| Contingency planning            | One plan; assumes primary succeeds                        | Plan A, B, C for each transition; verified backups actually accessible              |
+| Employer sponsorship evaluation | Takes "yes we sponsor" at face value                      | Asks operational questions: prior volume, immigration counsel, tracking process     |
+| Information sourcing            | Primary research is Reddit/Blind/WeChat                   | Uses forums to generate questions; validates with paid attorney consultation        |
+| Status timeline awareness       | Cannot state exact expiration or filing deadlines         | Knows exact dates 12+ months out; owns the timeline personally                      |
+| US CPT usage                    | Treats CPT as unlimited free work authorization           | Tracks cumulative full-time months against 12-month OPT-elimination threshold       |
+| US EAD and work authorization   | Interprets approval notice as work authorization          | Waits for physical EAD card; refuses employer pressure to start early               |
+| US EB-2 evaluation              | Focuses on "do I qualify?" ignoring priority date         | Checks Visa Bulletin for country of birth*first*, calculates realistic wait       |
+| Canada CEC calculation          | Counts co-op and student work toward CEC                  | Counts only post-graduation, PGWP-authorized TEER 0–3 hours against 1,560          |
+| Canada CRS strategy             | Waits passively for score to be reached                   | Actively pulls levers (French, spouse language, PNP) and monitors category draws    |
+| Canada PGWP eligibility check   | Assumes DLI enrollment = PGWP eligibility                 | Verifies specific program CIP code against current IRCC eligible fields list        |
+| Stay-vs-return framing          | Compares current quality of life                          | Runs 10-year compounding comparison including immigration stability tax             |
 
 ## Common Misconceptions
 
@@ -242,16 +242,16 @@ Reality: As of March 25, 2025, job offer CRS points were eliminated. Consequence
 
 ### Emotional States and What They Signal
 
-| When user says... | Underlying state | Expert move |
-|---|---|---|
-| "Should I stay in the US or go to Canada?" (without checking backlog first) | Ambiguity aversion + sunk cost bias from years invested | Redirect to the Visa Bulletin immediately: check priority date for country of birth before any other factor |
-| "I've failed the H-1B lottery twice — should I just try one more time?" | Sunk cost fallacy + status quo bias | Reframe: "What is your plan if you lose again?" Force contingency planning; activate cap-exempt exploration in parallel |
-| "I might have to leave, so I shouldn't fully commit here" | Anticipatory grief + pre-emptive withdrawal | "You're already paying the cost of leaving without the benefit of being here. The self-protection is producing the harm it was meant to prevent." |
-| "Day 1 CPT — lots of people do it and they seem fine" | Survivorship bias + social proof | "The people who are fine haven't hit their H-1B or green card stage yet — that's when this surfaces. Can you afford to find out then?" |
-| "My CRS is 450 and I'm stuck" | Learned helplessness + anchor bias | Reframe as portfolio problem: "Which of the CRS levers have you not yet pulled? French alone is worth 50 points." |
-| "I got the OPT approval notice — can I start Monday?" | Catastrophizing time pressure + conflating approval with authorization | Separate approval from authorization; the physical EAD is the legal trigger. One day early = permanent SEVIS violation. |
-| "I don't want to bring up sponsorship because it will hurt my chances" | Internalized stigma + catastrophizing | "Stop apologizing. On OPT you need zero sponsorship — the anxiety around this makes you come across worse than the visa situation warrants." |
-| "I need to switch programs because the research fit is wrong" | Present-focused discomfort overweighting distant immigration cost | Make the abstract cost concrete: "Switching costs 2 years of PGWP. Model what that looks like for you specifically before deciding." |
+| When user says...                                                           | Underlying state                                                       | Expert move                                                                                                                                       |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "Should I stay in the US or go to Canada?" (without checking backlog first) | Ambiguity aversion + sunk cost bias from years invested                | Redirect to the Visa Bulletin immediately: check priority date for country of birth before any other factor                                       |
+| "I've failed the H-1B lottery twice — should I just try one more time?"    | Sunk cost fallacy + status quo bias                                    | Reframe: "What is your plan if you lose again?" Force contingency planning; activate cap-exempt exploration in parallel                           |
+| "I might have to leave, so I shouldn't fully commit here"                   | Anticipatory grief + pre-emptive withdrawal                            | "You're already paying the cost of leaving without the benefit of being here. The self-protection is producing the harm it was meant to prevent." |
+| "Day 1 CPT — lots of people do it and they seem fine"                      | Survivorship bias + social proof                                       | "The people who are fine haven't hit their H-1B or green card stage yet — that's when this surfaces. Can you afford to find out then?"           |
+| "My CRS is 450 and I'm stuck"                                               | Learned helplessness + anchor bias                                     | Reframe as portfolio problem: "Which of the CRS levers have you not yet pulled? French alone is worth 50 points."                                 |
+| "I got the OPT approval notice — can I start Monday?"                      | Catastrophizing time pressure + conflating approval with authorization | Separate approval from authorization; the physical EAD is the legal trigger. One day early = permanent SEVIS violation.                           |
+| "I don't want to bring up sponsorship because it will hurt my chances"      | Internalized stigma + catastrophizing                                  | "Stop apologizing. On OPT you need zero sponsorship — the anxiety around this makes you come across worse than the visa situation warrants."     |
+| "I need to switch programs because the research fit is wrong"               | Present-focused discomfort overweighting distant immigration cost      | Make the abstract cost concrete: "Switching costs 2 years of PGWP. Model what that looks like for you specifically before deciding."              |
 
 ### Reframing Moves
 

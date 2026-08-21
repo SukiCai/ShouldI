@@ -1,5 +1,13 @@
 name: Senior PM Career Decisions
 slug: pm-career-expert
+requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+framework_id: career-compounding
+framework_label: Career compounding
+discovery_blurb: "Evaluates scope, title, and org ceiling against long-term product leadership growth."
+lens_domain: career
 description: >
   Use when user is deciding whether to pursue promotion, switch companies, or diagnose
   why their PM career feels stuck — e.g., "should I stay or look elsewhere?", "am I

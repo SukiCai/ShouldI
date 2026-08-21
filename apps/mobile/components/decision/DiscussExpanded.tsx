@@ -17,7 +17,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@/components/ui';
 import JumpUpSheet from '@/components/ui/JumpUpSheet';
 import { useColorScheme } from '@/components/useColorScheme';
-import { discussCardColors, discussCardStyles } from '@/components/decision/discussCardStyles';
+import { discussCardColors } from '@/components/decision/discussCardStyles';
+import { ExpertVerdictList } from '@/components/explore/ExpertVerdictList';
 import { pmfText, usePmfSurface } from '@/components/screen/pmfChrome';
 import { ctaStyles } from '@/components/screen/ctaStyles';
 import { updateWatching } from '@/lib/exploreUserActivity';
@@ -448,22 +449,29 @@ export function DiscussExpanded({
             </View>
             <Text style={[styles.aiDecisionHeadline, { color: surface.textPrimary }]}>{aiDecisionHeadline}</Text>
 
+            <Text style={[styles.aiDecisionReason, { color: surface.textMuted }]} numberOfLines={hasResults ? 8 : 2}>
+              {aiDecisionReason}
+            </Text>
+
             {card.aiValidation?.keyContext && card.aiValidation.keyContext.length > 0 ? (
               <View style={styles.keyContextSection}>
                 <Text style={[styles.keyContextEyebrow, { color: surface.textMuted }]}>Key context</Text>
-                {card.aiValidation.keyContext.slice(0, hasResults ? 3 : 2).map((ctx, i) => (
-                  <View key={i} style={[discussCardStyles.momentCard, { borderLeftWidth: 3, borderLeftColor: semantic.actionPrimary }]}>
-                    <Text style={discussCardStyles.momentOrdinal}>{String(i + 1).padStart(2, '0')}</Text>
-                    <Text style={discussCardStyles.momentCardTitle} numberOfLines={2}>
-                      {ctx}
-                    </Text>
-                  </View>
-                ))}
+                <View style={styles.keyContextTagRow}>
+                  {card.aiValidation.keyContext.slice(0, hasResults ? 4 : 2).map((ctx, i) => (
+                    <View key={i} style={[styles.keyContextTag, { borderColor: surface.groupedBorder }]}>
+                      <Text style={[styles.keyContextTagText, { color: surface.textMuted }]} numberOfLines={2}>
+                        {ctx}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
               </View>
             ) : null}
-            <Text style={[styles.aiDecisionReason, { color: surface.textMuted }]} numberOfLines={hasResults ? 4 : 2}>
-              {aiDecisionReason}
-            </Text>
+
+            {hasResults && card.aiValidation?.expertVerdicts && card.aiValidation.expertVerdicts.length > 0 ? (
+              <ExpertVerdictList expertVerdicts={card.aiValidation.expertVerdicts} />
+            ) : null}
+
             {!hasResults ? (
               <Text style={[styles.secondaryHint, { color: surface.textMuted }]}>Cast your vote to unlock full AI reasoning and interaction.</Text>
             ) : null}
@@ -1360,6 +1368,22 @@ function discussExpandedStyles(surface: ThemeSurface) {
     letterSpacing: 0.2,
     textTransform: 'uppercase',
     marginBottom: 2,
+  },
+  keyContextTagRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  keyContextTag: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    maxWidth: '100%',
+  },
+  keyContextTagText: {
+    ...typography.caption,
+    fontWeight: '500',
   },
   keyContextRow: {
     flexDirection: 'row',

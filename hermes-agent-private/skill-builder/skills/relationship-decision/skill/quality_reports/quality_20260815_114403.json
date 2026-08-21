@@ -1,0 +1,53 @@
+{
+  "skill_name": "Relationship Decision Expert",
+  "overall_score": 4.5,
+  "summary": "This is a genuinely strong skill that goes well beyond generic relationship advice. It combines evidence-based clinical patterns (Gottman, attachment theory, coercive control screening) with concrete jurisdictional legal knowledge in a way that would meaningfully upgrade an AI's advice quality. Its main weaknesses are minor: a few areas where the framework could sharpen operational thresholds further, and some coverage gaps around LGBTQ+ specifics and financial-abuse-adjacent post-separation dynamics.",
+  "scores": {
+    "expert_framing": 5,
+    "heuristics_specificity": 5,
+    "diagnostic_questions": 5,
+    "failure_patterns": 4,
+    "hidden_tradeoffs": 5,
+    "industry_realities": 4,
+    "junior_vs_senior_table": 5,
+    "overall_actionability": 4
+  },
+  "strengths": [
+    "The Expert Framing section names a specific, counterintuitive core insight: 'A moment of \"I finally see it clearly\" — whether the vision is stay or leave — is a data point about attachment state, not about the relationship.' This directly reframes how a novice would approach felt certainty, and it's actionable.",
+    "The reactive-abuse screening (Step 1a) is genuinely expert-level and rarely seen in relationship frameworks. Distinguishing 'who initiates the escalation and de-escalation' and 'fear asymmetry' before applying the abuse gate prevents both false-positive and false-negative gate trips — a subtle move that a naive framework would miss entirely.",
+    "The legal section is unusually operational: 'BC grants unmarried couples near-married property rights after 2 years; Ontario grants none regardless of duration' and the note that 'standard pre-marriage exclusions do NOT apply to the family home in Ontario' are the kind of jurisdiction-specific facts that change actual answers, not filler.",
+    "The trust-rebuild criteria are specified behaviorally with a stress-test threshold: 'these behaviors must sustain through at least one high-stress period and one triggering context... not just across calm months.' This gives the AI a falsifiable benchmark instead of a vibes-based evaluation.",
+    "The four-situation classifier (Abuse / Broken / Depleted / Attachment-driven) with an explicit run-order and an ambiguity fallback ('diagnose the most decision-relevant question first — usually does contempt appear in low-stakes moments too') gives the AI a real decision procedure, not just a taxonomy."
+  ],
+  "weaknesses": [
+    "The 'Broken relationship' classifier defines repair failure as failing 'across ≥2 clear opportunities' — this threshold is asserted without justification and may be too low for a life-altering assessment. Real senior clinicians would want more context on what counts as a 'clear opportunity' (was change modeled? was there a specific behavioral request? was follow-through defined?).",
+    "The sexless-relationship path, while good, treats 'responsive desire' as a treatment for baseline discrepancy without acknowledging that mismatched libido in long relationships is one of the most common irreconcilable differences and often does not resolve. The framing risks under-weighting it as a legitimate compatibility issue rather than always a management problem.",
+    "Some industry realities are true but not surprising to anyone who has done light reading — e.g., 'Conflict frequency signals relationship health. Reality: all relationships have conflict.' This is common-knowledge-level and dilutes the more genuinely counterintuitive entries (like the matrimonial home exclusion or contempt weighting).",
+    "The framework says almost nothing about how attachment-avoidant partners typically present in the conversation itself — e.g., they often minimize the problem to the AI or describe their partner as 'too needy,' which can bias the AI's read of who is the pursuer vs. withdrawer. A note on how presentation style itself is diagnostic would help."
+  ],
+  "improvement_suggestions": [
+    "Add a short 'presentation biases' subsection describing how anxious-attached and avoidant-attached users differ in how they *describe* the relationship to the AI (anxious: catastrophizing recent event, over-detailed conflict recall; avoidant: flat affect, 'we've just grown apart,' minimization). This lets the AI weight the described 'facts' correctly.",
+    "Tighten the '≥2 clear opportunities' threshold in the Broken-relationship classifier by specifying what makes an opportunity 'clear' (a specific behavioral request was made, the partner verbally committed, the situation recurred with the same choice available). Without this, the threshold is easily gamed by either partner's framing.",
+    "Add operational guidance for the case where the user is the *higher-power* partner (higher income, more social capital, primary custodial claim) — the current framing implicitly reads as advising the more-vulnerable partner. Legal and ethical considerations differ (e.g., duty of disclosure, risk of appearing to weaponize custody).",
+    "Add coverage for post-separation financial abuse and litigation abuse — a common continuation pattern after the abuse gate trips, where the controlling partner uses the legal system itself as the control surface (drawn-out proceedings, custody threats, discovery weaponization). Currently the skill hands off to the hotline and doesn't return.",
+    "Replace the weakest 'Industry Realities' entries (conflict frequency, trust rebuilds with time) with more counterintuitive ones — e.g., that 'starting an affair recovery process often surfaces prior undisclosed betrayals that reset the timeline,' or that 'no-fault jurisdictions can still consider fault for support/custody in specific ways.'"
+  ],
+  "generic_advice_flags": [
+    "'Conflict frequency signals relationship health. Reality: all relationships have conflict. Repair success rate is the predictor.' — The 'belief' side here is a strawman; almost no one who has read anything about relationships still believes conflict frequency alone signals health. The more interesting version would target *content* of conflict (perpetual vs. solvable per Gottman).",
+    "'Trust rebuilds gradually with time. Reality: requires active behavioral effort sustained through triggering conditions; time without effort produces nothing.' — True but standard betrayal-recovery framing; not the level of non-obviousness the rest of the skill achieves.",
+    "The heuristic 'Separate should I leave from how I leave legally' is stated as a heuristic but is essentially a structural instruction that's already baked into Step 0 and the How-to-Use section — it doesn't add heuristic content."
+  ],
+  "missing_coverage": [
+    "Same-sex and LGBTQ+ specifics: parentage presumptions, second-parent adoption gaps in some US states, and different community/religious dynamics around dissolution.",
+    "Blended-family and stepparent dynamics — a very common presentation ('should I leave when there are stepchildren I've raised but have no legal relationship to?').",
+    "Financial-abuse and post-separation litigation-abuse patterns from a controlling ex-partner (currently the skill exits to the hotline and doesn't cover the ongoing legal-strategy implications).",
+    "The role of individual therapy sequencing — the skill mentions couples therapy contraindications but doesn't specify when individual therapy is the correct sequenced intervention (e.g., trauma work before couples work in betrayal cases).",
+    "International and cross-border cases (one partner in US, one in Canada; immigration-dependent spouses; Hague convention implications for child custody) — increasingly common and legally distinct from within-jurisdiction cases.",
+    "How to handle the case where the user is describing a *third party's* relationship (friend, adult child, sibling) — different information constraints and different appropriate scope of advice."
+  ],
+  "location_precheck": {
+    "required": true,
+    "ok": true,
+    "issues": []
+  }
+}

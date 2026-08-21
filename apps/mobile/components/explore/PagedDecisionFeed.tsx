@@ -119,6 +119,18 @@ function AiDecisionReasonCard({
       </View>
       <Text style={[styles.aiReasonLead, { color: surface.textDisplay }]}>{v.verdictLine}</Text>
       <Text style={[styles.aiReasonBody, { color: surface.textPrimary }]}>{detail}</Text>
+      {v.expertVerdicts.length > 0 ? (
+        <View style={styles.aiReasonExpertBlock}>
+          <Text style={[styles.aiReasonExpertEyebrow, { color: surface.textMuted }]}>
+            {v.expertVerdicts.length} experts weighed in
+          </Text>
+          {v.expertVerdicts.map((expert, index) => (
+            <Text key={index} style={[styles.aiReasonExpertLine, { color: surface.textMuted }]}>
+              · {expert.expertTitle}: {expert.verdictLine}
+            </Text>
+          ))}
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -722,6 +734,19 @@ function pagedFeedStyles(surface: ThemeSurface) {
   },
   aiReasonBody: {
     ...typography.body,
+    fontWeight: '500',
+  },
+  aiReasonExpertBlock: {
+    marginTop: 2,
+    gap: 3,
+  },
+  aiReasonExpertEyebrow: {
+    ...typography.caption,
+    fontWeight: '600',
+  },
+  aiReasonExpertLine: {
+    ...typography.caption,
+    lineHeight: 17,
     fontWeight: '500',
   },
   outcomeMerged: {

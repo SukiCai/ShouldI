@@ -56,18 +56,18 @@ import {
   type DiscoveredExpert,
 } from '@shouldi/contracts';
 
-import { CouncilPaywallSheet } from './components/CouncilPaywallSheet';
-import { DecideModeSegment } from './components/DecideModeSegment';
-import { DecideSessionStatus } from './components/DecideSessionStatus';
-import { DecideSessionsSheet } from './components/DecideSessionsSheet';
+import { CouncilPaywallSheet } from '@/components/decide/CouncilPaywallSheet';
+import { DecideModeSegment } from '@/components/decide/DecideModeSegment';
+import { DecideSessionStatus } from '@/components/decide/DecideSessionStatus';
+import { DecideSessionsSheet } from '@/components/decide/DecideSessionsSheet';
 import {
   ChamberJoinChatRow,
   CouncilVoteTally,
   ExpertGlyph,
   ThinkingRow,
-} from './components/DecideThreadParts';
-import { ExpertDiscoverySheet } from './components/ExpertDiscoverySheet';
-import { ExpertRosterSheet } from './components/ExpertRosterSheet';
+} from '@/components/decide/DecideThreadParts';
+import { ExpertDiscoverySheet } from '@/components/decide/ExpertDiscoverySheet';
+import { ExpertRosterSheet } from '@/components/decide/ExpertRosterSheet';
 import {
   appendExpertJoinRows,
   assistantBubbleBody,
@@ -85,8 +85,9 @@ import {
   threadSenderLabel,
   type DecideThreadItem,
   type ExpertJoinRow,
-} from './components/threadHelpers';
-import { useDecideWizard } from './context';
+} from '@/components/decide/threadHelpers';
+import { defaultKeyMomentSelection, useDecideWizard } from './context';
+import { keyMomentTagText } from '@/lib/textExcerpt';
 
 const readable: Record<DecisionCategory, string> = {
   life: 'Life path',
@@ -437,8 +438,8 @@ export default function DecideCategoryScreen() {
           communityAiBecause:
             h?.communityAiBecause?.trim()?.length
               ? h.communityAiBecause.trim()
-              : preview?.aiBecause?.trim()
-              || [fd?.recommendation, fd?.rationale].filter(Boolean).join('\n\n')
+              : [fd?.recommendation, fd?.rationale].filter(Boolean).join('\n\n')
+              || preview?.aiBecause?.trim()
               || d.communityAiBecause,
           hook: preview?.hook?.trim() || d.hook,
           tension: preview?.tension?.trim() || d.tension,
@@ -447,6 +448,9 @@ export default function DecideCategoryScreen() {
             preview?.discussionPreview?.length ? [...preview.discussionPreview] : d.discussionPreview,
           expertVerdicts: fd?.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd?.keyMoments ?? d.keyMoments,
+          selectedKeyMomentIndices: fd?.keyMoments
+            ? defaultKeyMomentSelection(fd.keyMoments)
+            : d.selectedKeyMomentIndices,
           reflection: fd?.reflection ?? d.reflection,
           aiConfidenceScore: (() => {
             if (fd?.confidenceScore != null) {
@@ -538,6 +542,9 @@ export default function DecideCategoryScreen() {
         updateDraft({
           expertVerdicts: fd.expertVerdicts ?? d.expertVerdicts,
           keyMoments: fd.keyMoments ?? d.keyMoments,
+          selectedKeyMomentIndices: fd.keyMoments
+            ? defaultKeyMomentSelection(fd.keyMoments)
+            : d.selectedKeyMomentIndices,
           reflection: fd.reflection ?? d.reflection,
           communityAiVerdictLine: fd.verdictLine?.trim() || d.communityAiVerdictLine,
           communityAiBecause:
@@ -1111,6 +1118,23 @@ export default function DecideCategoryScreen() {
               })}
             </View>
           ) : null}
+          {finalDecision.keyMoments.length > 0 ? (
+            <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
+              <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>Key moments</Text>
+              <View style={styles.keyMomentTagRow}>
+                {[...finalDecision.keyMoments]
+                  .sort((a, b) => b.magnitude - a.magnitude)
+                  .slice(0, 4)
+                  .map((moment, index) => (
+                    <View key={index} style={[styles.keyMomentTag, { borderColor: colors.cardBorder }]}>
+                      <Text style={[styles.keyMomentTagText, { color: colors.primaryTxt }]}>
+                        {keyMomentTagText(moment, 110)}
+                      </Text>
+                    </View>
+                  ))}
+              </View>
+            </View>
+          ) : null}
           {finalDecision.reflection?.summary ? (
             <View style={[styles.verdictCard, { borderColor: colors.cardBorder, backgroundColor: colors.cardBg }]}>
               <Text style={[styles.verdictCardLabel, { color: colors.muted }]}>What to watch</Text>
@@ -1136,7 +1160,13 @@ export default function DecideCategoryScreen() {
           {canExpandVerdict ? (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={verdictExpanded ? 'Show less detail' : 'See full reasoning'}
+              accessibilityLabel={
+                verdictExpanded
+                  ? 'Show less'
+                  : finalDecision.expertVerdicts.length > 0
+                    ? 'See how each expert voted'
+                    : 'See full reasoning'
+              }
               onPress={() => setVerdictExpanded((v) => !v)}
               style={styles.verdictExpandBtn}>
               <Text style={[styles.verdictExpandText, { color: semantic.actionPrimary }]}>
@@ -1892,6 +1922,23 @@ const styles = StyleSheet.create({
   verdictStepText: {
     flex: 1,
     ...typography.compact,
+    fontWeight: '500',
+  },
+  keyMomentTagRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 4,
+  },
+  keyMomentTag: {
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    maxWidth: '100%',
+  },
+  keyMomentTagText: {
+    ...typography.caption,
     fontWeight: '500',
   },
   verdictExpandBtn: {

@@ -1,5 +1,13 @@
 name: Graduate School Selection Advisor
 slug: grad-school-advisor
+requires_location_precheck: true
+# Expert-card / collectible-catalog fields (must match this skill's HarmenceExpert
+# entry in apps/api/src/harmence-experts.ts — matched by slug == skillName).
+# Run scripts/check_catalog_sync.py after changing either side. See WORKFLOW §7c.
+framework_id: expected-value
+framework_label: Education ROI
+discovery_blurb: "Models funding, advisor fit, and immigration runway—not just program rank."
+lens_domain: career
 description: "Use when user is deciding whether to pursue graduate school, choosing between programs, evaluating admission offers, selecting advisors, or planning PhD/MS applications. Covers: PhD vs. MS tradeoffs, advisor red flags, funding package evaluation (RA/TA/fellowship), program ranking vs. fit vs. funding, application strategy (SOP, timeline, recommendations), Canadian/US/UK/EU program differences, MS coursework vs. thesis, unfunded MS ROI, and how program choice affects long-term immigration and career outcomes. Does NOT cover: active job search tactics (use intl-job-search) or post-graduation immigration status mechanics (use intl-student-advisor)."
 domain_description: Graduate school selection and application strategy for international students — including PhD vs. Masters decision, advisor evaluation, program ranking vs. research fit vs. funding tradeoffs, statement of purpose, application timing, funding types (RA/TA/fellowship), and how grad school choice affects long-term immigration and career outcomes
 tags:

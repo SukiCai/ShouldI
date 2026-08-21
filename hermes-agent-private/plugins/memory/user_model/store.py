@@ -118,22 +118,30 @@ class UserModelStore:
         """Returns None for unknown users (graceful degradation)."""
         try:
             with self._connect() as conn:
-                row = conn.execute(
-                    "SELECT * FROM user_models WHERE user_id = ?", (user_id,)
-                ).fetchone()
-            if row is None:
-                return None
-            inferred = [_dim_from_dict(d) for d in json.loads(row["inferred_json"] or "[]")]
-            return UserModel(
-                user_id=user_id,
-                profile=json.loads(row["profile_json"] or "{}"),
-                inferred=inferred,
-                signal_vocab=json.loads(row["signal_vocab"] or "[]"),
-                updated_at=row["updated_at"],
-            )
+                return self._get_model_with_conn(conn, user_id)
         except Exception:
             logger.exception("UserModelStore.get_model failed for %s", user_id)
             return None
+
+    def _get_model_with_conn(self, conn: sqlite3.Connection, user_id: str) -> Optional[UserModel]:
+        """Same as get_model(), but reuses a caller-supplied connection so the
+        read can happen inside the caller's own transaction (see
+        update_inferred/update_signal_vocab — without this, a fresh
+        connection here would read outside the BEGIN IMMEDIATE lock and
+        reintroduce the read-then-write race it exists to close)."""
+        row = conn.execute(
+            "SELECT * FROM user_models WHERE user_id = ?", (user_id,)
+        ).fetchone()
+        if row is None:
+            return None
+        inferred = [_dim_from_dict(d) for d in json.loads(row["inferred_json"] or "[]")]
+        return UserModel(
+            user_id=user_id,
+            profile=json.loads(row["profile_json"] or "{}"),
+            inferred=inferred,
+            signal_vocab=json.loads(row["signal_vocab"] or "[]"),
+            updated_at=row["updated_at"],
+        )
 
     # ── Inferred trait update ─────────────────────────────────────────────────
 
@@ -147,10 +155,34 @@ class UserModelStore:
         Summary updated only when provided in new_dimensions (keyword delta detected by Task A)
         Prune keywords < PRUNE_THRESHOLD; cap MAX_KEYWORDS_PER_DIM; cap MAX_DIMENSIONS
         """
-        model = self.get_model(user_id)
-        if model is None:
-            return
+        # Read-merge-write, but the read and write must happen inside the
+        # SAME locked transaction — otherwise two concurrent turns for the
+        # same user (each now its own OS process, one per /v1/turn call)
+        # can both read the pre-update state and each write back a merge
+        # that doesn't know about the other's contribution, silently
+        # dropping one of the two (see docs/engineering/
+        # user-account-isolation-test-plan.md, item F4). BEGIN IMMEDIATE
+        # takes SQLite's write lock up front — even in WAL mode, only one
+        # writer at a time — so a concurrent call simply waits (up to the
+        # connection's 5s timeout) instead of racing.
+        conn = self._connect()
+        try:
+            conn.execute("BEGIN IMMEDIATE")
+            model = self._get_model_with_conn(conn, user_id)
+            if model is None:
+                conn.execute("ROLLBACK")
+                return
+            self._merge_and_write_inferred(conn, user_id, model, new_dimensions)
+            conn.execute("COMMIT")
+        except Exception:
+            conn.execute("ROLLBACK")
+            raise
+        finally:
+            conn.close()
 
+    def _merge_and_write_inferred(
+        self, conn: sqlite3.Connection, user_id: str, model: "UserModel", new_dimensions: list[dict]
+    ) -> None:
         now = time.time()
         existing: dict[str, TraitDimension] = {d.field: d for d in model.inferred}
 
@@ -206,11 +238,10 @@ class UserModelStore:
         alive.sort(key=lambda d: _avg_confidence(d.keywords), reverse=True)
         final = alive[:MAX_DIMENSIONS]
 
-        with self._connect() as conn:
-            conn.execute(
-                "UPDATE user_models SET inferred_json = ?, updated_at = ? WHERE user_id = ?",
-                (json.dumps([_dim_to_dict(d) for d in final]), now, user_id),
-            )
+        conn.execute(
+            "UPDATE user_models SET inferred_json = ?, updated_at = ? WHERE user_id = ?",
+            (json.dumps([_dim_to_dict(d) for d in final]), now, user_id),
+        )
 
     # ── Signal vocabulary update ───────────────────────────────────────────────
 
@@ -219,11 +250,28 @@ class UserModelStore:
         Merge Task B output into signal_vocab.
         Decay existing terms × DECAY_FACTOR, reinforce matches, prune < PRUNE_THRESHOLD,
         cap at MAX_SIGNAL_TERMS.
-        """
-        model = self.get_model(user_id)
-        if model is None:
-            return
 
+        Same BEGIN IMMEDIATE locking as update_inferred — see that method's
+        comment for why the read and write must share one transaction.
+        """
+        conn = self._connect()
+        try:
+            conn.execute("BEGIN IMMEDIATE")
+            model = self._get_model_with_conn(conn, user_id)
+            if model is None:
+                conn.execute("ROLLBACK")
+                return
+            self._merge_and_write_signal_vocab(conn, user_id, model, new_terms)
+            conn.execute("COMMIT")
+        except Exception:
+            conn.execute("ROLLBACK")
+            raise
+        finally:
+            conn.close()
+
+    def _merge_and_write_signal_vocab(
+        self, conn: sqlite3.Connection, user_id: str, model: "UserModel", new_terms: list[dict]
+    ) -> None:
         now = time.time()
         vocab: dict[str, dict] = {t["term"].lower(): t for t in model.signal_vocab}
 
@@ -253,11 +301,10 @@ class UserModelStore:
         kept.sort(key=lambda t: t["confidence"], reverse=True)
         final = kept[:MAX_SIGNAL_TERMS]
 
-        with self._connect() as conn:
-            conn.execute(
-                "UPDATE user_models SET signal_vocab = ?, updated_at = ? WHERE user_id = ?",
-                (json.dumps(final), now, user_id),
-            )
+        conn.execute(
+            "UPDATE user_models SET signal_vocab = ?, updated_at = ? WHERE user_id = ?",
+            (json.dumps(final), now, user_id),
+        )
 
     # ── System prompt context ─────────────────────────────────────────────────
 

@@ -1,0 +1,241 @@
+{
+  "source_file": "california_divorce_residency_no_fault.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "California 6-month state residency requirement for divorce filing",
+      "condition": "When a spouse wishes to file for divorce in California...",
+      "action": "At least one spouse must have lived in California for the last 6 months before filing",
+      "because": "California courts require established residency to assert jurisdiction over a dissolution of marriage proceeding",
+      "regulatory_basis": "California Courts Self-Help Center (Judicial Branch of California), selfhelp.courts.ca.gov/divorce-california",
+      "country_scope": "us"
+    },
+    {
+      "rule": "California 3-month county residency requirement for divorce filing",
+      "condition": "When a spouse wishes to file for divorce in a specific California county...",
+      "action": "At least one spouse must have resided in that specific California county for the last 3 months before filing",
+      "because": "California courts require county-level residency to determine the proper local court venue for filing",
+      "regulatory_basis": "California Courts Self-Help Center (Judicial Branch of California), selfhelp.courts.ca.gov/divorce-california",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Mandatory wait when neither spouse meets California residency requirement",
+      "condition": "When neither spouse has met the 6-month state and 3-month county residency requirements...",
+      "action": "Both spouses must generally wait until the residency requirement is met before filing in California",
+      "because": "Filing eligibility is contingent on satisfying both residency thresholds; no exception or waiver is stated in the official guidance",
+      "regulatory_basis": "California Courts Self-Help Center (Judicial Branch of California), selfhelp.courts.ca.gov/divorce-california",
+      "country_scope": "us"
+    },
+    {
+      "rule": "No-fault filing: spousal agreement not required",
+      "condition": "When a spouse wants to file for divorce in California...",
+      "action": "The filing spouse does not need the other spouse's agreement and does not need to prove wrongdoing; divorce may be filed for any reason",
+      "because": "California operates under a no-fault model: 'You don't need your spouse's agreement to get a divorce. You can get divorced for any reason.'",
+      "regulatory_basis": "California Courts Self-Help Center (Judicial Branch of California), selfhelp.courts.ca.gov/divorce-california",
+      "country_scope": "us"
+    },
+    {
+      "rule": "Separate treatment of 'whether to leave' vs. 'how to legally leave'",
+      "condition": "When advising someone on ending a relationship who has recently relocated to a new state...",
+      "action": "Surface the residency window requirement as a concrete, checkable fact before discussing filing mechanics — do not conflate emotional/repairability diagnosis with legal eligibility",
+      "because": "Residency requirements create a real eligibility gate that affects when and where a person can file; the two questions require different information",
+      "regulatory_basis": "California Courts Self-Help Center (Judicial Branch of California), selfhelp.courts.ca.gov/divorce-california",
+      "country_scope": "us"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "State residency duration",
+      "why_it_matters": "Determines whether California has jurisdiction to hear the divorce filing; filing before meeting this threshold is not permitted",
+      "how_to_assess": "Verify that at least one spouse has lived continuously in California for the last 6 months prior to intended filing date",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "County residency duration",
+      "why_it_matters": "Determines the proper venue (specific court) within California; a separate 3-month requirement from the state-level requirement",
+      "how_to_assess": "Verify that at least one spouse has resided in the specific California county for the last 3 months prior to intended filing date",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Which spouse meets residency requirements",
+      "why_it_matters": "Only one spouse needs to meet the requirements, not both; this affects who initiates the filing and in which county",
+      "how_to_assess": "Assess each spouse's individual residency history independently — either spouse's qualifying residency is sufficient",
+      "weight": "high",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Reason for divorce / fault allegation",
+      "why_it_matters": "Under California's no-fault model, the reason for filing is legally irrelevant to eligibility; no proof of wrongdoing is required",
+      "how_to_assess": "Not a determining factor in California; any reason suffices and no fault needs to be established",
+      "weight": "low",
+      "country_scope": "us"
+    },
+    {
+      "factor": "Recent relocation history",
+      "why_it_matters": "A spouse who recently moved to California or to a new county within California may not yet satisfy the 6-month or 3-month residency windows, creating a filing delay",
+      "how_to_assess": "Calculate the date the spouse established California and county residency and determine whether the required intervals have elapsed",
+      "weight": "high",
+      "country_scope": "us"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Filing for divorce immediately after relocating to California",
+      "unstated_consequence": "Filing is not permitted until both the 6-month state and 3-month county residency requirements are independently satisfied; early relocation does not accelerate eligibility",
+      "who_it_affects": "Spouses who have recently moved to California (e.g., for employment, family, or immigration-related reasons) and wish to file without delay",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Assuming no-fault means no procedural requirements",
+      "unstated_consequence": "No-fault eliminates the need to prove wrongdoing but does not eliminate residency thresholds; procedural eligibility gates (6 months state, 3 months county) remain fully in force",
+      "who_it_affects": "Any spouse who conflates the ease of the no-fault substantive standard with the procedural residency requirements",
+      "country_scope": "us"
+    },
+    {
+      "choice": "Relying on California's residency rules as universally representative",
+      "unstated_consequence": "Residency windows vary by state (commonly 3–12 months depending on state) and terminology differs ('dissolution of marriage' vs. 'divorce'); California's specific thresholds do not apply in other states",
+      "who_it_affects": "Spouses who have recently moved from California to another state, or who assume California rules apply nationally",
+      "country_scope": "us"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Filing for divorce in California before satisfying the 6-month state residency requirement",
+      "why_it_happens": "Filer or both spouses have not yet lived in California for the required 6-month period prior to filing",
+      "consequence": "Filing is not permitted; spouses must wait until the residency requirement is met",
+      "warning_signs": [
+        "Spouse recently relocated to California (less than 6 months ago)",
+        "Neither spouse has a continuous 6-month California residency history prior to the intended filing date"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Filing for divorce in a California county before satisfying the 3-month county residency requirement",
+      "why_it_happens": "Filer has met the 6-month state requirement but has not yet lived in the specific county for 3 months",
+      "consequence": "Filing in that county is not permitted; filer must wait until the 3-month county threshold is met",
+      "warning_signs": [
+        "Spouse recently moved to a new county within California (less than 3 months ago)",
+        "State residency is established but county residency is not yet 3 months"
+      ],
+      "country_scope": "us"
+    },
+    {
+      "pattern": "Conflating emotional readiness to leave with legal eligibility to file",
+      "why_it_happens": "Decision to leave and legal mechanics of filing are treated as a single question rather than two separate axes",
+      "consequence": "Person is unprepared for the residency waiting period and cannot file when expected, delaying legal proceedings",
+      "warning_signs": [
+        "Person asks 'how do I leave' immediately after a recent interstate or international move without first checking residency eligibility",
+        "Person assumes decision to divorce is sufficient to initiate filing without verifying residency thresholds"
+      ],
+      "country_scope": "us"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has at least one spouse lived in California continuously for the last 6 months?",
+      "what_it_reveals": "Whether the state-level residency requirement for California divorce filing is satisfied",
+      "follow_up_if_yes": "Proceed to assess the 3-month county residency requirement",
+      "follow_up_if_no": "Filing in California is not currently permitted; calculate when the 6-month threshold will be reached",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has at least one spouse resided in their current California county for the last 3 months?",
+      "what_it_reveals": "Whether the county-level venue requirement for California divorce filing is satisfied",
+      "follow_up_if_yes": "Both residency requirements are met; the spouse may file in that county",
+      "follow_up_if_no": "Filing in that specific county is not yet permitted; calculate when the 3-month county threshold will be reached",
+      "country_scope": "us"
+    },
+    {
+      "question": "Has the person recently relocated to a new state or a new county within California?",
+      "what_it_reveals": "Whether a residency waiting period is an active constraint on filing timeline",
+      "follow_up_if_yes": "Surface the residency window requirements as a concrete eligibility gate before discussing filing mechanics",
+      "follow_up_if_no": "Residency is likely established; verify exact move-in dates to confirm both thresholds are met",
+      "country_scope": "us"
+    },
+    {
+      "question": "Is the person asking whether to leave the relationship, or how to file for divorce given their current location?",
+      "what_it_reveals": "Whether the relevant information needed is emotional/repairability diagnosis or legal/procedural filing mechanics — these are distinct questions requiring different information",
+      "follow_up_if_yes": "If asking 'how to file': assess residency eligibility first before discussing process",
+      "follow_up_if_no": "If asking 'whether to leave': address repairability diagnosis without conflating legal filing mechanics",
+      "country_scope": "universal"
+    },
+    {
+      "question": "Does the filing spouse believe they need the other spouse's consent or must prove fault to obtain a divorce in California?",
+      "what_it_reveals": "Whether the person understands California's no-fault model, which requires neither spousal agreement nor proof of wrongdoing",
+      "follow_up_if_yes": "Clarify that California's no-fault model explicitly states: 'You don't need your spouse's agreement to get a divorce. You can get divorced for any reason.'",
+      "follow_up_if_no": "Person already understands no-fault basis; focus on procedural residency requirements",
+      "country_scope": "us"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "You can file for divorce in California at any time once you decide to end the marriage",
+      "actual_reality": "Filing requires one spouse to have lived in California for at least 6 months AND in the specific county for at least 3 months; neither condition can be waived by mutual agreement or immediate intent to file",
+      "implication": "Anyone who has recently moved to California or to a new county must calculate the earliest eligible filing date before initiating divorce proceedings",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "No-fault divorce means there are no procedural requirements or waiting periods",
+      "actual_reality": "No-fault eliminates the requirement to prove wrongdoing and removes the need for spousal consent, but residency requirements (6 months state, 3 months county) are separate procedural thresholds that remain fully in effect",
+      "implication": "Spouses must satisfy both residency thresholds regardless of how clear-cut or uncontested the no-fault grounds are",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "California's divorce residency rules represent the national standard",
+      "actual_reality": "The official source explicitly states that residency windows vary by state, commonly ranging from 3 to 12 months depending on the state, and that terminology also varies ('dissolution of marriage' vs. 'divorce')",
+      "implication": "Spouses who have moved from California to another state must research that specific state's residency requirement rather than assuming California's 6-month/3-month thresholds apply",
+      "country_scope": "us"
+    },
+    {
+      "common_belief": "The decision to leave a relationship and the ability to file for divorce are the same question",
+      "actual_reality": "The official source explicitly identifies these as two separate axes: 'A user asking should I leave and a user asking how do I actually leave, given I just moved states are asking different questions that require different information'",
+      "implication": "Advisors and individuals must address emotional/repairability diagnosis and legal/procedural eligibility as distinct inquiries, not a single combined question",
+      "country_scope": "universal"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding of when divorce filing can begin",
+      "naive_pattern": "Assumes filing can start immediately once both parties (or one party) decides the marriage is over, without checking residency history",
+      "informed_pattern": "Immediately checks whether the 6-month state and 3-month county residency thresholds are satisfied before discussing any filing timeline or process",
+      "why_it_matters": "Filing before meeting residency requirements is not permitted; failure to check creates false expectations about when proceedings can begin",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Interpreting no-fault divorce",
+      "naive_pattern": "Treats no-fault as meaning there are no barriers or requirements to filing — just a simple decision to proceed",
+      "informed_pattern": "Understands that no-fault eliminates the fault-proving requirement and spousal consent requirement but does not eliminate the independent residency eligibility thresholds",
+      "why_it_matters": "Conflating no-fault ease with absence of procedural requirements leads to premature or improperly filed petitions",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Advising someone who recently relocated",
+      "naive_pattern": "Proceeds directly to explaining divorce process mechanics without surfacing the residency window as a threshold eligibility issue",
+      "informed_pattern": "Treats residency eligibility as a concrete, checkable fact to be surfaced first — before any discussion of 'how' to file — especially for someone who has recently moved states or counties",
+      "why_it_matters": "A recently relocated person may face a mandatory waiting period before they can file; not surfacing this creates a gap between advice given and what the person can actually do",
+      "country_scope": "us"
+    },
+    {
+      "dimension": "Distinguishing 'whether to leave' from 'how to leave legally'",
+      "naive_pattern": "Treats both questions as part of the same conversation and provides a single combined answer covering emotional readiness and legal process simultaneously",
+      "informed_pattern": "Recognizes these as two separate axes requiring different information — emotional/repairability diagnosis is distinct from legal filing eligibility — and addresses each independently",
+      "why_it_matters": "Conflating the two questions can result in providing legally irrelevant information to someone with an emotional decision question, or emotionally focused advice to someone with a concrete legal eligibility problem",
+      "country_scope": "universal"
+    },
+    {
+      "dimension": "Generalizing California rules to other states",
+      "naive_pattern": "Applies California's 6-month/3-month residency rule as if it were a national standard applicable in all US states",
+      "informed_pattern": "Knows that residency windows vary by state (commonly 3–12 months) and that even terminology differs by state; treats California's thresholds as California-specific, not universally representative",
+      "why_it_matters": "Applying the wrong state's residency threshold to a filing in a different state produces incorrect eligibility assessments and filing timelines",
+      "country_scope": "us"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "us_california_divorce_residency_no_fault",
+  "_source_regions": [
+    "us"
+  ]
+}

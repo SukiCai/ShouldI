@@ -5,7 +5,7 @@ version: 1.1.0
 metadata:
   hermes:
     tags: [interview, planning, clarification, ambiguity, decision, requirements]
-    related_skills: [intl-job-search, intl-student-advisor, pm-career-expert, stay-or-return, grad-school-advisor]
+    related_skills: [intl-job-search, intl-student-advisor, pm-career-expert, stay-or-return, grad-school-advisor, relationship-decision]
 ---
 
 # Smart Talk: Socratic Clarification
@@ -16,7 +16,7 @@ Smart Talk reduces ambiguity through a focused conversation before acting. You a
 
 **Required tools:** `smart_talk_state`, `clarify`, `write_file`
 
-**Optional domain skill tool-calls (Step C.5):** `intl-job-search`, `intl-student-advisor`, `pm-career-expert`, `stay-or-return`, `grad-school-advisor` — call these when the targeted dimension requires specialized domain knowledge. Available skills are listed in the session context provided by the caller.
+**Optional domain skill tool-calls (Step C.5):** `intl-job-search`, `intl-student-advisor`, `pm-career-expert`, `stay-or-return`, `grad-school-advisor`, `relationship-decision` — call these when the targeted dimension requires specialized domain knowledge. Available skills are listed in the session context provided by the caller.
 
 **Dimensions and weights:**
 | Dimension | Weight | What it captures |
@@ -49,6 +49,24 @@ Smart Talk reduces ambiguity through a focused conversation before acting. You a
 
 Repeat until `ambiguity_after ≤ 0.20` OR user says proceed/enough/let's go.
 
+### Step A0: Check for regressions (before scoring)
+
+Two things can make a dimension *less* clear than it was — not just contradiction. Compare the latest answer against **all four dimensions**, not just the one you're about to target:
+
+1. **Contradiction** — the latest answer conflicts with an existing `established_facts` entry (genuinely conflicts — not just adds nuance or narrows it).
+2. **New material unknown** — the latest answer surfaces a consideration that dimension's current `established_facts`/`gaps` didn't account for (a new constraint, stakeholder, or topic that changes the scope of that dimension) — even though nothing you already believed turned out wrong.
+
+Test for #2 so it doesn't over-trigger: *does this change what I'd need to know before acting confidently on this dimension?* A minor clarifying detail is not a new material unknown. A previously-unmentioned constraint, tradeoff, or stakeholder that the dimension's score didn't yet reflect, is.
+
+If either triggers, in the affected dimension(s) only:
+1. Contradiction → remove the invalidated fact from `established_facts`.
+2. New material unknown → add it to `gaps` (even if that dimension was already scored this session).
+3. Re-derive **that dimension's** score from its current `established_facts` and `gaps` — do not keep the old score as a floor. The new score may be lower than before.
+
+This is the only path by which a dimension's score is allowed to decrease. If Step A0 finds neither trigger this round, every dimension's score may only stay the same or increase.
+
+Most rounds narrow an existing gap and should just raise the targeted dimension's score as before — don't re-derive dimensions Step A0 didn't flag; that keeps convergence speed unchanged on the common path.
+
 ### Step A: Score the most recent answer
 
 Evaluate `cumulative_analysis` semantically — you are the scorer, not a keyword matcher.
@@ -78,6 +96,8 @@ Assign a score 0.0–0.90 per dimension. Update `cumulative_analysis`:
 ```
 
 Compute: `ambiguity = 1 - (intent × 0.35 + reality × 0.25 + signal × 0.25 + stakes × 0.15)`
+
+Note: `ambiguity_after` is **not guaranteed to be ≤ `ambiguity_before`**. If Step A0 found a contradiction or a new material unknown, ambiguity can rise — this is expected and correct, not a bug. The round cap (10 answers, see Phase 2 intro / hard stop) still guarantees the interview ends even if a regression resets progress late.
 
 ### Step B: Compute pre/post scores
 
@@ -115,6 +135,7 @@ After selecting the target dimension in Step C, before generating the question:
 - `reality` or `signal` + PM / promotion / career path → call `pm-career-expert`
 - `reality` or `signal` + stay abroad / return home / relocation / green card backlog → call `stay-or-return`
 - `reality` or `intent` + grad school / PhD / Masters / immigration runway via grad school → call `grad-school-advisor`
+- `reality` or `signal` + partner / breakup / marriage / trust / boundaries / attachment / divorce → call `relationship-decision`
 - `intent` or `stakes` + any topic → proceed without a domain call in most cases
 
 3. If a domain call is warranted: invoke the skill as a tool call to get relevant framework knowledge. Use that knowledge when generating the question in Step D.

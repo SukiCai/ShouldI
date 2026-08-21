@@ -1,5 +1,6 @@
 import { router, useFocusEffect } from 'expo-router';
 import {
+  ActivityIndicator,
   BackHandler,
   Pressable,
   ScrollView,
@@ -19,9 +20,9 @@ import { reelSurfaceGradientCoarse } from '@/constants/reelSurfaceGradients';
 import { palette, radius, screenContentGutter, semantic, themeSurface, typography } from '@/constants/theme';
 import { useColorScheme } from '@/components/useColorScheme';
 import { GATEWAY_ORIGIN, apiGetJson } from '@/lib/api';
-import type { DecisionCategory, ExploreCard } from '@shouldi/contracts';
-import { ExploreFeedResponseSchema } from '@shouldi/contracts';
-import { useQuery } from '@tanstack/react-query';
+import type { DecisionCategory, DecisionRecord, ExploreCard, OutcomeReplay } from '@shouldi/contracts';
+import { DecisionRecordSchema, ExploreFeedResponseSchema, OutcomeReplaySchema } from '@shouldi/contracts';
+import { useQueries, useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 
 const FILTERS = ['All', 'Career', 'Money', 'Relationship', 'Life'] as const;
@@ -83,6 +84,37 @@ function buildReplayPresentation(card: ExploreCard) {
   };
 }
 
+function buildPersonalReplayPresentation(decision: DecisionRecord, replay: OutcomeReplay) {
+  const outcomeHeadline = replay.actual?.outcomeText?.trim()
+    ? shorten(replay.actual.outcomeText.trim(), 140)
+    : shorten(decision.question, 140);
+
+  const lessonText = replay.reflection?.trim()
+    ? shorten(replay.reflection.trim(), 160)
+    : shorten(decision.rationale, 160);
+
+  const userPickLabel = decision.committedAction?.trim() || decision.recommendation;
+  const winningLabel = replay.actual?.outcomeText?.trim()
+    ? shorten(replay.actual.outcomeText.trim(), 48)
+    : null;
+
+  const predictionMatch =
+    replay.calibrationDelta == null
+      ? ('unknown' as const)
+      : Math.abs(replay.calibrationDelta) <= 0.2
+        ? ('match' as const)
+        : ('miss' as const);
+
+  return {
+    outcomeHeadline,
+    questionContext: shorten(decision.question, 100),
+    lessonText,
+    userPickLabel,
+    winningLabel,
+    predictionMatch,
+  };
+}
+
 function ReplaySegmentControl({
   active,
   onChange,
@@ -140,6 +172,44 @@ export default function PlotDeckScreen() {
       return ExploreFeedResponseSchema.parse(json);
     },
   });
+
+  const decisionsQuery = useQuery({
+    queryKey: ['decisions'],
+    queryFn: async () => {
+      const json = await apiGetJson<{ decisions: unknown[] }>('/v1/decisions');
+      return json.decisions.map((item) => DecisionRecordSchema.parse(item));
+    },
+  });
+  const decisions = decisionsQuery.data ?? [];
+
+  const replayQueries = useQueries({
+    queries: decisions.map((decision) => ({
+      queryKey: ['outcome-replay', decision.id],
+      queryFn: async () => {
+        try {
+          const data = await apiGetJson(`/v1/decisions/${decision.id}/replay`);
+          return OutcomeReplaySchema.parse(data);
+        } catch {
+          // No replay logged yet for this decision — not a real error.
+          return null;
+        }
+      },
+    })),
+  });
+
+  const personalReplays = decisions
+    .map((decision, index) => ({ decision, replay: replayQueries[index]?.data ?? null }))
+    .filter(
+      (row): row is { decision: DecisionRecord; replay: OutcomeReplay } => row.replay?.actual != null,
+    )
+    .sort(
+      (a, b) =>
+        (b.replay.actual?.happenedAt ?? b.decision.updatedAt) -
+        (a.replay.actual?.happenedAt ?? a.decision.updatedAt),
+    );
+
+  const personalReplaysLoading = decisionsQuery.isLoading || replayQueries.some((q) => q.isLoading);
+  const personalReplaysErrored = decisionsQuery.isError;
 
   const cards = query.data?.cards ?? [];
   const resolvedCards = React.useMemo(
@@ -229,27 +299,71 @@ export default function PlotDeckScreen() {
 
         {activeSegment === 'mine' ? (
           <View style={styles.listWrap}>
-            <View style={[styles.empty, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
-              <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Your calibration loop</Text>
-              <Text style={[styles.emptyTitle, { color: surface.textDisplay }]}>No personal replays yet</Text>
-              <Text style={[styles.emptyBody, { color: surface.textMuted }]}>
-                Finish a decision in Decide, then return here to log the outcome and calibrate your judgment.
-              </Text>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Go to Decide"
-                onPress={() => router.replace('/(tabs)/decide')}
-                style={ctaStyles.primary}>
-                <Text style={ctaStyles.primaryLabel}>Go to Decide</Text>
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Browse community lessons"
-                onPress={() => setActiveSegment('community')}
-                style={({ pressed }) => [styles.inlineGhostBtn, pressed && { opacity: 0.7 }]}>
-                <Text style={[styles.inlineGhostBtnText, { color: semantic.actionPrimary }]}>Browse community lessons</Text>
-              </Pressable>
-            </View>
+            {personalReplaysLoading ? (
+              <View style={[styles.empty, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
+                <ActivityIndicator color={semantic.actionPrimary} />
+              </View>
+            ) : personalReplaysErrored ? (
+              <View style={[styles.empty, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
+                <Text style={[styles.emptyTitle, { color: surface.textDisplay }]}>Couldn&apos;t load your replays</Text>
+                <Text style={[styles.emptyBody, { color: surface.textMuted }]}>
+                  {`Trying ${GATEWAY_ORIGIN}`}
+                </Text>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Retry loading your replays"
+                  onPress={() => decisionsQuery.refetch()}
+                  style={ctaStyles.primary}>
+                  <Text style={ctaStyles.primaryLabel}>Retry</Text>
+                </Pressable>
+              </View>
+            ) : personalReplays.length === 0 ? (
+              <View style={[styles.empty, { backgroundColor: surface.groupedSurface, borderColor: surface.groupedBorder }]}>
+                <Text style={[styles.sectionEyebrow, { color: surface.textMuted }]}>Your calibration loop</Text>
+                <Text style={[styles.emptyTitle, { color: surface.textDisplay }]}>No personal replays yet</Text>
+                <Text style={[styles.emptyBody, { color: surface.textMuted }]}>
+                  Finish a decision in Decide, then return here to log the outcome and calibrate your judgment.
+                </Text>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Go to Decide"
+                  onPress={() => router.replace('/(tabs)/decide')}
+                  style={ctaStyles.primary}>
+                  <Text style={ctaStyles.primaryLabel}>Go to Decide</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Browse community lessons"
+                  onPress={() => setActiveSegment('community')}
+                  style={({ pressed }) => [styles.inlineGhostBtn, pressed && { opacity: 0.7 }]}>
+                  <Text style={[styles.inlineGhostBtnText, { color: semantic.actionPrimary }]}>Browse community lessons</Text>
+                </Pressable>
+              </View>
+            ) : (
+              personalReplays.map(({ decision, replay }) => {
+                const presentation = buildPersonalReplayPresentation(decision, replay);
+                const openDetail = () =>
+                  router.push({ pathname: '/outcome-replay/[id]', params: { id: decision.id } });
+                return (
+                  <ExploreDecisionCard
+                    key={decision.id}
+                    mode="replay"
+                    category={decision.category ?? 'life'}
+                    outcomeHeadline={presentation.outcomeHeadline}
+                    questionContext={presentation.questionContext}
+                    lessonText={presentation.lessonText}
+                    userPickLabel={presentation.userPickLabel}
+                    winningLabel={presentation.winningLabel}
+                    predictionMatch={presentation.predictionMatch}
+                    totalVotes={0}
+                    formatVoteCount={() => ''}
+                    onPressCard={openDetail}
+                    onApplySimilar={() => router.push('/(tabs)/decide')}
+                    onOpenDetails={openDetail}
+                  />
+                );
+              })
+            )}
           </View>
         ) : (
           <>

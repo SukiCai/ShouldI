@@ -20,6 +20,7 @@ export type DiscussDraftFields = {
   rewardPoints: number;
   expertVerdicts: DecideInterviewFinalDecision['expertVerdicts'];
   keyMoments?: DecideInterviewFinalDecision['keyMoments'];
+  selectedKeyMomentIndices?: number[];
 };
 
 type Props = {
@@ -59,6 +60,14 @@ export function DiscussDraftEditor({ draft, onChange }: Props) {
     onChange({ pollOptions: next });
   };
 
+  const toggleKeyMoment = (index: number) => {
+    const current = draft.selectedKeyMomentIndices ?? [];
+    const next = current.includes(index)
+      ? current.filter((i) => i !== index)
+      : [...current, index].sort((a, b) => a - b);
+    onChange({ selectedKeyMomentIndices: next });
+  };
+
   return (
     <View style={styles.wrap} accessibilityLabel="Explore card compose preview">
       <ExploreDecisionCard
@@ -85,6 +94,9 @@ export function DiscussDraftEditor({ draft, onChange }: Props) {
         verdictBecause={draft.communityAiBecause}
         confidenceScore={draft.aiConfidenceScore}
         keyMoments={draft.keyMoments}
+        selectedKeyMomentIndices={draft.selectedKeyMomentIndices}
+        onToggleKeyMoment={toggleKeyMoment}
+        expertVerdicts={draft.expertVerdicts}
         onChangeVerdictLine={(text) => onChange({ communityAiVerdictLine: text })}
         onChangeVerdictBecause={(text) => onChange({ communityAiBecause: text })}
       />

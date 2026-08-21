@@ -4,6 +4,7 @@ description: Use when user is deciding whether to pursue promotion, switch compa
 
 version: 1.1.0
 metadata:
+  requires_location_precheck: true
   hermes:
     tags: [career, product-management, decision-making, senior-pm, promotion, job-switch, org-dynamics]
     related_skills: []

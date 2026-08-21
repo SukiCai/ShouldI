@@ -1,0 +1,158 @@
+{
+  "source_file": "divorce_act_best_interests_of_child.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Child's physical, emotional, and psychological safety, security, and well-being must receive primary consideration — not equal weighting — in any parenting order determination",
+      "condition": "When a Canadian court is determining decision-making responsibility or parenting time under a parenting order",
+      "action": "Court must give primary consideration to the child's physical, emotional, and psychological safety, security, and well-being before weighing all other factors",
+      "because": "Divorce Act s.16(2) statutorily mandates this priority ordering — safety/security/well-being is not one factor among equals but the factor the court is legally required to prioritize",
+      "regulatory_basis": "Divorce Act s.16(2)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Parenting orders are determined exclusively on the best interests of the child — not on which parent 'wins' custody as a concept",
+      "condition": "When a Canadian court is assigning decision-making responsibility and parenting time",
+      "action": "Court must frame its determination around best interests of the child, not around a custody-win framework for either parent",
+      "because": "The Divorce Act structures the entire parenting order determination around the best interests standard, displacing adversarial custody framing",
+      "regulatory_basis": "Divorce Act (parenting order provisions)",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "The factor list under the Divorce Act is explicitly non-exhaustive",
+      "condition": "When a court is applying the best interests of the child standard",
+      "action": "Court may consider case-specific factors not enumerated in the statutory list",
+      "because": "The Act explicitly designates the listed factors as non-exhaustive, preserving judicial discretion to weigh circumstances unique to the case",
+      "regulatory_basis": "Divorce Act (best interests factor provisions)",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Child's physical, emotional, and psychological safety, security, and well-being",
+      "why_it_matters": "Statutorily designated as the primary consideration under Divorce Act s.16(2) — overrides and precedes all other factors in weight",
+      "how_to_assess": "Court evaluates whether the proposed parenting arrangement protects the child's physical safety, emotional security, and psychological well-being; documented safety concerns are legally required to be weighed first",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Child's needs given age and developmental stage, including need for stability",
+      "why_it_matters": "Explicitly enumerated factor in the Divorce Act's best interests determination; developmental appropriateness and stability directly shape parenting time and responsibility allocations",
+      "how_to_assess": "Court considers the child's current age, developmental stage, and the degree to which proposed arrangements provide or disrupt stability",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Cultural, linguistic, religious and spiritual upbringing and heritage, including Indigenous upbringing and heritage",
+      "why_it_matters": "Explicitly enumerated factor under the Divorce Act; preservation of the child's cultural and heritage identity is a recognized component of best interests",
+      "how_to_assess": "Court assesses which arrangement better supports continuity of the child's cultural, linguistic, religious, spiritual, and — specifically named — Indigenous heritage",
+      "weight": "medium",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Child's own views",
+      "why_it_matters": "Explicitly enumerated factor under the Divorce Act; courts consider the child's expressed preferences as part of best interests analysis",
+      "how_to_assess": "Views are weighted by age and maturity — they are a factor but explicitly not determinative",
+      "weight": "medium",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining in or not documenting an unsafe relationship out of concern that leaving will harm custody outcome",
+      "unstated_consequence": "Under Divorce Act s.16(2), documented safety concerns are legally the first-weighted factor — not a factor that competes equally against stability or continuity arguments. A parent who stays and does not document safety concerns may actually weaken, not strengthen, their custody position.",
+      "who_it_affects": "Parents in abusive or unsafe relationships who fear that initiating separation will be held against them in parenting order proceedings",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Treating the Canadian best interests standard as equivalent to an unweighted multi-factor balancing test",
+      "unstated_consequence": "Unlike an unweighted factor list, the Canadian Divorce Act imposes a mandatory priority ordering — safety/security/well-being must be considered first. Litigants who treat all factors as equally negotiable misread the statutory structure and may miscalculate their legal position.",
+      "who_it_affects": "Parents and legal advisors who assume the Canadian standard mirrors a purely discretionary balancing approach",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Court or party treating child safety/security/well-being as one factor among equals rather than the primary statutory consideration",
+      "why_it_happens": "Misapplication of the best interests standard by treating the Divorce Act factor list as a flat, unweighted list rather than recognizing the mandatory priority ordering established by s.16(2)",
+      "consequence": "Parenting order determination that does not comply with the statutory requirement of Divorce Act s.16(2); appellate vulnerability for orders that fail to give primary consideration to safety/security/well-being",
+      "warning_signs": [
+        "Analysis weighs stability or continuity arguments against safety concerns without establishing safety primacy first",
+        "Order does not reflect any prioritization of physical, emotional, or psychological safety findings"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is there any evidence of risk to the child's physical, emotional, or psychological safety, security, or well-being in the proposed parenting arrangement?",
+      "what_it_reveals": "Whether the primary statutory consideration under Divorce Act s.16(2) is engaged — if yes, this factor must be weighed first before all others",
+      "follow_up_if_yes": "Court must give this finding primary consideration; it is not available to be simply balanced against competing factors such as stability or continuity",
+      "follow_up_if_no": "Court proceeds to weigh the remaining enumerated and non-enumerated factors on a case-by-case basis without a mandatory priority ordering among them",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the proposed parenting arrangement support continuity of the child's cultural, linguistic, religious, spiritual, or Indigenous heritage?",
+      "what_it_reveals": "Whether the explicitly enumerated heritage and upbringing factor under the Divorce Act is satisfied",
+      "follow_up_if_yes": "This factor supports the arrangement; court weighs it alongside other non-safety factors",
+      "follow_up_if_no": "Absence of heritage continuity is a factor weighing against the arrangement, to be balanced case-by-case against other non-safety factors",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Has the child expressed views about the parenting arrangement, and what is the child's age and maturity level?",
+      "what_it_reveals": "Whether and how much weight the child's expressed preferences carry under the Divorce Act's best interests factors",
+      "follow_up_if_yes": "Views are considered and weighted proportionally to age and maturity — they are a factor but explicitly not determinative",
+      "follow_up_if_no": "Absence of expressed views or insufficient maturity means this factor does not contribute to the determination",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Are there case-specific circumstances relevant to the child's best interests that are not captured by the enumerated statutory factors?",
+      "what_it_reveals": "Whether the non-exhaustive nature of the Divorce Act factor list should be invoked to consider additional circumstances",
+      "follow_up_if_yes": "Court may and should consider those additional factors under the non-exhaustive list authority",
+      "follow_up_if_no": "Determination proceeds on the enumerated factors alone",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Canadian and US custody determinations both use a 'best interests of the child' standard, so they function the same way",
+      "actual_reality": "The Canadian Divorce Act imposes a codified, legally mandatory priority ordering — safety/security/well-being must be considered first under s.16(2) — whereas the US best interests standard (e.g., California) uses an unweighted multi-factor list without a statutory priority hierarchy",
+      "implication": "In Canadian proceedings, a parent with documented safety concerns holds a structurally stronger legal position than the equivalent factor-balancing approach in many US jurisdictions would suggest; treating the two standards as equivalent misstates Canadian law",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A parent who leaves an unsafe relationship may harm their custody outcome because courts value stability and continuity",
+      "actual_reality": "Under Divorce Act s.16(2), documented safety concerns are the primary consideration — legally required to be weighed first — not a factor that stability or continuity arguments can simply outweigh",
+      "implication": "Documented safety concerns in a Canadian parenting order proceeding reinforce rather than compete with a decision to leave an unsafe relationship; the statutory structure does not penalize a parent for prioritizing safety",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Courts can only consider factors explicitly listed in the Divorce Act when determining best interests",
+      "actual_reality": "The Divorce Act explicitly designates its factor list as non-exhaustive — courts may consider case-specific factors not enumerated in the statute",
+      "implication": "Parties should not assume that a relevant circumstance is legally irrelevant simply because it does not appear on the statutory list",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Understanding the weight of safety concerns in Canadian parenting order proceedings",
+      "naive_pattern": "Treats safety as one factor among many that the court balances against stability, continuity, and other considerations — assumes a parent who disrupts the household by leaving may face a custody disadvantage",
+      "informed_pattern": "Recognizes that Divorce Act s.16(2) imposes a mandatory statutory priority — safety/security/well-being is the first-weighted consideration, not a competing factor — and advises clients that documented safety concerns structurally strengthen rather than complicate their legal position",
+      "why_it_matters": "Misreading the statutory priority ordering leads to incorrect risk assessments for clients in unsafe relationships who are weighing whether to leave, and potentially to legally non-compliant parenting order arguments",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Comparing Canadian and US custody standards",
+      "naive_pattern": "Assumes both jurisdictions apply a functionally identical best interests test because they share the same label",
+      "informed_pattern": "Identifies that the Canadian Divorce Act's s.16(2) creates a codified priority hierarchy (safety first) that is structurally distinct from US unweighted multi-factor balancing, and applies jurisdiction-specific analysis accordingly",
+      "why_it_matters": "Advice calibrated to US standards misstates the legal weight of safety evidence in Canadian proceedings and may lead clients to underestimate the strength of their position",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_divorce_act_best_interests_of_child",
+  "_source_regions": [
+    "canada"
+  ]
+}

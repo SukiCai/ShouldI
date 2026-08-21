@@ -1,0 +1,300 @@
+{
+  "source_file": "zhihu_怎样判断该不该分手.txt",
+  "source_type": "community",
+  "heuristics": [
+    {
+      "rule": "Categorize the reason for wanting to leave before deciding whether to leave",
+      "condition": "When you are considering a breakup but are unsure whether the problem is real or solvable",
+      "action": "Identify whether the dissatisfaction is (a) a persistent character trait you cannot accept, (b) a faded feeling that may be normalcy vs. genuine loss of love, or (c) an external obstacle that could be overcome with effort — then apply different logic to each category",
+      "because": "The top-ranked answer explicitly distinguishes these three categories and argues that the correct response differs entirely depending on which type of problem is driving the impulse to leave",
+      "regions": []
+    },
+    {
+      "rule": "Use somatic signals as a leading indicator of relationship health",
+      "condition": "When you are unsure whether your feelings for a partner are still alive",
+      "action": "Observe your body's involuntary responses: good sleep, good appetite, calm, and ease signal health; insomnia, crying, loss of appetite, emotional dysregulation, and physical aversion to touch signal that the relationship is causing harm",
+      "because": "Comment rank=2 documents two personal relationships in detail and concludes that the body consistently signaled the correct answer before the mind accepted it; the pattern appears as a generalizable principle across both accounts",
+      "regions": []
+    },
+    {
+      "rule": "Before acting on the impulse to leave for someone new, stress-test the new option against the same criteria as the current partner",
+      "condition": "When you are considering leaving a relationship because you believe a new option is better",
+      "action": "Ask whether the new option's known flaws are fewer, whether the same conflicts would not arise over time, whether the new option's feelings for you are genuine, and whether you will still feel the same way about the new option after years",
+      "because": "The top answer provides nine explicit questions designed to stress-test this comparison, grounded in the principle that people systematically overvalue the unavailable and undervalue the familiar",
+      "regions": []
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Whether the dissatisfying trait is stable and character-level vs. situational",
+      "why_it_matters": "A stable character trait (chronic laziness, chronic bad temper) is unlikely to change; a situational stressor may resolve. The decision logic is different for each.",
+      "how_to_assess": "Ask: Has this trait been consistently present throughout the relationship, not just in the recent difficult period? If yes, assume it will persist.",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Whether loss of feeling is genuine vs. hedonic adaptation",
+      "why_it_matters": "People in long-term relationships frequently lose the acute excitement of early love and misinterpret normalcy as absence of love, leading to premature exits they later regret.",
+      "how_to_assess": "Ask: Would I be genuinely indifferent if this person left my life, or would I feel loss? Imagine the relationship is gone — does grief appear?",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Whether external obstacles are truly irresolvable",
+      "why_it_matters": "Parental disapproval, long distance, and divergent life plans feel like hard stops but often are not — couples who mistake surmountable obstacles for dealbreakers end relationships unnecessarily.",
+      "how_to_assess": "Ask: Have both parties actually tried to solve this obstacle, or has it simply been accepted as fixed? Is the obstacle permanent or time-limited?",
+      "weight": "medium",
+      "regions": []
+    },
+    {
+      "factor": "Somatic / physical response to the partner",
+      "why_it_matters": "Involuntary physical aversion (stiffening at touch, reluctance to be near the person) is a reliable signal that attraction and attachment have genuinely ended, not merely faded temporarily.",
+      "how_to_assess": "Observe how your body responds to physical proximity, touch, and the prospect of contact. Aversion that is consistent and involuntary is a strong signal.",
+      "weight": "high",
+      "regions": []
+    },
+    {
+      "factor": "Ratio of distress to wellbeing across the relationship period",
+      "why_it_matters": "If time spent unhappy, anxious, crying, or dysregulated significantly outweighs time spent content and secure, the relationship is net-harmful regardless of positive peaks.",
+      "how_to_assess": "Retrospectively estimate: What fraction of days in this relationship have I felt okay or good vs. distressed? If distress dominates, that is diagnostic.",
+      "weight": "high",
+      "regions": []
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying despite persistent body-level distress signals in order to preserve the relationship",
+      "unstated_consequence": "Physical symptoms (insomnia, disordered eating, emotional dysregulation) escalate over time and the eventual ending is described as '异常惨烈' (catastrophically bad) rather than a clean break",
+      "who_it_affects": "People who are highly invested in a relationship and override somatic warning signals with rationalizations about love or commitment",
+      "regions": []
+    },
+    {
+      "choice": "Staying because of sunk costs (shared history, memories, time invested)",
+      "unstated_consequence": "The relationship's past is used as evidence the relationship should continue, but past investment does not predict future compatibility; people who stay for this reason often face the same problems indefinitely",
+      "who_it_affects": "People in longer relationships where the history is genuinely meaningful and separation feels like losing a part of their identity",
+      "regions": []
+    },
+    {
+      "choice": "Leaving for a newer, seemingly better option without examining it at the same depth",
+      "unstated_consequence": "The new relationship replicates the same dynamics because the unexamined patterns (conflict style, habituation to excitement, unrealistic expectations) travel with the person, not the partner",
+      "who_it_affects": "People who attribute relationship problems primarily to their current partner's specific flaws rather than to relational patterns",
+      "regions": []
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Ignoring persistent somatic distress signals and continuing the relationship",
+      "why_it_happens": "Emotional investment and hope for change override the body's consistent negative feedback; the person keeps reinterpreting distress as temporary",
+      "consequence": "The commenter in rank=2 describes the outcome as catastrophic when the relationship finally ended, rather than the manageable pain of an earlier clean break",
+      "warning_signs": [
+        "Chronic insomnia tied to the relationship",
+        "Disordered eating (binge eating or loss of appetite) that tracks with relationship events",
+        "Involuntary physical aversion to the partner's touch"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Misreading hedonic adaptation (the normalcy of long-term love) as absence of love",
+      "why_it_happens": "Early relationship neurochemistry creates an intensity baseline; when that fades into stable attachment, people misinterpret the calm as indifference or falling out of love",
+      "consequence": "Ending a functional and genuinely loving relationship prematurely, then experiencing regret when the loss becomes real",
+      "warning_signs": [
+        "The primary complaint is 'I don't feel excited/butterflies anymore' rather than a specific behavior problem",
+        "The person is simultaneously aware of no concrete wrongdoing by the partner"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Idealization of an alternative partner or imagined future relationship",
+      "why_it_happens": "The grass-is-greener cognitive bias: people systematically overweight the appeal of unavailable options and underweight the costs that any new relationship will eventually incur",
+      "consequence": "Leaving a stable relationship for a new option that has not been tested under the same conditions, and then discovering the new relationship has equivalent or worse problems",
+      "warning_signs": [
+        "The decision to leave is framed primarily as 'someone better exists' rather than 'this relationship has specific irresolvable problems'",
+        "The person cannot articulate concrete dealbreaking behaviors, only a vague sense that something better is out there"
+      ],
+      "regions": []
+    },
+    {
+      "pattern": "Suppressing breakup thoughts out of guilt or self-blame rather than examining them",
+      "why_it_happens": "The person feels that having a breakup thought is itself a moral failing or a sign of ingratitude, so they suppress it rather than using it as diagnostic information",
+      "consequence": "The underlying problem that triggered the thought goes unexamined and unresolved, creating larger hidden damage to the relationship over time",
+      "warning_signs": [
+        "The person frames the question as 'am I bad for thinking this?' rather than 'what is this thought telling me?'",
+        "Repeated suppression of the same doubt over months"
+      ],
+      "regions": []
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Is the thing that dissatisfies you a stable, persistent pattern or a recent change?",
+      "what_it_reveals": "Whether you are dealing with a character-level incompatibility (unlikely to change) or a situational stressor (may resolve)",
+      "follow_up_if_yes": "If it has always been present, ask: Can I accept this trait indefinitely without resentment?",
+      "follow_up_if_no": "If it is recent, ask: What changed, and is that change reversible?",
+      "regions": []
+    },
+    {
+      "question": "If this person disappeared from your life tomorrow, would you feel loss or relief?",
+      "what_it_reveals": "Whether attachment is genuinely present or whether the relationship is sustained primarily by habit and inertia",
+      "follow_up_if_yes": "If loss: examine whether the desire to leave is driven by solvable problems rather than absence of love",
+      "follow_up_if_no": "If relief: treat that as strong evidence the relationship has ended emotionally even if not formally",
+      "regions": []
+    },
+    {
+      "question": "Does the external obstacle (distance, parental disapproval, divergent plans) have a realistic path to resolution if both parties commit to it?",
+      "what_it_reveals": "Whether the real barrier is the obstacle or a lack of mutual will to solve it",
+      "follow_up_if_yes": "If yes: do not treat the obstacle as a dealbreaker; treat the lack of joint problem-solving effort as the real issue",
+      "follow_up_if_no": "If no: the obstacle may be genuinely irresolvable and the relationship decision needs to account for that permanence",
+      "regions": []
+    },
+    {
+      "question": "Do the problems you cite about your current partner also appear in the new option you are considering, or in your own relational patterns?",
+      "what_it_reveals": "Whether the problem is partner-specific (justifying leaving) or pattern-level (will follow you to the next relationship)",
+      "follow_up_if_yes": "If the new option has the same problems: the issue is likely relational pattern, not this specific partner",
+      "follow_up_if_no": "If the new option appears problem-free: ask whether you know the new option well enough to make that assessment reliably",
+      "regions": []
+    },
+    {
+      "question": "What is your body telling you? Are you sleeping, eating, and feeling basically okay in this relationship, or are you chronically dysregulated?",
+      "what_it_reveals": "Whether the relationship is net-harmful at a physiological level, which is a more reliable signal than cognitive rationalizations in either direction",
+      "follow_up_if_yes": "If chronically dysregulated: treat somatic distress as a serious data point; do not override it with cognitive hope",
+      "follow_up_if_no": "If basically okay physically: the distress may be situational and the relationship may be salvageable",
+      "regions": []
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "If you no longer feel the intense excitement and butterflies you felt at the start, you have fallen out of love and should leave",
+      "actual_reality": "Hedonic adaptation is universal in long-term relationships; the shift from passionate love to companionate love is developmental, not a sign of failure. The top answer explicitly addresses this: happiness is often invisible like air until it is lost.",
+      "implication": "People should distinguish between the absence of early-stage neurochemical intensity (normal) and the presence of actual negative indicators (aversion, contempt, chronic distress) before deciding the love is gone",
+      "regions": []
+    },
+    {
+      "common_belief": "If you are having doubts, it means the relationship is wrong for you",
+      "actual_reality": "Even healthy, long-term committed couples — including married ones — periodically have doubts or impulses to leave; the top-rated answer explicitly states that mature couples have repeated thoughts of divorce. The doubt itself is not diagnostic; the cause and content of the doubt are.",
+      "implication": "The presence of a doubt should trigger examination of its source, not automatic action; suppressing it or acting on it without examination are both errors",
+      "regions": []
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "How to interpret the impulse to leave",
+      "naive_pattern": "Treats the desire to leave as either entirely valid (the relationship is definitively wrong) or entirely invalid (you are being ungrateful/weak) — binary framing",
+      "informed_pattern": "Treats the desire to leave as diagnostic information that needs to be categorized by cause before any action is taken; the desire itself is neither automatically correct nor automatically a failure",
+      "why_it_matters": "Binary framing leads to either premature exits or indefinite suppression of legitimate problems; causal categorization leads to proportionate responses",
+      "regions": []
+    },
+    {
+      "dimension": "Evaluating a new potential partner vs. current partner",
+      "naive_pattern": "Compares the current partner's known flaws against the new option's idealized surface presentation, concluding the new option is better",
+      "informed_pattern": "Applies the same scrutiny to the new option: asks whether the same conflicts would emerge over time, whether the new option's feelings are genuine, and whether the evaluator's own patterns would replicate the same problems",
+      "why_it_matters": "Asymmetric comparison systematically inflates the appeal of new options and produces regret-generating decisions",
+      "regions": []
+    },
+    {
+      "dimension": "Relationship with somatic signals",
+      "naive_pattern": "Treats physical and emotional distress as something to push through or rationalize away in service of the relationship goal",
+      "informed_pattern": "Treats consistent somatic distress (sleep disruption, appetite disruption, physical aversion to the partner) as reliable early-warning data that should not be overridden by cognitive hope",
+      "why_it_matters": "People who ignore somatic signals consistently report that the relationship ended worse than it needed to, because the warning was available much earlier",
+      "regions": []
+    }
+  ],
+  "community_misconceptions": [
+    {
+      "misconception": "If you stay and keep trying hard enough, love and attraction will return even after it has genuinely ended",
+      "why_believed": "Persistence is culturally framed as virtue; the narrative of 'fighting for love' makes staying and trying feel more moral than leaving",
+      "actual_rule": "When physical aversion, chronic emotional dysregulation, and absence of genuine attachment are all present simultaneously, continuing the relationship intensifies harm rather than reversing it; the rank=2 commenter documents this directly",
+      "real_consequence": "Extended exposure to a relationship that has genuinely ended produces escalating physical and psychological symptoms and a more damaging eventual ending",
+      "regions": []
+    },
+    {
+      "misconception": "The grass-is-greener feeling means the new option is actually better",
+      "why_believed": "The new option has not yet been exposed to the conditions (time, conflict, habituation) that reveal its real character; it is being evaluated against a worn-in, fully-known current partner",
+      "actual_rule": "The psychological tendency to overvalue unavailable options and undervalue the familiar is a systematic bias, not an accurate signal; the new option will eventually be subject to the same dynamics",
+      "real_consequence": "Leaving for the new option often results in the same problems re-emerging, plus the loss of genuine accumulated intimacy with the previous partner",
+      "regions": []
+    }
+  ],
+  "real_case_outcomes": [
+    {
+      "situation": "Person was in a relationship where the partner showed low reciprocal investment (no clear reciprocation, no commitment signals); person continued the relationship while experiencing insomnia, weight loss, and emotional instability",
+      "decision": "Continued the relationship despite clear somatic distress signals, rationalizing that one-sided effort was acceptable",
+      "outcome": "Relationship ended on extremely painful terms ('异常惨烈'); the commenter identifies that the body had been signaling the correct answer far earlier than the mind accepted it",
+      "lesson": "When somatic distress (insomnia, appetite disruption, emotional dysregulation) is chronic and tracks the relationship rather than external stressors, it is a reliable leading indicator that should be acted on — not overridden",
+      "regions": []
+    },
+    {
+      "situation": "Person entered a second relationship with genuine initial attraction but later developed physical aversion: did not want to receive calls, avoided meetings, felt body stiffen at touch",
+      "decision": "Eventually ended the relationship by initiating the breakup",
+      "outcome": "Described as the right decision; the person expresses lasting regret only about the hurt caused to the partner, not about the decision itself",
+      "lesson": "Physical aversion that is consistent and involuntary — not wanting touch, not wanting contact — is a reliable signal that genuine attraction has ended; delaying the exit primarily extends harm to both parties",
+      "regions": []
+    }
+  ],
+  "psychological_barriers": [
+    {
+      "trigger": "Asking 'should I break up?' while simultaneously listing the partner's good qualities and shared history",
+      "underlying_state": "Sunk cost fallacy combined with loss aversion: the investment in the relationship is being treated as evidence the relationship should continue, rather than as a separate fact",
+      "how_it_manifests": "The person cannot separate the question 'is this relationship good for my future?' from 'does the time I have invested deserve to be honored?'; they conflate the two",
+      "expert_move": "Reframe explicitly: the past investment is real and worth honoring emotionally, but it is not evidence about whether the relationship should continue; those are two separate questions",
+      "regions": []
+    },
+    {
+      "trigger": "Feeling guilty for having a breakup thought at all, framing it as a moral failing",
+      "underlying_state": "Internalized norm that good partners do not doubt; the thought itself is being treated as evidence of personal failure rather than as diagnostic information",
+      "how_it_manifests": "The person suppresses the thought rather than examining what triggered it; asks 'am I bad for thinking this?' instead of 'what is this thought telling me about my situation?'",
+      "expert_move": "Validate the thought as normal and ubiquitous (even stable couples have it) and redirect: the question is not whether the thought is acceptable but what caused it and whether the cause is real",
+      "regions": []
+    },
+    {
+      "trigger": "Justifying staying by telling yourself 'I just want to give without expecting return' when the partner is clearly not invested",
+      "underlying_state": "Self-deception as a coping mechanism: reframing an unequal and painful dynamic as a virtuous choice to avoid confronting the fact that the relationship is harmful",
+      "how_it_manifests": "The person reports telling themselves the one-sided dynamic is their own choice and therefore acceptable, while simultaneously experiencing severe physical symptoms of distress",
+      "expert_move": "Point out the contradiction directly: if the choice genuinely felt right, the body would not be producing distress signals; the somatic data contradicts the cognitive rationalization",
+      "regions": []
+    },
+    {
+      "trigger": "Framing the question as 'do I love them or am I just used to them?' as the primary decision criterion",
+      "underlying_state": "Catastrophizing: treating the possibility that the feeling is 'just habit' as definitively meaning the relationship is worthless, without examining what genuine attachment actually looks like in long-term relationships",
+      "how_it_manifests": "The person devalues the relationship preemptively based on an unexamined assumption that 'real love' should always feel like early-stage intensity",
+      "expert_move": "Introduce the concept of hedonic adaptation: stable, calm attachment is what mature love looks like; the question is not whether excitement has faded but whether genuine care, respect, and positive regard are present",
+      "regions": []
+    }
+  ],
+  "reframing_moves": [
+    {
+      "original_framing": "'Should I break up or not?' — treated as a single yes/no question",
+      "reframe": "The question cannot be answered until you know which of three distinct categories is driving the impulse: (a) a character-level incompatibility, (b) hedonic adaptation mistaken for lost love, or (c) an external obstacle",
+      "why_it_works": "Dissolves the binary by showing that the correct answer is structurally different for each category; the person cannot decide without first categorizing",
+      "example_language": "不同想要分手的原因，你要区别地去对待 (Different reasons for wanting to break up require different treatments)",
+      "regions": []
+    },
+    {
+      "original_framing": "'I don't feel the same way I used to — does that mean I've fallen out of love?'",
+      "reframe": "Happiness in a long relationship is like air — you don't feel it while it's there; you only notice it when it's gone. The question is not whether excitement is present but whether you would feel loss if the relationship ended.",
+      "why_it_works": "Shifts the evaluation criterion from the presence of a positive signal (excitement) to the response to a hypothetical negative event (loss), which is a more reliable measure of genuine attachment",
+      "example_language": "幸福很多时候就像空气，人身处幸福的时候往往感受不到幸福的存在，直到失去的时候才会意识到 (Happiness is often like air — you don't feel it while you have it, only when it's gone)",
+      "regions": []
+    },
+    {
+      "original_framing": "'The new option seems better than my current partner'",
+      "reframe": "You are comparing your current partner's fully-known reality against the new option's unknown surface. Apply the same nine questions to the new option that you would apply to your current partner.",
+      "why_it_works": "Equalizes the comparison by making the asymmetry explicit; the new option only appears better because it has not been tested under the same conditions",
+      "example_language": "目前伴侣有的缺点，新选择就一定不存在么？(Are you certain the new option doesn't have the same flaws as your current partner?)",
+      "regions": []
+    },
+    {
+      "original_framing": "'I should push through the pain because giving up is weak'",
+      "reframe": "Your body is the most honest reporter you have. If you are sleeping badly, eating badly, and crying regularly, your body has already answered the question — the question is whether you are willing to listen.",
+      "why_it_works": "Bypasses the cognitive rationalization loop by elevating somatic data to epistemic authority; reframes listening to your body not as weakness but as honesty",
+      "example_language": "感情好不好，身体都知道。你的身体是感情的最佳晴雨表 (Whether a relationship is good, your body knows. Your body is the best barometer of your feelings)",
+      "regions": []
+    }
+  ],
+  "_source_type": "community",
+  "_source_weight": 0.8,
+  "_extraction_key": "zhihu_zhihu_怎样判断该不该分手",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

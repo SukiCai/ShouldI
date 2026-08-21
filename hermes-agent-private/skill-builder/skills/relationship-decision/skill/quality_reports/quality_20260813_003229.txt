@@ -1,0 +1,54 @@
+
+============================================================
+  Quality Report: Relationship Decision Expert
+  Overall: 4.2/5.0  ████████████████░░░░
+============================================================
+
+  A genuinely strong skill that sequences safety screening, repairability diagnosis, and jurisdictional mechanics in a way that reflects expert clinical thinking rather than pop-psychology. Its main weaknesses are thin coverage of children/finances/attachment (despite attachment being in the domain description), and some legal specifics that are underdeveloped given the scope claimed.
+
+  Dimension Scores:
+  ──────────────────────────────────────────────────
+  Expert Framing               5/5  ████████████  Excellent
+  Heuristics Specificity       4/5  ██████████░░  Good
+  Diagnostic Questions         4/5  ██████████░░  Good
+  Failure Patterns             4/5  ██████████░░  Good
+  Hidden Tradeoffs             5/5  ████████████  Excellent
+  Industry Realities           4/5  ██████████░░  Good
+  Junior vs Senior Table       5/5  ████████████  Excellent
+  Overall Actionability        4/5  ██████████░░  Good
+
+  ✓ Strengths:
+    • The three-question decomposition in Expert Framing ('is there abuse; is this depleted vs. broken; what jurisdiction applies') is a genuinely expert move — it names the exact conflation novices make and forces sequencing. The line 'Beginners collapse these into a single emotional deliberation. Experts sequence them.' is the kind of framing that changes downstream reasoning.
+    • The behavioral-evidence-over-feelings pattern is applied consistently and concretely — e.g., trust rebuilding is operationalized as 'cessation of affair contact, voluntary transparency, proactive disclosure of accidental contact,' which is checkable rather than vibes-based. This is repeated across heuristics, failure patterns, and the junior/senior table, giving the skill coherence.
+    • Hidden Tradeoffs table is unusually good: 'Relying on monitoring/surveillance as the primary trust-rebuilding mechanism → Builds surveillance-dependent trust that requires permanent monitoring; doesn't generalize' is a genuinely non-obvious consequence most laypeople miss.
+    • Abuse handling is well-calibrated: the one-or-two-behavior threshold, categorical override framing, and three-contact-mode referral (with rationale that 'monitoring may make phone unsafe') reflect actual DV expertise rather than generic 'seek help.'
+
+  ✗ Weaknesses:
+    • Attachment is named in the domain description ('attachment-driven decision distortion') and in the activation triggers ('Am I staying out of love, fear, or sunk cost?'), but the body of the skill barely addresses it. There's no framework for distinguishing anxious clinging from genuine commitment, no discussion of how avoidant deactivation looks like clarity, no protest-behavior recognition. This is a significant gap given the framing.
+    • Legal mechanics are gestured at but shallow. Step 0 asks the right screening questions, but the skill never actually gives the user the mechanics it claims to cover — no discussion of equitable distribution vs. community property states, no mention of the Divorce Act's specific grounds, no treatment of common-law vs. marriage property regimes in Canada (which vary dramatically by province — e.g., BC vs. Ontario treat cohabitants very differently). The one-year Canada residency and CA 6+3 rule are the only concrete facts.
+    • Children/custody is claimed in the description ('custody frameworks') but effectively absent from the body. No mention of best-interests standards, no discussion of how custody considerations should factor into leaving timing, no treatment of relocation restrictions.
+    • Some heuristics restate the diagnostic step rather than adding new leverage — e.g., Heuristic 6 ('Bilateral willingness is a hard stop') largely repeats Step 1 question 5. The Diagnostic and Heuristics sections have meaningful overlap that could be tightened.
+
+  → Improvement Suggestions:
+    • Add an Attachment section with concrete diagnostics: e.g., 'Anxious pattern: the intensity of wanting to stay spikes precisely when the partner withdraws — measure whether desire tracks connection or tracks unavailability.' Include protest behaviors, deactivating strategies, and how each distorts the stay/leave calculus in opposite directions.
+    • Expand legal mechanics into a proper reference table: US property regime by state type (community property list vs. equitable distribution), Canada province-by-province cohabitation property rules (BC includes cohabitants after 2 years; Ontario does not), and a short custody-framework primer (best interests factors, relocation constraints). Otherwise the description overpromises.
+    • Add a section on the 'decision under distortion' problem: when to defer the decision entirely (acute grief, postpartum, recent bereavement, active substance issue in either partner) vs. when apparent clarity is actually depression/hypomania talking. This is a classic expert move the skill doesn't make.
+    • Consolidate Heuristics with Diagnostic Framework — currently there's redundancy (bilateral willingness, contempt weighting, and behavioral evidence appear in both). Either make heuristics purely operational rules or make them meta-principles, but distinguish them.
+    • Add concrete language for the AI to use — e.g., scripts for asking about the 12 abuse behaviors without triggering minimization ('some of these might sound small — I'd still like to check each one'). Currently the skill tells the AI what to diagnose but not how to elicit it safely.
+
+  ⚠ Generic Advice Flags:
+    • 'Safety before problem-solving' as a heuristic is directionally correct but stated at a level of abstraction that any therapist-adjacent source would produce. The rationale ('without safety, the thinking brain is inaccessible') is generic neuroscience-flavored language. Would be stronger with an operational rule like 'if either partner's heart rate is above ~100 bpm, no substantive topic can be productively discussed.'
+    • 'Do not give generic advice. Every response should reflect where the user actually is' — this meta-instruction is itself generic. Better to specify: 'Never respond to a stay/leave question without first classifying which of the four situations applies.'
+    • '20-minute physiological timeout' is presented as expert but is standard Gottman material — fine to include, but not a differentiator. Could be sharpened by naming the specific mistake (people take breaks but ruminate, negating the physiological reset).
+
+  ○ Missing Coverage:
+    • Attachment-style distortion of the decision (named in scope, absent in body)
+    • Custody frameworks and how children change the timing/mechanics of leaving
+    • Financial entanglement diagnostics — when leaving requires a pre-separation financial plan (hidden accounts, income disparity, pension division)
+    • Common-law/cohabitation property rules — dramatically province-dependent in Canada, state-dependent in US
+    • When to defer the decision entirely (grief, postpartum, acute mental health episode, active addiction in either partner)
+    • Reconciliation-after-separation logistics — many couples separate then reunite; the skill treats leaving as terminal
+    • Sexless/low-desire relationships as a distinct diagnostic category (often mis-classified as depleted when structurally different)
+    • Coercive control as a pattern that may not trigger the 12-item list but still contraindicates repair
+
+  Location Precheck Gate: ✓ PASS

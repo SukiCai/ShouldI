@@ -1,0 +1,183 @@
+{
+  "source_file": "anxious_avoidant_stay_leave_signs.txt",
+  "heuristics": [
+    {
+      "rule": "Use time-with-no-visible-progress as the outcome-level leave signal, not conflict intensity alone",
+      "condition": "When a couple has repeated conflict without resolution, ongoing anxiety, and emotional withdrawal that never gets resolved...",
+      "action": "...treat the persistence and non-resolution over time as the primary indicator, not the mere presence of conflict or anxiety",
+      "because": "Conflict is present in repairable relationships too; what distinguishes them is whether the pattern moves — repeated conflict without progress over time is the distinguishing marker"
+    },
+    {
+      "rule": "One partner's unwillingness to work on the recurring pattern is a hard leave signal",
+      "condition": "When one partner consistently refuses to engage with or address the identified repeating pattern...",
+      "action": "...treat that unwillingness as a load-bearing decision factor, not a temporary obstacle to route around",
+      "because": "Mutual willingness to change is identified as the central repair-viability test; without it, effort by the willing partner cannot close the gap"
+    },
+    {
+      "rule": "Reframe ending the relationship as a needs-assessment verdict, not a past-value verdict",
+      "condition": "When someone is stuck on 'but we had good years' as a reason to stay despite ongoing unmet needs...",
+      "action": "...explicitly separate the question 'did this relationship matter' from the question 'is this relationship meeting my needs now and going forward'",
+      "because": "The distortion that ending equals invalidating the past is a known cognitive block; decoupling past validity from current functionality unblocks the decision"
+    },
+    {
+      "rule": "Layer outcome-level checks on top of mechanism-level checks, never instead of them",
+      "condition": "When using signs like 'ongoing anxiety' or 'no progress' to evaluate a relationship...",
+      "action": "...also separately ask whether the apparent no-progress is an attachment-mechanism artifact (deactivation resetting, hyperactivation misreading distance) before concluding the relationship is the cause",
+      "because": "Outcome-level signs alone will misfire on couples where one partner's deactivation cycle resets every time closeness approaches, producing the appearance of a stuck relationship when the mechanism, not the relationship, is the primary driver"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Mutual willingness to change",
+      "why_it_matters": "It is the load-bearing repair-viability test — without both partners willing to engage, the pattern cannot shift regardless of effort by one party",
+      "how_to_assess": "Observe whether both partners actively engage with the recurring pattern over time, not just in moments of crisis or reconciliation",
+      "weight": "high"
+    },
+    {
+      "factor": "Consistency of change over time",
+      "why_it_matters": "Willingness expressed once or in isolation is insufficient; consistent behavior change over time distinguishes genuine repair from cycle repetition",
+      "how_to_assess": "Track whether behavior shifts hold across multiple conflict episodes and across varying emotional states, not just immediately after a repair conversation",
+      "weight": "high"
+    },
+    {
+      "factor": "Persistence of anxiety and emotional triggers",
+      "why_it_matters": "Ongoing, unresolved anxiety signals the relationship dynamic is not improving; if triggers persist rather than diminish, the pattern is not changing",
+      "how_to_assess": "Ask whether anxiety and emotional reactivity are trending toward resolution or remaining stable/worsening across a meaningful time window",
+      "weight": "high"
+    },
+    {
+      "factor": "Resolution of emotional withdrawal",
+      "why_it_matters": "Emotional withdrawal that never gets resolved is a leave-pointing sign; resolution requires the withdrawing partner to re-engage, which requires their willingness",
+      "how_to_assess": "Determine whether withdrawal episodes end with genuine reconnection or simply with tension subsiding until the next cycle",
+      "weight": "high"
+    },
+    {
+      "factor": "Whether no-progress is relationship-driven or attachment-mechanism-driven",
+      "why_it_matters": "Apparent lack of progress may reflect an attachment dynamic (deactivation, hyperactivation) rather than the relationship's actual repair potential — conflating them leads to incorrect leave decisions",
+      "how_to_assess": "Separately assess whether the stuck pattern matches known attachment mechanism signatures before attributing it to relationship-level irreparability",
+      "weight": "high"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Staying based on 'we had good years'",
+      "unstated_consequence": "The past-value frame actively suppresses accurate assessment of current and future need-meeting, making a functional leave decision cognitively harder the longer it is deferred",
+      "who_it_affects": "People with high relationship investment or who anchor identity strongly to partnership history"
+    },
+    {
+      "choice": "Using outcome-level signs alone (ongoing anxiety, no progress) to decide",
+      "unstated_consequence": "You may exit a repairable relationship or stay in an unrepairable one because the apparent no-progress is actually an attachment-mechanism cycle, not a relationship-level ceiling",
+      "who_it_affects": "People in anxious-avoidant pairings specifically, where deactivation and hyperactivation can mimic relationship-level stuckness"
+    },
+    {
+      "choice": "Treating one partner's current unwillingness as permanent unwillingness",
+      "unstated_consequence": "If the unwillingness is actually avoidant deactivation, prematurely reading it as a fixed trait leads to leaving a relationship that could have been repaired with mechanism-level understanding",
+      "who_it_affects": "The anxious partner who is doing the assessing and may be hyperactivated at the moment of evaluation"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Conflating 'the relationship mattered' with 'the relationship should continue'",
+      "why_it_happens": "Past investment creates a cognitive frame where ending feels like retroactive invalidation of the relationship's value, not a forward-looking needs assessment",
+      "consequence": "Staying past the functional viability point, prolonging unmet needs and repeated non-resolution",
+      "warning_signs": [
+        "Person anchors stay-or-leave reasoning repeatedly on 'but we had good years' or 'we've been through so much'",
+        "Person is unable to separate evaluating the past from deciding about the future when prompted"
+      ]
+    },
+    {
+      "pattern": "Reading outcome-level signs without checking attachment mechanisms underneath",
+      "why_it_happens": "Outcome signs (ongoing anxiety, no progress, withdrawal) are visible and easy to name; attachment mechanisms (deactivation cycles, hyperactivation) require additional diagnostic work and a different knowledge base",
+      "consequence": "Misdiagnosis of the relationship's repairability — either leaving when the mechanism, not the relationship, is the problem, or staying and targeting the wrong intervention",
+      "warning_signs": [
+        "Assessment of 'no progress' is based on a period that coincides with repeated closeness-then-distance cycles",
+        "The partner identified as 'unwilling' shows willingness in low-stakes or emotionally cool moments but shuts down at high-stakes moments"
+      ]
+    },
+    {
+      "pattern": "Using conflict presence rather than conflict trajectory as the leave signal",
+      "why_it_happens": "Conflict is salient and emotionally loaded, making its presence feel like evidence of fundamental incompatibility rather than a data point that requires trend analysis",
+      "consequence": "Leaving a repairable relationship during a high-conflict period, or staying in an unrepairable one because a temporary calm is mistaken for progress",
+      "warning_signs": [
+        "Person describes the relationship as 'always fighting' without being able to say whether the fights are the same fight or different ones",
+        "Stay-or-leave assessment is being made during or immediately after an acute conflict episode"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Has the recurring pattern shown any visible movement — in either direction — over the last several months, or has it remained static?",
+      "what_it_reveals": "Whether the relationship is stuck at an outcome level; distinguishes a rough patch (trajectory exists) from a repeating pattern (no trajectory)",
+      "follow_up_if_yes": "What does that movement look like — is it holding across different emotional states and conflict episodes, or only in low-stakes moments?",
+      "follow_up_if_no": "Is the no-progress appearing across all conditions, or does it reset specifically when closeness increases or conflict peaks — which would suggest an attachment mechanism, not a relationship ceiling?"
+    },
+    {
+      "question": "When you say your partner is unwilling to work on this, what does that unwillingness look like in practice?",
+      "what_it_reveals": "Whether the unwillingness is a stable trait or a state-dependent response — engagement that disappears under emotional load suggests deactivation rather than genuine refusal",
+      "follow_up_if_yes": "Does the unwillingness appear across all emotional states, or specifically when the conversation gets close to the core attachment dynamic?",
+      "follow_up_if_no": "If they show some willingness, what conditions bring it out — and are those conditions replicable?"
+    },
+    {
+      "question": "Are you able to separate whether this relationship was valuable from whether it is currently meeting your needs?",
+      "what_it_reveals": "Whether the person is operating under the past-value distortion that blocks functional leave decisions",
+      "follow_up_if_yes": "What does an honest needs assessment show — and what would need to change for needs to be met going forward?",
+      "follow_up_if_no": "This is the distortion to address first before any stay-or-leave reasoning will be reliable; the framework question needs to be reset"
+    },
+    {
+      "question": "Is the ongoing anxiety you're experiencing consistent across the relationship, or does it spike specifically when distance increases or closeness is attempted?",
+      "what_it_reveals": "Whether the anxiety is a relationship-level signal or a hyperactivation signal that may be reading ordinary avoidant distance as threat",
+      "follow_up_if_yes": "If it spikes at closeness attempts, that pattern is consistent with anxious hyperactivation — the anxiety is a data point about the attachment dynamic, not necessarily about the relationship's viability",
+      "follow_up_if_no": "Consistent baseline anxiety across all relational states is a stronger signal that the relationship dynamic itself, not just the attachment mechanism, is the driver"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "Ending a relationship that had good years means those years were wasted or the relationship was a failure",
+      "actual_reality": "Past validity and current functionality are independent variables — a relationship can have been genuinely valuable and also no longer be meeting needs; ending it is a needs assessment, not a verdict on the past",
+      "implication": "Stay-or-leave decisions made through the past-value frame will systematically produce over-staying; the frame itself needs to be named and dismantled before the decision can be made clearly"
+    },
+    {
+      "common_belief": "If someone can see the signs pointing toward leaving (ongoing anxiety, no progress, unresolved withdrawal), the decision is straightforward",
+      "actual_reality": "Outcome-level signs are necessary but not sufficient — they can be produced by attachment mechanisms that are independent of the relationship's repair potential, and acting on them without checking the mechanism layer misfires on anxious-avoidant couples specifically",
+      "implication": "Practitioners and individuals need a two-layer diagnostic: outcome-level (has enough time passed with no visible improvement) and mechanism-level (is the apparent no-improvement actually an attachment cycle artifact)"
+    },
+    {
+      "common_belief": "Mutual willingness to change is something you can determine by asking each partner directly",
+      "actual_reality": "Apparent unwillingness may be avoidant deactivation — a state-dependent shutdown under emotional load — rather than a stable trait; the same partner may show genuine willingness in lower-stakes conditions",
+      "implication": "Assess willingness across conditions, not in a single high-stakes moment; a partner who appears unwilling during conflict but engages in calm reflection may be deactivating, not refusing"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Reading leave signals",
+      "junior_pattern": "Takes outcome-level signs at face value — ongoing anxiety and no progress are treated as sufficient evidence that the relationship is unrepairable",
+      "senior_pattern": "Uses outcome-level signs as the entry point to a second diagnostic layer — asks whether the apparent no-progress is relationship-driven or attachment-mechanism-driven before concluding",
+      "why_it_matters": "Outcome-only reading misfires on anxious-avoidant couples where deactivation cycles produce the appearance of a stuck relationship; the senior read prevents premature exit or misidentified intervention target"
+    },
+    {
+      "dimension": "Handling the 'we had good years' objection",
+      "junior_pattern": "Either validates the past-value frame ('yes, that matters, so maybe stay') or dismisses it ('the past doesn't matter, focus on now')",
+      "senior_pattern": "Names the distortion explicitly — separates past validity from current functionality as two independent questions, then redirects to the needs-assessment question",
+      "why_it_matters": "The junior response either reinforces the block or creates resistance; the senior response dissolves the frame without invalidating the person's experience, making the actual decision question accessible"
+    },
+    {
+      "dimension": "Assessing partner willingness",
+      "junior_pattern": "Treats a partner's unwillingness in a high-stakes conversation as a stable, reliable signal of their overall willingness to change",
+      "senior_pattern": "Distinguishes state-dependent unwillingness (deactivation under emotional load) from trait-level refusal by assessing behavior across emotional conditions",
+      "why_it_matters": "Misreading deactivation as refusal leads to either a premature leave decision or misidentifying the intervention needed — addressing deactivation requires a different approach than addressing genuine unwillingness"
+    },
+    {
+      "dimension": "Defining 'no progress'",
+      "junior_pattern": "Defines no progress as the absence of conflict resolution or the persistence of anxiety over a subjectively long time",
+      "senior_pattern": "Defines no progress as the absence of trajectory — asks whether the pattern is truly static or whether it is cycling in a way that mimics stasis while actually being an attachment mechanism resetting",
+      "why_it_matters": "A cycling pattern that resets at closeness looks like stasis but has a different cause and a different intervention; treating it as stasis produces wrong conclusions about both repairability and what repair would require"
+    }
+  ],
+  "_source_type": "expert",
+  "_source_weight": 1.0,
+  "_extraction_key": "general_anxious_avoidant_stay_leave_signs",
+  "_source_regions": [
+    "us",
+    "canada"
+  ]
+}

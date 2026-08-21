@@ -1,0 +1,242 @@
+{
+  "source_file": "ontario_property_division_equalization.txt",
+  "source_type": "official",
+  "heuristics": [
+    {
+      "rule": "Married spouses in Ontario must split property acquired during marriage equally via an equalization payment",
+      "condition": "When a marriage ends for any reason in Ontario",
+      "action": "Calculate each spouse's net family property (property value at separation minus debts and excluded property, minus pre-marriage property value minus pre-marriage debts); the spouse with the larger net family property pays half the difference to the other",
+      "because": "Ontario law requires equalization of net family property upon marriage breakdown — this is not a physical 50/50 asset split but a payment equalizing the financial gain each spouse made during the marriage",
+      "regulatory_basis": "Government of Ontario (ontario.ca) — dividing property when marriage or common-law relationship ends",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "The matrimonial home cannot have its pre-marriage, gift, or inheritance value excluded from the equalization calculation",
+      "condition": "When calculating net family property and one spouse owned the family home before marriage, or received it as a gift or inheritance",
+      "action": "Include the full value of the family home in the equalization calculation — do not deduct the pre-marriage value, gift value, or inheritance value as an exclusion",
+      "because": "Ontario law treats the family home specially: the standard exclusions for pre-marriage property, gifts, and inheritances explicitly do not apply to the matrimonial home",
+      "regulatory_basis": "Government of Ontario (ontario.ca) — dividing property when marriage or common-law relationship ends",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "A court claim for equalization must be brought within 6 years from separation OR 2 years from finalized divorce, whichever comes first",
+      "condition": "When a married spouse in Ontario intends to pursue a court claim for the equalization amount",
+      "action": "File the court claim before the earlier of: 6 years from the date of separation, or 2 years from the date the divorce is finalized",
+      "because": "Missing the limitation period bars the court claim for equalization entirely",
+      "regulatory_basis": "Government of Ontario (ontario.ca) — dividing property when marriage or common-law relationship ends",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "Common-law couples in Ontario have no automatic property division rights regardless of relationship duration",
+      "condition": "When a common-law couple in Ontario separates, regardless of how long they lived together",
+      "action": "Each partner retains only what they individually purchased — no equalization payment or automatic division applies",
+      "because": "Ontario law does not grant common-law partners automatic property-division rights; there is no duration threshold (unlike BC) that triggers such rights",
+      "regulatory_basis": "Government of Ontario (ontario.ca) — dividing property when marriage or common-law relationship ends",
+      "country_scope": "canada"
+    },
+    {
+      "rule": "A cohabitation agreement is the only mechanism for common-law partners in Ontario to establish enforceable property-division terms",
+      "condition": "When common-law partners in Ontario wish to create property rights or obligations between themselves",
+      "action": "Enter into a voluntary cohabitation agreement",
+      "because": "Without a cohabitation agreement, no automatic legal property-division framework applies to common-law couples in Ontario",
+      "regulatory_basis": "Government of Ontario (ontario.ca) — dividing property when marriage or common-law relationship ends",
+      "country_scope": "canada"
+    }
+  ],
+  "decision_factors": [
+    {
+      "factor": "Legal relationship status: married vs. common-law",
+      "why_it_matters": "Determines whether automatic property-division rights exist at all — married spouses have full equalization rights; common-law partners have none automatically",
+      "how_to_assess": "Establish whether the couple was legally married or in a common-law relationship at the time of separation",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Province of residence (Ontario vs. other Canadian provinces)",
+      "why_it_matters": "Property division rules vary dramatically by province — the same fact pattern (unmarried couple, 5+ years together, separating) produces automatic 50/50-equivalent division in BC but zero automatic division in Ontario",
+      "how_to_assess": "Establish which Canadian province the couple lived in before any property guidance is given",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Whether the family home was owned before marriage or received as gift/inheritance",
+      "why_it_matters": "For all other property, pre-marriage ownership, gifts, and inheritances can be excluded from the equalization calculation; for the matrimonial home, these exclusions do not apply — the full value is always included",
+      "how_to_assess": "Identify whether the property in question is the matrimonial home; if yes, standard exclusions cannot be applied regardless of how it was acquired",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Time elapsed since separation and since divorce finalization",
+      "why_it_matters": "A court claim for equalization is time-barred after 6 years from separation or 2 years from finalized divorce, whichever comes first",
+      "how_to_assess": "Calculate both: (a) years since date of separation and (b) years since divorce was finalized; the earlier deadline controls",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Existence of a cohabitation agreement for common-law couples",
+      "why_it_matters": "Without a cohabitation agreement, common-law partners in Ontario have no property-division entitlements; with one, the terms of the agreement govern",
+      "how_to_assess": "Determine whether a voluntary cohabitation agreement was signed and whether it addresses property division",
+      "weight": "high",
+      "country_scope": "canada"
+    },
+    {
+      "factor": "Each spouse's net family property (NFP) calculation",
+      "why_it_matters": "The equalization payment amount is determined by the difference between the two spouses' net family property figures — errors in calculating NFP directly affect the payment owed",
+      "how_to_assess": "For each spouse: (property value at separation minus debts and excluded property) minus (pre-marriage property value minus pre-marriage debts); the spouse with the higher NFP pays half the difference",
+      "weight": "high",
+      "country_scope": "canada"
+    }
+  ],
+  "hidden_tradeoffs": [
+    {
+      "choice": "Remaining in a long-term common-law relationship in Ontario without a cohabitation agreement",
+      "unstated_consequence": "Regardless of relationship length, a common-law partner in Ontario acquires zero automatic property-division rights — a partner who contributed financially to the household or property during a decades-long relationship leaves with only what is in their own name",
+      "who_it_affects": "Common-law partners in Ontario, particularly those who made informal financial contributions to jointly used property titled in the other partner's name",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Owning the family home before marriage and then marrying",
+      "unstated_consequence": "The pre-marriage value of the family home cannot be deducted from the equalization calculation — unlike all other pre-marriage property, the full current value of the matrimonial home is subject to equalization even though the owner brought it into the marriage",
+      "who_it_affects": "Spouses who owned the family home prior to marriage and assumed they could exclude its pre-marriage value the same way they exclude other pre-marriage assets",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Delaying pursuit of an equalization claim after separation",
+      "unstated_consequence": "The limitation period is the earlier of 6 years from separation or 2 years from finalized divorce — divorcing quickly can inadvertently shorten the window for bringing an equalization claim to as little as 2 years from the divorce date",
+      "who_it_affects": "Spouses who finalize their divorce relatively quickly but then delay pursuing the equalization payment, not realizing the 2-year post-divorce clock may expire before the 6-year post-separation clock",
+      "country_scope": "canada"
+    },
+    {
+      "choice": "Assuming Ontario common-law property rules match BC rules because both are Canadian provinces",
+      "unstated_consequence": "BC has a duration threshold (2 years) after which common-law partners gain automatic property-division rights equivalent to married spouses; Ontario has no such threshold — the rules are opposite in outcome for long-term common-law couples",
+      "who_it_affects": "Common-law partners who have lived in both provinces or who receive general 'Canadian' advice without province-specific clarification",
+      "country_scope": "canada"
+    }
+  ],
+  "failure_patterns": [
+    {
+      "pattern": "Common-law partner in Ontario attempts to claim automatic property division rights based on relationship duration",
+      "why_it_happens": "Ontario law contains no duration threshold for common-law partners to acquire automatic property-division rights; the rule in Ontario is a complete absence of automatic division regardless of years together",
+      "consequence": "No legal entitlement to any portion of property held in the other partner's name; claim fails entirely absent a cohabitation agreement or other legal instrument",
+      "warning_signs": [
+        "Partner assumes 2-year or other duration threshold applies (a BC rule, not an Ontario rule)",
+        "No cohabitation agreement was ever signed",
+        "Property was purchased in only one partner's name during the relationship"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Married spouse in Ontario misses the limitation period for an equalization claim",
+      "why_it_happens": "The claim must be brought within 6 years of separation OR 2 years of finalized divorce, whichever is earlier — spouses who divorce relatively quickly face a 2-year post-divorce window that may close before they act",
+      "consequence": "Court claim for equalization payment is barred; the spouse loses the right to pursue equalization through the courts",
+      "warning_signs": [
+        "Divorce was finalized more than 2 years ago and no equalization claim has been filed",
+        "Separation occurred more than 6 years ago and no equalization claim has been filed",
+        "Spouse assumed the longer 6-year period always applies without checking whether divorce finalization created an earlier 2-year deadline"
+      ],
+      "country_scope": "canada"
+    },
+    {
+      "pattern": "Spouse incorrectly excludes the pre-marriage or inherited value of the matrimonial home from the equalization calculation",
+      "why_it_happens": "Ontario's standard property exclusions (pre-marriage value, gifts, inheritances) explicitly do not apply to the matrimonial home — applying them anyway produces an incorrect and legally invalid equalization calculation",
+      "consequence": "Incorrect equalization payment calculated; if relied upon in a legal proceeding, the calculation will be rejected and corrected to include the full value of the matrimonial home",
+      "warning_signs": [
+        "One spouse owned the family home before marriage and deducts its pre-marriage value in the NFP calculation",
+        "The family home was received as a gift or inheritance and treated as excluded property in the calculation"
+      ],
+      "country_scope": "canada"
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "question": "Were the parties legally married, or were they in a common-law relationship?",
+      "what_it_reveals": "Determines whether Ontario's equalization framework applies at all — it applies only to married spouses",
+      "follow_up_if_yes": "If married: proceed to calculate net family property for each spouse and determine equalization payment",
+      "follow_up_if_no": "If common-law: automatic property division does not apply in Ontario; ask whether a cohabitation agreement exists",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Is the couple located in Ontario (as opposed to another Canadian province such as BC)?",
+      "what_it_reveals": "Province is determinative — Ontario's complete absence of automatic common-law property division is directly contrary to BC's rule; province must be established before any property guidance is given",
+      "follow_up_if_yes": "Apply Ontario rules: no automatic division for common-law; equalization for married",
+      "follow_up_if_no": "Apply the province-specific rules of the relevant province — do not assume Ontario rules apply",
+      "country_scope": "canada"
+    },
+    {
+      "question": "Does the property at issue include the matrimonial home?",
+      "what_it_reveals": "Tests whether the standard exclusions for pre-marriage value, gifts, or inheritances can be applied — they cannot be applied to the matrimonial home",
+      "follow_up_if_yes": "Include the full current value of the matrimonial home in the equalization calculation without any pre-marriage, gift, or inheritance deduction",
+      "follow_up_if_no": "Standard exclusions (pre-marriage value, gifts, inheritances) may apply to the non-home property in question",
+      "country_scope": "canada"
+    },
+    {
+      "question": "How long ago did the spouses separate, and has the divorce been finalized — and if so, when?",
+      "what_it_reveals": "Tests whether the limitation period for an equalization court claim has expired — the deadline is the earlier of 6 years from separation or 2 years from finalized divorce",
+      "follow_up_if_yes": "If within the limitation period: equalization claim may still be brought; calculate the applicable deadline precisely",
+      "follow_up_if_no": "If limitation period has passed: court claim for equalization is barred",
+      "country_scope": "canada"
+    },
+    {
+      "question": "For common-law couples: did the partners sign a cohabitation agreement, and does it address property division?",
+      "what_it_reveals": "Determines whether any enforceable property-division terms exist for a common-law couple in Ontario, where no automatic rights exist",
+      "follow_up_if_yes": "Apply the terms of the cohabitation agreement to determine each partner's property entitlements",
+      "follow_up_if_no": "Each partner retains only what is individually in their name — no further property-division entitlement exists under Ontario law",
+      "country_scope": "canada"
+    }
+  ],
+  "industry_realities": [
+    {
+      "common_belief": "In Canada, common-law couples who have lived together for a significant period (e.g., 2+ years) automatically gain property-division rights similar to married couples",
+      "actual_reality": "This is true in BC (2-year threshold) but explicitly not true in Ontario — Ontario has no duration threshold for common-law couples and provides zero automatic property-division rights regardless of how long the partners lived together",
+      "implication": "Any person in a long-term common-law relationship in Ontario who has not signed a cohabitation agreement should understand they have no automatic claim to property held in their partner's name upon separation",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "Dividing property in Ontario on marriage breakdown means physically splitting each asset 50/50",
+      "actual_reality": "Ontario uses an equalization payment system, not a physical 50/50 asset split — each spouse keeps their own property but the spouse who accumulated more net family property during the marriage pays half the difference in NFP to the other spouse",
+      "implication": "Spouses should focus on accurately calculating net family property figures rather than assuming each individual asset will be divided in half",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A spouse who owned the family home before marriage, or received it as a gift or inheritance, can exclude that value from the equalization calculation just like other pre-marriage or inherited assets",
+      "actual_reality": "Ontario law explicitly carves out the matrimonial home from the standard exclusions — the full value of the family home is always included in the equalization calculation regardless of how or when it was acquired",
+      "implication": "A spouse who brought a home into the marriage or inherited it during the marriage cannot protect that value from equalization the way they could protect, for example, an inherited bank account",
+      "country_scope": "canada"
+    },
+    {
+      "common_belief": "A separated spouse always has 6 years to bring an equalization claim",
+      "actual_reality": "The limitation period is the earlier of 6 years from separation OR 2 years from finalized divorce — if the divorce is finalized, the 2-year post-divorce clock may expire well before the 6-year separation clock, eliminating the right to claim",
+      "implication": "Spouses should not assume the 6-year period applies as a floor; finalizing a divorce quickly can inadvertently reduce the available window for an equalization claim to 2 years from the divorce date",
+      "country_scope": "canada"
+    }
+  ],
+  "junior_vs_senior_signals": [
+    {
+      "dimension": "Applying property-division rules to Canadian common-law couples",
+      "naive_pattern": "Assumes a duration threshold (e.g., 2 years together) triggers automatic property-division rights for common-law couples across Canada, treating Canadian provinces as uniform",
+      "informed_pattern": "Immediately asks which province the couple is in before stating any rule — knows that Ontario provides zero automatic division for common-law couples regardless of duration, while BC provides automatic division after 2 years, making province the threshold question",
+      "why_it_matters": "Giving a common-law partner in Ontario the impression they have automatic property rights could cause them to forgo a cohabitation agreement or fail to take timely legal action, resulting in complete loss of any property claim",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Calculating the equalization payment for the matrimonial home",
+      "naive_pattern": "Applies the standard pre-marriage value or inheritance exclusion to the family home the same way as any other asset, reducing the equalization base",
+      "informed_pattern": "Knows the matrimonial home is explicitly carved out of Ontario's standard property exclusions — regardless of pre-marriage ownership, gift, or inheritance, the full current value of the family home is included in the equalization calculation",
+      "why_it_matters": "Incorrectly excluding the matrimonial home's pre-marriage or inherited value produces a lower equalization payment than Ontario law requires, disadvantaging the spouse who is owed the payment",
+      "country_scope": "canada"
+    },
+    {
+      "dimension": "Advising on the limitation period for equalization claims",
+      "naive_pattern": "Tells a separated spouse they have 6 years to bring an equalization claim without asking whether a divorce has already been finalized",
+      "informed_pattern": "Checks both dates — separation date and divorce finalization date — and identifies the earlier of the two deadlines (6 years from separation vs. 2 years from finalized divorce) as the controlling limitation period",
+      "why_it_matters": "A spouse who finalizes their divorce and then waits more than 2 years to pursue equalization loses the right to a court claim, even if the 6-year separation clock has not yet run",
+      "country_scope": "canada"
+    }
+  ],
+  "_source_type": "official",
+  "_source_weight": 1.5,
+  "_extraction_key": "canada_ontario_property_division_equalization",
+  "_source_regions": [
+    "canada"
+  ]
+}
